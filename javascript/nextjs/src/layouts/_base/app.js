@@ -1,77 +1,68 @@
 // i18n
 import '../locales/i18n';
 
-// highlight
+// Highlight
 import '../utils/highlight';
 
-// scroll bar
-import 'simplebar/src/simplebar.css';
-
-// lightbox
+// Lightbox
 import 'react-image-lightbox/style.css';
 
-// map
+// Map
 import 'mapbox-gl/dist/mapbox-gl.css';
 
-// editor
+// Quill
 import 'react-quill/dist/quill.snow.css';
 
-// slick-carousel
+// Slick carousel
 import 'slick-carousel/slick/slick.css';
 import 'slick-carousel/slick/slick-theme.css';
 
-// lazy image
-import 'react-lazy-load-image-component/src/effects/blur.css';
-import 'react-lazy-load-image-component/src/effects/opacity.css';
-import 'react-lazy-load-image-component/src/effects/black-and-white.css';
-
-// fullcalendar
+// Fullcalendar
 import '@fullcalendar/common/main.min.css';
 import '@fullcalendar/daygrid/main.min.css';
 
 import PropTypes from 'prop-types';
 import cookie from 'cookie';
-// next
+
+// Next
 import Head from 'next/head';
 import App from 'next/app';
-//
+
+// Redux
 import { Provider as ReduxProvider } from 'react-redux';
+import { store } from '../redux/store';
+
 // @mui
 import { AdapterDateFns } from '@mui/x-date-pickers/AdapterDateFns';
 import { LocalizationProvider } from '@mui/x-date-pickers';
-// redux
-import { store } from '../redux/store';
-// utils
+
+// Utils
 import { getSettings } from '../utils/getSettings';
-// contexts
+
+// Contexts
 import { SettingsProvider } from '../contexts/SettingsContext';
 import { CollapseDrawerProvider } from '../contexts/CollapseDrawerContext';
-// theme
+
+// Theme
 import ThemeProvider from '../theme';
-// components
+
+// Components
 import ThemeSettings from '../components/settings';
 import { ChartStyle } from '../components/chart';
 import ProgressBar from '../components/ProgressBar';
 import NotistackProvider from '../components/NotistackProvider';
 import MotionLazyContainer from '../components/animate/MotionLazyContainer';
 
-// Check our docs
-// https://docs-minimals.vercel.app/authentication/ts-version
-
+// Auth
 import { AuthProvider } from '../contexts/JWTContext';
-// import { AuthProvider } from '../contexts/Auth0Context';
-// import { AuthProvider } from '../contexts/FirebaseContext';
-// import { AuthProvider } from '../contexts/AwsCognitoContext';
 
-// ----------------------------------------------------------------------
-
-MyApp.propTypes = {
+HeroApp.propTypes = {
   Component: PropTypes.func,
   pageProps: PropTypes.object,
   settings: PropTypes.object,
 };
 
-export default function MyApp(props) {
+export default function HeroApp(props) {
   const { Component, pageProps, settings } = props;
 
   const getLayout = Component.getLayout ?? ((page) => page);

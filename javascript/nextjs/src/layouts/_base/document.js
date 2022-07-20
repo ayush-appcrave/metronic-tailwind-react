@@ -1,20 +1,18 @@
 import * as React from 'react';
-// next
+// Next
 import Document, { Html, Head, Main, NextScript } from 'next/document';
-// emotion
+// Emotion
 import { CacheProvider } from '@emotion/react';
 import createCache from '@emotion/cache';
 import createEmotionServer from '@emotion/server/create-instance';
-// theme
+// Theme
 import palette from '../theme/palette';
-
-// ----------------------------------------------------------------------
 
 function createEmotionCache() {
   return createCache({ key: 'css' });
 }
 
-export default class MyDocument extends Document {
+export default class HeroDocument extends Document {
   render() {
     return (
       <Html lang="en">
@@ -57,9 +55,7 @@ export default class MyDocument extends Document {
   }
 }
 
-// ----------------------------------------------------------------------
-
-MyDocument.getInitialProps = async (ctx) => {
+HeroDocument.getInitialProps = async (ctx) => {
   const originalRenderPage = ctx.renderPage;
 
   const cache = createEmotionCache();
