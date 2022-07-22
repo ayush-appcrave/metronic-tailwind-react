@@ -4,23 +4,6 @@ import '../locales/i18n';
 // Highlight
 import '../utils/highlight';
 
-// Lightbox
-import 'react-image-lightbox/style.css';
-
-// Map
-import 'mapbox-gl/dist/mapbox-gl.css';
-
-// Quill
-import 'react-quill/dist/quill.snow.css';
-
-// Slick carousel
-import 'slick-carousel/slick/slick.css';
-import 'slick-carousel/slick/slick-theme.css';
-
-// Fullcalendar
-import '@fullcalendar/common/main.min.css';
-import '@fullcalendar/daygrid/main.min.css';
-
 import PropTypes from 'prop-types';
 import cookie from 'cookie';
 
