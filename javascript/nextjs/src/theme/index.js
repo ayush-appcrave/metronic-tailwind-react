@@ -2,7 +2,7 @@ import PropTypes from 'prop-types';
 import { useMemo } from 'react';
 import { CssBaseline } from '@mui/material';
 import { createTheme, ThemeProvider as MUIThemeProvider } from '@mui/material/styles';
-import useSettings from '../hooks/useSettings';
+import useSettings from '../hooks/useThemeSettings';
 import palette from './palette';
 
 ThemeProvider.propTypes = {

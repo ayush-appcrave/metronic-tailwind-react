@@ -4,6 +4,6 @@ import PropTypes from 'prop-types';
 
 export const SvgIcon = (icon, path = 'media/icons/duotune/') => {
   return (
-    <SVG src={path + icon}  height={'1em'} width={'auto'}/>
+    <SVG src={path + icon}/>
   )
 };

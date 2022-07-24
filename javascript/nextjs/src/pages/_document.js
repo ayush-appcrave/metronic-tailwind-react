@@ -16,7 +16,7 @@ function createEmotionCache() {
   return createCache({ key: 'css' });
 }
 
-export default class HeroDocument extends Document {
+export default class MyDocument extends Document {
   render() {
     return (
       <Html lang="en">
@@ -53,7 +53,7 @@ export default class HeroDocument extends Document {
   }
 }
 
-HeroDocument.getInitialProps = async (ctx) => {
+MyDocument.getInitialProps = async (ctx) => {
   const originalRenderPage = ctx.renderPage;
 
   const cache = createEmotionCache();

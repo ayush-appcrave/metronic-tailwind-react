@@ -1,74 +1,83 @@
-// Mui
 import { enUS, frFR, zhCN, viVN, arSD } from '@mui/material/locale';
 
-// Layouts
-export const CONFIG_LAYOUTS = {
-  default: {
-		header: {
-
-		}
-  }
-};
-
-// Cookies keys
-export const CONFIG_COOKIES_KEYS = {
+// Settings keys
+export const SETTINGS_KEYS = {
 	themeMode: 'themeMode',
 	themeDirection: 'themeDirection',
+  themeLanguage: 'themeLanguage',
 	themeLayout: 'themeLayout',
 	themeContainerWidth: 'themeContainerWidth',
-	themeColorPresets: 'themeColorPresets',
+	themeColor: 'themeColor',
 }
 
-// Cookies expiration
-export const CONFIG_COOKIES_EXPIRATION = 0;
-
-export const CONFIG_THEME_DEFAULTS = {
+// Settings defaults
+export const SETTINGS_DEFAULTS = {
   themeMode: 'light',
   themeDirection: 'ltr',
+  themeLanguage: 'en',
   themeLayout: 'default',
-  themeColorPresets: 'default',
+  themeColor: 'default',
   themeContainerWidth: 'fluid',
 };
 
+// Cookies expiration
+export const COOKIES_EXPIRATION = 5;
+
+// Layouts
+export const LAYOUT_DEFAULT = {
+  
+};
+
+export const LAYOUT_AUTH = {
+  
+};
+
 // Languages
-export const CONFIG_LANGUAGES = [
+export const LANGUAGES = [
   {
-    label: 'English',
-    value: 'en',
-    systemValue: enUS,
-    icon: '/assets/icons/flags/ic_flag_en.svg',
+    langugeLabel: 'English',
+    langugeValue: 'en',
+    languageSystemValue: enUS,
+    langugeDirection: 'ltr',
+    langugeIcon: '/assets/icons/flags/ic_flag_en.svg',
+  },
+  /*  
+  {
+    langugeLabel: 'French',
+    langugeValue: 'fr',
+    languageSystemValue: frFR,
+    langugeDirection: 'ltr',
+    langugeIcon: '/assets/icons/flags/ic_flag_fr.svg',
   },
   {
-    label: 'French',
-    value: 'fr',
-    systemValue: frFR,
-    icon: '/assets/icons/flags/ic_flag_fr.svg',
+    langugeLabel: 'Vietnamese',
+    langugeValue: 'vn',
+    languageSystemValue: viVN,
+    langugeDirection: 'ltr',
+    langugeIcon: '/assets/icons/flags/ic_flag_vn.svg',
   },
   {
-    label: 'Vietnamese',
-    value: 'vn',
-    systemValue: viVN,
-    icon: '/assets/icons/flags/ic_flag_vn.svg',
+    langugeLabel: 'Chinese',
+    langugeValue: 'cn',
+    languageSystemValue: zhCN,
+    langugeDirection: 'ltr',
+    langugeIcon: '/assets/icons/flags/ic_flag_cn.svg',
   },
   {
-    label: 'Chinese',
-    value: 'cn',
-    systemValue: zhCN,
-    icon: '/assets/icons/flags/ic_flag_cn.svg',
+    langugeLabel: 'Arabic (Sudan)',
+    langugeValue: 'ar',
+    languageSystemValue: arSD,
+    langugeDirection: 'rtl',
+    langugeIcon: '/assets/icons/flags/ic_flag_sa.svg',
   },
-  {
-    label: 'Arabic (Sudan)',
-    value: 'ar',
-    systemValue: arSD,
-    icon: '/assets/icons/flags/ic_flag_sa.svg',
-  },
+  */
 ];
 
 // Default languages
-export const CONFIG_DEFAULT_LANGUAGE = CONFIG_LANGUAGES[0]; // English
+export const DEFAULT_LANGUAGE = LANGUAGES[0]; // English
 
 // Route paths
-export const CONFIG_PATH_AUTH = {
+export const PATHS_AUTH = {
 	login: '/auth/login',
 	register: '/auth/register',
 	verify: '/auth/verify',
@@ -76,7 +85,7 @@ export const CONFIG_PATH_AUTH = {
 	newPassword: '/auth/new-password',
 };
 
-export const CONFIG_PATH_GENERAL = {
+export const PATHS_GENERAL = {
 	comingSoon: '/coming-soon',
 	maintenance: '/maintenance',
 	pricing: '/pricing',
