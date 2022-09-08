@@ -1,23 +1,23 @@
-import { LANGUAGES } from '../config';
+import { LANGUAGES } from '../../config';
 
-export const getLanguage = (lang) => {
+export default function getLanguage(lang) {
 	LANGUAGES.forEach(each => {
-		if (each.value === lang) {
+		if (each.languageValue === lang) {
 			return {
-				langugeLabel: each.langugeLabel,
-				langugeDirection: each.langugeDirection,
-				langugeValue: each.langugeValue,
+				languageLabel: each.languageLabel,
+				languageDirection: each.languageDirection,
+				languageValue: each.languageValue,
 				languageSystemValue: each.languageSystemValue,				
-				langugeIcon: each.langugeIcon,
+				languageIcon: each.languageIcon,
 			};
 		}
 	});
 
 	return {
-		langugeLabel: null,
-		langugeDirection: null,
-		langugeValue: null,
+		languageLabel: null,
+		languageDirection: null,
+		languageValue: null,
 		languageSystemValue: null,		
-		langugeIcon: null,
+		languageIcon: null,
 	};
 };

@@ -2,7 +2,7 @@ import PropTypes from 'prop-types';
 import { useMemo } from 'react';
 import { CssBaseline } from '@mui/material';
 import { createTheme, ThemeProvider as MUIThemeProvider } from '@mui/material/styles';
-import useSettings from '../hooks/useThemeSettings';
+import useSettings from '../_core/hooks/useSettings';
 import palette from './palette';
 
 ThemeProvider.propTypes = {
@@ -10,20 +10,20 @@ ThemeProvider.propTypes = {
 };
 
 export default function ThemeProvider({ children }) {
-  const { themeMode, themeDirection } = useSettings();
+  const { mode, direction } = useSettings();
 
-  const isLightMode = themeMode === 'light';
+  const isLightMode = mode === 'light';
 
-  const themeOptions = useMemo(
+  const options = useMemo(
     () => ({
       breakpoints,
       palette: isLightMode ? palette.light : palette.dark,   
-      direction: themeDirection
+      direction: direction
     }),
-    [isLightMode, themeDirection]
+    [isLightMode, direction]
   );
 
-  const theme = createTheme(themeOptions);
+  const theme = createTheme(options);
 
   theme.components = componentsOverride(theme);
 

@@ -2,7 +2,7 @@ import PropTypes from 'prop-types';
 import { useState } from 'react';
 import { styled } from '@mui/material/styles';
 import { Box } from '@mui/material';
-import useThemeSettings from '../../hooks/useThemeSettings';
+import useSettings from '../../_core/hooks/useSettings';
 import { LAYOUT_AUTH } from '../../config';
 
 AuthLayout.propTypes = {

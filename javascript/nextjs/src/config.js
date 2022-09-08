@@ -2,22 +2,22 @@ import { enUS, frFR, zhCN, viVN, arSD } from '@mui/material/locale';
 
 // Settings keys
 export const SETTINGS_KEYS = {
-	themeMode: 'themeMode',
-	themeDirection: 'themeDirection',
-  themeLanguage: 'themeLanguage',
-	themeLayout: 'themeLayout',
-	themeContainerWidth: 'themeContainerWidth',
-	themeColor: 'themeColor',
+	mode: 'mode',
+	direction: 'direction',
+  language: 'language',
+	layout: 'layout',
+	containerWidth: 'containerWidth',
+	color: 'color',
 }
 
 // Settings defaults
 export const SETTINGS_DEFAULTS = {
-  themeMode: 'light',
-  themeDirection: 'ltr',
-  themeLanguage: 'en',
-  themeLayout: 'default',
-  themeColor: 'default',
-  themeContainerWidth: 'fluid',
+  mode: 'light',
+  direction: 'ltr',
+  language: 'en',
+  layout: 'default',
+  color: 'default',
+  containerWidth: 'fluid',
 };
 
 // Cookies expiration
@@ -35,40 +35,40 @@ export const LAYOUT_AUTH = {
 // Languages
 export const LANGUAGES = [
   {
-    langugeLabel: 'English',
-    langugeValue: 'en',
+    languageLabel: 'English',
+    languageValue: 'en',
     languageSystemValue: enUS,
-    langugeDirection: 'ltr',
-    langugeIcon: '/assets/icons/flags/ic_flag_en.svg',
+    languageDirection: 'ltr',
+    languageIcon: '/assets/icons/flags/ic_flag_en.svg',
   },
   /*  
   {
-    langugeLabel: 'French',
-    langugeValue: 'fr',
+    languageLabel: 'French',
+    languageValue: 'fr',
     languageSystemValue: frFR,
-    langugeDirection: 'ltr',
-    langugeIcon: '/assets/icons/flags/ic_flag_fr.svg',
+    languageDirection: 'ltr',
+    languageIcon: '/assets/icons/flags/ic_flag_fr.svg',
   },
   {
-    langugeLabel: 'Vietnamese',
-    langugeValue: 'vn',
+    languageLabel: 'Vietnamese',
+    languageValue: 'vn',
     languageSystemValue: viVN,
-    langugeDirection: 'ltr',
-    langugeIcon: '/assets/icons/flags/ic_flag_vn.svg',
+    languageDirection: 'ltr',
+    languageIcon: '/assets/icons/flags/ic_flag_vn.svg',
   },
   {
-    langugeLabel: 'Chinese',
-    langugeValue: 'cn',
+    languageLabel: 'Chinese',
+    languageValue: 'cn',
     languageSystemValue: zhCN,
-    langugeDirection: 'ltr',
-    langugeIcon: '/assets/icons/flags/ic_flag_cn.svg',
+    languageDirection: 'ltr',
+    languageIcon: '/assets/icons/flags/ic_flag_cn.svg',
   },
   {
-    langugeLabel: 'Arabic (Sudan)',
-    langugeValue: 'ar',
+    languageLabel: 'Arabic (Sudan)',
+    languageValue: 'ar',
     languageSystemValue: arSD,
-    langugeDirection: 'rtl',
-    langugeIcon: '/assets/icons/flags/ic_flag_sa.svg',
+    languageDirection: 'rtl',
+    languageIcon: '/assets/icons/flags/ic_flag_sa.svg',
   },
   */
 ];

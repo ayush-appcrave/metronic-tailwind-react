@@ -1,4 +1,4 @@
-import palette from '../theme/palette';
+import palette from '../../theme/palette';
 
 export const colors = [
   {
@@ -14,12 +14,12 @@ export const colors = [
   },
 ];
 
-export const defaultOption = colors[0];
-export const purpleOption = colors[1];
+export const defaultColor = colors[0];
+export const purpleColor = colors[1];
 
 export default function getThemeColors(key) {
   return {
-    default: defaultOption,
-    purple: purpleOption
+    default: defaultColor,
+    purple: purpleColor
   }[key];
 }

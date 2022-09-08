@@ -1,6 +1,6 @@
 import { styled } from '@mui/material/styles';
 import Layout from '../layouts';
-import Page from '../components/Page';
+import Page from '../_core/components/Page';
 
 const Content = styled('div')(({ theme }) => ({
   overflow: 'hidden',

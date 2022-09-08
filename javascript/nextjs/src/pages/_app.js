@@ -1,17 +1,17 @@
 import Head from 'next/head';
 import App from 'next/app';
 import '../locales';
-import '../utils/highlight';
+import '../_core/utils/highlight';
 import PropTypes from 'prop-types';
 import cookie from 'cookie';
 import { Provider as ReduxProvider } from 'react-redux';
-import { store } from '../redux/store';
+import { store } from '../_core/stores';
 import { AdapterDateFns } from '@mui/x-date-pickers/AdapterDateFns';
 import { LocalizationProvider } from '@mui/x-date-pickers';
-import { getThemeSettings } from '../utils/getThemeSettings';
-import { ThemeSettingsProvider } from '../contexts/ThemeSettingsContext';
+import { getSettings } from '../_core/utils/getSettings';
+import { SettingsProvider } from '../_core/contexts/SettingsContext';
 import ThemeProvider from '../theme';
-import { AuthProvider } from '../contexts/AuthJWTContext';
+import { AuthProvider } from '../_core/contexts/AuthJWTContext';
 
 MyApp.propTypes = {
   Component: PropTypes.func,
@@ -33,11 +33,11 @@ export default function MyApp(props) {
       <AuthProvider>
         <ReduxProvider store={store}>
           <LocalizationProvider dateAdapter={AdapterDateFns}>
-            <ThemeSettingsProvider defaultSettings={settings}>
+            <SettingsProvider defaultSettings={settings}>
               <ThemeProvider>
                 {getLayout(<Component {...pageProps} />)}
               </ThemeProvider>
-            </ThemeSettingsProvider>
+            </SettingsProvider>
           </LocalizationProvider>
         </ReduxProvider>
       </AuthProvider>
@@ -50,7 +50,7 @@ MyApp.getInitialProps = async (context) => {
 
   const cookies = cookie.parse(context.ctx.req ? context.ctx.req.headers.cookie || '' : document.cookie);
 
-  const settings = getThemeSettings(cookies);
+  const settings = getSettings(cookies);
 
   return {
     ...appProps,
