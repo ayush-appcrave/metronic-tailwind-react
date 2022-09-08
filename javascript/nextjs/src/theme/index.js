@@ -4,6 +4,7 @@ import { CssBaseline } from '@mui/material';
 import { createTheme, ThemeProvider as MUIThemeProvider } from '@mui/material/styles';
 import useSettings from '../_core/hooks/useSettings';
 import palette from './palette';
+import breakpoints from './breakpoints';
 
 ThemeProvider.propTypes = {
   children: PropTypes.node.isRequired,
@@ -25,7 +26,7 @@ export default function ThemeProvider({ children }) {
 
   const theme = createTheme(options);
 
-  theme.components = componentsOverride(theme);
+  //theme.components = componentsOverride(theme);
 
   return (
     <MUIThemeProvider theme={theme}>
