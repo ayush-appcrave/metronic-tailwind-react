@@ -25,7 +25,7 @@ export const COOKIES_EXPIRATION = 5;
 
 // Layouts
 export const LAYOUT_DEFAULT = {
-  
+  SIDEBAR_WIDTH: 300
 };
 
 export const LAYOUT_AUTH = {

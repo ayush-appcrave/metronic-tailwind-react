@@ -1,13 +1,10 @@
 import PropTypes from 'prop-types';
 import { useState } from 'react';
 import { styled } from '@mui/material/styles';
-import { Box } from '@mui/material';
+import { Box, Link, Container, Typography, Stack } from '@mui/material';
 import useSettings from '../../_core/hooks/useSettings';
 import { LAYOUT_DEFAULT } from '../../config';
-import { Main } from './main';
-import { Header } from './header';
-import { Sidebar } from './sidebar';
-import { Footer } from './footer';
+import Sidebar from './sidebar';
 
 DefaultLayout.propTypes = {
   children: PropTypes.node.isRequired,
@@ -15,19 +12,17 @@ DefaultLayout.propTypes = {
 
 export default function DefaultLayout({ children }) {
 	return (
-		<Box
-		  sx={{
-			display: { lg: 'flex' },
-			minHeight: { lg: 1 },
-		  }}
-		>
-		  <Header />
-	
-		  <Sidebar onSidebarClose={() => setOpen(false)} />
-	
-		  <Main>{children}</Main>
+		<>
+			<Sidebar />
 
-		  <Footer />
-		</Box>
-	  );
+			<Box
+				component="main"
+				sx={{
+					px: { lg: 2 }
+				}}
+			>
+				{children}
+			</Box>
+    </>
+	);
 }

@@ -1,3 +1,4 @@
+// Todo: refactor
 import { useContext } from 'react';
 import { AuthContext } from '../contexts/authJWTContext';
 

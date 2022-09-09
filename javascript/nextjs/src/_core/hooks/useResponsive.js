@@ -1,4 +1,4 @@
-// @mui
+// Todo: refactor
 import { useTheme } from '@mui/material/styles';
 import useMediaQuery from '@mui/material/useMediaQuery';
 

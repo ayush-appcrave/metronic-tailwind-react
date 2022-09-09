@@ -5,6 +5,7 @@ import { createTheme, ThemeProvider as MUIThemeProvider } from '@mui/material/st
 import useSettings from '../_core/hooks/useSettings';
 import palette from './palette';
 import breakpoints from './breakpoints';
+import componentsCustomization from './customization';
 
 ThemeProvider.propTypes = {
   children: PropTypes.node.isRequired,
@@ -26,7 +27,7 @@ export default function ThemeProvider({ children }) {
 
   const theme = createTheme(options);
 
-  //theme.components = componentsOverride(theme);
+  theme.components = componentsCustomization(theme);
 
   return (
     <MUIThemeProvider theme={theme}>

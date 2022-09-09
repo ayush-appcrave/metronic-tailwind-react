@@ -13,9 +13,9 @@ Footer.propTypes = {
   onOpenSidebar: PropTypes.func,
 };
 
-export default function Footer({ onOpenSidebar, isCollapse = false }) {
+export default function Footer() {
   return (
-    <Root isCollapse={isCollapse} isOffset={isOffset} verticalLayout={verticalLayout}>
+    <Root>
      Footer
     </Root>
   );

@@ -1,21 +1,52 @@
 import PropTypes from 'prop-types';
 import { styled } from '@mui/material/styles';
-import { Box, Stack, AppBar, Toolbar } from '@mui/material';
-import { DEFAULT_LAYOUT } from '../../../config';
+import { Box, Stack, Drawer } from '@mui/material';
+import useResponsive from '../../../_core/hooks/useResponsive';
+import { LAYOUT_DEFAULT } from '../../../config';
+import Logo from './Logo';
 
-const Root = styled(AppBar, {
-  shouldForwardProp: (prop) => prop !== 'isCollapse' && prop !== 'isOffset',
-});
+const Root = styled('div')(({ theme }) => ({
+  position: 'relative',
+  backgroundColor: theme.palette.background.default,
+}));
 
-Sidebar.propTypes = {
-  isCollapse: PropTypes.bool,
-  onOpenSidebar: PropTypes.func,
-};
+export default function Sidebar() {
+  const isDesktop = useResponsive('up', 'lg');
 
-export default function Sidebar({ onOpenSidebar, isCollapse = false }) {
+  //const { isCollapse, collapseClick, collapseHover, onToggleCollapse, onHoverEnter, onHoverLeave } = useCollapseDrawer();
+
+  const renderContent = (
+    <Stack
+      spacing={3}
+      sx={{
+        pt: 3,
+        pb: 2,
+        px: 2.5,
+        flexShrink: 0,
+        //...(isCollapse && { alignItems: 'center' }),
+      }}
+    >
+      <Logo />
+    </Stack>
+  );
+
   return (
-    <Root isCollapse={isCollapse} isOffset={isOffset} verticalLayout={verticalLayout}>
-     Sidebar
+    <Root>
+     {isDesktop && (
+        <Drawer
+          open
+          variant="persistent"
+          PaperProps={{
+            sx: {
+              width: LAYOUT_DEFAULT.SIDEBAR_WIDTH,
+              borderRightStyle: 'dashed',
+              bgcolor: 'gray.100'
+            },
+          }}
+        >
+          {renderContent}
+        </Drawer>
+      )}
     </Root>
   );
 }

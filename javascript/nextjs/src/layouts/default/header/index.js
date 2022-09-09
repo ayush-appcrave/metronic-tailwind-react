@@ -12,9 +12,9 @@ Header.propTypes = {
   onOpenSidebar: PropTypes.func,
 };
 
-export default function Header({ onOpenSidebar, isCollapse = false }) {
+export default function Header() {
   return (
-    <Root isCollapse={isCollapse} isOffset={isOffset} verticalLayout={verticalLayout}>
+    <Root>
      Header
     </Root>
   );

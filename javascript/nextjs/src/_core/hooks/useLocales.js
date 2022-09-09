@@ -1,3 +1,4 @@
+// Todo: refactor
 import { useTranslation } from 'react-i18next';
 import useSettings from './useSettings';
 import { allLangs, defaultLang } from '../config';
