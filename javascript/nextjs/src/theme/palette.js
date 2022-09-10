@@ -111,7 +111,7 @@ const GENERAL = {
   grey: GREY,
   divider: GREY[200],
   text: { primary: GREY[900], secondary: GREY[700], disabled: GREY[500] },
-  background: { paper: GREY[100], default: GREY[100] },
+  background: { paper: COMMON.white, default: GREY[100] },
   action: {
     active: GREY[500],
     activatedOpacity: 0.12,

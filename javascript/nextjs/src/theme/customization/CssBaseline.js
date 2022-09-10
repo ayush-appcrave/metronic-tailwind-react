@@ -1,6 +1,4 @@
-// ----------------------------------------------------------------------
-
-export default function CssBaseline() {
+export default function CssBaseline(theme) {
   return {
     MuiCssBaseline: {
       styleOverrides: {
@@ -17,6 +15,7 @@ export default function CssBaseline() {
         body: {
           width: '100%',
           height: '100%',
+          backgroundColor: theme.palette.grey[100]
         },
         '#__next': {
           width: '100%',

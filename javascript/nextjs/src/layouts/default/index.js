@@ -11,6 +11,9 @@ DefaultLayout.propTypes = {
 };
 
 export default function DefaultLayout({ children }) {
+
+	
+
 	return (
 		<>
 			<Sidebar />

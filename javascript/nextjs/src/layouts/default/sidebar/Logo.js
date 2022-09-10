@@ -11,7 +11,9 @@ export default function Logo() {
   return (
     <NextLink href="/">
       <a>
-        <Box component="img" src="/media/logos/default.svg" alt="" sx={{ height: 40, cursor: 'pointer'}}>      
+        <Box component="img" src="/media/logos/default.svg" alt="" sx={{ display: 'inline-block', height: 30, cursor: 'pointer'}}>      
+        </Box>
+        <Box component="img" src="/media/logos/default-mini.svg" alt="" sx={{ display: 'none', height: 30, cursor: 'pointer'}}>      
         </Box>
       </a>      
     </NextLink>
