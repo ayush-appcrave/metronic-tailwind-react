@@ -1,3 +1,4 @@
+import { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { styled } from '@mui/material/styles';
 import { Box, Stack, Drawer } from '@mui/material';
@@ -5,6 +6,7 @@ import useResponsive from '../../../_core/hooks/useResponsive';
 import { LAYOUT_DEFAULT } from '../../../config';
 import Logo from './Logo';
 import ToggleButton from './ToggleButton';
+import { useLayout } from '../context';
 
 const Root = styled('div')(({ theme }) => ({
   position: 'relative',
@@ -14,7 +16,23 @@ const Root = styled('div')(({ theme }) => ({
 export default function Sidebar() {
   const isDesktop = useResponsive('up', 'lg');
 
-  //const { isCollapse, collapseClick, collapseHover, onToggleCollapse, onHoverEnter, onHoverLeave } = useCollapseDrawer();
+  const {isSidebarCollapse, setSidebarCollapse} = useLayout();
+
+  console.log('1');
+
+  useEffect(() => {
+    console.log('wowowow');
+  }, [isSidebarCollapse]);
+
+  const handleSidebarToggle = () => {
+    if (isSidebarCollapse === true) {
+      setSidebarCollapse(false);
+      console.log('toggle off');
+    } else {
+      setSidebarCollapse(true);
+      console.log('toggle on');
+    }
+  };
 
   const renderContent = (
     <Stack
@@ -29,21 +47,27 @@ export default function Sidebar() {
         position: 'relative'
       }}
     >
-      <Logo />
+      <Logo isSidebarCollapse={isSidebarCollapse}/>
 
-      <ToggleButton />
+      <ToggleButton onToggle={handleSidebarToggle} isSidebarCollapse={isSidebarCollapse}/>
     </Stack>
   );
 
   return (
-    <Root>
+    <Root
+      sx={{
+        width: {
+          lg: isSidebarCollapse ? LAYOUT_DEFAULT.SIDEBAR_COLLAPSE_WIDTH : LAYOUT_DEFAULT.SIDEBAR_WIDTH,
+        }
+      }}
+    >
      {isDesktop && (
         <Drawer
           open
           variant="persistent"
           PaperProps={{
             sx: {
-              width: LAYOUT_DEFAULT.SIDEBAR_WIDTH,
+              width: isSidebarCollapse ? LAYOUT_DEFAULT.SIDEBAR_COLLAPSE_WIDTH : LAYOUT_DEFAULT.SIDEBAR_WIDTH,
               borderRightWidth: '0px',
               overflow: 'visible',
               bgcolor: 'background.paper'

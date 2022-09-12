@@ -2,8 +2,6 @@ import { combineReducers } from 'redux';
 import { persistReducer } from 'redux-persist';
 import createWebStorage from 'redux-persist/lib/storage/createWebStorage';
 
-// ----------------------------------------------------------------------
-
 const createNoopStorage = () => ({
   getItem() {
     return Promise.resolve(null);
@@ -23,13 +21,6 @@ const rootPersistConfig = {
   storage,
   keyPrefix: 'redux-',
   whitelist: [],
-};
-
-const productPersistConfig = {
-  key: 'product',
-  storage,
-  keyPrefix: 'redux-',
-  whitelist: ['sortBy', 'checkout'],
 };
 
 const rootReducer = combineReducers({

@@ -1,15 +1,9 @@
-// React 
+// Todo: refactor
 import * as React from 'react';
-
-// Next
 import Document, { Html, Head, Main, NextScript } from 'next/document';
-
-// Emotion
 import { CacheProvider } from '@emotion/react';
 import createCache from '@emotion/cache';
 import createEmotionServer from '@emotion/server/create-instance';
-
-// Theme
 import palette from '../theme/palette';
 
 function createEmotionCache() {

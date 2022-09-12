@@ -1,3 +1,4 @@
+// Todo: refactor
 import PropTypes from 'prop-types';
 import Cookies from 'js-cookie';
 import { createContext, useEffect, useState } from 'react';

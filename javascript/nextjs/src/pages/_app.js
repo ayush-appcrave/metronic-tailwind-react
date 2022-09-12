@@ -34,7 +34,7 @@ export default function MyApp(props) {
         <ReduxProvider store={store}>
           <LocalizationProvider dateAdapter={AdapterDateFns}>
             <SettingsProvider defaultSettings={settings}>
-              <ThemeProvider>
+              <ThemeProvider> 
                 {getLayout(<Component {...pageProps} />)}
               </ThemeProvider>
             </SettingsProvider>

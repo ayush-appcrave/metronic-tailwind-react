@@ -1,6 +1,6 @@
+// Todo: refactor
 import { createContext, useEffect, useReducer } from 'react';
 import PropTypes from 'prop-types';
-// utils
 import axios from '../utils/axios';
 import { isValidToken, setSession } from '../utils/jwt';
 

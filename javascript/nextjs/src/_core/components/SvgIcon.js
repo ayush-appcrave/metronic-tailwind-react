@@ -3,13 +3,13 @@ import SVG from 'react-inlinesvg';
 import { useTheme } from '@mui/material/styles';
 import PropTypes from 'prop-types';
 
-export const getSvgIcon = (icon, path = 'media/icons/duotune/') => {
+export const getSvgIcon = (icon, path = 'media/icons/duotune/', size = '24px') => {
   return (
-    <SVG src={path + icon}/>
+    <SVG src={path + icon} width={size} height={size}/>
   )
 };
 
-const SvgIcon = forwardRef(({ icon, path = 'media/icons/duotune/', size = '24px', sx }, ref) => {
+const SvgIcon = forwardRef(({ icon, path = 'media/icons/duotune/', size = '24px'}, ref) => {
   const theme = useTheme();
 
   return <SVG src={path + icon} width={size} height={size}/>
@@ -18,8 +18,7 @@ const SvgIcon = forwardRef(({ icon, path = 'media/icons/duotune/', size = '24px'
 SvgIcon.propTypes = {
   icon: PropTypes.string,
   path: PropTypes.string,
-  size: PropTypes.string,
-  sx: PropTypes.object,
+  size: PropTypes.string
 };
 
 export default SvgIcon;
