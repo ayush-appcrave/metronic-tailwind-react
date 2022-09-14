@@ -3,27 +3,24 @@ import PropTypes from 'prop-types';
 import { Box, Stack, Drawer } from '@mui/material';
 import useResponsive from '../../../_core/hooks/useResponsive';
 import { LAYOUT_DEFAULT } from '../../../config';
+import Content from '../Content';
 import { useLayout } from '../context';
 
 export default function Main({childred}) {
-  const isDesktop = useResponsive('up', 'lg');
-
   const {isSidebarCollapse, setSidebarCollapse} = useLayout();
 
-  console.log('2');
+  const isDesktop = useResponsive('up', 'lg');
 
-  useEffect(() => {
-    console.log('1111');
-  }, [isSidebarCollapse]);
+  const marginTransition = 'margin ' + LAYOUT_DEFAULT.SIDEBAR_TRANSITION_DURATION + ' ' + LAYOUT_DEFAULT.SIDEBAR_TRANSITION_TIMING_FUNCTION;  
 
   return (
     <Box
       sx={{
-        px: { lg: 2 },
-				marginLeft: { lg: (isSidebarCollapse ? LAYOUT_DEFAULT.SIDEBAR_COLLAPSE_WIDTH : LAYOUT_DEFAULT.SIDEBAR_WIDTH) + 'px' }
+				marginLeft: { lg: (isSidebarCollapse ? LAYOUT_DEFAULT.SIDEBAR_COLLAPSE_WIDTH : LAYOUT_DEFAULT.SIDEBAR_WIDTH) + 'px' },
+        transition: marginTransition
       }}
-    >
-     {childred}
+    >      
+     <Content childred={childred}/>
     </Box>
   );
 }

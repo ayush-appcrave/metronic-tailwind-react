@@ -1,82 +1,99 @@
 import { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
-import { styled } from '@mui/material/styles';
+import { useTheme } from '@mui/material/styles';
 import { Box, Stack, Drawer } from '@mui/material';
 import useResponsive from '../../../_core/hooks/useResponsive';
 import { LAYOUT_DEFAULT } from '../../../config';
 import Logo from './Logo';
-import ToggleButton from './ToggleButton';
+import CollapseButton from './CollapseButton';
 import { useLayout } from '../context';
 
-const Root = styled('div')(({ theme }) => ({
-  position: 'relative',
-  backgroundColor: theme.palette.background.default,
-}));
-
 export default function Sidebar() {
+  const theme = useTheme();
+
   const isDesktop = useResponsive('up', 'lg');
+
+  const isMobile = useResponsive('down', 'lg');
+
+  const widthTransition = 'width ' + LAYOUT_DEFAULT.SIDEBAR_TRANSITION_DURATION + ' ' + LAYOUT_DEFAULT.SIDEBAR_TRANSITION_TIMING_FUNCTION;
 
   const {isSidebarCollapse, setSidebarCollapse} = useLayout();
 
-  console.log('1');
-
   useEffect(() => {
-    console.log('wowowow');
+    
   }, [isSidebarCollapse]);
 
-  const handleSidebarToggle = () => {
+  const handleSidebarCollapse = () => {
     if (isSidebarCollapse === true) {
       setSidebarCollapse(false);
-      console.log('toggle off');
     } else {
       setSidebarCollapse(true);
-      console.log('toggle on');
     }
   };
 
-  const renderContent = (
-    <Stack
-      direction="row"
-      justifyContent="space-between"
-      alignItems="center"
-      sx={{
-        pt: 3,
-        pb: 2,
-        px: 2.5,
-        flexShrink: 0,
-        position: 'relative'
-      }}
-    >
-      <Logo isSidebarCollapse={isSidebarCollapse}/>
-
-      <ToggleButton onToggle={handleSidebarToggle} isSidebarCollapse={isSidebarCollapse}/>
-    </Stack>
-  );
-
   return (
-    <Root
+    <Box
       sx={{
-        width: {
-          lg: isSidebarCollapse ? LAYOUT_DEFAULT.SIDEBAR_COLLAPSE_WIDTH : LAYOUT_DEFAULT.SIDEBAR_WIDTH,
-        }
+        position: 'relative',
+        backgroundColor: theme.palette.background.default,
+
+        [theme.breakpoints.up("lg")]: {
+          transition: widthTransition,
+          width: isSidebarCollapse ? LAYOUT_DEFAULT.SIDEBAR_COLLAPSE_WIDTH : LAYOUT_DEFAULT.SIDEBAR_WIDTH,
+        },
+        [theme.breakpoints.down("lg")]: {
+          width: LAYOUT_DEFAULT.SIDEBAR_WIDTH_MOBILE
+        }        
       }}
     >
-     {isDesktop && (
+      {isDesktop && (
         <Drawer
           open
           variant="persistent"
           PaperProps={{
             sx: {
               width: isSidebarCollapse ? LAYOUT_DEFAULT.SIDEBAR_COLLAPSE_WIDTH : LAYOUT_DEFAULT.SIDEBAR_WIDTH,
+              transition: widthTransition,
               borderRightWidth: '0px',
-              overflow: 'visible',
+              overflow: 'visible',              
               bgcolor: 'background.paper'
             },
           }}
         >
-          {renderContent}
+          <Stack
+            direction="row"
+            justifyContent="space-between"
+            alignItems="center"
+            sx={{        
+              flexShrink: 0,
+              position: 'relative',
+              px: LAYOUT_DEFAULT.SIDEBAR_PX,
+              py: LAYOUT_DEFAULT.SIDEBAR_PX
+            }}
+          >
+            <Logo/>
+
+            <CollapseButton onToggle={handleSidebarCollapse}/>
+          </Stack>
         </Drawer>
       )}
-    </Root>
+
+      {isMobile && (
+        <Drawer
+          open
+          variant="persistent"
+          PaperProps={{
+            sx: {
+              width: LAYOUT_DEFAULT.SIDEBAR_WIDTH_MOBILE,
+              transition: widthTransition,
+              borderRightWidth: '0px',
+              overflow: 'visible',              
+              bgcolor: 'background.paper'
+            },
+          }}
+        >          
+        </Drawer>
+      )}
+    </Box>
   );
 }
