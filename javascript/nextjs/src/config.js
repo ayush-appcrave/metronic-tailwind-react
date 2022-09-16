@@ -3,7 +3,7 @@ import { enUS, frFR, zhCN, viVN, arSD } from '@mui/material/locale';
 
 // Settings keys
 export const SETTINGS_KEYS = {
-	mode: 'mode',
+	variant: 'mode',
 	direction: 'direction',
   language: 'language',
 	layout: 'layout',
@@ -13,7 +13,7 @@ export const SETTINGS_KEYS = {
 
 // Settings defaults
 export const SETTINGS_DEFAULTS = {
-  mode: 'light',
+  variant: 'light',
   direction: 'ltr',
   language: 'en',
   layout: 'default',
@@ -211,7 +211,7 @@ export const MENU_VERTICAL = [
     title: 'Dashboards',
     icon: 'general/gen025.svg',
     children: {
-      mode: 'accordion',
+      variant: 'accordion',
       items: MENU_COMMON.dashboards
     }
   },
@@ -219,7 +219,7 @@ export const MENU_VERTICAL = [
     title: 'Pages',
     icon: 'general/gen025.svg',
     children: {
-      mode: 'accordion',
+      variant: 'accordion',
       items: MENU_COMMON.pages
     }
   },
@@ -227,7 +227,7 @@ export const MENU_VERTICAL = [
     title: 'Authentication',
     icon: 'general/gen025.svg',
     children: {
-      mode: 'accordion',
+      variant: 'accordion',
       items: MENU_COMMON.authentication
     }
   },
@@ -235,7 +235,7 @@ export const MENU_VERTICAL = [
     title: 'Account',
     icon: 'general/gen025.svg',
     children: {
-      mode: 'accordion',
+      variant: 'accordion',
       items: MENU_COMMON.account
     }
   },
@@ -243,7 +243,7 @@ export const MENU_VERTICAL = [
     title: 'Apps',
     icon: 'general/gen025.svg',
     children: {
-      mode: 'dropdown',
+      variant: 'dropdown',
       items: MENU_COMMON.apps
     }
   },
@@ -253,11 +253,11 @@ export const MENU_VERTICAL = [
   {
     title: 'Documentation',
     icon: 'general/gen025.svg',
-    url: 'previews.keenthemes.com/hero/mui/docs'
+    path: 'previews.keenthemes.com/hero/mui/docs'
   },
   {
     title: 'Changelog',
     icon: 'general/gen025.svg',
-    url: 'previews.keenthemes.com/hero/mui/docs/#/changelog'
+    path: 'previews.keenthemes.com/hero/mui/docs/#/changelog'
   }
 ];

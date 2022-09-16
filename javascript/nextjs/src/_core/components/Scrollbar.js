@@ -46,7 +46,8 @@ export default function Scrollbar({children, height = '100%', minHeight, maxHeig
           height: size
         },
         '&::-webkit-scrollbar-thumb': {
-          backgroundColor: color
+          backgroundColor: color,
+          borderRadius: '6px'
         },
         '&::-webkit-scrollbar-corner': {
           backgroundColor: 'transparent'
