@@ -37,7 +37,6 @@ export default function Sidebar() {
       sx={{
         position: 'relative',
         backgroundColor: theme.palette.background.default,
-
         [theme.breakpoints.up("lg")]: {
           transition: widthTransition,
           width: isSidebarCollapse ? LAYOUT_DEFAULT.SIDEBAR_COLLAPSE_WIDTH : LAYOUT_DEFAULT.SIDEBAR_WIDTH,

@@ -49,7 +49,7 @@ export default function CollapseButton({onToggle}) {
           ...(isSidebarCollapse && { transform: 'rotate(180deg)' })
         }}
       >
-        <SvgIcon icon='arrows/arr079.svg' size='19px' />    
+        <SvgIcon icon='arrows/arr079.svg' size='19px'/>    
       </Box>
     </ToggleButton>
   );
