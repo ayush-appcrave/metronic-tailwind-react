@@ -13,7 +13,6 @@ DefaultLayout.propTypes = {
 };
 
 export default function DefaultLayout({ children }) {
-	console.log('0+');
 
 	return (
 		<LayoutProvider>

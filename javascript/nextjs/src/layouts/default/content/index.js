@@ -17,10 +17,10 @@ export default function Content({childred}) {
     <Box
       sx={{
         [theme.breakpoints.up("lg")]: {
-          px: LAYOUT_DEFAULT.CONTENT_PX,
+          px: 3,
         },
         [theme.breakpoints.down("lg")]: {
-          px: LAYOUT_DEFAULT.CONTENT_PX_MOBILE
+          px: 2
         }
       }} 
     >

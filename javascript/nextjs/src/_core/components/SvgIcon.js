@@ -3,7 +3,7 @@ import SVG from 'react-inlinesvg';
 import { useTheme } from '@mui/material/styles';
 import PropTypes from 'prop-types';
 
-export const getSvgIcon = (icon, path = 'media/icons/duotune/', size = '24px') => {
+export const getSvgIcon = (icon, size = '24px', path = 'media/icons/duotune/') => {
   return (
     <SVG src={path + icon} width={size} height={size}/>
   )

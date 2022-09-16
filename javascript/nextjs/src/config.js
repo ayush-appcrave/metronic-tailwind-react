@@ -1,3 +1,4 @@
+import { SvgIcon } from '@mui/material';
 import { enUS, frFR, zhCN, viVN, arSD } from '@mui/material/locale';
 
 // Settings keys
@@ -22,23 +23,6 @@ export const SETTINGS_DEFAULTS = {
 
 // Cookies expiration
 export const COOKIES_EXPIRATION = 5;
-
-// Layouts
-export const LAYOUT_DEFAULT = {
-  SIDEBAR_WIDTH: 300,
-  SIDEBAR_COLLAPSE_WIDTH: 80,
-  SIDEBAR_WIDTH_MOBILE: 250,
-  SIDEBAR_TRANSITION_DURATION: '0.3s',
-  SIDEBAR_TRANSITION_TIMING_FUNCTION: 'ease',
-  SIDEBAR_PX: '30px', 
-  SIDEBAR_PX_MOBILE: '15px',
-  CONTENT_PX: '30px',
-  CONTENT_PX_MOBILE: '15px',
-};
-
-export const LAYOUT_AUTH = {
-  
-};
 
 // Languages
 export const LANGUAGES = [
@@ -81,10 +65,24 @@ export const LANGUAGES = [
   */
 ];
 
+// Auth layout
+export const LAYOUT_AUTH = {
+  
+};
+
+// Default layout
+export const LAYOUT_DEFAULT = {
+  SIDEBAR_WIDTH: 300,
+  SIDEBAR_COLLAPSE_WIDTH: 80,
+  SIDEBAR_WIDTH_MOBILE: 250,
+  SIDEBAR_TRANSITION_DURATION: '0.3s',
+  SIDEBAR_TRANSITION_TIMING_FUNCTION: 'ease'
+}
+
 // Default languages
 export const DEFAULT_LANGUAGE = LANGUAGES[0]; // English
 
-// Route paths
+// Auth paths
 export const PATHS_AUTH = {
 	login: '/auth/login',
 	register: '/auth/register',
@@ -93,6 +91,7 @@ export const PATHS_AUTH = {
 	newPassword: '/auth/new-password',
 };
 
+// General paths
 export const PATHS_GENERAL = {
 	comingSoon: '/coming-soon',
 	maintenance: '/maintenance',
@@ -104,3 +103,161 @@ export const PATHS_GENERAL = {
 	page404: '/404',
 	page500: '/500'
 };
+
+// Menu common
+export const MENU_COMMON = {
+  dashboards: [
+    {
+      title: 'Multipurpose',
+      path: '#',
+      bullet: true,
+      onClick: () => { console.log('New clicked') }
+    },
+    {
+      title: 'eCommerce',
+      path: '#ecommerce',
+      bullet: true,
+      onClick: () => { console.log('New clicked 2') }
+    },
+    {
+      title: 'Marketing',
+      path: '#marketing',
+      bullet: true
+    },
+    {
+      title: 'Crypto',
+      path: '#crypto',
+      bullet: true
+    },
+    {
+      title: 'Projects',
+      path: '#projects',
+      bullet: true
+    }
+  ],
+  pages: [
+    {
+      title: 'Page 1',
+      path: '#pages/page-1',
+      bullet: true
+    },
+    {
+      title: 'Page 2',
+      path: '#pages/page-1',
+      bullet: true
+    },
+    {
+      title: 'Page 3',
+      path: '#pages/page-1',
+      bullet: true
+    }
+  ],
+  authentication: [
+    {
+      title: 'Page 1',
+      path: '#auth/page-1',
+      bullet: true
+    },
+    {
+      title: 'Page 2',
+      path: '#auth/page-2',
+      bullet: true
+    },
+    {
+      title: 'Page 3',
+      path: '#auth/page-3',
+      bullet: true
+    }
+  ],
+  account: [
+    {
+      title: 'Page 1',
+      path: '#account/page-1',
+      bullet: true
+    },
+    {
+      title: 'Page 2',
+      path: '#account/page-2',
+      bullet: true
+    },
+    {
+      title: 'Page 3',
+      path: '#account/page-3',
+      bullet: true
+    }
+  ],
+  apps: [
+    {
+      title: 'Page 1',
+      path: '#apps/page-1',
+      bullet: true
+    },
+    {
+      title: 'Page 2',
+      path: '#apps/page-2',
+      bullet: true
+    },
+    {
+      title: 'Page 3',
+      path: '#apps/page-3',
+      bullet: true
+    }
+  ]
+};
+
+// Menu vertical
+export const MENU_VERTICAL = [
+  {
+    title: 'Dashboards',
+    icon: 'general/gen025.svg',
+    children: {
+      mode: 'accordion',
+      items: MENU_COMMON.dashboards
+    }
+  },
+  {
+    title: 'Pages',
+    icon: 'general/gen025.svg',
+    children: {
+      mode: 'accordion',
+      items: MENU_COMMON.pages
+    }
+  },
+  {
+    title: 'Authentication',
+    icon: 'general/gen025.svg',
+    children: {
+      mode: 'accordion',
+      items: MENU_COMMON.authentication
+    }
+  },
+  {
+    title: 'Account',
+    icon: 'general/gen025.svg',
+    children: {
+      mode: 'accordion',
+      items: MENU_COMMON.account
+    }
+  },
+  {
+    title: 'Apps',
+    icon: 'general/gen025.svg',
+    children: {
+      mode: 'dropdown',
+      items: MENU_COMMON.apps
+    }
+  },
+  {
+    devider: true
+  },
+  {
+    title: 'Documentation',
+    icon: 'general/gen025.svg',
+    url: 'previews.keenthemes.com/hero/mui/docs'
+  },
+  {
+    title: 'Changelog',
+    icon: 'general/gen025.svg',
+    url: 'previews.keenthemes.com/hero/mui/docs/#/changelog'
+  }
+];

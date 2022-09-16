@@ -40,6 +40,7 @@ export default function CollapseButton({onToggle}) {
       selected={isSidebarCollapse}
       aria-label="Toggle sidebar" 
       component="button"
+      value="1"
     >
       <Box
         component="span"

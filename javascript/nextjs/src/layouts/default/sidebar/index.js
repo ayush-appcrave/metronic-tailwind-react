@@ -3,6 +3,7 @@ import PropTypes from 'prop-types';
 import { useTheme } from '@mui/material/styles';
 import { Box, Stack, Drawer } from '@mui/material';
 import useResponsive from '../../../_core/hooks/useResponsive';
+import Scrollbar from '../../../_core/components/Scrollbar';
 import { LAYOUT_DEFAULT } from '../../../config';
 import Logo from './Logo';
 import CollapseButton from './CollapseButton';
@@ -67,14 +68,67 @@ export default function Sidebar() {
             sx={{        
               flexShrink: 0,
               position: 'relative',
-              px: LAYOUT_DEFAULT.SIDEBAR_PX,
-              py: LAYOUT_DEFAULT.SIDEBAR_PX
+              px: 4,
+              py: 4
             }}
           >
             <Logo/>
 
             <CollapseButton onToggle={handleSidebarCollapse}/>
           </Stack>
+
+          <Box
+            sx={{        
+              px: 1.5
+            }}
+          >
+            <Scrollbar variant="scroll-y" height="900px">
+              <p>Te st T e s t T e st T e s t T e s t Te s t T e</p>
+              <p>Test</p>
+              <p>Test</p>
+              <p>Test</p>
+              <p>Test</p>
+              <p>Test</p>
+              <p>Test</p>
+              <p>Test</p>
+              <p>Test</p>
+              <p>Test</p>
+              <p>Test</p>
+              <p>Test</p>
+              <p>Test</p>
+              <p>Test</p>
+              <p>Test</p>
+              <p>Test</p>
+              <p>Test</p>
+              <p>Test</p>
+              <p>Test</p>
+              <p>Test</p>
+              <p>Test</p>
+              <p>Test</p>
+              <p>Test</p>
+              <p>Test</p>
+              <p>Test</p>
+              <p>Test</p>
+              <p>Test</p>
+              <p>Test</p>
+              <p>Test</p>
+              <p>Test</p>
+              <p>Test</p>
+              <p>Test</p>
+              <p>Test</p>
+              <p>Test</p>
+              <p>Test</p>
+              <p>Test</p>
+              <p>Test</p>
+              <p>Test</p>
+              <p>Test</p>
+              <p>Test</p>
+              <p>Test</p>
+              <p>Test</p>
+              <p>Test</p>
+              <p>Test100</p>
+            </Scrollbar>
+          </Box>
         </Drawer>
       )}
 
