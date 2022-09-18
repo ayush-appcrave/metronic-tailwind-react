@@ -9,7 +9,7 @@ import CollapseButton from './CollapseButton';
 import { useLayout } from '../context';
 
 Menu.propTypes = {
-	navConfig: PropTypes.object,
+	data: PropTypes.object,
 	variant: PropTypes.string,
   onItemClick: PropTypes.func
 };
@@ -30,15 +30,10 @@ export default function Menu({navConfig, variant}) {
           width: '100%', 
         }}        
       >
-        {navConfig.map((item) => (
-          <MenuItem
-            key={item.title + item.path}
-            itemConfig={item}
-            level={1}
-            hasChildren={!!item.children}
-            isCollapse={isCollapse}
-          />
-        ))}
+        <MenuList
+          data={data}
+          level={1}
+        />
       </List>      
     </Box>
   );
