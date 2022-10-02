@@ -11,7 +11,7 @@ import { LocalizationProvider } from '@mui/x-date-pickers';
 import { getSettings } from '../_core/utils/getSettings';
 import { SettingsProvider } from '../_core/contexts/SettingsContext';
 import ThemeProvider from '../theme';
-import { AuthProvider } from '../_core/contexts/AuthJWTContext';
+// import { AuthProvider } from '../_core/contexts/AuthJWTContext';
 
 MyApp.propTypes = {
   Component: PropTypes.func,
@@ -30,7 +30,7 @@ export default function MyApp(props) {
         <meta name="viewport" content="initial-scale=1, width=device-width" />
       </Head>
 
-      <AuthProvider>
+      {/* <AuthProvider> */}
         <ReduxProvider store={store}>
           <LocalizationProvider dateAdapter={AdapterDateFns}>
             <SettingsProvider defaultSettings={settings}>
@@ -40,7 +40,7 @@ export default function MyApp(props) {
             </SettingsProvider>
           </LocalizationProvider>
         </ReduxProvider>
-      </AuthProvider>
+      {/* </AuthProvider> */}
     </>
   );
 }

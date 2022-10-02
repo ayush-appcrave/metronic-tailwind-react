@@ -12,7 +12,7 @@ const initialState = {
 const LayoutContext = createContext(initialState);
 
 const useLayout = () => useContext(LayoutContext);
-
+  
 LayoutProvider.propTypes = {
   children: PropTypes.node
 };
