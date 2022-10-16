@@ -1,27 +1,25 @@
-import PropTypes from "prop-types";
-import { styled } from "@mui/material/styles";
+import { isMobileDevice } from "@base/helpers";
 import { Box } from "@mui/material";
-import isMobileDevice from "../utils/isMobileDevice";
+import { PropsWithChildren } from "react";
 
-Scrollbar.propTypes = {
-  children: PropTypes.node.isRequired,
-  height: PropTypes.any,
-  minHeight: PropTypes.any,
-  maxHeight: PropTypes.any,
-  size: PropTypes.string,
-  variant: PropTypes.string,
-  color: PropTypes.string,
-};
+type Props = {
+  height?: string;
+  minHeight?: string;
+  maxHeight?: string;
+  variant?: string;
+  size?: string;
+  color?: string;
+} & PropsWithChildren;
 
-export default function Scrollbar({
+const Scrollbar = ({
   children,
   height = "100%",
-  minHeight,
-  maxHeight,
+  minHeight = "",
+  maxHeight = "",
   variant = "default",
   size = "6px",
   color = "grey.200",
-}) {
+}: Props) => {
   if (isMobileDevice()) {
     return (
       <Box
@@ -110,4 +108,6 @@ export default function Scrollbar({
       {children}
     </Box>
   );
-}
+};
+
+export { Scrollbar };

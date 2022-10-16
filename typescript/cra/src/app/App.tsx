@@ -1,29 +1,11 @@
-import { KTSVG } from "@kt/helpers";
+import { LayoutsProvider } from "@base/layouts";
+import { AppRouting } from "app/routing";
 import "./App.css";
 
-const App = () => {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-      <KTSVG
-        path="/media/icons/duotune/finance/fin009.svg"
-        className="svg-icon-3x svg-icon-primary mb-2"
-        svgClassName="svg-custom-class"
-      />
-    </div>
-  );
-};
+const App = () => (
+  <LayoutsProvider>
+    <AppRouting />
+  </LayoutsProvider>
+);
 
 export { App };
