@@ -7,18 +7,21 @@ import { DefaultLayoutProvider } from "./DefaultLayoutProvider";
 
 const Layout = () => (
   <>
+    <Header />
     <Sidebar />
     <Content>
-      <Outlet />
+      <>
+        <h4>Conent: </h4>
+        <Outlet />
+      </>
     </Content>
     <Footer />
-    <Header />
   </>
 );
 
-const DefaulLayout = () => (
+const DefaultLayout = () => (
   <DefaultLayoutProvider>
     <Layout />
   </DefaultLayoutProvider>
 );
-export { DefaulLayout };
+export { DefaultLayout };
