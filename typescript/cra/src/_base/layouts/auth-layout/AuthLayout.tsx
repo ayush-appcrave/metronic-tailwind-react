@@ -16,7 +16,7 @@ const Layout = () => {
           <Link to="/auth1">Auth page 1</Link>
         </li>
         <li>
-          <Link to="/auth1">Auth page 2</Link>
+          <Link to="/auth2">Auth page 2</Link>
         </li>
       </ul>
       <h5>Auth content</h5>
