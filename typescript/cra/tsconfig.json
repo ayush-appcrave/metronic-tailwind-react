@@ -28,6 +28,12 @@
       ],
       "app/routing": [
         "./src/app/routing"
+      ],
+      "app/setup/theme": [
+        "./src/app/setup/theme"
+      ],
+      "app/setup/configs": [
+        "./src/app/setup/configs"
       ]
     }
   },
