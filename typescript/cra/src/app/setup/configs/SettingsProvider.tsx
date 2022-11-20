@@ -1,15 +1,14 @@
 import { useState, createContext, useContext, PropsWithChildren } from "react";
-import { Direction } from "@mui/material";
 import { getData, setData } from "@base/helpers";
 import { defaultSettings } from "./settings.config";
-import { AppSettings } from "./types";
+import { AppSettings, Mode } from "./types";
 
 const SETTINGS_CONFIG_KEY = "app-settings-congif";
 
 export type SettingsProviderProps = {
   settings: AppSettings;
   updateSettings: (_: Partial<AppSettings>) => void;
-  changeDirection: (direction: Direction) => void;
+  getCalculatedMode: () => Omit<Mode, "system">;
 };
 
 const calculateInitialSettings = () => {
@@ -29,7 +28,7 @@ const calculateUpdatedSettings = (
 const initialProps: SettingsProviderProps = {
   settings: calculateInitialSettings(),
   updateSettings: (_: Partial<AppSettings>) => {},
-  changeDirection: (_: Direction) => {},
+  getCalculatedMode: () => "light",
 };
 
 const SettingsContext = createContext<SettingsProviderProps>(initialProps);
@@ -42,8 +41,15 @@ const SettingsProvider = ({ children }: PropsWithChildren) => {
     setSettings(updatedSettings);
   };
 
-  const changeDirection = (direction: Direction) => {
-    updateSettings({ direction });
+  const getCalculatedMode = () => {
+    const { mode } = settings;
+    if (mode === "system") {
+      return window.matchMedia("(prefers-color-scheme: dark)").matches
+        ? "dark"
+        : "light";
+    }
+
+    return mode;
   };
 
   return (
@@ -51,7 +57,7 @@ const SettingsProvider = ({ children }: PropsWithChildren) => {
       value={{
         settings,
         updateSettings,
-        changeDirection,
+        getCalculatedMode,
       }}
     >
       {children}

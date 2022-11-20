@@ -1,7 +1,7 @@
 import { AppSettings } from "./types";
 
 const defaultSettings: AppSettings = {
-  mode: "light",
+  mode: "system",
   direction: "ltr",
   layout: "default",
   containerWidth: "fluid",

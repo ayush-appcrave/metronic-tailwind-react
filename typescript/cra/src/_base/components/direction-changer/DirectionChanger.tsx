@@ -1,13 +1,15 @@
 import { useSettings } from "app/setup/configs";
 
 const DirectionChanger = () => {
-  const { settings, changeDirection } = useSettings();
+  const { settings, updateSettings } = useSettings();
+  const changeDirection = () => {
+    updateSettings({
+      direction: settings.direction === "rtl" ? "ltr" : "rtl",
+    });
+  };
+
   return (
-    <button
-      onClick={() =>
-        changeDirection(settings.direction === "rtl" ? "ltr" : "rtl")
-      }
-    >
+    <button onClick={changeDirection}>
       {settings.direction === "rtl" ? "RTL" : "LTR"}
     </button>
   );

@@ -11,9 +11,11 @@ export type Language = {
   languageIcon: string;
 };
 
+export type Mode = "light" | "dark" | "system";
+
 // settings types
 export type AppSettings = {
-  mode: "light" | "dark";
+  mode: Mode;
   direction: Direction;
   containerWidth: "fluid" | "fixed";
   color: "default";

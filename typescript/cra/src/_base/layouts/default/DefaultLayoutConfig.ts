@@ -8,11 +8,11 @@ export type DefaultSidebarType = {
 const defaultSidebarConfig: DefaultSidebarType = {
   enabled: true,
   collapse: true,
-}
+};
 
 export type DefaultHeaderType = {
   enabled: boolean;
-}
+};
 
 const defaultLayoutParts: ReadonlyArray<ILayoutPart> = [
   {
