@@ -22,7 +22,7 @@ const GENERAL_PATHS: PATHS = {
   page500: "/500",
 };
 
-const MENU_COMMON: MenuType = {
+const COMMON_MENU: MenuType = {
   dashboards: [
     {
       title: "Multipurpose",
@@ -126,14 +126,14 @@ const MENU_COMMON: MenuType = {
   ],
 };
 
-const MENU_VERTICAL: MenuType = [
+const VERTICAL_MENU: MenuType = [
   {
     title: "Dashboards",
     path: "#",
     icon: "general/gen025.svg",
     children: {
       variant: "accordion",
-      items: MENU_COMMON.dashboards,
+      items: COMMON_MENU.dashboards,
     },
   },
   {
@@ -141,7 +141,7 @@ const MENU_VERTICAL: MenuType = [
     icon: "general/gen025.svg",
     children: {
       variant: "accordion",
-      items: MENU_COMMON.pages,
+      items: COMMON_MENU.pages,
     },
   },
   {
@@ -149,7 +149,7 @@ const MENU_VERTICAL: MenuType = [
     icon: "general/gen025.svg",
     children: {
       variant: "accordion",
-      items: MENU_COMMON.authentication,
+      items: COMMON_MENU.authentication,
     },
   },
   {
@@ -157,7 +157,7 @@ const MENU_VERTICAL: MenuType = [
     icon: "general/gen025.svg",
     children: {
       variant: "accordion",
-      items: MENU_COMMON.account,
+      items: COMMON_MENU.account,
     },
   },
   {
@@ -165,7 +165,7 @@ const MENU_VERTICAL: MenuType = [
     icon: "general/gen025.svg",
     children: {
       variant: "dropdown",
-      items: MENU_COMMON.apps,
+      items: COMMON_MENU.apps,
     },
   },
   {
@@ -183,4 +183,4 @@ const MENU_VERTICAL: MenuType = [
   },
 ];
 
-export { AUTH_PATHS, GENERAL_PATHS, MENU_COMMON, MENU_VERTICAL };
+export { AUTH_PATHS, GENERAL_PATHS, COMMON_MENU, VERTICAL_MENU };

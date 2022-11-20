@@ -45,6 +45,6 @@ const CssBaseline = (theme: Theme) => {
   };
 };
 
-const ComponentsCustomization = (theme: Theme) => CssBaseline(theme);
+const componentsCustomization = (theme: Theme) => CssBaseline(theme);
 
-export { CssBaseline, ComponentsCustomization };
+export { CssBaseline, componentsCustomization };

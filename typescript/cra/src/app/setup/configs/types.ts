@@ -1,20 +1,20 @@
+import { Direction } from "@mui/material";
 import { Localization } from "@mui/material/locale";
 
 // i18n types
-export type LanguageDirection = "ltr" | "rtl";
 export type AvailableLanguages = "en" | "fr" | "zh" | "vn" | "ar" | "cn";
 export type Language = {
   languageLabel: string;
   languageValue: AvailableLanguages;
   languageSystemValue: Localization;
-  languageDirection: LanguageDirection;
+  languageDirection: Direction;
   languageIcon: string;
 };
 
 // settings types
 export type AppSettings = {
-  variant: "light" | "dark";
-  direction: LanguageDirection;
+  mode: "light" | "dark";
+  direction: Direction;
   containerWidth: "fluid" | "fixed";
   color: "default";
   layout: "default" | "without-sidebar";

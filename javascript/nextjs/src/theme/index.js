@@ -1,11 +1,14 @@
-import PropTypes from 'prop-types';
-import { useMemo } from 'react';
-import { CssBaseline } from '@mui/material';
-import { createTheme, ThemeProvider as MUIThemeProvider } from '@mui/material/styles';
-import useSettings from '../_core/hooks/useSettings';
-import palette from './palette';
-import breakpoints from './breakpoints';
-import componentsCustomization from './customization';
+import PropTypes from "prop-types";
+import { useMemo } from "react";
+import { CssBaseline } from "@mui/material";
+import {
+  createTheme,
+  ThemeProvider as MUIThemeProvider,
+} from "@mui/material/styles";
+import useSettings from "../_core/hooks/useSettings";
+import palette from "./palette";
+import breakpoints from "./breakpoints";
+import componentsCustomization from "./customization";
 
 ThemeProvider.propTypes = {
   children: PropTypes.node.isRequired,
@@ -14,13 +17,13 @@ ThemeProvider.propTypes = {
 export default function ThemeProvider({ children }) {
   const { mode, direction } = useSettings();
 
-  const isLightMode = mode === 'light';
+  const isLightMode = mode === "light";
 
   const options = useMemo(
     () => ({
       breakpoints,
-      palette: isLightMode ? palette.light : palette.dark,   
-      direction: direction
+      palette: isLightMode ? palette.light : palette.dark,
+      direction: direction,
     }),
     [isLightMode, direction]
   );

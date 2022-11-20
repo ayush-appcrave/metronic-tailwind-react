@@ -1,10 +1,14 @@
 // Todo: refactor
-import PropTypes from 'prop-types';
-import Cookies from 'js-cookie';
-import { createContext, useEffect, useState } from 'react';
-import getColors, { colors, defaultColor } from '../utils/getColors';
-import { SETTINGS_DEFAULTS, SETTINGS_KEYS, COOKIES_EXPIRATION } from '../../config';
-import getLanguage from '../utils/getLanguage';
+import PropTypes from "prop-types";
+import Cookies from "js-cookie";
+import { createContext, useEffect, useState } from "react";
+import getColors, { colors, defaultColor } from "../utils/getColors";
+import {
+  SETTINGS_DEFAULTS,
+  SETTINGS_KEYS,
+  COOKIES_EXPIRATION,
+} from "../../config";
+import getLanguage from "../utils/getLanguage";
 
 // ----------------------------------------------------------------------
 
@@ -38,10 +42,10 @@ SettingsProvider.propTypes = {
 
 function SettingsProvider({ children, defaultSettings }) {
   const [settings, setSettings] = useSettingsStorage(defaultSettings);
-  
+
   const language = getLanguage(settings.themeLanguage);
 
-  const isRtl = language.languageDirection === 'rtl';
+  const isRtl = language.languageDirection === "rtl";
 
   const onChangeMode = (event) => {
     setSettings({
@@ -89,7 +93,7 @@ function SettingsProvider({ children, defaultSettings }) {
       direction: initialState.direction,
       language: initialState.language,
       layout: initialState.layout,
-      containerWidth: initialState.containerWidth,      
+      containerWidth: initialState.containerWidth,
       color: initialState.color,
     });
   };
@@ -134,17 +138,29 @@ function useSettingsStorage(defaultSettings) {
   const [settings, setSettings] = useState(defaultSettings);
 
   const onChangeSettings = () => {
-    Cookies.set(SETTINGS_KEYS.mode, settings.mode, { expires: COOKIES_EXPIRATION });
+    Cookies.set(SETTINGS_KEYS.mode, settings.mode, {
+      expires: COOKIES_EXPIRATION,
+    });
 
-    Cookies.set(SETTINGS_KEYS.direction, settings.direction, { expires: COOKIES_EXPIRATION });
+    Cookies.set(SETTINGS_KEYS.direction, settings.direction, {
+      expires: COOKIES_EXPIRATION,
+    });
 
-    Cookies.set(SETTINGS_KEYS.language, settings.language, { expires: COOKIES_EXPIRATION });
+    Cookies.set(SETTINGS_KEYS.language, settings.language, {
+      expires: COOKIES_EXPIRATION,
+    });
 
-    Cookies.set(SETTINGS_KEYS.color, settings.color, { expires: COOKIES_EXPIRATION });
+    Cookies.set(SETTINGS_KEYS.color, settings.color, {
+      expires: COOKIES_EXPIRATION,
+    });
 
-    Cookies.set(SETTINGS_KEYS.layout, settings.layout, { expires: COOKIES_EXPIRATION });
+    Cookies.set(SETTINGS_KEYS.layout, settings.layout, {
+      expires: COOKIES_EXPIRATION,
+    });
 
-    Cookies.set(SETTINGS_KEYS.containerWidth, settings.containerWidth, { expires: COOKIES_EXPIRATION });
+    Cookies.set(SETTINGS_KEYS.containerWidth, settings.containerWidth, {
+      expires: COOKIES_EXPIRATION,
+    });
   };
 
   useEffect(() => {

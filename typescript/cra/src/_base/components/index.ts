@@ -1,2 +1,3 @@
-export * from "./scrollbar/Scrollbar";
-export * from "./svg-icon/SVGIcon";
+export * from "./scrollbar";
+export * from "./svg-icon";
+export * from "./direction-changer";

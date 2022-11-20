@@ -25,7 +25,7 @@ const calculateUpdatedLayouts = (
     updatedLayouts.delete(updatedLayout.layoutName);
   }
   updatedLayouts.set(updatedLayout.layoutName, updatedLayout);
-  setData(LAYOUTS_CONFIGS_KEY, updatedLayouts);
+  setData(LAYOUTS_CONFIGS_KEY, JSON.stringify(updatedLayouts));
   return updatedLayouts;
 };
 

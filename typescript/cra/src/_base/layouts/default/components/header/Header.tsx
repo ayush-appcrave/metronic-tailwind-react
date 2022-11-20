@@ -1,5 +1,12 @@
+import { DirectionChanger } from "@base/components";
+
 const Header = () => {
-  return <h3>Default Header</h3>;
+  return (
+    <header>
+      <h1>Header title</h1>
+      <DirectionChanger />
+    </header>
+  );
 };
 
 export { Header };

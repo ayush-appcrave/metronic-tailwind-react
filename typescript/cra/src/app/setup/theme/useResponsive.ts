@@ -6,7 +6,7 @@ const useResponsive = (
   key: Breakpoint,
   start: number,
   end: number
-): boolean => {
+): boolean | undefined => {
   const theme = useTheme();
   const mediaUp = useMediaQuery(theme.breakpoints.up(key));
   const mediaDown = useMediaQuery(theme.breakpoints.down(key));
@@ -27,8 +27,6 @@ const useResponsive = (
   if (query === "only") {
     return mediaOnly;
   }
-
-  return false;
 };
 
 export { useResponsive };

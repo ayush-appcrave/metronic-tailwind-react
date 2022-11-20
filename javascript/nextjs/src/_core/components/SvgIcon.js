@@ -12,7 +12,7 @@ export const getSvgIcon = (icon, size = '24px', path = 'media/icons/duotune/') =
 const SvgIcon = forwardRef(({ icon, path = 'media/icons/duotune/', size = '24px'}, ref) => {
   const theme = useTheme();
 
-  return <SVG src={path + icon} width={size} height={size}/>
+  return <SVG src={path + icon} width={size} height={size}/>,
 });
 
 SvgIcon.propTypes = {
