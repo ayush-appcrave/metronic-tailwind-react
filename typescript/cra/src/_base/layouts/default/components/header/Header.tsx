@@ -1,13 +1,14 @@
 import { LanguageChanger, ModeChanger } from "@base/components";
+import { FormattedMessage } from "react-intl";
 
-const Header = () => {
-  return (
-    <header>
-      <h1>Header title</h1>
-      <LanguageChanger />
-      <ModeChanger />
-    </header>
-  );
-};
+const Header = () => (
+  <header>
+    <h1>
+      <FormattedMessage id="MENU.DASHBOARD" />
+    </h1>
+    <LanguageChanger />
+    <ModeChanger />
+  </header>
+);
 
 export { Header };
