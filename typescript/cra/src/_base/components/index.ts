@@ -1,4 +1,4 @@
 export * from "./scrollbar";
 export * from "./svg-icon";
-export * from "./direction-changer";
+export * from "./language-changer";
 export * from "./mode-changer";

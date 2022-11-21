@@ -8,6 +8,7 @@ module.exports = {
       "app/routing": path.resolve(__dirname, "src/app/routing"),
       "app/setup/theme": path.resolve(__dirname, "src/app/setup/theme"),
       "app/setup/configs": path.resolve(__dirname, "src/app/setup/configs"),
+      "app/setup/i18n": path.resolve(__dirname, "src/app/setup/i18n"),
     },
   },
 };

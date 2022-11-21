@@ -34,6 +34,9 @@
       ],
       "app/setup/configs": [
         "./src/app/setup/configs"
+      ],
+      "app/setup/i18n": [
+        "./src/app/setup/i18n"
       ]
     }
   },

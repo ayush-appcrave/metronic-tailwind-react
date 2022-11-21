@@ -1,22 +1,8 @@
-import { Direction } from "@mui/material";
-import { Localization } from "@mui/material/locale";
-
-// i18n types
-export type AvailableLanguages = "en" | "fr" | "zh" | "vn" | "ar" | "cn";
-export type Language = {
-  languageLabel: string;
-  languageValue: AvailableLanguages;
-  languageSystemValue: Localization;
-  languageDirection: Direction;
-  languageIcon: string;
-};
-
 export type Mode = "light" | "dark" | "system";
 
 // settings types
 export type AppSettings = {
   mode: Mode;
-  direction: Direction;
   containerWidth: "fluid" | "fixed";
   color: "default";
   layout: "default" | "without-sidebar";
