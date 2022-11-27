@@ -3,6 +3,7 @@ import { Mode, useSettings } from "app/setup/configs";
 const ModeChanger = () => {
   const { settings, updateSettings, getCalculatedMode } = useSettings();
   const { mode } = settings;
+  
   const changeMode = (mode: Mode) => {
     updateSettings({
       mode,

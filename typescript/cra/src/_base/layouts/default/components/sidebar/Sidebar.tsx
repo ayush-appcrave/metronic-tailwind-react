@@ -1,21 +1,23 @@
+/* eslint-disable jsx-a11y/anchor-is-valid */
+import { useAuth } from "app/setup/auth";
 import { Link } from "react-router-dom";
 
 const Sidebar = () => {
+  const { logout } = useAuth();
   return (
     <>
       <h1>Default sidebar</h1>
       <ul>
         <li>
-          <Link to="/default1">Default page 1</Link>
+          <Link to="/dashboard">Dashboard 1</Link>
         </li>
         <li>
-          <Link to="/default2">Default page 2</Link>
+          <Link to="/dashboard2">Dashboard 2</Link>
         </li>
         <li>
-          <Link to="/auth1">Auth page 1</Link>
-        </li>
-        <li>
-          <Link to="/auth2">Auth page 2</Link>
+          <a style={{ cursor: "pointer" }} onClick={logout}>
+            Logout
+          </a>
         </li>
       </ul>
     </>

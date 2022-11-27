@@ -14,6 +14,10 @@ export type DefaultHeaderType = {
   enabled: boolean;
 };
 
+export type IFooterPart = {
+  enabled: boolean,
+}
+
 const defaultLayoutParts: ReadonlyArray<ILayoutPart> = [
   {
     layoutPartName: "sidebar",

@@ -7,16 +7,13 @@ const Layout = () => {
       <h1>Auth layout</h1>
       <ul>
         <li>
-          <Link to="/default1">Default page 1</Link>
+          <Link to="/auth/login">Sign in</Link>
         </li>
         <li>
-          <Link to="/default2">Default page 2</Link>
+          <Link to="/auth/registration">Registration</Link>
         </li>
         <li>
-          <Link to="/auth1">Auth page 1</Link>
-        </li>
-        <li>
-          <Link to="/auth2">Auth page 2</Link>
+          <Link to="/auth/forgot-password">Forgot password</Link>
         </li>
       </ul>
       <h5>Auth content</h5>

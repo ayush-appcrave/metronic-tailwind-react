@@ -9,6 +9,8 @@ module.exports = {
       "app/setup/theme": path.resolve(__dirname, "src/app/setup/theme"),
       "app/setup/configs": path.resolve(__dirname, "src/app/setup/configs"),
       "app/setup/i18n": path.resolve(__dirname, "src/app/setup/i18n"),
+      "app/setup/auth": path.resolve(__dirname, "src/app/setup/auth"),
+      "app/modules/errors": path.resolve(__dirname, "src/app/modules/errors"),
     },
   },
 };

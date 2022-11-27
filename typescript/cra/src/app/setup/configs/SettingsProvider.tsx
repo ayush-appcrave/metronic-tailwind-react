@@ -3,7 +3,7 @@ import { getData, setData } from "@base/helpers";
 import { defaultSettings } from "./settings.config";
 import { AppSettings, Mode } from "./types";
 
-const SETTINGS_CONFIG_KEY = "app-settings-congif";
+const SETTINGS_CONFIG_KEY = "app-settings-config";
 
 export type SettingsProviderProps = {
   settings: AppSettings;
