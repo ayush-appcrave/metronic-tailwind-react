@@ -1,26 +1,27 @@
-/* eslint-disable jsx-a11y/anchor-is-valid */
-import { useAuth } from "app/setup/auth";
-import { Link } from "react-router-dom";
+import ListSubheader from "@mui/material/ListSubheader";
+import List from "@mui/material/List";
+import { MenuItemType, useMenus } from "app/setup/configs";
+import { MenuItem } from "./components/MenuItem";
 
 const Sidebar = () => {
-  const { logout } = useAuth();
+  const { menus } = useMenus();
   return (
-    <>
-      <h1>Default sidebar</h1>
-      <ul>
-        <li>
-          <Link to="/dashboard">Dashboard 1</Link>
-        </li>
-        <li>
-          <Link to="/dashboard2">Dashboard 2</Link>
-        </li>
-        <li>
-          <a style={{ cursor: "pointer" }} onClick={logout}>
-            Logout
-          </a>
-        </li>
-      </ul>
-    </>
+    <List
+      sx={{ width: "100%", maxWidth: 360, bgcolor: "background.paper" }}
+      component="nav"
+      aria-labelledby="nested-list-subheader"
+      subheader={
+        <ListSubheader component="div" id="nested-list-subheader">
+          Sidebar menu
+        </ListSubheader>
+      }
+    >
+      {(menus.verticalMenu as ReadonlyArray<MenuItemType>).map(
+        (item, index) => (
+          <MenuItem key={`${index}-${item.title}`} {...item} pl={0} />
+        )
+      )}
+    </List>
   );
 };
 

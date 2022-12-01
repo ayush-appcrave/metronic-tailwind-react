@@ -26,7 +26,7 @@ const COMMON_MENU: MenuType = {
   dashboards: [
     {
       title: "Multipurpose",
-      path: "#",
+      path: "/dashboard",
       bullet: true,
       onClick: () => {
         console.log("New clicked");
@@ -34,7 +34,7 @@ const COMMON_MENU: MenuType = {
     },
     {
       title: "eCommerce",
-      path: "#ecommerce",
+      path: "/dashboard2",
       bullet: true,
       onClick: () => {
         console.log("New clicked 2");
@@ -129,7 +129,6 @@ const COMMON_MENU: MenuType = {
 const VERTICAL_MENU: MenuType = [
   {
     title: "Dashboards",
-    path: "#",
     icon: "general/gen025.svg",
     children: {
       variant: "accordion",
@@ -138,7 +137,7 @@ const VERTICAL_MENU: MenuType = [
   },
   {
     title: "Pages",
-    icon: "general/gen025.svg",
+    icon: "general/gen024.svg",
     children: {
       variant: "accordion",
       items: COMMON_MENU.pages,
@@ -146,7 +145,7 @@ const VERTICAL_MENU: MenuType = [
   },
   {
     title: "Authentication",
-    icon: "general/gen025.svg",
+    icon: "general/gen023.svg",
     children: {
       variant: "accordion",
       items: COMMON_MENU.authentication,
@@ -154,7 +153,7 @@ const VERTICAL_MENU: MenuType = [
   },
   {
     title: "Account",
-    icon: "general/gen025.svg",
+    icon: "general/gen022.svg",
     children: {
       variant: "accordion",
       items: COMMON_MENU.account,
@@ -162,7 +161,7 @@ const VERTICAL_MENU: MenuType = [
   },
   {
     title: "Apps",
-    icon: "general/gen025.svg",
+    icon: "general/gen021.svg",
     children: {
       variant: "dropdown",
       items: COMMON_MENU.apps,
@@ -173,12 +172,12 @@ const VERTICAL_MENU: MenuType = [
   },
   {
     title: "Documentation",
-    icon: "general/gen025.svg",
+    icon: "general/gen020.svg",
     path: "previews.keenthemes.com/hero/mui/docs",
   },
   {
     title: "Changelog",
-    icon: "general/gen025.svg",
+    icon: "general/gen019.svg",
     path: "previews.keenthemes.com/hero/mui/docs/#/changelog",
   },
 ];

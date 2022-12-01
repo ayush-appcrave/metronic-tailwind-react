@@ -1,4 +1,4 @@
-import { FC } from "react";
+import { memo } from "react";
 import SVG from "react-inlinesvg";
 import { toAbsoluteUrl } from "@base/helpers";
 type Props = {
@@ -17,23 +17,22 @@ type Props = {
 //*   svgClassName='svg-custom-class'
 //* />
 
-const SVGIcon: FC<Props> = ({
+const SVGIconComponent = ({
   icon,
-  path = "/media/icons/duatone",
+  path = "/media/icons/duotune/",
   size = "24px",
   className = "",
   svgClassName = "",
-}) => {
-  return (
-    <span className={`svg-icon ${className}`}>
-      <SVG
-        src={toAbsoluteUrl(path + icon)}
-        width={size}
-        height={size}
-        className={svgClassName}
-      />
-    </span>
-  );
-};
+}: Props) => (
+  <span className={`svg-icon ${className}`}>
+    <SVG
+      src={toAbsoluteUrl(path + icon)}
+      width={size}
+      height={size}
+      className={svgClassName}
+    />
+  </span>
+);
 
+const SVGIcon = memo(SVGIconComponent);
 export { SVGIcon };

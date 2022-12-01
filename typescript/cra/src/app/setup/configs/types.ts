@@ -19,19 +19,18 @@ export type PATHS = {
   [key: string]: string;
 };
 
-export type MenuItemType =
-  | {
-      title: string;
-      path?: string;
-      bullet?: boolean;
-      icon?: string;
-      children?: {
-        variant: "accordion" | "dropdown";
-        items: ReadonlyArray<MenuItemType>;
-      };
-      onClick?: (_?: unknown) => unknown | void;
-    }
-  | { divider: boolean };
+export type MenuItemType = {
+  title?: string;
+  path?: string;
+  bullet?: boolean;
+  icon?: string;
+  children?: {
+    variant: "accordion" | "dropdown";
+    items: ReadonlyArray<MenuItemType>;
+  };
+  onClick?: (_?: unknown) => unknown | void;
+  divider?: boolean;
+};
 
 export type MenuType =
   | {
