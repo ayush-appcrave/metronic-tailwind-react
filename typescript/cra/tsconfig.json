@@ -20,29 +20,38 @@
     "noEmit": true,
     "jsx": "react-jsx",
     "paths": {
-      "@base/*": [
-        "./src/_base/*"
+      "auth": [
+        "./src/auth"
       ],
-      "app/pages": [
-        "./src/app/pages"
+      "@components/*": [
+        "./src/components/*"
       ],
-      "app/routing": [
-        "./src/app/routing"
+      "configs": [
+        "./src/configs"
       ],
-      "app/setup/theme": [
-        "./src/app/setup/theme"
+      "i18n": [
+        "./src/i18n"
       ],
-      "app/setup/configs": [
-        "./src/app/setup/configs"
+      "layouts": [
+        "./src/layouts"
       ],
-      "app/setup/i18n": [
-        "./src/app/setup/i18n"
+      "modules/errors": [
+        "./src/modules/errors"
       ],
-      "app/setup/auth": [
-        "./src/app/setup/auth"
+      "pages": [
+        "./src/pages"
       ],
-      "app/modules/errors": [
-        "./src/app/modules/errors"
+      "partials": [
+        "./src/partials"
+      ],
+      "routing": [
+        "./src/routing"
+      ],
+      "theme": [
+        "./src/theme"
+      ],
+      "utils": [
+        "./src/utils"
       ]
     }
   },

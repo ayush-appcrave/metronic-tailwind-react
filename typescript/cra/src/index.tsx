@@ -1,16 +1,16 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
 import axios from 'axios'
-import { setupAxios } from "app/setup/auth";
+import { setupAxios } from "./auth";
 import "./index.css";
 import "material-icons/iconfont/material-icons.css";
-import { App } from "./app/App";
+import { App } from "./App";
 import reportWebVitals from "./reportWebVitals";
 // TODO: clarify helmet
 // import { Helmet } from "react-helmet";
 
 /**
- * Inject Metronic interceptors for axios.
+ * Inject interceptors for axios.
  *
  * @see https://github.com/axios/axios#interceptors
  */

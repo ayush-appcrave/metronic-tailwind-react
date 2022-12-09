@@ -1,0 +1,54 @@
+import { SVGIcon } from "../../../../../components";
+import { useDefaultLayout } from "../../../DefaultLayoutProvider";
+import { Box, ToggleButton } from "@mui/material";
+
+type Props = {
+  onToggle: () => void;
+};
+
+const CollapseButton = ({ onToggle }: Props) => {
+  const { isSidebarCollapsed } = useDefaultLayout();
+  const buttonSize = "32px";
+
+  return (
+    <ToggleButton
+      sx={{
+        height: buttonSize,
+        width: buttonSize,
+        minWidth: buttonSize,
+        color: "grey.600",
+        backgroundColor: "background.paper",
+        boxShadow: "0px 4px 6px rgba(130, 132, 140, 0.1)",
+        borderRadius: "6px",
+        border: "0px",
+        padding: "0px",
+        position: "absolute",
+        left: "100%",
+        top: "50%",
+        transform: "translate(-50%, -50%)",
+        "&:hover, &.Mui-selected, &.Mui-selected:hover": {
+          backgroundColor: "background.paper",
+          color: "primary.main",
+          opacity: 1,
+        },
+      }}
+      onClick={onToggle}
+      selected={isSidebarCollapsed}
+      aria-label="Toggle sidebar"
+      component="button"
+      value="1"
+    >
+      <Box
+        component="span"
+        sx={{
+          lineHeight: 0,
+          ...(isSidebarCollapsed && { transform: "rotate(180deg)" }),
+        }}
+      >
+        <SVGIcon icon={"/arrows/arr079.svg"} />
+      </Box>
+    </ToggleButton>
+  );
+};
+
+export { CollapseButton };
