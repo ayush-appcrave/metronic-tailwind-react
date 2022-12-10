@@ -12,7 +12,7 @@ export type Language = {
   messages: Record<string, string> | Record<string, MessageFormatElement[]>;
 };
 
-export type TranslationsProviderProps = {
+export type TranslationProviderProps = {
   currentLanguage: Language;
   changeLanguage: (lang: Language) => void;
   getDirection: () => Direction;

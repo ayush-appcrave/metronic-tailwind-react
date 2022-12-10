@@ -1,21 +1,16 @@
 import { PropsWithChildren, createContext, useState, useContext } from "react";
-import {
-  LayoutsType,
-  ILayout,
-  ILayoutPart,
-  ILayoutProvider,
-  useLayouts,
-} from "../_base";
+import { ILayout, ILayoutPartial, ILayoutProvider } from "../models";
+import { LayoutsType, useLayouts } from "../../providers/layouts";
 import { authLayoutConfig } from "./AuthLayoutConfig";
 
 type AuthLayoutProviderProps = {} & ILayoutProvider;
 
 const calculateInitAuthLayout = (layouts: LayoutsType): ILayout =>
-  layouts.get(authLayoutConfig.layoutName) || authLayoutConfig;
+  layouts.get(authLayoutConfig.name) || authLayoutConfig;
 
 const initalLayoutProps: AuthLayoutProviderProps = {
   layout: authLayoutConfig,
-  updateLayoutPart: () => {},
+  updatePartial:() => {},
   getConfig: (_: string) => undefined,
 };
 
@@ -27,26 +22,26 @@ const AuthLayoutProvider = ({ children }: PropsWithChildren) => {
   const { layouts, updateLayout } = useLayouts();
   const [layout, setLayout] = useState(calculateInitAuthLayout(layouts));
 
-  const updateLayoutPart = (part: ILayoutPart) => {
+  const updatePartial = (part: ILayoutPartial) => {
     const updatedLayout = { ...layout, ...part };
     setLayout(updatedLayout);
     updateLayout(updatedLayout);
   };
 
-  const getConfig = (partName: string) => {
-    const part = layout.parts.get(partName);
-    if (!part) {
+  const getConfig = (partialName: string) => {
+    const partial = layout.partials.get(partialName);
+    if (!partial) {
       return;
     }
 
-    return part.config;
+    return partial.config;
   };
 
   return (
     <AuthLayoutContext.Provider
       value={{
         layout,
-        updateLayoutPart,
+        updatePartial,
         getConfig,
       }}
     >

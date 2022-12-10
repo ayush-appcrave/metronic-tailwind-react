@@ -1,14 +1,15 @@
-import { LayoutsProvider } from "layouts";
-import { AuthProvider, AuthInit } from "auth";
-import { MenusProvider, SettingsProvider } from "./configs";
-import { ThemeProvider } from "theme";
-import { TranslationsProvider } from "./i18n";
-import { AppRouting } from "routing";
+import { LayoutsProvider } from "./providers/layouts";
+import { AuthProvider, AuthInit } from "./providers/auth";
+import { MenusProvider } from "./providers/menus";
+import { SettingsProvider } from "./providers/settings";
+import { ThemeProvider } from "./theme";
+import { TranslationProvider } from "./i18n";
+import { AppRouting } from "./routing";
 import "./App.css";
 
 const App = () => (
   <AuthProvider>
-    <TranslationsProvider>
+    <TranslationProvider>
       <SettingsProvider>
         <MenusProvider>
           <ThemeProvider>
@@ -20,7 +21,7 @@ const App = () => (
           </ThemeProvider>
         </MenusProvider>
       </SettingsProvider>
-    </TranslationsProvider>
+    </TranslationProvider>
   </AuthProvider>
 );
 

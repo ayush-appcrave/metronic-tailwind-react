@@ -1,20 +1,20 @@
-import { ILayout, ILayoutPart } from "../_base";
+import { ILayout, ILayoutPartial } from "../models";
 
-const authLayoutParts: ReadonlyArray<ILayoutPart> = [
+const authLayoutPartials: ReadonlyArray<ILayoutPartial> = [
   {
-    layoutPartName: "sidebar",
+    name: "sidebar",
     config: {
       enabled: false,
     },
   },
   {
-    layoutPartName: "footer",
+    name: "footer",
     config: {
       enabled: true,
     },
   },
   {
-    layoutPartName: "header",
+    name: "header",
     config: {
       enabled: true,
     },
@@ -22,9 +22,9 @@ const authLayoutParts: ReadonlyArray<ILayoutPart> = [
 ];
 
 const authLayoutConfig: ILayout = {
-  layoutName: "auth-layout",
-  parts: new Map<string, ILayoutPart>(
-    authLayoutParts.map((i) => [i.layoutPartName, i])
+  name: "auth-layout",
+  partials: new Map<string, ILayoutPartial>(
+    authLayoutPartials.map((i) => [i.name, i])
   ),
 };
 

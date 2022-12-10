@@ -1,20 +1,20 @@
-import { ILayout, ILayoutPart } from "../_base";
+import { ILayout, ILayoutPartial, ILayoutProvider } from "../models";
 
-const errorsLayoutParts: ReadonlyArray<ILayoutPart> = [
+const errorsLayoutPartials: ReadonlyArray<ILayoutPartial> = [
   {
-    layoutPartName: "sidebar",
+    name: "sidebar",
     config: {
       enabled: false,
     },
   },
   {
-    layoutPartName: "footer",
+    name: "footer",
     config: {
       enabled: true,
     },
   },
   {
-    layoutPartName: "header",
+    name: "header",
     config: {
       enabled: true,
     },
@@ -22,9 +22,9 @@ const errorsLayoutParts: ReadonlyArray<ILayoutPart> = [
 ];
 
 const errorsLayoutConfig: ILayout = {
-  layoutName: "errors-layout",
-  parts: new Map<string, ILayoutPart>(
-    errorsLayoutParts.map((i) => [i.layoutPartName, i])
+  name: "errors-layout",
+  partials: new Map<string, ILayoutPartial>(
+    errorsLayoutPartials.map((i) => [i.name, i])
   ),
 };
 

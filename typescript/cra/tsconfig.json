@@ -20,14 +20,11 @@
     "noEmit": true,
     "jsx": "react-jsx",
     "paths": {
-      "auth": [
-        "./src/auth"
-      ],
       "@components/*": [
         "./src/components/*"
       ],
       "configs": [
-        "./src/configs"
+        "./src/config"
       ],
       "i18n": [
         "./src/i18n"
@@ -41,8 +38,11 @@
       "pages": [
         "./src/pages"
       ],
-      "partials": [
-        "./src/partials"
+      "providers": [
+        "./src/providers"
+      ],
+      "sections": [
+        "./src/sections"
       ],
       "routing": [
         "./src/routing"

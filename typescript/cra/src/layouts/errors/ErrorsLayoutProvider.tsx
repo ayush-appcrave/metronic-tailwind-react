@@ -1,21 +1,16 @@
 import { PropsWithChildren, createContext, useState, useContext } from "react";
-import {
-  LayoutsType,
-  ILayout,
-  ILayoutPart,
-  ILayoutProvider,
-  useLayouts,
-} from "../_base";
+import { ILayout, ILayoutPartial, ILayoutProvider } from "../models";
+import { LayoutsType, useLayouts } from "../../providers/layouts";
 import { errorsLayoutConfig } from "./ErrorsLayoutConfig";
 
 type ErrorsLayoutProviderProps = {} & ILayoutProvider;
 
 const calculateInitErrorsLayout = (layouts: LayoutsType): ILayout =>
-  layouts.get(errorsLayoutConfig.layoutName) || errorsLayoutConfig;
+  layouts.get(errorsLayoutConfig.name) || errorsLayoutConfig;
 
 const initalLayoutProps: ErrorsLayoutProviderProps = {
   layout: errorsLayoutConfig,
-  updateLayoutPart: () => {},
+  updatePartial: () => {},
   getConfig: (_: string) => undefined,
 };
 
@@ -27,14 +22,14 @@ const ErrorsLayoutProvider = ({ children }: PropsWithChildren) => {
   const { layouts, updateLayout } = useLayouts();
   const [layout, setLayout] = useState(calculateInitErrorsLayout(layouts));
 
-  const updateLayoutPart = (part: ILayoutPart) => {
-    const updatedLayout = { ...layout, ...part };
+  const updatePartial = (partial: ILayoutPartial) => {
+    const updatedLayout = { ...layout, ...partial };
     setLayout(updatedLayout);
     updateLayout(updatedLayout);
   };
 
   const getConfig = (partName: string) => {
-    const part = layout.parts.get(partName);
+    const part = layout.partials.get(partName);
     if (!part) {
       return;
     }
@@ -46,7 +41,7 @@ const ErrorsLayoutProvider = ({ children }: PropsWithChildren) => {
     <ErrorsLayoutContext.Provider
       value={{
         layout,
-        updateLayoutPart,
+        updatePartial,
         getConfig,
       }}
     >

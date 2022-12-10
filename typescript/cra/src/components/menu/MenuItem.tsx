@@ -1,16 +1,9 @@
 import { useState, memo, useMemo } from "react";
 import { Link } from "react-router-dom";
-import {
-  Collapse,
-  Divider,
-  List,
-  ListItemButton,
-  ListItemIcon,
-  ListItemText,
-} from "@mui/material";
+import { Collapse, Divider, List, ListItemButton, ListItemIcon, ListItemText } from "@mui/material";
 import { ExpandMore, ExpandLess } from "@mui/icons-material";
 import { SVGIcon } from "..";
-import { MenuItemType } from "../../configs";
+import { MenuItemType } from "./types";
 
 const MenuItemComponent = ({
   title,

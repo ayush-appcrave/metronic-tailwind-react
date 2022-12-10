@@ -1,11 +1,6 @@
 import { PropsWithChildren, createContext, useState, useContext } from "react";
-import {
-  LayoutsType,
-  ILayout,
-  ILayoutPart,
-  ILayoutProvider,
-  useLayouts,
-} from "../_base";
+import { ILayout, ILayoutPartial, ILayoutProvider } from "../models";
+import { LayoutsType, useLayouts } from "../../providers/layouts";
 import { defaultLayoutConfig, DefaultSidebarType } from "./DefaultLayoutConfig";
 
 type DefaultLayoutProviderProps = {
@@ -14,10 +9,10 @@ type DefaultLayoutProviderProps = {
 } & ILayoutProvider;
 
 const calculateInitDefaultLayout = (layouts: LayoutsType): ILayout =>
-  layouts.get(defaultLayoutConfig.layoutName) || defaultLayoutConfig;
+  layouts.get(defaultLayoutConfig.name) || defaultLayoutConfig;
 
 const calculateSidebarIsCollapsible = (
-  sidebar: ILayoutPart | undefined
+  sidebar: ILayoutPartial | undefined
 ): boolean => {
   if (!sidebar) {
     return false;
@@ -28,7 +23,7 @@ const calculateSidebarIsCollapsible = (
 
 const initalLayoutProps: DefaultLayoutProviderProps = {
   layout: defaultLayoutConfig,
-  updateLayoutPart: () => {},
+  updatePartial: () => {},
   getConfig: (_: string) => undefined,
   isSidebarCollapsed: true,
   setSidebarCollapse: (_: boolean) => {},
@@ -42,32 +37,32 @@ const DefaultLayoutProvider = ({ children }: PropsWithChildren) => {
   const { layouts, updateLayout } = useLayouts();
   const [layout, setLayout] = useState(calculateInitDefaultLayout(layouts));
   const [isSidebarCollapsed, setIsSidebarCollapsed] = useState<boolean>(
-    calculateSidebarIsCollapsible(layout.parts.get("sidebar"))
+    calculateSidebarIsCollapsible(layout.partials.get("sidebar"))
   );
 
-  const updateLayoutPart = (part: ILayoutPart) => {
+  const updatePartial = (part: ILayoutPartial) => {
     const updatedLayout = { ...layout, ...part };
     setLayout(updatedLayout);
     updateLayout(updatedLayout);
   };
 
   const getConfig = (partName: string) => {
-    const part = layout.parts.get(partName);
-    if (!part) {
+    const partial = layout.partials.get(partName);
+    if (!partial) {
       return;
     }
 
-    return part.config;
+    return partial.config;
   };
 
   const setSidebarCollapse = (collapse: boolean) => {
-    const sidebar = layout.parts.get("sidebar");
+    const sidebar = layout.partials.get("sidebar");
     if (!sidebar) {
       return;
     }
 
     const updatedSidebar = { ...sidebar, collapse };
-    updateLayoutPart(updatedSidebar);
+    updatePartial(updatedSidebar);
     setIsSidebarCollapsed(collapse);
   };
 
@@ -75,7 +70,7 @@ const DefaultLayoutProvider = ({ children }: PropsWithChildren) => {
     <DefaultLayoutContext.Provider
       value={{
         layout,
-        updateLayoutPart,
+        updatePartial,
         getConfig,
         isSidebarCollapsed,
         setSidebarCollapse,

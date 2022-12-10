@@ -1,4 +1,4 @@
-import { ILayout, ILayoutPart } from "../_base";
+import { ILayout, ILayoutPartial } from "../";
 
 export type DefaultSidebarType = {
   enabled: boolean;
@@ -18,19 +18,19 @@ export type IFooterPart = {
   enabled: boolean,
 }
 
-const defaultLayoutParts: ReadonlyArray<ILayoutPart> = [
+const defaultLayoutPartials: ReadonlyArray<ILayoutPartial> = [
   {
-    layoutPartName: "sidebar",
+    name: "sidebar",
     config: defaultSidebarConfig,
   },
   {
-    layoutPartName: "footer",
+    name: "footer",
     config: {
       enabled: true,
     },
   },
   {
-    layoutPartName: "header",
+    name: "header",
     config: {
       enabled: true,
     },
@@ -38,9 +38,9 @@ const defaultLayoutParts: ReadonlyArray<ILayoutPart> = [
 ];
 
 const defaultLayoutConfig: ILayout = {
-  layoutName: "default-layout",
-  parts: new Map<string, ILayoutPart>(
-    defaultLayoutParts.map((i) => [i.layoutPartName, i])
+  name: "default-layout",
+  partials: new Map<string, ILayoutPartial>(
+    defaultLayoutPartials.map((i) => [i.name, i])
   ),
 };
 

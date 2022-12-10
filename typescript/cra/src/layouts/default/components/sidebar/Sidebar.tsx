@@ -1,7 +1,7 @@
 import ListSubheader from "@mui/material/ListSubheader";
 import List from "@mui/material/List";
-import { MenuItemType, useMenus } from "../../../../configs";
-import { MenuItem } from "../../../../components/menu/MenuItem";
+import { useMenus } from "../../../../providers/menus";
+import { MenuItem, MenuItemType } from "../../../../components/menu";
 
 const Sidebar = () => {
   const { menus } = useMenus();

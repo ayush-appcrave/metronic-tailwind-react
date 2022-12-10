@@ -1,4 +1,5 @@
-import { LanguageChanger, ModeChanger } from "../../../../components";
+import { LanguageChanger } from "./LanguageChanger";
+import { ModeChanger } from "./ModeChanger";
 import { FormattedMessage } from "react-intl";
 
 const Header = () => (
