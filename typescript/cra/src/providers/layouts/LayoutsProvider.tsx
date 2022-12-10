@@ -1,22 +1,23 @@
 import { PropsWithChildren, createContext, useState, useContext } from "react";
 import { getData, setData } from "../../utils";
-import { ILayout } from "../../layouts/models";
+import { ILayoutConfig } from "../../layouts/models";
 
 const LAYOUTS_CONFIGS_KEY = "layouts-configs";
 
-export type LayoutsType = Map<string, ILayout>;
+export type LayoutsType = Map<string, ILayoutConfig>;
 export type LayoutsProps = {
   layouts: LayoutsType;
-  updateLayout: (layout: ILayout) => void;
+  updateLayout: (layout: ILayoutConfig) => void;
 };
 
 const calculateInitialLayouts = () => {
   const layouts = getData(LAYOUTS_CONFIGS_KEY) as LayoutsType | undefined;
-  return layouts || new Map<string, ILayout>();
+
+  return layouts || new Map<string, ILayoutConfig>();
 };
 
 const calculateUpdatedLayouts = (
-  updatedLayout: ILayout,
+  updatedLayout: ILayoutConfig,
   layouts: LayoutsType
 ): LayoutsType => {
   const oldLayout = layouts.get(updatedLayout.name);
@@ -24,6 +25,8 @@ const calculateUpdatedLayouts = (
   if (oldLayout) {
     updatedLayouts.delete(updatedLayout.name);
   }
+  console.log('1:' + JSON.stringify(updatedLayouts));
+
   updatedLayouts.set(updatedLayout.name, updatedLayout);
   setData(LAYOUTS_CONFIGS_KEY, JSON.stringify(updatedLayouts));
   return updatedLayouts;
@@ -31,7 +34,7 @@ const calculateUpdatedLayouts = (
 
 const initialProps: LayoutsProps = {
   layouts: calculateInitialLayouts(),
-  updateLayout: (_: ILayout) => {},
+  updateLayout: (_: ILayoutConfig) => {},
 };
 
 const LayoutsContext = createContext<LayoutsProps>(initialProps);
@@ -39,7 +42,7 @@ const useLayouts = () => useContext(LayoutsContext);
 
 const LayoutsProvider = ({ children }: PropsWithChildren) => {
   const [layouts, setLayouts] = useState(initialProps.layouts);
-  const updateLayout = (layout: ILayout) => {
+  const updateLayout = (layout: ILayoutConfig) => {
     const updatedLayouts = calculateUpdatedLayouts(layout, layouts);
     setLayouts(updatedLayouts);
   };

@@ -1,6 +1,7 @@
 import { PropsWithChildren } from "react";
 import { useTheme } from "@mui/material/styles";
 import { Box } from "@mui/material";
+import { Outlet } from "react-router-dom";
 
 const Content = ({ children }: PropsWithChildren) => {
   const theme = useTheme();
@@ -16,7 +17,7 @@ const Content = ({ children }: PropsWithChildren) => {
         },
       }}
     >
-      {children}
+      <Outlet/>
     </Box>
   );
 };

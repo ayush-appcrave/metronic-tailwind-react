@@ -1,15 +1,7 @@
-export interface ILayoutPartial {
+export interface ILayoutConfig {
   name: string;
-  config: unknown;
+  options: any
 }
-
-export interface ILayout {
-  name: string;
-  partials: Map<string, ILayoutPartial>;
-}
-
 export interface ILayoutProvider {
-  layout: ILayout;
-  updatePartial: (part: ILayoutPartial) => void;
-  getConfig: (partName: string) => unknown | undefined;
+  layout: ILayoutConfig
 }

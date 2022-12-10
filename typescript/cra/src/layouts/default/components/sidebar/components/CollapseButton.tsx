@@ -7,7 +7,7 @@ type Props = {
 };
 
 const CollapseButton = ({ onToggle }: Props) => {
-  const { isSidebarCollapsed } = useDefaultLayout();
+  const { isSidebarCollapse } = useDefaultLayout();
   const buttonSize = "32px";
 
   return (
@@ -33,7 +33,7 @@ const CollapseButton = ({ onToggle }: Props) => {
         },
       }}
       onClick={onToggle}
-      selected={isSidebarCollapsed}
+      selected={isSidebarCollapse}
       aria-label="Toggle sidebar"
       component="button"
       value="1"
@@ -42,7 +42,7 @@ const CollapseButton = ({ onToggle }: Props) => {
         component="span"
         sx={{
           lineHeight: 0,
-          ...(isSidebarCollapsed && { transform: "rotate(180deg)" }),
+          ...(isSidebarCollapse && { transform: "rotate(180deg)" }),
         }}
       >
         <SVGIcon icon={"/arrows/arr079.svg"} />

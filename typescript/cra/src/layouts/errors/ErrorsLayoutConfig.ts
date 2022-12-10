@@ -1,31 +1,8 @@
-import { ILayout, ILayoutPartial, ILayoutProvider } from "../models";
+import { ILayoutConfig } from "../";
 
-const errorsLayoutPartials: ReadonlyArray<ILayoutPartial> = [
-  {
-    name: "sidebar",
-    config: {
-      enabled: false,
-    },
-  },
-  {
-    name: "footer",
-    config: {
-      enabled: true,
-    },
-  },
-  {
-    name: "header",
-    config: {
-      enabled: true,
-    },
-  },
-];
-
-const errorsLayoutConfig: ILayout = {
+const errorsLayoutConfig: ILayoutConfig = {
   name: "errors-layout",
-  partials: new Map<string, ILayoutPartial>(
-    errorsLayoutPartials.map((i) => [i.name, i])
-  ),
+  options: {}
 };
 
 export { errorsLayoutConfig };
