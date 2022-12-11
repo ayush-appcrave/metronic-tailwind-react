@@ -1,6 +1,6 @@
 export type Mode = "light" | "dark" | "system";
 
-// settings types
+// Settings types
 export type AppSettings = {
   mode: Mode;
   containerWidth: "fluid" | "fixed";
@@ -8,13 +8,13 @@ export type AppSettings = {
   layout: "default" | "without-sidebar";
 };
 
-// layout types
+// Layout types
 export type LayoutSettings = {
   SIDEBAR_WIDTH?: number;
   SIDEBAR_COLLAPSE_WIDTH?: number;
 };
 
-// menu types
+// Menu types
 export type PATHS = {
   [key: string]: string;
 };

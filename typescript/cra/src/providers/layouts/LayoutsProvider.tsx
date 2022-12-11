@@ -10,10 +10,11 @@ export type LayoutsProps = {
   updateLayout: (layout: ILayoutConfig) => void;
 };
 
-const calculateInitialLayouts = () => {
-  const layouts = getData(LAYOUTS_CONFIGS_KEY) as LayoutsType | undefined;
+const calculateInitialLayouts = () => {  
+  const storedLayouts = getData(LAYOUTS_CONFIGS_KEY) as object || {};
+  const layouts = new Map(Object.entries(storedLayouts)) as LayoutsType;
 
-  return layouts || new Map<string, ILayoutConfig>();
+  return layouts;
 };
 
 const calculateUpdatedLayouts = (
@@ -21,14 +22,16 @@ const calculateUpdatedLayouts = (
   layouts: LayoutsType
 ): LayoutsType => {
   const oldLayout = layouts.get(updatedLayout.name);
-  const updatedLayouts = { ...layouts };
+  const updatedLayouts = layouts;
+
   if (oldLayout) {
     updatedLayouts.delete(updatedLayout.name);
   }
-  console.log('1:' + JSON.stringify(updatedLayouts));
 
   updatedLayouts.set(updatedLayout.name, updatedLayout);
-  setData(LAYOUTS_CONFIGS_KEY, JSON.stringify(updatedLayouts));
+
+  setData(LAYOUTS_CONFIGS_KEY, Object.fromEntries(updatedLayouts));
+
   return updatedLayouts;
 };
 
@@ -44,6 +47,7 @@ const LayoutsProvider = ({ children }: PropsWithChildren) => {
   const [layouts, setLayouts] = useState(initialProps.layouts);
   const updateLayout = (layout: ILayoutConfig) => {
     const updatedLayouts = calculateUpdatedLayouts(layout, layouts);
+    
     setLayouts(updatedLayouts);
   };
 

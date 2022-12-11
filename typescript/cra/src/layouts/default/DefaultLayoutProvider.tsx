@@ -33,14 +33,15 @@ const DefaultLayoutProvider = ({ children }: PropsWithChildren) => {
         collapse: collapse
       }
     }};
-
+    
+    setLayout(updatedLayout);
     updateLayout(updatedLayout);
   };
 
   const isSidebarCollapse: boolean = layout.options.sidebar.collapse;
 
   return (
-    <DefaultLayoutContext.Provider
+    <DefaultLayoutContext.Provider 
       value={{
         layout,
         isSidebarCollapse,

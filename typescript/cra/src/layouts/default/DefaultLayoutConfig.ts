@@ -1,6 +1,6 @@
 import { ILayoutConfig } from "../";
 
-const defaultLayoutConfig: ILayoutConfig = {
+const defaultLayoutConfig = {
   name: "default-layout",
   options: {
     sidebar: {

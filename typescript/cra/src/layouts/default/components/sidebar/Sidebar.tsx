@@ -21,14 +21,16 @@ const Sidebar = () => {
   const {isSidebarCollapse, setSidebarCollapse} = useDefaultLayout();
 
   useEffect(() => {
-    
+    //console.log('sidebar toggle');
   }, [isSidebarCollapse]);
 
-  const handleSidebarCollapse = () => {
+  const handleSidebarCollapse = () => {   
     if (isSidebarCollapse === true) {
       setSidebarCollapse(false);
+      console.log("Sidebar expand");
     } else {
       setSidebarCollapse(true);
+      console.log("Sidebar collapse");
     }
   };
 

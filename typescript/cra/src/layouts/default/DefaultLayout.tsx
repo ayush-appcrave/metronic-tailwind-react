@@ -6,14 +6,14 @@ import { DefaultLayoutProvider } from "./DefaultLayoutProvider";
 
 const Layout = () => (
   <>
-    <Sidebar />
-    <Main />
+    <Sidebar/>
+    <Main/>
   </>
 );
 
 const DefaultLayout = () => (
   <DefaultLayoutProvider>
-    <Layout />
+    <Layout/>
   </DefaultLayoutProvider>
 );
 export { DefaultLayout };
