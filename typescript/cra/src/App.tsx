@@ -1,17 +1,19 @@
-import { LayoutsProvider } from "./providers/layouts";
-import { AuthProvider, AuthInit } from "./providers/auth";
-import { MenusProvider } from "./providers/menus";
-import { SettingsProvider } from "./providers/settings";
-import { ThemeProvider } from "./theme";
-import { TranslationProvider } from "./i18n";
+import { AuthProvider, AuthInit } from "./auth";
+import { LayoutsProvider } from "./providers/LayoutsProvider";
+import { NavsProvider } from "./providers/NavsProvider";
+import { SettingsProvider } from "./providers/SettingsProvider";
+import { ThemeProvider } from "./providers/ThemeProvider";
+import { TranslationProvider } from "./providers/TranslationProvider";
 import { AppRouting } from "./routing";
+
+import 'simplebar/src/simplebar.css';
 import "./App.css";
 
 const App = () => (
   <AuthProvider>
     <TranslationProvider>
       <SettingsProvider>
-        <MenusProvider>
+        <NavsProvider>
           <ThemeProvider>
             <LayoutsProvider>
               <AuthInit>
@@ -19,7 +21,7 @@ const App = () => (
               </AuthInit>
             </LayoutsProvider>
           </ThemeProvider>
-        </MenusProvider>
+        </NavsProvider>
       </SettingsProvider>
     </TranslationProvider>
   </AuthProvider>

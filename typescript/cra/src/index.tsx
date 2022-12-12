@@ -1,7 +1,7 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
 import axios from 'axios'
-import { setupAxios } from "./providers/auth";
+import { setupAxios } from "./auth";
 import "./index.css";
 import "material-icons/iconfont/material-icons.css";
 import { App } from "./App";

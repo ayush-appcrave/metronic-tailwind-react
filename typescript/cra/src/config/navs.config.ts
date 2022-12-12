@@ -1,5 +1,5 @@
-import { MenuType } from "../components/menu";
-import { PATHS } from "./";
+import { NavType } from "../components/nav";
+import { PATHS } from ".";
 
 // Auth paths
 const AUTH_PATHS: PATHS = {
@@ -23,7 +23,7 @@ const GENERAL_PATHS: PATHS = {
   page500: "/500",
 };
 
-const COMMON_MENU: MenuType = {
+const COMMON_NAV: NavType = {
   dashboards: [
     {
       title: "Multipurpose",
@@ -127,45 +127,45 @@ const COMMON_MENU: MenuType = {
   ],
 };
 
-const VERTICAL_MENU: MenuType = [
+const VERTICAL_NAV: NavType = [
   {
     title: "Dashboards",
     icon: "general/gen025.svg",
     children: {
-      variant: "accordion",
-      items: COMMON_MENU.dashboards,
+      collapsible: true,
+      items: COMMON_NAV.dashboards,
     },
   },
   {
     title: "Pages",
     icon: "general/gen024.svg",
     children: {
-      variant: "accordion",
-      items: COMMON_MENU.pages,
+      collapsible: true,
+      items: COMMON_NAV.pages,
     },
   },
   {
     title: "Authentication",
     icon: "general/gen023.svg",
     children: {
-      variant: "accordion",
-      items: COMMON_MENU.authentication,
+      collapsible: true,
+      items: COMMON_NAV.authentication,
     },
   },
   {
     title: "Account",
     icon: "general/gen022.svg",
     children: {
-      variant: "accordion",
-      items: COMMON_MENU.account,
+      collapsible: true,
+      items: COMMON_NAV.account,
     },
   },
   {
     title: "Apps",
     icon: "general/gen021.svg",
     children: {
-      variant: "dropdown",
-      items: COMMON_MENU.apps,
+      collapsible: true,
+      items: COMMON_NAV.apps,
     },
   },
   {
@@ -183,4 +183,4 @@ const VERTICAL_MENU: MenuType = [
   },
 ];
 
-export { AUTH_PATHS, GENERAL_PATHS, COMMON_MENU, VERTICAL_MENU };
+export { AUTH_PATHS, GENERAL_PATHS, COMMON_NAV, VERTICAL_NAV };

@@ -1,4 +1,4 @@
-import { getData, setData } from "../../utils";
+import { getData, setData } from "../utils";
 import { AuthModel } from "./_models";
 
 const AUTH_LOCAL_STORAGE_KEY = "auth-react-v";

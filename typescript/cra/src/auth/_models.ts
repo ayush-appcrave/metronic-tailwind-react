@@ -1,4 +1,4 @@
-import { AvailableLanguageCodes } from "../../i18n";
+import { AvailableLanguageCodes } from "../i18n";
 
 export interface AuthModel {
   api_token: string;

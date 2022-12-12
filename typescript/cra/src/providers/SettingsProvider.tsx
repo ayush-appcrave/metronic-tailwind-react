@@ -1,7 +1,7 @@
 import { useState, createContext, useContext, PropsWithChildren } from "react";
-import { getData, setData } from "../../utils";
-import { defaultSettings } from "../../config/settings.config";
-import { AppSettings, Mode } from "../../config/types";
+import { getData, setData } from "../utils";
+import { defaultSettings } from "../config/settings.config";
+import { AppSettings, Mode } from "../config/types";
 
 const SETTINGS_CONFIG_KEY = "app-settings-config";
 

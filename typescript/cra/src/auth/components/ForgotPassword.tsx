@@ -4,7 +4,7 @@ import clsx from "clsx";
 import { Link } from "react-router-dom";
 import { useFormik } from "formik";
 import { requestPassword } from "../_requests";
-import { useAuth } from "../../../providers/auth/JWTProvider";
+import { useAuth } from "../JWTProvider";
 
 const initialValues = {
   email: "admin@demo.com",

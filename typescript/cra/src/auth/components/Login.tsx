@@ -1,7 +1,7 @@
 import * as Yup from "yup";
 import { useFormik } from "formik";
 import { getUserByToken, login } from "../_requests";
-import { useAuth } from "../../../providers/auth/JWTProvider";
+import { useAuth } from "../JWTProvider";
 import { useState } from "react";
 import clsx from "clsx";
 import { Link } from "react-router-dom";

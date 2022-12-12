@@ -1,10 +1,10 @@
 import { PropsWithChildren, useEffect, useState } from "react";
 import { createTheme, CssBaseline, PaletteOptions, Theme, ThemeProvider as MUIThemeProvider} from "@mui/material";
 import { useLang } from "../i18n";
-import { useSettings } from "../settings/SettingsProvider";
-import { breakpoints } from "../../theme/breakpoints";
-import { palette } from "../../theme/palette";
-import { componentsCustomization } from "../../theme/customization";
+import { useSettings } from "./SettingsProvider";
+import { breakpoints } from "../theme/breakpoints";
+import { palette } from "../theme/palette";
+import { componentsCustomization } from "../theme/customization";
 
 const ThemeProvider = ({ children }: PropsWithChildren) => {
   const { settings } = useSettings();

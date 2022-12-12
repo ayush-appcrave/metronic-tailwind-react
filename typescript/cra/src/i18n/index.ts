@@ -1,3 +1,3 @@
-export * from "../providers/i18n/TranslationProvider";
+export * from "../providers/TranslationProvider";
 export * from "./types";
 export * from "./consts";

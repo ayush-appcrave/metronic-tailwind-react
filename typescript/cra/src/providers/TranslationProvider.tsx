@@ -7,9 +7,9 @@ import "@formatjs/intl-relativetimeformat/locale-data/es";
 import "@formatjs/intl-relativetimeformat/locale-data/fr";
 import "@formatjs/intl-relativetimeformat/locale-data/ja";
 import "@formatjs/intl-relativetimeformat/locale-data/zh";
-import { getData, setData } from "../../utils";
-import { DEFAULT_LANGUAGE, I18N_CONFIG_KEY } from "../../i18n/consts";
-import { Language, TranslationProviderProps } from "../../i18n/types";
+import { getData, setData } from "../utils";
+import { DEFAULT_LANGUAGE, I18N_CONFIG_KEY } from "../i18n/consts";
+import { Language, TranslationProviderProps } from "../i18n/types";
 
 const calculateInitialLanguage = () => {
   const currentLanguage = getData(I18N_CONFIG_KEY) as Language | undefined;

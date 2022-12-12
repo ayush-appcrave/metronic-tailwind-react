@@ -1,4 +1,4 @@
 export * from "./loading-screen";
-export * from "./menu";
-export * from "./scrollbar_";
+export * from "./nav";
+export * from "./scrollbar";
 export * from "./svg-icon";

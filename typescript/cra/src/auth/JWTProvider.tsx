@@ -8,7 +8,7 @@ import {
   SetStateAction,
   PropsWithChildren,
 } from "react";
-import { LoadingScreen } from "../../components";
+import { LoadingScreen } from "../components";
 import { AuthModel, UserModel } from "./_models";
 import * as authHelper from "./_helpers";
 import { getUserByToken } from "./_requests";

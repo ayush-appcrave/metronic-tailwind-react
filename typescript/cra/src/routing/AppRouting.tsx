@@ -1,6 +1,6 @@
 import { Navigate, Route, Routes } from "react-router";
 import { BrowserRouter } from "react-router-dom";
-import { AuthPage, Logout, useAuth } from "../providers/auth";
+import { AuthPage, Logout, useAuth } from "../auth";
 import { ErrorsPage } from "../modules/errors";
 import { PrivateRouting } from "./PrivateRouting";
 

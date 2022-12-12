@@ -11,8 +11,26 @@ const Logo = ({ sx }: Props) => {
 
   return (
     <a href="/" style={{lineHeight: '0px'}}>      
-      <img src="/media/logos/default.svg" alt="logo" style={{ display: isSidebarCollapse ? 'none' : 'inline-block', height: '30px', maxWidth: 'none', cursor: 'pointer'}}/>      
-      <img src="/media/logos/default-mini.svg" alt="logo" style={{ display: isSidebarCollapse ? 'inline-block' : 'none', height: '30px', maxWidth: 'none', cursor: 'pointer'}}/>
+      <img 
+        src="/media/logos/default.svg" 
+        alt="logo" 
+        style={{ 
+          display: isSidebarCollapse ? 'none' : 'inline-block', 
+          height: '30px', 
+          maxWidth: 'none', 
+          cursor: 'pointer'
+        }}
+      />      
+      
+      <img 
+        src="/media/logos/default-mini.svg" 
+        alt="logo" 
+        style={{ 
+          display: isSidebarCollapse ? 'inline-block' : 'none', 
+          height: '30px', 
+          maxWidth: 'none', 
+          cursor: 'pointer'
+        }}/>
     </a>      
   );
 }

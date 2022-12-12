@@ -1,4 +1,4 @@
-import { AuthLayout } from "../../layouts/auth";
+import { AuthLayout } from "../layouts/auth";
 import { Route, Routes } from "react-router";
 import { ForgotPassword } from "./components/ForgotPassword";
 import { Login } from "./components/Login";

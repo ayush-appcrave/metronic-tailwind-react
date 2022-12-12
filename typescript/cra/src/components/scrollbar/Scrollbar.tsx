@@ -2,13 +2,10 @@ import { memo } from 'react';
 import { Box } from '@mui/material';
 import { ScrollbarStyledRoot, ScrollbarStyled } from './Scrollbar.styles';
 import { ScrollbarProps } from './types';
+import { isMobileDevice } from '../../utils';
 
-function Scrollbar({ children, sx, ...other }: ScrollbarProps) {
-  const userAgent = typeof navigator === 'undefined' ? 'SSR' : navigator.userAgent;
-
-  const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(userAgent);
-
-  if (isMobile) {
+const Scrollbar = ({ children, sx, ...other }: ScrollbarProps) => {
+  if (isMobileDevice()) {
     return (
       <Box sx={{ overflowX: 'auto', ...sx }} {...other}>
         {children}

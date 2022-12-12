@@ -3,22 +3,26 @@ import { Link } from "react-router-dom";
 import { Collapse, Divider, List, ListItemButton, ListItemIcon, ListItemText } from "@mui/material";
 import { ExpandMore, ExpandLess } from "@mui/icons-material";
 import { SVGIcon } from "..";
-import { MenuItemType } from "./types";
+import { NavItemType } from "./types";
 
-const MenuItemComponent = ({
+const NavItemComponent = ({
   title,
   divider,
   children,
+  subheader,
   icon,
-  pl = 0,
+  bullet,
+  badge,
   isChild,
   path,
-}: MenuItemType & { pl: number; isChild?: boolean }) => {
+  pl = 0,
+}: NavItemType & { pl: number; isChild?: boolean }) => {
   const [open, setOpen] = useState(false);
   const handleClick = () => setOpen(!open);
   const hasChildren: boolean = useMemo(() => {
     return children !== undefined && children.items.length > 0;
   }, [children]);
+
   return (
     <>
       {divider ? (
@@ -52,7 +56,7 @@ const MenuItemComponent = ({
         <Collapse in={open} timeout="auto" unmountOnExit>
           <List component="div" disablePadding>
             {children?.items.map((item, index) => (
-              <MenuItem
+              <NavItem
                 key={`${index}-${item.title}`}
                 isChild={true}
                 pl={pl + 4}
@@ -66,5 +70,5 @@ const MenuItemComponent = ({
   );
 };
 
-const MenuItem = memo(MenuItemComponent);
-export { MenuItem };
+const NavItem = memo(NavItemComponent);
+export { NavItem };

@@ -3,7 +3,7 @@ import { useFormik } from "formik";
 import clsx from "clsx";
 import * as Yup from "yup";
 import { getUserByToken, register } from "../_requests";
-import { useAuth } from "../../../providers/auth/JWTProvider";
+import { useAuth } from "../JWTProvider";
 import { Link } from "react-router-dom";
 
 const initialValues = {
