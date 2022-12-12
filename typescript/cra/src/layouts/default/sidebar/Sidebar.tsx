@@ -2,12 +2,12 @@ import { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { useTheme } from '@mui/material/styles';
 import { Box, Stack, Drawer } from '@mui/material';
-import useResponsive from '../../../../hooks/useResponsive';
-import { Scrollbar } from '../../../../components/scrollbar';
-import { LAYOUT_DEFAULT } from '../../../../config';
-import { Logo } from './components/Logo';
-import { CollapseButton } from './components/CollapseButton';
-import { useDefaultLayout } from '../../';
+import useResponsive from '../../../hooks/useResponsive';
+import { Scrollbar } from '../../../components/scrollbar_';
+import { LAYOUT_DEFAULT } from '../../../config';
+import { useDefaultLayout } from '../';
+import { Logo } from './Logo';
+import { CollapseButton } from './CollapseButton';
 
 const Sidebar = () => {
   const theme = useTheme();
@@ -56,7 +56,7 @@ const Sidebar = () => {
             sx: {
               width: isSidebarCollapse ? LAYOUT_DEFAULT.SIDEBAR_COLLAPSE_WIDTH : LAYOUT_DEFAULT.SIDEBAR_WIDTH,
               transition: widthTransition,
-              borderRightWidth: '0px',
+              borderRight: '1px solid #EDEFF0',
               overflow: 'visible',              
               bgcolor: 'background.paper'
             },

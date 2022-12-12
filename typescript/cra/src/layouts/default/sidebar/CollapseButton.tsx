@@ -1,5 +1,5 @@
-import { SVGIcon } from "../../../../../components";
-import { useDefaultLayout } from "../../../DefaultLayoutProvider";
+import { SVGIcon } from "../../../components";
+import { useDefaultLayout } from "../DefaultLayoutProvider";
 import { Box, ToggleButton } from "@mui/material";
 
 type Props = {

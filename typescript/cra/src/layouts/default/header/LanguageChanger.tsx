@@ -1,4 +1,4 @@
-import { useLang, LANGUAGES } from "../../../../i18n";
+import { useLang, LANGUAGES } from "../../../i18n";
 
 const LanguageChanger = () => {
   const { currentLanguage, changeLanguage } = useLang();

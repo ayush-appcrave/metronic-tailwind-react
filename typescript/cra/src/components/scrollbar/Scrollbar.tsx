@@ -1,13 +1,28 @@
-import { isMobileDevice } from "../../utils";
-import { MobileBoxStyled, DesktopBoxStyled } from "./Scrollbar.style";
-import { ScrollbarProps } from "./types";
+import { memo } from 'react';
+import { Box } from '@mui/material';
+import { ScrollbarStyledRoot, ScrollbarStyled } from './Scrollbar.styles';
+import { ScrollbarProps } from './types';
 
-const Scrollbar = (props: ScrollbarProps) => {
-  return isMobileDevice() ? (
-    <MobileBoxStyled {...props}>{props.children}</MobileBoxStyled>
-  ) : (
-    <DesktopBoxStyled {...props}>{props.children}</DesktopBoxStyled>
+function Scrollbar({ children, sx, ...other }: ScrollbarProps) {
+  const userAgent = typeof navigator === 'undefined' ? 'SSR' : navigator.userAgent;
+
+  const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(userAgent);
+
+  if (isMobile) {
+    return (
+      <Box sx={{ overflowX: 'auto', ...sx }} {...other}>
+        {children}
+      </Box>
+    );
+  }
+
+  return (
+    <ScrollbarStyledRoot>
+      <ScrollbarStyled timeout={500} clickOnTrack={false} sx={sx} {...other}>
+        {children}
+      </ScrollbarStyled>
+    </ScrollbarStyledRoot>
   );
-};
+}
 
-export { Scrollbar };
+export default memo(Scrollbar);

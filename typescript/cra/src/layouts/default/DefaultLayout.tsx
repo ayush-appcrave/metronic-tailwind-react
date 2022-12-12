@@ -1,7 +1,7 @@
-import { Main } from "./components/main/Main";
-import { Sidebar } from "./components/sidebar/Sidebar";
-import { Footer } from "./components/footer/Footer";
-import { Header } from "./components/header/Header";
+import { Main } from "./main/Main";
+import { Sidebar } from "./sidebar/Sidebar";
+import { Footer } from "./footer/Footer";
+import { Header } from "./header/Header";
 import { DefaultLayoutProvider } from "./DefaultLayoutProvider";
 
 const Layout = () => (

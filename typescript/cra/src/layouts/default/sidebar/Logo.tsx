@@ -1,6 +1,6 @@
 import { useTheme } from '@mui/material/styles';
 import { Box } from '@mui/material';
-import { useDefaultLayout } from "../../../DefaultLayoutProvider";
+import { useDefaultLayout } from "../DefaultLayoutProvider";
 
 type Props = {
   sx?: Object

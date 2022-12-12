@@ -1,10 +1,10 @@
 import { PropsWithChildren, useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { Box, Stack, Drawer } from '@mui/material';
-import { useResponsive } from '../../../../hooks/useResponsive';
-import { LAYOUT_DEFAULT } from '../../../../config';
+import { useResponsive } from '../../../hooks/useResponsive';
+import { LAYOUT_DEFAULT } from '../../../config';
 import { Content } from "../content/Content";
-import { useDefaultLayout } from '../../';
+import { useDefaultLayout } from '../';
 
 const Main = ({ children }: PropsWithChildren) => {
   const {isSidebarCollapse, setSidebarCollapse} = useDefaultLayout();
