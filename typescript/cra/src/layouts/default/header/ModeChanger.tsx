@@ -1,5 +1,5 @@
 import { Mode } from "../../../config";
-import { useSettings } from "../../../providers/settings";
+import { useSettings } from "../../../providers/SettingsProvider";
 
 const ModeChanger = () => {
   const { settings, updateSettings, getCalculatedMode } = useSettings();

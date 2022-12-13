@@ -1,6 +1,6 @@
 import { PropsWithChildren, createContext, useState, useContext } from "react";
 import { ILayoutProvider, ILayoutConfig } from "../";
-import { LayoutsType, useLayouts } from "../../providers/layouts";
+import { LayoutsType, useLayouts } from "../../providers/LayoutsProvider";
 import { authLayoutConfig } from "./AuthLayoutConfig";
 
 type AuthLayoutProviderProps = {
