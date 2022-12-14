@@ -6,7 +6,7 @@ import { NavItemType, NavItem } from '../../../components/nav';
 
 const Nav = () => {
   const {isSidebarCollapse} = useDefaultLayout();
-	const { navs } = useNavs();
+  const { navs } = useNavs();
 
   return (
     <Box
@@ -14,9 +14,7 @@ const Nav = () => {
 				px: 1.5,
 			}}
 		>
-			<Scrollbar 
-				forceVisible="x" 
-				autoHide={true} 
+			<Scrollbar
 				sx={{
 					height: 700,
 					'& .simplebar-content': {
