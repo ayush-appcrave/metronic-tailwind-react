@@ -24,7 +24,7 @@ const NavItemComponent = ({
   const hasChildren: boolean = useMemo(() => {
     return children !== undefined && children.items.length > 0;
   }, [children]);
-
+ 
   return (
     <>
       {divider ? (
@@ -55,18 +55,18 @@ const NavItemComponent = ({
         </ListItemButton>
       )}
 
-      {hasChildren && (
+      {hasChildren && (        
         <Collapse in={open} timeout="auto" unmountOnExit>
           <List component="div" disablePadding>
-            {Array.isArray(children?.items) && (children?.items.map((item:NavItemType, index:number) => (
-                <NavItem
-                  key={`${index}-${item.title}`}
-                  isChild={true}
-                  pl={pl + indention}
-                  indention={indention}
-                  {...item}
-                />
-            ))) && children.items}
+            {(children?.items as ReadonlyArray<NavItemType>).map((item, index) => (
+              <NavItem
+                key={`${index}-${item.title}`}
+                isChild={true}
+                pl={pl + indention}
+                indention={indention}
+                {...item}
+              />
+            ))}
           </List>
         </Collapse>
       )}

@@ -31,7 +31,7 @@ const NavComponent = ({
           <NavItem 
             key={`${index}-${item.title}`} 
             pl={0}
-            indention={indention}   
+            indention={indention}               
             {...item}                   
           />
         )
