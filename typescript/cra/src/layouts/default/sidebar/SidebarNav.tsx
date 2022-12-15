@@ -2,7 +2,7 @@ import { Box, List, ListSubheader } from '@mui/material';
 import { useDefaultLayout } from '..';
 import { useNavs } from '../../../providers/NavsProvider';
 import Scrollbar from '../../../components/scrollbar';
-import { NavItemType, NavItem } from '../../../components/nav';
+import { Nav, NavItem, NavConfigType } from '../../../components/nav';
 
 const SidebarNav = () => {
   const {isSidebarCollapse} = useDefaultLayout();
@@ -18,31 +18,20 @@ const SidebarNav = () => {
 				forceVisible="x" 
 				autoHide={true} 
 				sx={{
-					height: 700,
-					'& .simplebar-content': {
-						display: 'flex',
-						flexDirection: 'column'
-					}
+					height: 700
 				}}              
 			>
-				<List
-					sx={{ width: "100%", maxWidth: 360, bgcolor: "background.paper" }}
-					component="nav"
-					aria-labelledby="nested-list-subheader"
-					subheader={
-						<ListSubheader component="div" id="nested-list-subheader">
-							Sidebar menu
-						</ListSubheader>
-					}
-				>
-					{(navs.verticalNav as ReadonlyArray<NavItemType>).map(
-						(item, index) => (
-							<NavItem key={`${index}-${item.title}`} {...item} pl={0} />
-						)
-					)}
-				</List>
+				<Nav 
+					type="inline"
+					direction="vertical"
+					indention={4}
+					items={navs.verticalNav}
+					sx={{
+						
+					}}
+				/>				
 			</Scrollbar>
-	</Box>
+		</Box>
   );
 }
 
