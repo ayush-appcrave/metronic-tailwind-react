@@ -6,18 +6,20 @@ export type NavItemType = {
 	icon?: string;
 	divider?: boolean;
 	subheader?: string;
-	children?: {
-	  direction?: "vertical" | "horizontal";
-		collapsible?: boolean
-		wrapper?: "inline" | "popper";
-		height?: number;
-		maxHeight?: number;
-	  items: ReadonlyArray<NavItemType>;		
-	};
+	children?: NavType;
 	onClick?: (_?: unknown) => unknown | void;	
 };
+
+export type NavType = {
+	type?: "inline" | "popper";
+	direction?: "vertical" | "horizontal";
+	collapsible?: boolean;
+	height?: number;
+	maxHeight?: number;
+	items: NavConfigType;
+};
   
-export type NavType =
+export type NavConfigType =
 	| {
 		[key: string]: ReadonlyArray<NavItemType>;
 	  }

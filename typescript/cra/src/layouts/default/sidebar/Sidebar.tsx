@@ -5,9 +5,9 @@ import { Box, Stack, Drawer } from '@mui/material';
 import useResponsive from '../../../hooks/useResponsive';
 import { LAYOUT_DEFAULT } from '../../../config';
 import { useDefaultLayout } from '../';
-import { Header } from './Header';
-import { Nav } from './Nav';
-import { Footer } from './Footer';
+import { SidebarHeader } from './SidebarHeader';
+import { SidebarNav } from './SidebarNav';
+import { SidebarFooter } from './SidebarFooter';
 
 const Sidebar = () => {
   const theme = useTheme();
@@ -48,9 +48,9 @@ const Sidebar = () => {
             },
           }}
         >
-          <Header/>
-          <Nav/>
-          <Footer/>          
+          <SidebarHeader/>
+          <SidebarNav/>
+          <SidebarFooter/>          
         </Drawer>
       )}
 
@@ -68,8 +68,8 @@ const Sidebar = () => {
             },
           }}
         >   
-          <Nav/>
-          <Footer/>          
+          <SidebarNav/>
+          <SidebarFooter/>          
         </Drawer>
       )}
     </Box>

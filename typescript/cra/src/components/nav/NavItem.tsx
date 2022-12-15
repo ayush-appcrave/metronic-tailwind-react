@@ -15,8 +15,10 @@ const NavItemComponent = ({
   badge,
   isChild,
   path,
-  pl = 0,
-}: NavItemType & { pl: number; isChild?: boolean }) => {
+  pl,
+  indention
+}: NavItemType & { pl: number, indention: number, isChild?: boolean }) => {
+
   const [open, setOpen] = useState(false);
   const handleClick = () => setOpen(!open);
   const hasChildren: boolean = useMemo(() => {
@@ -28,10 +30,10 @@ const NavItemComponent = ({
       {divider ? (
         <Divider />
       ) : (
-        <ListItemButton onClick={handleClick} sx={{ pl: isChild ? pl + 4 : 0 }}>
+        <ListItemButton onClick={handleClick} sx={{ pl: isChild ? pl + indention : 0 }}>
           {icon && (
             <ListItemIcon>
-              <SVGIcon className="" svgClassName="" icon={icon} />
+              <SVGIcon className="" svgClassName="" icon={icon}/>
             </ListItemIcon>
           )}
           {title && (
@@ -52,14 +54,16 @@ const NavItemComponent = ({
           {hasChildren && <>{open ? <ExpandLess /> : <ExpandMore />}</>}
         </ListItemButton>
       )}
+
       {hasChildren && (
         <Collapse in={open} timeout="auto" unmountOnExit>
           <List component="div" disablePadding>
-            {children?.items.map((item, index) => (
+            {children?.items?.map((item: NavItemType, index: number) => (
               <NavItem
                 key={`${index}-${item.title}`}
                 isChild={true}
-                pl={pl + 4}
+                pl={pl + indention}
+                indention={indention}
                 {...item}
               />
             ))}

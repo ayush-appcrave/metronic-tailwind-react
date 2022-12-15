@@ -1,4 +1,4 @@
-import { NavType } from "../components/nav";
+import { NavConfigType } from "../components/nav";
 import { PATHS } from ".";
 
 // Auth paths
@@ -23,7 +23,7 @@ const GENERAL_PATHS: PATHS = {
   page500: "/500",
 };
 
-const COMMON_NAV: NavType = {
+const COMMON_NAV: NavConfigType = {
   dashboards: [
     {
       title: "Multipurpose",
@@ -127,7 +127,7 @@ const COMMON_NAV: NavType = {
   ],
 };
 
-const VERTICAL_NAV: NavType = [
+const VERTICAL_NAV: NavConfigType = [
   {
     title: "Dashboards",
     icon: "general/gen025.svg",

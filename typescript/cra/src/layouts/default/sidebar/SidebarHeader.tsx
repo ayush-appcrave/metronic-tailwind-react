@@ -1,9 +1,9 @@
 import { Stack } from '@mui/material';
-import { useDefaultLayout } from '../';
-import { Logo } from './Logo';
-import { CollapseButton } from './CollapseButton';
+import { useDefaultLayout } from '..';
+import { SidebarLogo } from './SidebarLogo';
+import { SidebarCollapseButton } from './SidebarCollapseButton';
 
-const Header = () => {
+const SidebarHeader = () => {
   const {isSidebarCollapse, setSidebarCollapse} = useDefaultLayout();
 
   const handleSidebarCollapse = () => {   
@@ -26,11 +26,11 @@ const Header = () => {
         py: 4
       }}
     >
-      <Logo/>
+      <SidebarLogo/>
 
-      <CollapseButton onToggle={handleSidebarCollapse}/>
+      <SidebarCollapseButton onToggle={handleSidebarCollapse}/>
     </Stack>
   );
 }
 
-export { Header };
+export { SidebarHeader };

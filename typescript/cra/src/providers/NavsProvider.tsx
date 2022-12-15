@@ -1,46 +1,46 @@
 import { useState, createContext, useContext, PropsWithChildren } from "react";
 import { getData, setData } from "../utils";
-import { NavType } from "../components/nav";
+import { NavConfigType } from "../components/nav";
 import { COMMON_NAV, VERTICAL_NAV } from "../config/navs.config";
 
 const NAVS_CONFIGS_KEY = "navs-config";
 
-export type NavsType = {
-  commonNav: NavType;
-  verticalNav: NavType;
+export type NavsConfigType = {
+  commonNav: NavConfigType;
+  verticalNav: NavConfigType;
 };
 export type NavsProviderProps = {
-  navs: NavsType;
-  updateCommonNav: (_: NavType) => void;
-  updateVerticalNav: (_: NavType) => void;
+  navs: NavsConfigType;
+  updateCommonNav: (_: NavConfigType) => void;
+  updateVerticalNav: (_: NavConfigType) => void;
 };
 
-const initNavs: NavsType = {
+const initNavs: NavsConfigType = {
   commonNav: COMMON_NAV,
   verticalNav: VERTICAL_NAV,
 };
 
 const calculateInitialNavs = () => {
-  const navs = getData(NAVS_CONFIGS_KEY) as NavsType | undefined;
+  const navs = getData(NAVS_CONFIGS_KEY) as NavsConfigType | undefined;
   return navs || initNavs;
 };
 
 const calculateUpdatedNavs = (
-  menu: NavType,
-  oldNavs: NavsType,
+  nav: NavConfigType,
+  oldNavs: NavsConfigType,
   isVertical = false
-): NavsType => {
+): NavsConfigType => {
   const updatedNav = isVertical
-    ? { ...oldNavs, verticalNav: menu }
-    : { ...oldNavs, horizontalnNav: menu };
+    ? { ...oldNavs, verticalNav: nav }
+    : { ...oldNavs, horizontalnNav: nav };
   setData(NAVS_CONFIGS_KEY, JSON.stringify(updatedNav));
   return updatedNav;
 };
 
 const initialProps: NavsProviderProps = {
   navs: calculateInitialNavs(),
-  updateCommonNav: (_: NavType) => {},
-  updateVerticalNav: (_: NavType) => {},
+  updateCommonNav: (_: NavConfigType) => {},
+  updateVerticalNav: (_: NavConfigType) => {},
 };
 
 const NavsContext = createContext<NavsProviderProps>(initialProps);
@@ -48,11 +48,11 @@ const useNavs = () => useContext(NavsContext);
 
 const NavsProvider = ({ children }: PropsWithChildren) => {
   const [navs, setNavs] = useState(initialProps.navs);
-  const updateVerticalNav = (verticalNav: NavType) => {
+  const updateVerticalNav = (verticalNav: NavConfigType) => {
     const updatedNavs = calculateUpdatedNavs(verticalNav, navs, true);
     setNavs(updatedNavs);
   };
-  const updateCommonNav = (commonNav: NavType) => {
+  const updateCommonNav = (commonNav: NavConfigType) => {
     const updatedNav = calculateUpdatedNavs(commonNav, navs, false);
     setNavs(updatedNav);
   };

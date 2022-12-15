@@ -6,7 +6,7 @@ type Props = {
   sx?: Object
 };
 
-const Logo = ({ sx }: Props) => {
+const SidebarLogo = ({ sx }: Props) => {
   const {isSidebarCollapse} = useDefaultLayout();
 
   return (
@@ -35,4 +35,4 @@ const Logo = ({ sx }: Props) => {
   );
 }
 
-export { Logo };
+export { SidebarLogo };
