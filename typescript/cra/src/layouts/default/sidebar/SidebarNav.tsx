@@ -1,10 +1,10 @@
 import { Box, List, ListSubheader } from '@mui/material';
-import { useDefaultLayout } from '../';
+import { useDefaultLayout } from '..';
 import { useNavs } from '../../../providers/NavsProvider';
 import Scrollbar from '../../../components/scrollbar';
 import { NavItemType, NavItem } from '../../../components/nav';
 
-const Nav = () => {
+const SidebarNav = () => {
   const {isSidebarCollapse} = useDefaultLayout();
 	const { navs } = useNavs();
 
@@ -46,4 +46,4 @@ const Nav = () => {
   );
 }
 
-export { Nav };
+export { SidebarNav };

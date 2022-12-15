@@ -1,9 +1,9 @@
 import { Stack, Avatar, Button, Box } from '@mui/material';
-import { useDefaultLayout } from '../';
+import { useDefaultLayout } from '..';
 import { useAuth } from '../../../auth';
 import { toAbsoluteUrl } from '../../../utils/Assets';
 
-const Footer = () => {
+const SidebarFooter = () => {
   const {isSidebarCollapse} = useDefaultLayout();
   const {currentUser, logout} = useAuth();
 
@@ -28,4 +28,4 @@ const Footer = () => {
   );
 }
 
-export { Footer };
+export { SidebarFooter };

@@ -6,7 +6,7 @@ type Props = {
   onToggle: () => void;
 };
 
-const CollapseButton = ({ onToggle }: Props) => {
+const SidebarCollapseButton = ({ onToggle }: Props) => {
   const { isSidebarCollapse } = useDefaultLayout();
   const buttonSize = "32px";
 
@@ -51,4 +51,4 @@ const CollapseButton = ({ onToggle }: Props) => {
   );
 };
 
-export { CollapseButton };
+export { SidebarCollapseButton };
