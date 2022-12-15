@@ -60,11 +60,11 @@ const NavItemComponent = ({
           <List component="div" disablePadding>
             {Array.isArray(children?.items) && (children?.items.map((item:NavItemType, index:number) => (
                 <NavItem
-                    key={`${index}-${item.title}`}
-                    isChild={true}
-                    pl={pl + indention}
-                    indention={indention}
-                    {...item}
+                  key={`${index}-${item.title}`}
+                  isChild={true}
+                  pl={pl + indention}
+                  indention={indention}
+                  {...item}
                 />
             ))) && children.items}
           </List>
