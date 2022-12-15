@@ -58,7 +58,7 @@ const NavItemComponent = ({
       {hasChildren && (
         <Collapse in={open} timeout="auto" unmountOnExit>
           <List component="div" disablePadding>
-            {children?.items?.map((item: NavItemType, index: number) => (
+            {children?.items?.map((item, index) => (
               <NavItem
                 key={`${index}-${item.title}`}
                 isChild={true}
