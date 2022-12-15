@@ -19,8 +19,4 @@ export type NavType = {
 	items: NavConfigType;
 };
   
-export type NavConfigType =
-	| {
-		[key: string]: ReadonlyArray<NavItemType>;
-	  }
-	| ReadonlyArray<NavItemType>;  
+export type NavConfigType = { [key: string]: ReadonlyArray<NavItemType>; } | ReadonlyArray<NavItemType>;
