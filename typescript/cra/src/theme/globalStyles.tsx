@@ -1,9 +1,9 @@
-import { Theme } from "@mui/material";
+import { Theme, GlobalStyles as CustomGlobalStyles } from '@mui/material';
 
-const CssBaseline = (theme: Theme) => {
-  return {
-    MuiCssBaseline: {
-      styleOverrides: {
+const GlobalStyles = ({theme} : {theme: Theme}) => {
+  return (
+    <CustomGlobalStyles 
+      styles={{
         "*": {
           margin: 0,
           padding: 0,
@@ -17,11 +17,11 @@ const CssBaseline = (theme: Theme) => {
         body: {
           width: "100%",
           height: "100%",
-          backgroundColor: theme.palette.grey[100],
-        },
-        "#__next": {
-          width: "100%",
-          height: "100%",
+          backgroundColor: theme.palette.grey[100]
+        }, 
+        '#root': {
+          width: '100%',
+          height: '100%',
         },
         input: {
           "&[type=number]": {
@@ -40,9 +40,9 @@ const CssBaseline = (theme: Theme) => {
           display: "block",
           maxWidth: "100%",
         },
-      },
-    },
-  };
-};
+      }}
+    />
+  );
+}
 
-export { CssBaseline }
+export { GlobalStyles };

@@ -1,21 +1,23 @@
-export type Mode = "light" | "dark" | "system";
+export type ModeType = "light" | "dark" | "system";
+
+export type ThemeModeType = "light" | "dark";
 
 // Settings types
 export type AppSettings = {
-  mode: Mode;
+  mode?: ModeType;
   containerWidth: "fluid" | "fixed";
   color: "default";
   layout: "default" | "without-sidebar";
 };
 
 // Layout types
-export type LayoutSettings = {
+export type LayoutSettingsType = {
   SIDEBAR_WIDTH?: number;
   SIDEBAR_COLLAPSE_WIDTH?: number;
 };
 
 // Menu types
-export type PATHS = {
+export type PathsType = {
   [key: string]: string;
 };
 

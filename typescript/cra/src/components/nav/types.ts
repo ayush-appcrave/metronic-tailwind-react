@@ -11,12 +11,23 @@ export type NavItemType = {
 };
 
 export type NavType = {
-	type?: "inline" | "popper";
+	variant?: "inline" | "popper";
 	direction?: "vertical" | "horizontal";
 	collapsible?: boolean;
 	height?: number;
 	maxHeight?: number;
 	items: NavConfigType;
+};
+
+export type NavItemArrowType = {
+	variant?: "inline" | "popper";
+	direction?: "vertical" | "horizontal";
+	active?: boolean;
+	icon?: string;
+};
+
+export type NavItemBulletType = {
+	variant?: "bar" | "dot";
 };
   
 export type NavConfigType = { [key: string]: ReadonlyArray<NavItemType>; } | ReadonlyArray<NavItemType>;

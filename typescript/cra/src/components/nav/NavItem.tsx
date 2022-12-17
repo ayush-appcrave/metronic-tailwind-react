@@ -1,9 +1,8 @@
 import { useState, memo, useMemo } from "react";
+import { SVGIcon } from "..";
 import { Link } from "react-router-dom";
 import { Collapse, Divider, List, ListItemButton, ListItemIcon, ListItemText } from "@mui/material";
-import { ExpandMore, ExpandLess } from "@mui/icons-material";
-import { SVGIcon } from "..";
-import { NavItemType } from "./types";
+import { ListSubheaderStyled, ListItemButtonStyled, ListItemIconStyled, NavItemArrow, NavItemBullet, NavItemType } from "./";
 
 const NavItemComponent = ({
   title,
@@ -30,12 +29,13 @@ const NavItemComponent = ({
       {divider ? (
         <Divider />
       ) : (
-        <ListItemButton onClick={handleClick} sx={{ pl: isChild ? pl + indention : 0 }}>
+        <ListItemButtonStyled onClick={handleClick} sx={{ pl: isChild ? pl + indention : 0 }}>
           {icon && (
-            <ListItemIcon>
-              <SVGIcon className="" svgClassName="" icon={icon}/>
-            </ListItemIcon>
+            <ListItemIconStyled>
+              <SVGIcon icon={icon} />
+            </ListItemIconStyled>
           )}
+
           {title && (
             <>
               {hasChildren ? (
@@ -51,8 +51,11 @@ const NavItemComponent = ({
               )}
             </>
           )}
-          {hasChildren && <>{open ? <ExpandLess /> : <ExpandMore />}</>}
-        </ListItemButton>
+          
+          {hasChildren && ( 
+            <NavItemArrow active={open} /> 
+          )}
+        </ListItemButtonStyled>
       )}
 
       {hasChildren && (        

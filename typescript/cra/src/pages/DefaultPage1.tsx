@@ -1,5 +1,14 @@
+
+import { LanguageChanger } from "../layouts/default/header/LanguageChanger";
+import { ModeChanger } from "../layouts/default/header/ModeChanger";
+
 const DefaultPage1 = () => {
-  return <>Default page 1 content (dashboard)</>;
+  return ( 
+    <>
+      <LanguageChanger />
+      <ModeChanger />
+    </>
+  );
 };
 
 export { DefaultPage1 };

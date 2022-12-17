@@ -1,14 +1,14 @@
 import { useState, createContext, useContext, PropsWithChildren } from "react";
 import { getData, setData } from "../utils";
 import { defaultSettings } from "../config/settings.config";
-import { AppSettings, Mode } from "../config/types";
+import { AppSettings, ThemeModeType } from "../config/types";
 
 const SETTINGS_CONFIG_KEY = "app-settings-config";
 
 export type SettingsProviderProps = {
   settings: AppSettings;
   updateSettings: (_: Partial<AppSettings>) => void;
-  getCalculatedMode: () => Omit<Mode, "system">;
+  getMode: () => ThemeModeType;
 };
 
 const calculateInitialSettings = () => {
@@ -28,7 +28,7 @@ const calculateUpdatedSettings = (
 const initialProps: SettingsProviderProps = {
   settings: calculateInitialSettings(),
   updateSettings: (_: Partial<AppSettings>) => {},
-  getCalculatedMode: () => "light",
+  getMode: () => "light",
 };
 
 const SettingsContext = createContext<SettingsProviderProps>(initialProps);
@@ -41,15 +41,17 @@ const SettingsProvider = ({ children }: PropsWithChildren) => {
     setSettings(updatedSettings);
   };
 
-  const getCalculatedMode = () => {
+  const getMode = () => {
     const { mode } = settings;
     if (mode === "system") {
       return window.matchMedia("(prefers-color-scheme: dark)").matches
         ? "dark"
         : "light";
+    } else if (mode === "dark") {
+      return "dark";
+    } else {
+      return "light";
     }
-
-    return mode;
   };
 
   return (
@@ -57,7 +59,7 @@ const SettingsProvider = ({ children }: PropsWithChildren) => {
       value={{
         settings,
         updateSettings,
-        getCalculatedMode,
+        getMode,
       }}
     >
       {children}

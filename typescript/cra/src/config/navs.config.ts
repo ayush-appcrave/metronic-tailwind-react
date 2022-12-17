@@ -1,8 +1,8 @@
 import { NavConfigType } from "../components/nav";
-import { PATHS } from ".";
+import { PathsType } from ".";
 
 // Auth paths
-const AUTH_PATHS: PATHS = {
+const AUTH_PATHS: PathsType = {
   login: "/auth/login",
   register: "/auth/register",
   verify: "/auth/verify",
@@ -11,7 +11,7 @@ const AUTH_PATHS: PATHS = {
 };
 
 // General paths
-const GENERAL_PATHS: PATHS = {
+const GENERAL_PATHS: PathsType = {
   comingSoon: "/coming-soon",
   maintenance: "/maintenance",
   pricing: "/pricing",

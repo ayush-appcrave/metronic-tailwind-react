@@ -7,8 +7,8 @@ import { NavType, NavItemType } from "./types";
 import { NavItem } from "./";
 
 const NavComponent = ({
-  type,
-	direction,
+  variant = "inline",
+	direction = "vertical",
 	collapsible,
 	height,
 	maxHeight,

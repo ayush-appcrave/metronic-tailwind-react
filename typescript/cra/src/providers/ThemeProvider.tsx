@@ -1,43 +1,37 @@
-import { PropsWithChildren, useEffect, useState } from "react";
-import { createTheme, CssBaseline, PaletteOptions, Theme, ThemeProvider as MUIThemeProvider} from "@mui/material";
+import { PropsWithChildren, useEffect, useState, useMemo } from "react";
+import { CssBaseline } from '@mui/material';
+import { StyledEngineProvider, PaletteOptions, Theme, createTheme, ThemeOptions, ThemeProvider as CustomThemeProvider } from '@mui/material/styles';
 import { useLang } from "../i18n";
 import { useSettings } from "./SettingsProvider";
 import { breakpoints } from "../theme/breakpoints";
-import { palette } from "../theme/palette";
+import { getPalette } from "../theme/palette";
 import { componentsCustomization } from "../theme/customization";
+import { typography, GlobalStyles } from "../theme";
 
 const ThemeProvider = ({ children }: PropsWithChildren) => {
-  const { settings } = useSettings();
-  const { mode } = settings;
+  const { settings, getMode } = useSettings();
   const { currentLanguage } = useLang();
-  const [theme, setTheme] = useState<Theme>();
 
-  useEffect(() => {
-    setTheme(calculateTheme());
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [mode, currentLanguage]);
-
-  const calculateTheme = () => {
-    const newTheme = createTheme({
+  const themeOptions: ThemeOptions = useMemo(
+    () => ({
       breakpoints,
-      palette: mode
-        ? // @ts-ignore
-          { light: palette.light as PaletteOptions }
-        : { dark: palette.dark as PaletteOptions },
-      direction: currentLanguage.direction,
-    });
-    
-    newTheme.components = componentsCustomization(newTheme);
+      typography,
+      palette: getPalette(getMode()),
+    }),
+    [currentLanguage.direction, getMode()]
+  );
 
-    return newTheme;
-  };
+  const theme = createTheme(themeOptions);
 
-  return theme ? (
-    <MUIThemeProvider theme={theme}>
-      <CssBaseline/>
-      {children}
-    </MUIThemeProvider>
-  ) : null;
+  return (
+    <StyledEngineProvider injectFirst>
+      <CustomThemeProvider theme={theme}>
+        <CssBaseline />
+        {children}
+        <GlobalStyles theme={theme}/>
+      </CustomThemeProvider>
+    </StyledEngineProvider>    
+  );
 };
 
 export { ThemeProvider };

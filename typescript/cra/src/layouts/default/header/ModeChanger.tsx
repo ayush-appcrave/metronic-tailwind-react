@@ -1,11 +1,11 @@
-import { Mode } from "../../../config";
+import { ModeType } from "../../../config";
 import { useSettings } from "../../../providers/SettingsProvider";
 
 const ModeChanger = () => {
-  const { settings, updateSettings, getCalculatedMode } = useSettings();
+  const { settings, updateSettings, getMode } = useSettings();
   const { mode } = settings;
   
-  const changeMode = (mode: Mode) => {
+  const changeMode = (mode: ModeType) => {
     updateSettings({
       mode,
     });
@@ -50,7 +50,7 @@ const ModeChanger = () => {
           </label>
         </li>
       </ul>
-      <h4>Calculated mode: {getCalculatedMode()}</h4>
+      <h4>Calculated mode: {getMode()}</h4>
     </>
   );
 };

@@ -22,7 +22,7 @@ const SidebarNav = () => {
 				}}              
 			>
 				<Nav 
-					type="inline"
+					variant="inline"
 					direction="vertical"
 					indention={4}
 					items={navs.verticalNav}
