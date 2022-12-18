@@ -2,7 +2,7 @@ import { useState, memo, useMemo } from "react";
 import { SVGIcon } from "..";
 import { Link } from "react-router-dom";
 import { Collapse, Divider, List, ListItemButton, ListItemIcon, ListItemText } from "@mui/material";
-import { ListSubheaderStyled, ListItemButtonStyled, ListItemIconStyled, NavItemArrow, NavItemBullet, NavItemType } from "./";
+import { ListSubheaderStyled, ListItemButtonStyled, ListItemTextStyled, ListItemIconStyled, NavItemArrow, NavItemBullet, NavItemType } from "./";
 
 const NavItemComponent = ({
   title,
@@ -14,9 +14,10 @@ const NavItemComponent = ({
   badge,
   isChild,
   path,
-  pl,
-  indention
-}: NavItemType & { pl: number, indention: number, isChild?: boolean }) => {
+  gap,
+  indention,
+  level = 1
+}: NavItemType & { gap: number, indention: number, level?:number, isChild?: boolean }) => {
 
   const [open, setOpen] = useState(false);
   const handleClick = () => setOpen(!open);
@@ -29,22 +30,29 @@ const NavItemComponent = ({
       {divider ? (
         <Divider />
       ) : (
-        <ListItemButtonStyled onClick={handleClick} sx={{ pl: isChild ? pl + indention : 0 }}>
+        <ListItemButtonStyled onClick={handleClick} sx={{ 
+            marginLeft: isChild ? gap + indention : 0, 
+            marginRight: isChild ? gap : 0,
+          }}>
           {icon && (
             <ListItemIconStyled>
               <SVGIcon icon={icon} />
             </ListItemIconStyled>
           )}
 
+          {bullet && (
+            <NavItemBullet/>
+          )}
+
           {title && (
             <>
               {hasChildren ? (
-                <ListItemText primary={title} />
+                <ListItemTextStyled level={level} primary={title} />
               ) : (
                 <>
                   {path && (
-                    <Link to={path}>
-                      <ListItemText primary={title} />
+                    <Link to={path} style={{textDecoration: "none"}}>
+                      <ListItemTextStyled level={level} primary={title} />
                     </Link>
                   )}
                 </>
@@ -65,9 +73,10 @@ const NavItemComponent = ({
               <NavItem
                 key={`${index}-${item.title}`}
                 isChild={true}
-                pl={pl + indention}
-                indention={indention}
-                {...item}
+                gap={gap}
+                indention={indention}  
+                {...item} 
+                level={level+1}     
               />
             ))}
           </List>

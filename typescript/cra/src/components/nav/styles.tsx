@@ -10,9 +10,21 @@ export const ListSubheaderStyled = styled(ListSubheader)(({ theme }) => ({
 	color: theme.palette.text.secondary,
 }));
 
-export const ListItemButtonStyled = styled(ListItemButton)(({ theme }) => ({
+export const ListItemButtonStyled = styled(ListItemButton) (({ theme }) => ({
 	display: "flex",
-	aligItems: "center"
+	aligItems: "center",
+	borderRadius: 6,
+	px: 1
+}));
+
+export const ListItemTextStyled = styled(ListItemText, {
+	shouldForwardProp: (prop) => prop !== 'level'
+}) <{level: number}> (({ theme, level }) => ({
+	"> .MuiListItemText-primary": {
+		fontWeight: (level === 1 ? theme.typography.fontWeightBold : theme.typography.fontWeightMedium),
+		color: (level === 1 ? theme.palette.grey[700] : theme.palette.grey[600]),
+		fontSize: (level === 1 ? 15 : 13)
+	}
 }));
 
 export const ListItemIconStyled = styled(ListItemIcon)(({ theme }) => ({

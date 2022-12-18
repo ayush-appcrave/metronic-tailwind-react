@@ -9,8 +9,8 @@ const NavItemBulletComponent = ({
   return (
     <Box
       sx={{
-        backgriundColor: (theme) => theme.palette.grey["500"],
-	      merginRight: 4,//theme.spacing(1),
+        backgroundColor: (theme) => theme.palette.grey["500"],
+	      marginRight: (theme) => theme.spacing(2),
         ...(variant === "dot" && { 
           height: 4,
 	        width: 4,
@@ -18,7 +18,7 @@ const NavItemBulletComponent = ({
         }),
         ...(variant === "bar" && { 
           height: 4,
-	        width: 4,
+	        width: 6,
           borderRadius: 4 
         }),
       }}

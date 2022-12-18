@@ -24,7 +24,7 @@ const SidebarNav = () => {
 				<Nav 
 					variant="inline"
 					direction="vertical"
-					indention={4}
+					indention={1}
 					items={navs.verticalNav}
 					sx={{
 						
