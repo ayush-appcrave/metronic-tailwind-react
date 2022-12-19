@@ -1,4 +1,4 @@
-import * as React from 'react';
+import {ChangeEvent, FormEvent, useState} from 'react';
 import { alpha } from '@mui/material/styles';
 import Box from '@mui/material/Box';
 import Table from '@mui/material/Table';
@@ -18,10 +18,9 @@ import Tooltip from '@mui/material/Tooltip';
 import FormControlLabel from '@mui/material/FormControlLabel';
 import Switch from '@mui/material/Switch';
 import DeleteIcon from '@mui/icons-material/Delete';
-import FilterListIcon from '@mui/icons-material/FilterList';
 import { visuallyHidden } from '@mui/utils';
 import {toAbsoluteUrl} from "utils";
-import {Avatar, Button} from "@mui/material";
+import {Avatar, Button, FormControl, InputLabel, MenuItem, Select, SelectChangeEvent, TextField} from "@mui/material";
 
 interface Data {
     name: string;
@@ -89,7 +88,7 @@ function getComparator<Key extends keyof any>(
 
 // This method is created for cross-browser compatibility, if you don't
 // need to support IE11, you can use Array.prototype.sort() directly
-function stableSort<T>(array: readonly Data[], comparator: (a: T, b: T) => number) {
+function stableSort<T>(array: Data[], comparator: (a: T, b: T) => number) {
     const stabilizedThis = array.map((el, index) => [el, index] as [T, number]);
     stabilizedThis.sort((a, b) => {
         const order = comparator(a[0], b[0]);
@@ -99,6 +98,22 @@ function stableSort<T>(array: readonly Data[], comparator: (a: T, b: T) => numbe
         return a[1] - b[1];
     });
     return stabilizedThis.map((el) => el[0]);
+}
+
+function filterRow(array: Data[], roleFilter:string, nameFilter:string):Data[]{
+    let filteredItems = array;
+
+    if(roleFilter!=='all'){
+        filteredItems = filteredItems.filter((row) => row.role === roleFilter);
+    }
+
+    if(nameFilter!=='all'){
+        filteredItems = filteredItems.filter((row) => row.name.toLowerCase().indexOf(nameFilter.toLowerCase()) !== -1);
+    }
+
+
+    return filteredItems;
+
 }
 
 interface HeadCell {
@@ -145,7 +160,7 @@ const headCells: readonly HeadCell[] = [
 
 interface EnhancedTableProps {
     numSelected: number;
-    onRequestSort: (event: React.MouseEvent<unknown>, property: keyof Data | null) => void;
+    onRequestSort: (event: React.FormEvent<unknown>, property: keyof Data | null) => void;
     onSelectAllClick: (event: React.ChangeEvent<HTMLInputElement>) => void;
     order: Order;
     orderBy: string;
@@ -156,7 +171,7 @@ function EnhancedTableHead(props: EnhancedTableProps) {
     const { onSelectAllClick, order, orderBy, numSelected, rowCount, onRequestSort } =
         props;
     const createSortHandler =
-        (property: keyof Data | null) => (event: React.MouseEvent<unknown>) => {
+        (property: keyof Data | null) => (event: React.FormEvent<unknown>) => {
             onRequestSort(event, property);
         };
 
@@ -203,6 +218,10 @@ function EnhancedTableHead(props: EnhancedTableProps) {
 
 interface EnhancedTableToolbarProps {
     numSelected: number;
+    roleFilter: string | undefined;
+    handleRoleFilterChange: (event: SelectChangeEvent) => void
+    nameFilter: string | undefined;
+    handleNameFilterChange: (event: ChangeEvent<HTMLInputElement>) => void
 }
 
 function EnhancedTableToolbar(props: EnhancedTableToolbarProps) {
@@ -229,14 +248,22 @@ function EnhancedTableToolbar(props: EnhancedTableToolbarProps) {
                     {numSelected} selected
                 </Typography>
             ) : (
-                <Typography
-                    sx={{ flex: '1 1 100%' }}
-                    variant="h6"
-                    id="tableTitle"
-                    component="div"
-                >
-                    Users
-                </Typography>
+                <FormControl sx={{
+                    width: "50%"
+                }}>
+                    <InputLabel id="demo-simple-select-label">Role</InputLabel>
+                    <Select
+                        labelId="demo-simple-select-label"
+                        id="demo-simple-select"
+                        value={props.roleFilter}
+                        label="Role"
+                        onChange={props.handleRoleFilterChange}
+                    >
+                        <MenuItem value="Project Manager">Project Manager</MenuItem>
+                        <MenuItem value="Full stack developer">Full stack developer</MenuItem>
+                        <MenuItem value="Backend Developer">Backend Developer</MenuItem>
+                    </Select>
+                </FormControl>
             )}
             {numSelected > 0 ? (
                 <Tooltip title="Delete">
@@ -245,26 +272,22 @@ function EnhancedTableToolbar(props: EnhancedTableToolbarProps) {
                     </IconButton>
                 </Tooltip>
             ) : (
-                <Tooltip title="Filter list">
-                    <IconButton>
-                        <FilterListIcon />
-                    </IconButton>
-                </Tooltip>
+                <TextField sx={{width: "50%"}} onChange={props.handleNameFilterChange} value={props.nameFilter} id="search" label="Search" variant="outlined" />
             )}
         </Toolbar>
     );
 }
 
 function UsersManagement() {
-    const [order, setOrder] = React.useState<Order>('asc');
-    const [orderBy, setOrderBy] = React.useState<keyof Data>('company');
-    const [selected, setSelected] = React.useState<readonly string[]>([]);
-    const [page, setPage] = React.useState(0);
-    const [dense, setDense] = React.useState(false);
-    const [rowsPerPage, setRowsPerPage] = React.useState(5);
+    const [order, setOrder] = useState<Order>('asc');
+    const [orderBy, setOrderBy] = useState<keyof Data>('company');
+    const [selected, setSelected] = useState<readonly string[]>([]);
+    const [page, setPage] = useState(0);
+    const [dense, setDense] = useState(false);
+    const [rowsPerPage, setRowsPerPage] = useState(5);
 
     const handleRequestSort = (
-        event: React.MouseEvent<unknown>,
+        event: React.FormEvent<unknown>,
         property: keyof Data | null,
     ) => {
         const isAsc = orderBy === property && order === 'asc';
@@ -284,7 +307,20 @@ function UsersManagement() {
         setSelected([]);
     };
 
-    const handleClick = (event: React.MouseEvent<unknown>, name: string) => {
+    const [ roleFilter, setRoleFilter ] = useState<string>("all");
+    const [ nameFilter, setNameFilter ] = useState<string>("all");
+
+    const handleRoleFilterChange:(event: SelectChangeEvent) => void = (e:SelectChangeEvent) => {
+        setRoleFilter(e.target.value);
+        setPage(0);
+    }
+
+
+    const handleNameFilterChange:(event: ChangeEvent<HTMLInputElement>) => void = (e:ChangeEvent<HTMLInputElement>) => {
+        setNameFilter(e.target.value);
+        setPage(0);
+    }
+    const handleClick = (event: React.FormEvent<unknown>, name: string) => {
         const selectedIndex = selected.indexOf(name);
         let newSelected: readonly string[] = [];
 
@@ -314,7 +350,6 @@ function UsersManagement() {
     };
 
     const handleChangeDense = (event: React.ChangeEvent<HTMLInputElement>) => {
-        console.log("asdf");
         setDense(event.target.checked);
     };
 
@@ -327,7 +362,7 @@ function UsersManagement() {
     return (
         <Box sx={{ width: '100%' }}>
             <Paper sx={{ width: '100%', mb: 2 }}>
-                <EnhancedTableToolbar numSelected={selected.length} />
+                <EnhancedTableToolbar numSelected={selected.length} handleRoleFilterChange={handleRoleFilterChange} roleFilter={roleFilter} handleNameFilterChange={handleNameFilterChange} nameFilter={nameFilter}  />
                 <TableContainer>
                     <Table
                         sx={{ minWidth: 750 }}
@@ -345,7 +380,7 @@ function UsersManagement() {
                         <TableBody>
                             {/* if you don't need to support IE11, you can replace the `stableSort` call with:
               rows.sort(getComparator(order, orderBy)).slice() */}
-                            {stableSort(rows, getComparator(order, orderBy))
+                            {stableSort(filterRow(rows, roleFilter, nameFilter), getComparator(order, orderBy))
                                 .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
                                 .map((row, index) => {
                                     const isItemSelected = isSelected(row.name);
@@ -363,6 +398,7 @@ function UsersManagement() {
                                             <TableCell padding="checkbox">
                                                 <Checkbox
                                                     color="primary"
+                                                    onInput={(event) => handleClick(event, row.name)}
                                                     checked={isItemSelected}
                                                     inputProps={{
                                                         'aria-labelledby': labelId,
@@ -417,7 +453,7 @@ function UsersManagement() {
                     <TablePagination
                         rowsPerPageOptions={[5, 10, 25]}
                         component="div"
-                        count={rows.length}
+                        count={filterRow(rows, roleFilter, nameFilter).length}
                         rowsPerPage={rowsPerPage}
                         page={page}
                         onPageChange={handleChangePage}
