@@ -1,6 +1,7 @@
 import { Navigate, Route, Routes } from "react-router";
 import { DefaultLayout } from "../layouts/default";
-import { DefaultPage1, UsersManagment } from "../pages";
+import { DefaultPage1 } from "pages";
+import { UsersManagement } from "../modules/users-managment";
 
 const PrivateRouting = () => (
   <Routes>
@@ -8,7 +9,7 @@ const PrivateRouting = () => (
     <Route path="auth/*" element={<Navigate to="/dashboard" />} />
     <Route element={<DefaultLayout />}>
       <Route path="dashboard" element={<DefaultPage1 />} />
-      <Route path="users-management" element={<UsersManagment />} />
+      <Route path="users-management" element={<UsersManagement />} />
     </Route>
     {/* Pages */}
     {/* Page Not Found */}

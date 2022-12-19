@@ -14,9 +14,7 @@ const SidebarNav = () => {
 				px: 1.5,
 			}}
 		>
-			<Scrollbar 
-				forceVisible="x" 
-				autoHide={true} 
+			<Scrollbar
 				sx={{
 					height: 700
 				}}              

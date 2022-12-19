@@ -20,45 +20,47 @@ import Switch from '@mui/material/Switch';
 import DeleteIcon from '@mui/icons-material/Delete';
 import FilterListIcon from '@mui/icons-material/FilterList';
 import { visuallyHidden } from '@mui/utils';
+import {toAbsoluteUrl} from "utils";
+import {Avatar, Button} from "@mui/material";
 
 interface Data {
-    calories: number;
-    carbs: number;
-    fat: number;
     name: string;
-    protein: number;
+    company: string;
+    role: string;
+    verified: boolean;
+    status: "Banned" | "Active";
 }
 
 function createData(
     name: string,
-    calories: number,
-    fat: number,
-    carbs: number,
-    protein: number,
+    company: string,
+    role: string,
+    verified: boolean,
+    status: "Banned" | "Active",
 ): Data {
     return {
         name,
-        calories,
-        fat,
-        carbs,
-        protein,
+        company,
+        role,
+        verified,
+        status
     };
 }
 
 const rows = [
-    createData('Cupcake', 305, 3.7, 67, 4.3),
-    createData('Donut', 452, 25.0, 51, 4.9),
-    createData('Eclair', 262, 16.0, 24, 6.0),
-    createData('Frozen yoghurt', 159, 6.0, 24, 4.0),
-    createData('Gingerbread', 356, 16.0, 49, 3.9),
-    createData('Honeycomb', 408, 3.2, 87, 6.5),
-    createData('Ice cream sandwich', 237, 9.0, 37, 4.3),
-    createData('Jelly Bean', 375, 0.0, 94, 0.0),
-    createData('KitKat', 518, 26.0, 65, 7.0),
-    createData('Lollipop', 392, 0.2, 98, 0.0),
-    createData('Marshmallow', 318, 0, 81, 2.0),
-    createData('Nougat', 360, 19.0, 9, 37.0),
-    createData('Oreo', 437, 18.0, 63, 4.0),
+    createData('Sahil Shepard', "Google", "Frontend Developer", true, "Active"),
+    createData('Kayla Friedman', "Apple", "Frontend Developer", false, "Active"),
+    createData('Bibi Petersen', "Facebook", "Backend Developer", true, "Active"),
+    createData('Emma Mejia', "Netflix", "Project Manager", true, "Active"),
+    createData('Kara Briggs', "Amazon", "Director", true, "Active"),
+    createData('Juliet Mercado', "Microsoft", "Frontend Developer", true, "Active"),
+    createData('Yusuf Clayton', "AMD", "Sales Manager", false, "Banned"),
+    createData('Thalia Luna', "Intel", "Frontend Developer", true, "Banned"),
+    createData('Hanna Burke', "Ubisoft", "Project Manager", true, "Active"),
+    createData('Isabelle Obrien', "Nvidio", "Full stack developer", false, "Active"),
+    createData('Aaliyah Hicks', "Binance", "Sales Manager", true, "Active"),
+    createData('Darcie Church', "Accenture", "Sales Manager", true, "Banned"),
+    createData('Mahdi Harris', "Tesla", "Project Manager", false, "Banned"),
 ];
 
 function descendingComparator<T>(a: T, b: T, orderBy: keyof T) {
@@ -77,8 +79,8 @@ function getComparator<Key extends keyof any>(
     order: Order,
     orderBy: Key,
 ): (
-    a: { [key in Key]: number | string },
-    b: { [key in Key]: number | string },
+    a: { [key in Key]: string },
+    b: { [key in Key]: string },
 ) => number {
     return order === 'desc'
         ? (a, b) => descendingComparator(a, b, orderBy)
@@ -87,7 +89,7 @@ function getComparator<Key extends keyof any>(
 
 // This method is created for cross-browser compatibility, if you don't
 // need to support IE11, you can use Array.prototype.sort() directly
-function stableSort<T>(array: readonly T[], comparator: (a: T, b: T) => number) {
+function stableSort<T>(array: readonly Data[], comparator: (a: T, b: T) => number) {
     const stabilizedThis = array.map((el, index) => [el, index] as [T, number]);
     stabilizedThis.sort((a, b) => {
         const order = comparator(a[0], b[0]);
@@ -100,10 +102,11 @@ function stableSort<T>(array: readonly T[], comparator: (a: T, b: T) => number) 
 }
 
 interface HeadCell {
-    disablePadding: boolean;
-    id: keyof Data;
-    label: string;
-    numeric: boolean;
+    disablePadding?: boolean;
+    id: keyof Data | null;
+    label?: string;
+    numeric?: boolean;
+    hideSortIcon?: boolean;
 }
 
 const headCells: readonly HeadCell[] = [
@@ -111,37 +114,38 @@ const headCells: readonly HeadCell[] = [
         id: 'name',
         numeric: false,
         disablePadding: true,
-        label: 'Dessert (100g serving)',
+        label: 'Name',
     },
     {
-        id: 'calories',
-        numeric: true,
+        id: 'company',
+        numeric: false,
         disablePadding: false,
-        label: 'Calories',
+        label: 'Company',
     },
     {
-        id: 'fat',
-        numeric: true,
+        id: 'role',
+        numeric: false,
         disablePadding: false,
-        label: 'Fat (g)',
+        label: 'Role',
     },
     {
-        id: 'carbs',
-        numeric: true,
+        id: 'verified',
+        numeric: false,
         disablePadding: false,
-        label: 'Carbs (g)',
+        label: 'Verified',
     },
     {
-        id: 'protein',
-        numeric: true,
+        id: 'status',
+        numeric: false,
         disablePadding: false,
-        label: 'Protein (g)',
+        label: 'Status',
     },
+    { id: null, hideSortIcon: true },
 ];
 
 interface EnhancedTableProps {
     numSelected: number;
-    onRequestSort: (event: React.MouseEvent<unknown>, property: keyof Data) => void;
+    onRequestSort: (event: React.MouseEvent<unknown>, property: keyof Data | null) => void;
     onSelectAllClick: (event: React.ChangeEvent<HTMLInputElement>) => void;
     order: Order;
     orderBy: string;
@@ -152,7 +156,7 @@ function EnhancedTableHead(props: EnhancedTableProps) {
     const { onSelectAllClick, order, orderBy, numSelected, rowCount, onRequestSort } =
         props;
     const createSortHandler =
-        (property: keyof Data) => (event: React.MouseEvent<unknown>) => {
+        (property: keyof Data | null) => (event: React.MouseEvent<unknown>) => {
             onRequestSort(event, property);
         };
 
@@ -178,6 +182,7 @@ function EnhancedTableHead(props: EnhancedTableProps) {
                         sortDirection={orderBy === headCell.id ? order : false}
                     >
                         <TableSortLabel
+                            hideSortIcon={headCell.hideSortIcon}
                             active={orderBy === headCell.id}
                             direction={orderBy === headCell.id ? order : 'asc'}
                             onClick={createSortHandler(headCell.id)}
@@ -230,7 +235,7 @@ function EnhancedTableToolbar(props: EnhancedTableToolbarProps) {
                     id="tableTitle"
                     component="div"
                 >
-                    Nutrition
+                    Users
                 </Typography>
             )}
             {numSelected > 0 ? (
@@ -250,9 +255,9 @@ function EnhancedTableToolbar(props: EnhancedTableToolbarProps) {
     );
 }
 
-function UsersManagment() {
+function UsersManagement() {
     const [order, setOrder] = React.useState<Order>('asc');
-    const [orderBy, setOrderBy] = React.useState<keyof Data>('calories');
+    const [orderBy, setOrderBy] = React.useState<keyof Data>('company');
     const [selected, setSelected] = React.useState<readonly string[]>([]);
     const [page, setPage] = React.useState(0);
     const [dense, setDense] = React.useState(false);
@@ -260,11 +265,14 @@ function UsersManagment() {
 
     const handleRequestSort = (
         event: React.MouseEvent<unknown>,
-        property: keyof Data,
+        property: keyof Data | null,
     ) => {
         const isAsc = orderBy === property && order === 'asc';
         setOrder(isAsc ? 'desc' : 'asc');
-        setOrderBy(property);
+
+        if (property){
+            setOrderBy(property);
+        }
     };
 
     const handleSelectAllClick = (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -306,6 +314,7 @@ function UsersManagment() {
     };
 
     const handleChangeDense = (event: React.ChangeEvent<HTMLInputElement>) => {
+        console.log("asdf");
         setDense(event.target.checked);
     };
 
@@ -345,7 +354,6 @@ function UsersManagment() {
                                     return (
                                         <TableRow
                                             hover
-                                            onClick={(event) => handleClick(event, row.name)}
                                             role="checkbox"
                                             aria-checked={isItemSelected}
                                             tabIndex={-1}
@@ -367,12 +375,29 @@ function UsersManagment() {
                                                 scope="row"
                                                 padding="none"
                                             >
-                                                {row.name}
+                                                <Box sx={{
+                                                    display: 'flex',
+                                                }}>
+                                                    <Avatar alt={"A"} src={toAbsoluteUrl('/media/avatars/300-1.jpg')} />
+
+                                                    <Box sx={{
+                                                        verticalAlign: 'middle',
+                                                        marginTop: 'auto',
+                                                        marginBottom: 'auto',
+                                                        marginLeft: '5px',
+                                                    }}>
+                                                        {row.name}
+                                                    </Box>
+                                                </Box>
                                             </TableCell>
-                                            <TableCell align="right">{row.calories}</TableCell>
-                                            <TableCell align="right">{row.fat}</TableCell>
-                                            <TableCell align="right">{row.carbs}</TableCell>
-                                            <TableCell align="right">{row.protein}</TableCell>
+                                            <TableCell align="left">{row.company}</TableCell>
+                                            <TableCell align="left">{row.role}</TableCell>
+                                            <TableCell align="left">{String(row.verified)}</TableCell>
+                                            <TableCell align="left">{row.status}</TableCell>
+                                            <TableCell align="left">
+                                                <Button>Edit</Button>
+                                                <Button>Delete</Button>
+                                            </TableCell>
                                         </TableRow>
                                     );
                                 })}
@@ -389,15 +414,6 @@ function UsersManagment() {
                     </Table>
                 </TableContainer>
                 <Box sx={{ position: 'relative' }}>
-                    <FormControlLabel
-                        sx={{
-                            pl: 2,
-                            py: 1.5,
-                            top: 0,
-                        }}
-                        label="Dense"
-                        control={<Switch checked={dense} onChange={handleChangeDense} />}
-                    />
                     <TablePagination
                         rowsPerPageOptions={[5, 10, 25]}
                         component="div"
@@ -407,10 +423,22 @@ function UsersManagment() {
                         onPageChange={handleChangePage}
                         onRowsPerPageChange={handleChangeRowsPerPage}
                     />
+                    <FormControlLabel
+                        sx={{
+                            display: 'inline-flex',
+                            position: 'absolute',
+                            marginTop: '9px',
+                            marginLeft: '0',
+                            top: 0,
+                        }}
+
+                        label="Dense"
+                        control={<Switch checked={dense} onChange={handleChangeDense} />}
+                    />
                 </Box>
             </Paper>
         </Box>
     );
 }
 
-export { UsersManagment }
+export { UsersManagement }
