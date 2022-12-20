@@ -138,7 +138,7 @@ const VERTICAL_NAV: NavConfigType = [
   },
   {
     title: "Pages",
-    icon: "general/gen024.svg",
+    icon: "files/fil003.svg",
     children: {
       collapsible: true,
       items: COMMON_NAV.pages,
@@ -146,7 +146,7 @@ const VERTICAL_NAV: NavConfigType = [
   },
   {
     title: "Authentication",
-    icon: "general/gen023.svg",
+    icon: "general/gen002.svg",
     children: {
       collapsible: true,
       items: COMMON_NAV.authentication,
@@ -154,7 +154,7 @@ const VERTICAL_NAV: NavConfigType = [
   },
   {
     title: "Account",
-    icon: "general/gen022.svg",
+    icon: "communication/com013.svg",
     children: {
       collapsible: true,
       items: COMMON_NAV.account,
@@ -162,7 +162,7 @@ const VERTICAL_NAV: NavConfigType = [
   },
   {
     title: "Apps",
-    icon: "general/gen021.svg",
+    icon: "finance/fin006.svg",
     children: {
       collapsible: true,
       items: COMMON_NAV.apps,
@@ -173,12 +173,12 @@ const VERTICAL_NAV: NavConfigType = [
   },
   {
     title: "Documentation",
-    icon: "general/gen020.svg",
+    icon: "arrows/arr062.svg",
     path: "previews.keenthemes.com/hero/mui/docs",
   },
   {
     title: "Changelog",
-    icon: "general/gen019.svg",
+    icon: "arrows/arr062.svg",
     path: "previews.keenthemes.com/hero/mui/docs/#/changelog",
   },
 ];

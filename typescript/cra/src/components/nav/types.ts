@@ -7,6 +7,7 @@ export type NavItemType = {
 	divider?: boolean;
 	subheader?: string;
 	children?: NavType;
+	isChild?: boolean;
 	onClick?: (_?: unknown) => unknown | void;	
 };
 

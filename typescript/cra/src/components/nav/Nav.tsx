@@ -30,7 +30,7 @@ const NavComponent = ({
         (item, index) => (
           <NavItem 
             key={`${index}-${item.title}`} 
-            gap={1}
+            gap={2}
             indention={indention}               
             {...item}                   
           />

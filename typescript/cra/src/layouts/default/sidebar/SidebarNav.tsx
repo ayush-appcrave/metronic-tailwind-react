@@ -11,7 +11,7 @@ const SidebarNav = () => {
   return (
     <Box
 			sx={{        
-				px: 1.5,
+				px: 2,
 			}}
 		>
 			<Scrollbar 
@@ -24,7 +24,7 @@ const SidebarNav = () => {
 				<Nav 
 					variant="inline"
 					direction="vertical"
-					indention={1}
+					indention={3.15}
 					items={navs.verticalNav}
 					sx={{
 						

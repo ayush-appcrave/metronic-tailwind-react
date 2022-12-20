@@ -10,21 +10,29 @@ export const ListSubheaderStyled = styled(ListSubheader)(({ theme }) => ({
 	color: theme.palette.text.secondary,
 }));
 
-export const ListItemButtonStyled = styled(ListItemButton) (({ theme }) => ({
+export const ListItemButtonStyled = styled(ListItemButton, {
+	shouldForwardProp: (prop) => prop !== 'isChild'
+}) <{isChild: boolean}> (({ theme, isChild }) => ({
 	display: "flex",
 	aligItems: "center",
 	borderRadius: 6,
-	px: 1
+	px: 1,
+	":hover " : {
+		//backgroundColor: 'transparent'		
+	}
 }));
 
 export const ListItemTextStyled = styled(ListItemText, {
-	shouldForwardProp: (prop) => prop !== 'level'
-}) <{level: number}> (({ theme, level }) => ({
+	shouldForwardProp: (prop) => prop !== 'isChild'
+}) <{isChild: boolean}> (({ theme, isChild }) => ({	
 	"> .MuiListItemText-primary": {
-		fontWeight: (level === 1 ? theme.typography.fontWeightBold : theme.typography.fontWeightMedium),
-		color: (level === 1 ? theme.palette.grey[700] : theme.palette.grey[600]),
-		fontSize: (level === 1 ? 15 : 13)
-	}
+		fontWeight: (isChild ? theme.typography.fontWeightMedium : theme.typography.fontWeightBold),
+		color: (isChild ? theme.palette.grey[500] : theme.palette.grey[700]),
+		fontSize: (isChild ? 13 : 13)
+	},
+	".MuiListItemButton-root:hover .MuiListItemText-primary" : {
+		color: theme.palette.primary.light
+	}	
 }));
 
 export const ListItemIconStyled = styled(ListItemIcon)(({ theme }) => ({
@@ -32,9 +40,14 @@ export const ListItemIconStyled = styled(ListItemIcon)(({ theme }) => ({
 	width: 18,
 	minWidth: 0,
 	marginRight: theme.spacing(1),
-	color: "gray.500",
+	color: theme.palette.grey["500"],
 	"svg " : {
 		height: "100%",
 		width: "100%"
 	}
+}));
+
+export const DividerStyled = styled(Divider)(({ theme }) => ({
+	marginTop: theme.spacing(2),
+	marginBottom: theme.spacing(2),
 }));
