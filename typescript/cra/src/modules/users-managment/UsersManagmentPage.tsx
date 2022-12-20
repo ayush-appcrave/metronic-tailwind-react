@@ -1,4 +1,5 @@
-import {ChangeEvent, FormEvent, useState} from 'react';
+import {ChangeEvent, useState} from 'react';
+import { Data, rowsData } from "./users";
 import { alpha } from '@mui/material/styles';
 import Box from '@mui/material/Box';
 import Table from '@mui/material/Table';
@@ -20,47 +21,18 @@ import Switch from '@mui/material/Switch';
 import DeleteIcon from '@mui/icons-material/Delete';
 import { visuallyHidden } from '@mui/utils';
 import {toAbsoluteUrl} from "utils";
-import {Avatar, Button, FormControl, InputLabel, MenuItem, Select, SelectChangeEvent, TextField} from "@mui/material";
-
-interface Data {
-    name: string;
-    company: string;
-    role: string;
-    verified: boolean;
-    status: "Banned" | "Active";
-}
-
-function createData(
-    name: string,
-    company: string,
-    role: string,
-    verified: boolean,
-    status: "Banned" | "Active",
-): Data {
-    return {
-        name,
-        company,
-        role,
-        verified,
-        status
-    };
-}
-
-const rows = [
-    createData('Sahil Shepard', "Google", "Frontend Developer", true, "Active"),
-    createData('Kayla Friedman', "Apple", "Frontend Developer", false, "Active"),
-    createData('Bibi Petersen', "Facebook", "Backend Developer", true, "Active"),
-    createData('Emma Mejia', "Netflix", "Project Manager", true, "Active"),
-    createData('Kara Briggs', "Amazon", "Director", true, "Active"),
-    createData('Juliet Mercado', "Microsoft", "Frontend Developer", true, "Active"),
-    createData('Yusuf Clayton', "AMD", "Sales Manager", false, "Banned"),
-    createData('Thalia Luna', "Intel", "Frontend Developer", true, "Banned"),
-    createData('Hanna Burke', "Ubisoft", "Project Manager", true, "Active"),
-    createData('Isabelle Obrien', "Nvidio", "Full stack developer", false, "Active"),
-    createData('Aaliyah Hicks', "Binance", "Sales Manager", true, "Active"),
-    createData('Darcie Church', "Accenture", "Sales Manager", true, "Banned"),
-    createData('Mahdi Harris', "Tesla", "Project Manager", false, "Banned"),
-];
+import {
+    Avatar,
+    Button,
+    Dialog, DialogActions, DialogContent, DialogContentText, DialogTitle,
+    FormControl,
+    InputLabel,
+    MenuItem,
+    Select,
+    SelectChangeEvent,
+    TextField
+} from "@mui/material";
+import {useNavigate} from "react-router";
 
 function descendingComparator<T>(a: T, b: T, orderBy: keyof T) {
     if (b[orderBy] < a[orderBy]) {
@@ -100,14 +72,14 @@ function stableSort<T>(array: Data[], comparator: (a: T, b: T) => number) {
     return stabilizedThis.map((el) => el[0]);
 }
 
-function filterRow(array: Data[], roleFilter:string, nameFilter:string):Data[]{
+function filterRow(array: Data[], roleFilter:string, nameFilter:string|null):Data[]{
     let filteredItems = array;
 
     if(roleFilter!=='all'){
         filteredItems = filteredItems.filter((row) => row.role === roleFilter);
     }
 
-    if(nameFilter!=='all'){
+    if(nameFilter!==null){
         filteredItems = filteredItems.filter((row) => row.name.toLowerCase().indexOf(nameFilter.toLowerCase()) !== -1);
     }
 
@@ -220,8 +192,9 @@ interface EnhancedTableToolbarProps {
     numSelected: number;
     roleFilter: string | undefined;
     handleRoleFilterChange: (event: SelectChangeEvent) => void
-    nameFilter: string | undefined;
+    nameFilter: string | null;
     handleNameFilterChange: (event: ChangeEvent<HTMLInputElement>) => void
+    handleSelectedUsersDelete: () => void;
 }
 
 function EnhancedTableToolbar(props: EnhancedTableToolbarProps) {
@@ -259,6 +232,7 @@ function EnhancedTableToolbar(props: EnhancedTableToolbarProps) {
                         label="Role"
                         onChange={props.handleRoleFilterChange}
                     >
+                        <MenuItem value="all">All</MenuItem>
                         <MenuItem value="Project Manager">Project Manager</MenuItem>
                         <MenuItem value="Full stack developer">Full stack developer</MenuItem>
                         <MenuItem value="Backend Developer">Backend Developer</MenuItem>
@@ -267,24 +241,86 @@ function EnhancedTableToolbar(props: EnhancedTableToolbarProps) {
             )}
             {numSelected > 0 ? (
                 <Tooltip title="Delete">
-                    <IconButton>
+                    <IconButton onClick={props.handleSelectedUsersDelete}>
                         <DeleteIcon />
                     </IconButton>
                 </Tooltip>
             ) : (
-                <TextField sx={{width: "50%"}} onChange={props.handleNameFilterChange} value={props.nameFilter} id="search" label="Search" variant="outlined" />
+                <TextField sx={{width: "50%"}} onChange={props.handleNameFilterChange} value={props.nameFilter} id="search" label="Search name" variant="outlined" />
             )}
         </Toolbar>
     );
 }
 
-function UsersManagement() {
+interface AlertDialogProps {
+    open: boolean;
+    handleClose: () => void
+    userId: number | string;
+    handleDelete: (id:number|string) => void
+}
+
+function AlertDialog(props:AlertDialogProps) {
+    return (
+        <div>
+            <Dialog
+                open={props.open}
+                onClose={props.handleClose}
+                aria-labelledby="alert-dialog-title"
+                aria-describedby="alert-dialog-description"
+            >
+                <DialogTitle id="alert-dialog-title">
+                    {`Are you sure you want to delete user with ID ${props.userId}?`}
+                </DialogTitle>
+                <DialogContent>
+                    <DialogContentText id="alert-dialog-description">
+
+                    </DialogContentText>
+                </DialogContent>
+                <DialogActions>
+                    <Button onClick={(e) => props.handleClose()}>Disagree</Button>
+                    <Button onClick={(e) => props.handleDelete(props.userId)} autoFocus>
+                        Agree
+                    </Button>
+                </DialogActions>
+            </Dialog>
+        </div>
+    );
+}
+
+function UsersManagementPage() {
     const [order, setOrder] = useState<Order>('asc');
     const [orderBy, setOrderBy] = useState<keyof Data>('company');
-    const [selected, setSelected] = useState<readonly string[]>([]);
+    const [selected, setSelected] = useState<readonly (number | string)[]>([]);
     const [page, setPage] = useState(0);
     const [dense, setDense] = useState(false);
     const [rowsPerPage, setRowsPerPage] = useState(5);
+    const [rows, setRows] = useState<Data[]>(rowsData);
+    const navigate = useNavigate();
+
+    const [open, setOpen] = useState(false);
+    const [userToDeleteId, setUserToDeleteId] = useState<number | string>(1);
+
+    const handleClickOpen = (id:number|string) => {
+        setUserToDeleteId(id);
+        setOpen(true);
+    };
+
+    const handleClose = () => {
+        setOpen(false);
+    };
+
+    const handleUserDelete = (id:number|string) => {
+        const rowsWithDeletes = rows.filter((row) => row.id !== id);
+        setSelected([]);
+        setRows([...rowsWithDeletes]);
+        handleClose();
+    }
+
+    const handleSelectedUsersDelete = () => {
+        const rowsWithDeletes = rows.filter((row) => !selected.includes(row.id));
+        setSelected([]);
+        setRows([...rowsWithDeletes]);
+    }
 
     const handleRequestSort = (
         event: React.FormEvent<unknown>,
@@ -300,7 +336,7 @@ function UsersManagement() {
 
     const handleSelectAllClick = (event: React.ChangeEvent<HTMLInputElement>) => {
         if (event.target.checked) {
-            const newSelected = rows.map((n) => n.name);
+            const newSelected = rows.map((n) => n.id);
             setSelected(newSelected);
             return;
         }
@@ -308,7 +344,7 @@ function UsersManagement() {
     };
 
     const [ roleFilter, setRoleFilter ] = useState<string>("all");
-    const [ nameFilter, setNameFilter ] = useState<string>("all");
+    const [ nameFilter, setNameFilter ] = useState<string | null>(null);
 
     const handleRoleFilterChange:(event: SelectChangeEvent) => void = (e:SelectChangeEvent) => {
         setRoleFilter(e.target.value);
@@ -320,12 +356,12 @@ function UsersManagement() {
         setNameFilter(e.target.value);
         setPage(0);
     }
-    const handleClick = (event: React.FormEvent<unknown>, name: string) => {
-        const selectedIndex = selected.indexOf(name);
-        let newSelected: readonly string[] = [];
+    const handleClick = (event: React.FormEvent<unknown>, id: number | string) => {
+        const selectedIndex = selected.indexOf(id);
+        let newSelected: readonly (number | string)[] = [];
 
         if (selectedIndex === -1) {
-            newSelected = newSelected.concat(selected, name);
+            newSelected = newSelected.concat(selected, id);
         } else if (selectedIndex === 0) {
             newSelected = newSelected.concat(selected.slice(1));
         } else if (selectedIndex === selected.length - 1) {
@@ -349,11 +385,15 @@ function UsersManagement() {
         setPage(0);
     };
 
+    const handleUserEdit = (id:number|string) => {
+        navigate(`/edit/user/${id}`)
+    }
+
     const handleChangeDense = (event: React.ChangeEvent<HTMLInputElement>) => {
         setDense(event.target.checked);
     };
 
-    const isSelected = (name: string) => selected.indexOf(name) !== -1;
+    const isSelected = (id: number | string) => selected.indexOf(id) !== -1;
 
     // Avoid a layout jump when reaching the last page with empty rows.
     const emptyRows =
@@ -361,8 +401,8 @@ function UsersManagement() {
 
     return (
         <Box sx={{ width: '100%' }}>
-            <Paper sx={{ width: '100%', mb: 2 }}>
-                <EnhancedTableToolbar numSelected={selected.length} handleRoleFilterChange={handleRoleFilterChange} roleFilter={roleFilter} handleNameFilterChange={handleNameFilterChange} nameFilter={nameFilter}  />
+            <Paper sx={{ width: '100%', mb: 2, mt: 10 }}>
+                <EnhancedTableToolbar numSelected={selected.length} handleRoleFilterChange={handleRoleFilterChange} roleFilter={roleFilter} handleNameFilterChange={handleNameFilterChange} nameFilter={nameFilter} handleSelectedUsersDelete={handleSelectedUsersDelete} />
                 <TableContainer>
                     <Table
                         sx={{ minWidth: 750 }}
@@ -383,7 +423,7 @@ function UsersManagement() {
                             {stableSort(filterRow(rows, roleFilter, nameFilter), getComparator(order, orderBy))
                                 .slice(page * rowsPerPage, page * rowsPerPage + rowsPerPage)
                                 .map((row, index) => {
-                                    const isItemSelected = isSelected(row.name);
+                                    const isItemSelected = isSelected(row.id);
                                     const labelId = `enhanced-table-checkbox-${index}`;
 
                                     return (
@@ -398,7 +438,7 @@ function UsersManagement() {
                                             <TableCell padding="checkbox">
                                                 <Checkbox
                                                     color="primary"
-                                                    onInput={(event) => handleClick(event, row.name)}
+                                                    onInput={(event) => handleClick(event, row.id)}
                                                     checked={isItemSelected}
                                                     inputProps={{
                                                         'aria-labelledby': labelId,
@@ -431,8 +471,8 @@ function UsersManagement() {
                                             <TableCell align="left">{String(row.verified)}</TableCell>
                                             <TableCell align="left">{row.status}</TableCell>
                                             <TableCell align="left">
-                                                <Button>Edit</Button>
-                                                <Button>Delete</Button>
+                                                <Button onClick={(e)=>handleUserEdit(row.id)}>Edit</Button>
+                                                <Button onClick={(e)=>handleClickOpen(row.id)}>Delete</Button>
                                             </TableCell>
                                         </TableRow>
                                     );
@@ -444,6 +484,11 @@ function UsersManagement() {
                                     }}
                                 >
                                     <TableCell colSpan={6} />
+                                </TableRow>
+                            )}
+                            {rows.length <= 0 && (
+                                <TableRow>
+                                    <TableCell colSpan={headCells.length}>No data found</TableCell>
                                 </TableRow>
                             )}
                         </TableBody>
@@ -473,8 +518,9 @@ function UsersManagement() {
                     />
                 </Box>
             </Paper>
+            <AlertDialog open={open} handleClose={handleClose} handleDelete={handleUserDelete} userId={userToDeleteId}></AlertDialog>
         </Box>
     );
 }
 
-export { UsersManagement }
+export { UsersManagementPage }
