@@ -1,7 +1,15 @@
-import { useState, memo, useMemo } from "react";
+import { useState, useEffect, memo, useMemo } from "react";
 import { SVGIcon } from "..";
-import { Link } from "react-router-dom";
-import { Collapse, Divider, List, ListItemButton, ListItemIcon, ListItemText } from "@mui/material";
+import { Link, useLocation } from "react-router-dom";
+import { useMatchPath } from "../../hooks/useMatchPath";
+import { 
+  Collapse, 
+  Divider, 
+  List, 
+  ListItemButton, 
+  ListItemIcon, 
+  ListItemText 
+} from "@mui/material"
 import { 
   DividerStyled, 
   ListSubheaderStyled, 
@@ -10,24 +18,48 @@ import {
   ListItemIconStyled, 
   NavItemArrow, 
   NavItemBullet, 
-  NavItemType } from "./";
+  NavItemType
+} from "./";
 
 const NavItemComponent = ({
   title,
+  path,
+  isExternalLink = false,
   divider,
   children,
   subheader,
+  caption,
   icon,
   bullet,
   badge,
-  isChild = false,
-  path,
-  gap,
-  indention
-}: NavItemType & { gap: number, indention: number }) => {
+  active,
+  disabled,
+  depth = 1,
+  styles
+}: NavItemType ) => {
+  const { pathname } = useLocation();
+  const { match } = useMatchPath(pathname);
 
   const [open, setOpen] = useState(false);
-  const handleClick = () => setOpen(!open);
+
+  const handleToggle = () => {
+    setOpen(!open);
+  }
+
+  const handleShow = () => {
+    setOpen(true);
+  }
+
+  const handleHide = () => {
+    setOpen(false);
+  }
+
+  useEffect(() => {
+    if (!match) {
+      handleToggle();
+    }
+  }, [pathname]);
+    
   const hasChildren: boolean = useMemo(() => {
     return children !== undefined && children.items.length > 0;
   }, [children]);
@@ -36,32 +68,32 @@ const NavItemComponent = ({
     <>
       {divider ? (
         <DividerStyled sx={{ 
-          mx: gap          
+          mx: styles.ROOT_ITEM_PX          
         }}/>
       ) : (
-        <ListItemButtonStyled onClick={handleClick} isChild={isChild} sx={{ 
-            paddingLeft: isChild ? gap + indention : gap, 
-            paddingRight: gap,
+        <ListItemButtonStyled depth={depth} styles={styles} onClick={handleToggle} sx={{ 
+            paddingLeft: depth === 1 ? styles.ROOT_ITEM_PX : styles.ROOT_ITEM_PX + styles.INDENTION, 
+            paddingRight: styles.ROOT_ITEM_PX
           }}>
           {icon && (
-            <ListItemIconStyled>
+            <ListItemIconStyled depth={depth} styles={styles}>
               <SVGIcon icon={icon} />
             </ListItemIconStyled>
           )}
 
           {bullet && (
-            <NavItemBullet/>
+            <NavItemBullet depth={depth} styles={styles}/>
           )}
 
           {title && (
             <>
               {hasChildren ? (
-                <ListItemTextStyled isChild={isChild} primary={title} />
+                <ListItemTextStyled depth={depth} styles={styles} primary={title} />
               ) : (
                 <>
                   {path && (
                     <Link to={path} style={{textDecoration: "none"}}>
-                      <ListItemTextStyled isChild={isChild} primary={title} />
+                      <ListItemTextStyled depth={depth} styles={styles} primary={title} />
                     </Link>
                   )}
                 </>
@@ -70,7 +102,7 @@ const NavItemComponent = ({
           )}
           
           {hasChildren && ( 
-            <NavItemArrow active={open} /> 
+            <NavItemArrow depth={depth} styles={styles} active={open} /> 
           )}
         </ListItemButtonStyled>
       )}
@@ -81,10 +113,10 @@ const NavItemComponent = ({
             {(children?.items as ReadonlyArray<NavItemType>).map((item, index) => (
               <NavItem
                 key={`${index}-${item.title}`}
-                isChild={true}
-                gap={gap}
-                indention={indention}  
-                {...item}   
+                depth={depth + 1}
+                active={match}
+                styles={styles}                
+                {...item}                   
               />
             ))}
           </List>

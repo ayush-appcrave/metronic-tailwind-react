@@ -45,7 +45,7 @@ const SidebarCollapseButton = ({ onToggle }: Props) => {
           ...(isSidebarCollapse && { transform: "rotate(180deg)" }),
         }}
       >
-        <SVGIcon icon={"/arrows/arr079.svg"} />
+        <SVGIcon size="18" icon={"/arrows/arr079.svg"} />
       </Box>
     </ToggleButton>
   );

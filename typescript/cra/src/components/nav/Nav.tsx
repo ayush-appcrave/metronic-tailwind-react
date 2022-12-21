@@ -1,7 +1,5 @@
-import { useState, memo, useMemo } from "react";
-import { Link } from "react-router-dom";
+import { useState, useEffect, memo, useMemo } from "react";
 import { Collapse, Divider, List, ListItemButton, ListItemIcon, ListItemText, ListSubheader } from "@mui/material";
-import { ExpandMore, ExpandLess } from "@mui/icons-material";
 import { SVGIcon } from "..";
 import { NavType, NavItemType } from "./types";
 import { NavItem } from "./";
@@ -13,10 +11,10 @@ const NavComponent = ({
 	height,
 	maxHeight,
 	items,
-  indention = 0,
-  sx  
-}: NavType & { indention: number, sx?: Object }) => {
-
+  sx,
+  styles
+}: NavType & { sx?: Object }) => {
+    
   return (
     <List
       sx={{ 
@@ -29,9 +27,9 @@ const NavComponent = ({
       {(items as ReadonlyArray<NavItemType>).map(
         (item, index) => (
           <NavItem 
-            key={`${index}-${item.title}`} 
-            gap={2}
-            indention={indention}               
+            key={`${index}-${item.title}`}     
+            depth={1}    
+            styles={styles}
             {...item}                   
           />
         )

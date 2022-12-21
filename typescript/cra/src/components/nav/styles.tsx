@@ -1,8 +1,20 @@
 import { alpha, styled } from '@mui/material/styles';
-import { Collapse, Divider, List, ListSubheader, ListItemButton, ListItemIcon, ListItemText, Badge } from "@mui/material";
+import { 
+	Collapse, 
+	Divider, 
+	List, 
+	ListSubheader, 
+	ListItemButton, 
+	ListItemIcon, 
+	ListItemText, 
+	Badge 
+} from "@mui/material";
 import { NavItemArrow, NavItemBullet } from "./";
+import { NavType, NavItemType, NavItemChildType } from "./";
 
-export const ListSubheaderStyled = styled(ListSubheader)(({ theme }) => ({
+export const ListSubheaderStyled = styled(ListSubheader, {
+	shouldForwardProp: (prop) => prop !== 'depth' && prop !== 'styles'
+}) <NavItemChildType> (({depth, styles, theme }) => ({
 	...theme.typography.overline,
 	fontSize: 11,
 	paddingTop: theme.spacing(3),
@@ -11,8 +23,8 @@ export const ListSubheaderStyled = styled(ListSubheader)(({ theme }) => ({
 }));
 
 export const ListItemButtonStyled = styled(ListItemButton, {
-	shouldForwardProp: (prop) => prop !== 'isChild'
-}) <{isChild: boolean}> (({ theme, isChild }) => ({
+	shouldForwardProp: (prop) => prop !== 'depth' && prop !== 'styles'
+}) <NavItemChildType> (({depth, styles, theme }) => ({
 	display: "flex",
 	aligItems: "center",
 	borderRadius: 6,
@@ -23,19 +35,21 @@ export const ListItemButtonStyled = styled(ListItemButton, {
 }));
 
 export const ListItemTextStyled = styled(ListItemText, {
-	shouldForwardProp: (prop) => prop !== 'isChild'
-}) <{isChild: boolean}> (({ theme, isChild }) => ({	
+	shouldForwardProp: (prop) => prop !== 'depth' && prop !== 'styles'
+}) <NavItemChildType> (({depth, styles, theme }) => ({
 	"> .MuiListItemText-primary": {
-		fontWeight: (isChild ? theme.typography.fontWeightMedium : theme.typography.fontWeightBold),
-		color: (isChild ? theme.palette.grey[500] : theme.palette.grey[700]),
-		fontSize: (isChild ? 13 : 13)
+		fontSize: (depth === 1 ? styles.ROOT_ITEM_TITLE_FONT_SIZE : styles.SUB_ITEM_TITLE_FONT_SIZE),
+		fontWeight: (depth === 1 ? styles.ROOT_ITEM_TITLE_FONT_WEIGHT : styles.SUB_ITEM_TITLE_FONT_WEIGHT),
+		color: (depth === 1 ? styles.ROOT_ITEM_TITLE_COLOR : styles.SUB_ITEM_TITLE_COLOR),		
 	},
 	".MuiListItemButton-root:hover .MuiListItemText-primary" : {
-		color: theme.palette.primary.light
+		
 	}	
 }));
 
-export const ListItemIconStyled = styled(ListItemIcon)(({ theme }) => ({
+export const ListItemIconStyled = styled(ListItemIcon, {
+	shouldForwardProp: (prop) => prop !== 'depth' && prop !== 'styles'
+}) <NavItemChildType> (({depth, styles, theme }) => ({
 	height: 18,
 	width: 18,
 	minWidth: 0,

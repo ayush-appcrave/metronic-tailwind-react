@@ -2,7 +2,7 @@ import { NavConfigType } from "../components/nav";
 import { PathsType } from ".";
 
 // Auth paths
-const AUTH_PATHS: PathsType = {
+const PATHS_AUTH: PathsType = {
   login: "/auth/login",
   register: "/auth/register",
   verify: "/auth/verify",
@@ -11,7 +11,7 @@ const AUTH_PATHS: PathsType = {
 };
 
 // General paths
-const GENERAL_PATHS: PathsType = {
+const PATHS_GENERAL: PathsType = {
   comingSoon: "/coming-soon",
   maintenance: "/maintenance",
   pricing: "/pricing",
@@ -23,7 +23,7 @@ const GENERAL_PATHS: PathsType = {
   page500: "/500",
 };
 
-const COMMON_NAV: NavConfigType = {
+const NAV_COMMON: NavConfigType = {
   dashboards: [
     {
       title: "Multipurpose",
@@ -43,7 +43,7 @@ const COMMON_NAV: NavConfigType = {
     },
     {
       title: "Marketing",
-      path: "#marketing",
+      path: "/marketing",
       bullet: true,
     },
     {
@@ -127,13 +127,13 @@ const COMMON_NAV: NavConfigType = {
   ],
 };
 
-const VERTICAL_NAV: NavConfigType = [
+const NAV_VERTICAL: NavConfigType = [
   {
     title: "Dashboards",
     icon: "general/gen025.svg",
     children: {
       collapsible: true,
-      items: COMMON_NAV.dashboards,
+      items: NAV_COMMON.dashboards,
     },
   },
   {
@@ -141,7 +141,7 @@ const VERTICAL_NAV: NavConfigType = [
     icon: "files/fil003.svg",
     children: {
       collapsible: true,
-      items: COMMON_NAV.pages,
+      items: NAV_COMMON.pages,
     },
   },
   {
@@ -149,7 +149,7 @@ const VERTICAL_NAV: NavConfigType = [
     icon: "general/gen002.svg",
     children: {
       collapsible: true,
-      items: COMMON_NAV.authentication,
+      items: NAV_COMMON.authentication,
     },
   },
   {
@@ -157,7 +157,7 @@ const VERTICAL_NAV: NavConfigType = [
     icon: "communication/com013.svg",
     children: {
       collapsible: true,
-      items: COMMON_NAV.account,
+      items: NAV_COMMON.account,
     },
   },
   {
@@ -165,7 +165,7 @@ const VERTICAL_NAV: NavConfigType = [
     icon: "finance/fin006.svg",
     children: {
       collapsible: true,
-      items: COMMON_NAV.apps,
+      items: NAV_COMMON.apps,
     },
   },
   {
@@ -183,4 +183,4 @@ const VERTICAL_NAV: NavConfigType = [
   },
 ];
 
-export { AUTH_PATHS, GENERAL_PATHS, COMMON_NAV, VERTICAL_NAV };
+export { PATHS_AUTH, PATHS_GENERAL, NAV_COMMON, NAV_VERTICAL };
