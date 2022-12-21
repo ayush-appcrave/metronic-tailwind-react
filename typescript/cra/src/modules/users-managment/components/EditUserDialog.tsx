@@ -1,15 +1,26 @@
-import {useParams} from "react-router";
-import {Data, rowsData} from "./helpers/users";
-import {Button, Card, FormGroup, MenuItem, Select, TextField} from '@mui/material';
-import { FormEvent,useState} from "react";
-import FormControlLabel from "@mui/material/FormControlLabel";
-import Switch from "@mui/material/Switch";
+import {FormEvent, useEffect, useState} from "react";
+import {Data, rowsData} from "../helpers/users";
+import {Button, Dialog, FormControlLabel, FormGroup, MenuItem, Select, Switch, TextField} from "@mui/material";
 
-function EditUserPage(){
-    const { id } = useParams();
+interface EditUserDialogProps {
+    open: boolean;
+    handleClose: () => void
+    userId: number | string;
+}
+
+function EditUserDialog(props: EditUserDialogProps) {
+    const [id, setId] = useState<string | number>(1);
+
+    useEffect(()=>{
+        setId(props.userId);
+        setFormData(currentUser());
+    }, [props.open]);
+
     const currentUser = () => {
         const user = rowsData.find(row => row.id === Number(id));
 
+        console.log(id);
+        console.log(user);
         if(!id || !user){
             return rowsData[0];
         }
@@ -31,11 +42,13 @@ function EditUserPage(){
         console.log(formData);
     }
 
-    return (<Card sx={{
-        alignItems: "center",
-        padding: "30px",
-        margin: "15px",
-    }}>{
+    return (<Dialog
+        fullWidth={true}
+        maxWidth={"lg"}
+        open={props.open}
+        onClose={props.handleClose}
+
+    >
         <form onSubmit={(e)=>handleSubmit(e)}>
             <FormGroup>
                 <TextField
@@ -96,7 +109,7 @@ function EditUserPage(){
                 save
             </Button>
         </form>
-    }</Card>)
+    </Dialog>)
 }
 
-export { EditUserPage }
+export { EditUserDialog }

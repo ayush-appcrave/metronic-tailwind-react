@@ -1,3 +1,3 @@
 export * from "./UsersManagmentPage";
 export * from "./EditUserPage";
-export * from "./users";
+export * from "./helpers/users";
