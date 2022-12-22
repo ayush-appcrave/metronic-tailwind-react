@@ -1,49 +1,31 @@
 import { useState, useEffect, memo, useMemo } from "react";
 import { SVGIcon } from "..";
-import { Link, useLocation } from "react-router-dom";
+import { Link as RouterLink, useLocation } from "react-router-dom";
 import { useMatchPath } from "../../hooks/useMatchPath";
-import { 
-  Collapse, 
-  Divider, 
-  List, 
-  ListItemButton, 
-  ListItemIcon, 
-  ListItemText 
-} from "@mui/material"
-import { 
-  DividerStyled, 
-  ListSubheaderStyled, 
-  ListItemButtonStyled, 
-  ListItemTextStyled, 
-  ListItemIconStyled, 
-  NavItemArrow, 
-  NavItemBullet, 
-  NavItemType
-} from "./";
+import { Link, Collapse, Divider, List, ListItemButton, ListItemIcon, ListItemText, ListItemButtonProps } from "@mui/material";
+import { DividerStyled, ListSubheaderStyled, ListItemButtonStyled, ListItemTextStyled, ListItemIconStyled } from "..";
+import { NavItemArrow, NavItemBullet, NavItemType, NavItemOptionsType, NavConfigType } from "..";
 
 const NavItemComponent = ({
-  title,
-  path,
-  isExternalLink = false,
-  divider,
-  children,
-  subheader,
-  caption,
-  icon,
-  bullet,
-  badge,
-  active,
-  disabled,
-  depth = 1,
-  styles
-}: NavItemType ) => {
+  options,  
+  collapse = false,
+  styles,
+  depth = 1
+}: NavItemType) => {
   const { pathname } = useLocation();
-  const { match } = useMatchPath(pathname);
 
-  const [open, setOpen] = useState(false);
+  const { title, path = "", externalLink, newTab = false, divider, children, subheader, caption, icon, bullet, badge } = options;
+
+  const { match } = useMatchPath(path);
+
+  const [ open, setOpen ] = useState(match);
+
+  const active = match;
+
+  const disabled = false;
 
   const handleToggle = () => {
-    setOpen(!open);
+    setOpen(!open); 
   }
 
   const handleShow = () => {
@@ -55,54 +37,42 @@ const NavItemComponent = ({
   }
 
   useEffect(() => {
-    if (!match) {
-      handleToggle();
-    }
-  }, [pathname]);
+    if (match) {
+      setOpen(true);
+    }  
+  }, [pathname]); 
     
   const hasChildren: boolean = useMemo(() => {
     return children !== undefined && children.items.length > 0;
   }, [children]);
- 
-  return (
+
+  const renderItemContent = (
     <>
       {divider ? (
         <DividerStyled sx={{ 
           mx: styles.ROOT_ITEM_PX          
         }}/>
       ) : (
-        <ListItemButtonStyled depth={depth} styles={styles} onClick={handleToggle} sx={{ 
+        <ListItemButtonStyled depth={depth} styles={styles} active={active} open={open} disabled={disabled} collapse={collapse} onClick={handleToggle} sx={{ 
             paddingLeft: depth === 1 ? styles.ROOT_ITEM_PX : styles.ROOT_ITEM_PX + styles.INDENTION, 
             paddingRight: styles.ROOT_ITEM_PX
           }}>
           {icon && (
-            <ListItemIconStyled depth={depth} styles={styles}>
+            <ListItemIconStyled depth={depth} styles={styles} active={active} open={open} disabled={disabled} collapse={collapse}>
               <SVGIcon icon={icon} />
             </ListItemIconStyled>
           )}
 
           {bullet && (
-            <NavItemBullet depth={depth} styles={styles}/>
+            <NavItemBullet depth={depth} styles={styles} active={active} open={open} disabled={disabled} collapse={collapse}/>
           )}
 
           {title && (
-            <>
-              {hasChildren ? (
-                <ListItemTextStyled depth={depth} styles={styles} primary={title} />
-              ) : (
-                <>
-                  {path && (
-                    <Link to={path} style={{textDecoration: "none"}}>
-                      <ListItemTextStyled depth={depth} styles={styles} primary={title} />
-                    </Link>
-                  )}
-                </>
-              )}
-            </>
+            <ListItemTextStyled depth={depth} styles={styles} active={active} open={open} disabled={disabled} collapse={collapse} primary={title}/>
           )}
           
           {hasChildren && ( 
-            <NavItemArrow depth={depth} styles={styles} active={open} /> 
+            <NavItemArrow depth={depth} styles={styles} active={active} open={open} disabled={disabled} collapse={collapse}/> 
           )}
         </ListItemButtonStyled>
       )}
@@ -110,20 +80,38 @@ const NavItemComponent = ({
       {hasChildren && (        
         <Collapse in={open} timeout="auto" unmountOnExit>
           <List component="div" disablePadding>
-            {(children?.items as ReadonlyArray<NavItemType>).map((item, index) => (
-              <NavItem
-                key={`${index}-${item.title}`}
-                depth={depth + 1}
-                active={match}
-                styles={styles}                
-                {...item}                   
-              />
+            {(children?.items as ReadonlyArray<NavItemOptionsType>).map((item, index) => (
+              <NavItem key={`${index}-${item.title}`} depth={depth + 1} options={item} styles={styles} open={open} collapse={collapse}/>
             ))}
           </List>
         </Collapse>
       )}
     </>
   );
+
+  const renderItem = () => {
+    if (externalLink) {
+      const target = newTab === true ? '_blank' : '_self';
+
+      return (
+        <Link href={path} target={target} rel="noopener" underline="none">
+          {renderItemContent}
+        </Link>
+      );
+    }   
+
+    if (hasChildren) {
+      return renderItemContent;
+    }
+
+    return (
+      <Link component={RouterLink} to={path} underline="none">
+        {renderItemContent}
+      </Link>
+    );
+  }
+ 
+  return renderItem();
 };
 
 const NavItem = memo(NavItemComponent);

@@ -1,0 +1,22 @@
+import { alpha, styled } from '@mui/material/styles';
+import { ListItemText } from "@mui/material";
+import { NavItemChildType } from "..";
+
+export const ListItemTextStyled = styled(ListItemText, {
+	shouldForwardProp: (prop) => ["depth", "styles", "active", "open", "collapse", "disabled"].includes(prop as string) === false
+}) <NavItemChildType> (({depth, active, open, disabled, styles, theme}) => {
+
+	return {
+		"> .MuiListItemText-primary": {
+			fontSize: (depth === 1 ? styles.ROOT_ITEM_TITLE_FONT_SIZE : styles.SUB_ITEM_TITLE_FONT_SIZE),
+			fontWeight: (depth === 1 ? styles.ROOT_ITEM_TITLE_FONT_WEIGHT : styles.SUB_ITEM_TITLE_FONT_WEIGHT),
+			color: (depth === 1 ? styles.ROOT_ITEM_TITLE_COLOR : styles.SUB_ITEM_TITLE_COLOR),		
+			...(active && {
+				color: theme.palette.primary.main
+			}),
+		},
+		".MuiListItemButton-root:hover .MuiListItemText-primary" : {
+			
+		}	
+	}
+});

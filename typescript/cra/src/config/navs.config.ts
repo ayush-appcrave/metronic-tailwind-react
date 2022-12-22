@@ -26,6 +26,7 @@ const PATHS_GENERAL: PathsType = {
 const NAV_COMMON: NavConfigType = {
   dashboards: [
     {
+      key: 'dashboards-multipurpose',
       title: "Multipurpose",
       path: "/dashboard",
       bullet: true,
@@ -34,6 +35,7 @@ const NAV_COMMON: NavConfigType = {
       },
     },
     {
+      key: 'dashboards-eCommerce',
       title: "eCommerce",
       path: "/dashboard2",
       bullet: true,
@@ -42,18 +44,24 @@ const NAV_COMMON: NavConfigType = {
       },
     },
     {
+      key: 'dashboards-eCommerce',
       title: "Marketing",
       path: "/marketing",
       bullet: true,
     },
     {
+      key: 'dashboards-eCommerce',
       title: "Crypto",
-      path: "#crypto",
+      path: "https://keenthemes.com",
+      externalLink: true,
+      newTab: true,
       bullet: true,
     },
     {
+      key: 'dashboards-Projects',
       title: "Projects",
-      path: "#projects",
+      path: "https://keenthemes.com",
+      externalLink: true,
       bullet: true,
     },
   ],
@@ -132,7 +140,7 @@ const NAV_VERTICAL: NavConfigType = [
     title: "Dashboards",
     icon: "general/gen025.svg",
     children: {
-      collapsible: true,
+      accordion: true,
       items: NAV_COMMON.dashboards,
     },
   },
@@ -140,7 +148,7 @@ const NAV_VERTICAL: NavConfigType = [
     title: "Pages",
     icon: "files/fil003.svg",
     children: {
-      collapsible: true,
+      accordion: true,
       items: NAV_COMMON.pages,
     },
   },
@@ -148,7 +156,7 @@ const NAV_VERTICAL: NavConfigType = [
     title: "Authentication",
     icon: "general/gen002.svg",
     children: {
-      collapsible: true,
+      accordion: true,
       items: NAV_COMMON.authentication,
     },
   },
@@ -156,7 +164,7 @@ const NAV_VERTICAL: NavConfigType = [
     title: "Account",
     icon: "communication/com013.svg",
     children: {
-      collapsible: true,
+      accordion: true,
       items: NAV_COMMON.account,
     },
   },
@@ -164,7 +172,7 @@ const NAV_VERTICAL: NavConfigType = [
     title: "Apps",
     icon: "finance/fin006.svg",
     children: {
-      collapsible: true,
+      accordion: true,
       items: NAV_COMMON.apps,
     },
   },

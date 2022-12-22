@@ -8,6 +8,9 @@ const NavItemArrowComponent = ({
   variant = "inline",
 	direction = "vertical",
 	active = false,
+  open = false,
+  disabled = false,
+  collapse = false,
 	icon = "arrows/arr072.svg"
 }: NavItemArrowType ) => {
 
@@ -34,8 +37,6 @@ const NavItemArrowComponent = ({
   }  
 
   const transform: string = active === true ? rotateToggle : rotateInitial;
-
-  console.log("state:" + active);
  
   return (
     <Box

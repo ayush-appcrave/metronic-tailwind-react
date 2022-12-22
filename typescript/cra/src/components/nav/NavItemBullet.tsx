@@ -2,9 +2,16 @@ import { useState, memo, useMemo } from "react";
 import { Box } from "@mui/material";
 import { NavItemBulletType } from "./types";
 
+
 const NavItemBulletComponent = ({
-  variant = "dot"
-}: NavItemBulletType ) => {
+  variant = "dot",
+  active = false,
+  open = false,
+  disabled = false,
+  collapse = false,
+  styles,
+  depth = 1
+}: NavItemBulletType) => {
  
   return (
     <Box
@@ -20,6 +27,9 @@ const NavItemBulletComponent = ({
           height: 4,
 	        width: 6,
           borderRadius: 4 
+        }),
+        ...(active && {
+          backgroundColor: (theme) => theme.palette.primary.main
         }),
       }}
     >      

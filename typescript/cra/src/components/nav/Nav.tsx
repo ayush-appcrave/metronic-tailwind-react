@@ -1,13 +1,13 @@
 import { useState, useEffect, memo, useMemo } from "react";
-import { Collapse, Divider, List, ListItemButton, ListItemIcon, ListItemText, ListSubheader } from "@mui/material";
+import { List } from "@mui/material";
 import { SVGIcon } from "..";
-import { NavType, NavItemType } from "./types";
-import { NavItem } from "./";
+import { NavItem, NavType, NavItemType, NavItemOptionsType } from "./";
 
 const NavComponent = ({
   variant = "inline",
 	direction = "vertical",
-	collapsible,
+  accordion,
+	collapse,
 	height,
 	maxHeight,
 	items,
@@ -24,14 +24,9 @@ const NavComponent = ({
       component="nav"
       aria-labelledby="nav-list"
     >
-      {(items as ReadonlyArray<NavItemType>).map(
+      {(items as ReadonlyArray<NavItemOptionsType>).map(
         (item, index) => (
-          <NavItem 
-            key={`${index}-${item.title}`}     
-            depth={1}    
-            styles={styles}
-            {...item}                   
-          />
+          <NavItem key={`${index}-${item.title}`} depth={1} collapse={collapse} options={item} styles={styles}/>
         )
       )}
     </List>
