@@ -3,8 +3,8 @@ import { ListItemButton } from "@mui/material";
 import { NavItemChildType } from "..";
 
 export const ListItemButtonStyled = styled(ListItemButton, {
-	shouldForwardProp: (prop) => ["depth", "styles", "active", "open", "collapse", "disabled"].includes(prop as string) === false
-}) <NavItemChildType> (({depth, active, open, disabled, styles, theme}) => {
+	shouldForwardProp: (prop) => ["depth", "styles", "active", "here", "open", "collapse", "disabled"].includes(prop as string) === false
+}) <NavItemChildType> (({depth, active, here, open, disabled, styles, theme}) => {
 
 	const activeStyle = {
 		backgroundColor: theme.palette.primary.light,
@@ -14,16 +14,14 @@ export const ListItemButtonStyled = styled(ListItemButton, {
 	return {
 		display: "flex",
 		aligItems: "center",
-		borderRadius: 6,
-		px: 1,
+		borderRadius: styles.ITEM_BORDER_RADIUS as number,
+		//paddingLeft: theme.spacing(styles.ITEM_ITEM_PX),	
+		//paddingRight: theme.spacing(styles.ITEM_ITEM_PX),	
 		...(active && {
-			...activeStyle,
-			'&:hover': {
-				...activeStyle,
-			},
+			...activeStyle
 		}),
 		":hover " : {
-			
+			//backgroundColor: 'transparent'
 		}	
 	};	
 });

@@ -8,6 +8,7 @@ const NavItemArrowComponent = ({
   variant = "inline",
 	direction = "vertical",
 	active = false,
+  here = false,
   open = false,
   disabled = false,
   collapse = false,
@@ -36,7 +37,7 @@ const NavItemArrowComponent = ({
     rotateToggle = "rotate(180deg)";
   }  
 
-  const transform: string = active === true ? rotateToggle : rotateInitial;
+  const transform: string = open ? rotateToggle : rotateInitial;
  
   return (
     <Box

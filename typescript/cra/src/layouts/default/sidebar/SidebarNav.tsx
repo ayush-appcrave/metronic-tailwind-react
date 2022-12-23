@@ -10,26 +10,20 @@ const SidebarNav = () => {
 	const styles = NavVerticalStylesConfig();
 
   return (
-    <Box
-			sx={{        
+		<Scrollbar 
+			sx={{
+				height: 500,
 				px: 2,
-			}}
+				mx: 1
+			}}   
 		>
-			<Scrollbar 
-				forceVisible="x" 
-				autoHide={true} 
-				sx={{
-					height: 700
-				}}              
-			>
-				<Nav 
-					variant="inline"
-					direction="vertical"
-					items={navs.verticalNav}
-					styles={styles}
-				/>				
-			</Scrollbar>
-		</Box>
+			<Nav 
+				variant="inline"
+				direction="vertical"
+				items={navs.verticalNav}
+				styles={styles}
+			/>				
+		</Scrollbar>
   );
 }
 

@@ -6,6 +6,7 @@ import { NavItemBulletType } from "./types";
 const NavItemBulletComponent = ({
   variant = "dot",
   active = false,
+  here = false,
   open = false,
   disabled = false,
   collapse = false,

@@ -1,10 +1,9 @@
 import { memo } from 'react';
 import { Box } from '@mui/material';
-import { ScrollbarStyledRoot, ScrollbarStyled } from './styles';
-import { ScrollbarProps } from './types';
+import { ScrollbarStyled, ScrollbarStylesConfig, ScrollbarProps } from './';
 import { isMobileDevice } from '../../utils';
 
-const Scrollbar = ({ children, sx, ...other }: ScrollbarProps) => {
+const Scrollbar = ({ children, sx, styles, ...other }: ScrollbarProps) => {
   if (isMobileDevice()) {
     return (
       <Box sx={{ overflowX: 'auto', ...sx }} {...other}>
@@ -13,12 +12,12 @@ const Scrollbar = ({ children, sx, ...other }: ScrollbarProps) => {
     );
   }
 
+  styles = {...ScrollbarStylesConfig(), ...styles};
+
   return (
-    <ScrollbarStyledRoot>
-      <ScrollbarStyled timeout={500} clickOnTrack={false} sx={sx} {...other}>
-        {children}
-      </ScrollbarStyled>
-    </ScrollbarStyledRoot>
+    <ScrollbarStyled timeout={500} clickOnTrack={false} styles={styles} sx={sx} {...other}>
+      {children}
+    </ScrollbarStyled>
   );
 }
 

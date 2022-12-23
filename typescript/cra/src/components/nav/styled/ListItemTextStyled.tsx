@@ -3,8 +3,8 @@ import { ListItemText } from "@mui/material";
 import { NavItemChildType } from "..";
 
 export const ListItemTextStyled = styled(ListItemText, {
-	shouldForwardProp: (prop) => ["depth", "styles", "active", "open", "collapse", "disabled"].includes(prop as string) === false
-}) <NavItemChildType> (({depth, active, open, disabled, styles, theme}) => {
+	shouldForwardProp: (prop) => ["depth", "styles", "active", "here", "open", "collapse", "disabled"].includes(prop as string) === false
+}) <NavItemChildType> (({depth, active, here, open, disabled, styles, theme}) => {
 
 	return {
 		"> .MuiListItemText-primary": {
@@ -14,9 +14,6 @@ export const ListItemTextStyled = styled(ListItemText, {
 			...(active && {
 				color: theme.palette.primary.main
 			}),
-		},
-		".MuiListItemButton-root:hover .MuiListItemText-primary" : {
-			
 		}	
 	}
 });

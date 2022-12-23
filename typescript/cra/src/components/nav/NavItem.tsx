@@ -19,23 +19,13 @@ const NavItemComponent = ({
 
   const { match } = useMatchPath(path);
 
-  const getInitialOpen = ():boolean => {  
-    if (match) {
-      return true;
-    }
-
-    if (children?.items) {
-      return hasActiveChild(pathname, children.items as NavConfigType);
-    }
-
-    return false;
-  };
-
-  const [ open, setOpen ] = useState(getInitialOpen());
+  const here: boolean = children?.items ? hasActiveChild(pathname, children.items as NavConfigType) : false;
 
   const active: boolean = match;
 
   const disabled: boolean = false;
+
+  const [ open, setOpen ] = useState(here);
 
   const handleToggle = () => {
     setOpen(!open); 
@@ -63,29 +53,32 @@ const NavItemComponent = ({
     <>
       {divider ? (
         <DividerStyled sx={{ 
-          mx: styles.ROOT_ITEM_PX          
+          mx: styles.ITEM_PADDING_X
         }}/>
       ) : (
-        <ListItemButtonStyled depth={depth} styles={styles} active={active} open={open} disabled={disabled} collapse={collapse} onClick={handleToggle} sx={{ 
-            paddingLeft: depth === 1 ? styles.ROOT_ITEM_PX : styles.ROOT_ITEM_PX + styles.INDENTION, 
-            paddingRight: styles.ROOT_ITEM_PX
+        <ListItemButtonStyled depth={depth} styles={styles} active={active} here={here} open={open} disabled={disabled} collapse={collapse} onClick={handleToggle} sx={{ 
+            paddingTop: depth === 1 ? styles.ROOT_ITEM_PADDING_Y : styles.SUB_ITEM_PADDING_Y, 
+            paddingBottom: depth === 1 ? styles.ROOT_ITEM_PADDING_Y : styles.SUB_ITEM_PADDING_Y, 
+            paddingLeft: depth === 1 ? styles.ROOT_ITEM_PADDING_X : styles.SUB_ITEM_PADDING_X + styles.INDENTION, 
+            paddingRight: depth === 1 ? styles.ROOT_ITEM_PADDING_X : styles.SUB_ITEM_PADDING_X + styles.INDENTION, 
+            marginBottom: depth === 1 ? styles.ROOT_ITEM_GAP : styles.SUB_ITEM_GAP, 
           }}>
           {icon && (
-            <ListItemIconStyled depth={depth} styles={styles} active={active} open={open} disabled={disabled} collapse={collapse}>
+            <ListItemIconStyled depth={depth} styles={styles} active={active} here={here} open={open} disabled={disabled} collapse={collapse}>
               <SVGIcon icon={icon} />
             </ListItemIconStyled>
           )}
 
           {bullet && (
-            <NavItemBullet depth={depth} styles={styles} active={active} open={open} disabled={disabled} collapse={collapse}/>
+            <NavItemBullet depth={depth} styles={styles} active={active} here={here} open={open} disabled={disabled} collapse={collapse}/>
           )}
 
           {title && (
-            <ListItemTextStyled depth={depth} styles={styles} active={active} open={open} disabled={disabled} collapse={collapse} primary={title}/>
+            <ListItemTextStyled depth={depth} styles={styles} active={active} here={here} open={open} disabled={disabled} collapse={collapse} primary={title}/>
           )}
           
           {hasChildren && ( 
-            <NavItemArrow depth={depth} styles={styles} active={active} open={open} disabled={disabled} collapse={collapse}/> 
+            <NavItemArrow depth={depth} styles={styles} active={active} here={here} open={open} disabled={disabled} collapse={collapse}/> 
           )}
         </ListItemButtonStyled>
       )}
@@ -94,7 +87,7 @@ const NavItemComponent = ({
         <Collapse in={open} timeout="auto" unmountOnExit>
           <List component="div" disablePadding>
             {(children?.items as ReadonlyArray<NavItemOptionsType>).map((item, index) => (
-              <NavItem key={`${index}-${item.title}`} depth={depth + 1} options={item} styles={styles} open={open} collapse={collapse}/>
+              <NavItem key={`${index}-${item.title}`} depth={depth + 1} options={item} styles={styles} collapse={collapse}/>
             ))}
           </List>
         </Collapse>

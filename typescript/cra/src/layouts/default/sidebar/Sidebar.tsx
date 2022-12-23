@@ -49,8 +49,7 @@ const Sidebar = () => {
           }}
         >
           <SidebarHeader/>
-          <SidebarNav/>
-          <SidebarFooter/>          
+          <SidebarNav/>       
         </Drawer>
       )}
 
@@ -68,8 +67,7 @@ const Sidebar = () => {
             },
           }}
         >   
-          <SidebarNav/>
-          <SidebarFooter/>          
+          <SidebarNav/>       
         </Drawer>
       )}
     </Box>
