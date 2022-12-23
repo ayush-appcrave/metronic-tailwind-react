@@ -15,9 +15,6 @@ export type NavType = {
 export type NavItemType = {
 	options: NavItemOptionsType,	
 	collapse?: boolean;
-	active?: boolean;
-	open?: boolean,
-	disabled?: boolean;
 	styles?: any;
 	depth?: number;
 };
@@ -45,7 +42,8 @@ export type NavItemArrowType = {
 	depth?: number;
 	collapse?: boolean;
 	active?: boolean;
-	open?: boolean,
+	open?: boolean;
+	here?: boolean,
 	disabled?: boolean;
 	styles?: any;
 };
@@ -55,7 +53,8 @@ export type NavItemBulletType = {
 	depth?: number;
 	collapse?: boolean;
 	active?: boolean;
-	open?: boolean,
+	open?: boolean;
+	here?: boolean,
 	disabled?: boolean;
 	styles?: any;
 };
@@ -64,7 +63,8 @@ export type NavItemChildType = {
 	depth?: number;
 	collapse?: boolean;
 	active?: boolean;
-	open?: boolean,
+	open?: boolean;
+	here?: boolean,
 	disabled?: boolean;
 	styles?: any
 };

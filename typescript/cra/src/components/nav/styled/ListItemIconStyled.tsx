@@ -3,8 +3,8 @@ import { ListItemIcon } from "@mui/material";
 import { NavItemChildType } from "..";
 
 export const ListItemIconStyled = styled(ListItemIcon, {
-	shouldForwardProp: (prop) => ["depth", "styles", "active", "open", "collapse", "disabled"].includes(prop as string) === false
-}) <NavItemChildType> (({depth, active, open, disabled, styles, theme}) => {
+	shouldForwardProp: (prop) => ["depth", "styles", "active", "here", "open", "collapse", "disabled"].includes(prop as string) === false
+}) <NavItemChildType> (({depth, active, here, open, disabled, styles, theme}) => {
 
 	return {
 		height: 18,
