@@ -2,6 +2,7 @@ import { useState, useEffect, memo, useMemo } from "react";
 import { SVGIcon } from "..";
 import { Link as RouterLink, useLocation } from "react-router-dom";
 import { useMatchPath } from "../../hooks/useMatchPath";
+import { matchPath } from "../../utils/Router";
 import { Link, Collapse, Divider, List, ListItemButton, ListItemIcon, ListItemText, ListItemButtonProps } from "@mui/material";
 import { DividerStyled, ListSubheaderStyled, ListItemButtonStyled, ListItemTextStyled, ListItemIconStyled } from "..";
 import { NavItemArrow, NavItemBullet, NavItemType, NavItemOptionsType, NavConfigType } from "..";
@@ -18,11 +19,23 @@ const NavItemComponent = ({
 
   const { match } = useMatchPath(path);
 
-  const [ open, setOpen ] = useState(match);
+  const getInitialOpen = ():boolean => {  
+    if (match) {
+      return true;
+    }
 
-  const active = match;
+    if (children?.items) {
+      return hasActiveChild(pathname, children.items as NavConfigType);
+    }
 
-  const disabled = false;
+    return false;
+  };
+
+  const [ open, setOpen ] = useState(getInitialOpen());
+
+  const active: boolean = match;
+
+  const disabled: boolean = false;
 
   const handleToggle = () => {
     setOpen(!open); 
@@ -44,25 +57,7 @@ const NavItemComponent = ({
     
   const hasChildren: boolean = useMemo(() => {
     return children !== undefined && children.items.length > 0;
-  }, [children]);
-
-  const walkChildren = (items: ReadonlyArray<NavItemOptionsType>) => {
-    {items && items.map((item, index) => {
-      if (item.path) {
-        const { match } = useMatchPath(item.path);
-
-        if (match) {
-          setOpen(true);
-        } else if (item.children?.items) {
-          walkChildren(item.children?.items as ReadonlyArray<NavItemOptionsType>);
-        }
-      }
-    })}
-  }
-
-  if (children?.items) {
-    walkChildren(children.items as ReadonlyArray<NavItemOptionsType>);
-  }  
+  }, [children]); 
 
   const renderItemContent = (
     <>
@@ -131,6 +126,18 @@ const NavItemComponent = ({
  
   return renderItem();
 };
+
+const hasActiveChild = (pathname: string, items: NavConfigType):boolean => {
+  for (const item of items){
+    if (item.path && matchPath(item.path, pathname)) {
+      return true;
+    } else if (item.children?.items) {
+      return hasActiveChild(pathname, item.children.items as NavConfigType);
+    } 
+  }
+
+  return false;
+} 
 
 const NavItem = memo(NavItemComponent);
 export { NavItem };

@@ -6,7 +6,7 @@ import { NAV_COMMON, NAV_VERTICAL } from "../config/navs.config";
 const NAVS_CONFIGS_KEY = "navs-config";
 
 export type NavsConfigType = {
-  commonNav: NavConfigType;
+  commonNav: { [key: string]: NavConfigType };
   verticalNav: NavConfigType;
 };
 export type NavsProviderProps = {

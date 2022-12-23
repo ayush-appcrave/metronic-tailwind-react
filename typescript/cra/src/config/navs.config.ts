@@ -23,7 +23,7 @@ const PATHS_GENERAL: PathsType = {
   page500: "/500",
 };
 
-const NAV_COMMON: NavConfigType = {
+const NAV_COMMON: { [key: string]: NavConfigType } = {
   dashboards: [
     {
       key: 'dashboards-multipurpose',
