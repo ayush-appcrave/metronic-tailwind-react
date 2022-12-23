@@ -46,6 +46,24 @@ const NavItemComponent = ({
     return children !== undefined && children.items.length > 0;
   }, [children]);
 
+  const walkChildren = (items: ReadonlyArray<NavItemOptionsType>) => {
+    {items && items.map((item, index) => {
+      if (item.path) {
+        const { match } = useMatchPath(item.path);
+
+        if (match) {
+          setOpen(true);
+        } else if (item.children?.items) {
+          walkChildren(item.children?.items as ReadonlyArray<NavItemOptionsType>);
+        }
+      }
+    })}
+  }
+
+  if (children?.items) {
+    walkChildren(children.items as ReadonlyArray<NavItemOptionsType>);
+  }  
+
   const renderItemContent = (
     <>
       {divider ? (
