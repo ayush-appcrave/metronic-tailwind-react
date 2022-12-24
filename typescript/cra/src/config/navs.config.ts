@@ -30,6 +30,10 @@ const NAV_COMMON: { [key: string]: NavConfigType } = {
       title: "Multipurpose",
       path: "/dashboard",
       bullet: true,
+      badge: {
+        content: "New",
+        color: "success"
+      },
       onClick: () => {
         console.log("New clicked");
       },

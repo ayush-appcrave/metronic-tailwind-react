@@ -5,7 +5,7 @@ import { useMatchPath } from "../../hooks/useMatchPath";
 import { matchPath } from "../../utils/Router";
 import { Link, Collapse, Divider, List, ListItemButton, ListItemIcon, ListItemText, ListItemButtonProps } from "@mui/material";
 import { DividerStyled, ListSubheaderStyled, ListItemButtonStyled, ListItemTextStyled, ListItemIconStyled, BadgeStyled } from "..";
-import { NavItemSub, NavItemArrow, NavItemBullet, NavItemType, NavItemOptionsType, NavConfigType } from "..";
+import { NavItemArrow, NavItemBullet, NavItemType, NavItemOptionsType, NavConfigType } from "..";
 
 const NavItemComponent = ({
   options,  
@@ -49,7 +49,7 @@ const NavItemComponent = ({
     return children !== undefined && children.items.length > 0;
   }, [children]); 
 
-  const renderContent = (
+  const renderItemContent = (
     <>
       {divider ? (
         <DividerStyled sx={{ 
@@ -87,44 +87,41 @@ const NavItemComponent = ({
         </ListItemButtonStyled>
       )}
 
-      {(children !== undefined && children.items.length > 0) && (     
-        <NavItemSub 
-          variant={children?.variant ? children.variant : "inline"}
-          direction={children?.direction ? children.direction : "vertical"} 
-          accordion={children?.accordion ? children.accordion : false} 
-          open={open} 
-          depth={depth + 1} 
-          items={children.items} 
-          styles={styles} 
-          collapse={collapse} 
-        />
+      {hasChildren && (        
+        <Collapse in={open} timeout="auto" unmountOnExit>
+          <List component="div" disablePadding>
+            {(children?.items as ReadonlyArray<NavItemOptionsType>).map((item, index) => (
+              <NavItem key={`${index}-${item.title}`} depth={depth + 1} options={item} styles={styles} collapse={collapse}/>
+            ))}
+          </List>
+        </Collapse>
       )}
     </>
   );
 
-  const renderMain = () => {
+  const renderItem = () => {
     if (externalLink) {
       const target = newTab === true ? '_blank' : '_self';
 
       return (
         <Link href={path} target={target} rel="noopener" underline="none">
-          {renderContent}
+          {renderItemContent}
         </Link>
       );
     }   
 
     if (hasChildren) {
-      return renderContent;
+      return renderItemContent;
     }
 
     return (
       <Link component={RouterLink} to={path} underline="none">
-        {renderContent}
+        {renderItemContent}
       </Link>
     );
   }
  
-  return renderMain();
+  return renderItem();
 };
 
 const hasActiveChild = (pathname: string, items: NavConfigType):boolean => {

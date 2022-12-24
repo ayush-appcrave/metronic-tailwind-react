@@ -1,6 +1,5 @@
 import { AuthProvider, AuthInit } from "./auth";
 import { LayoutsProvider } from "./providers/LayoutsProvider";
-import { NavsProvider } from "./providers/NavsProvider";
 import { SettingsProvider } from "./providers/SettingsProvider";
 import { ThemeProvider } from "./providers/ThemeProvider";
 import { TranslationProvider } from "./providers/TranslationProvider";
@@ -12,15 +11,13 @@ const App = () => (
   <AuthProvider>
     <TranslationProvider>
       <SettingsProvider>
-        <NavsProvider>
-          <ThemeProvider>
-            <LayoutsProvider>
-              <AuthInit>
-                <AppRouting />
-              </AuthInit>
-            </LayoutsProvider>
-          </ThemeProvider>
-        </NavsProvider>
+        <ThemeProvider>
+          <LayoutsProvider>
+            <AuthInit>
+              <AppRouting/>
+            </AuthInit>
+          </LayoutsProvider>
+        </ThemeProvider>
       </SettingsProvider>
     </TranslationProvider>
   </AuthProvider>
