@@ -1,8 +1,8 @@
-import {ChangeEvent, FormEvent, useState} from 'react';
-import { Data, rowsData } from "./helpers/users";
+import {ChangeEvent, useEffect, useMemo, useState} from 'react';
+import { User } from "./core/_models";
 import { toAbsoluteUrl } from "utils";
 import {useNavigate} from "react-router";
-import { headCells } from "./helpers/headCellConfiguration";
+import { headCells } from "./core/headCellConfiguration";
 import { Order } from "./@types/sort";
 import { EnhancedTableHead } from "./components/EnhancedTableHead";
 import { AlertDialog } from "./components/AlertDialog";
@@ -11,7 +11,7 @@ import {
     getComparator,
     stableSort,
     filterRow,
-} from "./helpers/tableSortAndFilterHelpers";
+} from "./core/tableSortAndFilterHelpers";
 import {
     Avatar,
     Button,
@@ -29,15 +29,19 @@ import {
     Switch,
 } from "@mui/material";
 import {EditUserDialog} from "./components/EditUserDialog";
+import {useQueryResponseData, useQueryResponseLoading} from "./core/QueryResponseProvider";
 
-function UsersManagementPage() {
+function UsersManagementPageAPI() {
+    const users = useQueryResponseData()
+    // const isLoading = useQueryResponseLoading()
+    const data = useMemo(() => users, [users])
     const [order, setOrder] = useState<Order>('asc');
-    const [orderBy, setOrderBy] = useState<keyof Data>('company');
-    const [selected, setSelected] = useState<readonly (number | string)[]>([]);
+    const [orderBy, setOrderBy] = useState<keyof User>('role');
+    const [selected, setSelected] = useState<readonly (string)[]>([]);
     const [page, setPage] = useState(0);
     const [dense, setDense] = useState(false);
     const [rowsPerPage, setRowsPerPage] = useState(5);
-    const [rows, setRows] = useState<Data[]>(rowsData);
+    const [rows, setRows] = useState<User[]>(data);
     const navigate = useNavigate();
     const [open, setOpen] = useState(false);
     const [userToDeleteId, setUserToDeleteId] = useState<number | string>(1);
@@ -47,6 +51,10 @@ function UsersManagementPage() {
     const [ nameFilter, setNameFilter ] = useState<string | null>(null);
 
     // -------------------
+
+    useEffect(()=>{
+        setRows(data);
+    }, [data])
 
     const handleClickOpen = (id:number|string) => {
         setUserToDeleteId(id);
@@ -76,7 +84,7 @@ function UsersManagementPage() {
     }
     const handleRequestSort = (
         event: React.FormEvent<unknown>,
-        property: keyof Data | null,
+        property: keyof User | null,
     ) => {
         const isAsc = orderBy === property && order === 'asc';
         setOrder(isAsc ? 'desc' : 'asc');
@@ -101,9 +109,9 @@ function UsersManagementPage() {
         setNameFilter(e.target.value);
         setPage(0);
     }
-    const handleClick = (event: React.FormEvent<unknown>, id: number | string) => {
+    const handleClick = (event: React.FormEvent<unknown>, id: string) => {
         const selectedIndex = selected.indexOf(id);
-        let newSelected: readonly (number | string)[] = [];
+        let newSelected: readonly (string)[] = [];
 
         if (selectedIndex === -1) {
             newSelected = newSelected.concat(selected, id);
@@ -136,7 +144,7 @@ function UsersManagementPage() {
 
     // -------------------
 
-    const isSelected = (id: number | string) => selected.indexOf(id) !== -1;
+    const isSelected = (id: string) => selected.indexOf(id) !== -1;
 
     // Avoid a layout jump when reaching the last page with empty rows.
     const emptyRows =
@@ -145,7 +153,7 @@ function UsersManagementPage() {
     return (
         <Box sx={{ width: '100%' }}>
             <Paper sx={{ width: '100%', mb: 2, mt: 10 }}>
-                <EnhancedTableToolbar numSelected={selected.length} handleRoleFilterChange={handleRoleFilterChange} roleFilter={roleFilter} handleNameFilterChange={handleNameFilterChange} nameFilter={nameFilter} handleSelectedUsersDelete={handleSelectedUsersDelete} />
+                {/*<EnhancedTableToolbar numSelected={selected.length} handleRoleFilterChange={handleRoleFilterChange} roleFilter={roleFilter} handleNameFilterChange={handleNameFilterChange} nameFilter={nameFilter} handleSelectedUsersDelete={handleSelectedUsersDelete} />*/}
                 <TableContainer>
                     <Table
                         sx={{ minWidth: 750 }}
@@ -207,10 +215,10 @@ function UsersManagementPage() {
                                                     </Box>
                                                 </Box>
                                             </TableCell>
-                                            <TableCell align="left">{row.company}</TableCell>
+                                            <TableCell align="left">{row.name}</TableCell>
                                             <TableCell align="left">{row.role}</TableCell>
-                                            <TableCell align="left">{String(row.verified)}</TableCell>
-                                            <TableCell align="left">{row.status}</TableCell>
+                                            <TableCell align="left">{String(row.online)}</TableCell>
+                                            <TableCell align="left">{row.email}</TableCell>
                                             <TableCell align="left">
                                                 <Button onClick={(e)=>handleUserEdit(row.id)}>Edit</Button>
                                                 <Button onClick={(e)=>handleClickOpe2(row.id)}>Edit in Modal</Button>
@@ -266,4 +274,4 @@ function UsersManagementPage() {
     );
 }
 
-export { UsersManagementPage }
+export { UsersManagementPageAPI }

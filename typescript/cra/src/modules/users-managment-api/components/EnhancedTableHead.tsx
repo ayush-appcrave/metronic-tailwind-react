@@ -1,12 +1,12 @@
-import {Data} from "../helpers/users";
+import {User} from "../core/_models";
 import {Box, Checkbox, TableCell, TableHead, TableRow, TableSortLabel} from "@mui/material";
 import {visuallyHidden} from "@mui/utils";
 import { Order } from "../@types/sort";
-import { headCells } from "../helpers/headCellConfiguration";
+import { headCells } from "../core/headCellConfiguration";
 
 interface EnhancedTableProps {
     numSelected: number;
-    onRequestSort: (event: React.FormEvent<unknown>, property: keyof Data | null) => void;
+    onRequestSort: (event: React.FormEvent<unknown>, property: keyof User | null) => void;
     onSelectAllClick: (event: React.ChangeEvent<HTMLInputElement>) => void;
     order: Order;
     orderBy: string;
@@ -17,7 +17,7 @@ function EnhancedTableHead(props: EnhancedTableProps) {
     const { onSelectAllClick, order, orderBy, numSelected, rowCount, onRequestSort } =
         props;
     const createSortHandler =
-        (property: keyof Data | null) => (event: React.FormEvent<unknown>) => {
+        (property: keyof User | null) => (event: React.FormEvent<unknown>) => {
             onRequestSort(event, property);
         };
 

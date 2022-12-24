@@ -1,11 +1,11 @@
 import {useParams} from "react-router";
-import {Data, rowsData} from "./helpers/users";
+import {Data, rowsData} from "./core/users";
 import {Button, Card, FormGroup, MenuItem, Select, TextField} from '@mui/material';
 import { FormEvent,useState} from "react";
 import FormControlLabel from "@mui/material/FormControlLabel";
 import Switch from "@mui/material/Switch";
 
-function EditUserPage(){
+function EditUserPageAPI(){
     const { id } = useParams();
     const currentUser = () => {
         const user = rowsData.find(row => row.id === Number(id));
@@ -99,4 +99,4 @@ function EditUserPage(){
     }</Card>)
 }
 
-export { EditUserPage }
+export { EditUserPageAPI }

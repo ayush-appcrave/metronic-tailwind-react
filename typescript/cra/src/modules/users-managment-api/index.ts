@@ -1,3 +1,4 @@
 export * from "./UsersManagmentPage";
+export * from "./UserManagmentPageWrapper";
 export * from "./EditUserPage";
-export * from "./helpers/users";
+export * from "./core/users";

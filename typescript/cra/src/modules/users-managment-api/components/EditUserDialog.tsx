@@ -1,5 +1,5 @@
 import {FormEvent, useEffect, useState} from "react";
-import {Data, rowsData} from "../helpers/users";
+import {Data, rowsData} from "../core/users";
 import {Button, Dialog, FormControlLabel, FormGroup, MenuItem, Select, Switch, TextField} from "@mui/material";
 
 interface EditUserDialogProps {

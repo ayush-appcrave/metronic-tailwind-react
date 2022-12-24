@@ -1,8 +1,8 @@
-import {Data} from "./users";
+import {User} from "./_models";
 
 interface HeadCell {
     disablePadding?: boolean;
-    id: keyof Data | null;
+    id: keyof User | null;
     label?: string;
     numeric?: boolean;
     hideSortIcon?: boolean;
@@ -16,10 +16,10 @@ const headCells: readonly HeadCell[] = [
         label: 'Name',
     },
     {
-        id: 'company',
+        id: 'position',
         numeric: false,
         disablePadding: false,
-        label: 'Company',
+        label: 'Position',
     },
     {
         id: 'role',
@@ -28,13 +28,13 @@ const headCells: readonly HeadCell[] = [
         label: 'Role',
     },
     {
-        id: 'verified',
+        id: 'online',
         numeric: false,
         disablePadding: false,
         label: 'Verified',
     },
     {
-        id: 'status',
+        id: 'email',
         numeric: false,
         disablePadding: false,
         label: 'Status',

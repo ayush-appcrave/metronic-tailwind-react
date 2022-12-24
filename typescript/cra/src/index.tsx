@@ -5,6 +5,7 @@ import { setupAxios } from "./auth";
 import "./index.css";
 import "material-icons/iconfont/material-icons.css";
 import { App } from "./App";
+import {QueryClient, QueryClientProvider} from 'react-query'
 import reportWebVitals from "./reportWebVitals";
 // TODO: clarify helmet
 // import { Helmet } from "react-helmet";
@@ -15,18 +16,20 @@ import reportWebVitals from "./reportWebVitals";
  * @see https://github.com/axios/axios#interceptors
  */
  setupAxios(axios)
- 
 
+const queryClient = new QueryClient()
 const root = ReactDOM.createRoot(
   document.getElementById("root") as HTMLElement
 );
 root.render(
-  <React.StrictMode>
-    {/* <Helmet>
-      <meta name="theme-color" content={palette.light.primary.main} />
-    </Helmet> */}
-    <App />
-  </React.StrictMode>
+    <QueryClientProvider client={queryClient}>
+      <React.StrictMode>
+        {/* <Helmet>
+          <meta name="theme-color" content={palette.light.primary.main} />
+        </Helmet> */}
+        <App />
+      </React.StrictMode>
+    </QueryClientProvider>
 );
 
 // If you want to start measuring performance in your app, pass a function

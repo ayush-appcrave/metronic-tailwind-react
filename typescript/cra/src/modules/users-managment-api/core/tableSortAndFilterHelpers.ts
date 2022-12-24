@@ -1,5 +1,5 @@
 import {Order} from "../@types/sort";
-import {Data} from "./users";
+import {User} from "../core/_models";
 
 function descendingComparator<T>(a: T, b: T, orderBy: keyof T) {
     if (b[orderBy] < a[orderBy]) {
@@ -25,7 +25,7 @@ function getComparator<Key extends keyof any>(
 
 // This method is created for cross-browser compatibility, if you don't
 // need to support IE11, you can use Array.prototype.sort() directly
-function stableSort<T>(array: Data[], comparator: (a: T, b: T) => number) {
+function stableSort<T>(array: User[], comparator: (a: T, b: T) => number) {
     const stabilizedThis = array.map((el, index) => [el, index] as [T, number]);
     stabilizedThis.sort((a, b) => {
         const order = comparator(a[0], b[0]);
@@ -37,7 +37,7 @@ function stableSort<T>(array: Data[], comparator: (a: T, b: T) => number) {
     return stabilizedThis.map((el) => el[0]);
 }
 
-function filterRow(array: Data[], roleFilter:string, nameFilter:string|null):Data[]{
+function filterRow(array: User[], roleFilter:string, nameFilter:string|null):User[]{
     let filteredItems = array;
 
     if(roleFilter!=='all'){
@@ -45,7 +45,7 @@ function filterRow(array: Data[], roleFilter:string, nameFilter:string|null):Dat
     }
 
     if(nameFilter!==null){
-        filteredItems = filteredItems.filter((row) => row.name.toLowerCase().indexOf(nameFilter.toLowerCase()) !== -1);
+        filteredItems = filteredItems.filter((row) => row.name?.toLowerCase().indexOf(nameFilter.toLowerCase()) !== -1);
     }
 
 
