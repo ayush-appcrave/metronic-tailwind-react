@@ -1,15 +1,18 @@
 import { number } from "yup";
 import { ListItemButtonProps } from "@mui/material";
+import { ColorSchema } from "../../theme/palette";
 
 export type NavType = {
 	variant?: "inline" | "popper";
 	direction?: "vertical" | "horizontal";
 	accordion?: boolean;
 	collapse?: boolean;
-	height?: number;
+	open?: boolean;
+	height?: number | string;
 	maxHeight?: number;
 	items: NavConfigType;
-	styles?: any
+	styles?: any;
+	depth?: number;
 };
 
 export type NavItemType = {
@@ -26,7 +29,10 @@ export type NavItemOptionsType = {
 	externalLink?:boolean;
 	newTab?: boolean;
 	bullet?: boolean;
-	badge?: boolean;
+	badge?: {
+		content: string,
+		color: ColorSchema
+	};
 	icon?: string;
 	divider?: boolean;
 	subheader?: string;
