@@ -2,16 +2,17 @@ import { Box, List, ListSubheader } from '@mui/material';
 import { useDefaultLayout } from '..';
 import { useNavs } from '../../../providers/NavsProvider';
 import Scrollbar from '../../../components/scrollbar';
-import { Nav, NavItem, NavConfigType } from '../../../components/nav';
+import { Nav, NavItem, NavConfigType, NavVerticalStylesConfig } from '../../../components/nav';
 
 const SidebarNav = () => {
   const {isSidebarCollapse} = useDefaultLayout();
 	const { navs } = useNavs();
+	const styles = NavVerticalStylesConfig();
 
   return (
     <Box
 			sx={{        
-				px: 1.5,
+				px: 2,
 			}}
 		>
 			<Scrollbar
@@ -20,13 +21,10 @@ const SidebarNav = () => {
 				}}              
 			>
 				<Nav 
-					type="inline"
+					variant="inline"
 					direction="vertical"
-					indention={4}
 					items={navs.verticalNav}
-					sx={{
-						
-					}}
+					styles={styles}
 				/>				
 			</Scrollbar>
 		</Box>

@@ -1,12 +1,12 @@
 import { useState, createContext, useContext, PropsWithChildren } from "react";
 import { getData, setData } from "../utils";
 import { NavConfigType } from "../components/nav";
-import { COMMON_NAV, VERTICAL_NAV } from "../config/navs.config";
+import { NAV_COMMON, NAV_VERTICAL } from "../config/navs.config";
 
 const NAVS_CONFIGS_KEY = "navs-config";
 
 export type NavsConfigType = {
-  commonNav: NavConfigType;
+  commonNav: { [key: string]: NavConfigType };
   verticalNav: NavConfigType;
 };
 export type NavsProviderProps = {
@@ -16,8 +16,8 @@ export type NavsProviderProps = {
 };
 
 const initNavs: NavsConfigType = {
-  commonNav: COMMON_NAV,
-  verticalNav: VERTICAL_NAV,
+  commonNav: NAV_COMMON,
+  verticalNav: NAV_VERTICAL,
 };
 
 const calculateInitialNavs = () => {

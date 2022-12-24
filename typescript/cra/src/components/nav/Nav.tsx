@@ -1,22 +1,20 @@
-import { useState, memo, useMemo } from "react";
-import { Link } from "react-router-dom";
-import { Collapse, Divider, List, ListItemButton, ListItemIcon, ListItemText, ListSubheader } from "@mui/material";
-import { ExpandMore, ExpandLess } from "@mui/icons-material";
+import { useState, useEffect, memo, useMemo } from "react";
+import { List } from "@mui/material";
 import { SVGIcon } from "..";
-import { NavType, NavItemType } from "./types";
-import { NavItem } from "./";
+import { NavItem, NavType, NavItemType, NavItemOptionsType } from "./";
 
 const NavComponent = ({
-  type,
-	direction,
-	collapsible,
+  variant = "inline",
+	direction = "vertical",
+  accordion,
+	collapse,
 	height,
 	maxHeight,
 	items,
-  indention = 0,
-  sx  
-}: NavType & { indention: number, sx?: Object }) => {
-
+  sx,
+  styles
+}: NavType & { sx?: Object }) => {
+    
   return (
     <List
       sx={{ 
@@ -26,14 +24,9 @@ const NavComponent = ({
       component="nav"
       aria-labelledby="nav-list"
     >
-      {(items as ReadonlyArray<NavItemType>).map(
+      {(items as ReadonlyArray<NavItemOptionsType>).map(
         (item, index) => (
-          <NavItem 
-            key={`${index}-${item.title}`} 
-            pl={0}
-            indention={indention}               
-            {...item}                   
-          />
+          <NavItem key={`${index}-${item.title}`} depth={1} collapse={collapse} options={item} styles={styles}/>
         )
       )}
     </List>

@@ -1,8 +1,8 @@
 import { NavConfigType } from "../components/nav";
-import { PATHS } from ".";
+import { PathsType } from ".";
 
 // Auth paths
-const AUTH_PATHS: PATHS = {
+const PATHS_AUTH: PathsType = {
   login: "/auth/login",
   register: "/auth/register",
   verify: "/auth/verify",
@@ -11,7 +11,7 @@ const AUTH_PATHS: PATHS = {
 };
 
 // General paths
-const GENERAL_PATHS: PATHS = {
+const PATHS_GENERAL: PathsType = {
   comingSoon: "/coming-soon",
   maintenance: "/maintenance",
   pricing: "/pricing",
@@ -23,9 +23,10 @@ const GENERAL_PATHS: PATHS = {
   page500: "/500",
 };
 
-const COMMON_NAV: NavConfigType = {
+const NAV_COMMON: { [key: string]: NavConfigType } = {
   dashboards: [
     {
+      key: 'dashboards-multipurpose',
       title: "Multipurpose",
       path: "/dashboard",
       bullet: true,
@@ -34,6 +35,7 @@ const COMMON_NAV: NavConfigType = {
       },
     },
     {
+      key: 'dashboards-eCommerce',
       title: "eCommerce",
       path: "/dashboard2",
       bullet: true,
@@ -42,18 +44,24 @@ const COMMON_NAV: NavConfigType = {
       },
     },
     {
+      key: 'dashboards-eCommerce',
       title: "Marketing",
-      path: "#marketing",
+      path: "/marketing",
       bullet: true,
     },
     {
+      key: 'dashboards-eCommerce',
       title: "Crypto",
-      path: "#crypto",
+      path: "https://keenthemes.com",
+      externalLink: true,
+      newTab: true,
       bullet: true,
     },
     {
+      key: 'dashboards-Projects',
       title: "Projects",
-      path: "#projects",
+      path: "https://keenthemes.com",
+      externalLink: true,
       bullet: true,
     },
   ],
@@ -127,45 +135,45 @@ const COMMON_NAV: NavConfigType = {
   ],
 };
 
-const VERTICAL_NAV: NavConfigType = [
+const NAV_VERTICAL: NavConfigType = [
   {
     title: "Dashboards",
     icon: "general/gen025.svg",
     children: {
-      collapsible: true,
-      items: COMMON_NAV.dashboards,
+      accordion: true,
+      items: NAV_COMMON.dashboards,
     },
   },
   {
     title: "Pages",
-    icon: "general/gen024.svg",
+    icon: "files/fil003.svg",
     children: {
-      collapsible: true,
-      items: COMMON_NAV.pages,
+      accordion: true,
+      items: NAV_COMMON.pages,
     },
   },
   {
     title: "Authentication",
-    icon: "general/gen023.svg",
+    icon: "general/gen002.svg",
     children: {
-      collapsible: true,
-      items: COMMON_NAV.authentication,
+      accordion: true,
+      items: NAV_COMMON.authentication,
     },
   },
   {
     title: "Account",
-    icon: "general/gen022.svg",
+    icon: "communication/com013.svg",
     children: {
-      collapsible: true,
-      items: COMMON_NAV.account,
+      accordion: true,
+      items: NAV_COMMON.account,
     },
   },
   {
     title: "Apps",
-    icon: "general/gen021.svg",
+    icon: "finance/fin006.svg",
     children: {
-      collapsible: true,
-      items: COMMON_NAV.apps,
+      accordion: true,
+      items: NAV_COMMON.apps,
     },
   },
   {
@@ -173,14 +181,14 @@ const VERTICAL_NAV: NavConfigType = [
   },
   {
     title: "Documentation",
-    icon: "general/gen020.svg",
+    icon: "arrows/arr062.svg",
     path: "previews.keenthemes.com/hero/mui/docs",
   },
   {
     title: "Changelog",
-    icon: "general/gen019.svg",
+    icon: "arrows/arr062.svg",
     path: "previews.keenthemes.com/hero/mui/docs/#/changelog",
   },
 ];
 
-export { AUTH_PATHS, GENERAL_PATHS, COMMON_NAV, VERTICAL_NAV };
+export { PATHS_AUTH, PATHS_GENERAL, NAV_COMMON, NAV_VERTICAL };
