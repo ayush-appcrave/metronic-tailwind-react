@@ -1,2 +1,3 @@
-export * from "./UsersManagmentAPI";
-export * from "./users";
+export * from "./UsersManagmentPage";
+export * from "./EditUserPage";
+export * from "./helpers/users";
