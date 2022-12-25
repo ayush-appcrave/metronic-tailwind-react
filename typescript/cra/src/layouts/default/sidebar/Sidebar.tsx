@@ -15,14 +15,24 @@ const Sidebar = () => {
   const isMobile = useResponsive('down', 'lg');
   const styles = DefaultLayoutStylesConfig();
   const widthTransition = 'width ' + styles.SIDEBAR_TRANSITION_DURATION + ' ' + styles.SIDEBAR_TRANSITION_TIMING_FUNCTION;
-  const {isSidebarCollapse, setSidebarCollapse} = useDefaultLayout();
+  const {isSidebarHover, isSidebarCollapse, setSidebarCollapse, setSidebarHover} = useDefaultLayout();
 
   useEffect(() => {
-    //console.log('sidebar toggle');
-  }, [isSidebarCollapse]);
+    console.log('mouse hover:' + isSidebarHover);
+  }, [isSidebarHover]);
+
+  const handleSidebarMouseOver = () => { 
+    setSidebarHover(true);
+  };
+
+  const handleSidebarMouseOut = () => {
+    setSidebarHover(false);
+  };
 
   return (
     <Box
+      onMouseOver={handleSidebarMouseOver}
+      onMouseOut={handleSidebarMouseOut}
       sx={{
         position: 'relative',
         backgroundColor: theme.palette.background.default,

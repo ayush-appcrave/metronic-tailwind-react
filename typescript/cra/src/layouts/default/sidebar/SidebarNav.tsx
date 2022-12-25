@@ -5,7 +5,7 @@ import { Nav, NavItem, NavConfigType, NavVerticalStylesConfig } from '../../../c
 import { NAV_VERTICAL } from "../../../config/navs.config";
 
 const SidebarNav = () => {
-  const {isSidebarCollapse} = useDefaultLayout();
+  const {isSidebarHover, isSidebarCollapse} = useDefaultLayout();
 	const styles = NavVerticalStylesConfig();
 
   return (
@@ -20,6 +20,7 @@ const SidebarNav = () => {
 				variant="inline"
 				direction="vertical"
 				collapse={isSidebarCollapse}
+				hover={isSidebarHover}
 				items={NAV_VERTICAL}
 				styles={styles}
 			/>				

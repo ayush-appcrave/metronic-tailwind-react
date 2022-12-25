@@ -10,6 +10,7 @@ import { NavItemArrow, NavItemBullet, NavItemType, NavItemOptionsType, NavConfig
 const NavItemComponent = ({
   options,  
   collapse = false,
+  hover = false,
   styles,
   depth = 1
 }: NavItemType) => {

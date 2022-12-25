@@ -8,6 +8,7 @@ const NavComponent = ({
 	direction = "vertical",
   accordion,
 	collapse,
+  hover,
 	height,
 	maxHeight,
 	items,
@@ -26,7 +27,7 @@ const NavComponent = ({
     >
       {(items as ReadonlyArray<NavItemOptionsType>).map(
         (item, index) => (
-          <NavItem key={`${index}-${item.title}`} depth={1} collapse={collapse} options={item} styles={styles}/>
+          <NavItem key={`${index}-${item.title}`} depth={1} collapse={collapse} hover={hover} options={item} styles={styles}/>
         )
       )}
     </List>

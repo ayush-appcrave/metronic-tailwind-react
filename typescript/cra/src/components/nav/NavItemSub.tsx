@@ -9,6 +9,7 @@ const NavItemSubComponent = ({
 	height = 'auto',
 	maxHeight = 0,
 	collapse,
+  hover,
 	items,
 	styles,
   depth = 1,

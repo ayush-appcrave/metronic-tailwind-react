@@ -10,6 +10,7 @@ const NavItemBulletComponent = ({
   open = false,
   disabled = false,
   collapse = false,
+  hover = false,
   styles,
   depth = 1
 }: NavItemBulletType) => {
