@@ -12,6 +12,7 @@ const NavItemArrowComponent = ({
   open = false,
   disabled = false,
   collapse = false,
+  hover = false,
 	icon = "arrows/arr072.svg"
 }: NavItemArrowType ) => {
 

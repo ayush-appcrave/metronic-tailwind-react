@@ -5,12 +5,16 @@ import { defaultLayoutConfig } from "./DefaultLayoutConfig";
 
 type DefaultLayoutProviderProps = {
   isSidebarCollapse: boolean;
+  isSidebarHover: boolean;
+  setSidebarHover: (collapse: boolean) => void;
   setSidebarCollapse: (collapse: boolean) => void;
 } & ILayoutProvider;
 
 const initalLayoutProps: DefaultLayoutProviderProps = {
   layout: defaultLayoutConfig,
   isSidebarCollapse: true,
+  isSidebarHover: false,
+  setSidebarHover: (_: boolean) => {},
   setSidebarCollapse: (_: boolean) => {}
 };
 
@@ -25,6 +29,8 @@ const useDefaultLayout = () => useContext(DefaultLayoutContext);
 const DefaultLayoutProvider = ({ children }: PropsWithChildren) => {
   const {layouts, updateLayout} = useLayouts();
   
+  const [sidebarHoverState, setSidebarHoverState] = useState(false);
+
   const [layout, setLayout] = useState(getLayoutConfig(layouts));
 
   const setSidebarCollapse = (collapse: boolean) => {
@@ -38,12 +44,19 @@ const DefaultLayoutProvider = ({ children }: PropsWithChildren) => {
     updateLayout(updatedLayout);
   };
 
+  const setSidebarHover = (hover: boolean) => {
+    setSidebarHoverState(hover);
+  };
+
   const isSidebarCollapse: boolean = layout.options.sidebar.collapse;
+  let sidebarHover: boolean = false;
 
   return (
     <DefaultLayoutContext.Provider 
       value={{
         layout,
+        isSidebarHover: sidebarHoverState,
+        setSidebarHover,
         isSidebarCollapse,
         setSidebarCollapse
       }}

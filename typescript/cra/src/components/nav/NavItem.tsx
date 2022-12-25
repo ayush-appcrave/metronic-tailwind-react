@@ -10,6 +10,7 @@ import { NavItemSub, NavItemArrow, NavItemBullet, NavItemType, NavItemOptionsTyp
 const NavItemComponent = ({
   options,  
   collapse = false,
+  hover = false,
   styles,
   depth = 1
 }: NavItemType) => {
@@ -92,7 +93,8 @@ const NavItemComponent = ({
           variant={children?.variant ? children.variant : "inline"}
           direction={children?.direction ? children.direction : "vertical"} 
           accordion={children?.accordion ? children.accordion : false} 
-          open={open} 
+          open={open}
+          hover={hover} 
           depth={depth + 1} 
           items={children.items} 
           styles={styles} 
