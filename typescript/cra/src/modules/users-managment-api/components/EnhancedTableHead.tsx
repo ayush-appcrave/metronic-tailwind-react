@@ -3,6 +3,7 @@ import {Box, Checkbox, TableCell, TableHead, TableRow, TableSortLabel} from "@mu
 import {visuallyHidden} from "@mui/utils";
 import { Order } from "../@types/sort";
 import { headCells } from "../core/headCellConfiguration";
+import {useListView} from "../core/ListViewProvider";
 
 interface EnhancedTableProps {
     numSelected: number;
@@ -21,15 +22,16 @@ function EnhancedTableHead(props: EnhancedTableProps) {
             onRequestSort(event, property);
         };
 
+    const {isAllSelected, onSelectAll} = useListView()
+
     return (
         <TableHead>
             <TableRow>
                 <TableCell padding="checkbox">
                     <Checkbox
                         color="primary"
-                        indeterminate={numSelected > 0 && numSelected < rowCount}
-                        checked={rowCount > 0 && numSelected === rowCount}
-                        onChange={onSelectAllClick}
+                        checked={isAllSelected}
+                        onChange={onSelectAll}
                         inputProps={{
                             'aria-label': 'select all desserts',
                         }}
