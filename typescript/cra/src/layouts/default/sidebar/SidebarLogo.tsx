@@ -7,7 +7,7 @@ type Props = {
 };
 
 const SidebarLogo = ({ sx }: Props) => {
-  const {isSidebarCollapse} = useDefaultLayout();
+  const {isSidebarExpand, isSidebarCollapse} = useDefaultLayout();
 
   return (
     <a href="/" style={{lineHeight: '0px'}}>      
@@ -15,7 +15,7 @@ const SidebarLogo = ({ sx }: Props) => {
         src="/media/logos/default.svg" 
         alt="logo" 
         style={{ 
-          display: isSidebarCollapse ? 'none' : 'inline-block', 
+          display: !isSidebarExpand && isSidebarCollapse ? 'none' : 'inline-block', 
           height: '30px', 
           maxWidth: 'none', 
           cursor: 'pointer'
@@ -26,7 +26,7 @@ const SidebarLogo = ({ sx }: Props) => {
         src="/media/logos/default-mini.svg" 
         alt="logo" 
         style={{ 
-          display: isSidebarCollapse ? 'inline-block' : 'none', 
+          display: !isSidebarExpand && isSidebarCollapse ? 'inline-block' : 'none', 
           height: '30px', 
           maxWidth: 'none', 
           cursor: 'pointer'

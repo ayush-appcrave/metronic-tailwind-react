@@ -6,7 +6,7 @@ import { Content } from "../content/Content";
 import { useDefaultLayout, DefaultLayoutStylesConfig } from '../';
 
 const Main = ({ children }: PropsWithChildren) => {
-  const {isSidebarCollapse, setSidebarCollapse} = useDefaultLayout();
+  const {isSidebarCollapse, isSidebarExpand, setSidebarCollapse} = useDefaultLayout();
 
   const isDesktop = useResponsive('up', 'lg');
 

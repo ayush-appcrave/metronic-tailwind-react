@@ -12,7 +12,7 @@ const SidebarHeader = () => {
     } else {
       setSidebarCollapse(true);
     }
-  };
+  };  
 
   return (
     <Stack

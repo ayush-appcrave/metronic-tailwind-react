@@ -5,13 +5,14 @@ import { Nav, NavItem, NavConfigType, NavVerticalStylesConfig } from '../../../c
 import { NAV_VERTICAL } from "../../../config/navs.config";
 
 const SidebarNav = () => {
-  const {isSidebarHover, isSidebarCollapse} = useDefaultLayout();
+  const {isSidebarExpand, isSidebarCollapse} = useDefaultLayout();
 	const styles = NavVerticalStylesConfig();
 
   return (
 		<Scrollbar 
 			sx={{
-				height: 500,
+				height: 800,
+				overflow: 'hidden',
 				px: 1.5,
 				mx: 1
 			}}   
@@ -20,7 +21,7 @@ const SidebarNav = () => {
 				variant="inline"
 				direction="vertical"
 				collapse={isSidebarCollapse}
-				hover={isSidebarHover}
+				expand={isSidebarExpand}
 				items={NAV_VERTICAL}
 				styles={styles}
 			/>				

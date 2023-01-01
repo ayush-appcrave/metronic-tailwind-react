@@ -9,7 +9,7 @@ const NavItemSubComponent = ({
 	height = 'auto',
 	maxHeight = 0,
 	collapse,
-  hover,
+  expand,  
 	items,
 	styles,
   depth = 1,
@@ -21,7 +21,7 @@ const NavItemSubComponent = ({
       <>
         <List component="div" disablePadding>
           {(items as ReadonlyArray<NavItemOptionsType>).map((item, index) => (
-            <NavItem key={`${index}-${item.title}`} depth={depth + 1} options={item} styles={styles} collapse={collapse}/>
+            <NavItem key={`${index}-${item.title}`} depth={depth + 1} options={item} styles={styles} collapse={collapse} expand={expand}/>
           ))}
         </List>
       </>

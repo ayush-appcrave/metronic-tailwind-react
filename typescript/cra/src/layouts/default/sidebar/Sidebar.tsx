@@ -15,18 +15,18 @@ const Sidebar = () => {
   const isMobile = useResponsive('down', 'lg');
   const styles = DefaultLayoutStylesConfig();
   const widthTransition = 'width ' + styles.SIDEBAR_TRANSITION_DURATION + ' ' + styles.SIDEBAR_TRANSITION_TIMING_FUNCTION;
-  const {isSidebarHover, isSidebarCollapse, setSidebarCollapse, setSidebarHover} = useDefaultLayout();
+  const {isSidebarExpand, isSidebarCollapse, setSidebarCollapse, setSidebarExpand} = useDefaultLayout();
 
   useEffect(() => {
-    console.log('mouse hover:' + isSidebarHover);
-  }, [isSidebarHover]);
+    console.log('mouse hover:' + isSidebarExpand);
+  }, [isSidebarExpand]);
 
   const handleSidebarMouseOver = () => { 
-    setSidebarHover(true);
+    setSidebarExpand(true);
   };
 
   const handleSidebarMouseOut = () => {
-    setSidebarHover(false);
+    setSidebarExpand(false);
   };
 
   return (
@@ -51,7 +51,7 @@ const Sidebar = () => {
           variant="persistent"
           PaperProps={{
             sx: {
-              width: isSidebarCollapse ? styles.SIDEBAR_COLLAPSE_WIDTH : styles.SIDEBAR_WIDTH,
+              width: !isSidebarExpand && isSidebarCollapse ? styles.SIDEBAR_COLLAPSE_WIDTH : styles.SIDEBAR_WIDTH,
               transition: widthTransition,
               borderRight: '1px solid #EDEFF0',
               overflow: 'visible',              

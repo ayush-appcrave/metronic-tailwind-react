@@ -7,8 +7,20 @@ type Props = {
 };
 
 const SidebarCollapseButton = ({ onToggle }: Props) => {
-  const { isSidebarCollapse } = useDefaultLayout();
+  const { isSidebarExpand, isSidebarCollapse } = useDefaultLayout();
   const buttonSize = "32px";
+
+  const handleMouseOver = (event: React.MouseEvent<HTMLElement>) => { 
+    if (!isSidebarExpand) {
+      event.stopPropagation();
+    }    
+  };
+
+  const handleMouseOut = (event: React.MouseEvent<HTMLElement>) => {
+    if (!isSidebarExpand) {
+      event.stopPropagation();
+    }
+  };
 
   return (
     <ToggleButton
@@ -33,6 +45,8 @@ const SidebarCollapseButton = ({ onToggle }: Props) => {
         },
       }}
       onClick={onToggle}
+      onMouseOver={handleMouseOver}
+      onMouseOut={handleMouseOut}
       selected={isSidebarCollapse}
       aria-label="Toggle sidebar"
       component="button"

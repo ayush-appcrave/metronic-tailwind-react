@@ -10,7 +10,7 @@ import { NavItemSub, NavItemArrow, NavItemBullet, NavItemType, NavItemOptionsTyp
 const NavItemComponent = ({
   options,  
   collapse = false,
-  hover = false,
+  expand = false,
   styles,
   depth = 1
 }: NavItemType) => {
@@ -28,6 +28,16 @@ const NavItemComponent = ({
 
   const [ open, setOpen ] = useState(here);
 
+  const [ hover, setHover ] = useState(false);
+
+  const handleMouseOver = () => { 
+    setHover(true);
+  };
+
+  const handleMouseOut = () => {
+    setHover(false);
+  };
+
   const handleToggle = () => {
     setOpen(!open); 
   }
@@ -38,7 +48,7 @@ const NavItemComponent = ({
 
   const handleHide = () => {
     setOpen(false);
-  }
+  } 
 
   useEffect(() => {
     if (match) {
@@ -50,6 +60,8 @@ const NavItemComponent = ({
     return children !== undefined && children.items.length > 0;
   }, [children]); 
 
+  const minimize: boolean = collapse && !expand;
+
   const renderContent = (
     <>
       {divider ? (
@@ -57,44 +69,58 @@ const NavItemComponent = ({
           mx: styles.ITEM_PADDING_X
         }}/>
       ) : (
-        <ListItemButtonStyled depth={depth} styles={styles} active={active} here={here} open={open} disabled={disabled} collapse={collapse} onClick={handleToggle} sx={{ 
+        <ListItemButtonStyled 
+          onClick={handleToggle}
+          onMouseOver={handleMouseOver}
+          onMouseOut={handleMouseOut}
+          depth={depth} 
+          styles={styles} 
+          active={active} 
+          here={here} 
+          open={open} 
+          hover={hover} 
+          disabled={disabled} 
+          collapse={collapse} 
+          expand={expand}  
+          sx={{ 
             paddingTop: depth === 1 ? styles.ROOT_ITEM_PADDING_Y : styles.SUB_ITEM_PADDING_Y, 
             paddingBottom: depth === 1 ? styles.ROOT_ITEM_PADDING_Y : styles.SUB_ITEM_PADDING_Y, 
             paddingLeft: depth === 1 ? styles.ROOT_ITEM_PADDING_X : styles.SUB_ITEM_PADDING_X + styles.INDENTION, 
             paddingRight: depth === 1 ? styles.ROOT_ITEM_PADDING_X : styles.SUB_ITEM_PADDING_X + styles.INDENTION, 
             marginBottom: depth === 1 ? styles.ROOT_ITEM_GAP : styles.SUB_ITEM_GAP, 
-          }}>
+          }}
+        >
           {icon && (
-            <ListItemIconStyled depth={depth} styles={styles} active={active} here={here} open={open} disabled={disabled} collapse={collapse}>
+            <ListItemIconStyled depth={depth} styles={styles} active={active} here={here} hover={hover} open={open} disabled={disabled} collapse={collapse}>
               <SVGIcon icon={icon} />
             </ListItemIconStyled>
           )}
 
           {bullet && (
-            <NavItemBullet depth={depth} styles={styles} active={active} here={here} open={open} disabled={disabled} collapse={collapse}/>
+            <NavItemBullet depth={depth} styles={styles} active={active} here={here} hover={hover} open={open} disabled={disabled} collapse={collapse}/>
           )}
 
-          {title && (
-            <ListItemTextStyled depth={depth} styles={styles} active={active} here={here} open={open} disabled={disabled} collapse={collapse} primary={title}/>
+          {!minimize && title && (
+            <ListItemTextStyled depth={depth} styles={styles} active={active} here={here} hover={hover} open={open} disabled={disabled} collapse={collapse} primary={title}/>
           )}
 
-          {badge && (
-            <BadgeStyled badgeContent={badge.content} color={badge.color} depth={depth} styles={styles} active={active} here={here} open={open} disabled={disabled} collapse={collapse}/>
+          {!minimize && badge && (
+            <BadgeStyled badgeContent={badge.content} color={badge.color} depth={depth} styles={styles} active={active} hover={hover} here={here} open={open} disabled={disabled} collapse={collapse}/>
           )}
           
-          {hasChildren && ( 
-            <NavItemArrow depth={depth} styles={styles} active={active} here={here} open={open} disabled={disabled} collapse={collapse}/> 
+          {!minimize &&  hasChildren && ( 
+            <NavItemArrow depth={depth} styles={styles} active={active} here={here} open={open} hover={hover} disabled={disabled} collapse={collapse}/> 
           )}
         </ListItemButtonStyled>
       )}
 
-      {(children !== undefined && children.items.length > 0) && (     
+      {(!minimize && children !== undefined && children.items.length > 0) && (     
         <NavItemSub 
           variant={children?.variant ? children.variant : "inline"}
           direction={children?.direction ? children.direction : "vertical"} 
           accordion={children?.accordion ? children.accordion : false} 
           open={open}
-          hover={hover} 
+          expand={expand} 
           depth={depth + 1} 
           items={children.items} 
           styles={styles} 

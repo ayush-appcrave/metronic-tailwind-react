@@ -3,8 +3,8 @@ import { ListSubheader } from "@mui/material";
 import { NavItemChildType } from "..";
 
 export const ListSubheaderStyled = styled(ListSubheader, {
-	shouldForwardProp: (prop) => ["depth", "styles", "active", "here", "open", "collapse", "disabled"].includes(prop as string) === false
-}) <NavItemChildType> (({depth, collapse, active, here, open, disabled, styles, theme}) => {
+	shouldForwardProp: (prop) => ["depth", "styles", "active", "here", "hover", "open", "collapse", "expand", "disabled"].includes(prop as string) === false
+}) <NavItemChildType> (({depth, active, here, hover, open, disabled, styles, theme}) => {
 
 	return {
 		...theme.typography.overline,
