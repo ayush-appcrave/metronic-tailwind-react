@@ -7,6 +7,7 @@ export type NavType = {
 	direction?: "vertical" | "horizontal";
 	accordion?: boolean;
 	collapse?: boolean;
+	expand?: boolean;
 	hover?: boolean;
 	open?: boolean;
 	height?: number | string;
@@ -19,7 +20,7 @@ export type NavType = {
 export type NavItemType = {
 	options: NavItemOptionsType,	
 	collapse?: boolean;
-	hover?: boolean;
+	expand?: boolean;
 	styles?: any;
 	depth?: number;
 };
@@ -49,6 +50,7 @@ export type NavItemArrowType = {
 	icon?: string;
 	depth?: number;
 	collapse?: boolean;
+	expand?: boolean;
 	hover?: boolean;
 	active?: boolean;
 	open?: boolean;
@@ -61,6 +63,7 @@ export type NavItemBulletType = {
 	variant?: "bar" | "dot";
 	depth?: number;
 	collapse?: boolean;
+	expand?: boolean;
 	hover?: boolean;
 	active?: boolean;
 	open?: boolean;
@@ -72,6 +75,7 @@ export type NavItemBulletType = {
 export type NavItemChildType = {
 	depth?: number;
 	collapse?: boolean;
+	expand?: boolean;
 	hover?: boolean;
 	active?: boolean;
 	open?: boolean;

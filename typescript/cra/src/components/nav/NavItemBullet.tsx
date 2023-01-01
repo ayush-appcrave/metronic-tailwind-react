@@ -2,15 +2,15 @@ import { useState, memo, useMemo } from "react";
 import { Box } from "@mui/material";
 import { NavItemBulletType } from "./types";
 
-
 const NavItemBulletComponent = ({
   variant = "dot",
   active = false,
+  hover = false,
   here = false,
   open = false,
   disabled = false,
   collapse = false,
-  hover = false,
+  expand = false,  
   styles,
   depth = 1
 }: NavItemBulletType) => {
@@ -32,6 +32,9 @@ const NavItemBulletComponent = ({
         }),
         ...(active && {
           backgroundColor: (theme) => theme.palette.primary.main
+        }),
+        ...(here && {
+          backgroundColor: (theme) => theme.palette.grey["700"]
         }),
       }}
     >      

@@ -9,10 +9,11 @@ const NavItemArrowComponent = ({
 	direction = "vertical",
 	active = false,
   here = false,
+  hover = false,
   open = false,
   disabled = false,
   collapse = false,
-  hover = false,
+  expand = false,
 	icon = "arrows/arr072.svg"
 }: NavItemArrowType ) => {
 
@@ -51,6 +52,12 @@ const NavItemArrowComponent = ({
         display: "flex",
         alignItems: "center",
         color: (theme) => theme.palette.grey["500"],
+        ...(active && {
+          color: (theme) => theme.palette.primary.main
+        }),
+        ...(here && {
+          color: (theme) => theme.palette.grey["700"]
+        }),
         "svg " : {
           height: "100%",
           width: "100%"
