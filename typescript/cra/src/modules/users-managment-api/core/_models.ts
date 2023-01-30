@@ -1,18 +1,21 @@
-import {PaginationState, Response} from '../helpers'
+import {PaginationState} from '../helpers'
+
 export type User = {
   id: string
+  created_at?: string
+  initials?: {
+    label: string
+    state: string
+  },
   first_name?: string
   last_name?: string
   avatar?: string
   email?: string
   role?: string
   two_steps?: boolean
-  created_at?: string
-  initials?: {
-    label: string
-    state: string
-  }
-}
+  password?: string
+  password_confirmation?: string
+};
 
 export type UsersQueryResponse = {
   message: string,

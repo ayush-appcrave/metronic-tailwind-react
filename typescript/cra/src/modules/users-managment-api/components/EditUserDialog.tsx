@@ -1,45 +1,66 @@
 import {FormEvent, useEffect, useState} from "react";
-import {Data, rowsData} from "../core/users";
-import {Button, Dialog, FormControlLabel, FormGroup, MenuItem, Select, Switch, TextField} from "@mui/material";
+import {
+    Accordion, AccordionDetails, AccordionSummary,
+    Button,
+    Dialog,
+    FormControlLabel,
+    FormGroup,
+    MenuItem,
+    Select,
+    Switch,
+    TextField, Typography
+} from "@mui/material";
+import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
+import {User} from "../core/_models";
+import {updateUser, getUserById, createUser} from "../core/_requests";
 
 interface EditUserDialogProps {
     open: boolean;
     handleClose: () => void
-    userId: number | string;
+    userId: string | undefined;
 }
 
 function EditUserDialog(props: EditUserDialogProps) {
-    const [id, setId] = useState<string | number>(1);
+    const [id, setId] = useState<string | undefined>(undefined);
+    const [formData, setFormData] = useState<User>({
+        id: "",
+        first_name: "",
+        last_name: "",
+        email: "",
+        role: "user",
+        two_steps: false,
+    });
 
     useEffect(()=>{
         setId(props.userId);
-        setFormData(currentUser());
+        if (id){
+            getUserById(id).then((data)=>{
+                if(data){
+                    setFormData(data);
+                }
+            })
+        }
     }, [props.open]);
 
-    const currentUser = () => {
-        const user = rowsData.find(row => row.id === Number(id));
-
-        console.log(id);
-        console.log(user);
-        if(!id || !user){
-            return rowsData[0];
+    const onSubmit = async (e:FormEvent) => {
+        e.preventDefault();
+        try {
+            if(id){
+                await updateUser(formData);
+            } else {
+                await createUser(formData);
+                props.handleClose();
+            }
+        } catch (err) {
+            console.log(err);
         }
-
-        return user;
     }
-
-    const [formData, setFormData] = useState<Data>(currentUser);
 
     const handleChange = (name:string, value:unknown) => {
         setFormData((prevState)=>({
             ...prevState,
             [name]: value,
-        }));
-    }
-
-    const handleSubmit = (event:FormEvent<HTMLFormElement>) => {
-        event.preventDefault();
-        console.log(formData);
+        } as User));
     }
 
     return (<Dialog
@@ -49,15 +70,15 @@ function EditUserDialog(props: EditUserDialogProps) {
         onClose={props.handleClose}
 
     >
-        <form onSubmit={(e)=>handleSubmit(e)}>
+        <form onSubmit={(e)=>onSubmit(e)}>
             <FormGroup>
                 <TextField
                     style={{ width: "40%", margin: "5px" }}
                     type="text"
-                    label="Name"
-                    id="name"
-                    name="name"
-                    value={formData.name}
+                    label="First Name"
+                    id="first_name"
+                    name="first_name"
+                    value={formData?.first_name}
                     onChange={(e)=>handleChange(e.target.name, e.target.value)}
                     variant="outlined"
                 />
@@ -66,10 +87,22 @@ function EditUserDialog(props: EditUserDialogProps) {
                 <TextField
                     style={{ width: "40%", margin: "5px" }}
                     type="text"
-                    label="Company"
-                    id="company"
-                    name="company"
-                    value={formData.company}
+                    label="Last Name"
+                    id="last_name"
+                    name="last_name"
+                    value={formData?.last_name}
+                    onChange={(e)=>handleChange(e.target.name, e.target.value)}
+                    variant="outlined"
+                />
+            </FormGroup>
+            <FormGroup>
+                <TextField
+                    style={{ width: "40%", margin: "5px" }}
+                    type="text"
+                    label="Email"
+                    id="email"
+                    name="email"
+                    value={formData?.email}
                     variant="outlined"
                     onChange={(e)=>handleChange(e.target.name, e.target.value)}
                 />
@@ -80,33 +113,43 @@ function EditUserDialog(props: EditUserDialogProps) {
                     label="Role"
                     id="role"
                     name="role"
-                    value={formData.role}
+                    value={formData?.role}
+                    defaultValue={"user"}
                     onChange={(e)=>handleChange(e.target.name, e.target.value)}
                 >
-                    <MenuItem value="Project Manager">Project Manager</MenuItem>
-                    <MenuItem value="Frontend Developer">Frontend Developer</MenuItem>
-                    <MenuItem value="Project Manager">Project Manager</MenuItem>
-                    <MenuItem value="Sales Manager">Sales Manager</MenuItem>
+                    <MenuItem value="user">User</MenuItem>
+                    <MenuItem value="admin">Admin</MenuItem>
                 </Select>
             </FormGroup>
             <FormGroup>
-                <FormControlLabel control={<Switch name="verified" id="verified" checked={formData.verified} value={formData.verified} onChange={(e)=>handleChange(e.target.name, e.target.value !== 'true')} />} label="Verified" />
-            </FormGroup>
-            <FormGroup>
-                <Select
-                    style={{ width: "40%", margin: "5px" }}
-                    label="Status"
-                    id="status"
-                    name="status"
-                    value={formData.status}
-                    onChange={(e)=>handleChange(e.target.name, e.target.value)}
-                >
-                    <MenuItem value="Banned">Project Manager</MenuItem>
-                    <MenuItem value="Active">Frontend Developer</MenuItem>
-                </Select>
-            </FormGroup>
+            <TextField
+                style={{ width: "40%", margin: "5px" }}
+                type="text"
+                label="Password"
+                id="password"
+                name="password"
+                value={formData?.password}
+                variant="outlined"
+                onChange={(e)=>handleChange(e.target.name, e.target.value)}
+            />
+        </FormGroup>
+        <FormGroup>
+            <TextField
+                style={{ width: "40%", margin: "5px" }}
+                type="text"
+                label="Password Confirmation"
+                id="password_confirmation"
+                name="password_confirmation"
+                value={formData?.password_confirmation}
+                variant="outlined"
+                onChange={(e)=>handleChange(e.target.name, e.target.value)}
+            />
+        </FormGroup>
+        <FormGroup>
+            <FormControlLabel control={<Switch name="verified" id="verified" checked={formData?.two_steps} value={formData?.two_steps} onChange={(e)=>handleChange(e.target.name, e.target.value !== 'true')} />} label="Verified" />
+        </FormGroup>
             <Button style={{ width: "20%", margin: "5px" }} type="submit" variant="contained" color="primary">
-                save
+                Save
             </Button>
         </form>
     </Dialog>)

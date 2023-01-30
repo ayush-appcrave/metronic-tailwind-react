@@ -41,9 +41,9 @@ function UsersManagementPageAPI() {
     const [dense, setDense] = useState(false);
     const navigate = useNavigate();
     const [open, setOpen] = useState(false);
-    const [userToDeleteId, setUserToDeleteId] = useState<number | string>(1);
+    const [userToDeleteId, setUserToDeleteId] = useState<string>("1");
     const [open2, setOpen2] = useState(false);
-    const [userToEditId, setUserToEditId] = useState<number | string>(1);
+    const [userToEditId, setUserToEditId] = useState<string | undefined>(undefined);
     const [ roleFilter, setRoleFilter ] = useState<"all" | "user" | "admin" | undefined>("all");
     const [ nameFilter, setNameFilter ] = useState<string | null>(null);
     const queryClient = useQueryClient()
@@ -66,12 +66,11 @@ function UsersManagementPageAPI() {
 
     // -------------------
 
-    const handleClickOpen = (id:number|string) => {
+    const handleClickOpen = (id:string) => {
         setUserToDeleteId(id);
         setOpen(true);
     };
-    const handleClickOpe2 = (id:number|string) => {
-        console.log(id);
+    const handleClickOpe2 = (id:string|undefined) => {
         setUserToEditId(id);
         setOpen2(true);
     };
@@ -102,6 +101,7 @@ function UsersManagementPageAPI() {
     }
     const handleNameFilterChange:(event: ChangeEvent<HTMLInputElement>) => void = (e:ChangeEvent<HTMLInputElement>) => {
         setNameFilter(e.target.value);
+        updateState({search: e.target.value})
     }
     const handleChangePage = (event: unknown, newPage: number) => {
         console.log(newPage+1);
@@ -122,6 +122,7 @@ function UsersManagementPageAPI() {
     return (
         <Box sx={{ width: '100%' }}>
             <Paper sx={{ width: '100%', mb: 2, mt: 10 }}>
+                <Button onClick={(e)=> handleClickOpe2(undefined)}>Add new user</Button>
                 <EnhancedTableToolbar numSelected={selected.length} handleRoleFilterChange={handleRoleFilterChange} roleFilter={roleFilter} handleNameFilterChange={handleNameFilterChange} nameFilter={nameFilter} handleSelectedUsersDelete={async () => await deleteSelectedItems.mutateAsync()} />
                 <TableContainer>
                     <Table
