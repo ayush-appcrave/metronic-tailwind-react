@@ -28,7 +28,7 @@ const headCells: readonly HeadCell[] = [
         label: 'Role',
     },
     {
-        id: 'two_steps',
+        id: 'two_steps_auth',
         numeric: false,
         disablePadding: false,
         label: 'Verified',

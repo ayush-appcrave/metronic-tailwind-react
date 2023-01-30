@@ -12,7 +12,7 @@ export type User = {
   avatar?: string
   email?: string
   role?: string
-  two_steps?: boolean
+  two_steps_auth?: boolean
   password?: string
   password_confirmation?: string
 };

@@ -22,7 +22,7 @@ import {
     FormControlLabel,
     Switch,
 } from "@mui/material";
-import {EditUserDialog} from "./components/EditUserDialog";
+import {CreateUserDialog} from "./components/CreateUserDialog";
 import {useQueryResponse, useQueryResponseData, useQueryResponsePagination} from "./core/QueryResponseProvider";
 import {useQueryRequest} from "./core/QueryRequestProvider";
 import {useListView} from "./core/ListViewProvider";
@@ -37,14 +37,14 @@ function UsersManagementPageAPI() {
     const data = useMemo(() => users, [users])
     const pagination = useQueryResponsePagination()
     const [order, setOrder] = useState<Order>('asc');
-    const [orderBy, setOrderBy] = useState<keyof User>('role');
+    const [orderBy, setOrderBy] = useState<keyof User>('created_at');
     const [dense, setDense] = useState(false);
     const navigate = useNavigate();
     const [open, setOpen] = useState(false);
     const [userToDeleteId, setUserToDeleteId] = useState<string>("1");
     const [open2, setOpen2] = useState(false);
     const [userToEditId, setUserToEditId] = useState<string | undefined>(undefined);
-    const [ roleFilter, setRoleFilter ] = useState<"all" | "user" | "admin" | undefined>("all");
+    const [ roleFilter, setRoleFilter ] = useState<"user" | "admin" | undefined>(undefined);
     const [ nameFilter, setNameFilter ] = useState<string | null>(null);
     const queryClient = useQueryClient()
     const {query} = useQueryResponse()
@@ -96,8 +96,13 @@ function UsersManagementPageAPI() {
     }, [order, orderBy]);
 
     const handleRoleFilterChange:(event: SelectChangeEvent) => void = (e:SelectChangeEvent) => {
-        setRoleFilter(e.target.value as "all" | "user" | "admin");
-        updateState({role: e.target.value as "all" | "user" | "admin"})
+        if(e.target.value !== "all"){
+            setRoleFilter(e.target.value as "user" | "admin");
+            updateState({role: e.target.value as "user" | "admin"})
+        } else {
+            setRoleFilter(undefined);
+            updateState({role: undefined})
+        }
     }
     const handleNameFilterChange:(event: ChangeEvent<HTMLInputElement>) => void = (e:ChangeEvent<HTMLInputElement>) => {
         setNameFilter(e.target.value);
@@ -121,8 +126,12 @@ function UsersManagementPageAPI() {
 
     return (
         <Box sx={{ width: '100%' }}>
-            <Paper sx={{ width: '100%', mb: 2, mt: 10 }}>
-                <Button onClick={(e)=> handleClickOpe2(undefined)}>Add new user</Button>
+            <Paper sx={{ width: '100%', mb: 2, mt: 10, position: "relative", paddingTop: "40px" }}>
+                <Button sx={{
+                    position: "absolute",
+                    top: 2,
+                    right: 2,
+                }} onClick={(e)=> handleClickOpe2(undefined)}>Add new user</Button>
                 <EnhancedTableToolbar numSelected={selected.length} handleRoleFilterChange={handleRoleFilterChange} roleFilter={roleFilter} handleNameFilterChange={handleNameFilterChange} nameFilter={nameFilter} handleSelectedUsersDelete={async () => await deleteSelectedItems.mutateAsync()} />
                 <TableContainer>
                     <Table
@@ -227,7 +236,7 @@ function UsersManagementPageAPI() {
                 </Box>
             </Paper>
             <AlertDialog open={open} handleClose={handleClose} userId={userToDeleteId.toString()}></AlertDialog>
-            <EditUserDialog open={open2} handleClose={handleClose2} userId={userToEditId}></EditUserDialog>
+            <CreateUserDialog open={open2} handleClose={handleClose2} userId={userToEditId}></CreateUserDialog>
         </Box>
     );
 }

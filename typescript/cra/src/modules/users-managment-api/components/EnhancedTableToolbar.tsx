@@ -9,6 +9,7 @@ import {
     Tooltip,
     Typography
 } from "@mui/material";
+import { SxProps, Theme } from '@mui/material/styles';
 import {ChangeEvent} from "react";
 import DeleteIcon from "@mui/icons-material/Delete";
 
@@ -19,6 +20,7 @@ interface EnhancedTableToolbarProps {
     nameFilter: string | null;
     handleNameFilterChange: (event: ChangeEvent<HTMLInputElement>) => void
     handleSelectedUsersDelete: () => void;
+    sx?: SxProps<Theme>;
 }
 
 function EnhancedTableToolbar(props: EnhancedTableToolbarProps) {
@@ -33,6 +35,7 @@ function EnhancedTableToolbar(props: EnhancedTableToolbarProps) {
                     bgcolor: (theme) =>
                         alpha(theme.palette.primary.main, theme.palette.action.activatedOpacity),
                 }),
+                ...props.sx,
             }}
         >
             {numSelected > 0 ? (
@@ -53,10 +56,14 @@ function EnhancedTableToolbar(props: EnhancedTableToolbarProps) {
                         labelId="demo-simple-select-label"
                         id="demo-simple-select"
                         value={props.roleFilter}
+                        sx={{
+                            margin: "10px",
+                        }}
                         label="Role"
+                        defaultValue={"All"}
                         onChange={props.handleRoleFilterChange}
                     >
-                        <MenuItem value="all">All</MenuItem>
+                        <MenuItem value="" selected>All</MenuItem>
                         <MenuItem value="user">User</MenuItem>
                         <MenuItem value="admin">Admin</MenuItem>
                     </Select>
@@ -69,8 +76,10 @@ function EnhancedTableToolbar(props: EnhancedTableToolbarProps) {
                     </IconButton>
                 </Tooltip>
             ) : (
-                <TextField sx={{width: "50%"}} onChange={props.handleNameFilterChange}
-                           // value={props.nameFilter}
+                <TextField onChange={props.handleNameFilterChange} sx={{
+                    margin: "10px",
+                    width: "50%",
+                }}
                            id="search" label="Search name" variant="outlined" />
             )}
         </Toolbar>
