@@ -1,4 +1,4 @@
-import {ChangeEvent, useMemo, useState} from 'react';
+import {ChangeEvent, useEffect, useMemo, useState} from 'react';
 import { User } from "./core/_models";
 import { toAbsoluteUrl } from "utils";
 import {useNavigate} from "react-router";
@@ -23,10 +23,13 @@ import {
     Switch,
 } from "@mui/material";
 import {EditUserDialog} from "./components/EditUserDialog";
-import {useQueryResponseData, useQueryResponsePagination} from "./core/QueryResponseProvider";
+import {useQueryResponse, useQueryResponseData, useQueryResponsePagination} from "./core/QueryResponseProvider";
 import {useQueryRequest} from "./core/QueryRequestProvider";
 import {useListView} from "./core/ListViewProvider";
 import {EnhancedTableToolbar} from "./components/EnhancedTableToolbar";
+import {useMutation, useQueryClient} from "react-query";
+import {deleteSelectedUsers} from "./core/_requests";
+import {QUERIES} from "./helpers";
 
 function UsersManagementPageAPI() {
     const users = useQueryResponseData()
@@ -36,16 +39,26 @@ function UsersManagementPageAPI() {
     const [order, setOrder] = useState<Order>('asc');
     const [orderBy, setOrderBy] = useState<keyof User>('role');
     const [dense, setDense] = useState(false);
-    const [page, setPage] = useState(1);
     const navigate = useNavigate();
     const [open, setOpen] = useState(false);
     const [userToDeleteId, setUserToDeleteId] = useState<number | string>(1);
     const [open2, setOpen2] = useState(false);
     const [userToEditId, setUserToEditId] = useState<number | string>(1);
-    const [ roleFilter, setRoleFilter ] = useState<string>("all");
+    const [ roleFilter, setRoleFilter ] = useState<"all" | "user" | "admin" | undefined>("all");
     const [ nameFilter, setNameFilter ] = useState<string | null>(null);
+    const queryClient = useQueryClient()
+    const {query} = useQueryResponse()
 
-    const {selected, onSelect} = useListView()
+    const { onSelectAll, clearSelected, selected, onSelect} = useListView()
+
+    const deleteSelectedItems = useMutation(() => deleteSelectedUsers(selected as string[]), {
+        // 💡 response of the mutation is passed to onSuccess
+        onSuccess: () => {
+            // ✅ update detail view directly
+            queryClient.invalidateQueries([`${QUERIES.USERS_LIST}-${query}`])
+            clearSelected()
+        },
+    })
 
     const isSelected = (id:string) => {
         return selected.includes(id);
@@ -68,42 +81,31 @@ function UsersManagementPageAPI() {
     const handleClose2 = () => {
         setOpen2(false);
     };
-    const handleUserDelete = (id:number|string) => {
-        const rowsWithDeletes = data.filter((row) => row.id !== id);
-        handleClose();
-    }
-    const handleSelectedUsersDelete = () => {
-        const rowsWithDeletes = data.filter((row) => !selected.includes(row.id));
-    }
     const handleRequestSort = (
         event: React.FormEvent<unknown>,
         property: keyof User | null,
     ) => {
-        const isAsc = orderBy === property && order === 'asc';
-        setOrder(isAsc ? 'desc' : 'asc');
-
         if (property){
             setOrderBy(property);
         }
+        const isAsc = orderBy === property && order === 'asc';
+        setOrder(isAsc ? 'desc' : 'asc');
+    };
 
+    useEffect(()=>{
         updateState({sort: orderBy, order: order})
-    };
-    const handleSelectAllClick = (event: ChangeEvent<HTMLInputElement>) => {
-        if (event.target.checked) {
-            const newSelected = data.map((n) => n.id);
-            return;
-        }
-    };
+    }, [order, orderBy]);
+
     const handleRoleFilterChange:(event: SelectChangeEvent) => void = (e:SelectChangeEvent) => {
-        setRoleFilter(e.target.value);
+        setRoleFilter(e.target.value as "all" | "user" | "admin");
+        updateState({role: e.target.value as "all" | "user" | "admin"})
     }
     const handleNameFilterChange:(event: ChangeEvent<HTMLInputElement>) => void = (e:ChangeEvent<HTMLInputElement>) => {
         setNameFilter(e.target.value);
     }
     const handleChangePage = (event: unknown, newPage: number) => {
-        console.log(newPage);
-        setPage(newPage+1);
-        updateState({page:newPage+1})
+        console.log(newPage+1);
+        updateState({ page: newPage+1})
     };
     const handleChangeRowsPerPage = (event: ChangeEvent<HTMLInputElement>) => {
         updateState({items_per_page: event.target.value as unknown as 10 | 30 | 50 | 100})
@@ -120,7 +122,7 @@ function UsersManagementPageAPI() {
     return (
         <Box sx={{ width: '100%' }}>
             <Paper sx={{ width: '100%', mb: 2, mt: 10 }}>
-                <EnhancedTableToolbar numSelected={selected.length} handleRoleFilterChange={handleRoleFilterChange} roleFilter={roleFilter} handleNameFilterChange={handleNameFilterChange} nameFilter={nameFilter} handleSelectedUsersDelete={handleSelectedUsersDelete} />
+                <EnhancedTableToolbar numSelected={selected.length} handleRoleFilterChange={handleRoleFilterChange} roleFilter={roleFilter} handleNameFilterChange={handleNameFilterChange} nameFilter={nameFilter} handleSelectedUsersDelete={async () => await deleteSelectedItems.mutateAsync()} />
                 <TableContainer>
                     <Table
                         sx={{ minWidth: 750 }}
@@ -131,9 +133,9 @@ function UsersManagementPageAPI() {
                             numSelected={selected.length}
                             order={order}
                             orderBy={orderBy}
-                            onSelectAllClick={handleSelectAllClick}
+                            onSelectAllClick={onSelectAll}
                             onRequestSort={handleRequestSort}
-                            rowCount={pagination.total}
+                            rowCount={pagination?.total}
                         />
                         <TableBody>
                             {data.map((row, index) => {
@@ -145,7 +147,7 @@ function UsersManagementPageAPI() {
                                             role="checkbox"
                                             aria-checked={isSelected(row.id)}
                                             tabIndex={-1}
-                                            key={row.name}
+                                            key={row.id}
                                             selected={isSelected(row.id)}
                                         >
                                             <TableCell padding="checkbox">
@@ -167,7 +169,7 @@ function UsersManagementPageAPI() {
                                                 <Box sx={{
                                                     display: 'flex',
                                                 }}>
-                                                    <Avatar alt={row.name} src={toAbsoluteUrl('/media/avatars/300-1.jpg')} />
+                                                    <Avatar alt={row.first_name} src={toAbsoluteUrl('/media/avatars/300-1.jpg')} />
 
                                                     <Box sx={{
                                                         verticalAlign: 'middle',
@@ -175,14 +177,14 @@ function UsersManagementPageAPI() {
                                                         marginBottom: 'auto',
                                                         marginLeft: '5px',
                                                     }}>
-                                                        {row.name}
+                                                        {row.first_name}
                                                     </Box>
                                                 </Box>
                                             </TableCell>
-                                            <TableCell align="left">{row.name}</TableCell>
+                                            <TableCell align="left">{row.first_name}</TableCell>
                                             <TableCell align="left">{row.role}</TableCell>
-                                            <TableCell align="left">{String(row.online)}</TableCell>
-                                            <TableCell align="left">{row.email}</TableCell>
+                                            <TableCell align="left">{String(false)}</TableCell>
+                                            <TableCell align="left">{row.created_at}</TableCell>
                                             <TableCell align="left">
                                                 <Button onClick={(e)=>handleUserEdit(row.id)}>Edit</Button>
                                                 <Button onClick={(e)=>handleClickOpe2(row.id)}>Edit in Modal</Button>
@@ -203,9 +205,9 @@ function UsersManagementPageAPI() {
                     <TablePagination
                         rowsPerPageOptions={[5, 10, 25]}
                         component="div"
-                        count={pagination.total}
+                        count={pagination?.total}
                         rowsPerPage={Number(pagination.items_per_page)}
-                        page={page-1}
+                        page={pagination.current_page ? pagination.current_page -1 : 0}
                         onPageChange={handleChangePage}
                         onRowsPerPageChange={handleChangeRowsPerPage}
                     />
@@ -223,7 +225,7 @@ function UsersManagementPageAPI() {
                     />
                 </Box>
             </Paper>
-            <AlertDialog open={open} handleClose={handleClose} handleDelete={handleUserDelete} userId={userToDeleteId}></AlertDialog>
+            <AlertDialog open={open} handleClose={handleClose} userId={userToDeleteId.toString()}></AlertDialog>
             <EditUserDialog open={open2} handleClose={handleClose2} userId={userToEditId}></EditUserDialog>
         </Box>
     );

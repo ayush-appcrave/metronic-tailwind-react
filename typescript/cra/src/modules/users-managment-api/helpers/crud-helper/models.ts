@@ -1,10 +1,19 @@
 import {Dispatch, SetStateAction} from 'react'
+import {UsersQueryResponse} from "../../core/_models";
 
 export type PaginationState = {
-  page: number
-  items_per_page: 10 | 30 | 50 | 100
+  page?: number,
   links?: Array<{label: string; active: boolean; url: string | null; page: number | null}>
-  total: number
+  current_page?: number,
+  first_page_url?: number,
+  from?: number,
+  last_page?: number,
+  last_page_url?: string,
+  next_page_url?: string,
+  items_per_page?: number,
+  prev_page_url?: number,
+  to?: number,
+  total: number,
 }
 
 export type SortState = {
@@ -13,7 +22,7 @@ export type SortState = {
 }
 
 export type FilterState = {
-  filter?: unknown
+  role?: "all" | "user" | "admin",
 }
 
 export type SearchState = {
@@ -21,14 +30,8 @@ export type SearchState = {
 }
 
 export type Response<T> = {
-  data?: T
-  payload?: {
-    message?: string
-    errors?: {
-      [key: string]: Array<string>
-    }
-    pagination?: PaginationState
-  }
+  data?: T;
+  pagination?: PaginationState;
 }
 
 export type QueryState = PaginationState & SortState & FilterState & SearchState
@@ -39,7 +42,7 @@ export type QueryRequestContextProps = {
 }
 
 export const initialQueryState: QueryState = {
-  page: 1,
+  current_page: 1,
   items_per_page: 10,
   total: 0
 }
@@ -50,7 +53,7 @@ export const initialQueryRequest: QueryRequestContextProps = {
 }
 
 export type QueryResponseContextProps<T> = {
-  response?: Response<Array<T>> | undefined
+  response?: UsersQueryResponse | undefined
   refetch: () => void
   isLoading: boolean
   query: string

@@ -10,16 +10,16 @@ interface HeadCell {
 
 const headCells: readonly HeadCell[] = [
     {
-        id: 'name',
+        id: 'first_name',
         numeric: false,
         disablePadding: true,
         label: 'Name',
     },
     {
-        id: 'position',
+        id: 'last_name',
         numeric: false,
         disablePadding: false,
-        label: 'Position',
+        label: 'Surname',
     },
     {
         id: 'role',
@@ -28,16 +28,16 @@ const headCells: readonly HeadCell[] = [
         label: 'Role',
     },
     {
-        id: 'online',
+        id: 'two_steps',
         numeric: false,
         disablePadding: false,
         label: 'Verified',
     },
     {
-        id: 'email',
+        id: 'created_at',
         numeric: false,
         disablePadding: false,
-        label: 'Status',
+        label: 'Created At',
     },
     { id: null, hideSortIcon: true },
 ];

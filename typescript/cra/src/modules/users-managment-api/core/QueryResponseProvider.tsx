@@ -56,21 +56,24 @@ const useQueryResponseData = () => {
     return []
   }
 
+  console.log("======>", response?.data);
+
   return response?.data || []
 }
 
-const useQueryResponsePagination = () => {
+const useQueryResponsePagination = () :PaginationState => {
   const defaultPaginationState: PaginationState = {
     links: [],
     ...initialQueryState,
   }
 
   const {response} = useQueryResponse()
-  if (!response || !response.payload || !response.payload.pagination) {
+
+  if (!response) {
     return defaultPaginationState
   }
 
-  return response.payload.pagination
+  return response?.pagination;
 }
 
 const useQueryResponseLoading = (): boolean => {

@@ -18,16 +18,9 @@ function stringifyRequestQuery(state: QueryState): string {
     ? qs.stringify(state, {filter: ['search'], skipNulls: true})
     : ''
 
-  const filter = state.filter
-    ? Object.entries(state.filter as Object)
-        .filter((obj) => isNotEmpty(obj[1]))
-        .map((obj) => {
-          return `filter_${obj[0]}=${obj[1]}`
-        })
-        .join('&')
-    : ''
+  const role = qs.stringify(state, {skipNulls: true})
 
-  return [pagination, sort, search, filter]
+  return [pagination, sort, search, role]
     .filter((f) => f)
     .join('&')
     .toLowerCase()

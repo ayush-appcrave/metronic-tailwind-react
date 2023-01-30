@@ -35,8 +35,10 @@ export function setupAxios(axios: any) {
   axios.interceptors.request.use(
     (config: { headers: { Authorization: string } }) => {
       const auth = getAuth();
-      if (auth && auth.api_token) {
-        config.headers.Authorization = `Bearer ${auth.api_token}`;
+      console.log(auth);
+      console.log(auth?.access_token);
+      if (auth && auth.access_token) {
+        config.headers.Authorization = `Bearer ${auth.access_token}`;
       }
 
       return config;

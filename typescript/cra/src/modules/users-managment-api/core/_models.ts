@@ -1,28 +1,30 @@
-import { Response} from '../helpers'
+import {PaginationState, Response} from '../helpers'
 export type User = {
   id: string
-  name?: string
+  first_name?: string
+  last_name?: string
   avatar?: string
   email?: string
-  position?: string
   role?: string
-  last_login?: string
   two_steps?: boolean
-  joined_day?: string
-  online?: boolean
+  created_at?: string
   initials?: {
     label: string
     state: string
   }
 }
 
-export type UsersQueryResponse = Response<Array<User>>
+export type UsersQueryResponse = {
+  message: string,
+  data: Array<User>,
+  pagination: PaginationState
+  success: boolean,
+}
 
 export const initialUser: User = {
   id: "1",
   avatar: 'avatars/300-6.jpg',
-  position: 'Art Director',
   role: 'Administrator',
-  name: '',
+  first_name: '',
   email: '',
 }

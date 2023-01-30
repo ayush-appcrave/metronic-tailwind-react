@@ -1,13 +1,28 @@
 import {Button, Dialog, DialogActions, DialogContent, DialogContentText, DialogTitle} from "@mui/material";
+import {useMutation, useQueryClient} from "react-query";
+import {deleteUser} from "../core/_requests";
+import {QUERIES} from "../helpers";
+import {useQueryResponse} from "../core/QueryResponseProvider";
 
 interface AlertDialogProps {
     open: boolean;
     handleClose: () => void
-    userId: number | string;
-    handleDelete: (id:number|string) => void
+    userId: string;
 }
 
 function AlertDialog(props:AlertDialogProps) {
+    const {query} = useQueryResponse()
+    const queryClient = useQueryClient()
+
+    const deleteItem = useMutation(() => deleteUser(props.userId), {
+        // 💡 response of the mutation is passed to onSuccess
+        onSuccess: () => {
+            props.handleClose();
+            // ✅ update detail view directly
+            queryClient.invalidateQueries([`${QUERIES.USERS_LIST}-${query}`])
+        },
+    })
+
     return (
         <Dialog
             open={props.open}
@@ -25,7 +40,7 @@ function AlertDialog(props:AlertDialogProps) {
             </DialogContent>
             <DialogActions>
                 <Button onClick={(e) => props.handleClose()}>Disagree</Button>
-                <Button onClick={(e) => props.handleDelete(props.userId)} autoFocus>
+                <Button onClick={async () => await deleteItem.mutateAsync()} autoFocus>
                     Agree
                 </Button>
             </DialogActions>

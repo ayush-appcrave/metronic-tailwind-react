@@ -57,9 +57,8 @@ function EnhancedTableToolbar(props: EnhancedTableToolbarProps) {
                         onChange={props.handleRoleFilterChange}
                     >
                         <MenuItem value="all">All</MenuItem>
-                        <MenuItem value="Project Manager">Project Manager</MenuItem>
-                        <MenuItem value="Full stack developer">Full stack developer</MenuItem>
-                        <MenuItem value="Backend Developer">Backend Developer</MenuItem>
+                        <MenuItem value="user">User</MenuItem>
+                        <MenuItem value="admin">Admin</MenuItem>
                     </Select>
                 </FormControl>
             )}
@@ -70,7 +69,9 @@ function EnhancedTableToolbar(props: EnhancedTableToolbarProps) {
                     </IconButton>
                 </Tooltip>
             ) : (
-                <TextField sx={{width: "50%"}} onChange={props.handleNameFilterChange} value={props.nameFilter} id="search" label="Search name" variant="outlined" />
+                <TextField sx={{width: "50%"}} onChange={props.handleNameFilterChange}
+                           // value={props.nameFilter}
+                           id="search" label="Search name" variant="outlined" />
             )}
         </Toolbar>
     );
