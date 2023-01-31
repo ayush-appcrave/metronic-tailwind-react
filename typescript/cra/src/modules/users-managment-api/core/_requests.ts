@@ -8,7 +8,6 @@ const USER_PASSWORD_UPDATE_URL = `${API_URL}/updatePassword`
 const GET_USERS_URL = `${API_URL}/users/query`
 
 const getUsers = (query: string): Promise<UsersQueryResponse> => {
-  console.log("updated");
   return axios
     .get(`${GET_USERS_URL}?${query}`)
     .then((d: AxiosResponse<UsersQueryResponse>) => {

@@ -54,7 +54,7 @@ export function setupAxios(axios: any) {
                 let final = "";
                 for (const key in response.data.message) {
 
-                    final = `${key}: ${response.data.message[key][0]}\n`;
+                    final +=`${key}: ${response.data.message[key]}\n`;
                 }
                 alert(final);
             } else {

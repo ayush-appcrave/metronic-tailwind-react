@@ -23,7 +23,7 @@ import {
     FormControlLabel,
     Switch,
 } from "@mui/material";
-import {CreateUserDialog} from "./components/CreateUserDialog";
+import {CreateUserDialog} from "./components/create-user/CreateUserDialog";
 import {
     useQueryResponse,
     useQueryResponseData,
@@ -37,10 +37,20 @@ import {useMutation, useQueryClient} from "react-query";
 import {deleteSelectedUsers} from "./core/_requests";
 import {QUERIES} from "./helpers";
 import {UpdateUserDialog} from "./components/edit-user/UpdateUserDialog";
+import { CreateUserDrawer } from "./components/create-user/CreateUserDrawer";
 
 function UsersManagementPage() {
     const users = useQueryResponseData()
     const isLoading = useQueryResponseLoading()
+    const [loading, setLoading] = useState(false);
+    useEffect(()=>{
+        if(isLoading){
+            setLoading(true)
+            setTimeout(()=>{
+                setLoading(false);
+            }, 500)
+        }
+    }, [isLoading])
     const {updateState} = useQueryRequest()
     const data = useMemo(() => users, [users])
     const pagination = useQueryResponsePagination()
@@ -52,6 +62,7 @@ function UsersManagementPage() {
     const [userToDeleteId, setUserToDeleteId] = useState<string>("1");
     const [open2, setOpen2] = useState(false);
     const [open3, setOpen3] = useState(false);
+    const [open4, setOpen4] = useState(false);
     const [userToEditId, setUserToEditId] = useState<string>("");
     const [ roleFilter, setRoleFilter ] = useState<"user" | "admin" | undefined>(undefined);
     const [ nameFilter, setNameFilter ] = useState<string | null>(null);
@@ -86,6 +97,9 @@ function UsersManagementPage() {
         setUserToEditId(id);
         setOpen3(true);
     };
+    const handleClickOpe4 = () => {
+        setOpen4(true);
+    };
     const handleClose = () => {
         setOpen(false);
     };
@@ -94,6 +108,9 @@ function UsersManagementPage() {
     };
     const handleClose3 = () => {
         setOpen3(false);
+    };
+    const handleClose4 = () => {
+        setOpen4(false);
     };
     const handleRequestSort = (
         event: React.FormEvent<unknown>,
@@ -142,12 +159,16 @@ function UsersManagementPage() {
     return (
         <Box sx={{ width: '100%' }}>
             <Paper sx={{ width: '100%', mb: 2, mt: 10, position: "relative", paddingTop: "40px" }}>
-                {isLoading && <CircularProgress/>}
                 <Button sx={{
                     position: "absolute",
                     top: 2,
                     right: 2,
-                }} onClick={(e)=> handleClickOpe2(undefined)}>Add new user</Button>
+                }} onClick={(e)=> handleClickOpe2(undefined)}>Add new user (Modal)</Button>
+                <Button sx={{
+                    position: "absolute",
+                    top: 2,
+                    right: 200,
+                }} onClick={(e)=> handleClickOpe4()}>Add new user (Drawer)</Button>
                 <EnhancedTableToolbar numSelected={selected.length} handleRoleFilterChange={handleRoleFilterChange} roleFilter={roleFilter} handleNameFilterChange={handleNameFilterChange} nameFilter={nameFilter} handleSelectedUsersDelete={async () => await deleteSelectedItems.mutateAsync()} />
                 <TableContainer>
                     <Table
@@ -163,7 +184,14 @@ function UsersManagementPage() {
                             onRequestSort={handleRequestSort}
                             rowCount={pagination?.total}
                         />
-                        <TableBody>
+                        <TableBody sx={{
+                            position: "relative"
+                        }}>
+                            {loading && <CircularProgress sx={{
+                                position: "absolute",
+                                left: "50%",
+                                top: "50%",
+                            }}/>}
                             {data.map((row, index) => {
                                     const labelId = `enhanced-table-checkbox-${index}`;
 
@@ -253,6 +281,7 @@ function UsersManagementPage() {
             </Paper>
             <AlertDialog open={open} handleClose={handleClose} userId={userToDeleteId.toString()}></AlertDialog>
             <CreateUserDialog open={open2} handleClose={handleClose2}></CreateUserDialog>
+            <CreateUserDrawer open={open4} handleClose={handleClose4}></CreateUserDrawer>
             <UpdateUserDialog open={open3} handleClose={handleClose3} userId={userToEditId}></UpdateUserDialog>
         </Box>
     );

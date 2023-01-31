@@ -1,27 +1,27 @@
-import {FormEvent, useEffect, useState} from "react";
 import {
     Button,
-    Dialog, FormControl,
+    FormControl,
     FormControlLabel,
     FormGroup,
-    Grid, InputLabel,
+    Grid,
+    InputLabel,
     MenuItem,
-    Select,
-    Switch,
+    Select, Switch,
     TextField,
     Typography
 } from "@mui/material";
-import { Close } from "@mui/icons-material";
-import {User} from "../core/_models";
-import {createUser} from "../core/_requests";
-import {useQueryResponse} from "../core/QueryResponseProvider";
+import {Close} from "@mui/icons-material";
+import {FormEvent, useState} from "react";
+import {useQueryResponse} from "../../core/QueryResponseProvider";
+import {User} from "../../core/_models";
+import {createUser} from "../../core/_requests";
 
-interface EditUserDialogProps {
+interface CreateUserFormProps {
     open: boolean;
     handleClose: () => void
 }
 
-function CreateUserDialog(props: EditUserDialogProps) {
+function CreateUserForm(props: CreateUserFormProps){
     const {refetch} = useQueryResponse()
     const [formData, setFormData] = useState<User>({
         id: "",
@@ -51,15 +51,7 @@ function CreateUserDialog(props: EditUserDialogProps) {
         } as User));
     }
 
-    return (<Dialog
-        fullWidth={true}
-        maxWidth={"lg"}
-        open={props.open}
-        onClose={props.handleClose}
-        sx={{
-            padding: "70px",
-        }}
-    >
+    return <>
         <Button onClick={()=>{props.handleClose()}} sx={{
             position: "absolute",
             right: 5,
@@ -124,16 +116,16 @@ function CreateUserDialog(props: EditUserDialogProps) {
                     </Select>
                 </FormControl>
                 <FormGroup style={{ width: "40%", margin: "5px" }}>
-                <TextField
-                    type="password"
-                    label="Password"
-                    id="password"
-                    name="password"
-                    value={formData?.password}
-                    variant="outlined"
-                    onChange={(e)=>handleChange(e.target.name, e.target.value)}
-                />
-            </FormGroup>
+                    <TextField
+                        type="password"
+                        label="Password"
+                        id="password"
+                        name="password"
+                        value={formData?.password}
+                        variant="outlined"
+                        onChange={(e)=>handleChange(e.target.name, e.target.value)}
+                    />
+                </FormGroup>
                 <FormGroup style={{ width: "40%", margin: "5px" }}>
                     <TextField
                         type="password"
@@ -153,7 +145,7 @@ function CreateUserDialog(props: EditUserDialogProps) {
                 </Button>
             </Grid>
         </form>
-    </Dialog>)
+    </>;
 }
 
-export { CreateUserDialog }
+export { CreateUserForm }
