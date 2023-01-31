@@ -13,16 +13,16 @@ import {
 } from "@mui/material";
 import { Close } from "@mui/icons-material";
 import {User} from "../core/_models";
-import {updateUser, getUserById, createUser} from "../core/_requests";
+import {createUser} from "../core/_requests";
+import {useQueryResponse} from "../core/QueryResponseProvider";
 
 interface EditUserDialogProps {
     open: boolean;
     handleClose: () => void
-    userId: string | undefined;
 }
 
 function CreateUserDialog(props: EditUserDialogProps) {
-    const [id, setId] = useState<string | undefined>(undefined);
+    const {refetch} = useQueryResponse()
     const [formData, setFormData] = useState<User>({
         id: "",
         first_name: "",
@@ -32,26 +32,13 @@ function CreateUserDialog(props: EditUserDialogProps) {
         two_steps_auth: false,
     });
 
-    useEffect(()=>{
-        setId(props.userId);
-        if (id){
-            getUserById(id).then((data)=>{
-                if(data){
-                    setFormData(data);
-                }
-            })
-        }
-    }, [props.open]);
-
     const onSubmit = async (e:FormEvent) => {
         e.preventDefault();
         try {
-            if(id){
-                await updateUser(formData);
-            } else {
-                await createUser(formData);
-                props.handleClose();
-            }
+            await createUser(formData);
+            refetch();
+            props.handleClose();
+            alert("User was successfully created.");
         } catch (err) {
             console.log(err);
         }

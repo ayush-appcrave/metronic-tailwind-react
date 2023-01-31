@@ -1,7 +1,8 @@
 import { Navigate, Route, Routes } from "react-router";
 import { DefaultLayout } from "../layouts/default";
 import { DefaultPage1, DefaultPage2 } from "../pages";
-import { UsersListWrapper, EditUserPageAPI } from "../modules/users-managment-api";
+import { UsersListWrapper  } from "../modules/users-managment-api";
+import { UpdateUserPage } from "../modules/users-managment-api/components/edit-user/UpdateUserPage";
 
 const PrivateRouting = () => (
   <Routes>
@@ -11,7 +12,7 @@ const PrivateRouting = () => (
       <Route path="dashboard" element={<DefaultPage1 />} />
       <Route path="marketing" element={<DefaultPage2 />} />
       <Route path="users-management-api" element={<UsersListWrapper />} />
-      <Route path="edit/api/user/:id" element={<EditUserPageAPI />} />
+      <Route path="edit/user/:id" element={<UpdateUserPage />} />
     </Route>
     <Route path="*" element={<Navigate to="/error/404" />} />
   </Routes>

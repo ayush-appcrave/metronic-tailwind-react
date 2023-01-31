@@ -4,6 +4,7 @@ import {User, UsersQueryResponse} from './_models'
 
 const API_URL = process.env.REACT_APP_API_URL
 const USER_URL = `${API_URL}/user`
+const USER_PASSWORD_UPDATE_URL = `${API_URL}/updatePassword`
 const GET_USERS_URL = `${API_URL}/users/query`
 
 const getUsers = (query: string): Promise<UsersQueryResponse> => {
@@ -38,6 +39,13 @@ const updateUser = (user: User): Promise<User | { data?: User | undefined; } | u
     .then((response: Response<User>) => response.data)
 }
 
+const updateUserPassword = (user: User): Promise<User | { data?: User | undefined; } | undefined> => {
+  return axios
+      .post(`${USER_PASSWORD_UPDATE_URL}/${user.id}`, user)
+      .then((response: AxiosResponse<Response<User>>) => response.data)
+      .then((response: Response<User>) => response.data)
+}
+
 const deleteUser = (userId: string): Promise<void> => {
   return axios.delete(`${USER_URL}/${userId}`).then(() => {})
 }
@@ -47,4 +55,4 @@ const deleteSelectedUsers = (userIds: Array<string>): Promise<void> => {
   return axios.all(requests).then(() => {})
 }
 
-export {getUsers, deleteUser, deleteSelectedUsers, getUserById, createUser, updateUser}
+export {getUsers, deleteUser, deleteSelectedUsers, getUserById, createUser, updateUser, updateUserPassword}

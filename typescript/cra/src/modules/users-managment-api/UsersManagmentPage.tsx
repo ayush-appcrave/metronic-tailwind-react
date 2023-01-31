@@ -5,6 +5,7 @@ import {useNavigate} from "react-router";
 import { headCells } from "./core/headCellConfiguration";
 import { Order } from "./@types/sort";
 import { EnhancedTableHead } from "./components/EnhancedTableHead";
+import CircularProgress from '@mui/material/CircularProgress';
 import { AlertDialog } from "./components/AlertDialog";
 import {
     Avatar,
@@ -23,16 +24,23 @@ import {
     Switch,
 } from "@mui/material";
 import {CreateUserDialog} from "./components/CreateUserDialog";
-import {useQueryResponse, useQueryResponseData, useQueryResponsePagination} from "./core/QueryResponseProvider";
+import {
+    useQueryResponse,
+    useQueryResponseData,
+    useQueryResponseLoading,
+    useQueryResponsePagination
+} from "./core/QueryResponseProvider";
 import {useQueryRequest} from "./core/QueryRequestProvider";
 import {useListView} from "./core/ListViewProvider";
 import {EnhancedTableToolbar} from "./components/EnhancedTableToolbar";
 import {useMutation, useQueryClient} from "react-query";
 import {deleteSelectedUsers} from "./core/_requests";
 import {QUERIES} from "./helpers";
+import {UpdateUserDialog} from "./components/edit-user/UpdateUserDialog";
 
-function UsersManagementPageAPI() {
+function UsersManagementPage() {
     const users = useQueryResponseData()
+    const isLoading = useQueryResponseLoading()
     const {updateState} = useQueryRequest()
     const data = useMemo(() => users, [users])
     const pagination = useQueryResponsePagination()
@@ -43,7 +51,8 @@ function UsersManagementPageAPI() {
     const [open, setOpen] = useState(false);
     const [userToDeleteId, setUserToDeleteId] = useState<string>("1");
     const [open2, setOpen2] = useState(false);
-    const [userToEditId, setUserToEditId] = useState<string | undefined>(undefined);
+    const [open3, setOpen3] = useState(false);
+    const [userToEditId, setUserToEditId] = useState<string>("");
     const [ roleFilter, setRoleFilter ] = useState<"user" | "admin" | undefined>(undefined);
     const [ nameFilter, setNameFilter ] = useState<string | null>(null);
     const queryClient = useQueryClient()
@@ -71,14 +80,20 @@ function UsersManagementPageAPI() {
         setOpen(true);
     };
     const handleClickOpe2 = (id:string|undefined) => {
-        setUserToEditId(id);
         setOpen2(true);
+    };
+    const handleClickOpe3 = (id:string) => {
+        setUserToEditId(id);
+        setOpen3(true);
     };
     const handleClose = () => {
         setOpen(false);
     };
     const handleClose2 = () => {
         setOpen2(false);
+    };
+    const handleClose3 = () => {
+        setOpen3(false);
     };
     const handleRequestSort = (
         event: React.FormEvent<unknown>,
@@ -127,6 +142,7 @@ function UsersManagementPageAPI() {
     return (
         <Box sx={{ width: '100%' }}>
             <Paper sx={{ width: '100%', mb: 2, mt: 10, position: "relative", paddingTop: "40px" }}>
+                {isLoading && <CircularProgress/>}
                 <Button sx={{
                     position: "absolute",
                     top: 2,
@@ -187,17 +203,17 @@ function UsersManagementPageAPI() {
                                                         marginBottom: 'auto',
                                                         marginLeft: '5px',
                                                     }}>
-                                                        {row.first_name}
+                                                        {row.id}--{row.first_name}
                                                     </Box>
                                                 </Box>
                                             </TableCell>
-                                            <TableCell align="left">{row.first_name}</TableCell>
+                                            <TableCell align="left">{row.last_name}</TableCell>
                                             <TableCell align="left">{row.role}</TableCell>
                                             <TableCell align="left">{String(false)}</TableCell>
                                             <TableCell align="left">{row.created_at}</TableCell>
                                             <TableCell align="left">
                                                 <Button onClick={(e)=>handleUserEdit(row.id)}>Edit</Button>
-                                                <Button onClick={(e)=>handleClickOpe2(row.id)}>Edit in Modal</Button>
+                                                <Button onClick={(e)=>handleClickOpe3(row.id)}>Edit in Modal</Button>
                                                 <Button onClick={(e)=>handleClickOpen(row.id)}>Delete</Button>
                                             </TableCell>
                                         </TableRow>
@@ -236,9 +252,10 @@ function UsersManagementPageAPI() {
                 </Box>
             </Paper>
             <AlertDialog open={open} handleClose={handleClose} userId={userToDeleteId.toString()}></AlertDialog>
-            <CreateUserDialog open={open2} handleClose={handleClose2} userId={userToEditId}></CreateUserDialog>
+            <CreateUserDialog open={open2} handleClose={handleClose2}></CreateUserDialog>
+            <UpdateUserDialog open={open3} handleClose={handleClose3} userId={userToEditId}></UpdateUserDialog>
         </Box>
     );
 }
 
-export { UsersManagementPageAPI }
+export { UsersManagementPage }
