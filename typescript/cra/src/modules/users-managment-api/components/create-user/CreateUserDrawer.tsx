@@ -12,9 +12,11 @@ function CreateUserDrawer(props: CreateUserDrawerProps) {
     return (<Drawer
         open={props.open}
         onClose={props.handleClose}
-        anchor={"right"}
-        sx={{
-            padding: "70px",
+        anchor="right"
+        PaperProps={{
+            sx: {
+                width: "40%",
+            }
         }}
     >
         <CreateUserForm open={props.open} handleClose={props.handleClose}></CreateUserForm>

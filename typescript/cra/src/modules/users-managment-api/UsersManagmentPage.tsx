@@ -1,12 +1,5 @@
 import {ChangeEvent, useEffect, useMemo, useState} from 'react';
-import { User } from "./core/_models";
-import { toAbsoluteUrl } from "utils";
-import {useNavigate} from "react-router";
-import { headCells } from "./core/headCellConfiguration";
-import { Order } from "./@types/sort";
-import { EnhancedTableHead } from "./components/EnhancedTableHead";
-import CircularProgress from '@mui/material/CircularProgress';
-import { AlertDialog } from "./components/AlertDialog";
+
 import {
     Avatar,
     Button,
@@ -23,21 +16,30 @@ import {
     FormControlLabel,
     Switch,
 } from "@mui/material";
-import {CreateUserDialog} from "./components/create-user/CreateUserDialog";
+import CircularProgress from '@mui/material/CircularProgress';
+
 import {
     useQueryResponse,
     useQueryResponseData,
     useQueryResponseLoading,
     useQueryResponsePagination
 } from "./core/QueryResponseProvider";
+import {UpdateUserDialog} from "./components/edit-user/UpdateUserDialog";
+import { CreateUserDrawer } from "./components/create-user/CreateUserDrawer";
 import {useQueryRequest} from "./core/QueryRequestProvider";
+import { toAbsoluteUrl } from "utils";
+import { User } from "./core/_models";
+import { Order } from "./@types/sort";
+import {useNavigate} from "react-router";
+import { headCells } from "./core/headCellConfiguration";
+import { EnhancedTableHead } from "./components/EnhancedTableHead";
+import { AlertDialog } from "./components/AlertDialog";
+import {CreateUserDialog} from "./components/create-user/CreateUserDialog";
 import {useListView} from "./core/ListViewProvider";
 import {EnhancedTableToolbar} from "./components/EnhancedTableToolbar";
 import {useMutation, useQueryClient} from "react-query";
 import {deleteSelectedUsers} from "./core/_requests";
 import {QUERIES} from "./helpers";
-import {UpdateUserDialog} from "./components/edit-user/UpdateUserDialog";
-import { CreateUserDrawer } from "./components/create-user/CreateUserDrawer";
 
 function UsersManagementPage() {
     const users = useQueryResponseData()

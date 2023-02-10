@@ -33,7 +33,7 @@ function UpdateUserDialog(props: EditUserDialogProps) {
             marginTop: "30px",
             fontSize: "40px",
             textAlign: "center",
-        }}>Add new user</Typography>
+        }}>Update user info</Typography>
         <UpdateUserFormWrapper userId={props.userId}></UpdateUserFormWrapper>
     </Dialog>)
 }
