@@ -1,11 +1,13 @@
-import {Typography} from "@mui/material";
-import {useParams} from "react-router";
+import {Avatar, Button, Typography} from "@mui/material";
+import {useNavigate, useParams} from "react-router";
 import {useEffect, useState} from "react";
 import {getUserById} from "../../core/_requests";
 import {User} from "../../core/_models";
+import {toAbsoluteUrl} from "utils";
 
 function ViewUserPage(){
     const { id } = useParams();
+    const navigate = useNavigate();
     const [currentUser, setCurrentUser] = useState<User>({
         id: "",
         first_name: "",
@@ -14,6 +16,10 @@ function ViewUserPage(){
         role: "user",
         two_steps_auth: false,
     });
+
+    const navigateUserEditPage = () => {
+        navigate(`/edit/user/${id}`);
+    }
 
     useEffect( ()=>{
         if(id){
@@ -24,7 +30,15 @@ function ViewUserPage(){
     }, []);
     return <>
         <Typography>User</Typography>
-        {JSON.stringify(currentUser)}
+
+        <Typography>{currentUser.id}</Typography>
+        <Avatar alt={currentUser.first_name} src={toAbsoluteUrl('/media/avatars/300-1.jpg')} />
+        <Typography>{currentUser.first_name} {currentUser.last_name}</Typography>
+        <Typography>{currentUser.role}</Typography>
+        <Typography>{currentUser.created_at}</Typography>
+        <Typography>{currentUser.email}</Typography>
+
+        <Button onClick={navigateUserEditPage}>Edit User</Button>
     </>;
 }
 

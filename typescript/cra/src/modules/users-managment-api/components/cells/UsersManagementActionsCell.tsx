@@ -1,4 +1,4 @@
-import React, {MouseEventHandler, useState} from 'react';
+import React, {useState} from 'react';
 import { useNavigate } from "react-router";
 import {Button, Menu, MenuItem } from "@mui/material";
 import {UpdateUserDialog} from "../edit-user/UpdateUserDialog";
