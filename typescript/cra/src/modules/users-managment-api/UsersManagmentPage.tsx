@@ -24,22 +24,20 @@ import {
     useQueryResponseLoading,
     useQueryResponsePagination
 } from "./core/QueryResponseProvider";
-import {UpdateUserDialog} from "./components/edit-user/UpdateUserDialog";
 import { CreateUserDrawer } from "./components/create-user/CreateUserDrawer";
 import {useQueryRequest} from "./core/QueryRequestProvider";
 import { toAbsoluteUrl } from "utils";
 import { User } from "./core/_models";
 import { Order } from "./@types/sort";
-import {useNavigate} from "react-router";
 import { headCells } from "./core/headCellConfiguration";
 import { EnhancedTableHead } from "./components/EnhancedTableHead";
-import { AlertDialog } from "./components/AlertDialog";
 import {CreateUserDialog} from "./components/create-user/CreateUserDialog";
 import {useListView} from "./core/ListViewProvider";
 import {EnhancedTableToolbar} from "./components/EnhancedTableToolbar";
 import {useMutation, useQueryClient} from "react-query";
 import {deleteSelectedUsers} from "./core/_requests";
 import {QUERIES} from "./helpers";
+import UsersManagementActionsCell from "./components/cells/UsersManagementActionsCell";
 
 function UsersManagementPage() {
     const users = useQueryResponseData()
@@ -59,13 +57,10 @@ function UsersManagementPage() {
     const [order, setOrder] = useState<Order>('asc');
     const [orderBy, setOrderBy] = useState<keyof User>('created_at');
     const [dense, setDense] = useState(false);
-    const navigate = useNavigate();
     const [open, setOpen] = useState(false);
     const [userToDeleteId, setUserToDeleteId] = useState<string>("1");
     const [open2, setOpen2] = useState(false);
-    const [open3, setOpen3] = useState(false);
     const [open4, setOpen4] = useState(false);
-    const [userToEditId, setUserToEditId] = useState<string>("");
     const [ roleFilter, setRoleFilter ] = useState<"user" | "admin" | undefined>(undefined);
     const [ nameFilter, setNameFilter ] = useState<string | null>(null);
     const queryClient = useQueryClient()
@@ -95,21 +90,11 @@ function UsersManagementPage() {
     const handleClickOpe2 = (id:string|undefined) => {
         setOpen2(true);
     };
-    const handleClickOpe3 = (id:string) => {
-        setUserToEditId(id);
-        setOpen3(true);
-    };
     const handleClickOpe4 = () => {
         setOpen4(true);
     };
-    const handleClose = () => {
-        setOpen(false);
-    };
     const handleClose2 = () => {
         setOpen2(false);
-    };
-    const handleClose3 = () => {
-        setOpen3(false);
     };
     const handleClose4 = () => {
         setOpen4(false);
@@ -149,9 +134,6 @@ function UsersManagementPage() {
     const handleChangeRowsPerPage = (event: ChangeEvent<HTMLInputElement>) => {
         updateState({items_per_page: event.target.value as unknown as 10 | 30 | 50 | 100})
     };
-    const handleUserEdit = (id:number|string) => {
-        navigate(`/edit/user/${id}`)
-    }
     const handleChangeDense = (event: ChangeEvent<HTMLInputElement>) => {
         setDense(event.target.checked);
     };
@@ -242,9 +224,7 @@ function UsersManagementPage() {
                                             <TableCell align="left">{String(false)}</TableCell>
                                             <TableCell align="left">{row.created_at}</TableCell>
                                             <TableCell align="left">
-                                                <Button onClick={(e)=>handleUserEdit(row.id)}>Edit</Button>
-                                                <Button onClick={(e)=>handleClickOpe3(row.id)}>Edit in Modal</Button>
-                                                <Button onClick={(e)=>handleClickOpen(row.id)}>Delete</Button>
+                                                <UsersManagementActionsCell id={row.id} />
                                             </TableCell>
                                         </TableRow>
                                     );
@@ -281,10 +261,8 @@ function UsersManagementPage() {
                     />
                 </Box>
             </Paper>
-            <AlertDialog open={open} handleClose={handleClose} userId={userToDeleteId.toString()}></AlertDialog>
             <CreateUserDialog open={open2} handleClose={handleClose2}></CreateUserDialog>
             <CreateUserDrawer open={open4} handleClose={handleClose4}></CreateUserDrawer>
-            <UpdateUserDialog open={open3} handleClose={handleClose3} userId={userToEditId}></UpdateUserDialog>
         </Box>
     );
 }
