@@ -48,8 +48,8 @@ function EnhancedTableToolbar(props: EnhancedTableToolbarProps) {
                     {numSelected} selected
                 </Typography>
             ) : (
-                <FormControl sx={{
-                    width: "50%"
+                <FormControl size="small" sx={{
+                    width: "50%",
                 }}>
                     <InputLabel id="demo-simple-select-label">Role</InputLabel>
                     <Select
@@ -76,7 +76,7 @@ function EnhancedTableToolbar(props: EnhancedTableToolbarProps) {
                     </IconButton>
                 </Tooltip>
             ) : (
-                <TextField onChange={props.handleNameFilterChange} sx={{
+                <TextField size="small" onChange={props.handleNameFilterChange} sx={{
                     margin: "10px",
                     width: "50%",
                 }}
