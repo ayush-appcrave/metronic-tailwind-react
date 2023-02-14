@@ -47,8 +47,17 @@ function UpdateUserPasswordAccordion(props: UpdateUserPasswordProps){
                 resetForm();
                 enqueueSnackbar('"Password has been successfully updated"', { variant: "success" });
                 refetch();
-            } catch (err) {
-                enqueueSnackbar("Something went wrong!", { variant: "error" });
+            } catch (error) {
+                console.log(error);
+                if (axios.isAxiosError(error)) {
+                    if(typeof error.response?.data.message === "string"){
+                        enqueueSnackbar(error.response?.data.message, { variant: "error" });
+                    } else {
+                        enqueueSnackbar(JSON.stringify(Object.values(error.response?.data.message)[0]?.toString()), { variant: "error" });
+                    }
+                } else {
+                    enqueueSnackbar("Something went wrong!", { variant: "error" });
+                }
             }
         },
     });
