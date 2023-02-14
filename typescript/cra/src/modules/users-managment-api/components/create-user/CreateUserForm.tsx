@@ -49,7 +49,7 @@ function CreateUserForm(props: CreateUserFormProps){
             two_steps_auth: Yup.boolean()
                 .required('Two steps auth is required.'),
             password: Yup.string()
-                .min(8, "Password length should be 8.")
+                .min(8, "Password length should be at least 8.")
                 .required('Password field is required.'),
             password_confirmation: Yup.string()
                 .oneOf([Yup.ref('password'), null], 'Passwords must match')
