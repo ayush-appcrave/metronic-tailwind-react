@@ -1,6 +1,6 @@
 import axios, {AxiosResponse} from 'axios'
 import {Response} from '../helpers'
-import {User, UsersQueryResponse} from './_models'
+import {User, UserPasswords, UsersQueryResponse} from './_models'
 
 const API_URL = process.env.REACT_APP_API_URL
 const USER_URL = `${API_URL}/user`
@@ -38,9 +38,9 @@ const updateUser = (user: User): Promise<User | { data?: User | undefined; } | u
     .then((response: Response<User>) => response.data)
 }
 
-const updateUserPassword = (user: User): Promise<User | { data?: User | undefined; } | undefined> => {
+const updateUserPassword = (user: UserPasswords, userId:string): Promise<User | { data?: User | undefined; } | undefined> => {
   return axios
-      .post(`${USER_PASSWORD_UPDATE_URL}/${user.id}`, user)
+      .post(`${USER_PASSWORD_UPDATE_URL}/${userId}`, user)
       .then((response: AxiosResponse<Response<User>>) => response.data)
       .then((response: Response<User>) => response.data)
 }

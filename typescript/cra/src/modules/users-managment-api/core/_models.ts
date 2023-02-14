@@ -1,6 +1,7 @@
 import {PaginationState} from '../helpers'
+import {UpdateUserPasswordAccordion} from "../components/edit-user/UpdateUserPasswordAccordion";
 
-export type User = {
+export interface UserGeneralInfo {
   id: string
   created_at?: string
   initials?: {
@@ -13,9 +14,15 @@ export type User = {
   email?: string
   role?: string
   two_steps_auth?: boolean
+}
+
+export interface UserPasswords {
   password?: string
   password_confirmation?: string
-};
+  current_password?: string
+}
+
+export type User = UserGeneralInfo & UserPasswords;
 
 export type UsersQueryResponse = {
   message: string,

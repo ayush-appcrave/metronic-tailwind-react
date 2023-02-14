@@ -9,7 +9,7 @@ import {
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import {useQueryResponse} from "../../core/QueryResponseProvider";
 import {FormEvent, useState} from "react";
-import {User} from "../../core/_models";
+import {User, UserPasswords} from "../../core/_models";
 import { updateUserPassword } from "../../core/_requests";
 
 interface UpdateUserPasswordProps {
@@ -18,17 +18,17 @@ interface UpdateUserPasswordProps {
 
 function UpdateUserPasswordAccordion(props: UpdateUserPasswordProps){
     const {refetch} = useQueryResponse();
-    const [formData, setFormData] = useState<User>({
-        id: props.userId,
+    const [formData, setFormData] = useState<UserPasswords>({
         password: "",
         password_confirmation: "",
+        current_password: "",
     });
 
     const onSubmit = async (e:FormEvent) => {
         console.log(formData);
         e.preventDefault();
         try {
-            await updateUserPassword(formData);
+            await updateUserPassword(formData, props.userId);
             refetch();
             alert("Password has been successfully updated");
         } catch (err) {
@@ -40,7 +40,7 @@ function UpdateUserPasswordAccordion(props: UpdateUserPasswordProps){
         setFormData((prevState) => ({
             ...prevState,
             [name]: value,
-        } as User));
+        } as UserPasswords));
     }
 
     return <Accordion>
@@ -56,6 +56,17 @@ function UpdateUserPasswordAccordion(props: UpdateUserPasswordProps){
                 display: "flex",
             }} onSubmit={(e)=>onSubmit(e)}>
                 <Grid container alignItems="center" position="relative" margin={"40px"} direction="column">
+                    <FormGroup style={{ width: "40%", margin: "5px" }}>
+                        <TextField
+                            type="password"
+                            label="Current Password"
+                            id="current_password"
+                            name="current_password"
+                            value={formData?.current_password}
+                            variant="outlined"
+                            onChange={(e)=>handleChange(e.target.name, e.target.value)}
+                        />
+                    </FormGroup>
                     <FormGroup style={{ width: "40%", margin: "5px" }}>
                         <TextField
                             type="password"

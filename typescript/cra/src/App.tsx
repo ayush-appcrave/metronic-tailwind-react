@@ -15,7 +15,7 @@ const App = () => (
         <ThemeProvider>
           <LayoutsProvider>
             <AuthInit>
-              <SnackbarProvider anchorOrigin={{vertical:"top", horizontal:"right"}} maxSnack={3} >
+              <SnackbarProvider autoHideDuration={2000} anchorOrigin={{vertical:"top", horizontal:"right"}} maxSnack={3} >
                 <AppRouting/>
               </SnackbarProvider>
             </AuthInit>
