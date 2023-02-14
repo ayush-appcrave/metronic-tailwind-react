@@ -44,27 +44,6 @@ export function setupAxios(axios: any) {
     },
     (err: any) => Promise.reject(err)
   );
-
-    axios.interceptors.response.use(function (response:any) {
-        // Do something with response data
-        if(response.data.success){
-            return response;
-        } else {
-            if(typeof response.data.message === "object"){
-                let final = "";
-                for (const key in response.data.message) {
-
-                    final +=`${key}: ${response.data.message[key]}\n`;
-                }
-                alert(final);
-            } else {
-                alert("Something went wrong!");
-            }
-        }
-    }, function (error:any) {
-        // Do something with response error
-        alert(error);
-    });
 }
 
 export { getAuth, setAuth, removeAuth, AUTH_LOCAL_STORAGE_KEY };

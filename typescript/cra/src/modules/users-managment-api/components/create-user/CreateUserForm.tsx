@@ -2,7 +2,7 @@ import {
     Button,
     FormControl,
     FormControlLabel,
-    FormGroup,
+    FormGroup, FormHelperText,
     Grid,
     InputLabel,
     MenuItem,
@@ -10,11 +10,14 @@ import {
     TextField,
     Typography
 } from "@mui/material";
+import * as Yup from 'yup';
 import {Close} from "@mui/icons-material";
-import {FormEvent, useState} from "react";
 import {useQueryResponse} from "../../core/QueryResponseProvider";
 import {User} from "../../core/_models";
 import {createUser} from "../../core/_requests";
+import {useFormik} from "formik";
+import {useSnackbar} from "notistack";
+import axios from "axios";
 
 interface CreateUserFormProps {
     open: boolean;
@@ -22,34 +25,51 @@ interface CreateUserFormProps {
 }
 
 function CreateUserForm(props: CreateUserFormProps){
+    const { enqueueSnackbar } = useSnackbar();
     const {refetch} = useQueryResponse()
-    const [formData, setFormData] = useState<User>({
-        id: "",
-        first_name: "",
-        last_name: "",
-        email: "",
-        role: "user",
-        two_steps_auth: false,
+    const formik = useFormik<User>({
+        initialValues: {
+            id: "",
+            first_name: "",
+            last_name: "",
+            email: "",
+            role: "user",
+            two_steps_auth: false,
+            password: "",
+            password_confirmation: "",
+        },
+        validationSchema: Yup.object({
+            first_name: Yup.string()
+                .required('First name is required.'),
+            last_name: Yup.string()
+                .required('Last name is required.'),
+            email: Yup.string().email('Invalid email address.').required('Email is required.'),
+            role: Yup.string()
+                .required('Role is required'),
+            two_steps_auth: Yup.boolean()
+                .required('Two steps auth is required.'),
+            password: Yup.string()
+                .min(8, "Password length should be 8.")
+                .required('Password field is required.'),
+            password_confirmation: Yup.string()
+                .oneOf([Yup.ref('password'), null], 'Passwords must match')
+                .required('Password confirmation field is required.'),
+        }),
+        onSubmit: async (values) => {
+            try {
+                await createUser(values);
+                refetch();
+                enqueueSnackbar('User was successfully created.', { variant: "success" });
+                props.handleClose();
+            } catch (error) {
+                if (axios.isAxiosError(error)) {
+                    enqueueSnackbar(JSON.stringify(Object.values(error.response?.data.message)[0]?.toString()), { variant: "error" });
+                } else {
+                    enqueueSnackbar("Something went wrong!", { variant: "error" });
+                }
+            }
+        },
     });
-
-    const onSubmit = async (e:FormEvent) => {
-        e.preventDefault();
-        try {
-            await createUser(formData);
-            refetch();
-            props.handleClose();
-            alert("User was successfully created.");
-        } catch (err) {
-            console.log(err);
-        }
-    }
-
-    const handleChange = (name:string, value:unknown) => {
-        setFormData((prevState)=>({
-            ...prevState,
-            [name]: value,
-        } as User));
-    }
 
     return <>
         <Button onClick={()=>{props.handleClose()}} sx={{
@@ -67,7 +87,7 @@ function CreateUserForm(props: CreateUserFormProps){
         }}>Create new user</Typography>
         <form style={{
             display: "flex",
-        }} onSubmit={(e)=>onSubmit(e)}>
+        }} onSubmit={formik.handleSubmit}>
             <Grid container alignItems="center" position="relative" sx={{
                 marginX: "20%",
                 marginY: "30px",
@@ -78,9 +98,12 @@ function CreateUserForm(props: CreateUserFormProps){
                         label="First Name"
                         id="first_name"
                         name="first_name"
-                        value={formData?.first_name}
-                        onChange={(e)=>handleChange(e.target.name, e.target.value)}
                         variant="outlined"
+                        error={!!formik.errors.first_name && formik.touched.first_name}
+                        onChange={formik.handleChange}
+                        onBlur={formik.handleBlur}
+                        value={formik.values.first_name}
+                        helperText={formik.touched.first_name && formik.errors.first_name ? formik.errors.first_name : ""}
                     />
                 </FormGroup>
                 <FormGroup sx={{ marginY: "5px", width: "100%",  }}>
@@ -89,9 +112,12 @@ function CreateUserForm(props: CreateUserFormProps){
                         label="Last Name"
                         id="last_name"
                         name="last_name"
-                        value={formData?.last_name}
-                        onChange={(e)=>handleChange(e.target.name, e.target.value)}
                         variant="outlined"
+                        error={!!formik.errors.last_name && formik.touched.last_name}
+                        onChange={formik.handleChange}
+                        onBlur={formik.handleBlur}
+                        value={formik.values.last_name}
+                        helperText={formik.touched.last_name && formik.errors.last_name ? formik.errors.last_name : ""}
                     />
                 </FormGroup>
                 <FormGroup sx={{ marginY: "5px", width: "100%",  }}>
@@ -100,24 +126,31 @@ function CreateUserForm(props: CreateUserFormProps){
                         label="Email"
                         id="email"
                         name="email"
-                        value={formData?.email}
                         variant="outlined"
-                        onChange={(e)=>handleChange(e.target.name, e.target.value)}
+                        error={!!formik.errors.email && formik.touched.email}
+                        onChange={formik.handleChange}
+                        onBlur={formik.handleBlur}
+                        value={formik.values.email}
+                        helperText={formik.touched.email && formik.errors.email ? formik.errors.email : ""}
                     />
                 </FormGroup>
-                <FormControl sx={{ marginY: "5px", width: "100%",  }}>
-                    <InputLabel id="kt-role-select-label">Age</InputLabel>
+                <FormControl sx={{ marginY: "5px", width: "100%",  }} error={!!formik.errors.role}>
+                    <InputLabel id="kt-role-select-label">Role</InputLabel>
                     <Select
                         labelId="kt-role-select-label"
                         id="kt-role-select"
-                        value={formData?.role}
                         name="role"
-                        label="user"
-                        onChange={(e)=>handleChange(e.target.name, e.target.value)}
+                        label="role"
+                        error={!!formik.errors.role && formik.touched.role}
+                        onChange={formik.handleChange}
+                        onBlur={formik.handleBlur}
+                        value={formik.values.role}
+
                     >
                         <MenuItem value="user">User</MenuItem>
                         <MenuItem value="admin">Admin</MenuItem>
                     </Select>
+                    { (formik.touched.role && formik.errors.role) && <FormHelperText>{formik.errors.role}</FormHelperText>}
                 </FormControl>
                 <FormGroup sx={{ marginY: "5px", width: "100%",  }}>
                     <TextField
@@ -125,9 +158,12 @@ function CreateUserForm(props: CreateUserFormProps){
                         label="Password"
                         id="password"
                         name="password"
-                        value={formData?.password}
                         variant="outlined"
-                        onChange={(e)=>handleChange(e.target.name, e.target.value)}
+                        error={!!formik.errors.password && formik.touched.password}
+                        onChange={formik.handleChange}
+                        onBlur={formik.handleBlur}
+                        value={formik.values.password}
+                        helperText={formik.touched.password && formik.errors.password ? formik.errors.password : ""}
                     />
                 </FormGroup>
                 <FormGroup sx={{ marginY: "5px", width: "100%",  }}>
@@ -136,13 +172,20 @@ function CreateUserForm(props: CreateUserFormProps){
                         label="Password Confirmation"
                         id="password_confirmation"
                         name="password_confirmation"
-                        value={formData?.password_confirmation}
                         variant="outlined"
-                        onChange={(e)=>handleChange(e.target.name, e.target.value)}
+                        error={!!formik.errors.password_confirmation && formik.touched.password_confirmation}
+                        onChange={formik.handleChange}
+                        onBlur={formik.handleBlur}
+                        value={formik.values.password_confirmation}
+                        helperText={formik.touched.password_confirmation && formik.errors.password_confirmation ? formik.errors.password_confirmation : ""}
                     />
                 </FormGroup>
                 <FormGroup sx={{ marginY: "5px", width: "100%",  }}>
-                    <FormControlLabel control={<Switch name="two_steps_auth" id="two_steps_auth" checked={formData?.two_steps_auth} value={formData?.two_steps_auth} onChange={(e)=>handleChange(e.target.name, e.target.value !== 'true')} />} label="Two Steps Auth" />
+                    <FormControlLabel control={<Switch name="two_steps_auth" id="two_steps_auth"
+                                                       onChange={formik.handleChange}
+                                                       onBlur={formik.handleBlur}
+                                                       value={formik.values.password_confirmation}
+                    />} label="Two Steps Auth" />
                 </FormGroup>
                 <Button sx={{ marginY: "5px", width: "100%",  }} type="submit" variant="contained" color="primary">
                     Save

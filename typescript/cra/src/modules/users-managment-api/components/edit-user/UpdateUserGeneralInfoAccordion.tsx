@@ -9,15 +9,19 @@ import {
 } from "@mui/material";
 import ExpandMoreIcon from "@mui/icons-material/ExpandMore";
 import {FormEvent, useEffect, useState} from "react";
+import { useSnackbar } from "notistack";
 import {createUser, getUserById, updateUser} from "../../core/_requests";
 import {User} from "../../core/_models";
 import {useQueryResponse} from "../../core/QueryResponseProvider";
+import {useFormik} from "formik";
+import * as Yup from "yup";
 
 interface UpdateUserGeneralInfoProps {
     userId: string;
 }
 
 function UpdateUserGeneralInfoAccordion(props: UpdateUserGeneralInfoProps){
+    const { enqueueSnackbar } = useSnackbar();
     const {refetch} = useQueryResponse();
     const [formData, setFormData] = useState<User>({
         id: props.userId,
@@ -28,22 +32,10 @@ function UpdateUserGeneralInfoAccordion(props: UpdateUserGeneralInfoProps){
         two_steps_auth: false,
     });
 
-    useEffect( ()=>{
-        getUserById(props.userId).then(user=>{
-            setFormData(user as User);
-        })
-    }, [props.userId])
-
     const onSubmit = async (e:FormEvent) => {
         console.log(formData);
         e.preventDefault();
-        try {
-            await updateUser(formData);
-            refetch();
-            alert("Info has been successfully updated");
-        } catch (err) {
-            console.log(err);
-        }
+
     }
 
     const handleChange = (name:string, value:unknown) => {
@@ -52,6 +44,60 @@ function UpdateUserGeneralInfoAccordion(props: UpdateUserGeneralInfoProps){
             [name]: value,
         } as User));
     }
+
+    const formik = useFormik<User>({
+        initialValues: {
+            id: "",
+            first_name: "",
+            last_name: "",
+            email: "",
+            role: "user",
+            two_steps_auth: false,
+            password: "",
+            password_confirmation: "",
+        },
+        validationSchema: Yup.object({
+            first_name: Yup.string()
+                .required('First name is required.'),
+            last_name: Yup.string()
+                .required('Last name is required.'),
+            email: Yup.string().email('Invalid email address.').required('Email is required.'),
+            role: Yup.string()
+                .required('Role is required'),
+            two_steps_auth: Yup.boolean()
+                .required('Two steps auth is required.'),
+            password: Yup.string()
+                .min(8, "Password length should be 8.")
+                .required('Password field is required.'),
+            password_confirmation: Yup.string()
+                .oneOf([Yup.ref('password'), null], 'Passwords must match')
+                .required('Password confirmation field is required.'),
+        }),
+        onSubmit: async (values) => {
+            try {
+                await updateUser({
+                    id: "",
+                    first_name: "",
+                    last_name: "",
+                    email: "",
+                    role: "user",
+                    two_steps_auth: false,
+                    password: "",
+                    password_confirmation: "",
+                });
+                refetch();
+                enqueueSnackbar('User was successfully added.', { variant: "success" });
+            } catch (err) {
+                console.log(err);
+            }
+        },
+    });
+
+    useEffect( ()=>{
+        getUserById(props.userId).then(user=>{
+            setFormData(user as User);
+        })
+    }, [props.userId])
 
 
     return <Accordion>
