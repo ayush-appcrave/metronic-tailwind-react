@@ -1,7 +1,7 @@
 import {
     Accordion,
     AccordionDetails,
-    AccordionSummary, Button,
+    AccordionSummary, Box, Button,
     FormControl, FormControlLabel,
     FormGroup, FormHelperText, Grid, InputLabel, MenuItem, Select, Switch,
     TextField,
@@ -18,9 +18,11 @@ import * as Yup from "yup";
 
 interface UpdateUserGeneralInfoProps {
     userId: string;
+    exitHandler: () => void
 }
 
 function UpdateUserGeneralInfoAccordion(props: UpdateUserGeneralInfoProps){
+    const { exitHandler } = props;
     const { enqueueSnackbar } = useSnackbar();
     const {refetch} = useQueryResponse();
     const [loading, setLoading] = useState(false);
@@ -77,7 +79,9 @@ function UpdateUserGeneralInfoAccordion(props: UpdateUserGeneralInfoProps){
                 }}
             >
                 {props => (
-                    <form onSubmit={props.handleSubmit}>
+                    <form style={{
+                        display: "flex"
+                    }} onSubmit={props.handleSubmit}>
                         <Grid container alignItems="center" position="relative" margin={"40px"} direction="column">
                             <FormGroup sx={{ marginY: "5px", width: "40%",  }}>
                                 <TextField
@@ -146,9 +150,19 @@ function UpdateUserGeneralInfoAccordion(props: UpdateUserGeneralInfoProps){
                                                                    value={props.values.two_steps_auth}
                                 />} label="Two Steps Auth" />
                             </FormGroup>
-                            <Button style={{ width: "20%", margin: "5px" }} type="submit" variant="contained" color="primary">
-                                Save
-                            </Button>
+                           <Box sx={{
+                               display: "flex",
+                           }}>
+                               <Button style={{ margin: "5px" }} onClick={()=>{props.handleSubmit(); exitHandler();}} variant="contained" color="primary">
+                                   Save and Exit
+                               </Button>
+                               <Button style={{ margin: "5px" }} type="submit" variant="contained" color="primary">
+                                   Save and Continue
+                               </Button>
+                               <Button style={{ margin: "5px" }} onClick={()=>{exitHandler();}} variant="contained" color="primary">
+                                   Exit
+                               </Button>
+                           </Box>
                         </Grid>
                     </form>
                 )}
