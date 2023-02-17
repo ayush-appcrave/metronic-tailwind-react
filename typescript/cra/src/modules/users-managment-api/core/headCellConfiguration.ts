@@ -28,10 +28,16 @@ const headCells: readonly HeadCell[] = [
         label: 'Role',
     },
     {
+        id: 'status',
+        numeric: false,
+        disablePadding: false,
+        label: 'Status',
+    },
+    {
         id: 'two_steps_auth',
         numeric: false,
         disablePadding: false,
-        label: 'Verified',
+        label: 'Two Steps Auth',
     },
     {
         id: 'created_at',

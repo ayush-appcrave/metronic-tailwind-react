@@ -13,6 +13,8 @@ export interface UserGeneralInfo {
   avatar?: string
   email?: string
   role?: string
+  status?: string
+  deleted?: string
   two_steps_auth?: boolean
 }
 

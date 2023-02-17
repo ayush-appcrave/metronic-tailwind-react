@@ -57,8 +57,6 @@ function UsersManagementPage() {
     const [order, setOrder] = useState<Order>('asc');
     const [orderBy, setOrderBy] = useState<keyof User>('created_at');
     const [dense, setDense] = useState(false);
-    const [open, setOpen] = useState(false);
-    const [userToDeleteId, setUserToDeleteId] = useState<string>("1");
     const [open2, setOpen2] = useState(false);
     const [open4, setOpen4] = useState(false);
     const [ roleFilter, setRoleFilter ] = useState<"user" | "admin" | undefined>(undefined);
@@ -83,10 +81,6 @@ function UsersManagementPage() {
 
     // -------------------
 
-    const handleClickOpen = (id:string) => {
-        setUserToDeleteId(id);
-        setOpen(true);
-    };
     const handleClickOpe2 = (id:string|undefined) => {
         setOpen2(true);
     };
@@ -221,7 +215,8 @@ function UsersManagementPage() {
                                             </TableCell>
                                             <TableCell align="left">{row.last_name}</TableCell>
                                             <TableCell align="left">{row.role}</TableCell>
-                                            <TableCell align="left">{String(false)}</TableCell>
+                                            <TableCell align="left">{row.status}</TableCell>
+                                            <TableCell align="left">{row.two_steps_auth}</TableCell>
                                             <TableCell align="left">{row.created_at}</TableCell>
                                             <TableCell align="left">
                                                 <UsersManagementActionsCell id={row.id} />

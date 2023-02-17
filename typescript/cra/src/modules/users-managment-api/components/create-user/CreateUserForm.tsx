@@ -33,6 +33,7 @@ function CreateUserForm(props: CreateUserFormProps){
             first_name: "",
             last_name: "",
             email: "",
+            status: "active",
             role: "user",
             two_steps_auth: false,
             password: "",
@@ -44,6 +45,8 @@ function CreateUserForm(props: CreateUserFormProps){
             last_name: Yup.string()
                 .required('Last name is required.'),
             email: Yup.string().email('Invalid email address.').required('Email is required.'),
+            status: Yup.string()
+                .required('Role is required'),
             role: Yup.string()
                 .required('Role is required'),
             two_steps_auth: Yup.boolean()
@@ -134,6 +137,25 @@ function CreateUserForm(props: CreateUserFormProps){
                         helperText={formik.touched.email && formik.errors.email ? formik.errors.email : ""}
                     />
                 </FormGroup>
+                <FormControl sx={{ marginY: "5px", width: "100%",  }} error={!!formik.errors.status}>
+                    <InputLabel id="kt-status-select-label">Status</InputLabel>
+                    <Select
+                        labelId="kt-status-select-label"
+                        id="kt-status-select"
+                        name="status"
+                        label="status"
+                        error={!!formik.errors.status && formik.touched.status}
+                        onChange={formik.handleChange}
+                        onBlur={formik.handleBlur}
+                        value={formik.values.status}
+
+                    >
+                        <MenuItem value="active">Active</MenuItem>
+                        <MenuItem value="pending">Pending</MenuItem>
+                        <MenuItem value="deactivated">Deactivated</MenuItem>
+                    </Select>
+                    { (formik.touched.status && formik.errors.status) && <FormHelperText>{formik.errors.status}</FormHelperText>}
+                </FormControl>
                 <FormControl sx={{ marginY: "5px", width: "100%",  }} error={!!formik.errors.role}>
                     <InputLabel id="kt-role-select-label">Role</InputLabel>
                     <Select
