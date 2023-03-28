@@ -3,6 +3,7 @@ import { AppSettings } from "./types";
 const defaultSettings: AppSettings = {
   mode: "system",
   layout: "default",
+  keeniconsType: "duotone",
   containerWidth: "fluid",
   color: "default",
 };

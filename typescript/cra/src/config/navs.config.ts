@@ -1,4 +1,5 @@
 import { NavConfigType } from "../components/nav";
+import { getKeenIcon } from "../components/keenicons";
 import { PathsType } from ".";
 
 // Auth paths
@@ -142,7 +143,7 @@ const NAV_COMMON: { [key: string]: NavConfigType } = {
 const NAV_VERTICAL: NavConfigType = [
   {
     title: "Dashboards",
-    icon: "general/gen025.svg",
+    icon: getKeenIcon("calendar"),
     children: {
       accordion: true,
       items: NAV_COMMON.dashboards,
@@ -150,7 +151,7 @@ const NAV_VERTICAL: NavConfigType = [
   },
   {
     title: "Pages",
-    icon: "files/fil003.svg",
+    icon: getKeenIcon("calendar"),
     children: {
       accordion: true,
       items: NAV_COMMON.pages,
@@ -158,7 +159,7 @@ const NAV_VERTICAL: NavConfigType = [
   },
   {
     title: "Authentication",
-    icon: "general/gen002.svg",
+    icon: getKeenIcon("calendar"),
     children: {
       accordion: true,
       items: NAV_COMMON.authentication,
@@ -166,7 +167,7 @@ const NAV_VERTICAL: NavConfigType = [
   },
   {
     title: "Account",
-    icon: "communication/com013.svg",
+    icon: getKeenIcon("calendar"),
     children: {
       accordion: true,
       items: NAV_COMMON.account,
@@ -174,7 +175,7 @@ const NAV_VERTICAL: NavConfigType = [
   },
   {
     title: "Apps",
-    icon: "finance/fin006.svg",
+    icon: getKeenIcon("calendar"),
     children: {
       accordion: true,
       items: NAV_COMMON.apps,
@@ -185,12 +186,12 @@ const NAV_VERTICAL: NavConfigType = [
   },
   {
     title: "Documentation",
-    icon: "arrows/arr062.svg",
+    icon: getKeenIcon("calendar"),
     path: "previews.keenthemes.com/hero/mui/docs",
   },
   {
     title: "Changelog",
-    icon: "arrows/arr062.svg",
+    icon: getKeenIcon("calendar"),
     path: "previews.keenthemes.com/hero/mui/docs/#/changelog",
   },
 ];

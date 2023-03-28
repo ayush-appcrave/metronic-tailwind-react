@@ -19,7 +19,7 @@ type Props = {
 
 const SVGIconComponent = ({
   icon,
-  path = "/media/icons/duotune/",
+  path = "/media/icons/",
   size = "1rem",
   className = "",
   svgClassName = "",

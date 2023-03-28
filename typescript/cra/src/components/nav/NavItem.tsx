@@ -1,8 +1,8 @@
 import { useState, useEffect, memo, useMemo } from "react";
-import { SVGIcon } from "..";
 import { Link as RouterLink, useLocation } from "react-router-dom";
 import { useMatchPath } from "../../hooks/useMatchPath";
 import { matchPath } from "../../utils/Router";
+import { getKeenIcon } from "../keenicons";
 import { Link, Collapse, Divider, List, ListItemButton, ListItemIcon, ListItemText, ListItemButtonProps } from "@mui/material";
 import { DividerStyled, ListSubheaderStyled, ListItemButtonStyled, ListItemTextStyled, ListItemIconStyled, BadgeStyled } from "..";
 import { NavItemSub, NavItemArrow, NavItemBullet, NavItemType, NavItemOptionsType, NavConfigType } from "..";
@@ -92,7 +92,7 @@ const NavItemComponent = ({
         >
           {icon && (
             <ListItemIconStyled depth={depth} styles={styles} active={active} here={here} hover={hover} open={open} disabled={disabled} collapse={collapse}>
-              <SVGIcon icon={icon} />
+              {icon}
             </ListItemIconStyled>
           )}
 
@@ -109,7 +109,7 @@ const NavItemComponent = ({
           )}
           
           {!minimize &&  hasChildren && ( 
-            <NavItemArrow depth={depth} styles={styles} active={active} here={here} open={open} hover={hover} disabled={disabled} collapse={collapse}/> 
+            <NavItemArrow depth={depth} styles={styles} active={active} here={here} open={open} hover={hover} disabled={disabled} collapse={collapse} icon={getKeenIcon("down")}/> 
           )}
         </ListItemButtonStyled>
       )}

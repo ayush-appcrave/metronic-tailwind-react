@@ -1,4 +1,4 @@
-import { SVGIcon } from "../../../components";
+import { KeenIcon } from "../../../components";
 import { useDefaultLayout } from "../DefaultLayoutProvider";
 import { Box, ToggleButton } from "@mui/material";
 
@@ -57,9 +57,12 @@ const SidebarCollapseButton = ({ onToggle }: Props) => {
         sx={{
           lineHeight: 0,
           ...(isSidebarCollapse && { transform: "rotate(180deg)" }),
+          "i": {
+            fontSize: "17px"
+          }
         }}
       >
-        <SVGIcon size="18" icon={"/arrows/arr079.svg"} />
+        <KeenIcon iconName="double-left"/>
       </Box>
     </ToggleButton>
   );
