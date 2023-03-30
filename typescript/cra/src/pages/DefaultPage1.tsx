@@ -5,8 +5,7 @@ import { ModeChanger } from "../layouts/default/header/ModeChanger";
 const DefaultPage1 = () => {
   return ( 
     <>
-      <LanguageChanger />
-      <ModeChanger />
+      <h1>Hello World</h1>
     </>
   );
 };

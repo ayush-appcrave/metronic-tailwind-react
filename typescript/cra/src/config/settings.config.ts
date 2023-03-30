@@ -4,7 +4,7 @@ const defaultSettings: SettingsType = {
   mode: "system",
   direction: "ltr",
   keenicons: "duotone",
-  fontFamily: "inter",
+  fontFamily: "Inter",
   layout: "default",
   container: "fluid",
   color: "default",
