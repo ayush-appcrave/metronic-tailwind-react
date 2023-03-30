@@ -9,6 +9,8 @@ import { SettingsToggleButton } from './SettingsToggleButton';
 
 const Settings = () => {
   const [open, setOpen] = useState(false);
+  const [headerHeight, setHeaderHeight] = useState(0);
+  const [footerHeight, setFooterHeight] = useState(0);
 
   const handleToggle = () => { 
     if (open) {
@@ -35,9 +37,17 @@ const Settings = () => {
             },
           }}
         >
-        <SettingsHeader onCloseClick={handleToggle}/>
-        <SettingsBody/>       
-        <SettingsFooter/>
+        <SettingsHeader 
+          setHeaderHeight={setHeaderHeight}
+          onCloseClick={handleToggle}
+        />
+        <SettingsBody
+          headerHeight={headerHeight} 
+          footerHeight={footerHeight}
+        />       
+        <SettingsFooter
+          setFooterHeight={setHeaderHeight}
+        />
       </Drawer>
       <SettingsToggleButton onClick={handleToggle}/>
     </>

@@ -1,20 +1,26 @@
 import { Box, List, ListSubheader } from '@mui/material';
 import { useViewport } from '../../hooks';
 import Scrollbar from '../scrollbar';
+import { SettingsForm } from './SettingsForm';
 
-const SettingsBody = () => {
+type Props = {
+	headerHeight?: number
+  footerHeight?: number
+};
+
+const SettingsBody = ({headerHeight = 0, footerHeight = 0}: Props) => {
 	const [width, height]= useViewport();
-	const scrollableHeight: number = height - 100;
+	const scrollableHeight: number = height - headerHeight - footerHeight;
 
   return (
 		<Scrollbar 
 			sx={{
 				height: scrollableHeight,
-				px: 1.5,
+				px: 2,
 				mx: 1
 			}}   
 		>
-			Content			
+			<SettingsForm/>
 		</Scrollbar>
   );
 }

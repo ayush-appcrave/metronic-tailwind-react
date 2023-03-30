@@ -6,14 +6,19 @@ import { Nav, NavItem, NavConfigType, NavVerticalStylesConfig } from '../../../c
 import { NAV_VERTICAL } from "../../../config/navs.config";
 import { number } from 'yup';
 
-const SidebarNav = () => {
+type Props = {
+	headerHeight?: number
+  footerHeight?: number
+};
+
+const SidebarNav = ({headerHeight = 0, footerHeight = 0}: Props) => {
   const {isSidebarExpand, isSidebarCollapse} = useDefaultLayout();
 	const styles = NavVerticalStylesConfig();
 	const [width, height]= useViewport();
 
 	console.log('height:' + height);
 
-	const scrollableHeight: number = height - 100;
+	const scrollableHeight: number = height - headerHeight - footerHeight;
 
   return (
 		<Scrollbar 

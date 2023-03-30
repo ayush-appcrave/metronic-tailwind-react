@@ -16,6 +16,8 @@ const Sidebar = () => {
   const styles = DefaultLayoutStylesConfig();
   const widthTransition = 'width ' + styles.SIDEBAR_TRANSITION_DURATION + ' ' + styles.SIDEBAR_TRANSITION_TIMING_FUNCTION;
   const {isSidebarExpand, isSidebarCollapse, setSidebarCollapse, setSidebarExpand} = useDefaultLayout();
+  const [headerHeight, setHeaderHeight] = useState(0);
+  const [footerHeight, setFooterHeight] = useState(0);
 
   useEffect(() => {
     console.log('mouse hover:' + isSidebarExpand);
@@ -59,8 +61,16 @@ const Sidebar = () => {
             },
           }}
         >
-          <SidebarHeader/>
-          <SidebarNav/>       
+          <SidebarHeader 
+            setHeaderHeight={setHeaderHeight}
+          />
+          <SidebarNav 
+            headerHeight={headerHeight} 
+            footerHeight={footerHeight}
+          />    
+          <SidebarFooter 
+            setFooterHeight={setFooterHeight}
+          />   
         </Drawer>
       )}
 
@@ -78,7 +88,8 @@ const Sidebar = () => {
             },
           }}
         >   
-          <SidebarNav/>       
+          <SidebarNav footerHeight={footerHeight}/>       
+          <SidebarFooter setFooterHeight={setFooterHeight}/>   
         </Drawer>
       )}
     </Box>
