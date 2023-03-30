@@ -32,7 +32,7 @@ const Settings = () => {
         hideBackdrop={true}
         PaperProps={{
             sx: {
-              width: 325,       
+              width: 350,       
               bgcolor: 'background.paper'
             },
           }}

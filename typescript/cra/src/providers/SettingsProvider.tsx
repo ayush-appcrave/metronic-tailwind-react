@@ -1,25 +1,25 @@
 import { useState, createContext, useContext, PropsWithChildren } from "react";
 import { getData, setData } from "../utils";
 import { defaultSettings } from "../config/settings.config";
-import { AppSettings, ThemeModeType } from "../config/types";
+import { SettingsType, SettingsModeType, SettingsModeOptionType } from "../config/types";
 
 const SETTINGS_CONFIG_KEY = "app-settings-config";
 
 export type SettingsProviderProps = {
-  settings: AppSettings;
-  updateSettings: (_: Partial<AppSettings>) => void;
-  getMode: () => ThemeModeType;
+  settings: SettingsType;
+  updateSettings: (_: Partial<SettingsType>) => void;
+  getMode: () => SettingsModeType;
 };
 
 const calculateInitialSettings = () => {
-  const settings = getData(SETTINGS_CONFIG_KEY) as AppSettings | undefined;
+  const settings = getData(SETTINGS_CONFIG_KEY) as SettingsType | undefined;
   return settings || defaultSettings;
 };
 
 const calculateUpdatedSettings = (
-  prop: Partial<AppSettings>,
-  oldSettings: AppSettings
-): AppSettings => {
+  prop: Partial<SettingsType>,
+  oldSettings: SettingsType
+): SettingsType => {
   const updatedSettings = { ...oldSettings, ...prop };
   setData(SETTINGS_CONFIG_KEY, updatedSettings);
   return updatedSettings;
@@ -27,7 +27,7 @@ const calculateUpdatedSettings = (
 
 const initialProps: SettingsProviderProps = {
   settings: calculateInitialSettings(),
-  updateSettings: (_: Partial<AppSettings>) => {},
+  updateSettings: (_: Partial<SettingsType>) => {},
   getMode: () => "light",
 };
 
@@ -36,7 +36,7 @@ const useSettings = () => useContext(SettingsContext);
 
 const SettingsProvider = ({ children }: PropsWithChildren) => {
   const [settings, setSettings] = useState(initialProps.settings);
-  const updateSettings = (prop: Partial<AppSettings>) => {
+  const updateSettings = (prop: Partial<SettingsType>) => {
     const updatedSettings = calculateUpdatedSettings(prop, settings);
     setSettings(updatedSettings);
   };

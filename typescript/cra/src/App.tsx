@@ -13,8 +13,8 @@ import "./App.css";
 
 const App = () => (
   <AuthProvider>
-    <TranslationProvider>
-      <SettingsProvider>
+    <SettingsProvider>
+      <TranslationProvider>
         <ThemeProvider>
           <LayoutsProvider>
             <AuthInit>
@@ -22,8 +22,8 @@ const App = () => (
             </AuthInit>
           </LayoutsProvider>
         </ThemeProvider>
-      </SettingsProvider>
-    </TranslationProvider>
+      </TranslationProvider>
+    </SettingsProvider>
   </AuthProvider>
 );
 

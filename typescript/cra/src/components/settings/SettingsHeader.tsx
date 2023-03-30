@@ -27,7 +27,7 @@ const SettingsHeader = ({ onCloseClick, setHeaderHeight }: Props) => {
         flexShrink: 0,
         position: 'relative',
         px: 2,
-        py: 4
+        py: 2
       }}
     >
       <Box 

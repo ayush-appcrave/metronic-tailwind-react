@@ -1,11 +1,11 @@
-import { ModeType } from "../../../config";
+import { SettingsModeOptionType } from "../../../config";
 import { useSettings } from "../../../providers/SettingsProvider";
 
 const ModeChanger = () => {
   const { settings, updateSettings, getMode } = useSettings();
   const { mode } = settings;
   
-  const changeMode = (mode: ModeType) => {
+  const changeMode = (mode: SettingsModeOptionType) => {
     updateSettings({
       mode,
     });

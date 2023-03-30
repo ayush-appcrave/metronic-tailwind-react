@@ -10,6 +10,7 @@ import { typography, GlobalStyles } from "../theme";
 
 const ThemeProvider = ({ children }: PropsWithChildren) => {
   const { settings, getMode } = useSettings();
+  const { direction } = settings;
   const { currentLanguage } = useLang();
 
   const themeOptions: ThemeOptions = useMemo(
@@ -18,7 +19,7 @@ const ThemeProvider = ({ children }: PropsWithChildren) => {
       typography,
       palette: getPalette(getMode()),
     }),
-    [currentLanguage.direction, getMode()]
+    [direction, getMode()]
   );
 
   const theme = createTheme(themeOptions);

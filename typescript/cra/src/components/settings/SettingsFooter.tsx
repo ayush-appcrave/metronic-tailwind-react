@@ -26,8 +26,8 @@ const SettingsFooter = ({setFooterHeight}: Props) => {
       sx={{        
         flexShrink: 0,
         position: 'relative',
-        px: 4,
-        py: 4
+        px: 2,
+        py: 2
       }}
     >
       Footer

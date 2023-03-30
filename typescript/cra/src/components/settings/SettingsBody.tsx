@@ -1,7 +1,9 @@
 import { Box, List, ListSubheader } from '@mui/material';
 import { useViewport } from '../../hooks';
 import Scrollbar from '../scrollbar';
-import { SettingsForm } from './SettingsForm';
+import { SettingsFormMode } from './SettingsFormMode';
+import { SettingsFormKeenIcons } from './SettingsFormKeenIcons';
+import { SettingsFormDirection } from './SettingsFormDirection';
 
 type Props = {
 	headerHeight?: number
@@ -20,7 +22,9 @@ const SettingsBody = ({headerHeight = 0, footerHeight = 0}: Props) => {
 				mx: 1
 			}}   
 		>
-			<SettingsForm/>
+			<SettingsFormMode/>
+			<SettingsFormKeenIcons/>
+			<SettingsFormDirection/>
 		</Scrollbar>
   );
 }

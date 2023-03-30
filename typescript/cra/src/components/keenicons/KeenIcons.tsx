@@ -11,10 +11,10 @@ type Props = {
 
 const KeenIconComponent = ({iconName, iconClass = "", iconType = ""}: Props) => {
   const { settings } = useSettings();
-  const { keeniconsType } = settings;
+  const { keenicons } = settings;
 
   if (iconType === "") {
-    iconType = keeniconsType;
+    iconType = keenicons;
   }
 
   return (
