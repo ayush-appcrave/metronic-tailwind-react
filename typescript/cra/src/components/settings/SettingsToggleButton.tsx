@@ -19,7 +19,8 @@ const SettingsToggleButton = ({ onClick }: Props) => {
       variant="contained"
       value="1"
     >
-      <KeenIcon iconName="setting-4" />      
+      <KeenIcon icon="setting-4"/>      
+
       <Box sx={{paddingLeft: 1}}>
         Customize
       </Box>

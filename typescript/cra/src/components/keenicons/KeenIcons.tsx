@@ -1,32 +1,35 @@
 import { memo } from "react";
 import KeenIconsConfig from "./config";
 import { Box } from "@mui/material";
+import { SxProps, Theme } from '@mui/material/styles';
 import { useSettings } from "../../providers/SettingsProvider";
 
 type Props = {
-  iconName: string;
-  iconClass?: string;
-  iconType?: string;
+  icon: string;
+  style?: string;
+  className?: string;
+  sx?: SxProps<Theme>;
 };
 
-const KeenIconComponent = ({iconName, iconClass = "", iconType = ""}: Props) => {
+const KeenIconComponent = ({icon, style = "", className = "", sx}: Props) => {
   const { settings } = useSettings();
   const { keenicons } = settings;
 
-  if (iconType === "") {
-    iconType = keenicons;
+  if (style === "") {
+    style = keenicons;
   }
 
   return (
     <Box 
-      className={`ki-${iconType} ki-${iconName} ${iconClass && " " + iconClass}`}
+      className={`ki-${style} ki-${icon} ${className && " " + className}`}
       component="i" 
+      {...(sx && { sx: sx })}    
     >
-      {iconType === 'duotone' &&
-        [...Array(KeenIconsConfig[iconName])].map((e, i) => {
+      {style === 'duotone' &&
+        [...Array(KeenIconsConfig[icon])].map((e, i) => {
           return (
             <span 
-              key={`${iconType}-${iconName}-${iconClass}-path-${i + 1}`}
+              key={`${style}-${icon}-${className}-path-${i + 1}`}
               className={`path${i + 1}`}
             >              
             </span>
@@ -38,14 +41,4 @@ const KeenIconComponent = ({iconName, iconClass = "", iconType = ""}: Props) => 
 
 const KeenIcon = memo(KeenIconComponent);
 
-const getKeenIcon = (iconName:string, iconClass?:string, iconType?:string) => {
-  return (
-    <KeenIcon 
-      iconName={iconName} 
-      {...(iconClass !== null && { iconClass: iconClass })}
-      {...(iconType !== null && { iconType: iconType })}    
-    />
-  )
-};
-
-export { getKeenIcon, KeenIcon };
+export { KeenIcon };

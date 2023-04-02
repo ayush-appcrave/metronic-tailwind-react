@@ -62,7 +62,7 @@ const SidebarCollapseButton = ({ onToggle }: Props) => {
           }
         }}
       >
-        <KeenIcon iconName="double-left"/>
+        <KeenIcon icon="double-left"/>
       </Box>
     </ToggleButton>
   );

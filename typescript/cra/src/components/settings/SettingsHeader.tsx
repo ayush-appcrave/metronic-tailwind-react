@@ -42,7 +42,12 @@ const SettingsHeader = ({ onCloseClick, setHeaderHeight }: Props) => {
         aria-label="close"
         onClick={onCloseClick}
       >
-        <KeenIcon iconName="cross"/>
+        <KeenIcon 
+          icon="cross"
+          sx={{
+            fontSize: "18px"
+          }}
+        />
       </IconButton>
     </Stack>
   );
