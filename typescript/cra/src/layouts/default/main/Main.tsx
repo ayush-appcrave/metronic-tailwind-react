@@ -1,12 +1,16 @@
 import { PropsWithChildren, useState, useEffect } from 'react';
-import PropTypes from 'prop-types';
+import { useTheme } from '@mui/material/styles';
 import { Box, Stack, Drawer } from '@mui/material';
 import { useResponsive } from '../../../hooks/useResponsive';
-import { Content } from "../content/Content";
 import { useDefaultLayout, DefaultLayoutStylesConfig } from '../';
+import { Header } from "../header/Header";
+import { Content } from "../content/Content";
+import { Footer } from "../footer/Footer";
 
 const Main = ({ children }: PropsWithChildren) => {
-  const {isSidebarCollapse, isSidebarExpand, setSidebarCollapse} = useDefaultLayout();
+  const theme = useTheme();
+
+  const {sidebarWidth, isSidebarCollapse, isSidebarExpand, setSidebarCollapse} = useDefaultLayout();
 
   const isDesktop = useResponsive('up', 'lg');
 
@@ -17,11 +21,21 @@ const Main = ({ children }: PropsWithChildren) => {
   return (
     <Box
       sx={{
-				marginLeft: { lg: (isSidebarCollapse ? styles.SIDEBAR_COLLAPSE_WIDTH : styles.SIDEBAR_WIDTH) + 'px' },
-        transition: marginTransition
+        [theme.breakpoints.up("lg")]: {
+          paddingTop: styles.HEADER_HEIGHT + 'px',
+        },
+        [theme.breakpoints.down("lg")]: {
+          paddingTop: styles.HEADER_HEIGHT_MOBILE + 'px',
+        },
+				marginLeft: { lg: sidebarWidth + 'px' },
+        transition: marginTransition,
+        display: "flex",
+        flexDirection: "column"
       }}
     >      
-     <Content/>
+      <Header/>
+      <Content/>
+      <Footer/>
     </Box>
   );
 }

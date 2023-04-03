@@ -1,5 +1,4 @@
 import { useState, useEffect } from 'react';
-import PropTypes from 'prop-types';
 import { useTheme } from '@mui/material/styles';
 import { Box, Stack, Drawer } from '@mui/material';
 import useResponsive from '../../../hooks/useResponsive';
@@ -15,7 +14,7 @@ const Sidebar = () => {
   const isMobile = useResponsive('down', 'lg');
   const styles = DefaultLayoutStylesConfig();
   const widthTransition = 'width ' + styles.SIDEBAR_TRANSITION_DURATION + ' ' + styles.SIDEBAR_TRANSITION_TIMING_FUNCTION;
-  const {isSidebarExpand, isSidebarCollapse, setSidebarCollapse, setSidebarExpand} = useDefaultLayout();
+  const {sidebarWidth, isSidebarExpand, isSidebarCollapse, setSidebarCollapse, setSidebarExpand} = useDefaultLayout();
   const [headerHeight, setHeaderHeight] = useState(0);
   const [footerHeight, setFooterHeight] = useState(0);
 
@@ -40,7 +39,7 @@ const Sidebar = () => {
         backgroundColor: theme.palette.background.default,
         [theme.breakpoints.up("lg")]: {
           transition: widthTransition,
-          width: isSidebarCollapse ? styles.SIDEBAR_COLLAPSE_WIDTH : styles.SIDEBAR_WIDTH,
+          width: sidebarWidth
         },
         [theme.breakpoints.down("lg")]: {
           width: styles.SIDEBAR_WIDTH_MOBILE

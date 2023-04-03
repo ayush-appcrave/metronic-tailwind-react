@@ -15,9 +15,6 @@ const SidebarNav = ({headerHeight = 0, footerHeight = 0}: Props) => {
   const {isSidebarExpand, isSidebarCollapse} = useDefaultLayout();
 	const styles = NavVerticalStylesConfig();
 	const [width, height]= useViewport();
-
-	console.log('height:' + height);
-
 	const scrollableHeight: number = height - headerHeight - footerHeight;
 
   return (
