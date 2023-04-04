@@ -12,6 +12,8 @@ type DefaultLayoutProviderProps = {
   isSidebarExpand: boolean;
   setSidebarExpand: (collapse: boolean) => void;
   setSidebarCollapse: (collapse: boolean) => void;
+  mobileSidebarOpen: boolean;
+  setMobileSidebarOpen: (open: boolean) => void;
 } & ILayoutProvider;
 
 const initalLayoutProps: DefaultLayoutProviderProps = {
@@ -21,7 +23,9 @@ const initalLayoutProps: DefaultLayoutProviderProps = {
   isSidebarExpand: false,
   isHeaderSticky: false,
   setSidebarExpand: (_: boolean) => {},
-  setSidebarCollapse: (_: boolean) => {}
+  setSidebarCollapse: (_: boolean) => {},
+  mobileSidebarOpen: false,
+  setMobileSidebarOpen: (_: boolean) => {}
 };
 
 const getLayoutConfig = (layouts: LayoutsType): ILayoutConfig => {
@@ -58,6 +62,8 @@ const DefaultLayoutProvider = ({ children }: PropsWithChildren) => {
     setSidebarExpandState(hover);
   };
 
+  const [mobileSidebarOpen, setMobileSidebarOpen] = useState(false);
+
   const isHeaderSticky: boolean = scrollPosition > styles.HEADER_STICKY_OFFSET;
 
   const isSidebarCollapse: boolean = layout.options.sidebar.collapse;
@@ -75,7 +81,9 @@ const DefaultLayoutProvider = ({ children }: PropsWithChildren) => {
         setSidebarExpand,
         isSidebarCollapse,
         sidebarWidth,
-        setSidebarCollapse
+        setSidebarCollapse,
+        mobileSidebarOpen,
+        setMobileSidebarOpen
       }}
     >
       {children}

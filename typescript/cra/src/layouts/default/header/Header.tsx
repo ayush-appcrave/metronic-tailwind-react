@@ -1,26 +1,21 @@
 import { useState, useEffect } from 'react';
-import { useTheme } from '@mui/material/styles';
-import { Box, Stack, Drawer, Container, alpha } from '@mui/material';
+import { Box, Stack, Drawer, Container, alpha, useTheme } from '@mui/material';
 import useResponsive from '../../../hooks/useResponsive';
 import { useDefaultLayout } from '../';
 import { useSettings } from "../../../providers/SettingsProvider";
 import { DefaultLayoutStylesConfig } from '../';
+import { HeaderMobileLogo } from './HeaderMobileLogo';
 
 const Header = () => {
   const { settings } = useSettings();
   const { container } = settings;
-  const {isHeaderSticky, sidebarWidth, isSidebarCollapse} = useDefaultLayout();
+  const {isHeaderSticky, sidebarWidth, isSidebarCollapse, setMobileSidebarOpen} = useDefaultLayout();
   const theme = useTheme();
   const isDesktop = useResponsive('up', 'lg');
   const isMobile = useResponsive('down', 'lg');
   const styles = DefaultLayoutStylesConfig();
-  const heightTransition = 'height ' + styles.HEADER_TRANSITION_DURATION + ' ' + styles.HEADER_TRANSITION_TIMING_FUNCTION;
-
-  console.log('container:' + container);
-
-  useEffect(() => {
-    console.log('header sticky:' + isHeaderSticky);
-  }, [isHeaderSticky]);
+  const leftTransition = 'height ' + styles.SIDEBAR_TRANSITION_DURATION + ' ' + styles.SIDEBAR_TRANSITION_TIMING_FUNCTION;
+  const heightTransition = 'left ' + styles.HEADER_TRANSITION_DURATION + ' ' + styles.HEADER_TRANSITION_TIMING_FUNCTION;
 
   return (
     <Box
@@ -33,15 +28,10 @@ const Header = () => {
         right: 0,
         left: 0,
         backgroundColor: 'transparent',
-        transition: heightTransition,
-
-        ...(isHeaderSticky && {
-          transition: heightTransition,          
-          backgroundColor: alpha(theme.palette.background.default, 0.8),
-          backdropFilter: styles.HEADER_STICKY_BACKDROP_FILTER
-        }),
+        transition: heightTransition,       
         
         [theme.breakpoints.up("lg")]: {
+          transition: heightTransition + ', ' + leftTransition,
           left: sidebarWidth,
           height: styles.HEADER_HEIGHT + 'px',
           ...(isHeaderSticky && {
@@ -54,7 +44,13 @@ const Header = () => {
           ...(isHeaderSticky && {
             height: styles.HEADER_STICKY_HEIGHT_MOBILE + 'px',
           })
-        }
+        },
+
+        ...(isHeaderSticky && {
+          transition: heightTransition,          
+          backgroundColor: alpha(theme.palette.background.default, 0.8),
+          backdropFilter: styles.HEADER_STICKY_BACKDROP_FILTER
+        }),
       }}
     >
       <Container 
@@ -63,8 +59,8 @@ const Header = () => {
           display: "flex",
           alignItems: "center"
         }}
-      >
-        Header
+      >        
+        {isMobile && (<HeaderMobileLogo/>)}
       </Container>
     </Box>
   );  
