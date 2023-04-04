@@ -8,6 +8,7 @@ const defaultSettings: SettingsType = {
   layout: "default",
   container: "fluid",
   color: "default",
+  mobileBreakpoint: "md"
 };
 const COOKIES_EXPIRATION = 5;
 

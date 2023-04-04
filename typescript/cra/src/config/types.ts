@@ -8,6 +8,8 @@ export type SettingsKeenIconsType = "duotone" | "solid" | "outline";
 
 export type SettingsContainerType = "fluid" | "fixed";
 
+export type SettingsMobileBreakpointType = "xs" | "sm" | "md" | "lg" | "xl";
+
 // Settings types
 export type SettingsType = {
   mode: SettingsModeOptionType;
@@ -17,6 +19,7 @@ export type SettingsType = {
   fontFamily: string;
   color: string;
   layout: string;
+  mobileBreakpoint: SettingsMobileBreakpointType;
 };
 
 // Menu types
