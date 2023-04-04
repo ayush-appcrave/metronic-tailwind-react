@@ -11,6 +11,10 @@ const Footer = () => {
     >
       <Container 
         maxWidth={container === "fixed" ? 'lg' : false}
+        sx={{
+          display: "flex",
+          alignItems: "center"
+        }}
       >
         Footer
       </Container>
