@@ -1,6 +1,6 @@
 import { Box, useTheme } from '@mui/material';
 
-const HeaderSearch = () => {
+const HeaderMessagesMenu = () => {
 
 
   return (
@@ -9,9 +9,9 @@ const HeaderSearch = () => {
         
       }}
     >
-      Search
+      Messages
     </Box>
   );
 };
 
-export { HeaderSearch };
+export { HeaderMessagesMenu };

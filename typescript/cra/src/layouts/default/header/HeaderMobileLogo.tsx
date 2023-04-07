@@ -26,8 +26,8 @@ const HeaderMobileLogo = () => {
       <IconButton
         onClick={handleSidebarOpenOnMobile}
         sx={{
-          mr: 1,
-          ml: -0.5
+          mr: 0.25,
+          ml: -1
         }}
       >
         <KeenIcon 

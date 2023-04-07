@@ -1,11 +1,17 @@
-import { FormattedMessage } from "react-intl";
+import { Box, useTheme } from '@mui/material';
 
-const Header = () => (
-  <header>
-    <h1>
-      <FormattedMessage id="MENU.DASHBOARD" />
-    </h1>
-  </header>
-);
+const HeaderNotificationsMenu = () => {
 
-export { Header };
+
+  return (
+    <Box
+      sx={{
+        
+      }}
+    >
+      Notifications
+    </Box>
+  );
+};
+
+export { HeaderNotificationsMenu };

@@ -37,7 +37,9 @@ const SidebarFooter = ({setFooterHeight}: Props) => {
       <Avatar alt={currentUser!.first_name} src={toAbsoluteUrl('/media/avatars/300-1.jpg')} />
 
       <Box sx={{
-        mx: 5,
+        ml: 1,
+        mr: 1,
+        fontSize: '15px'
       }}>
         {currentUser!.first_name} {currentUser!.last_name}
       </Box>

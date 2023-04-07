@@ -13,7 +13,7 @@ type Props = {
 
 const SidebarNav = ({headerHeight = 0, footerHeight = 0}: Props) => {
   const {isSidebarExpand, isSidebarCollapse} = useDefaultLayout();
-	const styles = NavVerticalStylesConfig();
+	const stylesConfig = NavVerticalStylesConfig();
 	const [width, height]= useViewport();
 	const scrollableHeight: number = height - headerHeight - footerHeight;
 
@@ -32,7 +32,7 @@ const SidebarNav = ({headerHeight = 0, footerHeight = 0}: Props) => {
 				collapse={isSidebarCollapse}
 				expand={isSidebarExpand}
 				items={NAV_VERTICAL}
-				styles={styles}
+				styles={stylesConfig}
 			/>				
 		</Scrollbar>
   );

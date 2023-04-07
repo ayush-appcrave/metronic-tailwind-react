@@ -5,6 +5,12 @@ import { useDefaultLayout } from '../';
 import { useSettings } from "../../../providers/SettingsProvider";
 import { DefaultLayoutStylesConfig } from '../';
 import { HeaderMobileLogo } from './HeaderMobileLogo';
+import { HeaderSearch } from './HeaderSearch';
+import { HeaderNotificationsMenu } from './HeaderNotificationsMenu';
+import { HeaderMessagesMenu } from './HeaderMessagesMenu';
+import { HeaderLanguageMenu } from './HeaderLanguageMenu';
+import { HeaderUserMenu } from './HeaderUserMenu';
+import { HeaderModeSwitcher } from './HeaderModeSwitcher';
 
 const Header = () => {
   const { settings } = useSettings();
@@ -14,12 +20,13 @@ const Header = () => {
   const isDesktop = useResponsive('up', 'lg');
   const isMobile = useResponsive('down', 'lg');
   const styles = DefaultLayoutStylesConfig();
-  const leftTransition = 'height ' + styles.SIDEBAR_TRANSITION_DURATION + ' ' + styles.SIDEBAR_TRANSITION_TIMING_FUNCTION;
-  const heightTransition = 'left ' + styles.HEADER_TRANSITION_DURATION + ' ' + styles.HEADER_TRANSITION_TIMING_FUNCTION;
+  const leftTransition = 'left ' + styles.SIDEBAR_TRANSITION_DURATION + ' ' + styles.SIDEBAR_TRANSITION_TIMING_FUNCTION;
+  const heightTransition = 'height ' + styles.HEADER_TRANSITION_DURATION + ' ' + styles.HEADER_TRANSITION_TIMING_FUNCTION;
 
   return (
     <Box
       component="header"
+      className="mui-fixed"
       sx={{
         display: "flex",
         alignItems: "stretch",
@@ -57,10 +64,47 @@ const Header = () => {
         maxWidth={container === "fixed" ? 'lg' : false}
         sx={{
           display: "flex",
-          alignItems: "center"
+          justifyContent: "space-between",
+          alignItems: "stretch"
         }}
       >        
         {isMobile && (<HeaderMobileLogo/>)}
+
+        <Box
+          sx={{
+            display: "flex",
+            alignItems: "center",            
+            [theme.breakpoints.up("lg")]: {
+              justifyContent: "space-between",
+              flexGrow: 1
+            },
+            [theme.breakpoints.down("lg")]: {
+              justifyContent: "flex-end",
+              gap: '8px'
+            }            
+          }}
+        >
+          <HeaderSearch/>
+
+          <Box
+            sx={{
+              display: "flex",
+              alignItems: "center",
+              [theme.breakpoints.up("lg")]: {
+                gap: '15px'
+              },
+              [theme.breakpoints.down("lg")]: {
+                gap: '8px'
+              }              
+            }}
+          >
+            <HeaderNotificationsMenu/>               
+            <HeaderMessagesMenu/>
+            <HeaderLanguageMenu/>
+            <HeaderUserMenu/>
+            <HeaderModeSwitcher/>                                
+          </Box>  
+        </Box>
       </Container>
     </Box>
   );  
