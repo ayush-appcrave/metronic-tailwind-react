@@ -1,8 +1,13 @@
 import { useState, useEffect } from 'react';
-import { Box, Avatar, Menu, MenuItem, ListItemIcon, Divider, IconButton, Typography, Tooltip, useTheme } from '@mui/material';
-import { KeenIcon } from "../../../components";
+import { Box, Link, Stack, Avatar, Menu, MenuItem, ListItemIcon, Divider, IconButton, Typography, Tooltip, useTheme } from '@mui/material';
+import { KeenIcon, MenuDropdown } from "../../../components";
+import { useAuth } from '../../../auth';
+import { LineWeight } from '@mui/icons-material';
 
 const HeaderUserMenu = () => {
+  const theme = useTheme();
+  const {currentUser, logout} = useAuth();
+
   const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
   const open = Boolean(anchorEl);
   
@@ -43,7 +48,7 @@ const HeaderUserMenu = () => {
           />
         </IconButton>
       </Tooltip>
-      <Menu
+      <MenuDropdown
         id="user-account-menu"
         disableScrollLock={false}
         anchorEl={anchorEl}        
@@ -61,21 +66,86 @@ const HeaderUserMenu = () => {
         PaperProps={{
           sx: {
             mt: 0.5,
+            [theme.breakpoints.up("lg")]: {
+              width: "200px"
+            },
+            [theme.breakpoints.down("lg")]: {
+              width: "190px"
+            }
           }
         }}       
       >
-        <MenuItem onClick={handleClose}>
-          <Avatar /> 
-          Profile
-        </MenuItem>
-        <Divider />
-        <MenuItem onClick={handleClose}>
+        <Box sx={{
+          pt: 0.75,
+          pb: 0.25,
+          px: 2.5,
+          lineHeight: 1.15
+        }}>
+          <Box sx={{
+            fontSize: "14px",
+            fontWeight: theme.typography.fontWeightMedium,
+            color: theme.palette.grey['800'],
+            LineHeight: 1
+          }}>
+            {currentUser!.first_name} {currentUser!.last_name}
+          </Box>
+
+          <Link 
+            href={`mailto:{currentUser!.email}`}
+            sx={{
+              fontSize: "12px",
+              fontWeight: theme.typography.fontWeightMedium,
+              textDecoration: "none"
+            }}
+          >
+            {currentUser!.email}
+          </Link>
+        </Box>
+
+        <Divider sx={{ my: 1, borderStyle: "dashed" }}/>
+
+        <Stack sx={{ px:1 }}>
+          <MenuItem onClick={handleClose}>
+            <ListItemIcon>
+              <KeenIcon icon="user"/>
+            </ListItemIcon>
+            My Profile
+          </MenuItem>
+
+          <MenuItem onClick={handleClose} selected={false}>
+            <ListItemIcon>
+              <KeenIcon icon="setting-2"/>
+            </ListItemIcon>
+            Account Settings
+          </MenuItem>
+
+          <MenuItem onClick={handleClose} selected={false}>
+            <ListItemIcon>
+              <KeenIcon icon="sms"/>
+            </ListItemIcon>
+            My Inbox
+          </MenuItem>
+
+          <MenuItem onClick={handleClose} selected={false}>
+            <ListItemIcon>
+              <KeenIcon icon="calendar"/>
+            </ListItemIcon>
+            Calendar
+          </MenuItem>
+        </Stack>
+        
+        <Divider sx={{ my: 1, borderStyle: "dashed" }}/>
+
+        <MenuItem 
+          onClick={logout}
+          sx={{ mx:1 }}
+        >
           <ListItemIcon>
-            <KeenIcon icon="setting-2"/>
+            <KeenIcon icon="entrance-left"/>
           </ListItemIcon>
-          Add another account
-        </MenuItem>
-      </Menu>
+          Logout
+        </MenuItem>        
+      </MenuDropdown>
     </Box>
   );
 };

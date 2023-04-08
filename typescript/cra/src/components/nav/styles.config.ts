@@ -5,7 +5,7 @@ const NavVerticalStylesConfig = ():any => {
 
   return {
     INDENTION: 1.70,
-    ITEM_BORDER_RADIUS: 6,
+    ITEM_BORDER_RADIUS: '6px',
     ROOT_ITEM_HEIGHT: 46,
     ROOT_ITEM_PADDING_X: 1.75,
     ROOT_ITEM_PADDING_Y: 1,

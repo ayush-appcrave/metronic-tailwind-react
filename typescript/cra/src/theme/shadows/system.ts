@@ -1,19 +1,19 @@
 
 import { alpha, Shadows, PaletteMode } from '@mui/material';
-import { getPalette } from './palette';
+import { getPalette } from '../palette';
 
-const lightModeBaseColor = getPalette('light').grey[500];
-const darkModeBaseColor = getPalette('dark').grey[500];
+const lightModeColor = getPalette('light').grey[500];
+const darkModeColor = getPalette('dark').grey[500];
 
-const createShadows = (baseColor: string): Shadows => {
-  const umbraOpacity = alpha(baseColor, 0.2);
-  const penumbraOpacity = alpha(baseColor, 0.14);
-  const ambientOpacity = alpha(baseColor, 0.12);
+const createShadows = (color: string): Shadows => {
+  const umbraOpacity = alpha(color, 0.2);
+  const penumbraOpacity = alpha(color, 0.14);
+  const ambientOpacity = alpha(color, 0.12);
 
   return [
     'none',
-    `0px 2px 1px -1px ${umbraOpacity}, 0px 1px 1px 0px ${penumbraOpacity}, 0px 1px 3px 0px ${ambientOpacity}`,
-    `0px 3px 1px -2px ${umbraOpacity}, 0px 2px 2px 0px ${penumbraOpacity}, 0px 1px 5px 0px ${ambientOpacity}`,
+    `0px 2px 1px -1px ${umbraOpacity},0px 1px 1px 0px ${penumbraOpacity},0px 1px 3px 0px ${penumbraOpacity}`,
+    `0px 3px 1px -2px ${umbraOpacity}, 0px 2px 2px 0px ${penumbraOpacity}, 0px 1px 5px 0px ${penumbraOpacity}`,
     `0px 3px 3px -2px ${umbraOpacity}, 0px 3px 4px 0px ${penumbraOpacity}, 0px 1px 8px 0px ${ambientOpacity}`,
     `0px 2px 4px -1px ${umbraOpacity}, 0px 4px 5px 0px ${penumbraOpacity}, 0px 1px 10px 0px ${ambientOpacity}`,
     `0px 3px 5px -1px ${umbraOpacity}, 0px 5px 8px 0px ${penumbraOpacity}, 0px 1px 14px 0px ${ambientOpacity}`,
@@ -39,8 +39,8 @@ const createShadows = (baseColor: string): Shadows => {
   ];
 };
 
-const getShadows = (mode: PaletteMode) => {
-  return mode === 'light' ? createShadows(lightModeBaseColor) : createShadows(darkModeBaseColor);
+const getSystemShadows = (mode: PaletteMode) => {
+  return mode === 'light' ? createShadows(lightModeColor) : createShadows(darkModeColor);
 };
 
-export { getShadows };
+export { getSystemShadows };

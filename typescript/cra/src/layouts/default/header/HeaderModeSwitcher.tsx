@@ -45,7 +45,9 @@ const HeaderModeSwitcher = () => {
   );
 };
 
-export const IconButtonStyled = styled(IconButton) <{active: boolean}> (({active, theme}) => {
+export const IconButtonStyled = styled(IconButton, {
+  shouldForwardProp: (prop) => ["active"].includes(prop as string) === false
+}) <{active: boolean}> (({active, theme}) => {
 
 	return {
     height: "24px",

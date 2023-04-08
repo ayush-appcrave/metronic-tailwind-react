@@ -4,7 +4,9 @@ import { StyledEngineProvider, PaletteOptions, Theme, createTheme, ThemeOptions,
 import { useLang } from "../i18n";
 import { useSettings } from "./SettingsProvider";
 import { componentsCustomization } from "../theme/customization";
-import { getPalette, typography, getShadows, breakpoints, GlobalStyles } from "../theme";
+import { getPalette, typography, breakpoints, GlobalStyles } from "../theme";
+import { getSystemShadows, getCustomShadows } from "../theme/shadows";
+
 
 const ThemeProvider = ({ children }: PropsWithChildren) => {
   const { settings, getMode } = useSettings();
@@ -15,8 +17,9 @@ const ThemeProvider = ({ children }: PropsWithChildren) => {
     () => ({
       breakpoints,
       typography,
-      shadows: getShadows(getMode()),
       palette: getPalette(getMode()),
+      shadows: getSystemShadows(getMode()),
+      customShadows: getCustomShadows(getMode()),
     }),
     [direction, getMode()]
   );
