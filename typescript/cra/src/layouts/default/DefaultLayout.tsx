@@ -18,4 +18,5 @@ const DefaultLayout = () => (
     <Layout/>
   </DefaultLayoutProvider>
 );
+
 export { DefaultLayout };

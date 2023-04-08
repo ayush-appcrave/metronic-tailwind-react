@@ -1,10 +1,10 @@
 import { Theme } from "@mui/material/styles";
+import { Menu } from "./Menu";
 
 const componentsCustomization = (theme: Theme) => {
-  return;
-  //return Object.assign(
-    //CssBaseline(theme)
-  //);
+  return Object.assign(
+    Menu(theme)
+  );
 }
 
 export { componentsCustomization }

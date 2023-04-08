@@ -1,14 +1,15 @@
 import { useState, createContext, useContext, PropsWithChildren } from "react";
+import { PaletteMode } from '@mui/material';
 import { getData, setData } from "../utils";
 import { defaultSettings } from "../config/settings.config";
-import { SettingsType, SettingsModeType, SettingsModeOptionType } from "../config/types";
+import { SettingsType, SettingsModeOptionType } from "../config/types";
 
 const SETTINGS_CONFIG_KEY = "app-settings-config";
 
 export type SettingsProviderProps = {
   settings: SettingsType;
   updateSettings: (_: Partial<SettingsType>) => void;
-  getMode: () => SettingsModeType;
+  getMode: () => PaletteMode;
 };
 
 const calculateInitialSettings = () => {

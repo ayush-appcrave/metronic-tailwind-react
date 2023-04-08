@@ -1,7 +1,5 @@
 import { Direction } from "@mui/material";
 
-export type SettingsModeType = "light" | "dark";
-
 export type SettingsModeOptionType = "light" | "dark" | "system";
 
 export type SettingsKeenIconsType = "duotone" | "solid" | "outline";
