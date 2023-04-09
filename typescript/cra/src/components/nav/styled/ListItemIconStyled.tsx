@@ -21,9 +21,8 @@ export const ListItemIconStyled = styled(ListItemIcon, {
 		...(here && {
 			color: theme.palette.grey["700"]
 		}),
-		"svg " : {
-			height: "100%",
-			width: "100%"
+		"i " : {
+			fontSize: "18px"
 		}
 	}
 });

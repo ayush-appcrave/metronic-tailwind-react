@@ -1,21 +1,31 @@
 import { PropsWithChildren, createContext, useState, useContext } from "react";
 import { ILayoutProvider, ILayoutConfig } from "../";
 import { LayoutsType, useLayouts } from "../../providers/LayoutsProvider";
+import { useScrollPosition } from "../../hooks/useScrollPosition";
 import { defaultLayoutConfig } from "./DefaultLayoutConfig";
+import { DefaultLayoutStylesConfig } from './';
 
 type DefaultLayoutProviderProps = {
+  isHeaderSticky: boolean;
+  sidebarWidth: number,
   isSidebarCollapse: boolean;
   isSidebarExpand: boolean;
   setSidebarExpand: (collapse: boolean) => void;
   setSidebarCollapse: (collapse: boolean) => void;
+  mobileSidebarOpen: boolean;
+  setMobileSidebarOpen: (open: boolean) => void;
 } & ILayoutProvider;
 
 const initalLayoutProps: DefaultLayoutProviderProps = {
   layout: defaultLayoutConfig,
+  sidebarWidth: 0,
   isSidebarCollapse: true,
   isSidebarExpand: false,
+  isHeaderSticky: false,
   setSidebarExpand: (_: boolean) => {},
-  setSidebarCollapse: (_: boolean) => {}
+  setSidebarCollapse: (_: boolean) => {},
+  mobileSidebarOpen: false,
+  setMobileSidebarOpen: (_: boolean) => {}
 };
 
 const getLayoutConfig = (layouts: LayoutsType): ILayoutConfig => {
@@ -27,7 +37,11 @@ const DefaultLayoutContext = createContext<DefaultLayoutProviderProps>(initalLay
 const useDefaultLayout = () => useContext(DefaultLayoutContext);
 
 const DefaultLayoutProvider = ({ children }: PropsWithChildren) => {
+  const styles = DefaultLayoutStylesConfig();
+
   const {layouts, updateLayout} = useLayouts();
+
+  const scrollPosition = useScrollPosition();
   
   const [sidebarExpandState, setSidebarExpandState] = useState(false);
 
@@ -48,17 +62,28 @@ const DefaultLayoutProvider = ({ children }: PropsWithChildren) => {
     setSidebarExpandState(hover);
   };
 
+  const [mobileSidebarOpen, setMobileSidebarOpen] = useState(false);
+
+  const isHeaderSticky: boolean = scrollPosition > styles.HEADER_STICKY_OFFSET;
+
   const isSidebarCollapse: boolean = layout.options.sidebar.collapse;
+
+  const sidebarWidth: number = isSidebarCollapse ? styles.SIDEBAR_COLLAPSE_WIDTH : styles.SIDEBAR_WIDTH;
+
   let sidebarHover: boolean = false;
 
   return (
     <DefaultLayoutContext.Provider 
       value={{
         layout,
+        isHeaderSticky,
         isSidebarExpand: sidebarExpandState,
         setSidebarExpand,
         isSidebarCollapse,
-        setSidebarCollapse
+        sidebarWidth,
+        setSidebarCollapse,
+        mobileSidebarOpen,
+        setMobileSidebarOpen
       }}
     >
       {children}

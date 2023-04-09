@@ -36,7 +36,7 @@ export type NavItemOptionsType = {
 		content: string,
 		color: ColorSchema
 	};
-	icon?: string;
+	icon?: any;
 	divider?: boolean;
 	subheader?: string;
 	caption?: string;
@@ -47,7 +47,7 @@ export type NavItemOptionsType = {
 export type NavItemArrowType = {
 	variant?: "inline" | "popper";
 	direction?: "vertical" | "horizontal";	
-	icon?: string;
+	icon?: any;
 	depth?: number;
 	collapse?: boolean;
 	expand?: boolean;

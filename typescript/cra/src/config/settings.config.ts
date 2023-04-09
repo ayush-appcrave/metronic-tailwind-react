@@ -1,10 +1,14 @@
-import { AppSettings } from "./types";
+import { SettingsType } from "./types";
 
-const defaultSettings: AppSettings = {
+const defaultSettings: SettingsType = {
   mode: "system",
+  direction: "ltr",
+  keenicons: "duotone",
+  fontFamily: "Inter",
   layout: "default",
-  containerWidth: "fluid",
+  container: "fluid",
   color: "default",
+  mobileBreakpoint: "md"
 };
 const COOKIES_EXPIRATION = 5;
 

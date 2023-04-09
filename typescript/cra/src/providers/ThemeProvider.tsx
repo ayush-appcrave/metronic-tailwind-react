@@ -3,13 +3,14 @@ import { CssBaseline } from '@mui/material';
 import { StyledEngineProvider, PaletteOptions, Theme, createTheme, ThemeOptions, ThemeProvider as CustomThemeProvider } from '@mui/material/styles';
 import { useLang } from "../i18n";
 import { useSettings } from "./SettingsProvider";
-import { breakpoints } from "../theme/breakpoints";
-import { getPalette } from "../theme/palette";
 import { componentsCustomization } from "../theme/customization";
-import { typography, GlobalStyles } from "../theme";
+import { getPalette, typography, breakpoints, GlobalStyles } from "../theme";
+import { getSystemShadows, getCustomShadows } from "../theme/shadows";
+
 
 const ThemeProvider = ({ children }: PropsWithChildren) => {
   const { settings, getMode } = useSettings();
+  const { direction } = settings;
   const { currentLanguage } = useLang();
 
   const themeOptions: ThemeOptions = useMemo(
@@ -17,11 +18,14 @@ const ThemeProvider = ({ children }: PropsWithChildren) => {
       breakpoints,
       typography,
       palette: getPalette(getMode()),
+      shadows: getSystemShadows(getMode()),
+      customShadows: getCustomShadows(getMode()),
     }),
-    [currentLanguage.direction, getMode()]
+    [direction, getMode()]
   );
 
   const theme = createTheme(themeOptions);
+  theme.components = componentsCustomization(theme);
 
   return (
     <StyledEngineProvider injectFirst>

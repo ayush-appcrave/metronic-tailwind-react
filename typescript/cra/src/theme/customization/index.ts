@@ -1,10 +1,12 @@
 import { Theme } from "@mui/material/styles";
+import { Menu } from "./Menu";
+import { Popover } from "./Popover";
 
 const componentsCustomization = (theme: Theme) => {
-  return;
-  //return Object.assign(
-    //CssBaseline(theme)
-  //);
+  return Object.assign(
+    Menu(theme),
+    Popover(theme)
+  );
 }
 
 export { componentsCustomization }

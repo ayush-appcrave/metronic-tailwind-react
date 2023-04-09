@@ -14,6 +14,5 @@ export type Language = {
 
 export type TranslationProviderProps = {
   currentLanguage: Language;
-  changeLanguage: (lang: Language) => void;
-  getDirection: () => Direction;
+  changeLanguage: (lang: Language) => void
 };

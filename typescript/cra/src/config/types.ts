@@ -1,19 +1,23 @@
-export type ModeType = "light" | "dark" | "system";
+import { Direction } from "@mui/material";
 
-export type ThemeModeType = "light" | "dark";
+export type SettingsModeOptionType = "light" | "dark" | "system";
+
+export type SettingsKeenIconsType = "duotone" | "solid" | "outline";
+
+export type SettingsContainerType = "fluid" | "fixed";
+
+export type SettingsMobileBreakpointType = "xs" | "sm" | "md" | "lg" | "xl";
 
 // Settings types
-export type AppSettings = {
-  mode?: ModeType;
-  containerWidth: "fluid" | "fixed";
-  color: "default";
-  layout: "default" | "without-sidebar";
-};
-
-// Layout types
-export type LayoutSettingsType = {
-  SIDEBAR_WIDTH?: number;
-  SIDEBAR_COLLAPSE_WIDTH?: number;
+export type SettingsType = {
+  mode: SettingsModeOptionType;
+  direction: Direction;
+  container: SettingsContainerType;
+  keenicons: SettingsKeenIconsType;
+  fontFamily: string;
+  color: string;
+  layout: string;
+  mobileBreakpoint: SettingsMobileBreakpointType;
 };
 
 // Menu types

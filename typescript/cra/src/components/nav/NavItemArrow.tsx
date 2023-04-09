@@ -1,7 +1,6 @@
 import { useState, memo, useMemo } from "react";
 import { Box } from "@mui/material";
 import { Link } from "react-router-dom";
-import { SVGIcon } from "..";
 import { NavItemArrowType } from "./types";
 
 const NavItemArrowComponent = ({
@@ -14,7 +13,7 @@ const NavItemArrowComponent = ({
   disabled = false,
   collapse = false,
   expand = false,
-	icon = "arrows/arr072.svg"
+	icon = null
 }: NavItemArrowType ) => {
 
   const [toggle, setToggle] = useState(active);
@@ -51,6 +50,7 @@ const NavItemArrowComponent = ({
         minWidth: 0,
         display: "flex",
         alignItems: "center",
+        justifyContent: "center",
         color: (theme) => theme.palette.grey["500"],
         ...(active && {
           color: (theme) => theme.palette.primary.main
@@ -58,13 +58,12 @@ const NavItemArrowComponent = ({
         ...(here && {
           color: (theme) => theme.palette.grey["700"]
         }),
-        "svg " : {
-          height: "100%",
-          width: "100%"
+        "i " : {
+          fontSize: "13px"
         }
       }}
     >
-      <SVGIcon icon={icon}/>
+      {icon}
     </Box>
   );
 };
