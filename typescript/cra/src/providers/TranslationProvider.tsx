@@ -1,8 +1,8 @@
 import {createContext, PropsWithChildren, useContext, useEffect, useState} from "react";
 import { IntlProvider } from "react-intl";
 import { getData, setData } from "../utils";
-import { DEFAULT_LANGUAGE, I18N_CONFIG_KEY } from "../i18n/consts";
-import { Language, TranslationProviderProps } from "../i18n/types";
+import { I18N_DEFAULT_LANGUAGE, I18N_CONFIG_KEY } from "../i18n/config";
+import { LanguageType, TranslationProviderProps } from "../i18n/types";
 import { useSettings } from "./SettingsProvider";
 import "@formatjs/intl-relativetimeformat/polyfill";
 import "@formatjs/intl-relativetimeformat/locale-data/en";
@@ -13,13 +13,14 @@ import "@formatjs/intl-relativetimeformat/locale-data/ja";
 import "@formatjs/intl-relativetimeformat/locale-data/zh";
 
 const calculateInitialLanguage = () => {
-  const currentLanguage = getData(I18N_CONFIG_KEY) as Language | undefined;
-  return currentLanguage || DEFAULT_LANGUAGE;
+  const currentLanguage = getData(I18N_CONFIG_KEY) as LanguageType | undefined;
+
+  return currentLanguage || I18N_DEFAULT_LANGUAGE;
 };
 
 const initialProps: TranslationProviderProps = {
   currentLanguage: calculateInitialLanguage(),
-  changeLanguage: (_: Language) => {}
+  changeLanguage: (_: LanguageType) => {}
 };
 
 const TranslationsContext =
@@ -28,6 +29,7 @@ const useLang = () => useContext(TranslationsContext);
 
 const I18NProvider = ({ children }: PropsWithChildren) => {
   const { currentLanguage } = useLang();
+
   return (
     <IntlProvider
       messages={currentLanguage.messages}
@@ -46,7 +48,8 @@ const TranslationProvider = ({ children }: PropsWithChildren) => {
   const [currentLanguage, setCurrentLanguage] = useState(
     initialProps.currentLanguage
   );
-  const changeLanguage = (language: Language) => {
+  
+  const changeLanguage = (language: LanguageType) => {
     setData(I18N_CONFIG_KEY, language);
     setCurrentLanguage(language);
     updateSettings({

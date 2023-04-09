@@ -6,7 +6,8 @@ const HeaderMessagesMenu = () => {
   return (
     <Box
       sx={{
-        
+        display: "flex",
+        alignItems: "center"
       }}
     >
       Messages

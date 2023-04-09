@@ -8,9 +8,9 @@ const MenuDropdown = styled(Menu) <any> (({theme}) => {
 		".MuiMenuItem-root": {
 			fontSize: "14px",
 			fontWeight: theme.typography.fontWeightMedium,
-      borderRadius: theme.shape.borderRadius,
-      paddingLeft: theme.spacing(1.25),
-      paddingRight: theme.spacing(1.25),
+      borderRadius: Number(theme.shape.borderRadius) * 1.5,
+      padding: theme.spacing(1.25),
+      minHeight: 'auto',
       color: theme.palette.grey["700"],
       
       ".MuiListItemIcon-root": {

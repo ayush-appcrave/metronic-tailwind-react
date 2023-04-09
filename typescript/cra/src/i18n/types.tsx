@@ -2,17 +2,18 @@ import { Direction } from "@mui/material";
 import { Localization } from "@mui/material/locale";
 import { MessageFormatElement } from "react-intl";
 
-export type AvailableLanguageCodes = "en" | "fr" | "ar" | "zh";
-export type Language = {
+export type LanguageCodeType = "en" | "fr" | "ar" | "zh";
+
+export type LanguageType = {
   label: string;
-  code: AvailableLanguageCodes;
+  code: LanguageCodeType;
   systemValue: Localization;
   direction: Direction;
-  icon: string;
+  flag: string;
   messages: Record<string, string> | Record<string, MessageFormatElement[]>;
 };
 
 export type TranslationProviderProps = {
-  currentLanguage: Language;
-  changeLanguage: (lang: Language) => void
+  currentLanguage: LanguageType;
+  changeLanguage: (lang: LanguageType) => void
 };

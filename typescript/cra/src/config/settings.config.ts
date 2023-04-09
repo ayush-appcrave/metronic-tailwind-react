@@ -3,11 +3,11 @@ import { SettingsType } from "./types";
 const defaultSettings: SettingsType = {
   mode: "system",
   direction: "ltr",
-  keenicons: "duotone",
+  keeniconsStyle: "duotone",
   fontFamily: "Inter",
   layout: "default",
   container: "fluid",
-  color: "default",
+  colorPreset: "default",
   mobileBreakpoint: "md"
 };
 const COOKIES_EXPIRATION = 5;
