@@ -1,14 +1,14 @@
 import {
     Dialog
 } from "@mui/material";
-import CreateUserStepperForm from "./CreateUserStepperForm";
+import {CreateUserForm} from "./CreateUserForm";
 
 interface CreateUserDialogProps {
     open: boolean;
     handleClose: () => void
 }
 
-function CreateUserDialog(props: CreateUserDialogProps) {
+function CreateUserPlainFormDialog(props: CreateUserDialogProps) {
     return (<Dialog
         fullWidth
         maxWidth={"lg"}
@@ -19,8 +19,8 @@ function CreateUserDialog(props: CreateUserDialogProps) {
             maxHeight: "auto",
         }}
     >
-        <CreateUserStepperForm open={props.open} handleClose={props.handleClose}></CreateUserStepperForm>
+        <CreateUserForm open={props.open} handleClose={props.handleClose}></CreateUserForm>
     </Dialog>)
 }
 
-export { CreateUserDialog }
+export { CreateUserPlainFormDialog }

@@ -13,7 +13,7 @@ import {
 } from "./core/QueryResponseProvider";
 import { CreateUserDrawer } from "./components/create-user/CreateUserDrawer";
 import {useQueryRequest} from "./core/QueryRequestProvider";
-import {CreateUserDialog} from "./components/create-user/CreateUserDialog";
+import {CreateUserStepperFormDialog} from "./components/create-user/CreateUserStepperFormDialog";
 import {useListView} from "./core/ListViewProvider";
 import {EnhancedTableToolbar} from "./components/EnhancedTableToolbar";
 import {useMutation, useQueryClient} from "react-query";

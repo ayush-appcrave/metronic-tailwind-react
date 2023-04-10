@@ -14,7 +14,7 @@ import {
 } from "./core/QueryResponseProvider";
 import { CreateUserDrawer } from "./components/create-user/CreateUserDrawer";
 import {useQueryRequest} from "./core/QueryRequestProvider";
-import {CreateUserDialog} from "./components/create-user/CreateUserDialog";
+import {CreateUserStepperFormDialog} from "./components/create-user/CreateUserStepperFormDialog";
 import {useListView} from "./core/ListViewProvider";
 import {EnhancedTableToolbar} from "./components/EnhancedTableToolbar";
 import {useMutation, useQueryClient} from "react-query";
@@ -89,7 +89,7 @@ function UsersManagementPage() {
                     {(id) => <Button onClick={(e)=>console.log(id)}/>}
                 </UserManagementTableContainer>
             </Paper>
-            <CreateUserDialog open={open2} handleClose={handleClose2}></CreateUserDialog>
+            <CreateUserStepperFormDialog open={open2} handleClose={handleClose2}></CreateUserStepperFormDialog>
             <CreateUserDrawer open={open4} handleClose={handleClose4}></CreateUserDrawer>
         </Box>
     );

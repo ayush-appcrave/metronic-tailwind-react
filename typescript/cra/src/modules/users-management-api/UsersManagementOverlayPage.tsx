@@ -1,4 +1,4 @@
-import {ChangeEvent, useEffect, useState} from 'react';
+import React, {ChangeEvent, useEffect, useState} from 'react';
 
 import {
     Button,
@@ -14,17 +14,27 @@ import {
 } from "./core/QueryResponseProvider";
 import { CreateUserDrawer } from "./components/create-user/CreateUserDrawer";
 import {useQueryRequest} from "./core/QueryRequestProvider";
-import {CreateUserDialog} from "./components/create-user/CreateUserDialog";
+import {CreateUserStepperFormDialog} from "./components/create-user/CreateUserStepperFormDialog";
+import { CreateUserPlainFormDialog } from "./components/create-user/CreateUserPlainFormDialog"
+import { UpdateUserDialog } from "./components/edit-user/UpdateUserDialog";
+import { ViewUserDialog } from "./components/view/ViewUserDialog";
 import {useListView} from "./core/ListViewProvider";
 import {EnhancedTableToolbar} from "./components/EnhancedTableToolbar";
 import {useMutation, useQueryClient} from "react-query";
 import {deleteSelectedUsers} from "./core/_requests";
 import {QUERIES} from "./helpers";
+import {AlertDialog} from "./components/AlertDialog";
 
-function UsersManagementPage() {
+function UsersManagementOverlayPage() {
     const {updateState} = useQueryRequest()
     const [open2, setOpen2] = useState(false);
-    const [open4, setOpen4] = useState(false);
+    const [updateUserIdState, setUpdateUserIdState] = useState("-1");
+    const [newUserOverlayModalOpenState, setNewUserOverlayModalOpenState] = useState(false);
+    const [viewUserModalOpenState, setViewUserModalOpenState] = useState(false);
+    const [openDeleteDialogState, setOpenDeleteDialogState] = useState(false);
+    const [updateUserModalOpenState, setUpdateUserModalOpenState] = useState(false);
+    const [deleteUserIdState, setDeleteUserIdState] = useState("-1");
+    const [viewUserIdState, setViewUserIdState] = useState("-1");
     const [ roleFilter, setRoleFilter ] = useState<"user" | "admin" | undefined>(undefined);
     const [ nameFilter, setNameFilter ] = useState<string | null>(null);
     const queryClient = useQueryClient()
@@ -46,16 +56,9 @@ function UsersManagementPage() {
     const handleClickOpe2 = (id:string|undefined) => {
         setOpen2(true);
     };
-    const handleClickOpe4 = () => {
-        setOpen4(true);
-    };
     const handleClose2 = () => {
         setOpen2(false);
     };
-    const handleClose4 = () => {
-        setOpen4(false);
-    };
-
     const handleRoleFilterChange:(event: SelectChangeEvent) => void = (e:SelectChangeEvent) => {
         if(e.target.value !== "all"){
             setRoleFilter(e.target.value as "user" | "admin");
@@ -78,21 +81,35 @@ function UsersManagementPage() {
                     position: "absolute",
                     top: 2,
                     right: 2,
-                }} onClick={(e)=> handleClickOpe2(undefined)}>Add new user (Modal)</Button>
+                }} onClick={(e)=> handleClickOpe2(undefined)}>Add new user (Stepper)</Button>
                 <Button sx={{
                     position: "absolute",
                     top: 2,
                     right: 200,
-                }} onClick={(e)=> handleClickOpe4()}>Add new user (Drawer)</Button>
+                }} onClick={(e)=> setNewUserOverlayModalOpenState(true)}>Add new user (Plain form)</Button>
                 <EnhancedTableToolbar numSelected={selected.length} handleRoleFilterChange={handleRoleFilterChange} roleFilter={roleFilter} handleNameFilterChange={handleNameFilterChange} nameFilter={nameFilter} handleSelectedUsersDelete={async () => await deleteSelectedItems.mutateAsync()} />
                 <UserManagementTableContainer>
-                    {(id) => <Button onClick={(e)=>console.log(id)}/>}
+                    {(id) => <>
+                        <Button onClick={(e)=>{
+                            setUpdateUserIdState(id)
+                            setUpdateUserModalOpenState(true);
+                        }}>Update</Button><Button onClick={(e)=>{
+                            setDeleteUserIdState(id);
+                            setOpenDeleteDialogState(true);
+                        }}>Delete</Button><Button onClick={(e)=>{
+                          setViewUserIdState(id);
+                          setViewUserModalOpenState(true);
+                        }}>View</Button>
+                    </>}
                 </UserManagementTableContainer>
             </Paper>
-            <CreateUserDialog open={open2} handleClose={handleClose2}></CreateUserDialog>
-            <CreateUserDrawer open={open4} handleClose={handleClose4}></CreateUserDrawer>
+            <CreateUserStepperFormDialog open={open2} handleClose={handleClose2}></CreateUserStepperFormDialog>
+            <CreateUserPlainFormDialog open={newUserOverlayModalOpenState} handleClose={()=>setNewUserOverlayModalOpenState(false)}></CreateUserPlainFormDialog>
+            <UpdateUserDialog open={updateUserModalOpenState} userId={updateUserIdState} handleClose={()=>setUpdateUserModalOpenState(false)}></UpdateUserDialog>
+            <AlertDialog open={openDeleteDialogState} handleClose={()=>{setOpenDeleteDialogState(false)}} userId={deleteUserIdState}></AlertDialog>
+            <ViewUserDialog open={viewUserModalOpenState} handleClose={()=>{setViewUserModalOpenState(false)}} userId={viewUserIdState}></ViewUserDialog>
         </Box>
     );
 }
 
-export { UsersManagementPage }
+export { UsersManagementOverlayPage }
