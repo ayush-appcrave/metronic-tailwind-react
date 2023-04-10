@@ -1,0 +1,5 @@
+const UserManagementTableContainer = () => {
+
+}
+
+export { UserManagementTableContainer }
