@@ -1,7 +1,7 @@
 import { Navigate, Route, Routes } from "react-router";
 import { DefaultLayout } from "../layouts/default";
 import { DefaultPage1, DefaultPage2 } from "../pages";
-import { UsersListWrapper  } from "../modules/users-management-api";
+import { UsersListWrapper, UsersListOverlayWrapper, UsersListDrawersWrapper, UsersListInlineEditingWrapper, UsersListSubCRUDWrapper  } from "../modules/users-management-api";
 import { UpdateUserPage } from "../modules/users-management-api/components/edit-user/UpdateUserPage";
 import {ViewUserPage} from "../modules/users-management-api/components/view/ViewUserPage";
 
@@ -13,10 +13,10 @@ const PrivateRouting = () => (
       <Route path="dashboard" element={<DefaultPage1 />} />
       <Route path="marketing" element={<DefaultPage2 />} />
       <Route path="users-management-api" element={<UsersListWrapper />} />
-      <Route path="users-management-api-overlay-modal" element={<UsersListWrapper />} />
-      <Route path="users-management-api-drawers" element={<UsersListWrapper />} />
-      <Route path="users-management-api-inline-editing" element={<UsersListWrapper />} />
-      <Route path="users-management-api-sub-crud" element={<UsersListWrapper />} />
+      <Route path="users-management-api-overlay-modal" element={<UsersListOverlayWrapper />} />
+      <Route path="users-management-api-drawers" element={<UsersListDrawersWrapper />} />
+      <Route path="users-management-api-inline-editing" element={<UsersListInlineEditingWrapper />} />
+      <Route path="users-management-api-sub-crud" element={<UsersListSubCRUDWrapper />} />
       <Route path="edit/user/:id" element={<UpdateUserPage />} />
         <Route path="view/user/:id" element={<ViewUserPage />} />
     </Route>

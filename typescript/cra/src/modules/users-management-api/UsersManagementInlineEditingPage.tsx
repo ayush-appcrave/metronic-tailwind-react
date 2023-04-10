@@ -20,7 +20,6 @@ import {EnhancedTableToolbar} from "./components/EnhancedTableToolbar";
 import {useMutation, useQueryClient} from "react-query";
 import {deleteSelectedUsers} from "./core/_requests";
 import {QUERIES} from "./helpers";
-import UsersManagementActionsCell from "./components/cells/UsersManagementActionsCell";
 
 function UsersManagementPage() {
     const {updateState} = useQueryRequest()
@@ -87,7 +86,7 @@ function UsersManagementPage() {
                 }} onClick={(e)=> handleClickOpe4()}>Add new user (Drawer)</Button>
                 <EnhancedTableToolbar numSelected={selected.length} handleRoleFilterChange={handleRoleFilterChange} roleFilter={roleFilter} handleNameFilterChange={handleNameFilterChange} nameFilter={nameFilter} handleSelectedUsersDelete={async () => await deleteSelectedItems.mutateAsync()} />
                 <UserManagementTableContainer>
-                    {(id) => <UsersManagementActionsCell id={id}/>}
+                    {(id) => <Button onClick={(e)=>console.log(id)}/>}
                 </UserManagementTableContainer>
             </Paper>
             <CreateUserDialog open={open2} handleClose={handleClose2}></CreateUserDialog>

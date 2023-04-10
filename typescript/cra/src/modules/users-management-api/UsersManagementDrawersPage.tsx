@@ -1,4 +1,4 @@
-import {ChangeEvent, useEffect, useState} from 'react';
+import {ChangeEvent, useState} from 'react';
 
 import {
     Button,
@@ -9,8 +9,7 @@ import {
 import { UserManagementTableContainer } from "./components/UserManagementTableContainer";
 
 import {
-    useQueryResponse,
-    useQueryResponsePagination
+    useQueryResponse
 } from "./core/QueryResponseProvider";
 import { CreateUserDrawer } from "./components/create-user/CreateUserDrawer";
 import {useQueryRequest} from "./core/QueryRequestProvider";
@@ -20,12 +19,17 @@ import {EnhancedTableToolbar} from "./components/EnhancedTableToolbar";
 import {useMutation, useQueryClient} from "react-query";
 import {deleteSelectedUsers} from "./core/_requests";
 import {QUERIES} from "./helpers";
+import {UpdateUserDrawer} from "./components/edit-user/UpdateUserDrawer";
 import UsersManagementActionsCell from "./components/cells/UsersManagementActionsCell";
+import {ViewUserDrawer} from "./components/view/ViewUserDrawer";
 
-function UsersManagementPage() {
+function UsersManagementDrawersPage() {
     const {updateState} = useQueryRequest()
-    const [open2, setOpen2] = useState(false);
     const [open4, setOpen4] = useState(false);
+    const [openUpdateDrawerState, setOpenUpdateDrawerState] = useState<boolean>(false);
+    const [openViewDrawerState, setOpenViewDrawerState] = useState<boolean>(false);
+    const [updateUserIdState, setUpdateUserIdState] = useState("-1");
+    const [viewUserIdState, setViewUserIdState] = useState("-1");
     const [ roleFilter, setRoleFilter ] = useState<"user" | "admin" | undefined>(undefined);
     const [ nameFilter, setNameFilter ] = useState<string | null>(null);
     const queryClient = useQueryClient()
@@ -44,14 +48,8 @@ function UsersManagementPage() {
 
     // -------------------
 
-    const handleClickOpe2 = (id:string|undefined) => {
-        setOpen2(true);
-    };
     const handleClickOpe4 = () => {
         setOpen4(true);
-    };
-    const handleClose2 = () => {
-        setOpen2(false);
     };
     const handleClose4 = () => {
         setOpen4(false);
@@ -78,22 +76,28 @@ function UsersManagementPage() {
                 <Button sx={{
                     position: "absolute",
                     top: 2,
-                    right: 2,
-                }} onClick={(e)=> handleClickOpe2(undefined)}>Add new user (Modal)</Button>
-                <Button sx={{
-                    position: "absolute",
-                    top: 2,
-                    right: 200,
-                }} onClick={(e)=> handleClickOpe4()}>Add new user (Drawer)</Button>
+                    right: 20,
+                }} onClick={(e)=> handleClickOpe4()}>Add new user</Button>
                 <EnhancedTableToolbar numSelected={selected.length} handleRoleFilterChange={handleRoleFilterChange} roleFilter={roleFilter} handleNameFilterChange={handleNameFilterChange} nameFilter={nameFilter} handleSelectedUsersDelete={async () => await deleteSelectedItems.mutateAsync()} />
                 <UserManagementTableContainer>
-                    {(id) => <UsersManagementActionsCell id={id}/>}
+                    {(id) => <>
+                        <Button onClick={(e)=> {
+                            setUpdateUserIdState(id);
+                            setOpenUpdateDrawerState(true);
+                        }}>Edit</Button><Button onClick={(e)=> {
+                        setViewUserIdState(id);
+                        setOpenViewDrawerState(true);
+                    }}>View</Button>
+                    </>}
                 </UserManagementTableContainer>
             </Paper>
-            <CreateUserDialog open={open2} handleClose={handleClose2}></CreateUserDialog>
             <CreateUserDrawer open={open4} handleClose={handleClose4}></CreateUserDrawer>
+            <UpdateUserDrawer open={openUpdateDrawerState} userId={updateUserIdState} handleClose={()=>setOpenUpdateDrawerState(false)}></UpdateUserDrawer>
+            <ViewUserDrawer open={openViewDrawerState} userId={viewUserIdState} handleClose={()=>{
+                setOpenViewDrawerState(false);
+            }}></ViewUserDrawer>
         </Box>
     );
 }
 
-export { UsersManagementPage }
+export { UsersManagementDrawersPage }
