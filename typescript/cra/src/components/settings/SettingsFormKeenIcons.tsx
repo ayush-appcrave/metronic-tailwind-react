@@ -7,15 +7,15 @@ import FormControlLabel from '@mui/material/FormControlLabel';
 import FormControl from '@mui/material/FormControl';
 import FormLabel from '@mui/material/FormLabel';
 import { useSettings } from "../../providers/SettingsProvider";
-import { SettingsKeenIconsType } from "../../config";
+import { KeenIconsStyleType } from "../keenicons/types";
 
 const SettingsFormKeenIcons = () => {
 	const { settings, updateSettings } = useSettings();
-  const { keenicons } = settings;
+  const { keeniconsStyle } = settings;
 
-	const handleKeenIconsChange = (keenicons: SettingsKeenIconsType) => {
+	const handleKeenIconsChange = (keeniconsStyle: KeenIconsStyleType) => {
     updateSettings({
-      keenicons
+      keeniconsStyle
     });
   };
 
@@ -34,21 +34,21 @@ const SettingsFormKeenIcons = () => {
 					value="duotone" 
 					control={<Radio />} 
 					label="Duotone" 
-					checked={keenicons === 'duotone'}
+					checked={keeniconsStyle === 'duotone'}
 					onChange={() => handleKeenIconsChange("duotone")}
 				/>
         <FormControlLabel 
 					value="outline" 
 					control={<Radio />} 
 					label="Outline" 
-					checked={keenicons === 'outline'}
+					checked={keeniconsStyle === 'outline'}
 					onChange={() => handleKeenIconsChange("outline")}
 				/>
 				<FormControlLabel 
 					value="solid" 
 					control={<Radio />} 
 					label="Solid" 
-					checked={keenicons === 'solid'}
+					checked={keeniconsStyle === 'solid'}
 					onChange={() => handleKeenIconsChange("solid")}
 				/>
       </RadioGroup>

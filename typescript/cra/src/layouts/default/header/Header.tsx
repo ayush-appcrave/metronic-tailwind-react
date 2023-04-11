@@ -73,7 +73,7 @@ const Header = () => {
         <Box
           sx={{
             display: "flex",
-            alignItems: "center",            
+            alignItems: "stretch",            
             [theme.breakpoints.up("lg")]: {
               justifyContent: "space-between",
               flexGrow: 1
@@ -89,12 +89,12 @@ const Header = () => {
           <Box
             sx={{
               display: "flex",
-              alignItems: "center",
+              alignItems: "stretch",
               [theme.breakpoints.up("lg")]: {
-                gap: '15px'
+                gap: '20px'
               },
               [theme.breakpoints.down("lg")]: {
-                gap: '8px'
+                gap: '10px'
               }              
             }}
           >

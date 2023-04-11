@@ -6,7 +6,8 @@ const HeaderSearch = () => {
   return (
     <Box
       sx={{
-        
+        display: "flex",
+        alignItems: "center"
       }}
     >
       Search

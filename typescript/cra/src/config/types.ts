@@ -1,23 +1,20 @@
-import { Direction } from "@mui/material";
+import { Direction, Breakpoint } from "@mui/material";
+import { KeenIconsStyleType } from "../components/keenicons/types";
 
 export type SettingsModeOptionType = "light" | "dark" | "system";
 
-export type SettingsKeenIconsType = "duotone" | "solid" | "outline";
-
 export type SettingsContainerType = "fluid" | "fixed";
-
-export type SettingsMobileBreakpointType = "xs" | "sm" | "md" | "lg" | "xl";
 
 // Settings types
 export type SettingsType = {
   mode: SettingsModeOptionType;
   direction: Direction;
   container: SettingsContainerType;
-  keenicons: SettingsKeenIconsType;
+  keeniconsStyle: KeenIconsStyleType;
   fontFamily: string;
-  color: string;
+  colorPreset: string;
+  mobileBreakpoint: Breakpoint;
   layout: string;
-  mobileBreakpoint: SettingsMobileBreakpointType;
 };
 
 // Menu types

@@ -7,11 +7,10 @@ import { componentsCustomization } from "../theme/customization";
 import { getPalette, typography, breakpoints, GlobalStyles } from "../theme";
 import { getSystemShadows, getCustomShadows } from "../theme/shadows";
 
-
 const ThemeProvider = ({ children }: PropsWithChildren) => {
   const { settings, getMode } = useSettings();
   const { direction } = settings;
-  const { currentLanguage } = useLang();
+  const { currentLanguage } = useLang();  
 
   const themeOptions: ThemeOptions = useMemo(
     () => ({
@@ -19,7 +18,8 @@ const ThemeProvider = ({ children }: PropsWithChildren) => {
       typography,
       palette: getPalette(getMode()),
       shadows: getSystemShadows(getMode()),
-      customShadows: getCustomShadows(getMode()),
+      customShadows: getCustomShadows(getMode()),      
+      direction: direction
     }),
     [direction, getMode()]
   );
@@ -31,8 +31,8 @@ const ThemeProvider = ({ children }: PropsWithChildren) => {
     <StyledEngineProvider injectFirst>
       <CustomThemeProvider theme={theme}>
         <CssBaseline />
-        {children}
         <GlobalStyles theme={theme}/>
+        {children}        
       </CustomThemeProvider>
     </StyledEngineProvider>    
   );

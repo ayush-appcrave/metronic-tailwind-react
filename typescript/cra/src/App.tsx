@@ -2,8 +2,8 @@ import { AuthProvider, AuthInit } from "./auth";
 import { LayoutsProvider } from "./providers/LayoutsProvider";
 import { SettingsProvider } from "./providers/SettingsProvider";
 import { ThemeProvider } from "./providers/ThemeProvider";
+import { ThemeRtlProvider } from "./providers/ThemeRtlProvider";
 import { TranslationProvider } from "./providers/TranslationProvider";
-import { SnackbarProvider } from "notistack";
 import { AppRouting } from "./routing";
 
 import 'simplebar/src/simplebar.css';
@@ -15,15 +15,15 @@ import "./App.css";
 const App = () => (
   <AuthProvider>
     <SettingsProvider>
-      <TranslationProvider>
+      <TranslationProvider>        
         <ThemeProvider>
-          <LayoutsProvider>
-            <AuthInit>
-              <SnackbarProvider autoHideDuration={2000} anchorOrigin={{vertical:"top", horizontal:"right"}} maxSnack={3} >
+          <ThemeRtlProvider>
+            <LayoutsProvider>
+              <AuthInit>
                 <AppRouting/>
-              </SnackbarProvider>
-            </AuthInit>
-          </LayoutsProvider>
+              </AuthInit>
+            </LayoutsProvider>
+          </ThemeRtlProvider>
         </ThemeProvider>
       </TranslationProvider>
     </SettingsProvider>

@@ -1,22 +1,23 @@
 import { memo } from "react";
 import KeenIconsConfig from "./config";
+import { KeenIconsStyleType } from "./types";
 import { Box } from "@mui/material";
 import { SxProps, Theme } from '@mui/material/styles';
 import { useSettings } from "../../providers/SettingsProvider";
 
 type Props = {
   icon: string;
-  style?: string;
+  style?: KeenIconsStyleType;
   className?: string;
   sx?: SxProps<Theme>;
 };
 
-const KeenIconComponent = ({icon, style = "", className = "", sx}: Props) => {
+const KeenIconComponent = ({icon, style, className, sx}: Props) => {
   const { settings } = useSettings();
-  const { keenicons } = settings;
+  const { keeniconsStyle } = settings;
 
-  if (style === "") {
-    style = keenicons;
+  if (typeof style === "undefined") {
+    style = keeniconsStyle;
   }
 
   return (

@@ -1,4 +1,4 @@
-import { AvailableLanguageCodes } from "../i18n";
+import { LanguageCodeType } from "../i18n/";
 
 export interface AuthModel {
   access_token: string;
@@ -18,6 +18,6 @@ export interface UserModel {
   phone?: string;
   roles?: Array<number>;
   pic?: string;
-  language?: AvailableLanguageCodes;
+  language?: LanguageCodeType;
   auth?: AuthModel;
 }

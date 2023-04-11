@@ -34,17 +34,7 @@ const SidebarFooter = ({setFooterHeight}: Props) => {
         py: 4
       }}
     >
-      <Avatar alt={currentUser!.first_name} src={toAbsoluteUrl('/media/avatars/300-1.jpg')} />
-
-      <Box sx={{
-        ml: 1,
-        mr: 1,
-        fontSize: '15px'
-      }}>
-        {currentUser!.first_name} {currentUser!.last_name}
-      </Box>
-      
-      <Button variant="outlined" onClick={logout}>Logout</Button>
+      Footer
     </Stack>
   );
 }

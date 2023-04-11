@@ -2,7 +2,6 @@ import { useState, useEffect } from 'react';
 import { Box, Link, Stack, Avatar, Menu, MenuItem, ListItemIcon, Divider, IconButton, Typography, Tooltip, useTheme } from '@mui/material';
 import { KeenIcon, MenuDropdown } from "../../../components";
 import { useAuth } from '../../../auth';
-import { LineWeight } from '@mui/icons-material';
 
 const HeaderUserMenu = () => {
   const theme = useTheme();
@@ -22,32 +21,30 @@ const HeaderUserMenu = () => {
   return (
     <Box
       sx={{
-        
+        display: "flex",
+        alignItems: "center"
       }}
     >
-      <Tooltip title="Account settings">
-        <IconButton
-          onClick={handleClick}
-          size="small"
+      <IconButton
+        onClick={handleClick}
+        size="small"
+        sx={{ 
+          borderRadius: "6px",
+          p: "0px"
+        }}
+        aria-haspopup="true"
+        aria-controls={open ? 'user-account-menu' : undefined}          
+        aria-expanded={open ? 'true' : undefined}
+      >
+        <Avatar 
+          src="/media/avatars/default.png" 
           sx={{ 
             borderRadius: "6px",
-            p: "0px",
-            ml: 2 
+            width: 40, 
+            height: 40, 
           }}
-          aria-haspopup="true"
-          aria-controls={open ? 'user-account-menu' : undefined}          
-          aria-expanded={open ? 'true' : undefined}
-        >
-          <Avatar 
-            src="/media/avatars/default.png" 
-            sx={{ 
-              borderRadius: "6px",
-              width: 40, 
-              height: 40, 
-            }}
-          />
-        </IconButton>
-      </Tooltip>
+        />
+      </IconButton>
       <MenuDropdown
         id="user-account-menu"
         disableScrollLock={false}
@@ -70,7 +67,7 @@ const HeaderUserMenu = () => {
               width: "200px"
             },
             [theme.breakpoints.down("lg")]: {
-              width: "190px"
+              width: "200px"
             }
           }
         }}       

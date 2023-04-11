@@ -7,7 +7,6 @@ import { SettingsModeOptionType } from "../../../config";
 const HeaderModeSwitcher = () => {
   const theme = useTheme();
   const { settings, updateSettings, getMode } = useSettings();
-  const { mode } = settings;
 
 	const handleModeChange = (mode: SettingsModeOptionType) => {
     updateSettings({
@@ -18,29 +17,36 @@ const HeaderModeSwitcher = () => {
   return (
     <Box
       sx={{
-        height: "32px",
-        borderRadius: '6px',
         display: "flex",
-        alignItems: "center",
-        paddingLeft: 0.5,
-        paddingRight: 0.5,
-        gap: 0.5,
-        backgroundColor: theme.palette.grey['200']
+        alignItems: "center"
       }}
     >
-      <IconButtonStyled
-        onClick={() => handleModeChange("dark")}
-        active={mode === "dark"}
+      <Box
+        sx={{
+          height: "32px",
+          borderRadius: '6px',
+          display: "flex",
+          alignItems: "center",
+          paddingLeft: 0.5,
+          paddingRight: 0.5,
+          gap: 0.5,
+          backgroundColor: theme.palette.grey['200']
+        }}
       >
-        <KeenIcon icon="moon"/>
-      </IconButtonStyled>
+        <IconButtonStyled
+          onClick={() => handleModeChange("dark")}
+          active={getMode() === "dark"}
+        >
+          <KeenIcon icon="moon"/>
+        </IconButtonStyled>
 
-      <IconButtonStyled
-        onClick={() => handleModeChange("light")}
-        active={mode === "light"}
-      >
-        <KeenIcon icon="night-day"/>
-      </IconButtonStyled>
+        <IconButtonStyled
+          onClick={() => handleModeChange("light")}
+          active={getMode() === "light"}
+        >
+          <KeenIcon icon="night-day"/>
+        </IconButtonStyled>
+      </Box>
     </Box>
   );
 };
