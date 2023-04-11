@@ -5,6 +5,7 @@ import { useAuth } from "../JWTProvider";
 import { useState } from "react";
 import clsx from "clsx";
 import { Link } from "react-router-dom";
+import {setupAxios} from "../_helpers";
 
 const loginSchema = Yup.object().shape({
   email: Yup.string()
@@ -41,7 +42,7 @@ const Login = () => {
       try {
         const { data: auth } = await login(values.email, values.password);
         saveAuth(auth);
-        const { data: user } = await getUserByToken(auth.api_token);
+        const { data: user } = await getUserByToken(auth.access_token);
         setCurrentUser(user);
       } catch (error) {
         saveAuth(undefined);

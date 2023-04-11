@@ -1,7 +1,7 @@
 import { LanguageCodeType } from "../i18n/";
 
 export interface AuthModel {
-  api_token: string;
+  access_token: string;
   refreshToken?: string;
 }
 

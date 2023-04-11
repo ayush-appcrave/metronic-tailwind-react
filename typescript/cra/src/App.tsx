@@ -4,6 +4,7 @@ import { SettingsProvider } from "./providers/SettingsProvider";
 import { ThemeProvider } from "./providers/ThemeProvider";
 import { ThemeRtlProvider } from "./providers/ThemeRtlProvider";
 import { TranslationProvider } from "./providers/TranslationProvider";
+import { SnackbarProvider } from "./providers/SnackbarProvider";
 import { AppRouting } from "./routing";
 
 import 'simplebar/src/simplebar.css';
@@ -20,7 +21,9 @@ const App = () => (
           <ThemeRtlProvider>
             <LayoutsProvider>
               <AuthInit>
-                <AppRouting/>
+                <SnackbarProvider>
+                  <AppRouting/>
+                </SnackbarProvider>
               </AuthInit>
             </LayoutsProvider>
           </ThemeRtlProvider>

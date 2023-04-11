@@ -138,6 +138,33 @@ const NAV_COMMON: { [key: string]: NavConfigType } = {
       bullet: true,
     },
   ],
+  crud: [
+    {
+      title: "Default",
+      path: "/users-management-api",
+      bullet: true,
+    },
+    {
+      title: "Overlay modal",
+      path: "/users-management-api-overlay-modal",
+      bullet: true,
+    },
+    {
+      title: "Drawers",
+      path: "/users-management-api-drawers",
+      bullet: true,
+    },
+    {
+      title: "Inline editing",
+      path: "/users-management-api-inline-editing",
+      bullet: true,
+    },
+    {
+      title: "Sub CRUD",
+      path: "/users-management-api-sub-crud",
+      bullet: true,
+    },
+  ],
 };
 
 const NAV_VERTICAL: NavConfigType = [
@@ -179,6 +206,14 @@ const NAV_VERTICAL: NavConfigType = [
     children: {
       accordion: true,
       items: NAV_COMMON.apps,
+    },
+  },
+  {
+    title: "CRUD",
+    icon: (<KeenIcon icon="calendar"/>),
+    children: {
+      accordion: true,
+      items: NAV_COMMON.crud,
     },
   },
   {
