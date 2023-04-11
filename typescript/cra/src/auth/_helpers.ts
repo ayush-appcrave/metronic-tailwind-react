@@ -2,9 +2,11 @@ import { getData, setData } from "../utils";
 import { AuthModel } from "./_models";
 
 const AUTH_LOCAL_STORAGE_KEY = "auth-react-v";
+
 const getAuth = (): AuthModel | undefined => {
   try {
     const auth = getData(AUTH_LOCAL_STORAGE_KEY) as AuthModel | undefined ;
+    
     if (auth) {
       // You can easily check auth_token expiration also
       return auth;

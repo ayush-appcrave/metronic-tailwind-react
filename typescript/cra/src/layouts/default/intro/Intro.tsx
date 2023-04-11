@@ -1,25 +1,34 @@
-import { Breadcrumbs, Link, Typography } from "@mui/material";
-import { FormattedMessage } from "react-intl";
+import { Box, Breadcrumbs, Link, Typography } from "@mui/material";
+import { IntroTitle, IntroSubTitle, IntroBreadcrumbs, IntroType } from "./";
 
-const Intro = () => (
-  <div>
-    <Typography variant="h1" component="h1">
-      Page Title
-    </Typography>
-    <Breadcrumbs aria-label="breadcrumb">
-      <Link underline="hover" color="inherit" href="/">
-        MUI
-      </Link>
-      <Link
-        underline="hover"
-        color="inherit"
-        href="/material-ui/getting-started/installation/"
-      >
-        Core
-      </Link>
-      <Typography color="text.primary">Breadcrumbs</Typography>
-    </Breadcrumbs>
-  </div>
-);
+const Intro = ({title, subTitle, breadcrumbs}: IntroType) => {
+
+  return (
+    <Box
+      sx={{
+        display: "flex",
+        justifyContent: "start",
+				flexDirection: "column"
+      }}
+    >
+
+    {title && (
+      <IntroTitle>
+        {title}
+
+        {subTitle && (
+          <IntroSubTitle>
+            {subTitle}
+          </IntroSubTitle>
+        )}
+      </IntroTitle>
+    )}   
+
+    {breadcrumbs && (
+      <IntroBreadcrumbs breadcrumbs={breadcrumbs}/>
+    )}  
+  </Box>
+  )  
+};
 
 export { Intro };

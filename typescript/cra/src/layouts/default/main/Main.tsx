@@ -4,7 +4,7 @@ import { Box, Stack, Drawer } from '@mui/material';
 import { useResponsive } from '../../../hooks/useResponsive';
 import { useDefaultLayout, DefaultLayoutStylesConfig } from '../';
 import { Header } from "../header/Header";
-import { Content } from "../content/Content";
+import { Wrapper } from "../wrapper/Wrapper";
 import { Footer } from "../footer/Footer";
 
 const Main = ({ children }: PropsWithChildren) => {
@@ -30,11 +30,12 @@ const Main = ({ children }: PropsWithChildren) => {
 				marginLeft: { lg: sidebarWidth + 'px' },
         transition: marginTransition,
         display: "flex",
-        flexDirection: "column"
+        flexDirection: "column",
+        flexGrow: "1"
       }}
     >      
       <Header/>
-      <Content/>
+      <Wrapper/>
       <Footer/>
     </Box>
   );

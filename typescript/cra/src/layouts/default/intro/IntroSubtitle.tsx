@@ -1,25 +1,26 @@
-import { Breadcrumbs, Link, Typography } from "@mui/material";
-import { FormattedMessage } from "react-intl";
+import { PropsWithChildren } from "react";
+import { Typography, useTheme } from "@mui/material";
 
-const Intro = () => (
-  <div>
-    <Typography variant="h1" component="h1">
-      Page Title
+type PropsType = {
+  children: React.ReactNode;
+};
+
+const IntroSubTitle = ({children}: PropsType) => {
+  const theme = useTheme();
+
+  return (
+    <Typography 
+      component="span"
+      sx={{
+        fontSize: "14px",
+        fontWeight: theme.typography.fontWeightMedium,
+        color: theme.palette.grey["500"],
+        ml: theme.spacing(1)
+      }}
+    >
+      {children}
     </Typography>
-    <Breadcrumbs aria-label="breadcrumb">
-      <Link underline="hover" color="inherit" href="/">
-        MUI
-      </Link>
-      <Link
-        underline="hover"
-        color="inherit"
-        href="/material-ui/getting-started/installation/"
-      >
-        Core
-      </Link>
-      <Typography color="text.primary">Breadcrumbs</Typography>
-    </Breadcrumbs>
-  </div>
-);
+  )  
+};
 
-export { Intro };
+export { IntroSubTitle };

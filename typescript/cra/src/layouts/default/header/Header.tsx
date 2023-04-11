@@ -55,6 +55,7 @@ const Header = () => {
 
         ...(isHeaderSticky && {
           transition: heightTransition,          
+          zIndex: styles.HEADER_STICKY_ZINDEX,
           backgroundColor: alpha(theme.palette.background.default, 0.8),
           backdropFilter: styles.HEADER_STICKY_BACKDROP_FILTER
         }),

@@ -39,10 +39,11 @@ const HeaderMobileLogo = () => {
       </IconButton>
 
       <a href="/" style={{lineHeight: '0px'}}>      
-        <img 
+        <Box 
+          component="img"
           src="/media/logos/default.svg" 
           alt="logo" 
-          style={{ 
+          sx={{ 
             height: '30px', 
             maxWidth: 'none', 
             cursor: 'pointer'
