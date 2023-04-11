@@ -1,10 +1,10 @@
 import {ListViewProvider} from './core/ListViewProvider'
 import {QueryRequestProvider} from './core/QueryRequestProvider'
 import {QueryResponseProvider} from './core/QueryResponseProvider'
-import {UsersManagementPage} from "./UsersManagementPage";
+import {UsersManagementInlineEditingPage} from "./UsersManagementInlineEditingPage";
 
 const UsersList = () => {
-    return <UsersManagementPage></UsersManagementPage>
+    return <UsersManagementInlineEditingPage></UsersManagementInlineEditingPage>
 }
 
 const UsersListInlineEditingWrapper = () => (

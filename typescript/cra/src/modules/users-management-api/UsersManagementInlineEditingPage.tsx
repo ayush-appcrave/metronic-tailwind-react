@@ -6,7 +6,7 @@ import {
     Box,
     Paper,
 } from "@mui/material";
-import { UserManagementTableContainer } from "./components/UserManagementTableContainer";
+import { UserManagementInlineEditingTableContainer } from "./components/UserManagementInlineEditingTableContainer";
 
 import {
     useQueryResponse,
@@ -21,7 +21,7 @@ import {useMutation, useQueryClient} from "react-query";
 import {deleteSelectedUsers} from "./core/_requests";
 import {QUERIES} from "./helpers";
 
-function UsersManagementPage() {
+function UsersManagementInlineEditingPage() {
     const {updateState} = useQueryRequest()
     const [open2, setOpen2] = useState(false);
     const [open4, setOpen4] = useState(false);
@@ -85,9 +85,7 @@ function UsersManagementPage() {
                     right: 200,
                 }} onClick={(e)=> handleClickOpe4()}>Add new user (Drawer)</Button>
                 <EnhancedTableToolbar numSelected={selected.length} handleRoleFilterChange={handleRoleFilterChange} roleFilter={roleFilter} handleNameFilterChange={handleNameFilterChange} nameFilter={nameFilter} handleSelectedUsersDelete={async () => await deleteSelectedItems.mutateAsync()} />
-                <UserManagementTableContainer>
-                    {(id) => <Button onClick={(e)=>console.log(id)}/>}
-                </UserManagementTableContainer>
+                <UserManagementInlineEditingTableContainer></UserManagementInlineEditingTableContainer>
             </Paper>
             <CreateUserStepperFormDialog open={open2} handleClose={handleClose2}></CreateUserStepperFormDialog>
             <CreateUserDrawer open={open4} handleClose={handleClose4}></CreateUserDrawer>
@@ -95,4 +93,4 @@ function UsersManagementPage() {
     );
 }
 
-export { UsersManagementPage }
+export { UsersManagementInlineEditingPage }
