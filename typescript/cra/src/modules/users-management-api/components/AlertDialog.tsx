@@ -6,7 +6,8 @@ import {useQueryResponse} from "../core/QueryResponseProvider";
 
 interface AlertDialogProps {
     open: boolean;
-    handleClose: () => void
+    handleClose: (reason:string) => void
+    handleAgreeClose: (reason:string) => void
     userId: string;
 }
 
@@ -17,7 +18,7 @@ function AlertDialog(props:AlertDialogProps) {
     const deleteItem = useMutation(() => deleteUser(props.userId), {
         // 💡 response of the mutation is passed to onSuccess
         onSuccess: () => {
-            props.handleClose();
+            props.handleAgreeClose("deleted");
             // ✅ update detail view directly
             queryClient.invalidateQueries([`${QUERIES.USERS_LIST}-${query}`])
         },
@@ -26,7 +27,6 @@ function AlertDialog(props:AlertDialogProps) {
     return (
         <Dialog
             open={props.open}
-            onClose={props.handleClose}
             aria-labelledby="alert-dialog-title"
             aria-describedby="alert-dialog-description"
         >
@@ -39,7 +39,7 @@ function AlertDialog(props:AlertDialogProps) {
                 </DialogContentText>
             </DialogContent>
             <DialogActions>
-                <Button onClick={(e) => props.handleClose()}>Disagree</Button>
+                <Button onClick={(e) => props.handleClose("dissagree")}>Disagree</Button>
                 <Button onClick={async () => await deleteItem.mutateAsync()} autoFocus>
                     Agree
                 </Button>

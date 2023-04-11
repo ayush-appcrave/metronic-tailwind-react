@@ -1,4 +1,4 @@
-import {ChangeEvent, useEffect, useState} from 'react';
+import {ChangeEvent, useState} from 'react';
 
 import {
     Button,
@@ -10,7 +10,6 @@ import { UserManagementInlineEditingTableContainer } from "./components/UserMana
 
 import {
     useQueryResponse,
-    useQueryResponsePagination
 } from "./core/QueryResponseProvider";
 import { CreateUserDrawer } from "./components/create-user/CreateUserDrawer";
 import {useQueryRequest} from "./core/QueryRequestProvider";

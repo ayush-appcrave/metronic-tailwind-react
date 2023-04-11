@@ -1,4 +1,4 @@
-import {ChangeEvent, useEffect, useState} from 'react';
+import React, {ChangeEvent, useEffect, useState} from 'react';
 
 import {
     Button,
@@ -10,7 +10,6 @@ import { UserManagementTableContainer } from "./components/UserManagementTableCo
 
 import {
     useQueryResponse,
-    useQueryResponsePagination
 } from "./core/QueryResponseProvider";
 import { CreateUserDrawer } from "./components/create-user/CreateUserDrawer";
 import {useQueryRequest} from "./core/QueryRequestProvider";
@@ -21,6 +20,7 @@ import {useMutation, useQueryClient} from "react-query";
 import {deleteSelectedUsers} from "./core/_requests";
 import {QUERIES} from "./helpers";
 import UsersManagementActionsCell from "./components/cells/UsersManagementActionsCell";
+import {UndoSnackbar} from "./components/UndoSnackbar";
 
 function UsersManagementPage() {
     const {updateState} = useQueryRequest()
@@ -30,6 +30,9 @@ function UsersManagementPage() {
     const [ nameFilter, setNameFilter ] = useState<string | null>(null);
     const queryClient = useQueryClient()
     const {query} = useQueryResponse()
+
+    const [openUndoSnackbar, setOpenUndoSnackbar] = useState(false);
+    const [deleteId, setDeleteId] = useState("-1");
 
     const { clearSelected, selected} = useListView()
 
@@ -87,11 +90,15 @@ function UsersManagementPage() {
                 }} onClick={(e)=> handleClickOpe4()}>Add new user (Drawer)</Button>
                 <EnhancedTableToolbar numSelected={selected.length} handleRoleFilterChange={handleRoleFilterChange} roleFilter={roleFilter} handleNameFilterChange={handleNameFilterChange} nameFilter={nameFilter} handleSelectedUsersDelete={async () => await deleteSelectedItems.mutateAsync()} />
                 <UserManagementTableContainer>
-                    {(id) => <UsersManagementActionsCell id={id}/>}
+                    {(id) => <UsersManagementActionsCell id={id} deleteHandler={async ()=>{
+                        setDeleteId(id);
+                        setOpenUndoSnackbar(true);
+                    }}/>}
                 </UserManagementTableContainer>
             </Paper>
             <CreateUserStepperFormDialog open={open2} handleClose={handleClose2}></CreateUserStepperFormDialog>
             <CreateUserDrawer open={open4} handleClose={handleClose4}></CreateUserDrawer>
+            <UndoSnackbar userId={deleteId} open={openUndoSnackbar} onClose={()=>setOpenUndoSnackbar(false)}></UndoSnackbar>
         </Box>
     );
 }

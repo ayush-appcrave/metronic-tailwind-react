@@ -4,6 +4,7 @@ import {User, UserPasswords, UsersQueryResponse} from './_models'
 
 const API_URL = process.env.REACT_APP_API_URL
 const USER_URL = `${API_URL}/user`
+const USER_RESTORE_URL = `${API_URL}/restore`
 const USER_PASSWORD_UPDATE_URL = `${API_URL}/updatePassword`
 const GET_USERS_URL = `${API_URL}/users/query`
 
@@ -49,9 +50,15 @@ const deleteUser = (userId: string): Promise<void> => {
   return axios.delete(`${USER_URL}/${userId}`).then(() => {})
 }
 
+
+const restoreUser = (userId: string): Promise<User | { data?: User | undefined; } | undefined> => {
+  return axios.post(`${USER_RESTORE_URL}/${userId}`).then((response: AxiosResponse<Response<User>>) => response.data)
+      .then((response: Response<User>) => response.data);
+}
+
 const deleteSelectedUsers = (userIds: Array<string>): Promise<void> => {
   const requests = userIds.map((id) => axios.delete(`${USER_URL}/${id}`))
   return axios.all(requests).then(() => {})
 }
 
-export {getUsers, deleteUser, deleteSelectedUsers, getUserById, createUser, updateUser, updateUserPassword}
+export {getUsers, deleteUser, deleteSelectedUsers, getUserById, createUser, updateUser, updateUserPassword, restoreUser}

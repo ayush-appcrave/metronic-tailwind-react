@@ -24,6 +24,7 @@ import {useMutation, useQueryClient} from "react-query";
 import {deleteSelectedUsers} from "./core/_requests";
 import {QUERIES} from "./helpers";
 import {AlertDialog} from "./components/AlertDialog";
+import {UndoSnackbar} from "./components/UndoSnackbar";
 
 function UsersManagementOverlayPage() {
     const {updateState} = useQueryRequest()
@@ -35,6 +36,8 @@ function UsersManagementOverlayPage() {
     const [updateUserModalOpenState, setUpdateUserModalOpenState] = useState(false);
     const [deleteUserIdState, setDeleteUserIdState] = useState("-1");
     const [viewUserIdState, setViewUserIdState] = useState("-1");
+    const [openUndoSnackbar, setOpenUndoSnackbar] = useState(false);
+    const [deleteId, setDeleteId] = useState("-1");
     const [ roleFilter, setRoleFilter ] = useState<"user" | "admin" | undefined>(undefined);
     const [ nameFilter, setNameFilter ] = useState<string | null>(null);
     const queryClient = useQueryClient()
@@ -106,7 +109,9 @@ function UsersManagementOverlayPage() {
             <CreateUserStepperFormDialog open={open2} handleClose={handleClose2}></CreateUserStepperFormDialog>
             <CreateUserPlainFormDialog open={newUserOverlayModalOpenState} handleClose={()=>setNewUserOverlayModalOpenState(false)}></CreateUserPlainFormDialog>
             <UpdateUserDialog open={updateUserModalOpenState} userId={updateUserIdState} handleClose={()=>setUpdateUserModalOpenState(false)}></UpdateUserDialog>
-            <AlertDialog open={openDeleteDialogState} handleClose={()=>{setOpenDeleteDialogState(false)}} userId={deleteUserIdState}></AlertDialog>
+            <AlertDialog open={openDeleteDialogState} handleAgreeClose={()=>{setOpenDeleteDialogState(false);setDeleteId(deleteUserIdState);
+                setOpenUndoSnackbar(true);}} handleClose={()=>{setOpenDeleteDialogState(false);}} userId={deleteUserIdState}></AlertDialog>
+            <UndoSnackbar userId={deleteId} open={openUndoSnackbar} onClose={()=>setOpenUndoSnackbar(false)}></UndoSnackbar>
             <ViewUserDialog open={viewUserModalOpenState} handleClose={()=>{setViewUserModalOpenState(false)}} userId={viewUserIdState}></ViewUserDialog>
         </Box>
     );

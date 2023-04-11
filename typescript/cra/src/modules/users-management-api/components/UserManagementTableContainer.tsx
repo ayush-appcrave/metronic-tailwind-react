@@ -13,7 +13,7 @@ import {EnhancedTableHead} from "./EnhancedTableHead";
 import CircularProgress from "@mui/material/CircularProgress";
 import {toAbsoluteUrl} from "utils";
 import {headCells} from "../core/headCellConfiguration";
-import {ChangeEvent, useEffect, useMemo, useState} from "react";
+import React, {ChangeEvent, useEffect, useMemo, useState} from "react";
 import {User} from "../core/_models";
 import {useListView} from "../core/ListViewProvider";
 import {Order} from "../@types/sort";

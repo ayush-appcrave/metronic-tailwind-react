@@ -1,4 +1,4 @@
-import {ChangeEvent, useEffect, useState} from 'react';
+import React, {ChangeEvent, useEffect, useState} from 'react';
 
 import {
     Button,
@@ -20,6 +20,7 @@ import {useMutation, useQueryClient} from "react-query";
 import {deleteSelectedUsers} from "./core/_requests";
 import {QUERIES} from "./helpers";
 import UsersManagementActionsCell from "./components/cells/UsersManagementActionsCell";
+import {UndoSnackbar} from "./components/UndoSnackbar";
 
 function UsersManagementSubCRUDPage() {
     const {updateState} = useQueryRequest()
@@ -29,6 +30,9 @@ function UsersManagementSubCRUDPage() {
     const [ nameFilter, setNameFilter ] = useState<string | null>(null);
     const queryClient = useQueryClient()
     const {query} = useQueryResponse()
+
+    const [openUndoSnackbar, setOpenUndoSnackbar] = useState(false);
+    const [deleteId, setDeleteId] = useState("-1");
 
     const { clearSelected, selected} = useListView()
 
@@ -86,11 +90,15 @@ function UsersManagementSubCRUDPage() {
                 }} onClick={(e)=> handleClickOpe4()}>Add new user (Drawer)</Button>
                 <EnhancedTableToolbar numSelected={selected.length} handleRoleFilterChange={handleRoleFilterChange} roleFilter={roleFilter} handleNameFilterChange={handleNameFilterChange} nameFilter={nameFilter} handleSelectedUsersDelete={async () => await deleteSelectedItems.mutateAsync()} />
                 <UserManagementSubCRUDTableContainer>
-                    {(id) => <UsersManagementActionsCell id={id}/>}
+                    {(id) => <UsersManagementActionsCell id={id} deleteHandler={()=>{
+                        setDeleteId(id);
+                        setOpenUndoSnackbar(true);
+                    }}/>}
                 </UserManagementSubCRUDTableContainer>
             </Paper>
             <CreateUserStepperFormDialog open={open2} handleClose={handleClose2}></CreateUserStepperFormDialog>
             <CreateUserDrawer open={open4} handleClose={handleClose4}></CreateUserDrawer>
+            <UndoSnackbar userId={deleteId} open={openUndoSnackbar} onClose={()=>setOpenUndoSnackbar(false)}></UndoSnackbar>
         </Box>
     );
 }

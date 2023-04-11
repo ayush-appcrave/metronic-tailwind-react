@@ -6,6 +6,7 @@ import {AlertDialog} from "../AlertDialog";
 
 interface IUsersManagementActionsCellProps {
     id: string;
+    deleteHandler: (state:boolean)=>void;
 }
 
 function UsersManagementActionsCell(props: IUsersManagementActionsCellProps) {
@@ -57,7 +58,7 @@ function UsersManagementActionsCell(props: IUsersManagementActionsCellProps) {
             <MenuItem onClick={()=>setOpenDeleteDialog(true)}>Delete</MenuItem>
         </Menu>
 
-        <AlertDialog open={openDeleteDialog} handleClose={()=>{setOpenDeleteDialog(false)}} userId={props.id}></AlertDialog>
+        <AlertDialog open={openDeleteDialog} handleAgreeClose={()=>{setOpenDeleteDialog(false); props.deleteHandler(true);}} handleClose={()=>{setOpenDeleteDialog(false)}} userId={props.id}></AlertDialog>
         <UpdateUserDialog open={editModalOpen} handleClose={()=>setEditModalOpen(false)} userId={props.id}></UpdateUserDialog>
     </>;
 }
