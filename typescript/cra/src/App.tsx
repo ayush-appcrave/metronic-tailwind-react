@@ -4,6 +4,7 @@ import { SettingsProvider } from "./providers/SettingsProvider";
 import { ThemeProvider } from "./providers/ThemeProvider";
 import { ThemeRtlProvider } from "./providers/ThemeRtlProvider";
 import { TranslationProvider } from "./providers/TranslationProvider";
+import { LoadingProvider } from "./providers/LoadingProvider";
 import { AppRouting } from "./routing";
 
 import 'simplebar/src/simplebar.css';
@@ -19,9 +20,11 @@ const App = () => (
         <ThemeProvider>
           <ThemeRtlProvider>
             <LayoutsProvider>
-              <AuthInit>
-                <AppRouting/>
-              </AuthInit>
+              <LoadingProvider>
+                <AuthInit>
+                  <AppRouting/>
+                </AuthInit>
+              </LoadingProvider>
             </LayoutsProvider>
           </ThemeRtlProvider>
         </ThemeProvider>

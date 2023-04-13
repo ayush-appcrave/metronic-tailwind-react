@@ -12,6 +12,7 @@ import { LoadingScreen } from "../components";
 import { AuthModel, UserModel } from "./_models";
 import * as authHelper from "./_helpers";
 import { getUserByToken } from "./_requests";
+import { useLoading } from "../providers/LoadingProvider";
 
 type AuthContextProps = {
   auth: AuthModel | undefined;
@@ -62,12 +63,13 @@ const AuthProvider = ({ children }: PropsWithChildren) => {
 };
 
 const AuthInit = ({ children }: PropsWithChildren) => {
+  const { getLoading, setLoading } = useLoading();
   const { auth, logout, setCurrentUser } = useAuth();
   const didRequest = useRef(false);
-  const [showSplashScreen, setShowSplashScreen] = useState(true);
 
   // We should request user by authToken (IN OUR EXAMPLE IT'S API_TOKEN) before rendering the application
   useEffect(() => {
+    setLoading("screen", true);
     const requestUser = async (accessToken: string) => {
       try {
         if (!didRequest.current) {
@@ -84,7 +86,7 @@ const AuthInit = ({ children }: PropsWithChildren) => {
           logout();
         }
       } finally {
-        setShowSplashScreen(false);
+        setLoading("screen", false);
       }
 
       return () => (didRequest.current = true);
@@ -94,14 +96,16 @@ const AuthInit = ({ children }: PropsWithChildren) => {
       requestUser(auth.access_token);
     } else {
       logout();
-      setShowSplashScreen(false);
+      setLoading("screen", false);
     }
     // eslint-disable-next-line
   }, []);
 
-  console.log('init');
-
-  return showSplashScreen ? <LoadingScreen /> : <>{children}</>;
+  return (
+    <>
+      {children}
+    </>
+  );
 };
 
 export { AuthProvider, AuthInit, useAuth };

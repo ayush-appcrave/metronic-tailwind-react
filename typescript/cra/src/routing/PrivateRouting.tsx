@@ -19,7 +19,7 @@ const PrivateRouting = () => (
       <Route path="users-management-api-sub-crud" element={<UsersListSubCRUDWrapper />} />
       <Route path="edit/user/:id" element={<UpdateUserPage />} />
         <Route path="view/user/:id" element={<ViewUserPage />} />
-    </Route>
+      </Route>
     <Route path="*" element={<Navigate to="/error/404" />} />
   </Routes>
 );
