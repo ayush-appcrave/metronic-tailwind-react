@@ -70,6 +70,7 @@ const AuthInit = ({ children }: PropsWithChildren) => {
   // We should request user by authToken (IN OUR EXAMPLE IT'S API_TOKEN) before rendering the application
   useEffect(() => {
     setLoading("screen", true);
+
     const requestUser = async (accessToken: string) => {
       try {
         if (!didRequest.current) {

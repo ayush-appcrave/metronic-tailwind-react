@@ -5,11 +5,10 @@ import { Footer } from "./footer/Footer";
 import { Header } from "./header/Header";
 import { Settings } from "../../components/settings";
 import { LoadingPage, LoadingProgressBar } from "../../components/loading";
-import { useLoading } from "../../providers/LoadingProvider";
 import { DefaultLayoutProvider } from "./DefaultLayoutProvider";
+import { ToolbarProvider } from "./toolbar/ToolbarProvider";
 
 const Layout = () => {
-  const { getLoading, setLoading } = useLoading();
 
   return (
     <>
@@ -22,7 +21,9 @@ const Layout = () => {
 
 const DefaultLayout = () => (
   <DefaultLayoutProvider>
-    <Layout/>
+    <ToolbarProvider>
+      <Layout/>
+    </ToolbarProvider>    
   </DefaultLayoutProvider>
 );
 

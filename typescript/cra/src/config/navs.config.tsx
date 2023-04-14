@@ -42,7 +42,7 @@ const NAV_COMMON: { [key: string]: NavConfigType } = {
     {
       key: 'dashboards-eCommerce',
       title: "eCommerce",
-      path: "/dashboard2",
+      path: "/ecommerce",
       bullet: true,
       onClick: () => {
         console.log("New clicked 2");

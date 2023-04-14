@@ -1,4 +1,5 @@
 import { AuthProvider, AuthInit } from "./auth";
+import { BrowserRouter } from "react-router-dom";
 import { LayoutsProvider } from "./providers/LayoutsProvider";
 import { SettingsProvider } from "./providers/SettingsProvider";
 import { ThemeProvider } from "./providers/ThemeProvider";
@@ -22,7 +23,9 @@ const App = () => (
             <LayoutsProvider>
               <LoadingProvider>
                 <AuthInit>
-                  <AppRouting/>
+                  <BrowserRouter>
+                    <AppRouting/>
+                  </BrowserRouter>
                 </AuthInit>
               </LoadingProvider>
             </LayoutsProvider>

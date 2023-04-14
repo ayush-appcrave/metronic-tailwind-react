@@ -1,29 +1,14 @@
-import { PropsWithChildren } from "react";
 import { useTheme } from "@mui/material/styles";
 import { Box, Container } from "@mui/material";
-import { Outlet } from "react-router-dom";
+import { Intro } from "../intro";
 import { useSettings } from "../../../providers/SettingsProvider";
-import { Intro, IntroBreadcrumbsType } from "../intro";
+import { useToolbar } from "./ToolbarProvider";
 
-const Toolbar = ({ children }: PropsWithChildren) => {
+const Toolbar = () => {
+  const theme = useTheme();  
   const { settings } = useSettings();
-  const { container } = settings;
-  const theme = useTheme();
-
-  const breadcrumbs: IntroBreadcrumbsType = [
-    {
-      title: "Page 1",
-      href: "tedt"
-    },
-    {
-      title: "Page 1",
-      href: "tedt"
-    },
-    {
-      title: "Page 3",
-      active: true
-    }
-  ];
+  const { container } = settings;  
+  const { introTitle, introSubTitle, introBreadcrumbs } = useToolbar();
 
   return (
     <Box
@@ -35,9 +20,9 @@ const Toolbar = ({ children }: PropsWithChildren) => {
         maxWidth={container === "fixed" ? 'lg' : false}
       >
         <Intro
-          title="Title"
-          subTitle="Sub title"
-          breadcrumbs={breadcrumbs}
+          title={introTitle}
+          subTitle={introSubTitle}
+          breadcrumbs={introBreadcrumbs}
         />
       </Container>      
     </Box>

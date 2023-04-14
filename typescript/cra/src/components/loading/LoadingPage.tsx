@@ -10,7 +10,8 @@ const LoadingPage = () => {
         display: "flex",
         alignItems: "center",
 				justifyContent: "center",
-				flexDirection: "column"
+				flexDirection: "column",
+        alignSelf: "center"
       }}
     >
       <CircularProgress color="primary"/>
