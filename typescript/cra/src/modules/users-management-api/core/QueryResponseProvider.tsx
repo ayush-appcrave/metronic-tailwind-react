@@ -55,9 +55,6 @@ const useQueryResponseData = () => {
   if (!response) {
     return []
   }
-
-  console.log("======>", response?.data);
-
   return response?.data || []
 }
 

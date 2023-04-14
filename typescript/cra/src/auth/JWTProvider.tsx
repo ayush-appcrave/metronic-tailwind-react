@@ -102,7 +102,7 @@ const AuthInit = ({ children }: PropsWithChildren) => {
     // eslint-disable-next-line
   }, []);
 
-  return (
+  return (getLoading("screen") ? <></>  :
     <>
       {children}
     </>
