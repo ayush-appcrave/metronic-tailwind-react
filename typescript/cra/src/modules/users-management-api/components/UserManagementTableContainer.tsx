@@ -7,10 +7,10 @@ import {
     TableCell,
     TableContainer,
     TablePagination,
-    TableRow
+    TableRow,
+    Skeleton
 } from "@mui/material";
 import {EnhancedTableHead} from "./EnhancedTableHead";
-import CircularProgress from "@mui/material/CircularProgress";
 import {toAbsoluteUrl} from "utils";
 import {headCells} from "../core/headCellConfiguration";
 import React, {ChangeEvent, useEffect, useMemo, useState} from "react";
@@ -30,15 +30,6 @@ const UserManagementTableContainer = (props: Props) => {
     const data = useMemo(() => users, [users])
 
     const isLoading = useQueryResponseLoading()
-    const [loading, setLoading] = useState(false);
-    useEffect(()=>{
-        if(isLoading){
-            setLoading(true)
-            setTimeout(()=>{
-                setLoading(false);
-            }, 500)
-        }
-    }, [isLoading])
 
     const pagination = useQueryResponsePagination()
     const [order, setOrder] = useState<Order>('asc');
@@ -94,11 +85,6 @@ const UserManagementTableContainer = (props: Props) => {
                 <TableBody sx={{
                     position: "relative"
                 }}>
-                    {loading && <CircularProgress sx={{
-                        position: "absolute",
-                        left: "50%",
-                        top: "50%",
-                    }}/>}
                     {data.map((row, index) => {
                         const labelId = `enhanced-table-checkbox-${index}`;
 
@@ -138,7 +124,7 @@ const UserManagementTableContainer = (props: Props) => {
                                             marginBottom: 'auto',
                                             marginLeft: '5px',
                                         }}>
-                                            {row.id}--{row.first_name}
+                                            {row.first_name}
                                         </Box>
                                     </Box>
                                 </TableCell>

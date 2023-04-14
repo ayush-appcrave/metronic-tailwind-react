@@ -129,7 +129,7 @@ const UserManagementInlineEditingTableRow = (props: RowProps) => {
             <MenuItem value="pending">Pending</MenuItem>
             <MenuItem value="deactivated">Deactivated</MenuItem>
         </Select>  : formData.status}</TableCell>
-        <TableCell align="left">{props.row.two_steps_auth}</TableCell>
+        <TableCell align="left">{props.row.two_steps_auth ? "disabled" : "enabled"}</TableCell>
         <TableCell align="left">{props.row.created_at}</TableCell>
         <TableCell align="left">
             { editState && <Button onClick={()=>{saveChanges();

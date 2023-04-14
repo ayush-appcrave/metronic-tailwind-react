@@ -66,14 +66,14 @@ const UserManagementSubCRUDTableRow = (props: RowProps) => {
                         marginBottom: 'auto',
                         marginLeft: '5px',
                     }}>
-                        {props.row.id}--{props.row.first_name}
+                        {props.row.first_name}
                     </Box>
                 </Box>
             </TableCell>
             <TableCell align="left">{props.row.last_name}</TableCell>
             <TableCell align="left">{props.row.role}</TableCell>
             <TableCell align="left">{props.row.status}</TableCell>
-            <TableCell align="left">{props.row.two_steps_auth}</TableCell>
+            <TableCell align="left">{props.row.two_steps_auth ? "disabled" : "enabled"}</TableCell>
             <TableCell align="left">{props.row.created_at}</TableCell>
             <TableCell align="left">
                 {props.children(props.row.id)}

@@ -11,6 +11,7 @@ export interface UserGeneralInfo {
   first_name?: string
   last_name?: string
   avatar?: string
+  color?: string
   email?: string
   role?: string
   status?: string
