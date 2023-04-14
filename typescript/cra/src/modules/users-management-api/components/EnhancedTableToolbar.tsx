@@ -51,19 +51,17 @@ function EnhancedTableToolbar(props: EnhancedTableToolbarProps) {
                 <FormControl size="small" sx={{
                     width: "50%",
                 }}>
-                    <InputLabel id="demo-simple-select-label">Role</InputLabel>
                     <Select
                         labelId="demo-simple-select-label"
                         id="demo-simple-select"
-                        value={props.roleFilter}
+                        value={props.roleFilter ? props.roleFilter : "all"}
                         sx={{
                             margin: "10px",
                         }}
-                        label="Role"
-                        defaultValue={"All"}
+                        defaultValue={"all"}
                         onChange={props.handleRoleFilterChange}
                     >
-                        <MenuItem value="" selected>All</MenuItem>
+                        <MenuItem value="all">All</MenuItem>
                         <MenuItem value="user">User</MenuItem>
                         <MenuItem value="admin">Admin</MenuItem>
                     </Select>
