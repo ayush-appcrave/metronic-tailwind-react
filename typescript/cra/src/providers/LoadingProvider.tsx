@@ -20,7 +20,7 @@ const useLoading = () => useContext(LoadingContext);
 const LoadingProvider = ({ children }: PropsWithChildren) => {
   const [loadingPage, setLoadingPage] = useState(false);
   const [loadingProgressBar, setLoadingProgressPage] = useState(false);
-  const [loadingScreen, setLoadingScreen] = useState(false);
+  const [loadingScreen, setLoadingScreen] = useState(true);
 
   const setLoading = (type: LoadingType, state: boolean) => {
     if (type === "progressBar") {
