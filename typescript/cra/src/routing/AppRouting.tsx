@@ -50,15 +50,15 @@ const AppRouting = () => {
   
   return (
     <Routes>
-      <Route path="/" element={<Navigate replace to="{lastPath}"/>}></Route>
+      {lastPath.length > 0 && <Route path="/" element={<Navigate replace to="{lastPath}"/>}></Route>}
       <Route path="error/*" element={<ErrorsPage />} />
       <Route path="logout" element={<Logout />} />
       
       {currentUser ? (
         <>
           {/* Redirect to Dashboard after success login/registartion */}
-          <Route path="auth/*" element={<Navigate to="/dashboard" />} />
-          <Route element={<DefaultLayout />}>
+          <Route path="auth/*" element={<Navigate to="/dashboard"/>} />
+          <Route element={<DefaultLayout/>}>
             <Route path="dashboard" element={<DashboardPage/>} />
             <Route path="ecommerce" element={<EcommercePage/>} />
             <Route path="marketing" element={<MarketingPage/>} />
