@@ -99,17 +99,6 @@ const UserManagementSubCRUDTableContainer = (props: Props) => {
     const users = useQueryResponseData()
     const data = useMemo(() => users, [users])
 
-    const isLoading = useQueryResponseLoading()
-    const [loading, setLoading] = useState(false);
-    useEffect(()=>{
-        if(isLoading){
-            setLoading(true)
-            setTimeout(()=>{
-                setLoading(false);
-            }, 500)
-        }
-    }, [isLoading])
-
     const pagination = useQueryResponsePagination()
     const [order, setOrder] = useState<Order>('asc');
     const [orderBy, setOrderBy] = useState<keyof User>('created_at');
@@ -160,11 +149,6 @@ const UserManagementSubCRUDTableContainer = (props: Props) => {
                 <TableBody sx={{
                     position: "relative"
                 }}>
-                    {loading && <CircularProgress sx={{
-                        position: "absolute",
-                        left: "50%",
-                        top: "50%",
-                    }}/>}
                     {data.map((row, index) => {
                         const labelId = `enhanced-table-checkbox-${row.id}`;
 
