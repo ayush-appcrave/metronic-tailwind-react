@@ -166,8 +166,10 @@ const UserManagementSubCRUDTableContainer = (props: Props) => {
                         top: "50%",
                     }}/>}
                     {data.map((row, index) => {
+                        const labelId = `enhanced-table-checkbox-${row.id}`;
+
                         return (
-                            <UserManagementSubCRUDTableRow row={row} children={props.children}></UserManagementSubCRUDTableRow>
+                            <UserManagementSubCRUDTableRow key={labelId} row={row} children={props.children}></UserManagementSubCRUDTableRow>
                         );
                     })}
                     {pagination.total <= 0 && (

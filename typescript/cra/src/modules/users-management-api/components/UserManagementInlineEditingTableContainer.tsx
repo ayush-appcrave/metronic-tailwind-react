@@ -69,7 +69,7 @@ const UserManagementInlineEditingTableRow = (props: RowProps) => {
         role="checkbox"
         aria-checked={isSelected(props.row.id)}
         tabIndex={-1}
-        key={props.row.id}
+        key={props.labelId}
         selected={isSelected(props.row.id)}
     >
         <TableCell padding="checkbox">
@@ -145,16 +145,16 @@ const UserManagementInlineEditingTableContainer = () => {
     const users = useQueryResponseData()
     const data = useMemo(() => users, [users])
 
-    const isLoading = useQueryResponseLoading()
-    const [loading, setLoading] = useState(false);
-    useEffect(()=>{
-        if(isLoading){
-            setLoading(true)
-            setTimeout(()=>{
-                setLoading(false);
-            }, 500)
-        }
-    }, [isLoading])
+    // const isLoading = useQueryResponseLoading()
+    // const [loading, setLoading] = useState(false);
+    // useEffect(()=>{
+    //     if(isLoading){
+    //         setLoading(true)
+    //         setTimeout(()=>{
+    //             setLoading(false);
+    //         }, 500)
+    //     }
+    // }, [isLoading])
 
     const pagination = useQueryResponsePagination()
     const [order, setOrder] = useState<Order>('asc');
@@ -210,15 +210,15 @@ const UserManagementInlineEditingTableContainer = () => {
                 <TableBody sx={{
                     position: "relative"
                 }}>
-                    {loading && <CircularProgress sx={{
-                        position: "absolute",
-                        left: "50%",
-                        top: "50%",
-                    }}/>}
+                    {/*{loading && <CircularProgress sx={{*/}
+                    {/*    position: "absolute",*/}
+                    {/*    left: "50%",*/}
+                    {/*    top: "50%",*/}
+                    {/*}}/>}*/}
                     {data.map((row, index) => {
                         const labelId = `enhanced-table-checkbox-${index}`;
 
-                        return <UserManagementInlineEditingTableRow row={row} labelId={labelId}></UserManagementInlineEditingTableRow>;
+                        return <UserManagementInlineEditingTableRow key={labelId} row={row} labelId={labelId}></UserManagementInlineEditingTableRow>;
                     })}
                     {pagination.total <= 0 && (
                         <TableRow>
