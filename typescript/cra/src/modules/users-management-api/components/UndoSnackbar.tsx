@@ -16,7 +16,6 @@ const UndoSnackbar = (props: Props) => {
     const {refetch} = useQueryResponse();
 
     useEffect(()=>{
-        console.log("change was chnaged", props.open);
         setOpen(props.open);
     }, [props.open])
 
@@ -31,7 +30,6 @@ const UndoSnackbar = (props: Props) => {
     };
 
     const undoDelete = async () => {
-        console.log("undo");
         await restoreUser(props.userId);
         enqueueSnackbar('User was successfully restored.', { variant: "success" });
         setOpen(false);
@@ -57,7 +55,7 @@ const UndoSnackbar = (props: Props) => {
 
     return <Snackbar
         open={open}
-        autoHideDuration={6000}
+        autoHideDuration={2000}
         message="User deleted"
         action={action}
     />
