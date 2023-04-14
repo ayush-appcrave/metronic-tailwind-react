@@ -1,11 +1,14 @@
 import { AuthProvider, AuthInit } from "./auth";
-import { LayoutsProvider } from "./providers/LayoutsProvider";
-import { SettingsProvider } from "./providers/SettingsProvider";
-import { ThemeProvider } from "./providers/ThemeProvider";
-import { ThemeRtlProvider } from "./providers/ThemeRtlProvider";
-import { TranslationProvider } from "./providers/TranslationProvider";
-import { LoadingProvider } from "./providers/LoadingProvider";
-import { AppRouting } from "./routing";
+import {
+  SettingsProvider,
+  TranslationProvider,
+  ThemeRtlProvider,
+  LayoutsProvider,
+  ThemeProvider,
+  LoadingProvider,
+  SnackbarProvider
+} from "providers";
+import { AppRouting } from "routing";
 
 import 'simplebar/src/simplebar.css';
 import './components/keenicons/assets/duotone/style.css'
@@ -21,9 +24,11 @@ const App = () => (
           <ThemeRtlProvider>
             <LayoutsProvider>
               <LoadingProvider>
-                <AuthInit>
-                  <AppRouting/>
-                </AuthInit>
+                <SnackbarProvider>
+                  <AuthInit>
+                    <AppRouting/>
+                  </AuthInit>
+                </SnackbarProvider>
               </LoadingProvider>
             </LayoutsProvider>
           </ThemeRtlProvider>
