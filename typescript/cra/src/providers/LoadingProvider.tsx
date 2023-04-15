@@ -2,60 +2,46 @@ import { useState, createContext, useContext, PropsWithChildren } from "react";
 import { PaletteMode } from '@mui/material';
 import { LoadingScreen, LoadingProgressBar } from "../components/loading";
 
-export type LoadingType = "progressBar" | "page" | "screen";
-
 export type LoadingProviderType = {
-  setLoading: (type: LoadingType, state: boolean) => void;
-  getLoading: (type: LoadingType) => boolean;
+  pageLoading: boolean;
+  setPageLoading: (state: boolean) => void;
+  progressBarLoading: boolean;
+  setProgressBarLoading: (state: boolean) => void;
+  screenLoading: boolean;
+  setScreenLoading: (state: boolean) => void;
 };
 
 const initialProps: LoadingProviderType = {
-  setLoading: (type: LoadingType, state: boolean) => {},
-  getLoading: (type: LoadingType) => false
+  pageLoading: false,
+  setPageLoading: (state: boolean) => {},
+  progressBarLoading: false,
+  setProgressBarLoading: (state: boolean) => {},
+  screenLoading: false,
+  setScreenLoading: (state: boolean) => {}
 }
 
 const LoadingContext = createContext<LoadingProviderType>(initialProps);
 const useLoading = () => useContext(LoadingContext);
 
 const LoadingProvider = ({ children }: PropsWithChildren) => {
-  const [loadingPage, setLoadingPage] = useState(false);
-  const [loadingProgressBar, setLoadingProgressPage] = useState(false);
-  const [loadingScreen, setLoadingScreen] = useState(true);
-
-  const setLoading = (type: LoadingType, state: boolean) => {
-    if (type === "progressBar") {
-      setLoadingProgressPage(state);
-    }
-
-    if (type === "page") {
-      setLoadingPage(state);
-    }
-
-    if (type === "screen") {
-      setLoadingScreen(state);
-    }
-  }
-
-  const getLoading = (type: LoadingType) => {
-    if (type === "progressBar") {
-      return loadingProgressBar;
-    } else if (type === "page") {
-      return loadingPage;
-    } else {
-      return loadingScreen;
-    }
-  }  
+  const [pageLoading, setPageLoading] = useState(false);
+  const [progressBarLoading, setProgressBarLoading] = useState(false);
+  const [screenLoading, setScreenLoading] = useState(true);
 
   return (
     <LoadingContext.Provider
       value={{
-        setLoading,
-        getLoading
+        pageLoading,
+        setPageLoading,
+        progressBarLoading,
+        setProgressBarLoading,
+        screenLoading,
+        setScreenLoading
       }}
     >
       {children}
-      {getLoading("progressBar") && <LoadingProgressBar/>}
-      {getLoading("screen") && <LoadingScreen/>}
+      {progressBarLoading && <LoadingProgressBar/>}
+      {screenLoading && <LoadingScreen/>}
     </LoadingContext.Provider>
   );
 };

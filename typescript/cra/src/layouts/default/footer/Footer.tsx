@@ -14,6 +14,9 @@ const Footer = () => {
   return (
     <Box
       component="footer"
+      sx={{
+        py: theme.spacing(2)
+      }}
     >
       <Container 
         maxWidth={container === "fixed" ? 'lg' : false}

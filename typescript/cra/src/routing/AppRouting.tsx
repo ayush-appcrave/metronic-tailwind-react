@@ -18,45 +18,30 @@ import {DefaultLayout} from "../layouts/default";
 
 const AppRouting = () => {
   const { currentUser } = useAuth();
-  const { getLoading, setLoading } = useLoading();
-	const [previousLocation, setPreviousLocation] = useState("");
-	const lastPath = localStorage.getItem("lastPath") || "";
+  const { progressBarLoading, setProgressBarLoading } = useLoading();
+	const [ previousLocation, setPreviousLocation ] = useState("");
 	const location = useLocation();
 
-  console.log("last location:" + lastPath);
-
-  useEffect(() => {
-		//console.log("last location:" + lastPath);
- 	}, [location]);
-
 	useEffect(() => {
-		setLoading("progressBar", true);
-		setLoading("page", true);
-
+		setProgressBarLoading(true);
 		setPreviousLocation(location.pathname);		
 
 		if(location.pathname === previousLocation){
 			setPreviousLocation("");
 		}	
-		
-		localStorage.setItem("lastPath", location.pathname);
-		//console.log("previous location:" + previousLocation);
  	}, [location]);
 
 	useEffect(() => {
-		setLoading("progressBar", false);
-		setLoading("page", false);
+		setProgressBarLoading(false);
 	}, [previousLocation]);
   
   return (
     <Routes>
-      {lastPath.length > 0 && <Route path="/" element={<Navigate replace to="{lastPath}"/>}></Route>}
-      <Route path="error/*" element={<ErrorsPage />} />
-      <Route path="logout" element={<Logout />} />
+      <Route path="error/*" element={<ErrorsPage />}/>
+      <Route path="logout" element={<Logout />}/>
       
       {currentUser ? (
         <>
-          {/* Redirect to Dashboard after success login/registartion */}
           <Route path="auth/*" element={<Navigate to="/dashboard"/>} />
           <Route element={<DefaultLayout/>}>
             <Route path="dashboard" element={<DashboardPage/>} />

@@ -34,7 +34,7 @@ const SidebarFooter = ({setFooterHeight}: Props) => {
         py: 4
       }}
     >
-      Footer
+      Sidebar Footer
     </Stack>
   );
 }

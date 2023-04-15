@@ -11,7 +11,7 @@ const Wrapper = ({ children }: PropsWithChildren) => {
   const { settings } = useSettings();
   const { container } = settings;
   const theme = useTheme();
-  const { getLoading, setLoading } = useLoading();
+  const { pageLoading, setPageLoading } = useLoading();
 
   return (
     <Box
@@ -21,14 +21,9 @@ const Wrapper = ({ children }: PropsWithChildren) => {
         flexGrow: "1"
       }}
     >
-      {getLoading("page") ? (
-        <LoadingPage />
-      ) : (
-        <>
-          <Toolbar/>
-          <Content/>
-        </>
-      )}
+      {pageLoading && <LoadingPage/>}
+      <Toolbar/>
+      <Content/>
     </Box>
   );
 };
