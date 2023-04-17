@@ -2,7 +2,7 @@ import {
     Accordion,
     AccordionDetails,
     AccordionSummary,
-    Button, FormGroup,
+    Button, CircularProgress, FormGroup,
     Grid, TextField,
     Typography
 } from "@mui/material";
@@ -24,6 +24,7 @@ function UpdateUserPasswordAccordion(props: UpdateUserPasswordProps){
     const {refetch} = useQueryResponse();
     const { enqueueSnackbar } = useSnackbar();
 
+    const [loading, setLoading] = useState(false);
     const formik = useFormik<UserPasswords>({
         initialValues: {
             password: "",
@@ -42,11 +43,13 @@ function UpdateUserPasswordAccordion(props: UpdateUserPasswordProps){
                 .required('Password confirmation field is required.'),
         }),
         onSubmit: async (values, { resetForm }) => {
+            setLoading(true);
             try {
                 await updateUserPassword(values, props.userId);
                 resetForm();
                 enqueueSnackbar('"Password has been successfully updated"', { variant: "success" });
                 refetch();
+                setLoading(false);
             } catch (error) {
                 console.log(error);
                 if (axios.isAxiosError(error)) {
@@ -58,6 +61,7 @@ function UpdateUserPasswordAccordion(props: UpdateUserPasswordProps){
                 } else {
                     enqueueSnackbar("Something went wrong!", { variant: "error" });
                 }
+                setLoading(false);
             }
         },
     });
@@ -117,8 +121,8 @@ function UpdateUserPasswordAccordion(props: UpdateUserPasswordProps){
                             helperText={formik.touched.password_confirmation && formik.errors.password_confirmation ? formik.errors.password_confirmation : ""}
                         />
                     </FormGroup>
-                    <Button style={{ width: "20%", margin: "5px" }} type="submit" variant="contained" color="primary">
-                        Save
+                    <Button style={{ width: "20%", margin: "5px" }} type="submit" variant="contained" color="primary" disabled={loading}>
+                        {!loading ? "Save" : <><CircularProgress color={"inherit"} size={'1rem'} sx={{marginRight: "10px"}}></CircularProgress>"Loading..."</>}
                     </Button>
                 </Grid>
             </form>

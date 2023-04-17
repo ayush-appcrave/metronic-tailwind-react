@@ -1,7 +1,7 @@
 import {
     Accordion,
     AccordionDetails,
-    AccordionSummary, Box, Button,
+    AccordionSummary, Box, Button, CircularProgress,
     FormControl, FormControlLabel,
     FormGroup, FormHelperText, Grid, InputLabel, MenuItem, Select, Switch,
     TextField,
@@ -26,6 +26,7 @@ function UpdateUserGeneralInfoAccordion(props: UpdateUserGeneralInfoProps){
     const { enqueueSnackbar } = useSnackbar();
     const {refetch} = useQueryResponse();
     const [loading, setLoading] = useState(false);
+    const [progress, setProgress] = useState<null | string>(null);
     const [formData, setFormData] = useState<User>({
         id: props.userId,
         first_name: "",
@@ -73,8 +74,10 @@ function UpdateUserGeneralInfoAccordion(props: UpdateUserGeneralInfoProps){
                         await updateUser(values);
                         refetch();
                         enqueueSnackbar('User general info was successfully updated.', { variant: "success" });
+                        setProgress(null);
                     } catch (err) {
                         enqueueSnackbar('Ups! Something went wrong!', { variant: "error" });
+                        setProgress(null);
                     }
                 }}
             >
@@ -153,13 +156,13 @@ function UpdateUserGeneralInfoAccordion(props: UpdateUserGeneralInfoProps){
                            <Box sx={{
                                display: "flex",
                            }}>
-                               <Button style={{ margin: "5px" }} onClick={()=>{props.handleSubmit(); exitHandler();}} variant="contained" color="primary">
-                                   Save and Exit
+                               <Button style={{ margin: "5px" }} onClick={()=>{setProgress("exit"); props.handleSubmit(); exitHandler();}} variant="contained" color="primary" disabled={!!progress}>
+                                   {progress === "exit" ? <><CircularProgress color={"inherit"} size={'1rem'} sx={{marginRight: "10px"}}></CircularProgress>"Loading..."</> :"Save and Exit"}
                                </Button>
-                               <Button style={{ margin: "5px" }} type="submit" variant="contained" color="primary">
-                                   Save and Continue
+                               <Button style={{ margin: "5px" }} onClick={()=>{setProgress("continue"); props.handleSubmit();}} variant="contained" color="primary" disabled={!!progress}>
+                                   {progress === "continue" ? <><CircularProgress color={"inherit"} size={'1rem'} sx={{marginRight: "10px"}}></CircularProgress>"Loading..."</> : "Save and Continue"}
                                </Button>
-                               <Button style={{ margin: "5px" }} onClick={()=>{exitHandler();}} variant="contained" color="primary">
+                               <Button style={{ margin: "5px" }} onClick={()=>{exitHandler();}} variant="contained" color="primary" disabled={!!progress}>
                                    Exit
                                </Button>
                            </Box>

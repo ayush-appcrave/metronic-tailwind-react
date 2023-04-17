@@ -8,7 +8,8 @@ import {
     MenuItem,
     Select, Switch,
     TextField,
-    Typography
+    Typography,
+    CircularProgress
 } from "@mui/material";
 import * as Yup from 'yup';
 import {Close} from "@mui/icons-material";
@@ -18,6 +19,7 @@ import {createUser} from "../../core/_requests";
 import {useFormik} from "formik";
 import {useSnackbar} from "notistack";
 import axios from "axios";
+import {useState} from "react";
 
 interface CreateUserFormProps {
     open: boolean;
@@ -27,6 +29,7 @@ interface CreateUserFormProps {
 function CreateUserForm(props: CreateUserFormProps){
     const { enqueueSnackbar } = useSnackbar();
     const {refetch} = useQueryResponse()
+    const [loading, setLoading] = useState(false);
     const formik = useFormik<User>({
         initialValues: {
             id: "",
@@ -59,17 +62,20 @@ function CreateUserForm(props: CreateUserFormProps){
                 .required('Password confirmation field is required.'),
         }),
         onSubmit: async (values) => {
+            setLoading(true);
             try {
                 await createUser(values);
                 refetch();
                 enqueueSnackbar('User was successfully created.', { variant: "success" });
                 props.handleClose();
+                setLoading(false);
             } catch (error) {
                 if (axios.isAxiosError(error)) {
                     enqueueSnackbar(JSON.stringify(Object.values(error.response?.data.message)[0]?.toString()), { variant: "error" });
                 } else {
                     enqueueSnackbar("Something went wrong!", { variant: "error" });
                 }
+                setLoading(false);
             }
         },
     });
@@ -209,8 +215,8 @@ function CreateUserForm(props: CreateUserFormProps){
                                                        value={formik.values.password_confirmation}
                     />} label="Two Steps Auth" />
                 </FormGroup>
-                <Button sx={{ marginY: "5px", width: "100%",  }} type="submit" variant="contained" color="primary">
-                    Save
+                <Button sx={{ marginY: "5px", width: "100%",  }} type="submit" variant="contained" color="primary" disabled={loading}>
+                    {!loading ? "Save" : <><CircularProgress color={"inherit"} size={'1rem'} sx={{marginRight: "10px"}}></CircularProgress>"Loading..."</>}
                 </Button>
             </Grid>
         </form>
