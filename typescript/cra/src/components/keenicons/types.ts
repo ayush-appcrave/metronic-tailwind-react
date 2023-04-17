@@ -1,1 +1,1 @@
-export type KeenIconsStyleType = "duotone" | "solid" | "outline";
+export type KeenIconsStyleType = 'duotone' | 'solid' | 'outline';

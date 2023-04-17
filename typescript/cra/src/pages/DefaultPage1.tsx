@@ -1,9 +1,5 @@
 const DefaultPage1 = () => {
-  return ( 
-    <>
-      
-    </>
-  );
+  return <></>;
 };
 
 export { DefaultPage1 };

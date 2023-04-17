@@ -4,23 +4,23 @@ const Menu = (theme: Theme) => {
   return {
     MuiMenuItem: {
       styleOverrides: {
-        root: {          
+        root: {
           '&.Mui-selected': {
             backgroundColor: theme.palette.action.selected,
             '&:hover': {
-              backgroundColor: theme.palette.action.hover,
-            },
+              backgroundColor: theme.palette.action.hover
+            }
           },
           '&.Mui-selected.Mui-focusVisible': {
             backgroundColor: theme.palette.action.selected,
             '&:hover': {
-              backgroundColor: theme.palette.action.hover,
-            },
-          },
-        },
-      },
+              backgroundColor: theme.palette.action.hover
+            }
+          }
+        }
+      }
     }
   };
-}
+};
 
 export { Menu };

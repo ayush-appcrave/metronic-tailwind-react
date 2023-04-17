@@ -1,7 +1,7 @@
-import { ILayoutConfig } from "../";
+import { ILayoutConfig } from '../';
 
 const defaultLayoutConfig = {
-  name: "default-layout",
+  name: 'default-layout',
   options: {
     sidebar: {
       collapse: false

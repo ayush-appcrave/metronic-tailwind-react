@@ -1,18 +1,18 @@
-import { getData, setData } from "../utils";
-import { AuthModel } from "./_models";
+import { getData, setData } from '../utils';
+import { AuthModel } from './_models';
 
-const AUTH_LOCAL_STORAGE_KEY = "auth-react-v";
+const AUTH_LOCAL_STORAGE_KEY = 'auth-react-v';
 
 const getAuth = (): AuthModel | undefined => {
   try {
-    const auth = getData(AUTH_LOCAL_STORAGE_KEY) as AuthModel | undefined ;
-    
+    const auth = getData(AUTH_LOCAL_STORAGE_KEY) as AuthModel | undefined;
+
     if (auth) {
       // You can easily check auth_token expiration also
       return auth;
     }
   } catch (error) {
-    console.error("AUTH LOCAL STORAGE PARSE ERROR", error);
+    console.error('AUTH LOCAL STORAGE PARSE ERROR', error);
   }
 };
 
@@ -28,12 +28,12 @@ const removeAuth = () => {
   try {
     localStorage.removeItem(AUTH_LOCAL_STORAGE_KEY);
   } catch (error) {
-    console.error("AUTH LOCAL STORAGE REMOVE ERROR", error);
+    console.error('AUTH LOCAL STORAGE REMOVE ERROR', error);
   }
 };
 
 export function setupAxios(axios: any) {
-  axios.defaults.headers.Accept = "application/json";
+  axios.defaults.headers.Accept = 'application/json';
   axios.interceptors.request.use(
     (config: { headers: { Authorization: string } }) => {
       const auth = getAuth();

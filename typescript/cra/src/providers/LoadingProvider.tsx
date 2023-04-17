@@ -1,8 +1,8 @@
-import { useState, createContext, useContext, PropsWithChildren } from "react";
+import { useState, createContext, useContext, PropsWithChildren } from 'react';
 import { PaletteMode } from '@mui/material';
-import { LoadingScreen, LoadingProgressBar } from "../components/loading";
+import { LoadingScreen, LoadingProgressBar } from '../components/loading';
 
-export type LoadingType = "progressBar" | "page" | "screen";
+export type LoadingType = 'progressBar' | 'page' | 'screen';
 
 export type LoadingProviderType = {
   setLoading: (type: LoadingType, state: boolean) => void;
@@ -12,7 +12,7 @@ export type LoadingProviderType = {
 const initialProps: LoadingProviderType = {
   setLoading: (type: LoadingType, state: boolean) => {},
   getLoading: (type: LoadingType) => false
-}
+};
 
 const LoadingContext = createContext<LoadingProviderType>(initialProps);
 const useLoading = () => useContext(LoadingContext);
@@ -23,28 +23,28 @@ const LoadingProvider = ({ children }: PropsWithChildren) => {
   const [loadingScreen, setLoadingScreen] = useState(true);
 
   const setLoading = (type: LoadingType, state: boolean) => {
-    if (type === "progressBar") {
+    if (type === 'progressBar') {
       setLoadingProgressPage(state);
     }
 
-    if (type === "page") {
+    if (type === 'page') {
       setLoadingPage(state);
     }
 
-    if (type === "screen") {
+    if (type === 'screen') {
       setLoadingScreen(state);
     }
-  }
+  };
 
   const getLoading = (type: LoadingType) => {
-    if (type === "progressBar") {
+    if (type === 'progressBar') {
       return loadingProgressBar;
-    } else if (type === "page") {
+    } else if (type === 'page') {
       return loadingPage;
     } else {
       return loadingScreen;
     }
-  }  
+  };
 
   return (
     <LoadingContext.Provider
@@ -54,8 +54,8 @@ const LoadingProvider = ({ children }: PropsWithChildren) => {
       }}
     >
       {children}
-      {getLoading("progressBar") && <LoadingProgressBar/>}
-      {getLoading("screen") && <LoadingScreen/>}
+      {getLoading('progressBar') && <LoadingProgressBar />}
+      {getLoading('screen') && <LoadingScreen />}
     </LoadingContext.Provider>
   );
 };

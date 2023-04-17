@@ -1,32 +1,28 @@
-import { useEffect, useState, PropsWithChildren } from "react";
-import { Navigate, Route, Routes, useLocation } from "react-router";
-import { BrowserRouter } from "react-router-dom";
-import { useLoading } from "../providers/LoadingProvider";
+import { useEffect, useState, PropsWithChildren } from 'react';
+import { Navigate, Route, Routes, useLocation } from 'react-router';
+import { BrowserRouter } from 'react-router-dom';
+import { useLoading } from '../providers/LoadingProvider';
 
 const CustomRoutes = ({ children }: PropsWithChildren) => {
   const { getLoading, setLoading } = useLoading();
-	const [previousLocation, setPreviousLocation] = useState("");
-	const location = useLocation();
+  const [previousLocation, setPreviousLocation] = useState('');
+  const location = useLocation();
 
-	useEffect(() => {
-		setPreviousLocation(location.pathname);
-		
-		setLoading("progressBar", true);
+  useEffect(() => {
+    setPreviousLocation(location.pathname);
 
-		if(location.pathname === previousLocation){
-			setPreviousLocation("");
-		}
- 	}, [location]);
+    setLoading('progressBar', true);
 
-	useEffect(() => {
-		setLoading("progressBar", false);
-	}, [previousLocation]);
-  
-  return (
-    <Routes>
-			{children}
-    </Routes>
-  );
+    if (location.pathname === previousLocation) {
+      setPreviousLocation('');
+    }
+  }, [location]);
+
+  useEffect(() => {
+    setLoading('progressBar', false);
+  }, [previousLocation]);
+
+  return <Routes>{children}</Routes>;
 };
 
 export { CustomRoutes };

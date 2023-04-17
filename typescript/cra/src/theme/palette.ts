@@ -27,7 +27,7 @@ const GREY = {
   600: '#7E8299',
   700: '#5E6278',
   800: '#3F4254',
-  900: '#181C32',
+  900: '#181C32'
 };
 
 const GREY_DARK = {
@@ -40,7 +40,7 @@ const GREY_DARK = {
   600: '#7E8299',
   700: '#5E6278',
   800: '#3F4254',
-  900: '#181C32',
+  900: '#181C32'
 };
 
 const PRIMARY = {
@@ -49,7 +49,7 @@ const PRIMARY = {
   main: '#3E97FF',
   dark: '#2884EF',
   darker: '#005249',
-  contrastText: '#fff',
+  contrastText: '#fff'
 };
 
 const SECONDARY = {
@@ -58,7 +58,7 @@ const SECONDARY = {
   main: '#3366FF',
   dark: '#1939B7',
   darker: '#091A7A',
-  contrastText: '#fff',
+  contrastText: '#fff'
 };
 
 const INFO = {
@@ -67,7 +67,7 @@ const INFO = {
   main: '#00B8D9',
   dark: '#006C9C',
   darker: '#003768',
-  contrastText: '#fff',
+  contrastText: '#fff'
 };
 
 const SUCCESS = {
@@ -76,7 +76,7 @@ const SUCCESS = {
   main: '#36B37E',
   dark: '#1B806A',
   darker: '#0A5554',
-  contrastText: '#fff',
+  contrastText: '#fff'
 };
 
 const WARNING = {
@@ -85,7 +85,7 @@ const WARNING = {
   main: '#FFAB00',
   dark: '#B76E00',
   darker: '#7A4100',
-  contrastText: GREY[800],
+  contrastText: GREY[800]
 };
 
 const ERROR = {
@@ -94,7 +94,7 @@ const ERROR = {
   main: '#FF5630',
   dark: '#B71D18',
   darker: '#7A0916',
-  contrastText: '#fff',
+  contrastText: '#fff'
 };
 
 const COMMON = {
@@ -114,8 +114,8 @@ const COMMON = {
     disabledBackground: alpha(GREY[500], 0.24),
     focus: alpha(GREY[500], 0.24),
     hoverOpacity: 0.08,
-    disabledOpacity: 0.48,
-  },
+    disabledOpacity: 0.48
+  }
 };
 
 const getPalette = (themeMode: 'light' | 'dark') => {
@@ -125,13 +125,13 @@ const getPalette = (themeMode: 'light' | 'dark') => {
     text: {
       primary: GREY[800],
       secondary: GREY[600],
-      disabled: GREY[500],
+      disabled: GREY[500]
     },
     background: { paper: '#fff', default: '#fff', neutral: GREY[200] },
     action: {
       ...COMMON.action,
-      active: GREY[600],
-    },
+      active: GREY[600]
+    }
   } as const;
 
   const dark = {
@@ -140,20 +140,20 @@ const getPalette = (themeMode: 'light' | 'dark') => {
     text: {
       primary: '#fff',
       secondary: GREY[500],
-      disabled: GREY[600],
+      disabled: GREY[600]
     },
     background: {
       paper: GREY[800],
       default: GREY[900],
-      neutral: alpha(GREY[500], 0.16),
+      neutral: alpha(GREY[500], 0.16)
     },
     action: {
       ...COMMON.action,
-      active: GREY[500],
-    },
+      active: GREY[500]
+    }
   } as const;
 
   return themeMode === 'light' ? light : dark;
-}
+};
 
 export { getPalette };

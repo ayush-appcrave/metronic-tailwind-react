@@ -1,13 +1,11 @@
 import { Box, useTheme } from '@mui/material';
 
 const HeaderSearch = () => {
-
-
   return (
     <Box
       sx={{
-        display: "flex",
-        alignItems: "center"
+        display: 'flex',
+        alignItems: 'center'
       }}
     >
       Search

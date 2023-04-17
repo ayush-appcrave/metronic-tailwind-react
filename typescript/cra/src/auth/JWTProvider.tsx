@@ -6,13 +6,13 @@ import {
   useRef,
   Dispatch,
   SetStateAction,
-  PropsWithChildren,
-} from "react";
-import { LoadingScreen } from "../components";
-import { AuthModel, UserModel } from "./_models";
-import * as authHelper from "./_helpers";
-import { getUserByToken } from "./_requests";
-import { useLoading } from "../providers/LoadingProvider";
+  PropsWithChildren
+} from 'react';
+import { LoadingScreen } from '../components';
+import { AuthModel, UserModel } from './_models';
+import * as authHelper from './_helpers';
+import { getUserByToken } from './_requests';
+import { useLoading } from '../providers/LoadingProvider';
 
 type AuthContextProps = {
   auth: AuthModel | undefined;
@@ -27,7 +27,7 @@ const initAuthContextPropsState = {
   saveAuth: () => {},
   currentUser: undefined,
   setCurrentUser: () => {},
-  logout: () => {},
+  logout: () => {}
 };
 
 const AuthContext = createContext<AuthContextProps>(initAuthContextPropsState);
@@ -54,9 +54,7 @@ const AuthProvider = ({ children }: PropsWithChildren) => {
   };
 
   return (
-    <AuthContext.Provider
-      value={{ auth, saveAuth, currentUser, setCurrentUser, logout }}
-    >
+    <AuthContext.Provider value={{ auth, saveAuth, currentUser, setCurrentUser, logout }}>
       {children}
     </AuthContext.Provider>
   );
@@ -69,7 +67,7 @@ const AuthInit = ({ children }: PropsWithChildren) => {
 
   // We should request user by authToken (IN OUR EXAMPLE IT'S API_TOKEN) before rendering the application
   useEffect(() => {
-    setLoading("screen", true);
+    setLoading('screen', true);
     const requestUser = async (accessToken: string) => {
       try {
         if (!didRequest.current) {
@@ -86,7 +84,7 @@ const AuthInit = ({ children }: PropsWithChildren) => {
           logout();
         }
       } finally {
-        setLoading("screen", false);
+        setLoading('screen', false);
       }
 
       return () => (didRequest.current = true);
@@ -96,16 +94,12 @@ const AuthInit = ({ children }: PropsWithChildren) => {
       requestUser(auth.access_token);
     } else {
       logout();
-      setLoading("screen", false);
+      setLoading('screen', false);
     }
     // eslint-disable-next-line
   }, []);
 
-  return (getLoading("screen") ? <></>  :
-    <>
-      {children}
-    </>
-  );
+  return getLoading('screen') ? <></> : <>{children}</>;
 };
 
 export { AuthProvider, AuthInit, useAuth };

@@ -5,12 +5,12 @@ const Popover = (theme: Theme) => {
     MuiPopover: {
       styleOverrides: {
         paper: {
-          boxShadow: theme.customShadows.popover, 
+          boxShadow: theme.customShadows.popover,
           borderRadius: Number(theme.shape.borderRadius) * 2.75
         }
       }
     }
   };
-}
+};
 
 export { Popover };

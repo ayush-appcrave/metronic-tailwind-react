@@ -1,21 +1,21 @@
-import { useState } from "react";
-import * as Yup from "yup";
-import clsx from "clsx";
-import { Link } from "react-router-dom";
-import { useFormik } from "formik";
-import { requestPassword } from "../_requests";
-import { useAuth } from "../JWTProvider";
+import { useState } from 'react';
+import * as Yup from 'yup';
+import clsx from 'clsx';
+import { Link } from 'react-router-dom';
+import { useFormik } from 'formik';
+import { requestPassword } from '../_requests';
+import { useAuth } from '../JWTProvider';
 
 const initialValues = {
-  email: "admin@demo.com",
+  email: 'admin@demo.com'
 };
 
 const forgotPasswordSchema = Yup.object().shape({
   email: Yup.string()
-    .email("Wrong email format")
-    .min(3, "Minimum 3 symbols")
-    .max(50, "Maximum 50 symbols")
-    .required("Email is required"),
+    .email('Wrong email format')
+    .min(3, 'Minimum 3 symbols')
+    .max(50, 'Maximum 50 symbols')
+    .required('Email is required')
 });
 
 const ForgotPassword = () => {
@@ -37,10 +37,10 @@ const ForgotPassword = () => {
             setHasErrors(true);
             setLoading(false);
             setSubmitting(false);
-            setStatus("The login detail is incorrect");
+            setStatus('The login detail is incorrect');
           });
       }, 1000);
-    },
+    }
   });
   return (
     <form
@@ -72,9 +72,7 @@ const ForgotPassword = () => {
 
       {hasErrors === false && (
         <div className="mb-10 bg-light-info p-8 rounded">
-          <div className="text-info">
-            Sent password reset. Please check your email
-          </div>
+          <div className="text-info">Sent password reset. Please check your email</div>
         </div>
       )}
       {/* end::Title */}
@@ -86,12 +84,12 @@ const ForgotPassword = () => {
           type="email"
           placeholder=""
           autoComplete="off"
-          {...formik.getFieldProps("email")}
+          {...formik.getFieldProps('email')}
           className={clsx(
-            "form-control bg-transparent",
-            { "is-invalid": formik.touched.email && formik.errors.email },
+            'form-control bg-transparent',
+            { 'is-invalid': formik.touched.email && formik.errors.email },
             {
-              "is-valid": formik.touched.email && !formik.errors.email,
+              'is-valid': formik.touched.email && !formik.errors.email
             }
           )}
         />
@@ -107,11 +105,7 @@ const ForgotPassword = () => {
 
       {/* begin::Form group */}
       <div className="d-flex flex-wrap justify-content-center pb-lg-0">
-        <button
-          type="submit"
-          id="kt_password_reset_submit"
-          className="btn btn-primary me-4"
-        >
+        <button type="submit" id="kt_password_reset_submit" className="btn btn-primary me-4">
           <span className="indicator-label">Submit</span>
           {loading && (
             <span className="indicator-progress">
@@ -129,7 +123,7 @@ const ForgotPassword = () => {
           >
             Cancel
           </button>
-        </Link>{" "}
+        </Link>{' '}
       </div>
       {/* end::Form group */}
     </form>

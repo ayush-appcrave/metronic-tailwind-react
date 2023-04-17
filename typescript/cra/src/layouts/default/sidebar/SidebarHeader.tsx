@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from 'react'
+import React, { useState, useEffect, useRef } from 'react';
 import { SetStateAction } from 'react';
 import { Stack } from '@mui/material';
 import { useDefaultLayout } from '..';
@@ -9,23 +9,23 @@ type Props = {
   setHeaderHeight: React.Dispatch<React.SetStateAction<number>>;
 };
 
-const SidebarHeader = ({setHeaderHeight}: Props) => {
-  const {isSidebarCollapse, setSidebarCollapse} = useDefaultLayout();
+const SidebarHeader = ({ setHeaderHeight }: Props) => {
+  const { isSidebarCollapse, setSidebarCollapse } = useDefaultLayout();
   const elementRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     if (elementRef.current) {
       setHeaderHeight(elementRef.current.clientHeight);
-    }    
-  }, []);  
+    }
+  }, []);
 
-  const handleSidebarCollapse = () => {   
+  const handleSidebarCollapse = () => {
     if (isSidebarCollapse === true) {
       setSidebarCollapse(false);
     } else {
       setSidebarCollapse(true);
     }
-  };  
+  };
 
   return (
     <Stack
@@ -34,18 +34,18 @@ const SidebarHeader = ({setHeaderHeight}: Props) => {
       justifyContent="space-between"
       alignItems="center"
       component="div"
-      sx={{        
+      sx={{
         flexShrink: 0,
         position: 'relative',
         px: 4,
         py: 4
       }}
     >
-      <SidebarLogo/>
+      <SidebarLogo />
 
-      <SidebarCollapseButton onToggle={handleSidebarCollapse}/>
+      <SidebarCollapseButton onToggle={handleSidebarCollapse} />
     </Stack>
   );
-}
+};
 
 export { SidebarHeader };

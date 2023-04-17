@@ -1,8 +1,8 @@
-import { Direction } from "@mui/material";
-import { Localization } from "@mui/material/locale";
-import { MessageFormatElement } from "react-intl";
+import { Direction } from '@mui/material';
+import { Localization } from '@mui/material/locale';
+import { MessageFormatElement } from 'react-intl';
 
-export type LanguageCodeType = "en" | "fr" | "ar" | "zh";
+export type LanguageCodeType = 'en' | 'fr' | 'ar' | 'zh';
 
 export type LanguageType = {
   label: string;
@@ -15,5 +15,5 @@ export type LanguageType = {
 
 export type TranslationProviderProps = {
   currentLanguage: LanguageType;
-  changeLanguage: (lang: LanguageType) => void
+  changeLanguage: (lang: LanguageType) => void;
 };

@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { Stack, IconButton, Box } from '@mui/material';
-import { KeenIcon } from "../";
+import { KeenIcon } from '../';
 
 type Props = {
   onCloseClick: () => void;
@@ -13,8 +13,8 @@ const SettingsHeader = ({ onCloseClick, setHeaderHeight }: Props) => {
   useEffect(() => {
     if (elementRef.current) {
       setHeaderHeight(elementRef.current.clientHeight);
-    }    
-  }, []); 
+    }
+  }, []);
 
   return (
     <Stack
@@ -23,14 +23,14 @@ const SettingsHeader = ({ onCloseClick, setHeaderHeight }: Props) => {
       component="div"
       justifyContent="space-between"
       alignItems="center"
-      sx={{        
+      sx={{
         flexShrink: 0,
         position: 'relative',
         px: 2,
         py: 2
       }}
     >
-      <Box 
+      <Box
         sx={{
           paddingLeft: 1
         }}
@@ -38,19 +38,16 @@ const SettingsHeader = ({ onCloseClick, setHeaderHeight }: Props) => {
         Customization
       </Box>
 
-      <IconButton 
-        aria-label="close"
-        onClick={onCloseClick}
-      >
-        <KeenIcon 
+      <IconButton aria-label="close" onClick={onCloseClick}>
+        <KeenIcon
           icon="cross"
           sx={{
-            fontSize: "18px"
+            fontSize: '18px'
           }}
         />
       </IconButton>
     </Stack>
   );
-}
+};
 
 export { SettingsHeader };

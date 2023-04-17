@@ -1,8 +1,8 @@
-import { PropsWithChildren } from "react";
-import { useTheme } from "@mui/material/styles";
-import { Box, Container } from "@mui/material";
-import { Outlet } from "react-router-dom";
-import { useSettings } from "../../../providers/SettingsProvider";
+import { PropsWithChildren } from 'react';
+import { useTheme } from '@mui/material/styles';
+import { Box, Container } from '@mui/material';
+import { Outlet } from 'react-router-dom';
+import { useSettings } from '../../../providers/SettingsProvider';
 
 const Content = ({ children }: PropsWithChildren) => {
   const { settings } = useSettings();
@@ -12,19 +12,13 @@ const Content = ({ children }: PropsWithChildren) => {
   return (
     <Box
       sx={{
-        [theme.breakpoints.up("lg")]: {
-          
-        },
-        [theme.breakpoints.down("lg")]: {
-          
-        },
+        [theme.breakpoints.up('lg')]: {},
+        [theme.breakpoints.down('lg')]: {}
       }}
     >
-      <Container 
-        maxWidth={container === "fixed" ? 'lg' : false}
-      >
-        <Outlet/>
-      </Container>      
+      <Container maxWidth={container === 'fixed' ? 'lg' : false}>
+        <Outlet />
+      </Container>
     </Box>
   );
 };

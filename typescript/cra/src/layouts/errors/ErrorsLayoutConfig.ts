@@ -1,7 +1,7 @@
-import { ILayoutConfig } from "../";
+import { ILayoutConfig } from '../';
 
 const errorsLayoutConfig: ILayoutConfig = {
-  name: "errors-layout",
+  name: 'errors-layout',
   options: {}
 };
 

@@ -1,75 +1,69 @@
-import { memo, useMemo } from "react";
-import { Collapse, List } from "@mui/material";
-import { NavItem, NavType, NavItemOptionsType } from "..";
+import { memo, useMemo } from 'react';
+import { Collapse, List } from '@mui/material';
+import { NavItem, NavType, NavItemOptionsType } from '..';
 
 const NavItemSubComponent = ({
-  variant = "popper",
-	direction = "vertical",
-	accordion = true,
-	height = 'auto',
-	maxHeight = 0,
-	collapse,
-  expand,  
-	items,
-	styles,
+  variant = 'popper',
+  direction = 'vertical',
+  accordion = true,
+  height = 'auto',
+  maxHeight = 0,
+  collapse,
+  expand,
+  items,
+  styles,
   depth = 1,
   open
 }: NavType) => {
-
   const renderChildren = () => {
     return (
       <>
         <List component="div" disablePadding>
           {(items as ReadonlyArray<NavItemOptionsType>).map((item, index) => (
-            <NavItem key={`${index}-${item.title}`} depth={depth + 1} options={item} styles={styles} collapse={collapse} expand={expand}/>
+            <NavItem
+              key={`${index}-${item.title}`}
+              depth={depth + 1}
+              options={item}
+              styles={styles}
+              collapse={collapse}
+              expand={expand}
+            />
           ))}
         </List>
       </>
-    );    
-  }
+    );
+  };
 
   const renderContent = () => {
-    if ( accordion ) {
+    if (accordion) {
       return (
         <>
           <Collapse in={open} timeout="auto" unmountOnExit>
             {renderChildren()}
-          </Collapse>    
+          </Collapse>
         </>
       );
     } else {
-      return (
-        <>
-          {renderChildren()}  
-        </>
-      );
+      return <>{renderChildren()}</>;
     }
-  }
-    
+  };
+
   const renderInline = () => {
-    return (
-      <>
-        {renderContent()}
-      </>
-    );
-  }
+    return <>{renderContent()}</>;
+  };
 
   const renderPopper = () => {
-    return (
-      <>
-        {renderContent()}
-      </>
-    );
-  }
+    return <>{renderContent()}</>;
+  };
 
   const renderMain = () => {
-    if ( variant === "popper" ) {
+    if (variant === 'popper') {
       return renderPopper();
     } else {
       return renderInline();
     }
-  }
- 
+  };
+
   return renderMain();
 };
 

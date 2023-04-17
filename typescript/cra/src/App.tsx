@@ -1,4 +1,4 @@
-import { AuthProvider, AuthInit } from "./auth";
+import { AuthProvider, AuthInit } from './auth';
 import {
   SettingsProvider,
   TranslationProvider,
@@ -7,26 +7,26 @@ import {
   ThemeProvider,
   LoadingProvider,
   SnackbarProvider
-} from "providers";
-import { AppRouting } from "routing";
+} from 'providers';
+import { AppRouting } from 'routing';
 
 import 'simplebar/src/simplebar.css';
-import './components/keenicons/assets/duotone/style.css'
-import './components/keenicons/assets/outline/style.css'
-import './components/keenicons/assets/solid/style.css'
-import "./App.css";
+import './components/keenicons/assets/duotone/style.css';
+import './components/keenicons/assets/outline/style.css';
+import './components/keenicons/assets/solid/style.css';
+import './App.css';
 
 const App = () => (
   <AuthProvider>
     <SettingsProvider>
-      <TranslationProvider>        
+      <TranslationProvider>
         <ThemeProvider>
           <ThemeRtlProvider>
             <LayoutsProvider>
               <LoadingProvider>
                 <SnackbarProvider>
                   <AuthInit>
-                    <AppRouting/>
+                    <AppRouting />
                   </AuthInit>
                 </SnackbarProvider>
               </LoadingProvider>

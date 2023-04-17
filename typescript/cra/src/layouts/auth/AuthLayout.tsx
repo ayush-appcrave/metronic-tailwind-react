@@ -1,5 +1,5 @@
-import { Link, Outlet } from "react-router-dom";
-import { AuthLayoutProvider } from "./AuthLayoutProvider";
+import { Link, Outlet } from 'react-router-dom';
+import { AuthLayoutProvider } from './AuthLayoutProvider';
 
 const Layout = () => {
   return (

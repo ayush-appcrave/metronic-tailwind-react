@@ -1,4 +1,3 @@
-
 import { alpha, PaletteMode } from '@mui/material';
 import { getPalette } from '../palette';
 
@@ -26,11 +25,11 @@ const createShadows = (color: string) => {
   return {
     card: `0px 5px 20px 0px ${opacity}`,
     popover: `0px 5px 50px 0px ${opacity}`
-  }
-}
+  };
+};
 
 const getCustomShadows = (mode: PaletteMode) => {
   return mode === 'light' ? createShadows(lightModeColor) : createShadows(darkModeColor);
-}
+};
 
-export { getCustomShadows }
+export { getCustomShadows };

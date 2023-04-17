@@ -13,14 +13,15 @@ const Sidebar = () => {
   const isDesktop = useResponsive('up', 'lg');
   const isMobile = useResponsive('down', 'lg');
   const styles = DefaultLayoutStylesConfig();
-  const widthTransition = 'width ' + styles.SIDEBAR_TRANSITION_DURATION + ' ' + styles.SIDEBAR_TRANSITION_TIMING_FUNCTION;
+  const widthTransition =
+    'width ' + styles.SIDEBAR_TRANSITION_DURATION + ' ' + styles.SIDEBAR_TRANSITION_TIMING_FUNCTION;
   const {
-    sidebarWidth, 
-    isSidebarExpand, 
-    isSidebarCollapse, 
-    setSidebarCollapse, 
-    setSidebarExpand, 
-    mobileSidebarOpen, 
+    sidebarWidth,
+    isSidebarExpand,
+    isSidebarCollapse,
+    setSidebarCollapse,
+    setSidebarExpand,
+    mobileSidebarOpen,
     setMobileSidebarOpen
   } = useDefaultLayout();
   const [headerHeight, setHeaderHeight] = useState(0);
@@ -30,7 +31,7 @@ const Sidebar = () => {
     console.log('mouse hover:' + isSidebarExpand);
   }, [isSidebarExpand]);
 
-  const handleSidebarMouseOver = () => { 
+  const handleSidebarMouseOver = () => {
     setSidebarExpand(true);
   };
 
@@ -50,13 +51,13 @@ const Sidebar = () => {
         sx={{
           position: 'relative',
           backgroundColor: theme.palette.background.default,
-          [theme.breakpoints.up("lg")]: {
+          [theme.breakpoints.up('lg')]: {
             transition: widthTransition,
             width: sidebarWidth
           },
-          [theme.breakpoints.down("lg")]: {
+          [theme.breakpoints.down('lg')]: {
             width: styles.SIDEBAR_WIDTH_MOBILE
-          }        
+          }
         }}
       >
         <Drawer
@@ -64,24 +65,20 @@ const Sidebar = () => {
           variant="persistent"
           PaperProps={{
             sx: {
-              width: !isSidebarExpand && isSidebarCollapse ? styles.SIDEBAR_COLLAPSE_WIDTH : styles.SIDEBAR_WIDTH,
+              width:
+                !isSidebarExpand && isSidebarCollapse
+                  ? styles.SIDEBAR_COLLAPSE_WIDTH
+                  : styles.SIDEBAR_WIDTH,
               transition: widthTransition,
               borderRight: '1px solid #EDEFF0',
-              overflow: 'visible',              
+              overflow: 'visible',
               bgcolor: 'background.paper'
-            },
+            }
           }}
         >
-          <SidebarHeader 
-            setHeaderHeight={setHeaderHeight}
-          />
-          <SidebarNav 
-            headerHeight={headerHeight} 
-            footerHeight={footerHeight}
-          />    
-          <SidebarFooter 
-            setFooterHeight={setFooterHeight}
-          />   
+          <SidebarHeader setHeaderHeight={setHeaderHeight} />
+          <SidebarNav headerHeight={headerHeight} footerHeight={footerHeight} />
+          <SidebarFooter setFooterHeight={setFooterHeight} />
         </Drawer>
       </Box>
     );
@@ -95,16 +92,16 @@ const Sidebar = () => {
             width: styles.SIDEBAR_WIDTH_MOBILE,
             transition: widthTransition,
             borderRightWidth: '0px',
-            overflow: 'visible',              
+            overflow: 'visible',
             bgcolor: 'background.paper'
-          },
+          }
         }}
-      >   
-        <SidebarNav footerHeight={footerHeight}/>       
-        <SidebarFooter setFooterHeight={setFooterHeight}/>   
+      >
+        <SidebarNav footerHeight={footerHeight} />
+        <SidebarFooter setFooterHeight={setFooterHeight} />
       </Drawer>
-    )
+    );
   }
-}
+};
 
 export { Sidebar };

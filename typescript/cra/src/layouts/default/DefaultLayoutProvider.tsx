@@ -1,13 +1,13 @@
-import { PropsWithChildren, createContext, useState, useContext } from "react";
-import { ILayoutProvider, ILayoutConfig } from "../";
-import { LayoutsType, useLayouts } from "../../providers/LayoutsProvider";
-import { useScrollPosition } from "../../hooks/useScrollPosition";
-import { defaultLayoutConfig } from "./DefaultLayoutConfig";
+import { PropsWithChildren, createContext, useState, useContext } from 'react';
+import { ILayoutProvider, ILayoutConfig } from '../';
+import { LayoutsType, useLayouts } from '../../providers/LayoutsProvider';
+import { useScrollPosition } from '../../hooks/useScrollPosition';
+import { defaultLayoutConfig } from './DefaultLayoutConfig';
 import { DefaultLayoutStylesConfig } from './';
 
 type DefaultLayoutProviderProps = {
   isHeaderSticky: boolean;
-  sidebarWidth: number,
+  sidebarWidth: number;
   isSidebarCollapse: boolean;
   isSidebarExpand: boolean;
   setSidebarExpand: (collapse: boolean) => void;
@@ -30,7 +30,7 @@ const initalLayoutProps: DefaultLayoutProviderProps = {
 
 const getLayoutConfig = (layouts: LayoutsType): ILayoutConfig => {
   return layouts.get(defaultLayoutConfig.name) || defaultLayoutConfig;
-}
+};
 
 const DefaultLayoutContext = createContext<DefaultLayoutProviderProps>(initalLayoutProps);
 
@@ -39,21 +39,24 @@ const useDefaultLayout = () => useContext(DefaultLayoutContext);
 const DefaultLayoutProvider = ({ children }: PropsWithChildren) => {
   const styles = DefaultLayoutStylesConfig();
 
-  const {layouts, updateLayout} = useLayouts();
+  const { layouts, updateLayout } = useLayouts();
 
   const scrollPosition = useScrollPosition();
-  
+
   const [sidebarExpandState, setSidebarExpandState] = useState(false);
 
   const [layout, setLayout] = useState(getLayoutConfig(layouts));
 
   const setSidebarCollapse = (collapse: boolean) => {
-    const updatedLayout: ILayoutConfig = { ...layout, options: {
-      sidebar: {
-        collapse: collapse
+    const updatedLayout: ILayoutConfig = {
+      ...layout,
+      options: {
+        sidebar: {
+          collapse: collapse
+        }
       }
-    }};
-    
+    };
+
     setLayout(updatedLayout);
     updateLayout(updatedLayout);
   };
@@ -68,12 +71,14 @@ const DefaultLayoutProvider = ({ children }: PropsWithChildren) => {
 
   const isSidebarCollapse: boolean = layout.options.sidebar.collapse;
 
-  const sidebarWidth: number = isSidebarCollapse ? styles.SIDEBAR_COLLAPSE_WIDTH : styles.SIDEBAR_WIDTH;
+  const sidebarWidth: number = isSidebarCollapse
+    ? styles.SIDEBAR_COLLAPSE_WIDTH
+    : styles.SIDEBAR_WIDTH;
 
   let sidebarHover: boolean = false;
 
   return (
-    <DefaultLayoutContext.Provider 
+    <DefaultLayoutContext.Provider
       value={{
         layout,
         isHeaderSticky,
