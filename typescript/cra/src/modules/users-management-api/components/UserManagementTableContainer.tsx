@@ -19,6 +19,7 @@ import {useListView} from "../core/ListViewProvider";
 import {Order} from "../@types/sort";
 import {useQueryResponseData, useQueryResponseLoading, useQueryResponsePagination} from "../core/QueryResponseProvider";
 import {useQueryRequest} from "../core/QueryRequestProvider";
+import {TableLoader} from "./loading/TableLoader";
 
 type Props = {
     children: (id:string) => React.ReactNode
@@ -67,6 +68,11 @@ const UserManagementTableContainer = (props: Props) => {
         setDense(event.target.checked);
     };
 
+    const formatDate = (date:string) => {
+        const localDateTime = new Date(date);
+        return `${localDateTime.getUTCDate()}/${localDateTime.getUTCMonth()}/${localDateTime.getFullYear()} at ${localDateTime.getHours()}:${localDateTime.getMinutes()}`
+    }
+
     return <>
         <TableContainer>
             <Table
@@ -85,7 +91,7 @@ const UserManagementTableContainer = (props: Props) => {
                 <TableBody sx={{
                     position: "relative"
                 }}>
-                    {data.map((row, index) => {
+                    {isLoading ? <TableLoader pagination={pagination} rowHeight={dense ? 49 : 69} ></TableLoader> : data.map((row, index) => {
                         const labelId = `enhanced-table-checkbox-${index}`;
 
                         return (
@@ -97,7 +103,7 @@ const UserManagementTableContainer = (props: Props) => {
                                 key={row.id}
                                 selected={isSelected(row.id)}
                             >
-                                <TableCell padding="checkbox">
+                                <TableCell width={"5%"} padding="checkbox">
                                     <Checkbox
                                         color="primary"
                                         onInput={(event) => onSelect(row.id)}
@@ -108,6 +114,7 @@ const UserManagementTableContainer = (props: Props) => {
                                     />
                                 </TableCell>
                                 <TableCell
+                                    width={"20%"}
                                     component="th"
                                     id={labelId}
                                     scope="row"
@@ -128,12 +135,12 @@ const UserManagementTableContainer = (props: Props) => {
                                         </Box>
                                     </Box>
                                 </TableCell>
-                                <TableCell align="left">{row.last_name}</TableCell>
-                                <TableCell align="left">{row.role}</TableCell>
-                                <TableCell align="left">{row.status}</TableCell>
-                                <TableCell align="left">{row.two_steps_auth}</TableCell>
-                                <TableCell align="left">{row.created_at}</TableCell>
-                                <TableCell align="left">
+                                <TableCell width={"15%"} align="left">{row.last_name}</TableCell>
+                                <TableCell width={"10%"} align="left">{row.role}</TableCell>
+                                <TableCell width={"10%"} align="left">{row.status}</TableCell>
+                                <TableCell width={"10%"} align="left">{row.two_steps_auth ? "enabled" : "disabled"}</TableCell>
+                                <TableCell width={"20%"} align="left">{formatDate(row.created_at!)}</TableCell>
+                                <TableCell width={"10%"} align="left">
                                     {props.children(row.id)}
                                 </TableCell>
                             </TableRow>

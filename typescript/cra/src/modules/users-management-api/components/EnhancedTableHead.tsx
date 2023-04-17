@@ -27,7 +27,7 @@ function EnhancedTableHead(props: EnhancedTableProps) {
     return (
         <TableHead>
             <TableRow>
-                <TableCell padding="checkbox">
+                <TableCell width={"5%"} padding="checkbox">
                     <Checkbox
                         color="primary"
                         checked={isAllSelected}
@@ -43,6 +43,7 @@ function EnhancedTableHead(props: EnhancedTableProps) {
                         align={headCell.numeric ? 'right' : 'left'}
                         padding={headCell.disablePadding ? 'none' : 'normal'}
                         sortDirection={orderBy === headCell.id ? order : false}
+                        width={headCell.width}
                     >
                         <TableSortLabel
                             hideSortIcon={headCell.hideSortIcon}

@@ -1,9 +1,8 @@
 import {User} from "../core/_models";
-import {Box, Checkbox, TableCell, TableHead, TableRow, TableSortLabel} from "@mui/material";
+import {Box, TableCell, TableHead, TableRow, TableSortLabel} from "@mui/material";
 import {visuallyHidden} from "@mui/utils";
 import { Order } from "../@types/sort";
 import { headCells } from "../core/headCellConfiguration";
-import {useListView} from "../core/ListViewProvider";
 
 interface EnhancedTableProps {
     numSelected: number;
@@ -25,13 +24,14 @@ function EnhancedSubCRUDTableHead(props: EnhancedTableProps) {
     return (
         <TableHead>
             <TableRow>
-                <TableCell />
+                <TableCell width={"5%"} />
                 {headCells.map((headCell) => (
                     <TableCell
                         key={headCell.id}
                         align={headCell.numeric ? 'right' : 'left'}
                         padding={headCell.disablePadding ? 'none' : 'normal'}
                         sortDirection={orderBy === headCell.id ? order : false}
+                        width={headCell.width}
                     >
                         <TableSortLabel
                             hideSortIcon={headCell.hideSortIcon}

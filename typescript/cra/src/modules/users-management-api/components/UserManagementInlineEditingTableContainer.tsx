@@ -1,19 +1,19 @@
 import {
     Avatar,
     Box, Button,
-    Checkbox, FormControlLabel, InputLabel, MenuItem, Select, Switch,
+    Checkbox, FormControlLabel, MenuItem, Select, Switch,
     Table,
     TableBody,
     TableCell,
     TableContainer,
     TablePagination,
-    TableRow, TextField
+    TableRow, TextField,
 } from "@mui/material";
+import { TableLoader } from "./loading/TableLoader";
 import {EnhancedTableHead} from "./EnhancedTableHead";
-import CircularProgress from "@mui/material/CircularProgress";
 import {toAbsoluteUrl} from "utils";
 import {headCells} from "../core/headCellConfiguration";
-import {ChangeEvent, useEffect, useMemo, useState} from "react";
+import React, {ChangeEvent, useEffect, useMemo, useState} from "react";
 import {User} from "../core/_models";
 import {useListView} from "../core/ListViewProvider";
 import {Order} from "../@types/sort";
@@ -63,6 +63,12 @@ const UserManagementInlineEditingTableRow = (props: RowProps) => {
     const isSelected = (id:string) => {
         return selected.includes(id);
     }
+
+    const formatDate = (date:string) => {
+        const localDateTime = new Date(date);
+        return `${localDateTime.getUTCDate()}/${localDateTime.getUTCMonth()}/${localDateTime.getFullYear()} at ${localDateTime.getHours()}:${localDateTime.getMinutes()}`
+    }
+
 
     return <TableRow
         hover
@@ -129,8 +135,8 @@ const UserManagementInlineEditingTableRow = (props: RowProps) => {
             <MenuItem value="pending">Pending</MenuItem>
             <MenuItem value="deactivated">Deactivated</MenuItem>
         </Select>  : formData.status}</TableCell>
-        <TableCell align="left">{props.row.two_steps_auth ? "disabled" : "enabled"}</TableCell>
-        <TableCell align="left">{props.row.created_at}</TableCell>
+        <TableCell width={"10%"} align="left">{props.row.two_steps_auth ? "enabled" : "disabled"}</TableCell>
+        <TableCell width={"20%"} align="left">{formatDate(props.row.created_at!)}</TableCell>
         <TableCell align="left">
             { editState && <Button onClick={()=>{saveChanges();
             }}>Save</Button> }
@@ -145,30 +151,17 @@ const UserManagementInlineEditingTableContainer = () => {
     const users = useQueryResponseData()
     const data = useMemo(() => users, [users])
 
-    // const isLoading = useQueryResponseLoading()
-    // const [loading, setLoading] = useState(false);
-    // useEffect(()=>{
-    //     if(isLoading){
-    //         setLoading(true)
-    //         setTimeout(()=>{
-    //             setLoading(false);
-    //         }, 500)
-    //     }
-    // }, [isLoading])
+    const isLoading = useQueryResponseLoading()
 
     const pagination = useQueryResponsePagination()
     const [order, setOrder] = useState<Order>('asc');
     const [orderBy, setOrderBy] = useState<keyof User>('created_at');
     const [dense, setDense] = useState(false);
-    const { onSelectAll, selected, onSelect} = useListView()
+    const { onSelectAll, selected} = useListView()
 
     useEffect(()=>{
         updateState({sort: orderBy, order: order})
     }, [order, orderBy]);
-
-    const isSelected = (id:string) => {
-        return selected.includes(id);
-    }
 
     const handleRequestSort = (
         event: React.FormEvent<unknown>,
@@ -207,20 +200,13 @@ const UserManagementInlineEditingTableContainer = () => {
                     onRequestSort={handleRequestSort}
                     rowCount={pagination?.total}
                 />
-                <TableBody sx={{
-                    position: "relative"
-                }}>
-                    {/*{loading && <CircularProgress sx={{*/}
-                    {/*    position: "absolute",*/}
-                    {/*    left: "50%",*/}
-                    {/*    top: "50%",*/}
-                    {/*}}/>}*/}
-                    {data.map((row, index) => {
+                <TableBody>
+                    { isLoading ? <TableLoader pagination={pagination} rowHeight={70} ></TableLoader> : data.map((row, index) => {
                         const labelId = `enhanced-table-checkbox-${index}`;
 
                         return <UserManagementInlineEditingTableRow key={labelId} row={row} labelId={labelId}></UserManagementInlineEditingTableRow>;
-                    })}
-                    {pagination.total <= 0 && (
+                    }) }
+                    {(!pagination.total && !isLoading) && (
                         <TableRow>
                             <TableCell colSpan={headCells.length}>No data found</TableCell>
                         </TableRow>

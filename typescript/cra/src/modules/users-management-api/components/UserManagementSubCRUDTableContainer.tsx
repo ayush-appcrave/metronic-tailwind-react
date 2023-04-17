@@ -12,7 +12,7 @@ import {EnhancedSubCRUDTableHead} from "./EnhancedSubCRUDTableHead";
 import CircularProgress from "@mui/material/CircularProgress";
 import {toAbsoluteUrl} from "utils";
 import {headCells} from "../core/headCellConfiguration";
-import {ChangeEvent, useEffect, useMemo, useState} from "react";
+import React, {ChangeEvent, useEffect, useMemo, useState} from "react";
 import {User} from "../core/_models";
 import {useListView} from "../core/ListViewProvider";
 import {Order} from "../@types/sort";
@@ -21,6 +21,7 @@ import {useQueryRequest} from "../core/QueryRequestProvider";
 import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
 import KeyboardArrowUpIcon from '@mui/icons-material/KeyboardArrowUp';
 import { StaticDataTableCRUD } from "./static-table/StaticDataTableCRUD";
+import {TableLoader} from "./loading/TableLoader";
 
 type Props = {
     children: (id:string) => React.ReactNode
@@ -33,6 +34,12 @@ type RowProps = {
 
 const UserManagementSubCRUDTableRow = (props: RowProps) => {
     const [subCRUDVisibilityState, setSubCRUDVisibilityState] = useState(false);
+
+    const formatDate = (date:string) => {
+        const localDateTime = new Date(date);
+        return `${localDateTime.getUTCDate()}/${localDateTime.getUTCMonth()}/${localDateTime.getFullYear()} at ${localDateTime.getHours()}:${localDateTime.getMinutes()}`
+    }
+
 
     return <>
         <TableRow
@@ -73,8 +80,8 @@ const UserManagementSubCRUDTableRow = (props: RowProps) => {
             <TableCell align="left">{props.row.last_name}</TableCell>
             <TableCell align="left">{props.row.role}</TableCell>
             <TableCell align="left">{props.row.status}</TableCell>
-            <TableCell align="left">{props.row.two_steps_auth ? "disabled" : "enabled"}</TableCell>
-            <TableCell align="left">{props.row.created_at}</TableCell>
+            <TableCell align="left">{props.row.two_steps_auth ? "enabled" : "disabled"}</TableCell>
+            <TableCell align="left">{formatDate(props.row.created_at!)}</TableCell>
             <TableCell align="left">
                 {props.children(props.row.id)}
             </TableCell>
@@ -100,16 +107,6 @@ const UserManagementSubCRUDTableContainer = (props: Props) => {
     const data = useMemo(() => users, [users])
 
     const isLoading = useQueryResponseLoading()
-    const [loading, setLoading] = useState(false);
-    useEffect(()=>{
-        if(isLoading){
-            setLoading(true)
-            setTimeout(()=>{
-                setLoading(false);
-            }, 500)
-        }
-    }, [isLoading])
-
     const pagination = useQueryResponsePagination()
     const [order, setOrder] = useState<Order>('asc');
     const [orderBy, setOrderBy] = useState<keyof User>('created_at');
@@ -160,12 +157,7 @@ const UserManagementSubCRUDTableContainer = (props: Props) => {
                 <TableBody sx={{
                     position: "relative"
                 }}>
-                    {loading && <CircularProgress sx={{
-                        position: "absolute",
-                        left: "50%",
-                        top: "50%",
-                    }}/>}
-                    {data.map((row, index) => {
+                    {isLoading ? <TableLoader pagination={pagination} rowHeight={70} ></TableLoader> : data.map((row, index) => {
                         const labelId = `enhanced-table-checkbox-${row.id}`;
 
                         return (
