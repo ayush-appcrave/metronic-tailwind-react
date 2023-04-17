@@ -1,25 +1,31 @@
-import { useEffect } from "react";
+import { Helmet } from 'react-helmet-async';
 import { useDefaultLayout } from '../layouts/default';
-import { useToolbar } from "../layouts/default/toolbar";
-import { IntroBreadcrumbsType } from "../layouts/default/intro";
+import { Content, Toolbar, Intro } from "../layouts/default";
+import { useNavBreadcrumbs } from "@components/nav";
+import { PageContainer } from "@components/page-container";
+import { NAV_VERTICAL } from "../config/navs.config";
 
-const DashboardPage = () => {
-  const { setIntroTitle, setIntroSubTitle, setIntroBreadcrumbs } = useToolbar();
+const DashboardPage = () => {  
   
-  const breadcrumbs:IntroBreadcrumbsType = [
-    { title: "Home", href: "/" },
-    { title: "Dashboard", active: true }
-  ];
-
-  useEffect(() => {
-    setIntroTitle("Dashboard");
-    setIntroSubTitle("Sub-title");
-    setIntroBreadcrumbs(breadcrumbs);  
-  }, []); 
-
   return ( 
     <>
-      Dashboard Page
+      <Helmet>
+        <title>Dashboard Page</title>
+      </Helmet>
+     
+      <Toolbar>
+          <Intro
+            title="Dashboard"
+            subTitle="statistics & reports"
+            breadcrumbs={useNavBreadcrumbs(NAV_VERTICAL)}
+          />
+      </Toolbar>
+      
+      <Content>
+        <PageContainer>
+          Dashboard page content goes here...
+        </PageContainer>
+      </Content>
     </>
   );
 };

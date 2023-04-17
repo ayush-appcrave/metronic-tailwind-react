@@ -8,13 +8,13 @@ import {
   ThemeProvider,
   LoadingProvider,
   SnackbarProvider
-} from "providers";
-import { AppRouting } from "routing";
+} from "./providers";
+import { AppRouting } from "./routing";
 
 import 'simplebar/src/simplebar.css';
-import './components/keenicons/assets/duotone/style.css'
-import './components/keenicons/assets/outline/style.css'
-import './components/keenicons/assets/solid/style.css'
+import '@components/keenicons/assets/duotone/style.css'
+import '@components/keenicons/assets/outline/style.css'
+import '@components/keenicons/assets/solid/style.css'
 import "./App.css";
 
 const App = () => (

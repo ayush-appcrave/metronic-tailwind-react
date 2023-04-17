@@ -63,13 +63,13 @@ const AuthProvider = ({ children }: PropsWithChildren) => {
 };
 
 const AuthInit = ({ children }: PropsWithChildren) => {
-  const { getLoading, setLoading } = useLoading();
+  const { screenLoading, setScreenLoading } = useLoading();
   const { auth, logout, setCurrentUser } = useAuth();
   const didRequest = useRef(false);
 
   // We should request user by authToken (IN OUR EXAMPLE IT'S API_TOKEN) before rendering the application
   useEffect(() => {
-    setLoading("screen", true);
+    setScreenLoading(true);
 
     const requestUser = async (accessToken: string) => {
       try {
@@ -87,7 +87,7 @@ const AuthInit = ({ children }: PropsWithChildren) => {
           logout();
         }
       } finally {
-        setLoading("screen", false);
+        setScreenLoading(false);
       }
 
       return () => (didRequest.current = true);
@@ -97,13 +97,13 @@ const AuthInit = ({ children }: PropsWithChildren) => {
       requestUser(auth.access_token);
     } else {
       logout();
-      setLoading("screen", false);
+      setScreenLoading(false);
     }
     // eslint-disable-next-line
   }, []);
 
-  return (getLoading("screen") ? <></>  :
-    <>
+  return (
+    screenLoading ? <></>  : <>
       {children}
     </>
   );

@@ -1,4 +1,5 @@
 import { Box, Container, useTheme } from '@mui/material';
+import { PageContainer } from '@components/page-container';
 import { useSettings } from "../../../providers/SettingsProvider";
 import { useDefaultLayout } from '../';
 import { DefaultLayoutStylesConfig } from '../';
@@ -15,22 +16,21 @@ const Footer = () => {
     <Box
       component="footer"
       sx={{
-        py: theme.spacing(2)
+        py: theme.spacing(2),
+        [theme.breakpoints.up("lg")]: {
+          transition: leftTransition,
+          left: sidebarWidth
+        }
       }}
     >
-      <Container 
-        maxWidth={container === "fixed" ? 'lg' : false}
+      <PageContainer 
         sx={{
           display: "flex",
-          alignItems: "center",
-          [theme.breakpoints.up("lg")]: {
-            transition: leftTransition,
-            left: sidebarWidth
-          },
+          alignItems: "center"
         }}
       >
         Footer
-      </Container>
+      </PageContainer>
     </Box>
   );
 };

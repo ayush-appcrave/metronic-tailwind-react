@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
-import { Box, Stack, Drawer, Container, alpha, useTheme } from '@mui/material';
+import { Box, Stack, Drawer, alpha, useTheme } from '@mui/material';
+import { PageContainer } from '@components/page-container';
 import useResponsive from '../../../hooks/useResponsive';
 import { useDefaultLayout } from '../';
 import { useSettings } from "../../../providers/SettingsProvider";
@@ -61,8 +62,7 @@ const Header = () => {
         }),
       }}
     >
-      <Container 
-        maxWidth={container === "fixed" ? 'lg' : false}
+      <PageContainer 
         sx={{
           display: "flex",
           justifyContent: "space-between",
@@ -106,7 +106,7 @@ const Header = () => {
             <HeaderModeSwitcher/>                                
           </Box>  
         </Box>
-      </Container>
+      </PageContainer>
     </Box>
   );  
 };

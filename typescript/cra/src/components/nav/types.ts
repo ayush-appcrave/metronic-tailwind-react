@@ -85,3 +85,11 @@ export type NavItemChildType = {
 };
   
 export type NavConfigType = ReadonlyArray<NavItemOptionsType>;
+
+export type NavBreadcrumbsType = Array<NavBreadcrumbType>;
+
+export type NavBreadcrumbType = {
+	title: string,
+	href?: string,	
+	active?: boolean
+};

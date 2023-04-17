@@ -1,9 +1,9 @@
 import { Breadcrumbs, Link, Box, useTheme } from "@mui/material";
-import { IntroBreadcrumbsType } from "./";
-import { KeenIcon } from "../../../components/keenicons";
+import { NavBreadcrumbsType } from "@components/nav";
+import { KeenIcon } from "@components/keenicons";
 
 type PropsType = {
-  breadcrumbs: IntroBreadcrumbsType
+  breadcrumbs: NavBreadcrumbsType
 }
 
 const IntroBreadcrumbs = ({breadcrumbs}: PropsType) => {
@@ -44,7 +44,7 @@ const IntroBreadcrumbs = ({breadcrumbs}: PropsType) => {
       }
       aria-label="breadcrumbs"          
     >
-      {(breadcrumbs as IntroBreadcrumbsType).map((item, index) => {
+      {(breadcrumbs as NavBreadcrumbsType).map((item, index) => {
         if (item.href) {
           return (
             <Link 

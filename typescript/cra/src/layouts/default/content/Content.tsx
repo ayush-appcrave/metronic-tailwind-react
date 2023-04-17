@@ -1,12 +1,9 @@
 import { PropsWithChildren } from "react";
 import { useTheme } from "@mui/material/styles";
 import { Box, Container } from "@mui/material";
-import { Outlet } from "react-router-dom";
 import { useSettings } from "../../../providers/SettingsProvider";
 
 const Content = ({ children }: PropsWithChildren) => {
-  const { settings } = useSettings();
-  const { container } = settings;
   const theme = useTheme();
 
   return (
@@ -20,11 +17,7 @@ const Content = ({ children }: PropsWithChildren) => {
         },
       }}
     >
-      <Container 
-        maxWidth={container === "fixed" ? 'lg' : false}
-      >
-        <Outlet/>
-      </Container>      
+      {children}
     </Box>
   );
 };

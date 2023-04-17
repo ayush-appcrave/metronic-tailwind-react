@@ -1,30 +1,24 @@
-import { useTheme } from "@mui/material/styles";
-import { Box, Container } from "@mui/material";
-import { Intro } from "../intro";
+import { PropsWithChildren } from "react";
+import { Box, useTheme } from "@mui/material";
 import { useSettings } from "../../../providers/SettingsProvider";
-import { useToolbar } from "./ToolbarProvider";
+import { PageContainer } from "@components/page-container";
 
-const Toolbar = () => {
+type PropsType = {
+  children: React.ReactNode;
+};
+
+const Toolbar = ({ children }: PropsWithChildren) => {
   const theme = useTheme();  
-  const { settings } = useSettings();
-  const { container } = settings;  
-  const { introTitle, introSubTitle, introBreadcrumbs } = useToolbar();
-
+  
   return (
     <Box
       sx={{
         mb: theme.spacing(2)
       }}
     >
-      <Container 
-        maxWidth={container === "fixed" ? 'lg' : false}
-      >
-        <Intro
-          title={introTitle}
-          subTitle={introSubTitle}
-          breadcrumbs={introBreadcrumbs}
-        />
-      </Container>      
+      <PageContainer>
+        {children}
+      </PageContainer>      
     </Box>
   );
 };

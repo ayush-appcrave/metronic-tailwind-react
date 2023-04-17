@@ -1,10 +1,11 @@
 import { PropsWithChildren } from "react";
 import { useTheme } from "@mui/material/styles";
 import { Box, Container } from "@mui/material";
+import { Outlet } from "react-router-dom";
 import { useSettings } from "../../../providers/SettingsProvider";
 import { useLoading } from "../../../providers/LoadingProvider";
 import { LoadingPage } from "../../../components/loading";
-import { Toolbar } from "../toolbar/Toolbar";
+import { Toolbar } from "../toolbar";
 import { Content } from "../content/Content";
 
 const Wrapper = ({ children }: PropsWithChildren) => {
@@ -22,8 +23,7 @@ const Wrapper = ({ children }: PropsWithChildren) => {
       }}
     >
       {pageLoading && <LoadingPage/>}
-      <Toolbar/>
-      <Content/>
+      <Outlet/>      
     </Box>
   );
 };

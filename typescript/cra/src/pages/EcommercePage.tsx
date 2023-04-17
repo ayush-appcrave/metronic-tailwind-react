@@ -1,21 +1,14 @@
-import { useEffect } from "react";
+import { useEffect } from 'react';
+import { Helmet } from 'react-helmet-async';
 import { useDefaultLayout } from '../layouts/default';
-import { useToolbar } from "../layouts/default/toolbar";
-import { IntroBreadcrumbsType } from "../layouts/default/intro";
 import { useLoading } from "../providers/LoadingProvider";
+import { Content, Toolbar, Intro } from "../layouts/default";
+import { useNavBreadcrumbs } from "@components/nav";
+import { PageContainer } from "@components/page-container";
+import { NAV_VERTICAL } from "../config/navs.config";
 
-type ApiResponse = {
-  message: string;
-}
-
-const EcommercePage = () => {
+const EcommercePage = () => {  
   const { pageLoading, setPageLoading } = useLoading();
-  const { setIntroTitle, setIntroSubTitle, setIntroBreadcrumbs } = useToolbar();
-  
-  const breadcrumbs:IntroBreadcrumbsType = [
-    { title: "Home", href: "/" },
-    { title: "eCommerce", active: true }
-  ];
 
   const simulateRestCall = async () => {
     setPageLoading(true);
@@ -34,16 +27,28 @@ const EcommercePage = () => {
   };
 
   useEffect(() => {
-    setIntroTitle("Dashboard");
-    setIntroSubTitle("Sub-title");
-    setIntroBreadcrumbs(breadcrumbs);  
-
     simulateRestCall();
   }, []); 
-  
+
   return ( 
     <>
-      eCommerce Page
+      <Helmet>
+        <title>Ecommerce Page</title>
+      </Helmet>
+     
+      <Toolbar>
+          <Intro
+            title="Ecommerce"
+            subTitle="statistics & reports"
+            breadcrumbs={useNavBreadcrumbs(NAV_VERTICAL)}
+          />
+      </Toolbar>
+      
+      <Content>
+        <PageContainer>
+          Ecommerce page content goes here...
+        </PageContainer>
+      </Content>
     </>
   );
 };
