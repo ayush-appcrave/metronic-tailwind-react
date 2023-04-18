@@ -23,8 +23,7 @@ const SettingsFormContainer = () => {
     <FormControl
       sx={{
         mb: 2
-      }}
-    >
+      }}>
       <FormLabel>Container</FormLabel>
       <RadioGroup row name="settings-direction">
         <FormControlLabel
@@ -32,14 +31,18 @@ const SettingsFormContainer = () => {
           control={<Radio />}
           label="Fluid"
           checked={container === 'fluid'}
-          onChange={() => handleContainerChange('fluid')}
+          onChange={() => {
+            handleContainerChange('fluid');
+          }}
         />
         <FormControlLabel
           value="fixed"
           control={<Radio />}
           label="Fixed"
           checked={container === 'fixed'}
-          onChange={() => handleContainerChange('fixed')}
+          onChange={() => {
+            handleContainerChange('fixed');
+          }}
         />
       </RadioGroup>
     </FormControl>

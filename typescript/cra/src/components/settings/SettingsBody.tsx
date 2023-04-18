@@ -6,10 +6,10 @@ import { SettingsFormKeenIcons } from './SettingsFormKeenIcons';
 import { SettingsFormDirection } from './SettingsFormDirection';
 import { SettingsFormContainer } from './SettingsFormContainer';
 
-type Props = {
+interface Props {
   headerHeight?: number;
   footerHeight?: number;
-};
+}
 
 const SettingsBody = ({ headerHeight = 0, footerHeight = 0 }: Props) => {
   const [width, height] = useViewport();
@@ -21,8 +21,7 @@ const SettingsBody = ({ headerHeight = 0, footerHeight = 0 }: Props) => {
         height: scrollableHeight,
         px: 2,
         mx: 1
-      }}
-    >
+      }}>
       <SettingsFormMode />
       <SettingsFormKeenIcons />
       <SettingsFormDirection />

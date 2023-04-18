@@ -1,5 +1,5 @@
 import { useState, useEffect, memo, useMemo } from 'react';
-import { List } from '@mui/material';
+import { List, SxProps } from '@mui/material';
 import { SVGIcon } from '..';
 import { NavItem, NavType, NavItemType, NavItemOptionsType } from './';
 
@@ -14,7 +14,7 @@ const NavComponent = ({
   items,
   sx,
   styles
-}: NavType & { sx?: Object }) => {
+}: NavType & { sx?: SxProps }) => {
   return (
     <List
       sx={{
@@ -22,9 +22,8 @@ const NavComponent = ({
         ...sx
       }}
       component="nav"
-      aria-labelledby="nav-list"
-    >
-      {(items as ReadonlyArray<NavItemOptionsType>).map((item, index) => (
+      aria-labelledby="nav-list">
+      {(items as readonly NavItemOptionsType[]).map((item, index) => (
         <NavItem
           key={`${index}-${item.title}`}
           depth={1}

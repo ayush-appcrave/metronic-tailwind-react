@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, MouseEvent } from 'react';
 import { Box, Link, Stack, Avatar, Menu, MenuItem, ListItemIcon, useTheme } from '@mui/material';
 import { KeenIcon, MenuDropdown } from '../../../components';
 import { useAuth } from '../../../auth';
@@ -14,7 +14,7 @@ const HeaderLanguageMenu = () => {
   const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
   const open = Boolean(anchorEl);
 
-  const handleClick = (event: React.MouseEvent<HTMLElement>) => {
+  const handleClick = (event: MouseEvent<HTMLElement>) => {
     setAnchorEl(event.currentTarget);
   };
 
@@ -33,8 +33,7 @@ const HeaderLanguageMenu = () => {
       sx={{
         display: 'flex',
         alignItems: 'center'
-      }}
-    >
+      }}>
       <Box
         component="img"
         onClick={handleClick}
@@ -74,14 +73,14 @@ const HeaderLanguageMenu = () => {
               width: '190px'
             }
           }
-        }}
-      >
+        }}>
         {I18N_LANGUAGES.map((language) => (
           <MenuItem
-            onClick={() => handleLanguageSelect(language)}
+            onClick={() => {
+              handleLanguageSelect(language);
+            }}
             selected={language.code === currentLanguage.code}
-            key={`language-${language.code}`}
-          >
+            key={`language-${language.code}`}>
             <Box
               component="img"
               src={language.flag}

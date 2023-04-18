@@ -2,10 +2,10 @@ import React, { useState, useEffect, useRef } from 'react';
 import { Stack, IconButton, Box } from '@mui/material';
 import { KeenIcon } from '../';
 
-type Props = {
+interface Props {
   onCloseClick: () => void;
   setHeaderHeight: React.Dispatch<React.SetStateAction<number>>;
-};
+}
 
 const SettingsHeader = ({ onCloseClick, setHeaderHeight }: Props) => {
   const elementRef = useRef<HTMLDivElement>(null);
@@ -28,13 +28,11 @@ const SettingsHeader = ({ onCloseClick, setHeaderHeight }: Props) => {
         position: 'relative',
         px: 2,
         py: 2
-      }}
-    >
+      }}>
       <Box
         sx={{
           paddingLeft: 1
-        }}
-      >
+        }}>
         Customization
       </Box>
 

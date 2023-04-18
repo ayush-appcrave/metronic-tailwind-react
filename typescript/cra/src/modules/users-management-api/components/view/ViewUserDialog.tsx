@@ -18,8 +18,7 @@ function ViewUserDialog(props: CreateUserDialogProps) {
       sx={{
         padding: '70px',
         maxHeight: 'auto'
-      }}
-    >
+      }}>
       <Button
         onClick={() => {
           props.handleClose();
@@ -28,8 +27,7 @@ function ViewUserDialog(props: CreateUserDialogProps) {
           position: 'absolute',
           right: 5,
           top: 5
-        }}
-      >
+        }}>
         <Close></Close>
       </Button>
       <Box sx={{ marginTop: '40px' }}>

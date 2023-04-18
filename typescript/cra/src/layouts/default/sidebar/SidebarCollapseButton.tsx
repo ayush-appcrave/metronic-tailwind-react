@@ -1,22 +1,23 @@
+import { MouseEvent } from 'react';
 import { KeenIcon } from '../../../components';
 import { useDefaultLayout } from '../DefaultLayoutProvider';
 import { Box, ToggleButton } from '@mui/material';
 
-type Props = {
+interface Props {
   onToggle: () => void;
-};
+}
 
 const SidebarCollapseButton = ({ onToggle }: Props) => {
   const { isSidebarExpand, isSidebarCollapse } = useDefaultLayout();
   const buttonSize = '32px';
 
-  const handleMouseOver = (event: React.MouseEvent<HTMLElement>) => {
+  const handleMouseOver = (event: MouseEvent<HTMLElement>) => {
     if (!isSidebarExpand) {
       event.stopPropagation();
     }
   };
 
-  const handleMouseOut = (event: React.MouseEvent<HTMLElement>) => {
+  const handleMouseOut = (event: MouseEvent<HTMLElement>) => {
     if (!isSidebarExpand) {
       event.stopPropagation();
     }
@@ -50,8 +51,7 @@ const SidebarCollapseButton = ({ onToggle }: Props) => {
       selected={isSidebarCollapse}
       aria-label="Toggle sidebar"
       component="button"
-      value="1"
-    >
+      value="1">
       <Box
         component="span"
         sx={{
@@ -60,8 +60,7 @@ const SidebarCollapseButton = ({ onToggle }: Props) => {
           i: {
             fontSize: '17px'
           }
-        }}
-      >
+        }}>
         <KeenIcon icon="double-left" />
       </Box>
     </ToggleButton>

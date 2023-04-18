@@ -4,7 +4,7 @@ import { NavItemChildType } from '..';
 
 export const DividerStyled = styled(Divider, {
   shouldForwardProp: (prop) =>
-    [
+    ![
       'depth',
       'styles',
       'active',
@@ -14,7 +14,7 @@ export const DividerStyled = styled(Divider, {
       'collapse',
       'expand',
       'disabled'
-    ].includes(prop as string) === false
+    ].includes(prop as string)
 })<NavItemChildType>(({ depth, active, here, open, hover, disabled, styles, theme }) => {
   return {
     marginTop: theme.spacing(2),

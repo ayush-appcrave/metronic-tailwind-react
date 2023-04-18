@@ -15,7 +15,7 @@ import '@formatjs/intl-relativetimeformat/locale-data/zh';
 const calculateInitialLanguage = () => {
   const currentLanguage = getData(I18N_CONFIG_KEY) as LanguageType | undefined;
 
-  return currentLanguage || I18N_DEFAULT_LANGUAGE;
+  return currentLanguage ?? I18N_DEFAULT_LANGUAGE;
 };
 
 const initialProps: TranslationProviderProps = {
@@ -33,8 +33,7 @@ const I18NProvider = ({ children }: PropsWithChildren) => {
     <IntlProvider
       messages={currentLanguage.messages}
       locale={currentLanguage.code}
-      defaultLocale={calculateInitialLanguage().code}
-    >
+      defaultLocale={calculateInitialLanguage().code}>
       {children}
     </IntlProvider>
   );
@@ -71,8 +70,7 @@ const TranslationProvider = ({ children }: PropsWithChildren) => {
       value={{
         currentLanguage,
         changeLanguage
-      }}
-    >
+      }}>
       <I18NProvider>{children}</I18NProvider>
     </TranslationsContext.Provider>
   );

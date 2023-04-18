@@ -48,10 +48,15 @@ function UpdateUserGeneralInfoAccordion(props: UpdateUserGeneralInfoProps) {
 
   useEffect(() => {
     setLoading(true);
-    getUserById(props.userId).then((user) => {
-      setFormData(user as User);
-      setLoading(false);
-    });
+    getUserById(props.userId)
+      .then((user) => {
+        setFormData(user as User);
+        setLoading(false);
+      })
+      .catch((error) => {
+        setLoading(false);
+        console.log(error);
+      });
   }, [props.userId]);
 
   const validationSchema = Yup.object({
@@ -67,8 +72,7 @@ function UpdateUserGeneralInfoAccordion(props: UpdateUserGeneralInfoProps) {
       <AccordionSummary
         expandIcon={<ExpandMoreIcon />}
         aria-controls="general-info"
-        id="general-info"
-      >
+        id="general-info">
         <Typography>General Info</Typography>
       </AccordionSummary>
       <AccordionDetails>
@@ -88,22 +92,19 @@ function UpdateUserGeneralInfoAccordion(props: UpdateUserGeneralInfoProps) {
                 enqueueSnackbar('Ups! Something went wrong!', { variant: 'error' });
                 setProgress(null);
               }
-            }}
-          >
-            {(props) => (
+            }}>
+            {(formikProps) => (
               <form
                 style={{
                   display: 'flex'
                 }}
-                onSubmit={props.handleSubmit}
-              >
+                onSubmit={formikProps.handleSubmit}>
                 <Grid
                   container
                   alignItems="center"
                   position="relative"
                   margin={'40px'}
-                  direction="column"
-                >
+                  direction="column">
                   <FormGroup sx={{ marginY: '5px', width: '40%' }}>
                     <TextField
                       type="text"
@@ -111,13 +112,13 @@ function UpdateUserGeneralInfoAccordion(props: UpdateUserGeneralInfoProps) {
                       id="first_name"
                       name="first_name"
                       variant="outlined"
-                      error={!!props.errors.first_name && props.touched.first_name}
-                      onChange={props.handleChange}
-                      onBlur={props.handleBlur}
-                      value={props.values.first_name}
+                      error={!!formikProps.errors.first_name && formikProps.touched.first_name}
+                      onChange={formikProps.handleChange}
+                      onBlur={formikProps.handleBlur}
+                      value={formikProps.values.first_name}
                       helperText={
-                        props.touched.first_name && props.errors.first_name
-                          ? props.errors.first_name
+                        formikProps.touched.first_name && formikProps.errors.first_name
+                          ? formikProps.errors.first_name
                           : ''
                       }
                     />
@@ -129,13 +130,13 @@ function UpdateUserGeneralInfoAccordion(props: UpdateUserGeneralInfoProps) {
                       id="last_name"
                       name="last_name"
                       variant="outlined"
-                      error={!!props.errors.last_name && props.touched.last_name}
-                      onChange={props.handleChange}
-                      onBlur={props.handleBlur}
-                      value={props.values.last_name}
+                      error={!!formikProps.errors.last_name && formikProps.touched.last_name}
+                      onChange={formikProps.handleChange}
+                      onBlur={formikProps.handleBlur}
+                      value={formikProps.values.last_name}
                       helperText={
-                        props.touched.last_name && props.errors.last_name
-                          ? props.errors.last_name
+                        formikProps.touched.last_name && formikProps.errors.last_name
+                          ? formikProps.errors.last_name
                           : ''
                       }
                     />
@@ -147,32 +148,35 @@ function UpdateUserGeneralInfoAccordion(props: UpdateUserGeneralInfoProps) {
                       id="email"
                       name="email"
                       variant="outlined"
-                      error={!!props.errors.email && props.touched.email}
-                      onChange={props.handleChange}
-                      onBlur={props.handleBlur}
-                      value={props.values.email}
+                      error={!!formikProps.errors.email && formikProps.touched.email}
+                      onChange={formikProps.handleChange}
+                      onBlur={formikProps.handleBlur}
+                      value={formikProps.values.email}
                       helperText={
-                        props.touched.email && props.errors.email ? props.errors.email : ''
+                        formikProps.touched.email && formikProps.errors.email
+                          ? formikProps.errors.email
+                          : ''
                       }
                     />
                   </FormGroup>
-                  <FormControl sx={{ marginY: '5px', width: '40%' }} error={!!props.errors.role}>
+                  <FormControl
+                    sx={{ marginY: '5px', width: '40%' }}
+                    error={!!formikProps.errors.role}>
                     <InputLabel id="kt-role-select-label">Role</InputLabel>
                     <Select
                       labelId="kt-role-select-label"
                       id="kt-role-select"
                       name="role"
                       label="role"
-                      error={!!props.errors.role && props.touched.role}
-                      onChange={props.handleChange}
-                      onBlur={props.handleBlur}
-                      value={props.values.role}
-                    >
+                      error={!!formikProps.errors.role && formikProps.touched.role}
+                      onChange={formikProps.handleChange}
+                      onBlur={formikProps.handleBlur}
+                      value={formikProps.values.role}>
                       <MenuItem value="user">User</MenuItem>
                       <MenuItem value="admin">Admin</MenuItem>
                     </Select>
-                    {props.touched.role && props.errors.role && (
-                      <FormHelperText>{props.errors.role}</FormHelperText>
+                    {formikProps.touched.role && formikProps.errors.role && (
+                      <FormHelperText>{formikProps.errors.role}</FormHelperText>
                     )}
                   </FormControl>
                   <FormGroup sx={{ marginY: '5px', width: '40%' }}>
@@ -181,9 +185,9 @@ function UpdateUserGeneralInfoAccordion(props: UpdateUserGeneralInfoProps) {
                         <Switch
                           name="two_steps_auth"
                           id="two_steps_auth"
-                          onChange={props.handleChange}
-                          onBlur={props.handleBlur}
-                          value={props.values.two_steps_auth}
+                          onChange={formikProps.handleChange}
+                          onBlur={formikProps.handleBlur}
+                          value={formikProps.values.two_steps_auth}
                         />
                       }
                       label="Two Steps Auth"
@@ -192,27 +196,24 @@ function UpdateUserGeneralInfoAccordion(props: UpdateUserGeneralInfoProps) {
                   <Box
                     sx={{
                       display: 'flex'
-                    }}
-                  >
+                    }}>
                     <Button
                       style={{ margin: '5px' }}
                       onClick={() => {
                         setProgress('exit');
-                        props.handleSubmit();
+                        formikProps.handleSubmit();
                         exitHandler();
                       }}
                       variant="contained"
                       color="primary"
-                      disabled={!!progress}
-                    >
+                      disabled={!!progress}>
                       {progress === 'exit' ? (
                         <>
                           <CircularProgress
                             color={'inherit'}
                             size={'1rem'}
-                            sx={{ marginRight: '10px' }}
-                          ></CircularProgress>
-                          "Loading..."
+                            sx={{ marginRight: '10px' }}></CircularProgress>
+                          Loading...
                         </>
                       ) : (
                         'Save and Exit'
@@ -222,20 +223,18 @@ function UpdateUserGeneralInfoAccordion(props: UpdateUserGeneralInfoProps) {
                       style={{ margin: '5px' }}
                       onClick={() => {
                         setProgress('continue');
-                        props.handleSubmit();
+                        formikProps.handleSubmit();
                       }}
                       variant="contained"
                       color="primary"
-                      disabled={!!progress}
-                    >
+                      disabled={!!progress}>
                       {progress === 'continue' ? (
                         <>
                           <CircularProgress
                             color={'inherit'}
                             size={'1rem'}
-                            sx={{ marginRight: '10px' }}
-                          ></CircularProgress>
-                          "Loading..."
+                            sx={{ marginRight: '10px' }}></CircularProgress>
+                          Loading...
                         </>
                       ) : (
                         'Save and Continue'
@@ -248,8 +247,7 @@ function UpdateUserGeneralInfoAccordion(props: UpdateUserGeneralInfoProps) {
                       }}
                       variant="contained"
                       color="primary"
-                      disabled={!!progress}
-                    >
+                      disabled={!!progress}>
                       Exit
                     </Button>
                   </Box>

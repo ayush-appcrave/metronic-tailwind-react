@@ -12,8 +12,7 @@ const Content = ({ children }: PropsWithChildren) => {
       sx={{
         [theme.breakpoints.up('lg')]: {},
         [theme.breakpoints.down('lg')]: {}
-      }}
-    >
+      }}>
       {children}
     </Box>
   );

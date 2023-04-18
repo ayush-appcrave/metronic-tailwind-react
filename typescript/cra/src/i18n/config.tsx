@@ -14,14 +14,14 @@ const I18N_MESSAGES = {
 
 const I18N_CONFIG_KEY = 'i18nConfig';
 
-const I18N_LANGUAGES: ReadonlyArray<LanguageType> = [
+const I18N_LANGUAGES: readonly LanguageType[] = [
   {
     label: 'English',
     code: 'en',
     systemValue: enUS,
     direction: 'ltr',
     flag: '/media/flags/united-states.svg',
-    messages: I18N_MESSAGES['en']
+    messages: I18N_MESSAGES.en
   },
   {
     label: 'French',
@@ -29,7 +29,7 @@ const I18N_LANGUAGES: ReadonlyArray<LanguageType> = [
     systemValue: frFR,
     direction: 'ltr',
     flag: '/media/flags/france.svg',
-    messages: I18N_MESSAGES['fr']
+    messages: I18N_MESSAGES.fr
   },
   {
     label: 'Chinese',
@@ -37,7 +37,7 @@ const I18N_LANGUAGES: ReadonlyArray<LanguageType> = [
     systemValue: zhCN,
     direction: 'ltr',
     flag: '/media/flags/china.svg',
-    messages: I18N_MESSAGES['zh']
+    messages: I18N_MESSAGES.zh
   },
   {
     label: 'Arabic (Saudi)',
@@ -45,7 +45,7 @@ const I18N_LANGUAGES: ReadonlyArray<LanguageType> = [
     systemValue: arSA,
     direction: 'rtl',
     flag: '/media/flags/saudi-arabia.svg',
-    messages: I18N_MESSAGES['ar']
+    messages: I18N_MESSAGES.ar
   }
 ];
 

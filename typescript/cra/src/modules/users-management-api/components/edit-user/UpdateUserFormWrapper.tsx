@@ -14,8 +14,7 @@ function UpdateUserFormWrapper(props: UpdateUserFormWrapperProps) {
     <Box sx={[...(Array.isArray(props.sx) ? props.sx : [props.sx])]}>
       <UpdateUserGeneralInfoAccordion
         userId={props.userId}
-        exitHandler={props.handleExit}
-      ></UpdateUserGeneralInfoAccordion>
+        exitHandler={props.handleExit}></UpdateUserGeneralInfoAccordion>
       <UpdateUserPasswordAccordion userId={props.userId}></UpdateUserPasswordAccordion>
     </Box>
   );

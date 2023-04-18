@@ -1,9 +1,9 @@
 import { useLocation, matchPath } from 'react-router-dom';
 
-type ReturnType = {
+interface ReturnType {
   match: boolean;
   isExternal: boolean;
-};
+}
 
 const useMatchPath = (path: string, mode = 'default'): ReturnType => {
   const { pathname } = useLocation();

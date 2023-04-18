@@ -4,7 +4,7 @@ import { NavItemChildType } from '..';
 
 export const ListItemTextStyled = styled(ListItemText, {
   shouldForwardProp: (prop) =>
-    [
+    ![
       'depth',
       'styles',
       'active',
@@ -14,7 +14,7 @@ export const ListItemTextStyled = styled(ListItemText, {
       'collapse',
       'expand',
       'disabled'
-    ].includes(prop as string) === false
+    ].includes(prop as string)
 })<NavItemChildType>(({ depth, active, here, hover, open, disabled, styles, theme }) => {
   return {
     '> .MuiListItemText-primary': {

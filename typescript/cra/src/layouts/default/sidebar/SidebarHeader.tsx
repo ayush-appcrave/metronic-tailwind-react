@@ -1,13 +1,12 @@
-import React, { useState, useEffect, useRef } from 'react';
-import { SetStateAction } from 'react';
+import React, { useState, useEffect, useRef, SetStateAction } from 'react';
 import { Stack } from '@mui/material';
 import { useDefaultLayout } from '..';
 import { SidebarLogo } from './SidebarLogo';
 import { SidebarCollapseButton } from './SidebarCollapseButton';
 
-type Props = {
+interface Props {
   setHeaderHeight: React.Dispatch<React.SetStateAction<number>>;
-};
+}
 
 const SidebarHeader = ({ setHeaderHeight }: Props) => {
   const { isSidebarCollapse, setSidebarCollapse } = useDefaultLayout();
@@ -20,7 +19,7 @@ const SidebarHeader = ({ setHeaderHeight }: Props) => {
   }, []);
 
   const handleSidebarCollapse = () => {
-    if (isSidebarCollapse === true) {
+    if (isSidebarCollapse) {
       setSidebarCollapse(false);
     } else {
       setSidebarCollapse(true);
@@ -39,8 +38,7 @@ const SidebarHeader = ({ setHeaderHeight }: Props) => {
         position: 'relative',
         px: 4,
         py: 4
-      }}
-    >
+      }}>
       <SidebarLogo />
 
       <SidebarCollapseButton onToggle={handleSidebarCollapse} />

@@ -23,8 +23,7 @@ const SettingsFormKeenIcons = () => {
     <FormControl
       sx={{
         mb: 2
-      }}
-    >
+      }}>
       <FormLabel>KeenIcons</FormLabel>
       <RadioGroup row name="settings-keenicons">
         <FormControlLabel
@@ -32,21 +31,27 @@ const SettingsFormKeenIcons = () => {
           control={<Radio />}
           label="Duotone"
           checked={keeniconsStyle === 'duotone'}
-          onChange={() => handleKeenIconsChange('duotone')}
+          onChange={() => {
+            handleKeenIconsChange('duotone');
+          }}
         />
         <FormControlLabel
           value="outline"
           control={<Radio />}
           label="Outline"
           checked={keeniconsStyle === 'outline'}
-          onChange={() => handleKeenIconsChange('outline')}
+          onChange={() => {
+            handleKeenIconsChange('outline');
+          }}
         />
         <FormControlLabel
           value="solid"
           control={<Radio />}
           label="Solid"
           checked={keeniconsStyle === 'solid'}
-          onChange={() => handleKeenIconsChange('solid')}
+          onChange={() => {
+            handleKeenIconsChange('solid');
+          }}
         />
       </RadioGroup>
     </FormControl>

@@ -5,10 +5,10 @@ import { ILayoutConfig } from '../layouts/models';
 const LAYOUTS_CONFIGS_KEY = 'layouts-configs';
 
 export type LayoutsType = Map<string, ILayoutConfig>;
-export type LayoutsProps = {
+export interface LayoutsProps {
   layouts: LayoutsType;
   updateLayout: (layout: ILayoutConfig) => void;
-};
+}
 
 const calculateInitialLayouts = () => {
   const storedLayouts = (getData(LAYOUTS_CONFIGS_KEY) as object) || {};

@@ -1,9 +1,9 @@
 import { KeenIcon } from '../';
 import { Box, Button } from '@mui/material';
 
-type Props = {
+interface Props {
   onClick: () => void;
-};
+}
 
 const SettingsToggleButton = ({ onClick }: Props) => {
   return (
@@ -14,8 +14,7 @@ const SettingsToggleButton = ({ onClick }: Props) => {
         bottom: '40px',
         right: '40px',
         zIndex: '100'
-      }}
-    >
+      }}>
       <Button onClick={onClick} variant="contained" value="1">
         <KeenIcon icon="setting-4" />
 

@@ -27,9 +27,9 @@ import {
 import { useQueryRequest } from '../core/QueryRequestProvider';
 import { TableLoader } from './loading/TableLoader';
 
-type Props = {
+interface Props {
   children: (id: string) => React.ReactNode;
-};
+}
 
 const UserManagementTableContainer = (props: Props) => {
   const { updateState } = useQueryRequest();
@@ -45,7 +45,7 @@ const UserManagementTableContainer = (props: Props) => {
   const { onSelectAll, selected, onSelect } = useListView();
 
   useEffect(() => {
-    updateState({ sort: orderBy, order: order });
+    updateState({ sort: orderBy, order });
   }, [order, orderBy]);
 
   const isSelected = (id: string) => {
@@ -71,9 +71,11 @@ const UserManagementTableContainer = (props: Props) => {
     setDense(event.target.checked);
   };
 
-  const formatDate = (date: string) => {
-    const localDateTime = new Date(date);
-    return `${localDateTime.getUTCDate()}/${localDateTime.getUTCMonth()}/${localDateTime.getFullYear()} at ${localDateTime.getHours()}:${localDateTime.getMinutes()}`;
+  const formatDate = (date?: string) => {
+    if (date) {
+      const localDateTime = new Date(date);
+      return `${localDateTime.getUTCDate()}/${localDateTime.getUTCMonth()}/${localDateTime.getFullYear()} at ${localDateTime.getHours()}:${localDateTime.getMinutes()}`;
+    }
   };
 
   return (
@@ -82,23 +84,23 @@ const UserManagementTableContainer = (props: Props) => {
         <Table
           sx={{ minWidth: 750 }}
           aria-labelledby="tableTitle"
-          size={dense ? 'small' : 'medium'}
-        >
+          size={dense ? 'small' : 'medium'}>
           <EnhancedTableHead
             numSelected={selected.length}
             order={order}
             orderBy={orderBy}
             onSelectAllClick={onSelectAll}
             onRequestSort={handleRequestSort}
-            rowCount={pagination?.total}
+            rowCount={pagination.total ? pagination.total : 0}
           />
           <TableBody
             sx={{
               position: 'relative'
-            }}
-          >
+            }}>
             {isLoading ? (
-              <TableLoader pagination={pagination} rowHeight={dense ? 49 : 69}></TableLoader>
+              <TableLoader
+                itemsPerPage={pagination.items_per_page ? pagination.items_per_page : 10}
+                rowHeight={dense ? 49 : 69}></TableLoader>
             ) : (
               data.map((row, index) => {
                 const labelId = `enhanced-table-checkbox-${index}`;
@@ -110,12 +112,13 @@ const UserManagementTableContainer = (props: Props) => {
                     aria-checked={isSelected(row.id)}
                     tabIndex={-1}
                     key={row.id}
-                    selected={isSelected(row.id)}
-                  >
+                    selected={isSelected(row.id)}>
                     <TableCell width={'5%'} padding="checkbox">
                       <Checkbox
                         color="primary"
-                        onInput={(event) => onSelect(row.id)}
+                        onInput={(event) => {
+                          onSelect(row.id);
+                        }}
                         checked={isSelected(row.id)}
                         inputProps={{
                           'aria-labelledby': labelId
@@ -126,8 +129,7 @@ const UserManagementTableContainer = (props: Props) => {
                       <Box
                         sx={{
                           display: 'flex'
-                        }}
-                      >
+                        }}>
                         <Avatar
                           alt={row.first_name}
                           src={toAbsoluteUrl('/media/avatars/300-1.jpg')}
@@ -139,8 +141,7 @@ const UserManagementTableContainer = (props: Props) => {
                             marginTop: 'auto',
                             marginBottom: 'auto',
                             marginLeft: '5px'
-                          }}
-                        >
+                          }}>
                           {row.first_name}
                         </Box>
                       </Box>
@@ -158,7 +159,7 @@ const UserManagementTableContainer = (props: Props) => {
                       {row.two_steps_auth ? 'enabled' : 'disabled'}
                     </TableCell>
                     <TableCell width={'20%'} align="left">
-                      {formatDate(row.created_at!)}
+                      {formatDate(row.created_at)}
                     </TableCell>
                     <TableCell width={'10%'} align="left">
                       {props.children(row.id)}
@@ -167,7 +168,7 @@ const UserManagementTableContainer = (props: Props) => {
                 );
               })
             )}
-            {pagination.total <= 0 && (
+            {pagination.total && (
               <TableRow>
                 <TableCell colSpan={headCells.length}>No data found</TableCell>
               </TableRow>
@@ -179,7 +180,7 @@ const UserManagementTableContainer = (props: Props) => {
         <TablePagination
           rowsPerPageOptions={[5, 10, 25]}
           component="div"
-          count={pagination?.total}
+          count={pagination.total ? pagination.total : 0}
           rowsPerPage={Number(pagination.items_per_page)}
           page={pagination.current_page ? pagination.current_page - 1 : 0}
           onPageChange={handleChangePage}

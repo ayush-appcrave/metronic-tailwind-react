@@ -5,12 +5,12 @@ import { Box } from '@mui/material';
 import { SxProps, Theme } from '@mui/material/styles';
 import { useSettings } from '../../providers/SettingsProvider';
 
-type Props = {
+interface Props {
   icon: string;
   style?: KeenIconsStyleType;
   className?: string;
   sx?: SxProps<Theme>;
-};
+}
 
 const KeenIconComponent = ({ icon, style, className, sx }: Props) => {
   const { settings } = useSettings();
@@ -24,15 +24,13 @@ const KeenIconComponent = ({ icon, style, className, sx }: Props) => {
     <Box
       className={`ki-${style} ki-${icon} ${className && ' ' + className}`}
       component="i"
-      {...(sx && { sx: sx })}
-    >
+      {...(sx && { sx })}>
       {style === 'duotone' &&
         [...Array(KeenIconsConfig[icon])].map((e, i) => {
           return (
             <span
               key={`${style}-${icon}-${className}-path-${i + 1}`}
-              className={`path${i + 1}`}
-            ></span>
+              className={`path${i + 1}`}></span>
           );
         })}
     </Box>

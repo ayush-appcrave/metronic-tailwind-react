@@ -39,8 +39,7 @@ function UsersManagementActionsCell(props: IUsersManagementActionsCellProps) {
         aria-controls={open ? 'basic-menu' : undefined}
         aria-haspopup="true"
         aria-expanded={open ? 'true' : undefined}
-        onClick={handleHover}
-      >
+        onClick={handleHover}>
         Actions
       </Button>
       <Menu
@@ -51,12 +50,21 @@ function UsersManagementActionsCell(props: IUsersManagementActionsCellProps) {
         onClick={handleClose}
         MenuListProps={{
           'aria-labelledby': 'basic-button'
-        }}
-      >
+        }}>
         <MenuItem onClick={handleUserView}>View</MenuItem>
         <MenuItem onClick={handleUserEdit}>Edit</MenuItem>
-        <MenuItem onClick={(e) => setEditModalOpen(true)}>Edit In Modal</MenuItem>
-        <MenuItem onClick={() => setOpenDeleteDialog(true)}>Delete</MenuItem>
+        <MenuItem
+          onClick={(e) => {
+            setEditModalOpen(true);
+          }}>
+          Edit In Modal
+        </MenuItem>
+        <MenuItem
+          onClick={() => {
+            setOpenDeleteDialog(true);
+          }}>
+          Delete
+        </MenuItem>
       </Menu>
 
       <AlertDialog
@@ -68,13 +76,13 @@ function UsersManagementActionsCell(props: IUsersManagementActionsCellProps) {
         handleClose={() => {
           setOpenDeleteDialog(false);
         }}
-        userId={props.id}
-      ></AlertDialog>
+        userId={props.id}></AlertDialog>
       <UpdateUserDialog
         open={editModalOpen}
-        handleClose={() => setEditModalOpen(false)}
-        userId={props.id}
-      ></UpdateUserDialog>
+        handleClose={() => {
+          setEditModalOpen(false);
+        }}
+        userId={props.id}></UpdateUserDialog>
     </>
   );
 }

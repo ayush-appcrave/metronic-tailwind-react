@@ -3,6 +3,7 @@ import { ILayoutProvider, ILayoutConfig } from '../';
 import { LayoutsType, useLayouts } from '../../providers/LayoutsProvider';
 import { authLayoutConfig } from './AuthLayoutConfig';
 
+// eslint-disable-next-line @typescript-eslint/ban-types
 type AuthLayoutProviderProps = {} & ILayoutProvider;
 
 const initalLayoutProps: AuthLayoutProviderProps = {
@@ -10,7 +11,7 @@ const initalLayoutProps: AuthLayoutProviderProps = {
 };
 
 const getLayoutConfig = (layouts: LayoutsType): ILayoutConfig => {
-  return layouts.get(authLayoutConfig.name) || authLayoutConfig;
+  return layouts.get(authLayoutConfig.name) ?? authLayoutConfig;
 };
 
 const AuthLayoutContext = createContext<AuthLayoutProviderProps>(initalLayoutProps);
@@ -26,8 +27,7 @@ const AuthLayoutProvider = ({ children }: PropsWithChildren) => {
     <AuthLayoutContext.Provider
       value={{
         layout
-      }}
-    >
+      }}>
       {children}
     </AuthLayoutContext.Provider>
   );

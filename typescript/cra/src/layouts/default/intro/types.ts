@@ -1,7 +1,7 @@
-import { NavBreadcrumbsType } from "@components/nav";
+import { NavBreadcrumbsType } from '@components/nav';
 
-export type IntroType = {
+export interface IntroType {
   title?: string;
   subTitle?: string;
   breadcrumbs?: NavBreadcrumbsType;
-};
+}

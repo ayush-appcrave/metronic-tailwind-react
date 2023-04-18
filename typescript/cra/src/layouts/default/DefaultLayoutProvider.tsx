@@ -29,7 +29,7 @@ const initalLayoutProps: DefaultLayoutProviderProps = {
 };
 
 const getLayoutConfig = (layouts: LayoutsType): ILayoutConfig => {
-  return layouts.get(defaultLayoutConfig.name) || defaultLayoutConfig;
+  return layouts.get(defaultLayoutConfig.name) ?? defaultLayoutConfig;
 };
 
 const DefaultLayoutContext = createContext<DefaultLayoutProviderProps>(initalLayoutProps);
@@ -52,7 +52,7 @@ const DefaultLayoutProvider = ({ children }: PropsWithChildren) => {
       ...layout,
       options: {
         sidebar: {
-          collapse: collapse
+          collapse
         }
       }
     };
@@ -75,7 +75,7 @@ const DefaultLayoutProvider = ({ children }: PropsWithChildren) => {
     ? styles.SIDEBAR_COLLAPSE_WIDTH
     : styles.SIDEBAR_WIDTH;
 
-  let sidebarHover: boolean = false;
+  const sidebarHover: boolean = false;
 
   return (
     <DefaultLayoutContext.Provider
@@ -89,8 +89,7 @@ const DefaultLayoutProvider = ({ children }: PropsWithChildren) => {
         setSidebarCollapse,
         mobileSidebarOpen,
         setMobileSidebarOpen
-      }}
-    >
+      }}>
       {children}
     </DefaultLayoutContext.Provider>
   );

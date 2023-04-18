@@ -1,4 +1,4 @@
-import { PropsWithChildren, useEffect, useState, useMemo } from 'react';
+import { PropsWithChildren, useEffect, useState, useMemo, ReactNode } from 'react';
 import { prefixer } from 'stylis';
 import rtlPlugin from 'stylis-plugin-rtl';
 import createCache from '@emotion/cache';
@@ -6,9 +6,9 @@ import { CacheProvider } from '@emotion/react';
 import { useTheme } from '@mui/material/styles';
 import { useSettings } from './SettingsProvider';
 
-type Props = {
-  children: React.ReactNode;
-};
+interface Props {
+  children: ReactNode;
+}
 
 const ThemeRtlProvider = ({ children }: Props) => {
   const theme = useTheme();

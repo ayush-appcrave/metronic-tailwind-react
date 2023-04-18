@@ -16,7 +16,7 @@ export interface UserModel {
   occupation?: string;
   companyName?: string;
   phone?: string;
-  roles?: Array<number>;
+  roles?: number[];
   pic?: string;
   language?: LanguageCodeType;
   auth?: AuthModel;

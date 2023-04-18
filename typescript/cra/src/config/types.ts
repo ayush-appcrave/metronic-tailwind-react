@@ -6,7 +6,7 @@ export type SettingsModeOptionType = 'light' | 'dark' | 'system';
 export type SettingsContainerType = 'fluid' | 'fixed';
 
 // Settings types
-export type SettingsType = {
+export interface SettingsType {
   mode: SettingsModeOptionType;
   direction: Direction;
   container: SettingsContainerType;
@@ -15,9 +15,7 @@ export type SettingsType = {
   colorPreset: string;
   mobileBreakpoint: Breakpoint;
   layout: string;
-};
+}
 
 // Menu types
-export type PathsType = {
-  [key: string]: string;
-};
+export type PathsType = Record<string, string>;

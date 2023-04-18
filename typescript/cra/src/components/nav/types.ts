@@ -1,8 +1,9 @@
+/* eslint-disable @typescript-eslint/no-invalid-void-type */
 import { number } from 'yup';
 import { ListItemButtonProps } from '@mui/material';
 import { ColorSchema } from '../../theme/palette';
 
-export type NavType = {
+export interface NavType {
   variant?: 'inline' | 'popper';
   direction?: 'vertical' | 'horizontal';
   accordion?: boolean;
@@ -15,17 +16,17 @@ export type NavType = {
   items: NavConfigType;
   styles?: any;
   depth?: number;
-};
+}
 
-export type NavItemType = {
+export interface NavItemType {
   options: NavItemOptionsType;
   collapse?: boolean;
   expand?: boolean;
   styles?: any;
   depth?: number;
-};
+}
 
-export type NavItemOptionsType = {
+export interface NavItemOptionsType {
   key?: string;
   title?: string;
   path?: string;
@@ -42,9 +43,9 @@ export type NavItemOptionsType = {
   caption?: string;
   children?: NavType;
   onClick?: (_?: unknown) => unknown | void;
-};
+}
 
-export type NavItemArrowType = {
+export interface NavItemArrowType {
   variant?: 'inline' | 'popper';
   direction?: 'vertical' | 'horizontal';
   icon?: any;
@@ -57,9 +58,9 @@ export type NavItemArrowType = {
   here?: boolean;
   disabled?: boolean;
   styles?: any;
-};
+}
 
-export type NavItemBulletType = {
+export interface NavItemBulletType {
   variant?: 'bar' | 'dot';
   depth?: number;
   collapse?: boolean;
@@ -70,9 +71,9 @@ export type NavItemBulletType = {
   here?: boolean;
   disabled?: boolean;
   styles?: any;
-};
+}
 
-export type NavItemChildType = {
+export interface NavItemChildType {
   depth?: number;
   collapse?: boolean;
   expand?: boolean;
@@ -82,14 +83,14 @@ export type NavItemChildType = {
   here?: boolean;
   disabled?: boolean;
   styles?: any;
-};
-  
-export type NavConfigType = ReadonlyArray<NavItemOptionsType>;
+}
 
-export type NavBreadcrumbsType = Array<NavBreadcrumbType>;
+export type NavConfigType = readonly NavItemOptionsType[];
 
-export type NavBreadcrumbType = {
-	title: string,
-	href?: string,	
-	active?: boolean
-};
+export type NavBreadcrumbsType = NavBreadcrumbType[];
+
+export interface NavBreadcrumbType {
+  title: string;
+  href?: string;
+  active?: boolean;
+}

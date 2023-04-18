@@ -14,13 +14,13 @@ import * as authHelper from './_helpers';
 import { getUserByToken } from './_requests';
 import { useLoading } from '../providers/LoadingProvider';
 
-type AuthContextProps = {
+interface AuthContextProps {
   auth: AuthModel | undefined;
   saveAuth: (auth: AuthModel | undefined) => void;
   currentUser: UserModel | undefined;
   setCurrentUser: Dispatch<SetStateAction<UserModel | undefined>>;
   logout: () => void;
-};
+}
 
 const initAuthContextPropsState = {
   auth: authHelper.getAuth(),
@@ -91,7 +91,7 @@ const AuthInit = ({ children }: PropsWithChildren) => {
       return () => (didRequest.current = true);
     };
 
-    if (auth && auth.access_token) {
+    if (auth?.access_token) {
       requestUser(auth.access_token);
     } else {
       logout();
@@ -100,11 +100,7 @@ const AuthInit = ({ children }: PropsWithChildren) => {
     // eslint-disable-next-line
   }, []);
 
-  return (
-    screenLoading ? <></>  : <>
-      {children}
-    </>
-  );
+  return screenLoading ? <></> : <>{children}</>;
 };
 
 export { AuthProvider, AuthInit, useAuth };

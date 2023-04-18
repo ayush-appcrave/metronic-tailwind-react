@@ -23,8 +23,7 @@ const SettingsFormMode = () => {
     <FormControl
       sx={{
         mb: 2
-      }}
-    >
+      }}>
       <FormLabel>Mode</FormLabel>
       <RadioGroup row name="settings-mode">
         <FormControlLabel
@@ -32,21 +31,27 @@ const SettingsFormMode = () => {
           control={<Radio />}
           label="Light"
           checked={mode === 'light'}
-          onChange={() => handleModeChange('light')}
+          onChange={() => {
+            handleModeChange('light');
+          }}
         />
         <FormControlLabel
           value="dark"
           control={<Radio />}
           label="Dark"
           checked={mode === 'dark'}
-          onChange={() => handleModeChange('dark')}
+          onChange={() => {
+            handleModeChange('dark');
+          }}
         />
         <FormControlLabel
           value="system"
           control={<Radio />}
           label="System"
           checked={mode === 'system'}
-          onChange={() => handleModeChange('system')}
+          onChange={() => {
+            handleModeChange('system');
+          }}
         />
       </RadioGroup>
     </FormControl>

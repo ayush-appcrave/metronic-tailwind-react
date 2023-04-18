@@ -27,12 +27,12 @@ export interface UserPasswords {
 
 export type User = UserGeneralInfo & UserPasswords;
 
-export type UsersQueryResponse = {
+export interface UsersQueryResponse {
   message: string;
-  data: Array<User>;
+  data: User[];
   pagination: PaginationState;
   success: boolean;
-};
+}
 
 export const initialUser: User = {
   id: '1',

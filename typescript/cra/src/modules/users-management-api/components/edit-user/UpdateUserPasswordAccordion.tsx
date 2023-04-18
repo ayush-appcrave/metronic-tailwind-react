@@ -77,8 +77,7 @@ function UpdateUserPasswordAccordion(props: UpdateUserPasswordProps) {
       <AccordionSummary
         expandIcon={<ExpandMoreIcon />}
         aria-controls="panel1a-content"
-        id="panel1a-header"
-      >
+        id="panel1a-header">
         <Typography>Auth info</Typography>
       </AccordionSummary>
       <AccordionDetails>
@@ -86,15 +85,13 @@ function UpdateUserPasswordAccordion(props: UpdateUserPasswordProps) {
           style={{
             display: 'flex'
           }}
-          onSubmit={formik.handleSubmit}
-        >
+          onSubmit={formik.handleSubmit}>
           <Grid
             container
             alignItems="center"
             position="relative"
             margin={'40px'}
-            direction="column"
-          >
+            direction="column">
             <FormGroup sx={{ marginY: '5px', width: '40%' }}>
               <TextField
                 type="password"
@@ -154,8 +151,7 @@ function UpdateUserPasswordAccordion(props: UpdateUserPasswordProps) {
               type="submit"
               variant="contained"
               color="primary"
-              disabled={loading}
-            >
+              disabled={loading}>
               {!loading ? (
                 'Save'
               ) : (
@@ -163,9 +159,8 @@ function UpdateUserPasswordAccordion(props: UpdateUserPasswordProps) {
                   <CircularProgress
                     color={'inherit'}
                     size={'1rem'}
-                    sx={{ marginRight: '10px' }}
-                  ></CircularProgress>
-                  "Loading..."
+                    sx={{ marginRight: '10px' }}></CircularProgress>
+                  Loading...
                 </>
               )}
             </Button>

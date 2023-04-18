@@ -16,8 +16,7 @@ function CreateUserDrawer(props: CreateUserDrawerProps) {
         sx: {
           width: '40%'
         }
-      }}
-    >
+      }}>
       <CreateUserForm open={props.open} handleClose={props.handleClose}></CreateUserForm>
     </Drawer>
   );

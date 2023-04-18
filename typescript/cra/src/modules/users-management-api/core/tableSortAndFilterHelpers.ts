@@ -42,8 +42,8 @@ function filterRow(array: User[], roleFilter: string, nameFilter: string | null)
   }
 
   if (nameFilter !== null) {
-    filteredItems = filteredItems.filter(
-      (row) => row.first_name?.toLowerCase().indexOf(nameFilter.toLowerCase()) !== -1
+    filteredItems = filteredItems.filter((row) =>
+      row.first_name?.toLowerCase().includes(nameFilter.toLowerCase())
     );
   }
 

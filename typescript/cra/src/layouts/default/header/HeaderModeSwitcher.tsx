@@ -19,8 +19,7 @@ const HeaderModeSwitcher = () => {
       sx={{
         display: 'flex',
         alignItems: 'center'
-      }}
-    >
+      }}>
       <Box
         sx={{
           height: '32px',
@@ -31,13 +30,20 @@ const HeaderModeSwitcher = () => {
           paddingRight: 0.5,
           gap: 0.5,
           backgroundColor: theme.palette.grey['200']
-        }}
-      >
-        <IconButtonStyled onClick={() => handleModeChange('dark')} active={getMode() === 'dark'}>
+        }}>
+        <IconButtonStyled
+          onClick={() => {
+            handleModeChange('dark');
+          }}
+          active={getMode() === 'dark'}>
           <KeenIcon icon="moon" />
         </IconButtonStyled>
 
-        <IconButtonStyled onClick={() => handleModeChange('light')} active={getMode() === 'light'}>
+        <IconButtonStyled
+          onClick={() => {
+            handleModeChange('light');
+          }}
+          active={getMode() === 'light'}>
           <KeenIcon icon="night-day" />
         </IconButtonStyled>
       </Box>
@@ -46,7 +52,7 @@ const HeaderModeSwitcher = () => {
 };
 
 export const IconButtonStyled = styled(IconButton, {
-  shouldForwardProp: (prop) => ['active'].includes(prop as string) === false
+  shouldForwardProp: (prop) => !['active'].includes(prop as string)
 })<{ active: boolean }>(({ active, theme }) => {
   return {
     height: '24px',

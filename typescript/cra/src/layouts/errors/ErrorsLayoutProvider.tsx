@@ -3,6 +3,7 @@ import { ILayoutProvider, ILayoutConfig } from '../';
 import { LayoutsType, useLayouts } from '../../providers/LayoutsProvider';
 import { errorsLayoutConfig } from './ErrorsLayoutConfig';
 
+// eslint-disable-next-line @typescript-eslint/ban-types
 type ErrorsLayoutProviderProps = {} & ILayoutProvider;
 
 const initalLayoutProps: ErrorsLayoutProviderProps = {
@@ -10,7 +11,7 @@ const initalLayoutProps: ErrorsLayoutProviderProps = {
 };
 
 const getLayoutConfig = (layouts: LayoutsType): ILayoutConfig => {
-  return layouts.get(errorsLayoutConfig.name) || errorsLayoutConfig;
+  return layouts.get(errorsLayoutConfig.name) ?? errorsLayoutConfig;
 };
 
 const ErrorsLayoutContext = createContext<ErrorsLayoutProviderProps>(initalLayoutProps);
@@ -26,8 +27,7 @@ const ErrorsLayoutProvider = ({ children }: PropsWithChildren) => {
     <ErrorsLayoutContext.Provider
       value={{
         layout
-      }}
-    >
+      }}>
       {children}
     </ErrorsLayoutContext.Provider>
   );

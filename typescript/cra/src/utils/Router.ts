@@ -1,8 +1,8 @@
-const getCurrentUrl = (path: string) => {
+const getCurrentUrl = (path: string): string => {
   return path.split(/[?#]/)[0];
 };
 
-const matchPath = (path: string, pathname: string) => {
+const matchPath = (path: string, pathname: string): boolean => {
   const current = getCurrentUrl(path);
   if (!current || !pathname) {
     return false;
@@ -12,7 +12,7 @@ const matchPath = (path: string, pathname: string) => {
     return true;
   }
 
-  if (current.indexOf(pathname) > -1) {
+  if (current.includes(pathname)) {
     return true;
   }
 

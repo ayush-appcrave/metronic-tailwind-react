@@ -1,9 +1,9 @@
-import { Breadcrumbs, Link, Box, useTheme } from "@mui/material";
-import { NavBreadcrumbsType } from "@components/nav";
-import { KeenIcon } from "@components/keenicons";
+import { Breadcrumbs, Link, Box, useTheme } from '@mui/material';
+import { NavBreadcrumbsType } from '@components/nav';
+import { KeenIcon } from '@components/keenicons';
 
-type PropsType = {
-  breadcrumbs: NavBreadcrumbsType
+interface PropsType {
+  breadcrumbs: NavBreadcrumbsType;
 }
 
 const IntroBreadcrumbs = ({ breadcrumbs }: PropsType) => {
@@ -42,17 +42,15 @@ const IntroBreadcrumbs = ({ breadcrumbs }: PropsType) => {
           }}
         />
       }
-      aria-label="breadcrumbs"
-    >
-      {(breadcrumbs as NavBreadcrumbsType).map((item, index) => {
+      aria-label="breadcrumbs">
+      {breadcrumbs.map((item, index) => {
         if (item.href) {
           return (
             <Link
-              key={`breadcrumb-${item}`}
+              key={`breadcrumb-${JSON.stringify(item)}`}
               underline="none"
               href={item.href}
-              className={item?.active ? 'Mui-active' : ''}
-            >
+              className={item?.active ? 'Mui-active' : ''}>
               {item.title}
             </Link>
           );
@@ -60,9 +58,8 @@ const IntroBreadcrumbs = ({ breadcrumbs }: PropsType) => {
           return (
             <Box
               component="span"
-              key={`breadcrumb-${item}`}
-              className={item?.active ? 'Mui-active' : ''}
-            >
+              key={`breadcrumb-${JSON.stringify(item)}`}
+              className={item?.active ? 'Mui-active' : ''}>
               {item.title}
             </Box>
           );

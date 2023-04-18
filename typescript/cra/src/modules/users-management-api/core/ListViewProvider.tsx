@@ -9,9 +9,9 @@ import {
 } from '../helpers';
 import { useQueryResponse, useQueryResponseData } from './QueryResponseProvider';
 
-type WithChildren = {
+interface WithChildren {
   children?: ReactNode;
-};
+}
 
 const ListViewContext = createContext<ListViewContextProps>(initialListView);
 
@@ -42,8 +42,7 @@ const ListViewProvider: FC<WithChildren> = ({ children }) => {
         clearSelected: () => {
           setSelected([]);
         }
-      }}
-    >
+      }}>
       {children}
     </ListViewContext.Provider>
   );

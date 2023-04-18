@@ -1,13 +1,13 @@
 import { memo } from 'react';
 import SVG from 'react-inlinesvg';
 import { toAbsoluteUrl } from '../../utils';
-type Props = {
+interface Props {
   icon: string;
   path?: string;
   size?: string;
   className?: string;
   svgClassName?: string;
-};
+}
 
 // Example of usage:
 //* <SVGIcon

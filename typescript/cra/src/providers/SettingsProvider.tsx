@@ -6,15 +6,15 @@ import { SettingsType, SettingsModeOptionType } from '../config/types';
 
 const SETTINGS_CONFIG_KEY = 'app-settings-config';
 
-export type SettingsProviderProps = {
+export interface SettingsProviderProps {
   settings: SettingsType;
   updateSettings: (_: Partial<SettingsType>) => void;
   getMode: () => PaletteMode;
-};
+}
 
 const calculateInitialSettings = () => {
   const settings = getData(SETTINGS_CONFIG_KEY) as SettingsType | undefined;
-  return settings || defaultSettings;
+  return settings ?? defaultSettings;
 };
 
 const calculateUpdatedSettings = (
@@ -59,8 +59,7 @@ const SettingsProvider = ({ children }: PropsWithChildren) => {
         settings,
         updateSettings,
         getMode
-      }}
-    >
+      }}>
       {children}
     </SettingsContext.Provider>
   );

@@ -16,8 +16,7 @@ function CreateUserPlainFormDialog(props: CreateUserDialogProps) {
       sx={{
         padding: '70px',
         maxHeight: 'auto'
-      }}
-    >
+      }}>
       <CreateUserForm open={props.open} handleClose={props.handleClose}></CreateUserForm>
     </Dialog>
   );

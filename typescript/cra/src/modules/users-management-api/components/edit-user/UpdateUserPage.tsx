@@ -12,8 +12,9 @@ function UpdateUserPage() {
       {id && (
         <UpdateUserFormWrapper
           userId={id}
-          handleExit={() => navigate('/users-management-api')}
-        ></UpdateUserFormWrapper>
+          handleExit={() => {
+            navigate('/users-management-api');
+          }}></UpdateUserFormWrapper>
       )}
     </>
   );

@@ -1,18 +1,17 @@
 import { useEffect } from 'react';
-import { Helmet } from 'react-helmet-async';
-import { useDefaultLayout } from '../layouts/default';
-import { useLoading } from "../providers/LoadingProvider";
-import { Content, Toolbar, Intro } from "../layouts/default";
-import { useNavBreadcrumbs } from "@components/nav";
-import { PageContainer } from "@components/page-container";
-import { NAV_VERTICAL } from "../config/navs.config";
+import { Helmet } from 'react-helmet';
+import { useDefaultLayout, Content, Toolbar, Intro } from '../layouts/default';
+import { useLoading } from '../providers/LoadingProvider';
+import { useNavBreadcrumbs } from '@components/nav';
+import { PageContainer } from '@components/page-container';
+import { NAV_VERTICAL } from '../config/navs.config';
 
-const EcommercePage = () => {  
+const EcommercePage = () => {
   const { pageLoading, setPageLoading } = useLoading();
 
   const simulateRestCall = async () => {
     setPageLoading(true);
-    console.log('wow1:' + pageLoading);
+    console.log(`wow1: ${pageLoading}`);
 
     try {
       setTimeout(() => {
@@ -28,26 +27,24 @@ const EcommercePage = () => {
 
   useEffect(() => {
     simulateRestCall();
-  }, []); 
+  }, []);
 
-  return ( 
+  return (
     <>
       <Helmet>
         <title>Ecommerce Page</title>
       </Helmet>
-     
+
       <Toolbar>
-          <Intro
-            title="Ecommerce"
-            subTitle="statistics & reports"
-            breadcrumbs={useNavBreadcrumbs(NAV_VERTICAL)}
-          />
+        <Intro
+          title="Ecommerce"
+          subTitle="statistics & reports"
+          breadcrumbs={useNavBreadcrumbs(NAV_VERTICAL)}
+        />
       </Toolbar>
-      
+
       <Content>
-        <PageContainer>
-          Ecommerce page content goes here...
-        </PageContainer>
+        <PageContainer>Ecommerce page content goes here...</PageContainer>
       </Content>
     </>
   );

@@ -1,7 +1,7 @@
 import { Dispatch, SetStateAction } from 'react';
 import { UsersQueryResponse } from '../../core/_models';
 
-export type PaginationState = {
+export interface PaginationState {
   page?: number;
   links?: Array<{ label: string; active: boolean; url: string | null; page: number | null }>;
   current_page?: number;
@@ -13,33 +13,33 @@ export type PaginationState = {
   items_per_page?: number;
   prev_page_url?: number;
   to?: number;
-  total: number;
-};
+  total?: number;
+}
 
-export type SortState = {
+export interface SortState {
   sort?: string;
   order?: 'asc' | 'desc';
-};
+}
 
-export type FilterState = {
+export interface FilterState {
   role?: 'all' | 'user' | 'admin';
-};
+}
 
-export type SearchState = {
+export interface SearchState {
   search?: string;
-};
+}
 
-export type Response<T> = {
+export interface Response<T> {
   data?: T;
   pagination?: PaginationState;
-};
+}
 
 export type QueryState = PaginationState & SortState & FilterState & SearchState;
 
-export type QueryRequestContextProps = {
+export interface QueryRequestContextProps {
   state: QueryState;
   updateState: (updates: Partial<QueryState>) => void;
-};
+}
 
 export const initialQueryState: QueryState = {
   current_page: 1,
@@ -52,16 +52,16 @@ export const initialQueryRequest: QueryRequestContextProps = {
   updateState: () => {}
 };
 
-export type QueryResponseContextProps<T> = {
+export interface QueryResponseContextProps<T> {
   response?: UsersQueryResponse | undefined;
   refetch: () => void;
   isLoading: boolean;
   query: string;
-};
+}
 
 export const initialQueryResponse = { refetch: () => {}, isLoading: false, query: '' };
 
-export type ListViewContextProps = {
+export interface ListViewContextProps {
   selected: Array<string | undefined>;
   onSelect: (selectedId: string) => void;
   onSelectAll: () => void;
@@ -73,7 +73,7 @@ export type ListViewContextProps = {
   setItemIdForUpdate: Dispatch<SetStateAction<string | undefined>>;
   isAllSelected: boolean;
   disabled: boolean;
-};
+}
 
 export const initialListView: ListViewContextProps = {
   selected: [],

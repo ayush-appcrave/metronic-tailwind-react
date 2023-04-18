@@ -4,7 +4,7 @@ import { NavItemChildType } from '..';
 
 const BadgeStyled = styled(Badge, {
   shouldForwardProp: (prop) =>
-    [
+    ![
       'depth',
       'styles',
       'active',
@@ -14,7 +14,7 @@ const BadgeStyled = styled(Badge, {
       'collapse',
       'expand',
       'disabled'
-    ].includes(prop as string) === false
+    ].includes(prop as string)
 })<NavItemChildType>(({ depth, active, here, hover, open, disabled, styles, theme }) => {
   return {
     '.MuiBadge-badge ': {

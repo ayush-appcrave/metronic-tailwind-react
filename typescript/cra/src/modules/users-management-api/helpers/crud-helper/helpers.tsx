@@ -31,16 +31,16 @@ function parseRequestQuery(query: string): QueryState {
   return cache as QueryState;
 }
 
-function calculatedGroupingIsDisabled<T>(isLoading: boolean, data: Array<T> | undefined): boolean {
+function calculatedGroupingIsDisabled<T>(isLoading: boolean, data: T[] | undefined): boolean {
   if (isLoading) {
     return true;
   }
 
-  return !data || !data.length;
+  return !data?.length;
 }
 
 function calculateIsAllDataSelected<T>(
-  data: Array<T> | undefined,
+  data: T[] | undefined,
   selected: Array<string | undefined>
 ): boolean {
   if (!data) {
@@ -78,7 +78,7 @@ function groupingOnSelectAll<T>(
     return;
   }
 
-  if (!data || !data.length) {
+  if (!data?.length) {
     return;
   }
 

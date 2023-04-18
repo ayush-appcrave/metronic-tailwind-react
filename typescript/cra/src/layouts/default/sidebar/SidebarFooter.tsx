@@ -1,13 +1,12 @@
-import React, { useState, useEffect, useRef } from 'react';
-import { SetStateAction } from 'react';
+import React, { useState, useEffect, useRef, SetStateAction } from 'react';
 import { Stack, Avatar, Button, Box } from '@mui/material';
 import { useDefaultLayout } from '..';
 import { useAuth } from '../../../auth';
 import { toAbsoluteUrl } from '../../../utils/Assets';
 
-type Props = {
+interface Props {
   setFooterHeight: React.Dispatch<React.SetStateAction<number>>;
-};
+}
 
 const SidebarFooter = ({ setFooterHeight }: Props) => {
   const { isSidebarCollapse } = useDefaultLayout();
@@ -32,8 +31,7 @@ const SidebarFooter = ({ setFooterHeight }: Props) => {
         position: 'relative',
         px: 4,
         py: 4
-      }}
-    >
+      }}>
       Sidebar Footer
     </Stack>
   );

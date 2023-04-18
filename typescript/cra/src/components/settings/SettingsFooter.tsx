@@ -3,9 +3,9 @@ import { Stack, Avatar, Button, Box } from '@mui/material';
 import { useAuth } from '../../auth';
 import { toAbsoluteUrl } from '../../utils/Assets';
 
-type Props = {
+interface Props {
   setFooterHeight: React.Dispatch<React.SetStateAction<number>>;
-};
+}
 
 const SettingsFooter = ({ setFooterHeight }: Props) => {
   const elementRef = useRef<HTMLDivElement>(null);
@@ -28,8 +28,7 @@ const SettingsFooter = ({ setFooterHeight }: Props) => {
         position: 'relative',
         px: 2,
         py: 2
-      }}
-    >
+      }}>
       Footer
     </Stack>
   );

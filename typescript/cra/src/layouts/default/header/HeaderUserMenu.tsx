@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, MouseEvent } from 'react';
 import {
   Box,
   Link,
@@ -23,7 +23,7 @@ const HeaderUserMenu = () => {
   const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
   const open = Boolean(anchorEl);
 
-  const handleClick = (event: React.MouseEvent<HTMLElement>) => {
+  const handleClick = (event: MouseEvent<HTMLElement>) => {
     setAnchorEl(event.currentTarget);
   };
 
@@ -36,8 +36,7 @@ const HeaderUserMenu = () => {
       sx={{
         display: 'flex',
         alignItems: 'center'
-      }}
-    >
+      }}>
       <IconButton
         onClick={handleClick}
         size="small"
@@ -47,8 +46,7 @@ const HeaderUserMenu = () => {
         }}
         aria-haspopup="true"
         aria-controls={open ? 'user-account-menu' : undefined}
-        aria-expanded={open ? 'true' : undefined}
-      >
+        aria-expanded={open ? 'true' : undefined}>
         <Avatar
           src="/media/avatars/default.png"
           sx={{
@@ -83,25 +81,22 @@ const HeaderUserMenu = () => {
               width: '200px'
             }
           }
-        }}
-      >
+        }}>
         <Box
           sx={{
             pt: 0.75,
             pb: 0.25,
             px: 2.5,
             lineHeight: 1.15
-          }}
-        >
+          }}>
           <Box
             sx={{
               fontSize: '14px',
               fontWeight: theme.typography.fontWeightMedium,
               color: theme.palette.grey['800'],
               LineHeight: 1
-            }}
-          >
-            {currentUser!.first_name} {currentUser!.last_name}
+            }}>
+            {currentUser?.first_name} {currentUser?.last_name}
           </Box>
 
           <Link
@@ -110,9 +105,8 @@ const HeaderUserMenu = () => {
               fontSize: '12px',
               fontWeight: theme.typography.fontWeightMedium,
               textDecoration: 'none'
-            }}
-          >
-            {currentUser!.email}
+            }}>
+            {currentUser?.email}
           </Link>
         </Box>
 

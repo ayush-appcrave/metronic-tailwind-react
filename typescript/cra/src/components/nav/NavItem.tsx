@@ -19,9 +19,7 @@ import {
   ListItemButtonStyled,
   ListItemTextStyled,
   ListItemIconStyled,
-  BadgeStyled
-} from '..';
-import {
+  BadgeStyled,
   NavItemSub,
   NavItemArrow,
   NavItemBullet,
@@ -55,9 +53,7 @@ const NavItemComponent = ({
 
   const { match } = useMatchPath(path);
 
-  const here: boolean = children?.items
-    ? hasActiveChild(pathname, children.items as NavConfigType)
-    : false;
+  const here: boolean = children?.items ? hasActiveChild(pathname, children.items) : false;
 
   const active: boolean = match;
 
@@ -133,8 +129,7 @@ const NavItemComponent = ({
                 ? styles.ROOT_ITEM_PADDING_X
                 : styles.SUB_ITEM_PADDING_X + styles.INDENTION,
             marginBottom: depth === 1 ? styles.ROOT_ITEM_GAP : styles.SUB_ITEM_GAP
-          }}
-        >
+          }}>
           {icon && (
             <ListItemIconStyled
               depth={depth}
@@ -144,8 +139,7 @@ const NavItemComponent = ({
               hover={hover}
               open={open}
               disabled={disabled}
-              collapse={collapse}
-            >
+              collapse={collapse}>
               {icon}
             </ListItemIconStyled>
           )}
@@ -226,7 +220,7 @@ const NavItemComponent = ({
 
   const renderMain = () => {
     if (externalLink) {
-      const target = newTab === true ? '_blank' : '_self';
+      const target = newTab ? '_blank' : '_self';
 
       return (
         <Link href={path} target={target} rel="noopener" underline="none">
@@ -254,7 +248,7 @@ const hasActiveChild = (pathname: string, items: NavConfigType): boolean => {
     if (item.path && matchPath(item.path, pathname)) {
       return true;
     } else if (item.children?.items) {
-      return hasActiveChild(pathname, item.children.items as NavConfigType);
+      return hasActiveChild(pathname, item.children.items);
     }
   }
 

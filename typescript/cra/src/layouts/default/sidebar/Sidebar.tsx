@@ -2,11 +2,10 @@ import { useState, useEffect } from 'react';
 import { useTheme } from '@mui/material/styles';
 import { Box, Stack, Drawer } from '@mui/material';
 import useResponsive from '../../../hooks/useResponsive';
-import { useDefaultLayout } from '../';
+import { useDefaultLayout, DefaultLayoutStylesConfig } from '../';
 import { SidebarHeader } from './SidebarHeader';
 import { SidebarNav } from './SidebarNav';
 import { SidebarFooter } from './SidebarFooter';
-import { DefaultLayoutStylesConfig } from '../';
 
 const Sidebar = () => {
   const theme = useTheme();
@@ -58,8 +57,7 @@ const Sidebar = () => {
           [theme.breakpoints.down('lg')]: {
             width: styles.SIDEBAR_WIDTH_MOBILE
           }
-        }}
-      >
+        }}>
         <Drawer
           open
           variant="persistent"
@@ -74,8 +72,7 @@ const Sidebar = () => {
               overflow: 'visible',
               bgcolor: 'background.paper'
             }
-          }}
-        >
+          }}>
           <SidebarHeader setHeaderHeight={setHeaderHeight} />
           <SidebarNav headerHeight={headerHeight} footerHeight={footerHeight} />
           <SidebarFooter setFooterHeight={setFooterHeight} />
@@ -95,8 +92,7 @@ const Sidebar = () => {
             overflow: 'visible',
             bgcolor: 'background.paper'
           }
-        }}
-      >
+        }}>
         <SidebarNav footerHeight={footerHeight} />
         <SidebarFooter setFooterHeight={setFooterHeight} />
       </Drawer>

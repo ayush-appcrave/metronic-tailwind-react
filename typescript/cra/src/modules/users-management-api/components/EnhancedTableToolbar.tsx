@@ -38,8 +38,7 @@ function EnhancedTableToolbar(props: EnhancedTableToolbarProps) {
             alpha(theme.palette.primary.main, theme.palette.action.activatedOpacity)
         }),
         ...props.sx
-      }}
-    >
+      }}>
       {numSelected > 0 ? (
         <Typography sx={{ flex: '1 1 100%' }} color="inherit" variant="subtitle1" component="div">
           {numSelected} selected
@@ -49,8 +48,7 @@ function EnhancedTableToolbar(props: EnhancedTableToolbarProps) {
           size="small"
           sx={{
             width: '50%'
-          }}
-        >
+          }}>
           <Select
             labelId="demo-simple-select-label"
             id="demo-simple-select"
@@ -59,8 +57,7 @@ function EnhancedTableToolbar(props: EnhancedTableToolbarProps) {
               margin: '10px'
             }}
             defaultValue={'all'}
-            onChange={props.handleRoleFilterChange}
-          >
+            onChange={props.handleRoleFilterChange}>
             <MenuItem value="all">All</MenuItem>
             <MenuItem value="user">User</MenuItem>
             <MenuItem value="admin">Admin</MenuItem>

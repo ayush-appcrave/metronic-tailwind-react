@@ -37,8 +37,7 @@ const Main = ({ children }: PropsWithChildren) => {
         display: 'flex',
         flexDirection: 'column',
         flexGrow: '1'
-      }}
-    >
+      }}>
       <Header />
       <Wrapper />
       <Footer />

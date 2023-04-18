@@ -1,4 +1,4 @@
-/* eslint-disable react-hooks/exhaustive-deps */
+/* eslint-disable @typescript-eslint/no-misused-promises */
 import { FC, useContext, useState, useEffect, useMemo, ReactNode } from 'react';
 import { useQuery } from 'react-query';
 import {
@@ -13,9 +13,9 @@ import { getUsers } from './_requests';
 import { User } from './_models';
 import { useQueryRequest } from './QueryRequestProvider';
 
-type WithChildren = {
+interface WithChildren {
   children?: ReactNode;
-};
+}
 
 const QueryResponseContext = createResponseContext<User>(initialQueryResponse);
 const QueryResponseProvider: FC<WithChildren> = ({ children }) => {
@@ -35,8 +35,8 @@ const QueryResponseProvider: FC<WithChildren> = ({ children }) => {
     data: response
   } = useQuery(
     `${QUERIES.USERS_LIST}-${query}`,
-    () => {
-      return getUsers(query);
+    async () => {
+      return await getUsers(query);
     },
     { cacheTime: 0, keepPreviousData: true, refetchOnWindowFocus: false }
   );

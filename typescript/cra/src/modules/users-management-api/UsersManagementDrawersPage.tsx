@@ -30,14 +30,19 @@ function UsersManagementDrawersPage() {
 
   const { clearSelected, selected } = useListView();
 
-  const deleteSelectedItems = useMutation(() => deleteSelectedUsers(selected as string[]), {
-    // 💡 response of the mutation is passed to onSuccess
-    onSuccess: () => {
-      // ✅ update detail view directly
-      queryClient.invalidateQueries([`${QUERIES.USERS_LIST}-${query}`]);
-      clearSelected();
+  const deleteSelectedItems = useMutation(
+    async () => {
+      await deleteSelectedUsers(selected as string[]);
+    },
+    {
+      // 💡 response of the mutation is passed to onSuccess
+      onSuccess: () => {
+        // ✅ update detail view directly
+        queryClient.invalidateQueries([`${QUERIES.USERS_LIST}-${query}`]);
+        clearSelected();
+      }
     }
-  });
+  );
 
   // -------------------
 
@@ -74,8 +79,9 @@ function UsersManagementDrawersPage() {
             top: 2,
             right: 20
           }}
-          onClick={(e) => handleClickOpe4()}
-        >
+          onClick={(e) => {
+            handleClickOpe4();
+          }}>
           Add new user
         </Button>
         <EnhancedTableToolbar
@@ -84,7 +90,9 @@ function UsersManagementDrawersPage() {
           roleFilter={roleFilter}
           handleNameFilterChange={handleNameFilterChange}
           nameFilter={nameFilter}
-          handleSelectedUsersDelete={async () => await deleteSelectedItems.mutateAsync()}
+          handleSelectedUsersDelete={() => {
+            deleteSelectedItems.mutateAsync();
+          }}
         />
         <UserManagementTableContainer>
           {(id) => (
@@ -93,16 +101,14 @@ function UsersManagementDrawersPage() {
                 onClick={(e) => {
                   setUpdateUserIdState(id);
                   setOpenUpdateDrawerState(true);
-                }}
-              >
+                }}>
                 Edit
               </Button>
               <Button
                 onClick={(e) => {
                   setViewUserIdState(id);
                   setOpenViewDrawerState(true);
-                }}
-              >
+                }}>
                 View
               </Button>
             </>
@@ -113,15 +119,15 @@ function UsersManagementDrawersPage() {
       <UpdateUserDrawer
         open={openUpdateDrawerState}
         userId={updateUserIdState}
-        handleClose={() => setOpenUpdateDrawerState(false)}
-      ></UpdateUserDrawer>
+        handleClose={() => {
+          setOpenUpdateDrawerState(false);
+        }}></UpdateUserDrawer>
       <ViewUserDrawer
         open={openViewDrawerState}
         userId={viewUserIdState}
         handleClose={() => {
           setOpenViewDrawerState(false);
-        }}
-      ></ViewUserDrawer>
+        }}></ViewUserDrawer>
     </Box>
   );
 }

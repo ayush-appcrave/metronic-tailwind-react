@@ -24,7 +24,7 @@ const PATHS_GENERAL: PathsType = {
   page500: '/500'
 };
 
-const NAV_COMMON: { [key: string]: NavConfigType } = {
+const NAV_COMMON: Record<string, NavConfigType> = {
   dashboards: [
     {
       key: 'dashboards-multipurpose',
@@ -41,8 +41,8 @@ const NAV_COMMON: { [key: string]: NavConfigType } = {
     },
     {
       key: 'dashboards-eCommerce',
-      title: "eCommerce",
-      path: "/ecommerce",
+      title: 'eCommerce',
+      path: '/ecommerce',
       bullet: true,
       onClick: () => {
         console.log('New clicked 2');

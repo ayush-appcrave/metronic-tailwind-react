@@ -25,7 +25,7 @@ function createData(
   };
 }
 
-let rowsData = [
+const rowsData = [
   createData(1, 'Sahil Shepard', 'Google', 'Frontend Developer', true, 'Active'),
   createData(2, 'Kayla Friedman', 'Apple', 'Frontend Developer', false, 'Active'),
   createData(3, 'Bibi Petersen', 'Facebook', 'Backend Developer', true, 'Active'),

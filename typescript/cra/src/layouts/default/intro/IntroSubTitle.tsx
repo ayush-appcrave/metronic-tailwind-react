@@ -1,9 +1,9 @@
-import { PropsWithChildren } from 'react';
+import { PropsWithChildren, ReactNode } from 'react';
 import { Typography, useTheme } from '@mui/material';
 
-type PropsType = {
-  children: React.ReactNode;
-};
+interface PropsType {
+  children: ReactNode;
+}
 
 const IntroSubTitle = ({ children }: PropsType) => {
   const theme = useTheme();
@@ -16,8 +16,7 @@ const IntroSubTitle = ({ children }: PropsType) => {
         fontWeight: theme.typography.fontWeightMedium,
         color: theme.palette.grey['500'],
         ml: theme.spacing(1)
-      }}
-    >
+      }}>
       {children}
     </Typography>
   );

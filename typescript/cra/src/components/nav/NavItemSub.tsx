@@ -19,7 +19,7 @@ const NavItemSubComponent = ({
     return (
       <>
         <List component="div" disablePadding>
-          {(items as ReadonlyArray<NavItemOptionsType>).map((item, index) => (
+          {(items as readonly NavItemOptionsType[]).map((item, index) => (
             <NavItem
               key={`${index}-${item.title}`}
               depth={depth + 1}

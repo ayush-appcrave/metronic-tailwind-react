@@ -30,6 +30,7 @@ const GREY = {
   900: '#181C32'
 };
 
+// eslint-disable-next-line no-unused-vars, @typescript-eslint/no-unused-vars
 const GREY_DARK = {
   0: '#FFFFFF',
   100: '#F5F8FA',

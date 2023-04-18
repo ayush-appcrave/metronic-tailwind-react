@@ -17,8 +17,7 @@ function UpdateUserDialog(props: EditUserDialogProps) {
       onClose={props.handleClose}
       sx={{
         padding: '70px'
-      }}
-    >
+      }}>
       <Button
         onClick={() => {
           props.handleClose();
@@ -27,8 +26,7 @@ function UpdateUserDialog(props: EditUserDialogProps) {
           position: 'absolute',
           right: 5,
           top: 5
-        }}
-      >
+        }}>
         <Close></Close>
       </Button>
       <Typography
@@ -36,14 +34,12 @@ function UpdateUserDialog(props: EditUserDialogProps) {
           marginTop: '30px',
           fontSize: '40px',
           textAlign: 'center'
-        }}
-      >
+        }}>
         Update user info
       </Typography>
       <UpdateUserFormWrapper
         userId={props.userId}
-        handleExit={props.handleClose}
-      ></UpdateUserFormWrapper>
+        handleExit={props.handleClose}></UpdateUserFormWrapper>
     </Dialog>
   );
 }

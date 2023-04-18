@@ -6,8 +6,7 @@ const HeaderNotificationsMenu = () => {
       sx={{
         display: 'flex',
         alignItems: 'center'
-      }}
-    >
+      }}>
       Notifications
     </Box>
   );

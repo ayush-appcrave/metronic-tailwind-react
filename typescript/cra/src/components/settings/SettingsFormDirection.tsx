@@ -22,8 +22,7 @@ const SettingsFormDirection = () => {
     <FormControl
       sx={{
         mb: 2
-      }}
-    >
+      }}>
       <FormLabel>Direction</FormLabel>
       <RadioGroup row name="settings-direction">
         <FormControlLabel
@@ -31,14 +30,18 @@ const SettingsFormDirection = () => {
           control={<Radio />}
           label="LTR"
           checked={direction === 'ltr'}
-          onChange={() => handleDirectionChange('ltr')}
+          onChange={() => {
+            handleDirectionChange('ltr');
+          }}
         />
         <FormControlLabel
           value="rtl"
           control={<Radio />}
           label="RTL"
           checked={direction === 'rtl'}
-          onChange={() => handleDirectionChange('rtl')}
+          onChange={() => {
+            handleDirectionChange('rtl');
+          }}
         />
       </RadioGroup>
     </FormControl>

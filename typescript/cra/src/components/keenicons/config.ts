@@ -1,6 +1,4 @@
-interface IKeenIconsConfig {
-  [key: string]: number;
-}
+type IKeenIconsConfig = Record<string, number>;
 
 const KeenIconsConfig: IKeenIconsConfig = {
   'abstract-33': 2,

@@ -13,11 +13,8 @@ const Toolbar = ({ children }: PropsWithChildren) => {
     <Box
       sx={{
         mb: theme.spacing(2)
-      }}
-    >
-      <PageContainer>
-        {children}
-      </PageContainer>
+      }}>
+      <PageContainer>{children}</PageContainer>
     </Box>
   );
 };

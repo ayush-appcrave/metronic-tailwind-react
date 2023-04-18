@@ -1,3 +1,4 @@
+import { FormEvent, ChangeEvent } from 'react';
 import { User } from '../core/_models';
 import { Box, Checkbox, TableCell, TableHead, TableRow, TableSortLabel } from '@mui/material';
 import { visuallyHidden } from '@mui/utils';
@@ -7,8 +8,8 @@ import { useListView } from '../core/ListViewProvider';
 
 interface EnhancedTableProps {
   numSelected: number;
-  onRequestSort: (event: React.FormEvent<unknown>, property: keyof User | null) => void;
-  onSelectAllClick: (event: React.ChangeEvent<HTMLInputElement>) => void;
+  onRequestSort: (event: FormEvent<unknown>, property: keyof User | null) => void;
+  onSelectAllClick: (event: ChangeEvent<HTMLInputElement>) => void;
   order: Order;
   orderBy: string;
   rowCount: number;
@@ -16,7 +17,7 @@ interface EnhancedTableProps {
 
 function EnhancedTableHead(props: EnhancedTableProps) {
   const { onSelectAllClick, order, orderBy, numSelected, rowCount, onRequestSort } = props;
-  const createSortHandler = (property: keyof User | null) => (event: React.FormEvent<unknown>) => {
+  const createSortHandler = (property: keyof User | null) => (event: FormEvent<unknown>) => {
     onRequestSort(event, property);
   };
 
@@ -41,14 +42,12 @@ function EnhancedTableHead(props: EnhancedTableProps) {
             align={headCell.numeric ? 'right' : 'left'}
             padding={headCell.disablePadding ? 'none' : 'normal'}
             sortDirection={orderBy === headCell.id ? order : false}
-            width={headCell.width}
-          >
+            width={headCell.width}>
             <TableSortLabel
               hideSortIcon={headCell.hideSortIcon}
               active={orderBy === headCell.id}
               direction={orderBy === headCell.id ? order : 'asc'}
-              onClick={createSortHandler(headCell.id)}
-            >
+              onClick={createSortHandler(headCell.id)}>
               {headCell.label}
               {orderBy === headCell.id ? (
                 <Box component="span" sx={visuallyHidden}>

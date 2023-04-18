@@ -9,9 +9,9 @@ import { QUERIES } from '../../helpers';
 import { Avatar, Box, Button, Typography, Skeleton } from '@mui/material';
 import { toAbsoluteUrl } from 'utils';
 
-type Props = {
+interface Props {
   userId: string;
-};
+}
 
 function ViewUser(props: Props) {
   const { enqueueSnackbar } = useSnackbar();
@@ -28,15 +28,24 @@ function ViewUser(props: Props) {
     two_steps_auth: false
   });
 
-  const deleteItem = useMutation(() => deleteUser(props.userId as string), {
-    // 💡 response of the mutation is passed to onSuccess
-    onSuccess: () => {
-      // ✅ update detail view directly
-      queryClient.invalidateQueries([`${QUERIES.USERS_LIST}-${query}`]);
-      enqueueSnackbar('User Successfully Deleted', { variant: 'success' });
-      navigate(`/users-management-api`);
+  const deleteItem = useMutation(
+    async () => {
+      await deleteUser(props.userId);
+    },
+    {
+      // 💡 response of the mutation is passed to onSuccess
+      onSuccess: () => {
+        // ✅ update detail view directly
+        queryClient.invalidateQueries([`${QUERIES.USERS_LIST}-${query}`]);
+        enqueueSnackbar('User Successfully Deleted', { variant: 'success' });
+        navigate(`/users-management-api`);
+      }
     }
-  });
+  );
+
+  const deleteEvent = () => {
+    deleteItem.mutateAsync();
+  };
 
   const navigateUserEditPage = () => {
     navigate(`/edit/user/${props.userId}`);
@@ -65,17 +74,6 @@ function ViewUser(props: Props) {
           <Typography>{currentUser.role}</Typography>
           <Typography>{currentUser.created_at}</Typography>
           <Typography>{currentUser.email}</Typography>
-
-          <Button variant="outlined" color="info" onClick={navigateUserEditPage}>
-            Edit User
-          </Button>
-          <Button
-            variant="outlined"
-            color="error"
-            onClick={async () => await deleteItem.mutateAsync()}
-          >
-            Delete
-          </Button>
         </Box>
       ) : (
         <Box>
@@ -87,19 +85,14 @@ function ViewUser(props: Props) {
           <Skeleton variant="text" width={'15%'} sx={{ fontSize: '1rem' }} />
           <Skeleton variant="text" width={'60%'} sx={{ fontSize: '1rem' }} />
           <Skeleton variant="text" width={'55%'} sx={{ fontSize: '1rem' }} />
-
-          <Button variant="outlined" color="info" onClick={navigateUserEditPage}>
-            Edit User
-          </Button>
-          <Button
-            variant="outlined"
-            color="error"
-            onClick={async () => await deleteItem.mutateAsync()}
-          >
-            Delete
-          </Button>
         </Box>
       )}
+      <Button variant="outlined" color="info" onClick={navigateUserEditPage}>
+        Edit User
+      </Button>
+      <Button variant="outlined" color="error" onClick={deleteEvent}>
+        Delete
+      </Button>
     </>
   );
 }

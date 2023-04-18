@@ -6,10 +6,10 @@ import { Nav, NavItem, NavConfigType, NavVerticalStylesConfig } from '../../../c
 import { NAV_VERTICAL } from '../../../config/navs.config';
 import { number } from 'yup';
 
-type Props = {
+interface Props {
   headerHeight?: number;
   footerHeight?: number;
-};
+}
 
 const SidebarNav = ({ headerHeight = 0, footerHeight = 0 }: Props) => {
   const { isSidebarExpand, isSidebarCollapse } = useDefaultLayout();
@@ -21,11 +21,10 @@ const SidebarNav = ({ headerHeight = 0, footerHeight = 0 }: Props) => {
     <Scrollbar
       sx={{
         height: scrollableHeight,
-        //overflow: 'hidden',
+        // overflow: 'hidden',
         px: 1.5,
         mx: 1
-      }}
-    >
+      }}>
       <Nav
         variant="inline"
         direction="vertical"

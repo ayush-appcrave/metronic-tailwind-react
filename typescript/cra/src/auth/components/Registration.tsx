@@ -36,7 +36,7 @@ const registrationSchema = Yup.object().shape({
   changepassword: Yup.string()
     .required('Password confirmation is required')
     .when('password', {
-      is: (val: string) => (val && val.length > 0 ? true : false),
+      is: (val: string) => !!(val && val.length > 0),
       then: Yup.string().oneOf([Yup.ref('password')], "Password and Confirm Password didn't match")
     }),
   acceptTerms: Yup.bool().required('You must accept the terms and conditions')
@@ -76,8 +76,7 @@ const Registration = () => {
       className="form w-100 fv-plugins-bootstrap5 fv-plugins-framework"
       noValidate
       id="kt_login_signup_form"
-      onSubmit={formik.handleSubmit}
-    >
+      onSubmit={formik.handleSubmit}>
       {/* begin::Heading */}
       <div className="text-center mb-11">
         {/* begin::Title */}
@@ -210,8 +209,7 @@ const Registration = () => {
           {/* begin::Meter */}
           <div
             className="d-flex align-items-center mb-3"
-            data-kt-password-meter-control="highlight"
-          >
+            data-kt-password-meter-control="highlight">
             <div className="flex-grow-1 bg-secondary bg-active-success rounded h-5px me-2"></div>
             <div className="flex-grow-1 bg-secondary bg-active-success rounded h-5px me-2"></div>
             <div className="flex-grow-1 bg-secondary bg-active-success rounded h-5px me-2"></div>
@@ -268,8 +266,7 @@ const Registration = () => {
               href="https://keenthemes.com/metronic/?page=faq"
               target="_blank"
               className="ms-1 link-primary"
-              rel="noreferrer"
-            >
+              rel="noreferrer">
               Terms
             </a>
             .
@@ -291,8 +288,7 @@ const Registration = () => {
           type="submit"
           id="kt_sign_up_submit"
           className="btn btn-lg btn-primary w-100 mb-5"
-          disabled={formik.isSubmitting || !formik.isValid || !formik.values.acceptTerms}
-        >
+          disabled={formik.isSubmitting || !formik.isValid || !formik.values.acceptTerms}>
           {!loading && <span className="indicator-label">Submit</span>}
           {loading && (
             <span className="indicator-progress" style={{ display: 'block' }}>
@@ -305,8 +301,7 @@ const Registration = () => {
           <button
             type="button"
             id="kt_login_signup_form_cancel_button"
-            className="btn btn-lg btn-light-primary w-100 mb-5"
-          >
+            className="btn btn-lg btn-light-primary w-100 mb-5">
             Cancel
           </button>
         </Link>

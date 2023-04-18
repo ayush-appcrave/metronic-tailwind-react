@@ -38,13 +38,13 @@ export function setupAxios(axios: any) {
     (config: { headers: { Authorization: string } }) => {
       const auth = getAuth();
 
-      if (auth && auth.access_token) {
+      if (auth?.access_token) {
         config.headers.Authorization = `Bearer ${auth.access_token}`;
       }
 
       return config;
     },
-    (err: any) => Promise.reject(err)
+    async (err: any) => await Promise.reject(err)
   );
 }
 

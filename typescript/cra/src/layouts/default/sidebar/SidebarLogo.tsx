@@ -1,10 +1,10 @@
-import { useTheme } from '@mui/material/styles';
+import { useTheme, SxProps } from '@mui/material/styles';
 import { Box } from '@mui/material';
 import { useDefaultLayout } from '../DefaultLayoutProvider';
 
-type Props = {
-  sx?: Object;
-};
+interface Props {
+  sx?: SxProps;
+}
 
 const SidebarLogo = ({ sx }: Props) => {
   const { isSidebarExpand, isSidebarCollapse } = useDefaultLayout();

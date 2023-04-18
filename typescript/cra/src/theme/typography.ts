@@ -1,10 +1,10 @@
 const FONT_PRIMARY = 'Inter, Helvetica, "sans-serif"'; // Google Font
 
-export function remToPx(value: string) {
+export function remToPx(value: string): number {
   return Math.round(parseFloat(value) * 16);
 }
 
-export function pxToRem(value: number) {
+export function pxToRem(value: number): string {
   return `${value / 16}rem`;
 }
 

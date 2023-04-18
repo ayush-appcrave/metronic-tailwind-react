@@ -19,8 +19,7 @@ const LoadingScreen = () => {
         flexDirection: 'column',
         zIndex: zIndex.modal + 1,
         backgroundColor: theme.palette.background.default
-      }}
-    >
+      }}>
       <Box
         component="img"
         src="/media/logos/default.svg"
@@ -36,8 +35,7 @@ const LoadingScreen = () => {
           color: theme.palette.grey['500'],
           fontWeight: theme.typography.fontWeightMedium,
           fontSize: '13px'
-        }}
-      >
+        }}>
         Loading...
       </Box>
     </Box>

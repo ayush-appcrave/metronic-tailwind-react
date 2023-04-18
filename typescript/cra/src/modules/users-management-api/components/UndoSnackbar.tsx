@@ -3,13 +3,13 @@ import { restoreUser } from '../core/_requests';
 import { Close } from '@mui/icons-material';
 import { useSnackbar } from 'notistack';
 import { useQueryResponse } from '../core/QueryResponseProvider';
-import { useEffect, useState } from 'react';
+import { useEffect, useState, SyntheticEvent } from 'react';
 
-type Props = {
+interface Props {
   open: boolean;
   userId: string;
   onClose: () => void;
-};
+}
 
 const UndoSnackbar = (props: Props) => {
   const { enqueueSnackbar } = useSnackbar();
@@ -21,7 +21,7 @@ const UndoSnackbar = (props: Props) => {
 
   const [open, setOpen] = useState(false);
 
-  const handleClose = (event: React.SyntheticEvent | Event, reason?: string) => {
+  const handleClose = (event: SyntheticEvent | Event, reason?: string) => {
     if (reason === 'clickaway') {
       return;
     }
@@ -39,7 +39,12 @@ const UndoSnackbar = (props: Props) => {
 
   const action = (
     <>
-      <Button color="secondary" size="small" onClick={() => undoDelete()}>
+      <Button
+        color="secondary"
+        size="small"
+        onClick={() => {
+          undoDelete();
+        }}>
         UNDO
       </Button>
       <IconButton size="small" aria-label="close" color="inherit" onClick={handleClose}>

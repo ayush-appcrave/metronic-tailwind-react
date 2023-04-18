@@ -32,21 +32,23 @@ import KeyboardArrowUpIcon from '@mui/icons-material/KeyboardArrowUp';
 import { StaticDataTableCRUD } from './static-table/StaticDataTableCRUD';
 import { TableLoader } from './loading/TableLoader';
 
-type Props = {
+interface Props {
   children: (id: string) => React.ReactNode;
-};
+}
 
-type RowProps = {
+interface RowProps {
   row: User;
   children: (id: string) => React.ReactNode;
-};
+}
 
 const UserManagementSubCRUDTableRow = (props: RowProps) => {
   const [subCRUDVisibilityState, setSubCRUDVisibilityState] = useState(false);
 
-  const formatDate = (date: string) => {
-    const localDateTime = new Date(date);
-    return `${localDateTime.getUTCDate()}/${localDateTime.getUTCMonth()}/${localDateTime.getFullYear()} at ${localDateTime.getHours()}:${localDateTime.getMinutes()}`;
+  const formatDate = (date?: string) => {
+    if (date) {
+      const localDateTime = new Date(date);
+      return `${localDateTime.getUTCDate()}/${localDateTime.getUTCMonth()}/${localDateTime.getFullYear()} at ${localDateTime.getHours()}:${localDateTime.getMinutes()}`;
+    }
   };
 
   return (
@@ -56,8 +58,9 @@ const UserManagementSubCRUDTableRow = (props: RowProps) => {
           <IconButton
             aria-label="expand row"
             size="small"
-            onClick={() => setSubCRUDVisibilityState(!subCRUDVisibilityState)}
-          >
+            onClick={() => {
+              setSubCRUDVisibilityState(!subCRUDVisibilityState);
+            }}>
             {subCRUDVisibilityState ? <KeyboardArrowUpIcon /> : <KeyboardArrowDownIcon />}
           </IconButton>
         </TableCell>
@@ -65,8 +68,7 @@ const UserManagementSubCRUDTableRow = (props: RowProps) => {
           <Box
             sx={{
               display: 'flex'
-            }}
-          >
+            }}>
             <Avatar alt={props.row.first_name} src={toAbsoluteUrl('/media/avatars/300-1.jpg')} />
 
             <Box
@@ -75,8 +77,7 @@ const UserManagementSubCRUDTableRow = (props: RowProps) => {
                 marginTop: 'auto',
                 marginBottom: 'auto',
                 marginLeft: '5px'
-              }}
-            >
+              }}>
               {props.row.first_name}
             </Box>
           </Box>
@@ -85,7 +86,7 @@ const UserManagementSubCRUDTableRow = (props: RowProps) => {
         <TableCell align="left">{props.row.role}</TableCell>
         <TableCell align="left">{props.row.status}</TableCell>
         <TableCell align="left">{props.row.two_steps_auth ? 'enabled' : 'disabled'}</TableCell>
-        <TableCell align="left">{formatDate(props.row.created_at!)}</TableCell>
+        <TableCell align="left">{formatDate(props.row.created_at)}</TableCell>
         <TableCell align="left">{props.children(props.row.id)}</TableCell>
       </TableRow>
       <TableRow>
@@ -117,7 +118,7 @@ const UserManagementSubCRUDTableContainer = (props: Props) => {
   const { onSelectAll, selected } = useListView();
 
   useEffect(() => {
-    updateState({ sort: orderBy, order: order });
+    updateState({ sort: orderBy, order });
   }, [order, orderBy]);
 
   const handleRequestSort = (event: React.FormEvent<unknown>, property: keyof User | null) => {
@@ -145,37 +146,35 @@ const UserManagementSubCRUDTableContainer = (props: Props) => {
         <Table
           sx={{ minWidth: 750 }}
           aria-labelledby="tableTitle"
-          size={dense ? 'small' : 'medium'}
-        >
+          size={dense ? 'small' : 'medium'}>
           <EnhancedSubCRUDTableHead
             numSelected={selected.length}
             order={order}
             orderBy={orderBy}
             onSelectAllClick={onSelectAll}
             onRequestSort={handleRequestSort}
-            rowCount={pagination?.total}
+            rowCount={pagination.total ? pagination.total : 0}
           />
           <TableBody
             sx={{
               position: 'relative'
-            }}
-          >
+            }}>
             {isLoading ? (
-              <TableLoader pagination={pagination} rowHeight={70}></TableLoader>
+              <TableLoader
+                itemsPerPage={pagination.items_per_page ? pagination.items_per_page : 10}
+                rowHeight={70}></TableLoader>
             ) : (
               data.map((row, index) => {
                 const labelId = `enhanced-table-checkbox-${row.id}`;
 
                 return (
-                  <UserManagementSubCRUDTableRow
-                    key={labelId}
-                    row={row}
-                    children={props.children}
-                  ></UserManagementSubCRUDTableRow>
+                  <UserManagementSubCRUDTableRow key={labelId} row={row}>
+                    {props.children}
+                  </UserManagementSubCRUDTableRow>
                 );
               })
             )}
-            {pagination.total <= 0 && (
+            {pagination.total && (
               <TableRow>
                 <TableCell colSpan={headCells.length}>No data found</TableCell>
               </TableRow>
@@ -187,7 +186,7 @@ const UserManagementSubCRUDTableContainer = (props: Props) => {
         <TablePagination
           rowsPerPageOptions={[5, 10, 25]}
           component="div"
-          count={pagination?.total}
+          count={pagination.total ? pagination.total : 0}
           rowsPerPage={Number(pagination.items_per_page)}
           page={pagination.current_page ? pagination.current_page - 1 : 0}
           onPageChange={handleChangePage}

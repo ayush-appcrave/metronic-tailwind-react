@@ -4,16 +4,16 @@ import { MessageFormatElement } from 'react-intl';
 
 export type LanguageCodeType = 'en' | 'fr' | 'ar' | 'zh';
 
-export type LanguageType = {
+export interface LanguageType {
   label: string;
   code: LanguageCodeType;
   systemValue: Localization;
   direction: Direction;
   flag: string;
   messages: Record<string, string> | Record<string, MessageFormatElement[]>;
-};
+}
 
-export type TranslationProviderProps = {
+export interface TranslationProviderProps {
   currentLanguage: LanguageType;
   changeLanguage: (lang: LanguageType) => void;
-};
+}

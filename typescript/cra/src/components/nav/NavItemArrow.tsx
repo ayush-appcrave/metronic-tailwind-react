@@ -1,3 +1,4 @@
+/* eslint-disable no-dupe-else-if */
 import { useState, memo, useMemo } from 'react';
 import { Box } from '@mui/material';
 import { Link } from 'react-router-dom';
@@ -42,7 +43,7 @@ const NavItemArrowComponent = ({
   return (
     <Box
       sx={{
-        transform: transform,
+        transform,
         transition: 'transform 0.3s ease',
         height: 16,
         width: 16,
@@ -60,8 +61,7 @@ const NavItemArrowComponent = ({
         'i ': {
           fontSize: '13px'
         }
-      }}
-    >
+      }}>
       {icon}
     </Box>
   );

@@ -1,9 +1,9 @@
 import { FC, useState, createContext, useContext, ReactNode } from 'react';
 import { QueryState, QueryRequestContextProps, initialQueryRequest } from '../helpers';
 
-type WithChildren = {
+interface WithChildren {
   children?: ReactNode;
-};
+}
 
 const QueryRequestContext = createContext<QueryRequestContextProps>(initialQueryRequest);
 
@@ -11,7 +11,7 @@ const QueryRequestProvider: FC<WithChildren> = ({ children }) => {
   const [state, setState] = useState<QueryState>(initialQueryRequest.state);
 
   const updateState = (updates: Partial<QueryState>) => {
-    const updatedState = { ...state, ...updates } as QueryState;
+    const updatedState: QueryState = { ...state, ...updates };
     setState(updatedState);
   };
 

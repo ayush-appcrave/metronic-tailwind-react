@@ -1,4 +1,4 @@
-import * as React from 'react';
+import { useState, ReactNode } from 'react';
 import Box from '@mui/material/Box';
 import Stepper from '@mui/material/Stepper';
 import Step from '@mui/material/Step';
@@ -15,7 +15,6 @@ import {
   Switch,
   TextField
 } from '@mui/material';
-import { FormEvent, useState } from 'react';
 import { User } from '../../core/_models';
 import { createUser } from '../../core/_requests';
 import { Close } from '@mui/icons-material';
@@ -35,10 +34,10 @@ interface CreateUserFormProps {
 export default function CreateUserStepperForm(props: CreateUserFormProps) {
   const { refetch } = useQueryResponse();
   const { enqueueSnackbar } = useSnackbar();
-  const [activeStep, setActiveStep] = React.useState(0);
+  const [activeStep, setActiveStep] = useState(0);
   const [currentSchema, setCurrentSchema] = useState(createAccountSchemas[activeStep]);
   const [initValues] = useState<User>(inits);
-  const [skipped, setSkipped] = React.useState(new Set<number>());
+  const [skipped, setSkipped] = useState(new Set<number>());
 
   const isStepSkipped = (step: number) => {
     return skipped.has(step);
@@ -87,8 +86,7 @@ export default function CreateUserStepperForm(props: CreateUserFormProps) {
             position: 'absolute',
             right: 5,
             top: 5
-          }}
-        >
+          }}>
           <Close onClick={props.handleClose}></Close>
         </Button>
         <Stepper
@@ -96,12 +94,11 @@ export default function CreateUserStepperForm(props: CreateUserFormProps) {
             margin: '10px',
             marginButtom: '20px'
           }}
-          activeStep={activeStep}
-        >
+          activeStep={activeStep}>
           {steps.map((label, index) => {
             const stepProps: { completed?: boolean } = {};
             const labelProps: {
-              optional?: React.ReactNode;
+              optional?: ReactNode;
             } = {};
             return (
               <Step key={label} {...stepProps}>
@@ -110,33 +107,35 @@ export default function CreateUserStepperForm(props: CreateUserFormProps) {
             );
           })}
         </Stepper>
-        <React.Fragment>
+        <>
           <Box
             sx={{
               margin: '20px'
-            }}
-          >
+            }}>
             <Formik
               validationSchema={currentSchema}
               initialValues={initValues}
-              onSubmit={handleNext}
-            >
-              {(props) => (
-                <Form onSubmit={props.handleSubmit}>
-                  {renderSteps(activeStep, props)}
+              onSubmit={handleNext}>
+              {(formikProps) => (
+                <Form onSubmit={formikProps.handleSubmit}>
+                  {renderSteps(activeStep, formikProps)}
                   <Box sx={{ display: 'flex', flexDirection: 'row', pt: 2 }}>
                     <Button
                       color="inherit"
                       disabled={activeStep === steps.length || activeStep === 0}
                       onClick={handleBack}
-                      sx={{ mr: 1 }}
-                    >
+                      sx={{ mr: 1 }}>
                       Back
                     </Button>
                     <Box sx={{ flex: '1 1 auto' }} />
 
                     {activeStep === steps.length - 1 && (
-                      <Button onClick={(e) => submit(props.values)}>Submit</Button>
+                      <Button
+                        onClick={(e) => {
+                          submit(formikProps.values);
+                        }}>
+                        Submit
+                      </Button>
                     )}
 
                     {activeStep !== steps.length - 1 && <Button type="submit">Continue</Button>}
@@ -145,7 +144,7 @@ export default function CreateUserStepperForm(props: CreateUserFormProps) {
               )}
             </Formik>
           </Box>
-        </React.Fragment>
+        </>
       </>
     </Box>
   );
@@ -204,8 +203,7 @@ function renderSteps(step: number, props: FormikProps<User>) {
           </FormGroup>
           <FormControl
             error={!!props.errors.role && props.touched.role}
-            sx={{ marginY: '5px', width: '100%' }}
-          >
+            sx={{ marginY: '5px', width: '100%' }}>
             <InputLabel id="kt-role-select-label">Age</InputLabel>
             <Select
               labelId="kt-role-select-label"
@@ -214,8 +212,7 @@ function renderSteps(step: number, props: FormikProps<User>) {
               label="user"
               onChange={props.handleChange}
               onBlur={props.handleBlur}
-              value={props.values.role}
-            >
+              value={props.values.role}>
               <MenuItem value="user">User</MenuItem>
               <MenuItem value="admin">Admin</MenuItem>
             </Select>

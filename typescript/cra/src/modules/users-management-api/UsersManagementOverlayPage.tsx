@@ -37,14 +37,19 @@ function UsersManagementOverlayPage() {
 
   const { clearSelected, selected } = useListView();
 
-  const deleteSelectedItems = useMutation(() => deleteSelectedUsers(selected as string[]), {
-    // 💡 response of the mutation is passed to onSuccess
-    onSuccess: () => {
-      // ✅ update detail view directly
-      queryClient.invalidateQueries([`${QUERIES.USERS_LIST}-${query}`]);
-      clearSelected();
+  const deleteSelectedItems = useMutation(
+    async () => {
+      await deleteSelectedUsers(selected as string[]);
+    },
+    {
+      // 💡 response of the mutation is passed to onSuccess
+      onSuccess: () => {
+        // ✅ update detail view directly
+        queryClient.invalidateQueries([`${QUERIES.USERS_LIST}-${query}`]);
+        clearSelected();
+      }
     }
-  });
+  );
 
   // -------------------
 
@@ -80,8 +85,9 @@ function UsersManagementOverlayPage() {
             top: 2,
             right: 2
           }}
-          onClick={(e) => handleClickOpe2(undefined)}
-        >
+          onClick={(e) => {
+            handleClickOpe2(undefined);
+          }}>
           Add new user (Stepper)
         </Button>
         <Button
@@ -90,8 +96,9 @@ function UsersManagementOverlayPage() {
             top: 2,
             right: 200
           }}
-          onClick={(e) => setNewUserOverlayModalOpenState(true)}
-        >
+          onClick={(e) => {
+            setNewUserOverlayModalOpenState(true);
+          }}>
           Add new user (Plain form)
         </Button>
         <EnhancedTableToolbar
@@ -100,7 +107,9 @@ function UsersManagementOverlayPage() {
           roleFilter={roleFilter}
           handleNameFilterChange={handleNameFilterChange}
           nameFilter={nameFilter}
-          handleSelectedUsersDelete={async () => await deleteSelectedItems.mutateAsync()}
+          handleSelectedUsersDelete={() => {
+            deleteSelectedItems.mutateAsync();
+          }}
         />
         <UserManagementTableContainer>
           {(id) => (
@@ -109,24 +118,21 @@ function UsersManagementOverlayPage() {
                 onClick={(e) => {
                   setUpdateUserIdState(id);
                   setUpdateUserModalOpenState(true);
-                }}
-              >
+                }}>
                 Update
               </Button>
               <Button
                 onClick={(e) => {
                   setDeleteUserIdState(id);
                   setOpenDeleteDialogState(true);
-                }}
-              >
+                }}>
                 Delete
               </Button>
               <Button
                 onClick={(e) => {
                   setViewUserIdState(id);
                   setViewUserModalOpenState(true);
-                }}
-              >
+                }}>
                 View
               </Button>
             </>
@@ -135,17 +141,18 @@ function UsersManagementOverlayPage() {
       </Paper>
       <CreateUserStepperFormDialog
         open={open2}
-        handleClose={handleClose2}
-      ></CreateUserStepperFormDialog>
+        handleClose={handleClose2}></CreateUserStepperFormDialog>
       <CreateUserPlainFormDialog
         open={newUserOverlayModalOpenState}
-        handleClose={() => setNewUserOverlayModalOpenState(false)}
-      ></CreateUserPlainFormDialog>
+        handleClose={() => {
+          setNewUserOverlayModalOpenState(false);
+        }}></CreateUserPlainFormDialog>
       <UpdateUserDialog
         open={updateUserModalOpenState}
         userId={updateUserIdState}
-        handleClose={() => setUpdateUserModalOpenState(false)}
-      ></UpdateUserDialog>
+        handleClose={() => {
+          setUpdateUserModalOpenState(false);
+        }}></UpdateUserDialog>
       <AlertDialog
         open={openDeleteDialogState}
         handleAgreeClose={() => {
@@ -156,20 +163,19 @@ function UsersManagementOverlayPage() {
         handleClose={() => {
           setOpenDeleteDialogState(false);
         }}
-        userId={deleteUserIdState}
-      ></AlertDialog>
+        userId={deleteUserIdState}></AlertDialog>
       <UndoSnackbar
         userId={deleteId}
         open={openUndoSnackbar}
-        onClose={() => setOpenUndoSnackbar(false)}
-      ></UndoSnackbar>
+        onClose={() => {
+          setOpenUndoSnackbar(false);
+        }}></UndoSnackbar>
       <ViewUserDialog
         open={viewUserModalOpenState}
         handleClose={() => {
           setViewUserModalOpenState(false);
         }}
-        userId={viewUserIdState}
-      ></ViewUserDialog>
+        userId={viewUserIdState}></ViewUserDialog>
     </Box>
   );
 }

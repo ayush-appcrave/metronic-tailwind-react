@@ -1,10 +1,9 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, MouseEvent } from 'react';
 import { Box, IconButton, useTheme } from '@mui/material';
 import { KeenIcon } from '../../../components';
 import { useResponsive } from '../../../hooks/useResponsive';
-import { useDefaultLayout } from '..';
+import { useDefaultLayout, DefaultLayoutStylesConfig } from '..';
 import { useSettings } from '../../../providers/SettingsProvider';
-import { DefaultLayoutStylesConfig } from '..';
 
 const HeaderMobileLogo = () => {
   const { setMobileSidebarOpen } = useDefaultLayout();
@@ -12,7 +11,7 @@ const HeaderMobileLogo = () => {
   const isDesktop = useResponsive('up', 'lg');
   const isMobile = useResponsive('down', 'lg');
 
-  const handleSidebarOpenOnMobile = (event: React.MouseEvent<HTMLElement>) => {
+  const handleSidebarOpenOnMobile = (event: MouseEvent<HTMLElement>) => {
     setMobileSidebarOpen(true);
   };
 
@@ -21,15 +20,13 @@ const HeaderMobileLogo = () => {
       sx={{
         display: 'flex',
         alignItems: 'center'
-      }}
-    >
+      }}>
       <IconButton
         onClick={handleSidebarOpenOnMobile}
         sx={{
           mr: 0.25,
           ml: -1
-        }}
-      >
+        }}>
         <KeenIcon
           icon="burger-menu-6"
           sx={{

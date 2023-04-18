@@ -26,7 +26,7 @@ const ThemeProvider = ({ children }: PropsWithChildren) => {
       palette: getPalette(getMode()),
       shadows: getSystemShadows(getMode()),
       customShadows: getCustomShadows(getMode()),
-      direction: direction
+      direction
     }),
     [direction, getMode()]
   );

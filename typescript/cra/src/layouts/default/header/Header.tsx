@@ -2,9 +2,8 @@ import { useState, useEffect } from 'react';
 import { Box, Stack, Drawer, alpha, useTheme } from '@mui/material';
 import { PageContainer } from '@components/page-container';
 import useResponsive from '../../../hooks/useResponsive';
-import { useDefaultLayout } from '../';
+import { useDefaultLayout, DefaultLayoutStylesConfig } from '../';
 import { useSettings } from '../../../providers/SettingsProvider';
-import { DefaultLayoutStylesConfig } from '../';
 import { HeaderMobileLogo } from './HeaderMobileLogo';
 import { HeaderSearch } from './HeaderSearch';
 import { HeaderNotificationsMenu } from './HeaderNotificationsMenu';
@@ -63,15 +62,13 @@ const Header = () => {
           backgroundColor: alpha(theme.palette.background.default, 0.8),
           backdropFilter: styles.HEADER_STICKY_BACKDROP_FILTER
         })
-      }}
-    >
-      <PageContainer 
+      }}>
+      <PageContainer
         sx={{
           display: 'flex',
           justifyContent: 'space-between',
           alignItems: 'stretch'
-        }}
-      >
+        }}>
         {isMobile && <HeaderMobileLogo />}
 
         <Box
@@ -86,8 +83,7 @@ const Header = () => {
               justifyContent: 'flex-end',
               gap: '8px'
             }
-          }}
-        >
+          }}>
           <HeaderSearch />
 
           <Box
@@ -100,8 +96,7 @@ const Header = () => {
               [theme.breakpoints.down('lg')]: {
                 gap: '10px'
               }
-            }}
-          >
+            }}>
             <HeaderNotificationsMenu />
             <HeaderMessagesMenu />
             <HeaderLanguageMenu />

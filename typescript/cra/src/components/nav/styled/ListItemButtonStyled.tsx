@@ -4,7 +4,7 @@ import { NavItemChildType } from '..';
 
 export const ListItemButtonStyled = styled(ListItemButton, {
   shouldForwardProp: (prop) =>
-    [
+    ![
       'depth',
       'styles',
       'active',
@@ -14,7 +14,7 @@ export const ListItemButtonStyled = styled(ListItemButton, {
       'collapse',
       'expand',
       'disabled'
-    ].includes(prop as string) === false
+    ].includes(prop as string)
 })<NavItemChildType>(({ depth, active, here, hover, open, disabled, styles, theme }) => {
   const activeStyle = {
     backgroundColor: theme.palette.primary.light,
@@ -31,7 +31,7 @@ export const ListItemButtonStyled = styled(ListItemButton, {
     }),
     ...(hover &&
       {
-        //x...activeStyle
+        // x...activeStyle
       })
   };
 });

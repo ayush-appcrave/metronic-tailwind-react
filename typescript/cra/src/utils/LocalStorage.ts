@@ -3,7 +3,7 @@ const getData = (key: string): unknown | undefined => {
     const data = localStorage.getItem(key);
 
     if (data) {
-      //console.log("get data:" + data);
+      // console.log("get data:" + data);
       return JSON.parse(data);
     }
   } catch (error) {
@@ -11,7 +11,7 @@ const getData = (key: string): unknown | undefined => {
   }
 };
 
-const setData = (key: string, value: unknown) => {
+const setData = (key: string, value: unknown): void => {
   try {
     localStorage.setItem(key, JSON.stringify(value));
   } catch (error) {

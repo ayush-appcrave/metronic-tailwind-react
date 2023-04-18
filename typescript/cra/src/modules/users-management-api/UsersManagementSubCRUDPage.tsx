@@ -1,4 +1,4 @@
-import React, { ChangeEvent, useEffect, useState } from 'react';
+import { ChangeEvent, useEffect, useState } from 'react';
 
 import { Button, SelectChangeEvent, Box, Paper } from '@mui/material';
 import { UserManagementSubCRUDTableContainer } from './components/UserManagementSubCRUDTableContainer';
@@ -29,14 +29,19 @@ function UsersManagementSubCRUDPage() {
 
   const { clearSelected, selected } = useListView();
 
-  const deleteSelectedItems = useMutation(() => deleteSelectedUsers(selected as string[]), {
-    // 💡 response of the mutation is passed to onSuccess
-    onSuccess: () => {
-      // ✅ update detail view directly
-      queryClient.invalidateQueries([`${QUERIES.USERS_LIST}-${query}`]);
-      clearSelected();
+  const deleteSelectedItems = useMutation(
+    async () => {
+      await deleteSelectedUsers(selected as string[]);
+    },
+    {
+      // 💡 response of the mutation is passed to onSuccess
+      onSuccess: () => {
+        // ✅ update detail view directly
+        queryClient.invalidateQueries([`${QUERIES.USERS_LIST}-${query}`]);
+        clearSelected();
+      }
     }
-  });
+  );
 
   // -------------------
 
@@ -79,8 +84,9 @@ function UsersManagementSubCRUDPage() {
             top: 2,
             right: 2
           }}
-          onClick={(e) => handleClickOpe2(undefined)}
-        >
+          onClick={(e) => {
+            handleClickOpe2(undefined);
+          }}>
           Add new user (Modal)
         </Button>
         <Button
@@ -89,8 +95,9 @@ function UsersManagementSubCRUDPage() {
             top: 2,
             right: 200
           }}
-          onClick={(e) => handleClickOpe4()}
-        >
+          onClick={(e) => {
+            handleClickOpe4();
+          }}>
           Add new user (Drawer)
         </Button>
         <EnhancedTableToolbar
@@ -99,7 +106,9 @@ function UsersManagementSubCRUDPage() {
           roleFilter={roleFilter}
           handleNameFilterChange={handleNameFilterChange}
           nameFilter={nameFilter}
-          handleSelectedUsersDelete={async () => await deleteSelectedItems.mutateAsync()}
+          handleSelectedUsersDelete={() => {
+            deleteSelectedItems.mutateAsync();
+          }}
         />
         <UserManagementSubCRUDTableContainer>
           {(id) => (
@@ -115,14 +124,14 @@ function UsersManagementSubCRUDPage() {
       </Paper>
       <CreateUserStepperFormDialog
         open={open2}
-        handleClose={handleClose2}
-      ></CreateUserStepperFormDialog>
+        handleClose={handleClose2}></CreateUserStepperFormDialog>
       <CreateUserDrawer open={open4} handleClose={handleClose4}></CreateUserDrawer>
       <UndoSnackbar
         userId={deleteId}
         open={openUndoSnackbar}
-        onClose={() => setOpenUndoSnackbar(false)}
-      ></UndoSnackbar>
+        onClose={() => {
+          setOpenUndoSnackbar(false);
+        }}></UndoSnackbar>
     </Box>
   );
 }
