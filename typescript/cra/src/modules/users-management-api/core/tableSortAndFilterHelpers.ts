@@ -1,5 +1,6 @@
-import { Order } from '../@types/sort';
-import { User } from '../core/_models';
+/* eslint-disable no-unused-vars */
+import { type Order } from '../@types/sort';
+import { type User } from '../core/_models';
 
 function descendingComparator<T>(a: T, b: T, orderBy: keyof T) {
   if (b[orderBy] < a[orderBy]) {

@@ -1,4 +1,4 @@
-import { MouseEvent } from 'react';
+import { type MouseEvent } from 'react';
 import { KeenIcon } from '../../../components';
 import { useDefaultLayout } from '../DefaultLayoutProvider';
 import { Box, ToggleButton } from '@mui/material';

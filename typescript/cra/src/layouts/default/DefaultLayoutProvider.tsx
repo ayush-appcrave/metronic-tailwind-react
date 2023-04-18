@@ -1,6 +1,6 @@
-import { PropsWithChildren, createContext, useState, useContext } from 'react';
-import { ILayoutProvider, ILayoutConfig } from '../';
-import { LayoutsType, useLayouts } from '../../providers/LayoutsProvider';
+import { type PropsWithChildren, createContext, useState, useContext } from 'react';
+import { type ILayoutProvider, type ILayoutConfig } from '../';
+import { type LayoutsType, useLayouts } from '../../providers/LayoutsProvider';
 import { useScrollPosition } from '../../hooks/useScrollPosition';
 import { defaultLayoutConfig } from './DefaultLayoutConfig';
 import { DefaultLayoutStylesConfig } from './';
@@ -74,8 +74,6 @@ const DefaultLayoutProvider = ({ children }: PropsWithChildren) => {
   const sidebarWidth: number = isSidebarCollapse
     ? styles.SIDEBAR_COLLAPSE_WIDTH
     : styles.SIDEBAR_WIDTH;
-
-  const sidebarHover: boolean = false;
 
   return (
     <DefaultLayoutContext.Provider

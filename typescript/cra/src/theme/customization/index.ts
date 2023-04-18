@@ -1,4 +1,4 @@
-import { Theme } from '@mui/material/styles';
+import { type Theme } from '@mui/material/styles';
 import { Menu } from './Menu';
 import { Popover } from './Popover';
 

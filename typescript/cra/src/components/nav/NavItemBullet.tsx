@@ -1,6 +1,6 @@
-import { useState, memo, useMemo } from 'react';
+import { memo } from 'react';
 import { Box } from '@mui/material';
-import { NavItemBulletType } from './types';
+import { type NavItemBulletType } from './types';
 
 const NavItemBulletComponent = ({
   variant = 'dot',

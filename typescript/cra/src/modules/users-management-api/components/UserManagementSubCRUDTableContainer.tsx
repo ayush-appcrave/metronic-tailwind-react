@@ -14,13 +14,12 @@ import {
   Typography
 } from '@mui/material';
 import { EnhancedSubCRUDTableHead } from './EnhancedSubCRUDTableHead';
-import CircularProgress from '@mui/material/CircularProgress';
 import { toAbsoluteUrl } from 'utils';
 import { headCells } from '../core/headCellConfiguration';
-import React, { ChangeEvent, useEffect, useMemo, useState } from 'react';
-import { User } from '../core/_models';
+import React, { type ChangeEvent, useEffect, useMemo, useState } from 'react';
+import { type User } from '../core/_models';
 import { useListView } from '../core/ListViewProvider';
-import { Order } from '../@types/sort';
+import { type Order } from '../@types/sort';
 import {
   useQueryResponseData,
   useQueryResponseLoading,

@@ -1,6 +1,6 @@
 import { UpdateUserGeneralInfoAccordion } from './UpdateUserGeneralInfoAccordion';
 import { UpdateUserPasswordAccordion } from './UpdateUserPasswordAccordion';
-import { SxProps, Theme } from '@mui/material/styles';
+import { type SxProps, type Theme } from '@mui/material/styles';
 import { Box } from '@mui/material';
 
 interface UpdateUserFormWrapperProps {

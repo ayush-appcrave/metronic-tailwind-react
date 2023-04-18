@@ -1,7 +1,5 @@
 /* eslint-disable @typescript-eslint/no-invalid-void-type */
-import { number } from 'yup';
-import { ListItemButtonProps } from '@mui/material';
-import { ColorSchema } from '../../theme/palette';
+import { type ColorSchema } from '../../theme/palette';
 
 export interface NavType {
   variant?: 'inline' | 'popper';

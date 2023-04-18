@@ -1,6 +1,6 @@
-import { memo, useMemo } from 'react';
+import { memo } from 'react';
 import { Collapse, List } from '@mui/material';
-import { NavItem, NavType, NavItemOptionsType } from '..';
+import { NavItem, type NavType, type NavItemOptionsType } from '..';
 
 const NavItemSubComponent = ({
   variant = 'popper',

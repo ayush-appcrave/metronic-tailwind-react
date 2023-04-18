@@ -1,6 +1,5 @@
 import { Breadcrumbs, Link, Box, useTheme } from '@mui/material';
-import { NavBreadcrumbsType } from '@components/nav';
-import { KeenIcon } from '@components/keenicons';
+import { type NavBreadcrumbsType } from '@components/nav';
 
 interface PropsType {
   breadcrumbs: NavBreadcrumbsType;

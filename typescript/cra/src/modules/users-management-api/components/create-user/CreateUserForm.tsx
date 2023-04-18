@@ -16,7 +16,7 @@ import {
 import * as Yup from 'yup';
 import { Close } from '@mui/icons-material';
 import { useQueryResponse } from '../../core/QueryResponseProvider';
-import { User } from '../../core/_models';
+import { type User } from '../../core/_models';
 import { createUser } from '../../core/_requests';
 import { useFormik } from 'formik';
 import { useSnackbar } from 'notistack';

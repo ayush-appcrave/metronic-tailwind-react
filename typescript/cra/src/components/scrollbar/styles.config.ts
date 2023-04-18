@@ -1,4 +1,4 @@
-import { Theme, useTheme, alpha } from '@mui/material';
+import { useTheme, alpha } from '@mui/material';
 
 const ScrollbarStylesConfig = (): any => {
   const theme = useTheme();

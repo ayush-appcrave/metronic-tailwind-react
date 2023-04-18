@@ -1,6 +1,6 @@
-import { Direction } from '@mui/material';
-import { Localization } from '@mui/material/locale';
-import { MessageFormatElement } from 'react-intl';
+import { type Direction } from '@mui/material';
+import { type Localization } from '@mui/material/locale';
+import { type MessageFormatElement } from 'react-intl';
 
 export type LanguageCodeType = 'en' | 'fr' | 'ar' | 'zh';
 

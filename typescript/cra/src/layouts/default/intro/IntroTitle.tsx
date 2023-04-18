@@ -1,4 +1,4 @@
-import { PropsWithChildren, ReactNode } from 'react';
+import { type ReactNode } from 'react';
 import { Typography, useTheme } from '@mui/material';
 
 interface PropsType {

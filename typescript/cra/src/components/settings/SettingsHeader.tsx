@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from 'react';
+import React, { useEffect, useRef } from 'react';
 import { Stack, IconButton, Box } from '@mui/material';
 import { KeenIcon } from '../';
 

@@ -1,6 +1,6 @@
 import { useEffect } from 'react';
 import { Helmet } from 'react-helmet';
-import { useDefaultLayout, Content, Toolbar, Intro } from '../layouts/default';
+import { Content, Toolbar, Intro } from '../layouts/default';
 import { useLoading } from '../providers/LoadingProvider';
 import { useNavBreadcrumbs } from '@components/nav';
 import { PageContainer } from '@components/page-container';

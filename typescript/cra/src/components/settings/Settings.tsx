@@ -1,7 +1,5 @@
 import { useState, useEffect } from 'react';
-import PropTypes from 'prop-types';
-import { useTheme } from '@mui/material/styles';
-import { Box, Stack, Drawer } from '@mui/material';
+import { Drawer } from '@mui/material';
 import { SettingsHeader } from './SettingsHeader';
 import { SettingsBody } from './SettingsBody';
 import { SettingsFooter } from './SettingsFooter';

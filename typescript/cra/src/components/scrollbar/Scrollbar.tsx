@@ -1,6 +1,6 @@
 import { memo } from 'react';
 import { Box } from '@mui/material';
-import { ScrollbarStyled, ScrollbarStylesConfig, ScrollbarProps } from './';
+import { ScrollbarStyled, ScrollbarStylesConfig, type ScrollbarProps } from './';
 import { isMobileDevice } from '../../utils';
 
 const Scrollbar = ({ children, sx, styles, ...other }: ScrollbarProps) => {

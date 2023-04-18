@@ -1,6 +1,6 @@
-import { alpha, styled } from '@mui/material/styles';
+import { styled } from '@mui/material/styles';
 import { Badge } from '@mui/material';
-import { NavItemChildType } from '..';
+import { type NavItemChildType } from '..';
 
 const BadgeStyled = styled(Badge, {
   shouldForwardProp: (prop) =>

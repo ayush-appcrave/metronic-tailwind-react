@@ -1,16 +1,13 @@
-import { Box, List, ListSubheader } from '@mui/material';
-import { useViewport } from '../../hooks';
-import Scrollbar from '../scrollbar';
 import Radio from '@mui/material/Radio';
 import RadioGroup from '@mui/material/RadioGroup';
 import FormControlLabel from '@mui/material/FormControlLabel';
 import FormControl from '@mui/material/FormControl';
 import FormLabel from '@mui/material/FormLabel';
 import { useSettings } from '../../providers/SettingsProvider';
-import { SettingsModeOptionType } from '../../config';
+import { type SettingsModeOptionType } from '../../config';
 
 const SettingsFormMode = () => {
-  const { settings, updateSettings, getMode } = useSettings();
+  const { settings, updateSettings } = useSettings();
   const { mode } = settings;
 
   const handleModeChange = (mode: SettingsModeOptionType) => {

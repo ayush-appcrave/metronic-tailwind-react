@@ -1,5 +1,4 @@
-import { PaginationState } from '../helpers';
-import { UpdateUserPasswordAccordion } from '../components/edit-user/UpdateUserPasswordAccordion';
+import { type PaginationState } from '../helpers';
 
 export interface UserGeneralInfo {
   id: string;

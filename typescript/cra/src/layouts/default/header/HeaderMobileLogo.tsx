@@ -1,15 +1,10 @@
-import { useState, useEffect, MouseEvent } from 'react';
-import { Box, IconButton, useTheme } from '@mui/material';
+import { type MouseEvent } from 'react';
+import { Box, IconButton } from '@mui/material';
 import { KeenIcon } from '../../../components';
-import { useResponsive } from '../../../hooks/useResponsive';
-import { useDefaultLayout, DefaultLayoutStylesConfig } from '..';
-import { useSettings } from '../../../providers/SettingsProvider';
+import { useDefaultLayout } from '../DefaultLayoutProvider';
 
 const HeaderMobileLogo = () => {
   const { setMobileSidebarOpen } = useDefaultLayout();
-  const theme = useTheme();
-  const isDesktop = useResponsive('up', 'lg');
-  const isMobile = useResponsive('down', 'lg');
 
   const handleSidebarOpenOnMobile = (event: MouseEvent<HTMLElement>) => {
     setMobileSidebarOpen(true);

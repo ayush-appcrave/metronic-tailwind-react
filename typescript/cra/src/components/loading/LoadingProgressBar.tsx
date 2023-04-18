@@ -1,9 +1,7 @@
-import { Box, LinearProgress, useTheme } from '@mui/material';
+import { Box, LinearProgress } from '@mui/material';
 import zIndex from '@mui/material/styles/zIndex';
 
 const LoadingProgressBar = () => {
-  const theme = useTheme();
-
   return (
     <Box
       sx={{

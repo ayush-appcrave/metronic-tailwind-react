@@ -1,14 +1,11 @@
-import { PropsWithChildren, useEffect, useState, useMemo } from 'react';
+import { type PropsWithChildren, useMemo } from 'react';
 import { CssBaseline } from '@mui/material';
 import {
   StyledEngineProvider,
-  PaletteOptions,
-  Theme,
   createTheme,
-  ThemeOptions,
+  type ThemeOptions,
   ThemeProvider as CustomThemeProvider
 } from '@mui/material/styles';
-import { useLang } from '../i18n';
 import { useSettings } from './SettingsProvider';
 import { componentsCustomization } from '../theme/customization';
 import { getPalette, typography, breakpoints, GlobalStyles } from '../theme';
@@ -17,7 +14,6 @@ import { getSystemShadows, getCustomShadows } from '../theme/shadows';
 const ThemeProvider = ({ children }: PropsWithChildren) => {
   const { settings, getMode } = useSettings();
   const { direction } = settings;
-  const { currentLanguage } = useLang();
 
   const themeOptions: ThemeOptions = useMemo(
     () => ({

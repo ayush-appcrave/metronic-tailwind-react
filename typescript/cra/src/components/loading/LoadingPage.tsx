@@ -1,9 +1,6 @@
-import { Box, CircularProgress, useTheme } from '@mui/material';
-import zIndex from '@mui/material/styles/zIndex';
+import { Box, CircularProgress } from '@mui/material';
 
 const LoadingPage = () => {
-  const theme = useTheme();
-
   return (
     <Box
       sx={{

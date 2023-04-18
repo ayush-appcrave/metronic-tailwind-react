@@ -1,8 +1,8 @@
-import { createContext, PropsWithChildren, useContext, useEffect, useState } from 'react';
+import { createContext, type PropsWithChildren, useContext, useEffect, useState } from 'react';
 import { IntlProvider } from 'react-intl';
 import { getData, setData } from '../utils';
 import { I18N_DEFAULT_LANGUAGE, I18N_CONFIG_KEY } from '../i18n/config';
-import { LanguageType, TranslationProviderProps } from '../i18n/types';
+import { type LanguageType, type TranslationProviderProps } from '../i18n/types';
 import { useSettings } from './SettingsProvider';
 import '@formatjs/intl-relativetimeformat/polyfill';
 import '@formatjs/intl-relativetimeformat/locale-data/en';

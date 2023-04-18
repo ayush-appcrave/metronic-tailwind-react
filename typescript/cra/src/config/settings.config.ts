@@ -1,4 +1,4 @@
-import { SettingsType } from './types';
+import { type SettingsType } from './types';
 
 const defaultSettings: SettingsType = {
   mode: 'system',

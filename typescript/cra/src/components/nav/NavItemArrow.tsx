@@ -1,8 +1,6 @@
-/* eslint-disable no-dupe-else-if */
-import { useState, memo, useMemo } from 'react';
+import { memo } from 'react';
 import { Box } from '@mui/material';
-import { Link } from 'react-router-dom';
-import { NavItemArrowType } from './types';
+import { type NavItemArrowType } from './types';
 
 const NavItemArrowComponent = ({
   variant = 'inline',
@@ -16,23 +14,12 @@ const NavItemArrowComponent = ({
   expand = false,
   icon = null
 }: NavItemArrowType) => {
-  const [toggle, setToggle] = useState(active);
-
   let rotateInitial: string = '';
   let rotateToggle: string = '';
 
   if (variant === 'inline' && direction === 'vertical') {
     rotateInitial = 'rotate(0)';
     rotateToggle = 'rotate(-180deg)';
-  } else if (variant === 'inline' && direction === 'horizontal') {
-    rotateInitial = 'rotate(0)';
-    rotateToggle = 'rotate(180deg)';
-  } else if (variant === 'inline' && direction === 'vertical') {
-    rotateInitial = 'rotate(0)';
-    rotateToggle = 'rotate(180deg)';
-  } else if (variant === 'inline' && direction === 'horizontal') {
-    rotateInitial = 'rotate(0)';
-    rotateToggle = 'rotate(180deg)';
   } else if (variant === 'inline' && direction === 'horizontal') {
     rotateInitial = 'rotate(0)';
     rotateToggle = 'rotate(180deg)';

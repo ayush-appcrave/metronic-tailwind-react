@@ -1,16 +1,13 @@
-import { useState, useEffect, MouseEvent } from 'react';
+import { useState, type MouseEvent } from 'react';
 import {
   Box,
   Link,
   Stack,
   Avatar,
-  Menu,
   MenuItem,
   ListItemIcon,
   Divider,
   IconButton,
-  Typography,
-  Tooltip,
   useTheme
 } from '@mui/material';
 import { KeenIcon, MenuDropdown } from '../../../components';

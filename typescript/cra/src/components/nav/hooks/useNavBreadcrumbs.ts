@@ -1,7 +1,4 @@
-import { useEffect, useState } from 'react';
-import { NavBreadcrumbsType, NavConfigType } from '../types';
-import { useLocation } from 'react-router';
-import { useMatchPath } from '../../../hooks/useMatchPath';
+import { type NavBreadcrumbsType, type NavConfigType } from '../types';
 
 const useNavBreadcrumbs = (items: NavConfigType, path?: string): NavBreadcrumbsType => {
   return [];

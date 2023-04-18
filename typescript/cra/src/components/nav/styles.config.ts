@@ -1,4 +1,4 @@
-import { Theme, useTheme } from '@mui/material';
+import { useTheme } from '@mui/material';
 
 const NavVerticalStylesConfig = (): any => {
   const theme = useTheme();

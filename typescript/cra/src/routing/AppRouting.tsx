@@ -1,6 +1,5 @@
-import { useEffect, useState, PropsWithChildren } from 'react';
+import { useEffect, useState, ReactElement } from 'react';
 import { Navigate, Route, Routes, useLocation } from 'react-router';
-import { BrowserRouter } from 'react-router-dom';
 import { useLoading } from '../providers/LoadingProvider';
 import { AuthPage, Logout, useAuth } from '../auth';
 import { DashboardPage, EcommercePage, MarketingPage } from '../pages';
@@ -16,9 +15,9 @@ import { UpdateUserPage } from '../modules/users-management-api/components/edit-
 import { ViewUserPage } from '../modules/users-management-api/components/view/ViewUserPage';
 import { DefaultLayout } from '../layouts/default';
 
-const AppRouting = () => {
+const AppRouting = (): ReactElement => {
   const { currentUser } = useAuth();
-  const { progressBarLoading, setProgressBarLoading } = useLoading();
+  const { setProgressBarLoading } = useLoading();
   const [previousLocation, setPreviousLocation] = useState('');
   const location = useLocation();
 

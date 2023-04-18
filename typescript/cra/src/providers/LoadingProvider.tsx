@@ -1,5 +1,4 @@
-import { useState, createContext, useContext, PropsWithChildren } from 'react';
-import { PaletteMode } from '@mui/material';
+import { useState, createContext, useContext, type PropsWithChildren } from 'react';
 import { LoadingScreen, LoadingProgressBar } from '../components/loading';
 
 export interface LoadingProviderType {

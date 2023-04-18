@@ -1,6 +1,6 @@
-import { PropsWithChildren, createContext, useState, useContext } from 'react';
+import { type PropsWithChildren, createContext, useState, useContext } from 'react';
 import { getData, setData } from '../utils';
-import { ILayoutConfig } from '../layouts/models';
+import { type ILayoutConfig } from '../layouts/models';
 
 const LAYOUTS_CONFIGS_KEY = 'layouts-configs';
 

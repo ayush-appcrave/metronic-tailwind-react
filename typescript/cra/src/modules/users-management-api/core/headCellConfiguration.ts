@@ -1,4 +1,4 @@
-import { User } from './_models';
+import { type User } from './_models';
 
 interface HeadCell {
   disablePadding?: boolean;

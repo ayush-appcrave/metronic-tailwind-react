@@ -1,12 +1,11 @@
-import { useState, useEffect } from 'react';
 import { Box, IconButton, useTheme, styled } from '@mui/material';
 import { useSettings } from '../../../providers/SettingsProvider';
 import { KeenIcon } from '../../../components';
-import { SettingsModeOptionType } from '../../../config';
+import { type SettingsModeOptionType } from '../../../config';
 
 const HeaderModeSwitcher = () => {
   const theme = useTheme();
-  const { settings, updateSettings, getMode } = useSettings();
+  const { updateSettings, getMode } = useSettings();
 
   const handleModeChange = (mode: SettingsModeOptionType) => {
     updateSettings({

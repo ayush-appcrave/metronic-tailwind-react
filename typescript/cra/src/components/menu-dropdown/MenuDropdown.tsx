@@ -1,6 +1,5 @@
-import { alpha, styled } from '@mui/material/styles';
+import { styled } from '@mui/material/styles';
 import { Menu } from '@mui/material';
-import { NavItemChildType } from '..';
 
 const MenuDropdown = styled(Menu)<any>(({ theme }) => {
   return {

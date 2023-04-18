@@ -11,9 +11,9 @@ import {
 } from '@mui/material';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import { useQueryResponse } from '../../core/QueryResponseProvider';
-import { FormEvent, useState } from 'react';
-import { User, UserPasswords } from '../../core/_models';
-import { createUser, updateUserPassword } from '../../core/_requests';
+import { useState } from 'react';
+import { type UserPasswords } from '../../core/_models';
+import { updateUserPassword } from '../../core/_requests';
 import { useFormik } from 'formik';
 import * as Yup from 'yup';
 import axios from 'axios';

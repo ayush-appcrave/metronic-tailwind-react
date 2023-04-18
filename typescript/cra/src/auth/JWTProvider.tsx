@@ -4,12 +4,11 @@ import {
   createContext,
   useContext,
   useRef,
-  Dispatch,
-  SetStateAction,
-  PropsWithChildren
+  type Dispatch,
+  type SetStateAction,
+  type PropsWithChildren
 } from 'react';
-import { LoadingScreen } from '../components';
-import { AuthModel, UserModel } from './_models';
+import { type AuthModel, type UserModel } from './_models';
 import * as authHelper from './_helpers';
 import { getUserByToken } from './_requests';
 import { useLoading } from '../providers/LoadingProvider';

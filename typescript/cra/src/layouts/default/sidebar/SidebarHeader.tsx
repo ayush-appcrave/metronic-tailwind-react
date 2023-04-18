@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef, SetStateAction } from 'react';
+import React, { useEffect, useRef } from 'react';
 import { Stack } from '@mui/material';
 import { useDefaultLayout } from '..';
 import { SidebarLogo } from './SidebarLogo';

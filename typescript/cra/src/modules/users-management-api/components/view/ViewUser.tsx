@@ -3,7 +3,7 @@ import { useQueryResponse } from '../../core/QueryResponseProvider';
 import { useMutation, useQueryClient } from 'react-query';
 import { useNavigate } from 'react-router';
 import { useEffect, useState } from 'react';
-import { User } from '../../core/_models';
+import { type User } from '../../core/_models';
 import { deleteUser, getUserById } from '../../core/_requests';
 import { QUERIES } from '../../helpers';
 import { Avatar, Box, Button, Typography, Skeleton } from '@mui/material';

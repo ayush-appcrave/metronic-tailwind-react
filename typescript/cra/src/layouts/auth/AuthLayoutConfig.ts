@@ -1,4 +1,4 @@
-import { ILayoutConfig } from '../';
+import { type ILayoutConfig } from '../';
 
 const authLayoutConfig: ILayoutConfig = {
   name: 'auth-layout',

@@ -1,14 +1,12 @@
-import { useState, useEffect, MouseEvent } from 'react';
-import { Box, Link, Stack, Avatar, Menu, MenuItem, ListItemIcon, useTheme } from '@mui/material';
-import { KeenIcon, MenuDropdown } from '../../../components';
-import { useAuth } from '../../../auth';
+import { useState, type MouseEvent } from 'react';
+import { Box, MenuItem, useTheme } from '@mui/material';
+import { MenuDropdown } from '../../../components';
 import { useLang } from '../../../providers/TranslationProvider';
 import { I18N_LANGUAGES } from '../../../i18n/config';
-import { LanguageType } from '../../../i18n/types';
+import { type LanguageType } from '../../../i18n/types';
 
 const HeaderLanguageMenu = () => {
   const theme = useTheme();
-  const { currentUser, logout } = useAuth();
   const { currentLanguage, changeLanguage } = useLang();
 
   const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);

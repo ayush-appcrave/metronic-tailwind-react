@@ -3,7 +3,7 @@ import { restoreUser } from '../core/_requests';
 import { Close } from '@mui/icons-material';
 import { useSnackbar } from 'notistack';
 import { useQueryResponse } from '../core/QueryResponseProvider';
-import { useEffect, useState, SyntheticEvent } from 'react';
+import { useEffect, useState, type SyntheticEvent } from 'react';
 
 interface Props {
   open: boolean;

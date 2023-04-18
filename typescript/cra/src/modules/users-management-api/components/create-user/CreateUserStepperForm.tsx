@@ -1,4 +1,4 @@
-import { useState, ReactNode } from 'react';
+import { useState, type ReactNode } from 'react';
 import Box from '@mui/material/Box';
 import Stepper from '@mui/material/Stepper';
 import Step from '@mui/material/Step';
@@ -15,12 +15,12 @@ import {
   Switch,
   TextField
 } from '@mui/material';
-import { User } from '../../core/_models';
+import { type User } from '../../core/_models';
 import { createUser } from '../../core/_requests';
 import { Close } from '@mui/icons-material';
 import { useQueryResponse } from '../../core/QueryResponseProvider';
 import { createAccountSchemas, inits } from './CreateUserStepperFormHelper';
-import { Form, Formik, FormikProps, FormikValues } from 'formik';
+import { Form, Formik, type FormikProps } from 'formik';
 import { useSnackbar } from 'notistack';
 import axios from 'axios';
 

@@ -1,12 +1,9 @@
-import { PropsWithChildren } from 'react';
+import { type PropsWithChildren } from 'react';
 import { useTheme } from '@mui/material/styles';
-import { Box, Container } from '@mui/material';
+import { Box } from '@mui/material';
 import { PageContainer } from '@components/page-container';
-import { useSettings } from '../../../providers/SettingsProvider';
 
 const Toolbar = ({ children }: PropsWithChildren) => {
-  const { settings } = useSettings();
-  const { container } = settings;
   const theme = useTheme();
 
   return (

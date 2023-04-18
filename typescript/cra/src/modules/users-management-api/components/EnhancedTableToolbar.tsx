@@ -2,17 +2,16 @@ import {
   alpha,
   FormControl,
   IconButton,
-  InputLabel,
   MenuItem,
   Select,
-  SelectChangeEvent,
+  type SelectChangeEvent,
   TextField,
   Toolbar,
   Tooltip,
   Typography
 } from '@mui/material';
-import { SxProps, Theme } from '@mui/material/styles';
-import { ChangeEvent } from 'react';
+import { type SxProps, type Theme } from '@mui/material/styles';
+import { type ChangeEvent } from 'react';
 import DeleteIcon from '@mui/icons-material/Delete';
 
 interface EnhancedTableToolbarProps {

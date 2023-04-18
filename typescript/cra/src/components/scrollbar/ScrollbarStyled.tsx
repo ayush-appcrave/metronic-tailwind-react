@@ -1,5 +1,5 @@
 import SimpleBar from 'simplebar-react';
-import { alpha, styled } from '@mui/material/styles';
+import { styled } from '@mui/material/styles';
 
 export const ScrollbarStyled = styled(SimpleBar, {
   shouldForwardProp: (prop) => prop !== 'styles'

@@ -1,4 +1,4 @@
-import { PropsWithChildren } from 'react';
+import { type PropsWithChildren } from 'react';
 import { SnackbarProvider as CustomSnackbarProvider } from 'notistack';
 
 const SnackbarProvider = ({ children }: PropsWithChildren) => {

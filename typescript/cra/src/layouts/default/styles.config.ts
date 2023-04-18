@@ -1,8 +1,4 @@
-import { Theme, useTheme, alpha } from '@mui/material';
-
 const DefaultLayoutStylesConfig = (): any => {
-  const theme = useTheme();
-
   return {
     CONTAINER_PX: 2,
     CONTAINER_PX_MOBILE: 2,

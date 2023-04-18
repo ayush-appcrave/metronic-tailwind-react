@@ -1,8 +1,6 @@
-import { PropsWithChildren } from 'react';
+import { type PropsWithChildren } from 'react';
 import { useTheme } from '@mui/material/styles';
 import { Box } from '@mui/material';
-import { Outlet } from 'react-router-dom';
-import { useSettings } from '../../../providers/SettingsProvider';
 
 const Content = ({ children }: PropsWithChildren) => {
   const theme = useTheme();

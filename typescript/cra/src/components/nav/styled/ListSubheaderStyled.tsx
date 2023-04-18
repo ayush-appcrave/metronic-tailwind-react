@@ -1,6 +1,6 @@
-import { alpha, styled } from '@mui/material/styles';
+import { styled } from '@mui/material/styles';
 import { ListSubheader } from '@mui/material';
-import { NavItemChildType } from '..';
+import { type NavItemChildType } from '..';
 
 export const ListSubheaderStyled = styled(ListSubheader, {
   shouldForwardProp: (prop) =>

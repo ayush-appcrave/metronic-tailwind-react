@@ -1,3 +1,4 @@
+import { type ReactElement } from 'react';
 import { Box, Button, Dialog, Typography } from '@mui/material';
 import { ViewUser } from './ViewUser';
 import { Close } from '@mui/icons-material';
@@ -8,7 +9,7 @@ interface CreateUserDialogProps {
   handleClose: () => void;
 }
 
-function ViewUserDialog(props: CreateUserDialogProps) {
+function ViewUserDialog(props: CreateUserDialogProps): ReactElement {
   return (
     <Dialog
       fullWidth

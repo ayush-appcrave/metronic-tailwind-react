@@ -1,6 +1,7 @@
-import { Box, useTheme } from '@mui/material';
+import { type ReactElement } from 'react';
+import { Box } from '@mui/material';
 
-const HeaderNotificationsMenu = () => {
+const HeaderNotificationsMenu = (): ReactElement => {
   return (
     <Box
       sx={{

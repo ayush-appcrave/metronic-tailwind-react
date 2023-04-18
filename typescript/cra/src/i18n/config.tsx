@@ -3,7 +3,7 @@ import enMessages from './messages/en.json';
 import frMessages from './messages/fr.json';
 import arMessages from './messages/ar.json';
 import zhMessages from './messages/zh.json';
-import { LanguageType } from './types';
+import { type LanguageType } from './types';
 
 const I18N_MESSAGES = {
   en: enMessages,

@@ -1,5 +1,4 @@
-import { useTheme, SxProps } from '@mui/material/styles';
-import { Box } from '@mui/material';
+import { type SxProps } from '@mui/material/styles';
 import { useDefaultLayout } from '../DefaultLayoutProvider';
 
 interface Props {

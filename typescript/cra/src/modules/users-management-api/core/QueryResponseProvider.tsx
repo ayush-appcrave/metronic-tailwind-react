@@ -1,16 +1,16 @@
 /* eslint-disable @typescript-eslint/no-misused-promises */
-import { FC, useContext, useState, useEffect, useMemo, ReactNode } from 'react';
+import { type FC, useContext, useState, useEffect, useMemo, type ReactNode } from 'react';
 import { useQuery } from 'react-query';
 import {
   createResponseContext,
   initialQueryResponse,
   initialQueryState,
-  PaginationState,
+  type PaginationState,
   QUERIES,
   stringifyRequestQuery
 } from '../helpers';
 import { getUsers } from './_requests';
-import { User } from './_models';
+import { type User } from './_models';
 import { useQueryRequest } from './QueryRequestProvider';
 
 interface WithChildren {

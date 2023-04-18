@@ -1,8 +1,8 @@
-import { FormEvent, ChangeEvent } from 'react';
-import { User } from '../core/_models';
+import { type FormEvent, type ChangeEvent } from 'react';
+import { type User } from '../core/_models';
 import { Box, Checkbox, TableCell, TableHead, TableRow, TableSortLabel } from '@mui/material';
 import { visuallyHidden } from '@mui/utils';
-import { Order } from '../@types/sort';
+import { type Order } from '../@types/sort';
 import { headCells } from '../core/headCellConfiguration';
 import { useListView } from '../core/ListViewProvider';
 
@@ -16,7 +16,7 @@ interface EnhancedTableProps {
 }
 
 function EnhancedTableHead(props: EnhancedTableProps) {
-  const { onSelectAllClick, order, orderBy, numSelected, rowCount, onRequestSort } = props;
+  const { order, orderBy, onRequestSort } = props;
   const createSortHandler = (property: keyof User | null) => (event: FormEvent<unknown>) => {
     onRequestSort(event, property);
   };

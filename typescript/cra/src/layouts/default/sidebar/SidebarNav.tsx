@@ -1,10 +1,8 @@
-import { Box, List, ListSubheader } from '@mui/material';
 import { useDefaultLayout } from '..';
 import { useViewport } from '../../../hooks';
 import Scrollbar from '../../../components/scrollbar';
-import { Nav, NavItem, NavConfigType, NavVerticalStylesConfig } from '../../../components/nav';
+import { Nav, NavVerticalStylesConfig } from '../../../components/nav';
 import { NAV_VERTICAL } from '../../../config/navs.config';
-import { number } from 'yup';
 
 interface Props {
   headerHeight?: number;
@@ -14,7 +12,7 @@ interface Props {
 const SidebarNav = ({ headerHeight = 0, footerHeight = 0 }: Props) => {
   const { isSidebarExpand, isSidebarCollapse } = useDefaultLayout();
   const stylesConfig = NavVerticalStylesConfig();
-  const [width, height] = useViewport();
+  const [height] = useViewport();
   const scrollableHeight: number = height - headerHeight - footerHeight;
 
   return (

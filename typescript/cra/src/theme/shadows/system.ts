@@ -1,4 +1,4 @@
-import { alpha, Shadows, PaletteMode } from '@mui/material';
+import { alpha, type Shadows, type PaletteMode } from '@mui/material';
 import { getPalette } from '../palette';
 
 const lightModeColor = getPalette('light').grey[500];

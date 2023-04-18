@@ -3,19 +3,9 @@ import { Link as RouterLink, useLocation } from 'react-router-dom';
 import { useMatchPath } from '../../hooks/useMatchPath';
 import { matchPath } from '../../utils/Router';
 import { KeenIcon } from '../keenicons';
-import {
-  Link,
-  Collapse,
-  Divider,
-  List,
-  ListItemButton,
-  ListItemIcon,
-  ListItemText,
-  ListItemButtonProps
-} from '@mui/material';
+import { Link } from '@mui/material';
 import {
   DividerStyled,
-  ListSubheaderStyled,
   ListItemButtonStyled,
   ListItemTextStyled,
   ListItemIconStyled,
@@ -23,9 +13,8 @@ import {
   NavItemSub,
   NavItemArrow,
   NavItemBullet,
-  NavItemType,
-  NavItemOptionsType,
-  NavConfigType
+  type NavItemType,
+  type NavConfigType
 } from '..';
 
 const NavItemComponent = ({
@@ -44,8 +33,6 @@ const NavItemComponent = ({
     newTab = false,
     divider,
     children,
-    subheader,
-    caption,
     icon,
     bullet,
     badge
@@ -73,14 +60,6 @@ const NavItemComponent = ({
 
   const handleToggle = () => {
     setOpen(!open);
-  };
-
-  const handleShow = () => {
-    setOpen(true);
-  };
-
-  const handleHide = () => {
-    setOpen(false);
   };
 
   useEffect(() => {

@@ -1,19 +1,17 @@
-import { ChangeEvent, useState } from 'react';
+import { type ChangeEvent, useState } from 'react';
 
-import { Button, SelectChangeEvent, Box, Paper } from '@mui/material';
+import { Button, type SelectChangeEvent, Box, Paper } from '@mui/material';
 import { UserManagementTableContainer } from './components/UserManagementTableContainer';
 
 import { useQueryResponse } from './core/QueryResponseProvider';
 import { CreateUserDrawer } from './components/create-user/CreateUserDrawer';
 import { useQueryRequest } from './core/QueryRequestProvider';
-import { CreateUserStepperFormDialog } from './components/create-user/CreateUserStepperFormDialog';
 import { useListView } from './core/ListViewProvider';
 import { EnhancedTableToolbar } from './components/EnhancedTableToolbar';
 import { useMutation, useQueryClient } from 'react-query';
 import { deleteSelectedUsers } from './core/_requests';
 import { QUERIES } from './helpers';
 import { UpdateUserDrawer } from './components/edit-user/UpdateUserDrawer';
-import UsersManagementActionsCell from './components/cells/UsersManagementActionsCell';
 import { ViewUserDrawer } from './components/view/ViewUserDrawer';
 
 function UsersManagementDrawersPage() {

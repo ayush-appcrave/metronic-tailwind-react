@@ -1,4 +1,3 @@
-import { Box, List, ListSubheader } from '@mui/material';
 import { useViewport } from '../../hooks';
 import Scrollbar from '../scrollbar';
 import { SettingsFormMode } from './SettingsFormMode';
@@ -12,7 +11,7 @@ interface Props {
 }
 
 const SettingsBody = ({ headerHeight = 0, footerHeight = 0 }: Props) => {
-  const [width, height] = useViewport();
+  const [height] = useViewport();
   const scrollableHeight: number = height - headerHeight - footerHeight;
 
   return (

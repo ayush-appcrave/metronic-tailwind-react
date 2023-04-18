@@ -1,10 +1,9 @@
-import React, { ChangeEvent, useEffect, useState } from 'react';
+import React, { type ChangeEvent, useState } from 'react';
 
-import { Button, SelectChangeEvent, Box, Paper } from '@mui/material';
+import { Button, type SelectChangeEvent, Box, Paper } from '@mui/material';
 import { UserManagementTableContainer } from './components/UserManagementTableContainer';
 
-import { useQueryResponse, useQueryResponsePagination } from './core/QueryResponseProvider';
-import { CreateUserDrawer } from './components/create-user/CreateUserDrawer';
+import { useQueryResponse } from './core/QueryResponseProvider';
 import { useQueryRequest } from './core/QueryRequestProvider';
 import { CreateUserStepperFormDialog } from './components/create-user/CreateUserStepperFormDialog';
 import { CreateUserPlainFormDialog } from './components/create-user/CreateUserPlainFormDialog';

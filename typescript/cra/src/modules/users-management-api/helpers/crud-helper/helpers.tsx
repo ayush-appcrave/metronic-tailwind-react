@@ -1,12 +1,21 @@
-import { createContext, Dispatch, SetStateAction, useEffect, useState } from 'react';
+import {
+  createContext,
+  type Context,
+  type Dispatch,
+  type SetStateAction,
+  useEffect,
+  useState
+} from 'react';
 import qs from 'qs';
-import { QueryResponseContextProps, QueryState } from './models';
+import { type QueryResponseContextProps, type QueryState } from './models';
 
-function createResponseContext<T>(initialState: QueryResponseContextProps<T>) {
+function createResponseContext<T>(
+  initialState: QueryResponseContextProps<T>
+): Context<QueryResponseContextProps<T>> {
   return createContext(initialState);
 }
 
-function isNotEmpty(obj: unknown) {
+function isNotEmpty(obj: unknown): boolean {
   return obj !== undefined && obj !== null && obj !== '';
 }
 

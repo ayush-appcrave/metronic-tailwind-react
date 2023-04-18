@@ -1,5 +1,6 @@
-import { Dispatch, SetStateAction } from 'react';
-import { UsersQueryResponse } from '../../core/_models';
+/* eslint-disable no-unused-vars */
+import { type Dispatch, type SetStateAction } from 'react';
+import { type UsersQueryResponse } from '../../core/_models';
 
 export interface PaginationState {
   page?: number;

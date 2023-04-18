@@ -5,7 +5,6 @@ import { useAuth } from '../JWTProvider';
 import { useState } from 'react';
 import clsx from 'clsx';
 import { Link } from 'react-router-dom';
-import { setupAxios } from '../_helpers';
 
 const loginSchema = Yup.object().shape({
   email: Yup.string()

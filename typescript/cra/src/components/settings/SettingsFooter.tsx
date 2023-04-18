@@ -1,7 +1,5 @@
-import React, { useState, useEffect, useRef } from 'react';
-import { Stack, Avatar, Button, Box } from '@mui/material';
-import { useAuth } from '../../auth';
-import { toAbsoluteUrl } from '../../utils/Assets';
+import React, { useEffect, useRef } from 'react';
+import { Stack } from '@mui/material';
 
 interface Props {
   setFooterHeight: React.Dispatch<React.SetStateAction<number>>;

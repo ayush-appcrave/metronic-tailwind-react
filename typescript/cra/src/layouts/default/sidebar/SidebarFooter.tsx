@@ -1,16 +1,11 @@
-import React, { useState, useEffect, useRef, SetStateAction } from 'react';
-import { Stack, Avatar, Button, Box } from '@mui/material';
-import { useDefaultLayout } from '..';
-import { useAuth } from '../../../auth';
-import { toAbsoluteUrl } from '../../../utils/Assets';
+import React, { useEffect, useRef } from 'react';
+import { Stack } from '@mui/material';
 
 interface Props {
   setFooterHeight: React.Dispatch<React.SetStateAction<number>>;
 }
 
 const SidebarFooter = ({ setFooterHeight }: Props) => {
-  const { isSidebarCollapse } = useDefaultLayout();
-  const { currentUser, logout } = useAuth();
   const elementRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {

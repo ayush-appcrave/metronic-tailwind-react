@@ -1,6 +1,4 @@
-import { Box, List, ListSubheader, Direction } from '@mui/material';
-import { useViewport } from '../../hooks';
-import Scrollbar from '../scrollbar';
+import { type Direction } from '@mui/material';
 import Radio from '@mui/material/Radio';
 import RadioGroup from '@mui/material/RadioGroup';
 import FormControlLabel from '@mui/material/FormControlLabel';

@@ -1,7 +1,6 @@
-import { PropsWithChildren, useState, useEffect } from 'react';
+import { type PropsWithChildren } from 'react';
 import { useTheme } from '@mui/material/styles';
-import { Box, Stack, Drawer } from '@mui/material';
-import { useResponsive } from '../../../hooks/useResponsive';
+import { Box } from '@mui/material';
 import { useDefaultLayout, DefaultLayoutStylesConfig } from '../';
 import { Header } from '../header/Header';
 import { Wrapper } from '../wrapper/Wrapper';
@@ -10,10 +9,7 @@ import { Footer } from '../footer/Footer';
 const Main = ({ children }: PropsWithChildren) => {
   const theme = useTheme();
 
-  const { sidebarWidth, isSidebarCollapse, isSidebarExpand, setSidebarCollapse } =
-    useDefaultLayout();
-
-  const isDesktop = useResponsive('up', 'lg');
+  const { sidebarWidth } = useDefaultLayout();
 
   const styles = DefaultLayoutStylesConfig();
 

@@ -1,6 +1,6 @@
-import { NavConfigType } from '../components/nav';
+import { type NavConfigType } from '../components/nav';
 import { KeenIcon } from '../components/keenicons';
-import { PathsType } from '.';
+import { type PathsType } from '.';
 
 // Auth paths
 const PATHS_AUTH: PathsType = {

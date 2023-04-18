@@ -1,6 +1,6 @@
-import { PropsWithChildren, createContext, useState, useContext } from 'react';
-import { ILayoutProvider, ILayoutConfig } from '../';
-import { LayoutsType, useLayouts } from '../../providers/LayoutsProvider';
+import { type PropsWithChildren, createContext, useState, useContext } from 'react';
+import { type ILayoutProvider, type ILayoutConfig } from '../';
+import { type LayoutsType, useLayouts } from '../../providers/LayoutsProvider';
 import { authLayoutConfig } from './AuthLayoutConfig';
 
 // eslint-disable-next-line @typescript-eslint/ban-types
@@ -19,9 +19,9 @@ const AuthLayoutContext = createContext<AuthLayoutProviderProps>(initalLayoutPro
 const useAuthLayout = () => useContext(AuthLayoutContext);
 
 const AuthLayoutProvider = ({ children }: PropsWithChildren) => {
-  const { layouts, updateLayout } = useLayouts();
+  const { layouts } = useLayouts();
 
-  const [layout, setLayout] = useState(getLayoutConfig(layouts));
+  const [layout] = useState(getLayoutConfig(layouts));
 
   return (
     <AuthLayoutContext.Provider

@@ -1,7 +1,6 @@
-import { useState, useEffect, memo, useMemo } from 'react';
-import { List, SxProps } from '@mui/material';
-import { SVGIcon } from '..';
-import { NavItem, NavType, NavItemType, NavItemOptionsType } from './';
+import { memo } from 'react';
+import { List, type SxProps } from '@mui/material';
+import { NavItem, type NavType, type NavItemOptionsType } from './';
 
 const NavComponent = ({
   variant = 'inline',

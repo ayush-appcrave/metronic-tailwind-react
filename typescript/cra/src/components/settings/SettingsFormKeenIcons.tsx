@@ -1,13 +1,10 @@
-import { Box, List, ListSubheader } from '@mui/material';
-import { useViewport } from '../../hooks';
-import Scrollbar from '../scrollbar';
 import Radio from '@mui/material/Radio';
 import RadioGroup from '@mui/material/RadioGroup';
 import FormControlLabel from '@mui/material/FormControlLabel';
 import FormControl from '@mui/material/FormControl';
 import FormLabel from '@mui/material/FormLabel';
 import { useSettings } from '../../providers/SettingsProvider';
-import { KeenIconsStyleType } from '../keenicons/types';
+import { type KeenIconsStyleType } from '../keenicons/types';
 
 const SettingsFormKeenIcons = () => {
   const { settings, updateSettings } = useSettings();

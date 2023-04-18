@@ -1,6 +1,6 @@
-import axios, { AxiosResponse } from 'axios';
-import { Response } from '../helpers';
-import { User, UserPasswords, UsersQueryResponse } from './_models';
+import axios, { type AxiosResponse } from 'axios';
+import { type Response } from '../helpers';
+import { type User, type UserPasswords, type UsersQueryResponse } from './_models';
 
 const API_URL = process.env.REACT_APP_API_URL;
 const USER_URL = `${API_URL}/user`;

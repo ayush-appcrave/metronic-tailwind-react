@@ -18,12 +18,12 @@ import {
   Typography
 } from '@mui/material';
 import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
-import { FormEvent, useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useSnackbar } from 'notistack';
-import { createUser, getUserById, updateUser } from '../../core/_requests';
-import { User } from '../../core/_models';
+import { getUserById, updateUser } from '../../core/_requests';
+import { type User } from '../../core/_models';
 import { useQueryResponse } from '../../core/QueryResponseProvider';
-import { Formik, useFormik } from 'formik';
+import { Formik } from 'formik';
 import * as Yup from 'yup';
 
 interface UpdateUserGeneralInfoProps {

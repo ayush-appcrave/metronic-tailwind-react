@@ -1,9 +1,7 @@
-import { useState, useEffect } from 'react';
-import { Box, Stack, Drawer, alpha, useTheme } from '@mui/material';
+import { Box, alpha, useTheme } from '@mui/material';
 import { PageContainer } from '@components/page-container';
 import useResponsive from '../../../hooks/useResponsive';
 import { useDefaultLayout, DefaultLayoutStylesConfig } from '../';
-import { useSettings } from '../../../providers/SettingsProvider';
 import { HeaderMobileLogo } from './HeaderMobileLogo';
 import { HeaderSearch } from './HeaderSearch';
 import { HeaderNotificationsMenu } from './HeaderNotificationsMenu';
@@ -13,12 +11,8 @@ import { HeaderUserMenu } from './HeaderUserMenu';
 import { HeaderModeSwitcher } from './HeaderModeSwitcher';
 
 const Header = () => {
-  const { settings } = useSettings();
-  const { container } = settings;
-  const { isHeaderSticky, sidebarWidth, isSidebarCollapse, setMobileSidebarOpen } =
-    useDefaultLayout();
+  const { isHeaderSticky, sidebarWidth } = useDefaultLayout();
   const theme = useTheme();
-  const isDesktop = useResponsive('up', 'lg');
   const isMobile = useResponsive('down', 'lg');
   const styles = DefaultLayoutStylesConfig();
   const leftTransition =

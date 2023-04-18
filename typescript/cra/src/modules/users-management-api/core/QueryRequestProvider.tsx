@@ -1,5 +1,5 @@
-import { FC, useState, createContext, useContext, ReactNode } from 'react';
-import { QueryState, QueryRequestContextProps, initialQueryRequest } from '../helpers';
+import { type FC, useState, createContext, useContext, type ReactNode } from 'react';
+import { type QueryState, type QueryRequestContextProps, initialQueryRequest } from '../helpers';
 
 interface WithChildren {
   children?: ReactNode;

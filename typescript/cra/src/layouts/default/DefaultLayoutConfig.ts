@@ -1,5 +1,3 @@
-import { ILayoutConfig } from '../';
-
 const defaultLayoutConfig = {
   name: 'default-layout',
   options: {

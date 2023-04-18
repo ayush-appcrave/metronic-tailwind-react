@@ -1,5 +1,4 @@
 import { LinearProgress, TableCell, TableRow } from '@mui/material';
-import { PaginationState } from '../../helpers';
 
 interface Props {
   itemsPerPage: number;
