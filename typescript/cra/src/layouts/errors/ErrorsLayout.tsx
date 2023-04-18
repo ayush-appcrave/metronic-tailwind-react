@@ -1,5 +1,5 @@
-import { Link, Outlet } from "react-router-dom";
-import { ErrorsLayoutProvider } from "./ErrorsLayoutProvider";
+import { Link, Outlet } from 'react-router-dom';
+import { ErrorsLayoutProvider } from './ErrorsLayoutProvider';
 
 const Layout = () => {
   return (

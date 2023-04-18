@@ -2,10 +2,10 @@ import { Box, CircularProgress, useTheme } from '@mui/material';
 import zIndex from '@mui/material/styles/zIndex';
 
 const LoadingPage = () => {
-	const theme = useTheme();
+  const theme = useTheme();
 
-	return (
-		<Box
+  return (
+    <Box
       sx={{
         position: "relative",
         top: "50%",
@@ -17,9 +17,9 @@ const LoadingPage = () => {
         alignSelf: "center"
       }}
     >
-      <CircularProgress color="primary"/>
+      <CircularProgress color="primary" />
     </Box>
-	)
-}
+  );
+};
 
-export { LoadingPage }
+export { LoadingPage };

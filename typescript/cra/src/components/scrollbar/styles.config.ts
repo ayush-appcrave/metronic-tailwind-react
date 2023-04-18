@@ -1,6 +1,6 @@
 import { Theme, useTheme, alpha } from '@mui/material';
 
-const ScrollbarStylesConfig = ():any => {
+const ScrollbarStylesConfig = (): any => {
   const theme = useTheme();
 
   return {
@@ -8,7 +8,7 @@ const ScrollbarStylesConfig = ():any => {
     BORDER_RADIUS: '6px',
     TRACK_VERTICAL_WIDTH: '10px',
     TRACK_HORIZONTAL_WIDTH: '8px'
-  }
+  };
 };
 
 export { ScrollbarStylesConfig };

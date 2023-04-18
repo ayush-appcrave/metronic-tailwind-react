@@ -1,7 +1,7 @@
-import { Route, Routes } from "react-router-dom";
-import { Error500 } from "./components/Error500";
-import { Error404 } from "./components/Error404";
-import { ErrorsLayout } from "../../layouts/errors";
+import { Route, Routes } from 'react-router-dom';
+import { Error500 } from './components/Error500';
+import { Error404 } from './components/Error404';
+import { ErrorsLayout } from '../../layouts/errors';
 
 const ErrorsPage = () => (
   <Routes>

@@ -1,6 +1,6 @@
-import { memo } from "react";
-import SVG from "react-inlinesvg";
-import { toAbsoluteUrl } from "../../utils";
+import { memo } from 'react';
+import SVG from 'react-inlinesvg';
+import { toAbsoluteUrl } from '../../utils';
 type Props = {
   icon: string;
   path?: string;
@@ -19,17 +19,12 @@ type Props = {
 
 const SVGIconComponent = ({
   icon,
-  path = "/media/icons/",
-  size = "1rem",
-  className = "",
-  svgClassName = "",
+  path = '/media/icons/',
+  size = '1rem',
+  className = '',
+  svgClassName = ''
 }: Props) => (
-  <SVG
-    src={toAbsoluteUrl(path + icon)}
-    width={size}
-    height={size}
-    className={svgClassName}
-  />
+  <SVG src={toAbsoluteUrl(path + icon)} width={size} height={size} className={svgClassName} />
 );
 
 const SVGIcon = memo(SVGIconComponent);

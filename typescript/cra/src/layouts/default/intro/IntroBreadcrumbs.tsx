@@ -6,66 +6,66 @@ type PropsType = {
   breadcrumbs: NavBreadcrumbsType
 }
 
-const IntroBreadcrumbs = ({breadcrumbs}: PropsType) => {
+const IntroBreadcrumbs = ({ breadcrumbs }: PropsType) => {
   const theme = useTheme();
 
   return (
-    <Breadcrumbs 
+    <Breadcrumbs
       sx={{
-        fontSize: "13px",
+        fontSize: '13px',
         fontWeight: theme.typography.fontWeightMedium,
-        color: theme.palette.grey["500"],
-        display: "flex",
-        alignItems: "center",
+        color: theme.palette.grey['500'],
+        display: 'flex',
+        alignItems: 'center',
 
-        ".MuiBreadcrumbs-li": {
+        '.MuiBreadcrumbs-li': {
           px: theme.spacing(0),
-          "a": {
-            color: theme.palette.grey["700"],
-            "&:hover": {
-              color: theme.palette.grey["900"],
+          a: {
+            color: theme.palette.grey['700'],
+            '&:hover': {
+              color: theme.palette.grey['900']
             }
           }
         },
-        ".MuiBreadcrumbs-separator": {
+        '.MuiBreadcrumbs-separator': {
           mx: theme.spacing(1.25)
         }
       }}
       separator={
-        <Box 
-          component="span" 
+        <Box
+          component="span"
           sx={{
-            height: "4px",
-            width: "4px",
-            borderRadius: "4px",
-            backgroundColor: theme.palette.grey["400"]
+            height: '4px',
+            width: '4px',
+            borderRadius: '4px',
+            backgroundColor: theme.palette.grey['400']
           }}
         />
       }
-      aria-label="breadcrumbs"          
+      aria-label="breadcrumbs"
     >
       {(breadcrumbs as NavBreadcrumbsType).map((item, index) => {
         if (item.href) {
           return (
-            <Link 
+            <Link
               key={`breadcrumb-${item}`}
               underline="none"
-              href={item.href}           
-              className={item?.active ? "Mui-active" : ""}
+              href={item.href}
+              className={item?.active ? 'Mui-active' : ''}
             >
               {item.title}
             </Link>
-          )
+          );
         } else {
           return (
-            <Box 
+            <Box
               component="span"
               key={`breadcrumb-${item}`}
-              className={item?.active ? "Mui-active" : ""}
+              className={item?.active ? 'Mui-active' : ''}
             >
               {item.title}
             </Box>
-          )
+          );
         }
       })}
     </Breadcrumbs>

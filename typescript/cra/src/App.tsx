@@ -20,7 +20,7 @@ import "./App.css";
 const App = () => (
   <AuthProvider>
     <SettingsProvider>
-      <TranslationProvider>        
+      <TranslationProvider>
         <ThemeProvider>
           <ThemeRtlProvider>
             <LayoutsProvider>

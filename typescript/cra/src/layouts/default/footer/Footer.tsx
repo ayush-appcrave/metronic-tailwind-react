@@ -10,7 +10,11 @@ const Footer = () => {
   const { sidebarWidth } = useDefaultLayout();
   const theme = useTheme();
   const styles = DefaultLayoutStylesConfig();
-  const leftTransition = 'height ' + styles.SIDEBAR_TRANSITION_DURATION + ' ' + styles.SIDEBAR_TRANSITION_TIMING_FUNCTION;
+  const leftTransition =
+    'height ' +
+    styles.SIDEBAR_TRANSITION_DURATION +
+    ' ' +
+    styles.SIDEBAR_TRANSITION_TIMING_FUNCTION;
 
   return (
     <Box

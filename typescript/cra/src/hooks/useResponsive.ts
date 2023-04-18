@@ -1,5 +1,5 @@
-import { Breakpoint, useTheme } from "@mui/material/styles";
-import useMediaQuery from "@mui/material/useMediaQuery";
+import { Breakpoint, useTheme } from '@mui/material/styles';
+import useMediaQuery from '@mui/material/useMediaQuery';
 
 type Query = 'up' | 'down' | 'between' | 'only';
 type Key = Breakpoint | number;
@@ -29,6 +29,6 @@ export default function useResponsive(query: Query, key?: Key, start?: Start, en
   if (query === 'only') {
     return mediaOnly;
   }
-};
+}
 
 export { useResponsive };

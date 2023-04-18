@@ -11,11 +11,11 @@ const Layout = () => {
 
   return (
     <>
-      <Sidebar/>
-      <Main/>
-      <Settings/>
+      <Sidebar />
+      <Main />
+      <Settings />
     </>
-  )
+  );
 };
 
 const DefaultLayout = () => (

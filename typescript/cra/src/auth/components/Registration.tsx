@@ -1,48 +1,45 @@
-import { useState } from "react";
-import { useFormik } from "formik";
-import clsx from "clsx";
-import * as Yup from "yup";
-import { getUserByToken, register } from "../_requests";
-import { useAuth } from "../JWTProvider";
-import { Link } from "react-router-dom";
+import { useState } from 'react';
+import { useFormik } from 'formik';
+import clsx from 'clsx';
+import * as Yup from 'yup';
+import { getUserByToken, register } from '../_requests';
+import { useAuth } from '../JWTProvider';
+import { Link } from 'react-router-dom';
 
 const initialValues = {
-  firstname: "",
-  lastname: "",
-  email: "",
-  password: "",
-  changepassword: "",
-  acceptTerms: false,
+  firstname: '',
+  lastname: '',
+  email: '',
+  password: '',
+  changepassword: '',
+  acceptTerms: false
 };
 
 const registrationSchema = Yup.object().shape({
   firstname: Yup.string()
-    .min(3, "Minimum 3 symbols")
-    .max(50, "Maximum 50 symbols")
-    .required("First name is required"),
+    .min(3, 'Minimum 3 symbols')
+    .max(50, 'Maximum 50 symbols')
+    .required('First name is required'),
   email: Yup.string()
-    .email("Wrong email format")
-    .min(3, "Minimum 3 symbols")
-    .max(50, "Maximum 50 symbols")
-    .required("Email is required"),
+    .email('Wrong email format')
+    .min(3, 'Minimum 3 symbols')
+    .max(50, 'Maximum 50 symbols')
+    .required('Email is required'),
   lastname: Yup.string()
-    .min(3, "Minimum 3 symbols")
-    .max(50, "Maximum 50 symbols")
-    .required("Last name is required"),
+    .min(3, 'Minimum 3 symbols')
+    .max(50, 'Maximum 50 symbols')
+    .required('Last name is required'),
   password: Yup.string()
-    .min(3, "Minimum 3 symbols")
-    .max(50, "Maximum 50 symbols")
-    .required("Password is required"),
+    .min(3, 'Minimum 3 symbols')
+    .max(50, 'Maximum 50 symbols')
+    .required('Password is required'),
   changepassword: Yup.string()
-    .required("Password confirmation is required")
-    .when("password", {
+    .required('Password confirmation is required')
+    .when('password', {
       is: (val: string) => (val && val.length > 0 ? true : false),
-      then: Yup.string().oneOf(
-        [Yup.ref("password")],
-        "Password and Confirm Password didn't match"
-      ),
+      then: Yup.string().oneOf([Yup.ref('password')], "Password and Confirm Password didn't match")
     }),
-  acceptTerms: Yup.bool().required("You must accept the terms and conditions"),
+  acceptTerms: Yup.bool().required('You must accept the terms and conditions')
 });
 
 const Registration = () => {
@@ -67,11 +64,11 @@ const Registration = () => {
       } catch (error) {
         console.error(error);
         saveAuth(undefined);
-        setStatus("The registration details is incorrect");
+        setStatus('The registration details is incorrect');
         setSubmitting(false);
         setLoading(false);
       }
-    },
+    }
   });
 
   return (
@@ -87,16 +84,12 @@ const Registration = () => {
         <h1 className="text-dark fw-bolder mb-3">Sign Up</h1>
         {/* end::Title */}
 
-        <div className="text-gray-500 fw-semibold fs-6">
-          Your Social Campaigns
-        </div>
+        <div className="text-gray-500 fw-semibold fs-6">Your Social Campaigns</div>
       </div>
       {/* end::Heading */}
 
       <div className="separator separator-content my-14">
-        <span className="w-125px text-gray-500 fw-semibold fs-7">
-          Or with email
-        </span>
+        <span className="w-125px text-gray-500 fw-semibold fs-7">Or with email</span>
       </div>
 
       {formik.status && (
@@ -107,21 +100,19 @@ const Registration = () => {
 
       {/* begin::Form group Firstname */}
       <div className="fv-row mb-8">
-        <label className="form-label fw-bolder text-dark fs-6">
-          First name
-        </label>
+        <label className="form-label fw-bolder text-dark fs-6">First name</label>
         <input
           placeholder="First name"
           type="text"
           autoComplete="off"
-          {...formik.getFieldProps("firstname")}
+          {...formik.getFieldProps('firstname')}
           className={clsx(
-            "form-control bg-transparent",
+            'form-control bg-transparent',
             {
-              "is-invalid": formik.touched.firstname && formik.errors.firstname,
+              'is-invalid': formik.touched.firstname && formik.errors.firstname
             },
             {
-              "is-valid": formik.touched.firstname && !formik.errors.firstname,
+              'is-valid': formik.touched.firstname && !formik.errors.firstname
             }
           )}
         />
@@ -141,14 +132,14 @@ const Registration = () => {
           placeholder="Last name"
           type="text"
           autoComplete="off"
-          {...formik.getFieldProps("lastname")}
+          {...formik.getFieldProps('lastname')}
           className={clsx(
-            "form-control bg-transparent",
+            'form-control bg-transparent',
             {
-              "is-invalid": formik.touched.lastname && formik.errors.lastname,
+              'is-invalid': formik.touched.lastname && formik.errors.lastname
             },
             {
-              "is-valid": formik.touched.lastname && !formik.errors.lastname,
+              'is-valid': formik.touched.lastname && !formik.errors.lastname
             }
           )}
         />
@@ -169,12 +160,12 @@ const Registration = () => {
           placeholder="Email"
           type="email"
           autoComplete="off"
-          {...formik.getFieldProps("email")}
+          {...formik.getFieldProps('email')}
           className={clsx(
-            "form-control bg-transparent",
-            { "is-invalid": formik.touched.email && formik.errors.email },
+            'form-control bg-transparent',
+            { 'is-invalid': formik.touched.email && formik.errors.email },
             {
-              "is-valid": formik.touched.email && !formik.errors.email,
+              'is-valid': formik.touched.email && !formik.errors.email
             }
           )}
         />
@@ -191,24 +182,20 @@ const Registration = () => {
       {/* begin::Form group Password */}
       <div className="fv-row mb-8" data-kt-password-meter="true">
         <div className="mb-1">
-          <label className="form-label fw-bolder text-dark fs-6">
-            Password
-          </label>
+          <label className="form-label fw-bolder text-dark fs-6">Password</label>
           <div className="position-relative mb-3">
             <input
               type="password"
               placeholder="Password"
               autoComplete="off"
-              {...formik.getFieldProps("password")}
+              {...formik.getFieldProps('password')}
               className={clsx(
-                "form-control bg-transparent",
+                'form-control bg-transparent',
                 {
-                  "is-invalid":
-                    formik.touched.password && formik.errors.password,
+                  'is-invalid': formik.touched.password && formik.errors.password
                 },
                 {
-                  "is-valid":
-                    formik.touched.password && !formik.errors.password,
+                  'is-valid': formik.touched.password && !formik.errors.password
                 }
               )}
             />
@@ -240,23 +227,19 @@ const Registration = () => {
 
       {/* begin::Form group Confirm password */}
       <div className="fv-row mb-5">
-        <label className="form-label fw-bolder text-dark fs-6">
-          Confirm Password
-        </label>
+        <label className="form-label fw-bolder text-dark fs-6">Confirm Password</label>
         <input
           type="password"
           placeholder="Password confirmation"
           autoComplete="off"
-          {...formik.getFieldProps("changepassword")}
+          {...formik.getFieldProps('changepassword')}
           className={clsx(
-            "form-control bg-transparent",
+            'form-control bg-transparent',
             {
-              "is-invalid":
-                formik.touched.changepassword && formik.errors.changepassword,
+              'is-invalid': formik.touched.changepassword && formik.errors.changepassword
             },
             {
-              "is-valid":
-                formik.touched.changepassword && !formik.errors.changepassword,
+              'is-valid': formik.touched.changepassword && !formik.errors.changepassword
             }
           )}
         />
@@ -272,18 +255,15 @@ const Registration = () => {
 
       {/* begin::Form group */}
       <div className="fv-row mb-8">
-        <label
-          className="form-check form-check-inline"
-          htmlFor="kt_login_toc_agree"
-        >
+        <label className="form-check form-check-inline" htmlFor="kt_login_toc_agree">
           <input
             className="form-check-input"
             type="checkbox"
             id="kt_login_toc_agree"
-            {...formik.getFieldProps("acceptTerms")}
+            {...formik.getFieldProps('acceptTerms')}
           />
           <span>
-            I Accept the{" "}
+            I Accept the{' '}
             <a
               href="https://keenthemes.com/metronic/?page=faq"
               target="_blank"
@@ -311,14 +291,12 @@ const Registration = () => {
           type="submit"
           id="kt_sign_up_submit"
           className="btn btn-lg btn-primary w-100 mb-5"
-          disabled={
-            formik.isSubmitting || !formik.isValid || !formik.values.acceptTerms
-          }
+          disabled={formik.isSubmitting || !formik.isValid || !formik.values.acceptTerms}
         >
           {!loading && <span className="indicator-label">Submit</span>}
           {loading && (
-            <span className="indicator-progress" style={{ display: "block" }}>
-              Please wait...{" "}
+            <span className="indicator-progress" style={{ display: 'block' }}>
+              Please wait...{' '}
               <span className="spinner-border spinner-border-sm align-middle ms-2"></span>
             </span>
           )}

@@ -1,6 +1,6 @@
-import { Theme, useTheme, alpha  } from '@mui/material';
+import { Theme, useTheme, alpha } from '@mui/material';
 
-const DefaultLayoutStylesConfig = ():any => {
+const DefaultLayoutStylesConfig = (): any => {
   const theme = useTheme();
 
   return {
@@ -9,8 +9,8 @@ const DefaultLayoutStylesConfig = ():any => {
 
     HEADER_HEIGHT: 80,
     HEADER_HEIGHT_MOBILE: 70,
-    HEADER_TRANSITION_DURATION: "0.3s",
-    HEADER_TRANSITION_TIMING_FUNCTION: "ease",
+    HEADER_TRANSITION_DURATION: '0.3s',
+    HEADER_TRANSITION_TIMING_FUNCTION: 'ease',
     HEADER_STICKY_ZINDEX: 100,
     HEADER_STICKY_OFFSET: 5,
     HEADER_STICKY_HEIGHT: 60,
@@ -20,9 +20,9 @@ const DefaultLayoutStylesConfig = ():any => {
     SIDEBAR_WIDTH: 300,
     SIDEBAR_COLLAPSE_WIDTH: 85,
     SIDEBAR_WIDTH_MOBILE: 250,
-    SIDEBAR_TRANSITION_DURATION: "0.3s",
-    SIDEBAR_TRANSITION_TIMING_FUNCTION: "ease",
-  }
+    SIDEBAR_TRANSITION_DURATION: '0.3s',
+    SIDEBAR_TRANSITION_TIMING_FUNCTION: 'ease'
+  };
 };
 
 export { DefaultLayoutStylesConfig };

@@ -1,11 +1,7 @@
 {
   "compilerOptions": {
     "target": "es5",
-    "lib": [
-      "dom",
-      "dom.iterable",
-      "esnext"
-    ],
+    "lib": ["dom", "dom.iterable", "esnext"],
     "allowJs": true,
     "skipLibCheck": true,
     "esModuleInterop": true,
@@ -18,47 +14,20 @@
     "resolveJsonModule": true,
     "isolatedModules": true,
     "noEmit": true,
-    "jsx": "react-jsx",    
+    "jsx": "react-jsx",
     "paths": {
-      "@components/*": [
-        "./src/components/*"
-      ],
-      "providers": [
-        "./src/providers/*"
-      ],
-      "configs": [
-        "./src/config"
-      ],
-      "i18n": [
-        "./src/i18n"
-      ],
-      "layouts": [
-        "./src/layouts"
-      ],
-      "modules/errors": [
-        "./src/modules/errors"
-      ],
-      "pages": [
-        "./src/pages"
-      ],
-      "providers": [
-        "./src/providers"
-      ],
-      "sections": [
-        "./src/sections"
-      ],
-      "routing": [
-        "./src/routing"
-      ],
-      "theme": [
-        "./src/theme"
-      ],
-      "utils": [
-        "./src/utils"
-      ]
+      "@components/*": ["./src/components/*"],
+      "configs": ["./src/config"],
+      "i18n": ["./src/i18n"],
+      "layouts": ["./src/layouts"],
+      "modules/errors": ["./src/modules/errors"],
+      "pages": ["./src/pages"],
+      "providers": ["./src/providers"],
+      "sections": ["./src/sections"],
+      "routing": ["./src/routing"],
+      "theme": ["./src/theme"],
+      "utils": ["./src/utils"]
     }
   },
-  "include": [
-    "src"
-  ]
+  "include": ["src"]
 }

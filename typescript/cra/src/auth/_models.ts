@@ -1,4 +1,4 @@
-import { LanguageCodeType } from "../i18n/";
+import { LanguageCodeType } from '../i18n/';
 
 export interface AuthModel {
   access_token: string;

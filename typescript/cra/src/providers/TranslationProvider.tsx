@@ -1,16 +1,16 @@
-import {createContext, PropsWithChildren, useContext, useEffect, useState} from "react";
-import { IntlProvider } from "react-intl";
-import { getData, setData } from "../utils";
-import { I18N_DEFAULT_LANGUAGE, I18N_CONFIG_KEY } from "../i18n/config";
-import { LanguageType, TranslationProviderProps } from "../i18n/types";
-import { useSettings } from "./SettingsProvider";
-import "@formatjs/intl-relativetimeformat/polyfill";
-import "@formatjs/intl-relativetimeformat/locale-data/en";
-import "@formatjs/intl-relativetimeformat/locale-data/de";
-import "@formatjs/intl-relativetimeformat/locale-data/es";
-import "@formatjs/intl-relativetimeformat/locale-data/fr";
-import "@formatjs/intl-relativetimeformat/locale-data/ja";
-import "@formatjs/intl-relativetimeformat/locale-data/zh";
+import { createContext, PropsWithChildren, useContext, useEffect, useState } from 'react';
+import { IntlProvider } from 'react-intl';
+import { getData, setData } from '../utils';
+import { I18N_DEFAULT_LANGUAGE, I18N_CONFIG_KEY } from '../i18n/config';
+import { LanguageType, TranslationProviderProps } from '../i18n/types';
+import { useSettings } from './SettingsProvider';
+import '@formatjs/intl-relativetimeformat/polyfill';
+import '@formatjs/intl-relativetimeformat/locale-data/en';
+import '@formatjs/intl-relativetimeformat/locale-data/de';
+import '@formatjs/intl-relativetimeformat/locale-data/es';
+import '@formatjs/intl-relativetimeformat/locale-data/fr';
+import '@formatjs/intl-relativetimeformat/locale-data/ja';
+import '@formatjs/intl-relativetimeformat/locale-data/zh';
 
 const calculateInitialLanguage = () => {
   const currentLanguage = getData(I18N_CONFIG_KEY) as LanguageType | undefined;
@@ -23,8 +23,7 @@ const initialProps: TranslationProviderProps = {
   changeLanguage: (_: LanguageType) => {}
 };
 
-const TranslationsContext =
-  createContext<TranslationProviderProps>(initialProps);
+const TranslationsContext = createContext<TranslationProviderProps>(initialProps);
 const useLang = () => useContext(TranslationsContext);
 
 const I18NProvider = ({ children }: PropsWithChildren) => {
@@ -45,10 +44,8 @@ const TranslationProvider = ({ children }: PropsWithChildren) => {
   const { settings, updateSettings } = useSettings();
   const { direction } = settings;
 
-  const [currentLanguage, setCurrentLanguage] = useState(
-    initialProps.currentLanguage
-  );
-  
+  const [currentLanguage, setCurrentLanguage] = useState(initialProps.currentLanguage);
+
   const changeLanguage = (language: LanguageType) => {
     setData(I18N_CONFIG_KEY, language);
     setCurrentLanguage(language);
@@ -58,14 +55,14 @@ const TranslationProvider = ({ children }: PropsWithChildren) => {
   };
 
   useEffect(() => {
-    if (direction === "rtl") {
-      document.documentElement.setAttribute("direction", "rtl");
-      document.documentElement.setAttribute("dir", "rtl");
-      document.documentElement.style.direction = "rtl";
+    if (direction === 'rtl') {
+      document.documentElement.setAttribute('direction', 'rtl');
+      document.documentElement.setAttribute('dir', 'rtl');
+      document.documentElement.style.direction = 'rtl';
     } else {
-      document.documentElement.removeAttribute("direction");
-      document.documentElement.removeAttribute("dir");
-      document.documentElement.style.direction = "ltr";
+      document.documentElement.removeAttribute('direction');
+      document.documentElement.removeAttribute('dir');
+      document.documentElement.style.direction = 'ltr';
     }
   }, [direction]);
 
@@ -73,12 +70,10 @@ const TranslationProvider = ({ children }: PropsWithChildren) => {
     <TranslationsContext.Provider
       value={{
         currentLanguage,
-        changeLanguage,
+        changeLanguage
       }}
     >
-      <I18NProvider>
-        {children}
-      </I18NProvider>
+      <I18NProvider>{children}</I18NProvider>
     </TranslationsContext.Provider>
   );
 };

@@ -12,13 +12,13 @@ const Scrollbar = ({ children, sx, styles, ...other }: ScrollbarProps) => {
     );
   }
 
-  styles = {...ScrollbarStylesConfig(), ...styles};
+  styles = { ...ScrollbarStylesConfig(), ...styles };
 
   return (
     <ScrollbarStyled timeout={500} clickOnTrack={false} styles={styles} sx={sx} {...other}>
       {children}
     </ScrollbarStyled>
   );
-}
+};
 
 export default memo(Scrollbar);

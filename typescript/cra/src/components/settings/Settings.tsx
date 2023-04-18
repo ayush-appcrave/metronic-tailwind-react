@@ -12,7 +12,7 @@ const Settings = () => {
   const [headerHeight, setHeaderHeight] = useState(0);
   const [footerHeight, setFooterHeight] = useState(0);
 
-  const handleToggle = () => { 
+  const handleToggle = () => {
     if (open) {
       setOpen(false);
     } else {
@@ -20,9 +20,7 @@ const Settings = () => {
     }
   };
 
-  useEffect(() => {
-
-  }, [open]);
+  useEffect(() => {}, [open]);
 
   return (
     <>
@@ -31,27 +29,19 @@ const Settings = () => {
         open={open}
         hideBackdrop={true}
         PaperProps={{
-            sx: {
-              width: 375,       
-              bgcolor: 'background.paper'
-            },
-          }}
-        >
-        <SettingsHeader 
-          setHeaderHeight={setHeaderHeight}
-          onCloseClick={handleToggle}
-        />
-        <SettingsBody
-          headerHeight={headerHeight} 
-          footerHeight={footerHeight}
-        />       
-        <SettingsFooter
-          setFooterHeight={setHeaderHeight}
-        />
+          sx: {
+            width: 375,
+            bgcolor: 'background.paper'
+          }
+        }}
+      >
+        <SettingsHeader setHeaderHeight={setHeaderHeight} onCloseClick={handleToggle} />
+        <SettingsBody headerHeight={headerHeight} footerHeight={footerHeight} />
+        <SettingsFooter setFooterHeight={setHeaderHeight} />
       </Drawer>
-      <SettingsToggleButton onClick={handleToggle}/>
+      <SettingsToggleButton onClick={handleToggle} />
     </>
   );
-}
+};
 
 export { Settings };

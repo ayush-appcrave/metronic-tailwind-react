@@ -5,5 +5,5 @@ import { SxProps } from '@mui/material';
 export interface ScrollbarProps extends Props {
   children?: React.ReactNode;
   sx?: SxProps<Theme>;
-  styles?: any
+  styles?: any;
 }

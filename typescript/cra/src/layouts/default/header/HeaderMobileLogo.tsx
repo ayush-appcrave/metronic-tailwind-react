@@ -1,9 +1,9 @@
 import { useState, useEffect } from 'react';
 import { Box, IconButton, useTheme } from '@mui/material';
-import { KeenIcon } from "../../../components";
+import { KeenIcon } from '../../../components';
 import { useResponsive } from '../../../hooks/useResponsive';
 import { useDefaultLayout } from '..';
-import { useSettings } from "../../../providers/SettingsProvider";
+import { useSettings } from '../../../providers/SettingsProvider';
 import { DefaultLayoutStylesConfig } from '..';
 
 const HeaderMobileLogo = () => {
@@ -12,15 +12,15 @@ const HeaderMobileLogo = () => {
   const isDesktop = useResponsive('up', 'lg');
   const isMobile = useResponsive('down', 'lg');
 
-  const handleSidebarOpenOnMobile = (event: React.MouseEvent<HTMLElement>) => { 
+  const handleSidebarOpenOnMobile = (event: React.MouseEvent<HTMLElement>) => {
     setMobileSidebarOpen(true);
   };
 
   return (
     <Box
       sx={{
-        display: "flex",
-        alignItems: "center"
+        display: 'flex',
+        alignItems: 'center'
       }}
     >
       <IconButton
@@ -30,28 +30,28 @@ const HeaderMobileLogo = () => {
           ml: -1
         }}
       >
-        <KeenIcon 
+        <KeenIcon
           icon="burger-menu-6"
           sx={{
-            fontSize: "20px"
+            fontSize: '20px'
           }}
         />
       </IconButton>
 
-      <a href="/" style={{lineHeight: '0px'}}>      
-        <Box 
+      <a href="/" style={{ lineHeight: '0px' }}>
+        <Box
           component="img"
-          src="/media/logos/default.svg" 
-          alt="logo" 
-          sx={{ 
-            height: '30px', 
-            maxWidth: 'none', 
+          src="/media/logos/default.svg"
+          alt="logo"
+          sx={{
+            height: '30px',
+            maxWidth: 'none',
             cursor: 'pointer'
           }}
         />
       </a>
     </Box>
-  );  
+  );
 };
 
 export { HeaderMobileLogo };

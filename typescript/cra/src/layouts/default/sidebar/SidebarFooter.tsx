@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useRef } from 'react'
+import React, { useState, useEffect, useRef } from 'react';
 import { SetStateAction } from 'react';
 import { Stack, Avatar, Button, Box } from '@mui/material';
 import { useDefaultLayout } from '..';
@@ -9,16 +9,16 @@ type Props = {
   setFooterHeight: React.Dispatch<React.SetStateAction<number>>;
 };
 
-const SidebarFooter = ({setFooterHeight}: Props) => {
-  const {isSidebarCollapse} = useDefaultLayout();
-  const {currentUser, logout} = useAuth();
+const SidebarFooter = ({ setFooterHeight }: Props) => {
+  const { isSidebarCollapse } = useDefaultLayout();
+  const { currentUser, logout } = useAuth();
   const elementRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     if (elementRef.current) {
       setFooterHeight(elementRef.current.clientHeight);
-    }    
-  }, []); 
+    }
+  }, []);
 
   return (
     <Stack
@@ -27,7 +27,7 @@ const SidebarFooter = ({setFooterHeight}: Props) => {
       direction="row"
       justifyContent="space-between"
       alignItems="center"
-      sx={{        
+      sx={{
         flexShrink: 0,
         position: 'relative',
         px: 4,
@@ -37,6 +37,6 @@ const SidebarFooter = ({setFooterHeight}: Props) => {
       Sidebar Footer
     </Stack>
   );
-}
+};
 
 export { SidebarFooter };

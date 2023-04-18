@@ -1,38 +1,39 @@
 import { useTheme } from '@mui/material/styles';
 import { Box } from '@mui/material';
-import { useDefaultLayout } from "../DefaultLayoutProvider";
+import { useDefaultLayout } from '../DefaultLayoutProvider';
 
 type Props = {
-  sx?: Object
+  sx?: Object;
 };
 
 const SidebarLogo = ({ sx }: Props) => {
-  const {isSidebarExpand, isSidebarCollapse} = useDefaultLayout();
+  const { isSidebarExpand, isSidebarCollapse } = useDefaultLayout();
 
   return (
-    <a href="/" style={{lineHeight: '0px'}}>      
-      <img 
-        src="/media/logos/default.svg" 
-        alt="logo" 
-        style={{ 
-          display: !isSidebarExpand && isSidebarCollapse ? 'none' : 'inline-block', 
-          height: '30px', 
-          maxWidth: 'none', 
+    <a href="/" style={{ lineHeight: '0px' }}>
+      <img
+        src="/media/logos/default.svg"
+        alt="logo"
+        style={{
+          display: !isSidebarExpand && isSidebarCollapse ? 'none' : 'inline-block',
+          height: '30px',
+          maxWidth: 'none',
           cursor: 'pointer'
         }}
-      />      
-      
-      <img 
-        src="/media/logos/default-mini.svg" 
-        alt="logo" 
-        style={{ 
-          display: !isSidebarExpand && isSidebarCollapse ? 'inline-block' : 'none', 
-          height: '30px', 
-          maxWidth: 'none', 
+      />
+
+      <img
+        src="/media/logos/default-mini.svg"
+        alt="logo"
+        style={{
+          display: !isSidebarExpand && isSidebarCollapse ? 'inline-block' : 'none',
+          height: '30px',
+          maxWidth: 'none',
           cursor: 'pointer'
-        }}/>
-    </a>      
+        }}
+      />
+    </a>
   );
-}
+};
 
 export { SidebarLogo };

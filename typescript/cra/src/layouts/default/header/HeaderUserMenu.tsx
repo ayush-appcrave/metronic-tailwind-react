@@ -1,15 +1,28 @@
 import { useState, useEffect } from 'react';
-import { Box, Link, Stack, Avatar, Menu, MenuItem, ListItemIcon, Divider, IconButton, Typography, Tooltip, useTheme } from '@mui/material';
-import { KeenIcon, MenuDropdown } from "../../../components";
+import {
+  Box,
+  Link,
+  Stack,
+  Avatar,
+  Menu,
+  MenuItem,
+  ListItemIcon,
+  Divider,
+  IconButton,
+  Typography,
+  Tooltip,
+  useTheme
+} from '@mui/material';
+import { KeenIcon, MenuDropdown } from '../../../components';
 import { useAuth } from '../../../auth';
 
 const HeaderUserMenu = () => {
   const theme = useTheme();
-  const {currentUser, logout} = useAuth();
+  const { currentUser, logout } = useAuth();
 
   const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
   const open = Boolean(anchorEl);
-  
+
   const handleClick = (event: React.MouseEvent<HTMLElement>) => {
     setAnchorEl(event.currentTarget);
   };
@@ -21,127 +34,128 @@ const HeaderUserMenu = () => {
   return (
     <Box
       sx={{
-        display: "flex",
-        alignItems: "center"
+        display: 'flex',
+        alignItems: 'center'
       }}
     >
       <IconButton
         onClick={handleClick}
         size="small"
-        sx={{ 
-          borderRadius: "6px",
-          p: "0px"
+        sx={{
+          borderRadius: '6px',
+          p: '0px'
         }}
         aria-haspopup="true"
-        aria-controls={open ? 'user-account-menu' : undefined}          
+        aria-controls={open ? 'user-account-menu' : undefined}
         aria-expanded={open ? 'true' : undefined}
       >
-        <Avatar 
-          src="/media/avatars/default.png" 
-          sx={{ 
-            borderRadius: "6px",
-            width: 40, 
-            height: 40, 
+        <Avatar
+          src="/media/avatars/default.png"
+          sx={{
+            borderRadius: '6px',
+            width: 40,
+            height: 40
           }}
         />
       </IconButton>
       <MenuDropdown
         id="user-account-menu"
         disableScrollLock={false}
-        anchorEl={anchorEl}        
+        anchorEl={anchorEl}
         open={open}
         onClose={handleClose}
         onClick={handleClose}
-        transformOrigin={{ 
-          horizontal: 'right', 
-          vertical: 'top' 
+        transformOrigin={{
+          horizontal: 'right',
+          vertical: 'top'
         }}
-        anchorOrigin={{ 
-          horizontal: 'right', 
-          vertical: 'bottom' 
+        anchorOrigin={{
+          horizontal: 'right',
+          vertical: 'bottom'
         }}
         PaperProps={{
           sx: {
             mt: 0.5,
-            [theme.breakpoints.up("lg")]: {
-              width: "200px"
+            [theme.breakpoints.up('lg')]: {
+              width: '200px'
             },
-            [theme.breakpoints.down("lg")]: {
-              width: "200px"
+            [theme.breakpoints.down('lg')]: {
+              width: '200px'
             }
           }
-        }}       
+        }}
       >
-        <Box sx={{
-          pt: 0.75,
-          pb: 0.25,
-          px: 2.5,
-          lineHeight: 1.15
-        }}>
-          <Box sx={{
-            fontSize: "14px",
-            fontWeight: theme.typography.fontWeightMedium,
-            color: theme.palette.grey['800'],
-            LineHeight: 1
-          }}>
+        <Box
+          sx={{
+            pt: 0.75,
+            pb: 0.25,
+            px: 2.5,
+            lineHeight: 1.15
+          }}
+        >
+          <Box
+            sx={{
+              fontSize: '14px',
+              fontWeight: theme.typography.fontWeightMedium,
+              color: theme.palette.grey['800'],
+              LineHeight: 1
+            }}
+          >
             {currentUser!.first_name} {currentUser!.last_name}
           </Box>
 
-          <Link 
+          <Link
             href={`mailto:{currentUser!.email}`}
             sx={{
-              fontSize: "12px",
+              fontSize: '12px',
               fontWeight: theme.typography.fontWeightMedium,
-              textDecoration: "none"
+              textDecoration: 'none'
             }}
           >
             {currentUser!.email}
           </Link>
         </Box>
 
-        <Divider sx={{ my: 1, borderStyle: "dashed" }}/>
+        <Divider sx={{ my: 1, borderStyle: 'dashed' }} />
 
-        <Stack sx={{ px:1 }}>
+        <Stack sx={{ px: 1 }}>
           <MenuItem onClick={handleClose}>
             <ListItemIcon>
-              <KeenIcon icon="user"/>
+              <KeenIcon icon="user" />
             </ListItemIcon>
             My Profile
           </MenuItem>
 
           <MenuItem onClick={handleClose} selected={false}>
             <ListItemIcon>
-              <KeenIcon icon="setting-2"/>
+              <KeenIcon icon="setting-2" />
             </ListItemIcon>
             Account Settings
           </MenuItem>
 
           <MenuItem onClick={handleClose} selected={false}>
             <ListItemIcon>
-              <KeenIcon icon="sms"/>
+              <KeenIcon icon="sms" />
             </ListItemIcon>
             My Inbox
           </MenuItem>
 
           <MenuItem onClick={handleClose} selected={false}>
             <ListItemIcon>
-              <KeenIcon icon="calendar"/>
+              <KeenIcon icon="calendar" />
             </ListItemIcon>
             Calendar
           </MenuItem>
         </Stack>
-        
-        <Divider sx={{ my: 1, borderStyle: "dashed" }}/>
 
-        <MenuItem 
-          onClick={logout}
-          sx={{ mx:1 }}
-        >
+        <Divider sx={{ my: 1, borderStyle: 'dashed' }} />
+
+        <MenuItem onClick={logout} sx={{ mx: 1 }}>
           <ListItemIcon>
-            <KeenIcon icon="entrance-left"/>
+            <KeenIcon icon="entrance-left" />
           </ListItemIcon>
           Logout
-        </MenuItem>        
+        </MenuItem>
       </MenuDropdown>
     </Box>
   );

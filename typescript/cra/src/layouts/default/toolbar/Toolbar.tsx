@@ -1,15 +1,14 @@
-import { PropsWithChildren } from "react";
-import { Box, useTheme } from "@mui/material";
-import { useSettings } from "../../../providers/SettingsProvider";
-import { PageContainer } from "@components/page-container";
-
-type PropsType = {
-  children: React.ReactNode;
-};
+import { PropsWithChildren } from 'react';
+import { useTheme } from '@mui/material/styles';
+import { Box, Container } from '@mui/material';
+import { PageContainer } from '@components/page-container';
+import { useSettings } from '../../../providers/SettingsProvider';
 
 const Toolbar = ({ children }: PropsWithChildren) => {
-  const theme = useTheme();  
-  
+  const { settings } = useSettings();
+  const { container } = settings;
+  const theme = useTheme();
+
   return (
     <Box
       sx={{
@@ -18,7 +17,7 @@ const Toolbar = ({ children }: PropsWithChildren) => {
     >
       <PageContainer>
         {children}
-      </PageContainer>      
+      </PageContainer>
     </Box>
   );
 };

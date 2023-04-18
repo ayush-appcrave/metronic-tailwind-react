@@ -1,9 +1,9 @@
-import { Direction, Breakpoint } from "@mui/material";
-import { KeenIconsStyleType } from "../components/keenicons/types";
+import { Direction, Breakpoint } from '@mui/material';
+import { KeenIconsStyleType } from '../components/keenicons/types';
 
-export type SettingsModeOptionType = "light" | "dark" | "system";
+export type SettingsModeOptionType = 'light' | 'dark' | 'system';
 
-export type SettingsContainerType = "fluid" | "fixed";
+export type SettingsContainerType = 'fluid' | 'fixed';
 
 // Settings types
 export type SettingsType = {
@@ -21,4 +21,3 @@ export type SettingsType = {
 export type PathsType = {
   [key: string]: string;
 };
-

@@ -6,13 +6,13 @@ import {
   useRef,
   Dispatch,
   SetStateAction,
-  PropsWithChildren,
-} from "react";
-import { LoadingScreen } from "../components";
-import { AuthModel, UserModel } from "./_models";
-import * as authHelper from "./_helpers";
-import { getUserByToken } from "./_requests";
-import { useLoading } from "../providers/LoadingProvider";
+  PropsWithChildren
+} from 'react';
+import { LoadingScreen } from '../components';
+import { AuthModel, UserModel } from './_models';
+import * as authHelper from './_helpers';
+import { getUserByToken } from './_requests';
+import { useLoading } from '../providers/LoadingProvider';
 
 type AuthContextProps = {
   auth: AuthModel | undefined;
@@ -27,7 +27,7 @@ const initAuthContextPropsState = {
   saveAuth: () => {},
   currentUser: undefined,
   setCurrentUser: () => {},
-  logout: () => {},
+  logout: () => {}
 };
 
 const AuthContext = createContext<AuthContextProps>(initAuthContextPropsState);
@@ -54,9 +54,7 @@ const AuthProvider = ({ children }: PropsWithChildren) => {
   };
 
   return (
-    <AuthContext.Provider
-      value={{ auth, saveAuth, currentUser, setCurrentUser, logout }}
-    >
+    <AuthContext.Provider value={{ auth, saveAuth, currentUser, setCurrentUser, logout }}>
       {children}
     </AuthContext.Provider>
   );

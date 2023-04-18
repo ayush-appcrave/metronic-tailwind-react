@@ -1,5 +1,5 @@
-import axios from "axios";
-import { AuthModel, UserModel } from "./_models";
+import axios from 'axios';
+import { AuthModel, UserModel } from './_models';
 
 const API_URL = process.env.REACT_APP_API_URL;
 
@@ -12,7 +12,7 @@ export const REQUEST_PASSWORD_URL = `${API_URL}/forgotpassword`;
 export function login(email: string, password: string) {
   return axios.post<AuthModel>(LOGIN_URL, {
     email,
-    password,
+    password
   });
 }
 
@@ -29,14 +29,14 @@ export function register(
     first_name: firstname,
     last_name: lastname,
     password,
-    password_confirmation,
+    password_confirmation
   });
 }
 
 // Server should return object => { result: boolean } (Is Email in DB)
 export function requestPassword(email: string) {
   return axios.post<{ result: boolean }>(REQUEST_PASSWORD_URL, {
-    email,
+    email
   });
 }
 

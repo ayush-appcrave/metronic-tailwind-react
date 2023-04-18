@@ -1,7 +1,7 @@
 export interface ILayoutConfig {
   name: string;
-  options: any
+  options: any;
 }
 export interface ILayoutProvider {
-  layout: ILayoutConfig
+  layout: ILayoutConfig;
 }

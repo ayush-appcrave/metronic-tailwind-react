@@ -1,10 +1,10 @@
-import { useState, createContext, useContext, PropsWithChildren } from "react";
+import { useState, createContext, useContext, PropsWithChildren } from 'react';
 import { PaletteMode } from '@mui/material';
-import { getData, setData } from "../utils";
-import { defaultSettings } from "../config/settings.config";
-import { SettingsType, SettingsModeOptionType } from "../config/types";
+import { getData, setData } from '../utils';
+import { defaultSettings } from '../config/settings.config';
+import { SettingsType, SettingsModeOptionType } from '../config/types';
 
-const SETTINGS_CONFIG_KEY = "app-settings-config";
+const SETTINGS_CONFIG_KEY = 'app-settings-config';
 
 export type SettingsProviderProps = {
   settings: SettingsType;
@@ -29,7 +29,7 @@ const calculateUpdatedSettings = (
 const initialProps: SettingsProviderProps = {
   settings: calculateInitialSettings(),
   updateSettings: (_: Partial<SettingsType>) => {},
-  getMode: () => "light",
+  getMode: () => 'light'
 };
 
 const SettingsContext = createContext<SettingsProviderProps>(initialProps);
@@ -44,14 +44,12 @@ const SettingsProvider = ({ children }: PropsWithChildren) => {
 
   const getMode = () => {
     const { mode } = settings;
-    if (mode === "system") {
-      return window.matchMedia("(prefers-color-scheme: dark)").matches
-        ? "dark"
-        : "light";
-    } else if (mode === "dark") {
-      return "dark";
+    if (mode === 'system') {
+      return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+    } else if (mode === 'dark') {
+      return 'dark';
     } else {
-      return "light";
+      return 'light';
     }
   };
 
@@ -60,7 +58,7 @@ const SettingsProvider = ({ children }: PropsWithChildren) => {
       value={{
         settings,
         updateSettings,
-        getMode,
+        getMode
       }}
     >
       {children}

@@ -13,9 +13,9 @@ const Intro = ({title = "", subTitle = "", breadcrumbs = []}: IntroProps) => {
   return (
     <Box
       sx={{
-        display: "flex",
-        justifyContent: "start",
-				flexDirection: "column"
+        display: 'flex',
+        justifyContent: 'start',
+        flexDirection: 'column'
       }}
     >
       {(title.length > 0 || subTitle.length > 0) && (
