@@ -65,6 +65,11 @@ const deleteSelectedUsers = async (userIds: string[]): Promise<void> => {
   await axios.all(requests).then(() => {});
 };
 
+const restoreMultipleUsers = async (userIds: string[]): Promise<void> => {
+  const requests = userIds.map(async (id) => await axios.post(`${USER_RESTORE_URL}/${id}`));
+  await axios.all(requests).then(() => {});
+};
+
 export {
   getUsers,
   deleteUser,
@@ -73,5 +78,6 @@ export {
   createUser,
   updateUser,
   updateUserPassword,
-  restoreUser
+  restoreUser,
+  restoreMultipleUsers
 };
