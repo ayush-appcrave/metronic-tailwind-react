@@ -173,7 +173,7 @@ const UserManagementSubCRUDTableContainer = (props: Props) => {
                 );
               })
             )}
-            {pagination.total && (
+            {!pagination.total && !isLoading && (
               <TableRow>
                 <TableCell colSpan={headCells.length}>No data found</TableCell>
               </TableRow>
