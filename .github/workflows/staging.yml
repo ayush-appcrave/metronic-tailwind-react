@@ -1,0 +1,44 @@
+name: STAGING DEPLOY
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        node-version: [17.x]
+
+    steps:
+      - uses: actions/checkout@v2
+      - name: 1. Install Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v1
+        with:
+          node-version: ${{ matrix.node-version }}
+
+      - name: 2. Build demo1
+        run: |
+          yarn install
+          yarn build
+          ls
+        working-directory: demo1
+
+      - name: 10. Publish demo1
+        uses: appleboy/scp-action@master
+        with:
+          host: ${{ secrets.SSH_STAGING_HOST }}
+          username: ${{ secrets.SSH_STAGING_USER }}
+          password: ${{ secrets.SSH_STAGING_PSW }}
+          port: 22
+          source: './demo1/dist/*'
+          target: 'www/hero'
+          strip_components: 2
+
+      - name: 19. Results
+        run: |
+          echo "https://lauris.dev.keenthemes.com/metronic8/vue/demo1"
