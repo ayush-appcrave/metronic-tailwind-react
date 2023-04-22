@@ -1,3 +1,4 @@
+import { useEffect } from 'react';
 import { Helmet } from 'react-helmet';
 import { Content, Toolbar, Intro } from '../layouts/default';
 import { useNavBreadcrumbs } from '@components/nav';
@@ -5,7 +6,9 @@ import { PageContainer } from '@components/page-container';
 import { NAV_VERTICAL } from '../config/navs.config';
 
 const MarketingPage = () => {
-  console.log('page: marketing');
+  useEffect(() => {
+    console.log('page: marketing');
+  }, []);
 
   return (
     <>
@@ -22,7 +25,7 @@ const MarketingPage = () => {
       </Toolbar>
 
       <Content>
-        <PageContainer>Dashboard page content goes here...</PageContainer>
+        <PageContainer>Marketing page content goes here...</PageContainer>
       </Content>
     </>
   );

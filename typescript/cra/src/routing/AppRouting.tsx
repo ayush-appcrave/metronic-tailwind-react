@@ -36,9 +36,6 @@ const AppRouting = (): ReactElement => {
 
   return (
     <Routes>
-      <Route element={<DefaultLayout />}>
-        <Route path="dashboard" element={<DashboardPage />} />
-      </Route>
       <Route path="error/*" element={<ErrorsPage />} />
       <Route path="logout" element={<Logout />} />
 

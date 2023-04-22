@@ -11,11 +11,11 @@ export interface LoadingProviderType {
 }
 
 const initialProps: LoadingProviderType = {
-  pageLoading: true,
+  pageLoading: false,
   setPageLoading: (state: boolean) => {},
-  progressBarLoading: true,
+  progressBarLoading: false,
   setProgressBarLoading: (state: boolean) => {},
-  screenLoading: true,
+  screenLoading: false,
   setScreenLoading: (state: boolean) => {}
 };
 

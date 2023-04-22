@@ -1,12 +1,16 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import axios from 'axios';
-import { setupAxios } from './auth';
-import './index.css';
-import 'material-icons/iconfont/material-icons.css';
 import { App } from './App';
 import { QueryClient, QueryClientProvider } from 'react-query';
 import reportWebVitals from './reportWebVitals';
+import 'simplebar/src/simplebar.css';
+import '@components/keenicons/assets/duotone/style.css';
+import '@components/keenicons/assets/outline/style.css';
+import '@components/keenicons/assets/solid/style.css';
+import { setupAxios } from './auth';
+import './index.css';
+import './App.css';
 // TODO: clarify helmet
 // import { Helmet } from "react-helmet";
 
@@ -21,12 +25,10 @@ const queryClient = new QueryClient();
 const root = ReactDOM.createRoot(document.getElementById('root') as HTMLElement);
 root.render(
   <QueryClientProvider client={queryClient}>
-    <React.StrictMode>
-      {/* <Helmet>
-          <meta name="theme-color" content={palette.light.primary.main} />
-        </Helmet> */}
-      <App />
-    </React.StrictMode>
+    {/* <Helmet>
+        <meta name="theme-color" content={palette.light.primary.main} />
+      </Helmet> */}
+    <App />
   </QueryClientProvider>
 );
 

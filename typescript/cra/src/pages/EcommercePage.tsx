@@ -11,6 +11,8 @@ const EcommercePage = () => {
   const { pageLoading, setPageLoading } = useLoading();
 
   const simulateRestCall = () => {
+    console.log('page: start');
+
     setPageLoading(true);
 
     try {
@@ -27,10 +29,19 @@ const EcommercePage = () => {
     simulateRestCall();
   }, []);
 
-  const renderContent = () => {
-    console.log('compoent: content');
+  useEffect(() => {
+    console.log('page: ecommerce');
+  }, []);
+
+  if (pageLoading) {
+    return <LoadingPage />;
+  } else {
+    console.log('page: ecommerce inner');
     return (
       <>
+        <Helmet>
+          <title>Ecommerce Page</title>
+        </Helmet>
         <Toolbar>
           <Intro
             title="Ecommerce"
@@ -38,25 +49,12 @@ const EcommercePage = () => {
             breadcrumbs={useNavBreadcrumbs(NAV_VERTICAL)}
           />
         </Toolbar>
-
         <Content>
           <PageContainer>Ecommerce page content goes here...</PageContainer>
         </Content>
       </>
     );
-  };
-
-  console.log('page: ecommerce');
-
-  return (
-    <>
-      <Helmet>
-        <title>Ecommerce Page</title>
-      </Helmet>
-
-      {pageLoading ? <LoadingPage /> : renderContent()}
-    </>
-  );
+  }
 };
 
 export { EcommercePage };

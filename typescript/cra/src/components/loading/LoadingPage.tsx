@@ -1,7 +1,11 @@
+import { useEffect } from 'react';
 import { Box, CircularProgress } from '@mui/material';
 
 const LoadingPage = () => {
-  console.log('compoent: page loading');
+  useEffect(() => {
+    console.log('compoent: page loading');
+  }, []);
+
   return (
     <Box
       sx={{
