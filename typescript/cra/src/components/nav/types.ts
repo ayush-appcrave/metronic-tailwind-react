@@ -88,7 +88,7 @@ export type NavConfigType = readonly NavItemOptionsType[];
 export type NavBreadcrumbsType = NavBreadcrumbType[];
 
 export interface NavBreadcrumbType {
-  title: string;
-  href?: string;
+  title?: string;
+  path?: string;
   active?: boolean;
 }

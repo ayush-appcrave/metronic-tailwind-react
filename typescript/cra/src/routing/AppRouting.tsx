@@ -36,12 +36,14 @@ const AppRouting = (): ReactElement => {
 
   return (
     <Routes>
+      <Route element={<DefaultLayout />}>
+        <Route path="dashboard" element={<DashboardPage />} />
+      </Route>
       <Route path="error/*" element={<ErrorsPage />} />
       <Route path="logout" element={<Logout />} />
 
       {currentUser ? (
         <>
-          <Route path="auth/*" element={<Navigate to="/dashboard" />} />
           <Route element={<DefaultLayout />}>
             <Route path="dashboard" element={<DashboardPage />} />
             <Route path="ecommerce" element={<EcommercePage />} />

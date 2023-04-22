@@ -43,12 +43,12 @@ const IntroBreadcrumbs = ({ breadcrumbs }: PropsType) => {
       }
       aria-label="breadcrumbs">
       {breadcrumbs.map((item, index) => {
-        if (item.href) {
+        if (item.path) {
           return (
             <Link
               key={`breadcrumb-${JSON.stringify(item)}`}
               underline="none"
-              href={item.href}
+              href={item.path}
               className={item?.active ? 'Mui-active' : ''}>
               {item.title}
             </Link>

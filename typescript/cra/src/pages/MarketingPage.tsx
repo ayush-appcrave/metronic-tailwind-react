@@ -5,6 +5,8 @@ import { PageContainer } from '@components/page-container';
 import { NAV_VERTICAL } from '../config/navs.config';
 
 const MarketingPage = () => {
+  console.log('page: marketing');
+
   return (
     <>
       <Helmet>

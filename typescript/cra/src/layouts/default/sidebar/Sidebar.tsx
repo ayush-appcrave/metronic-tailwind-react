@@ -24,10 +24,6 @@ const Sidebar = () => {
   const [headerHeight, setHeaderHeight] = useState(0);
   const [footerHeight, setFooterHeight] = useState(0);
 
-  useEffect(() => {
-    console.log('mouse hover:' + isSidebarExpand);
-  }, [isSidebarExpand]);
-
   const handleSidebarMouseOver = () => {
     setSidebarExpand(true);
   };

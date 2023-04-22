@@ -1,12 +1,7 @@
-import { type PropsWithChildren } from 'react';
 import { Box } from '@mui/material';
 import { Outlet } from 'react-router-dom';
-import { useLoading } from '../../../providers/LoadingProvider';
-import { LoadingPage } from '../../../components/loading';
 
-const Wrapper = ({ children }: PropsWithChildren) => {
-  const { pageLoading } = useLoading();
-
+const Wrapper = () => {
   return (
     <Box
       sx={{
@@ -14,7 +9,7 @@ const Wrapper = ({ children }: PropsWithChildren) => {
         flexDirection: 'column',
         flexGrow: '1'
       }}>
-      {pageLoading ? <LoadingPage /> : <Outlet />}
+      <Outlet />
     </Box>
   );
 };

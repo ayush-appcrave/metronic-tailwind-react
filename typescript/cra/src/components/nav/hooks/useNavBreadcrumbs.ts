@@ -1,8 +1,39 @@
-import { type NavBreadcrumbsType, type NavBreadcrumbType, type NavConfigType } from '../types';
+import { NavBreadcrumbsType, NavConfigType, NavItemOptionsType } from '../types';
 import { useMatchPath } from '../../../hooks';
 
-const useNavBreadcrumbs = (items: NavConfigType, path?: string): NavBreadcrumbsType => {
-  return [];
+const useNavBreadcrumbs = (items: NavConfigType): NavBreadcrumbsType => {
+  const findParents = (items: NavConfigType, parent?: NavItemOptionsType): NavBreadcrumbsType => {
+    for (let i = 0; i < items.length; i++) {
+      const obj = items[i];
+      const path = obj.path ? obj.path : '';
+      const { match } = useMatchPath(path);
+
+      if (match) {
+        if (parent) {
+          return [
+            {
+              title: obj.title,
+              path: obj.path,
+              active: true
+            }
+          ];
+        } else {
+          const parents = findParents(items, parent);
+          return [obj, ...parents];
+        }
+      } else if (obj.children?.items) {
+        const parents = findParents(obj.children.items, obj);
+
+        if (parents.length > 0) {
+          return [obj, ...parents];
+        }
+      }
+    }
+
+    return [];
+  };
+
+  return findParents(items);
 };
 
 export { useNavBreadcrumbs };
