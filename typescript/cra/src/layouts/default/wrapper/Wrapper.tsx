@@ -14,8 +14,7 @@ const Wrapper = ({ children }: PropsWithChildren) => {
         flexDirection: 'column',
         flexGrow: '1'
       }}>
-      {pageLoading && <LoadingPage />}
-      <Outlet />
+      {pageLoading ? <LoadingPage /> : <Outlet />}
     </Box>
   );
 };

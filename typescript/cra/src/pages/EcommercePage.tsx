@@ -9,7 +9,7 @@ import { NAV_VERTICAL } from '../config/navs.config';
 const EcommercePage = () => {
   const { pageLoading, setPageLoading } = useLoading();
 
-  const simulateRestCall = async () => {
+  const simulateRestCall = () => {
     setPageLoading(true);
     console.log(`wow1: ${pageLoading}`);
 
@@ -35,17 +35,19 @@ const EcommercePage = () => {
         <title>Ecommerce Page</title>
       </Helmet>
 
-      <Toolbar>
-        <Intro
-          title="Ecommerce"
-          subTitle="statistics & reports"
-          breadcrumbs={useNavBreadcrumbs(NAV_VERTICAL)}
-        />
-      </Toolbar>
+      <>
+        <Toolbar>
+          <Intro
+            title="Ecommerce"
+            subTitle="statistics & reports"
+            breadcrumbs={useNavBreadcrumbs(NAV_VERTICAL)}
+          />
+        </Toolbar>
 
-      <Content>
-        <PageContainer>Ecommerce page content goes here...</PageContainer>
-      </Content>
+        <Content>
+          <PageContainer>Ecommerce page content goes here...</PageContainer>
+        </Content>
+      </>
     </>
   );
 };
