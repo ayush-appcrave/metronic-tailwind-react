@@ -141,27 +141,27 @@ const NAV_COMMON: Record<string, NavConfigType> = {
   crud: [
     {
       title: 'Default',
-      path: '/users-management-api',
+      path: 'users-management/default',
       bullet: true
     },
     {
       title: 'Overlay modal',
-      path: '/users-management-api-overlay-modal',
+      path: '/users-management/overlay-modal',
       bullet: true
     },
     {
       title: 'Drawers',
-      path: '/users-management-api-drawers',
+      path: '/users-management/drawers',
       bullet: true
     },
     {
       title: 'Inline editing',
-      path: '/users-management-api-inline-editing',
+      path: '/users-management/inline-editing',
       bullet: true
     },
     {
       title: 'Sub CRUD',
-      path: '/users-management-api-sub-crud',
+      path: '/users-management/sub-crud',
       bullet: true
     }
   ]
