@@ -2,6 +2,8 @@ import { useState, createContext, useContext, type PropsWithChildren } from 'rea
 import { ScreenLoader, ProgressBarLoader } from '@components/loaders';
 
 export interface LoadersProviderType {
+  contentLoader: boolean;
+  setContentLoader: (state: boolean) => void;
   progressBarLoader: boolean;
   setProgressBarLoader: (state: boolean) => void;
   screenLoader: boolean;
@@ -9,6 +11,8 @@ export interface LoadersProviderType {
 }
 
 const initialProps: LoadersProviderType = {
+  contentLoader: false,
+  setContentLoader: (state: boolean) => {},
   progressBarLoader: false,
   setProgressBarLoader: (state: boolean) => {},
   screenLoader: false,
@@ -19,12 +23,15 @@ const LoadersContext = createContext<LoadersProviderType>(initialProps);
 const useLoaders = () => useContext(LoadersContext);
 
 const LoadersProvider = ({ children }: PropsWithChildren) => {
+  const [contentLoader, setContentLoader] = useState(false);
   const [progressBarLoader, setProgressBarLoader] = useState(false);
   const [screenLoader, setScreenLoader] = useState(true);
 
   return (
     <LoadersContext.Provider
       value={{
+        contentLoader,
+        setContentLoader,
         progressBarLoader,
         setProgressBarLoader,
         screenLoader,

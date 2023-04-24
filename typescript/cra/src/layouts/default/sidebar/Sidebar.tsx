@@ -1,13 +1,15 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { useTheme } from '@mui/material/styles';
 import { Box, Drawer } from '@mui/material';
 import useResponsive from '../../../hooks/useResponsive';
+import { useLoaders } from '../../../providers/LoadersProvider';
 import { useDefaultLayout, DefaultLayoutStylesConfig } from '../';
 import { SidebarHeader } from './SidebarHeader';
 import { SidebarNav } from './SidebarNav';
 import { SidebarFooter } from './SidebarFooter';
 
 const Sidebar = () => {
+  const { contentLoader } = useLoaders();
   const theme = useTheme();
   const isDesktop = useResponsive('up', 'lg');
   const styles = DefaultLayoutStylesConfig();
@@ -35,6 +37,10 @@ const Sidebar = () => {
   const handleMobileSidebarClose = () => {
     setMobileSidebarOpen(false);
   };
+
+  useEffect(() => {
+    console.log('content loading...');
+  }, [contentLoader]);
 
   if (isDesktop) {
     return (
