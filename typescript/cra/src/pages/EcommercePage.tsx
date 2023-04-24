@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import { Helmet } from 'react-helmet';
-import { Content, Toolbar, Intro } from '../layouts/default';
+import { Button } from '@mui/material';
+import { Content, Toolbar, ToolbarActions, Intro } from '../layouts/default';
 import { useNavBreadcrumbs } from '@components/nav';
 import { PageContainer } from '@components/page-container';
 import { ContentLoader } from '@components/loaders';
@@ -16,7 +17,7 @@ const EcommercePage = () => {
     try {
       setTimeout(() => {
         setLoading(false);
-      }, 3000); // simulate 2 second delay
+      }, 1000); // simulate 2 second delay
     } catch (error) {
       console.error(error);
       setLoading(false);
@@ -32,6 +33,9 @@ const EcommercePage = () => {
       <>
         <Toolbar>
           <Intro title="Ecommerce" subTitle="statistics & reports" breadcrumbs={breadcrumbs} />
+          <ToolbarActions>
+            <Button variant="contained">Create</Button>
+          </ToolbarActions>
         </Toolbar>
         <Content>
           <PageContainer>Ecommerce page content goes here...</PageContainer>

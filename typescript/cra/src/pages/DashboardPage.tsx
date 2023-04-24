@@ -1,4 +1,3 @@
-import { useEffect } from 'react';
 import { Helmet } from 'react-helmet';
 import { Content, Toolbar, Intro } from '../layouts/default';
 import { useNavBreadcrumbs } from '@components/nav';
@@ -6,10 +5,7 @@ import { PageContainer } from '@components/page-container';
 import { NAV_VERTICAL } from '../config/navs.config';
 
 const DashboardPage = () => {
-  useEffect(() => {
-    console.log('page: dashboard');
-  }, []);
-
+  const breadcrumbs = useNavBreadcrumbs(NAV_VERTICAL);
   return (
     <>
       <Helmet>
@@ -17,11 +13,7 @@ const DashboardPage = () => {
       </Helmet>
 
       <Toolbar>
-        <Intro
-          title="Dashboard"
-          subTitle="statistics & reports"
-          breadcrumbs={useNavBreadcrumbs(NAV_VERTICAL)}
-        />
+        <Intro title="Ecommerce" subTitle="statistics & reports" breadcrumbs={breadcrumbs} />
       </Toolbar>
 
       <Content>
