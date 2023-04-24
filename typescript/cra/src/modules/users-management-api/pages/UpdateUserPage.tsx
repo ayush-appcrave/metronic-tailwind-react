@@ -1,4 +1,4 @@
-import { UpdateUserFormWrapper } from './UpdateUserFormWrapper';
+import { UpdateUserFormWrapper } from '../components/edit-user/UpdateUserFormWrapper';
 import { Typography } from '@mui/material';
 import { useNavigate, useParams } from 'react-router';
 

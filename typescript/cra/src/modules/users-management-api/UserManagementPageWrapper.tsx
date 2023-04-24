@@ -2,13 +2,15 @@ import { ListViewProvider } from './core/ListViewProvider';
 import { QueryRequestProvider } from './core/QueryRequestProvider';
 import { QueryResponseProvider } from './core/QueryResponseProvider';
 import { Route } from 'react-router-dom';
-import { UsersManagementPage } from './UsersManagementPage';
-import { UsersManagementOverlayPage } from './UsersManagementOverlayPage';
-import { UsersManagementDrawersPage } from './UsersManagementDrawersPage';
-import { UsersManagementInlineEditingPage } from './UsersManagementInlineEditingPage';
-import { UsersManagementSubCRUDPage } from './UsersManagementSubCRUDPage';
-import { UpdateUserPage } from './components/edit-user/UpdateUserPage';
-import { ViewUserPage } from './components/view/ViewUserPage';
+import {
+  UpdateUserPage,
+  UsersManagementPage,
+  UsersManagementOverlayPage,
+  UsersManagementDrawersPage,
+  UsersManagementInlineEditingPage,
+  UsersManagementSubCRUDPage,
+  ViewUserPage
+} from './pages';
 import { Routes } from 'react-router';
 
 const UsersManagementWrapper = () => (

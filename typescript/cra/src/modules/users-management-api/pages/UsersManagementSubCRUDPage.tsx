@@ -1,19 +1,21 @@
-import { type ChangeEvent, useState } from 'react';
+import { type ChangeEvent, useEffect, useState } from 'react';
 
 import { Button, type SelectChangeEvent, Box, Paper } from '@mui/material';
-import { UserManagementSubCRUDTableContainer } from './components/UserManagementSubCRUDTableContainer';
+import { UserManagementSubCRUDTableContainer } from '../components/UserManagementSubCRUDTableContainer';
 
-import { useQueryResponse } from './core/QueryResponseProvider';
-import { CreateUserDrawer } from './components/create-user/CreateUserDrawer';
-import { useQueryRequest } from './core/QueryRequestProvider';
-import { CreateUserStepperFormDialog } from './components/create-user/CreateUserStepperFormDialog';
-import { useListView } from './core/ListViewProvider';
-import { EnhancedTableToolbar } from './components/EnhancedTableToolbar';
+import { useQueryResponse } from '../core/QueryResponseProvider';
+import { CreateUserDrawer } from '../components/create-user/CreateUserDrawer';
+import { useQueryRequest } from '../core/QueryRequestProvider';
+import { CreateUserStepperFormDialog } from '../components/create-user/CreateUserStepperFormDialog';
+import { useListView } from '../core/ListViewProvider';
+import { EnhancedTableToolbar } from '../components/EnhancedTableToolbar';
 import { useMutation, useQueryClient } from 'react-query';
-import { deleteSelectedUsers } from './core/_requests';
-import { QUERIES } from './helpers';
-import UsersManagementActionsCell from './components/cells/UsersManagementActionsCell';
-import { UndoSnackbar } from './components/UndoSnackbar';
+import { deleteSelectedUsers } from '../core/_requests';
+import { QUERIES } from '../helpers';
+import UsersManagementActionsCell from '../components/cells/UsersManagementActionsCell';
+import { UndoSnackbar } from '../components/UndoSnackbar';
+import { useSearchParams } from 'react-router-dom';
+import qs from 'query-string';
 
 function UsersManagementSubCRUDPage() {
   const { updateState } = useQueryRequest();
@@ -23,6 +25,20 @@ function UsersManagementSubCRUDPage() {
   const [nameFilter, setNameFilter] = useState<string | null>(null);
   const queryClient = useQueryClient();
   const { query } = useQueryResponse();
+
+  const [searchParams, setSearchParams] = useSearchParams();
+  useEffect(() => {
+    if (searchParams.toString()) {
+      updateState(qs.parse(searchParams.toString()));
+    } else {
+      updateState({});
+    }
+
+    return () => {
+      console.log('component clean up');
+      updateState({});
+    };
+  }, []);
 
   const [openUndoSnackbar, setOpenUndoSnackbar] = useState(false);
   const [deleteId, setDeleteId] = useState('-1');

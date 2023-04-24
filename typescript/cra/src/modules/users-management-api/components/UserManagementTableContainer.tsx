@@ -44,7 +44,7 @@ const UserManagementTableContainer = (props: Props) => {
   const { onSelectAll, selected, onSelect } = useListView();
 
   useEffect(() => {
-    updateState({ sort: orderBy, order });
+    updateState({ sort: orderBy, order }, true);
   }, [order, orderBy]);
 
   const isSelected = (id: string) => {
@@ -60,11 +60,11 @@ const UserManagementTableContainer = (props: Props) => {
   };
 
   const handleChangePage = (event: unknown, newPage: number) => {
-    console.log(newPage + 1);
-    updateState({ page: newPage + 1 });
+    console.log('handle change');
+    updateState({ page: newPage + 1 }, true);
   };
   const handleChangeRowsPerPage = (event: ChangeEvent<HTMLInputElement>) => {
-    updateState({ items_per_page: event.target.value as unknown as 10 | 30 | 50 | 100 });
+    updateState({ items_per_page: event.target.value as unknown as 10 | 30 | 50 | 100 }, true);
   };
   const handleChangeDense = (event: ChangeEvent<HTMLInputElement>) => {
     setDense(event.target.checked);

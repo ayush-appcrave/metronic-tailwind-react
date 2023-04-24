@@ -22,7 +22,6 @@ import { headCells } from '../core/headCellConfiguration';
 import React, { type ChangeEvent, useEffect, useMemo, useState } from 'react';
 import { type User } from '../core/_models';
 import { useListView } from '../core/ListViewProvider';
-import { type Order } from '../@types/sort';
 import {
   useQueryResponse,
   useQueryResponseData,
@@ -32,6 +31,7 @@ import {
 import { useQueryRequest } from '../core/QueryRequestProvider';
 import { updateUser } from '../core/_requests';
 import { useSnackbar } from 'notistack';
+import { Order } from '../@types/sort';
 
 interface RowProps {
   row: User;
@@ -234,15 +234,16 @@ const UserManagementInlineEditingTableContainer = () => {
   const { onSelectAll, selected } = useListView();
 
   useEffect(() => {
-    updateState({ sort: orderBy, order });
-  }, [order, orderBy]);
+    updateState({ sort: 'created_at', order: 'asc' });
+  }, []);
 
   const handleRequestSort = (event: React.FormEvent<unknown>, property: keyof User | null) => {
     if (property) {
       setOrderBy(property);
+      const isAsc = orderBy === property && order === 'asc';
+      setOrder(isAsc ? 'desc' : 'asc');
+      updateState({ sort: property, order: isAsc ? 'desc' : 'asc' }, true);
     }
-    const isAsc = orderBy === property && order === 'asc';
-    setOrder(isAsc ? 'desc' : 'asc');
   };
 
   const handleChangePage = (event: unknown, newPage: number) => {
