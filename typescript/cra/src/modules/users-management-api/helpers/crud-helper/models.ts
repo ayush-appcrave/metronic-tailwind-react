@@ -39,7 +39,7 @@ export type QueryState = PaginationState & SortState & FilterState & SearchState
 
 export interface QueryRequestContextProps {
   state: QueryState;
-  updateState: (updates: Partial<QueryState>) => void;
+  updateState: (updates: Partial<QueryState>, saveToQuery?: boolean | undefined) => void;
 }
 
 export const initialQueryState: QueryState = {

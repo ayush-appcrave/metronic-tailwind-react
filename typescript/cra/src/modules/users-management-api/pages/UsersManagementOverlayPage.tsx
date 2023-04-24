@@ -1,4 +1,4 @@
-import React, { type ChangeEvent, useState } from 'react';
+import React, { type ChangeEvent, useEffect, useState } from 'react';
 
 import { Button, type SelectChangeEvent, Box, Paper } from '@mui/material';
 import { UserManagementTableContainer } from '../components/UserManagementTableContainer';
@@ -16,6 +16,8 @@ import { deleteSelectedUsers } from '../core/_requests';
 import { QUERIES } from '../helpers';
 import { AlertDialog } from '../components/AlertDialog';
 import { UndoSnackbar } from '../components/UndoSnackbar';
+import { useSearchParams } from 'react-router-dom';
+import qs from 'query-string';
 
 function UsersManagementOverlayPage() {
   const { updateState } = useQueryRequest();
@@ -33,6 +35,20 @@ function UsersManagementOverlayPage() {
   const [nameFilter, setNameFilter] = useState<string | null>(null);
   const queryClient = useQueryClient();
   const { query } = useQueryResponse();
+
+  const [searchParams, setSearchParams] = useSearchParams();
+  useEffect(() => {
+    if (searchParams.toString()) {
+      updateState(qs.parse(searchParams.toString()));
+    } else {
+      updateState({});
+    }
+
+    return () => {
+      console.log('component clean up');
+      updateState({});
+    };
+  }, []);
 
   const { clearSelected, selected } = useListView();
 

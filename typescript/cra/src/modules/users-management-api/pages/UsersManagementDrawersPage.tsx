@@ -1,4 +1,4 @@
-import { type ChangeEvent, useState } from 'react';
+import { type ChangeEvent, useEffect, useState } from 'react';
 
 import { Button, type SelectChangeEvent, Box, Paper } from '@mui/material';
 import { UserManagementTableContainer } from '../components/UserManagementTableContainer';
@@ -13,6 +13,8 @@ import { deleteSelectedUsers } from '../core/_requests';
 import { QUERIES } from '../helpers';
 import { UpdateUserDrawer } from '../components/edit-user/UpdateUserDrawer';
 import { ViewUserDrawer } from '../components/view/ViewUserDrawer';
+import qs from 'query-string';
+import { useSearchParams } from 'react-router-dom';
 
 function UsersManagementDrawersPage() {
   const { updateState } = useQueryRequest();
@@ -25,6 +27,20 @@ function UsersManagementDrawersPage() {
   const [nameFilter, setNameFilter] = useState<string | null>(null);
   const queryClient = useQueryClient();
   const { query } = useQueryResponse();
+
+  const [searchParams, setSearchParams] = useSearchParams();
+  useEffect(() => {
+    if (searchParams.toString()) {
+      updateState(qs.parse(searchParams.toString()));
+    } else {
+      updateState({});
+    }
+
+    return () => {
+      console.log('component clean up');
+      updateState({});
+    };
+  }, []);
 
   const { clearSelected, selected } = useListView();
 
@@ -54,17 +70,17 @@ function UsersManagementDrawersPage() {
   const handleRoleFilterChange: (event: SelectChangeEvent) => void = (e: SelectChangeEvent) => {
     if (e.target.value !== 'all') {
       setRoleFilter(e.target.value as 'user' | 'admin');
-      updateState({ role: e.target.value as 'user' | 'admin' });
+      updateState({ role: e.target.value as 'user' | 'admin' }, true);
     } else {
       setRoleFilter(undefined);
-      updateState({ role: undefined });
+      updateState({ role: undefined }, true);
     }
   };
   const handleNameFilterChange: (event: ChangeEvent<HTMLInputElement>) => void = (
     e: ChangeEvent<HTMLInputElement>
   ) => {
     setNameFilter(e.target.value);
-    updateState({ search: e.target.value });
+    updateState({ search: e.target.value }, true);
   };
   // -------------------
 

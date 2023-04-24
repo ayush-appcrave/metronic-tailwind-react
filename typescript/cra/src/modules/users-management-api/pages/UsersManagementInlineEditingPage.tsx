@@ -1,4 +1,4 @@
-import { type ChangeEvent, useState } from 'react';
+import { type ChangeEvent, useEffect, useState } from 'react';
 
 import { Button, type SelectChangeEvent, Box, Paper } from '@mui/material';
 import { UserManagementInlineEditingTableContainer } from '../components/UserManagementInlineEditingTableContainer';
@@ -12,6 +12,8 @@ import { EnhancedTableToolbar } from '../components/EnhancedTableToolbar';
 import { useMutation, useQueryClient } from 'react-query';
 import { deleteSelectedUsers } from '../core/_requests';
 import { QUERIES } from '../helpers';
+import { useSearchParams } from 'react-router-dom';
+import qs from 'query-string';
 
 function UsersManagementInlineEditingPage() {
   const { updateState } = useQueryRequest();
@@ -23,6 +25,20 @@ function UsersManagementInlineEditingPage() {
   const { query } = useQueryResponse();
 
   const { clearSelected, selected } = useListView();
+
+  const [searchParams] = useSearchParams();
+  useEffect(() => {
+    if (searchParams.toString()) {
+      updateState(qs.parse(searchParams.toString()));
+    } else {
+      updateState({});
+    }
+
+    return () => {
+      console.log('component clean up');
+      updateState({});
+    };
+  }, []);
 
   const deleteSelectedItems = useMutation(
     async () => {
@@ -56,17 +72,17 @@ function UsersManagementInlineEditingPage() {
   const handleRoleFilterChange: (event: SelectChangeEvent) => void = (e: SelectChangeEvent) => {
     if (e.target.value !== 'all') {
       setRoleFilter(e.target.value as 'user' | 'admin');
-      updateState({ role: e.target.value as 'user' | 'admin' });
+      updateState({ role: e.target.value as 'user' | 'admin' }, true);
     } else {
       setRoleFilter(undefined);
-      updateState({ role: undefined });
+      updateState({ role: undefined }, true);
     }
   };
   const handleNameFilterChange: (event: ChangeEvent<HTMLInputElement>) => void = (
     e: ChangeEvent<HTMLInputElement>
   ) => {
     setNameFilter(e.target.value);
-    updateState({ search: e.target.value });
+    updateState({ search: e.target.value }, true);
   };
   // -------------------
 

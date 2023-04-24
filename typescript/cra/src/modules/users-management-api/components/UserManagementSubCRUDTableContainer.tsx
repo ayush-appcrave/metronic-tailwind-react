@@ -117,7 +117,7 @@ const UserManagementSubCRUDTableContainer = (props: Props) => {
   const { onSelectAll, selected } = useListView();
 
   useEffect(() => {
-    updateState({ sort: orderBy, order });
+    updateState({ sort: orderBy, order }, true);
   }, [order, orderBy]);
 
   const handleRequestSort = (event: React.FormEvent<unknown>, property: keyof User | null) => {
@@ -130,10 +130,10 @@ const UserManagementSubCRUDTableContainer = (props: Props) => {
 
   const handleChangePage = (event: unknown, newPage: number) => {
     console.log(newPage + 1);
-    updateState({ page: newPage + 1 });
+    updateState({ page: newPage + 1 }, true);
   };
   const handleChangeRowsPerPage = (event: ChangeEvent<HTMLInputElement>) => {
-    updateState({ items_per_page: event.target.value as unknown as 10 | 30 | 50 | 100 });
+    updateState({ items_per_page: event.target.value as unknown as 10 | 30 | 50 | 100 }, true);
   };
   const handleChangeDense = (event: ChangeEvent<HTMLInputElement>) => {
     setDense(event.target.checked);
