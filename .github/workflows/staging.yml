@@ -21,12 +21,12 @@ jobs:
         with:
           node-version: ${{ matrix.node-version }}
 
-      - name: 2. Build demo1
+      - name: 2. Build hero
         run: |
           yarn install
           yarn build
           ls
-        working-directory: demo1
+        working-directory: typescript/cra
 
       - name: 10. Publish demo1
         uses: appleboy/scp-action@master
@@ -35,10 +35,10 @@ jobs:
           username: ${{ secrets.SSH_STAGING_USER }}
           password: ${{ secrets.SSH_STAGING_PSW }}
           port: 22
-          source: './demo1/dist/*'
+          source: './typescript/cra/build/*'
           target: 'www/hero'
           strip_components: 2
 
       - name: 19. Results
         run: |
-          echo "https://lauris.dev.keenthemes.com/metronic8/vue/demo1"
+          echo "https://lauris.dev.keenthemes.com/hero"
