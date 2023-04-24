@@ -10,7 +10,7 @@ jobs:
 
     strategy:
       matrix:
-        node-version: [17.x]
+        node-version: [18.x]
 
     steps:
       - uses: actions/checkout@v2
@@ -19,178 +19,24 @@ jobs:
         with:
           node-version: ${{ matrix.node-version }}
 
-      - name: 2. Build demo1
+      - name: 2. Build hero
         run: |
           yarn install
-          yarn build
+          CI=false yarn build
           ls
-        working-directory: demo1
+        working-directory: typescript/cra
 
-      - name: 3. Build demo2
-        run: |
-          yarn install
-          yarn build
-          ls
-        working-directory: demo2
-
-      - name: 4. Build demo3
-        run: |
-          yarn install
-          yarn build
-          ls
-        working-directory: demo3
-
-      - name: 5. Build demo4
-        run: |
-          yarn install
-          yarn build
-          ls
-        working-directory: demo4
-
-      - name: 6. Build demo5
-        run: |
-          yarn install
-          yarn build
-          ls
-        working-directory: demo5
-
-      - name: 7. Build demo6
-        run: |
-          yarn install
-          yarn build
-          ls
-        working-directory: demo6
-
-      - name: 8. Build demo7
-        run: |
-          yarn install
-          yarn build
-          ls
-        working-directory: demo7
-
-      - name: 9. Build demo8
-        run: |
-          yarn install
-          yarn build
-          ls
-        working-directory: demo8
-
-      - name: 10. Build docs
-        run: |
-          yarn install
-          yarn build
-          ls
-        working-directory: docs
-
-      - name: 11. Publish demo1
+      - name: 10. Publish hero
         uses: appleboy/scp-action@master
         with:
           host: ${{ secrets.SSH_PROD_HOST }}
           username: ${{ secrets.SSH_PROD_USER }}
           password: ${{ secrets.SSH_PROD_PSW }}
           port: 22
-          source: './demo1/dist/*'
-          target: '/var/www/preview.keenthemes.com/public/metronic8/vue/demo1'
+          source: './typescript/cra/build/*'
+          target: '/var/www/preview.keenthemes.com/public/hero'
           strip_components: 2
-          rm: true
 
-      - name: 12. Publish demo2
-        uses: appleboy/scp-action@master
-        with:
-          host: ${{ secrets.SSH_PROD_HOST }}
-          username: ${{ secrets.SSH_PROD_USER }}
-          password: ${{ secrets.SSH_PROD_PSW }}
-          port: 22
-          source: './demo2/dist/*'
-          target: '/var/www/preview.keenthemes.com/public/metronic8/vue/demo2'
-          strip_components: 2
-          rm: true
-
-      - name: 13. Publish demo3
-        uses: appleboy/scp-action@master
-        with:
-          host: ${{ secrets.SSH_PROD_HOST }}
-          username: ${{ secrets.SSH_PROD_USER }}
-          password: ${{ secrets.SSH_PROD_PSW }}
-          port: 22
-          source: './demo3/dist/*'
-          target: '/var/www/preview.keenthemes.com/public/metronic8/vue/demo3'
-          strip_components: 2
-          rm: true
-
-      - name: 14. Publish demo4
-        uses: appleboy/scp-action@master
-        with:
-          host: ${{ secrets.SSH_PROD_HOST }}
-          username: ${{ secrets.SSH_PROD_USER }}
-          password: ${{ secrets.SSH_PROD_PSW }}
-          port: 22
-          source: './demo4/dist/*'
-          target: '/var/www/preview.keenthemes.com/public/metronic8/vue/demo4'
-          strip_components: 2
-          rm: true
-
-      - name: 15. Publish demo5
-        uses: appleboy/scp-action@master
-        with:
-          host: ${{ secrets.SSH_PROD_HOST }}
-          username: ${{ secrets.SSH_PROD_USER }}
-          password: ${{ secrets.SSH_PROD_PSW }}
-          port: 22
-          source: './demo5/dist/*'
-          target: '/var/www/preview.keenthemes.com/public/metronic8/vue/demo5'
-          strip_components: 2
-          rm: true
-
-      - name: 16. Publish demo6
-        uses: appleboy/scp-action@master
-        with:
-          host: ${{ secrets.SSH_PROD_HOST }}
-          username: ${{ secrets.SSH_PROD_USER }}
-          password: ${{ secrets.SSH_PROD_PSW }}
-          port: 22
-          source: './demo6/dist/*'
-          target: '/var/www/preview.keenthemes.com/public/metronic8/vue/demo6'
-          strip_components: 2
-          rm: true
-
-      - name: 17. Publish demo7
-        uses: appleboy/scp-action@master
-        with:
-          host: ${{ secrets.SSH_PROD_HOST }}
-          username: ${{ secrets.SSH_PROD_USER }}
-          password: ${{ secrets.SSH_PROD_PSW }}
-          port: 22
-          source: './demo7/dist/*'
-          target: '/var/www/preview.keenthemes.com/public/metronic8/vue/demo7'
-          strip_components: 2
-          rm: true
-
-      - name: 18. Publish demo8
-        uses: appleboy/scp-action@master
-        with:
-          host: ${{ secrets.SSH_PROD_HOST }}
-          username: ${{ secrets.SSH_PROD_USER }}
-          password: ${{ secrets.SSH_PROD_PSW }}
-          port: 22
-          source: './demo8/dist/*'
-          target: '/var/www/preview.keenthemes.com/public/metronic8/vue/demo8'
-          strip_components: 2
-          rm: true
-
-
-      - name: 19. Publish docs
-        uses: appleboy/scp-action@master
-        with:
-          host: ${{ secrets.SSH_PROD_HOST }}
-          username: ${{ secrets.SSH_PROD_USER }}
-          password: ${{ secrets.SSH_PROD_PSW }}
-          port: 22
-          source: './docs/dist/*'
-          target: '/var/www/preview.keenthemes.com/public/metronic8/vue/docs'
-          strip_components: 2
-          rm: true
-
-          # Examples:
-          # source: "./demo1/dist/*"
-          # target: '/var/www/preview.keenthemes.com/public/metronic8/vue/demo1'
+      - name: 19. Results
+        run: |
+          echo "https://preview.keenthemes.com/hero"

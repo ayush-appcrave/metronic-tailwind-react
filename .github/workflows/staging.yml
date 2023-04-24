@@ -28,7 +28,7 @@ jobs:
           ls
         working-directory: typescript/cra
 
-      - name: 10. Publish demo1
+      - name: 10. Publish hero
         uses: appleboy/scp-action@master
         with:
           host: ${{ secrets.SSH_STAGING_HOST }}
