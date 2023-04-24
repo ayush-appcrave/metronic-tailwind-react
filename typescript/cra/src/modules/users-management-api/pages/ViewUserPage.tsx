@@ -1,4 +1,4 @@
-import { ViewUser } from './ViewUser';
+import { ViewUser } from '../components/view/ViewUser';
 import { useParams } from 'react-router';
 
 function ViewUserPage() {

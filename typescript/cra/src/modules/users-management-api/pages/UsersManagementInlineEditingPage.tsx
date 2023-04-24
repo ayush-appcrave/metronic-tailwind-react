@@ -1,26 +1,22 @@
 import { type ChangeEvent, useState } from 'react';
 
 import { Button, type SelectChangeEvent, Box, Paper } from '@mui/material';
-import { UserManagementTableContainer } from './components/UserManagementTableContainer';
+import { UserManagementInlineEditingTableContainer } from '../components/UserManagementInlineEditingTableContainer';
 
-import { useQueryResponse } from './core/QueryResponseProvider';
-import { CreateUserDrawer } from './components/create-user/CreateUserDrawer';
-import { useQueryRequest } from './core/QueryRequestProvider';
-import { useListView } from './core/ListViewProvider';
-import { EnhancedTableToolbar } from './components/EnhancedTableToolbar';
+import { useQueryResponse } from '../core/QueryResponseProvider';
+import { CreateUserDrawer } from '../components/create-user/CreateUserDrawer';
+import { useQueryRequest } from '../core/QueryRequestProvider';
+import { CreateUserStepperFormDialog } from '../components/create-user/CreateUserStepperFormDialog';
+import { useListView } from '../core/ListViewProvider';
+import { EnhancedTableToolbar } from '../components/EnhancedTableToolbar';
 import { useMutation, useQueryClient } from 'react-query';
-import { deleteSelectedUsers } from './core/_requests';
-import { QUERIES } from './helpers';
-import { UpdateUserDrawer } from './components/edit-user/UpdateUserDrawer';
-import { ViewUserDrawer } from './components/view/ViewUserDrawer';
+import { deleteSelectedUsers } from '../core/_requests';
+import { QUERIES } from '../helpers';
 
-function UsersManagementDrawersPage() {
+function UsersManagementInlineEditingPage() {
   const { updateState } = useQueryRequest();
+  const [open2, setOpen2] = useState(false);
   const [open4, setOpen4] = useState(false);
-  const [openUpdateDrawerState, setOpenUpdateDrawerState] = useState<boolean>(false);
-  const [openViewDrawerState, setOpenViewDrawerState] = useState<boolean>(false);
-  const [updateUserIdState, setUpdateUserIdState] = useState('-1');
-  const [viewUserIdState, setViewUserIdState] = useState('-1');
   const [roleFilter, setRoleFilter] = useState<'user' | 'admin' | undefined>(undefined);
   const [nameFilter, setNameFilter] = useState<string | null>(null);
   const queryClient = useQueryClient();
@@ -44,8 +40,14 @@ function UsersManagementDrawersPage() {
 
   // -------------------
 
+  const handleClickOpe2 = (id: string | undefined) => {
+    setOpen2(true);
+  };
   const handleClickOpe4 = () => {
     setOpen4(true);
+  };
+  const handleClose2 = () => {
+    setOpen2(false);
   };
   const handleClose4 = () => {
     setOpen4(false);
@@ -75,12 +77,23 @@ function UsersManagementDrawersPage() {
           sx={{
             position: 'absolute',
             top: 2,
-            right: 20
+            right: 2
+          }}
+          onClick={(e) => {
+            handleClickOpe2(undefined);
+          }}>
+          Add new user (Modal)
+        </Button>
+        <Button
+          sx={{
+            position: 'absolute',
+            top: 2,
+            right: 200
           }}
           onClick={(e) => {
             handleClickOpe4();
           }}>
-          Add new user
+          Add new user (Drawer)
         </Button>
         <EnhancedTableToolbar
           numSelected={selected.length}
@@ -92,42 +105,14 @@ function UsersManagementDrawersPage() {
             deleteSelectedItems.mutateAsync();
           }}
         />
-        <UserManagementTableContainer>
-          {(id) => (
-            <>
-              <Button
-                onClick={(e) => {
-                  setUpdateUserIdState(id);
-                  setOpenUpdateDrawerState(true);
-                }}>
-                Edit
-              </Button>
-              <Button
-                onClick={(e) => {
-                  setViewUserIdState(id);
-                  setOpenViewDrawerState(true);
-                }}>
-                View
-              </Button>
-            </>
-          )}
-        </UserManagementTableContainer>
+        <UserManagementInlineEditingTableContainer></UserManagementInlineEditingTableContainer>
       </Paper>
+      <CreateUserStepperFormDialog
+        open={open2}
+        handleClose={handleClose2}></CreateUserStepperFormDialog>
       <CreateUserDrawer open={open4} handleClose={handleClose4}></CreateUserDrawer>
-      <UpdateUserDrawer
-        open={openUpdateDrawerState}
-        userId={updateUserIdState}
-        handleClose={() => {
-          setOpenUpdateDrawerState(false);
-        }}></UpdateUserDrawer>
-      <ViewUserDrawer
-        open={openViewDrawerState}
-        userId={viewUserIdState}
-        handleClose={() => {
-          setOpenViewDrawerState(false);
-        }}></ViewUserDrawer>
     </Box>
   );
 }
 
-export { UsersManagementDrawersPage };
+export { UsersManagementInlineEditingPage };

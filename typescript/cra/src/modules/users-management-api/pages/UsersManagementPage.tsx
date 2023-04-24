@@ -1,28 +1,37 @@
 import { type ChangeEvent, useState } from 'react';
 
 import { Button, type SelectChangeEvent, Box, Paper } from '@mui/material';
-import { UserManagementInlineEditingTableContainer } from './components/UserManagementInlineEditingTableContainer';
+import { UserManagementTableContainer } from '../components/UserManagementTableContainer';
 
-import { useQueryResponse } from './core/QueryResponseProvider';
-import { CreateUserDrawer } from './components/create-user/CreateUserDrawer';
-import { useQueryRequest } from './core/QueryRequestProvider';
-import { CreateUserStepperFormDialog } from './components/create-user/CreateUserStepperFormDialog';
-import { useListView } from './core/ListViewProvider';
-import { EnhancedTableToolbar } from './components/EnhancedTableToolbar';
+import { useQueryResponse } from '../core/QueryResponseProvider';
+import { CreateUserDrawer } from '../components/create-user/CreateUserDrawer';
+import { useQueryRequest } from '../core/QueryRequestProvider';
+import { CreateUserStepperFormDialog } from '../components/create-user/CreateUserStepperFormDialog';
+import { useListView } from '../core/ListViewProvider';
+import { EnhancedTableToolbar } from '../components/EnhancedTableToolbar';
 import { useMutation, useQueryClient } from 'react-query';
-import { deleteSelectedUsers } from './core/_requests';
-import { QUERIES } from './helpers';
+import { deleteSelectedUsers, restoreMultipleUsers } from '../core/_requests';
+import { QUERIES } from '../helpers';
+import UsersManagementActionsCell from '../components/cells/UsersManagementActionsCell';
+import { UndoActions } from '../components/UndoActions';
+import { useSnackbar } from 'notistack';
 
-function UsersManagementInlineEditingPage() {
+function UsersManagementPage() {
+  const { enqueueSnackbar } = useSnackbar();
   const { updateState } = useQueryRequest();
   const [open2, setOpen2] = useState(false);
   const [open4, setOpen4] = useState(false);
   const [roleFilter, setRoleFilter] = useState<'user' | 'admin' | undefined>(undefined);
   const [nameFilter, setNameFilter] = useState<string | null>(null);
   const queryClient = useQueryClient();
-  const { query } = useQueryResponse();
+  const { query, refetch } = useQueryResponse();
 
   const { clearSelected, selected } = useListView();
+
+  const undoAction: (ids: string[]) => Promise<void> = async (ids: string[]) => {
+    await restoreMultipleUsers(ids);
+    refetch();
+  };
 
   const deleteSelectedItems = useMutation(
     async () => {
@@ -33,6 +42,16 @@ function UsersManagementInlineEditingPage() {
       onSuccess: () => {
         // ✅ update detail view directly
         queryClient.invalidateQueries([`${QUERIES.USERS_LIST}-${query}`]);
+        enqueueSnackbar(`${selected.length} users was deleted.`, {
+          action: (snackbarKey) => (
+            <UndoActions
+              ids={selected as string[]}
+              snackbarKey={snackbarKey}
+              undoAction={undoAction}></UndoActions>
+          ),
+          anchorOrigin: { vertical: 'bottom', horizontal: 'left' },
+          autoHideDuration: 7000
+        });
         clearSelected();
       }
     }
@@ -105,7 +124,25 @@ function UsersManagementInlineEditingPage() {
             deleteSelectedItems.mutateAsync();
           }}
         />
-        <UserManagementInlineEditingTableContainer></UserManagementInlineEditingTableContainer>
+        <UserManagementTableContainer>
+          {(id) => (
+            <UsersManagementActionsCell
+              id={id}
+              deleteHandler={() => {
+                enqueueSnackbar('User was deleted.', {
+                  action: (snackbarKey) => (
+                    <UndoActions
+                      snackbarKey={snackbarKey}
+                      undoAction={undoAction}
+                      ids={[id]}></UndoActions>
+                  ),
+                  anchorOrigin: { vertical: 'bottom', horizontal: 'left' },
+                  autoHideDuration: 7000
+                });
+              }}
+            />
+          )}
+        </UserManagementTableContainer>
       </Paper>
       <CreateUserStepperFormDialog
         open={open2}
@@ -115,4 +152,4 @@ function UsersManagementInlineEditingPage() {
   );
 }
 
-export { UsersManagementInlineEditingPage };
+export { UsersManagementPage };

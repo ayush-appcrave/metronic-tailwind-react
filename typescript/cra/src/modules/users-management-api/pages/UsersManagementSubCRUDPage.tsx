@@ -1,37 +1,33 @@
 import { type ChangeEvent, useState } from 'react';
 
 import { Button, type SelectChangeEvent, Box, Paper } from '@mui/material';
-import { UserManagementTableContainer } from './components/UserManagementTableContainer';
+import { UserManagementSubCRUDTableContainer } from '../components/UserManagementSubCRUDTableContainer';
 
-import { useQueryResponse } from './core/QueryResponseProvider';
-import { CreateUserDrawer } from './components/create-user/CreateUserDrawer';
-import { useQueryRequest } from './core/QueryRequestProvider';
-import { CreateUserStepperFormDialog } from './components/create-user/CreateUserStepperFormDialog';
-import { useListView } from './core/ListViewProvider';
-import { EnhancedTableToolbar } from './components/EnhancedTableToolbar';
+import { useQueryResponse } from '../core/QueryResponseProvider';
+import { CreateUserDrawer } from '../components/create-user/CreateUserDrawer';
+import { useQueryRequest } from '../core/QueryRequestProvider';
+import { CreateUserStepperFormDialog } from '../components/create-user/CreateUserStepperFormDialog';
+import { useListView } from '../core/ListViewProvider';
+import { EnhancedTableToolbar } from '../components/EnhancedTableToolbar';
 import { useMutation, useQueryClient } from 'react-query';
-import { deleteSelectedUsers, restoreMultipleUsers, restoreUser } from './core/_requests';
-import { QUERIES } from './helpers';
-import UsersManagementActionsCell from './components/cells/UsersManagementActionsCell';
-import { UndoActions } from './components/UndoActions';
-import { useSnackbar } from 'notistack';
+import { deleteSelectedUsers } from '../core/_requests';
+import { QUERIES } from '../helpers';
+import UsersManagementActionsCell from '../components/cells/UsersManagementActionsCell';
+import { UndoSnackbar } from '../components/UndoSnackbar';
 
-function UsersManagementPage() {
-  const { enqueueSnackbar } = useSnackbar();
+function UsersManagementSubCRUDPage() {
   const { updateState } = useQueryRequest();
   const [open2, setOpen2] = useState(false);
   const [open4, setOpen4] = useState(false);
   const [roleFilter, setRoleFilter] = useState<'user' | 'admin' | undefined>(undefined);
   const [nameFilter, setNameFilter] = useState<string | null>(null);
   const queryClient = useQueryClient();
-  const { query, refetch } = useQueryResponse();
+  const { query } = useQueryResponse();
+
+  const [openUndoSnackbar, setOpenUndoSnackbar] = useState(false);
+  const [deleteId, setDeleteId] = useState('-1');
 
   const { clearSelected, selected } = useListView();
-
-  const undoAction: (ids: string[]) => Promise<void> = async (ids: string[]) => {
-    await restoreMultipleUsers(ids);
-    refetch();
-  };
 
   const deleteSelectedItems = useMutation(
     async () => {
@@ -42,16 +38,6 @@ function UsersManagementPage() {
       onSuccess: () => {
         // ✅ update detail view directly
         queryClient.invalidateQueries([`${QUERIES.USERS_LIST}-${query}`]);
-        enqueueSnackbar(`${selected.length} users was deleted.`, {
-          action: (snackbarKey) => (
-            <UndoActions
-              ids={selected as string[]}
-              snackbarKey={snackbarKey}
-              undoAction={undoAction}></UndoActions>
-          ),
-          anchorOrigin: { vertical: 'bottom', horizontal: 'left' },
-          autoHideDuration: 7000
-        });
         clearSelected();
       }
     }
@@ -124,32 +110,30 @@ function UsersManagementPage() {
             deleteSelectedItems.mutateAsync();
           }}
         />
-        <UserManagementTableContainer>
+        <UserManagementSubCRUDTableContainer>
           {(id) => (
             <UsersManagementActionsCell
               id={id}
               deleteHandler={() => {
-                enqueueSnackbar('User was deleted.', {
-                  action: (snackbarKey) => (
-                    <UndoActions
-                      snackbarKey={snackbarKey}
-                      undoAction={undoAction}
-                      ids={[id]}></UndoActions>
-                  ),
-                  anchorOrigin: { vertical: 'bottom', horizontal: 'left' },
-                  autoHideDuration: 7000
-                });
+                setDeleteId(id);
+                setOpenUndoSnackbar(true);
               }}
             />
           )}
-        </UserManagementTableContainer>
+        </UserManagementSubCRUDTableContainer>
       </Paper>
       <CreateUserStepperFormDialog
         open={open2}
         handleClose={handleClose2}></CreateUserStepperFormDialog>
       <CreateUserDrawer open={open4} handleClose={handleClose4}></CreateUserDrawer>
+      <UndoSnackbar
+        userId={deleteId}
+        open={openUndoSnackbar}
+        onClose={() => {
+          setOpenUndoSnackbar(false);
+        }}></UndoSnackbar>
     </Box>
   );
 }
 
-export { UsersManagementPage };
+export { UsersManagementSubCRUDPage };

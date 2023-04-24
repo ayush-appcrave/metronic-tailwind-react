@@ -1,21 +1,21 @@
 import React, { type ChangeEvent, useState } from 'react';
 
 import { Button, type SelectChangeEvent, Box, Paper } from '@mui/material';
-import { UserManagementTableContainer } from './components/UserManagementTableContainer';
+import { UserManagementTableContainer } from '../components/UserManagementTableContainer';
 
-import { useQueryResponse } from './core/QueryResponseProvider';
-import { useQueryRequest } from './core/QueryRequestProvider';
-import { CreateUserStepperFormDialog } from './components/create-user/CreateUserStepperFormDialog';
-import { CreateUserPlainFormDialog } from './components/create-user/CreateUserPlainFormDialog';
-import { UpdateUserDialog } from './components/edit-user/UpdateUserDialog';
-import { ViewUserDialog } from './components/view/ViewUserDialog';
-import { useListView } from './core/ListViewProvider';
-import { EnhancedTableToolbar } from './components/EnhancedTableToolbar';
+import { useQueryResponse } from '../core/QueryResponseProvider';
+import { useQueryRequest } from '../core/QueryRequestProvider';
+import { CreateUserStepperFormDialog } from '../components/create-user/CreateUserStepperFormDialog';
+import { CreateUserPlainFormDialog } from '../components/create-user/CreateUserPlainFormDialog';
+import { UpdateUserDialog } from '../components/edit-user/UpdateUserDialog';
+import { ViewUserDialog } from '../components/view/ViewUserDialog';
+import { useListView } from '../core/ListViewProvider';
+import { EnhancedTableToolbar } from '../components/EnhancedTableToolbar';
 import { useMutation, useQueryClient } from 'react-query';
-import { deleteSelectedUsers } from './core/_requests';
-import { QUERIES } from './helpers';
-import { AlertDialog } from './components/AlertDialog';
-import { UndoSnackbar } from './components/UndoSnackbar';
+import { deleteSelectedUsers } from '../core/_requests';
+import { QUERIES } from '../helpers';
+import { AlertDialog } from '../components/AlertDialog';
+import { UndoSnackbar } from '../components/UndoSnackbar';
 
 function UsersManagementOverlayPage() {
   const { updateState } = useQueryRequest();
