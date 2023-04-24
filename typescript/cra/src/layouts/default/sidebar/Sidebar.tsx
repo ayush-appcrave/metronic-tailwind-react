@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import { useTheme } from '@mui/material/styles';
 import { Box, Drawer } from '@mui/material';
 import useResponsive from '../../../hooks/useResponsive';

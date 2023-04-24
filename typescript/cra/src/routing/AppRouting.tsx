@@ -1,6 +1,6 @@
 import { useEffect, useState, ReactElement } from 'react';
 import { Navigate, Route, Routes, useLocation } from 'react-router';
-import { useLoading } from '../providers/LoadingProvider';
+import { useLoaders } from '../providers/LoadersProvider';
 import { AuthPage, Logout, useAuth } from '../auth';
 import { DashboardPage, EcommercePage, MarketingPage } from '../pages';
 import { ErrorsPage } from '../modules/errors';
@@ -9,12 +9,12 @@ import { UsersManagementWrapper } from '../modules/users-management-api';
 
 const AppRouting = (): ReactElement => {
   const { currentUser } = useAuth();
-  const { setProgressBarLoading } = useLoading();
+  const { setProgressBarLoader } = useLoaders();
   const [previousLocation, setPreviousLocation] = useState('');
   const location = useLocation();
 
   useEffect(() => {
-    setProgressBarLoading(true);
+    setProgressBarLoader(true);
     setPreviousLocation(location.pathname);
 
     if (location.pathname === previousLocation) {
@@ -23,7 +23,7 @@ const AppRouting = (): ReactElement => {
   }, [location]);
 
   useEffect(() => {
-    setProgressBarLoading(false);
+    setProgressBarLoader(false);
   }, [previousLocation]);
 
   return (

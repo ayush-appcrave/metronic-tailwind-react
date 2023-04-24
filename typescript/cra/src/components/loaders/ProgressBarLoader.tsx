@@ -1,7 +1,7 @@
 import { Box, LinearProgress } from '@mui/material';
 import zIndex from '@mui/material/styles/zIndex';
 
-const LoadingProgressBar = () => {
+const ProgressBarLoader = () => {
   return (
     <Box
       sx={{
@@ -16,4 +16,4 @@ const LoadingProgressBar = () => {
   );
 };
 
-export { LoadingProgressBar };
+export { ProgressBarLoader };

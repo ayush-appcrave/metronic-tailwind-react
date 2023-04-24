@@ -1,27 +1,25 @@
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { Helmet } from 'react-helmet';
 import { Content, Toolbar, Intro } from '../layouts/default';
-import { useLoading } from '../providers/LoadingProvider';
 import { useNavBreadcrumbs } from '@components/nav';
 import { PageContainer } from '@components/page-container';
-import { LoadingPage } from '@components/loading';
+import { ContentLoader } from '@components/loaders';
 import { NAV_VERTICAL } from '../config/navs.config';
 
 const EcommercePage = () => {
-  const { pageLoading, setPageLoading } = useLoading();
+  const [loading, setLoading] = useState(true);
+  const breadcrumbs = useNavBreadcrumbs(NAV_VERTICAL);
 
   const simulateRestCall = () => {
     console.log('page: start');
 
-    setPageLoading(true);
-
     try {
       setTimeout(() => {
-        setPageLoading(false);
+        setLoading(false);
       }, 3000); // simulate 2 second delay
     } catch (error) {
       console.error(error);
-      setPageLoading(false);
+      setLoading(false);
     }
   };
 
@@ -29,32 +27,28 @@ const EcommercePage = () => {
     simulateRestCall();
   }, []);
 
-  useEffect(() => {
-    console.log('page: ecommerce');
-  }, []);
-
-  if (pageLoading) {
-    return <LoadingPage />;
-  } else {
-    console.log('page: ecommerce inner');
+  const renderContent = () => {
     return (
       <>
-        <Helmet>
-          <title>Ecommerce Page</title>
-        </Helmet>
         <Toolbar>
-          <Intro
-            title="Ecommerce"
-            subTitle="statistics & reports"
-            breadcrumbs={useNavBreadcrumbs(NAV_VERTICAL)}
-          />
+          <Intro title="Ecommerce" subTitle="statistics & reports" breadcrumbs={breadcrumbs} />
         </Toolbar>
         <Content>
           <PageContainer>Ecommerce page content goes here...</PageContainer>
         </Content>
       </>
     );
-  }
+  };
+
+  return (
+    <>
+      <Helmet>
+        <title>Ecommerce Page</title>
+      </Helmet>
+
+      {loading ? <ContentLoader /> : renderContent()}
+    </>
+  );
 };
 
 export { EcommercePage };

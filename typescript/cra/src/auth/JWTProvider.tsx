@@ -11,7 +11,7 @@ import {
 import { type AuthModel, type UserModel } from './_models';
 import * as authHelper from './_helpers';
 import { getUserByToken } from './_requests';
-import { useLoading } from '../providers/LoadingProvider';
+import { useLoaders } from '../providers/LoadersProvider';
 
 interface AuthContextProps {
   auth: AuthModel | undefined;
@@ -60,7 +60,7 @@ const AuthProvider = ({ children }: PropsWithChildren) => {
 };
 
 const AuthInit = ({ children }: PropsWithChildren) => {
-  const { screenLoading, setScreenLoading } = useLoading();
+  const { screenLoader, setScreenLoader } = useLoaders();
   const { auth, logout, setCurrentUser } = useAuth();
   const didRequest = useRef(false);
 
@@ -68,7 +68,7 @@ const AuthInit = ({ children }: PropsWithChildren) => {
   useEffect(() => {
     console.log('auth');
 
-    setScreenLoading(true);
+    setScreenLoader(true);
 
     const requestUser = async (accessToken: string) => {
       try {
@@ -86,7 +86,7 @@ const AuthInit = ({ children }: PropsWithChildren) => {
           logout();
         }
       } finally {
-        setScreenLoading(false);
+        setScreenLoader(false);
       }
 
       return () => (didRequest.current = true);
@@ -96,12 +96,12 @@ const AuthInit = ({ children }: PropsWithChildren) => {
       requestUser(auth.access_token);
     } else {
       logout();
-      setScreenLoading(false);
+      setScreenLoader(false);
     }
     // eslint-disable-next-line
   }, []);
 
-  return screenLoading ? <></> : <>{children}</>;
+  return screenLoader ? <></> : <>{children}</>;
 };
 
 export { AuthProvider, AuthInit, useAuth };

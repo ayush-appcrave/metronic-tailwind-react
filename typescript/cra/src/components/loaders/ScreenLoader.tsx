@@ -1,7 +1,7 @@
 import { Box, useTheme } from '@mui/material';
 import zIndex from '@mui/material/styles/zIndex';
 
-const LoadingScreen = () => {
+const ScreenLoader = () => {
   const theme = useTheme();
 
   return (
@@ -42,4 +42,4 @@ const LoadingScreen = () => {
   );
 };
 
-export { LoadingScreen };
+export { ScreenLoader };

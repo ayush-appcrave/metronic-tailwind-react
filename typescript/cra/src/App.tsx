@@ -6,7 +6,7 @@ import {
   ThemeRtlProvider,
   LayoutsProvider,
   ThemeProvider,
-  LoadingProvider,
+  LoadersProvider,
   SnackbarProvider
 } from './providers';
 import { AppRouting } from './routing';
@@ -18,7 +18,7 @@ const App = () => (
         <ThemeProvider>
           <ThemeRtlProvider>
             <LayoutsProvider>
-              <LoadingProvider>
+              <LoadersProvider>
                 <SnackbarProvider>
                   <AuthInit>
                     <BrowserRouter>
@@ -26,7 +26,7 @@ const App = () => (
                     </BrowserRouter>
                   </AuthInit>
                 </SnackbarProvider>
-              </LoadingProvider>
+              </LoadersProvider>
             </LayoutsProvider>
           </ThemeRtlProvider>
         </ThemeProvider>

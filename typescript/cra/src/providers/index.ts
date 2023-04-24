@@ -1,5 +1,5 @@
 export * from './LayoutsProvider';
-export * from './LoadingProvider';
+export * from './LoadersProvider';
 export * from './SettingsProvider';
 export * from './SnackbarProvider';
 export * from './ThemeProvider';
