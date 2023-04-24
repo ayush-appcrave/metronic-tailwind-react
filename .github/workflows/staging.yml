@@ -24,7 +24,7 @@ jobs:
       - name: 2. Build hero
         run: |
           yarn install
-          yarn build
+          CI=false yarn build
           ls
         working-directory: typescript/cra
 
