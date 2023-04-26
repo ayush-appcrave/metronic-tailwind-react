@@ -124,7 +124,7 @@ function UsersManagementPage() {
             deleteSelectedItems.mutateAsync();
           }}
         />
-        <UserManagementTableContainer>
+        <UserManagementTableContainer denseKey="MAIN">
           {(id) => (
             <UsersManagementActionsCell
               id={id}

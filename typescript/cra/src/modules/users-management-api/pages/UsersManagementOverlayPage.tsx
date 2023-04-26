@@ -110,9 +110,12 @@ function UsersManagementOverlayPage() {
             deleteSelectedItems.mutateAsync();
           }}
         />
-        <UserManagementTableContainer>
+        <UserManagementTableContainer denseKey="OVERLAY_MODAL">
           {(id) => (
-            <>
+            <Box
+              sx={{
+                display: 'flex'
+              }}>
               <Button
                 onClick={(e) => {
                   setUpdateUserIdState(id);
@@ -134,7 +137,7 @@ function UsersManagementOverlayPage() {
                 }}>
                 View
               </Button>
-            </>
+            </Box>
           )}
         </UserManagementTableContainer>
       </Paper>

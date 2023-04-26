@@ -203,7 +203,10 @@ const UserManagementInlineEditingTableRow = (props: RowProps) => {
           </Button>
         )}
         {!editState && (
-          <>
+          <Box
+            sx={{
+              display: 'flex'
+            }}>
             <Button
               onClick={(e) => {
                 setEditState(true);
@@ -216,7 +219,7 @@ const UserManagementInlineEditingTableRow = (props: RowProps) => {
               }}>
               Delete
             </Button>
-          </>
+          </Box>
         )}
       </TableCell>
     </TableRow>

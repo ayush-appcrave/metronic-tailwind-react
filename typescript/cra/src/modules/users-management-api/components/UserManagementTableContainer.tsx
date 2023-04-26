@@ -31,6 +31,7 @@ import qs from 'query-string';
 import { initialQueryRequest } from '../helpers';
 
 interface Props {
+  denseKey: string;
   children: (id: string) => React.ReactNode;
 }
 
@@ -50,7 +51,7 @@ const UserManagementTableContainer = (props: Props) => {
 
   const [searchParams] = useSearchParams();
   useEffect(() => {
-    setDense(localStorage.getItem('DENSE_DEFAULT_TABLE') === 'true');
+    setDense(localStorage.getItem(`DENSE_DEFAULT_${props.denseKey}_TABLE`) === 'true');
     if (searchParams.toString()) {
       console.log('query set', qs.parse(searchParams.toString()));
       updateState(qs.parse(searchParams.toString()));
@@ -89,7 +90,7 @@ const UserManagementTableContainer = (props: Props) => {
     updateState({ items_per_page: event.target.value as unknown as 5 | 10 | 25 }, true);
   };
   const handleChangeDense = (event: ChangeEvent<HTMLInputElement>) => {
-    localStorage.setItem('DENSE_DEFAULT_TABLE', event.target.checked.toString());
+    localStorage.setItem(`DENSE_DEFAULT_${props.denseKey}_TABLE`, event.target.checked.toString());
     setDense(event.target.checked);
   };
 

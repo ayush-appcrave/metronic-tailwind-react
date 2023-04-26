@@ -92,9 +92,12 @@ function UsersManagementDrawersPage() {
             deleteSelectedItems.mutateAsync();
           }}
         />
-        <UserManagementTableContainer>
+        <UserManagementTableContainer denseKey="DRAWERS">
           {(id) => (
-            <>
+            <Box
+              sx={{
+                display: 'flex'
+              }}>
               <Button
                 onClick={(e) => {
                   setUpdateUserIdState(id);
@@ -109,7 +112,7 @@ function UsersManagementDrawersPage() {
                 }}>
                 View
               </Button>
-            </>
+            </Box>
           )}
         </UserManagementTableContainer>
       </Paper>
