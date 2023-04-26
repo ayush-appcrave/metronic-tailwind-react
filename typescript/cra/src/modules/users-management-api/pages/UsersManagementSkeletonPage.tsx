@@ -1,4 +1,4 @@
-import { type ChangeEvent, useState } from 'react';
+import React, { type ChangeEvent, useState } from 'react';
 
 import { Button, type SelectChangeEvent, Box, Paper } from '@mui/material';
 import { UserManagementSkeletonTableContainer } from '../components/UserManagementSkeletonTableContainer';
@@ -15,6 +15,10 @@ import { QUERIES } from '../helpers';
 import UsersManagementActionsCell from '../components/cells/UsersManagementActionsCell';
 import { UndoActions } from '../components/UndoActions';
 import { useSnackbar } from 'notistack';
+import { Helmet } from 'react-helmet';
+import { Content, Intro, Toolbar } from '../../../layouts/default';
+import { useNavBreadcrumbs } from '@components/nav';
+import { NAV_VERTICAL } from '../../../config/navs.config';
 
 function UsersManagementSkeletonPage() {
   const { enqueueSnackbar } = useSnackbar();
@@ -25,6 +29,7 @@ function UsersManagementSkeletonPage() {
   const [nameFilter, setNameFilter] = useState<string | null>(null);
   const queryClient = useQueryClient();
   const { query, refetch } = useQueryResponse();
+  const breadcrumbs = useNavBreadcrumbs(NAV_VERTICAL);
 
   const { clearSelected, selected } = useListView();
 
@@ -90,65 +95,77 @@ function UsersManagementSkeletonPage() {
   // -------------------
 
   return (
-    <Box sx={{ width: '100%' }}>
-      <Paper sx={{ width: '100%', mb: 2, mt: 10, position: 'relative', paddingTop: '40px' }}>
-        <Button
-          sx={{
-            position: 'absolute',
-            top: 2,
-            right: 2
-          }}
-          onClick={(e) => {
-            handleClickOpe2(undefined);
-          }}>
-          Add new user (Modal)
-        </Button>
-        <Button
-          sx={{
-            position: 'absolute',
-            top: 2,
-            right: 200
-          }}
-          onClick={(e) => {
-            handleClickOpe4();
-          }}>
-          Add new user (Drawer)
-        </Button>
-        <EnhancedTableToolbar
-          numSelected={selected.length}
-          handleRoleFilterChange={handleRoleFilterChange}
-          roleFilter={roleFilter}
-          handleNameFilterChange={handleNameFilterChange}
-          nameFilter={nameFilter}
-          handleSelectedUsersDelete={() => {
-            deleteSelectedItems.mutateAsync();
-          }}
-        />
-        <UserManagementSkeletonTableContainer denseKey="MAIN">
-          {(id) => (
-            <UsersManagementActionsCell
-              id={id}
-              deleteHandler={() => {
-                enqueueSnackbar('User was deleted.', {
-                  action: (snackbarKey) => (
-                    <UndoActions
-                      snackbarKey={snackbarKey}
-                      undoAction={undoAction}
-                      ids={[id]}></UndoActions>
-                  ),
-                  anchorOrigin: { vertical: 'bottom', horizontal: 'left' },
-                  autoHideDuration: 7000
-                });
+    <>
+      <Helmet>
+        <title>Users Management Skeleton Loading Page</title>
+      </Helmet>
+
+      <Toolbar>
+        <Intro title={`Users Management Skeleton Loading Page`} breadcrumbs={breadcrumbs} />
+      </Toolbar>
+
+      <Content>
+        <Box sx={{ width: '100%' }}>
+          <Paper sx={{ width: '100%', mb: 2, mt: 10, position: 'relative', paddingTop: '40px' }}>
+            <Button
+              sx={{
+                position: 'absolute',
+                top: 2,
+                right: 2
+              }}
+              onClick={(e) => {
+                handleClickOpe2(undefined);
+              }}>
+              Add new user (Modal)
+            </Button>
+            <Button
+              sx={{
+                position: 'absolute',
+                top: 2,
+                right: 200
+              }}
+              onClick={(e) => {
+                handleClickOpe4();
+              }}>
+              Add new user (Drawer)
+            </Button>
+            <EnhancedTableToolbar
+              numSelected={selected.length}
+              handleRoleFilterChange={handleRoleFilterChange}
+              roleFilter={roleFilter}
+              handleNameFilterChange={handleNameFilterChange}
+              nameFilter={nameFilter}
+              handleSelectedUsersDelete={() => {
+                deleteSelectedItems.mutateAsync();
               }}
             />
-          )}
-        </UserManagementSkeletonTableContainer>
-      </Paper>
-      <CreateUserStepperFormDialog
-        open={open2}
-        handleClose={handleClose2}></CreateUserStepperFormDialog>
-      <CreateUserDrawer open={open4} handleClose={handleClose4}></CreateUserDrawer>
-    </Box>
+            <UserManagementSkeletonTableContainer denseKey="MAIN">
+              {(id) => (
+                <UsersManagementActionsCell
+                  id={id}
+                  deleteHandler={() => {
+                    enqueueSnackbar('User was deleted.', {
+                      action: (snackbarKey) => (
+                        <UndoActions
+                          snackbarKey={snackbarKey}
+                          undoAction={undoAction}
+                          ids={[id]}></UndoActions>
+                      ),
+                      anchorOrigin: { vertical: 'bottom', horizontal: 'left' },
+                      autoHideDuration: 7000
+                    });
+                  }}
+                />
+              )}
+            </UserManagementSkeletonTableContainer>
+          </Paper>
+          <CreateUserStepperFormDialog
+            open={open2}
+            handleClose={handleClose2}></CreateUserStepperFormDialog>
+          <CreateUserDrawer open={open4} handleClose={handleClose4}></CreateUserDrawer>
+        </Box>
+      </Content>
+    </>
   );
 }
 

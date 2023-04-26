@@ -13,6 +13,10 @@ import { deleteSelectedUsers } from '../core/_requests';
 import { QUERIES } from '../helpers';
 import { UpdateUserDrawer } from '../components/edit-user/UpdateUserDrawer';
 import { ViewUserDrawer } from '../components/view/ViewUserDrawer';
+import { Helmet } from 'react-helmet';
+import { Content, Intro, Toolbar } from '../../../layouts/default';
+import { useNavBreadcrumbs } from '@components/nav';
+import { NAV_VERTICAL } from '../../../config/navs.config';
 
 function UsersManagementDrawersPage() {
   const { updateState } = useQueryRequest();
@@ -25,6 +29,7 @@ function UsersManagementDrawersPage() {
   const [nameFilter, setNameFilter] = useState<string | null>(null);
   const queryClient = useQueryClient();
   const { query } = useQueryResponse();
+  const breadcrumbs = useNavBreadcrumbs(NAV_VERTICAL);
 
   const { clearSelected, selected } = useListView();
 
@@ -69,67 +74,79 @@ function UsersManagementDrawersPage() {
   // -------------------
 
   return (
-    <Box sx={{ width: '100%' }}>
-      <Paper sx={{ width: '100%', mb: 2, mt: 10, position: 'relative', paddingTop: '40px' }}>
-        <Button
-          sx={{
-            position: 'absolute',
-            top: 2,
-            right: 20
-          }}
-          onClick={(e) => {
-            handleClickOpe4();
-          }}>
-          Add new user
-        </Button>
-        <EnhancedTableToolbar
-          numSelected={selected.length}
-          handleRoleFilterChange={handleRoleFilterChange}
-          roleFilter={roleFilter}
-          handleNameFilterChange={handleNameFilterChange}
-          nameFilter={nameFilter}
-          handleSelectedUsersDelete={() => {
-            deleteSelectedItems.mutateAsync();
-          }}
-        />
-        <UserManagementTableContainer denseKey="DRAWERS">
-          {(id) => (
-            <Box
+    <>
+      <Helmet>
+        <title>Users Management Drawers Page</title>
+      </Helmet>
+
+      <Toolbar>
+        <Intro title={`Users Management Drawers Page`} breadcrumbs={breadcrumbs} />
+      </Toolbar>
+
+      <Content>
+        <Box sx={{ width: '100%' }}>
+          <Paper sx={{ width: '100%', mb: 2, mt: 10, position: 'relative', paddingTop: '40px' }}>
+            <Button
               sx={{
-                display: 'flex'
+                position: 'absolute',
+                top: 2,
+                right: 20
+              }}
+              onClick={(e) => {
+                handleClickOpe4();
               }}>
-              <Button
-                onClick={(e) => {
-                  setUpdateUserIdState(id);
-                  setOpenUpdateDrawerState(true);
-                }}>
-                Edit
-              </Button>
-              <Button
-                onClick={(e) => {
-                  setViewUserIdState(id);
-                  setOpenViewDrawerState(true);
-                }}>
-                View
-              </Button>
-            </Box>
-          )}
-        </UserManagementTableContainer>
-      </Paper>
-      <CreateUserDrawer open={open4} handleClose={handleClose4}></CreateUserDrawer>
-      <UpdateUserDrawer
-        open={openUpdateDrawerState}
-        userId={updateUserIdState}
-        handleClose={() => {
-          setOpenUpdateDrawerState(false);
-        }}></UpdateUserDrawer>
-      <ViewUserDrawer
-        open={openViewDrawerState}
-        userId={viewUserIdState}
-        handleClose={() => {
-          setOpenViewDrawerState(false);
-        }}></ViewUserDrawer>
-    </Box>
+              Add new user
+            </Button>
+            <EnhancedTableToolbar
+              numSelected={selected.length}
+              handleRoleFilterChange={handleRoleFilterChange}
+              roleFilter={roleFilter}
+              handleNameFilterChange={handleNameFilterChange}
+              nameFilter={nameFilter}
+              handleSelectedUsersDelete={() => {
+                deleteSelectedItems.mutateAsync();
+              }}
+            />
+            <UserManagementTableContainer denseKey="DRAWERS">
+              {(id) => (
+                <Box
+                  sx={{
+                    display: 'flex'
+                  }}>
+                  <Button
+                    onClick={(e) => {
+                      setUpdateUserIdState(id);
+                      setOpenUpdateDrawerState(true);
+                    }}>
+                    Edit
+                  </Button>
+                  <Button
+                    onClick={(e) => {
+                      setViewUserIdState(id);
+                      setOpenViewDrawerState(true);
+                    }}>
+                    View
+                  </Button>
+                </Box>
+              )}
+            </UserManagementTableContainer>
+          </Paper>
+          <CreateUserDrawer open={open4} handleClose={handleClose4}></CreateUserDrawer>
+          <UpdateUserDrawer
+            open={openUpdateDrawerState}
+            userId={updateUserIdState}
+            handleClose={() => {
+              setOpenUpdateDrawerState(false);
+            }}></UpdateUserDrawer>
+          <ViewUserDrawer
+            open={openViewDrawerState}
+            userId={viewUserIdState}
+            handleClose={() => {
+              setOpenViewDrawerState(false);
+            }}></ViewUserDrawer>
+        </Box>
+      </Content>
+    </>
   );
 }
 
