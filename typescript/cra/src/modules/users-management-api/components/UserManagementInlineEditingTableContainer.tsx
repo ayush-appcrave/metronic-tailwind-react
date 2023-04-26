@@ -32,6 +32,9 @@ import { useQueryRequest } from '../core/QueryRequestProvider';
 import { updateUser } from '../core/_requests';
 import { useSnackbar } from 'notistack';
 import { Order } from '../@types/sort';
+import { useSearchParams } from 'react-router-dom';
+import qs from 'query-string';
+import { initialQueryRequest } from '../helpers';
 
 interface RowProps {
   row: User;
@@ -233,8 +236,26 @@ const UserManagementInlineEditingTableContainer = () => {
   const [dense, setDense] = useState(false);
   const { onSelectAll, selected } = useListView();
 
+  const { refetch } = useQueryResponse();
+
+  const [searchParams] = useSearchParams();
   useEffect(() => {
-    updateState({ sort: 'created_at', order: 'asc' });
+    setDense(localStorage.getItem('DENSE_INLINE_EDITING_TABLE') === 'true');
+    if (searchParams.toString()) {
+      console.log('query set', qs.parse(searchParams.toString()));
+      updateState(qs.parse(searchParams.toString()));
+      const sortParam = qs.parse(searchParams.toString()).sort;
+      const orderParam = qs.parse(searchParams.toString()).order;
+
+      if (sortParam && orderParam) {
+        setOrderBy(sortParam as keyof User);
+        setOrder(orderParam as Order);
+      }
+    }
+
+    return () => {
+      updateState(initialQueryRequest.state);
+    };
   }, []);
 
   const handleRequestSort = (event: React.FormEvent<unknown>, property: keyof User | null) => {
@@ -247,13 +268,14 @@ const UserManagementInlineEditingTableContainer = () => {
   };
 
   const handleChangePage = (event: unknown, newPage: number) => {
-    console.log(newPage + 1);
-    updateState({ page: newPage + 1 });
+    updateState({ page: newPage + 1 }, true);
   };
   const handleChangeRowsPerPage = (event: ChangeEvent<HTMLInputElement>) => {
-    updateState({ items_per_page: event.target.value as unknown as 10 | 30 | 50 | 100 });
+    alert('update state');
+    updateState({ items_per_page: event.target.value as unknown as 5 | 10 | 25 }, true);
   };
   const handleChangeDense = (event: ChangeEvent<HTMLInputElement>) => {
+    localStorage.setItem('DENSE_INLINE_EDITING_TABLE', event.target.checked.toString());
     setDense(event.target.checked);
   };
 

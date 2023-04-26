@@ -1,8 +1,7 @@
-import { type ChangeEvent, useState, useEffect } from 'react';
+import { type ChangeEvent, useState } from 'react';
 
 import { Button, type SelectChangeEvent, Box, Paper } from '@mui/material';
 import { UserManagementTableContainer } from '../components/UserManagementTableContainer';
-import qs from 'query-string';
 
 import { useQueryResponse } from '../core/QueryResponseProvider';
 import { CreateUserDrawer } from '../components/create-user/CreateUserDrawer';
@@ -16,7 +15,6 @@ import { QUERIES } from '../helpers';
 import UsersManagementActionsCell from '../components/cells/UsersManagementActionsCell';
 import { UndoActions } from '../components/UndoActions';
 import { useSnackbar } from 'notistack';
-import { useSearchParams } from 'react-router-dom';
 
 function UsersManagementPage() {
   const { enqueueSnackbar } = useSnackbar();
@@ -29,17 +27,6 @@ function UsersManagementPage() {
   const { query, refetch } = useQueryResponse();
 
   const { clearSelected, selected } = useListView();
-  const [searchParams, setSearchParams] = useSearchParams();
-
-  useEffect(() => {
-    if (searchParams.toString()) {
-      updateState(qs.parse(searchParams.toString()));
-    }
-
-    return () => {
-      updateState({});
-    };
-  }, []);
 
   const undoAction: (ids: string[]) => Promise<void> = async (ids: string[]) => {
     await restoreMultipleUsers(ids);

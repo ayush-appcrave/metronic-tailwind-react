@@ -19,12 +19,16 @@ import { type User } from '../core/_models';
 import { useListView } from '../core/ListViewProvider';
 import { type Order } from '../@types/sort';
 import {
+  useQueryResponse,
   useQueryResponseData,
   useQueryResponseLoading,
   useQueryResponsePagination
 } from '../core/QueryResponseProvider';
 import { useQueryRequest } from '../core/QueryRequestProvider';
 import { TableLoader } from './loading/TableLoader';
+import { useSearchParams } from 'react-router-dom';
+import qs from 'query-string';
+import { initialQueryRequest } from '../helpers';
 
 interface Props {
   children: (id: string) => React.ReactNode;
@@ -34,6 +38,7 @@ const UserManagementTableContainer = (props: Props) => {
   const { updateState } = useQueryRequest();
   const users = useQueryResponseData();
   const data = useMemo(() => users, [users]);
+  const { refetch } = useQueryResponse();
 
   const isLoading = useQueryResponseLoading();
 
@@ -43,9 +48,25 @@ const UserManagementTableContainer = (props: Props) => {
   const [dense, setDense] = useState(false);
   const { onSelectAll, selected, onSelect } = useListView();
 
+  const [searchParams] = useSearchParams();
   useEffect(() => {
-    updateState({ sort: orderBy, order }, true);
-  }, [order, orderBy]);
+    setDense(localStorage.getItem('DENSE_DEFAULT_TABLE') === 'true');
+    if (searchParams.toString()) {
+      console.log('query set', qs.parse(searchParams.toString()));
+      updateState(qs.parse(searchParams.toString()));
+      const sortParam = qs.parse(searchParams.toString()).sort;
+      const orderParam = qs.parse(searchParams.toString()).order;
+
+      if (sortParam && orderParam) {
+        setOrderBy(sortParam as keyof User);
+        setOrder(orderParam as Order);
+      }
+    }
+
+    return () => {
+      updateState(initialQueryRequest.state);
+    };
+  }, []);
 
   const isSelected = (id: string) => {
     return selected.includes(id);
@@ -54,9 +75,10 @@ const UserManagementTableContainer = (props: Props) => {
   const handleRequestSort = (event: React.FormEvent<unknown>, property: keyof User | null) => {
     if (property) {
       setOrderBy(property);
+      const isAsc = orderBy === property && order === 'asc';
+      setOrder(isAsc ? 'desc' : 'asc');
+      updateState({ sort: property, order: isAsc ? 'desc' : 'asc' }, true);
     }
-    const isAsc = orderBy === property && order === 'asc';
-    setOrder(isAsc ? 'desc' : 'asc');
   };
 
   const handleChangePage = (event: unknown, newPage: number) => {
@@ -64,9 +86,10 @@ const UserManagementTableContainer = (props: Props) => {
     updateState({ page: newPage + 1 }, true);
   };
   const handleChangeRowsPerPage = (event: ChangeEvent<HTMLInputElement>) => {
-    updateState({ items_per_page: event.target.value as unknown as 10 | 30 | 50 | 100 }, true);
+    updateState({ items_per_page: event.target.value as unknown as 5 | 10 | 25 }, true);
   };
   const handleChangeDense = (event: ChangeEvent<HTMLInputElement>) => {
+    localStorage.setItem('DENSE_DEFAULT_TABLE', event.target.checked.toString());
     setDense(event.target.checked);
   };
 
