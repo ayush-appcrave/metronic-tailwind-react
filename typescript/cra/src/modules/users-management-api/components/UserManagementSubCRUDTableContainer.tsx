@@ -4,6 +4,7 @@ import {
   Collapse,
   FormControlLabel,
   IconButton,
+  LinearProgress,
   Switch,
   Table,
   TableBody,
@@ -30,10 +31,11 @@ import { useQueryRequest } from '../core/QueryRequestProvider';
 import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
 import KeyboardArrowUpIcon from '@mui/icons-material/KeyboardArrowUp';
 import { StaticDataTableCRUD } from './static-table/StaticDataTableCRUD';
-import { TableLoader } from './loading/TableLoader';
 import { useSearchParams } from 'react-router-dom';
 import qs from 'query-string';
 import { initialQueryRequest } from '../helpers';
+import { TableOverlay } from './loading/TableOverlay';
+import zIndex from '@mui/material/styles/zIndex';
 
 interface Props {
   children: (id: string) => React.ReactNode;
@@ -166,7 +168,7 @@ const UserManagementSubCRUDTableContainer = (props: Props) => {
     <>
       <TableContainer>
         <Table
-          sx={{ minWidth: 750 }}
+          sx={{ minWidth: 750, position: 'relative' }}
           aria-labelledby="tableTitle"
           size={dense ? 'small' : 'medium'}>
           <EnhancedSubCRUDTableHead
@@ -177,24 +179,35 @@ const UserManagementSubCRUDTableContainer = (props: Props) => {
             onRequestSort={handleRequestSort}
             rowCount={pagination.total ? pagination.total : 0}
           />
+          {isLoading && (
+            <Box
+              sx={{
+                position: 'absolute',
+                zIndex: zIndex.modal + 1,
+                top: 0,
+                left: 0,
+                right: 0
+              }}>
+              <LinearProgress color="primary" />
+            </Box>
+          )}
           <TableBody
             sx={{
               position: 'relative'
             }}>
-            {isLoading ? (
-              <TableLoader
-                itemsPerPage={pagination.items_per_page ? pagination.items_per_page : 10}
-                rowHeight={70}></TableLoader>
-            ) : (
-              data.map((row, index) => {
-                const labelId = `enhanced-table-checkbox-${row.id}`;
+            {data.map((row, index) => {
+              const labelId = `enhanced-table-checkbox-${row.id}`;
 
-                return (
-                  <UserManagementSubCRUDTableRow key={labelId} row={row}>
-                    {props.children}
-                  </UserManagementSubCRUDTableRow>
-                );
-              })
+              return (
+                <UserManagementSubCRUDTableRow key={labelId} row={row}>
+                  {props.children}
+                </UserManagementSubCRUDTableRow>
+              );
+            })}
+            {isLoading && (
+              <TableOverlay
+                itemsPerPage={pagination.items_per_page ? pagination.items_per_page : 10}
+                rowHeight={dense ? 49 : 69}></TableOverlay>
             )}
             {!pagination.total && !isLoading && (
               <TableRow>
