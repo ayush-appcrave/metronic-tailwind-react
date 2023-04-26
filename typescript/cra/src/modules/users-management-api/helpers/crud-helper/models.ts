@@ -45,7 +45,8 @@ export interface QueryRequestContextProps {
 export const initialQueryState: QueryState = {
   current_page: 1,
   items_per_page: 10,
-  total: 0
+  total: 0,
+  page: 1
 };
 
 export const initialQueryRequest: QueryRequestContextProps = {

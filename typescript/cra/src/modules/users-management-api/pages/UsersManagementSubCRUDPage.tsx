@@ -1,4 +1,4 @@
-import { type ChangeEvent, useEffect, useState } from 'react';
+import { type ChangeEvent, useState } from 'react';
 
 import { Button, type SelectChangeEvent, Box, Paper } from '@mui/material';
 import { UserManagementSubCRUDTableContainer } from '../components/UserManagementSubCRUDTableContainer';
@@ -14,8 +14,6 @@ import { deleteSelectedUsers } from '../core/_requests';
 import { QUERIES } from '../helpers';
 import UsersManagementActionsCell from '../components/cells/UsersManagementActionsCell';
 import { UndoSnackbar } from '../components/UndoSnackbar';
-import { useSearchParams } from 'react-router-dom';
-import qs from 'query-string';
 
 function UsersManagementSubCRUDPage() {
   const { updateState } = useQueryRequest();
@@ -25,20 +23,6 @@ function UsersManagementSubCRUDPage() {
   const [nameFilter, setNameFilter] = useState<string | null>(null);
   const queryClient = useQueryClient();
   const { query } = useQueryResponse();
-
-  const [searchParams, setSearchParams] = useSearchParams();
-  useEffect(() => {
-    if (searchParams.toString()) {
-      updateState(qs.parse(searchParams.toString()));
-    } else {
-      updateState({});
-    }
-
-    return () => {
-      console.log('component clean up');
-      updateState({});
-    };
-  }, []);
 
   const [openUndoSnackbar, setOpenUndoSnackbar] = useState(false);
   const [deleteId, setDeleteId] = useState('-1');
