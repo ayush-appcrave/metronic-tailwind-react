@@ -13,7 +13,7 @@ function UpdateUserPage() {
         <UpdateUserFormWrapper
           userId={id}
           handleExit={() => {
-            navigate('/users-management-api');
+            navigate('/users-management/default');
           }}></UpdateUserFormWrapper>
       )}
     </>
