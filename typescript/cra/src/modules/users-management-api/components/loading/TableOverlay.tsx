@@ -27,7 +27,8 @@ const TableOverlay = (props: Props) => {
           opacity: 0.3,
           display: 'inline-table',
           width: '100%',
-          height: '100%'
+          height: '100%',
+          cursor: 'wait'
         }}></TableCell>
     </TableRow>
   );
