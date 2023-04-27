@@ -34,6 +34,7 @@ const AppRouting = (): ReactElement => {
       {currentUser ? (
         <>
           <Route element={<DefaultLayout />}>
+            <Route path="auth/*" element={<Navigate to="/dashboard" />} />
             <Route path="dashboard" element={<DashboardPage />} />
             <Route path="ecommerce" element={<EcommercePage />} />
             <Route path="marketing" element={<MarketingPage />} />

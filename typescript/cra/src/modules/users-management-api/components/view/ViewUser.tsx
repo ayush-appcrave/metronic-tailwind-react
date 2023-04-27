@@ -38,7 +38,7 @@ function ViewUser(props: Props) {
         // ✅ update detail view directly
         queryClient.invalidateQueries([`${QUERIES.USERS_LIST}-${query}`]);
         enqueueSnackbar('User Successfully Deleted', { variant: 'success' });
-        navigate(`/users-management-api`);
+        navigate(`/users-management/default`);
       }
     }
   );

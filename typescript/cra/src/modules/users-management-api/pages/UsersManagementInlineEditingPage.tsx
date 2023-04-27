@@ -12,6 +12,10 @@ import { EnhancedTableToolbar } from '../components/EnhancedTableToolbar';
 import { useMutation, useQueryClient } from 'react-query';
 import { deleteSelectedUsers } from '../core/_requests';
 import { QUERIES } from '../helpers';
+import { Helmet } from 'react-helmet';
+import { Content, Intro, Toolbar } from '../../../layouts/default';
+import { useNavBreadcrumbs } from '@components/nav';
+import { NAV_VERTICAL } from '../../../config/navs.config';
 
 function UsersManagementInlineEditingPage() {
   const { updateState } = useQueryRequest();
@@ -21,6 +25,7 @@ function UsersManagementInlineEditingPage() {
   const [nameFilter, setNameFilter] = useState<string | null>(null);
   const queryClient = useQueryClient();
   const { query } = useQueryResponse();
+  const breadcrumbs = useNavBreadcrumbs(NAV_VERTICAL);
 
   const { clearSelected, selected } = useListView();
 
@@ -71,47 +76,59 @@ function UsersManagementInlineEditingPage() {
   // -------------------
 
   return (
-    <Box sx={{ width: '100%' }}>
-      <Paper sx={{ width: '100%', mb: 2, mt: 10, position: 'relative', paddingTop: '40px' }}>
-        <Button
-          sx={{
-            position: 'absolute',
-            top: 2,
-            right: 2
-          }}
-          onClick={(e) => {
-            handleClickOpe2(undefined);
-          }}>
-          Add new user (Modal)
-        </Button>
-        <Button
-          sx={{
-            position: 'absolute',
-            top: 2,
-            right: 200
-          }}
-          onClick={(e) => {
-            handleClickOpe4();
-          }}>
-          Add new user (Drawer)
-        </Button>
-        <EnhancedTableToolbar
-          numSelected={selected.length}
-          handleRoleFilterChange={handleRoleFilterChange}
-          roleFilter={roleFilter}
-          handleNameFilterChange={handleNameFilterChange}
-          nameFilter={nameFilter}
-          handleSelectedUsersDelete={() => {
-            deleteSelectedItems.mutateAsync();
-          }}
-        />
-        <UserManagementInlineEditingTableContainer></UserManagementInlineEditingTableContainer>
-      </Paper>
-      <CreateUserStepperFormDialog
-        open={open2}
-        handleClose={handleClose2}></CreateUserStepperFormDialog>
-      <CreateUserDrawer open={open4} handleClose={handleClose4}></CreateUserDrawer>
-    </Box>
+    <>
+      <Helmet>
+        <title>Users Management Inline Editing Page</title>
+      </Helmet>
+
+      <Toolbar>
+        <Intro title={`Users Management Inline Editing Page`} breadcrumbs={breadcrumbs} />
+      </Toolbar>
+
+      <Content>
+        <Box sx={{ width: '100%' }}>
+          <Paper sx={{ width: '100%', mb: 2, mt: 10, position: 'relative', paddingTop: '40px' }}>
+            <Button
+              sx={{
+                position: 'absolute',
+                top: 2,
+                right: 2
+              }}
+              onClick={(e) => {
+                handleClickOpe2(undefined);
+              }}>
+              Add new user (Modal)
+            </Button>
+            <Button
+              sx={{
+                position: 'absolute',
+                top: 2,
+                right: 200
+              }}
+              onClick={(e) => {
+                handleClickOpe4();
+              }}>
+              Add new user (Drawer)
+            </Button>
+            <EnhancedTableToolbar
+              numSelected={selected.length}
+              handleRoleFilterChange={handleRoleFilterChange}
+              roleFilter={roleFilter}
+              handleNameFilterChange={handleNameFilterChange}
+              nameFilter={nameFilter}
+              handleSelectedUsersDelete={() => {
+                deleteSelectedItems.mutateAsync();
+              }}
+            />
+            <UserManagementInlineEditingTableContainer></UserManagementInlineEditingTableContainer>
+          </Paper>
+          <CreateUserStepperFormDialog
+            open={open2}
+            handleClose={handleClose2}></CreateUserStepperFormDialog>
+          <CreateUserDrawer open={open4} handleClose={handleClose4}></CreateUserDrawer>
+        </Box>
+      </Content>
+    </>
   );
 }
 

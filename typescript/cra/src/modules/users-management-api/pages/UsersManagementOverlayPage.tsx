@@ -16,6 +16,10 @@ import { deleteSelectedUsers } from '../core/_requests';
 import { QUERIES } from '../helpers';
 import { AlertDialog } from '../components/AlertDialog';
 import { UndoSnackbar } from '../components/UndoSnackbar';
+import { Helmet } from 'react-helmet';
+import { Content, Intro, Toolbar } from '../../../layouts/default';
+import { useNavBreadcrumbs } from '@components/nav';
+import { NAV_VERTICAL } from '../../../config/navs.config';
 
 function UsersManagementOverlayPage() {
   const { updateState } = useQueryRequest();
@@ -33,6 +37,7 @@ function UsersManagementOverlayPage() {
   const [nameFilter, setNameFilter] = useState<string | null>(null);
   const queryClient = useQueryClient();
   const { query } = useQueryResponse();
+  const breadcrumbs = useNavBreadcrumbs(NAV_VERTICAL);
 
   const { clearSelected, selected } = useListView();
 
@@ -76,106 +81,121 @@ function UsersManagementOverlayPage() {
   // -------------------
 
   return (
-    <Box sx={{ width: '100%' }}>
-      <Paper sx={{ width: '100%', mb: 2, mt: 10, position: 'relative', paddingTop: '40px' }}>
-        <Button
-          sx={{
-            position: 'absolute',
-            top: 2,
-            right: 2
-          }}
-          onClick={(e) => {
-            handleClickOpe2(undefined);
-          }}>
-          Add new user (Stepper)
-        </Button>
-        <Button
-          sx={{
-            position: 'absolute',
-            top: 2,
-            right: 200
-          }}
-          onClick={(e) => {
-            setNewUserOverlayModalOpenState(true);
-          }}>
-          Add new user (Plain form)
-        </Button>
-        <EnhancedTableToolbar
-          numSelected={selected.length}
-          handleRoleFilterChange={handleRoleFilterChange}
-          roleFilter={roleFilter}
-          handleNameFilterChange={handleNameFilterChange}
-          nameFilter={nameFilter}
-          handleSelectedUsersDelete={() => {
-            deleteSelectedItems.mutateAsync();
-          }}
-        />
-        <UserManagementTableContainer>
-          {(id) => (
-            <>
-              <Button
-                onClick={(e) => {
-                  setUpdateUserIdState(id);
-                  setUpdateUserModalOpenState(true);
-                }}>
-                Update
-              </Button>
-              <Button
-                onClick={(e) => {
-                  setDeleteUserIdState(id);
-                  setOpenDeleteDialogState(true);
-                }}>
-                Delete
-              </Button>
-              <Button
-                onClick={(e) => {
-                  setViewUserIdState(id);
-                  setViewUserModalOpenState(true);
-                }}>
-                View
-              </Button>
-            </>
-          )}
-        </UserManagementTableContainer>
-      </Paper>
-      <CreateUserStepperFormDialog
-        open={open2}
-        handleClose={handleClose2}></CreateUserStepperFormDialog>
-      <CreateUserPlainFormDialog
-        open={newUserOverlayModalOpenState}
-        handleClose={() => {
-          setNewUserOverlayModalOpenState(false);
-        }}></CreateUserPlainFormDialog>
-      <UpdateUserDialog
-        open={updateUserModalOpenState}
-        userId={updateUserIdState}
-        handleClose={() => {
-          setUpdateUserModalOpenState(false);
-        }}></UpdateUserDialog>
-      <AlertDialog
-        open={openDeleteDialogState}
-        handleAgreeClose={() => {
-          setOpenDeleteDialogState(false);
-          setDeleteId(deleteUserIdState);
-          setOpenUndoSnackbar(true);
-        }}
-        handleClose={() => {
-          setOpenDeleteDialogState(false);
-        }}
-        userId={deleteUserIdState}></AlertDialog>
-      <UndoSnackbar
-        userId={deleteId}
-        open={openUndoSnackbar}
-        onClose={() => {
-          setOpenUndoSnackbar(false);
-        }}></UndoSnackbar>
-      <ViewUserDialog
-        open={viewUserModalOpenState}
-        handleClose={() => {
-          setViewUserModalOpenState(false);
-        }}
-        userId={viewUserIdState}></ViewUserDialog>
-    </Box>
+    <>
+      <Helmet>
+        <title>Users Management Overlay Page</title>
+      </Helmet>
+
+      <Toolbar>
+        <Intro title={`Users Management Overlay Page`} breadcrumbs={breadcrumbs} />
+      </Toolbar>
+
+      <Content>
+        <Box sx={{ width: '100%' }}>
+          <Paper sx={{ width: '100%', mb: 2, mt: 10, position: 'relative', paddingTop: '40px' }}>
+            <Button
+              sx={{
+                position: 'absolute',
+                top: 2,
+                right: 2
+              }}
+              onClick={(e) => {
+                handleClickOpe2(undefined);
+              }}>
+              Add new user (Stepper)
+            </Button>
+            <Button
+              sx={{
+                position: 'absolute',
+                top: 2,
+                right: 200
+              }}
+              onClick={(e) => {
+                setNewUserOverlayModalOpenState(true);
+              }}>
+              Add new user (Plain form)
+            </Button>
+            <EnhancedTableToolbar
+              numSelected={selected.length}
+              handleRoleFilterChange={handleRoleFilterChange}
+              roleFilter={roleFilter}
+              handleNameFilterChange={handleNameFilterChange}
+              nameFilter={nameFilter}
+              handleSelectedUsersDelete={() => {
+                deleteSelectedItems.mutateAsync();
+              }}
+            />
+            <UserManagementTableContainer denseKey="OVERLAY_MODAL">
+              {(id) => (
+                <Box
+                  sx={{
+                    display: 'flex'
+                  }}>
+                  <Button
+                    onClick={(e) => {
+                      setUpdateUserIdState(id);
+                      setUpdateUserModalOpenState(true);
+                    }}>
+                    Update
+                  </Button>
+                  <Button
+                    onClick={(e) => {
+                      setDeleteUserIdState(id);
+                      setOpenDeleteDialogState(true);
+                    }}>
+                    Delete
+                  </Button>
+                  <Button
+                    onClick={(e) => {
+                      setViewUserIdState(id);
+                      setViewUserModalOpenState(true);
+                    }}>
+                    View
+                  </Button>
+                </Box>
+              )}
+            </UserManagementTableContainer>
+          </Paper>
+          <CreateUserStepperFormDialog
+            open={open2}
+            handleClose={handleClose2}></CreateUserStepperFormDialog>
+          <CreateUserPlainFormDialog
+            open={newUserOverlayModalOpenState}
+            handleClose={() => {
+              setNewUserOverlayModalOpenState(false);
+            }}></CreateUserPlainFormDialog>
+          <UpdateUserDialog
+            open={updateUserModalOpenState}
+            userId={updateUserIdState}
+            handleClose={() => {
+              setUpdateUserModalOpenState(false);
+            }}></UpdateUserDialog>
+          <AlertDialog
+            open={openDeleteDialogState}
+            handleAgreeClose={() => {
+              setOpenDeleteDialogState(false);
+              setDeleteId(deleteUserIdState);
+              setOpenUndoSnackbar(true);
+            }}
+            handleClose={() => {
+              setOpenDeleteDialogState(false);
+            }}
+            userId={deleteUserIdState}></AlertDialog>
+          <UndoSnackbar
+            userId={deleteId}
+            open={openUndoSnackbar}
+            onClose={() => {
+              setOpenUndoSnackbar(false);
+            }}></UndoSnackbar>
+          <ViewUserDialog
+            open={viewUserModalOpenState}
+            handleClose={() => {
+              setViewUserModalOpenState(false);
+            }}
+            userId={viewUserIdState}></ViewUserDialog>
+        </Box>
+      </Content>
+    </>
   );
 }
 

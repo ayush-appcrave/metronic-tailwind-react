@@ -163,6 +163,11 @@ const NAV_COMMON: Record<string, NavConfigType> = {
       title: 'Sub CRUD',
       path: '/users-management/sub-crud',
       bullet: true
+    },
+    {
+      title: 'Skeleton loading',
+      path: '/users-management/skeleton',
+      bullet: true
     }
   ]
 };

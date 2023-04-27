@@ -25,11 +25,11 @@ function UsersManagementActionsCell(props: IUsersManagementActionsCellProps) {
   };
 
   const handleUserEdit = () => {
-    navigate(`/edit/user/${props.id}`);
+    navigate(`/users-management/edit/user/${props.id}`);
   };
 
   const handleUserView = () => {
-    navigate(`/view/user/${props.id}`);
+    navigate(`/users-management/view/user/${props.id}`);
   };
 
   return (

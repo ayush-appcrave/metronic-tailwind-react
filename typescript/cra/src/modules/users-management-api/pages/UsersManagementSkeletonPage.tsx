@@ -1,37 +1,42 @@
-import { type ChangeEvent, useState } from 'react';
+import React, { type ChangeEvent, useState } from 'react';
 
 import { Button, type SelectChangeEvent, Box, Paper } from '@mui/material';
-import { UserManagementTableContainer } from '../components/UserManagementTableContainer';
+import { UserManagementSkeletonTableContainer } from '../components/UserManagementSkeletonTableContainer';
 
 import { useQueryResponse } from '../core/QueryResponseProvider';
 import { CreateUserDrawer } from '../components/create-user/CreateUserDrawer';
 import { useQueryRequest } from '../core/QueryRequestProvider';
+import { CreateUserStepperFormDialog } from '../components/create-user/CreateUserStepperFormDialog';
 import { useListView } from '../core/ListViewProvider';
 import { EnhancedTableToolbar } from '../components/EnhancedTableToolbar';
 import { useMutation, useQueryClient } from 'react-query';
-import { deleteSelectedUsers } from '../core/_requests';
+import { deleteSelectedUsers, restoreMultipleUsers } from '../core/_requests';
 import { QUERIES } from '../helpers';
-import { UpdateUserDrawer } from '../components/edit-user/UpdateUserDrawer';
-import { ViewUserDrawer } from '../components/view/ViewUserDrawer';
+import UsersManagementActionsCell from '../components/cells/UsersManagementActionsCell';
+import { UndoActions } from '../components/UndoActions';
+import { useSnackbar } from 'notistack';
 import { Helmet } from 'react-helmet';
 import { Content, Intro, Toolbar } from '../../../layouts/default';
 import { useNavBreadcrumbs } from '@components/nav';
 import { NAV_VERTICAL } from '../../../config/navs.config';
 
-function UsersManagementDrawersPage() {
+function UsersManagementSkeletonPage() {
+  const { enqueueSnackbar } = useSnackbar();
   const { updateState } = useQueryRequest();
+  const [open2, setOpen2] = useState(false);
   const [open4, setOpen4] = useState(false);
-  const [openUpdateDrawerState, setOpenUpdateDrawerState] = useState<boolean>(false);
-  const [openViewDrawerState, setOpenViewDrawerState] = useState<boolean>(false);
-  const [updateUserIdState, setUpdateUserIdState] = useState('-1');
-  const [viewUserIdState, setViewUserIdState] = useState('-1');
   const [roleFilter, setRoleFilter] = useState<'user' | 'admin' | undefined>(undefined);
   const [nameFilter, setNameFilter] = useState<string | null>(null);
   const queryClient = useQueryClient();
-  const { query } = useQueryResponse();
+  const { query, refetch } = useQueryResponse();
   const breadcrumbs = useNavBreadcrumbs(NAV_VERTICAL);
 
   const { clearSelected, selected } = useListView();
+
+  const undoAction: (ids: string[]) => Promise<void> = async (ids: string[]) => {
+    await restoreMultipleUsers(ids);
+    refetch();
+  };
 
   const deleteSelectedItems = useMutation(
     async () => {
@@ -42,6 +47,16 @@ function UsersManagementDrawersPage() {
       onSuccess: () => {
         // ✅ update detail view directly
         queryClient.invalidateQueries([`${QUERIES.USERS_LIST}-${query}`]);
+        enqueueSnackbar(`${selected.length} users was deleted.`, {
+          action: (snackbarKey) => (
+            <UndoActions
+              ids={selected as string[]}
+              snackbarKey={snackbarKey}
+              undoAction={undoAction}></UndoActions>
+          ),
+          anchorOrigin: { vertical: 'bottom', horizontal: 'left' },
+          autoHideDuration: 7000
+        });
         clearSelected();
       }
     }
@@ -49,8 +64,14 @@ function UsersManagementDrawersPage() {
 
   // -------------------
 
+  const handleClickOpe2 = (id: string | undefined) => {
+    setOpen2(true);
+  };
   const handleClickOpe4 = () => {
     setOpen4(true);
+  };
+  const handleClose2 = () => {
+    setOpen2(false);
   };
   const handleClose4 = () => {
     setOpen4(false);
@@ -59,28 +80,28 @@ function UsersManagementDrawersPage() {
   const handleRoleFilterChange: (event: SelectChangeEvent) => void = (e: SelectChangeEvent) => {
     if (e.target.value !== 'all') {
       setRoleFilter(e.target.value as 'user' | 'admin');
-      updateState({ role: e.target.value as 'user' | 'admin' }, true);
+      updateState({ role: e.target.value as 'user' | 'admin' });
     } else {
       setRoleFilter(undefined);
-      updateState({ role: undefined }, true);
+      updateState({ role: undefined });
     }
   };
   const handleNameFilterChange: (event: ChangeEvent<HTMLInputElement>) => void = (
     e: ChangeEvent<HTMLInputElement>
   ) => {
     setNameFilter(e.target.value);
-    updateState({ search: e.target.value }, true);
+    updateState({ search: e.target.value });
   };
   // -------------------
 
   return (
     <>
       <Helmet>
-        <title>Users Management Drawers Page</title>
+        <title>Users Management Skeleton Loading Page</title>
       </Helmet>
 
       <Toolbar>
-        <Intro title={`Users Management Drawers Page`} breadcrumbs={breadcrumbs} />
+        <Intro title={`Users Management Skeleton Loading Page`} breadcrumbs={breadcrumbs} />
       </Toolbar>
 
       <Content>
@@ -90,12 +111,23 @@ function UsersManagementDrawersPage() {
               sx={{
                 position: 'absolute',
                 top: 2,
-                right: 20
+                right: 2
+              }}
+              onClick={(e) => {
+                handleClickOpe2(undefined);
+              }}>
+              Add new user (Modal)
+            </Button>
+            <Button
+              sx={{
+                position: 'absolute',
+                top: 2,
+                right: 200
               }}
               onClick={(e) => {
                 handleClickOpe4();
               }}>
-              Add new user
+              Add new user (Drawer)
             </Button>
             <EnhancedTableToolbar
               numSelected={selected.length}
@@ -107,47 +139,34 @@ function UsersManagementDrawersPage() {
                 deleteSelectedItems.mutateAsync();
               }}
             />
-            <UserManagementTableContainer denseKey="DRAWERS">
+            <UserManagementSkeletonTableContainer denseKey="MAIN">
               {(id) => (
-                <Box
-                  sx={{
-                    display: 'flex'
-                  }}>
-                  <Button
-                    onClick={(e) => {
-                      setUpdateUserIdState(id);
-                      setOpenUpdateDrawerState(true);
-                    }}>
-                    Edit
-                  </Button>
-                  <Button
-                    onClick={(e) => {
-                      setViewUserIdState(id);
-                      setOpenViewDrawerState(true);
-                    }}>
-                    View
-                  </Button>
-                </Box>
+                <UsersManagementActionsCell
+                  id={id}
+                  deleteHandler={() => {
+                    enqueueSnackbar('User was deleted.', {
+                      action: (snackbarKey) => (
+                        <UndoActions
+                          snackbarKey={snackbarKey}
+                          undoAction={undoAction}
+                          ids={[id]}></UndoActions>
+                      ),
+                      anchorOrigin: { vertical: 'bottom', horizontal: 'left' },
+                      autoHideDuration: 7000
+                    });
+                  }}
+                />
               )}
-            </UserManagementTableContainer>
+            </UserManagementSkeletonTableContainer>
           </Paper>
+          <CreateUserStepperFormDialog
+            open={open2}
+            handleClose={handleClose2}></CreateUserStepperFormDialog>
           <CreateUserDrawer open={open4} handleClose={handleClose4}></CreateUserDrawer>
-          <UpdateUserDrawer
-            open={openUpdateDrawerState}
-            userId={updateUserIdState}
-            handleClose={() => {
-              setOpenUpdateDrawerState(false);
-            }}></UpdateUserDrawer>
-          <ViewUserDrawer
-            open={openViewDrawerState}
-            userId={viewUserIdState}
-            handleClose={() => {
-              setOpenViewDrawerState(false);
-            }}></ViewUserDrawer>
         </Box>
       </Content>
     </>
   );
 }
 
-export { UsersManagementDrawersPage };
+export { UsersManagementSkeletonPage };

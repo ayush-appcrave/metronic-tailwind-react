@@ -1,4 +1,4 @@
-import { type ChangeEvent, useState } from 'react';
+import React, { type ChangeEvent, useState } from 'react';
 
 import { Button, type SelectChangeEvent, Box, Paper } from '@mui/material';
 import { UserManagementSubCRUDTableContainer } from '../components/UserManagementSubCRUDTableContainer';
@@ -14,6 +14,10 @@ import { deleteSelectedUsers } from '../core/_requests';
 import { QUERIES } from '../helpers';
 import UsersManagementActionsCell from '../components/cells/UsersManagementActionsCell';
 import { UndoSnackbar } from '../components/UndoSnackbar';
+import { Helmet } from 'react-helmet';
+import { Content, Intro, Toolbar } from '../../../layouts/default';
+import { useNavBreadcrumbs } from '@components/nav';
+import { NAV_VERTICAL } from '../../../config/navs.config';
 
 function UsersManagementSubCRUDPage() {
   const { updateState } = useQueryRequest();
@@ -23,6 +27,7 @@ function UsersManagementSubCRUDPage() {
   const [nameFilter, setNameFilter] = useState<string | null>(null);
   const queryClient = useQueryClient();
   const { query } = useQueryResponse();
+  const breadcrumbs = useNavBreadcrumbs(NAV_VERTICAL);
 
   const [openUndoSnackbar, setOpenUndoSnackbar] = useState(false);
   const [deleteId, setDeleteId] = useState('-1');
@@ -76,63 +81,75 @@ function UsersManagementSubCRUDPage() {
   // -------------------
 
   return (
-    <Box sx={{ width: '100%' }}>
-      <Paper sx={{ width: '100%', mb: 2, mt: 10, position: 'relative', paddingTop: '40px' }}>
-        <Button
-          sx={{
-            position: 'absolute',
-            top: 2,
-            right: 2
-          }}
-          onClick={(e) => {
-            handleClickOpe2(undefined);
-          }}>
-          Add new user (Modal)
-        </Button>
-        <Button
-          sx={{
-            position: 'absolute',
-            top: 2,
-            right: 200
-          }}
-          onClick={(e) => {
-            handleClickOpe4();
-          }}>
-          Add new user (Drawer)
-        </Button>
-        <EnhancedTableToolbar
-          numSelected={selected.length}
-          handleRoleFilterChange={handleRoleFilterChange}
-          roleFilter={roleFilter}
-          handleNameFilterChange={handleNameFilterChange}
-          nameFilter={nameFilter}
-          handleSelectedUsersDelete={() => {
-            deleteSelectedItems.mutateAsync();
-          }}
-        />
-        <UserManagementSubCRUDTableContainer>
-          {(id) => (
-            <UsersManagementActionsCell
-              id={id}
-              deleteHandler={() => {
-                setDeleteId(id);
-                setOpenUndoSnackbar(true);
+    <>
+      <Helmet>
+        <title>Users Management Sub CRUD Page</title>
+      </Helmet>
+
+      <Toolbar>
+        <Intro title={`Users Management Sub CRUD Page`} breadcrumbs={breadcrumbs} />
+      </Toolbar>
+
+      <Content>
+        <Box sx={{ width: '100%' }}>
+          <Paper sx={{ width: '100%', mb: 2, mt: 10, position: 'relative', paddingTop: '40px' }}>
+            <Button
+              sx={{
+                position: 'absolute',
+                top: 2,
+                right: 2
+              }}
+              onClick={(e) => {
+                handleClickOpe2(undefined);
+              }}>
+              Add new user (Modal)
+            </Button>
+            <Button
+              sx={{
+                position: 'absolute',
+                top: 2,
+                right: 200
+              }}
+              onClick={(e) => {
+                handleClickOpe4();
+              }}>
+              Add new user (Drawer)
+            </Button>
+            <EnhancedTableToolbar
+              numSelected={selected.length}
+              handleRoleFilterChange={handleRoleFilterChange}
+              roleFilter={roleFilter}
+              handleNameFilterChange={handleNameFilterChange}
+              nameFilter={nameFilter}
+              handleSelectedUsersDelete={() => {
+                deleteSelectedItems.mutateAsync();
               }}
             />
-          )}
-        </UserManagementSubCRUDTableContainer>
-      </Paper>
-      <CreateUserStepperFormDialog
-        open={open2}
-        handleClose={handleClose2}></CreateUserStepperFormDialog>
-      <CreateUserDrawer open={open4} handleClose={handleClose4}></CreateUserDrawer>
-      <UndoSnackbar
-        userId={deleteId}
-        open={openUndoSnackbar}
-        onClose={() => {
-          setOpenUndoSnackbar(false);
-        }}></UndoSnackbar>
-    </Box>
+            <UserManagementSubCRUDTableContainer>
+              {(id) => (
+                <UsersManagementActionsCell
+                  id={id}
+                  deleteHandler={() => {
+                    setDeleteId(id);
+                    setOpenUndoSnackbar(true);
+                  }}
+                />
+              )}
+            </UserManagementSubCRUDTableContainer>
+          </Paper>
+          <CreateUserStepperFormDialog
+            open={open2}
+            handleClose={handleClose2}></CreateUserStepperFormDialog>
+          <CreateUserDrawer open={open4} handleClose={handleClose4}></CreateUserDrawer>
+          <UndoSnackbar
+            userId={deleteId}
+            open={openUndoSnackbar}
+            onClose={() => {
+              setOpenUndoSnackbar(false);
+            }}></UndoSnackbar>
+        </Box>
+      </Content>
+    </>
   );
 }
 

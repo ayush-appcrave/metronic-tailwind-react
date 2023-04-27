@@ -25,17 +25,17 @@ import {
   useQueryResponsePagination
 } from '../core/QueryResponseProvider';
 import { useQueryRequest } from '../core/QueryRequestProvider';
-import { TableLoader } from './loading/TableLoader';
 import { useSearchParams } from 'react-router-dom';
 import qs from 'query-string';
 import { initialQueryRequest } from '../helpers';
+import { TableSkeleton } from './loading/TableSkeleton';
 
 interface Props {
   denseKey: string;
   children: (id: string) => React.ReactNode;
 }
 
-const UserManagementTableContainer = (props: Props) => {
+const UserManagementSkeletonTableContainer = (props: Props) => {
   const { updateState } = useQueryRequest();
   const users = useQueryResponseData();
   const data = useMemo(() => users, [users]);
@@ -121,9 +121,10 @@ const UserManagementTableContainer = (props: Props) => {
               position: 'relative'
             }}>
             {isLoading ? (
-              <TableLoader
-                itemsPerPage={pagination.items_per_page ? pagination.items_per_page : 10}
-                rowHeight={dense ? 49 : 69}></TableLoader>
+              <TableSkeleton
+                itemsPerPage={
+                  pagination.items_per_page ? pagination.items_per_page : 10
+                }></TableSkeleton>
             ) : (
               data.map((row, index) => {
                 const labelId = `enhanced-table-checkbox-${index}`;
@@ -225,4 +226,4 @@ const UserManagementTableContainer = (props: Props) => {
   );
 };
 
-export { UserManagementTableContainer };
+export { UserManagementSkeletonTableContainer };

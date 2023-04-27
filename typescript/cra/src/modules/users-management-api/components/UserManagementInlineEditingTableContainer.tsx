@@ -15,7 +15,6 @@ import {
   TableRow,
   TextField
 } from '@mui/material';
-import { TableLoader } from './loading/TableLoader';
 import { EnhancedTableHead } from './EnhancedTableHead';
 import { toAbsoluteUrl } from 'utils';
 import { headCells } from '../core/headCellConfiguration';
@@ -35,6 +34,9 @@ import { Order } from '../@types/sort';
 import { useSearchParams } from 'react-router-dom';
 import qs from 'query-string';
 import { initialQueryRequest } from '../helpers';
+import { TableOverlay } from './loading/TableOverlay';
+import { ProgressBarLoader } from '@components/loaders';
+import { TableSkeleton } from './loading/TableSkeleton';
 
 interface RowProps {
   row: User;
@@ -45,6 +47,7 @@ const UserManagementInlineEditingTableRow = (props: RowProps) => {
   const [editState, setEditState] = useState(false);
   const { refetch } = useQueryResponse();
   const { enqueueSnackbar } = useSnackbar();
+  const isLoading = useQueryResponseLoading();
 
   const [formData, setFormData] = useState<User>({
     id: props.row.id,
@@ -203,7 +206,10 @@ const UserManagementInlineEditingTableRow = (props: RowProps) => {
           </Button>
         )}
         {!editState && (
-          <>
+          <Box
+            sx={{
+              display: 'flex'
+            }}>
             <Button
               onClick={(e) => {
                 setEditState(true);
@@ -216,7 +222,7 @@ const UserManagementInlineEditingTableRow = (props: RowProps) => {
               }}>
               Delete
             </Button>
-          </>
+          </Box>
         )}
       </TableCell>
     </TableRow>
@@ -235,8 +241,6 @@ const UserManagementInlineEditingTableContainer = () => {
   const [orderBy, setOrderBy] = useState<keyof User>('created_at');
   const [dense, setDense] = useState(false);
   const { onSelectAll, selected } = useListView();
-
-  const { refetch } = useQueryResponse();
 
   const [searchParams] = useSearchParams();
   useEffect(() => {
@@ -271,7 +275,6 @@ const UserManagementInlineEditingTableContainer = () => {
     updateState({ page: newPage + 1 }, true);
   };
   const handleChangeRowsPerPage = (event: ChangeEvent<HTMLInputElement>) => {
-    alert('update state');
     updateState({ items_per_page: event.target.value as unknown as 5 | 10 | 25 }, true);
   };
   const handleChangeDense = (event: ChangeEvent<HTMLInputElement>) => {
@@ -281,6 +284,7 @@ const UserManagementInlineEditingTableContainer = () => {
 
   return (
     <>
+      {isLoading && <ProgressBarLoader></ProgressBarLoader>}
       <TableContainer>
         <Table
           sx={{ minWidth: 750 }}
@@ -294,23 +298,31 @@ const UserManagementInlineEditingTableContainer = () => {
             onRequestSort={handleRequestSort}
             rowCount={pagination.total ? pagination.total : 0}
           />
-          <TableBody>
-            {isLoading ? (
-              <TableLoader
-                itemsPerPage={pagination.items_per_page ? pagination.items_per_page : 10}
-                rowHeight={70}></TableLoader>
-            ) : (
-              data.map((row, index) => {
-                const labelId = `enhanced-table-checkbox-${index}`;
+          <TableBody
+            sx={{
+              position: 'relative'
+            }}>
+            {data.map((row, index) => {
+              const labelId = `enhanced-table-checkbox-${index}`;
 
-                return (
-                  <UserManagementInlineEditingTableRow
-                    key={labelId}
-                    row={row}
-                    labelId={labelId}></UserManagementInlineEditingTableRow>
-                );
-              })
-            )}
+              return (
+                <UserManagementInlineEditingTableRow
+                  key={labelId}
+                  row={row}
+                  labelId={labelId}></UserManagementInlineEditingTableRow>
+              );
+            })}
+            {isLoading &&
+              (data.length ? (
+                <TableOverlay
+                  itemsPerPage={pagination.items_per_page ? pagination.items_per_page : 10}
+                  rowHeight={dense ? 49 : 69}></TableOverlay>
+              ) : (
+                <TableSkeleton
+                  itemsPerPage={
+                    pagination.items_per_page ? pagination.items_per_page : 10
+                  }></TableSkeleton>
+              ))}
             {!pagination.total && !isLoading && (
               <TableRow>
                 <TableCell colSpan={headCells.length}>No data found</TableCell>
