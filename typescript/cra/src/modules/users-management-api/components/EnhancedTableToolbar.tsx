@@ -11,21 +11,37 @@ import {
   Typography
 } from '@mui/material';
 import { type SxProps, type Theme } from '@mui/material/styles';
-import { type ChangeEvent } from 'react';
+import { type ChangeEvent, useState } from 'react';
 import DeleteIcon from '@mui/icons-material/Delete';
+import { useQueryRequest } from '../core/QueryRequestProvider';
 
 interface EnhancedTableToolbarProps {
   numSelected: number;
-  roleFilter: string | undefined;
-  handleRoleFilterChange: (event: SelectChangeEvent) => void;
-  nameFilter: string | null;
-  handleNameFilterChange: (event: ChangeEvent<HTMLInputElement>) => void;
   handleSelectedUsersDelete: () => void;
   sx?: SxProps<Theme>;
 }
 
 function EnhancedTableToolbar(props: EnhancedTableToolbarProps) {
   const { numSelected } = props;
+  const { updateState } = useQueryRequest();
+  const [roleFilter, setRoleFilter] = useState<'user' | 'admin' | undefined>(undefined);
+  const [nameFilter, setNameFilter] = useState<string | null>(null);
+
+  const handleRoleFilterChange: (event: SelectChangeEvent) => void = (e: SelectChangeEvent) => {
+    if (e.target.value !== 'all') {
+      setRoleFilter(e.target.value as 'user' | 'admin');
+      updateState({ role: e.target.value as 'user' | 'admin', page: 1 }, true);
+    } else {
+      setRoleFilter(undefined);
+      updateState({ role: undefined, page: 1 }, true);
+    }
+  };
+  const handleNameFilterChange: (event: ChangeEvent<HTMLInputElement>) => void = (
+    e: ChangeEvent<HTMLInputElement>
+  ) => {
+    setNameFilter(e.target.value);
+    updateState({ search: e.target.value, page: 1 }, true);
+  };
 
   return (
     <Toolbar
@@ -50,12 +66,12 @@ function EnhancedTableToolbar(props: EnhancedTableToolbarProps) {
           <Select
             labelId="demo-simple-select-label"
             id="demo-simple-select"
-            value={props.roleFilter ? props.roleFilter : 'all'}
+            value={roleFilter ?? 'all'}
             sx={{
               margin: '10px'
             }}
             defaultValue={'all'}
-            onChange={props.handleRoleFilterChange}>
+            onChange={handleRoleFilterChange}>
             <MenuItem value="all">All</MenuItem>
             <MenuItem value="user">User</MenuItem>
             <MenuItem value="admin">Admin</MenuItem>
@@ -71,7 +87,8 @@ function EnhancedTableToolbar(props: EnhancedTableToolbarProps) {
       ) : (
         <TextField
           size="small"
-          onChange={props.handleNameFilterChange}
+          onChange={handleNameFilterChange}
+          value={nameFilter}
           sx={{
             margin: '10px',
             width: '50%'

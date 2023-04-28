@@ -1,11 +1,10 @@
-import { type ChangeEvent, useState } from 'react';
+import { useState } from 'react';
 
-import { Button, type SelectChangeEvent, Box, Paper } from '@mui/material';
+import { Button, Box, Paper } from '@mui/material';
 import { UserManagementTableContainer } from '../components/UserManagementTableContainer';
 
 import { useQueryResponse } from '../core/QueryResponseProvider';
 import { CreateUserDrawer } from '../components/create-user/CreateUserDrawer';
-import { useQueryRequest } from '../core/QueryRequestProvider';
 import { useListView } from '../core/ListViewProvider';
 import { EnhancedTableToolbar } from '../components/EnhancedTableToolbar';
 import { useMutation, useQueryClient } from 'react-query';
@@ -19,14 +18,11 @@ import { useNavBreadcrumbs } from '@components/nav';
 import { NAV_VERTICAL } from '../../../config/navs.config';
 
 function UsersManagementDrawersPage() {
-  const { updateState } = useQueryRequest();
   const [open4, setOpen4] = useState(false);
   const [openUpdateDrawerState, setOpenUpdateDrawerState] = useState<boolean>(false);
   const [openViewDrawerState, setOpenViewDrawerState] = useState<boolean>(false);
   const [updateUserIdState, setUpdateUserIdState] = useState('-1');
   const [viewUserIdState, setViewUserIdState] = useState('-1');
-  const [roleFilter, setRoleFilter] = useState<'user' | 'admin' | undefined>(undefined);
-  const [nameFilter, setNameFilter] = useState<string | null>(null);
   const queryClient = useQueryClient();
   const { query } = useQueryResponse();
   const breadcrumbs = useNavBreadcrumbs(NAV_VERTICAL);
@@ -54,22 +50,6 @@ function UsersManagementDrawersPage() {
   };
   const handleClose4 = () => {
     setOpen4(false);
-  };
-
-  const handleRoleFilterChange: (event: SelectChangeEvent) => void = (e: SelectChangeEvent) => {
-    if (e.target.value !== 'all') {
-      setRoleFilter(e.target.value as 'user' | 'admin');
-      updateState({ role: e.target.value as 'user' | 'admin' }, true);
-    } else {
-      setRoleFilter(undefined);
-      updateState({ role: undefined }, true);
-    }
-  };
-  const handleNameFilterChange: (event: ChangeEvent<HTMLInputElement>) => void = (
-    e: ChangeEvent<HTMLInputElement>
-  ) => {
-    setNameFilter(e.target.value);
-    updateState({ search: e.target.value }, true);
   };
   // -------------------
 
@@ -99,10 +79,6 @@ function UsersManagementDrawersPage() {
             </Button>
             <EnhancedTableToolbar
               numSelected={selected.length}
-              handleRoleFilterChange={handleRoleFilterChange}
-              roleFilter={roleFilter}
-              handleNameFilterChange={handleNameFilterChange}
-              nameFilter={nameFilter}
               handleSelectedUsersDelete={() => {
                 deleteSelectedItems.mutateAsync();
               }}

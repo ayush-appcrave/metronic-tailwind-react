@@ -67,7 +67,9 @@ function ViewUser(props: Props) {
           <Typography>User</Typography>
 
           <Typography>{currentUser.id}</Typography>
-          <Avatar alt={currentUser.first_name} src={toAbsoluteUrl('/media/avatars/300-1.jpg')} />
+          {currentUser.avatar && (
+            <Avatar alt={currentUser.first_name} src={toAbsoluteUrl(currentUser.avatar)} />
+          )}
           <Typography>
             {currentUser.first_name} {currentUser.last_name}
           </Typography>

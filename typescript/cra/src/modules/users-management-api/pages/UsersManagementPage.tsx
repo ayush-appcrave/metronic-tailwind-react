@@ -1,11 +1,10 @@
-import React, { type ChangeEvent, useState } from 'react';
+import React, { useState } from 'react';
 
-import { Button, type SelectChangeEvent, Card } from '@mui/material';
+import { Button, Card } from '@mui/material';
 import { UserManagementTableContainer } from '../components/UserManagementTableContainer';
 
 import { useQueryResponse } from '../core/QueryResponseProvider';
 import { CreateUserDrawer } from '../components/create-user/CreateUserDrawer';
-import { useQueryRequest } from '../core/QueryRequestProvider';
 import { CreateUserStepperFormDialog } from '../components/create-user/CreateUserStepperFormDialog';
 import { useListView } from '../core/ListViewProvider';
 import { EnhancedTableToolbar } from '../components/EnhancedTableToolbar';
@@ -23,11 +22,8 @@ import { NAV_VERTICAL } from '../../../config/navs.config';
 
 function UsersManagementPage() {
   const { enqueueSnackbar } = useSnackbar();
-  const { updateState } = useQueryRequest();
   const [open2, setOpen2] = useState(false);
   const [open4, setOpen4] = useState(false);
-  const [roleFilter, setRoleFilter] = useState<'user' | 'admin' | undefined>(undefined);
-  const [nameFilter, setNameFilter] = useState<string | null>(null);
   const queryClient = useQueryClient();
   const { query, refetch } = useQueryResponse();
   const breadcrumbs = useNavBreadcrumbs(NAV_VERTICAL);
@@ -77,22 +73,6 @@ function UsersManagementPage() {
   const handleClose4 = () => {
     setOpen4(false);
   };
-
-  const handleRoleFilterChange: (event: SelectChangeEvent) => void = (e: SelectChangeEvent) => {
-    if (e.target.value !== 'all') {
-      setRoleFilter(e.target.value as 'user' | 'admin');
-      updateState({ role: e.target.value as 'user' | 'admin' });
-    } else {
-      setRoleFilter(undefined);
-      updateState({ role: undefined });
-    }
-  };
-  const handleNameFilterChange: (event: ChangeEvent<HTMLInputElement>) => void = (
-    e: ChangeEvent<HTMLInputElement>
-  ) => {
-    setNameFilter(e.target.value);
-    updateState({ search: e.target.value });
-  };
   // -------------------
 
   return (
@@ -138,10 +118,6 @@ function UsersManagementPage() {
             </Button>
             <EnhancedTableToolbar
               numSelected={selected.length}
-              handleRoleFilterChange={handleRoleFilterChange}
-              roleFilter={roleFilter}
-              handleNameFilterChange={handleNameFilterChange}
-              nameFilter={nameFilter}
               handleSelectedUsersDelete={() => {
                 deleteSelectedItems.mutateAsync();
               }}

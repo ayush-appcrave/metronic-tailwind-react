@@ -1,10 +1,9 @@
-import React, { type ChangeEvent, useState } from 'react';
+import React, { useState } from 'react';
 
-import { Button, type SelectChangeEvent, Box, Paper } from '@mui/material';
+import { Button, Box, Paper } from '@mui/material';
 import { UserManagementTableContainer } from '../components/UserManagementTableContainer';
 
 import { useQueryResponse } from '../core/QueryResponseProvider';
-import { useQueryRequest } from '../core/QueryRequestProvider';
 import { CreateUserStepperFormDialog } from '../components/create-user/CreateUserStepperFormDialog';
 import { CreateUserPlainFormDialog } from '../components/create-user/CreateUserPlainFormDialog';
 import { UpdateUserDialog } from '../components/edit-user/UpdateUserDialog';
@@ -22,7 +21,6 @@ import { useNavBreadcrumbs } from '@components/nav';
 import { NAV_VERTICAL } from '../../../config/navs.config';
 
 function UsersManagementOverlayPage() {
-  const { updateState } = useQueryRequest();
   const [open2, setOpen2] = useState(false);
   const [updateUserIdState, setUpdateUserIdState] = useState('-1');
   const [newUserOverlayModalOpenState, setNewUserOverlayModalOpenState] = useState(false);
@@ -33,8 +31,6 @@ function UsersManagementOverlayPage() {
   const [viewUserIdState, setViewUserIdState] = useState('-1');
   const [openUndoSnackbar, setOpenUndoSnackbar] = useState(false);
   const [deleteId, setDeleteId] = useState('-1');
-  const [roleFilter, setRoleFilter] = useState<'user' | 'admin' | undefined>(undefined);
-  const [nameFilter, setNameFilter] = useState<string | null>(null);
   const queryClient = useQueryClient();
   const { query } = useQueryResponse();
   const breadcrumbs = useNavBreadcrumbs(NAV_VERTICAL);
@@ -63,21 +59,7 @@ function UsersManagementOverlayPage() {
   const handleClose2 = () => {
     setOpen2(false);
   };
-  const handleRoleFilterChange: (event: SelectChangeEvent) => void = (e: SelectChangeEvent) => {
-    if (e.target.value !== 'all') {
-      setRoleFilter(e.target.value as 'user' | 'admin');
-      updateState({ role: e.target.value as 'user' | 'admin' });
-    } else {
-      setRoleFilter(undefined);
-      updateState({ role: undefined });
-    }
-  };
-  const handleNameFilterChange: (event: ChangeEvent<HTMLInputElement>) => void = (
-    e: ChangeEvent<HTMLInputElement>
-  ) => {
-    setNameFilter(e.target.value);
-    updateState({ search: e.target.value });
-  };
+
   // -------------------
 
   return (
@@ -117,10 +99,6 @@ function UsersManagementOverlayPage() {
             </Button>
             <EnhancedTableToolbar
               numSelected={selected.length}
-              handleRoleFilterChange={handleRoleFilterChange}
-              roleFilter={roleFilter}
-              handleNameFilterChange={handleNameFilterChange}
-              nameFilter={nameFilter}
               handleSelectedUsersDelete={() => {
                 deleteSelectedItems.mutateAsync();
               }}
