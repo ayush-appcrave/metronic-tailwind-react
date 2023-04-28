@@ -1,18 +1,21 @@
 import { type ReactNode } from 'react';
 import { Container, type SxProps, type Theme } from '@mui/material';
 import { useSettings } from '../../providers/SettingsProvider';
+import { SettingsContainerWidthType } from '../../config/types';
 
 export interface PageContainerProps {
   children?: ReactNode;
+  width?: SettingsContainerWidthType;
   sx?: SxProps<Theme>;
 }
 
-const PageContainer = ({ children, sx }: PageContainerProps) => {
+const PageContainer = ({ children, width, sx }: PageContainerProps) => {
   const { settings } = useSettings();
-  const { container } = settings;
+  const { containerWidth } = settings;
+  const widthMode = width !== undefined ? width : containerWidth;
 
   return (
-    <Container maxWidth={container === 'fixed' ? 'lg' : false} sx={sx}>
+    <Container maxWidth={widthMode === 'fixed' ? 'lg' : false} sx={sx}>
       {children}
     </Container>
   );

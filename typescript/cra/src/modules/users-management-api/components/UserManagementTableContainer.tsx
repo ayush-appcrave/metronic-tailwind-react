@@ -136,9 +136,10 @@ const UserManagementTableContainer = (props: Props) => {
                     tabIndex={-1}
                     key={row.id}
                     selected={isSelected(row.id)}>
-                    <TableCell width={'5%'} padding="checkbox">
+                    <TableCell padding="checkbox">
                       <Checkbox
                         color="primary"
+                        size="small"
                         onInput={(event) => {
                           onSelect(row.id);
                         }}
@@ -199,7 +200,24 @@ const UserManagementTableContainer = (props: Props) => {
           </TableBody>
         </Table>
       </TableContainer>
-      <Box sx={{ position: 'relative' }}>
+      <Box
+        sx={{
+          display: 'flex',
+          justifyContent: 'space-between',
+          alignItems: 'center',
+          py: {
+            sm: 1,
+            lg: 2
+          },
+          px: {
+            sm: 1,
+            lg: 3
+          }
+        }}>
+        <FormControlLabel
+          label="Dense"
+          control={<Switch checked={dense} onChange={handleChangeDense} />}
+        />
         <TablePagination
           rowsPerPageOptions={[5, 10, 25]}
           component="div"
@@ -208,17 +226,6 @@ const UserManagementTableContainer = (props: Props) => {
           page={pagination.current_page ? pagination.current_page - 1 : 0}
           onPageChange={handleChangePage}
           onRowsPerPageChange={handleChangeRowsPerPage}
-        />
-        <FormControlLabel
-          sx={{
-            display: 'inline-flex',
-            position: 'absolute',
-            marginTop: '9px',
-            marginLeft: '0',
-            top: 0
-          }}
-          label="Dense"
-          control={<Switch checked={dense} onChange={handleChangeDense} />}
         />
       </Box>
     </>

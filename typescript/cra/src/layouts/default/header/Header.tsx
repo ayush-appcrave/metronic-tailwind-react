@@ -58,6 +58,7 @@ const Header = () => {
         })
       }}>
       <PageContainer
+        width="fluid"
         sx={{
           display: 'flex',
           justifyContent: 'space-between',

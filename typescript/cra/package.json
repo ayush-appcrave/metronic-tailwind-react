@@ -2,7 +2,6 @@
   "name": "cra",
   "version": "0.1.0",
   "private": true,
-  "homepage": "/hero",
   "dependencies": {
     "@emotion/cache": "^11.10.3",
     "@emotion/react": "^11.10.4",
