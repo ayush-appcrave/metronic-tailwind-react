@@ -5,7 +5,6 @@ import { UserManagementSkeletonTableContainer } from '../components/UserManageme
 
 import { useQueryResponse } from '../core/QueryResponseProvider';
 import { CreateUserDrawer } from '../components/create-user/CreateUserDrawer';
-import { useQueryRequest } from '../core/QueryRequestProvider';
 import { CreateUserStepperFormDialog } from '../components/create-user/CreateUserStepperFormDialog';
 import { useListView } from '../core/ListViewProvider';
 import { EnhancedTableToolbar } from '../components/EnhancedTableToolbar';
