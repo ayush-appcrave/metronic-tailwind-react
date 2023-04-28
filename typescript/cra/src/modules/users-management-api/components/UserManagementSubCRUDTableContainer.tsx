@@ -35,6 +35,7 @@ import qs from 'query-string';
 import { initialQueryRequest } from '../helpers';
 import { TableOverlay } from './loading/TableOverlay';
 import zIndex from '@mui/material/styles/zIndex';
+import { TableSkeleton } from './loading/TableSkeleton';
 
 interface Props {
   children: (id: string) => React.ReactNode;
@@ -202,11 +203,17 @@ const UserManagementSubCRUDTableContainer = (props: Props) => {
                 </UserManagementSubCRUDTableRow>
               );
             })}
-            {isLoading && (
-              <TableOverlay
-                itemsPerPage={pagination.items_per_page ? pagination.items_per_page : 10}
-                rowHeight={dense ? 49 : 69}></TableOverlay>
-            )}
+            {isLoading &&
+              (data.length ? (
+                <TableOverlay
+                  itemsPerPage={pagination.items_per_page ? pagination.items_per_page : 10}
+                  rowHeight={dense ? 49 : 69}></TableOverlay>
+              ) : (
+                <TableSkeleton
+                  itemsPerPage={
+                    pagination.items_per_page ? pagination.items_per_page : 10
+                  }></TableSkeleton>
+              ))}
             {!pagination.total && !isLoading && (
               <TableRow>
                 <TableCell colSpan={headCells.length}>No data found</TableCell>
