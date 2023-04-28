@@ -18,6 +18,7 @@ import { useSnackbar } from 'notistack';
 import { Helmet } from 'react-helmet';
 import { Content, Intro, Toolbar } from '../../../layouts/default';
 import { useNavBreadcrumbs } from '@components/nav';
+import { PageContainer } from '@components/page-container';
 import { NAV_VERTICAL } from '../../../config/navs.config';
 
 function UsersManagementPage() {
@@ -105,8 +106,14 @@ function UsersManagementPage() {
       </Toolbar>
 
       <Content>
-        <Box sx={{ width: '100%' }}>
-          <Paper sx={{ width: '100%', mb: 2, mt: 10, position: 'relative', paddingTop: '40px' }}>
+        <PageContainer>
+          <Paper
+            sx={{
+              width: '100%',
+              mb: 2,
+              position: 'relative',
+              paddingTop: '40px'
+            }}>
             <Button
               sx={{
                 position: 'absolute',
@@ -163,7 +170,7 @@ function UsersManagementPage() {
             open={open2}
             handleClose={handleClose2}></CreateUserStepperFormDialog>
           <CreateUserDrawer open={open4} handleClose={handleClose4}></CreateUserDrawer>
-        </Box>
+        </PageContainer>
       </Content>
     </>
   );

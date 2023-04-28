@@ -4,15 +4,15 @@ import FormControlLabel from '@mui/material/FormControlLabel';
 import FormControl from '@mui/material/FormControl';
 import FormLabel from '@mui/material/FormLabel';
 import { useSettings } from '../../providers/SettingsProvider';
-import { type SettingsContainerType } from '../../config';
+import { type SettingsContainerWidthType } from '../../config';
 
-const SettingsFormContainer = () => {
+const SettingsFormContainerWidth = () => {
   const { settings, updateSettings } = useSettings();
-  const { container } = settings;
+  const { containerWidth } = settings;
 
-  const handleContainerChange = (container: SettingsContainerType) => {
+  const handleContainerChange = (containerWidth: SettingsContainerWidthType) => {
     updateSettings({
-      container
+      containerWidth
     });
   };
 
@@ -27,7 +27,7 @@ const SettingsFormContainer = () => {
           value="fluid"
           control={<Radio />}
           label="Fluid"
-          checked={container === 'fluid'}
+          checked={containerWidth === 'fluid'}
           onChange={() => {
             handleContainerChange('fluid');
           }}
@@ -36,7 +36,7 @@ const SettingsFormContainer = () => {
           value="fixed"
           control={<Radio />}
           label="Fixed"
-          checked={container === 'fixed'}
+          checked={containerWidth === 'fixed'}
           onChange={() => {
             handleContainerChange('fixed');
           }}
@@ -46,4 +46,4 @@ const SettingsFormContainer = () => {
   );
 };
 
-export { SettingsFormContainer };
+export { SettingsFormContainerWidth };

@@ -45,7 +45,7 @@ const HeaderUserMenu = () => {
         aria-controls={open ? 'user-account-menu' : undefined}
         aria-expanded={open ? 'true' : undefined}>
         <Avatar
-          src="/media/avatars/default.png"
+          src="/media/avatars/300-3.jpg"
           sx={{
             borderRadius: '6px',
             width: 40,

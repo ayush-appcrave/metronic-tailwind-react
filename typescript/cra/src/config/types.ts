@@ -3,13 +3,13 @@ import { type KeenIconsStyleType } from '../components/keenicons/types';
 
 export type SettingsModeOptionType = 'light' | 'dark' | 'system';
 
-export type SettingsContainerType = 'fluid' | 'fixed';
+export type SettingsContainerWidthType = 'fluid' | 'fixed';
 
 // Settings types
 export interface SettingsType {
   mode: SettingsModeOptionType;
   direction: Direction;
-  container: SettingsContainerType;
+  containerWidth: SettingsContainerWidthType;
   keeniconsStyle: KeenIconsStyleType;
   fontFamily: string;
   colorPreset: string;

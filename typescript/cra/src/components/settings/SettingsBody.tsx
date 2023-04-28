@@ -3,7 +3,7 @@ import Scrollbar from '../scrollbar';
 import { SettingsFormMode } from './SettingsFormMode';
 import { SettingsFormKeenIcons } from './SettingsFormKeenIcons';
 import { SettingsFormDirection } from './SettingsFormDirection';
-import { SettingsFormContainer } from './SettingsFormContainer';
+import { SettingsFormContainerWidth } from './SettingsFormContainerWidth';
 
 interface Props {
   headerHeight?: number;
@@ -24,7 +24,7 @@ const SettingsBody = ({ headerHeight = 0, footerHeight = 0 }: Props) => {
       <SettingsFormMode />
       <SettingsFormKeenIcons />
       <SettingsFormDirection />
-      <SettingsFormContainer />
+      <SettingsFormContainerWidth />
     </Scrollbar>
   );
 };

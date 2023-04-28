@@ -6,7 +6,7 @@ const defaultSettings: SettingsType = {
   keeniconsStyle: 'duotone',
   fontFamily: 'Inter',
   layout: 'default',
-  container: 'fluid',
+  containerWidth: 'fluid',
   colorPreset: 'default',
   mobileBreakpoint: 'md'
 };
