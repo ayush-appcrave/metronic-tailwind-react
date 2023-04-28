@@ -26,9 +26,10 @@ function EnhancedTableHead(props: EnhancedTableProps) {
   return (
     <TableHead>
       <TableRow>
-        <TableCell width={'5%'} padding="checkbox">
+        <TableCell padding="checkbox">
           <Checkbox
             color="primary"
+            size="small"
             checked={isAllSelected}
             onChange={onSelectAll}
             inputProps={{

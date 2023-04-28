@@ -30,8 +30,7 @@ function EnhancedTableToolbar(props: EnhancedTableToolbarProps) {
   return (
     <Toolbar
       sx={{
-        pl: { sm: 2 },
-        pr: { xs: 1, sm: 1 },
+        px: { xs: 1, sm: 2 },
         ...(numSelected > 0 && {
           bgcolor: (theme) =>
             alpha(theme.palette.primary.main, theme.palette.action.activatedOpacity)

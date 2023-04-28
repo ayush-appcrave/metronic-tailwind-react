@@ -1,6 +1,6 @@
 import React, { type ChangeEvent, useState } from 'react';
 
-import { Button, type SelectChangeEvent, Box, Paper } from '@mui/material';
+import { Button, type SelectChangeEvent, Box, Card } from '@mui/material';
 import { UserManagementTableContainer } from '../components/UserManagementTableContainer';
 
 import { useQueryResponse } from '../core/QueryResponseProvider';
@@ -107,7 +107,7 @@ function UsersManagementPage() {
 
       <Content>
         <PageContainer>
-          <Paper
+          <Card
             sx={{
               width: '100%',
               mb: 2,
@@ -165,7 +165,7 @@ function UsersManagementPage() {
                 />
               )}
             </UserManagementTableContainer>
-          </Paper>
+          </Card>
           <CreateUserStepperFormDialog
             open={open2}
             handleClose={handleClose2}></CreateUserStepperFormDialog>
