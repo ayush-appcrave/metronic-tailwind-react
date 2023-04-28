@@ -47,7 +47,6 @@ const UserManagementInlineEditingTableRow = (props: RowProps) => {
   const [editState, setEditState] = useState(false);
   const { refetch } = useQueryResponse();
   const { enqueueSnackbar } = useSnackbar();
-  const isLoading = useQueryResponseLoading();
 
   const [formData, setFormData] = useState<User>({
     id: props.row.id,
@@ -108,7 +107,9 @@ const UserManagementInlineEditingTableRow = (props: RowProps) => {
           sx={{
             display: 'flex'
           }}>
-          <Avatar alt={props.row.first_name} src={toAbsoluteUrl('/media/avatars/300-1.jpg')} />
+          {props.row.avatar && (
+            <Avatar alt={props.row.first_name} src={toAbsoluteUrl(props.row.avatar)} />
+          )}
 
           {editState ? (
             <TextField
@@ -239,12 +240,11 @@ const UserManagementInlineEditingTableContainer = () => {
   const pagination = useQueryResponsePagination();
   const [order, setOrder] = useState<Order>('asc');
   const [orderBy, setOrderBy] = useState<keyof User>('created_at');
-  const [dense, setDense] = useState(false);
+  const [dense, setDense] = useState(localStorage.getItem('DENSE_INLINE_EDITING_TABLE') === 'true');
   const { onSelectAll, selected } = useListView();
 
   const [searchParams] = useSearchParams();
   useEffect(() => {
-    setDense(localStorage.getItem('DENSE_INLINE_EDITING_TABLE') === 'true');
     if (searchParams.toString()) {
       console.log('query set', qs.parse(searchParams.toString()));
       updateState(qs.parse(searchParams.toString()));

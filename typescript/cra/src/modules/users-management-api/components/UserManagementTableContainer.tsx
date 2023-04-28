@@ -19,7 +19,6 @@ import { type User } from '../core/_models';
 import { useListView } from '../core/ListViewProvider';
 import { type Order } from '../@types/sort';
 import {
-  useQueryResponse,
   useQueryResponseData,
   useQueryResponseLoading,
   useQueryResponsePagination
@@ -39,19 +38,19 @@ const UserManagementTableContainer = (props: Props) => {
   const { updateState } = useQueryRequest();
   const users = useQueryResponseData();
   const data = useMemo(() => users, [users]);
-  const { refetch } = useQueryResponse();
 
   const isLoading = useQueryResponseLoading();
 
   const pagination = useQueryResponsePagination();
   const [order, setOrder] = useState<Order>('asc');
   const [orderBy, setOrderBy] = useState<keyof User>('created_at');
-  const [dense, setDense] = useState(false);
+  const [dense, setDense] = useState(
+    localStorage.getItem(`DENSE_DEFAULT_${props.denseKey}_TABLE`) === 'true'
+  );
   const { onSelectAll, selected, onSelect } = useListView();
 
   const [searchParams] = useSearchParams();
   useEffect(() => {
-    setDense(localStorage.getItem(`DENSE_DEFAULT_${props.denseKey}_TABLE`) === 'true');
     if (searchParams.toString()) {
       console.log('query set', qs.parse(searchParams.toString()));
       updateState(qs.parse(searchParams.toString()));
@@ -154,10 +153,9 @@ const UserManagementTableContainer = (props: Props) => {
                         sx={{
                           display: 'flex'
                         }}>
-                        <Avatar
-                          alt={row.first_name}
-                          src={toAbsoluteUrl('/media/avatars/300-1.jpg')}
-                        />
+                        {row.avatar && (
+                          <Avatar alt={row.first_name} src={toAbsoluteUrl(row.avatar)} />
+                        )}
 
                         <Box
                           sx={{

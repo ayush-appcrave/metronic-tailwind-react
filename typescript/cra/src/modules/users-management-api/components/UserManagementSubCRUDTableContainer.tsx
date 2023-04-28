@@ -22,7 +22,6 @@ import { type User } from '../core/_models';
 import { useListView } from '../core/ListViewProvider';
 import { type Order } from '../@types/sort';
 import {
-  useQueryResponse,
   useQueryResponseData,
   useQueryResponseLoading,
   useQueryResponsePagination
@@ -74,7 +73,9 @@ const UserManagementSubCRUDTableRow = (props: RowProps) => {
             sx={{
               display: 'flex'
             }}>
-            <Avatar alt={props.row.first_name} src={toAbsoluteUrl('/media/avatars/300-1.jpg')} />
+            {props.row.avatar && (
+              <Avatar alt={props.row.first_name} src={toAbsoluteUrl(props.row.avatar)} />
+            )}
 
             <Box
               sx={{
@@ -115,18 +116,15 @@ const UserManagementSubCRUDTableContainer = (props: Props) => {
   const users = useQueryResponseData();
   const data = useMemo(() => users, [users]);
 
-  const { refetch } = useQueryResponse();
-
   const isLoading = useQueryResponseLoading();
   const pagination = useQueryResponsePagination();
   const [order, setOrder] = useState<Order>('asc');
   const [orderBy, setOrderBy] = useState<keyof User>('created_at');
-  const [dense, setDense] = useState(false);
+  const [dense, setDense] = useState(localStorage.getItem('DENSE_INLINE_SUB_CRUD') === 'true');
   const { onSelectAll, selected } = useListView();
 
   const [searchParams] = useSearchParams();
   useEffect(() => {
-    setDense(localStorage.getItem('DENSE_INLINE_SUB_CRUD') === 'true');
     if (searchParams.toString()) {
       console.log('query set', qs.parse(searchParams.toString()));
       updateState(qs.parse(searchParams.toString()));

@@ -1,6 +1,6 @@
 import React, { type ChangeEvent, useState } from 'react';
 
-import { Button, type SelectChangeEvent, Box, Card } from '@mui/material';
+import { Button, type SelectChangeEvent, Card } from '@mui/material';
 import { UserManagementTableContainer } from '../components/UserManagementTableContainer';
 
 import { useQueryResponse } from '../core/QueryResponseProvider';
