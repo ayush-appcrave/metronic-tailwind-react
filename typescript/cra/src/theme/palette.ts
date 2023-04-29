@@ -136,7 +136,8 @@ const getPalette = (themeMode: 'light' | 'dark') => {
     },
     action: {
       ...COMMON.action,
-      active: GREY[600]
+      hover: GREY[100],
+      active: GREY[500]
     }
   } as const;
 
@@ -155,6 +156,7 @@ const getPalette = (themeMode: 'light' | 'dark') => {
     },
     action: {
       ...COMMON.action,
+      hover: GREY[100],
       active: GREY[500]
     }
   } as const;

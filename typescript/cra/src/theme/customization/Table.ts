@@ -2,6 +2,21 @@ import { type Theme } from '@mui/material/styles';
 
 const Table = (theme: Theme) => {
   return {
+    MuiTableRow: {
+      styleOverrides: {
+        root: {
+          '&:hover': {
+            backgroundColor: theme.palette.grey['100'] + ' !important'
+          },
+          '&.Mui-selected': {
+            backgroundColor: theme.palette.grey['200'],
+            '&:hover': {
+              backgroundColor: theme.palette.grey['100']
+            }
+          }
+        }
+      }
+    },
     MuiTableCell: {
       styleOverrides: {
         root: {
