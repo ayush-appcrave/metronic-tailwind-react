@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 
-import { Button, Box, Paper } from '@mui/material';
+import { Button, Box, Card } from '@mui/material';
 import { UserManagementSubCRUDTableContainer } from '../components/UserManagementSubCRUDTableContainer';
 
 import { useQueryResponse } from '../core/QueryResponseProvider';
@@ -17,6 +17,7 @@ import { Helmet } from 'react-helmet';
 import { Content, Intro, Toolbar } from '../../../layouts/default';
 import { useNavBreadcrumbs } from '@components/nav';
 import { NAV_VERTICAL } from '../../../config/navs.config';
+import { PageContainer } from '@components/page-container';
 
 function UsersManagementSubCRUDPage() {
   const [open2, setOpen2] = useState(false);
@@ -68,33 +69,29 @@ function UsersManagementSubCRUDPage() {
 
       <Toolbar>
         <Intro title={`Users Management Sub CRUD Page`} breadcrumbs={breadcrumbs} />
+        <Box>
+          <Button
+            onClick={(e) => {
+              handleClickOpe2(undefined);
+            }}>
+            Add new user (Modal)
+          </Button>
+          <Button
+            onClick={(e) => {
+              handleClickOpe4();
+            }}>
+            Add new user (Drawer)
+          </Button>
+        </Box>
       </Toolbar>
 
       <Content>
-        <Box sx={{ width: '100%' }}>
-          <Paper sx={{ width: '100%', mb: 2, mt: 10, position: 'relative', paddingTop: '40px' }}>
-            <Button
-              sx={{
-                position: 'absolute',
-                top: 2,
-                right: 2
-              }}
-              onClick={(e) => {
-                handleClickOpe2(undefined);
-              }}>
-              Add new user (Modal)
-            </Button>
-            <Button
-              sx={{
-                position: 'absolute',
-                top: 2,
-                right: 200
-              }}
-              onClick={(e) => {
-                handleClickOpe4();
-              }}>
-              Add new user (Drawer)
-            </Button>
+        <PageContainer>
+          <Card
+            sx={{
+              mb: 2,
+              paddingTop: '5px'
+            }}>
             <EnhancedTableToolbar
               numSelected={selected.length}
               handleSelectedUsersDelete={() => {
@@ -112,18 +109,18 @@ function UsersManagementSubCRUDPage() {
                 />
               )}
             </UserManagementSubCRUDTableContainer>
-          </Paper>
-          <CreateUserStepperFormDialog
-            open={open2}
-            handleClose={handleClose2}></CreateUserStepperFormDialog>
-          <CreateUserDrawer open={open4} handleClose={handleClose4}></CreateUserDrawer>
-          <UndoSnackbar
-            userId={deleteId}
-            open={openUndoSnackbar}
-            onClose={() => {
-              setOpenUndoSnackbar(false);
-            }}></UndoSnackbar>
-        </Box>
+          </Card>
+        </PageContainer>
+        <CreateUserStepperFormDialog
+          open={open2}
+          handleClose={handleClose2}></CreateUserStepperFormDialog>
+        <CreateUserDrawer open={open4} handleClose={handleClose4}></CreateUserDrawer>
+        <UndoSnackbar
+          userId={deleteId}
+          open={openUndoSnackbar}
+          onClose={() => {
+            setOpenUndoSnackbar(false);
+          }}></UndoSnackbar>
       </Content>
     </>
   );

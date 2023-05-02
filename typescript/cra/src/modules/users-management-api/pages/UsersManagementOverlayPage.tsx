@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 
-import { Button, Box, Paper } from '@mui/material';
+import { Button, Box, Card } from '@mui/material';
 import { UserManagementTableContainer } from '../components/UserManagementTableContainer';
 
 import { useQueryResponse } from '../core/QueryResponseProvider';
@@ -19,6 +19,7 @@ import { Helmet } from 'react-helmet';
 import { Content, Intro, Toolbar } from '../../../layouts/default';
 import { useNavBreadcrumbs } from '@components/nav';
 import { NAV_VERTICAL } from '../../../config/navs.config';
+import { PageContainer } from '@components/page-container';
 
 function UsersManagementOverlayPage() {
   const [open2, setOpen2] = useState(false);
@@ -70,33 +71,29 @@ function UsersManagementOverlayPage() {
 
       <Toolbar>
         <Intro title={`Users Management Overlay Page`} breadcrumbs={breadcrumbs} />
+        <Box>
+          <Button
+            onClick={(e) => {
+              handleClickOpe2(undefined);
+            }}>
+            Add new user (Stepper)
+          </Button>
+          <Button
+            onClick={(e) => {
+              setNewUserOverlayModalOpenState(true);
+            }}>
+            Add new user (Plain form)
+          </Button>
+        </Box>
       </Toolbar>
 
       <Content>
-        <Box sx={{ width: '100%' }}>
-          <Paper sx={{ width: '100%', mb: 2, mt: 10, position: 'relative', paddingTop: '40px' }}>
-            <Button
-              sx={{
-                position: 'absolute',
-                top: 2,
-                right: 2
-              }}
-              onClick={(e) => {
-                handleClickOpe2(undefined);
-              }}>
-              Add new user (Stepper)
-            </Button>
-            <Button
-              sx={{
-                position: 'absolute',
-                top: 2,
-                right: 200
-              }}
-              onClick={(e) => {
-                setNewUserOverlayModalOpenState(true);
-              }}>
-              Add new user (Plain form)
-            </Button>
+        <PageContainer>
+          <Card
+            sx={{
+              mb: 2,
+              paddingTop: '5px'
+            }}>
             <EnhancedTableToolbar
               numSelected={selected.length}
               handleSelectedUsersDelete={() => {
@@ -133,45 +130,45 @@ function UsersManagementOverlayPage() {
                 </Box>
               )}
             </UserManagementTableContainer>
-          </Paper>
-          <CreateUserStepperFormDialog
-            open={open2}
-            handleClose={handleClose2}></CreateUserStepperFormDialog>
-          <CreateUserPlainFormDialog
-            open={newUserOverlayModalOpenState}
-            handleClose={() => {
-              setNewUserOverlayModalOpenState(false);
-            }}></CreateUserPlainFormDialog>
-          <UpdateUserDialog
-            open={updateUserModalOpenState}
-            userId={updateUserIdState}
-            handleClose={() => {
-              setUpdateUserModalOpenState(false);
-            }}></UpdateUserDialog>
-          <AlertDialog
-            open={openDeleteDialogState}
-            handleAgreeClose={() => {
-              setOpenDeleteDialogState(false);
-              setDeleteId(deleteUserIdState);
-              setOpenUndoSnackbar(true);
-            }}
-            handleClose={() => {
-              setOpenDeleteDialogState(false);
-            }}
-            userId={deleteUserIdState}></AlertDialog>
-          <UndoSnackbar
-            userId={deleteId}
-            open={openUndoSnackbar}
-            onClose={() => {
-              setOpenUndoSnackbar(false);
-            }}></UndoSnackbar>
-          <ViewUserDialog
-            open={viewUserModalOpenState}
-            handleClose={() => {
-              setViewUserModalOpenState(false);
-            }}
-            userId={viewUserIdState}></ViewUserDialog>
-        </Box>
+          </Card>
+        </PageContainer>
+        <CreateUserStepperFormDialog
+          open={open2}
+          handleClose={handleClose2}></CreateUserStepperFormDialog>
+        <CreateUserPlainFormDialog
+          open={newUserOverlayModalOpenState}
+          handleClose={() => {
+            setNewUserOverlayModalOpenState(false);
+          }}></CreateUserPlainFormDialog>
+        <UpdateUserDialog
+          open={updateUserModalOpenState}
+          userId={updateUserIdState}
+          handleClose={() => {
+            setUpdateUserModalOpenState(false);
+          }}></UpdateUserDialog>
+        <AlertDialog
+          open={openDeleteDialogState}
+          handleAgreeClose={() => {
+            setOpenDeleteDialogState(false);
+            setDeleteId(deleteUserIdState);
+            setOpenUndoSnackbar(true);
+          }}
+          handleClose={() => {
+            setOpenDeleteDialogState(false);
+          }}
+          userId={deleteUserIdState}></AlertDialog>
+        <UndoSnackbar
+          userId={deleteId}
+          open={openUndoSnackbar}
+          onClose={() => {
+            setOpenUndoSnackbar(false);
+          }}></UndoSnackbar>
+        <ViewUserDialog
+          open={viewUserModalOpenState}
+          handleClose={() => {
+            setViewUserModalOpenState(false);
+          }}
+          userId={viewUserIdState}></ViewUserDialog>
       </Content>
     </>
   );

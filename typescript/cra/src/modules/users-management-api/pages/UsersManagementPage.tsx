@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 
-import { Button, Card } from '@mui/material';
+import { Box, Button, Card } from '@mui/material';
 import { UserManagementTableContainer } from '../components/UserManagementTableContainer';
 
 import { useQueryResponse } from '../core/QueryResponseProvider';
@@ -83,39 +83,29 @@ function UsersManagementPage() {
 
       <Toolbar>
         <Intro title={`Users Management Default Page`} breadcrumbs={breadcrumbs} />
+        <Box>
+          <Button
+            onClick={(e) => {
+              handleClickOpe2(undefined);
+            }}>
+            Add new user (Modal)
+          </Button>
+          <Button
+            onClick={(e) => {
+              handleClickOpe4();
+            }}>
+            Add new user (Drawer)
+          </Button>
+        </Box>
       </Toolbar>
 
       <Content>
         <PageContainer>
           <Card
             sx={{
-              width: '100%',
               mb: 2,
-              position: 'relative',
-              paddingTop: '40px'
+              paddingTop: '5px'
             }}>
-            <Button
-              sx={{
-                position: 'absolute',
-                top: 2,
-                right: 2
-              }}
-              onClick={(e) => {
-                handleClickOpe2(undefined);
-              }}>
-              Add new user (Modal)
-            </Button>
-            <Button
-              sx={{
-                position: 'absolute',
-                top: 2,
-                right: 200
-              }}
-              onClick={(e) => {
-                handleClickOpe4();
-              }}>
-              Add new user (Drawer)
-            </Button>
             <EnhancedTableToolbar
               numSelected={selected.length}
               handleSelectedUsersDelete={() => {

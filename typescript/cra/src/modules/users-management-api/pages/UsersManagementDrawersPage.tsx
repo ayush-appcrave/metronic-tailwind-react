@@ -1,6 +1,6 @@
 import { useState } from 'react';
 
-import { Button, Box, Paper } from '@mui/material';
+import { Button, Box, Card } from '@mui/material';
 import { UserManagementTableContainer } from '../components/UserManagementTableContainer';
 
 import { useQueryResponse } from '../core/QueryResponseProvider';
@@ -16,6 +16,7 @@ import { Helmet } from 'react-helmet';
 import { Content, Intro, Toolbar } from '../../../layouts/default';
 import { useNavBreadcrumbs } from '@components/nav';
 import { NAV_VERTICAL } from '../../../config/navs.config';
+import { PageContainer } from '@components/page-container';
 
 function UsersManagementDrawersPage() {
   const [open4, setOpen4] = useState(false);
@@ -61,22 +62,21 @@ function UsersManagementDrawersPage() {
 
       <Toolbar>
         <Intro title={`Users Management Drawers Page`} breadcrumbs={breadcrumbs} />
+        <Button
+          onClick={(e) => {
+            handleClickOpe4();
+          }}>
+          Add new user
+        </Button>
       </Toolbar>
 
       <Content>
-        <Box sx={{ width: '100%' }}>
-          <Paper sx={{ width: '100%', mb: 2, mt: 10, position: 'relative', paddingTop: '40px' }}>
-            <Button
-              sx={{
-                position: 'absolute',
-                top: 2,
-                right: 20
-              }}
-              onClick={(e) => {
-                handleClickOpe4();
-              }}>
-              Add new user
-            </Button>
+        <PageContainer>
+          <Card
+            sx={{
+              mb: 2,
+              paddingTop: '5px'
+            }}>
             <EnhancedTableToolbar
               numSelected={selected.length}
               handleSelectedUsersDelete={() => {
@@ -106,21 +106,21 @@ function UsersManagementDrawersPage() {
                 </Box>
               )}
             </UserManagementTableContainer>
-          </Paper>
-          <CreateUserDrawer open={open4} handleClose={handleClose4}></CreateUserDrawer>
-          <UpdateUserDrawer
-            open={openUpdateDrawerState}
-            userId={updateUserIdState}
-            handleClose={() => {
-              setOpenUpdateDrawerState(false);
-            }}></UpdateUserDrawer>
-          <ViewUserDrawer
-            open={openViewDrawerState}
-            userId={viewUserIdState}
-            handleClose={() => {
-              setOpenViewDrawerState(false);
-            }}></ViewUserDrawer>
-        </Box>
+          </Card>
+        </PageContainer>
+        <CreateUserDrawer open={open4} handleClose={handleClose4}></CreateUserDrawer>
+        <UpdateUserDrawer
+          open={openUpdateDrawerState}
+          userId={updateUserIdState}
+          handleClose={() => {
+            setOpenUpdateDrawerState(false);
+          }}></UpdateUserDrawer>
+        <ViewUserDrawer
+          open={openViewDrawerState}
+          userId={viewUserIdState}
+          handleClose={() => {
+            setOpenViewDrawerState(false);
+          }}></ViewUserDrawer>
       </Content>
     </>
   );
