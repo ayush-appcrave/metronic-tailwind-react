@@ -4,6 +4,8 @@ import { Helmet } from 'react-helmet';
 import { Content, Intro, Toolbar } from '../../../layouts/default';
 import { useNavBreadcrumbs } from '@components/nav';
 import { NAV_VERTICAL } from '../../../config/navs.config';
+import { PageContainer } from '@components/page-container';
+import { Card } from '@mui/material';
 
 function ViewUserPage() {
   const { id } = useParams();
@@ -19,7 +21,16 @@ function ViewUserPage() {
         <Intro title="View User" breadcrumbs={breadcrumbs} />
       </Toolbar>
 
-      <Content>{id && <ViewUser userId={id}></ViewUser>}</Content>
+      <Content>
+        <PageContainer>
+          <Card
+            sx={{
+              padding: '20px'
+            }}>
+            {id && <ViewUser userId={id}></ViewUser>}
+          </Card>
+        </PageContainer>
+      </Content>
     </>
   );
 }

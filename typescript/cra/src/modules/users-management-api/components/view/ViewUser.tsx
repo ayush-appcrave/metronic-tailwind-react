@@ -48,7 +48,7 @@ function ViewUser(props: Props) {
   };
 
   const navigateUserEditPage = () => {
-    navigate(`/edit/user/${props.userId}`);
+    navigate(`/users-management/edit/user/${props.userId}`);
   };
 
   useEffect(() => {
