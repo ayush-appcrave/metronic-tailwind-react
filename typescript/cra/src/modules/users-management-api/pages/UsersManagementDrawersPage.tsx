@@ -3,13 +3,8 @@ import { useState } from 'react';
 import { Button, Box, Card } from '@mui/material';
 import { UserManagementTableContainer } from '../components/UserManagementTableContainer';
 
-import { useQueryResponse } from '../core/QueryResponseProvider';
 import { CreateUserDrawer } from '../components/create-user/CreateUserDrawer';
-import { useListView } from '../core/ListViewProvider';
 import { EnhancedTableToolbar } from '../components/EnhancedTableToolbar';
-import { useMutation, useQueryClient } from 'react-query';
-import { deleteSelectedUsers } from '../core/_requests';
-import { QUERIES } from '../helpers';
 import { UpdateUserDrawer } from '../components/edit-user/UpdateUserDrawer';
 import { ViewUserDrawer } from '../components/view/ViewUserDrawer';
 import { Helmet } from 'react-helmet';
@@ -24,27 +19,7 @@ function UsersManagementDrawersPage() {
   const [openViewDrawerState, setOpenViewDrawerState] = useState<boolean>(false);
   const [updateUserIdState, setUpdateUserIdState] = useState('-1');
   const [viewUserIdState, setViewUserIdState] = useState('-1');
-  const queryClient = useQueryClient();
-  const { query } = useQueryResponse();
   const breadcrumbs = useNavBreadcrumbs(NAV_VERTICAL);
-
-  const { clearSelected, selected } = useListView();
-
-  const deleteSelectedItems = useMutation(
-    async () => {
-      await deleteSelectedUsers(selected as string[]);
-    },
-    {
-      // 💡 response of the mutation is passed to onSuccess
-      onSuccess: () => {
-        // ✅ update detail view directly
-        queryClient.invalidateQueries([`${QUERIES.USERS_LIST}-${query}`]);
-        clearSelected();
-      }
-    }
-  );
-
-  // -------------------
 
   const handleClickOpe4 = () => {
     setOpen4(true);
@@ -52,7 +27,6 @@ function UsersManagementDrawersPage() {
   const handleClose4 = () => {
     setOpen4(false);
   };
-  // -------------------
 
   return (
     <>
@@ -77,12 +51,7 @@ function UsersManagementDrawersPage() {
               mb: 2,
               paddingTop: '5px'
             }}>
-            <EnhancedTableToolbar
-              numSelected={selected.length}
-              handleSelectedUsersDelete={() => {
-                deleteSelectedItems.mutateAsync();
-              }}
-            />
+            <EnhancedTableToolbar />
             <UserManagementTableContainer denseKey="DRAWERS">
               {(id) => (
                 <Box

@@ -3,14 +3,9 @@ import { useState } from 'react';
 import { Button, Box, Card } from '@mui/material';
 import { UserManagementInlineEditingTableContainer } from '../components/UserManagementInlineEditingTableContainer';
 
-import { useQueryResponse } from '../core/QueryResponseProvider';
 import { CreateUserDrawer } from '../components/create-user/CreateUserDrawer';
 import { CreateUserStepperFormDialog } from '../components/create-user/CreateUserStepperFormDialog';
-import { useListView } from '../core/ListViewProvider';
 import { EnhancedTableToolbar } from '../components/EnhancedTableToolbar';
-import { useMutation, useQueryClient } from 'react-query';
-import { deleteSelectedUsers } from '../core/_requests';
-import { QUERIES } from '../helpers';
 import { Helmet } from 'react-helmet';
 import { Content, Intro, Toolbar } from '../../../layouts/default';
 import { useNavBreadcrumbs } from '@components/nav';
@@ -20,27 +15,7 @@ import { PageContainer } from '@components/page-container';
 function UsersManagementInlineEditingPage() {
   const [open2, setOpen2] = useState(false);
   const [open4, setOpen4] = useState(false);
-  const queryClient = useQueryClient();
-  const { query } = useQueryResponse();
   const breadcrumbs = useNavBreadcrumbs(NAV_VERTICAL);
-
-  const { clearSelected, selected } = useListView();
-
-  const deleteSelectedItems = useMutation(
-    async () => {
-      await deleteSelectedUsers(selected as string[]);
-    },
-    {
-      // 💡 response of the mutation is passed to onSuccess
-      onSuccess: () => {
-        // ✅ update detail view directly
-        queryClient.invalidateQueries([`${QUERIES.USERS_LIST}-${query}`]);
-        clearSelected();
-      }
-    }
-  );
-
-  // -------------------
 
   const handleClickOpe2 = (id: string | undefined) => {
     setOpen2(true);
@@ -86,12 +61,7 @@ function UsersManagementInlineEditingPage() {
               mb: 2,
               paddingTop: '5px'
             }}>
-            <EnhancedTableToolbar
-              numSelected={selected.length}
-              handleSelectedUsersDelete={() => {
-                deleteSelectedItems.mutateAsync();
-              }}
-            />
+            <EnhancedTableToolbar />
             <UserManagementInlineEditingTableContainer></UserManagementInlineEditingTableContainer>
           </Card>
         </PageContainer>

@@ -3,14 +3,9 @@ import React, { useState } from 'react';
 import { Button, Box, Card } from '@mui/material';
 import { UserManagementSubCRUDTableContainer } from '../components/UserManagementSubCRUDTableContainer';
 
-import { useQueryResponse } from '../core/QueryResponseProvider';
 import { CreateUserDrawer } from '../components/create-user/CreateUserDrawer';
 import { CreateUserStepperFormDialog } from '../components/create-user/CreateUserStepperFormDialog';
-import { useListView } from '../core/ListViewProvider';
 import { EnhancedTableToolbar } from '../components/EnhancedTableToolbar';
-import { useMutation, useQueryClient } from 'react-query';
-import { deleteSelectedUsers } from '../core/_requests';
-import { QUERIES } from '../helpers';
 import UsersManagementActionsCell from '../components/cells/UsersManagementActionsCell';
 import { UndoSnackbar } from '../components/UndoSnackbar';
 import { Helmet } from 'react-helmet';
@@ -22,30 +17,10 @@ import { PageContainer } from '@components/page-container';
 function UsersManagementSubCRUDPage() {
   const [open2, setOpen2] = useState(false);
   const [open4, setOpen4] = useState(false);
-  const queryClient = useQueryClient();
-  const { query } = useQueryResponse();
   const breadcrumbs = useNavBreadcrumbs(NAV_VERTICAL);
 
   const [openUndoSnackbar, setOpenUndoSnackbar] = useState(false);
   const [deleteId, setDeleteId] = useState('-1');
-
-  const { clearSelected, selected } = useListView();
-
-  const deleteSelectedItems = useMutation(
-    async () => {
-      await deleteSelectedUsers(selected as string[]);
-    },
-    {
-      // 💡 response of the mutation is passed to onSuccess
-      onSuccess: () => {
-        // ✅ update detail view directly
-        queryClient.invalidateQueries([`${QUERIES.USERS_LIST}-${query}`]);
-        clearSelected();
-      }
-    }
-  );
-
-  // -------------------
 
   const handleClickOpe2 = (id: string | undefined) => {
     setOpen2(true);
@@ -59,7 +34,6 @@ function UsersManagementSubCRUDPage() {
   const handleClose4 = () => {
     setOpen4(false);
   };
-  // -------------------
 
   return (
     <>
@@ -92,12 +66,7 @@ function UsersManagementSubCRUDPage() {
               mb: 2,
               paddingTop: '5px'
             }}>
-            <EnhancedTableToolbar
-              numSelected={selected.length}
-              handleSelectedUsersDelete={() => {
-                deleteSelectedItems.mutateAsync();
-              }}
-            />
+            <EnhancedTableToolbar />
             <UserManagementSubCRUDTableContainer>
               {(id) => (
                 <UsersManagementActionsCell

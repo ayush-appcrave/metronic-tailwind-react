@@ -11,21 +11,59 @@ import {
   Typography
 } from '@mui/material';
 import { type SxProps, type Theme } from '@mui/material/styles';
-import { type ChangeEvent, useState } from 'react';
+import React, { type ChangeEvent, useState } from 'react';
 import DeleteIcon from '@mui/icons-material/Delete';
 import { useQueryRequest } from '../core/QueryRequestProvider';
+import { useListView } from '../core/ListViewProvider';
+import { useMutation, useQueryClient } from 'react-query';
+import { deleteSelectedUsers, restoreMultipleUsers } from '../core/_requests';
+import { QUERIES } from '../helpers';
+import { UndoActions } from './UndoActions';
+import { useQueryResponse } from '../core/QueryResponseProvider';
+import { useSnackbar } from 'notistack';
 
 interface EnhancedTableToolbarProps {
-  numSelected: number;
-  handleSelectedUsersDelete: () => void;
   sx?: SxProps<Theme>;
 }
 
 function EnhancedTableToolbar(props: EnhancedTableToolbarProps) {
-  const { numSelected } = props;
   const { updateState } = useQueryRequest();
   const [roleFilter, setRoleFilter] = useState<'user' | 'admin' | undefined>(undefined);
   const [nameFilter, setNameFilter] = useState<string | null>(null);
+
+  const { clearSelected, selected } = useListView();
+  const { enqueueSnackbar } = useSnackbar();
+  const queryClient = useQueryClient();
+  const { query, refetch } = useQueryResponse();
+
+  const deleteSelectedItems = useMutation(
+    async () => {
+      await deleteSelectedUsers(selected as string[]);
+    },
+    {
+      // 💡 response of the mutation is passed to onSuccess
+      onSuccess: () => {
+        // ✅ update detail view directly
+        queryClient.invalidateQueries([`${QUERIES.USERS_LIST}-${query}`]);
+        enqueueSnackbar(`${selected.length} users was deleted.`, {
+          action: (snackbarKey) => (
+            <UndoActions
+              ids={selected as string[]}
+              snackbarKey={snackbarKey}
+              undoAction={undoAction}></UndoActions>
+          ),
+          anchorOrigin: { vertical: 'bottom', horizontal: 'left' },
+          autoHideDuration: 7000
+        });
+        clearSelected();
+      }
+    }
+  );
+
+  const undoAction: (ids: string[]) => Promise<void> = async (ids: string[]) => {
+    await restoreMultipleUsers(ids);
+    refetch();
+  };
 
   const handleRoleFilterChange: (event: SelectChangeEvent) => void = (e: SelectChangeEvent) => {
     if (e.target.value !== 'all') {
@@ -47,15 +85,16 @@ function EnhancedTableToolbar(props: EnhancedTableToolbarProps) {
     <Toolbar
       sx={{
         px: { xs: 1, sm: 2 },
-        ...(numSelected > 0 && {
-          bgcolor: (theme) =>
-            alpha(theme.palette.primary.main, theme.palette.action.activatedOpacity)
-        }),
+        ...(selected.length &&
+          selected.length && {
+            bgcolor: (theme) =>
+              alpha(theme.palette.primary.main, theme.palette.action.activatedOpacity)
+          }),
         ...props.sx
       }}>
-      {numSelected > 0 ? (
+      {selected.length ? (
         <Typography sx={{ flex: '1 1 100%' }} color="inherit" variant="subtitle1" component="div">
-          {numSelected} selected
+          {selected.length} selected
         </Typography>
       ) : (
         <FormControl
@@ -78,13 +117,7 @@ function EnhancedTableToolbar(props: EnhancedTableToolbarProps) {
           </Select>
         </FormControl>
       )}
-      {numSelected > 0 ? (
-        <Tooltip title="Delete">
-          <IconButton onClick={props.handleSelectedUsersDelete}>
-            <DeleteIcon />
-          </IconButton>
-        </Tooltip>
-      ) : (
+      {!selected.length ? (
         <TextField
           size="small"
           onChange={handleNameFilterChange}
@@ -97,6 +130,15 @@ function EnhancedTableToolbar(props: EnhancedTableToolbarProps) {
           label="Search name"
           variant="outlined"
         />
+      ) : (
+        <Tooltip title="Delete">
+          <IconButton
+            onClick={() => {
+              deleteSelectedItems.mutateAsync();
+            }}>
+            <DeleteIcon />
+          </IconButton>
+        </Tooltip>
       )}
     </Toolbar>
   );
