@@ -168,6 +168,11 @@ const NAV_COMMON: Record<string, NavConfigType> = {
       title: 'Skeleton loading',
       path: '/users-management/skeleton',
       bullet: true
+    },
+    {
+      title: 'Data Grid',
+      path: '/users-management/data-grid',
+      bullet: true
     }
   ]
 };
