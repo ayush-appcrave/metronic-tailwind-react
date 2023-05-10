@@ -1,4 +1,5 @@
 export * from './UpdateUserPage';
+export * from './UsersManagementDataGridPage';
 export * from './UsersManagementDrawersPage';
 export * from './UsersManagementInlineEditingPage';
 export * from './UsersManagementOverlayPage';

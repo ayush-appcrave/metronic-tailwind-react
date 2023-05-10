@@ -23,13 +23,21 @@ function isNotEmpty(obj: unknown): boolean {
 function stringifyRequestQuery(state: QueryState): string {
   const pagination = qs.stringify(state, { filter: ['page', 'items_per_page'], skipNulls: true });
   const sort = qs.stringify(state, { filter: ['sort', 'order'], skipNulls: true });
+  const filter = state.advanced ? qs.stringify([...state.advanced], { encode: false }) : '';
   const search = isNotEmpty(state.search)
     ? qs.stringify(state, { filter: ['search'], skipNulls: true })
     : '';
 
   const role = qs.stringify(state, { skipNulls: true });
 
-  return [pagination, sort, search, role]
+  console.log(
+    [pagination, sort, search, role, filter]
+      .filter((f) => f)
+      .join('&')
+      .toLowerCase()
+  );
+
+  return [pagination, sort, search, role, filter]
     .filter((f) => f)
     .join('&')
     .toLowerCase();

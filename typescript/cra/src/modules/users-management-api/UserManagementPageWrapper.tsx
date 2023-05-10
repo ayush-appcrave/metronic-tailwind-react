@@ -10,6 +10,7 @@ import {
   UsersManagementInlineEditingPage,
   UsersManagementSubCRUDPage,
   UsersManagementSkeletonPage,
+  UsersManagementDataGridPage,
   ViewUserPage
 } from './pages';
 import { Routes } from 'react-router';
@@ -25,6 +26,7 @@ const UsersManagementWrapper = () => (
           <Route path="inline-editing" element={<UsersManagementInlineEditingPage />} />
           <Route path="sub-crud" element={<UsersManagementSubCRUDPage />} />
           <Route path="skeleton" element={<UsersManagementSkeletonPage />} />
+          <Route path="data-grid" element={<UsersManagementDataGridPage />} />
 
           <Route path="edit/user/:id" element={<UpdateUserPage />} />
           <Route path="view/user/:id" element={<ViewUserPage />} />

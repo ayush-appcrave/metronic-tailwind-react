@@ -1,6 +1,7 @@
 /* eslint-disable no-unused-vars */
 import { type Dispatch, type SetStateAction } from 'react';
 import { type UsersQueryResponse } from '../../core/_models';
+import { GridFilterItem } from '@mui/x-data-grid';
 
 export interface PaginationState {
   page?: number;
@@ -24,6 +25,7 @@ export interface SortState {
 
 export interface FilterState {
   role?: 'all' | 'user' | 'admin';
+  advanced?: GridFilterItem[];
 }
 
 export interface SearchState {
@@ -46,7 +48,7 @@ export const initialQueryState: QueryState = {
   current_page: 1,
   items_per_page: 10,
   total: 0,
-  page: 1
+  page: 0
 };
 
 export const initialQueryRequest: QueryRequestContextProps = {
