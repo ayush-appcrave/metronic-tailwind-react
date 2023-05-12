@@ -10,7 +10,6 @@ import {
   GridToolbarColumnsButton,
   GridToolbarContainer,
   GridToolbarDensitySelector,
-  GridToolbarQuickFilter,
   GridRowSelectionModel
 } from '@mui/x-data-grid';
 import { IconButton, Avatar, Box } from '@mui/material';
@@ -41,7 +40,6 @@ function DataToolbar(props: Props) {
   return (
     <GridToolbarContainer>
       <Auctions selectionModel={props.selectionModel} />
-      <GridToolbarQuickFilter />
       <GridToolbarColumnsButton />
       <GridToolbarDensitySelector />
     </GridToolbarContainer>
