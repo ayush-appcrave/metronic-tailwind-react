@@ -21,7 +21,7 @@ function EnhancedTableHead(props: EnhancedTableProps) {
     onRequestSort(event, property);
   };
 
-  const { isAllSelected, onSelectAll } = useListView();
+  const { isAllSelected, onSelectAll, selected } = useListView();
 
   return (
     <TableHead>
@@ -31,6 +31,7 @@ function EnhancedTableHead(props: EnhancedTableProps) {
             color="primary"
             size="small"
             checked={isAllSelected}
+            indeterminate={!isAllSelected && selected.length > 0}
             onChange={onSelectAll}
             inputProps={{
               'aria-label': 'select all desserts'

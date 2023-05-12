@@ -29,7 +29,7 @@ interface EnhancedTableToolbarProps {
 function EnhancedTableToolbar(props: EnhancedTableToolbarProps) {
   const { updateState } = useQueryRequest();
   const [roleFilter, setRoleFilter] = useState<'user' | 'admin' | undefined>(undefined);
-  const [nameFilter, setNameFilter] = useState<string | null>(null);
+  const [nameFilter, setNameFilter] = useState<string>('');
 
   const { clearSelected, selected } = useListView();
   const { enqueueSnackbar } = useSnackbar();
