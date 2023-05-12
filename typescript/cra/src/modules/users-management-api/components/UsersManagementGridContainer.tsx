@@ -6,8 +6,15 @@ import {
   GridFilterModel,
   GridPaginationModel,
   GridRenderCellParams,
-  GridSortModel
+  GridSortModel,
+  GridToolbarColumnsButton,
+  GridToolbarContainer,
+  GridToolbarDensitySelector,
+  GridToolbarQuickFilter,
+  GridRowSelectionModel
 } from '@mui/x-data-grid';
+import { IconButton, Avatar, Box } from '@mui/material';
+import DeleteIcon from '@mui/icons-material/Delete';
 import { useMemo } from 'react';
 import { useQueryRequest } from '../core/QueryRequestProvider';
 import {
@@ -16,14 +23,79 @@ import {
   useQueryResponseLoading,
   useQueryResponsePagination
 } from '../core/QueryResponseProvider';
-import { initialQueryState } from '../helpers';
+import { initialQueryState, QUERIES } from '../helpers';
 import { UndoActions } from './UndoActions';
 import UsersManagementActionsCell from './cells/UsersManagementActionsCell';
 import { useSnackbar } from 'notistack';
-import { restoreMultipleUsers } from '../core/_requests';
+import { deleteSelectedUsers, restoreMultipleUsers } from '../core/_requests';
 import { User } from '../core/_models';
-import { Avatar, Box } from '@mui/material';
 import { toAbsoluteUrl } from 'utils';
+import { useMutation, useQueryClient } from 'react-query';
+import { useListView } from '../core/ListViewProvider';
+
+interface Props {
+  selectionModel: GridRowSelectionModel;
+}
+
+function DataToolbar(props: Props) {
+  return (
+    <GridToolbarContainer>
+      <Auctions selectionModel={props.selectionModel} />
+      <GridToolbarQuickFilter />
+      <GridToolbarColumnsButton />
+      <GridToolbarDensitySelector />
+    </GridToolbarContainer>
+  );
+}
+
+function Auctions(props: Props) {
+  const hasSelectedRows = props.selectionModel.length > 0;
+  const { query, refetch } = useQueryResponse();
+  const queryClient = useQueryClient();
+
+  const { enqueueSnackbar } = useSnackbar();
+  const { clearSelected } = useListView();
+  const deleteSelectedItems = useMutation(
+    async () => {
+      await deleteSelectedUsers(props.selectionModel as string[]);
+    },
+    {
+      // 💡 response of the mutation is passed to onSuccess
+      onSuccess: () => {
+        // ✅ update detail view directly
+        queryClient.invalidateQueries([`${QUERIES.USERS_LIST}-${query}`]);
+        enqueueSnackbar(`${props.selectionModel.length} users was deleted.`, {
+          action: (snackbarKey) => (
+            <UndoActions
+              ids={props.selectionModel as string[]}
+              snackbarKey={snackbarKey}
+              undoAction={undoAction}></UndoActions>
+          ),
+          anchorOrigin: { vertical: 'bottom', horizontal: 'left' },
+          autoHideDuration: 7000
+        });
+        clearSelected();
+      }
+    }
+  );
+
+  const undoAction: (ids: string[]) => Promise<void> = async (ids: string[]) => {
+    await restoreMultipleUsers(ids);
+    refetch();
+  };
+
+  return (
+    <>
+      <IconButton
+        disabled={!hasSelectedRows}
+        onClick={() => {
+          deleteSelectedItems.mutateAsync();
+        }}>
+        <DeleteIcon color={hasSelectedRows ? 'error' : 'disabled'} />
+      </IconButton>
+    </>
+  );
+}
 
 export function UsersManagementGridContainer() {
   const { updateState } = useQueryRequest();
@@ -32,6 +104,7 @@ export function UsersManagementGridContainer() {
   const data = useMemo(() => users, [users]);
   const isLoading = useQueryResponseLoading();
   const { refetch } = useQueryResponse();
+  const [selectionModel, setSelectionModel] = React.useState<GridRowSelectionModel>([]);
 
   const { enqueueSnackbar } = useSnackbar();
   const undoAction: (ids: string[]) => Promise<void> = async (ids: string[]) => {
@@ -140,6 +213,10 @@ export function UsersManagementGridContainer() {
         checkboxSelection
         rows={data}
         columns={columns}
+        slots={{ toolbar: DataToolbar }}
+        slotProps={{
+          toolbar: { selectionModel }
+        }}
         sortingMode="server"
         paginationMode="server"
         rowCount={pagination.total}
@@ -151,6 +228,11 @@ export function UsersManagementGridContainer() {
             }
           }
         }}
+        onRowSelectionModelChange={(newSelectionModel: GridRowSelectionModel) => {
+          console.log(newSelectionModel);
+          setSelectionModel(newSelectionModel);
+        }}
+        rowSelectionModel={selectionModel}
         onSortModelChange={handleRequestSort}
         onPaginationModelChange={handleChangePage}
         onFilterModelChange={handleFilterChange}
