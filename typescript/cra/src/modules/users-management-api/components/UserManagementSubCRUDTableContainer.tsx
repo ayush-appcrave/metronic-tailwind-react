@@ -127,7 +127,6 @@ const UserManagementSubCRUDTableContainer = (props: Props) => {
   const [searchParams] = useSearchParams();
   useEffect(() => {
     if (searchParams.toString()) {
-      console.log('query set', qs.parse(searchParams.toString()));
       updateState(qs.parse(searchParams.toString()));
       const sortParam = qs.parse(searchParams.toString()).sort;
       const orderParam = qs.parse(searchParams.toString()).order;

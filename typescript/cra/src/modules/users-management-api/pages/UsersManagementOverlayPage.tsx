@@ -17,7 +17,7 @@ import { NAV_VERTICAL } from '../../../config/navs.config';
 import { PageContainer } from '@components/page-container';
 
 function UsersManagementOverlayPage() {
-  const [open2, setOpen2] = useState(false);
+  const [userStepperDialogOpenState, setUserStepperDialogOpenState] = useState(false);
   const [updateUserIdState, setUpdateUserIdState] = useState('-1');
   const [newUserOverlayModalOpenState, setNewUserOverlayModalOpenState] = useState(false);
   const [viewUserModalOpenState, setViewUserModalOpenState] = useState(false);
@@ -28,13 +28,6 @@ function UsersManagementOverlayPage() {
   const [openUndoSnackbar, setOpenUndoSnackbar] = useState(false);
   const [deleteId, setDeleteId] = useState('-1');
   const breadcrumbs = useNavBreadcrumbs(NAV_VERTICAL);
-
-  const handleClickOpe2 = (id: string | undefined) => {
-    setOpen2(true);
-  };
-  const handleClose2 = () => {
-    setOpen2(false);
-  };
 
   return (
     <>
@@ -47,7 +40,7 @@ function UsersManagementOverlayPage() {
         <Box>
           <Button
             onClick={(e) => {
-              handleClickOpe2(undefined);
+              setUserStepperDialogOpenState(true);
             }}>
             Add new user (Stepper)
           </Button>
@@ -101,8 +94,10 @@ function UsersManagementOverlayPage() {
           </Card>
         </PageContainer>
         <CreateUserStepperFormDialog
-          open={open2}
-          handleClose={handleClose2}></CreateUserStepperFormDialog>
+          open={userStepperDialogOpenState}
+          handleClose={() => {
+            setUserStepperDialogOpenState(false);
+          }}></CreateUserStepperFormDialog>
         <CreateUserPlainFormDialog
           open={newUserOverlayModalOpenState}
           handleClose={() => {

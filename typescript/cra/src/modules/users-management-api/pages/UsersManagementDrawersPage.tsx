@@ -14,19 +14,12 @@ import { NAV_VERTICAL } from '../../../config/navs.config';
 import { PageContainer } from '@components/page-container';
 
 function UsersManagementDrawersPage() {
-  const [open4, setOpen4] = useState(false);
+  const [openCreateUserDrawerState, setOpenCreateUserDrawerState] = useState(false);
   const [openUpdateDrawerState, setOpenUpdateDrawerState] = useState<boolean>(false);
   const [openViewDrawerState, setOpenViewDrawerState] = useState<boolean>(false);
   const [updateUserIdState, setUpdateUserIdState] = useState('-1');
   const [viewUserIdState, setViewUserIdState] = useState('-1');
   const breadcrumbs = useNavBreadcrumbs(NAV_VERTICAL);
-
-  const handleClickOpe4 = () => {
-    setOpen4(true);
-  };
-  const handleClose4 = () => {
-    setOpen4(false);
-  };
 
   return (
     <>
@@ -38,7 +31,7 @@ function UsersManagementDrawersPage() {
         <Intro title={`Users Management Drawers Page`} breadcrumbs={breadcrumbs} />
         <Button
           onClick={(e) => {
-            handleClickOpe4();
+            setOpenCreateUserDrawerState(true);
           }}>
           Add new user
         </Button>
@@ -77,7 +70,11 @@ function UsersManagementDrawersPage() {
             </UserManagementTableContainer>
           </Card>
         </PageContainer>
-        <CreateUserDrawer open={open4} handleClose={handleClose4}></CreateUserDrawer>
+        <CreateUserDrawer
+          open={openCreateUserDrawerState}
+          handleClose={() => {
+            setOpenCreateUserDrawerState(false);
+          }}></CreateUserDrawer>
         <UpdateUserDrawer
           open={openUpdateDrawerState}
           userId={updateUserIdState}

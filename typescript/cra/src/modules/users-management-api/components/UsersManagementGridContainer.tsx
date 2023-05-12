@@ -227,7 +227,6 @@ export function UsersManagementGridContainer() {
           }
         }}
         onRowSelectionModelChange={(newSelectionModel: GridRowSelectionModel) => {
-          console.log(newSelectionModel);
           setSelectionModel(newSelectionModel);
         }}
         rowSelectionModel={selectionModel}

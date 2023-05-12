@@ -52,7 +52,6 @@ const UserManagementSkeletonTableContainer = (props: Props) => {
   const [searchParams] = useSearchParams();
   useEffect(() => {
     if (searchParams.toString()) {
-      console.log('query set', qs.parse(searchParams.toString()));
       updateState(qs.parse(searchParams.toString()));
       const sortParam = qs.parse(searchParams.toString()).sort;
       const orderParam = qs.parse(searchParams.toString()).order;
@@ -82,7 +81,6 @@ const UserManagementSkeletonTableContainer = (props: Props) => {
   };
 
   const handleChangePage = (event: unknown, newPage: number) => {
-    console.log('handle change');
     updateState({ page: newPage + 1 }, true);
   };
   const handleChangeRowsPerPage = (event: ChangeEvent<HTMLInputElement>) => {

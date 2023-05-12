@@ -13,22 +13,9 @@ import { NAV_VERTICAL } from '../../../config/navs.config';
 import { PageContainer } from '@components/page-container';
 
 function UsersManagementInlineEditingPage() {
-  const [open2, setOpen2] = useState(false);
-  const [open4, setOpen4] = useState(false);
+  const [userStepperFormDialogOpenState, setUserStepperFormDialogOpenState] = useState(false);
+  const [createUserDrawerOpenState, setCreateUserDrawerOpenState] = useState(false);
   const breadcrumbs = useNavBreadcrumbs(NAV_VERTICAL);
-
-  const handleClickOpe2 = (id: string | undefined) => {
-    setOpen2(true);
-  };
-  const handleClickOpe4 = () => {
-    setOpen4(true);
-  };
-  const handleClose2 = () => {
-    setOpen2(false);
-  };
-  const handleClose4 = () => {
-    setOpen4(false);
-  };
 
   return (
     <>
@@ -41,13 +28,13 @@ function UsersManagementInlineEditingPage() {
         <Box>
           <Button
             onClick={(e) => {
-              handleClickOpe2(undefined);
+              setUserStepperFormDialogOpenState(true);
             }}>
             Add new user (Modal)
           </Button>
           <Button
             onClick={(e) => {
-              handleClickOpe4();
+              setCreateUserDrawerOpenState(true);
             }}>
             Add new user (Drawer)
           </Button>
@@ -66,9 +53,15 @@ function UsersManagementInlineEditingPage() {
           </Card>
         </PageContainer>
         <CreateUserStepperFormDialog
-          open={open2}
-          handleClose={handleClose2}></CreateUserStepperFormDialog>
-        <CreateUserDrawer open={open4} handleClose={handleClose4}></CreateUserDrawer>
+          open={userStepperFormDialogOpenState}
+          handleClose={() => {
+            setUserStepperFormDialogOpenState(false);
+          }}></CreateUserStepperFormDialog>
+        <CreateUserDrawer
+          open={createUserDrawerOpenState}
+          handleClose={() => {
+            setCreateUserDrawerOpenState(false);
+          }}></CreateUserDrawer>
       </Content>
     </>
   );
