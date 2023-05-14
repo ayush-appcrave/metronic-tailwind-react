@@ -38,7 +38,8 @@ const SidebarHeader = ({ setHeaderHeight }: Props) => {
         position: 'relative',
         px: 4,
         py: 4
-      }}>
+      }}
+    >
       <SidebarLogo />
 
       <SidebarCollapseButton onToggle={handleSidebarCollapse} />

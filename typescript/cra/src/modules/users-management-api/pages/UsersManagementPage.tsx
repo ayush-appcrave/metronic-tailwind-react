@@ -41,13 +41,15 @@ function UsersManagementPage() {
           <Button
             onClick={(e) => {
               setUserStepperFormDialogOpenState(true);
-            }}>
+            }}
+          >
             Add new user (Modal)
           </Button>
           <Button
             onClick={(e) => {
               setCreateUserDrawerOpenState(true);
-            }}>
+            }}
+          >
             Add new user (Drawer)
           </Button>
         </Box>
@@ -59,7 +61,8 @@ function UsersManagementPage() {
             sx={{
               mb: 2,
               paddingTop: '5px'
-            }}>
+            }}
+          >
             <EnhancedTableToolbar />
             <UserManagementTableContainer denseKey="MAIN">
               {(id) => (
@@ -71,7 +74,8 @@ function UsersManagementPage() {
                         <UndoActions
                           snackbarKey={snackbarKey}
                           undoAction={undoAction}
-                          ids={[id]}></UndoActions>
+                          ids={[id]}
+                        ></UndoActions>
                       ),
                       anchorOrigin: { vertical: 'bottom', horizontal: 'left' },
                       autoHideDuration: 7000
@@ -85,12 +89,14 @@ function UsersManagementPage() {
             open={userStepperFormDialogOpenState}
             handleClose={() => {
               setUserStepperFormDialogOpenState(false);
-            }}></CreateUserStepperFormDialog>
+            }}
+          ></CreateUserStepperFormDialog>
           <CreateUserDrawer
             open={createUserDrawerOpenState}
             handleClose={() => {
               setCreateUserDrawerOpenState(false);
-            }}></CreateUserDrawer>
+            }}
+          ></CreateUserDrawer>
         </PageContainer>
       </Content>
     </>

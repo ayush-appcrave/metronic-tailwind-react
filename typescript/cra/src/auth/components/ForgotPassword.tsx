@@ -46,7 +46,8 @@ const ForgotPassword = () => {
       className="form w-100 fv-plugins-bootstrap5 fv-plugins-framework"
       noValidate
       id="kt_login_password_reset_form"
-      onSubmit={formik.handleSubmit}>
+      onSubmit={formik.handleSubmit}
+    >
       <div className="text-center mb-10">
         {/* begin::Title */}
         <h1 className="text-dark fw-bolder mb-3">Forgot Password ?</h1>
@@ -117,7 +118,8 @@ const ForgotPassword = () => {
             type="button"
             id="kt_login_password_reset_form_cancel_button"
             className="btn btn-light"
-            disabled={formik.isSubmitting || !formik.isValid}>
+            disabled={formik.isSubmitting || !formik.isValid}
+          >
             Cancel
           </button>
         </Link>{' '}

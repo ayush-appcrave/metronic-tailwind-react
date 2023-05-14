@@ -15,7 +15,8 @@ const TableOverlay = (props: Props) => {
         left: 0,
         right: 0,
         bottom: 0
-      }}>
+      }}
+    >
       <TableCell
         colSpan={8}
         rowSpan={props.itemsPerPage}
@@ -30,7 +31,8 @@ const TableOverlay = (props: Props) => {
           width: '100%',
           height: '100%',
           cursor: 'wait'
-        }}>
+        }}
+      >
         <CircularProgress />
       </TableCell>
     </TableRow>

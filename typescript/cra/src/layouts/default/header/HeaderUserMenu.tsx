@@ -33,7 +33,8 @@ const HeaderUserMenu = () => {
       sx={{
         display: 'flex',
         alignItems: 'center'
-      }}>
+      }}
+    >
       <IconButton
         onClick={handleClick}
         size="small"
@@ -43,7 +44,8 @@ const HeaderUserMenu = () => {
         }}
         aria-haspopup="true"
         aria-controls={open ? 'user-account-menu' : undefined}
-        aria-expanded={open ? 'true' : undefined}>
+        aria-expanded={open ? 'true' : undefined}
+      >
         <Avatar
           src="/media/avatars/300-3.jpg"
           sx={{
@@ -78,21 +80,24 @@ const HeaderUserMenu = () => {
               width: '200px'
             }
           }
-        }}>
+        }}
+      >
         <Box
           sx={{
             pt: 0.75,
             pb: 0.25,
             px: 2.5,
             lineHeight: 1.15
-          }}>
+          }}
+        >
           <Box
             sx={{
               fontSize: '14px',
               fontWeight: theme.typography.fontWeightMedium,
               color: theme.palette.grey['800'],
               LineHeight: 1
-            }}>
+            }}
+          >
             {currentUser?.first_name} {currentUser?.last_name}
           </Box>
 
@@ -102,7 +107,8 @@ const HeaderUserMenu = () => {
               fontSize: '12px',
               fontWeight: theme.typography.fontWeightMedium,
               textDecoration: 'none'
-            }}>
+            }}
+          >
             {currentUser?.email}
           </Link>
         </Box>

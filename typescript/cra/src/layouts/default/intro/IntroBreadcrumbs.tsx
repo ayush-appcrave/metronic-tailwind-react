@@ -41,7 +41,8 @@ const IntroBreadcrumbs = ({ breadcrumbs }: PropsType) => {
           }}
         />
       }
-      aria-label="breadcrumbs">
+      aria-label="breadcrumbs"
+    >
       {breadcrumbs.map((item, index) => {
         if (item.path) {
           return (
@@ -49,7 +50,8 @@ const IntroBreadcrumbs = ({ breadcrumbs }: PropsType) => {
               key={`breadcrumb-${JSON.stringify(item)}`}
               underline="none"
               href={item.path}
-              className={item?.active ? 'Mui-active' : ''}>
+              className={item?.active ? 'Mui-active' : ''}
+            >
               {item.title}
             </Link>
           );
@@ -58,7 +60,8 @@ const IntroBreadcrumbs = ({ breadcrumbs }: PropsType) => {
             <Box
               component="span"
               key={`breadcrumb-${JSON.stringify(item)}`}
-              className={item?.active ? 'Mui-active' : ''}>
+              className={item?.active ? 'Mui-active' : ''}
+            >
               {item.title}
             </Box>
           );

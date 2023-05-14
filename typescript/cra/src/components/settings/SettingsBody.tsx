@@ -20,7 +20,8 @@ const SettingsBody = ({ headerHeight = 0, footerHeight = 0 }: Props) => {
         height: scrollableHeight,
         px: 2,
         mx: 1
-      }}>
+      }}
+    >
       <SettingsFormMode />
       <SettingsFormKeenIcons />
       <SettingsFormDirection />

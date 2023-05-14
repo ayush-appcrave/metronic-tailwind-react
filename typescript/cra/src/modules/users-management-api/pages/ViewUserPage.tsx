@@ -26,7 +26,8 @@ function ViewUserPage() {
           <Card
             sx={{
               padding: '20px'
-            }}>
+            }}
+          >
             {id && <ViewUser userId={id}></ViewUser>}
           </Card>
         </PageContainer>

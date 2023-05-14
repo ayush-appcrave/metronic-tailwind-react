@@ -56,14 +56,16 @@ const Header = () => {
           backgroundColor: alpha(theme.palette.background.default, 0.8),
           backdropFilter: styles.HEADER_STICKY_BACKDROP_FILTER
         })
-      }}>
+      }}
+    >
       <PageContainer
         width="fluid"
         sx={{
           display: 'flex',
           justifyContent: 'space-between',
           alignItems: 'stretch'
-        }}>
+        }}
+      >
         {isMobile && <HeaderMobileLogo />}
 
         <Box
@@ -78,7 +80,8 @@ const Header = () => {
               justifyContent: 'flex-end',
               gap: '8px'
             }
-          }}>
+          }}
+        >
           <HeaderSearch />
 
           <Box
@@ -91,7 +94,8 @@ const Header = () => {
               [theme.breakpoints.down('lg')]: {
                 gap: '10px'
               }
-            }}>
+            }}
+          >
             <HeaderNotificationsMenu />
             <HeaderMessagesMenu />
             <HeaderLanguageMenu />

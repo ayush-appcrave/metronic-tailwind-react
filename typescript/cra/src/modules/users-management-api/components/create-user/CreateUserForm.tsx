@@ -90,7 +90,8 @@ function CreateUserForm(props: CreateUserFormProps) {
           position: 'absolute',
           right: 5,
           top: 5
-        }}>
+        }}
+      >
         <Close></Close>
       </Button>
       <Typography
@@ -99,14 +100,16 @@ function CreateUserForm(props: CreateUserFormProps) {
           fontSize: '30px',
           marginX: '20%',
           textAlign: 'center'
-        }}>
+        }}
+      >
         Create new user
       </Typography>
       <form
         style={{
           display: 'flex'
         }}
-        onSubmit={formik.handleSubmit}>
+        onSubmit={formik.handleSubmit}
+      >
         <Grid
           container
           alignItems="center"
@@ -115,7 +118,8 @@ function CreateUserForm(props: CreateUserFormProps) {
             marginX: '20%',
             marginY: '30px'
           }}
-          direction="column">
+          direction="column"
+        >
           <FormGroup sx={{ marginY: '5px', width: '100%' }}>
             <TextField
               type="text"
@@ -174,7 +178,8 @@ function CreateUserForm(props: CreateUserFormProps) {
               error={!!formik.errors.status && formik.touched.status}
               onChange={formik.handleChange}
               onBlur={formik.handleBlur}
-              value={formik.values.status}>
+              value={formik.values.status}
+            >
               <MenuItem value="active">Active</MenuItem>
               <MenuItem value="pending">Pending</MenuItem>
               <MenuItem value="deactivated">Deactivated</MenuItem>
@@ -193,7 +198,8 @@ function CreateUserForm(props: CreateUserFormProps) {
               error={!!formik.errors.role && formik.touched.role}
               onChange={formik.handleChange}
               onBlur={formik.handleBlur}
-              value={formik.values.role}>
+              value={formik.values.role}
+            >
               <MenuItem value="user">User</MenuItem>
               <MenuItem value="admin">Admin</MenuItem>
             </Select>
@@ -254,7 +260,8 @@ function CreateUserForm(props: CreateUserFormProps) {
             type="submit"
             variant="contained"
             color="primary"
-            disabled={loading}>
+            disabled={loading}
+          >
             {!loading ? (
               'Save'
             ) : (
@@ -262,7 +269,8 @@ function CreateUserForm(props: CreateUserFormProps) {
                 <CircularProgress
                   color={'inherit'}
                   size={'1rem'}
-                  sx={{ marginRight: '10px' }}></CircularProgress>
+                  sx={{ marginRight: '10px' }}
+                ></CircularProgress>
                 Loading...
               </>
             )}

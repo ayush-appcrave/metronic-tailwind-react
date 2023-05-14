@@ -36,7 +36,8 @@ const LoadersProvider = ({ children }: PropsWithChildren) => {
         setProgressBarLoader,
         screenLoader,
         setScreenLoader
-      }}>
+      }}
+    >
       {children}
       {progressBarLoader && <ProgressBarLoader />}
       {screenLoader && <ScreenLoader />}

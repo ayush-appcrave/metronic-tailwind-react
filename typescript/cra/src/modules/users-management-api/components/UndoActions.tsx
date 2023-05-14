@@ -28,7 +28,8 @@ const UndoActions = ({ snackbarKey, ids, undoAction }: Props) => {
         onClick={() => {
           handleClose();
           undoAction(ids);
-        }}>
+        }}
+      >
         UNDO
       </Button>
       <IconButton size="small" aria-label="close" color="inherit" onClick={handleClose}>

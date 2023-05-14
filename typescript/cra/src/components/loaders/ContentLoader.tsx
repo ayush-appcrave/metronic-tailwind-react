@@ -19,7 +19,8 @@ const ContentLoader = ({ sx }: ContentLoaderProps) => {
         flexDirection: 'column',
         alignSelf: 'center',
         ...sx
-      }}>
+      }}
+    >
       <CircularProgress color="primary" />
     </Box>
   );

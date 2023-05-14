@@ -21,12 +21,14 @@ const Footer = () => {
           transition: leftTransition,
           left: sidebarWidth
         }
-      }}>
+      }}
+    >
       <PageContainer
         sx={{
           display: 'flex',
           alignItems: 'center'
-        }}>
+        }}
+      >
         Footer
       </PageContainer>
     </Box>

@@ -18,7 +18,8 @@ function UpdateUserDrawer(props: UpdateUserDrawerProps) {
         sx: {
           width: '40%'
         }
-      }}>
+      }}
+    >
       <Button
         onClick={() => {
           props.handleClose();
@@ -27,14 +28,16 @@ function UpdateUserDrawer(props: UpdateUserDrawerProps) {
           position: 'absolute',
           right: 5,
           top: 5
-        }}>
+        }}
+      >
         <Close></Close>
       </Button>
       <Box sx={{ marginTop: '40px' }}>
         <Typography>Update User Info Page</Typography>
         <UpdateUserFormWrapper
           userId={props.userId}
-          handleExit={props.handleClose}></UpdateUserFormWrapper>
+          handleExit={props.handleClose}
+        ></UpdateUserFormWrapper>
       </Box>
     </Drawer>
   );

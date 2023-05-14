@@ -21,7 +21,8 @@ const NavComponent = ({
         ...sx
       }}
       component="nav"
-      aria-labelledby="nav-list">
+      aria-labelledby="nav-list"
+    >
       {(items as readonly NavItemOptionsType[]).map((item, index) => (
         <NavItem
           key={`${index}-${item.title}`}

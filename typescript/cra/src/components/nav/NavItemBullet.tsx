@@ -35,7 +35,8 @@ const NavItemBulletComponent = ({
         ...(here && {
           backgroundColor: (theme) => theme.palette.grey['700']
         })
-      }}></Box>
+      }}
+    ></Box>
   );
 };
 

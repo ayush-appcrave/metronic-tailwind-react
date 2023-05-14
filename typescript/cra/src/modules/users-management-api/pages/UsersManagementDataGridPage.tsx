@@ -21,7 +21,8 @@ function UsersManagementDataGridPage() {
             sx={{
               mb: 2,
               paddingTop: '5px'
-            }}>
+            }}
+          >
             <UsersManagementGridContainer></UsersManagementGridContainer>
           </Card>
         </PageContainer>

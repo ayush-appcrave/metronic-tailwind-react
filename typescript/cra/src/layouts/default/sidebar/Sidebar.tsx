@@ -57,7 +57,8 @@ const Sidebar = () => {
           [theme.breakpoints.down('lg')]: {
             width: styles.SIDEBAR_WIDTH_MOBILE
           }
-        }}>
+        }}
+      >
         <Drawer
           open
           variant="persistent"
@@ -72,7 +73,8 @@ const Sidebar = () => {
               overflow: 'visible',
               bgcolor: 'background.paper'
             }
-          }}>
+          }}
+        >
           <SidebarHeader setHeaderHeight={setHeaderHeight} />
           <SidebarNav headerHeight={headerHeight} footerHeight={footerHeight} />
           <SidebarFooter setFooterHeight={setFooterHeight} />
@@ -92,7 +94,8 @@ const Sidebar = () => {
             overflow: 'visible',
             bgcolor: 'background.paper'
           }
-        }}>
+        }}
+      >
         <SidebarNav footerHeight={footerHeight} />
         <SidebarFooter setFooterHeight={setFooterHeight} />
       </Drawer>

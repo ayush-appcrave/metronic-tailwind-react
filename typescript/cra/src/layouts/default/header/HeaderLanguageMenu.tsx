@@ -31,7 +31,8 @@ const HeaderLanguageMenu = () => {
       sx={{
         display: 'flex',
         alignItems: 'center'
-      }}>
+      }}
+    >
       <Box
         component="img"
         onClick={handleClick}
@@ -71,14 +72,16 @@ const HeaderLanguageMenu = () => {
               width: '190px'
             }
           }
-        }}>
+        }}
+      >
         {I18N_LANGUAGES.map((language) => (
           <MenuItem
             onClick={() => {
               handleLanguageSelect(language);
             }}
             selected={language.code === currentLanguage.code}
-            key={`language-${language.code}`}>
+            key={`language-${language.code}`}
+          >
             <Box
               component="img"
               src={language.flag}

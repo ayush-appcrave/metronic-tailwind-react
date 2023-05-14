@@ -29,13 +29,15 @@ function UsersManagementInlineEditingPage() {
           <Button
             onClick={(e) => {
               setUserStepperFormDialogOpenState(true);
-            }}>
+            }}
+          >
             Add new user (Modal)
           </Button>
           <Button
             onClick={(e) => {
               setCreateUserDrawerOpenState(true);
-            }}>
+            }}
+          >
             Add new user (Drawer)
           </Button>
         </Box>
@@ -47,7 +49,8 @@ function UsersManagementInlineEditingPage() {
             sx={{
               mb: 2,
               paddingTop: '5px'
-            }}>
+            }}
+          >
             <EnhancedTableToolbar />
             <UserManagementInlineEditingTableContainer></UserManagementInlineEditingTableContainer>
           </Card>
@@ -56,12 +59,14 @@ function UsersManagementInlineEditingPage() {
           open={userStepperFormDialogOpenState}
           handleClose={() => {
             setUserStepperFormDialogOpenState(false);
-          }}></CreateUserStepperFormDialog>
+          }}
+        ></CreateUserStepperFormDialog>
         <CreateUserDrawer
           open={createUserDrawerOpenState}
           handleClose={() => {
             setCreateUserDrawerOpenState(false);
-          }}></CreateUserDrawer>
+          }}
+        ></CreateUserDrawer>
       </Content>
     </>
   );

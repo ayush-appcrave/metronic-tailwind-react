@@ -86,7 +86,8 @@ export default function CreateUserStepperForm(props: CreateUserFormProps) {
             position: 'absolute',
             right: 5,
             top: 5
-          }}>
+          }}
+        >
           <Close onClick={props.handleClose}></Close>
         </Button>
         <Stepper
@@ -94,7 +95,8 @@ export default function CreateUserStepperForm(props: CreateUserFormProps) {
             margin: '10px',
             marginButtom: '20px'
           }}
-          activeStep={activeStep}>
+          activeStep={activeStep}
+        >
           {steps.map((label, index) => {
             const stepProps: { completed?: boolean } = {};
             const labelProps: {
@@ -111,11 +113,13 @@ export default function CreateUserStepperForm(props: CreateUserFormProps) {
           <Box
             sx={{
               margin: '20px'
-            }}>
+            }}
+          >
             <Formik
               validationSchema={currentSchema}
               initialValues={initValues}
-              onSubmit={handleNext}>
+              onSubmit={handleNext}
+            >
               {(formikProps) => (
                 <Form onSubmit={formikProps.handleSubmit}>
                   {renderSteps(activeStep, formikProps)}
@@ -124,7 +128,8 @@ export default function CreateUserStepperForm(props: CreateUserFormProps) {
                       color="inherit"
                       disabled={activeStep === steps.length || activeStep === 0}
                       onClick={handleBack}
-                      sx={{ mr: 1 }}>
+                      sx={{ mr: 1 }}
+                    >
                       Back
                     </Button>
                     <Box sx={{ flex: '1 1 auto' }} />
@@ -133,7 +138,8 @@ export default function CreateUserStepperForm(props: CreateUserFormProps) {
                       <Button
                         onClick={(e) => {
                           submit(formikProps.values);
-                        }}>
+                        }}
+                      >
                         Submit
                       </Button>
                     )}
@@ -203,7 +209,8 @@ function renderSteps(step: number, props: FormikProps<User>) {
           </FormGroup>
           <FormControl
             error={!!props.errors.role && props.touched.role}
-            sx={{ marginY: '5px', width: '100%' }}>
+            sx={{ marginY: '5px', width: '100%' }}
+          >
             <InputLabel id="kt-role-select-label">Age</InputLabel>
             <Select
               labelId="kt-role-select-label"
@@ -212,7 +219,8 @@ function renderSteps(step: number, props: FormikProps<User>) {
               label="user"
               onChange={props.handleChange}
               onBlur={props.handleBlur}
-              value={props.values.role}>
+              value={props.values.role}
+            >
               <MenuItem value="user">User</MenuItem>
               <MenuItem value="admin">Admin</MenuItem>
             </Select>

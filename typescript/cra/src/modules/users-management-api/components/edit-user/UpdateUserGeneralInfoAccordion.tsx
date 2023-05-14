@@ -72,7 +72,8 @@ function UpdateUserGeneralInfoAccordion(props: UpdateUserGeneralInfoProps) {
       <AccordionSummary
         expandIcon={<ExpandMoreIcon />}
         aria-controls="general-info"
-        id="general-info">
+        id="general-info"
+      >
         <Typography>General Info</Typography>
       </AccordionSummary>
       <AccordionDetails>
@@ -92,19 +93,22 @@ function UpdateUserGeneralInfoAccordion(props: UpdateUserGeneralInfoProps) {
                 enqueueSnackbar('Ups! Something went wrong!', { variant: 'error' });
                 setProgress(null);
               }
-            }}>
+            }}
+          >
             {(formikProps) => (
               <form
                 style={{
                   display: 'flex'
                 }}
-                onSubmit={formikProps.handleSubmit}>
+                onSubmit={formikProps.handleSubmit}
+              >
                 <Grid
                   container
                   alignItems="center"
                   position="relative"
                   margin={'40px'}
-                  direction="column">
+                  direction="column"
+                >
                   <FormGroup sx={{ marginY: '5px', width: '40%' }}>
                     <TextField
                       type="text"
@@ -161,7 +165,8 @@ function UpdateUserGeneralInfoAccordion(props: UpdateUserGeneralInfoProps) {
                   </FormGroup>
                   <FormControl
                     sx={{ marginY: '5px', width: '40%' }}
-                    error={!!formikProps.errors.role}>
+                    error={!!formikProps.errors.role}
+                  >
                     <InputLabel id="kt-role-select-label">Role</InputLabel>
                     <Select
                       labelId="kt-role-select-label"
@@ -171,7 +176,8 @@ function UpdateUserGeneralInfoAccordion(props: UpdateUserGeneralInfoProps) {
                       error={!!formikProps.errors.role && formikProps.touched.role}
                       onChange={formikProps.handleChange}
                       onBlur={formikProps.handleBlur}
-                      value={formikProps.values.role}>
+                      value={formikProps.values.role}
+                    >
                       <MenuItem value="user">User</MenuItem>
                       <MenuItem value="admin">Admin</MenuItem>
                     </Select>
@@ -196,7 +202,8 @@ function UpdateUserGeneralInfoAccordion(props: UpdateUserGeneralInfoProps) {
                   <Box
                     sx={{
                       display: 'flex'
-                    }}>
+                    }}
+                  >
                     <Button
                       style={{ margin: '5px' }}
                       onClick={() => {
@@ -206,13 +213,15 @@ function UpdateUserGeneralInfoAccordion(props: UpdateUserGeneralInfoProps) {
                       }}
                       variant="contained"
                       color="primary"
-                      disabled={!!progress}>
+                      disabled={!!progress}
+                    >
                       {progress === 'exit' ? (
                         <>
                           <CircularProgress
                             color={'inherit'}
                             size={'1rem'}
-                            sx={{ marginRight: '10px' }}></CircularProgress>
+                            sx={{ marginRight: '10px' }}
+                          ></CircularProgress>
                           Loading...
                         </>
                       ) : (
@@ -227,13 +236,15 @@ function UpdateUserGeneralInfoAccordion(props: UpdateUserGeneralInfoProps) {
                       }}
                       variant="contained"
                       color="primary"
-                      disabled={!!progress}>
+                      disabled={!!progress}
+                    >
                       {progress === 'continue' ? (
                         <>
                           <CircularProgress
                             color={'inherit'}
                             size={'1rem'}
-                            sx={{ marginRight: '10px' }}></CircularProgress>
+                            sx={{ marginRight: '10px' }}
+                          ></CircularProgress>
                           Loading...
                         </>
                       ) : (
@@ -247,7 +258,8 @@ function UpdateUserGeneralInfoAccordion(props: UpdateUserGeneralInfoProps) {
                       }}
                       variant="contained"
                       color="primary"
-                      disabled={!!progress}>
+                      disabled={!!progress}
+                    >
                       Exit
                     </Button>
                   </Box>

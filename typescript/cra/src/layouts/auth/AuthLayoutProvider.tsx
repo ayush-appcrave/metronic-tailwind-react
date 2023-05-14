@@ -27,7 +27,8 @@ const AuthLayoutProvider = ({ children }: PropsWithChildren) => {
     <AuthLayoutContext.Provider
       value={{
         layout
-      }}>
+      }}
+    >
       {children}
     </AuthLayoutContext.Provider>
   );

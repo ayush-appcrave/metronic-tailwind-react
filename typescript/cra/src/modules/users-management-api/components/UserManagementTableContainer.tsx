@@ -105,7 +105,8 @@ const UserManagementTableContainer = (props: Props) => {
         <Table
           sx={{ minWidth: 750 }}
           aria-labelledby="tableTitle"
-          size={dense ? 'small' : 'medium'}>
+          size={dense ? 'small' : 'medium'}
+        >
           <EnhancedTableHead
             numSelected={selected.length}
             order={order}
@@ -117,7 +118,8 @@ const UserManagementTableContainer = (props: Props) => {
           <TableBody
             sx={{
               position: 'relative'
-            }}>
+            }}
+          >
             {data.map((row, index) => {
               const labelId = `enhanced-table-checkbox-${index}`;
 
@@ -128,7 +130,8 @@ const UserManagementTableContainer = (props: Props) => {
                   aria-checked={isSelected(row.id)}
                   tabIndex={-1}
                   key={row.id}
-                  selected={isSelected(row.id)}>
+                  selected={isSelected(row.id)}
+                >
                   <TableCell padding="checkbox">
                     <Checkbox
                       color="primary"
@@ -146,7 +149,8 @@ const UserManagementTableContainer = (props: Props) => {
                     <Box
                       sx={{
                         display: 'flex'
-                      }}>
+                      }}
+                    >
                       {row.avatar && (
                         <Avatar alt={row.first_name} src={toAbsoluteUrl(row.avatar)} />
                       )}
@@ -157,7 +161,8 @@ const UserManagementTableContainer = (props: Props) => {
                           marginTop: 'auto',
                           marginBottom: 'auto',
                           marginLeft: '5px'
-                        }}>
+                        }}
+                      >
                         {row.first_name}
                       </Box>
                     </Box>
@@ -187,12 +192,12 @@ const UserManagementTableContainer = (props: Props) => {
               (data.length ? (
                 <TableLoader
                   itemsPerPage={pagination.items_per_page ? pagination.items_per_page : 10}
-                  rowHeight={dense ? 49 : 69}></TableLoader>
+                  rowHeight={dense ? 49 : 69}
+                ></TableLoader>
               ) : (
                 <TableSkeleton
-                  itemsPerPage={
-                    pagination.items_per_page ? pagination.items_per_page : 10
-                  }></TableSkeleton>
+                  itemsPerPage={pagination.items_per_page ? pagination.items_per_page : 10}
+                ></TableSkeleton>
               ))}
             {!pagination.total && !isLoading && (
               <TableRow>
@@ -215,7 +220,8 @@ const UserManagementTableContainer = (props: Props) => {
             sm: 1,
             lg: 3
           }
-        }}>
+        }}
+      >
         <FormControlLabel
           label="Dense"
           control={<Switch checked={dense} onChange={handleChangeDense} />}

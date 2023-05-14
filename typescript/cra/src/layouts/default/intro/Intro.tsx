@@ -15,7 +15,8 @@ const Intro = ({ title = '', subTitle = '', breadcrumbs = [] }: IntroProps) => {
         display: 'flex',
         justifyContent: 'start',
         flexDirection: 'column'
-      }}>
+      }}
+    >
       {(title.length > 0 || subTitle.length > 0) && (
         <IntroTitle>
           {title.length > 0 && title}

@@ -65,7 +65,8 @@ const UserManagementSubCRUDTableRow = (props: RowProps) => {
             size="small"
             onClick={() => {
               setSubCRUDVisibilityState(!subCRUDVisibilityState);
-            }}>
+            }}
+          >
             {subCRUDVisibilityState ? <KeyboardArrowUpIcon /> : <KeyboardArrowDownIcon />}
           </IconButton>
         </TableCell>
@@ -73,7 +74,8 @@ const UserManagementSubCRUDTableRow = (props: RowProps) => {
           <Box
             sx={{
               display: 'flex'
-            }}>
+            }}
+          >
             {props.row.avatar && (
               <Avatar alt={props.row.first_name} src={toAbsoluteUrl(props.row.avatar)} />
             )}
@@ -84,7 +86,8 @@ const UserManagementSubCRUDTableRow = (props: RowProps) => {
                 marginTop: 'auto',
                 marginBottom: 'auto',
                 marginLeft: '5px'
-              }}>
+              }}
+            >
               {props.row.first_name}
             </Box>
           </Box>
@@ -168,7 +171,8 @@ const UserManagementSubCRUDTableContainer = (props: Props) => {
         <Table
           sx={{ minWidth: 750, position: 'relative' }}
           aria-labelledby="tableTitle"
-          size={dense ? 'small' : 'medium'}>
+          size={dense ? 'small' : 'medium'}
+        >
           <EnhancedSubCRUDTableHead
             numSelected={selected.length}
             order={order}
@@ -185,14 +189,16 @@ const UserManagementSubCRUDTableContainer = (props: Props) => {
                 top: 0,
                 left: 0,
                 right: 0
-              }}>
+              }}
+            >
               <LinearProgress color="primary" />
             </Box>
           )}
           <TableBody
             sx={{
               position: 'relative'
-            }}>
+            }}
+          >
             {data.map((row, index) => {
               const labelId = `enhanced-table-checkbox-${row.id}`;
 
@@ -206,12 +212,12 @@ const UserManagementSubCRUDTableContainer = (props: Props) => {
               (data.length ? (
                 <TableOverlay
                   itemsPerPage={pagination.items_per_page ? pagination.items_per_page : 10}
-                  rowHeight={dense ? 49 : 69}></TableOverlay>
+                  rowHeight={dense ? 49 : 69}
+                ></TableOverlay>
               ) : (
                 <TableSkeleton
-                  itemsPerPage={
-                    pagination.items_per_page ? pagination.items_per_page : 10
-                  }></TableSkeleton>
+                  itemsPerPage={pagination.items_per_page ? pagination.items_per_page : 10}
+                ></TableSkeleton>
               ))}
             {!pagination.total && !isLoading && (
               <TableRow>

@@ -32,7 +32,8 @@ function UsersManagementDrawersPage() {
         <Button
           onClick={(e) => {
             setOpenCreateUserDrawerState(true);
-          }}>
+          }}
+        >
           Add new user
         </Button>
       </Toolbar>
@@ -43,26 +44,30 @@ function UsersManagementDrawersPage() {
             sx={{
               mb: 2,
               paddingTop: '5px'
-            }}>
+            }}
+          >
             <EnhancedTableToolbar />
             <UserManagementTableContainer denseKey="DRAWERS">
               {(id) => (
                 <Box
                   sx={{
                     display: 'flex'
-                  }}>
+                  }}
+                >
                   <Button
                     onClick={(e) => {
                       setUpdateUserIdState(id);
                       setOpenUpdateDrawerState(true);
-                    }}>
+                    }}
+                  >
                     Edit
                   </Button>
                   <Button
                     onClick={(e) => {
                       setViewUserIdState(id);
                       setOpenViewDrawerState(true);
-                    }}>
+                    }}
+                  >
                     View
                   </Button>
                 </Box>
@@ -74,19 +79,22 @@ function UsersManagementDrawersPage() {
           open={openCreateUserDrawerState}
           handleClose={() => {
             setOpenCreateUserDrawerState(false);
-          }}></CreateUserDrawer>
+          }}
+        ></CreateUserDrawer>
         <UpdateUserDrawer
           open={openUpdateDrawerState}
           userId={updateUserIdState}
           handleClose={() => {
             setOpenUpdateDrawerState(false);
-          }}></UpdateUserDrawer>
+          }}
+        ></UpdateUserDrawer>
         <ViewUserDrawer
           open={openViewDrawerState}
           userId={viewUserIdState}
           handleClose={() => {
             setOpenViewDrawerState(false);
-          }}></ViewUserDrawer>
+          }}
+        ></ViewUserDrawer>
       </Content>
     </>
   );

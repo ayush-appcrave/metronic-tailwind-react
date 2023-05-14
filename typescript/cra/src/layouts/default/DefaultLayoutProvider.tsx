@@ -87,7 +87,8 @@ const DefaultLayoutProvider = ({ children }: PropsWithChildren) => {
         setSidebarCollapse,
         mobileSidebarOpen,
         setMobileSidebarOpen
-      }}>
+      }}
+    >
       {children}
     </DefaultLayoutContext.Provider>
   );

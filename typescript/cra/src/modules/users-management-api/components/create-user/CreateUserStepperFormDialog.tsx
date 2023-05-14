@@ -16,10 +16,12 @@ function CreateUserStepperFormDialog(props: CreateUserDialogProps) {
       sx={{
         padding: '70px',
         maxHeight: 'auto'
-      }}>
+      }}
+    >
       <CreateUserStepperForm
         open={props.open}
-        handleClose={props.handleClose}></CreateUserStepperForm>
+        handleClose={props.handleClose}
+      ></CreateUserStepperForm>
     </Dialog>
   );
 }

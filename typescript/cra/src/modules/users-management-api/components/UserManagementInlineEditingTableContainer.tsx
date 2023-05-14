@@ -89,7 +89,8 @@ const UserManagementInlineEditingTableRow = (props: RowProps) => {
       aria-checked={isSelected(props.row.id)}
       tabIndex={-1}
       key={props.labelId}
-      selected={isSelected(props.row.id)}>
+      selected={isSelected(props.row.id)}
+    >
       <TableCell padding="checkbox">
         <Checkbox
           color="primary"
@@ -106,7 +107,8 @@ const UserManagementInlineEditingTableRow = (props: RowProps) => {
         <Box
           sx={{
             display: 'flex'
-          }}>
+          }}
+        >
           {props.row.avatar && (
             <Avatar alt={props.row.first_name} src={toAbsoluteUrl(props.row.avatar)} />
           )}
@@ -129,7 +131,8 @@ const UserManagementInlineEditingTableRow = (props: RowProps) => {
                 marginTop: 'auto',
                 marginBottom: 'auto',
                 marginLeft: '5px'
-              }}>
+              }}
+            >
               {props.row.first_name}
             </Box>
           )}
@@ -163,7 +166,8 @@ const UserManagementInlineEditingTableRow = (props: RowProps) => {
               onChange={(e) => {
                 setFormData({ ...formData, ...{ role: e.target.value } });
               }}
-              size={'small'}>
+              size={'small'}
+            >
               <MenuItem value="user">User</MenuItem>
               <MenuItem value="admin">Admin</MenuItem>
             </Select>
@@ -182,7 +186,8 @@ const UserManagementInlineEditingTableRow = (props: RowProps) => {
             onChange={(e) => {
               setFormData({ ...formData, ...{ status: e.target.value } });
             }}
-            size={'small'}>
+            size={'small'}
+          >
             <MenuItem value="active">Active</MenuItem>
             <MenuItem value="pending">Pending</MenuItem>
             <MenuItem value="deactivated">Deactivated</MenuItem>
@@ -202,7 +207,8 @@ const UserManagementInlineEditingTableRow = (props: RowProps) => {
           <Button
             onClick={() => {
               saveChanges();
-            }}>
+            }}
+          >
             Save
           </Button>
         )}
@@ -210,17 +216,20 @@ const UserManagementInlineEditingTableRow = (props: RowProps) => {
           <Box
             sx={{
               display: 'flex'
-            }}>
+            }}
+          >
             <Button
               onClick={(e) => {
                 setEditState(true);
-              }}>
+              }}
+            >
               Update
             </Button>
             <Button
               onClick={(e) => {
                 console.log(props.row.id);
-              }}>
+              }}
+            >
               Delete
             </Button>
           </Box>
@@ -288,7 +297,8 @@ const UserManagementInlineEditingTableContainer = () => {
         <Table
           sx={{ minWidth: 750 }}
           aria-labelledby="tableTitle"
-          size={dense ? 'small' : 'medium'}>
+          size={dense ? 'small' : 'medium'}
+        >
           <EnhancedTableHead
             numSelected={selected.length}
             order={order}
@@ -300,7 +310,8 @@ const UserManagementInlineEditingTableContainer = () => {
           <TableBody
             sx={{
               position: 'relative'
-            }}>
+            }}
+          >
             {data.map((row, index) => {
               const labelId = `enhanced-table-checkbox-${index}`;
 
@@ -308,19 +319,20 @@ const UserManagementInlineEditingTableContainer = () => {
                 <UserManagementInlineEditingTableRow
                   key={labelId}
                   row={row}
-                  labelId={labelId}></UserManagementInlineEditingTableRow>
+                  labelId={labelId}
+                ></UserManagementInlineEditingTableRow>
               );
             })}
             {isLoading &&
               (data.length ? (
                 <TableOverlay
                   itemsPerPage={pagination.items_per_page ? pagination.items_per_page : 10}
-                  rowHeight={dense ? 49 : 69}></TableOverlay>
+                  rowHeight={dense ? 49 : 69}
+                ></TableOverlay>
               ) : (
                 <TableSkeleton
-                  itemsPerPage={
-                    pagination.items_per_page ? pagination.items_per_page : 10
-                  }></TableSkeleton>
+                  itemsPerPage={pagination.items_per_page ? pagination.items_per_page : 10}
+                ></TableSkeleton>
               ))}
             {!pagination.total && !isLoading && (
               <TableRow>

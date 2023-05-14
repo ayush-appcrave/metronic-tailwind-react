@@ -33,7 +33,8 @@ const I18NProvider = ({ children }: PropsWithChildren) => {
     <IntlProvider
       messages={currentLanguage.messages}
       locale={currentLanguage.code}
-      defaultLocale={calculateInitialLanguage().code}>
+      defaultLocale={calculateInitialLanguage().code}
+    >
       {children}
     </IntlProvider>
   );
@@ -70,7 +71,8 @@ const TranslationProvider = ({ children }: PropsWithChildren) => {
       value={{
         currentLanguage,
         changeLanguage
-      }}>
+      }}
+    >
       <I18NProvider>{children}</I18NProvider>
     </TranslationsContext.Provider>
   );

@@ -15,13 +15,15 @@ const HeaderMobileLogo = () => {
       sx={{
         display: 'flex',
         alignItems: 'center'
-      }}>
+      }}
+    >
       <IconButton
         onClick={handleSidebarOpenOnMobile}
         sx={{
           mr: 0.25,
           ml: -1
-        }}>
+        }}
+      >
         <KeenIcon
           icon="burger-menu-6"
           sx={{

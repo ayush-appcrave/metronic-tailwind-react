@@ -28,11 +28,13 @@ const SettingsHeader = ({ onCloseClick, setHeaderHeight }: Props) => {
         position: 'relative',
         px: 2,
         py: 2
-      }}>
+      }}
+    >
       <Box
         sx={{
           paddingLeft: 1
-        }}>
+        }}
+      >
         Customization
       </Box>
 

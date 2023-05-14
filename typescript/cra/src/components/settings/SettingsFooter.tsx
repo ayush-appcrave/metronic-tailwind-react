@@ -26,7 +26,8 @@ const SettingsFooter = ({ setFooterHeight }: Props) => {
         position: 'relative',
         px: 2,
         py: 2
-      }}>
+      }}
+    >
       Footer
     </Stack>
   );

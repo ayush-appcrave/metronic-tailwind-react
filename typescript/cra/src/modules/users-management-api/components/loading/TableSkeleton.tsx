@@ -26,7 +26,8 @@ const TableSkeleton = (props: Props) => {
                     verticalAlign: 'middle',
                     padding: '9px',
                     position: 'relative'
-                  }}>
+                  }}
+                >
                   <Skeleton
                     variant="rectangular"
                     sx={{

@@ -51,7 +51,8 @@ const SidebarCollapseButton = ({ onToggle }: Props) => {
       selected={isSidebarCollapse}
       aria-label="Toggle sidebar"
       component="button"
-      value="1">
+      value="1"
+    >
       <Box
         component="span"
         sx={{
@@ -60,7 +61,8 @@ const SidebarCollapseButton = ({ onToggle }: Props) => {
           i: {
             fontSize: '17px'
           }
-        }}>
+        }}
+      >
         <KeenIcon icon="double-left" />
       </Box>
     </ToggleButton>

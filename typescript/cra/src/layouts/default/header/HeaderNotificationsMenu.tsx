@@ -7,7 +7,8 @@ const HeaderNotificationsMenu = (): ReactElement => {
       sx={{
         display: 'flex',
         alignItems: 'center'
-      }}>
+      }}
+    >
       Notifications
     </Box>
   );

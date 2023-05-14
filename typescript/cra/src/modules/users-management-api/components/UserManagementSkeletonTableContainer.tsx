@@ -104,7 +104,8 @@ const UserManagementSkeletonTableContainer = (props: Props) => {
         <Table
           sx={{ minWidth: 750 }}
           aria-labelledby="tableTitle"
-          size={dense ? 'small' : 'medium'}>
+          size={dense ? 'small' : 'medium'}
+        >
           <EnhancedTableHead
             numSelected={selected.length}
             order={order}
@@ -116,12 +117,12 @@ const UserManagementSkeletonTableContainer = (props: Props) => {
           <TableBody
             sx={{
               position: 'relative'
-            }}>
+            }}
+          >
             {isLoading ? (
               <TableSkeleton
-                itemsPerPage={
-                  pagination.items_per_page ? pagination.items_per_page : 10
-                }></TableSkeleton>
+                itemsPerPage={pagination.items_per_page ? pagination.items_per_page : 10}
+              ></TableSkeleton>
             ) : (
               data.map((row, index) => {
                 const labelId = `enhanced-table-checkbox-${index}`;
@@ -133,7 +134,8 @@ const UserManagementSkeletonTableContainer = (props: Props) => {
                     aria-checked={isSelected(row.id)}
                     tabIndex={-1}
                     key={row.id}
-                    selected={isSelected(row.id)}>
+                    selected={isSelected(row.id)}
+                  >
                     <TableCell width={'5%'} padding="checkbox">
                       <Checkbox
                         color="primary"
@@ -150,7 +152,8 @@ const UserManagementSkeletonTableContainer = (props: Props) => {
                       <Box
                         sx={{
                           display: 'flex'
-                        }}>
+                        }}
+                      >
                         {row.avatar && (
                           <Avatar alt={row.first_name} src={toAbsoluteUrl(row.avatar)} />
                         )}
@@ -161,7 +164,8 @@ const UserManagementSkeletonTableContainer = (props: Props) => {
                             marginTop: 'auto',
                             marginBottom: 'auto',
                             marginLeft: '5px'
-                          }}>
+                          }}
+                        >
                           {row.first_name}
                         </Box>
                       </Box>

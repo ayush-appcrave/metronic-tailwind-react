@@ -44,7 +44,8 @@ const UndoSnackbar = (props: Props) => {
         size="small"
         onClick={() => {
           undoDelete();
-        }}>
+        }}
+      >
         UNDO
       </Button>
       <IconButton size="small" aria-label="close" color="inherit" onClick={handleClose}>

@@ -44,7 +44,8 @@ function AlertDialog(props: AlertDialogProps) {
     <Dialog
       open={props.open}
       aria-labelledby="alert-dialog-title"
-      aria-describedby="alert-dialog-description">
+      aria-describedby="alert-dialog-description"
+    >
       <DialogTitle id="alert-dialog-title">
         {`Are you sure you want to delete user with ID ${props.userId}?`}
       </DialogTitle>
@@ -55,7 +56,8 @@ function AlertDialog(props: AlertDialogProps) {
         <Button
           onClick={(e) => {
             props.handleClose('dissagree');
-          }}>
+          }}
+        >
           Disagree
         </Button>
         <Button onClick={deleteEvent} autoFocus>

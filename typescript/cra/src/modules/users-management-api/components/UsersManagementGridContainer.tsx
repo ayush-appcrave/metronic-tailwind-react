@@ -67,7 +67,8 @@ function Auctions(props: Props) {
             <UndoActions
               ids={props.selectionModel as string[]}
               snackbarKey={snackbarKey}
-              undoAction={undoAction}></UndoActions>
+              undoAction={undoAction}
+            ></UndoActions>
           ),
           anchorOrigin: { vertical: 'bottom', horizontal: 'left' },
           autoHideDuration: 7000
@@ -88,7 +89,8 @@ function Auctions(props: Props) {
         disabled={!hasSelectedRows}
         onClick={() => {
           deleteSelectedItems.mutateAsync();
-        }}>
+        }}
+      >
         <DeleteIcon color={hasSelectedRows ? 'error' : 'disabled'} />
       </IconButton>
     </>
@@ -120,7 +122,8 @@ export function UsersManagementGridContainer() {
           <Box
             sx={{
               display: 'flex'
-            }}>
+            }}
+          >
             {props.row.avatar && (
               <Avatar alt={props.row.first_name} src={toAbsoluteUrl(props.row.avatar)} />
             )}
@@ -131,7 +134,8 @@ export function UsersManagementGridContainer() {
                 marginTop: 'auto',
                 marginBottom: 'auto',
                 marginLeft: '5px'
-              }}>
+              }}
+            >
               {props.row.first_name}
             </Box>
           </Box>
@@ -176,7 +180,8 @@ export function UsersManagementGridContainer() {
                   <UndoActions
                     snackbarKey={snackbarKey}
                     undoAction={undoAction}
-                    ids={[props.row.id]}></UndoActions>
+                    ids={[props.row.id]}
+                  ></UndoActions>
                 ),
                 anchorOrigin: { vertical: 'bottom', horizontal: 'left' },
                 autoHideDuration: 7000

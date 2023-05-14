@@ -8,7 +8,8 @@ const Wrapper = () => {
         display: 'flex',
         flexDirection: 'column',
         flexGrow: '1'
-      }}>
+      }}
+    >
       <Outlet />
     </Box>
   );

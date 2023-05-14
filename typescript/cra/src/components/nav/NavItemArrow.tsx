@@ -48,7 +48,8 @@ const NavItemArrowComponent = ({
         'i ': {
           fontSize: '13px'
         }
-      }}>
+      }}
+    >
       {icon}
     </Box>
   );

@@ -11,7 +11,8 @@ const ToolbarActions = ({ children }: PropsWithChildren) => {
         display: 'flex',
         alignItems: 'center',
         gap: theme.spacing(1)
-      }}>
+      }}
+    >
       {children}
     </Box>
   );

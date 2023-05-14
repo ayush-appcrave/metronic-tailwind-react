@@ -34,13 +34,15 @@ function UsersManagementSubCRUDPage() {
           <Button
             onClick={(e) => {
               setUserStepperFormDialogOpenState(true);
-            }}>
+            }}
+          >
             Add new user (Modal)
           </Button>
           <Button
             onClick={(e) => {
               setCreateUserDrawerOpenState(true);
-            }}>
+            }}
+          >
             Add new user (Drawer)
           </Button>
         </Box>
@@ -52,7 +54,8 @@ function UsersManagementSubCRUDPage() {
             sx={{
               mb: 2,
               paddingTop: '5px'
-            }}>
+            }}
+          >
             <EnhancedTableToolbar />
             <UserManagementSubCRUDTableContainer>
               {(id) => (
@@ -71,18 +74,21 @@ function UsersManagementSubCRUDPage() {
           open={userStepperFormDialogOpenState}
           handleClose={() => {
             setUserStepperFormDialogOpenState(false);
-          }}></CreateUserStepperFormDialog>
+          }}
+        ></CreateUserStepperFormDialog>
         <CreateUserDrawer
           open={createUserDrawerOpenState}
           handleClose={() => {
             setCreateUserDrawerOpenState(false);
-          }}></CreateUserDrawer>
+          }}
+        ></CreateUserDrawer>
         <UndoSnackbar
           userId={deleteId}
           open={openUndoSnackbar}
           onClose={() => {
             setOpenUndoSnackbar(false);
-          }}></UndoSnackbar>
+          }}
+        ></UndoSnackbar>
       </Content>
     </>
   );

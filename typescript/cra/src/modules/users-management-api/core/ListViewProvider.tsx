@@ -42,7 +42,8 @@ const ListViewProvider: FC<WithChildren> = ({ children }) => {
         clearSelected: () => {
           setSelected([]);
         }
-      }}>
+      }}
+    >
       {children}
     </ListViewContext.Provider>
   );

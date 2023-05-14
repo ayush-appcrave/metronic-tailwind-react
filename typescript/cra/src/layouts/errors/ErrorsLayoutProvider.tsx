@@ -27,7 +27,8 @@ const ErrorsLayoutProvider = ({ children }: PropsWithChildren) => {
     <ErrorsLayoutContext.Provider
       value={{
         layout
-      }}>
+      }}
+    >
       {children}
     </ErrorsLayoutContext.Provider>
   );

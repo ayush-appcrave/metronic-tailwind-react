@@ -16,7 +16,8 @@ const IntroSubTitle = ({ children }: PropsType) => {
         fontWeight: theme.typography.fontWeightMedium,
         color: theme.palette.grey['500'],
         ml: theme.spacing(1)
-      }}>
+      }}
+    >
       {children}
     </Typography>
   );

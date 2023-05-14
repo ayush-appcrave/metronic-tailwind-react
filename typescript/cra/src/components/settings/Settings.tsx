@@ -31,7 +31,8 @@ const Settings = () => {
             width: 375,
             bgcolor: 'background.paper'
           }
-        }}>
+        }}
+      >
         <SettingsHeader setHeaderHeight={setHeaderHeight} onCloseClick={handleToggle} />
         <SettingsBody headerHeight={headerHeight} footerHeight={footerHeight} />
         <SettingsFooter setFooterHeight={setHeaderHeight} />

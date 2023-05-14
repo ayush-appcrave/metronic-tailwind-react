@@ -14,7 +14,8 @@ const SettingsToggleButton = ({ onClick }: Props) => {
         bottom: '40px',
         right: '40px',
         zIndex: '100'
-      }}>
+      }}
+    >
       <Button onClick={onClick} variant="contained" value="1">
         <KeenIcon icon="setting-4" />
 

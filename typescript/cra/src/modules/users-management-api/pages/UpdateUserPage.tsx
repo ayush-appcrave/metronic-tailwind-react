@@ -27,13 +27,15 @@ function UpdateUserPage() {
           <Card
             sx={{
               padding: '20px'
-            }}>
+            }}
+          >
             {id && (
               <UpdateUserFormWrapper
                 userId={id}
                 handleExit={() => {
                   navigate('/users-management/default');
-                }}></UpdateUserFormWrapper>
+                }}
+              ></UpdateUserFormWrapper>
             )}
           </Card>
         </PageContainer>

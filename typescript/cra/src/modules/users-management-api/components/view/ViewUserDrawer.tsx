@@ -18,7 +18,8 @@ function ViewUserDrawer(props: UpdateUserDrawerProps) {
         sx: {
           width: '40%'
         }
-      }}>
+      }}
+    >
       <Button
         onClick={() => {
           props.handleClose();
@@ -27,7 +28,8 @@ function ViewUserDrawer(props: UpdateUserDrawerProps) {
           position: 'absolute',
           right: 5,
           top: 5
-        }}>
+        }}
+      >
         <Close></Close>
       </Button>
       <Box sx={{ marginTop: '40px' }}>

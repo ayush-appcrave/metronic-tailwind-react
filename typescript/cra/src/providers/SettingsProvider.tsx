@@ -59,7 +59,8 @@ const SettingsProvider = ({ children }: PropsWithChildren) => {
         settings,
         updateSettings,
         getMode
-      }}>
+      }}
+    >
       {children}
     </SettingsContext.Provider>
   );

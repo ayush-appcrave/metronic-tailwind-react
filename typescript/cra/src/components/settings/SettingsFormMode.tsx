@@ -20,7 +20,8 @@ const SettingsFormMode = () => {
     <FormControl
       sx={{
         mb: 2
-      }}>
+      }}
+    >
       <FormLabel>Mode</FormLabel>
       <RadioGroup row name="settings-mode">
         <FormControlLabel

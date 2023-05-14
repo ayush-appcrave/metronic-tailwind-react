@@ -26,7 +26,8 @@ const SidebarFooter = ({ setFooterHeight }: Props) => {
         position: 'relative',
         px: 4,
         py: 4
-      }}>
+      }}
+    >
       Sidebar Footer
     </Stack>
   );

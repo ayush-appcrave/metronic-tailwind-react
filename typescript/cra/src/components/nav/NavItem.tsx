@@ -108,7 +108,8 @@ const NavItemComponent = ({
                 ? styles.ROOT_ITEM_PADDING_X
                 : styles.SUB_ITEM_PADDING_X + styles.INDENTION,
             marginBottom: depth === 1 ? styles.ROOT_ITEM_GAP : styles.SUB_ITEM_GAP
-          }}>
+          }}
+        >
           {icon && (
             <ListItemIconStyled
               depth={depth}
@@ -118,7 +119,8 @@ const NavItemComponent = ({
               hover={hover}
               open={open}
               disabled={disabled}
-              collapse={collapse}>
+              collapse={collapse}
+            >
               {icon}
             </ListItemIconStyled>
           )}

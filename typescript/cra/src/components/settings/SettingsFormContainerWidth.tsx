@@ -20,7 +20,8 @@ const SettingsFormContainerWidth = () => {
     <FormControl
       sx={{
         mb: 2
-      }}>
+      }}
+    >
       <FormLabel>Container</FormLabel>
       <RadioGroup row name="settings-direction">
         <FormControlLabel

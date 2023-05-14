@@ -22,7 +22,8 @@ const SidebarNav = ({ headerHeight = 0, footerHeight = 0 }: Props) => {
         // overflow: 'hidden',
         px: 1.5,
         mx: 1
-      }}>
+      }}
+    >
       <Nav
         variant="inline"
         direction="vertical"

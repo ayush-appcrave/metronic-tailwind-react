@@ -20,7 +20,8 @@ const SettingsFormDirection = () => {
     <FormControl
       sx={{
         mb: 2
-      }}>
+      }}
+    >
       <FormLabel>Direction</FormLabel>
       <RadioGroup row name="settings-direction">
         <FormControlLabel

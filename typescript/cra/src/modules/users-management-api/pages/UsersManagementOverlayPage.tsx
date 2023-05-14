@@ -41,13 +41,15 @@ function UsersManagementOverlayPage() {
           <Button
             onClick={(e) => {
               setUserStepperDialogOpenState(true);
-            }}>
+            }}
+          >
             Add new user (Stepper)
           </Button>
           <Button
             onClick={(e) => {
               setNewUserOverlayModalOpenState(true);
-            }}>
+            }}
+          >
             Add new user (Plain form)
           </Button>
         </Box>
@@ -59,33 +61,38 @@ function UsersManagementOverlayPage() {
             sx={{
               mb: 2,
               paddingTop: '5px'
-            }}>
+            }}
+          >
             <EnhancedTableToolbar />
             <UserManagementTableContainer denseKey="OVERLAY_MODAL">
               {(id) => (
                 <Box
                   sx={{
                     display: 'flex'
-                  }}>
+                  }}
+                >
                   <Button
                     onClick={(e) => {
                       setUpdateUserIdState(id);
                       setUpdateUserModalOpenState(true);
-                    }}>
+                    }}
+                  >
                     Update
                   </Button>
                   <Button
                     onClick={(e) => {
                       setDeleteUserIdState(id);
                       setOpenDeleteDialogState(true);
-                    }}>
+                    }}
+                  >
                     Delete
                   </Button>
                   <Button
                     onClick={(e) => {
                       setViewUserIdState(id);
                       setViewUserModalOpenState(true);
-                    }}>
+                    }}
+                  >
                     View
                   </Button>
                 </Box>
@@ -97,18 +104,21 @@ function UsersManagementOverlayPage() {
           open={userStepperDialogOpenState}
           handleClose={() => {
             setUserStepperDialogOpenState(false);
-          }}></CreateUserStepperFormDialog>
+          }}
+        ></CreateUserStepperFormDialog>
         <CreateUserPlainFormDialog
           open={newUserOverlayModalOpenState}
           handleClose={() => {
             setNewUserOverlayModalOpenState(false);
-          }}></CreateUserPlainFormDialog>
+          }}
+        ></CreateUserPlainFormDialog>
         <UpdateUserDialog
           open={updateUserModalOpenState}
           userId={updateUserIdState}
           handleClose={() => {
             setUpdateUserModalOpenState(false);
-          }}></UpdateUserDialog>
+          }}
+        ></UpdateUserDialog>
         <AlertDialog
           open={openDeleteDialogState}
           handleAgreeClose={() => {
@@ -119,19 +129,22 @@ function UsersManagementOverlayPage() {
           handleClose={() => {
             setOpenDeleteDialogState(false);
           }}
-          userId={deleteUserIdState}></AlertDialog>
+          userId={deleteUserIdState}
+        ></AlertDialog>
         <UndoSnackbar
           userId={deleteId}
           open={openUndoSnackbar}
           onClose={() => {
             setOpenUndoSnackbar(false);
-          }}></UndoSnackbar>
+          }}
+        ></UndoSnackbar>
         <ViewUserDialog
           open={viewUserModalOpenState}
           handleClose={() => {
             setViewUserModalOpenState(false);
           }}
-          userId={viewUserIdState}></ViewUserDialog>
+          userId={viewUserIdState}
+        ></ViewUserDialog>
       </Content>
     </>
   );

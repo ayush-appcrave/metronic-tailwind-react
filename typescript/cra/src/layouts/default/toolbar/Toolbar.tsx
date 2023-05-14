@@ -10,13 +10,15 @@ const Toolbar = ({ children }: PropsWithChildren) => {
     <Box
       sx={{
         mb: theme.spacing(2)
-      }}>
+      }}
+    >
       <PageContainer
         sx={{
           display: 'flex',
           alignItems: 'center',
           justifyContent: 'space-between'
-        }}>
+        }}
+      >
         {children}
       </PageContainer>
     </Box>

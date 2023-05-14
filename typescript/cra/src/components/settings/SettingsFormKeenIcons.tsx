@@ -20,7 +20,8 @@ const SettingsFormKeenIcons = () => {
     <FormControl
       sx={{
         mb: 2
-      }}>
+      }}
+    >
       <FormLabel>KeenIcons</FormLabel>
       <RadioGroup row name="settings-keenicons">
         <FormControlLabel
