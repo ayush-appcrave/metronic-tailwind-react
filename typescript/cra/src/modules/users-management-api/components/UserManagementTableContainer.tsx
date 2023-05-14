@@ -18,7 +18,7 @@ import React, { type ChangeEvent, useEffect, useMemo, useState } from 'react';
 import { type User } from '../core/_models';
 import { useListView } from '../core/ListViewProvider';
 import { type Order } from '@components/table/types';
-import { formatDate } from '../helpers/crud-helper/content';
+import { formatDate } from '@components/table';
 import {
   useQueryResponseData,
   useQueryResponseLoading,

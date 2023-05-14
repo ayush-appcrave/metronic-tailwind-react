@@ -28,7 +28,7 @@ import { useSearchParams } from 'react-router-dom';
 import qs from 'query-string';
 import { initialQueryRequest } from '../helpers';
 import { TableSkeleton } from '@components/table/loading/TableSkeleton';
-import { formatDate } from '../helpers/crud-helper/content';
+import { formatDate } from '@components/table';
 
 interface Props {
   denseKey: string;

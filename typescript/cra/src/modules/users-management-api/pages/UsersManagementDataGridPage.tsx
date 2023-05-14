@@ -12,7 +12,7 @@ function UsersManagementDataGridPage() {
       </Helmet>
 
       <Toolbar>
-        <Intro title={`Users Management Drawers Page`} />
+        <Intro title={`Users Management Data Grid Page`} />
       </Toolbar>
 
       <Content>

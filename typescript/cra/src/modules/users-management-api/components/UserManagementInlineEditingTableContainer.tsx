@@ -37,7 +37,7 @@ import { initialQueryRequest } from '../helpers';
 import { TableOverlay } from '@components/table/loading/TableOverlay';
 import { ProgressBarLoader } from '@components/loaders';
 import { TableSkeleton } from '@components/table/loading/TableSkeleton';
-import { formatDate } from '../helpers/crud-helper/content';
+import { formatDate } from '@components/table';
 
 interface RowProps {
   row: User;

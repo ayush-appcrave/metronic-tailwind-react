@@ -36,7 +36,7 @@ import { initialQueryRequest } from '../helpers';
 import { TableOverlay } from '@components/table/loading/TableOverlay';
 import zIndex from '@mui/material/styles/zIndex';
 import { TableSkeleton } from '@components/table/loading/TableSkeleton';
-import { formatDate } from '../helpers/crud-helper/content';
+import { formatDate } from '@components/table';
 
 interface Props {
   children: (id: string) => React.ReactNode;
