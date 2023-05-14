@@ -28,6 +28,7 @@ import { useSearchParams } from 'react-router-dom';
 import qs from 'query-string';
 import { initialQueryRequest } from '../helpers';
 import { TableSkeleton } from '@components/table/loading/TableSkeleton';
+import { formatDate } from '../helpers/crud-helper/content';
 
 interface Props {
   denseKey: string;
@@ -89,13 +90,6 @@ const UserManagementSkeletonTableContainer = (props: Props) => {
   const handleChangeDense = (event: ChangeEvent<HTMLInputElement>) => {
     localStorage.setItem(`DENSE_DEFAULT_${props.denseKey}_TABLE`, event.target.checked.toString());
     setDense(event.target.checked);
-  };
-
-  const formatDate = (date?: string) => {
-    if (date) {
-      const localDateTime = new Date(date);
-      return `${localDateTime.getUTCDate()}/${localDateTime.getUTCMonth()}/${localDateTime.getFullYear()} at ${localDateTime.getHours()}:${localDateTime.getMinutes()}`;
-    }
   };
 
   return (

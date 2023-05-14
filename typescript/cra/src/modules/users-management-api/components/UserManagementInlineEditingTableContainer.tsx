@@ -37,6 +37,7 @@ import { initialQueryRequest } from '../helpers';
 import { TableOverlay } from '@components/table/loading/TableOverlay';
 import { ProgressBarLoader } from '@components/loaders';
 import { TableSkeleton } from '@components/table/loading/TableSkeleton';
+import { formatDate } from '../helpers/crud-helper/content';
 
 interface RowProps {
   row: User;
@@ -73,13 +74,6 @@ const UserManagementInlineEditingTableRow = (props: RowProps) => {
 
   const isSelected = (id: string) => {
     return selected.includes(id);
-  };
-
-  const formatDate = (date?: string) => {
-    if (date) {
-      const localDateTime = new Date(date);
-      return `${localDateTime.getUTCDate()}/${localDateTime.getUTCMonth()}/${localDateTime.getFullYear()} at ${localDateTime.getHours()}:${localDateTime.getMinutes()}`;
-    }
   };
 
   return (

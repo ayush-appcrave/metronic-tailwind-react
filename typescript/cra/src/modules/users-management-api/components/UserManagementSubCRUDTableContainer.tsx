@@ -36,6 +36,7 @@ import { initialQueryRequest } from '../helpers';
 import { TableOverlay } from '@components/table/loading/TableOverlay';
 import zIndex from '@mui/material/styles/zIndex';
 import { TableSkeleton } from '@components/table/loading/TableSkeleton';
+import { formatDate } from '../helpers/crud-helper/content';
 
 interface Props {
   children: (id: string) => React.ReactNode;
@@ -48,13 +49,6 @@ interface RowProps {
 
 const UserManagementSubCRUDTableRow = (props: RowProps) => {
   const [subCRUDVisibilityState, setSubCRUDVisibilityState] = useState(false);
-
-  const formatDate = (date?: string) => {
-    if (date) {
-      const localDateTime = new Date(date);
-      return `${localDateTime.getUTCDate()}/${localDateTime.getUTCMonth()}/${localDateTime.getFullYear()} at ${localDateTime.getHours()}:${localDateTime.getMinutes()}`;
-    }
-  };
 
   return (
     <>

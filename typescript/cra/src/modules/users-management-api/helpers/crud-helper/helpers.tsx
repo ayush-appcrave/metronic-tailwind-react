@@ -30,13 +30,6 @@ function stringifyRequestQuery(state: UserQueryState): string {
 
   const role = qs.stringify(state, { skipNulls: true });
 
-  console.log(
-    [pagination, sort, search, role, filter]
-      .filter((f) => f)
-      .join('&')
-      .toLowerCase()
-  );
-
   return [pagination, sort, search, role, filter]
     .filter((f) => f)
     .join('&')

@@ -20,8 +20,6 @@ function EnhancedTableToolbar(props: EnhancedTableToolbarProps) {
   const [roleFilter, setRoleFilter] = useState<'user' | 'admin' | undefined>(undefined);
   const [nameFilter, setNameFilter] = useState<string>('');
 
-  const { selected } = useListView();
-
   const handleRoleFilterChange: (event: SelectChangeEvent) => void = (e: SelectChangeEvent) => {
     if (e.target.value !== 'all') {
       setRoleFilter(e.target.value as 'user' | 'admin');

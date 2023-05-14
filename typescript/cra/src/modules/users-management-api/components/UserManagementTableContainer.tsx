@@ -18,6 +18,7 @@ import React, { type ChangeEvent, useEffect, useMemo, useState } from 'react';
 import { type User } from '../core/_models';
 import { useListView } from '../core/ListViewProvider';
 import { type Order } from '@components/table/types';
+import { formatDate } from '../helpers/crud-helper/content';
 import {
   useQueryResponseData,
   useQueryResponseLoading,
@@ -90,13 +91,6 @@ const UserManagementTableContainer = (props: Props) => {
   const handleChangeDense = (event: ChangeEvent<HTMLInputElement>) => {
     localStorage.setItem(`DENSE_DEFAULT_${props.denseKey}_TABLE`, event.target.checked.toString());
     setDense(event.target.checked);
-  };
-
-  const formatDate = (date?: string) => {
-    if (date) {
-      const localDateTime = new Date(date);
-      return `${localDateTime.getUTCDate()}/${localDateTime.getUTCMonth()}/${localDateTime.getFullYear()} at ${localDateTime.getHours()}:${localDateTime.getMinutes()}`;
-    }
   };
 
   return (
