@@ -34,9 +34,9 @@ import { Order } from '../@types/sort';
 import { useSearchParams } from 'react-router-dom';
 import qs from 'query-string';
 import { initialQueryRequest } from '../helpers';
-import { TableOverlay } from './loading/TableOverlay';
+import { TableOverlay } from '@components/table/loading/TableOverlay';
 import { ProgressBarLoader } from '@components/loaders';
-import { TableSkeleton } from './loading/TableSkeleton';
+import { TableSkeleton } from '@components/table/loading/TableSkeleton';
 
 interface RowProps {
   row: User;

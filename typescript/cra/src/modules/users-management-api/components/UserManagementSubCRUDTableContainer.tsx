@@ -33,9 +33,9 @@ import { StaticDataTableCRUD } from './static-table/StaticDataTableCRUD';
 import { useSearchParams } from 'react-router-dom';
 import qs from 'query-string';
 import { initialQueryRequest } from '../helpers';
-import { TableOverlay } from './loading/TableOverlay';
+import { TableOverlay } from '@components/table/loading/TableOverlay';
 import zIndex from '@mui/material/styles/zIndex';
-import { TableSkeleton } from './loading/TableSkeleton';
+import { TableSkeleton } from '@components/table/loading/TableSkeleton';
 
 interface Props {
   children: (id: string) => React.ReactNode;

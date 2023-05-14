@@ -27,8 +27,8 @@ import { useQueryRequest } from '../core/QueryRequestProvider';
 import { useSearchParams } from 'react-router-dom';
 import qs from 'query-string';
 import { initialQueryRequest } from '../helpers';
-import { TableSkeleton } from './loading/TableSkeleton';
-import { TableLoader } from './loading/TableLoader';
+import { TableSkeleton } from '@components/table/loading/TableSkeleton';
+import { TableLoader } from '@components/table/loading/TableLoader';
 
 interface Props {
   denseKey: string;
