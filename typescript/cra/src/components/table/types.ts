@@ -27,4 +27,13 @@ export interface SortState {
   order?: Order;
 }
 
+export interface HeadCell<T> {
+  disablePadding?: boolean;
+  id: keyof T | null;
+  label?: string;
+  numeric?: boolean;
+  hideSortIcon?: boolean;
+  width: string;
+}
+
 export type QueryState = PaginationState & SortState;

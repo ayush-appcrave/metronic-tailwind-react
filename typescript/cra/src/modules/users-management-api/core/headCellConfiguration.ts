@@ -1,15 +1,9 @@
 import { type User } from './_models';
+import { HeadCell } from '@components/table';
 
-interface HeadCell {
-  disablePadding?: boolean;
-  id: keyof User | null;
-  label?: string;
-  numeric?: boolean;
-  hideSortIcon?: boolean;
-  width: string;
-}
+type UserTableHeadCellsConfiguration = HeadCell<User>;
 
-const headCells: readonly HeadCell[] = [
+const headCells: UserTableHeadCellsConfiguration[] = [
   {
     id: 'first_name',
     numeric: false,
