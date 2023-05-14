@@ -2,7 +2,7 @@ import { type FormEvent, type ChangeEvent } from 'react';
 import { type User } from '../core/_models';
 import { Box, TableCell, TableHead, TableRow, TableSortLabel } from '@mui/material';
 import { visuallyHidden } from '@mui/utils';
-import { type Order } from '../@types/sort';
+import { type Order } from '@components/table/types';
 import { headCells } from '../core/headCellConfiguration';
 
 interface EnhancedTableProps {

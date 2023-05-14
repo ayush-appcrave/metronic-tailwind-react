@@ -7,7 +7,7 @@ import {
   useState
 } from 'react';
 import qs from 'qs';
-import { type QueryResponseContextProps, type QueryState } from './models';
+import { type QueryResponseContextProps, type UserQueryState } from './models';
 
 function createResponseContext<T>(
   initialState: QueryResponseContextProps<T>
@@ -20,7 +20,7 @@ function isNotEmpty(obj: unknown): boolean {
 }
 
 // Example: page=1&items_per_page=10&sort=id&order=desc&search=a&filter_name=a&filter_online=false
-function stringifyRequestQuery(state: QueryState): string {
+function stringifyRequestQuery(state: UserQueryState): string {
   const pagination = qs.stringify(state, { filter: ['page', 'items_per_page'], skipNulls: true });
   const sort = qs.stringify(state, { filter: ['sort', 'order'], skipNulls: true });
   const filter = state.advanced ? qs.stringify([...state.advanced], { encode: false }) : '';
@@ -43,9 +43,9 @@ function stringifyRequestQuery(state: QueryState): string {
     .toLowerCase();
 }
 
-function parseRequestQuery(query: string): QueryState {
+function parseRequestQuery(query: string): UserQueryState {
   const cache: unknown = qs.parse(query);
-  return cache as QueryState;
+  return cache as UserQueryState;
 }
 
 function calculatedGroupingIsDisabled<T>(isLoading: boolean, data: T[] | undefined): boolean {

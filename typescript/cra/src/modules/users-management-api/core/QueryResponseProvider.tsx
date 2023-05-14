@@ -1,11 +1,11 @@
 /* eslint-disable @typescript-eslint/no-misused-promises */
 import { type FC, useContext, useState, useEffect, useMemo, type ReactNode } from 'react';
 import { useQuery } from 'react-query';
+import { type PaginationState } from '@components/table/types';
 import {
   createResponseContext,
   initialQueryResponse,
   initialQueryState,
-  type PaginationState,
   QUERIES,
   stringifyRequestQuery
 } from '../helpers';

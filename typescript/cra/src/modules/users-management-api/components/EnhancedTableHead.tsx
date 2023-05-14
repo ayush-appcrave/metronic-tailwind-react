@@ -11,7 +11,7 @@ import {
   Tooltip
 } from '@mui/material';
 import { visuallyHidden } from '@mui/utils';
-import { type Order } from '../@types/sort';
+import { type Order } from '@components/table/types';
 import { headCells } from '../core/headCellConfiguration';
 import { useListView } from '../core/ListViewProvider';
 import DeleteIcon from '@mui/icons-material/Delete';

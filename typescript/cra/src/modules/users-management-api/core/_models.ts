@@ -1,4 +1,4 @@
-import { type PaginationState } from '../helpers';
+import { type PaginationState } from '@components/table/types';
 
 export interface UserGeneralInfo {
   id: string;

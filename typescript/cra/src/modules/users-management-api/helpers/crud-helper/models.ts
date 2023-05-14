@@ -2,25 +2,10 @@
 import { type Dispatch, type SetStateAction } from 'react';
 import { type UsersQueryResponse } from '../../core/_models';
 import { GridFilterItem } from '@mui/x-data-grid';
+import { type PaginationState, QueryState } from '@components/table/types';
 
-export interface PaginationState {
-  page?: number;
-  links?: Array<{ label: string; active: boolean; url: string | null; page: number | null }>;
-  current_page?: number;
-  first_page_url?: number;
-  from?: number;
-  last_page?: number;
-  last_page_url?: string;
-  next_page_url?: string;
-  items_per_page?: number;
-  prev_page_url?: number;
-  to?: number;
-  total?: number;
-}
-
-export interface SortState {
-  sort?: string;
-  order?: 'asc' | 'desc';
+export interface SearchState {
+  search?: string;
 }
 
 export interface FilterState {
@@ -28,23 +13,19 @@ export interface FilterState {
   advanced?: GridFilterItem[];
 }
 
-export interface SearchState {
-  search?: string;
-}
+export type UserQueryState = QueryState & FilterState & SearchState;
 
 export interface Response<T> {
   data?: T;
   pagination?: PaginationState;
 }
 
-export type QueryState = PaginationState & SortState & FilterState & SearchState;
-
 export interface QueryRequestContextProps {
-  state: QueryState;
-  updateState: (updates: Partial<QueryState>, saveToQuery?: boolean | undefined) => void;
+  state: UserQueryState;
+  updateState: (updates: Partial<UserQueryState>, saveToQuery?: boolean | undefined) => void;
 }
 
-export const initialQueryState: QueryState = {
+export const initialQueryState: UserQueryState = {
   current_page: 1,
   items_per_page: 10,
   total: 0,

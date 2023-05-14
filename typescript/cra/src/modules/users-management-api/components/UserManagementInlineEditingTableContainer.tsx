@@ -30,7 +30,7 @@ import {
 import { useQueryRequest } from '../core/QueryRequestProvider';
 import { updateUser } from '../core/_requests';
 import { useSnackbar } from 'notistack';
-import { Order } from '../@types/sort';
+import { Order } from '@components/table/types';
 import { useSearchParams } from 'react-router-dom';
 import qs from 'query-string';
 import { initialQueryRequest } from '../helpers';

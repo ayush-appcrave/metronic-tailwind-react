@@ -1,2 +1,2 @@
+export * from './pages';
 export * from './UserManagementPageWrapper';
-export * from './core/users';
