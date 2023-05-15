@@ -2,6 +2,7 @@ import { Box, Checkbox, TableCell, TableHead, TableRow, TableSortLabel } from '@
 import { visuallyHidden } from '@mui/utils';
 import { ReactNode } from 'react';
 import { HeadCell, Order } from '@components/table/types';
+import { SxProps, Theme } from '@mui/material/styles';
 
 interface RequiredSelectProps<T> {
   tableKey: string;
@@ -15,6 +16,7 @@ interface RequiredSelectProps<T> {
   order: Order;
   onSort: (property: keyof T | null) => void;
   children: ReactNode;
+  sx?: SxProps<Theme>;
 }
 
 interface OptionalSelectProps<T> {
@@ -29,13 +31,14 @@ interface OptionalSelectProps<T> {
   order: Order;
   onSort: (property: keyof T | null) => void;
   children?: ReactNode;
+  sx?: SxProps<Theme>;
 }
 
 type TableHeadCustomProps<T> = RequiredSelectProps<T> | OptionalSelectProps<T>;
 
 const TableHeadCustom = <T extends object>(props: TableHeadCustomProps<T>) => {
   return (
-    <TableHead>
+    <TableHead sx={props.sx}>
       <TableRow>
         {props.withCheckbox && (
           <TableCell padding="checkbox">

@@ -11,8 +11,8 @@ import { QUERIES } from '../helpers';
 import { UndoActions } from './UndoActions';
 import { useSnackbar } from 'notistack';
 import { useQueryResponse } from '../core/QueryResponseProvider';
-import { TableHeadCustom } from '@components/table';
-import { Box, TableCell, Tooltip, IconButton } from '@mui/material';
+import { TableHeadCustom, TableActionsToolbar } from '@components/table';
+import { Tooltip, IconButton } from '@mui/material';
 
 interface EnhancedTableProps {
   numSelected: number;
@@ -78,20 +78,17 @@ function EnhancedTableHead(props: EnhancedTableProps) {
       order={order}
       onSort={createSortHandler}
     >
-      <TableCell colSpan={8}>
-        <Box sx={{ display: 'flex', alignItems: 'center' }}>
-          <Box>{selected.length} selected</Box>
-          <Tooltip title="Delete">
-            <IconButton
-              onClick={() => {
-                deleteSelectedItems.mutateAsync();
-              }}
-            >
-              <DeleteIcon />
-            </IconButton>
-          </Tooltip>
-        </Box>
-      </TableCell>
+      <TableActionsToolbar colSpan={8} selected={selected}>
+        <Tooltip title="Delete">
+          <IconButton
+            onClick={() => {
+              deleteSelectedItems.mutateAsync();
+            }}
+          >
+            <DeleteIcon />
+          </IconButton>
+        </Tooltip>
+      </TableActionsToolbar>
     </TableHeadCustom>
   );
 }
