@@ -36,7 +36,7 @@ import { initialQueryRequest } from '../helpers';
 import { TableOverlay } from '@components/table/loading/TableOverlay';
 import zIndex from '@mui/material/styles/zIndex';
 import { TableSkeleton } from '@components/table/loading/TableSkeleton';
-import { formatDate } from '@components/table';
+import { formatDate, TableNoData } from '@components/table';
 
 interface Props {
   children: (id: string) => React.ReactNode;
@@ -213,11 +213,7 @@ const UserManagementSubCRUDTableContainer = (props: Props) => {
                   itemsPerPage={pagination.items_per_page ? pagination.items_per_page : 10}
                 ></TableSkeleton>
               ))}
-            {!pagination.total && !isLoading && (
-              <TableRow>
-                <TableCell colSpan={headCells.length}>No data found</TableCell>
-              </TableRow>
-            )}
+            {!pagination.total && !isLoading && <TableNoData colSpan={8}></TableNoData>}
           </TableBody>
         </Table>
       </TableContainer>

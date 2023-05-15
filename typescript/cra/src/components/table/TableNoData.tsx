@@ -2,14 +2,14 @@ import { TableCell, TableRow } from '@mui/material';
 import React from 'react';
 
 interface TableNoDataProps {
-  colSpan: number;
-  text: string;
+  colSpan?: number;
+  text?: string;
 }
 
-const TableNoData = (props: TableNoDataProps) => {
+const TableNoData = ({ colSpan = 1, text = 'No data found' }: TableNoDataProps) => {
   return (
     <TableRow>
-      <TableCell colSpan={props.colSpan}>{props.text}</TableCell>
+      <TableCell colSpan={colSpan}>{text}</TableCell>
     </TableRow>
   );
 };

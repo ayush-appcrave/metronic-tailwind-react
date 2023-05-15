@@ -13,12 +13,11 @@ import {
 } from '@mui/material';
 import { EnhancedTableHead } from './EnhancedTableHead';
 import { toAbsoluteUrl } from 'utils';
-import { headCells } from '../core/headCellConfiguration';
 import React, { type ChangeEvent, useEffect, useMemo, useState } from 'react';
 import { type User } from '../core/_models';
 import { useListView } from '../core/ListViewProvider';
 import { type Order } from '@components/table/types';
-import { formatDate } from '@components/table';
+import { formatDate, TableNoData } from '@components/table';
 import {
   useQueryResponseData,
   useQueryResponseLoading,
@@ -193,11 +192,7 @@ const UserManagementTableContainer = (props: Props) => {
                   itemsPerPage={pagination.items_per_page ? pagination.items_per_page : 10}
                 ></TableSkeleton>
               ))}
-            {!pagination.total && !isLoading && (
-              <TableRow>
-                <TableCell colSpan={headCells.length}>No data found</TableCell>
-              </TableRow>
-            )}
+            {!pagination.total && !isLoading && <TableNoData colSpan={8}></TableNoData>}
           </TableBody>
         </Table>
       </TableContainer>
