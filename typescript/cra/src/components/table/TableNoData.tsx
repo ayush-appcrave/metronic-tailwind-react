@@ -1,5 +1,4 @@
 import { TableCell, TableRow } from '@mui/material';
-import { headCells } from '../../modules/users-management-api/core/headCellConfiguration';
 import React from 'react';
 
 interface TableNoDataProps {

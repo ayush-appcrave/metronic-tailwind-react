@@ -22,7 +22,7 @@ function EnhancedTableActionToolbar(props: EnhancedTableToolbarProps) {
 
   const deleteSelectedItems = useMutation(
     async () => {
-      await deleteSelectedUsers(selected as string[]);
+      await deleteSelectedUsers(selected);
     },
     {
       // 💡 response of the mutation is passed to onSuccess
@@ -32,7 +32,7 @@ function EnhancedTableActionToolbar(props: EnhancedTableToolbarProps) {
         enqueueSnackbar(`${selected.length} users was deleted.`, {
           action: (snackbarKey) => (
             <UndoActions
-              ids={selected as string[]}
+              ids={selected}
               snackbarKey={snackbarKey}
               undoAction={undoAction}
             ></UndoActions>

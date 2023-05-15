@@ -16,7 +16,7 @@ interface WithChildren {
 const ListViewContext = createContext<ListViewContextProps>(initialListView);
 
 const ListViewProvider: FC<WithChildren> = ({ children }) => {
-  const [selected, setSelected] = useState<Array<string | undefined>>(initialListView.selected);
+  const [selected, setSelected] = useState<string[]>(initialListView.selected);
   const [itemIdForUpdate, setItemIdForUpdate] = useState<string | undefined>(
     initialListView.itemIdForUpdate
   );

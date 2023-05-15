@@ -47,7 +47,7 @@ export interface QueryResponseContextProps<T> {
 export const initialQueryResponse = { refetch: () => {}, isLoading: false, query: '' };
 
 export interface ListViewContextProps {
-  selected: Array<string | undefined>;
+  selected: string[];
   onSelect: (selectedId: string) => void;
   onSelectAll: () => void;
   clearSelected: () => void;

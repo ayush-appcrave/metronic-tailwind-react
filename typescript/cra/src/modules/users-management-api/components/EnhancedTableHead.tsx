@@ -1,16 +1,6 @@
-import React, { type FormEvent, type ChangeEvent } from 'react';
+import React, { type ChangeEvent } from 'react';
 import { type User } from '../core/_models';
-import {
-  Box,
-  Checkbox,
-  IconButton,
-  TableCell,
-  TableHead,
-  TableRow,
-  TableSortLabel,
-  Tooltip
-} from '@mui/material';
-import { visuallyHidden } from '@mui/utils';
+
 import { type Order } from '@components/table/types';
 import { headCells } from '../core/headCellConfiguration';
 import { useListView } from '../core/ListViewProvider';
@@ -21,10 +11,12 @@ import { QUERIES } from '../helpers';
 import { UndoActions } from './UndoActions';
 import { useSnackbar } from 'notistack';
 import { useQueryResponse } from '../core/QueryResponseProvider';
+import { TableHeadCustom } from '@components/table';
+import { Box, TableCell, Tooltip, IconButton } from '@mui/material';
 
 interface EnhancedTableProps {
   numSelected: number;
-  onRequestSort: (event: FormEvent<unknown>, property: keyof User | null) => void;
+  onRequestSort: (property: keyof User | null) => void;
   onSelectAllClick: (event: ChangeEvent<HTMLInputElement>) => void;
   order: Order;
   orderBy: string;
@@ -37,15 +29,15 @@ function EnhancedTableHead(props: EnhancedTableProps) {
   const queryClient = useQueryClient();
   const { query, refetch } = useQueryResponse();
   const { order, orderBy, onRequestSort } = props;
-  const createSortHandler = (property: keyof User | null) => (event: FormEvent<unknown>) => {
-    onRequestSort(event, property);
+  const createSortHandler = (property: keyof User | null) => {
+    onRequestSort(property);
   };
 
   const { isAllSelected, onSelectAll, selected } = useListView();
 
   const deleteSelectedItems = useMutation(
     async () => {
-      await deleteSelectedUsers(selected as string[]);
+      await deleteSelectedUsers(selected);
     },
     {
       // 💡 response of the mutation is passed to onSuccess
@@ -55,7 +47,7 @@ function EnhancedTableHead(props: EnhancedTableProps) {
         enqueueSnackbar(`${selected.length} users was deleted.`, {
           action: (snackbarKey) => (
             <UndoActions
-              ids={selected as string[]}
+              ids={selected}
               snackbarKey={snackbarKey}
               undoAction={undoAction}
             ></UndoActions>
@@ -74,62 +66,33 @@ function EnhancedTableHead(props: EnhancedTableProps) {
   };
 
   return (
-    <TableHead>
-      <TableRow>
-        <TableCell padding="checkbox">
-          <Checkbox
-            color="primary"
-            size="small"
-            checked={isAllSelected}
-            indeterminate={!isAllSelected && selected.length > 0}
-            onChange={!isAllSelected && selected.length > 0 ? clearSelected : onSelectAll}
-            inputProps={{
-              'aria-label': 'select all desserts'
-            }}
-          />
-        </TableCell>
-        {selected.length > 0 && (
-          <TableCell colSpan={8}>
-            <Box sx={{ display: 'flex', alignItems: 'center' }}>
-              <Box>{selected.length} selected</Box>
-              <Tooltip title="Delete">
-                <IconButton
-                  onClick={() => {
-                    deleteSelectedItems.mutateAsync();
-                  }}
-                >
-                  <DeleteIcon />
-                </IconButton>
-              </Tooltip>
-            </Box>
-          </TableCell>
-        )}
-        {!selected.length &&
-          headCells.map((headCell) => (
-            <TableCell
-              key={headCell.id}
-              align={headCell.numeric ? 'right' : 'left'}
-              padding={headCell.disablePadding ? 'none' : 'normal'}
-              sortDirection={orderBy === headCell.id ? order : false}
-              width={headCell.width}
+    <TableHeadCustom
+      tableKey="user-table"
+      withCheckbox
+      headCells={headCells}
+      allSelected={isAllSelected}
+      onSelectAll={onSelectAll}
+      selected={selected}
+      clearSelected={clearSelected}
+      orderBy={orderBy}
+      order={order}
+      onSort={createSortHandler}
+    >
+      <TableCell colSpan={8}>
+        <Box sx={{ display: 'flex', alignItems: 'center' }}>
+          <Box>{selected.length} selected</Box>
+          <Tooltip title="Delete">
+            <IconButton
+              onClick={() => {
+                deleteSelectedItems.mutateAsync();
+              }}
             >
-              <TableSortLabel
-                hideSortIcon={headCell.hideSortIcon}
-                active={orderBy === headCell.id}
-                direction={orderBy === headCell.id ? order : 'asc'}
-                onClick={createSortHandler(headCell.id)}
-              >
-                {headCell.label}
-                {orderBy === headCell.id ? (
-                  <Box component="span" sx={visuallyHidden}>
-                    {order === 'desc' ? 'sorted descending' : 'sorted ascending'}
-                  </Box>
-                ) : null}
-              </TableSortLabel>
-            </TableCell>
-          ))}
-      </TableRow>
-    </TableHead>
+              <DeleteIcon />
+            </IconButton>
+          </Tooltip>
+        </Box>
+      </TableCell>
+    </TableHeadCustom>
   );
 }
 

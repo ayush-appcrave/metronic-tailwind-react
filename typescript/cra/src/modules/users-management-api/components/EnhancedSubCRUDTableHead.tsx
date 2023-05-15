@@ -1,9 +1,8 @@
-import { type FormEvent, type ChangeEvent } from 'react';
+import React, { type FormEvent, type ChangeEvent } from 'react';
 import { type User } from '../core/_models';
-import { Box, TableCell, TableHead, TableRow, TableSortLabel } from '@mui/material';
-import { visuallyHidden } from '@mui/utils';
 import { type Order } from '@components/table/types';
 import { headCells } from '../core/headCellConfiguration';
+import { TableHeadCustom } from '@components/table';
 
 interface EnhancedTableProps {
   numSelected: number;
@@ -21,34 +20,13 @@ function EnhancedSubCRUDTableHead(props: EnhancedTableProps) {
   };
 
   return (
-    <TableHead>
-      <TableRow>
-        <TableCell width={'5%'} />
-        {headCells.map((headCell) => (
-          <TableCell
-            key={headCell.id}
-            align={headCell.numeric ? 'right' : 'left'}
-            padding={headCell.disablePadding ? 'none' : 'normal'}
-            sortDirection={orderBy === headCell.id ? order : false}
-            width={headCell.width}
-          >
-            <TableSortLabel
-              hideSortIcon={headCell.hideSortIcon}
-              active={orderBy === headCell.id}
-              direction={orderBy === headCell.id ? order : 'asc'}
-              onClick={createSortHandler(headCell.id)}
-            >
-              {headCell.label}
-              {orderBy === headCell.id ? (
-                <Box component="span" sx={visuallyHidden}>
-                  {order === 'desc' ? 'sorted descending' : 'sorted ascending'}
-                </Box>
-              ) : null}
-            </TableSortLabel>
-          </TableCell>
-        ))}
-      </TableRow>
-    </TableHead>
+    <TableHeadCustom
+      tableKey="user-sub-table"
+      headCells={[...[{ id: null, hideSortIcon: true, width: '5%' }], ...headCells]}
+      orderBy={orderBy}
+      order={order}
+      onSort={createSortHandler}
+    ></TableHeadCustom>
   );
 }
 

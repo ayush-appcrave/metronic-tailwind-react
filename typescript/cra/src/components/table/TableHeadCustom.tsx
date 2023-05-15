@@ -1,44 +1,62 @@
 import { Box, Checkbox, TableCell, TableHead, TableRow, TableSortLabel } from '@mui/material';
 import { visuallyHidden } from '@mui/utils';
-import { MouseEventHandler, ReactNode } from 'react';
+import { ReactNode } from 'react';
 import { HeadCell, Order } from '@components/table/types';
 
-interface TableHeadCustomProps<T> {
+interface RequiredSelectProps<T> {
   tableKey: string;
-  selected: T[];
+  withCheckbox?: true;
+  selected: Array<string | number>;
   allSelected: boolean;
   clearSelected: () => void;
   onSelectAll: () => void;
   headCells: Array<HeadCell<T>>;
   orderBy: string;
   order: Order;
-  onSort: (id: string | number | symbol) => MouseEventHandler<HTMLAnchorElement>;
+  onSort: (property: keyof T | null) => void;
+  children: ReactNode;
 }
 
-const TableHeadCustom = <T extends object>(
-  props: TableHeadCustomProps<T> & { children: ReactNode }
-) => {
+interface OptionalSelectProps<T> {
+  tableKey: string;
+  withCheckbox?: false;
+  selected?: Array<string | number>;
+  allSelected?: boolean;
+  clearSelected?: () => void;
+  onSelectAll?: () => void;
+  headCells: Array<HeadCell<T>>;
+  orderBy: string;
+  order: Order;
+  onSort: (property: keyof T | null) => void;
+  children?: ReactNode;
+}
+
+type TableHeadCustomProps<T> = RequiredSelectProps<T> | OptionalSelectProps<T>;
+
+const TableHeadCustom = <T extends object>(props: TableHeadCustomProps<T>) => {
   return (
     <TableHead>
       <TableRow>
-        <TableCell padding="checkbox">
-          <Checkbox
-            color="primary"
-            size="small"
-            checked={props.allSelected}
-            indeterminate={!props.allSelected && props.selected.length > 0}
-            onChange={
-              !props.allSelected && props.selected.length > 0
-                ? props.clearSelected
-                : props.onSelectAll
-            }
-            inputProps={{
-              'aria-label': 'select all desserts'
-            }}
-          />
-        </TableCell>
-        {props.selected.length > 0 && props.children}
-        {!props.selected.length &&
+        {props.withCheckbox && (
+          <TableCell padding="checkbox">
+            <Checkbox
+              color="primary"
+              size="small"
+              checked={props.allSelected}
+              indeterminate={!props.allSelected && props.selected.length > 0}
+              onChange={
+                !props.allSelected && props.selected.length > 0
+                  ? props.clearSelected
+                  : props.onSelectAll
+              }
+              inputProps={{
+                'aria-label': 'select all desserts'
+              }}
+            />
+          </TableCell>
+        )}
+        {!!props.selected?.length && props.children}
+        {(!props.selected?.length || !props.withCheckbox) &&
           props.headCells.map((headCell) => (
             <TableCell
               key={`${props.tableKey}-${String(headCell.id)}`}
@@ -51,7 +69,9 @@ const TableHeadCustom = <T extends object>(
                 hideSortIcon={headCell.hideSortIcon}
                 active={props.orderBy === headCell.id}
                 direction={props.orderBy === headCell.id ? props.order : 'asc'}
-                onClick={props.onSort(String(headCell.id))}
+                onClick={(event) => {
+                  props.onSort(headCell.id);
+                }}
               >
                 {headCell.label}
                 {props.orderBy === headCell.id ? (

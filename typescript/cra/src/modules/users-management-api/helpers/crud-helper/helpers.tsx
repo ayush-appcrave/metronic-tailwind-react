@@ -49,10 +49,7 @@ function calculatedGroupingIsDisabled<T>(isLoading: boolean, data: T[] | undefin
   return !data?.length;
 }
 
-function calculateIsAllDataSelected<T>(
-  data: T[] | undefined,
-  selected: Array<string | undefined>
-): boolean {
+function calculateIsAllDataSelected<T>(data: T[] | undefined, selected: string[]): boolean {
   if (!data) {
     return false;
   }
@@ -62,8 +59,8 @@ function calculateIsAllDataSelected<T>(
 
 function groupingOnSelect(
   id: string,
-  selected: Array<string | undefined>,
-  setSelected: Dispatch<SetStateAction<Array<string | undefined>>>
+  selected: string[],
+  setSelected: Dispatch<SetStateAction<string[]>>
 ) {
   if (!id) {
     return;
@@ -80,18 +77,17 @@ function groupingOnSelect(
 
 function groupingOnSelectAll<T>(
   isAllSelected: boolean,
-  setSelected: Dispatch<SetStateAction<Array<string | undefined>>>,
-  data?: Array<T & { id?: string }>
+  setSelected: Dispatch<SetStateAction<string[]>>,
+  data?: Array<T & { id: string }>
 ) {
   if (isAllSelected) {
     setSelected([]);
     return;
   }
 
-  if (!data?.length) {
+  if (!data) {
     return;
   }
-
   setSelected(data.filter((item) => item.id).map((item) => item.id));
 }
 

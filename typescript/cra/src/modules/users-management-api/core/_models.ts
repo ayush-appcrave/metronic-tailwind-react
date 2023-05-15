@@ -36,7 +36,7 @@ export interface UsersQueryResponse {
 export const initialUser: User = {
   id: '1',
   avatar: 'avatars/300-6.jpg',
-  role: 'Administrator',
+  role: 'admin',
   first_name: '',
   email: ''
 };

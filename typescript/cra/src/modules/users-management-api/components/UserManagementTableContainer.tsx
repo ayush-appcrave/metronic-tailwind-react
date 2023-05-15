@@ -73,7 +73,7 @@ const UserManagementTableContainer = (props: Props) => {
     return selected.includes(id);
   };
 
-  const handleRequestSort = (event: React.FormEvent<unknown>, property: keyof User | null) => {
+  const handleRequestSort = (property: keyof User | null) => {
     if (property) {
       setOrderBy(property);
       const isAsc = orderBy === property && order === 'asc';
