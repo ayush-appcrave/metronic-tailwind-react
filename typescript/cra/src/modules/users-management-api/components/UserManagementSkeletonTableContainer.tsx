@@ -26,7 +26,7 @@ import { useQueryRequest } from '../core/QueryRequestProvider';
 import { useSearchParams } from 'react-router-dom';
 import qs from 'query-string';
 import { initialQueryRequest } from '../helpers';
-import { TableSkeleton } from '@components/table/loading/TableSkeleton';
+import { TableSkeletonLoader } from '@components/table/loading/TableSkeletonLoader';
 import { formatDate, TableNoData } from '@components/table';
 
 interface Props {
@@ -113,9 +113,9 @@ const UserManagementSkeletonTableContainer = (props: Props) => {
             }}
           >
             {isLoading ? (
-              <TableSkeleton
+              <TableSkeletonLoader
                 itemsPerPage={pagination.items_per_page ? pagination.items_per_page : 10}
-              ></TableSkeleton>
+              ></TableSkeletonLoader>
             ) : (
               data.map((row, index) => {
                 const labelId = `enhanced-table-checkbox-${index}`;

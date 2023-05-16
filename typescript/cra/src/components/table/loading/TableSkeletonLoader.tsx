@@ -5,7 +5,7 @@ interface Props {
   itemsPerPage: number;
 }
 
-const TableSkeleton = (props: Props) => {
+const TableSkeletonLoader = (props: Props) => {
   return (
     <>
       {new Array(props.itemsPerPage)
@@ -85,4 +85,4 @@ const TableSkeleton = (props: Props) => {
   );
 };
 
-export { TableSkeleton };
+export { TableSkeletonLoader };

@@ -1,3 +1,2 @@
-export * from './TableLoader';
-export * from './TableOverlay';
-export * from './TableSkeleton';
+export * from './TableOverlayLoader';
+export * from './TableSkeletonLoader';

@@ -27,8 +27,8 @@ import { useQueryRequest } from '../core/QueryRequestProvider';
 import { useSearchParams } from 'react-router-dom';
 import qs from 'query-string';
 import { initialQueryRequest } from '../helpers';
-import { TableSkeleton } from '@components/table/loading/TableSkeleton';
-import { TableLoader } from '@components/table/loading/TableLoader';
+import { TableSkeletonLoader } from '@components/table/loading/TableSkeletonLoader';
+import { TableOverlayLoader } from '@components/table/loading/TableOverlayLoader';
 
 interface Props {
   denseKey: string;
@@ -183,14 +183,15 @@ const UserManagementTableContainer = (props: Props) => {
             })}
             {isLoading &&
               (data.length ? (
-                <TableLoader
+                <TableOverlayLoader
+                  colSpan={8}
                   itemsPerPage={pagination.items_per_page ? pagination.items_per_page : 10}
                   rowHeight={dense ? 49 : 69}
-                ></TableLoader>
+                ></TableOverlayLoader>
               ) : (
-                <TableSkeleton
+                <TableSkeletonLoader
                   itemsPerPage={pagination.items_per_page ? pagination.items_per_page : 10}
-                ></TableSkeleton>
+                ></TableSkeletonLoader>
               ))}
             {!pagination.total && !isLoading && <TableNoData colSpan={8}></TableNoData>}
           </TableBody>

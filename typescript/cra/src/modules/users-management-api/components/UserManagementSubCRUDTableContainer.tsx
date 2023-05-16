@@ -16,7 +16,6 @@ import {
 } from '@mui/material';
 import { EnhancedSubCRUDTableHead } from './EnhancedSubCRUDTableHead';
 import { toAbsoluteUrl } from 'utils';
-import { headCells } from '../core/headCellConfiguration';
 import React, { type ChangeEvent, useEffect, useMemo, useState } from 'react';
 import { type User } from '../core/_models';
 import { useListView } from '../core/ListViewProvider';
@@ -33,9 +32,9 @@ import { StaticDataTableCRUD } from './static-table/StaticDataTableCRUD';
 import { useSearchParams } from 'react-router-dom';
 import qs from 'query-string';
 import { initialQueryRequest } from '../helpers';
-import { TableOverlay } from '@components/table/loading/TableOverlay';
+import { TableOverlayLoader } from '@components/table/loading/TableOverlayLoader';
 import zIndex from '@mui/material/styles/zIndex';
-import { TableSkeleton } from '@components/table/loading/TableSkeleton';
+import { TableSkeletonLoader } from '@components/table/loading/TableSkeletonLoader';
 import { formatDate, TableNoData } from '@components/table';
 
 interface Props {
@@ -204,14 +203,16 @@ const UserManagementSubCRUDTableContainer = (props: Props) => {
             })}
             {isLoading &&
               (data.length ? (
-                <TableOverlay
+                <TableOverlayLoader
+                  colSpan={8}
+                  type="circle"
                   itemsPerPage={pagination.items_per_page ? pagination.items_per_page : 10}
                   rowHeight={dense ? 49 : 69}
-                ></TableOverlay>
+                ></TableOverlayLoader>
               ) : (
-                <TableSkeleton
+                <TableSkeletonLoader
                   itemsPerPage={pagination.items_per_page ? pagination.items_per_page : 10}
-                ></TableSkeleton>
+                ></TableSkeletonLoader>
               ))}
             {!pagination.total && !isLoading && <TableNoData colSpan={8}></TableNoData>}
           </TableBody>

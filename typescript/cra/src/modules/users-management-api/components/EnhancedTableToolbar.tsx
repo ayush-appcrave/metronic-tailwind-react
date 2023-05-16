@@ -9,7 +9,6 @@ import {
 import { type SxProps, type Theme } from '@mui/material/styles';
 import React, { type ChangeEvent, useState } from 'react';
 import { useQueryRequest } from '../core/QueryRequestProvider';
-import { useListView } from '../core/ListViewProvider';
 
 interface EnhancedTableToolbarProps {
   sx?: SxProps<Theme>;

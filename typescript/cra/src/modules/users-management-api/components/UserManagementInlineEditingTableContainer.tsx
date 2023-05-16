@@ -33,9 +33,9 @@ import { Order } from '@components/table/types';
 import { useSearchParams } from 'react-router-dom';
 import qs from 'query-string';
 import { initialQueryRequest } from '../helpers';
-import { TableOverlay } from '@components/table/loading/TableOverlay';
+import { TableOverlayLoader } from '@components/table/loading/TableOverlayLoader';
 import { ProgressBarLoader } from '@components/loaders';
-import { TableSkeleton } from '@components/table/loading/TableSkeleton';
+import { TableSkeletonLoader } from '@components/table/loading/TableSkeletonLoader';
 import { formatDate, TableNoData } from '@components/table';
 
 interface RowProps {
@@ -318,14 +318,16 @@ const UserManagementInlineEditingTableContainer = () => {
             })}
             {isLoading &&
               (data.length ? (
-                <TableOverlay
+                <TableOverlayLoader
+                  colSpan={8}
+                  type="circle"
                   itemsPerPage={pagination.items_per_page ? pagination.items_per_page : 10}
                   rowHeight={dense ? 49 : 69}
-                ></TableOverlay>
+                ></TableOverlayLoader>
               ) : (
-                <TableSkeleton
+                <TableSkeletonLoader
                   itemsPerPage={pagination.items_per_page ? pagination.items_per_page : 10}
-                ></TableSkeleton>
+                ></TableSkeletonLoader>
               ))}
             {!pagination.total && !isLoading && <TableNoData colSpan={8}></TableNoData>}
           </TableBody>

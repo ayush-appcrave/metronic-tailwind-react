@@ -1,15 +1,17 @@
-import { TableCell, TableRow, CircularProgress } from '@mui/material';
+import { CircularProgress, LinearProgress, TableCell, TableRow } from '@mui/material';
 
 interface Props {
+  colSpan: number;
   itemsPerPage: number;
   rowHeight: number;
+  type?: 'linear' | 'circle';
 }
 
-const TableOverlay = (props: Props) => {
+const TableOverlayLoader = ({ colSpan, itemsPerPage, rowHeight, type = 'linear' }: Props) => {
   return (
     <TableRow
       sx={{
-        height: `${props.rowHeight * props.itemsPerPage}px`,
+        height: `${rowHeight * itemsPerPage}px`,
         position: 'absolute',
         top: 0,
         left: 0,
@@ -18,8 +20,8 @@ const TableOverlay = (props: Props) => {
       }}
     >
       <TableCell
-        colSpan={8}
-        rowSpan={props.itemsPerPage}
+        colSpan={colSpan}
+        rowSpan={itemsPerPage}
         sx={{
           textAlign: 'center',
           verticalAlign: 'middle',
@@ -33,10 +35,13 @@ const TableOverlay = (props: Props) => {
           cursor: 'wait'
         }}
       >
-        <CircularProgress />
+        {type === 'circle' && <CircularProgress />}
+        {type === 'linear' && (
+          <LinearProgress sx={{ marginLeft: 'auto', marginRight: 'auto', width: '30%' }} />
+        )}
       </TableCell>
     </TableRow>
   );
 };
 
-export { TableOverlay };
+export { TableOverlayLoader };
