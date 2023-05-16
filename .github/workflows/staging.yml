@@ -36,7 +36,7 @@ jobs:
           password: ${{ secrets.SSH_STAGING_PSW }}
           port: 22
           source: './typescript/cra/build/*'
-          target: '/www/public/hero'
+          target: 'www/hero'
           strip_components: 2
 
       - name: 19. Results
