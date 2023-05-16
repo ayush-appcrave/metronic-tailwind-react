@@ -36,9 +36,9 @@ jobs:
           password: ${{ secrets.SSH_STAGING_PSW }}
           port: 22
           source: './typescript/cra/build/*'
-          target: 'www/hero'
+          target: '/www/hero'
           strip_components: 2
 
       - name: 19. Results
         run: |
-          echo "https://lauris.dev.keenthemes.com/hero"
+          echo "http://lauris.dev.keenthemes.com/hero"
