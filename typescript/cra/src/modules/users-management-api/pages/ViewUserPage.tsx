@@ -14,7 +14,7 @@ function ViewUserPage() {
   return (
     <>
       <Helmet>
-        <title>View user {id}</title>
+        <title>View Test user {id}</title>
       </Helmet>
 
       <Toolbar>
