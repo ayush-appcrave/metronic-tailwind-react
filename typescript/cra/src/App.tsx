@@ -11,6 +11,13 @@ import {
 } from './providers';
 import { AppRouting } from './routing';
 
+/**
+ * Base URL of the website.
+ *
+ * @see https://facebook.github.io/create-react-app/docs/using-the-public-folder
+ */
+const { PUBLIC_URL } = process.env;
+
 const App = () => (
   <AuthProvider>
     <SettingsProvider>
@@ -21,7 +28,7 @@ const App = () => (
               <LoadersProvider>
                 <SnackbarProvider>
                   <AuthInit>
-                    <BrowserRouter>
+                    <BrowserRouter basename={PUBLIC_URL}>
                       <AppRouting />
                     </BrowserRouter>
                   </AuthInit>
