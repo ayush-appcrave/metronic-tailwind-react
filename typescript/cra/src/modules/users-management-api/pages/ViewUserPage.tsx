@@ -18,7 +18,7 @@ function ViewUserPage() {
       </Helmet>
 
       <Toolbar>
-        <Intro title="View User" breadcrumbs={breadcrumbs} />
+        <Intro title="View Test User" breadcrumbs={breadcrumbs} />
       </Toolbar>
 
       <Content>
