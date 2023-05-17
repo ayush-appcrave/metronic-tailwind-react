@@ -12,6 +12,7 @@ import {
 } from '@mui/material';
 import { KeenIcon, MenuDropdown } from '../../../components';
 import { useAuth } from '../../../auth';
+import { toAbsoluteUrl } from 'utils';
 
 const HeaderUserMenu = () => {
   const theme = useTheme();
@@ -47,7 +48,7 @@ const HeaderUserMenu = () => {
         aria-expanded={open ? 'true' : undefined}
       >
         <Avatar
-          src="/media/avatars/300-3.jpg"
+          src={toAbsoluteUrl('/media/avatars/300-3.jpg')}
           sx={{
             borderRadius: '6px',
             width: 40,

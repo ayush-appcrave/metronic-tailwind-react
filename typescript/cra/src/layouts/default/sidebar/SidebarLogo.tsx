@@ -1,5 +1,6 @@
 import { type SxProps } from '@mui/material/styles';
 import { useDefaultLayout } from '../DefaultLayoutProvider';
+import { toAbsoluteUrl } from 'utils';
 
 interface Props {
   sx?: SxProps;
@@ -11,7 +12,7 @@ const SidebarLogo = ({ sx }: Props) => {
   return (
     <a href="/" style={{ lineHeight: '0px' }}>
       <img
-        src="/media/logos/default.svg"
+        src={toAbsoluteUrl('/media/logos/default.svg')}
         alt="logo"
         style={{
           display: !isSidebarExpand && isSidebarCollapse ? 'none' : 'inline-block',
@@ -22,7 +23,7 @@ const SidebarLogo = ({ sx }: Props) => {
       />
 
       <img
-        src="/media/logos/default-mini.svg"
+        src={toAbsoluteUrl('/media/logos/default-mini.svg')}
         alt="logo"
         style={{
           display: !isSidebarExpand && isSidebarCollapse ? 'inline-block' : 'none',

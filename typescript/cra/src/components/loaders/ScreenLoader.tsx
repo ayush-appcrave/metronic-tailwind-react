@@ -1,5 +1,6 @@
 import { Box, useTheme } from '@mui/material';
 import zIndex from '@mui/material/styles/zIndex';
+import { toAbsoluteUrl } from 'utils';
 
 const ScreenLoader = () => {
   const theme = useTheme();
@@ -23,7 +24,7 @@ const ScreenLoader = () => {
     >
       <Box
         component="img"
-        src="/media/logos/default.svg"
+        src={toAbsoluteUrl('/media/logos/default.svg')}
         alt="logo"
         sx={{
           height: '30px',

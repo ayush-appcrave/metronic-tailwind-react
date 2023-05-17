@@ -4,6 +4,7 @@ import frMessages from './messages/fr.json';
 import arMessages from './messages/ar.json';
 import zhMessages from './messages/zh.json';
 import { type LanguageType } from './types';
+import { toAbsoluteUrl } from 'utils';
 
 const I18N_MESSAGES = {
   en: enMessages,
@@ -20,7 +21,7 @@ const I18N_LANGUAGES: readonly LanguageType[] = [
     code: 'en',
     systemValue: enUS,
     direction: 'ltr',
-    flag: '/media/flags/united-states.svg',
+    flag: toAbsoluteUrl('/media/flags/united-states.svg'),
     messages: I18N_MESSAGES.en
   },
   {
@@ -28,7 +29,7 @@ const I18N_LANGUAGES: readonly LanguageType[] = [
     code: 'fr',
     systemValue: frFR,
     direction: 'ltr',
-    flag: '/media/flags/france.svg',
+    flag: toAbsoluteUrl('/media/flags/france.svg'),
     messages: I18N_MESSAGES.fr
   },
   {
@@ -36,7 +37,7 @@ const I18N_LANGUAGES: readonly LanguageType[] = [
     code: 'zh',
     systemValue: zhCN,
     direction: 'ltr',
-    flag: '/media/flags/china.svg',
+    flag: toAbsoluteUrl('/media/flags/china.svg'),
     messages: I18N_MESSAGES.zh
   },
   {
@@ -44,7 +45,7 @@ const I18N_LANGUAGES: readonly LanguageType[] = [
     code: 'ar',
     systemValue: arSA,
     direction: 'rtl',
-    flag: '/media/flags/saudi-arabia.svg',
+    flag: toAbsoluteUrl('/media/flags/saudi-arabia.svg'),
     messages: I18N_MESSAGES.ar
   }
 ];
