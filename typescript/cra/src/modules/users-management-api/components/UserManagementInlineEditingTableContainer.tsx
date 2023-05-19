@@ -31,7 +31,7 @@ import { updateUser } from '../core/_requests';
 import { useSnackbar } from 'notistack';
 import { Order } from '@components/table/types';
 import { useSearchParams } from 'react-router-dom';
-import qs from 'query-string';
+import qs from 'qs';
 import { initialQueryRequest } from '../helpers';
 import { TableOverlayLoader } from '@components/table/loading/TableOverlayLoader';
 import { ProgressBarLoader } from '@components/loaders';

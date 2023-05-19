@@ -10,11 +10,12 @@ import {
   GridToolbarColumnsButton,
   GridToolbarContainer,
   GridToolbarDensitySelector,
-  GridRowSelectionModel
+  GridRowSelectionModel,
+  GridFilterItem
 } from '@mui/x-data-grid';
 import { IconButton, Avatar, Box } from '@mui/material';
 import DeleteIcon from '@mui/icons-material/Delete';
-import { useMemo } from 'react';
+import { useEffect, useMemo } from 'react';
 import { useQueryRequest } from '../core/QueryRequestProvider';
 import {
   useQueryResponse,
@@ -22,7 +23,7 @@ import {
   useQueryResponseLoading,
   useQueryResponsePagination
 } from '../core/QueryResponseProvider';
-import { initialQueryState, QUERIES } from '../helpers';
+import { initialQueryRequest, initialQueryState, QUERIES, UserQueryState } from '../helpers';
 import { UndoActions } from './UndoActions';
 import UsersManagementActionsCell from './cells/UsersManagementActionsCell';
 import { useSnackbar } from 'notistack';
@@ -31,6 +32,8 @@ import { User } from '../core/_models';
 import { toAbsoluteUrl } from 'utils';
 import { useMutation, useQueryClient } from 'react-query';
 import { useListView } from '../core/ListViewProvider';
+import { useLocation } from 'react-router';
+import qs from 'qs';
 
 interface Props {
   selectionModel: GridRowSelectionModel;
@@ -105,6 +108,7 @@ export function UsersManagementGridContainer() {
   const isLoading = useQueryResponseLoading();
   const { refetch } = useQueryResponse();
   const [selectionModel, setSelectionModel] = React.useState<GridRowSelectionModel>([]);
+  let filter: GridFilterItem[] = [];
 
   const { enqueueSnackbar } = useSnackbar();
   const undoAction: (ids: string[]) => Promise<void> = async (ids: string[]) => {
@@ -196,6 +200,22 @@ export function UsersManagementGridContainer() {
     }
   ];
 
+  const location = useLocation();
+  useEffect(() => {
+    const queryParams: UserQueryState = qs.parse(location.search, {
+      parseArrays: false,
+      ignoreQueryPrefix: true
+    });
+    if (queryParams.advanced) {
+      filter = queryParams.advanced;
+    }
+    updateState(queryParams);
+
+    return () => {
+      updateState(initialQueryRequest.state);
+    };
+  }, []);
+
   const handleRequestSort = (model: GridSortModel, details: GridCallbackDetails<any>) => {
     if (model.length) {
       updateState({ sort: model[0].field, order: model[0].sort ? model[0].sort : undefined }, true);
@@ -207,6 +227,7 @@ export function UsersManagementGridContainer() {
   };
 
   const handleFilterChange = (model: GridFilterModel, details: GridCallbackDetails<'filter'>) => {
+    model.items.map((item) => delete item.id);
     updateState({ advanced: model.items }, true);
   };
 
@@ -229,6 +250,11 @@ export function UsersManagementGridContainer() {
               pageSize: initialQueryState.items_per_page,
               page: initialQueryState.page
             }
+          },
+          filter: {
+            filterModel: {
+              items: filter
+            }
           }
         }}
         onRowSelectionModelChange={(newSelectionModel: GridRowSelectionModel) => {
@@ -237,6 +263,7 @@ export function UsersManagementGridContainer() {
         rowSelectionModel={selectionModel}
         onSortModelChange={handleRequestSort}
         onPaginationModelChange={handleChangePage}
+        filterMode="server"
         onFilterModelChange={handleFilterChange}
         pageSizeOptions={[5, 10, 25]}
         loading={isLoading}

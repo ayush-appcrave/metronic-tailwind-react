@@ -30,7 +30,7 @@ import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
 import KeyboardArrowUpIcon from '@mui/icons-material/KeyboardArrowUp';
 import { StaticDataTableCRUD } from './static-table/StaticDataTableCRUD';
 import { useSearchParams } from 'react-router-dom';
-import qs from 'query-string';
+import qs from 'qs';
 import { initialQueryRequest } from '../helpers';
 import { TableOverlayLoader } from '@components/table/loading/TableOverlayLoader';
 import zIndex from '@mui/material/styles/zIndex';

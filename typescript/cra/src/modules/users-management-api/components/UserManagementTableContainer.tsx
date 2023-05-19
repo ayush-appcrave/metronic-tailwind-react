@@ -25,7 +25,7 @@ import {
 } from '../core/QueryResponseProvider';
 import { useQueryRequest } from '../core/QueryRequestProvider';
 import { useSearchParams } from 'react-router-dom';
-import qs from 'query-string';
+import qs from 'qs';
 import { initialQueryRequest } from '../helpers';
 import { TableSkeletonLoader } from '@components/table/loading/TableSkeletonLoader';
 import { TableOverlayLoader } from '@components/table/loading/TableOverlayLoader';

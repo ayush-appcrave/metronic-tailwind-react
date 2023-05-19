@@ -21,19 +21,9 @@ function isNotEmpty(obj: unknown): boolean {
 
 // Example: page=1&items_per_page=10&sort=id&order=desc&search=a&filter_name=a&filter_online=false
 function stringifyRequestQuery(state: UserQueryState): string {
-  const pagination = qs.stringify(state, { filter: ['page', 'items_per_page'], skipNulls: true });
-  const sort = qs.stringify(state, { filter: ['sort', 'order'], skipNulls: true });
-  const filter = state.advanced ? qs.stringify([...state.advanced], { encode: false }) : '';
-  const search = isNotEmpty(state.search)
-    ? qs.stringify(state, { filter: ['search'], skipNulls: true })
-    : '';
+  const query = qs.stringify(state, { skipNulls: true });
 
-  const role = qs.stringify(state, { skipNulls: true });
-
-  return [pagination, sort, search, role, filter]
-    .filter((f) => f)
-    .join('&')
-    .toLowerCase();
+  return query.toLowerCase();
 }
 
 function parseRequestQuery(query: string): UserQueryState {
