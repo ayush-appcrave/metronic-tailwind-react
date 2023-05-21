@@ -7,18 +7,18 @@ import {
   DialogTitle
 } from '@mui/material';
 import { useMutation, useQueryClient } from 'react-query';
-import { deleteUser } from '../core/_requests';
-import { QUERIES } from '../helpers';
-import { useQueryResponse } from '../core/QueryResponseProvider';
+import { deleteUser } from '../../core/_requests';
+import { QUERIES } from '../../helpers';
+import { useQueryResponse } from '../../core/QueryResponseProvider';
 
-interface AlertDialogProps {
+interface AlertDialogDeleteUserProps {
   open: boolean;
   handleClose: (reason: string) => void;
   handleAgreeClose: (reason: string) => void;
   userId: string;
 }
 
-function AlertDialog(props: AlertDialogProps) {
+function AlertDialogDeleteUser(props: AlertDialogDeleteUserProps) {
   const { query } = useQueryResponse();
   const queryClient = useQueryClient();
 
@@ -68,4 +68,4 @@ function AlertDialog(props: AlertDialogProps) {
   );
 }
 
-export { AlertDialog };
+export { AlertDialogDeleteUser };

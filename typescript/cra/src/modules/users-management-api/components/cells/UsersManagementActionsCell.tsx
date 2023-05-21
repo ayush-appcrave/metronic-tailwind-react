@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { useNavigate } from 'react-router';
 import { Button, Menu, MenuItem } from '@mui/material';
 import { UpdateUserDialog } from '../edit-user/UpdateUserDialog';
-import { AlertDialog } from '../AlertDialog';
+import { AlertDialogDeleteUser } from '../alerts/AlertDialogDeleteUser';
 
 interface IUsersManagementActionsCellProps {
   id: string;
@@ -71,7 +71,7 @@ function UsersManagementActionsCell(props: IUsersManagementActionsCellProps) {
         </MenuItem>
       </Menu>
 
-      <AlertDialog
+      <AlertDialogDeleteUser
         open={openDeleteDialog}
         handleAgreeClose={() => {
           setOpenDeleteDialog(false);
@@ -81,7 +81,7 @@ function UsersManagementActionsCell(props: IUsersManagementActionsCellProps) {
           setOpenDeleteDialog(false);
         }}
         userId={props.id}
-      ></AlertDialog>
+      ></AlertDialogDeleteUser>
       <UpdateUserDialog
         open={editModalOpen}
         handleClose={() => {

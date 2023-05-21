@@ -1,4 +1,4 @@
-import React, { type ChangeEvent } from 'react';
+import React, { type ChangeEvent, useState } from 'react';
 import { type User } from '../core/_models';
 
 import { type Order } from '@components/table/types';
@@ -13,6 +13,7 @@ import { useSnackbar } from 'notistack';
 import { useQueryResponse } from '../core/QueryResponseProvider';
 import { TableHeadCustom, TableActionsToolbar } from '@components/table';
 import { Tooltip, IconButton } from '@mui/material';
+import { AlertDialogDeleteMultiple } from './alerts/AlertDialogDeleteMultiple';
 
 interface EnhancedTableProps {
   numSelected: number;
@@ -32,6 +33,7 @@ function EnhancedTableHead(props: EnhancedTableProps) {
   const createSortHandler = (property: keyof User | null) => {
     onRequestSort(property);
   };
+  const [openDialogState, setOpenDialogState] = useState(false);
 
   const { isAllSelected, onSelectAll, selected } = useListView();
 
@@ -66,30 +68,43 @@ function EnhancedTableHead(props: EnhancedTableProps) {
   };
 
   return (
-    <TableHeadCustom
-      tableKey="user-table"
-      withCheckbox
-      headCells={headCells}
-      allSelected={isAllSelected}
-      onSelectAll={onSelectAll}
-      selected={selected}
-      clearSelected={clearSelected}
-      orderBy={orderBy}
-      order={order}
-      onSort={createSortHandler}
-    >
-      <TableActionsToolbar colSpan={8} selected={selected}>
-        <Tooltip title="Delete">
-          <IconButton
-            onClick={() => {
-              deleteSelectedItems.mutateAsync();
-            }}
-          >
-            <DeleteIcon />
-          </IconButton>
-        </Tooltip>
-      </TableActionsToolbar>
-    </TableHeadCustom>
+    <>
+      <TableHeadCustom
+        tableKey="user-table"
+        withCheckbox
+        headCells={headCells}
+        allSelected={isAllSelected}
+        onSelectAll={onSelectAll}
+        selected={selected}
+        clearSelected={clearSelected}
+        orderBy={orderBy}
+        order={order}
+        onSort={createSortHandler}
+      >
+        <TableActionsToolbar colSpan={8} selected={selected}>
+          <Tooltip title="Delete">
+            <IconButton
+              onClick={() => {
+                setOpenDialogState(true);
+              }}
+            >
+              <DeleteIcon />
+            </IconButton>
+          </Tooltip>
+        </TableActionsToolbar>
+      </TableHeadCustom>
+
+      <AlertDialogDeleteMultiple
+        open={openDialogState}
+        agreeHandler={() => {
+          setOpenDialogState(false);
+          deleteSelectedItems.mutateAsync();
+        }}
+        closeHandler={() => {
+          setOpenDialogState(false);
+        }}
+      ></AlertDialogDeleteMultiple>
+    </>
   );
 }
 

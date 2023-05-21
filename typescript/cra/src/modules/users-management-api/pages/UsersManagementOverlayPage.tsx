@@ -8,7 +8,7 @@ import { CreateUserPlainFormDialog } from '../components/create-user/CreateUserP
 import { UpdateUserDialog } from '../components/edit-user/UpdateUserDialog';
 import { ViewUserDialog } from '../components/view/ViewUserDialog';
 import { EnhancedTableToolbar } from '../components/EnhancedTableToolbar';
-import { AlertDialog } from '../components/AlertDialog';
+import { AlertDialogDeleteUser } from '../components/alerts/AlertDialogDeleteUser';
 import { UndoSnackbar } from '../components/UndoSnackbar';
 import { Helmet } from 'react-helmet';
 import { Content, Intro, Toolbar } from '../../../layouts/default';
@@ -119,7 +119,7 @@ function UsersManagementOverlayPage() {
             setUpdateUserModalOpenState(false);
           }}
         ></UpdateUserDialog>
-        <AlertDialog
+        <AlertDialogDeleteUser
           open={openDeleteDialogState}
           handleAgreeClose={() => {
             setOpenDeleteDialogState(false);
@@ -130,7 +130,7 @@ function UsersManagementOverlayPage() {
             setOpenDeleteDialogState(false);
           }}
           userId={deleteUserIdState}
-        ></AlertDialog>
+        ></AlertDialogDeleteUser>
         <UndoSnackbar
           userId={deleteId}
           open={openUndoSnackbar}
