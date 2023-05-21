@@ -1,10 +1,10 @@
-import { UpdateUserFormWrapper } from '../components/edit-user/UpdateUserFormWrapper';
+import { UpdateUserFormWrapper } from '../components';
 import { Card } from '@mui/material';
 import { useNavigate, useParams } from 'react-router';
 import { Helmet } from 'react-helmet';
 import { Content, Intro, Toolbar } from '../../../layouts/default';
 import { useNavBreadcrumbs } from '@components/nav';
-import { NAV_VERTICAL } from '../../../config/navs.config';
+import { NAV_VERTICAL } from 'configs';
 import { PageContainer } from '@components/page-container';
 
 function UpdateUserPage() {

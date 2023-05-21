@@ -8,7 +8,7 @@ module.exports = {
       pages: path.resolve(__dirname, 'src/pages'),
       routing: path.resolve(__dirname, 'src/routing'),
       theme: path.resolve(__dirname, 'src/theme'),
-      configs: path.resolve(__dirname, 'src/configs'),
+      configs: path.resolve(__dirname, 'src/config'),
       providers: path.resolve(__dirname, 'src/providers'),
       utils: path.resolve(__dirname, 'src//utils'),
       partials: path.resolve(__dirname, 'src//partials'),

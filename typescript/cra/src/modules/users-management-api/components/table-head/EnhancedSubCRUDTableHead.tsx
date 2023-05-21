@@ -1,7 +1,6 @@
 import React, { type FormEvent, type ChangeEvent } from 'react';
-import { type User } from '../core/_models';
+import { type User, headCells } from '../../core';
 import { type Order } from '@components/table/types';
-import { headCells } from '../core/headCellConfiguration';
 import { TableHeadCustom } from '@components/table';
 
 interface EnhancedTableProps {

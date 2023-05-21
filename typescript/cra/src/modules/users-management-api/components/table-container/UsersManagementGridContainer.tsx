@@ -15,24 +15,27 @@ import {
 import { IconButton, Avatar, Box } from '@mui/material';
 import DeleteIcon from '@mui/icons-material/Delete';
 import { useEffect, useMemo, useState } from 'react';
-import { useQueryRequest } from '../core/QueryRequestProvider';
 import {
+  useQueryRequest,
   useQueryResponse,
   useQueryResponseData,
   useQueryResponseLoading,
-  useQueryResponsePagination
-} from '../core/QueryResponseProvider';
-import { initialQueryRequest, initialQueryState, QUERIES, UserQueryState } from '../helpers';
-import { UndoActions } from './UndoActions';
-import UsersManagementActionsCell from './cells/UsersManagementActionsCell';
+  useQueryResponsePagination,
+  deleteSelectedUsers,
+  restoreMultipleUsers,
+  User,
+  useListView
+} from '../../core';
+import { initialQueryRequest, initialQueryState, QUERIES, UserQueryState } from '../../helpers';
+import {
+  UndoActions,
+  UsersManagementActionsCell,
+  AlertDialogDeleteMultiple
+} from '../../components';
 import { useSnackbar } from 'notistack';
-import { deleteSelectedUsers, restoreMultipleUsers } from '../core/_requests';
-import { User } from '../core/_models';
 import { toAbsoluteUrl } from 'utils';
 import { useMutation, useQueryClient } from 'react-query';
-import { useListView } from '../core/ListViewProvider';
 import { useLocation } from 'react-router';
-import { AlertDialogDeleteMultiple } from './alerts/AlertDialogDeleteMultiple';
 import qs from 'qs';
 
 interface Props {

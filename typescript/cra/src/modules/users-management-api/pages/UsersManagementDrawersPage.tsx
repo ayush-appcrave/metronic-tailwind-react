@@ -1,16 +1,18 @@
 import { useState } from 'react';
 
 import { Button, Box, Card } from '@mui/material';
-import { UserManagementTableContainer } from '../components/UserManagementTableContainer';
+import {
+  UserManagementTableContainer,
+  CreateUserDrawer,
+  EnhancedTableToolbar,
+  UpdateUserDrawer,
+  ViewUserDrawer
+} from '../components';
 
-import { CreateUserDrawer } from '../components/create-user/CreateUserDrawer';
-import { EnhancedTableToolbar } from '../components/EnhancedTableToolbar';
-import { UpdateUserDrawer } from '../components/edit-user/UpdateUserDrawer';
-import { ViewUserDrawer } from '../components/view/ViewUserDrawer';
 import { Helmet } from 'react-helmet';
 import { Content, Intro, Toolbar } from '../../../layouts/default';
 import { useNavBreadcrumbs } from '@components/nav';
-import { NAV_VERTICAL } from '../../../config/navs.config';
+import { NAV_VERTICAL } from 'configs';
 import { PageContainer } from '@components/page-container';
 
 function UsersManagementDrawersPage() {

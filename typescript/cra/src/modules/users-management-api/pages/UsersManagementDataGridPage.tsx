@@ -1,7 +1,7 @@
 import { Helmet } from 'react-helmet';
 import { Content, Intro, Toolbar } from '../../../layouts/default';
 import { PageContainer } from '@components/page-container';
-import { UsersManagementGridContainer } from '../components/UsersManagementGridContainer';
+import { UsersManagementGridContainer } from '../components';
 import { Card } from '@mui/material';
 
 function UsersManagementDataGridPage() {

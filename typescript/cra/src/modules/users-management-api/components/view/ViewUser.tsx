@@ -1,10 +1,9 @@
 import { useSnackbar } from 'notistack';
-import { useQueryResponse } from '../../core/QueryResponseProvider';
+import { useQueryResponse, deleteUser, getUserById } from '../../core';
 import { useMutation, useQueryClient } from 'react-query';
 import { useNavigate } from 'react-router';
 import { useEffect, useState } from 'react';
-import { type User } from '../../core/_models';
-import { deleteUser, getUserById } from '../../core/_requests';
+import { type User } from '../../core';
 import { QUERIES } from '../../helpers';
 import { Avatar, Box, Button, Typography, Skeleton } from '@mui/material';
 import { toAbsoluteUrl } from 'utils';

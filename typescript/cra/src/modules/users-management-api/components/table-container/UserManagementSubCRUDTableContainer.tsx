@@ -14,24 +14,24 @@ import {
   TableRow,
   Typography
 } from '@mui/material';
-import { EnhancedSubCRUDTableHead } from './EnhancedSubCRUDTableHead';
+import { EnhancedSubCRUDTableHead } from '../table-head';
 import { toAbsoluteUrl } from 'utils';
 import React, { type ChangeEvent, useEffect, useMemo, useState } from 'react';
-import { type User } from '../core/_models';
-import { useListView } from '../core/ListViewProvider';
-import { type Order } from '@components/table/types';
+import { type User } from '../../core';
 import {
+  useListView,
   useQueryResponseData,
   useQueryResponseLoading,
-  useQueryResponsePagination
-} from '../core/QueryResponseProvider';
-import { useQueryRequest } from '../core/QueryRequestProvider';
+  useQueryResponsePagination,
+  useQueryRequest
+} from '../../core';
+import { type Order } from '@components/table/types';
 import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
 import KeyboardArrowUpIcon from '@mui/icons-material/KeyboardArrowUp';
-import { StaticDataTableCRUD } from './static-table/StaticDataTableCRUD';
+import { StaticDataTableCRUD } from '../static-table';
 import { useSearchParams } from 'react-router-dom';
 import qs from 'qs';
-import { initialQueryRequest } from '../helpers';
+import { initialQueryRequest } from '../../helpers';
 import { TableOverlayLoader } from '@components/table/loading/TableOverlayLoader';
 import zIndex from '@mui/material/styles/zIndex';
 import { TableSkeletonLoader } from '@components/table/loading/TableSkeletonLoader';

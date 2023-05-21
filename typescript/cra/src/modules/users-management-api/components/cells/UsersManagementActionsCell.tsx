@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { useNavigate } from 'react-router';
 import { Button, Menu, MenuItem } from '@mui/material';
 import { UpdateUserDialog } from '../edit-user/UpdateUserDialog';
-import { AlertDialogDeleteUser } from '../alerts/AlertDialogDeleteUser';
+import { AlertDialogDeleteUser } from '../alerts';
 
 interface IUsersManagementActionsCellProps {
   id: string;
@@ -93,4 +93,4 @@ function UsersManagementActionsCell(props: IUsersManagementActionsCellProps) {
   );
 }
 
-export default UsersManagementActionsCell;
+export { UsersManagementActionsCell };

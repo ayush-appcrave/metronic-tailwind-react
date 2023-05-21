@@ -11,21 +11,21 @@ import {
   TablePagination,
   TableRow
 } from '@mui/material';
-import { EnhancedTableHead } from './EnhancedTableHead';
+import { EnhancedTableHead } from '../table-head';
 import { toAbsoluteUrl } from 'utils';
 import React, { type ChangeEvent, useEffect, useMemo, useState } from 'react';
-import { type User } from '../core/_models';
-import { useListView } from '../core/ListViewProvider';
-import { type Order } from '@components/table/types';
 import {
+  type User,
+  useListView,
   useQueryResponseData,
   useQueryResponseLoading,
-  useQueryResponsePagination
-} from '../core/QueryResponseProvider';
-import { useQueryRequest } from '../core/QueryRequestProvider';
+  useQueryResponsePagination,
+  useQueryRequest
+} from '../../core';
+import { type Order } from '@components/table/types';
 import { useSearchParams } from 'react-router-dom';
 import qs from 'query-string';
-import { initialQueryRequest } from '../helpers';
+import { initialQueryRequest } from '../../helpers';
 import { TableSkeletonLoader } from '@components/table/loading/TableSkeletonLoader';
 import { formatDate, TableNoData } from '@components/table';
 

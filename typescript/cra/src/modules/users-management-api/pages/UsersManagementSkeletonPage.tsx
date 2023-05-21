@@ -1,20 +1,21 @@
 import React, { useState } from 'react';
 
 import { Button, Box, Card } from '@mui/material';
-import { UserManagementSkeletonTableContainer } from '../components/UserManagementSkeletonTableContainer';
+import {
+  UserManagementSkeletonTableContainer,
+  CreateUserDrawer,
+  CreateUserStepperFormDialog,
+  EnhancedTableToolbar,
+  UsersManagementActionsCell,
+  UndoActions
+} from '../components';
 
-import { useQueryResponse } from '../core/QueryResponseProvider';
-import { CreateUserDrawer } from '../components/create-user/CreateUserDrawer';
-import { CreateUserStepperFormDialog } from '../components/create-user/CreateUserStepperFormDialog';
-import { EnhancedTableToolbar } from '../components/EnhancedTableToolbar';
-import { restoreMultipleUsers } from '../core/_requests';
-import UsersManagementActionsCell from '../components/cells/UsersManagementActionsCell';
-import { UndoActions } from '../components/UndoActions';
+import { useQueryResponse, restoreMultipleUsers } from '../core';
 import { useSnackbar } from 'notistack';
 import { Helmet } from 'react-helmet';
 import { Content, Intro, Toolbar } from '../../../layouts/default';
 import { useNavBreadcrumbs } from '@components/nav';
-import { NAV_VERTICAL } from '../../../config/navs.config';
+import { NAV_VERTICAL } from 'configs';
 import { PageContainer } from '@components/page-container';
 
 function UsersManagementSkeletonPage() {

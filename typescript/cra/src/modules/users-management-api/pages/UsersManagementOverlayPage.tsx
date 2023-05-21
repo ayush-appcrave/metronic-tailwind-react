@@ -1,19 +1,20 @@
 import React, { useState } from 'react';
 
 import { Button, Box, Card } from '@mui/material';
-import { UserManagementTableContainer } from '../components/UserManagementTableContainer';
-
-import { CreateUserStepperFormDialog } from '../components/create-user/CreateUserStepperFormDialog';
-import { CreateUserPlainFormDialog } from '../components/create-user/CreateUserPlainFormDialog';
-import { UpdateUserDialog } from '../components/edit-user/UpdateUserDialog';
-import { ViewUserDialog } from '../components/view/ViewUserDialog';
-import { EnhancedTableToolbar } from '../components/EnhancedTableToolbar';
-import { AlertDialogDeleteUser } from '../components/alerts/AlertDialogDeleteUser';
-import { UndoSnackbar } from '../components/UndoSnackbar';
+import {
+  UserManagementTableContainer,
+  CreateUserStepperFormDialog,
+  CreateUserPlainFormDialog,
+  UpdateUserDialog,
+  ViewUserDialog,
+  EnhancedTableToolbar,
+  AlertDialogDeleteUser,
+  UndoSnackbar
+} from '../components';
 import { Helmet } from 'react-helmet';
 import { Content, Intro, Toolbar } from '../../../layouts/default';
 import { useNavBreadcrumbs } from '@components/nav';
-import { NAV_VERTICAL } from '../../../config/navs.config';
+import { NAV_VERTICAL } from 'configs';
 import { PageContainer } from '@components/page-container';
 
 function UsersManagementOverlayPage() {

@@ -15,24 +15,24 @@ import {
   TableRow,
   TextField
 } from '@mui/material';
-import { EnhancedTableHead } from './EnhancedTableHead';
+import { EnhancedTableHead } from '../table-head';
 import { toAbsoluteUrl } from 'utils';
 import React, { type ChangeEvent, useEffect, useMemo, useState } from 'react';
-import { type User } from '../core/_models';
-import { useListView } from '../core/ListViewProvider';
 import {
+  type User,
+  useListView,
   useQueryResponse,
   useQueryResponseData,
   useQueryResponseLoading,
-  useQueryResponsePagination
-} from '../core/QueryResponseProvider';
-import { useQueryRequest } from '../core/QueryRequestProvider';
-import { updateUser } from '../core/_requests';
+  useQueryResponsePagination,
+  useQueryRequest,
+  updateUser
+} from '../../core';
 import { useSnackbar } from 'notistack';
 import { Order } from '@components/table/types';
 import { useSearchParams } from 'react-router-dom';
 import qs from 'qs';
-import { initialQueryRequest } from '../helpers';
+import { initialQueryRequest } from '../../helpers';
 import { TableOverlayLoader } from '@components/table/loading/TableOverlayLoader';
 import { ProgressBarLoader } from '@components/loaders';
 import { TableSkeletonLoader } from '@components/table/loading/TableSkeletonLoader';

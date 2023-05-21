@@ -1,8 +1,7 @@
 import { Button, IconButton, Snackbar } from '@mui/material';
-import { restoreUser } from '../core/_requests';
+import { restoreUser, useQueryResponse } from '../../core';
 import { Close } from '@mui/icons-material';
 import { useSnackbar } from 'notistack';
-import { useQueryResponse } from '../core/QueryResponseProvider';
 import { useEffect, useState, type SyntheticEvent } from 'react';
 
 interface Props {
