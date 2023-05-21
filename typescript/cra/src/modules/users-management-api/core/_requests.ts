@@ -1,4 +1,5 @@
 import axios, { type AxiosResponse } from 'axios';
+
 import { type Response } from '../helpers';
 import { type User, type UserPasswords, type UsersQueryResponse } from './_models';
 
@@ -71,13 +72,13 @@ const restoreMultipleUsers = async (userIds: string[]): Promise<void> => {
 };
 
 export {
-  getUsers,
-  deleteUser,
-  deleteSelectedUsers,
-  getUserById,
   createUser,
-  updateUser,
-  updateUserPassword,
+  deleteSelectedUsers,
+  deleteUser,
+  getUserById,
+  getUsers,
+  restoreMultipleUsers,
   restoreUser,
-  restoreMultipleUsers
+  updateUser,
+  updateUserPassword
 };

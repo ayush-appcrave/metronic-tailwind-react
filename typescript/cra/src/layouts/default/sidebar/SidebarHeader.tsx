@@ -1,8 +1,9 @@
-import React, { useEffect, useRef } from 'react';
 import { Stack } from '@mui/material';
+import React, { useEffect, useRef } from 'react';
+
 import { useDefaultLayout } from '..';
-import { SidebarLogo } from './SidebarLogo';
 import { SidebarCollapseButton } from './SidebarCollapseButton';
+import { SidebarLogo } from './SidebarLogo';
 
 interface Props {
   setHeaderHeight: React.Dispatch<React.SetStateAction<number>>;

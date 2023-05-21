@@ -1,11 +1,12 @@
-import { useEffect, useState, ReactElement } from 'react';
+import { ReactElement, useEffect, useState } from 'react';
 import { Navigate, Route, Routes, useLocation } from 'react-router';
-import { useLoaders } from '../providers/LoadersProvider';
+
 import { AuthPage, Logout, useAuth } from '../auth';
-import { DashboardPage, EcommercePage, MarketingPage } from '../pages';
-import { ErrorsPage } from '../modules/errors';
 import { DefaultLayout } from '../layouts/default';
+import { ErrorsPage } from '../modules/errors';
 import { UsersManagementWrapper } from '../modules/users-management-api';
+import { DashboardPage, EcommercePage, MarketingPage } from '../pages';
+import { useLoaders } from '../providers/LoadersProvider';
 
 const AppRouting = (): ReactElement => {
   const { currentUser } = useAuth();

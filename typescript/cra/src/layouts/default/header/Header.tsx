@@ -1,14 +1,15 @@
-import { Box, alpha, useTheme } from '@mui/material';
 import { PageContainer } from '@components/page-container';
+import { alpha, Box, useTheme } from '@mui/material';
+
 import useResponsive from '../../../hooks/useResponsive';
-import { useDefaultLayout, DefaultLayoutStylesConfig } from '../';
-import { HeaderMobileLogo } from './HeaderMobileLogo';
-import { HeaderSearch } from './HeaderSearch';
-import { HeaderNotificationsMenu } from './HeaderNotificationsMenu';
-import { HeaderMessagesMenu } from './HeaderMessagesMenu';
+import { DefaultLayoutStylesConfig, useDefaultLayout } from '../';
 import { HeaderLanguageMenu } from './HeaderLanguageMenu';
-import { HeaderUserMenu } from './HeaderUserMenu';
+import { HeaderMessagesMenu } from './HeaderMessagesMenu';
+import { HeaderMobileLogo } from './HeaderMobileLogo';
 import { HeaderModeSwitcher } from './HeaderModeSwitcher';
+import { HeaderNotificationsMenu } from './HeaderNotificationsMenu';
+import { HeaderSearch } from './HeaderSearch';
+import { HeaderUserMenu } from './HeaderUserMenu';
 
 const Header = () => {
   const { isHeaderSticky, sidebarWidth } = useDefaultLayout();

@@ -1,16 +1,18 @@
-import React from 'react';
-import ReactDOM from 'react-dom/client';
-import axios from 'axios';
-import { App } from './App';
-import { QueryClient, QueryClientProvider } from 'react-query';
-import reportWebVitals from './reportWebVitals';
 import 'simplebar/src/simplebar.css';
 import '@components/keenicons/assets/duotone/style.css';
 import '@components/keenicons/assets/outline/style.css';
 import '@components/keenicons/assets/solid/style.css';
-import { setupAxios } from './auth';
 import './index.css';
 import './App.css';
+
+import axios from 'axios';
+import React from 'react';
+import ReactDOM from 'react-dom/client';
+import { QueryClient, QueryClientProvider } from 'react-query';
+
+import { App } from './App';
+import { setupAxios } from './auth';
+import reportWebVitals from './reportWebVitals';
 // TODO: clarify helmet
 // import { Helmet } from "react-helmet";
 

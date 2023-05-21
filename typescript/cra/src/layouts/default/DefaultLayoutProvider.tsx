@@ -1,9 +1,10 @@
-import { type PropsWithChildren, createContext, useState, useContext } from 'react';
-import { type ILayoutProvider, type ILayoutConfig } from '../';
-import { type LayoutsType, useLayouts } from '../../providers/LayoutsProvider';
+import { createContext, type PropsWithChildren, useContext, useState } from 'react';
+
 import { useScrollPosition } from '../../hooks/useScrollPosition';
-import { defaultLayoutConfig } from './DefaultLayoutConfig';
+import { type LayoutsType, useLayouts } from '../../providers/LayoutsProvider';
+import { type ILayoutConfig, type ILayoutProvider } from '../';
 import { DefaultLayoutStylesConfig } from './';
+import { defaultLayoutConfig } from './DefaultLayoutConfig';
 
 type DefaultLayoutProviderProps = {
   isHeaderSticky: boolean;
@@ -94,4 +95,4 @@ const DefaultLayoutProvider = ({ children }: PropsWithChildren) => {
   );
 };
 
-export { useDefaultLayout, DefaultLayoutProvider };
+export { DefaultLayoutProvider, useDefaultLayout };

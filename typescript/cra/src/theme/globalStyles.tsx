@@ -1,4 +1,4 @@
-import { type Theme, GlobalStyles as CustomGlobalStyles } from '@mui/material';
+import { GlobalStyles as CustomGlobalStyles, type Theme } from '@mui/material';
 
 const GlobalStyles = ({ theme }: { theme: Theme }) => {
   return (

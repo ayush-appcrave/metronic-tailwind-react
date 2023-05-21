@@ -1,6 +1,6 @@
-import { type PropsWithChildren } from 'react';
-import { useTheme } from '@mui/material/styles';
 import { Box } from '@mui/material';
+import { useTheme } from '@mui/material/styles';
+import { type PropsWithChildren } from 'react';
 
 const ToolbarActions = ({ children }: PropsWithChildren) => {
   const theme = useTheme();

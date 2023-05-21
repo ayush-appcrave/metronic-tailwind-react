@@ -1,11 +1,12 @@
-import { type FC, useState, createContext, useContext, useMemo, type ReactNode } from 'react';
+import { createContext, type FC, type ReactNode, useContext, useMemo, useState } from 'react';
+
 import {
   calculatedGroupingIsDisabled,
   calculateIsAllDataSelected,
   groupingOnSelect,
+  groupingOnSelectAll,
   initialListView,
-  type ListViewContextProps,
-  groupingOnSelectAll
+  type ListViewContextProps
 } from '../helpers';
 import { useQueryResponse, useQueryResponseData } from './QueryResponseProvider';
 

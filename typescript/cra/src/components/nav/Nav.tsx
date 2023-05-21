@@ -1,6 +1,7 @@
-import { memo } from 'react';
 import { List, type SxProps } from '@mui/material';
-import { NavItem, type NavType, type NavItemOptionsType } from './';
+import { memo } from 'react';
+
+import { NavItem, type NavItemOptionsType, type NavType } from './';
 
 const NavComponent = ({
   variant = 'inline',

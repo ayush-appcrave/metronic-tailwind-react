@@ -1,5 +1,5 @@
-import { Breadcrumbs, Link, Box, useTheme } from '@mui/material';
 import { type NavBreadcrumbsType } from '@components/nav';
+import { Box, Breadcrumbs, Link, useTheme } from '@mui/material';
 
 interface PropsType {
   breadcrumbs: NavBreadcrumbsType;

@@ -1,8 +1,8 @@
-import { useDefaultLayout } from '..';
-import { useViewport } from '../../../hooks';
-import Scrollbar from '../../../components/scrollbar';
 import { Nav, NavVerticalStylesConfig } from '../../../components/nav';
+import Scrollbar from '../../../components/scrollbar';
 import { NAV_VERTICAL } from '../../../config/navs.config';
+import { useViewport } from '../../../hooks';
+import { useDefaultLayout } from '..';
 
 interface Props {
   headerHeight?: number;

@@ -1,7 +1,8 @@
-import { type ReactElement } from 'react';
-import { Box, Button, Dialog, Typography } from '@mui/material';
-import { ViewUser } from './ViewUser';
 import { Close } from '@mui/icons-material';
+import { Box, Button, Dialog, Typography } from '@mui/material';
+import { type ReactElement } from 'react';
+
+import { ViewUser } from './ViewUser';
 
 interface CreateUserDialogProps {
   userId: string;

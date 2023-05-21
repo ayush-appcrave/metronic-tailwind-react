@@ -1,8 +1,9 @@
-import { useState, createContext, useContext, type PropsWithChildren } from 'react';
 import { type PaletteMode } from '@mui/material';
-import { getData, setData } from '../utils';
+import { createContext, type PropsWithChildren, useContext, useState } from 'react';
+
 import { defaultSettings } from '../config/settings.config';
 import { type SettingsType } from '../config/types';
+import { getData, setData } from '../utils';
 
 const SETTINGS_CONFIG_KEY = 'app-settings-config';
 

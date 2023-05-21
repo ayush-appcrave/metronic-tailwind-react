@@ -1,10 +1,11 @@
-import * as Yup from 'yup';
+import clsx from 'clsx';
 import { useFormik } from 'formik';
+import { useState } from 'react';
+import { Link } from 'react-router-dom';
+import * as Yup from 'yup';
+
 import { getUserByToken, login } from '../_requests';
 import { useAuth } from '../JWTProvider';
-import { useState } from 'react';
-import clsx from 'clsx';
-import { Link } from 'react-router-dom';
 
 const loginSchema = Yup.object().shape({
   email: Yup.string()

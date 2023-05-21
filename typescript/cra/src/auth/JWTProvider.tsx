@@ -1,17 +1,18 @@
 import {
-  useState,
-  useEffect,
   createContext,
-  useContext,
-  useRef,
   type Dispatch,
+  type PropsWithChildren,
   type SetStateAction,
-  type PropsWithChildren
+  useContext,
+  useEffect,
+  useRef,
+  useState
 } from 'react';
-import { type AuthModel, type UserModel } from './_models';
-import * as authHelper from './_helpers';
-import { getUserByToken } from './_requests';
+
 import { useLoaders } from '../providers/LoadersProvider';
+import * as authHelper from './_helpers';
+import { type AuthModel, type UserModel } from './_models';
+import { getUserByToken } from './_requests';
 
 interface AuthContextProps {
   auth: AuthModel | undefined;
@@ -104,4 +105,4 @@ const AuthInit = ({ children }: PropsWithChildren) => {
   return screenLoader ? <></> : <>{children}</>;
 };
 
-export { AuthProvider, AuthInit, useAuth };
+export { AuthInit, AuthProvider, useAuth };

@@ -1,10 +1,11 @@
-import { enUS, frFR, zhCN, arSA } from '@mui/material/locale';
+import { arSA, enUS, frFR, zhCN } from '@mui/material/locale';
+import { toAbsoluteUrl } from 'utils';
+
+import arMessages from './messages/ar.json';
 import enMessages from './messages/en.json';
 import frMessages from './messages/fr.json';
-import arMessages from './messages/ar.json';
 import zhMessages from './messages/zh.json';
 import { type LanguageType } from './types';
-import { toAbsoluteUrl } from 'utils';
 
 const I18N_MESSAGES = {
   en: enMessages,

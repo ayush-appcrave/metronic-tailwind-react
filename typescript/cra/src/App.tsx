@@ -1,13 +1,14 @@
-import { AuthProvider, AuthInit } from './auth';
 import { BrowserRouter } from 'react-router-dom';
+
+import { AuthInit, AuthProvider } from './auth';
 import {
-  SettingsProvider,
-  TranslationProvider,
-  ThemeRtlProvider,
   LayoutsProvider,
-  ThemeProvider,
   LoadersProvider,
-  SnackbarProvider
+  SettingsProvider,
+  SnackbarProvider,
+  ThemeProvider,
+  ThemeRtlProvider,
+  TranslationProvider
 } from './providers';
 import { AppRouting } from './routing';
 

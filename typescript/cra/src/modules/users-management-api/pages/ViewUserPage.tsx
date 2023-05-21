@@ -1,11 +1,12 @@
-import { ViewUser } from '../components';
-import { useParams } from 'react-router';
-import { Helmet } from 'react-helmet';
-import { Content, Intro, Toolbar } from '../../../layouts/default';
 import { useNavBreadcrumbs } from '@components/nav';
-import { NAV_VERTICAL } from 'configs';
 import { PageContainer } from '@components/page-container';
 import { Card } from '@mui/material';
+import { NAV_VERTICAL } from 'configs';
+import { Helmet } from 'react-helmet';
+import { useParams } from 'react-router';
+
+import { Content, Intro, Toolbar } from '../../../layouts/default';
+import { ViewUser } from '../components';
 
 function ViewUserPage() {
   const { id } = useParams();

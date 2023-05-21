@@ -1,28 +1,28 @@
-import { useState, type ReactNode } from 'react';
-import Box from '@mui/material/Box';
-import Stepper from '@mui/material/Stepper';
-import Step from '@mui/material/Step';
-import StepLabel from '@mui/material/StepLabel';
-import Button from '@mui/material/Button';
-import Typography from '@mui/material/Typography';
+import { Close } from '@mui/icons-material';
 import {
+  Box,
+  Button,
   FormControl,
   FormControlLabel,
   FormGroup,
   InputLabel,
   MenuItem,
   Select,
+  Step,
+  StepLabel,
+  Stepper,
   Switch,
-  TextField
+  TextField,
+  Typography
 } from '@mui/material';
-import { type User } from '../../core/_models';
-import { createUser } from '../../core/_requests';
-import { Close } from '@mui/icons-material';
-import { useQueryResponse } from '../../core/QueryResponseProvider';
-import { createAccountSchemas, inits } from './CreateUserStepperFormHelper';
+import axios from 'axios';
 import { Form, Formik, type FormikProps } from 'formik';
 import { useSnackbar } from 'notistack';
-import axios from 'axios';
+import { type ReactNode, useState } from 'react';
+
+import { type User } from '../../core';
+import { createUser, useQueryResponse } from '../../core';
+import { createAccountSchemas, inits } from './CreateUserStepperFormHelper';
 
 const steps = ['General', 'Auth info', 'Review'];
 

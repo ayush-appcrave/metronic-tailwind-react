@@ -1,19 +1,20 @@
+import { Routes } from 'react-router';
+import { Route } from 'react-router-dom';
+
 import { ListViewProvider } from './core/ListViewProvider';
 import { QueryRequestProvider } from './core/QueryRequestProvider';
 import { QueryResponseProvider } from './core/QueryResponseProvider';
-import { Route } from 'react-router-dom';
 import {
   UpdateUserPage,
-  UsersManagementPage,
-  UsersManagementOverlayPage,
+  UsersManagementDataGridPage,
   UsersManagementDrawersPage,
   UsersManagementInlineEditingPage,
-  UsersManagementSubCRUDPage,
+  UsersManagementOverlayPage,
+  UsersManagementPage,
   UsersManagementSkeletonPage,
-  UsersManagementDataGridPage,
+  UsersManagementSubCRUDPage,
   ViewUserPage
 } from './pages';
-import { Routes } from 'react-router';
 
 const UsersManagementWrapper = () => (
   <QueryRequestProvider>

@@ -1,5 +1,6 @@
+import { Box, IconButton, Stack } from '@mui/material';
 import React, { useEffect, useRef } from 'react';
-import { Stack, IconButton, Box } from '@mui/material';
+
 import { KeenIcon } from '../';
 
 interface Props {

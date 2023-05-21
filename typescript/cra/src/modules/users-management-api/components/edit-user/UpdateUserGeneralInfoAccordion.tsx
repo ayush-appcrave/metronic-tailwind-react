@@ -1,3 +1,4 @@
+import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import {
   Accordion,
   AccordionDetails,
@@ -17,14 +18,14 @@ import {
   TextField,
   Typography
 } from '@mui/material';
-import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
-import { useEffect, useState } from 'react';
-import { useSnackbar } from 'notistack';
-import { getUserById, updateUser } from '../../core/_requests';
-import { type User } from '../../core/_models';
-import { useQueryResponse } from '../../core/QueryResponseProvider';
 import { Formik } from 'formik';
+import { useSnackbar } from 'notistack';
+import { useEffect, useState } from 'react';
 import * as Yup from 'yup';
+
+import { type User } from '../../core/_models';
+import { getUserById, updateUser } from '../../core/_requests';
+import { useQueryResponse } from '../../core/QueryResponseProvider';
 
 interface UpdateUserGeneralInfoProps {
   userId: string;

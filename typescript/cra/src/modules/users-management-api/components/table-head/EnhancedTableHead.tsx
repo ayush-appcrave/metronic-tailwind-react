@@ -1,22 +1,22 @@
-import React, { type ChangeEvent, useState } from 'react';
-import { type User } from '../../core';
-
+import { TableActionsToolbar, TableHeadCustom } from '@components/table';
 import { type Order } from '@components/table/types';
+import DeleteIcon from '@mui/icons-material/Delete';
+import { IconButton, Tooltip } from '@mui/material';
+import { useSnackbar } from 'notistack';
+import React, { type ChangeEvent, useState } from 'react';
+import { useMutation, useQueryClient } from 'react-query';
+
+import { AlertDialogDeleteMultiple } from '../../components';
+import { type User } from '../../core';
 import {
-  headCells,
-  useListView,
   deleteSelectedUsers,
+  headCells,
   restoreMultipleUsers,
+  useListView,
   useQueryResponse
 } from '../../core';
-import DeleteIcon from '@mui/icons-material/Delete';
-import { useMutation, useQueryClient } from 'react-query';
 import { QUERIES } from '../../helpers';
 import { UndoActions } from '../undo';
-import { useSnackbar } from 'notistack';
-import { TableHeadCustom, TableActionsToolbar } from '@components/table';
-import { Tooltip, IconButton } from '@mui/material';
-import { AlertDialogDeleteMultiple } from '../../components';
 
 interface EnhancedTableProps {
   numSelected: number;

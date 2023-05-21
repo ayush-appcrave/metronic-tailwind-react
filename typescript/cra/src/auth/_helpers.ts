@@ -48,4 +48,4 @@ export function setupAxios(axios: any) {
   );
 }
 
-export { getAuth, setAuth, removeAuth, AUTH_LOCAL_STORAGE_KEY };
+export { AUTH_LOCAL_STORAGE_KEY, getAuth, removeAuth, setAuth };

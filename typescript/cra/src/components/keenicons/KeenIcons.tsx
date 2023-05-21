@@ -1,9 +1,10 @@
-import { memo } from 'react';
-import KeenIconsConfig from './config';
-import { type KeenIconsStyleType } from './types';
 import { Box } from '@mui/material';
 import { type SxProps, type Theme } from '@mui/material/styles';
+import { memo } from 'react';
+
 import { useSettings } from '../../providers/SettingsProvider';
+import KeenIconsConfig from './config';
+import { type KeenIconsStyleType } from './types';
 
 interface Props {
   icon: string;

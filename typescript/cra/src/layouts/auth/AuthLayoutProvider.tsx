@@ -1,6 +1,7 @@
-import { type PropsWithChildren, createContext, useState, useContext } from 'react';
-import { type ILayoutProvider, type ILayoutConfig } from '../';
+import { createContext, type PropsWithChildren, useContext, useState } from 'react';
+
 import { type LayoutsType, useLayouts } from '../../providers/LayoutsProvider';
+import { type ILayoutConfig, type ILayoutProvider } from '../';
 import { authLayoutConfig } from './AuthLayoutConfig';
 
 // eslint-disable-next-line @typescript-eslint/ban-types
@@ -34,4 +35,4 @@ const AuthLayoutProvider = ({ children }: PropsWithChildren) => {
   );
 };
 
-export { useAuthLayout, AuthLayoutProvider };
+export { AuthLayoutProvider, useAuthLayout };

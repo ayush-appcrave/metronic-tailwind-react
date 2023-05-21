@@ -1,5 +1,5 @@
-import { type PropsWithChildren } from 'react';
 import { SnackbarProvider as CustomSnackbarProvider } from 'notistack';
+import { type PropsWithChildren } from 'react';
 
 const SnackbarProvider = ({ children }: PropsWithChildren) => {
   return (

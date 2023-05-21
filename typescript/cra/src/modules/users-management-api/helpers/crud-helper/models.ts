@@ -1,8 +1,9 @@
 /* eslint-disable no-unused-vars */
-import { type Dispatch, type SetStateAction } from 'react';
-import { type UsersQueryResponse } from '../../core/_models';
-import { GridFilterItem } from '@mui/x-data-grid';
 import { type PaginationState, QueryState } from '@components/table/types';
+import { GridFilterItem } from '@mui/x-data-grid';
+import { type Dispatch, type SetStateAction } from 'react';
+
+import { type UsersQueryResponse } from '../../core/_models';
 
 export interface SearchState {
   search?: string;

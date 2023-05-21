@@ -1,5 +1,5 @@
-import { ReactNode } from 'react';
 import { Box, CircularProgress, type SxProps, type Theme } from '@mui/material';
+import { ReactNode } from 'react';
 
 export interface ContentLoaderProps {
   children?: ReactNode;

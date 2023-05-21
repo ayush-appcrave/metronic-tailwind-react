@@ -1,4 +1,5 @@
 import { Drawer } from '@mui/material';
+
 import { CreateUserForm } from './CreateUserForm';
 
 interface CreateUserDrawerProps {

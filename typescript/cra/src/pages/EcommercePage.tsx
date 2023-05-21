@@ -1,12 +1,13 @@
-import { useEffect, useState } from 'react';
-import { Helmet } from 'react-helmet';
-import { Button } from '@mui/material';
-import { Content, Toolbar, ToolbarActions, Intro } from '../layouts/default';
+import { ContentLoader } from '@components/loaders';
 import { useNavBreadcrumbs } from '@components/nav';
 import { PageContainer } from '@components/page-container';
-import { ContentLoader } from '@components/loaders';
-import { useLoaders } from '../providers/LoadersProvider';
+import { Button } from '@mui/material';
+import { useEffect, useState } from 'react';
+import { Helmet } from 'react-helmet';
+
 import { NAV_VERTICAL } from '../config/navs.config';
+import { Content, Intro, Toolbar, ToolbarActions } from '../layouts/default';
+import { useLoaders } from '../providers/LoadersProvider';
 
 const EcommercePage = () => {
   const { setContentLoader } = useLoaders();

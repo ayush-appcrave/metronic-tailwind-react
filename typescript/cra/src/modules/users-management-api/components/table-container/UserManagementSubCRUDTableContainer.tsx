@@ -1,3 +1,9 @@
+import { formatDate, TableNoData } from '@components/table';
+import { TableOverlayLoader } from '@components/table/loading/TableOverlayLoader';
+import { TableSkeletonLoader } from '@components/table/loading/TableSkeletonLoader';
+import { type Order } from '@components/table/types';
+import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
+import KeyboardArrowUpIcon from '@mui/icons-material/KeyboardArrowUp';
 import {
   Avatar,
   Box,
@@ -14,28 +20,23 @@ import {
   TableRow,
   Typography
 } from '@mui/material';
-import { EnhancedSubCRUDTableHead } from '../table-head';
-import { toAbsoluteUrl } from 'utils';
+import zIndex from '@mui/material/styles/zIndex';
+import qs from 'qs';
 import React, { type ChangeEvent, useEffect, useMemo, useState } from 'react';
+import { useSearchParams } from 'react-router-dom';
+import { toAbsoluteUrl } from 'utils';
+
 import { type User } from '../../core';
 import {
   useListView,
+  useQueryRequest,
   useQueryResponseData,
   useQueryResponseLoading,
-  useQueryResponsePagination,
-  useQueryRequest
+  useQueryResponsePagination
 } from '../../core';
-import { type Order } from '@components/table/types';
-import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
-import KeyboardArrowUpIcon from '@mui/icons-material/KeyboardArrowUp';
-import { StaticDataTableCRUD } from '../static-table';
-import { useSearchParams } from 'react-router-dom';
-import qs from 'qs';
 import { initialQueryRequest } from '../../helpers';
-import { TableOverlayLoader } from '@components/table/loading/TableOverlayLoader';
-import zIndex from '@mui/material/styles/zIndex';
-import { TableSkeletonLoader } from '@components/table/loading/TableSkeletonLoader';
-import { formatDate, TableNoData } from '@components/table';
+import { StaticDataTableCRUD } from '../static-table';
+import { EnhancedSubCRUDTableHead } from '../table-head';
 
 interface Props {
   children: (id: string) => React.ReactNode;

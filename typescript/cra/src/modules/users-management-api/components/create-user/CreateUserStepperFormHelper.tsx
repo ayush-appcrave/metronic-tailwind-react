@@ -1,4 +1,5 @@
 import * as Yup from 'yup';
+
 import { type User } from '../../core/_models';
 
 const createAccountSchemas = [

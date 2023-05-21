@@ -1,5 +1,6 @@
-import { styled } from '@mui/material/styles';
 import { Divider } from '@mui/material';
+import { styled } from '@mui/material/styles';
+
 import { type NavItemChildType } from '..';
 
 export const DividerStyled = styled(Divider, {

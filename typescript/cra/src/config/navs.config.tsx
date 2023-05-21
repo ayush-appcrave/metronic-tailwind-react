@@ -1,5 +1,5 @@
-import { type NavConfigType } from '../components/nav';
 import { KeenIcon } from '../components/keenicons';
+import { type NavConfigType } from '../components/nav';
 import { type PathsType } from '.';
 
 // Auth paths
@@ -241,4 +241,4 @@ const NAV_VERTICAL: NavConfigType = [
   }
 ];
 
-export { PATHS_AUTH, PATHS_GENERAL, NAV_COMMON, NAV_VERTICAL };
+export { NAV_COMMON, NAV_VERTICAL, PATHS_AUTH, PATHS_GENERAL };

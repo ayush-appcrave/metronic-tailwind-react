@@ -1,6 +1,7 @@
 import { Box } from '@mui/material';
-import { IntroTitle, IntroSubTitle, IntroBreadcrumbs } from './';
+
 import { type NavBreadcrumbsType } from '../../../components/nav';
+import { IntroBreadcrumbs, IntroSubTitle, IntroTitle } from './';
 
 export interface IntroProps {
   title?: string;

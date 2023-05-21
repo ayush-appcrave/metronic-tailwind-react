@@ -1,8 +1,9 @@
-import { useState, useEffect } from 'react';
 import { Drawer } from '@mui/material';
-import { SettingsHeader } from './SettingsHeader';
+import { useEffect, useState } from 'react';
+
 import { SettingsBody } from './SettingsBody';
 import { SettingsFooter } from './SettingsFooter';
+import { SettingsHeader } from './SettingsHeader';
 import { SettingsToggleButton } from './SettingsToggleButton';
 
 const Settings = () => {

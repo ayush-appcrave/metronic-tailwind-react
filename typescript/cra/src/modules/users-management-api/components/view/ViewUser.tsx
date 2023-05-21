@@ -1,12 +1,13 @@
+import { Avatar, Box, Button, Skeleton, Typography } from '@mui/material';
 import { useSnackbar } from 'notistack';
-import { useQueryResponse, deleteUser, getUserById } from '../../core';
+import { useEffect, useState } from 'react';
 import { useMutation, useQueryClient } from 'react-query';
 import { useNavigate } from 'react-router';
-import { useEffect, useState } from 'react';
+import { toAbsoluteUrl } from 'utils';
+
+import { deleteUser, getUserById, useQueryResponse } from '../../core';
 import { type User } from '../../core';
 import { QUERIES } from '../../helpers';
-import { Avatar, Box, Button, Typography, Skeleton } from '@mui/material';
-import { toAbsoluteUrl } from 'utils';
 
 interface Props {
   userId: string;

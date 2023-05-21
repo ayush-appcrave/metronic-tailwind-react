@@ -1,6 +1,7 @@
 import { type SxProps } from '@mui/material/styles';
-import { useDefaultLayout } from '../DefaultLayoutProvider';
 import { toAbsoluteUrl } from 'utils';
+
+import { useDefaultLayout } from '../DefaultLayoutProvider';
 
 interface Props {
   sx?: SxProps;

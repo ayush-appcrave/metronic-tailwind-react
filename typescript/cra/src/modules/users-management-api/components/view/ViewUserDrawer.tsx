@@ -1,6 +1,7 @@
-import { Box, Button, Drawer, Typography } from '@mui/material';
-import { ViewUser } from './ViewUser';
 import { Close } from '@mui/icons-material';
+import { Box, Button, Drawer, Typography } from '@mui/material';
+
+import { ViewUser } from './ViewUser';
 
 interface UpdateUserDrawerProps {
   open: boolean;

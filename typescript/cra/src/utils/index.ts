@@ -1,5 +1,5 @@
 export * from './Assets';
-export * from './Dom';
-export * from './Router';
 export * from './Devices';
+export * from './Dom';
 export * from './LocalStorage';
+export * from './Router';

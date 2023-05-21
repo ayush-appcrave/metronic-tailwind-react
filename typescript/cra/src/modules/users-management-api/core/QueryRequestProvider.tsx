@@ -1,11 +1,12 @@
-import { type FC, useState, createContext, useContext, type ReactNode } from 'react';
-import {
-  type QueryRequestContextProps,
-  initialQueryRequest,
-  UserQueryState,
-  stringifyRequestQuery
-} from '../helpers';
+import { createContext, type FC, type ReactNode, useContext, useState } from 'react';
 import { useSearchParams } from 'react-router-dom';
+
+import {
+  initialQueryRequest,
+  type QueryRequestContextProps,
+  stringifyRequestQuery,
+  UserQueryState
+} from '../helpers';
 
 interface WithChildren {
   children?: ReactNode;

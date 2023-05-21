@@ -1,5 +1,6 @@
-import { KeenIcon } from '../';
 import { Box, Button } from '@mui/material';
+
+import { KeenIcon } from '../';
 
 interface Props {
   onClick: () => void;

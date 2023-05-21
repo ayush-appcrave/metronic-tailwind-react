@@ -1,7 +1,7 @@
-import { Button, IconButton } from '@mui/material';
 import { Close } from '@mui/icons-material';
-import React, { SyntheticEvent } from 'react';
+import { Button, IconButton } from '@mui/material';
 import { SnackbarKey, useSnackbar } from 'notistack';
+import React, { SyntheticEvent } from 'react';
 
 interface Props {
   ids: string[];

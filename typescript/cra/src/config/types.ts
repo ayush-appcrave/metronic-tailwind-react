@@ -1,4 +1,5 @@
-import { type Direction, type Breakpoint } from '@mui/material';
+import { type Breakpoint, type Direction } from '@mui/material';
+
 import { type KeenIconsStyleType } from '../components/keenicons/types';
 
 export type SettingsModeOptionType = 'light' | 'dark' | 'system';

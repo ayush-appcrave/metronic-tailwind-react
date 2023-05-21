@@ -1,5 +1,5 @@
-import React, { useEffect, useRef } from 'react';
 import { Stack } from '@mui/material';
+import React, { useEffect, useRef } from 'react';
 
 interface Props {
   setFooterHeight: React.Dispatch<React.SetStateAction<number>>;

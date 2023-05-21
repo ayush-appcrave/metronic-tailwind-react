@@ -1,42 +1,43 @@
+import DeleteIcon from '@mui/icons-material/Delete';
+import { Avatar, Box, IconButton } from '@mui/material';
 import {
   DataGrid,
   GridCallbackDetails,
   GridColDef,
+  GridFilterItem,
   GridFilterModel,
   GridPaginationModel,
   GridRenderCellParams,
+  GridRowSelectionModel,
   GridSortModel,
   GridToolbarColumnsButton,
   GridToolbarContainer,
-  GridToolbarDensitySelector,
-  GridRowSelectionModel,
-  GridFilterItem
+  GridToolbarDensitySelector
 } from '@mui/x-data-grid';
-import { IconButton, Avatar, Box } from '@mui/material';
-import DeleteIcon from '@mui/icons-material/Delete';
+import { useSnackbar } from 'notistack';
+import qs from 'qs';
 import { useEffect, useMemo, useState } from 'react';
+import { useMutation, useQueryClient } from 'react-query';
+import { useLocation } from 'react-router';
+import { toAbsoluteUrl } from 'utils';
+
 import {
+  AlertDialogDeleteMultiple,
+  UndoActions,
+  UsersManagementActionsCell
+} from '../../components';
+import {
+  deleteSelectedUsers,
+  restoreMultipleUsers,
+  useListView,
   useQueryRequest,
   useQueryResponse,
   useQueryResponseData,
   useQueryResponseLoading,
   useQueryResponsePagination,
-  deleteSelectedUsers,
-  restoreMultipleUsers,
-  User,
-  useListView
+  User
 } from '../../core';
 import { initialQueryRequest, initialQueryState, QUERIES, UserQueryState } from '../../helpers';
-import {
-  UndoActions,
-  UsersManagementActionsCell,
-  AlertDialogDeleteMultiple
-} from '../../components';
-import { useSnackbar } from 'notistack';
-import { toAbsoluteUrl } from 'utils';
-import { useMutation, useQueryClient } from 'react-query';
-import { useLocation } from 'react-router';
-import qs from 'qs';
 
 interface Props {
   deleteHandler: () => void;

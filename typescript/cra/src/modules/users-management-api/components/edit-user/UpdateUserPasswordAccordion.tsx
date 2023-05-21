@@ -1,3 +1,4 @@
+import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 import {
   Accordion,
   AccordionDetails,
@@ -9,15 +10,15 @@ import {
   TextField,
   Typography
 } from '@mui/material';
-import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
-import { useQueryResponse } from '../../core/QueryResponseProvider';
+import axios from 'axios';
+import { useFormik } from 'formik';
+import { useSnackbar } from 'notistack';
 import { useState } from 'react';
+import * as Yup from 'yup';
+
 import { type UserPasswords } from '../../core/_models';
 import { updateUserPassword } from '../../core/_requests';
-import { useFormik } from 'formik';
-import * as Yup from 'yup';
-import axios from 'axios';
-import { useSnackbar } from 'notistack';
+import { useQueryResponse } from '../../core/QueryResponseProvider';
 
 interface UpdateUserPasswordProps {
   userId: string;

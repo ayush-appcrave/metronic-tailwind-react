@@ -1,7 +1,8 @@
-import { Box, IconButton, useTheme, styled } from '@mui/material';
-import { useSettings } from '../../../providers/SettingsProvider';
+import { Box, IconButton, styled, useTheme } from '@mui/material';
+
 import { KeenIcon } from '../../../components';
 import { type SettingsModeOptionType } from '../../../config';
+import { useSettings } from '../../../providers/SettingsProvider';
 
 const HeaderModeSwitcher = () => {
   const theme = useTheme();

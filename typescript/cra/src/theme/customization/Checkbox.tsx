@@ -1,5 +1,6 @@
-import { type Theme, type CheckboxProps } from '@mui/material';
-import { CheckboxIcon, CheckboxCheckedIcon, CheckboxIndeterminateIcon } from './Icons';
+import { type CheckboxProps, type Theme } from '@mui/material';
+
+import { CheckboxCheckedIcon, CheckboxIcon, CheckboxIndeterminateIcon } from './Icons';
 
 const Checkbox = (theme: Theme) => {
   return {

@@ -1,10 +1,11 @@
-import { type PropsWithChildren } from 'react';
-import { useTheme } from '@mui/material/styles';
 import { Box } from '@mui/material';
-import { useDefaultLayout, DefaultLayoutStylesConfig } from '../';
+import { useTheme } from '@mui/material/styles';
+import { type PropsWithChildren } from 'react';
+
+import { DefaultLayoutStylesConfig, useDefaultLayout } from '../';
+import { Footer } from '../footer/Footer';
 import { Header } from '../header/Header';
 import { Wrapper } from '../wrapper/Wrapper';
-import { Footer } from '../footer/Footer';
 
 const Main = ({ children }: PropsWithChildren) => {
   const theme = useTheme();

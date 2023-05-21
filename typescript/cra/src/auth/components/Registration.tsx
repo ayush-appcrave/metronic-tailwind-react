@@ -1,10 +1,11 @@
-import { useState } from 'react';
-import { useFormik } from 'formik';
 import clsx from 'clsx';
+import { useFormik } from 'formik';
+import { useState } from 'react';
+import { Link } from 'react-router-dom';
 import * as Yup from 'yup';
+
 import { getUserByToken, register } from '../_requests';
 import { useAuth } from '../JWTProvider';
-import { Link } from 'react-router-dom';
 
 const initialValues = {
   firstname: '',

@@ -1,7 +1,8 @@
-import React, { type FormEvent, type ChangeEvent } from 'react';
-import { type User, headCells } from '../../core';
-import { type Order } from '@components/table/types';
 import { TableHeadCustom } from '@components/table';
+import { type Order } from '@components/table/types';
+import React, { type ChangeEvent, type FormEvent } from 'react';
+
+import { headCells, type User } from '../../core';
 
 interface EnhancedTableProps {
   numSelected: number;

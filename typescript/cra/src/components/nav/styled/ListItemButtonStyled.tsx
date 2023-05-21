@@ -1,5 +1,6 @@
-import { styled } from '@mui/material/styles';
 import { ListItemButton } from '@mui/material';
+import { styled } from '@mui/material/styles';
+
 import { type NavItemChildType } from '..';
 
 export const ListItemButtonStyled = styled(ListItemButton, {

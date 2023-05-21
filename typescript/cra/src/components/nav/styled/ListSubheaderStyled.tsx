@@ -1,5 +1,6 @@
-import { styled } from '@mui/material/styles';
 import { ListSubheader } from '@mui/material';
+import { styled } from '@mui/material/styles';
+
 import { type NavItemChildType } from '..';
 
 export const ListSubheaderStyled = styled(ListSubheader, {

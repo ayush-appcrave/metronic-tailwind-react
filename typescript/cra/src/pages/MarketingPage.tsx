@@ -1,8 +1,9 @@
-import { Helmet } from 'react-helmet';
-import { Content, Toolbar, Intro } from '../layouts/default';
 import { useNavBreadcrumbs } from '@components/nav';
 import { PageContainer } from '@components/page-container';
-import { NAV_VERTICAL } from '../config/navs.config';
+import { Helmet } from 'react-helmet';
+
+import { NAV_VERTICAL } from 'configs';
+import { Content, Intro, Toolbar } from '../layouts/default';
 
 const MarketingPage = () => {
   const breadcrumbs = useNavBreadcrumbs(NAV_VERTICAL);

@@ -1,3 +1,7 @@
+import { formatDate, TableNoData } from '@components/table';
+import { TableOverlayLoader } from '@components/table/loading/TableOverlayLoader';
+import { TableSkeletonLoader } from '@components/table/loading/TableSkeletonLoader';
+import { type Order } from '@components/table/types';
 import {
   Avatar,
   Box,
@@ -11,24 +15,21 @@ import {
   TablePagination,
   TableRow
 } from '@mui/material';
-import { EnhancedTableHead } from '../../components';
-import { toAbsoluteUrl } from 'utils';
+import qs from 'qs';
 import React, { type ChangeEvent, useEffect, useMemo, useState } from 'react';
+import { useSearchParams } from 'react-router-dom';
+import { toAbsoluteUrl } from 'utils';
+
+import { EnhancedTableHead } from '../../components';
 import { type User } from '../../core';
 import {
   useListView,
+  useQueryRequest,
   useQueryResponseData,
   useQueryResponseLoading,
-  useQueryResponsePagination,
-  useQueryRequest
+  useQueryResponsePagination
 } from '../../core';
-import { type Order } from '@components/table/types';
-import { formatDate, TableNoData } from '@components/table';
-import { useSearchParams } from 'react-router-dom';
-import qs from 'qs';
 import { initialQueryRequest } from '../../helpers';
-import { TableSkeletonLoader } from '@components/table/loading/TableSkeletonLoader';
-import { TableOverlayLoader } from '@components/table/loading/TableOverlayLoader';
 
 interface Props {
   denseKey: string;

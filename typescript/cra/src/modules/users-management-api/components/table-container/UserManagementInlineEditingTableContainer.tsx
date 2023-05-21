@@ -1,3 +1,8 @@
+import { ProgressBarLoader } from '@components/loaders';
+import { formatDate, TableNoData } from '@components/table';
+import { TableOverlayLoader } from '@components/table/loading/TableOverlayLoader';
+import { TableSkeletonLoader } from '@components/table/loading/TableSkeletonLoader';
+import { Order } from '@components/table/types';
 import {
   Avatar,
   Box,
@@ -15,28 +20,24 @@ import {
   TableRow,
   TextField
 } from '@mui/material';
-import { EnhancedTableHead } from '../table-head';
-import { toAbsoluteUrl } from 'utils';
+import { useSnackbar } from 'notistack';
+import qs from 'qs';
 import React, { type ChangeEvent, useEffect, useMemo, useState } from 'react';
+import { useSearchParams } from 'react-router-dom';
+import { toAbsoluteUrl } from 'utils';
+
 import {
-  type User,
+  updateUser,
   useListView,
+  useQueryRequest,
   useQueryResponse,
   useQueryResponseData,
   useQueryResponseLoading,
   useQueryResponsePagination,
-  useQueryRequest,
-  updateUser
+  type User
 } from '../../core';
-import { useSnackbar } from 'notistack';
-import { Order } from '@components/table/types';
-import { useSearchParams } from 'react-router-dom';
-import qs from 'qs';
 import { initialQueryRequest } from '../../helpers';
-import { TableOverlayLoader } from '@components/table/loading/TableOverlayLoader';
-import { ProgressBarLoader } from '@components/loaders';
-import { TableSkeletonLoader } from '@components/table/loading/TableSkeletonLoader';
-import { formatDate, TableNoData } from '@components/table';
+import { EnhancedTableHead } from '../table-head';
 
 interface RowProps {
   row: User;

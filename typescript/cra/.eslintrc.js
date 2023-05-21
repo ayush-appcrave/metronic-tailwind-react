@@ -21,7 +21,7 @@ module.exports = {
     tsconfigRootDir: __dirname,
     sourceType: 'module'
   },
-  plugins: ['react', 'unused-imports'],
+  plugins: ['react', 'unused-imports', 'simple-import-sort'],
   rules: {
     'no-unused-vars': 'warn',
     '@typescript-eslint/no-unused-vars': 'off',
@@ -33,6 +33,9 @@ module.exports = {
     '@typescript-eslint/restrict-template-expressions': 'off',
     '@typescript-eslint/restrict-plus-operands': 'off',
     '@typescript-eslint/no-floating-promises': 'off',
-    '@typescript-eslint/naming-convention': 'off'
+    '@typescript-eslint/naming-convention': 'off',
+    'simple-import-sort/imports': 'warn',
+    'simple-import-sort/exports': 'warn',
+    'prettier/prettier': 'warn'
   }
 };

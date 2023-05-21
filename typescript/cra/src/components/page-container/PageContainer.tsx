@@ -1,7 +1,8 @@
-import { type ReactNode } from 'react';
 import { Container, type SxProps, type Theme } from '@mui/material';
-import { useSettings } from '../../providers/SettingsProvider';
+import { type ReactNode } from 'react';
+
 import { SettingsContainerWidthType } from '../../config/types';
+import { useSettings } from '../../providers/SettingsProvider';
 
 export interface PageContainerProps {
   children?: ReactNode;

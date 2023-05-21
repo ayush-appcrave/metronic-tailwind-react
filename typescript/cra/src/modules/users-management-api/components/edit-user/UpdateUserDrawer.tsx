@@ -1,6 +1,7 @@
-import { Box, Button, Drawer, Typography } from '@mui/material';
-import { UpdateUserFormWrapper } from './UpdateUserFormWrapper';
 import { Close } from '@mui/icons-material';
+import { Box, Button, Drawer, Typography } from '@mui/material';
+
+import { UpdateUserFormWrapper } from './UpdateUserFormWrapper';
 
 interface UpdateUserDrawerProps {
   open: boolean;

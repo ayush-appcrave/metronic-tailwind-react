@@ -1,5 +1,7 @@
+import { Close } from '@mui/icons-material';
 import {
   Button,
+  CircularProgress,
   FormControl,
   FormControlLabel,
   FormGroup,
@@ -10,18 +12,16 @@ import {
   Select,
   Switch,
   TextField,
-  Typography,
-  CircularProgress
+  Typography
 } from '@mui/material';
-import * as Yup from 'yup';
-import { Close } from '@mui/icons-material';
-import { useQueryResponse } from '../../core/QueryResponseProvider';
-import { type User } from '../../core/_models';
-import { createUser } from '../../core/_requests';
+import axios from 'axios';
 import { useFormik } from 'formik';
 import { useSnackbar } from 'notistack';
-import axios from 'axios';
 import { useState } from 'react';
+import * as Yup from 'yup';
+
+import { type User } from '../../core';
+import { createUser, useQueryResponse } from '../../core';
 
 interface CreateUserFormProps {
   open: boolean;

@@ -1,22 +1,21 @@
-import React, { useState } from 'react';
-
+import { useNavBreadcrumbs } from '@components/nav';
+import { PageContainer } from '@components/page-container';
 import { Box, Button, Card } from '@mui/material';
+import { NAV_VERTICAL } from 'configs';
+import { useSnackbar } from 'notistack';
+import React, { useState } from 'react';
+import { Helmet } from 'react-helmet';
+
+import { Content, Intro, Toolbar } from '../../../layouts/default';
 import {
-  UserManagementTableContainer,
   CreateUserDrawer,
   CreateUserStepperFormDialog,
   EnhancedTableToolbar,
-  UsersManagementActionsCell,
-  UndoActions
+  UndoActions,
+  UserManagementTableContainer,
+  UsersManagementActionsCell
 } from '../components';
-
-import { useQueryResponse, restoreMultipleUsers } from '../core';
-import { useSnackbar } from 'notistack';
-import { Helmet } from 'react-helmet';
-import { Content, Intro, Toolbar } from '../../../layouts/default';
-import { useNavBreadcrumbs } from '@components/nav';
-import { PageContainer } from '@components/page-container';
-import { NAV_VERTICAL } from 'configs';
+import { restoreMultipleUsers, useQueryResponse } from '../core';
 
 function UsersManagementPage() {
   const { enqueueSnackbar } = useSnackbar();

@@ -1,9 +1,9 @@
 import { useViewport } from '../../hooks';
 import Scrollbar from '../scrollbar';
-import { SettingsFormMode } from './SettingsFormMode';
-import { SettingsFormKeenIcons } from './SettingsFormKeenIcons';
-import { SettingsFormDirection } from './SettingsFormDirection';
 import { SettingsFormContainerWidth } from './SettingsFormContainerWidth';
+import { SettingsFormDirection } from './SettingsFormDirection';
+import { SettingsFormKeenIcons } from './SettingsFormKeenIcons';
+import { SettingsFormMode } from './SettingsFormMode';
 
 interface Props {
   headerHeight?: number;

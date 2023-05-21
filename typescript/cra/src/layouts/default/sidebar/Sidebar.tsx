@@ -1,12 +1,13 @@
-import { useEffect, useState } from 'react';
-import { useTheme } from '@mui/material/styles';
 import { Box, Drawer } from '@mui/material';
+import { useTheme } from '@mui/material/styles';
+import { useEffect, useState } from 'react';
+
 import useResponsive from '../../../hooks/useResponsive';
 import { useLoaders } from '../../../providers/LoadersProvider';
-import { useDefaultLayout, DefaultLayoutStylesConfig } from '../';
+import { DefaultLayoutStylesConfig, useDefaultLayout } from '../';
+import { SidebarFooter } from './SidebarFooter';
 import { SidebarHeader } from './SidebarHeader';
 import { SidebarNav } from './SidebarNav';
-import { SidebarFooter } from './SidebarFooter';
 
 const Sidebar = () => {
   const { contentLoader } = useLoaders();

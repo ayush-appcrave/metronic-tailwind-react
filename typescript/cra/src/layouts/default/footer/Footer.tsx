@@ -1,6 +1,7 @@
-import { Box, useTheme } from '@mui/material';
 import { PageContainer } from '@components/page-container';
-import { useDefaultLayout, DefaultLayoutStylesConfig } from '../';
+import { Box, useTheme } from '@mui/material';
+
+import { DefaultLayoutStylesConfig, useDefaultLayout } from '../';
 
 const Footer = () => {
   const { sidebarWidth } = useDefaultLayout();

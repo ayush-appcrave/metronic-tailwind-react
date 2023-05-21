@@ -1,5 +1,5 @@
-import { NavBreadcrumbsType, NavConfigType, NavItemOptionsType } from '../types';
 import { useMatchPath } from '../../../hooks';
+import { NavBreadcrumbsType, NavConfigType, NavItemOptionsType } from '../types';
 
 const useNavBreadcrumbs = (items: NavConfigType): NavBreadcrumbsType => {
   const findParents = (items: NavConfigType, parent?: NavItemOptionsType): NavBreadcrumbsType => {

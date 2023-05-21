@@ -1,15 +1,16 @@
-import { type PropsWithChildren, useMemo } from 'react';
 import { CssBaseline } from '@mui/material';
 import {
-  StyledEngineProvider,
   createTheme,
+  StyledEngineProvider,
   type ThemeOptions,
   ThemeProvider as CustomThemeProvider
 } from '@mui/material/styles';
-import { useSettings } from './SettingsProvider';
+import { type PropsWithChildren, useMemo } from 'react';
+
+import { breakpoints, getPalette, GlobalStyles, typography } from '../theme';
 import { componentsCustomization } from '../theme/customization';
-import { getPalette, typography, breakpoints, GlobalStyles } from '../theme';
-import { getSystemShadows, getCustomShadows } from '../theme/shadows';
+import { getCustomShadows, getSystemShadows } from '../theme/shadows';
+import { useSettings } from './SettingsProvider';
 
 const ThemeProvider = ({ children }: PropsWithChildren) => {
   const { settings, getMode } = useSettings();

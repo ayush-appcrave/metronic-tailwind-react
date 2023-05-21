@@ -1,9 +1,10 @@
-import { useState, type MouseEvent } from 'react';
 import { Box, MenuItem, useTheme } from '@mui/material';
+import { type MouseEvent, useState } from 'react';
+
 import { MenuDropdown } from '../../../components';
-import { useLang } from '../../../providers/TranslationProvider';
 import { I18N_LANGUAGES } from '../../../i18n/config';
 import { type LanguageType } from '../../../i18n/types';
+import { useLang } from '../../../providers/TranslationProvider';
 
 const HeaderLanguageMenu = () => {
   const theme = useTheme();

@@ -1,6 +1,7 @@
-import { UpdateUserFormWrapper } from './UpdateUserFormWrapper';
-import { Button, Dialog, Typography } from '@mui/material';
 import { Close } from '@mui/icons-material';
+import { Button, Dialog, Typography } from '@mui/material';
+
+import { UpdateUserFormWrapper } from './UpdateUserFormWrapper';
 
 interface EditUserDialogProps {
   open: boolean;

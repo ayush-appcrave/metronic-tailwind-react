@@ -1,6 +1,7 @@
-import { type PropsWithChildren, createContext, useState, useContext } from 'react';
-import { getData, setData } from '../utils';
+import { createContext, type PropsWithChildren, useContext, useState } from 'react';
+
 import { type ILayoutConfig } from '../layouts/models';
+import { getData, setData } from '../utils';
 
 const LAYOUTS_CONFIGS_KEY = 'layouts-configs';
 
@@ -56,4 +57,4 @@ const LayoutsProvider = ({ children }: PropsWithChildren) => {
   );
 };
 
-export { useLayouts, LayoutsProvider };
+export { LayoutsProvider, useLayouts };

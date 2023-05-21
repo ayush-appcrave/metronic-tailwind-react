@@ -1,5 +1,6 @@
-import { type User } from './_models';
 import { HeadCell } from '@components/table';
+
+import { type User } from './_models';
 
 type UserTableHeadCellsConfiguration = HeadCell<User>;
 
@@ -49,4 +50,4 @@ const headCells: UserTableHeadCellsConfiguration[] = [
   { id: null, hideSortIcon: true, width: '10%' }
 ];
 
-export { headCells, type HeadCell };
+export { type HeadCell, headCells };

@@ -1,7 +1,8 @@
+import { Box, ToggleButton } from '@mui/material';
 import { type MouseEvent } from 'react';
+
 import { KeenIcon } from '../../../components';
 import { useDefaultLayout } from '../DefaultLayoutProvider';
-import { Box, ToggleButton } from '@mui/material';
 
 interface Props {
   onToggle: () => void;

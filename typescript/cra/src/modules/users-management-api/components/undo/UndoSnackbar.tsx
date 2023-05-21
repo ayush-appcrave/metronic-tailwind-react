@@ -1,8 +1,9 @@
-import { Button, IconButton, Snackbar } from '@mui/material';
-import { restoreUser, useQueryResponse } from '../../core';
 import { Close } from '@mui/icons-material';
+import { Button, IconButton, Snackbar } from '@mui/material';
 import { useSnackbar } from 'notistack';
-import { useEffect, useState, type SyntheticEvent } from 'react';
+import { type SyntheticEvent, useEffect, useState } from 'react';
+
+import { restoreUser, useQueryResponse } from '../../core';
 
 interface Props {
   open: boolean;

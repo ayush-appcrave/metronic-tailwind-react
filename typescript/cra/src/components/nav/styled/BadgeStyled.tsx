@@ -1,5 +1,6 @@
-import { styled } from '@mui/material/styles';
 import { Badge } from '@mui/material';
+import { styled } from '@mui/material/styles';
+
 import { type NavItemChildType } from '..';
 
 const BadgeStyled = styled(Badge, {

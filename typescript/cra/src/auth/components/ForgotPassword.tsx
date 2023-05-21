@@ -1,8 +1,9 @@
-import { useState } from 'react';
-import * as Yup from 'yup';
 import clsx from 'clsx';
-import { Link } from 'react-router-dom';
 import { useFormik } from 'formik';
+import { useState } from 'react';
+import { Link } from 'react-router-dom';
+import * as Yup from 'yup';
+
 import { requestPassword } from '../_requests';
 
 const initialValues = {

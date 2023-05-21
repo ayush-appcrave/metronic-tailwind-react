@@ -1,18 +1,19 @@
-import { useState, type MouseEvent } from 'react';
 import {
-  Box,
-  Link,
-  Stack,
   Avatar,
-  MenuItem,
-  ListItemIcon,
+  Box,
   Divider,
   IconButton,
+  Link,
+  ListItemIcon,
+  MenuItem,
+  Stack,
   useTheme
 } from '@mui/material';
-import { KeenIcon, MenuDropdown } from '../../../components';
-import { useAuth } from '../../../auth';
+import { type MouseEvent, useState } from 'react';
 import { toAbsoluteUrl } from 'utils';
+
+import { useAuth } from '../../../auth';
+import { KeenIcon, MenuDropdown } from '../../../components';
 
 const HeaderUserMenu = () => {
   const theme = useTheme();

@@ -1,4 +1,4 @@
-export * from './types';
+export { default } from './Scrollbar';
 export * from './ScrollbarStyled';
 export * from './styles.config';
-export { default } from './Scrollbar';
+export * from './types';

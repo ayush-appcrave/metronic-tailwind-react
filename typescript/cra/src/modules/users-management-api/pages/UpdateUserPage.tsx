@@ -1,11 +1,12 @@
-import { UpdateUserFormWrapper } from '../components';
-import { Card } from '@mui/material';
-import { useNavigate, useParams } from 'react-router';
-import { Helmet } from 'react-helmet';
-import { Content, Intro, Toolbar } from '../../../layouts/default';
 import { useNavBreadcrumbs } from '@components/nav';
-import { NAV_VERTICAL } from 'configs';
 import { PageContainer } from '@components/page-container';
+import { Card } from '@mui/material';
+import { NAV_VERTICAL } from 'configs';
+import { Helmet } from 'react-helmet';
+import { useNavigate, useParams } from 'react-router';
+
+import { Content, Intro, Toolbar } from '../../../layouts/default';
+import { UpdateUserFormWrapper } from '../components';
 
 function UpdateUserPage() {
   const { id } = useParams();

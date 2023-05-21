@@ -1,7 +1,8 @@
 /* eslint-disable @typescript-eslint/no-misused-promises */
-import { type FC, useContext, useState, useEffect, useMemo, type ReactNode } from 'react';
-import { useQuery } from 'react-query';
 import { type PaginationState } from '@components/table/types';
+import { type FC, type ReactNode, useContext, useEffect, useMemo, useState } from 'react';
+import { useQuery } from 'react-query';
+
 import {
   createResponseContext,
   initialQueryResponse,
@@ -9,8 +10,8 @@ import {
   QUERIES,
   stringifyRequestQuery
 } from '../helpers';
-import { getUsers } from './_requests';
 import { type User } from './_models';
+import { getUsers } from './_requests';
 import { useQueryRequest } from './QueryRequestProvider';
 
 interface WithChildren {
@@ -82,6 +83,6 @@ export {
   QueryResponseProvider,
   useQueryResponse,
   useQueryResponseData,
-  useQueryResponsePagination,
-  useQueryResponseLoading
+  useQueryResponseLoading,
+  useQueryResponsePagination
 };

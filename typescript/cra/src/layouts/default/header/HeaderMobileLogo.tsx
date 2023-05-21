@@ -1,8 +1,9 @@
-import { type MouseEvent } from 'react';
 import { Box, IconButton } from '@mui/material';
+import { type MouseEvent } from 'react';
+import { toAbsoluteUrl } from 'utils';
+
 import { KeenIcon } from '../../../components';
 import { useDefaultLayout } from '../DefaultLayoutProvider';
-import { toAbsoluteUrl } from 'utils';
 
 const HeaderMobileLogo = () => {
   const { setMobileSidebarOpen } = useDefaultLayout();

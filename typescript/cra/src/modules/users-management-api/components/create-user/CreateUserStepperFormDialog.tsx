@@ -1,4 +1,5 @@
 import { Dialog } from '@mui/material';
+
 import CreateUserStepperForm from './CreateUserStepperForm';
 
 interface CreateUserDialogProps {

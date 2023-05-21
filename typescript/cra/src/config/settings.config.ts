@@ -12,4 +12,4 @@ const defaultSettings: SettingsType = {
 };
 const COOKIES_EXPIRATION = 5;
 
-export { defaultSettings, COOKIES_EXPIRATION };
+export { COOKIES_EXPIRATION, defaultSettings };
