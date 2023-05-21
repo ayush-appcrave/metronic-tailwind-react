@@ -1,4 +1,3 @@
-import * as React from 'react';
 import {
   DataGrid,
   GridCallbackDetails,
@@ -15,7 +14,7 @@ import {
 } from '@mui/x-data-grid';
 import { IconButton, Avatar, Box } from '@mui/material';
 import DeleteIcon from '@mui/icons-material/Delete';
-import { useEffect, useMemo } from 'react';
+import { useEffect, useMemo, useState } from 'react';
 import { useQueryRequest } from '../core/QueryRequestProvider';
 import {
   useQueryResponse,
@@ -33,68 +32,34 @@ import { toAbsoluteUrl } from 'utils';
 import { useMutation, useQueryClient } from 'react-query';
 import { useListView } from '../core/ListViewProvider';
 import { useLocation } from 'react-router';
+import { AlertDialogDeleteMultiple } from './alerts/AlertDialogDeleteMultiple';
 import qs from 'qs';
 
 interface Props {
-  selectionModel: GridRowSelectionModel;
+  deleteHandler: () => void;
+  hasSelectedRows: boolean;
 }
 
 function DataToolbar(props: Props) {
   return (
     <GridToolbarContainer>
-      <Auctions selectionModel={props.selectionModel} />
+      <Actions deleteHandler={props.deleteHandler} hasSelectedRows={props.hasSelectedRows} />
       <GridToolbarColumnsButton />
       <GridToolbarDensitySelector />
     </GridToolbarContainer>
   );
 }
 
-function Auctions(props: Props) {
-  const hasSelectedRows = props.selectionModel.length > 0;
-  const { query, refetch } = useQueryResponse();
-  const queryClient = useQueryClient();
-
-  const { enqueueSnackbar } = useSnackbar();
-  const { clearSelected } = useListView();
-  const deleteSelectedItems = useMutation(
-    async () => {
-      await deleteSelectedUsers(props.selectionModel as string[]);
-    },
-    {
-      // 💡 response of the mutation is passed to onSuccess
-      onSuccess: () => {
-        // ✅ update detail view directly
-        queryClient.invalidateQueries([`${QUERIES.USERS_LIST}-${query}`]);
-        enqueueSnackbar(`${props.selectionModel.length} users was deleted.`, {
-          action: (snackbarKey) => (
-            <UndoActions
-              ids={props.selectionModel as string[]}
-              snackbarKey={snackbarKey}
-              undoAction={undoAction}
-            ></UndoActions>
-          ),
-          anchorOrigin: { vertical: 'bottom', horizontal: 'left' },
-          autoHideDuration: 7000
-        });
-        clearSelected();
-      }
-    }
-  );
-
-  const undoAction: (ids: string[]) => Promise<void> = async (ids: string[]) => {
-    await restoreMultipleUsers(ids);
-    refetch();
-  };
-
+function Actions(props: Props) {
   return (
     <>
       <IconButton
-        disabled={!hasSelectedRows}
+        disabled={!props.hasSelectedRows}
         onClick={() => {
-          deleteSelectedItems.mutateAsync();
+          props.deleteHandler();
         }}
       >
-        <DeleteIcon color={hasSelectedRows ? 'error' : 'disabled'} />
+        <DeleteIcon color={props.hasSelectedRows ? 'error' : 'disabled'} />
       </IconButton>
     </>
   );
@@ -106,15 +71,45 @@ export function UsersManagementGridContainer() {
   const users = useQueryResponseData();
   const data = useMemo(() => users, [users]);
   const isLoading = useQueryResponseLoading();
-  const { refetch } = useQueryResponse();
-  const [selectionModel, setSelectionModel] = React.useState<GridRowSelectionModel>([]);
+  const [selectionModel, setSelectionModel] = useState<GridRowSelectionModel>([]);
   let filter: GridFilterItem[] = [];
+  const [openDialogState, setOpenDialogState] = useState(false);
+
+  const { query, refetch } = useQueryResponse();
+  const queryClient = useQueryClient();
 
   const { enqueueSnackbar } = useSnackbar();
+  const { clearSelected } = useListView();
+
   const undoAction: (ids: string[]) => Promise<void> = async (ids: string[]) => {
     await restoreMultipleUsers(ids);
     refetch();
   };
+
+  const deleteSelectedItems = useMutation(
+    async () => {
+      await deleteSelectedUsers(selectionModel as string[]);
+    },
+    {
+      // 💡 response of the mutation is passed to onSuccess
+      onSuccess: () => {
+        // ✅ update detail view directly
+        queryClient.invalidateQueries([`${QUERIES.USERS_LIST}-${query}`]);
+        enqueueSnackbar(`${selectionModel.length} users was deleted.`, {
+          action: (snackbarKey) => (
+            <UndoActions
+              ids={selectionModel as string[]}
+              snackbarKey={snackbarKey}
+              undoAction={undoAction}
+            ></UndoActions>
+          ),
+          anchorOrigin: { vertical: 'bottom', horizontal: 'left' },
+          autoHideDuration: 7000
+        });
+        clearSelected();
+      }
+    }
+  );
 
   const columns: GridColDef[] = [
     {
@@ -232,42 +227,59 @@ export function UsersManagementGridContainer() {
   };
 
   return (
-    <div style={{ height: 400, width: '100%' }}>
-      <DataGrid
-        checkboxSelection
-        rows={data}
-        columns={columns}
-        slots={{ toolbar: DataToolbar }}
-        slotProps={{
-          toolbar: { selectionModel }
-        }}
-        sortingMode="server"
-        paginationMode="server"
-        rowCount={pagination.total}
-        initialState={{
-          pagination: {
-            paginationModel: {
-              pageSize: initialQueryState.items_per_page,
-              page: initialQueryState.page
+    <>
+      <div style={{ height: 400, width: '100%' }}>
+        <DataGrid
+          checkboxSelection
+          rows={data}
+          columns={columns}
+          slots={{ toolbar: DataToolbar }}
+          slotProps={{
+            toolbar: {
+              deleteHandler: () => {
+                setOpenDialogState(true);
+              },
+              hasSelectedRows: selectionModel.length > 0
             }
-          },
-          filter: {
-            filterModel: {
-              items: filter
+          }}
+          sortingMode="server"
+          paginationMode="server"
+          rowCount={pagination.total}
+          initialState={{
+            pagination: {
+              paginationModel: {
+                pageSize: initialQueryState.items_per_page,
+                page: initialQueryState.page
+              }
+            },
+            filter: {
+              filterModel: {
+                items: filter
+              }
             }
-          }
+          }}
+          onRowSelectionModelChange={(newSelectionModel: GridRowSelectionModel) => {
+            setSelectionModel(newSelectionModel);
+          }}
+          rowSelectionModel={selectionModel}
+          onSortModelChange={handleRequestSort}
+          onPaginationModelChange={handleChangePage}
+          filterMode="server"
+          onFilterModelChange={handleFilterChange}
+          pageSizeOptions={[5, 10, 25]}
+          loading={isLoading}
+        />
+      </div>
+      <AlertDialogDeleteMultiple
+        open={openDialogState}
+        agreeHandler={() => {
+          setOpenDialogState(false);
+          deleteSelectedItems.mutateAsync();
         }}
-        onRowSelectionModelChange={(newSelectionModel: GridRowSelectionModel) => {
-          setSelectionModel(newSelectionModel);
+        closeHandler={() => {
+          setOpenDialogState(false);
         }}
-        rowSelectionModel={selectionModel}
-        onSortModelChange={handleRequestSort}
-        onPaginationModelChange={handleChangePage}
-        filterMode="server"
-        onFilterModelChange={handleFilterChange}
-        pageSizeOptions={[5, 10, 25]}
-        loading={isLoading}
-      />
-    </div>
+      ></AlertDialogDeleteMultiple>
+    </>
   );
 }
