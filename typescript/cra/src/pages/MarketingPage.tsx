@@ -1,8 +1,8 @@
 import { useNavBreadcrumbs } from '@components/nav';
 import { PageContainer } from '@components/page-container';
+import { NAV_VERTICAL } from 'configs';
 import { Helmet } from 'react-helmet';
 
-import { NAV_VERTICAL } from 'configs';
 import { Content, Intro, Toolbar } from '../layouts/default';
 
 const MarketingPage = () => {

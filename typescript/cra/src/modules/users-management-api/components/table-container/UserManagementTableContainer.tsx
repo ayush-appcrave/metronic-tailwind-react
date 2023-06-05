@@ -21,7 +21,7 @@ import { useSearchParams } from 'react-router-dom';
 import { toAbsoluteUrl } from 'utils';
 
 import { EnhancedTableHead } from '../../components';
-import { type User } from '../../core';
+import { useQueryResponse, type User } from '../../core';
 import {
   useListView,
   useQueryRequest,
@@ -29,7 +29,7 @@ import {
   useQueryResponseLoading,
   useQueryResponsePagination
 } from '../../core';
-import { initialQueryRequest } from '../../helpers';
+import { initialQueryRequest, UserQueryState } from '../../helpers';
 
 interface Props {
   denseKey: string;
@@ -42,6 +42,7 @@ const UserManagementTableContainer = (props: Props) => {
   const data = useMemo(() => users, [users]);
 
   const isLoading = useQueryResponseLoading();
+  const { refetch } = useQueryResponse();
 
   const pagination = useQueryResponsePagination();
   const [order, setOrder] = useState<Order>('asc');
@@ -54,7 +55,7 @@ const UserManagementTableContainer = (props: Props) => {
   const [searchParams] = useSearchParams();
   useEffect(() => {
     if (searchParams.toString()) {
-      updateState(qs.parse(searchParams.toString()));
+      updateState(qs.parse(searchParams.toString()) as Partial<UserQueryState>);
       const sortParam = qs.parse(searchParams.toString()).sort;
       const orderParam = qs.parse(searchParams.toString()).order;
 
@@ -62,6 +63,8 @@ const UserManagementTableContainer = (props: Props) => {
         setOrderBy(sortParam as keyof User);
         setOrder(orderParam as Order);
       }
+    } else {
+      refetch();
     }
 
     return () => {
