@@ -1,4 +1,4 @@
-import { formatDate, TableNoData } from '@components/table';
+import { formatDate, QueryState, TableNoData } from '@components/table';
 import { TableOverlayLoader } from '@components/table/loading/TableOverlayLoader';
 import { TableSkeletonLoader } from '@components/table/loading/TableSkeletonLoader';
 import { type Order } from '@components/table/types';
@@ -26,7 +26,7 @@ import React, { type ChangeEvent, useEffect, useMemo, useState } from 'react';
 import { useSearchParams } from 'react-router-dom';
 import { toAbsoluteUrl } from 'utils';
 
-import { type User } from '../../core';
+import { useQueryResponse, type User } from '../../core';
 import {
   useListView,
   useQueryRequest,
@@ -49,6 +49,12 @@ interface RowProps {
 
 const UserManagementSubCRUDTableRow = (props: RowProps) => {
   const [subCRUDVisibilityState, setSubCRUDVisibilityState] = useState(false);
+
+  const { refetch } = useQueryResponse();
+
+  useEffect(() => {
+    refetch();
+  }, []);
 
   return (
     <>
@@ -124,7 +130,7 @@ const UserManagementSubCRUDTableContainer = (props: Props) => {
   const [searchParams] = useSearchParams();
   useEffect(() => {
     if (searchParams.toString()) {
-      updateState(qs.parse(searchParams.toString()));
+      updateState(qs.parse(searchParams.toString()) as Partial<QueryState>);
       const sortParam = qs.parse(searchParams.toString()).sort;
       const orderParam = qs.parse(searchParams.toString()).order;
 

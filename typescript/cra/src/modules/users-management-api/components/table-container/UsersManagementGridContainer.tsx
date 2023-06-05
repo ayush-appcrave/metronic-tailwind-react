@@ -90,6 +90,10 @@ export function UsersManagementGridContainer() {
     refetch();
   };
 
+  useEffect(() => {
+    refetch();
+  }, []);
+
   const deleteSelectedItems = useMutation(
     async () => {
       await deleteSelectedUsers(selectionModel as string[]);

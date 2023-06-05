@@ -1,5 +1,5 @@
 import { ProgressBarLoader } from '@components/loaders';
-import { formatDate, TableNoData } from '@components/table';
+import { formatDate, QueryState, TableNoData } from '@components/table';
 import { TableOverlayLoader } from '@components/table/loading/TableOverlayLoader';
 import { TableSkeletonLoader } from '@components/table/loading/TableSkeletonLoader';
 import { Order } from '@components/table/types';
@@ -70,6 +70,12 @@ const UserManagementInlineEditingTableRow = (props: RowProps) => {
     }
   };
 
+  useEffect(() => {
+    return () => {
+      refetch();
+    };
+  }, []);
+
   const { selected, onSelect } = useListView();
 
   const isSelected = (id: string) => {
@@ -104,7 +110,7 @@ const UserManagementInlineEditingTableRow = (props: RowProps) => {
           }}
         >
           {props.row.avatar && (
-            <Avatar alt={props.row.first_name} src={toAbsoluteUrl(props.row.avatar)} />
+            <Avatar alt={props.row.first_name as string} src={toAbsoluteUrl(props.row.avatar)} />
           )}
 
           {editState ? (
@@ -249,7 +255,7 @@ const UserManagementInlineEditingTableContainer = () => {
   const [searchParams] = useSearchParams();
   useEffect(() => {
     if (searchParams.toString()) {
-      updateState(qs.parse(searchParams.toString()));
+      updateState(qs.parse(searchParams.toString()) as Partial<QueryState>);
       const sortParam = qs.parse(searchParams.toString()).sort;
       const orderParam = qs.parse(searchParams.toString()).order;
 
