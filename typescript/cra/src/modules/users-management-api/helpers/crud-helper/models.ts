@@ -26,7 +26,7 @@ export interface QueryRequestContextProps {
   updateState: (updates: Partial<UserQueryState>, saveToQuery?: boolean | undefined) => void;
 }
 
-export const initialQueryState: UserQueryState = {
+export const initialQueryState: PaginationState = {
   current_page: 1,
   items_per_page: 10,
   total: 0,

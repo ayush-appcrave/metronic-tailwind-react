@@ -71,7 +71,7 @@ const useQueryResponsePagination = (): PaginationState => {
     return defaultPaginationState;
   }
 
-  return response?.pagination;
+  return response.pagination;
 };
 
 const useQueryResponseLoading = (): boolean => {

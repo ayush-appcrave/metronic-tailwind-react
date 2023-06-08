@@ -77,7 +77,10 @@ const UserManagementSubCRUDTableRow = (props: RowProps) => {
             }}
           >
             {props.row.avatar && (
-              <Avatar alt={props.row.first_name} src={toAbsoluteUrl(props.row.avatar)} />
+              <Avatar
+                alt={props.row.first_name ?? 'user avatar'}
+                src={toAbsoluteUrl(props.row.avatar)}
+              />
             )}
 
             <Box

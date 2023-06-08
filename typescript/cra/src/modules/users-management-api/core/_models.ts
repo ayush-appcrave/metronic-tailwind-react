@@ -12,7 +12,7 @@ export interface UserGeneralInfo {
   avatar?: string;
   color?: string;
   email?: string;
-  role?: string;
+  role?: 'admin' | 'user';
   status?: string;
   deleted?: string;
   two_steps_auth?: boolean;

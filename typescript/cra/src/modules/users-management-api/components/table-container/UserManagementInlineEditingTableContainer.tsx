@@ -49,14 +49,8 @@ const UserManagementInlineEditingTableRow = (props: RowProps) => {
   const { refetch } = useQueryResponse();
   const { enqueueSnackbar } = useSnackbar();
 
-  const [formData, setFormData] = useState<User>({
-    id: props.row.id,
-    first_name: props.row.first_name,
-    last_name: props.row.last_name,
-    email: props.row.email,
-    role: props.row.role,
-    status: props.row.status,
-    two_steps_auth: props.row.two_steps_auth
+  const [formData, setFormData] = useState<Partial<User>>({
+    role: undefined
   });
 
   const saveChanges = async () => {
@@ -71,6 +65,10 @@ const UserManagementInlineEditingTableRow = (props: RowProps) => {
   };
 
   useEffect(() => {
+    setFormData((prevState: Partial<User>) => {
+      return { ...prevState, ...props.row };
+    });
+
     return () => {
       refetch();
     };
@@ -94,7 +92,7 @@ const UserManagementInlineEditingTableRow = (props: RowProps) => {
       <TableCell padding="checkbox">
         <Checkbox
           color="primary"
-          onInput={(event) => {
+          onInput={() => {
             onSelect(props.row.id);
           }}
           checked={isSelected(props.row.id)}
@@ -162,14 +160,18 @@ const UserManagementInlineEditingTableRow = (props: RowProps) => {
               labelId="kt-role-select-label"
               id="kt-role-select"
               name="role"
-              value={formData.role}
-              onChange={(e) => {
-                setFormData({ ...formData, ...{ role: e.target.value } });
+              value={props.row.role}
+              onChange={(event) => {
+                setFormData((prevObject) => ({
+                  ...prevObject,
+                  role: event.target.value as 'admin' | 'user' | undefined
+                }));
               }}
               size={'small'}
             >
-              <MenuItem value="user">User</MenuItem>
-              <MenuItem value="admin">Admin</MenuItem>
+              <MenuItem value={undefined}></MenuItem>
+              <MenuItem value={'user'}>User</MenuItem>
+              <MenuItem value={'admin'}>Admin</MenuItem>
             </Select>
           </>
         ) : (
@@ -179,12 +181,15 @@ const UserManagementInlineEditingTableRow = (props: RowProps) => {
       <TableCell align="left">
         {editState ? (
           <Select
-            labelId="kt-role-select-label"
-            id="kt-role-select"
+            labelId="kt-status-select-label"
+            id="kt-status-select"
             name="status"
-            value={formData.status}
-            onChange={(e) => {
-              setFormData({ ...formData, ...{ status: e.target.value } });
+            value={''}
+            onChange={(event) => {
+              setFormData((prevObject) => ({
+                ...prevObject,
+                status: event.target.value
+              }));
             }}
             size={'small'}
           >
