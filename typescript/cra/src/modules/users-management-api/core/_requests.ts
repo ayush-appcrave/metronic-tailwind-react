@@ -31,7 +31,9 @@ const createUser = async (user: User): Promise<User | { data?: User | undefined 
     .then((response: Response<User>) => response.data);
 };
 
-const updateUser = async (user: User): Promise<User | { data?: User | undefined } | undefined> => {
+const updateUser = async (
+  user: User | Partial<User>
+): Promise<User | { data?: User | undefined } | undefined> => {
   return await axios
     .post(`${USER_URL}/${user.id}`, user)
     .then((response: AxiosResponse<Response<User>>) => response.data)

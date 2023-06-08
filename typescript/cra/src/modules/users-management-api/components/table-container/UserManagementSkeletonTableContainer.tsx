@@ -153,7 +153,10 @@ const UserManagementSkeletonTableContainer = (props: Props) => {
                         }}
                       >
                         {row.avatar && (
-                          <Avatar alt={row.first_name} src={toAbsoluteUrl(row.avatar)} />
+                          <Avatar
+                            alt={row.first_name ?? 'user avatar'}
+                            src={toAbsoluteUrl(row.avatar)}
+                          />
                         )}
 
                         <Box

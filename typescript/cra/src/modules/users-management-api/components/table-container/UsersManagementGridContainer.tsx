@@ -15,10 +15,8 @@ import {
   GridToolbarDensitySelector
 } from '@mui/x-data-grid';
 import { useSnackbar } from 'notistack';
-import qs from 'qs';
 import { useEffect, useMemo, useState } from 'react';
 import { useMutation, useQueryClient } from 'react-query';
-import { useLocation } from 'react-router';
 import { toAbsoluteUrl } from 'utils';
 
 import {
@@ -37,7 +35,7 @@ import {
   useQueryResponsePagination,
   User
 } from '../../core';
-import { initialQueryRequest, initialQueryState, QUERIES, UserQueryState } from '../../helpers';
+import { initialQueryRequest, initialQueryState, QUERIES } from '../../helpers';
 
 interface Props {
   deleteHandler: () => void;
@@ -76,7 +74,7 @@ export function UsersManagementGridContainer() {
   const data = useMemo(() => users, [users]);
   const isLoading = useQueryResponseLoading();
   const [selectionModel, setSelectionModel] = useState<GridRowSelectionModel>([]);
-  let filter: GridFilterItem[] = [];
+  const filter: GridFilterItem[] = [];
   const [openDialogState, setOpenDialogState] = useState(false);
 
   const { query, refetch } = useQueryResponse();
@@ -132,7 +130,10 @@ export function UsersManagementGridContainer() {
             }}
           >
             {props.row.avatar && (
-              <Avatar alt={props.row.first_name} src={toAbsoluteUrl(props.row.avatar)} />
+              <Avatar
+                alt={props.row.first_name ?? 'user avatar'}
+                src={toAbsoluteUrl(props.row.avatar)}
+              />
             )}
 
             <Box
@@ -203,17 +204,7 @@ export function UsersManagementGridContainer() {
     }
   ];
 
-  const location = useLocation();
   useEffect(() => {
-    const queryParams: UserQueryState = qs.parse(location.search, {
-      parseArrays: false,
-      ignoreQueryPrefix: true
-    });
-    if (queryParams.advanced) {
-      filter = queryParams.advanced;
-    }
-    updateState(queryParams);
-
     return () => {
       updateState(initialQueryRequest.state);
     };
@@ -221,6 +212,7 @@ export function UsersManagementGridContainer() {
 
   const handleRequestSort = (model: GridSortModel, details: GridCallbackDetails<any>) => {
     if (model.length) {
+      // eslint-disable-next-line
       updateState({ sort: model[0].field, order: model[0].sort ? model[0].sort : undefined }, true);
     }
   };
@@ -238,21 +230,24 @@ export function UsersManagementGridContainer() {
     <>
       <div style={{ height: 400, width: '100%' }}>
         <DataGrid
-          checkboxSelection
           rows={data}
           columns={columns}
-          slots={{ toolbar: DataToolbar }}
-          slotProps={{
-            toolbar: {
-              deleteHandler: () => {
-                setOpenDialogState(true);
-              },
-              hasSelectedRows: selectionModel.length > 0
+          checkboxSelection
+          slots={{
+            toolbar: () => {
+              return (
+                <DataToolbar
+                  hasSelectedRows={selectionModel.length > 0}
+                  deleteHandler={() => {
+                    setOpenDialogState(true);
+                  }}
+                />
+              );
             }
           }}
           sortingMode="server"
           paginationMode="server"
-          rowCount={pagination.total}
+          rowCount={pagination.total ?? 0}
           initialState={{
             pagination: {
               paginationModel: {
@@ -276,13 +271,13 @@ export function UsersManagementGridContainer() {
           onFilterModelChange={handleFilterChange}
           pageSizeOptions={[5, 10, 25]}
           loading={isLoading}
-        />
+        ></DataGrid>
       </div>
       <AlertDialogDeleteMultiple
         open={openDialogState}
         agreeHandler={() => {
           setOpenDialogState(false);
-          deleteSelectedItems.mutateAsync();
+          deleteSelectedItems.mutateAsync(undefined, undefined);
         }}
         closeHandler={() => {
           setOpenDialogState(false);
