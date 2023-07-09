@@ -2,7 +2,7 @@ import { styled } from '@mui/material/styles';
 import SimpleBar from 'simplebar-react';
 
 export const ScrollbarStyled = styled(SimpleBar, {
-  shouldForwardProp: (prop) => prop !== 'styles'
+  shouldForwardProp: (prop) => !['styles', 'sx'].includes(prop as string)
 })<{ styles: any }>(({ theme, styles }) => {
   return {
     height: '100%',
