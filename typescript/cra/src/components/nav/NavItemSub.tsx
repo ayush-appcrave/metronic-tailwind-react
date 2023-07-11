@@ -4,7 +4,7 @@ import { memo } from 'react';
 import { NavItem, type NavItemOptionsType, type NavType } from '..';
 
 const NavItemSubComponent = ({
-  variant = 'popper',
+  variant = 'inline',
   direction = 'vertical',
   accordion = true,
   height = 'auto',
@@ -14,58 +14,40 @@ const NavItemSubComponent = ({
   items,
   styles,
   depth = 1,
-  open
+  open,
+  hover,
+  itemAnchor
 }: NavType) => {
   const renderChildren = () => {
     return (
-      <>
-        <List component="div" disablePadding>
-          {(items as readonly NavItemOptionsType[]).map((item, index) => (
-            <NavItem
-              key={`${index}-${item.title}`}
-              depth={depth + 1}
-              options={item}
-              styles={styles}
-              collapse={collapse}
-              expand={expand}
-            />
-          ))}
-        </List>
-      </>
+      <List component="div" disablePadding>
+        {(items as readonly NavItemOptionsType[]).map((item, index) => (
+          <NavItem
+            key={`${index}-${item.title}`}
+            depth={depth + 1}
+            options={item}
+            styles={styles}
+            collapse={collapse}
+            expand={expand}
+          />
+        ))}
+      </List>
     );
   };
 
   const renderContent = () => {
     if (accordion) {
       return (
-        <>
-          <Collapse in={open} timeout="auto" unmountOnExit>
-            {renderChildren()}
-          </Collapse>
-        </>
+        <Collapse in={open} timeout="auto" unmountOnExit>
+          {renderChildren()}
+        </Collapse>
       );
     } else {
-      return <>{renderChildren()}</>;
+      return renderChildren();
     }
   };
 
-  const renderInline = () => {
-    return <>{renderContent()}</>;
-  };
-
-  const renderPopper = () => {
-    return <>{renderContent()}</>;
-  };
-
-  const renderMain = () => {
-    if (variant === 'popper') {
-      return renderPopper();
-    } else {
-      return renderInline();
-    }
-  };
-
-  return renderMain();
+  return renderContent();
 };
 
 const NavItemSub = memo(NavItemSubComponent);

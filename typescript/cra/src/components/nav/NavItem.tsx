@@ -1,5 +1,5 @@
 import { Link } from '@mui/material';
-import { memo, useEffect, useMemo, useState } from 'react';
+import { memo, MouseEvent, useEffect, useMemo, useState } from 'react';
 import { Link as RouterLink, useLocation } from 'react-router-dom';
 
 import { useMatchPath } from '../../hooks/useMatchPath';
@@ -17,6 +17,7 @@ import {
   type NavItemType
 } from '..';
 import { KeenIcon } from '../keenicons';
+import { PopoverStyled } from './';
 
 const NavItemComponent = ({
   options,
@@ -25,8 +26,6 @@ const NavItemComponent = ({
   styles,
   depth = 1
 }: NavItemType) => {
-  const { pathname } = useLocation();
-
   const {
     title,
     path = '',
@@ -39,15 +38,31 @@ const NavItemComponent = ({
     badge
   } = options;
 
+  const { pathname } = useLocation();
+
   const { match } = useMatchPath(path);
 
+  const hasChildren: boolean = useMemo(() => {
+    return children?.items !== undefined && children.items.length > 0;
+  }, [children]);
+
+  const minimize: boolean = collapse && !expand;
+
   const here: boolean = children?.items ? hasActiveChild(pathname, children.items) : false;
+
+  const variant = children?.variant ? children.variant : 'inline';
 
   const active: boolean = match;
 
   const disabled: boolean = false;
 
   const [open, setOpen] = useState(here);
+
+  useEffect(() => {
+    if (match) {
+      setOpen(true);
+    }
+  }, [pathname]);
 
   const [hover, setHover] = useState(false);
 
@@ -59,35 +74,107 @@ const NavItemComponent = ({
     setHover(false);
   };
 
-  const handleToggle = () => {
+  const [anchorEl, setAnchorEl] = useState<HTMLDivElement | null>(null);
+
+  const handleToggle = (event: MouseEvent<HTMLDivElement>) => {
     setOpen(!open);
+
+    if (variant === 'dropdown') {
+      setAnchorEl(event.currentTarget);
+    }
   };
 
-  useEffect(() => {
-    if (match) {
-      setOpen(true);
-    }
-  }, [pathname]);
+  const renderDivider = (
+    <DividerStyled
+      sx={{
+        mx: styles.ITEM_PADDING_X
+      }}
+    />
+  );
 
-  const hasChildren: boolean = useMemo(() => {
-    return children !== undefined && children.items.length > 0;
-  }, [children]);
+  const renderItem = (
+    <ListItemButtonStyled
+      onClick={handleToggle}
+      onMouseOver={handleMouseOver}
+      onMouseOut={handleMouseOut}
+      depth={depth}
+      styles={styles}
+      active={active}
+      here={here}
+      open={open}
+      hover={hover}
+      disabled={disabled}
+      collapse={collapse}
+      expand={expand}
+      sx={{
+        paddingTop: depth === 1 ? styles.ROOT_ITEM_PADDING_Y : styles.SUB_ITEM_PADDING_Y,
+        paddingBottom: depth === 1 ? styles.ROOT_ITEM_PADDING_Y : styles.SUB_ITEM_PADDING_Y,
+        paddingLeft:
+          depth === 1 ? styles.ROOT_ITEM_PADDING_X : styles.SUB_ITEM_PADDING_X + styles.INDENTION,
+        paddingRight:
+          depth === 1 ? styles.ROOT_ITEM_PADDING_X : styles.SUB_ITEM_PADDING_X + styles.INDENTION,
+        marginBottom: depth === 1 ? styles.ROOT_ITEM_GAP : styles.SUB_ITEM_GAP
+      }}
+    >
+      {icon && (
+        <ListItemIconStyled
+          depth={depth}
+          styles={styles}
+          active={active}
+          here={here}
+          hover={hover}
+          open={open}
+          disabled={disabled}
+          collapse={collapse}
+        >
+          {icon}
+        </ListItemIconStyled>
+      )}
 
-  const minimize: boolean = collapse && !expand;
-
-  const renderContent = (
-    <>
-      {divider ? (
-        <DividerStyled
-          sx={{
-            mx: styles.ITEM_PADDING_X
-          }}
+      {bullet && (
+        <NavItemBullet
+          depth={depth}
+          styles={styles}
+          active={active}
+          here={here}
+          hover={hover}
+          open={open}
+          disabled={disabled}
+          collapse={collapse}
         />
-      ) : (
-        <ListItemButtonStyled
-          onClick={handleToggle}
-          onMouseOver={handleMouseOver}
-          onMouseOut={handleMouseOut}
+      )}
+
+      {!minimize && title && (
+        <ListItemTextStyled
+          depth={depth}
+          styles={styles}
+          active={active}
+          here={here}
+          hover={hover}
+          open={open}
+          disabled={disabled}
+          collapse={collapse}
+          primary={title}
+        />
+      )}
+
+      {!minimize && badge && (
+        <BadgeStyled
+          badgeContent={badge.content}
+          color={badge.color}
+          depth={depth}
+          styles={styles}
+          active={active}
+          hover={hover}
+          here={here}
+          open={open}
+          disabled={disabled}
+          collapse={collapse}
+        />
+      )}
+
+      {!minimize && hasChildren && (
+        <NavItemArrow
           depth={depth}
           styles={styles}
           active={active}
@@ -96,107 +183,53 @@ const NavItemComponent = ({
           hover={hover}
           disabled={disabled}
           collapse={collapse}
-          expand={expand}
-          sx={{
-            paddingTop: depth === 1 ? styles.ROOT_ITEM_PADDING_Y : styles.SUB_ITEM_PADDING_Y,
-            paddingBottom: depth === 1 ? styles.ROOT_ITEM_PADDING_Y : styles.SUB_ITEM_PADDING_Y,
-            paddingLeft:
-              depth === 1
-                ? styles.ROOT_ITEM_PADDING_X
-                : styles.SUB_ITEM_PADDING_X + styles.INDENTION,
-            paddingRight:
-              depth === 1
-                ? styles.ROOT_ITEM_PADDING_X
-                : styles.SUB_ITEM_PADDING_X + styles.INDENTION,
-            marginBottom: depth === 1 ? styles.ROOT_ITEM_GAP : styles.SUB_ITEM_GAP
-          }}
-        >
-          {icon && (
-            <ListItemIconStyled
-              depth={depth}
-              styles={styles}
-              active={active}
-              here={here}
-              hover={hover}
-              open={open}
-              disabled={disabled}
-              collapse={collapse}
-            >
-              {icon}
-            </ListItemIconStyled>
-          )}
-
-          {bullet && (
-            <NavItemBullet
-              depth={depth}
-              styles={styles}
-              active={active}
-              here={here}
-              hover={hover}
-              open={open}
-              disabled={disabled}
-              collapse={collapse}
-            />
-          )}
-
-          {!minimize && title && (
-            <ListItemTextStyled
-              depth={depth}
-              styles={styles}
-              active={active}
-              here={here}
-              hover={hover}
-              open={open}
-              disabled={disabled}
-              collapse={collapse}
-              primary={title}
-            />
-          )}
-
-          {!minimize && badge && (
-            <BadgeStyled
-              badgeContent={badge.content}
-              color={badge.color}
-              depth={depth}
-              styles={styles}
-              active={active}
-              hover={hover}
-              here={here}
-              open={open}
-              disabled={disabled}
-              collapse={collapse}
-            />
-          )}
-
-          {!minimize && hasChildren && (
-            <NavItemArrow
-              depth={depth}
-              styles={styles}
-              active={active}
-              here={here}
-              open={open}
-              hover={hover}
-              disabled={disabled}
-              collapse={collapse}
-              icon={<KeenIcon icon="down" />}
-            />
-          )}
-        </ListItemButtonStyled>
-      )}
-
-      {!minimize && children !== undefined && children.items.length > 0 && (
-        <NavItemSub
-          variant={children?.variant ? children.variant : 'inline'}
-          direction={children?.direction ? children.direction : 'vertical'}
-          accordion={children?.accordion ? children.accordion : false}
-          open={open}
-          expand={expand}
-          depth={depth + 1}
-          items={children.items}
-          styles={styles}
-          collapse={collapse}
+          icon={<KeenIcon icon="down" />}
         />
       )}
+    </ListItemButtonStyled>
+  );
+
+  const renderItemSub = (
+    <NavItemSub
+      variant={variant}
+      direction={children?.direction ? children.direction : 'vertical'}
+      accordion={children?.accordion ? children.accordion : false}
+      open={open}
+      hover={hover}
+      expand={expand}
+      depth={depth + 1}
+      items={children?.items}
+      styles={styles}
+      collapse={collapse}
+    />
+  );
+
+  const renderItemDropdown = () => {
+    const handleClose = () => {
+      setAnchorEl(null);
+    };
+
+    return (
+      <PopoverStyled
+        onClose={handleClose}
+        anchorOrigin={{
+          vertical: 'top',
+          horizontal: 'right'
+        }}
+        anchorEl={anchorEl}
+        open={Boolean(anchorEl)}
+        disableScrollLock={true}
+      >
+        {renderItemSub}
+      </PopoverStyled>
+    );
+  };
+
+  const renderContent = (
+    <>
+      {divider ? renderDivider : renderItem}
+
+      {!minimize && hasChildren && (variant === 'dropdown' ? renderItemDropdown() : renderItemSub)}
     </>
   );
 

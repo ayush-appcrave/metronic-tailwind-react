@@ -190,7 +190,7 @@ const NAV_VERTICAL: NavConfigType = [
     title: 'Pages',
     icon: <KeenIcon icon="calendar" />,
     children: {
-      variant: 'popper',
+      variant: 'dropdown',
       items: NAV_COMMON.pages
     }
   },

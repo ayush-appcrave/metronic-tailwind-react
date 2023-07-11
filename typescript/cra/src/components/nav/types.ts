@@ -2,7 +2,7 @@
 import { type ColorSchema } from '../../theme/palette';
 
 export interface NavType {
-  variant?: 'inline' | 'popper';
+  variant?: 'inline' | 'dropdown';
   direction?: 'vertical' | 'horizontal';
   accordion?: boolean;
   collapse?: boolean;
@@ -11,9 +11,10 @@ export interface NavType {
   open?: boolean;
   height?: number | string;
   maxHeight?: number;
-  items: NavConfigType;
+  items: NavConfigType | undefined;
   styles?: any;
   depth?: number;
+  itemAnchor?: any;
 }
 
 export interface NavItemType {
@@ -39,12 +40,12 @@ export interface NavItemOptionsType {
   divider?: boolean;
   subheader?: string;
   caption?: string;
-  children?: NavType;
+  children?: NavType | undefined;
   onClick?: (_?: unknown) => unknown | void;
 }
 
 export interface NavItemArrowType {
-  variant?: 'inline' | 'popper';
+  variant?: 'inline' | 'dropdown';
   direction?: 'vertical' | 'horizontal';
   icon?: any;
   depth?: number;
