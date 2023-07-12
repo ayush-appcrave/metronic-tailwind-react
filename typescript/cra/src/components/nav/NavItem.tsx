@@ -206,6 +206,7 @@ const NavItemComponent = ({
 
   const renderItemDropdown = () => {
     const handleClose = () => {
+      setOpen(false);
       setAnchorEl(null);
     };
 
@@ -217,7 +218,7 @@ const NavItemComponent = ({
           horizontal: 'right'
         }}
         anchorEl={anchorEl}
-        open={Boolean(anchorEl)}
+        open={open}
         disableScrollLock={true}
       >
         {renderItemSub}

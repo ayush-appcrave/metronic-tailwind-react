@@ -4,6 +4,7 @@ import { type ColorSchema } from '../../theme/palette';
 export interface NavType {
   variant?: 'inline' | 'dropdown';
   direction?: 'vertical' | 'horizontal';
+  dropdownProps?: any;
   accordion?: boolean;
   collapse?: boolean;
   expand?: boolean;
