@@ -2,10 +2,10 @@
 import { type ColorSchema } from '../../theme/palette';
 
 export interface NavType {
-  variant?: 'inline' | 'dropdown';
-  direction?: 'vertical' | 'horizontal';
+  variant?: any;
+  direction?: any;
   dropdownProps?: any;
-  accordion?: boolean;
+  accordion?: any;
   collapse?: boolean;
   expand?: boolean;
   hover?: boolean;
@@ -46,8 +46,8 @@ export interface NavItemOptionsType {
 }
 
 export interface NavItemArrowType {
-  variant?: 'inline' | 'dropdown';
-  direction?: 'vertical' | 'horizontal';
+  variant?: any;
+  direction?: any;
   icon?: any;
   depth?: number;
   collapse?: boolean;

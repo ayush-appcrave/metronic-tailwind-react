@@ -3,6 +3,7 @@ import { memo, MouseEvent, useEffect, useMemo, useState } from 'react';
 import { Link as RouterLink, useLocation } from 'react-router-dom';
 
 import { useMatchPath } from '../../hooks/useMatchPath';
+import { useResponsiveProp } from '../../hooks/useResponsiveProp';
 import { matchPath } from '../../utils/Router';
 import {
   BadgeStyled,
@@ -42,6 +43,12 @@ const NavItemComponent = ({
 
   const { match } = useMatchPath(path);
 
+  const variant = useResponsiveProp(children?.variant);
+
+  const direction = useResponsiveProp(children?.direction);
+
+  const accordion = useResponsiveProp(children?.accordion, true);
+
   const hasChildren: boolean = useMemo(() => {
     return children?.items !== undefined && children.items.length > 0;
   }, [children]);
@@ -49,8 +56,6 @@ const NavItemComponent = ({
   const minimize: boolean = collapse && !expand;
 
   const here: boolean = children?.items ? hasActiveChild(pathname, children.items) : false;
-
-  const variant = children?.variant ? children.variant : 'inline';
 
   const active: boolean = match;
 
@@ -192,8 +197,8 @@ const NavItemComponent = ({
   const renderItemSub = (
     <NavItemSub
       variant={variant}
-      direction={children?.direction ? children.direction : 'vertical'}
-      accordion={children?.accordion ? children.accordion : false}
+      direction={direction}
+      accordion={accordion}
       open={open}
       hover={hover}
       expand={expand}

@@ -190,7 +190,26 @@ const NAV_VERTICAL: NavConfigType = [
     title: 'Pages',
     icon: <KeenIcon icon="calendar" />,
     children: {
-      variant: 'dropdown',
+      variant: {
+        breakpoints: {
+          up: {
+            lg: 'dropdown'
+          },
+          down: {
+            lg: 'inline'
+          }
+        }
+      },
+      accordion: {
+        breakpoints: {
+          up: {
+            lg: false
+          },
+          down: {
+            lg: true
+          }
+        }
+      },
       items: NAV_COMMON.pages
     }
   },
