@@ -1,5 +1,16 @@
-import { Link } from '@mui/material';
-import { memo, MouseEvent, useEffect, useMemo, useState } from 'react';
+import { Box, Link } from '@mui/material';
+import {
+  FocusEvent,
+  forwardRef,
+  KeyboardEvent,
+  memo,
+  MouseEvent,
+  useEffect,
+  useImperativeHandle,
+  useMemo,
+  useRef,
+  useState
+} from 'react';
 import { Link as RouterLink, useLocation } from 'react-router-dom';
 
 import { useMatchPath } from '../../hooks/useMatchPath';
@@ -18,18 +29,26 @@ import {
   type NavItemType
 } from '..';
 import { KeenIcon } from '../keenicons';
-import { PopoverStyled } from './';
+import { MenuStyled } from './';
 
-const NavItemComponent = ({
-  options,
-  collapse = false,
-  expand = false,
-  styles,
-  depth = 1
-}: NavItemType) => {
+const NavItemComponent = forwardRef<HTMLDivElement | null, NavItemType>(function NavItemComponent(
+  props,
+  ref
+) {
+  const {
+    options,
+    collapse = false,
+    expand = false,
+    styles,
+    depth = 1,
+    ContainerProps: ContainerPropsProp = {},
+    MenuProps
+  } = props;
+
   const {
     title,
     path = '',
+    tabIndex: tabIndexProp,
     externalLink,
     newTab = false,
     divider,
@@ -39,15 +58,129 @@ const NavItemComponent = ({
     badge
   } = options;
 
+  const { ref: containerRefProp, ...ContainerProps } = ContainerPropsProp;
+
+  const [anchorEl, setAnchorEl] = useState<HTMLElement | null>(null);
+
+  const menuItemRef = useRef<HTMLDivElement | null>(null);
+
+  useImperativeHandle(ref, () => menuItemRef.current!); // eslint-disable-line @typescript-eslint/no-non-null-assertion
+
+  const containerRef = useRef<HTMLDivElement | null>(null);
+  useImperativeHandle(containerRefProp, () => containerRef.current);
+
+  const menuContainerRef = useRef<HTMLDivElement | null>(null);
+
+  const [isSubMenuOpen, setIsSubMenuOpen] = useState(false);
+
+  const handleMouseEnter = (e: MouseEvent<HTMLElement>) => {
+    setHover(true);
+
+    if (toggle === 'hover') {
+      setOpen(true);
+      setIsSubMenuOpen(true);
+      setAnchorEl(menuItemRef.current);
+
+      if (ContainerProps.onMouseEnter) {
+        ContainerProps.onMouseEnter(e);
+      }
+    }
+  };
+
+  const handleMouseLeave = (e: MouseEvent<HTMLElement>) => {
+    setHover(false);
+
+    if (toggle === 'hover') {
+      setOpen(false);
+      setIsSubMenuOpen(false);
+      setAnchorEl(menuItemRef.current);
+
+      if (ContainerProps.onMouseLeave) {
+        ContainerProps.onMouseLeave(e);
+      }
+    }
+  };
+
+  const handleToggle = (event: MouseEvent<HTMLDivElement>) => {
+    setOpen(!open);
+
+    if (variant === 'dropdown' && toggle === 'click') {
+      setHover(false);
+      if (isSubMenuOpen) {
+        setAnchorEl(null);
+        setIsSubMenuOpen(false);
+      } else {
+        setAnchorEl(menuItemRef.current);
+        setIsSubMenuOpen(true);
+      }
+    }
+  };
+
+  const handleFocus = (e: FocusEvent<HTMLElement>) => {
+    if (e.target === containerRef.current) {
+      setAnchorEl(menuItemRef.current);
+      setIsSubMenuOpen(true);
+    }
+
+    if (ContainerProps.onFocus) {
+      ContainerProps.onFocus(e);
+    }
+  };
+
+  const handleKeyDown = (e: KeyboardEvent) => {
+    if (e.key === 'Escape') {
+      return;
+    }
+
+    if (isSubmenuFocused()) {
+      e.stopPropagation();
+    }
+
+    const active = containerRef.current?.ownerDocument.activeElement;
+
+    if (e.key === 'ArrowLeft' && isSubmenuFocused()) {
+      containerRef.current?.focus();
+    }
+
+    if (e.key === 'ArrowRight' && e.target === containerRef.current && e.target === active) {
+      const firstChild = menuContainerRef.current?.children[0] as HTMLDivElement;
+      firstChild?.focus();
+    }
+  };
+
+  // Check if any immediate children are active
+  const isSubmenuFocused = () => {
+    const active = containerRef.current?.ownerDocument.activeElement ?? null;
+    const childrenList = menuContainerRef.current?.children;
+
+    if (childrenList && childrenList.length > 0) {
+      for (const child of childrenList) {
+        if (child === active) {
+          return true;
+        }
+      }
+    }
+
+    return false;
+  };
+
+  // Root element must have a `tabIndex` attribute for keyboard navigation
+  let tabIndex;
+  if (!props.disabled) {
+    tabIndex = tabIndexProp !== undefined ? tabIndexProp : -1;
+  }
+
   const { pathname } = useLocation();
 
   const { match } = useMatchPath(path);
 
-  const variant = useResponsiveProp(children?.variant);
+  const variant = useResponsiveProp(children?.variant, 'inline');
 
-  const direction = useResponsiveProp(children?.direction);
+  const direction = useResponsiveProp(children?.direction, 'vertical');
 
   const accordion = useResponsiveProp(children?.accordion, true);
+
+  const toggle = useResponsiveProp(children?.toggle, 'click');
 
   const hasChildren: boolean = useMemo(() => {
     return children?.items !== undefined && children.items.length > 0;
@@ -63,31 +196,13 @@ const NavItemComponent = ({
 
   const [open, setOpen] = useState(here);
 
+  const [hover, setHover] = useState(false);
+
   useEffect(() => {
     if (match) {
       setOpen(true);
     }
   }, [pathname]);
-
-  const [hover, setHover] = useState(false);
-
-  const handleMouseOver = () => {
-    setHover(true);
-  };
-
-  const handleMouseOut = () => {
-    setHover(false);
-  };
-
-  const [anchorEl, setAnchorEl] = useState<HTMLDivElement | null>(null);
-
-  const handleToggle = (event: MouseEvent<HTMLDivElement>) => {
-    setOpen(!open);
-
-    if (variant === 'dropdown') {
-      setAnchorEl(event.currentTarget);
-    }
-  };
 
   const renderDivider = (
     <DividerStyled
@@ -99,9 +214,8 @@ const NavItemComponent = ({
 
   const renderItem = (
     <ListItemButtonStyled
+      ref={menuItemRef}
       onClick={handleToggle}
-      onMouseOver={handleMouseOver}
-      onMouseOut={handleMouseOut}
       depth={depth}
       styles={styles}
       active={active}
@@ -111,13 +225,14 @@ const NavItemComponent = ({
       disabled={disabled}
       collapse={collapse}
       expand={expand}
+      tabIndex={tabIndex}
       sx={{
         paddingTop: depth === 1 ? styles.ROOT_ITEM_PADDING_Y : styles.SUB_ITEM_PADDING_Y,
         paddingBottom: depth === 1 ? styles.ROOT_ITEM_PADDING_Y : styles.SUB_ITEM_PADDING_Y,
         paddingLeft:
-          depth === 1 ? styles.ROOT_ITEM_PADDING_X : styles.SUB_ITEM_PADDING_X + styles.INDENTION,
+          depth === 1 ? styles.ROOT_ITEM_PADDING_X : styles.SUB_ITEM_PADDING_X * styles.INDENTION,
         paddingRight:
-          depth === 1 ? styles.ROOT_ITEM_PADDING_X : styles.SUB_ITEM_PADDING_X + styles.INDENTION,
+          depth === 1 ? styles.ROOT_ITEM_PADDING_X : styles.SUB_ITEM_PADDING_X * styles.INDENTION,
         marginBottom: depth === 1 ? styles.ROOT_ITEM_GAP : styles.SUB_ITEM_GAP
       }}
     >
@@ -181,6 +296,10 @@ const NavItemComponent = ({
       {!minimize && hasChildren && (
         <NavItemArrow
           depth={depth}
+          toggle={toggle}
+          variant={variant}
+          direction={direction}
+          accordion={accordion}
           styles={styles}
           active={active}
           here={here}
@@ -195,48 +314,76 @@ const NavItemComponent = ({
   );
 
   const renderItemSub = (
-    <NavItemSub
-      variant={variant}
-      direction={direction}
-      accordion={accordion}
-      open={open}
-      hover={hover}
-      expand={expand}
-      depth={depth + 1}
-      items={children?.items}
-      styles={styles}
-      collapse={collapse}
-    />
+    <Box ref={menuContainerRef} style={{ pointerEvents: 'auto' }}>
+      <NavItemSub
+        variant={variant}
+        direction={direction}
+        accordion={accordion}
+        open={open}
+        hover={hover}
+        expand={expand}
+        depth={depth + 1}
+        items={children?.items}
+        styles={styles}
+        collapse={collapse}
+      />
+    </Box>
   );
 
   const renderItemDropdown = () => {
-    const handleClose = () => {
-      setOpen(false);
-      setAnchorEl(null);
+    const handleClose = (event: MouseEvent<HTMLDivElement>) => {
+      setIsSubMenuOpen(false);
+
+      if (toggle === 'click') {
+        setOpen(false);
+        setAnchorEl(null);
+      }
     };
 
+    console.log('wow:' + menuItemRef.current);
+
     return (
-      <PopoverStyled
+      <MenuStyled
         onClose={handleClose}
-        anchorOrigin={{
-          vertical: 'top',
-          horizontal: 'right'
+        sx={{
+          pointerEvents: toggle === 'click' ? 'auto' : 'none'
         }}
         anchorEl={anchorEl}
-        open={open}
+        anchorOrigin={{
+          horizontal: 'right',
+          vertical: 'top'
+        }}
+        transformOrigin={{
+          horizontal: 'left',
+          vertical: 'top'
+        }}
+        open={isSubMenuOpen}
+        autoFocus={false}
+        disableAutoFocus
+        disableEnforceFocus
         disableScrollLock={true}
+        disableRestoreFocus
+        {...MenuProps}
       >
         {renderItemSub}
-      </PopoverStyled>
+      </MenuStyled>
     );
   };
 
   const renderContent = (
-    <>
+    <Box
+      {...ContainerProps}
+      ref={containerRef}
+      onFocus={handleFocus}
+      tabIndex={tabIndex}
+      onMouseEnter={handleMouseEnter}
+      onMouseLeave={handleMouseLeave}
+      onKeyDown={handleKeyDown}
+    >
       {divider ? renderDivider : renderItem}
 
       {!minimize && hasChildren && (variant === 'dropdown' ? renderItemDropdown() : renderItemSub)}
-    </>
+    </Box>
   );
 
   const renderMain = () => {
@@ -262,7 +409,7 @@ const NavItemComponent = ({
   };
 
   return renderMain();
-};
+});
 
 const hasActiveChild = (pathname: string, items: NavConfigType): boolean => {
   for (const item of items) {

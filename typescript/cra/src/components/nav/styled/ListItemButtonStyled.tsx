@@ -22,6 +22,10 @@ export const ListItemButtonStyled = styled(ListItemButton, {
     color: theme.palette.primary.main
   };
 
+  const hoverStyle = {
+    backgroundColor: theme.palette.grey['100']
+  };
+
   return {
     display: 'flex',
     aligItems: 'center',
@@ -30,9 +34,8 @@ export const ListItemButtonStyled = styled(ListItemButton, {
     ...(active && {
       ...activeStyle
     }),
-    ...(hover &&
-      {
-        // x...activeStyle
-      })
+    ...(hover && {
+      ...hoverStyle
+    })
   };
 });

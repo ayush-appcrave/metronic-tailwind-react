@@ -1,10 +1,13 @@
 /* eslint-disable @typescript-eslint/no-invalid-void-type */
+import { MenuProps, type SxProps } from '@mui/material';
+import { HTMLAttributes, RefAttributes } from 'react';
+
 import { type ColorSchema } from '../../theme/palette';
 
 export interface NavType {
   variant?: any;
   direction?: any;
-  dropdownProps?: any;
+  toggle?: any;
   accordion?: any;
   collapse?: boolean;
   expand?: boolean;
@@ -15,7 +18,7 @@ export interface NavType {
   items: NavConfigType | undefined;
   styles?: any;
   depth?: number;
-  itemAnchor?: any;
+  sx?: SxProps;
 }
 
 export interface NavItemType {
@@ -24,12 +27,16 @@ export interface NavItemType {
   expand?: boolean;
   styles?: any;
   depth?: number;
+  disabled?: boolean;
+  ContainerProps?: HTMLAttributes<HTMLElement> & RefAttributes<HTMLElement | null>;
+  MenuProps?: Partial<Omit<MenuProps, 'children'>>;
 }
 
 export interface NavItemOptionsType {
   key?: string;
   title?: string;
   path?: string;
+  tabIndex?: number;
   externalLink?: boolean;
   newTab?: boolean;
   bullet?: boolean;
@@ -48,6 +55,8 @@ export interface NavItemOptionsType {
 export interface NavItemArrowType {
   variant?: any;
   direction?: any;
+  toggle?: any;
+  accordion?: any;
   icon?: any;
   depth?: number;
   collapse?: boolean;

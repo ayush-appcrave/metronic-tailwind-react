@@ -1,26 +1,31 @@
 import { Collapse, List } from '@mui/material';
-import { memo } from 'react';
+import { forwardRef, memo, useRef } from 'react';
 
 import { NavItem, type NavItemOptionsType, type NavType } from '..';
 
-const NavItemSubComponent = ({
-  variant = 'inline',
-  direction = 'vertical',
-  accordion = true,
-  height = 'auto',
-  maxHeight = 0,
-  collapse,
-  expand,
-  items,
-  styles,
-  depth = 1,
-  open,
-  hover,
-  itemAnchor
-}: NavType) => {
+const NavItemSubComponent = forwardRef<HTMLDivElement, NavType>(function NavItemSubComponent(
+  props,
+  ref
+) {
+  const { 
+    variant = 'inline',
+    direction = 'vertical',
+    accordion = true,
+    toggle = 'click',
+    height = 'auto',
+    maxHeight = 0,
+    collapse,
+    expand,
+    items,
+    styles,
+    depth = 1,
+    open,
+    hover
+   } = props;
+
   const renderChildren = () => {
     return (
-      <List component="div" disablePadding>
+      <List ref={ref} component="div" disablePadding>
         {(items as readonly NavItemOptionsType[]).map((item, index) => (
           <NavItem
             key={`${index}-${item.title}`}
@@ -48,7 +53,7 @@ const NavItemSubComponent = ({
   };
 
   return renderContent();
-};
+});
 
 const NavItemSub = memo(NavItemSubComponent);
 export { NavItemSub };

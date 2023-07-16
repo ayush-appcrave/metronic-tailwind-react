@@ -79,6 +79,60 @@ const NAV_COMMON: Record<string, NavConfigType> = {
     {
       title: 'Page 2',
       path: '#pages/page-1',
+      bullet: true,
+      children: {
+        variant: {
+          breakpoints: {
+            up: {
+              md: 'dropdown'
+            },
+            down: {
+              md: 'inline'
+            }
+          }
+        },
+        direction: 'vertical',
+        accordion: {
+          breakpoints: {
+            up: {
+              md: false
+            },
+            down: {
+              md: true
+            }
+          }
+        },
+        toggle: {
+          breakpoints: {
+            up: {
+              md: 'hover'
+            },
+            down: {
+              md: 'click'
+            }
+          }
+        },
+        items: [
+          {
+            title: 'Page 1',
+            path: '#auth/page-1',
+            bullet: true
+          },
+          {
+            title: 'Page 2',
+            path: '#auth/page-2',
+            bullet: true
+          },
+          {
+            title: 'Page 3',
+            path: '#auth/page-3',
+            bullet: true
+          }
+        ]
+      }
+    },
+    {
+      title: 'Submenu',
       bullet: true
     },
     {
@@ -182,6 +236,9 @@ const NAV_VERTICAL: NavConfigType = [
     title: 'Dashboards',
     icon: <KeenIcon icon="calendar" />,
     children: {
+      variant: 'inline',
+      direction: 'vertical',
+      toggle: 'click',
       accordion: true,
       items: NAV_COMMON.dashboards
     }
@@ -189,24 +246,35 @@ const NAV_VERTICAL: NavConfigType = [
   {
     title: 'Pages',
     icon: <KeenIcon icon="calendar" />,
+    tabIndex: 0,
     children: {
       variant: {
         breakpoints: {
           up: {
-            lg: 'dropdown'
+            md: 'dropdown'
           },
           down: {
-            lg: 'inline'
+            md: 'inline'
           }
         }
       },
       accordion: {
         breakpoints: {
           up: {
-            lg: false
+            md: false
           },
           down: {
-            lg: true
+            md: true
+          }
+        }
+      },
+      toggle: {
+        breakpoints: {
+          up: {
+            md: 'click'
+          },
+          down: {
+            md: 'click'
           }
         }
       },

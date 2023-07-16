@@ -1,9 +1,9 @@
-import { Popover } from '@mui/material';
+import { Menu } from '@mui/material';
 import { styled } from '@mui/material/styles';
 
-const PopoverStyled = styled(Popover)<any>(({ theme }) => {
+const MenuStyled = styled(Menu)<any>(({ theme }) => {
   return {
-    '.MuiPopover-root': {
+    '.MuiMenu-root': {
       fontSize: '14px',
       fontWeight: theme.typography.fontWeightMedium,
       borderRadius: Number(theme.shape.borderRadius) * 1.5,
@@ -14,4 +14,4 @@ const PopoverStyled = styled(Popover)<any>(({ theme }) => {
   };
 });
 
-export { PopoverStyled };
+export { MenuStyled };
