@@ -1,7 +1,7 @@
 import { useEffect } from 'react';
 import { Navigate, Routes } from 'react-router-dom';
 
-import { useAuth } from '../JWTProvider';
+import { useAuth } from '../context/JWTProvider';
 
 const Logout = () => {
   const { logout } = useAuth();

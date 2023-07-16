@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom';
 import * as Yup from 'yup';
 
 import { getUserByToken, login } from '../_requests';
-import { useAuth } from '../JWTProvider';
+import { useAuth } from '../context/JWTProvider';
 
 const loginSchema = Yup.object().shape({
   email: Yup.string()
