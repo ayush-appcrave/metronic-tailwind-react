@@ -36,7 +36,7 @@ const Settings = () => {
       >
         <SettingsHeader setHeaderHeight={setHeaderHeight} onCloseClick={handleToggle} />
         <SettingsBody headerHeight={headerHeight} footerHeight={footerHeight} />
-        <SettingsFooter setFooterHeight={setHeaderHeight} />
+        <SettingsFooter setFooterHeight={setFooterHeight} />
       </Drawer>
       <SettingsToggleButton onClick={handleToggle} />
     </>

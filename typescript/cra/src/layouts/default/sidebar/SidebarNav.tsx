@@ -12,8 +12,8 @@ interface Props {
 const SidebarNav = ({ headerHeight = 0, footerHeight = 0 }: Props) => {
   const { isSidebarExpand, isSidebarCollapse } = useDefaultLayout();
   const stylesConfig = NavVerticalStylesConfig();
-  const [height] = useViewport();
-  const scrollableHeight: number = height - headerHeight - footerHeight;
+  const [viewportHeight] = useViewport();
+  const scrollableHeight: number = viewportHeight - headerHeight - footerHeight;
 
   return (
     <Scrollbar

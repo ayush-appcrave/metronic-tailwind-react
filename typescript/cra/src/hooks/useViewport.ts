@@ -5,13 +5,13 @@ type DimensionsType = [number, number];
 
 const useViewport = (): ReturnType => {
   const [dimensions, setDimensions] = useState<DimensionsType>([
-    window.innerWidth,
-    window.innerHeight
+    window.innerHeight,
+    window.innerWidth
   ]);
 
   useEffect(() => {
     const handleResize = (): void => {
-      setDimensions([window.innerWidth, window.innerHeight]);
+      setDimensions([window.innerHeight, window.innerWidth]);
     };
 
     window.addEventListener('resize', handleResize);

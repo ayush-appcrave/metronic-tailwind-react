@@ -1,5 +1,5 @@
 import { List, type SxProps } from '@mui/material';
-import { memo } from 'react';
+import { memo, useRef } from 'react';
 
 import { NavItem, type NavItemOptionsType, type NavType } from './';
 
@@ -14,7 +14,7 @@ const NavComponent = ({
   items,
   sx,
   styles
-}: NavType & { sx?: SxProps }) => {
+}: NavType) => {
   return (
     <List
       sx={{

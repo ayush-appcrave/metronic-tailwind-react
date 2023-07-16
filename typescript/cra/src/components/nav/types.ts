@@ -1,19 +1,24 @@
 /* eslint-disable @typescript-eslint/no-invalid-void-type */
+import { MenuProps, type SxProps } from '@mui/material';
+import { HTMLAttributes, RefAttributes } from 'react';
+
 import { type ColorSchema } from '../../theme/palette';
 
 export interface NavType {
-  variant?: 'inline' | 'popper';
-  direction?: 'vertical' | 'horizontal';
-  accordion?: boolean;
+  variant?: any;
+  direction?: any;
+  toggle?: any;
+  accordion?: any;
   collapse?: boolean;
   expand?: boolean;
   hover?: boolean;
   open?: boolean;
   height?: number | string;
   maxHeight?: number;
-  items: NavConfigType;
+  items: NavConfigType | undefined;
   styles?: any;
   depth?: number;
+  sx?: SxProps;
 }
 
 export interface NavItemType {
@@ -22,12 +27,16 @@ export interface NavItemType {
   expand?: boolean;
   styles?: any;
   depth?: number;
+  disabled?: boolean;
+  ContainerProps?: HTMLAttributes<HTMLElement> & RefAttributes<HTMLElement | null>;
+  MenuProps?: Partial<Omit<MenuProps, 'children'>>;
 }
 
 export interface NavItemOptionsType {
   key?: string;
   title?: string;
   path?: string;
+  tabIndex?: number;
   externalLink?: boolean;
   newTab?: boolean;
   bullet?: boolean;
@@ -39,13 +48,15 @@ export interface NavItemOptionsType {
   divider?: boolean;
   subheader?: string;
   caption?: string;
-  children?: NavType;
+  children?: NavType | undefined;
   onClick?: (_?: unknown) => unknown | void;
 }
 
 export interface NavItemArrowType {
-  variant?: 'inline' | 'popper';
-  direction?: 'vertical' | 'horizontal';
+  variant?: any;
+  direction?: any;
+  toggle?: any;
+  accordion?: any;
   icon?: any;
   depth?: number;
   collapse?: boolean;
