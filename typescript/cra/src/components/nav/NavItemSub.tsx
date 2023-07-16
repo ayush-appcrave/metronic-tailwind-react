@@ -8,10 +8,7 @@ const NavItemSubComponent = forwardRef<HTMLDivElement, NavType>(function NavItem
   ref
 ) {
   const { 
-    variant = 'inline',
-    direction = 'vertical',
     accordion = true,
-    toggle = 'click',
     height = 'auto',
     maxHeight = 0,
     collapse,
@@ -19,8 +16,7 @@ const NavItemSubComponent = forwardRef<HTMLDivElement, NavType>(function NavItem
     items,
     styles,
     depth = 1,
-    open,
-    hover
+    open
    } = props;
 
   const renderChildren = () => {

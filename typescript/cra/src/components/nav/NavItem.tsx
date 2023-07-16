@@ -316,8 +316,6 @@ const NavItemComponent = forwardRef<HTMLDivElement | null, NavItemType>(function
   const renderItemSub = (
     <Box ref={menuContainerRef} style={{ pointerEvents: 'auto' }}>
       <NavItemSub
-        variant={variant}
-        direction={direction}
         accordion={accordion}
         open={open}
         hover={hover}
