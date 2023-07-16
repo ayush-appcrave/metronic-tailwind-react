@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom';
 import * as Yup from 'yup';
 
 import { getUserByToken, register } from '../_requests';
-import { useAuth } from '../JWTProvider';
+import { useAuth } from '../context/JWTProvider';
 
 const initialValues = {
   firstname: '',

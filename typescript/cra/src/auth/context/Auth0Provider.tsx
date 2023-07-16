@@ -9,10 +9,10 @@ import {
   useState
 } from 'react';
 
-import { useLoaders } from '../providers/LoadersProvider';
-import * as authHelper from './_helpers';
-import { type AuthModel, type UserModel } from './_models';
-import { getUserByToken } from './_requests';
+import { useLoaders } from '../../providers/LoadersProvider';
+import * as authHelper from '../_helpers';
+import { type AuthModel, type UserModel } from '../_models';
+import { getUserByToken } from '../_requests';
 
 interface AuthContextProps {
   auth: AuthModel | undefined;
