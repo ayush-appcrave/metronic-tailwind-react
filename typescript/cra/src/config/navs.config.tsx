@@ -271,7 +271,7 @@ const NAV_VERTICAL: NavConfigType = [
       toggle: {
         breakpoints: {
           up: {
-            md: 'click'
+            md: 'hover'
           },
           down: {
             md: 'click'
