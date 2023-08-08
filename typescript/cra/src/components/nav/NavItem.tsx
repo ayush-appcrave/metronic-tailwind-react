@@ -41,6 +41,7 @@ const NavItemComponent = forwardRef<HTMLDivElement | null, NavItemType>(function
     expand = false,
     styles,
     depth = 1,
+    parentVariant,
     ContainerProps: ContainerPropsProp = {},
     MenuProps
   } = props;
@@ -102,16 +103,16 @@ const NavItemComponent = forwardRef<HTMLDivElement | null, NavItemType>(function
   };
 
   const handleToggle = (event: MouseEvent<HTMLDivElement>) => {
-    setOpen(!open);
-
-    if (variant === 'dropdown' && toggle === 'click') {
-      setHover(false);
-      if (isSubMenuOpen) {
-        setAnchorEl(null);
-        setIsSubMenuOpen(false);
-      } else {
-        setAnchorEl(menuItemRef.current);
-        setIsSubMenuOpen(true);
+    if (toggle === 'click') {
+      setOpen(!open);
+      if (variant === 'dropdown') {
+        if (isSubMenuOpen) {
+          setAnchorEl(null);
+          setIsSubMenuOpen(false);
+        } else {
+          setAnchorEl(menuItemRef.current);
+          setIsSubMenuOpen(true);
+        }
       }
     }
   };
@@ -230,9 +231,10 @@ const NavItemComponent = forwardRef<HTMLDivElement | null, NavItemType>(function
         paddingTop: depth === 1 ? styles.ROOT_ITEM_PADDING_Y : styles.SUB_ITEM_PADDING_Y,
         paddingBottom: depth === 1 ? styles.ROOT_ITEM_PADDING_Y : styles.SUB_ITEM_PADDING_Y,
         paddingLeft:
-          depth === 1 ? styles.ROOT_ITEM_PADDING_X : styles.SUB_ITEM_PADDING_X * styles.INDENTION,
-        paddingRight:
-          depth === 1 ? styles.ROOT_ITEM_PADDING_X : styles.SUB_ITEM_PADDING_X * styles.INDENTION,
+          depth === 1
+            ? styles.ROOT_ITEM_PADDING_X
+            : styles.SUB_ITEM_PADDING_X * (parentVariant === 'inline' ? styles.INDENTION * depth : 1),
+        paddingRight: depth === 1 ? styles.ROOT_ITEM_PADDING_X : styles.SUB_ITEM_PADDING_X,
         marginBottom: depth === 1 ? styles.ROOT_ITEM_GAP : styles.SUB_ITEM_GAP
       }}
     >
@@ -274,7 +276,7 @@ const NavItemComponent = forwardRef<HTMLDivElement | null, NavItemType>(function
           open={open}
           disabled={disabled}
           collapse={collapse}
-          primary={title}
+          primary={title + depth}
         />
       )}
 
@@ -316,6 +318,7 @@ const NavItemComponent = forwardRef<HTMLDivElement | null, NavItemType>(function
   const renderItemSub = (
     <Box ref={menuContainerRef} style={{ pointerEvents: 'auto' }}>
       <NavItemSub
+        variant={variant}
         accordion={accordion}
         open={open}
         hover={hover}

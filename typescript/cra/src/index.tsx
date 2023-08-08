@@ -1,4 +1,4 @@
-import 'simplebar/src/simplebar.css';
+import 'simplebar/dist/simplebar.css';
 import '@components/keenicons/assets/duotone/style.css';
 import '@components/keenicons/assets/outline/style.css';
 import '@components/keenicons/assets/solid/style.css';
