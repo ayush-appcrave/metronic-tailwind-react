@@ -27,6 +27,7 @@ const NavComponent = ({
       {(items as readonly NavItemOptionsType[]).map((item, index) => (
         <NavItem
           key={`${index}-${item.title}`}
+          parentVariant={variant}
           depth={1}
           collapse={collapse}
           expand={expand}

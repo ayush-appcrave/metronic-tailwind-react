@@ -27,6 +27,7 @@ export interface NavItemType {
   expand?: boolean;
   styles?: any;
   depth?: number;
+  parentVariant: string;
   disabled?: boolean;
   ContainerProps?: HTMLAttributes<HTMLElement> & RefAttributes<HTMLElement | null>;
   MenuProps?: Partial<Omit<MenuProps, 'children'>>;
@@ -36,6 +37,7 @@ export interface NavItemOptionsType {
   key?: string;
   title?: string;
   path?: string;
+  disabled?: boolean;
   tabIndex?: number;
   externalLink?: boolean;
   newTab?: boolean;

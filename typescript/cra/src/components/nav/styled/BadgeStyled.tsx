@@ -20,7 +20,8 @@ const BadgeStyled = styled(Badge, {
   return {
     '.MuiBadge-badge ': {
       fontSize: 11,
-      fontWeight: theme.typography.fontWeightMedium
+      fontWeight: theme.typography.fontWeightMedium,
+      right: theme.spacing(depth === 1 ? styles.ROOT_ITEM_PADDING_X : styles.SUB_ITEM_PADDING_X)
     }
   };
 });

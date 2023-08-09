@@ -11,6 +11,7 @@ const NavItemSubComponent = forwardRef<HTMLDivElement, NavType>(function NavItem
     accordion = true,
     height = 'auto',
     maxHeight = 0,
+    variant,
     collapse,
     expand,
     items,
@@ -25,9 +26,10 @@ const NavItemSubComponent = forwardRef<HTMLDivElement, NavType>(function NavItem
         {(items as readonly NavItemOptionsType[]).map((item, index) => (
           <NavItem
             key={`${index}-${item.title}`}
-            depth={depth + 1}
+            depth={depth}
             options={item}
             styles={styles}
+            parentVariant={variant}
             collapse={collapse}
             expand={expand}
           />

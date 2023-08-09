@@ -116,6 +116,7 @@ const NAV_COMMON: Record<string, NavConfigType> = {
           {
             title: 'Page 1',
             path: '#auth/page-1',
+            disabled: true,
             bullet: true
           },
           {

@@ -4,7 +4,7 @@ const NavVerticalStylesConfig = (): any => {
   const theme = useTheme();
 
   return {
-    INDENTION: 1.7,
+    INDENTION: 1.15,
     ITEM_BORDER_RADIUS: '6px',
     ROOT_ITEM_HEIGHT: 46,
     ROOT_ITEM_PADDING_X: 1.75,
