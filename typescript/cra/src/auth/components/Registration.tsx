@@ -35,11 +35,10 @@ const registrationSchema = Yup.object().shape({
     .max(50, 'Maximum 50 symbols')
     .required('Password is required'),
   changepassword: Yup.string()
-    .required('Password confirmation is required')
-    .when('password', {
-      is: (val: string) => !!(val && val.length > 0),
-      then: Yup.string().oneOf([Yup.ref('password')], "Password and Confirm Password didn't match")
-    }),
+  .min(3, 'Minimum 3 symbols')
+  .max(50, 'Maximum 50 symbols')
+  .required('Password confirmation is required')
+  .oneOf([Yup.ref('password')], "Password and Confirm Password didn't match"),
   acceptTerms: Yup.bool().required('You must accept the terms and conditions')
 });
 

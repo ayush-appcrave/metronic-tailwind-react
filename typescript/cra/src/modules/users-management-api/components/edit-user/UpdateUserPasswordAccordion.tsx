@@ -43,7 +43,7 @@ function UpdateUserPasswordAccordion(props: UpdateUserPasswordProps) {
         .min(8, 'Password length should be at least 8.')
         .required('Password field is required.'),
       password_confirmation: Yup.string()
-        .oneOf([Yup.ref('password'), null], 'Passwords must match')
+        .oneOf([Yup.ref('password')], 'Passwords must match')
         .required('Password confirmation field is required.')
     }),
     onSubmit: async (values, { resetForm }) => {
