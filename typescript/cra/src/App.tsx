@@ -1,6 +1,10 @@
 import { BrowserRouter } from 'react-router-dom';
 
-import { AuthInit, AuthProvider } from './auth';
+import { AuthInit } from './auth';
+import { AuthProvider } from './auth/providers/JWTProvider';
+// import { AuthProvider } from './auth/providers/Auth0Provider';
+// import { AuthProvider } from './auth/providers/FirebaseProvider';
+
 import {
   LayoutsProvider,
   LoadersProvider,

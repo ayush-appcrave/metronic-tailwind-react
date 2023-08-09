@@ -1,7 +1,8 @@
 import { ReactElement, useEffect, useState } from 'react';
 import { Navigate, Route, Routes, useLocation } from 'react-router';
 
-import { AuthPage, Logout, useAuth } from '../auth';
+import { AuthPage, Logout } from '../auth';
+import { useAuthContext } from '../auth/providers/useAuthContext';
 import { DefaultLayout } from '../layouts/default';
 import { ErrorsPage } from '../modules/errors';
 import { UsersManagementWrapper } from '../modules/users-management-api';
@@ -9,7 +10,7 @@ import { DashboardPage, EcommercePage, MarketingPage } from '../pages';
 import { useLoaders } from '../providers/LoadersProvider';
 
 const AppRouting = (): ReactElement => {
-  const { currentUser } = useAuth();
+  const { currentUser } = useAuthContext();
   const { setProgressBarLoader } = useLoaders();
   const [previousLocation, setPreviousLocation] = useState('');
   const location = useLocation();

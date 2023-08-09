@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom';
 import * as Yup from 'yup';
 
 import { getUserByToken, login } from '../_requests';
-import { useAuth } from '../context/JWTProvider';
+import { useAuthContext } from '../providers/useAuthContext';
 
 const loginSchema = Yup.object().shape({
   email: Yup.string()
@@ -32,7 +32,7 @@ const initialValues = {
 
 const Login = () => {
   const [loading, setLoading] = useState(false);
-  const { saveAuth, setCurrentUser } = useAuth();
+  const { saveAuth, setCurrentUser, login } = useAuthContext();
 
   const formik = useFormik({
     initialValues,

@@ -1,10 +1,10 @@
 import { useEffect } from 'react';
 import { Navigate, Routes } from 'react-router-dom';
 
-import { useAuth } from '../context/JWTProvider';
+import { useAuthContext } from '../providers/useAuthContext';
 
 const Logout = () => {
-  const { logout } = useAuth();
+  const { logout } = useAuthContext();
   useEffect(() => {
     logout();
     document.location.reload();

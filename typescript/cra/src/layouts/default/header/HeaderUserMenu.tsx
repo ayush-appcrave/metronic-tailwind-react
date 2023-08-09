@@ -12,12 +12,12 @@ import {
 import { type MouseEvent, useState } from 'react';
 import { toAbsoluteUrl } from 'utils';
 
-import { useAuth } from '../../../auth';
+import { useAuthContext } from '../../../auth/providers/useAuthContext';
 import { KeenIcon, MenuDropdown } from '../../../components';
 
 const HeaderUserMenu = () => {
   const theme = useTheme();
-  const { currentUser, logout } = useAuth();
+  const { currentUser, logout } = useAuthContext();
 
   const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
   const open = Boolean(anchorEl);
