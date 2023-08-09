@@ -16,7 +16,7 @@ const Scrollbar = ({ children, sx, styles, ...other }: ScrollbarProps) => {
   styles = { ...ScrollbarStylesConfig(), ...styles };
 
   return (
-    <ScrollbarStyled clickOnTrack={false} sx={sx} styles={styles} {...other}>
+    <ScrollbarStyled timeout={500} clickOnTrack={false} sx={sx} styles={styles} {...other}>
       {children}
     </ScrollbarStyled>
   );
