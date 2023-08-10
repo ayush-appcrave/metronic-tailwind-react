@@ -8,6 +8,7 @@ export const ScrollbarStyled = styled(SimpleBar, {
     height: '100%',
     '& .simplebar-scrollbar': {
       '&:before': {
+        transitionDelay: '0.5s',
         backgroundColor: styles.BG_COLOR,
         borderRadius: styles.BORDER_RADIUS
       },
