@@ -4,7 +4,6 @@ import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import * as Yup from 'yup';
 
-import { getUserByToken, login } from '../_requests';
 import { useAuthContext } from '../providers/useAuthContext';
 
 const loginSchema = Yup.object().shape({
@@ -32,7 +31,7 @@ const initialValues = {
 
 const Login = () => {
   const [loading, setLoading] = useState(false);
-  const { saveAuth, setCurrentUser, login } = useAuthContext();
+  const { saveAuth, setCurrentUser, login, getUserByToken } = useAuthContext();
 
   const formik = useFormik({
     initialValues,

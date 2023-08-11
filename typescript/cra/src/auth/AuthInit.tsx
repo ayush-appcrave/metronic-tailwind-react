@@ -1,12 +1,12 @@
 import { type PropsWithChildren, useEffect, useRef } from 'react';
 
 import { useLoaders } from '../providers/LoadersProvider';
-import { getUserByToken } from './_requests';
 import { useAuthContext } from './providers/useAuthContext';
 
 const AuthInit = ({ children }: PropsWithChildren) => {
+
   const { screenLoader, setScreenLoader } = useLoaders();
-  const { auth, logout, setCurrentUser } = useAuthContext();
+  const { auth, logout, setCurrentUser, getUserByToken } = useAuthContext();
   const didRequest = useRef(false);
 
   // We should request user by authToken (IN OUR EXAMPLE IT'S API_TOKEN) before rendering the application

@@ -3,8 +3,7 @@ import { useFormik } from 'formik';
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import * as Yup from 'yup';
-
-import { requestPassword } from '../_requests';
+import { useAuthContext } from '../providers/useAuthContext';
 
 const initialValues = {
   email: 'admin@demo.com'
@@ -21,6 +20,7 @@ const forgotPasswordSchema = Yup.object().shape({
 const ForgotPassword = () => {
   const [loading, setLoading] = useState(false);
   const [hasErrors, setHasErrors] = useState<boolean | undefined>(undefined);
+  const { requestPassword } = useAuthContext();
   const formik = useFormik({
     initialValues,
     validationSchema: forgotPasswordSchema,

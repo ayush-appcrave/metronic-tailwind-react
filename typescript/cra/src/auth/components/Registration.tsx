@@ -3,8 +3,6 @@ import { useFormik } from 'formik';
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import * as Yup from 'yup';
-
-import { getUserByToken, register } from '../_requests';
 import { useAuthContext } from '../providers/useAuthContext';
 
 const initialValues = {
@@ -44,7 +42,7 @@ const registrationSchema = Yup.object().shape({
 
 const Registration = () => {
   const [loading, setLoading] = useState(false);
-  const { saveAuth, setCurrentUser } = useAuthContext();
+  const { saveAuth, setCurrentUser, register, getUserByToken } = useAuthContext();
   const formik = useFormik({
     initialValues,
     validationSchema: registrationSchema,
