@@ -17,9 +17,8 @@ module.exports = {
   ],
   overrides: [],
   parserOptions: {
-    project: 'tsconfig.json',
-    tsconfigRootDir: __dirname,
-    sourceType: 'module'
+    project: './tsconfig.json',
+    tsconfigRootDir: __dirname
   },
   plugins: ['react', 'unused-imports', 'simple-import-sort'],
   rules: {
@@ -32,6 +31,8 @@ module.exports = {
     '@typescript-eslint/consistent-type-imports': 'off',
     '@typescript-eslint/no-floating-promises': 'off',
     '@typescript-eslint/naming-convention': 'off',
+    '@typescript-eslint/restrict-template-expressions': 'off',
+    '@typescript-eslint/restrict-plus-operands': 'off',
     'simple-import-sort/imports': 'warn',
     'simple-import-sort/exports': 'warn',
     'prettier/prettier': 'warn'
