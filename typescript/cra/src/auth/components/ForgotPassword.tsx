@@ -29,7 +29,7 @@ const ForgotPassword = () => {
       setHasErrors(undefined);
       setTimeout(() => {
         requestPassword(values.email)
-          .then(({ data: { result } }) => {
+          .then(() => {
             setHasErrors(false);
             setLoading(false);
           })

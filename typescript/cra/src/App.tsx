@@ -1,6 +1,4 @@
 import { BrowserRouter } from 'react-router-dom';
-
-import { AuthInit } from './auth';
 import { AuthProvider } from './auth/providers/JWTProvider';
 // import { AuthProvider } from './auth/providers/Auth0Provider';
 // import { AuthProvider } from './auth/providers/FirebaseProvider';
@@ -32,11 +30,9 @@ const App = () => (
             <LayoutsProvider>
               <LoadersProvider>
                 <SnackbarProvider>
-                  <AuthInit>
                     <BrowserRouter basename={PUBLIC_URL}>
                       <AppRouting />
                     </BrowserRouter>
-                  </AuthInit>
                 </SnackbarProvider>
               </LoadersProvider>
             </LayoutsProvider>

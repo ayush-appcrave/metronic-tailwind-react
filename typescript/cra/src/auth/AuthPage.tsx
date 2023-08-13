@@ -1,4 +1,4 @@
-import { Route, Routes } from 'react-router';
+import { Navigate, Route, Routes } from 'react-router';
 
 import { AuthLayout } from '../layouts/auth';
 import { ForgotPassword } from './components/ForgotPassword';
@@ -12,6 +12,7 @@ const AuthPage = () => (
       <Route path="registration" element={<Registration />} />
       <Route path="forgot-password" element={<ForgotPassword />} />
       <Route index element={<Login />} />
+      <Route path="*" element={<Navigate to="/error/404" />} />
     </Route>
   </Routes>
 );
