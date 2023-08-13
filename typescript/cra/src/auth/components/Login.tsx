@@ -43,6 +43,10 @@ const Login = () => {
     onSubmit: async (values, { setStatus, setSubmitting }) => {
       setLoading(true);
       try {
+        if(!login){
+          throw new Error("JWTProveder is required for thir form.");
+        }
+
         await login(values.email, values.password);
       
         navigate(from, { replace: true });

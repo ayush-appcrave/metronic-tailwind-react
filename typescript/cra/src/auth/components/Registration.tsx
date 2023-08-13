@@ -53,6 +53,10 @@ const Registration = () => {
     onSubmit: async (values, { setStatus, setSubmitting }) => {
       setLoading(true);
       try {
+        if(!register){
+          throw new Error("JWTProveder is required for thir form.");
+        }
+
         await register(
           values.email,
           values.firstname,

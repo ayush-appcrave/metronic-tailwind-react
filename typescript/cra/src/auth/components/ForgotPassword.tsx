@@ -27,8 +27,11 @@ const ForgotPassword = () => {
     onSubmit: async (values, { setStatus, setSubmitting }) => {
       setLoading(true);
       setHasErrors(undefined);
-
       try {
+        if(!requestPassword){
+          throw new Error("JWTProveder is required for thir form.");
+        }
+
         await requestPassword(values.email);
 
         setHasErrors(false);

@@ -3,145 +3,100 @@ import {
   type Dispatch,
   type PropsWithChildren,
   type SetStateAction,
-  useCallback,
   useState,
   useEffect,
 } from 'react';
-import { AuthModel, UserModel } from '../_models';
 import * as authHelper from '../_helpers';
-import { Auth0Client } from "@auth0/auth0-spa-js";
+import { Auth0Client, User } from "@auth0/auth0-spa-js";
  
 interface AuthContextProps {
-  auth: AuthModel | undefined;
-  saveAuth: (auth: AuthModel | undefined) => void;
-  currentUser: UserModel | undefined;
-  setCurrentUser: Dispatch<SetStateAction<UserModel | undefined>>;
-  login: (email: string, password: string)=> Promise<{ data: AuthModel }>;
-  register: (
+  isLoading: boolean;
+  auth: User | undefined;
+  currentUser: User | undefined;
+  setCurrentUser: Dispatch<SetStateAction<User | undefined>>;
+  // login: ()=> Promise<void>;
+  logout: () => Promise<void>;
+  verify: () => Promise<void>
+
+  login: (email?: string, password?: string) => Promise<void>;
+  register?: (
     email: string,
     firstname: string,
     lastname: string,
     password: string,
     password_confirmation: string
-  ) => Promise<{ data: AuthModel }>;
-  getUserByToken: (token: string) => Promise<{ data: UserModel }>;
-  requestPassword: (email: string) => Promise<{ data: AuthModel }>;
-  logout: () => void;
+  ) => Promise<void>;
+  requestPassword?: (email: string) => Promise<void>;
 }
 const AuthContext = createContext<AuthContextProps | null>(null);
 
 let auth0Client: Auth0Client | null = null; 
 
 const AuthProvider = ({ children }: PropsWithChildren) => {
-  const [auth, setAuth] = useState<AuthModel | undefined>(authHelper.getAuth());
-  const [currentUser, setCurrentUser] = useState<UserModel | undefined>();
+  const [ loading, setLoading ] = useState(false);
+  const [auth, setAuth] = useState<User | undefined>(authHelper.getAuth0());
+  const [currentUser, setCurrentUser] = useState<User | undefined>();
 
-  const init = useCallback(async () => {
-    auth0Client = new Auth0Client({
-      domain: 'dev-71gfvs3huwm3geqk.us.auth0.com',
-      clientId: 'A4nEnzCN7UIaYh01bn7nFRmMVJdh1enK',
-      authorizationParams: {
-        redirect_uri: "http://localhost:3000/hero/dashboard"
-      }
-    });
-
-    await auth0Client.checkSession();
-
-    const isAuth = await auth0Client.isAuthenticated();
-
-    console.log(isAuth);
-  }, []);
+  // Verity user session and validate bearer authentication
+  const verify = async () => {
+    setLoading(true);
+    try {
+      auth0Client = new Auth0Client({
+        domain: 'dev-71gfvs3huwm3geqk.us.auth0.com',
+        clientId: 'A4nEnzCN7UIaYh01bn7nFRmMVJdh1enK',
+        authorizationParams: {
+          redirect_uri: "http://localhost:3000/hero/dashboard"
+        }
+      });
+  
+      await auth0Client.checkSession();
+    } catch (error){
+      throw new Error(error as string);
+    } finally {
+      setLoading(false);
+    }
+  }
 
   useEffect(()=>{
-    init();
-  }, [init]);
+    verify();
+  }, []);
 
-  const saveAuth = () => {
-    console.log("saveAuth");
-  }
-  const login = async (email: string, password: string) => {
-    console.log("login");
+  // Set auth object and save it to local storage
+  const saveAuth = (auth: User | undefined) => {
+    setAuth(auth);
+    if (auth) {
+      authHelper.setAuth(auth);
+    } else {
+      authHelper.removeAuth();
+    }
+  };
+
+  const login = async () => {
     await auth0Client?.loginWithPopup();
 
     const isAuthenticated = await auth0Client?.isAuthenticated();
 
     if (isAuthenticated) {
       const user = await auth0Client?.getUser();
-      console.log(user);
-    }
-
-    return {
-      data: {
-      access_token: "arsts",
-     refreshToken: "starst",
-     api_token: "arstarst"
-   }
-  }
-  }
-
-  const requestPassword = async (email: string) => {
-    return {data: {
-      access_token: "arsts",
-     refreshToken: "starst",
-     api_token: "arstarst"
-   }}
-  }
-
-  const register = async (email: string, firstname: string, lastname: string, password: string, password_confirmation: string) => {
-    try {
-      // await auth0Client.;
-    } catch (error) {
-      console.log(error);
-    }
-
-    console.log("register")
-    return {data: {
-       access_token: "arsts",
-      refreshToken: "starst",
-      api_token: "arstarst"
-    }}
-  }
-
-  const getUserByToken = async () => {
-    console.log("getUserByToken")
-    return {
-      data:  {
-        id: 1,
-        username: "Arstarst",
-        password: "arstars",
-        email: "arstasr",
-        first_name: "atarst",
-        last_name: "arstrst",
-        fullname: "arstarst",
-        occupation: "arstrast",
-        companyName: "asrtarst",
-        phone: "arsta",
-        roles: [1],
-        pic: "aarst",
-        auth: {
-          access_token: "arsts",
-          refreshToken: "starst",
-          api_token: "arstarst"
-        }
-      }
+      setAuth(user);
     }
   }
 
-  const logout = () => {
-    console.log("logout")
+  const logout = async () => {
+    await auth0Client?.logout({
+      openUrl: false });
+    saveAuth(undefined);
   }
 
   return <AuthContext.Provider
       value={{
-        requestPassword,
-        register,
-        getUserByToken,
-        saveAuth,
-        setCurrentUser,
+        isLoading: loading,
         auth,
         currentUser,
+        setCurrentUser,
         login,
-        logout
+        logout,
+        verify
       }}
     >
       {children}
