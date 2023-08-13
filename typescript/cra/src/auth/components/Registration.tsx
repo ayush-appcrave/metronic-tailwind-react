@@ -1,7 +1,7 @@
 import clsx from 'clsx';
 import { useFormik } from 'formik';
 import { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import * as Yup from 'yup';
 import { useAuthContext } from '../providers/useAuthContext';
 
@@ -42,27 +42,28 @@ const registrationSchema = Yup.object().shape({
 
 const Registration = () => {
   const [loading, setLoading] = useState(false);
-  const { saveAuth, setCurrentUser, register, getUserByToken } = useAuthContext();
+  const { register } = useAuthContext();
+  const navigate = useNavigate();
+  const location = useLocation();
+  const from = location.state?.from?.pathname || "/";
+
   const formik = useFormik({
     initialValues,
     validationSchema: registrationSchema,
     onSubmit: async (values, { setStatus, setSubmitting }) => {
       setLoading(true);
       try {
-        const { data: auth } = await register(
+        await register(
           values.email,
           values.firstname,
           values.lastname,
           values.password,
           values.changepassword
-        );
-        saveAuth(auth);
-        const { data: user } = await getUserByToken(auth.api_token);
-        setCurrentUser(user);
+        );      
+        navigate(from, { replace: true });
       } catch (error) {
         console.error(error);
-        saveAuth(undefined);
-        setStatus('The registration details is incorrect');
+        setStatus('The registration details are incorrect');
         setSubmitting(false);
         setLoading(false);
       }

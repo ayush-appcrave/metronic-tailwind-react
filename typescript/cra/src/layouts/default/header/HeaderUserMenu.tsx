@@ -149,7 +149,7 @@ const HeaderUserMenu = () => {
 
         <Divider sx={{ my: 1, borderStyle: 'dashed' }} />
 
-        <MenuItem onClick={logout} sx={{ mx: 1 }}>
+        <MenuItem onClick={()=>{logout()}} sx={{ mx: 1 }}>
           <ListItemIcon>
             <KeenIcon icon="entrance-left" />
           </ListItemIcon>

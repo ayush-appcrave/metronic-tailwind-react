@@ -10,6 +10,8 @@ const getAuth = (): AuthModel | undefined => {
     if (auth) {
       // You can easily check auth_token expiration also
       return auth;
+    } else {
+      return undefined;
     }
   } catch (error) {
     console.error('AUTH LOCAL STORAGE PARSE ERROR', error);

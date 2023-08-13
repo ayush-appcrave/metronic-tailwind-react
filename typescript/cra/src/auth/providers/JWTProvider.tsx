@@ -4,7 +4,8 @@ import {
   type Dispatch,
   type PropsWithChildren,
   type SetStateAction,
-  useState
+  useState,
+  useEffect,
 } from 'react';
 
 import * as authHelper from '../_helpers';
@@ -18,29 +19,53 @@ export const REGISTER_URL = `${API_URL}/register`;
 export const REQUEST_PASSWORD_URL = `${API_URL}/forgotpassword`;
 
 interface AuthContextProps {
+  isLoading: boolean,
   auth: AuthModel | undefined;
   saveAuth: (auth: AuthModel | undefined) => void;
   currentUser: UserModel | undefined;
   setCurrentUser: Dispatch<SetStateAction<UserModel | undefined>>;
-  login: (email: string, password: string) => Promise<AxiosResponse<any>>;
+  login: (email: string, password: string) => Promise<void>;
   register: (
     email: string,
     firstname: string,
     lastname: string,
     password: string,
     password_confirmation: string
-  ) => Promise<AxiosResponse<any>>;
-  requestPassword: (email: string) => Promise<AxiosResponse<any>>;
-  getUserByToken: (token: string) => Promise<AxiosResponse<any>>;
+  ) => Promise<void>;
+  requestPassword: (email: string) => Promise<void>;
+  getUser: () => Promise<AxiosResponse<any>>;
   logout: () => void;
+  verify: () => Promise<void>
 }
 
 const AuthContext = createContext<AuthContextProps | null>(null);
 
 const AuthProvider = ({ children }: PropsWithChildren) => {
-  const [auth, setAuth] = useState<AuthModel | undefined>(authHelper.getAuth());
+  const [ loading, setLoading ] = useState(false);
+  const [ auth, setAuth ] = useState<AuthModel | undefined>(authHelper.getAuth());
   const [currentUser, setCurrentUser] = useState<UserModel | undefined>();
 
+  // Verity user session and validate bearer authentication
+  const verify = async () => {
+    if(auth){
+      try {
+        const { data: user } = await getUser();
+        setCurrentUser(user);
+      } catch(error){
+        saveAuth(undefined);
+        setCurrentUser(undefined);
+      } finally {
+        setLoading(false);
+      }
+    }
+  }
+
+  useEffect(()=>{
+    setLoading(true);
+    verify();
+  }, [])
+
+  // Set auth object and save it to local storage
   const saveAuth = (auth: AuthModel | undefined) => {
     setAuth(auth);
     if (auth) {
@@ -50,15 +75,23 @@ const AuthProvider = ({ children }: PropsWithChildren) => {
     }
   };
 
-  // Server should return AuthModel
+  // Login user with email and password
   const login = async (email: string, password: string) => {
-    return await axios.post<AuthModel>(LOGIN_URL, {
-      email,
-      password
-    });
+    try {
+      const { data: auth } = await axios.post<AuthModel>(LOGIN_URL, {
+        email,
+        password
+      });
+      saveAuth(auth);
+      const { data: user } = await getUser();
+      setCurrentUser(user);
+    } catch(error){
+      saveAuth(undefined);
+      throw new Error(`Error ${error}`);
+    }
   };
 
-  // Server should return AuthModel
+  // Register user using default registraion information
   const register = async (
     email: string,
     firstname: string,
@@ -66,26 +99,36 @@ const AuthProvider = ({ children }: PropsWithChildren) => {
     password: string,
     password_confirmation: string
   ) => {
-    return await axios.post(REGISTER_URL, {
-      email,
-      first_name: firstname,
-      last_name: lastname,
-      password,
-      password_confirmation
-    });
+    try {
+      const { data: auth } =  await axios.post(REGISTER_URL, {
+        email,
+        first_name: firstname,
+        last_name: lastname,
+        password,
+        password_confirmation
+      });
+      saveAuth(auth);
+      const { data: user } = await getUser();
+      setCurrentUser(user);
+    } catch(error){
+      saveAuth(undefined);
+      throw new Error(`Error ${error}`);
+    }
   };
 
   // Server should return object => { result: boolean } (Is Email in DB)
   const requestPassword = async (email: string) => {
-    return await axios.post<{ result: boolean }>(REQUEST_PASSWORD_URL, {
+    await axios.post<{ result: boolean }>(REQUEST_PASSWORD_URL, {
       email
     });
   };
 
-  const getUserByToken = async (token: string) => {
+  // Returns user by using bearer authentication token
+  const getUser = async () => {
     return await axios.get<UserModel>(GET_USER_BY_ACCESSTOKEN_URL);
   };
 
+  // Delete auth local storage and resets current user state
   const logout = () => {
     saveAuth(undefined);
     setCurrentUser(undefined);
@@ -94,6 +137,7 @@ const AuthProvider = ({ children }: PropsWithChildren) => {
   return (
     <AuthContext.Provider
       value={{
+        isLoading: loading,
         auth,
         saveAuth,
         currentUser,
@@ -101,8 +145,9 @@ const AuthProvider = ({ children }: PropsWithChildren) => {
         login,
         register,
         requestPassword,
-        getUserByToken,
-        logout
+        getUser,
+        logout,
+        verify,
       }}
     >
       {children}

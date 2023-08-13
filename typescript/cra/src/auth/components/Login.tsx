@@ -1,10 +1,11 @@
 import clsx from 'clsx';
 import { useFormik } from 'formik';
 import { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate, useLocation } from 'react-router-dom';
 import * as Yup from 'yup';
 
 import { useAuthContext } from '../providers/useAuthContext';
+import { setAuth } from '../_helpers';
 
 const loginSchema = Yup.object().shape({
   email: Yup.string()
@@ -31,7 +32,10 @@ const initialValues = {
 
 const Login = () => {
   const [loading, setLoading] = useState(false);
-  const { saveAuth, setCurrentUser, login, getUserByToken } = useAuthContext();
+  const { login, auth } = useAuthContext();
+  const navigate = useNavigate();
+  const location = useLocation();
+  const from = location.state?.from?.pathname || "/";
 
   const formik = useFormik({
     initialValues,
@@ -39,16 +43,14 @@ const Login = () => {
     onSubmit: async (values, { setStatus, setSubmitting }) => {
       setLoading(true);
       try {
-        const { data: auth } = await login(values.email, values.password);
-        saveAuth(auth);
-        const { data: user } = await getUserByToken(auth.access_token);
-        setCurrentUser(user);
+        await login(values.email, values.password);
+      
+        navigate(from, { replace: true });
       } catch (error) {
-        saveAuth(undefined);
         setStatus('The login details are incorrect');
         setSubmitting(false);
-        setLoading(false);
       }
+      setLoading(false);
     }
   });
 

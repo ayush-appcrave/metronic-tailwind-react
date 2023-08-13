@@ -24,22 +24,21 @@ const ForgotPassword = () => {
   const formik = useFormik({
     initialValues,
     validationSchema: forgotPasswordSchema,
-    onSubmit: (values, { setStatus, setSubmitting }) => {
+    onSubmit: async (values, { setStatus, setSubmitting }) => {
       setLoading(true);
       setHasErrors(undefined);
-      setTimeout(() => {
-        requestPassword(values.email)
-          .then(() => {
-            setHasErrors(false);
-            setLoading(false);
-          })
-          .catch(() => {
-            setHasErrors(true);
-            setLoading(false);
-            setSubmitting(false);
-            setStatus('The login detail is incorrect');
-          });
-      }, 1000);
+
+      try {
+        await requestPassword(values.email);
+
+        setHasErrors(false);
+        setLoading(false);
+      } catch(error){
+        setHasErrors(true);
+        setLoading(false);
+        setSubmitting(false);
+        setStatus('The login detail is incorrect');
+      }
     }
   });
   return (
