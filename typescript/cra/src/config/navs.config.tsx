@@ -49,13 +49,13 @@ const NAV_COMMON: Record<string, NavConfigType> = {
       }
     },
     {
-      key: 'dashboards-eCommerce',
+      key: 'dashboards-Marketing',
       title: 'Marketing',
       path: '/marketing',
       bullet: true
     },
     {
-      key: 'dashboards-eCommerce',
+      key: 'dashboards-Crypto',
       title: 'Crypto',
       path: 'https://keenthemes.com',
       externalLink: true,
@@ -81,13 +81,23 @@ const NAV_COMMON: Record<string, NavConfigType> = {
       path: '#pages/page-1',
       bullet: true,
       children: {
-        variant: {
+        menuProps: {
+          anchorOrigin: {
+            horizontal: 'right',
+            vertical: 'top'
+          },
+          transformOrigin: {
+            horizontal: 'left',
+            vertical: 'top'
+          }
+        },
+        menu: {
           breakpoints: {
             up: {
-              md: 'dropdown'
+              md: true
             },
             down: {
-              md: 'inline'
+              md: false
             }
           }
         },
@@ -237,7 +247,6 @@ const NAV_VERTICAL: NavConfigType = [
     title: 'Dashboards',
     icon: <KeenIcon icon="calendar" />,
     children: {
-      variant: 'inline',
       direction: 'vertical',
       toggle: 'click',
       accordion: true,
@@ -249,14 +258,24 @@ const NAV_VERTICAL: NavConfigType = [
     icon: <KeenIcon icon="calendar" />,
     tabIndex: 0,
     children: {
-      variant: {
+      menu: {
         breakpoints: {
           up: {
-            md: 'dropdown'
+            md: true
           },
           down: {
-            md: 'inline'
+            md: false
           }
+        }
+      },
+      menuProps: {
+        anchorOrigin: {
+          horizontal: 'right',
+          vertical: 'top'
+        },
+        transformOrigin: {
+          horizontal: 'left',
+          vertical: 'top'
         }
       },
       accordion: {

@@ -1,20 +1,18 @@
-import { List, type SxProps } from '@mui/material';
-import { memo, useRef } from 'react';
+import { List } from '@mui/material';
+import { memo } from 'react';
 
-import { NavItem, type NavItemOptionsType, type NavType } from './';
+import { NavDefaultStylesConfig, NavItem, NavItemPropsType, NavPropsType } from './';
 
 const NavComponent = ({
-  variant = 'inline',
-  direction = 'vertical',
+  direction,
   accordion,
   collapse,
   expand,
-  height,
-  maxHeight,
+  hover,
   items,
-  sx,
-  styles
-}: NavType) => {
+  styles,
+  sx
+}: NavPropsType) => {
   return (
     <List
       sx={{
@@ -24,15 +22,15 @@ const NavComponent = ({
       component="nav"
       aria-labelledby="nav-list"
     >
-      {(items as readonly NavItemOptionsType[]).map((item, index) => (
+      {(items as readonly NavItemPropsType[]).map((item, index) => (
         <NavItem
+          // eslint-disable-next-line @typescript-eslint/restrict-template-expressions
           key={`${index}-${item.title}`}
-          parentVariant={variant}
-          depth={1}
+          menu={false}
           collapse={collapse}
           expand={expand}
-          options={item}
-          styles={styles}
+          styles={styles ?? NavDefaultStylesConfig()}
+          {...item}
         />
       ))}
     </List>

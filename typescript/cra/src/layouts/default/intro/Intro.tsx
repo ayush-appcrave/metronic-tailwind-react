@@ -1,12 +1,12 @@
 import { Box } from '@mui/material';
 
-import { type NavBreadcrumbsType } from '../../../components/nav';
+import { type NavBreadcrumbsPropsType } from '../../../components/nav';
 import { IntroBreadcrumbs, IntroSubTitle, IntroTitle } from './';
 
 export interface IntroProps {
   title?: string;
   subTitle?: string;
-  breadcrumbs?: NavBreadcrumbsType;
+  breadcrumbs?: NavBreadcrumbsPropsType;
 }
 
 const Intro = ({ title = '', subTitle = '', breadcrumbs = [] }: IntroProps) => {

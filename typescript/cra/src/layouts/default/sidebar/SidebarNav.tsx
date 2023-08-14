@@ -1,4 +1,4 @@
-import { Nav, NavVerticalStylesConfig } from '../../../components/nav';
+import { Nav, NavDefaultStylesConfig } from '../../../components/nav';
 import Scrollbar from '../../../components/scrollbar';
 import { NAV_VERTICAL } from '../../../config/navs.config';
 import { useViewport } from '../../../hooks';
@@ -11,7 +11,6 @@ interface Props {
 
 const SidebarNav = ({ headerHeight = 0, footerHeight = 0 }: Props) => {
   const { isSidebarExpand, isSidebarCollapse } = useDefaultLayout();
-  const stylesConfig = NavVerticalStylesConfig();
   const [viewportHeight] = useViewport();
   const scrollableHeight: number = viewportHeight - headerHeight - footerHeight;
 
@@ -19,18 +18,16 @@ const SidebarNav = ({ headerHeight = 0, footerHeight = 0 }: Props) => {
     <Scrollbar
       sx={{
         height: scrollableHeight,
-        // overflow: 'hidden',
         px: 1.5,
         mx: 1
       }}
     >
       <Nav
-        variant="inline"
         direction="vertical"
         collapse={isSidebarCollapse}
         expand={isSidebarExpand}
         items={NAV_VERTICAL}
-        styles={stylesConfig}
+        styles={NavDefaultStylesConfig()}
       />
     </Scrollbar>
   );

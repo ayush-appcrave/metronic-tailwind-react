@@ -1,10 +1,11 @@
 import { Box } from '@mui/material';
 import { memo } from 'react';
 
-import { type NavItemArrowType } from './types';
+import { type NavItemArrowPropsType } from './types';
 
 const NavItemArrowComponent = ({
-  variant = 'inline',
+  menu,
+  itemMenu,
   direction = 'vertical',
   toggle = 'click',
   accordion = false,
@@ -12,28 +13,19 @@ const NavItemArrowComponent = ({
   here = false,
   hover = false,
   open = false,
-  disabled = false,
   collapse = false,
   expand = false,
   icon = null,
-  depth = 0
-}: NavItemArrowType) => {
+  depth = 0,
+  styles
+}: NavItemArrowPropsType) => {
   let rotateInitial: string = '';
   let rotateToggle: string = '';
 
-  if (variant === 'inline') {
-    if (direction === 'vertical') {
-      rotateInitial = 'rotate(0)';
-      rotateToggle = 'rotate(-180deg)';
-    } else if (direction === 'horizontal') {
-      rotateInitial = 'rotate(0)';
-      rotateToggle = 'rotate(180deg)';
-    }
-  } else if (variant === 'dropdown') {
+  if (itemMenu) {
     if (direction === 'vertical') {
       rotateInitial = 'rotate(0)';
       rotateToggle = 'rotate(-90deg)';
-      console.log('1');
     } else if (direction === 'horizontal') {
       if (depth === 1) {
         rotateInitial = 'rotate(0)';
@@ -42,6 +34,14 @@ const NavItemArrowComponent = ({
         rotateInitial = 'rotate(0)';
         rotateToggle = 'rotate(-180deg)';
       }
+    }
+  } else {
+    if (direction === 'vertical') {
+      rotateInitial = 'rotate(0)';
+      rotateToggle = 'rotate(-180deg)';
+    } else if (direction === 'horizontal') {
+      rotateInitial = 'rotate(0)';
+      rotateToggle = 'rotate(180deg)';
     }
   }
 
@@ -52,21 +52,72 @@ const NavItemArrowComponent = ({
       sx={{
         transform,
         transition: 'transform 0.3s ease',
-        height: 16,
-        width: 16,
         minWidth: 0,
         display: 'flex',
         alignItems: 'center',
         justifyContent: 'center',
-        color: (theme) => theme.palette.grey['500'],
-        ...(active && {
-          color: (theme) => theme.palette.primary.main
+
+        height: menu
+          ? styles.MENU_ITEM_ARROW_SIZE
+          : depth === 1
+          ? styles.ROOT_ITEM_ARROW_SIZE
+          : styles.SUB_ITEM_ARROW_SIZE,
+
+        width: menu
+          ? styles.MENU_ITEM_ARROW_SIZE
+          : depth === 1
+          ? styles.ROOT_ITEM_ARROW_SIZE
+          : styles.SUB_ITEM_ARROW_SIZE,
+
+        color: menu
+          ? styles.MENU_ITEM_ARROW_COLOR
+          : depth === 1
+          ? styles.ROOT_ITEM_ARROW_COLOR
+          : styles.SUB_ITEM_ARROW_COLOR,
+
+        ...(hover && {
+          color:
+            menu === true
+              ? styles.MENU_ITEM_ARROW_COLOR_HOVER
+              : depth === 1
+              ? styles.ROOT_ITEM_ARROW_COLOR_HOVER
+              : styles.SUB_ITEM_ARROW_COLOR_HOVER
         }),
+
+        ...(open && {
+          color:
+            menu === true
+              ? styles.MENU_ITEM_ARROW_COLOR_OPEN
+              : depth === 1
+              ? styles.ROOT_ITEM_ARROW_COLOR_OPEN
+              : styles.SUB_ITEM_ARROW_COLOR_OPEN
+        }),
+
         ...(here && {
-          color: (theme) => theme.palette.grey['700']
+          color:
+            menu === true
+              ? styles.MENU_ITEM_ARROW_COLOR_HERE
+              : depth === 1
+              ? styles.ROOT_ITEM_ARROW_COLOR_HERE
+              : styles.SUB_ITEM_ARROW_COLOR_HERE
         }),
+
+        ...(active && {
+          color:
+            menu === true
+              ? styles.MENU_ITEM_ARROW_COLOR_ACTIVE
+              : depth === 1
+              ? styles.ROOT_ITEM_ARROW_COLOR_ACTIVE
+              : styles.SUB_ITEM_ARROW_COLOR_ACTIVE
+        }),
+
         'i ': {
-          fontSize: '13px'
+          fontSize:
+            menu === true
+              ? styles.MENU_ITEM_ARROW_FONT_SIZE
+              : depth === 1
+              ? styles.ROOT_ITEM_ARROW_FONT_SIZE
+              : styles.SUB_ITEM_ARROW_FONT_SIZE
         }
       }}
     >

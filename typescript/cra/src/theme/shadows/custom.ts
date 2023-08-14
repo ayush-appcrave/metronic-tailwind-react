@@ -6,6 +6,7 @@ import { getPalette } from '../palette';
 interface CustomShadowOptions {
   card: string;
   popover: string;
+  menu: string;
 }
 
 declare module '@mui/material/styles' {
@@ -26,7 +27,8 @@ const createShadows = (color: string) => {
   // box-shadow: h-offset v-offset blur spread color;
   return {
     card: `0px 5px 20px 0px ${opacity}`,
-    popover: `0px 5px 50px 0px ${opacity}`
+    popover: `0px 5px 50px 0px ${opacity}`,
+    menu: `0px 5px 50px 0px ${opacity}`
   };
 };
 

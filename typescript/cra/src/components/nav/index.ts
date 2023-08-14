@@ -2,6 +2,7 @@ export * from './hooks/useNavBreadcrumbs';
 export * from './hooks/useNavTitle';
 export * from './Nav';
 export * from './NavItem';
+export * from './NavItemButton';
 export * from './NavItemArrow';
 export * from './NavItemBullet';
 export * from './NavItemSub';

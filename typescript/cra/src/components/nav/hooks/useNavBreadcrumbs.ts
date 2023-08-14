@@ -1,8 +1,11 @@
 import { useMatchPath } from '../../../hooks';
-import { NavBreadcrumbsType, NavConfigType, NavItemOptionsType } from '../types';
+import { NavBreadcrumbsPropsType, NavConfigType, NavItemPropsType } from '../types';
 
-const useNavBreadcrumbs = (items: NavConfigType): NavBreadcrumbsType => {
-  const findParents = (items: NavConfigType, parent?: NavItemOptionsType): NavBreadcrumbsType => {
+const useNavBreadcrumbs = (items: NavConfigType): NavBreadcrumbsPropsType => {
+  const findParents = (
+    items: NavConfigType,
+    parent?: NavItemPropsType
+  ): NavBreadcrumbsPropsType => {
     for (let i = 0; i < items.length; i++) {
       const obj = items[i];
       const path = obj.path ? obj.path : '';

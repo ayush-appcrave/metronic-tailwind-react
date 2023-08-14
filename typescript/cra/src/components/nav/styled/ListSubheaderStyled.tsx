@@ -1,27 +1,16 @@
 import { ListSubheader } from '@mui/material';
 import { styled } from '@mui/material/styles';
 
-import { type NavItemChildType } from '..';
+import { type NavItemChildPropsType } from '..';
 
 export const ListSubheaderStyled = styled(ListSubheader, {
-  shouldForwardProp: (prop) =>
-    ![
-      'depth',
-      'styles',
-      'active',
-      'here',
-      'hover',
-      'open',
-      'collapse',
-      'expand',
-      'disabled'
-    ].includes(prop as string)
-})<NavItemChildType>(({ depth, active, here, hover, open, disabled, styles, theme }) => {
+  shouldForwardProp: (prop) => !['depth', 'styles'].includes(prop as string)
+})<NavItemChildPropsType>(({ depth, styles, theme }) => {
   return {
     ...theme.typography.overline,
-    fontSize: 11,
-    paddingTop: theme.spacing(3),
-    paddingBottom: theme.spacing(1),
-    color: theme.palette.text.secondary
+    fontSize: styles.SUBHEADER_FONT_SIZE,
+    paddingTop: styles.SUBHEADER_PADDING_TOP,
+    paddingBottom: styles.SUBHEADER_PADDING_BOTTOM,
+    color: styles.SUBHEADER_COLOR
   };
 });

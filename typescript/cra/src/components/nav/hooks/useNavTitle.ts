@@ -1,6 +1,6 @@
-import { type NavBreadcrumbsType, type NavConfigType } from '../types';
+import { type NavBreadcrumbsPropsType, type NavConfigType } from '../types';
 
-const useNavTitle = (items: NavConfigType, path?: string): NavBreadcrumbsType => {
+const useNavTitle = (items: NavConfigType, path?: string): NavBreadcrumbsPropsType => {
   return [];
 };
 
