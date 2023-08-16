@@ -28,15 +28,15 @@ const ForgotPassword = () => {
       setLoading(true);
       setHasErrors(undefined);
       try {
-        if(!requestPassword){
-          throw new Error("JWTProveder is required for thir form.");
+        if (!requestPassword) {
+          throw new Error('JWTProveder is required for thir form.');
         }
 
         await requestPassword(values.email);
 
         setHasErrors(false);
         setLoading(false);
-      } catch(error){
+      } catch (error) {
         setHasErrors(true);
         setLoading(false);
         setSubmitting(false);

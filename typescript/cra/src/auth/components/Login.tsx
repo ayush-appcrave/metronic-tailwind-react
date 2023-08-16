@@ -35,7 +35,7 @@ const Login = () => {
   const { login, auth } = useAuthContext();
   const navigate = useNavigate();
   const location = useLocation();
-  const from = location.state?.from?.pathname || "/";
+  const from = location.state?.from?.pathname || '/';
 
   const formik = useFormik({
     initialValues,
@@ -43,12 +43,12 @@ const Login = () => {
     onSubmit: async (values, { setStatus, setSubmitting }) => {
       setLoading(true);
       try {
-        if(!login){
-          throw new Error("JWTProveder is required for thir form.");
+        if (!login) {
+          throw new Error('JWTProveder is required for thir form.');
         }
 
         await login(values.email, values.password);
-      
+
         navigate(from, { replace: true });
       } catch (error) {
         setStatus('The login details are incorrect');

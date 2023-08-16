@@ -30,9 +30,9 @@ const App = () => (
             <LayoutsProvider>
               <LoadersProvider>
                 <SnackbarProvider>
-                    <BrowserRouter basename={PUBLIC_URL}>
-                      <AppRouting />
-                    </BrowserRouter>
+                  <BrowserRouter basename={PUBLIC_URL}>
+                    <AppRouting />
+                  </BrowserRouter>
                 </SnackbarProvider>
               </LoadersProvider>
             </LayoutsProvider>

@@ -33,10 +33,10 @@ const registrationSchema = Yup.object().shape({
     .max(50, 'Maximum 50 symbols')
     .required('Password is required'),
   changepassword: Yup.string()
-  .min(3, 'Minimum 3 symbols')
-  .max(50, 'Maximum 50 symbols')
-  .required('Password confirmation is required')
-  .oneOf([Yup.ref('password')], "Password and Confirm Password didn't match"),
+    .min(3, 'Minimum 3 symbols')
+    .max(50, 'Maximum 50 symbols')
+    .required('Password confirmation is required')
+    .oneOf([Yup.ref('password')], "Password and Confirm Password didn't match"),
   acceptTerms: Yup.bool().required('You must accept the terms and conditions')
 });
 
@@ -45,7 +45,7 @@ const Registration = () => {
   const { register } = useAuthContext();
   const navigate = useNavigate();
   const location = useLocation();
-  const from = location.state?.from?.pathname || "/";
+  const from = location.state?.from?.pathname || '/';
 
   const formik = useFormik({
     initialValues,
@@ -53,17 +53,11 @@ const Registration = () => {
     onSubmit: async (values, { setStatus, setSubmitting }) => {
       setLoading(true);
       try {
-        if(!register){
-          throw new Error("JWTProveder is required for thir form.");
+        if (!register) {
+          throw new Error('JWTProveder is required for thir form.');
         }
 
-        await register(
-          values.email,
-          values.firstname,
-          values.lastname,
-          values.password,
-          values.changepassword
-        );      
+        await register(values.email, values.firstname, values.lastname, values.password);
         navigate(from, { replace: true });
       } catch (error) {
         console.error(error);

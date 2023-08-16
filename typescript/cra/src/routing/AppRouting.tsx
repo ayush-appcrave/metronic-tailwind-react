@@ -27,10 +27,10 @@ const AppRouting = (): ReactElement => {
       if (location.pathname === previousLocation) {
         setPreviousLocation('');
       }
-    } catch(error){
-      console.log(error);
+    } catch (error) {
+      throw new Error('Something went wrong!');
     }
-  }
+  };
 
   useEffect(() => {
     init();

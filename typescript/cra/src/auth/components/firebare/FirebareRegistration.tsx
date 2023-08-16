@@ -15,28 +15,20 @@ const initialValues = {
 };
 
 const registrationSchema = Yup.object().shape({
-  firstname: Yup.string()
-    .min(3, 'Minimum 3 symbols')
-    .max(50, 'Maximum 50 symbols')
-    .required('First name is required'),
   email: Yup.string()
     .email('Wrong email format')
     .min(3, 'Minimum 3 symbols')
     .max(50, 'Maximum 50 symbols')
     .required('Email is required'),
-  lastname: Yup.string()
-    .min(3, 'Minimum 3 symbols')
-    .max(50, 'Maximum 50 symbols')
-    .required('Last name is required'),
   password: Yup.string()
     .min(3, 'Minimum 3 symbols')
     .max(50, 'Maximum 50 symbols')
     .required('Password is required'),
   changepassword: Yup.string()
-  .min(3, 'Minimum 3 symbols')
-  .max(50, 'Maximum 50 symbols')
-  .required('Password confirmation is required')
-  .oneOf([Yup.ref('password')], "Password and Confirm Password didn't match"),
+    .min(3, 'Minimum 3 symbols')
+    .max(50, 'Maximum 50 symbols')
+    .required('Password confirmation is required')
+    .oneOf([Yup.ref('password')], "Password and Confirm Password didn't match"),
   acceptTerms: Yup.bool().required('You must accept the terms and conditions')
 });
 
@@ -45,7 +37,7 @@ const FirebaseRegistration = () => {
   const { register } = useAuthContext();
   const navigate = useNavigate();
   const location = useLocation();
-  const from = location.state?.from?.pathname || "/";
+  const from = location.state?.from?.pathname || '/';
 
   const formik = useFormik({
     initialValues,
@@ -53,17 +45,11 @@ const FirebaseRegistration = () => {
     onSubmit: async (values, { setStatus, setSubmitting }) => {
       setLoading(true);
       try {
-        if(!register){
-          throw new Error("JWTProveder is required for thir form.");
+        if (!register) {
+          throw new Error('FirebaseProveder is required for this form.');
         }
 
-        await register(
-          values.email,
-          values.firstname,
-          values.lastname,
-          values.password,
-          values.changepassword
-        );      
+        await register(values.email, values.password);
         navigate(from, { replace: true });
       } catch (error) {
         console.error(error);
@@ -100,61 +86,6 @@ const FirebaseRegistration = () => {
           <div className="alert-text font-weight-bold">{formik.status}</div>
         </div>
       )}
-
-      {/* begin::Form group Firstname */}
-      <div className="fv-row mb-8">
-        <label className="form-label fw-bolder text-dark fs-6">First name</label>
-        <input
-          placeholder="First name"
-          type="text"
-          autoComplete="off"
-          {...formik.getFieldProps('firstname')}
-          className={clsx(
-            'form-control bg-transparent',
-            {
-              'is-invalid': formik.touched.firstname && formik.errors.firstname
-            },
-            {
-              'is-valid': formik.touched.firstname && !formik.errors.firstname
-            }
-          )}
-        />
-        {formik.touched.firstname && formik.errors.firstname && (
-          <div className="fv-plugins-message-container">
-            <div className="fv-help-block">
-              <span role="alert">{formik.errors.firstname}</span>
-            </div>
-          </div>
-        )}
-      </div>
-      {/* end::Form group */}
-      <div className="fv-row mb-8">
-        {/* begin::Form group Lastname */}
-        <label className="form-label fw-bolder text-dark fs-6">Last name</label>
-        <input
-          placeholder="Last name"
-          type="text"
-          autoComplete="off"
-          {...formik.getFieldProps('lastname')}
-          className={clsx(
-            'form-control bg-transparent',
-            {
-              'is-invalid': formik.touched.lastname && formik.errors.lastname
-            },
-            {
-              'is-valid': formik.touched.lastname && !formik.errors.lastname
-            }
-          )}
-        />
-        {formik.touched.lastname && formik.errors.lastname && (
-          <div className="fv-plugins-message-container">
-            <div className="fv-help-block">
-              <span role="alert">{formik.errors.lastname}</span>
-            </div>
-          </div>
-        )}
-        {/* end::Form group */}
-      </div>
 
       {/* begin::Form group Email */}
       <div className="fv-row mb-8">

@@ -1,5 +1,5 @@
 import { User as Auth0UserModel } from '@auth0/auth0-spa-js';
-import { User as FirebaseUserModel } from "@firebase/auth";
+import { User as FirebaseUserModel } from '@firebase/auth';
 import { getData, setData } from '../utils';
 import { type AuthModel } from './_models';
 
