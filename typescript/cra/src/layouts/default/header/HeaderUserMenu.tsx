@@ -100,7 +100,7 @@ const HeaderUserMenu = () => {
               LineHeight: 1
             }}
           >
-            {currentUser?.first_name} {currentUser?.last_name}
+            {/* {currentUser?.first_name} {currentUser?.last_name} */}
           </Box>
 
           <Link

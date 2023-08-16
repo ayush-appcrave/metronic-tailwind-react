@@ -7,18 +7,19 @@ import {
   useEffect,
 } from 'react';
 import * as authHelper from '../_helpers';
-import { Auth0Client, User } from "@auth0/auth0-spa-js";
+import { initializeApp } from '@firebase/app';
+import { getAuth, User, createUserWithEmailAndPassword, signInWithEmailAndPassword, signInWithPopup, signOut, GoogleAuthProvider, FacebookAuthProvider, TwitterAuthProvider, GithubAuthProvider   } from "@firebase/auth";
  
 interface AuthContextProps {
   isLoading: boolean;
   auth: User | undefined;
   currentUser: User | undefined;
   setCurrentUser: Dispatch<SetStateAction<User | undefined>>;
-  // login: ()=> Promise<void>;
   logout: () => Promise<void>;
   verify: () => Promise<void>
 
-  login: (email?: string, password?: string) => Promise<void>;
+  login: (email: string, password: string) => Promise<void>;
+  loginWithGoogle: () => Promise<void>;
   register?: (
     email: string,
     firstname: string,
@@ -30,31 +31,35 @@ interface AuthContextProps {
 }
 const AuthContext = createContext<AuthContextProps | null>(null);
 
-let auth0Client: Auth0Client | null = null; 
+const firebaseConfig = {
+  apiKey: "AIzaSyAX-aXLvvN2g0FklFe03muFbZejNiF11tg",
+  authDomain: "keenthemes-41576.firebaseapp.com",
+  projectId: "keenthemes-41576",
+  storageBucket: "keenthemes-41576.appspot.com",
+  messagingSenderId: "44736719732",
+  appId: "1:44736719732:web:1705967b4e9ee58b1c9a21",
+  measurementId: "G-31Y30EC1ZD"
+};
+
+const app = initializeApp(firebaseConfig);
+const firebaseAuth = getAuth(app);
+
+const googleAuthProvider = new GoogleAuthProvider();
+
+const facebookAuthProvider = new FacebookAuthProvider();
+
+const twitterAuthProvider = new TwitterAuthProvider();
+
+const githubAuthProvider = new GithubAuthProvider();
 
 const AuthProvider = ({ children }: PropsWithChildren) => {
   const [ loading, setLoading ] = useState(false);
-  const [auth, setAuth] = useState<User | undefined>(authHelper.getAuth0());
+  const [auth, setAuth] = useState<User | undefined>(authHelper.getFirebaseAuth());
   const [currentUser, setCurrentUser] = useState<User | undefined>();
 
   // Verity user session and validate bearer authentication
   const verify = async () => {
-    setLoading(true);
-    try {
-      auth0Client = new Auth0Client({
-        domain: 'dev-71gfvs3huwm3geqk.us.auth0.com',
-        clientId: 'A4nEnzCN7UIaYh01bn7nFRmMVJdh1enK',
-        authorizationParams: {
-          redirect_uri: "http://localhost:3000/hero/dashboard"
-        }
-      });
-  
-      await auth0Client.checkSession();
-    } catch (error){
-      throw new Error(error as string);
-    } finally {
-      setLoading(false);
-    }
+    
   }
 
   useEffect(()=>{
@@ -71,20 +76,45 @@ const AuthProvider = ({ children }: PropsWithChildren) => {
     }
   };
 
-  const login = async () => {
-    await auth0Client?.loginWithPopup();
+  const login = async (email: string, password: string) => {
+    try {
+      const {user} = await signInWithEmailAndPassword(firebaseAuth, email, password);
+      saveAuth(user);
+      console.log(user);
+    } catch(error){
+      saveAuth(undefined);
+      throw new Error(`Error ${error}`);
+    }
+  };
 
-    const isAuthenticated = await auth0Client?.isAuthenticated();
+  const register = async (email: string, password: string) => {
+    try {
+      const {user} = await createUserWithEmailAndPassword(firebaseAuth, email, password);
+      saveAuth(user);
+      console.log(user);
+    } catch(error){
+      saveAuth(undefined);
+      throw new Error(`Error ${error}`);
+    }
+  };
 
-    if (isAuthenticated) {
-      const user = await auth0Client?.getUser();
-      setAuth(user);
+  const loginWithGoogle = async () => {
+    try {
+      const result =  await signInWithPopup(firebaseAuth, googleAuthProvider);
+
+      // This is the signed-in user
+      const user = result.user;
+
+      console.log(user); 
+      saveAuth(user);
+    } catch(error){
+      saveAuth(undefined);
+      throw new Error(`Error ${error}`);
     }
   }
 
   const logout = async () => {
-    await auth0Client?.logout({
-      openUrl: false });
+    signOut(firebaseAuth);
     saveAuth(undefined);
   }
 
@@ -96,7 +126,8 @@ const AuthProvider = ({ children }: PropsWithChildren) => {
         setCurrentUser,
         login,
         logout,
-        verify
+        verify,
+        loginWithGoogle
       }}
     >
       {children}

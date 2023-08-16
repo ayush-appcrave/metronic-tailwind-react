@@ -17,7 +17,7 @@ const Auth0Login = () => {
               throw new Error("Auth0Provider is required for thir form.");
             }
 
-            await login();
+            // await login();
     
             navigate(from, { replace: true });
           } catch (error) {
