@@ -5,6 +5,9 @@ const MenuStyled = styled(Menu, {
   shouldForwardProp: (prop) => !['styles', 'theme'].includes(prop as string)
 })<any>(({ styles, theme }) => {
   return {
+    '.MuiMenu-list': {
+      padding: 0
+    },
     '.MuiMenu-paper.MuiPopover-paper': {
       minHeight: 'auto',
       width: styles.MENU_WIDTH,

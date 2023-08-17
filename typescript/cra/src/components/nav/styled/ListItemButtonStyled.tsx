@@ -11,7 +11,7 @@ export const ListItemButtonStyled = styled(ListItemButton, {
 })<NavItemChildPropsType>(({ depth, menu, active, here, hover, open, styles }) => {
   return {
     display: 'flex',
-    aligItems: 'center',
+    alignItems: 'center',
     borderRadius:
       menu === true
         ? styles.MENU_ITEM_BUTTON_BORDER_RADIUS
@@ -54,12 +54,33 @@ export const ListItemButtonStyled = styled(ListItemButton, {
         ? styles.ROOT_ITEM_BUTTON_PADDING_X
         : styles.SUB_ITEM_BUTTON_PADDING_X,
 
+    marginTop:
+      menu === true
+        ? styles.MENU_ITEM_BUTTON_MARGIN_Y
+        : depth === 1
+        ? styles.ROOT_ITEM_BUTTON_MARGIN_Y
+        : styles.SUB_ITEM_BUTTON_MARGIN_Y,
+
     marginBottom:
       menu === true
-        ? styles.MENU_ITEM_BUTTON_GAP
+        ? styles.MENU_ITEM_BUTTON_MARGIN_Y
         : depth === 1
-        ? styles.ROOT_ITEM_BUTTON_PADDING_GAP
-        : styles.SUB_ITEM_BUTTON_PADDING_GAP,
+        ? styles.ROOT_ITEM_BUTTON_MARGIN_Y
+        : styles.SUB_ITEM_BUTTON_MARGIN_Y,
+
+    marginLeft:
+      menu === true
+        ? styles.MENU_ITEM_BUTTON_MARGIN_X
+        : depth === 1
+        ? styles.ROOT_ITEM_BUTTON_MARGIN_X
+        : styles.SUB_ITEM_BUTTON_MARGIN_X,
+
+    marginRight:
+      menu === true
+        ? styles.MENU_ITEM_BUTTON_PADDING_X
+        : depth === 1
+        ? styles.ROOT_ITEM_BUTTON_PADDING_X
+        : styles.SUB_ITEM_BUTTON_PADDING_X,
 
     '&:hover ': {
       backgroundColor:

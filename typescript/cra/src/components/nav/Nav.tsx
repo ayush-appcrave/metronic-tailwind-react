@@ -1,5 +1,5 @@
 import { List } from '@mui/material';
-import { Children, isValidElement } from 'react';
+import { Children } from 'react';
 
 import {
   NavConfigType,
@@ -30,8 +30,8 @@ const Nav = ({
       if (name === 'NavItem') {
         const item = { ...(child.props as NavItemPropsType) };
 
-        Children.map(child.props?.children, (child2) => {
-          const name2 = child2.type?.render?.name;
+        Children.map(child.props.children, (child2) => {
+          const name2 = child2.type.render.name;
 
           if (name2 === 'NavItemButton') {
             if (child2.props.children) {

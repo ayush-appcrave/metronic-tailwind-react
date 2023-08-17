@@ -11,6 +11,8 @@ export const ListItemIconStyled = styled(ListItemIcon, {
 })<NavItemChildPropsType>(({ depth, menu, active, here, hover, open, styles }) => {
   return {
     minWidth: 0,
+    display: 'flex',
+    alignItems: 'center',
 
     height:
       menu === true
@@ -77,6 +79,7 @@ export const ListItemIconStyled = styled(ListItemIcon, {
     }),
 
     'i ': {
+      lineHeight: '1',
       fontSize:
         menu === true
           ? styles.MENU_ITEM_ICON_FONT_SIZE

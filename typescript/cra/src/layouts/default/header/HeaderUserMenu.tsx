@@ -29,7 +29,7 @@ const HeaderUserMenu = () => {
             />
           </NavItemButton>
           <NavItemSub
-            menu="true"
+            menu={true}
             menuProps={{
               anchorOrigin: {
                 horizontal: 'right',
@@ -45,7 +45,26 @@ const HeaderUserMenu = () => {
             <NavItem path="#" title="Title" icon={<KeenIcon icon="calendar" />} />
             <NavItem path="#" title="Title" icon={<KeenIcon icon="calendar" />} />
             <NavItem path="#" title="Title" icon={<KeenIcon icon="calendar" />} />
-            <NavItem path="#" title="Title" icon={<KeenIcon icon="calendar" />} />
+            <NavItem title="Title" icon={<KeenIcon icon="calendar" />}>
+              <NavItemSub
+                menu="true"
+                menuProps={{
+                  anchorOrigin: {
+                    horizontal: 'left',
+                    vertical: 'top'
+                  },
+                  transformOrigin: {
+                    horizontal: 'right',
+                    vertical: 'top'
+                  }
+                }}
+              >
+                <NavItem path="#" title="Title" icon={<KeenIcon icon="calendar" />} />
+                <NavItem path="#" title="Title" icon={<KeenIcon icon="calendar" />} />
+                <NavItem path="#" title="Title" icon={<KeenIcon icon="calendar" />} />
+              </NavItemSub>
+            </NavItem>
+            <NavItem divider={true} />
             <NavItem path="#" title="Title" icon={<KeenIcon icon="calendar" />} />
           </NavItemSub>
         </NavItem>

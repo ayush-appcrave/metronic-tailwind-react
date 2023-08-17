@@ -203,7 +203,6 @@ const NavItem = forwardRef<HTMLDivElement | null, NavItemPropsType>(function Nav
         return button;
       }
     } else {
-      console.log('setting buttonchik3');
       return (
         <NavItemButton
           depth={depth}
