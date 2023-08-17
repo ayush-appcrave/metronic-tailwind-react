@@ -80,7 +80,7 @@ const NAV_COMMON: Record<string, NavConfigType> = {
       title: 'Page 2',
       path: '#pages/page-1',
       bullet: true,
-      children: {
+      sub: {
         menuProps: {
           anchorOrigin: {
             horizontal: 'right',
@@ -246,7 +246,7 @@ const NAV_VERTICAL: NavConfigType = [
   {
     title: 'Dashboards',
     icon: <KeenIcon icon="calendar" />,
-    children: {
+    sub: {
       direction: 'vertical',
       toggle: 'click',
       accordion: true,
@@ -257,7 +257,7 @@ const NAV_VERTICAL: NavConfigType = [
     title: 'Pages',
     icon: <KeenIcon icon="calendar" />,
     tabIndex: 0,
-    children: {
+    sub: {
       menu: {
         breakpoints: {
           up: {
@@ -304,7 +304,7 @@ const NAV_VERTICAL: NavConfigType = [
   {
     title: 'Authentication',
     icon: <KeenIcon icon="calendar" />,
-    children: {
+    sub: {
       accordion: true,
       items: NAV_COMMON.authentication
     }
@@ -312,7 +312,7 @@ const NAV_VERTICAL: NavConfigType = [
   {
     title: 'Account',
     icon: <KeenIcon icon="calendar" />,
-    children: {
+    sub: {
       accordion: true,
       items: NAV_COMMON.account
     }
@@ -320,7 +320,7 @@ const NAV_VERTICAL: NavConfigType = [
   {
     title: 'Apps',
     icon: <KeenIcon icon="calendar" />,
-    children: {
+    sub: {
       accordion: true,
       items: NAV_COMMON.apps
     }
@@ -328,7 +328,7 @@ const NAV_VERTICAL: NavConfigType = [
   {
     title: 'CRUD',
     icon: <KeenIcon icon="calendar" />,
-    children: {
+    sub: {
       accordion: true,
       items: NAV_COMMON.crud
     }

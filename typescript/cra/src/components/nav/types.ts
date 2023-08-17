@@ -47,7 +47,7 @@ export type NavBulletType = boolean;
 
 export type NavIconType = any;
 
-export type NavHasChildrenType = boolean;
+export type NavHasSubType = boolean;
 
 export type NavHandleToggleType = any;
 
@@ -62,20 +62,23 @@ export interface NavPropsType {
   items?: NavConfigType | undefined;
   styles?: NavStylesType;
   sx?: SxProps;
+  children?: any;
 }
 
 export interface NavItemSubPropsType {
   depth?: NavDepthType;
   menu: NavMenuType;
+  menuProps?: NavMenuPropsType;
   direction?: NavDirectionType;
   accordion?: NavAccordionType;
   collapse?: NavCollapseType;
   open?: NavOpenType;
   expand?: NavExpandType;
   hover?: NavHoverType;
-  items: NavConfigType | undefined;
+  items?: NavConfigType | undefined;
   styles?: NavStylesType;
   sx?: SxProps;
+  children?: any;
 }
 
 export interface NavItemPropsType {
@@ -98,12 +101,13 @@ export interface NavItemPropsType {
   divider?: boolean;
   subheader?: string;
   caption?: string;
-  children?: NavItemOptionsChildrenConfigType | undefined;
-  item?: any;
+  sub?: NavItemSubConfigType | undefined;
+  button?: any;
   sx?: SxProps;
   menuProps?: NavMenuPropsType;
   onClick?: (_?: unknown) => unknown | void;
   containerProps?: HTMLAttributes<HTMLElement> & RefAttributes<HTMLElement | null>;
+  children?: any;
 }
 
 export interface NavItemChildPropsType {
@@ -119,7 +123,7 @@ export interface NavItemChildPropsType {
 }
 
 export interface NavItemButtonPropsType {
-  depth: NavDepthType;
+  depth?: NavDepthType;
   menu?: NavMenuType;
   itemMenu?: NavMenuType;
   direction?: NavDirectionType;
@@ -140,8 +144,9 @@ export interface NavItemButtonPropsType {
   bullet?: NavBulletType;
   badge?: NavBadgeType;
   title?: NavTitleType;
-  hasChildren?: NavHasChildrenType;
-  arrow: NavArrowType;
+  hasSub?: NavHasSubType;
+  arrow?: NavArrowType;
+  children?: any;
 }
 
 export interface NavItemArrowPropsType {
@@ -161,9 +166,9 @@ export interface NavItemArrowPropsType {
   open?: NavOpenType;
 }
 
-export type NavConfigType = readonly NavItemPropsType[];
+export type NavConfigType = NavItemPropsType[];
 
-export interface NavItemOptionsChildrenConfigType {
+export interface NavItemSubConfigType {
   menu?: NavMenuType;
   menuProps?: NavMenuPropsType;
   direction?: NavDirectionType;
@@ -173,7 +178,7 @@ export interface NavItemOptionsChildrenConfigType {
   toggle?: NavToggleType;
   arrow?: NavArrowType;
   hover?: NavHoverType;
-  items: NavConfigType | undefined;
+  items?: NavConfigType;
   styles?: NavStylesType;
   sx?: SxProps;
 }

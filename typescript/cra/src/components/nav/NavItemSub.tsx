@@ -1,10 +1,9 @@
 import { Collapse, List } from '@mui/material';
-import { forwardRef, memo } from 'react';
+import { forwardRef } from 'react';
 
 import { NavItem, type NavItemPropsType, type NavItemSubPropsType } from '..';
 
-const NavItemSubComponent = forwardRef<HTMLDivElement, NavItemSubPropsType>(
-  function NavItemSubComponent(props, ref) {
+const NavItemSub = forwardRef<HTMLDivElement, NavItemSubPropsType>(function NavItemSub(props, ref) {
     const { depth, menu, accordion, collapse, expand, items, styles, open } = props;
 
     const renderChildren = () => {
@@ -42,5 +41,4 @@ const NavItemSubComponent = forwardRef<HTMLDivElement, NavItemSubPropsType>(
   }
 );
 
-const NavItemSub = memo(NavItemSubComponent);
 export { NavItemSub };

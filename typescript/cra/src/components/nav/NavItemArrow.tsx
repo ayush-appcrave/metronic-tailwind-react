@@ -1,9 +1,8 @@
 import { Box } from '@mui/material';
-import { memo } from 'react';
 
 import { type NavItemArrowPropsType } from './types';
 
-const NavItemArrowComponent = ({
+const NavItemArrow = ({
   menu,
   itemMenu,
   direction = 'vertical',
@@ -126,5 +125,4 @@ const NavItemArrowComponent = ({
   );
 };
 
-const NavItemArrow = memo(NavItemArrowComponent);
 export { NavItemArrow };

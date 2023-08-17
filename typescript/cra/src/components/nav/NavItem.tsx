@@ -3,7 +3,6 @@ import {
   FocusEvent,
   forwardRef,
   KeyboardEvent,
-  memo,
   MouseEvent,
   useEffect,
   useImperativeHandle,
@@ -26,314 +25,314 @@ import {
   NavItemSub
 } from '..';
 
-const NavItemComponent = forwardRef<HTMLDivElement | null, NavItemPropsType>(
-  function NavItemComponent(props, ref) {
-    const {
-      depth = 1,
-      menu,
-      collapse = false,
-      expand = false,
-      title,
-      path = '',
-      tabIndex,
-      externalLink,
-      newTab = false,
-      divider,
-      children,
-      icon,
-      bullet,
-      badge,
-      item,
-      styles = NavDefaultStylesConfig(),
-      containerProps: ContainerPropsProp = {},
-      sx
-    } = props;
+const NavItem = forwardRef<HTMLDivElement | null, NavItemPropsType>(function NavItem(props, ref) {
+  const {
+    depth = 1,
+    menu,
+    collapse = false,
+    expand = false,
+    title,
+    path = '',
+    tabIndex,
+    externalLink,
+    newTab = false,
+    divider,
+    sub,
+    icon,
+    bullet,
+    badge,
+    button,
+    styles = NavDefaultStylesConfig(),
+    containerProps: ContainerPropsProp = {},
+    sx
+  } = props;
 
-    const { ref: containerRefProp, ...containerProps } = ContainerPropsProp;
+  const { ref: containerRefProp, ...containerProps } = ContainerPropsProp;
 
-    const [anchorEl, setAnchorEl] = useState<HTMLElement | null>(null);
+  const [anchorEl, setAnchorEl] = useState<HTMLElement | null>(null);
 
-    const menuItemRef = useRef<HTMLDivElement | null>(null);
+  const menuItemRef = useRef<HTMLDivElement | null>(null);
 
-    useImperativeHandle(ref, () => menuItemRef.current!); // eslint-disable-line @typescript-eslint/no-non-null-assertion
+  useImperativeHandle(ref, () => menuItemRef.current!); // eslint-disable-line @typescript-eslint/no-non-null-assertion
 
-    const containerRef = useRef<HTMLDivElement | null>(null);
-    useImperativeHandle(containerRefProp, () => containerRef.current);
+  const containerRef = useRef<HTMLDivElement | null>(null);
+  useImperativeHandle(containerRefProp, () => containerRef.current);
 
-    const menuContainerRef = useRef<HTMLDivElement | null>(null);
+  const menuContainerRef = useRef<HTMLDivElement | null>(null);
 
-    const [isSubMenuOpen, setIsSubMenuOpen] = useState(false);
+  const [isSubMenuOpen, setIsSubMenuOpen] = useState(false);
 
-    const handleMouseEnter = (e: MouseEvent<HTMLElement>) => {
-      setHover(true);
+  const handleMouseEnter = (e: MouseEvent<HTMLElement>) => {
+    setHover(true);
 
-      if (toggle === 'hover') {
-        setOpen(true);
-        setIsSubMenuOpen(true);
-        setAnchorEl(menuItemRef.current);
+    if (toggle === 'hover') {
+      setOpen(true);
+      setIsSubMenuOpen(true);
+      setAnchorEl(menuItemRef.current);
 
-        if (containerProps.onMouseEnter) {
-          containerProps.onMouseEnter(e);
+      if (containerProps.onMouseEnter) {
+        containerProps.onMouseEnter(e);
+      }
+    }
+  };
+
+  const handleMouseLeave = (e: MouseEvent<HTMLElement>) => {
+    setHover(false);
+
+    if (toggle === 'hover') {
+      setOpen(false);
+      setIsSubMenuOpen(false);
+      setAnchorEl(menuItemRef.current);
+
+      if (containerProps.onMouseLeave) {
+        containerProps.onMouseLeave(e);
+      }
+    }
+  };
+
+  const handleToggle = (event: MouseEvent<HTMLDivElement>) => {
+    if (toggle === 'click') {
+      setOpen(!open);
+      if (itemMenu) {
+        if (isSubMenuOpen) {
+          setAnchorEl(null);
+          setIsSubMenuOpen(false);
+        } else {
+          setAnchorEl(menuItemRef.current);
+          setIsSubMenuOpen(true);
         }
       }
-    };
+    }
+  };
 
-    const handleMouseLeave = (e: MouseEvent<HTMLElement>) => {
-      setHover(false);
+  const handleFocus = (e: FocusEvent<HTMLElement>) => {
+    if (e.target === containerRef.current) {
+      setAnchorEl(menuItemRef.current);
+      setIsSubMenuOpen(true);
+    }
 
-      if (toggle === 'hover') {
-        setOpen(false);
-        setIsSubMenuOpen(false);
-        setAnchorEl(menuItemRef.current);
+    if (containerProps.onFocus) {
+      containerProps.onFocus(e);
+    }
+  };
 
-        if (containerProps.onMouseLeave) {
-          containerProps.onMouseLeave(e);
+  const handleKeyDown = (e: KeyboardEvent) => {
+    if (e.key === 'Escape') {
+      return;
+    }
+
+    if (isSubmenuFocused()) {
+      e.stopPropagation();
+    }
+
+    const active = containerRef.current?.ownerDocument.activeElement;
+
+    if (e.key === 'ArrowLeft' && isSubmenuFocused()) {
+      containerRef.current?.focus();
+    }
+
+    if (e.key === 'ArrowRight' && e.target === containerRef.current && e.target === active) {
+      const firstChild = menuContainerRef.current?.children[0] as HTMLDivElement;
+      firstChild?.focus();
+    }
+  };
+
+  // Check if any immediate sub are active
+  const isSubmenuFocused = () => {
+    const active = containerRef.current?.ownerDocument.activeElement ?? null;
+    const subList = menuContainerRef.current?.children;
+
+    if (subList && subList.length > 0) {
+      for (const child of subList) {
+        if (child === active) {
+          return true;
         }
       }
-    };
+    }
 
-    const handleToggle = (event: MouseEvent<HTMLDivElement>) => {
-      if (toggle === 'click') {
-        setOpen(!open);
-        if (itemMenu) {
-          if (isSubMenuOpen) {
-            setAnchorEl(null);
-            setIsSubMenuOpen(false);
-          } else {
-            setAnchorEl(menuItemRef.current);
-            setIsSubMenuOpen(true);
-          }
-        }
-      }
-    };
+    return false;
+  };
 
-    const handleFocus = (e: FocusEvent<HTMLElement>) => {
-      if (e.target === containerRef.current) {
-        setAnchorEl(menuItemRef.current);
-        setIsSubMenuOpen(true);
-      }
+  const { pathname } = useLocation();
 
-      if (containerProps.onFocus) {
-        containerProps.onFocus(e);
-      }
-    };
+  const { match } = useMatchPath(path);
 
-    const handleKeyDown = (e: KeyboardEvent) => {
-      if (e.key === 'Escape') {
-        return;
-      }
+  const itemMenu = useResponsiveProp(sub?.menu, false);
 
-      if (isSubmenuFocused()) {
-        e.stopPropagation();
-      }
+  const direction = useResponsiveProp(sub?.direction, 'vertical');
 
-      const active = containerRef.current?.ownerDocument.activeElement;
+  const menuProps = useResponsiveProp(sub?.menuProps);
 
-      if (e.key === 'ArrowLeft' && isSubmenuFocused()) {
-        containerRef.current?.focus();
-      }
+  const accordion = useResponsiveProp(sub?.accordion, true);
 
-      if (e.key === 'ArrowRight' && e.target === containerRef.current && e.target === active) {
-        const firstChild = menuContainerRef.current?.children[0] as HTMLDivElement;
-        firstChild?.focus();
-      }
-    };
+  const toggle = useResponsiveProp(sub?.toggle, 'click');
 
-    // Check if any immediate children are active
-    const isSubmenuFocused = () => {
-      const active = containerRef.current?.ownerDocument.activeElement ?? null;
-      const childrenList = menuContainerRef.current?.children;
+  const arrow = sub?.arrow ?? true;
 
-      if (childrenList && childrenList.length > 0) {
-        for (const child of childrenList) {
-          if (child === active) {
-            return true;
-          }
-        }
-      }
+  const hasSub: boolean = useMemo(() => {
+    return sub?.items !== undefined && sub.items.length > 0;
+  }, [sub]);
 
-      return false;
-    };
+  const minimize: boolean = collapse && !expand;
 
-    const { pathname } = useLocation();
+  const here: boolean = sub?.items ? hasActiveChild(pathname, sub.items) : false;
 
-    const { match } = useMatchPath(path);
+  const active: boolean = match;
 
-    const itemMenu = useResponsiveProp(children?.menu, false);
+  const [open, setOpen] = useState(here);
 
-    const direction = useResponsiveProp(children?.direction, 'vertical');
+  const [hover, setHover] = useState(false);
 
-    const menuProps = useResponsiveProp(children?.menuProps);
+  useEffect(() => {
+    if (match) {
+      setOpen(true);
+    }
+  }, [pathname]);
 
-    const accordion = useResponsiveProp(children?.accordion, true);
+  const renderDivider = <DividerStyled depth={depth} styles={styles} />;
 
-    const toggle = useResponsiveProp(children?.toggle, 'click');
-
-    const arrow = children?.arrow ?? true;
-
-    const hasChildren: boolean = useMemo(() => {
-      return children?.items !== undefined && children.items.length > 0;
-    }, [children]);
-
-    const minimize: boolean = collapse && !expand;
-
-    const here: boolean = children?.items ? hasActiveChild(pathname, children.items) : false;
-
-    const active: boolean = match;
-
-    const [open, setOpen] = useState(here);
-
-    const [hover, setHover] = useState(false);
-
-    useEffect(() => {
-      if (match) {
-        setOpen(true);
-      }
-    }, [pathname]);
-
-    const renderDivider = <DividerStyled depth={depth} styles={styles} />;
-
-    const renderCustomItem = () => {
-      if (hasChildren) {
+  const renderItem = () => {
+    if (button) {
+      if (hasSub) {
         return (
           <Box tabIndex={tabIndex} ref={menuItemRef} onClick={handleToggle} sx={{ ...sx }}>
-            {item}
+            {button}
           </Box>
         );
       } else {
-        return item;
+        return button;
       }
-    };
-
-    const renderItem = (
-      <NavItemButton
-        depth={depth}
-        menu={menu}
-        itemMenu={itemMenu}
-        direction={direction}
-        toggle={toggle}
-        accordion={accordion}
-        active={active}
-        here={here}
-        hover={hover}
-        open={open}
-        collapse={collapse}
-        expand={expand}
-        styles={styles}
-        tabIndex={tabIndex}
-        menuItemRef={menuItemRef}
-        handleToggle={handleToggle}
-        minimize={minimize}
-        icon={icon}
-        bullet={bullet}
-        badge={badge}
-        title={title}
-        arrow={arrow}
-        hasChildren={hasChildren}
-      />
-    );
-
-    const renderItemSub = (
-      <Box ref={menuContainerRef} style={{ pointerEvents: 'auto' }}>
-        <NavItemSub
-          depth={depth + 1}
-          menu={itemMenu}
+    } else {
+      console.log('setting buttonchik3');
+      return (
+        <NavItemButton
+          depth={depth}
+          menu={menu}
+          itemMenu={itemMenu}
+          direction={direction}
+          toggle={toggle}
           accordion={accordion}
-          open={open}
+          active={active}
+          here={here}
           hover={hover}
-          expand={expand}
-          items={children?.items}
-          styles={styles}
+          open={open}
           collapse={collapse}
-        />
-      </Box>
-    );
-
-    const renderItemMenu = () => {
-      const handleClose = (event: MouseEvent<HTMLDivElement>) => {
-        setIsSubMenuOpen(false);
-
-        if (toggle === 'click') {
-          setOpen(false);
-          setHover(false);
-          setAnchorEl(null);
-        }
-      };
-
-      return (
-        <MenuStyled
+          expand={expand}
           styles={styles}
-          onClose={handleClose}
-          sx={{
-            pointerEvents: toggle === 'click' ? 'auto' : 'none'
-          }}
-          anchorEl={anchorEl}
-          {...(menuProps && menuProps)}
-          open={isSubMenuOpen}
-          autoFocus={false}
-          disableAutoFocus
-          disableEnforceFocus
-          disableScrollLock={true}
-          disableRestoreFocus
-        >
-          {renderItemSub}
-        </MenuStyled>
+          tabIndex={tabIndex}
+          menuItemRef={menuItemRef}
+          handleToggle={handleToggle}
+          minimize={minimize}
+          icon={icon}
+          bullet={bullet}
+          badge={badge}
+          title={title}
+          arrow={arrow}
+          hasSub={hasSub}
+        />
       );
+    }
+  };
+
+  const renderItemSub = (
+    <Box ref={menuContainerRef} style={{ pointerEvents: 'auto' }}>
+      <NavItemSub
+        depth={depth + 1}
+        menu={itemMenu}
+        accordion={accordion}
+        open={open}
+        hover={hover}
+        expand={expand}
+        items={sub?.items}
+        styles={styles}
+        collapse={collapse}
+      />
+    </Box>
+  );
+
+  const renderItemMenu = () => {
+    const handleClose = (event: MouseEvent<HTMLDivElement>) => {
+      setIsSubMenuOpen(false);
+
+      if (toggle === 'click') {
+        setOpen(false);
+        setHover(false);
+        setAnchorEl(null);
+      }
     };
 
-    const renderContent = (
-      <Box
-        {...containerProps}
-        ref={containerRef}
-        onFocus={handleFocus}
-        tabIndex={tabIndex}
-        onMouseEnter={handleMouseEnter}
-        onMouseLeave={handleMouseLeave}
-        onKeyDown={handleKeyDown}
+    return (
+      <MenuStyled
+        styles={styles}
+        onClose={handleClose}
+        sx={{
+          pointerEvents: toggle === 'click' ? 'auto' : 'none'
+        }}
+        anchorEl={anchorEl}
+        {...(menuProps && menuProps)}
+        open={isSubMenuOpen}
+        autoFocus={false}
+        disableAutoFocus
+        disableEnforceFocus
+        disableScrollLock={true}
+        disableRestoreFocus
       >
-        {divider ? renderDivider : item ? renderCustomItem() : renderItem}
-
-        {!minimize && hasChildren && (itemMenu ? renderItemMenu() : renderItemSub)}
-      </Box>
+        {renderItemSub}
+      </MenuStyled>
     );
+  };
 
-    const renderMain = () => {
-      if (externalLink) {
-        const target = newTab ? '_blank' : '_self';
+  const renderContent = (
+    <Box
+      {...containerProps}
+      ref={containerRef}
+      onFocus={handleFocus}
+      tabIndex={tabIndex}
+      onMouseEnter={handleMouseEnter}
+      onMouseLeave={handleMouseLeave}
+      onKeyDown={handleKeyDown}
+    >
+      {divider ? renderDivider : renderItem()}
 
-        return (
-          <Link href={path} target={target} rel="noopener" underline="none">
-            {renderContent}
-          </Link>
-        );
-      }
+      {!minimize && hasSub && (itemMenu ? renderItemMenu() : renderItemSub)}
+    </Box>
+  );
 
-      if (hasChildren) {
-        return renderContent;
-      }
+  const renderMain = () => {
+    if (externalLink) {
+      const target = newTab ? '_blank' : '_self';
 
       return (
-        <Link component={RouterLink} to={path} underline="none">
+        <Link href={path} target={target} rel="noopener" underline="none">
           {renderContent}
         </Link>
       );
-    };
+    }
 
-    return renderMain();
-  }
-);
+    if (hasSub) {
+      return renderContent;
+    }
+
+    return (
+      <Link component={RouterLink} to={path} underline="none">
+        {renderContent}
+      </Link>
+    );
+  };
+
+  return renderMain();
+});
 
 const hasActiveChild = (pathname: string, items: NavConfigType): boolean => {
   for (const item of items) {
     if (item.path && matchPath(item.path, pathname)) {
       return true;
-    } else if (item.children?.items) {
-      return hasActiveChild(pathname, item.children.items);
+    } else if (item.sub?.items) {
+      return hasActiveChild(pathname, item.sub.items);
     }
   }
 
   return false;
 };
 
-const NavItem = memo(NavItemComponent);
 export { NavItem };

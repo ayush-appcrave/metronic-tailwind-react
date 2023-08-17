@@ -1,4 +1,4 @@
-import { memo } from 'react';
+import { forwardRef } from 'react';
 
 import {
   BadgeStyled,
@@ -11,118 +11,121 @@ import {
 } from '..';
 import { KeenIcon } from '../keenicons';
 
-const NavItemButtonComponent = ({
-  depth,
-  menu,
-  itemMenu,
-  direction,
-  toggle,
-  accordion,
-  active,
-  here,
-  hover,
-  open,
-  collapse,
-  expand,
-  styles,
-  tabIndex,
-  menuItemRef,
-  handleToggle,
-  minimize,
-  icon,
-  bullet,
-  badge,
-  title,
-  hasChildren,
-  arrow
-}: NavItemButtonPropsType) => {
-  return (
-    <ListItemButtonStyled
-      depth={depth}
-			menu={menu}
-			styles={styles}
-			active={active}
-			here={here}
-			open={open}
-			hover={hover}
-			collapse={collapse}
-			expand={expand}
-			tabIndex={tabIndex}
-			ref={menuItemRef}
-			onClick={handleToggle}
-		>
-			{icon && (
-				<ListItemIconStyled
-					depth={depth}
-					menu={menu}
-					styles={styles}
-					active={active}
-					here={here}
-					hover={hover}
-					open={open}
-					collapse={collapse}
-				>
-					{icon}
-				</ListItemIconStyled>
-			)}
+const NavItemButton = forwardRef<HTMLDivElement | null, NavItemButtonPropsType>(
+  function NavItemButton(props, ref) {
+    const {
+      depth = 1,
+      menu,
+      itemMenu,
+      direction,
+      toggle,
+      accordion,
+      active,
+      here,
+      hover,
+      open,
+      collapse,
+      expand,
+      styles,
+      tabIndex,
+      menuItemRef,
+      handleToggle,
+      minimize,
+      icon,
+      bullet,
+      badge,
+      title,
+      hasSub,
+      arrow
+    } = props;
 
-			{bullet && (
-				<NavItemBullet
-					depth={depth}
-					menu={menu}
-					styles={styles}
-					active={active}
-					here={here}
-					hover={hover}
-					open={open}
-					collapse={collapse}
-				/>
-			)}
+    return (
+      <ListItemButtonStyled
+        depth={depth}
+        menu={menu}
+        styles={styles}
+        active={active}
+        here={here}
+        open={open}
+        hover={hover}
+        collapse={collapse}
+        expand={expand}
+        tabIndex={tabIndex}
+        ref={menuItemRef}
+        onClick={handleToggle}
+      >
+        {icon && (
+          <ListItemIconStyled
+            depth={depth}
+            menu={menu}
+            styles={styles}
+            active={active}
+            here={here}
+            hover={hover}
+            open={open}
+            collapse={collapse}
+          >
+            {icon}
+          </ListItemIconStyled>
+        )}
 
-			{!minimize && title && (
-				<ListItemTextStyled
-					depth={depth}
-					menu={menu}
-					styles={styles}
-					active={active}
-					here={here}
-					hover={hover}
-					open={open}
-					collapse={collapse}
-					primary={title}
-				/>
-			)}
+        {bullet && (
+          <NavItemBullet
+            depth={depth}
+            menu={menu}
+            styles={styles}
+            active={active}
+            here={here}
+            hover={hover}
+            open={open}
+            collapse={collapse}
+          />
+        )}
 
-			{!minimize && badge && (
-				<BadgeStyled
-					badgeContent={badge.content}
-					color={badge.color}
-					depth={depth}
-					menu={menu}
-					styles={styles}
-				/>
-			)}
+        {!minimize && title && (
+          <ListItemTextStyled
+            depth={depth}
+            menu={menu}
+            styles={styles}
+            active={active}
+            here={here}
+            hover={hover}
+            open={open}
+            collapse={collapse}
+            primary={title}
+          />
+        )}
 
-			{!minimize && hasChildren && arrow && (
-				<NavItemArrow
-					depth={depth}
-					menu={menu}
-					itemMenu={itemMenu}
-					toggle={toggle}
-					direction={direction}
-					accordion={accordion}
-					styles={styles}
-					active={active}
-					here={here}
-					open={open}
-					hover={hover}
-					collapse={collapse}
-					icon={<KeenIcon icon="down" />}
-				/>
-			)}
-    </ListItemButtonStyled>
-  );
-};
+        {!minimize && badge && (
+          <BadgeStyled
+            badgeContent={badge.content}
+            color={badge.color}
+            depth={depth}
+            menu={menu}
+            styles={styles}
+          />
+        )}
 
-const NavItemButton = memo(NavItemButtonComponent);
+        {!minimize && hasSub && arrow && (
+          <NavItemArrow
+            depth={depth}
+            menu={menu}
+            itemMenu={itemMenu}
+            toggle={toggle}
+            direction={direction}
+            accordion={accordion}
+            styles={styles}
+            active={active}
+            here={here}
+            open={open}
+            hover={hover}
+            collapse={collapse}
+            icon={<KeenIcon icon="down" />}
+          />
+        )}
+      </ListItemButtonStyled>
+    );
+  }
+);
+
 export { NavItemButton };

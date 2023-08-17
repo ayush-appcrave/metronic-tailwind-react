@@ -1,9 +1,8 @@
 import { Box } from '@mui/material';
-import { memo } from 'react';
 
 import { type NavItemChildPropsType } from './types';
 
-const NavItemBulletComponent = ({
+const NavItemBullet = ({
   depth,
   menu,
   active,
@@ -87,5 +86,4 @@ const NavItemBulletComponent = ({
   );
 };
 
-const NavItemBullet = memo(NavItemBulletComponent);
 export { NavItemBullet };
