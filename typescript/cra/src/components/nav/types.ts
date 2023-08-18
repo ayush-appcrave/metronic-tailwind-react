@@ -36,6 +36,8 @@ export type NavStylesType = any;
 
 export type NavMenuRefType = any;
 
+export type NavMenuWidthType = any;
+
 export type NavTitleType = string;
 
 export interface NavBadgeType {
@@ -69,6 +71,7 @@ export interface NavItemSubPropsType {
   depth?: NavDepthType;
   menu: NavMenuType;
   menuProps?: NavMenuPropsType;
+  menuWidth?: NavMenuWidthType;
   direction?: NavDirectionType;
   accordion?: NavAccordionType;
   collapse?: NavCollapseType;
@@ -171,6 +174,7 @@ export type NavConfigType = NavItemPropsType[];
 export interface NavItemSubConfigType {
   menu?: NavMenuType;
   menuProps?: NavMenuPropsType;
+  menuWidth?: NavMenuWidthType;
   direction?: NavDirectionType;
   accordion?: NavAccordionType;
   collapse?: NavCollapseType;

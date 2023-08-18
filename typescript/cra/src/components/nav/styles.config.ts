@@ -148,7 +148,7 @@ const NavDefaultStylesConfig = (): any => {
     BADGE_GAP: 2,
 
     DIVIDER_MARGIN_Y: 0,
-    DIVIDER_BORDER: '1px dashed ' + theme.palette.grey['200']
+    DIVIDER_BORDER: '1px dashed ' + theme.palette.grey['300']
   };
 };
 

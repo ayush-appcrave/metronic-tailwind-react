@@ -9,6 +9,6 @@ export const DividerStyled = styled(Divider, {
   return {
     marginTop: styles.DIVIDER_MARGIN_Y,
     marginBottom: styles.DIVIDER_MARGIN_Y,
-    border: styles.DIVIDER_BORDER
+    borderBottom: styles.DIVIDER_BORDER
   };
 });

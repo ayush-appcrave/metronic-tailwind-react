@@ -163,6 +163,8 @@ const NavItem = forwardRef<HTMLDivElement | null, NavItemPropsType>(function Nav
 
   const menuProps = useResponsiveProp(sub?.menuProps);
 
+  const menuWidth = useResponsiveProp(sub?.menuWidth);
+
   const accordion = useResponsiveProp(sub?.accordion, true);
 
   const toggle = useResponsiveProp(sub?.toggle, 'click');
@@ -265,7 +267,8 @@ const NavItem = forwardRef<HTMLDivElement | null, NavItemPropsType>(function Nav
         styles={styles}
         onClose={handleClose}
         sx={{
-          pointerEvents: toggle === 'click' ? 'auto' : 'none'
+          pointerEvents: toggle === 'click' ? 'auto' : 'none',
+          ...(menuWidth && { width: menuWidth })
         }}
         anchorEl={anchorEl}
         {...(menuProps && menuProps)}

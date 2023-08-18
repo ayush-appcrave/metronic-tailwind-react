@@ -30,6 +30,7 @@ const HeaderUserMenu = () => {
           </NavItemButton>
           <NavItemSub
             menu={true}
+            menuWidth="200px"
             menuProps={{
               anchorOrigin: {
                 horizontal: 'right',
