@@ -42,8 +42,8 @@ const AuthProvider = ({ children }: PropsWithChildren) => {
     setLoading(true);
     try {
       auth0Client = new Auth0Client({
-        domain: 'dev-71gfvs3huwm3geqk.us.auth0.com',
-        clientId: 'A4nEnzCN7UIaYh01bn7nFRmMVJdh1enK',
+        domain: process.env.REACT_APP_AUTH0_DOMAIN || '',
+        clientId: process.env.REACT_APP_AUTH0_CLIENT_ID || '',
         authorizationParams: {
           redirect_uri: 'http://localhost:3000/hero/dashboard'
         }

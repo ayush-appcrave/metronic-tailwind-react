@@ -13,9 +13,7 @@ import {
   User,
   createUserWithEmailAndPassword,
   signInWithEmailAndPassword,
-  getRedirectResult,
   signInWithPopup,
-  signInWithRedirect,
   signOut,
   GoogleAuthProvider,
   FacebookAuthProvider,
@@ -46,13 +44,13 @@ interface AuthContextProps {
 const AuthContext = createContext<AuthContextProps | null>(null);
 
 const firebaseConfig = {
-  apiKey: 'AIzaSyAX-aXLvvN2g0FklFe03muFbZejNiF11tg',
-  authDomain: 'keenthemes-41576.firebaseapp.com',
-  projectId: 'keenthemes-41576',
-  storageBucket: 'keenthemes-41576.appspot.com',
-  messagingSenderId: '44736719732',
-  appId: '1:44736719732:web:1705967b4e9ee58b1c9a21',
-  measurementId: 'G-31Y30EC1ZD'
+  apiKey: process.env.REACT_APP_FIREBASE_API_KEY,
+  authDomain: process.env.REACT_APP_FIREBASE_AUTH_DOMAIN,
+  projectId: process.env.REACT_APP_FIREBASE_PROJECT_ID,
+  storageBucket: process.env.REACT_APP_FIREBASE_STORAGE_BUCKET,
+  messagingSenderId: process.env.REACT_APP_FIREBASE_MESSANGING_SENDER_ID,
+  appId: process.env.REACT_APP_FIREBASE_APP_ID,
+  measurementId: process.env.REACT_APP_FIREBASE_MEASUREMENT_ID,
 };
 
 const app = initializeApp(firebaseConfig);
@@ -70,7 +68,9 @@ const AuthProvider = ({ children }: PropsWithChildren) => {
   const [currentUser, setCurrentUser] = useState<User | undefined>();
 
   // Verity user session
-  const verify = async () => {};
+  const verify = async () => {
+    // firebaseAuth.verifyIdToken()
+  };
 
   useEffect(() => {
     verify();
@@ -125,14 +125,12 @@ const AuthProvider = ({ children }: PropsWithChildren) => {
 
   const loginWithGithub = async () => {
     try {
-      await signInWithRedirect(firebaseAuth, githubAuthProvider);
+      const result = await signInWithPopup(firebaseAuth, githubAuthProvider);
 
-      const result = await getRedirectResult(firebaseAuth);
-      if (result) {
-        const user = result.user;
-        console.log(user);
-        saveAuth(user);
-      }
+      // This is the signed-in user
+      const user = result.user;
+      console.log(user);
+      saveAuth(user);
     } catch (error) {
       saveAuth(undefined);
       throw new Error(`Error ${error}`);
@@ -141,14 +139,12 @@ const AuthProvider = ({ children }: PropsWithChildren) => {
 
   const loginWithFacebook = async () => {
     try {
-      await signInWithRedirect(firebaseAuth, facebookAuthProvider);
+      const result = await signInWithPopup(firebaseAuth, facebookAuthProvider);
 
-      const result = await getRedirectResult(firebaseAuth);
-      if (result) {
-        const user = result.user;
-        console.log(user);
-        saveAuth(user);
-      }
+      // This is the signed-in user
+      const user = result.user;
+      console.log(user);
+      saveAuth(user);
     } catch (error) {
       saveAuth(undefined);
       throw new Error(`Error ${error}`);
