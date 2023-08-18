@@ -92,7 +92,7 @@ const NavDefaultStylesConfig = (): any => {
 
     MENU_WIDTH: '200px',
     MENU_PADDING_X: 0,
-    MENU_PADDING_Y: 2,
+    MENU_PADDING_Y: 5,
     MENU_BOX_SHADOW: theme.customShadows.menu,
     MENU_BORDER_RADIUS: '6px',
     MENU_BACKGROUND_COLOR: theme.palette.background.paper,

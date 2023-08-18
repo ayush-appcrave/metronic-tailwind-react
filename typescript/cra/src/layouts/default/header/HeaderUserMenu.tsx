@@ -29,6 +29,16 @@ const HeaderUserMenu = () => {
             />
           </NavItemButton>
           <NavItemSub
+            toggle={{
+              breakpoints: {
+                up: {
+                  md: 'click'
+                },
+                down: {
+                  md: 'click'
+                }
+              }
+            }}
             menu={true}
             menuWidth="200px"
             menuProps={{
@@ -48,7 +58,18 @@ const HeaderUserMenu = () => {
             <NavItem path="#" title="Title" icon={<KeenIcon icon="calendar" />} />
             <NavItem title="Title" icon={<KeenIcon icon="calendar" />}>
               <NavItemSub
-                menu="true"
+                toggle={{
+                  breakpoints: {
+                    up: {
+                      md: 'hover'
+                    },
+                    down: {
+                      md: 'click'
+                    }
+                  }
+                }}
+                menu={true}
+                menuWidth="200px"
                 menuProps={{
                   anchorOrigin: {
                     horizontal: 'left',
@@ -61,7 +82,36 @@ const HeaderUserMenu = () => {
                 }}
               >
                 <NavItem path="#" title="Title" icon={<KeenIcon icon="calendar" />} />
-                <NavItem path="#" title="Title" icon={<KeenIcon icon="calendar" />} />
+                <NavItem title="Title" icon={<KeenIcon icon="calendar" />}>
+                  <NavItemSub
+                    toggle={{
+                      breakpoints: {
+                        up: {
+                          md: 'hover'
+                        },
+                        down: {
+                          md: 'click'
+                        }
+                      }
+                    }}
+                    menu={true}
+                    menuWidth="200px"
+                    menuProps={{
+                      anchorOrigin: {
+                        horizontal: 'left',
+                        vertical: 'top'
+                      },
+                      transformOrigin: {
+                        horizontal: 'right',
+                        vertical: 'top'
+                      }
+                    }}
+                  >
+                    <NavItem path="#" title="Title" icon={<KeenIcon icon="calendar" />} />
+                    <NavItem path="#" title="Title" icon={<KeenIcon icon="calendar" />} />
+                    <NavItem path="#" title="Title" icon={<KeenIcon icon="calendar" />} />
+                  </NavItemSub>
+                </NavItem>
                 <NavItem path="#" title="Title" icon={<KeenIcon icon="calendar" />} />
               </NavItemSub>
             </NavItem>

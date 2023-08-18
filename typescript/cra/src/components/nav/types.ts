@@ -69,6 +69,7 @@ export interface NavPropsType {
 
 export interface NavItemSubPropsType {
   depth?: NavDepthType;
+  toggle?: NavToggleType;
   menu: NavMenuType;
   menuProps?: NavMenuPropsType;
   menuWidth?: NavMenuWidthType;
