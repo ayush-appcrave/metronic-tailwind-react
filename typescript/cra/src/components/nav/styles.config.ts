@@ -105,7 +105,7 @@ const NavDefaultStylesConfig = (): any => {
     MENU_ITEM_BUTTON_BACKGROUND_COLOR_HOVER: 'transparent',
     MENU_ITEM_BUTTON_BACKGROUND_COLOR_OPEN: 'transparent',
     MENU_ITEM_BUTTON_BACKGROUND_COLOR_HERE: 'transparent',
-    MENU_ITEM_BUTTON_BACKGROUND_COLOR_ACTIVE: theme.palette.grey['600'],
+    MENU_ITEM_BUTTON_BACKGROUND_COLOR_ACTIVE: theme.palette.primary.light,
     MENU_ITEM_TITLE_FONT_SIZE: 14,
     MENU_ITEM_TITLE_FONT_WEIGHT: theme.typography.fontWeightMedium,
     MENU_ITEM_TITLE_COLOR: theme.palette.grey['600'],
@@ -147,7 +147,7 @@ const NavDefaultStylesConfig = (): any => {
     BADGE_FONT_WEIGHT: theme.typography.fontWeightMedium,
     BADGE_GAP: 2,
 
-    DIVIDER_MARGIN_Y: 0,
+    DIVIDER_MARGIN_Y: 5,
     DIVIDER_BORDER: '1px dashed ' + theme.palette.grey['300']
   };
 };

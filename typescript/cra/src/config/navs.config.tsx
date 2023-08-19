@@ -73,7 +73,7 @@ const NAV_COMMON: Record<string, NavConfigType> = {
   pages: [
     {
       title: 'Page 1',
-      path: '#pages/page-1',
+      path: '/ecommerce',
       bullet: true
     },
     {
@@ -125,13 +125,16 @@ const NAV_COMMON: Record<string, NavConfigType> = {
         items: [
           {
             title: 'Page 1',
-            path: '#auth/page-1',
+            path: '/ecommerce',
             disabled: true,
-            bullet: true
+            bullet: true,
+            onClick: () => {
+              console.log('New clicked');
+            }
           },
           {
             title: 'Page 2',
-            path: '#auth/page-2',
+            path: '/dashboard',
             bullet: true
           },
           {

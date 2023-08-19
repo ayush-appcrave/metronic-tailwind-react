@@ -42,6 +42,7 @@ const NavItem = forwardRef<HTMLDivElement | null, NavItemPropsType>(function Nav
     bullet,
     badge,
     button,
+    onClick,
     styles = NavDefaultStylesConfig(),
     containerProps: ContainerPropsProp = {},
     sx
@@ -53,105 +54,12 @@ const NavItem = forwardRef<HTMLDivElement | null, NavItemPropsType>(function Nav
 
   const menuItemRef = useRef<HTMLDivElement | null>(null);
 
-  useImperativeHandle(ref, () => menuItemRef.current!); // eslint-disable-line @typescript-eslint/no-non-null-assertion
-
   const containerRef = useRef<HTMLDivElement | null>(null);
   useImperativeHandle(containerRefProp, () => containerRef.current);
 
   const menuContainerRef = useRef<HTMLDivElement | null>(null);
 
   const [isSubMenuOpen, setIsSubMenuOpen] = useState(false);
-
-  const handleMouseEnter = (e: MouseEvent<HTMLElement>) => {
-    setHover(true);
-
-    if (toggle === 'hover') {
-      setOpen(true);
-      setIsSubMenuOpen(true);
-      setAnchorEl(menuItemRef.current);
-
-      if (containerProps.onMouseEnter) {
-        containerProps.onMouseEnter(e);
-      }
-    }
-  };
-
-  const handleMouseLeave = (e: MouseEvent<HTMLElement>) => {
-    setHover(false);
-
-    if (toggle === 'hover') {
-      setOpen(false);
-      setIsSubMenuOpen(false);
-      setAnchorEl(menuItemRef.current);
-
-      if (containerProps.onMouseLeave) {
-        containerProps.onMouseLeave(e);
-      }
-    }
-  };
-
-  const handleToggle = (event: MouseEvent<HTMLDivElement>) => {
-    if (toggle === 'click') {
-      setOpen(!open);
-      if (itemMenu) {
-        if (isSubMenuOpen) {
-          setAnchorEl(null);
-          setIsSubMenuOpen(false);
-        } else {
-          setAnchorEl(menuItemRef.current);
-          setIsSubMenuOpen(true);
-        }
-      }
-    }
-  };
-
-  const handleFocus = (e: FocusEvent<HTMLElement>) => {
-    if (e.target === containerRef.current) {
-      setAnchorEl(menuItemRef.current);
-      setIsSubMenuOpen(true);
-    }
-
-    if (containerProps.onFocus) {
-      containerProps.onFocus(e);
-    }
-  };
-
-  const handleKeyDown = (e: KeyboardEvent) => {
-    if (e.key === 'Escape') {
-      return;
-    }
-
-    if (isSubmenuFocused()) {
-      e.stopPropagation();
-    }
-
-    const active = containerRef.current?.ownerDocument.activeElement;
-
-    if (e.key === 'ArrowLeft' && isSubmenuFocused()) {
-      containerRef.current?.focus();
-    }
-
-    if (e.key === 'ArrowRight' && e.target === containerRef.current && e.target === active) {
-      const firstChild = menuContainerRef.current?.children[0] as HTMLDivElement;
-      firstChild?.focus();
-    }
-  };
-
-  // Check if any immediate sub are active
-  const isSubmenuFocused = () => {
-    const active = containerRef.current?.ownerDocument.activeElement ?? null;
-    const subList = menuContainerRef.current?.children;
-
-    if (subList && subList.length > 0) {
-      for (const child of subList) {
-        if (child === active) {
-          return true;
-        }
-      }
-    }
-
-    return false;
-  };
 
   const { pathname } = useLocation();
 
@@ -181,7 +89,7 @@ const NavItem = forwardRef<HTMLDivElement | null, NavItemPropsType>(function Nav
 
   const active: boolean = match;
 
-  const [open, setOpen] = useState(here);
+  const [open, setOpen] = useState(accordion ? here : false);
 
   const [hover, setHover] = useState(false);
 
@@ -190,6 +98,103 @@ const NavItem = forwardRef<HTMLDivElement | null, NavItemPropsType>(function Nav
       setOpen(true);
     }
   }, [pathname]);
+
+  const handleMouseEnter = (e: MouseEvent<HTMLElement>) => {
+    setHover(true);
+
+    if (toggle === 'hover') {
+      setSubOpen(true);
+
+      if (containerProps.onMouseEnter) {
+        containerProps.onMouseEnter(e);
+      }
+    }
+  };
+
+  const handleMouseLeave = (e: MouseEvent<HTMLElement>) => {
+    setHover(false);
+
+    if (toggle === 'hover') {
+      setSubOpen(false);
+
+      if (containerProps.onMouseLeave) {
+        containerProps.onMouseLeave(e);
+      }
+    }
+  };
+
+  const handleToggle = (e: MouseEvent<HTMLElement>) => {
+    if (toggle === 'click') {
+      setSubOpen(!open);
+    }
+  };
+
+  const handleFocus = (e: FocusEvent<HTMLElement>) => {
+    if (e.target === containerRef.current) {
+      setSubOpen(true);
+    }
+
+    if (containerProps.onFocus) {
+      containerProps.onFocus(e);
+    }
+  };
+
+  const handleKeyDown = (e: KeyboardEvent) => {
+    if (e.key === 'Escape') {
+      return;
+    }
+
+    if (isSubmenuFocused()) {
+      e.stopPropagation();
+    }
+
+    const active = containerRef.current?.ownerDocument.activeElement;
+
+    if (e.key === 'ArrowLeft' && isSubmenuFocused()) {
+      containerRef.current?.focus();
+    }
+
+    if (e.key === 'ArrowRight' && e.target === containerRef.current && e.target === active) {
+      const firstChild = menuContainerRef.current?.children[0] as HTMLDivElement;
+      firstChild?.focus();
+    }
+  };
+
+  const handleClick = (e: MouseEvent<HTMLElement>) => {
+    console.log('click');
+
+    if (menu) {
+      console.log('click2');
+    }
+  };
+
+  const setSubOpen = (open: boolean) => {
+    setOpen(open);
+
+    if (isSubMenuOpen) {
+      setAnchorEl(null);
+      setIsSubMenuOpen(false);
+    } else {
+      setAnchorEl(menuItemRef.current);
+      setIsSubMenuOpen(true);
+    }
+  };
+
+  // Check if any immediate sub are active
+  const isSubmenuFocused = () => {
+    const active = containerRef.current?.ownerDocument.activeElement ?? null;
+    const subList = menuContainerRef.current?.children;
+
+    if (subList && subList.length > 0) {
+      for (const child of subList) {
+        if (child === active) {
+          return true;
+        }
+      }
+    }
+
+    return false;
+  };
 
   const renderDivider = <DividerStyled depth={depth} styles={styles} />;
 

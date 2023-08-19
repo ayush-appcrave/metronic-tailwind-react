@@ -55,6 +55,10 @@ export type NavHandleToggleType = any;
 
 export type NavMenuPropsType = Partial<Omit<MenuProps, 'children'>>;
 
+export type NavChildrenType = any;
+
+export type NavParentItemRef = any;
+
 export interface NavPropsType {
   direction?: NavDirectionType;
   accordion?: NavAccordionType;
@@ -82,7 +86,7 @@ export interface NavItemSubPropsType {
   items?: NavConfigType | undefined;
   styles?: NavStylesType;
   sx?: SxProps;
-  children?: any;
+  children?: NavChildrenType;
 }
 
 export interface NavItemPropsType {
@@ -111,7 +115,7 @@ export interface NavItemPropsType {
   menuProps?: NavMenuPropsType;
   onClick?: (_?: unknown) => unknown | void;
   containerProps?: HTMLAttributes<HTMLElement> & RefAttributes<HTMLElement | null>;
-  children?: any;
+  children?: NavChildrenType;
 }
 
 export interface NavItemChildPropsType {
