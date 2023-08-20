@@ -29,9 +29,9 @@ interface AuthContextProps {
   verify: () => Promise<void>;
 
   login: (email: string, password: string) => Promise<void>;
-  loginWithGoogle: () => Promise<void>;
-  loginWithFacebook: () => Promise<void>;
-  loginWithGithub: () => Promise<void>;
+  loginWithGoogle?: () => Promise<void>;
+  loginWithFacebook?: () => Promise<void>;
+  loginWithGithub?: () => Promise<void>;
   register: (
     email: string,
     password: string,

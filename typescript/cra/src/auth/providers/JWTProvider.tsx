@@ -25,12 +25,15 @@ interface AuthContextProps {
   currentUser: UserModel | undefined;
   setCurrentUser: Dispatch<SetStateAction<UserModel | undefined>>;
   login: (email: string, password: string) => Promise<void>;
+  loginWithGoogle?: () => Promise<void>;
+  loginWithFacebook?: () => Promise<void>;
+  loginWithGithub?: () => Promise<void>;
   register: (
     email: string,
-    firstname: string,
-    lastname: string,
     password: string,
-    password_confirmation: string
+    firstname?: string,
+    lastname?: string,
+    password_confirmation?: string
   ) => Promise<void>;
   requestPassword: (email: string) => Promise<void>;
   getUser: () => Promise<AxiosResponse<any>>;
@@ -94,10 +97,10 @@ const AuthProvider = ({ children }: PropsWithChildren) => {
   // Register user using default registraion information
   const register = async (
     email: string,
-    firstname: string,
-    lastname: string,
     password: string,
-    password_confirmation: string
+    firstname?: string,
+    lastname?: string,
+    password_confirmation?: string
   ) => {
     try {
       const { data: auth } = await axios.post(REGISTER_URL, {

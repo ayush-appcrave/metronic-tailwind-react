@@ -6,7 +6,6 @@ import './index.css';
 import './App.css';
 
 import axios from 'axios';
-import React from 'react';
 import ReactDOM from 'react-dom/client';
 import { QueryClient, QueryClientProvider } from 'react-query';
 
@@ -21,7 +20,7 @@ import reportWebVitals from './reportWebVitals';
  *
  * @see https://github.com/axios/axios#interceptors
  */
-// setupAxios(axios);
+setupAxios(axios);
 
 const queryClient = new QueryClient();
 const root = ReactDOM.createRoot(document.getElementById('root') as HTMLElement);

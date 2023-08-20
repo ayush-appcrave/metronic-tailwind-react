@@ -1,6 +1,7 @@
-import { useLocation, Navigate, Outlet } from 'react-router-dom';
-import { useAuthContext } from '../providers/useAuthContext';
 import { ScreenLoader } from '@components/loaders';
+import { Navigate, Outlet, useLocation } from 'react-router-dom';
+
+import { useAuthContext } from '../providers/useAuthContext';
 
 const RequireAuth = () => {
   const { auth, isLoading } = useAuthContext();

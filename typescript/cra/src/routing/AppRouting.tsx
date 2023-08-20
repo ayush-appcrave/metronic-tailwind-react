@@ -1,13 +1,14 @@
 import { ReactElement, useEffect, useState } from 'react';
 import { Navigate, Route, Routes, useLocation } from 'react-router';
-import { RequireAuth } from '../auth/components/RequireAuth';
+
 import { AuthPage } from '../auth';
+import { RequireAuth } from '../auth/components/RequireAuth';
+import { useAuthContext } from '../auth/providers/useAuthContext';
 import { DefaultLayout } from '../layouts/default';
 import { ErrorsPage } from '../modules/errors';
 import { UsersManagementWrapper } from '../modules/users-management-api';
 import { DashboardPage, EcommercePage, MarketingPage } from '../pages';
 import { useLoaders } from '../providers/LoadersProvider';
-import { useAuthContext } from '../auth/providers/useAuthContext';
 
 const AppRouting = (): ReactElement => {
   const { setProgressBarLoader } = useLoaders();

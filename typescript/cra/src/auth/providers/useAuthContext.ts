@@ -1,6 +1,6 @@
 import { useContext } from 'react';
 
-import { AuthContext } from './FirebaseProvider';
+import { AuthContext } from './JWTProvider';
 
 export const useAuthContext = () => {
   const context = useContext(AuthContext);

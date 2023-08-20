@@ -1,11 +1,10 @@
 import clsx from 'clsx';
 import { useFormik } from 'formik';
 import { useState } from 'react';
-import { Link, useNavigate, useLocation } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import * as Yup from 'yup';
 
 import { useAuthContext } from '../providers/useAuthContext';
-import { setAuth } from '../_helpers';
 
 const loginSchema = Yup.object().shape({
   email: Yup.string()
@@ -32,7 +31,7 @@ const initialValues = {
 
 const Login = () => {
   const [loading, setLoading] = useState(false);
-  const { login, auth } = useAuthContext();
+  const { login } = useAuthContext();
   const navigate = useNavigate();
   const location = useLocation();
   const from = location.state?.from?.pathname || '/';

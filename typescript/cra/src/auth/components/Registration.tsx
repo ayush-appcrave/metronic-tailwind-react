@@ -3,6 +3,7 @@ import { useFormik } from 'formik';
 import { useState } from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import * as Yup from 'yup';
+
 import { useAuthContext } from '../providers/useAuthContext';
 
 const initialValues = {
@@ -57,7 +58,13 @@ const Registration = () => {
           throw new Error('JWTProveder is required for thir form.');
         }
 
-        await register(values.email, values.firstname, values.lastname, values.password);
+        await register(
+          values.email,
+          values.password,
+          values.firstname,
+          values.lastname,
+          values.changepassword
+        );
         navigate(from, { replace: true });
       } catch (error) {
         console.error(error);

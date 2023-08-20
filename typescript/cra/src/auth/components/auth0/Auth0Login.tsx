@@ -1,6 +1,7 @@
-import { useLocation, useNavigate } from 'react-router';
-import { useAuthContext } from '../../providers/useAuthContext';
 import { useState } from 'react';
+import { useLocation, useNavigate } from 'react-router';
+
+import { useAuthContext } from '../../providers/useAuthContext';
 
 const Auth0Login = () => {
   const [loading, setLoading] = useState(false);
@@ -13,7 +14,7 @@ const Auth0Login = () => {
     setLoading(true);
     try {
       if (!login) {
-        throw new Error('Auth0Provider is required for thir form.');
+        throw new Error('Auth0Provider is required for this form.');
       }
 
       // await login();
