@@ -22,25 +22,25 @@ import { AppRouting } from './routing';
 const { PUBLIC_URL } = process.env;
 
 const App = () => (
-  <AuthProvider>
-    <SettingsProvider>
-      <TranslationProvider>
-        <ThemeProvider>
-          <ThemeRtlProvider>
-            <LayoutsProvider>
-              <LoadersProvider>
-                <SnackbarProvider>
+  <SnackbarProvider>
+    <AuthProvider>
+      <SettingsProvider>
+        <TranslationProvider>
+          <ThemeProvider>
+            <ThemeRtlProvider>
+              <LayoutsProvider>
+                <LoadersProvider>
                   <BrowserRouter basename={PUBLIC_URL}>
                     <AppRouting />
                   </BrowserRouter>
-                </SnackbarProvider>
-              </LoadersProvider>
-            </LayoutsProvider>
-          </ThemeRtlProvider>
-        </ThemeProvider>
-      </TranslationProvider>
-    </SettingsProvider>
-  </AuthProvider>
+                </LoadersProvider>
+              </LayoutsProvider>
+            </ThemeRtlProvider>
+          </ThemeProvider>
+        </TranslationProvider>
+      </SettingsProvider>
+    </AuthProvider>
+  </SnackbarProvider>
 );
 
 export { App };

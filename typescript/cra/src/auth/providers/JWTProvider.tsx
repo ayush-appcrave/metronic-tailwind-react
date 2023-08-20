@@ -4,8 +4,8 @@ import {
   type Dispatch,
   type PropsWithChildren,
   type SetStateAction,
-  useState,
-  useEffect
+  useEffect,
+  useState
 } from 'react';
 
 import * as authHelper from '../_helpers';

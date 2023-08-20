@@ -1,13 +1,14 @@
+import { Auth0Client, User } from '@auth0/auth0-spa-js';
 import {
   createContext,
   type Dispatch,
   type PropsWithChildren,
   type SetStateAction,
-  useState,
-  useEffect
+  useEffect,
+  useState
 } from 'react';
+
 import * as authHelper from '../_helpers';
-import { Auth0Client, User } from '@auth0/auth0-spa-js';
 
 interface AuthContextProps {
   isLoading: boolean;
@@ -106,4 +107,4 @@ const AuthProvider = ({ children }: PropsWithChildren) => {
   );
 };
 
-export { AuthProvider, AuthContext };
+export { AuthContext, AuthProvider };

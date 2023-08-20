@@ -21,7 +21,7 @@ import reportWebVitals from './reportWebVitals';
  *
  * @see https://github.com/axios/axios#interceptors
  */
-setupAxios(axios);
+// setupAxios(axios);
 
 const queryClient = new QueryClient();
 const root = ReactDOM.createRoot(document.getElementById('root') as HTMLElement);

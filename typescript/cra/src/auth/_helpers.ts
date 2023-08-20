@@ -1,5 +1,5 @@
 import { User as Auth0UserModel } from '@auth0/auth0-spa-js';
-import { User as FirebaseUserModel } from '@firebase/auth';
+
 import { getData, setData } from '../utils';
 import { type AuthModel } from './_models';
 
@@ -35,22 +35,7 @@ const getAuth0 = (): Auth0UserModel | undefined => {
   }
 };
 
-const getFirebaseAuth = (): FirebaseUserModel | undefined => {
-  try {
-    const auth = getData(AUTH_LOCAL_STORAGE_KEY) as FirebaseUserModel | undefined;
-
-    if (auth) {
-      // You can easily check auth_token expiration also
-      return auth;
-    } else {
-      return undefined;
-    }
-  } catch (error) {
-    console.error('AUTH LOCAL STORAGE PARSE ERROR', error);
-  }
-};
-
-const setAuth = (auth: AuthModel | Auth0UserModel | FirebaseUserModel) => {
+const setAuth = (auth: AuthModel | Auth0UserModel) => {
   setData(AUTH_LOCAL_STORAGE_KEY, auth);
 };
 
@@ -82,4 +67,4 @@ export function setupAxios(axios: any) {
   );
 }
 
-export { AUTH_LOCAL_STORAGE_KEY, getAuth, removeAuth, setAuth, getAuth0, getFirebaseAuth };
+export { AUTH_LOCAL_STORAGE_KEY, getAuth, getAuth0, removeAuth, setAuth };

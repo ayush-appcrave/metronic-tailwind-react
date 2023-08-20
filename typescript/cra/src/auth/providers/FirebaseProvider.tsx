@@ -1,30 +1,30 @@
+import { initializeApp } from '@firebase/app';
+import {
+  createUserWithEmailAndPassword,
+  FacebookAuthProvider,
+  getAuth,
+  GithubAuthProvider,
+  GoogleAuthProvider,
+  signInWithEmailAndPassword,
+  signInWithPopup,
+  signOut,
+  User
+} from '@firebase/auth';
+import { useSnackbar } from 'notistack';
 import {
   createContext,
   type Dispatch,
   type PropsWithChildren,
   type SetStateAction,
-  useState,
-  useEffect
+  useEffect,
+  useState
 } from 'react';
-import * as authHelper from '../_helpers';
-import { initializeApp } from '@firebase/app';
-import {
-  getAuth,
-  User,
-  createUserWithEmailAndPassword,
-  signInWithEmailAndPassword,
-  signInWithPopup,
-  signOut,
-  GoogleAuthProvider,
-  FacebookAuthProvider,
-  GithubAuthProvider
-} from '@firebase/auth';
 
 interface AuthContextProps {
   isLoading: boolean;
-  auth: User | undefined;
-  currentUser: User | undefined;
-  setCurrentUser: Dispatch<SetStateAction<User | undefined>>;
+  auth: User | null;
+  currentUser: User | null;
+  setCurrentUser: Dispatch<SetStateAction<User | null>>;
   logout: () => Promise<void>;
   verify: () => Promise<void>;
 
@@ -50,7 +50,7 @@ const firebaseConfig = {
   storageBucket: process.env.REACT_APP_FIREBASE_STORAGE_BUCKET,
   messagingSenderId: process.env.REACT_APP_FIREBASE_MESSANGING_SENDER_ID,
   appId: process.env.REACT_APP_FIREBASE_APP_ID,
-  measurementId: process.env.REACT_APP_FIREBASE_MEASUREMENT_ID,
+  measurementId: process.env.REACT_APP_FIREBASE_MEASUREMENT_ID
 };
 
 const app = initializeApp(firebaseConfig);
@@ -63,48 +63,42 @@ const facebookAuthProvider = new FacebookAuthProvider();
 const githubAuthProvider = new GithubAuthProvider();
 
 const AuthProvider = ({ children }: PropsWithChildren) => {
-  const [loading, setLoading] = useState(false);
-  const [auth, setAuth] = useState<User | undefined>(authHelper.getFirebaseAuth());
-  const [currentUser, setCurrentUser] = useState<User | undefined>();
+  const [loading, setLoading] = useState(true);
+  const [auth, setAuth] = useState<User | null>(null);
+  const [currentUser, setCurrentUser] = useState<User | null>(null);
+  const { enqueueSnackbar } = useSnackbar();
 
-  // Verity user session
   const verify = async () => {
-    // firebaseAuth.verifyIdToken()
+    firebaseAuth.onAuthStateChanged((user) => {
+      setAuth(user);
+      setLoading(false);
+    });
   };
 
   useEffect(() => {
     verify();
   }, []);
 
-  // Set auth object and save it to local storage
-  const saveAuth = (auth: User | undefined) => {
-    setAuth(auth);
-    if (auth) {
-      authHelper.setAuth(auth);
-    } else {
-      authHelper.removeAuth();
-    }
-  };
-
   const login = async (email: string, password: string) => {
     try {
       const { user } = await signInWithEmailAndPassword(firebaseAuth, email, password);
-      saveAuth(user);
-      console.log(user);
+      setAuth(user);
     } catch (error) {
-      saveAuth(undefined);
-      throw new Error(`Error ${error}`);
+      setAuth(null);
+      enqueueSnackbar(`${error}`, { variant: 'error' });
+      throw error;
     }
   };
 
   const register = async (email: string, password: string) => {
     try {
       const { user } = await createUserWithEmailAndPassword(firebaseAuth, email, password);
-      saveAuth(user);
+      setAuth(user);
       console.log(user);
     } catch (error) {
-      saveAuth(undefined);
-      throw new Error(`Error ${error}`);
+      setAuth(null);
+      enqueueSnackbar(`${error}`, { variant: 'error' });
+      throw error;
     }
   };
 
@@ -116,10 +110,10 @@ const AuthProvider = ({ children }: PropsWithChildren) => {
       const user = result.user;
 
       console.log(user);
-      saveAuth(user);
+      setAuth(user);
     } catch (error) {
-      saveAuth(undefined);
-      throw new Error(`Error ${error}`);
+      setAuth(null);
+      throw error;
     }
   };
 
@@ -130,10 +124,10 @@ const AuthProvider = ({ children }: PropsWithChildren) => {
       // This is the signed-in user
       const user = result.user;
       console.log(user);
-      saveAuth(user);
+      setAuth(user);
     } catch (error) {
-      saveAuth(undefined);
-      throw new Error(`Error ${error}`);
+      setAuth(null);
+      throw error;
     }
   };
 
@@ -144,16 +138,16 @@ const AuthProvider = ({ children }: PropsWithChildren) => {
       // This is the signed-in user
       const user = result.user;
       console.log(user);
-      saveAuth(user);
+      setAuth(user);
     } catch (error) {
-      saveAuth(undefined);
-      throw new Error(`Error ${error}`);
+      setAuth(null);
+      throw error;
     }
   };
 
   const logout = async () => {
     signOut(firebaseAuth);
-    saveAuth(undefined);
+    setAuth(null);
   };
 
   return (
@@ -177,4 +171,4 @@ const AuthProvider = ({ children }: PropsWithChildren) => {
   );
 };
 
-export { AuthProvider, AuthContext };
+export { AuthContext, AuthProvider };
