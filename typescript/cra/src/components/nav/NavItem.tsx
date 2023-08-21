@@ -42,10 +42,12 @@ const NavItem = forwardRef<HTMLDivElement | null, NavItemPropsType>(function Nav
     bullet,
     badge,
     button,
-    onClick,
     styles = NavDefaultStylesConfig(),
     containerProps: ContainerPropsProp = {},
-    sx
+    sx,
+    onLinksClick,
+    onLinkClick,
+    handleParentMenuClose
   } = props;
 
   const { ref: containerRefProp, ...containerProps } = ContainerPropsProp;
@@ -53,6 +55,7 @@ const NavItem = forwardRef<HTMLDivElement | null, NavItemPropsType>(function Nav
   const [anchorEl, setAnchorEl] = useState<HTMLElement | null>(null);
 
   const menuItemRef = useRef<HTMLDivElement | null>(null);
+  useImperativeHandle(ref, () => menuItemRef.current!); // eslint-disable-line @typescript-eslint/no-non-null-assertion
 
   const containerRef = useRef<HTMLDivElement | null>(null);
   useImperativeHandle(containerRefProp, () => containerRef.current);
@@ -124,52 +127,38 @@ const NavItem = forwardRef<HTMLDivElement | null, NavItemPropsType>(function Nav
   };
 
   const handleToggle = (e: MouseEvent<HTMLElement>) => {
+    console.log('event: toggle');
     if (toggle === 'click') {
       setSubOpen(!open);
     }
   };
 
-  const handleFocus = (e: FocusEvent<HTMLElement>) => {
-    if (e.target === containerRef.current) {
-      setSubOpen(true);
-    }
-
-    if (containerProps.onFocus) {
-      containerProps.onFocus(e);
-    }
-  };
-
-  const handleKeyDown = (e: KeyboardEvent) => {
-    if (e.key === 'Escape') {
-      return;
-    }
-
-    if (isSubmenuFocused()) {
-      e.stopPropagation();
-    }
-
-    const active = containerRef.current?.ownerDocument.activeElement;
-
-    if (e.key === 'ArrowLeft' && isSubmenuFocused()) {
-      containerRef.current?.focus();
-    }
-
-    if (e.key === 'ArrowRight' && e.target === containerRef.current && e.target === active) {
-      const firstChild = menuContainerRef.current?.children[0] as HTMLDivElement;
-      firstChild?.focus();
-    }
-  };
-
   const handleClick = (e: MouseEvent<HTMLElement>) => {
-    console.log('click');
+    console.log('event: click');
+    handleMenuClose(e);
 
-    if (menu) {
-      console.log('click2');
+    if (onLinksClick) {
+      onLinksClick(e, props);
+    }
+
+    if (onLinkClick) {
+      onLinkClick(e, props);
+    }
+  };
+
+  const handleMenuClose = (e: MouseEvent<HTMLElement>) => {
+    if (itemMenu) {
+      setSubOpen(false);
+    }
+
+    if (handleParentMenuClose) {
+      handleParentMenuClose(e);
     }
   };
 
   const setSubOpen = (open: boolean) => {
     setOpen(open);
+    setHover(open);
 
     if (isSubMenuOpen) {
       setAnchorEl(null);
@@ -178,22 +167,6 @@ const NavItem = forwardRef<HTMLDivElement | null, NavItemPropsType>(function Nav
       setAnchorEl(menuItemRef.current);
       setIsSubMenuOpen(true);
     }
-  };
-
-  // Check if any immediate sub are active
-  const isSubmenuFocused = () => {
-    const active = containerRef.current?.ownerDocument.activeElement ?? null;
-    const subList = menuContainerRef.current?.children;
-
-    if (subList && subList.length > 0) {
-      for (const child of subList) {
-        if (child === active) {
-          return true;
-        }
-      }
-    }
-
-    return false;
   };
 
   const renderDivider = <DividerStyled depth={depth} styles={styles} />;
@@ -252,19 +225,14 @@ const NavItem = forwardRef<HTMLDivElement | null, NavItemPropsType>(function Nav
         items={sub?.items}
         styles={styles}
         collapse={collapse}
+        handleParentMenuClose={handleMenuClose}
       />
     </Box>
   );
 
   const renderItemMenu = () => {
-    const handleClose = (event: MouseEvent<HTMLDivElement>) => {
-      setIsSubMenuOpen(false);
-
-      if (toggle === 'click') {
-        setOpen(false);
-        setHover(false);
-        setAnchorEl(null);
-      }
+    const handleClose = (e: MouseEvent<HTMLElement>) => {
+      setSubOpen(false);
     };
 
     return (
@@ -293,11 +261,9 @@ const NavItem = forwardRef<HTMLDivElement | null, NavItemPropsType>(function Nav
     <Box
       {...containerProps}
       ref={containerRef}
-      onFocus={handleFocus}
       tabIndex={tabIndex}
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}
-      onKeyDown={handleKeyDown}
     >
       {divider ? renderDivider : renderItem()}
 
@@ -310,7 +276,7 @@ const NavItem = forwardRef<HTMLDivElement | null, NavItemPropsType>(function Nav
       const target = newTab ? '_blank' : '_self';
 
       return (
-        <Link href={path} target={target} rel="noopener" underline="none">
+        <Link href={path} target={target} rel="noopener" underline="none" onClick={handleClick}>
           {renderContent}
         </Link>
       );
@@ -321,7 +287,7 @@ const NavItem = forwardRef<HTMLDivElement | null, NavItemPropsType>(function Nav
     }
 
     return (
-      <Link component={RouterLink} to={path} underline="none">
+      <Link component={RouterLink} to={path} underline="none" onClick={handleClick}>
         {renderContent}
       </Link>
     );

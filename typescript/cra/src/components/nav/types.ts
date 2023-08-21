@@ -1,6 +1,6 @@
 /* eslint-disable @typescript-eslint/no-invalid-void-type */
 import { MenuProps, type SxProps } from '@mui/material';
-import { HTMLAttributes, RefAttributes } from 'react';
+import { HTMLAttributes, MouseEvent, RefAttributes } from 'react';
 
 import { type ColorSchema } from '../../theme/palette';
 
@@ -40,6 +40,9 @@ export type NavMenuWidthType = any;
 
 export type NavTitleType = string;
 
+export type NavEventHandlerType = (e: MouseEvent<HTMLElement>) => void;
+
+export type NavLinkClickEventType = (e: MouseEvent<HTMLElement>, props: any) => void;
 export interface NavBadgeType {
   content: string;
   color: ColorSchema;
@@ -59,6 +62,8 @@ export type NavChildrenType = any;
 
 export type NavParentItemRef = any;
 
+export type NavCallbackType = any;
+
 export interface NavPropsType {
   direction?: NavDirectionType;
   accordion?: NavAccordionType;
@@ -69,6 +74,7 @@ export interface NavPropsType {
   styles?: NavStylesType;
   sx?: SxProps;
   children?: any;
+  onLinksClick?: NavLinkClickEventType;
 }
 
 export interface NavItemSubPropsType {
@@ -87,6 +93,8 @@ export interface NavItemSubPropsType {
   styles?: NavStylesType;
   sx?: SxProps;
   children?: NavChildrenType;
+  onLinksClick?: NavLinkClickEventType;
+  handleParentMenuClose?: NavEventHandlerType;
 }
 
 export interface NavItemPropsType {
@@ -113,9 +121,11 @@ export interface NavItemPropsType {
   button?: any;
   sx?: SxProps;
   menuProps?: NavMenuPropsType;
-  onClick?: (_?: unknown) => unknown | void;
   containerProps?: HTMLAttributes<HTMLElement> & RefAttributes<HTMLElement | null>;
   children?: NavChildrenType;
+  onLinksClick?: NavLinkClickEventType;
+  onLinkClick?: NavLinkClickEventType;
+  handleParentMenuClose?: NavEventHandlerType;
 }
 
 export interface NavItemChildPropsType {

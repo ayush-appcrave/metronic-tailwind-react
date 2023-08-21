@@ -92,7 +92,7 @@ const NavDefaultStylesConfig = (): any => {
 
     MENU_WIDTH: '200px',
     MENU_PADDING_X: 0,
-    MENU_PADDING_Y: 5,
+    MENU_PADDING_Y: 8,
     MENU_BOX_SHADOW: theme.customShadows.menu,
     MENU_BORDER_RADIUS: '6px',
     MENU_BACKGROUND_COLOR: theme.palette.background.paper,
@@ -100,7 +100,7 @@ const NavDefaultStylesConfig = (): any => {
     MENU_ITEM_BUTTON_HEIGHT: 38,
     MENU_ITEM_BUTTON_PADDING_X: 12,
     MENU_ITEM_BUTTON_PADDING_Y: 5,
-    MENU_ITEM_BUTTON_MARGIN_X: 5,
+    MENU_ITEM_BUTTON_MARGIN_X: 8,
     MENU_ITEM_BUTTON_MARGIN_Y: 2,
     MENU_ITEM_BUTTON_BACKGROUND_COLOR_HOVER: 'transparent',
     MENU_ITEM_BUTTON_BACKGROUND_COLOR_OPEN: 'transparent',

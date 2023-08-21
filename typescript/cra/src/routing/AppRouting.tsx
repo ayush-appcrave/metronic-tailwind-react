@@ -11,21 +11,21 @@ import { useLoaders } from '../providers/LoadersProvider';
 const AppRouting = (): ReactElement => {
   const { currentUser } = useAuth();
   const { setProgressBarLoader } = useLoaders();
-  const [previousLocation, setPreviousLocation] = useState('');
+  const [previousPathname, setPreviousPathname] = useState('');
   const location = useLocation();
 
   useEffect(() => {
     setProgressBarLoader(true);
-    setPreviousLocation(location.pathname);
+    setPreviousPathname(location.pathname);
 
-    if (location.pathname === previousLocation) {
-      setPreviousLocation('');
+    if (location.pathname === previousPathname) {
+      setPreviousPathname('');
     }
-  }, [location]);
+  }, [location.pathname]);
 
   useEffect(() => {
     setProgressBarLoader(false);
-  }, [previousLocation]);
+  }, [previousPathname]);
 
   return (
     <Routes>

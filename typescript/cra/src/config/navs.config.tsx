@@ -34,19 +34,13 @@ const NAV_COMMON: Record<string, NavConfigType> = {
       badge: {
         content: 'New',
         color: 'success'
-      },
-      onClick: () => {
-        console.log('New clicked');
       }
     },
     {
       key: 'dashboards-eCommerce',
       title: 'eCommerce',
       path: '/ecommerce',
-      bullet: true,
-      onClick: () => {
-        console.log('New clicked 2');
-      }
+      bullet: true
     },
     {
       key: 'dashboards-Marketing',
@@ -72,12 +66,15 @@ const NAV_COMMON: Record<string, NavConfigType> = {
   ],
   pages: [
     {
-      title: 'Page 1',
+      title: 'Page 1-1',
       path: '/ecommerce',
-      bullet: true
+      bullet: true,
+      onLinkClick: () => {
+        console.log('New clicked');
+      }
     },
     {
-      title: 'Page 2',
+      title: 'Page 1-2',
       path: '#pages/page-1',
       bullet: true,
       sub: {
@@ -124,21 +121,21 @@ const NAV_COMMON: Record<string, NavConfigType> = {
         },
         items: [
           {
-            title: 'Page 1',
+            title: 'Page 2-1',
             path: '/ecommerce',
             disabled: true,
             bullet: true,
-            onClick: () => {
+            onLinkClick: () => {
               console.log('New clicked');
             }
           },
           {
-            title: 'Page 2',
+            title: 'Page 2-2',
             path: '/dashboard',
             bullet: true
           },
           {
-            title: 'Page 3',
+            title: 'Page 2-3',
             path: '#auth/page-3',
             bullet: true
           }
@@ -146,11 +143,11 @@ const NAV_COMMON: Record<string, NavConfigType> = {
       }
     },
     {
-      title: 'Submenu',
+      title: 'Page 1-4',
       bullet: true
     },
     {
-      title: 'Page 3',
+      title: 'Page 1-4',
       path: '#pages/page-1',
       bullet: true
     }

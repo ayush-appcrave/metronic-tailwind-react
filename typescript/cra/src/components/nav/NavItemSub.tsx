@@ -4,7 +4,18 @@ import { forwardRef } from 'react';
 import { NavItem, type NavItemPropsType, type NavItemSubPropsType } from '..';
 
 const NavItemSub = forwardRef<HTMLDivElement, NavItemSubPropsType>(function NavItemSub(props, ref) {
-  const { depth, menu, accordion, collapse, expand, items, styles, open } = props;
+  const {
+    depth,
+    menu,
+    accordion,
+    collapse,
+    expand,
+    items,
+    styles,
+    open,
+    onLinksClick,
+    handleParentMenuClose
+  } = props;
 
   const renderChildren = () => {
     return (
@@ -18,6 +29,8 @@ const NavItemSub = forwardRef<HTMLDivElement, NavItemSubPropsType>(function NavI
             styles={styles}
             collapse={collapse}
             expand={expand}
+            handleParentMenuClose={handleParentMenuClose}
+            onLinksClick={onLinksClick}
             {...item}
           />
         ))}

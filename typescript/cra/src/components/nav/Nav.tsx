@@ -19,6 +19,7 @@ const Nav = ({
   items,
   styles,
   sx,
+  onLinksClick,
   children
 }: NavPropsType) => {
   const populateConfigFromMarkup = (children: any) => {
@@ -73,6 +74,7 @@ const Nav = ({
           collapse={collapse}
           expand={expand}
           styles={styles ?? NavDefaultStylesConfig()}
+          onLinksClick={onLinksClick}
           {...item}
         />
       ))}

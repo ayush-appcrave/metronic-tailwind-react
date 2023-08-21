@@ -7,6 +7,8 @@ import { Content, Intro, Toolbar } from '../layouts/default';
 
 const DashboardPage = () => {
   const breadcrumbs = useNavBreadcrumbs(NAV_VERTICAL);
+  console.log('page render: dashboard');
+
   return (
     <>
       <Helmet>

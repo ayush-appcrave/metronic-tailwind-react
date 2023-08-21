@@ -77,10 +77,10 @@ export const ListItemButtonStyled = styled(ListItemButton, {
 
     marginRight:
       menu === true
-        ? styles.MENU_ITEM_BUTTON_PADDING_X
+        ? styles.MENU_ITEM_BUTTON_MARGIN_X
         : depth === 1
-        ? styles.ROOT_ITEM_BUTTON_PADDING_X
-        : styles.SUB_ITEM_BUTTON_PADDING_X,
+        ? styles.ROOT_ITEM_BUTTON_MARGIN_X
+        : styles.SUB_ITEM_BUTTON_MARGIN_X,
 
     '&:hover ': {
       backgroundColor:
@@ -93,29 +93,29 @@ export const ListItemButtonStyled = styled(ListItemButton, {
 
     ...(open && {
       backgroundColor:
-        menu === true
+        (menu === true
           ? styles.MENU_ITEM_BUTTON_BACKGROUND_COLOR_OPEN
           : depth === 1
           ? styles.ROOT_ITEM_BUTTON_BACKGROUND_COLOR_OPEN
-          : styles.SUB_ITEM_BUTTON_BACKGROUND_COLOR_OPEN
+          : styles.SUB_ITEM_BUTTON_BACKGROUND_COLOR_OPEN) + ' !important'
     }),
 
     ...(here && {
       backgroundColor:
-        menu === true
+        (menu === true
           ? styles.MENU_ITEM_BUTTON_BACKGROUND_COLOR_HERE
           : depth === 1
           ? styles.ROOT_ITEM_BUTTON_BACKGROUND_COLOR_HERE
-          : styles.SUB_ITEM_BUTTON_BACKGROUND_COLOR_HERE
+          : styles.SUB_ITEM_BUTTON_BACKGROUND_COLOR_HERE) + ' !important'
     }),
 
     ...(active && {
       backgroundColor:
-        menu === true
+        (menu === true
           ? styles.MENU_ITEM_BUTTON_BACKGROUND_COLOR_ACTIVE
           : depth === 1
           ? styles.ROOT_ITEM_BUTTON_BACKGROUND_COLOR_ACTIVE
-          : styles.SUB_ITEM_BUTTON_BACKGROUND_COLOR_ACTIVE
+          : styles.SUB_ITEM_BUTTON_BACKGROUND_COLOR_ACTIVE) + ' !important'
     })
   };
 });
