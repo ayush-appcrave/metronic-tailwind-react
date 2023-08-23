@@ -7,7 +7,8 @@ const ScrollbarStylesConfig = (): any => {
     BG_COLOR: alpha(theme.palette.grey[400], 0.5),
     BORDER_RADIUS: '6px',
     TRACK_VERTICAL_WIDTH: '10px',
-    TRACK_HORIZONTAL_WIDTH: '8px'
+    TRACK_HORIZONTAL_WIDTH: '8px',
+    TRANSITION_DELAY: '0.1s'
   };
 };
 

@@ -6,6 +6,8 @@ import { type ColorSchema } from '../../theme/palette';
 
 export type NavMenuType = any;
 
+export type NavScrollbarType = any;
+
 export type NavDepthType = number;
 
 export type NavTabIndexType = number;
@@ -58,6 +60,8 @@ export type NavHandleToggleType = any;
 
 export type NavMenuPropsType = Partial<Omit<MenuProps, 'children'>>;
 
+export type NavWrapperType = any;
+
 export type NavChildrenType = any;
 
 export type NavParentItemRef = any;
@@ -73,6 +77,7 @@ export interface NavPropsType {
   items?: NavConfigType | undefined;
   styles?: NavStylesType;
   sx?: SxProps;
+  wrapper?: NavWrapperType;
   children?: any;
   onLinksClick?: NavLinkClickEventType;
 }
@@ -91,7 +96,10 @@ export interface NavItemSubPropsType {
   hover?: NavHoverType;
   items?: NavConfigType | undefined;
   styles?: NavStylesType;
+  scrollbar?: NavScrollbarType;
+  scrollbarSx?: SxProps;
   sx?: SxProps;
+  wrapper?: NavWrapperType;
   children?: NavChildrenType;
   onLinksClick?: NavLinkClickEventType;
   handleParentMenuClose?: NavEventHandlerType;
@@ -100,6 +108,7 @@ export interface NavItemSubPropsType {
 export interface NavItemPropsType {
   depth?: NavDepthType;
   menu?: NavMenuType;
+  menuProps?: NavMenuPropsType;
   collapse?: NavCollapseType;
   expand?: NavExpandType;
   arrow?: NavArrowType;
@@ -118,9 +127,8 @@ export interface NavItemPropsType {
   subheader?: string;
   caption?: string;
   sub?: NavItemSubConfigType | undefined;
-  button?: any;
+  wrapper?: NavWrapperType;
   sx?: SxProps;
-  menuProps?: NavMenuPropsType;
   containerProps?: HTMLAttributes<HTMLElement> & RefAttributes<HTMLElement | null>;
   children?: NavChildrenType;
   onLinksClick?: NavLinkClickEventType;
@@ -190,6 +198,9 @@ export interface NavItemSubConfigType {
   menu?: NavMenuType;
   menuProps?: NavMenuPropsType;
   menuWidth?: NavMenuWidthType;
+  scrollbar?: NavScrollbarType;
+  scrollbarSx?: SxProps;
+  wrapper?: NavWrapperType;
   direction?: NavDirectionType;
   accordion?: NavAccordionType;
   collapse?: NavCollapseType;

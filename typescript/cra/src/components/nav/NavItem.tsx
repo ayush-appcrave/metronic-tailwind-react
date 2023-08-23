@@ -1,8 +1,6 @@
 import { Box, Link } from '@mui/material';
 import {
-  FocusEvent,
   forwardRef,
-  KeyboardEvent,
   MouseEvent,
   useEffect,
   useImperativeHandle,
@@ -41,12 +39,12 @@ const NavItem = forwardRef<HTMLDivElement | null, NavItemPropsType>(function Nav
     icon,
     bullet,
     badge,
-    button,
+    wrapper,
     styles = NavDefaultStylesConfig(),
     containerProps: ContainerPropsProp = {},
     sx,
-    onLinksClick,
     onLinkClick,
+    onLinksClick,
     handleParentMenuClose
   } = props;
 
@@ -76,7 +74,7 @@ const NavItem = forwardRef<HTMLDivElement | null, NavItemPropsType>(function Nav
 
   const menuWidth = useResponsiveProp(sub?.menuWidth);
 
-  const accordion = useResponsiveProp(sub?.accordion, true);
+  const accordion = useResponsiveProp(sub?.accordion, false);
 
   const toggle = useResponsiveProp(sub?.toggle, 'click');
 
@@ -127,16 +125,15 @@ const NavItem = forwardRef<HTMLDivElement | null, NavItemPropsType>(function Nav
   };
 
   const handleToggle = (e: MouseEvent<HTMLElement>) => {
-    console.log('event: toggle');
     if (toggle === 'click') {
       setSubOpen(!open);
     }
   };
 
   const handleClick = (e: MouseEvent<HTMLElement>) => {
-    console.log('event: click');
     handleMenuClose(e);
 
+    console.log('links click:' + onLinksClick);
     if (onLinksClick) {
       onLinksClick(e, props);
     }
@@ -160,27 +157,29 @@ const NavItem = forwardRef<HTMLDivElement | null, NavItemPropsType>(function Nav
     setOpen(open);
     setHover(open);
 
-    if (isSubMenuOpen) {
-      setAnchorEl(null);
-      setIsSubMenuOpen(false);
-    } else {
-      setAnchorEl(menuItemRef.current);
-      setIsSubMenuOpen(true);
+    if (itemMenu) {
+      if (open) {
+        setAnchorEl(menuItemRef.current);
+        setIsSubMenuOpen(true);
+      } else {
+        setAnchorEl(null);
+        setIsSubMenuOpen(false);
+      }
     }
   };
 
   const renderDivider = <DividerStyled depth={depth} styles={styles} />;
 
   const renderItem = () => {
-    if (button) {
+    if (wrapper) {
       if (hasSub) {
         return (
           <Box tabIndex={tabIndex} ref={menuItemRef} onClick={handleToggle} sx={{ ...sx }}>
-            {button}
+            {wrapper}
           </Box>
         );
       } else {
-        return button;
+        return wrapper;
       }
     } else {
       return (
@@ -222,9 +221,13 @@ const NavItem = forwardRef<HTMLDivElement | null, NavItemPropsType>(function Nav
         open={open}
         hover={hover}
         expand={expand}
+        scrollbar={sub?.scrollbar}
+        scrollbarSx={sub?.scrollbarSx}
+        wrapper={sub?.wrapper}
         items={sub?.items}
         styles={styles}
         collapse={collapse}
+        onLinksClick={onLinksClick}
         handleParentMenuClose={handleMenuClose}
       />
     </Box>

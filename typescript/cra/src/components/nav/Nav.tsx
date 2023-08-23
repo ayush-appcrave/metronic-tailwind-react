@@ -36,17 +36,23 @@ const Nav = ({
 
           if (name2 === 'NavItemButton') {
             if (child2.props.children) {
-              item.button = child2.props.children;
+              item.wrapper = child2.props.children;
             }
           } else if (name2 === 'NavItemSub') {
-            item.sub = {
-              ...(child2.props satisfies NavItemSubConfigType),
-              items: populateConfigFromMarkup(child2.props.children)
-            };
+            const child3 = child2.props.children[0];
+
+            if (child3?.type.render.name === 'NavItem') {
+              item.sub = {
+                ...(child2.props satisfies NavItemSubConfigType),
+                items: populateConfigFromMarkup(child2.props.children)
+              };
+            } else {
+              item.sub = { ...{ wrapper: child2.props.children } };
+            }
           }
         });
 
-        items?.push(item);
+        items.push(item);
       }
     });
 

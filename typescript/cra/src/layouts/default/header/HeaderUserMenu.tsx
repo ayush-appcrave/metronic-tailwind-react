@@ -32,7 +32,7 @@ const HeaderUserMenu = () => {
             toggle={{
               breakpoints: {
                 up: {
-                  md: 'click'
+                  md: 'hover'
                 },
                 down: {
                   md: 'click'
@@ -106,7 +106,26 @@ const HeaderUserMenu = () => {
                         vertical: 'top'
                       }
                     }}
+                    scrollbar={true}
+                    scrollbarSx={{
+                      height: 250
+                    }}
                   >
+                    <NavItem path="#" title="Title" icon={<KeenIcon icon="calendar" />} />
+                    <NavItem path="#" title="Title" icon={<KeenIcon icon="calendar" />} />
+                    <NavItem path="#" title="Title" icon={<KeenIcon icon="calendar" />} />
+                    <NavItem path="#" title="Title" icon={<KeenIcon icon="calendar" />} />
+                    <NavItem path="#" title="Title" icon={<KeenIcon icon="calendar" />} />
+                    <NavItem path="#" title="Title" icon={<KeenIcon icon="calendar" />} />
+                    <NavItem path="#" title="Title" icon={<KeenIcon icon="calendar" />} />
+                    <NavItem path="#" title="Title" icon={<KeenIcon icon="calendar" />} />
+                    <NavItem path="#" title="Title" icon={<KeenIcon icon="calendar" />} />
+                    <NavItem path="#" title="Title" icon={<KeenIcon icon="calendar" />} />
+                    <NavItem path="#" title="Title" icon={<KeenIcon icon="calendar" />} />
+                    <NavItem path="#" title="Title" icon={<KeenIcon icon="calendar" />} />
+                    <NavItem path="#" title="Title" icon={<KeenIcon icon="calendar" />} />
+                    <NavItem path="#" title="Title" icon={<KeenIcon icon="calendar" />} />
+                    <NavItem path="#" title="Title" icon={<KeenIcon icon="calendar" />} />
                     <NavItem path="#" title="Title" icon={<KeenIcon icon="calendar" />} />
                     <NavItem path="#" title="Title" icon={<KeenIcon icon="calendar" />} />
                     <NavItem path="#" title="Title" icon={<KeenIcon icon="calendar" />} />
