@@ -39,7 +39,7 @@ const Nav = ({
               item.wrapper = child2.props.children;
             }
           } else if (name2 === 'NavItemSub') {
-            const child3 = child2.props.children[0];
+            const child3 = child2.props.children[0] || child2.props.children;
 
             if (child3?.type.render.name === 'NavItem') {
               item.sub = {
@@ -47,7 +47,11 @@ const Nav = ({
                 items: populateConfigFromMarkup(child2.props.children)
               };
             } else {
-              item.sub = { ...{ wrapper: child2.props.children } };
+              console.log('got cha:' + child2.props.children);
+              item.sub = {
+                ...(child2.props satisfies NavItemSubConfigType),
+                wrapper: child2.props.children
+              };
             }
           }
         });

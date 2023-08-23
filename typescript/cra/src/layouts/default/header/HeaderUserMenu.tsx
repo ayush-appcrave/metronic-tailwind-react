@@ -1,4 +1,4 @@
-import { Avatar, Box, useTheme } from '@mui/material';
+import { Avatar, Box, Button, useTheme } from '@mui/material';
 import { toAbsoluteUrl } from 'utils';
 
 import { useAuth } from '../../../auth';
@@ -129,6 +129,34 @@ const HeaderUserMenu = () => {
                     <NavItem path="#" title="Title" icon={<KeenIcon icon="calendar" />} />
                     <NavItem path="#" title="Title" icon={<KeenIcon icon="calendar" />} />
                     <NavItem path="#" title="Title" icon={<KeenIcon icon="calendar" />} />
+                  </NavItemSub>
+                </NavItem>
+                <NavItem title="LaLaLa" icon={<KeenIcon icon="calendar" />}>
+                  <NavItemSub
+                    toggle={{
+                      breakpoints: {
+                        up: {
+                          md: 'hover'
+                        },
+                        down: {
+                          md: 'click'
+                        }
+                      }
+                    }}
+                    menu={true}
+                    menuWidth="200px"
+                    menuProps={{
+                      anchorOrigin: {
+                        horizontal: 'left',
+                        vertical: 'top'
+                      },
+                      transformOrigin: {
+                        horizontal: 'right',
+                        vertical: 'top'
+                      }
+                    }}
+                  >
+                    <Button variant="contained">Close Menu</Button>
                   </NavItemSub>
                 </NavItem>
                 <NavItem path="#" title="Title" icon={<KeenIcon icon="calendar" />} />

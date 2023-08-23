@@ -52,14 +52,12 @@ const NavItemSub = forwardRef<HTMLDivElement, NavItemSubPropsType>(function NavI
   };
 
   const renderScrollbar = () => {
-    console.log('scrollbar:' + scrollbar);
     if (useResponsiveProp(scrollbar)) {
-      console.log('scrollbar: wow2');
       return <Scrollbar sx={scrollbarSx}>{renderChildren()}</Scrollbar>;
     } else {
       return renderChildren();
     }
-  }
+  };
 
   const renderContent = () => {
     if (accordion) {

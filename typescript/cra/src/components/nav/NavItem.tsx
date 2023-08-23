@@ -81,7 +81,7 @@ const NavItem = forwardRef<HTMLDivElement | null, NavItemPropsType>(function Nav
   const arrow = sub?.arrow ?? true;
 
   const hasSub: boolean = useMemo(() => {
-    return sub?.items !== undefined && sub.items.length > 0;
+    return (sub?.items !== undefined && sub.items.length > 0) || sub?.wrapper;
   }, [sub]);
 
   const minimize: boolean = collapse && !expand;
@@ -133,7 +133,6 @@ const NavItem = forwardRef<HTMLDivElement | null, NavItemPropsType>(function Nav
   const handleClick = (e: MouseEvent<HTMLElement>) => {
     handleMenuClose(e);
 
-    console.log('links click:' + onLinksClick);
     if (onLinksClick) {
       onLinksClick(e, props);
     }
@@ -286,6 +285,7 @@ const NavItem = forwardRef<HTMLDivElement | null, NavItemPropsType>(function Nav
     }
 
     if (hasSub) {
+      console.log('sub.wrapper:' + sub?.wrapper);
       return renderContent;
     }
 
