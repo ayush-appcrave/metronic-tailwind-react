@@ -61,6 +61,14 @@ const NavItem = forwardRef<HTMLDivElement | null, NavItemPropsType>(function Nav
 
   const containerRef = useRef<HTMLDivElement | null>(null);
 
+  useImperativeHandle(itemRef, () => {
+    return {
+      closeMenu: () => {
+        closeMenu();
+      }
+    }
+  });
+
   // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
   useImperativeHandle(containerRef, () => menuItemRef.current!);
 

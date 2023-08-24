@@ -6,14 +6,24 @@ import { useAuth } from '../../../auth';
 import { KeenIcon } from '../../../components';
 import { Nav, NavItem, NavItemButton, NavItemSub } from '../../../components/nav';
 
+interface ExtendedHTMLDivElement extends HTMLDivElement {
+  closeMenu: () => void;
+}
+
 const HeaderUserMenu = () => {
   const theme = useTheme();
   const { currentUser, logout } = useAuth();
-  const itemRef = useRef<HTMLDivElement>(null);
+  const itemRef = useRef<ExtendedHTMLDivElement>(null);
 
   const closeMenu = () => {
     // here need to close menu with NavItem closeMenu function
     console.log('ref:' + itemRef.current);
+
+    if (!itemRef.current) {
+      return;
+    }
+
+    itemRef.current.closeMenu();
   };
 
   return (
