@@ -3,7 +3,7 @@ import { Navigate, Route, Routes, useLocation } from 'react-router';
 
 import { AuthPage } from '../auth';
 import { RequireAuth } from '../auth/components/RequireAuth';
-import { useAuthContext } from '../auth/providers/useAuthContext';
+import { useAuthContext } from '../auth/useAuthContext';
 import { DefaultLayout } from '../layouts/default';
 import { ErrorsPage } from '../modules/errors';
 import { UsersManagementWrapper } from '../modules/users-management-api';

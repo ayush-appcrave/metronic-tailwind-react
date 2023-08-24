@@ -12,7 +12,7 @@ import {
 import { type MouseEvent, useState } from 'react';
 import { toAbsoluteUrl } from 'utils';
 
-import { useAuthContext } from '../../../auth/providers/useAuthContext';
+import { useAuthContext } from '../../../auth/useAuthContext';
 import { KeenIcon, MenuDropdown } from '../../../components';
 
 const HeaderUserMenu = () => {

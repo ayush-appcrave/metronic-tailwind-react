@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import { useLocation, useNavigate } from 'react-router';
 
-import { useAuthContext } from '../../providers/useAuthContext';
+import { useAuthContext } from '../../useAuthContext';
 
 const Auth0Login = () => {
   const [loading, setLoading] = useState(false);

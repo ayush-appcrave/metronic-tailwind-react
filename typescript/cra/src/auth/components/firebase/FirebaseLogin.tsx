@@ -1,5 +1,5 @@
 import { useLocation, useNavigate } from 'react-router';
-import { useAuthContext } from '../../providers/useAuthContext';
+import { useAuthContext } from '../../useAuthContext';
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import clsx from 'clsx';

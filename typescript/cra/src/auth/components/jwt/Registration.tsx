@@ -4,7 +4,7 @@ import { useState } from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import * as Yup from 'yup';
 
-import { useAuthContext } from '../providers/useAuthContext';
+import { useAuthContext } from '../../useAuthContext';
 
 const initialValues = {
   firstname: '',

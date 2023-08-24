@@ -27,7 +27,6 @@ interface AuthContextProps {
   setCurrentUser: Dispatch<SetStateAction<User | null>>;
   logout: () => Promise<void>;
   verify: () => Promise<void>;
-
   login: (email: string, password: string) => Promise<void>;
   loginWithGoogle?: () => Promise<void>;
   loginWithFacebook?: () => Promise<void>;
@@ -85,7 +84,7 @@ const AuthProvider = ({ children }: PropsWithChildren) => {
       setAuth(user);
     } catch (error) {
       setAuth(null);
-      enqueueSnackbar(`${error}`, { variant: 'error' });
+      enqueueSnackbar(`${error}`, { variant: 'error', autoHideDuration: 5000 });
       throw error;
     }
   };
@@ -97,7 +96,7 @@ const AuthProvider = ({ children }: PropsWithChildren) => {
       console.log(user);
     } catch (error) {
       setAuth(null);
-      enqueueSnackbar(`${error}`, { variant: 'error' });
+      enqueueSnackbar(`${error}`, { variant: 'error', autoHideDuration: 5000 });
       throw error;
     }
   };
@@ -113,6 +112,7 @@ const AuthProvider = ({ children }: PropsWithChildren) => {
       setAuth(user);
     } catch (error) {
       setAuth(null);
+      enqueueSnackbar(`${error}`, { variant: 'error', autoHideDuration: 5000 });
       throw error;
     }
   };
@@ -127,6 +127,7 @@ const AuthProvider = ({ children }: PropsWithChildren) => {
       setAuth(user);
     } catch (error) {
       setAuth(null);
+      enqueueSnackbar(`${error}`, { variant: 'error', autoHideDuration: 5000 });
       throw error;
     }
   };
@@ -141,6 +142,7 @@ const AuthProvider = ({ children }: PropsWithChildren) => {
       setAuth(user);
     } catch (error) {
       setAuth(null);
+      enqueueSnackbar(`${error}`, { variant: 'error', autoHideDuration: 5000 });
       throw error;
     }
   };

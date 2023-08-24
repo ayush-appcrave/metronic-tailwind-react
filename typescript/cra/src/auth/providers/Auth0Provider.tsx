@@ -13,10 +13,8 @@ interface AuthContextProps {
   auth: User | undefined;
   currentUser: User | undefined;
   setCurrentUser: Dispatch<SetStateAction<User | undefined>>;
-  // login: ()=> Promise<void>;
   logout: () => Promise<void>;
   verify: () => Promise<void>;
-
   login: (email?: string, password?: string) => Promise<void>;
   loginWithGoogle?: () => Promise<void>;
   loginWithFacebook?: () => Promise<void>;
@@ -30,6 +28,7 @@ interface AuthContextProps {
   ) => Promise<void>;
   requestPassword?: (email: string) => Promise<void>;
 }
+
 const AuthContext = createContext<AuthContextProps | null>(null);
 
 const auth0Client: Auth0Client = new Auth0Client({
@@ -52,11 +51,8 @@ const AuthProvider = ({ children }: PropsWithChildren) => {
 
       const isAuthenticated = await auth0Client.isAuthenticated();
 
-      console.log('auth', isAuthenticated);
-
       if (isAuthenticated) {
         const user = await auth0Client.getUser();
-        console.log('user', user);
         setAuth(user);
       }
     } catch (error) {
