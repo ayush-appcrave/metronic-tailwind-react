@@ -1,9 +1,9 @@
 import { Avatar, Box, Button, useTheme } from '@mui/material';
-import { useRef, createRef } from 'react';
+import { useRef } from 'react';
 import { toAbsoluteUrl } from 'utils';
 
 import { useAuth } from '../../../auth';
-import { KeenIcon, NavItemPropsType } from '../../../components';
+import { KeenIcon } from '../../../components';
 import { Nav, NavItem, NavItemButton, NavItemSub } from '../../../components/nav';
 
 const HeaderUserMenu = () => {
