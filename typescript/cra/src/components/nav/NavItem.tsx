@@ -43,6 +43,7 @@ const NavItem = forwardRef<HTMLDivElement | null, NavItemPropsType>(function Nav
     styles = NavDefaultStylesConfig(),
     containerProps: ContainerPropsProp = {},
     sx,
+    itemRef,
     onLinkClick,
     onLinksClick,
     handleParentMenuClose
@@ -53,10 +54,15 @@ const NavItem = forwardRef<HTMLDivElement | null, NavItemPropsType>(function Nav
   const [anchorEl, setAnchorEl] = useState<HTMLElement | null>(null);
 
   const menuItemRef = useRef<HTMLDivElement | null>(null);
-  useImperativeHandle(ref, () => menuItemRef.current!); // eslint-disable-line @typescript-eslint/no-non-null-assertion
+  // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
+  useImperativeHandle(ref, () => itemRef.current!);
+
+  useImperativeHandle(containerRefProp, () => containerRef.current);
 
   const containerRef = useRef<HTMLDivElement | null>(null);
-  useImperativeHandle(containerRefProp, () => containerRef.current);
+
+  // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
+  useImperativeHandle(containerRef, () => menuItemRef.current!);
 
   const menuContainerRef = useRef<HTMLDivElement | null>(null);
 
@@ -150,6 +156,10 @@ const NavItem = forwardRef<HTMLDivElement | null, NavItemPropsType>(function Nav
     if (handleParentMenuClose) {
       handleParentMenuClose(e);
     }
+  };
+
+  const closeMenu = () => {
+    setSubOpen(false);
   };
 
   const setSubOpen = (open: boolean) => {
@@ -263,6 +273,7 @@ const NavItem = forwardRef<HTMLDivElement | null, NavItemPropsType>(function Nav
     <Box
       {...containerProps}
       ref={containerRef}
+      component="div"
       tabIndex={tabIndex}
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}

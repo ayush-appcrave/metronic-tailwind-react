@@ -1,13 +1,20 @@
 import { Avatar, Box, Button, useTheme } from '@mui/material';
+import { useRef, createRef } from 'react';
 import { toAbsoluteUrl } from 'utils';
 
 import { useAuth } from '../../../auth';
-import { KeenIcon } from '../../../components';
+import { KeenIcon, NavItemPropsType } from '../../../components';
 import { Nav, NavItem, NavItemButton, NavItemSub } from '../../../components/nav';
 
 const HeaderUserMenu = () => {
   const theme = useTheme();
   const { currentUser, logout } = useAuth();
+  const itemRef = useRef<HTMLDivElement>(null);
+
+  const closeMenu = () => {
+    // here need to close menu with NavItem closeMenu function
+    console.log('ref:' + itemRef.current);
+  };
 
   return (
     <Box
@@ -32,7 +39,7 @@ const HeaderUserMenu = () => {
             toggle={{
               breakpoints: {
                 up: {
-                  md: 'hover'
+                  md: 'click'
                 },
                 down: {
                   md: 'click'
@@ -61,7 +68,7 @@ const HeaderUserMenu = () => {
                 toggle={{
                   breakpoints: {
                     up: {
-                      md: 'hover'
+                      md: 'click'
                     },
                     down: {
                       md: 'click'
@@ -131,12 +138,12 @@ const HeaderUserMenu = () => {
                     <NavItem path="#" title="Title" icon={<KeenIcon icon="calendar" />} />
                   </NavItemSub>
                 </NavItem>
-                <NavItem title="LaLaLa" icon={<KeenIcon icon="calendar" />}>
+                <NavItem itemRef={itemRef} title="LaLaLa" icon={<KeenIcon icon="calendar" />}>
                   <NavItemSub
                     toggle={{
                       breakpoints: {
                         up: {
-                          md: 'hover'
+                          md: 'click'
                         },
                         down: {
                           md: 'click'
@@ -156,7 +163,9 @@ const HeaderUserMenu = () => {
                       }
                     }}
                   >
-                    <Button variant="contained">Close Menu</Button>
+                    <Button variant="contained" onClick={closeMenu}>
+                      Close Menu
+                    </Button>
                   </NavItemSub>
                 </NavItem>
                 <NavItem path="#" title="Title" icon={<KeenIcon icon="calendar" />} />

@@ -129,6 +129,7 @@ export interface NavItemPropsType {
   sub?: NavItemSubConfigType | undefined;
   wrapper?: NavWrapperType;
   sx?: SxProps;
+  itemRef?: any;
   containerProps?: HTMLAttributes<HTMLElement> & RefAttributes<HTMLElement | null>;
   children?: NavChildrenType;
   onLinksClick?: NavLinkClickEventType;
