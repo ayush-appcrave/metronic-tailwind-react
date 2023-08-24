@@ -6,24 +6,15 @@ import { useAuth } from '../../../auth';
 import { KeenIcon } from '../../../components';
 import { Nav, NavItem, NavItemButton, NavItemSub } from '../../../components/nav';
 
-interface ExtendedHTMLDivElement extends HTMLDivElement {
-  closeMenu: () => void;
-}
-
 const HeaderUserMenu = () => {
-  const theme = useTheme();
   const { currentUser, logout } = useAuth();
-  const itemRef = useRef<ExtendedHTMLDivElement>(null);
+  const itemRef = useRef<any>(null);
 
   const closeMenu = () => {
     // here need to close menu with NavItem closeMenu function
     console.log('ref:' + itemRef.current);
 
-    if (!itemRef.current) {
-      return;
-    }
-
-    itemRef.current.closeMenu();
+    itemRef?.current.closeMenu();
   };
 
   return (
@@ -49,7 +40,7 @@ const HeaderUserMenu = () => {
             toggle={{
               breakpoints: {
                 up: {
-                  md: 'click'
+                  md: 'hover'
                 },
                 down: {
                   md: 'click'
@@ -78,7 +69,7 @@ const HeaderUserMenu = () => {
                 toggle={{
                   breakpoints: {
                     up: {
-                      md: 'click'
+                      md: 'hover'
                     },
                     down: {
                       md: 'click'
@@ -153,7 +144,7 @@ const HeaderUserMenu = () => {
                     toggle={{
                       breakpoints: {
                         up: {
-                          md: 'click'
+                          md: 'hover'
                         },
                         down: {
                           md: 'click'
@@ -182,7 +173,7 @@ const HeaderUserMenu = () => {
               </NavItemSub>
             </NavItem>
             <NavItem divider={true} />
-            <NavItem path="#" title="Title" icon={<KeenIcon icon="calendar" />} />
+            <NavItem title="Logout" onLinkClick={logout} icon={<KeenIcon icon="calendar" />} />
           </NavItemSub>
         </NavItem>
       </Nav>
