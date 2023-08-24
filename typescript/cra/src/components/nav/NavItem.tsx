@@ -64,9 +64,9 @@ const NavItem = forwardRef<HTMLDivElement | null, NavItemPropsType>(function Nav
   useImperativeHandle(itemRef, () => {
     return {
       closeMenu: () => {
-        closeMenu();
+        setSubOpen(false);
       }
-    }
+    };
   });
 
   // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
@@ -164,10 +164,6 @@ const NavItem = forwardRef<HTMLDivElement | null, NavItemPropsType>(function Nav
     if (handleParentMenuClose) {
       handleParentMenuClose(e);
     }
-  };
-
-  const closeMenu = () => {
-    setSubOpen(false);
   };
 
   const setSubOpen = (open: boolean) => {
