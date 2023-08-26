@@ -5,10 +5,19 @@ import { type NavItemChildPropsType } from '..';
 
 export const ListItemTextStyled = styled(ListItemText, {
   shouldForwardProp: (prop) =>
-    !['depth', 'menu', 'styles', 'active', 'here', 'hover', 'open', 'collapse', 'expand'].includes(
-      prop as string
-    )
-})<NavItemChildPropsType>(({ depth, menu, active, here, hover, open, styles, theme }) => {
+    ![
+      'depth',
+      'menu',
+      'color',
+      'styles',
+      'active',
+      'here',
+      'hover',
+      'open',
+      'collapse',
+      'expand'
+    ].includes(prop as string)
+})<NavItemChildPropsType>(({ depth, menu, active, here, hover, open, color, styles, theme }) => {
   return {
     '> .MuiListItemText-primary': {
       fontSize:
@@ -26,46 +35,51 @@ export const ListItemTextStyled = styled(ListItemText, {
           : styles.SUB_ITEM_TITLE_FONT_WEIGHT,
 
       color:
-        menu === true
+        color ||
+        (menu
           ? styles.MENU_ITEM_TITLE_COLOR
           : depth === 1
           ? styles.ROOT_ITEM_TITLE_COLOR
-          : styles.SUB_ITEM_TITLE_COLOR,
-
-      ...(hover && {
-        color:
-          menu === true
-            ? styles.MENU_ITEM_TITLE_COLOR_HOVER
-            : depth === 1
-            ? styles.ROOT_ITEM_TITLE_COLOR_HOVER
-            : styles.SUB_ITEM_TITLE_COLOR_HOVER
-      }),
+          : styles.SUB_ITEM_TITLE_COLOR),
 
       ...(open && {
         color:
-          menu === true
+          color ||
+          (menu
             ? styles.MENU_ITEM_TITLE_COLOR_OPEN
             : depth === 1
             ? styles.ROOT_ITEM_TITLE_COLOR_OPEN
-            : styles.SUB_ITEM_TITLE_COLOR_OPEN
+            : styles.SUB_ITEM_TITLE_COLOR_OPEN)
       }),
 
       ...(here && {
         color:
-          menu === true
+          color ||
+          (menu
             ? styles.MENU_ITEM_TITLE_COLOR_HERE
             : depth === 1
             ? styles.ROOT_ITEM_TITLE_COLOR_HERE
-            : styles.SUB_ITEM_TITLE_COLOR_HERE
+            : styles.SUB_ITEM_TITLE_COLOR_HERE)
+      }),
+
+      ...(hover && {
+        color:
+          color ||
+          (menu
+            ? styles.MENU_ITEM_TITLE_COLOR_HOVER
+            : depth === 1
+            ? styles.ROOT_ITEM_TITLE_COLOR_HOVER
+            : styles.SUB_ITEM_TITLE_COLOR_HOVER)
       }),
 
       ...(active && {
         color:
-          menu === true
+          color ||
+          (menu
             ? styles.MENU_ITEM_TITLE_COLOR_ACTIVE
             : depth === 1
             ? styles.ROOT_ITEM_TITLE_COLOR_ACTIVE
-            : styles.SUB_ITEM_TITLE_COLOR_ACTIVE
+            : styles.SUB_ITEM_TITLE_COLOR_ACTIVE)
       })
     }
   };

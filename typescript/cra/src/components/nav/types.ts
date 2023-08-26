@@ -30,6 +30,8 @@ export type NavHoverType = boolean;
 
 export type NavOpenType = boolean;
 
+export type NavColorType = any;
+
 export type NavHereType = boolean;
 
 export type NavActiveType = boolean;
@@ -112,6 +114,7 @@ export interface NavItemPropsType {
   collapse?: NavCollapseType;
   expand?: NavExpandType;
   arrow?: NavArrowType;
+  color?: NavColorType;
   styles?: NavStylesType;
   key?: string;
   title?: string;
@@ -140,6 +143,7 @@ export interface NavItemPropsType {
 export interface NavItemChildPropsType {
   depth: NavDepthType;
   menu?: NavMenuType;
+  color?: NavColorType;
   styles: NavStylesType;
   collapse?: NavCollapseType;
   expand?: NavExpandType;
@@ -162,6 +166,7 @@ export interface NavItemButtonPropsType {
   open?: NavOpenType;
   collapse?: NavCollapseType;
   expand?: NavExpandType;
+  color?: NavColorType;
   styles?: NavStylesType;
   tabIndex?: NavTabIndexType;
   menuItemRef?: NavMenuRefType;
@@ -180,6 +185,7 @@ export interface NavItemArrowPropsType {
   depth: NavDepthType;
   menu: NavMenuType;
   itemMenu: NavMenuType;
+  color?: NavColorType;
   styles: NavStylesType;
   direction?: NavDirectionType;
   toggle?: NavToggleType;

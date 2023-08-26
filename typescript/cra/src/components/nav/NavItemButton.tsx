@@ -26,6 +26,7 @@ const NavItemButton = forwardRef<HTMLDivElement | null, NavItemButtonPropsType>(
       open,
       collapse,
       expand,
+      color,
       styles,
       tabIndex,
       menuItemRef,
@@ -43,6 +44,7 @@ const NavItemButton = forwardRef<HTMLDivElement | null, NavItemButtonPropsType>(
       <ListItemButtonStyled
         depth={depth}
         menu={menu}
+        color={color}
         styles={styles}
         active={active}
         here={here}
@@ -58,6 +60,7 @@ const NavItemButton = forwardRef<HTMLDivElement | null, NavItemButtonPropsType>(
           <ListItemIconStyled
             depth={depth}
             menu={menu}
+            color={color}
             styles={styles}
             active={active}
             here={here}
@@ -73,6 +76,7 @@ const NavItemButton = forwardRef<HTMLDivElement | null, NavItemButtonPropsType>(
           <NavItemBullet
             depth={depth}
             menu={menu}
+            color={color}
             styles={styles}
             active={active}
             here={here}
@@ -86,6 +90,7 @@ const NavItemButton = forwardRef<HTMLDivElement | null, NavItemButtonPropsType>(
           <ListItemTextStyled
             depth={depth}
             menu={menu}
+            color={color}
             styles={styles}
             active={active}
             here={here}
@@ -114,6 +119,7 @@ const NavItemButton = forwardRef<HTMLDivElement | null, NavItemButtonPropsType>(
             toggle={toggle}
             direction={direction}
             accordion={accordion}
+            color={color}
             styles={styles}
             active={active}
             here={here}

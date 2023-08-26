@@ -1,4 +1,4 @@
-import { Box, Link } from '@mui/material';
+import { Box, Link, useTheme } from '@mui/material';
 import {
   forwardRef,
   MouseEvent,
@@ -40,6 +40,7 @@ const NavItem = forwardRef<HTMLDivElement | null, NavItemPropsType>(function Nav
     bullet,
     badge,
     wrapper,
+    color,
     styles = NavDefaultStylesConfig(),
     containerProps: ContainerPropsProp = {},
     sx,
@@ -48,6 +49,7 @@ const NavItem = forwardRef<HTMLDivElement | null, NavItemPropsType>(function Nav
     onLinksClick,
     handleParentMenuClose
   } = props;
+  const theme = useTheme();
 
   const { ref: containerRefProp, ...containerProps } = ContainerPropsProp;
 
@@ -209,6 +211,7 @@ const NavItem = forwardRef<HTMLDivElement | null, NavItemPropsType>(function Nav
           open={open}
           collapse={collapse}
           expand={expand}
+          color={color}
           styles={styles}
           tabIndex={tabIndex}
           menuItemRef={menuItemRef}

@@ -9,6 +9,7 @@ import { Nav, NavItem, NavItemButton, NavItemSub } from '../../../components/nav
 const HeaderUserMenu = () => {
   const { currentUser, logout } = useAuth();
   const itemRef = useRef<any>(null);
+  const theme = useTheme();
 
   const closeMenu = () => {
     // here need to close menu with NavItem closeMenu function
@@ -60,7 +61,12 @@ const HeaderUserMenu = () => {
               }
             }}
           >
-            <NavItem path="#" title="Title" icon={<KeenIcon icon="calendar" />} />
+            <NavItem
+              color={theme.palette.error.main}
+              path="#"
+              title="Title Wow"
+              icon={<KeenIcon icon="calendar" />}
+            />
             <NavItem path="#" title="Title" icon={<KeenIcon icon="calendar" />} />
             <NavItem path="#" title="Title" icon={<KeenIcon icon="calendar" />} />
             <NavItem path="#" title="Title" icon={<KeenIcon icon="calendar" />} />

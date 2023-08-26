@@ -11,6 +11,7 @@ const NavItemBullet = ({
   open,
   collapse,
   expand,
+  color,
   styles
 }: NavItemChildPropsType) => {
   return (
@@ -40,46 +41,52 @@ const NavItemBullet = ({
           ? styles.ROOT_ITEM_BULLET_BORDER_RADIUS
           : styles.SUB_ITEM_BULLET_BORDER_RADIUS,
 
-        backgroundColor: menu
-          ? styles.MENU_ITEM_BULLET_COLOR
-          : depth === 1
-          ? styles.ROOT_ITEM_BULLET_COLOR
-          : styles.SUB_ITEM_BULLET_COLOR,
-
-        ...(hover && {
-          backgroundColor:
-            menu === true
-              ? styles.MENU_ITEM_BULLET_COLOR_HOVER
-              : depth === 1
-              ? styles.ROOT_ITEM_BULLET_COLOR_HOVER
-              : styles.SUB_ITEM_BULLET_COLOR_HOVER
-        }),
+        backgroundColor:
+          color ||
+          (menu
+            ? styles.MENU_ITEM_BULLET_COLOR
+            : depth === 1
+            ? styles.ROOT_ITEM_BULLET_COLOR
+            : styles.SUB_ITEM_BULLET_COLOR),
 
         ...(open && {
           backgroundColor:
-            menu === true
+            color ||
+            (menu
               ? styles.MENU_ITEM_BULLET_COLOR_OPEN
               : depth === 1
               ? styles.ROOT_ITEM_BULLET_COLOR_OPEN
-              : styles.SUB_ITEM_BULLET_COLOR_OPEN
+              : styles.SUB_ITEM_BULLET_COLOR_OPEN)
         }),
 
         ...(here && {
           backgroundColor:
-            menu === true
+            color ||
+            (menu
               ? styles.MENU_ITEM_BULLET_COLOR_HERE
               : depth === 1
               ? styles.ROOT_ITEM_BULLET_COLOR_HERE
-              : styles.SUB_ITEM_BULLET_COLOR_HERE
+              : styles.SUB_ITEM_BULLET_COLOR_HERE)
+        }),
+
+        ...(hover && {
+          backgroundColor:
+            color ||
+            (menu
+              ? styles.MENU_ITEM_BULLET_COLOR_HOVER
+              : depth === 1
+              ? styles.ROOT_ITEM_BULLET_COLOR_HOVER
+              : styles.SUB_ITEM_BULLET_COLOR_HOVER)
         }),
 
         ...(active && {
           backgroundColor:
-            menu === true
+            color ||
+            (menu
               ? styles.MENU_ITEM_BULLET_COLOR_ACTIVE
               : depth === 1
               ? styles.ROOT_ITEM_BULLET_COLOR_ACTIVE
-              : styles.SUB_ITEM_BULLET_COLOR_ACTIVE
+              : styles.SUB_ITEM_BULLET_COLOR_ACTIVE)
         })
       }}
     ></Box>

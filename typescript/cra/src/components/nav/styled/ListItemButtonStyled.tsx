@@ -5,10 +5,19 @@ import { type NavItemChildPropsType } from '..';
 
 export const ListItemButtonStyled = styled(ListItemButton, {
   shouldForwardProp: (prop) =>
-    !['depth', 'menu', 'active', 'here', 'hover', 'open', 'collapse', 'expand', 'styles'].includes(
-      prop as string
-    )
-})<NavItemChildPropsType>(({ depth, menu, active, here, hover, open, styles }) => {
+    ![
+      'depth',
+      'menu',
+      'color',
+      'active',
+      'here',
+      'hover',
+      'open',
+      'collapse',
+      'expand',
+      'styles'
+    ].includes(prop as string)
+})<NavItemChildPropsType>(({ depth, menu, active, here, hover, open, color, styles }) => {
   return {
     display: 'flex',
     alignItems: 'center',
@@ -82,6 +91,24 @@ export const ListItemButtonStyled = styled(ListItemButton, {
         ? styles.ROOT_ITEM_BUTTON_MARGIN_X
         : styles.SUB_ITEM_BUTTON_MARGIN_X,
 
+    ...(open && {
+      backgroundColor:
+        menu === true
+          ? styles.MENU_ITEM_BUTTON_BACKGROUND_COLOR_OPEN
+          : depth === 1
+          ? styles.ROOT_ITEM_BUTTON_BACKGROUND_COLOR_OPEN
+          : styles.SUB_ITEM_BUTTON_BACKGROUND_COLOR_OPEN
+    }),
+
+    ...(here && {
+      backgroundColor:
+        menu === true
+          ? styles.MENU_ITEM_BUTTON_BACKGROUND_COLOR_HERE
+          : depth === 1
+          ? styles.ROOT_ITEM_BUTTON_BACKGROUND_COLOR_HERE
+          : styles.SUB_ITEM_BUTTON_BACKGROUND_COLOR_HERE
+    }),
+
     '&:hover ': {
       backgroundColor:
         menu === true
@@ -90,24 +117,6 @@ export const ListItemButtonStyled = styled(ListItemButton, {
           ? styles.ROOT_ITEM_BUTTON_BACKGROUND_COLOR_HOVER
           : styles.SUB_ITEM_BUTTON_BACKGROUND_COLOR_HOVER
     },
-
-    ...(open && {
-      backgroundColor:
-        (menu === true
-          ? styles.MENU_ITEM_BUTTON_BACKGROUND_COLOR_OPEN
-          : depth === 1
-          ? styles.ROOT_ITEM_BUTTON_BACKGROUND_COLOR_OPEN
-          : styles.SUB_ITEM_BUTTON_BACKGROUND_COLOR_OPEN) + ' !important'
-    }),
-
-    ...(here && {
-      backgroundColor:
-        (menu === true
-          ? styles.MENU_ITEM_BUTTON_BACKGROUND_COLOR_HERE
-          : depth === 1
-          ? styles.ROOT_ITEM_BUTTON_BACKGROUND_COLOR_HERE
-          : styles.SUB_ITEM_BUTTON_BACKGROUND_COLOR_HERE) + ' !important'
-    }),
 
     ...(active && {
       backgroundColor:
