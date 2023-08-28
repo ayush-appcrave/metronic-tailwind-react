@@ -4,11 +4,11 @@ import React, { useEffect, useRef } from 'react';
 import { KeenIcon } from '../';
 
 interface Props {
-  onCloseClick: () => void;
+  handleClose: () => void;
   setHeaderHeight: React.Dispatch<React.SetStateAction<number>>;
 }
 
-const SettingsHeader = ({ onCloseClick, setHeaderHeight }: Props) => {
+const SettingsHeader = ({ handleClose, setHeaderHeight }: Props) => {
   const elementRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
@@ -39,7 +39,7 @@ const SettingsHeader = ({ onCloseClick, setHeaderHeight }: Props) => {
         Customization
       </Box>
 
-      <IconButton aria-label="close" onClick={onCloseClick}>
+      <IconButton aria-label="close" onClick={handleClose}>
         <KeenIcon
           icon="cross"
           sx={{

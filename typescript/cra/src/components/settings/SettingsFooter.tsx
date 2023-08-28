@@ -1,11 +1,11 @@
 import { Stack } from '@mui/material';
 import React, { useEffect, useRef } from 'react';
 
-interface Props {
+interface PropsType {
   setFooterHeight: React.Dispatch<React.SetStateAction<number>>;
 }
 
-const SettingsFooter = ({ setFooterHeight }: Props) => {
+const SettingsFooter = ({ setFooterHeight }: PropsType) => {
   const elementRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {

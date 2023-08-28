@@ -5,12 +5,12 @@ import { SettingsFormDirection } from './SettingsFormDirection';
 import { SettingsFormKeenIcons } from './SettingsFormKeenIcons';
 import { SettingsFormMode } from './SettingsFormMode';
 
-interface Props {
+interface PropsType {
   headerHeight?: number;
   footerHeight?: number;
 }
 
-const SettingsBody = ({ headerHeight = 0, footerHeight = 0 }: Props) => {
+const SettingsBody = ({ headerHeight = 0, footerHeight = 0 }: PropsType) => {
   const [height] = useViewport();
   const scrollableHeight: number = height - headerHeight - footerHeight;
 

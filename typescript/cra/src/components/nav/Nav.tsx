@@ -47,7 +47,6 @@ const Nav = ({
                 items: populateConfigFromMarkup(child2.props.children)
               };
             } else {
-              console.log('got cha:' + child2.props.children);
               item.sub = {
                 ...(child2.props satisfies NavItemSubConfigType),
                 wrapper: child2.props.children

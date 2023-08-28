@@ -1,4 +1,4 @@
-import { Box, Link, useTheme } from '@mui/material';
+import { Box, Link } from '@mui/material';
 import {
   forwardRef,
   MouseEvent,
@@ -49,7 +49,6 @@ const NavItem = forwardRef<HTMLDivElement | null, NavItemPropsType>(function Nav
     onLinksClick,
     handleParentMenuClose
   } = props;
-  const theme = useTheme();
 
   const { ref: containerRefProp, ...containerProps } = ContainerPropsProp;
 
@@ -303,7 +302,6 @@ const NavItem = forwardRef<HTMLDivElement | null, NavItemPropsType>(function Nav
     }
 
     if (hasSub) {
-      console.log('sub.wrapper:' + sub?.wrapper);
       return renderContent;
     }
 
