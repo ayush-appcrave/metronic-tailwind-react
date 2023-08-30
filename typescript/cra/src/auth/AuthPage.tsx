@@ -25,6 +25,8 @@ const AuthPage = () => (
 
       <Route path="*" element={<Navigate to="/error/404" />} />
     </Route>
+
+
   </Routes>
 );
 
