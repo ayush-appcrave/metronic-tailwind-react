@@ -19,8 +19,12 @@ const AppRouting = (): ReactElement => {
 
   const init = async () => {
     try {
-      await verify();
-
+      if (verify) {
+        await verify();
+      }
+    } catch (error) {
+      throw new Error('Something went wrong!');
+    } finally {
       setProgressBarLoader(true);
 
       setPreviousLocation(location.pathname);
@@ -28,8 +32,6 @@ const AppRouting = (): ReactElement => {
       if (location.pathname === previousLocation) {
         setPreviousLocation('');
       }
-    } catch (error) {
-      throw new Error('Something went wrong!');
     }
   };
 

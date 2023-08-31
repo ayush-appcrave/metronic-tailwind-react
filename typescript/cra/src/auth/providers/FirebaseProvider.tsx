@@ -1,4 +1,4 @@
-import { initializeApp } from '@firebase/app';
+import { FirebaseApp, initializeApp } from '@firebase/app';
 import {
   createUserWithEmailAndPassword,
   FacebookAuthProvider,
@@ -26,7 +26,7 @@ interface AuthContextProps {
   currentUser: User | null;
   setCurrentUser: Dispatch<SetStateAction<User | null>>;
   logout: () => Promise<void>;
-  verify: () => Promise<void>;
+  verify?: () => Promise<void>;
   login: (email: string, password: string) => Promise<void>;
   loginWithGoogle?: () => Promise<void>;
   loginWithFacebook?: () => Promise<void>;
@@ -67,7 +67,7 @@ const AuthProvider = ({ children }: PropsWithChildren) => {
   const [currentUser, setCurrentUser] = useState<User | null>(null);
   const { enqueueSnackbar } = useSnackbar();
 
-  const verify = async () => {
+  const init = async () => {
     firebaseAuth.onAuthStateChanged((user) => {
       setAuth(user);
       setLoading(false);
@@ -75,7 +75,7 @@ const AuthProvider = ({ children }: PropsWithChildren) => {
   };
 
   useEffect(() => {
-    verify();
+    init();
   }, []);
 
   const login = async (email: string, password: string) => {
@@ -107,8 +107,6 @@ const AuthProvider = ({ children }: PropsWithChildren) => {
 
       // This is the signed-in user
       const user = result.user;
-
-      console.log(user);
       setAuth(user);
     } catch (error) {
       setAuth(null);
@@ -123,7 +121,6 @@ const AuthProvider = ({ children }: PropsWithChildren) => {
 
       // This is the signed-in user
       const user = result.user;
-      console.log(user);
       setAuth(user);
     } catch (error) {
       setAuth(null);
@@ -138,7 +135,6 @@ const AuthProvider = ({ children }: PropsWithChildren) => {
 
       // This is the signed-in user
       const user = result.user;
-      console.log(user);
       setAuth(user);
     } catch (error) {
       setAuth(null);
@@ -162,7 +158,6 @@ const AuthProvider = ({ children }: PropsWithChildren) => {
         login,
         register,
         logout,
-        verify,
         loginWithGoogle,
         loginWithGithub,
         loginWithFacebook
