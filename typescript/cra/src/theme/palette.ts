@@ -4,22 +4,8 @@ import { alpha } from '@mui/material/styles';
 
 export type ColorSchema = 'primary' | 'secondary' | 'info' | 'success' | 'warning' | 'error';
 
-declare module '@mui/material/styles/createPalette' {
-  interface TypeBackground {
-    neutral: string;
-  }
-  interface SimplePaletteColorOptions {
-    lighter: string;
-    darker: string;
-  }
-  interface PaletteColor {
-    lighter: string;
-    darker: string;
-  }
-}
-
 // SETUP COLORS
-const GREY = {
+const GREY_LIGHT = {
   0: '#FFFFFF',
   100: '#F5F8FA',
   200: '#EFF2F5',
@@ -46,60 +32,48 @@ const GREY_DARK = {
 };
 
 const PRIMARY = {
-  lighter: '#C8FACD',
   light: '#EEF6FF',
   main: '#3E97FF',
   dark: '#2884EF',
-  darker: '#005249',
   contrastText: '#fff'
 };
 
 const SECONDARY = {
-  lighter: '#D6E4FF',
   light: '#84A9FF',
   main: '#3366FF',
   dark: '#1939B7',
-  darker: '#091A7A',
   contrastText: '#fff'
 };
 
 const INFO = {
-  lighter: '#CAFDF5',
   light: '#61F3F3',
   main: '#00B8D9',
   dark: '#006C9C',
-  darker: '#003768',
   contrastText: '#fff'
 };
 
 const SUCCESS = {
-  lighter: '#D8FBDE',
   light: '#86E8AB',
   main: '#36B37E',
   dark: '#1B806A',
-  darker: '#0A5554',
   contrastText: '#fff'
 };
 
 const WARNING = {
-  lighter: '#FFF5CC',
   light: '#FFD666',
   main: '#FFAB00',
   dark: '#B76E00',
-  darker: '#7A4100',
-  contrastText: GREY[800]
+  contrastText: GREY_LIGHT[800]
 };
 
 const ERROR = {
-  lighter: '#FFE9D5',
   light: '#FFAC82',
   main: '#FF5630',
   dark: '#B71D18',
-  darker: '#7A0916',
   contrastText: '#fff'
 };
 
-const COMMON = {
+const COMMON_LIGHT = {
   common: { black: '#000', white: '#fff' },
   primary: PRIMARY,
   secondary: SECONDARY,
@@ -107,14 +81,35 @@ const COMMON = {
   success: SUCCESS,
   warning: WARNING,
   error: ERROR,
-  grey: GREY,
-  divider: alpha(GREY[500], 0.24),
+  grey: GREY_LIGHT,
+  divider: alpha(GREY_LIGHT[500], 0.24),
   action: {
-    hover: alpha(GREY[500], 0.08),
-    selected: alpha(GREY[500], 0.16),
-    disabled: alpha(GREY[500], 0.8),
-    disabledBackground: alpha(GREY[500], 0.24),
-    focus: alpha(GREY[500], 0.24),
+    hover: alpha(GREY_LIGHT[500], 0.08),
+    selected: alpha(GREY_LIGHT[500], 0.16),
+    disabled: alpha(GREY_LIGHT[500], 0.8),
+    disabledBackground: alpha(GREY_LIGHT[500], 0.24),
+    focus: alpha(GREY_LIGHT[500], 0.24),
+    hoverOpacity: 0.08,
+    disabledOpacity: 0.48
+  }
+};
+
+const COMMON_DARK = {
+  common: { black: '#000', white: '#fff' },
+  primary: PRIMARY,
+  secondary: SECONDARY,
+  info: INFO,
+  success: SUCCESS,
+  warning: WARNING,
+  error: ERROR,
+  grey: GREY_DARK,
+  divider: alpha(GREY_DARK[500], 0.24),
+  action: {
+    hover: alpha(GREY_DARK[500], 0.08),
+    selected: alpha(GREY_DARK[500], 0.16),
+    disabled: alpha(GREY_DARK[500], 0.8),
+    disabledBackground: alpha(GREY_DARK[500], 0.24),
+    focus: alpha(GREY_DARK[500], 0.24),
     hoverOpacity: 0.08,
     disabledOpacity: 0.48
   }
@@ -122,42 +117,40 @@ const COMMON = {
 
 const getPalette = (themeMode: 'light' | 'dark') => {
   const light = {
-    ...COMMON,
+    ...COMMON_LIGHT,
     mode: 'light',
     text: {
-      primary: GREY[800],
-      secondary: GREY[600],
-      disabled: GREY[500]
+      primary: GREY_LIGHT[800],
+      secondary: GREY_LIGHT[600],
+      disabled: GREY_LIGHT[500]
     },
     background: {
       paper: '#fff',
-      default: '#fff',
-      neutral: GREY[100]
+      default: '#fff'
     },
     action: {
-      ...COMMON.action,
-      hover: GREY[100],
-      active: GREY[500]
+      ...COMMON_LIGHT.action,
+      hover: GREY_LIGHT[100],
+      active: GREY_LIGHT[500]
     }
   } as const;
 
   const dark = {
-    ...COMMON,
+    ...COMMON_DARK,
     mode: 'dark',
     text: {
-      primary: '#fff',
-      secondary: GREY[500],
-      disabled: GREY[600]
+      primary: GREY_DARK[800],
+      secondary: GREY_DARK[600],
+      disabled: GREY_DARK[500]
     },
     background: {
-      paper: GREY[800],
-      default: GREY[900],
-      neutral: alpha(GREY[500], 0.16)
+      paper: GREY_DARK[100],
+      default: GREY_DARK[100]
     },
     action: {
-      ...COMMON.action,
-      hover: GREY[100],
-      active: GREY[500]
+      ...COMMON_DARK.action,
+      hover: GREY_DARK[100],
+      active: GREY_DARK[500]
     }
   } as const;
 
