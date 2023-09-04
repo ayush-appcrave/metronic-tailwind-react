@@ -3,7 +3,7 @@ import { PageContainer } from '@components/page-container';
 import { Box, Button, Card } from '@mui/material';
 import { NAV_VERTICAL } from 'configs';
 import { useSnackbar } from 'notistack';
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Helmet } from 'react-helmet';
 
 import { Content, Intro, Toolbar } from '../../../layouts/default';

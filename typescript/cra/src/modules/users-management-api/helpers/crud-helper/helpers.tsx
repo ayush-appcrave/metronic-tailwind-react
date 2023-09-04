@@ -11,8 +11,8 @@ import {
 import { type QueryResponseContextProps, type UserQueryState } from './models';
 
 function createResponseContext<T>(
-  initialState: QueryResponseContextProps<T>
-): Context<QueryResponseContextProps<T>> {
+  initialState: QueryResponseContextProps<T> | null
+): Context<QueryResponseContextProps<T> | null> {
   return createContext(initialState);
 }
 
