@@ -2,7 +2,7 @@ import { ReactElement, useEffect, useState } from 'react';
 import { Navigate, Route, Routes, useLocation } from 'react-router';
 
 import { AuthPage } from '../auth';
-import { RequireAuth } from '../auth/components/RequireAuth';
+import { RequireAuth } from '../auth/RequireAuth';
 import { useAuthContext } from '../auth/useAuthContext';
 import { DefaultLayout } from '../layouts/default';
 import { ErrorsPage } from '../modules/errors';

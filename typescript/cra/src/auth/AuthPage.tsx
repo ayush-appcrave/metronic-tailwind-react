@@ -2,11 +2,11 @@ import { Navigate, Route, Routes } from 'react-router';
 
 import { AuthLayout } from '../layouts/auth';
 // Auth0 login page
-// import { Auth0Login } from './components/auth0';
+// import { Auth0Login } from './layouts/default/auth0';
 // Firebase auth pages
-// import { FirebaseLogin, FirebaseRegistration } from './components/firebase';
+// import { FirebaseLogin, FirebaseRegistration } from './layouts/default/firebase';
 // JWT auth pages
-import { ForgotPassword, Login, Registration } from './components/jwt';
+import { ForgotPassword, Login, Registration } from './layouts/default/jwt';
 
 const AuthPage = () => (
   <Routes>
