@@ -71,20 +71,7 @@ const NavItemSub = forwardRef<HTMLDivElement, NavItemSubPropsType>(function NavI
     }
   };
 
-    const renderContent = () => {
-      if (accordion) {
-        return (
-          <Collapse in={open} timeout="auto" unmountOnExit>
-            {renderChildren()}
-          </Collapse>
-        );
-      } else {
-        return renderChildren();
-      }
-    };
-
-    return renderContent();
-  }
-);
+  return renderContent();
+});
 
 export { NavItemSub };

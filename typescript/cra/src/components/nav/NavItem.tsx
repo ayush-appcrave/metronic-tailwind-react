@@ -23,171 +23,89 @@ import {
   NavItemSub
 } from '..';
 
-const NavItemComponent = forwardRef<HTMLDivElement | null, NavItemType>(function NavItemComponent(
-  props,
-  ref
-) {
+const NavItem = forwardRef<HTMLDivElement | null, NavItemPropsType>(function NavItem(props, ref) {
   const {
-    options,
+    depth = 1,
+    menu,
     collapse = false,
     expand = false,
-    styles,
-    depth = 1,
-    parentVariant,
-    ContainerProps: ContainerPropsProp = {},
-    MenuProps
-  } = props;
-
-  const {
     title,
     path = '',
-    tabIndex: tabIndexProp,
+    tabIndex,
     externalLink,
     newTab = false,
     divider,
-    children,
+    sub,
     icon,
     bullet,
-    badge
-  } = options;
+    badge,
+    wrapper,
+    color,
+    styles = NavDefaultStylesConfig(),
+    containerProps: ContainerPropsProp = {},
+    sx,
+    itemRef,
+    onLinkClick,
+    onLinksClick,
+    handleParentMenuClose
+  } = props;
 
-  const { ref: containerRefProp, ...ContainerProps } = ContainerPropsProp;
+  const { ref: containerRefProp, ...containerProps } = ContainerPropsProp;
 
-    const [anchorEl, setAnchorEl] = useState<HTMLElement | null>(null);
+  const [anchorEl, setAnchorEl] = useState<HTMLElement | null>(null);
 
   const menuItemRef = useRef<HTMLDivElement | null>(null);
+  // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
+  useImperativeHandle(ref, () => itemRef.current!);
 
-  useImperativeHandle(ref, () => menuItemRef.current!); // eslint-disable-line @typescript-eslint/no-non-null-assertion
-
-  const containerRef = useRef<HTMLDivElement | null>(null);
   useImperativeHandle(containerRefProp, () => containerRef.current);
 
-    const menuContainerRef = useRef<HTMLDivElement | null>(null);
+  const containerRef = useRef<HTMLDivElement | null>(null);
+
+  useImperativeHandle(itemRef, () => {
+    return {
+      closeMenu: () => {
+        setSubOpen(false);
+      }
+    };
+  });
+
+  // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
+  useImperativeHandle(containerRef, () => menuItemRef.current!);
+
+  const menuContainerRef = useRef<HTMLDivElement | null>(null);
 
   const [isSubMenuOpen, setIsSubMenuOpen] = useState(false);
-
-    const handleMouseEnter = (e: MouseEvent<HTMLElement>) => {
-      setHover(true);
-
-    if (toggle === 'hover') {
-      setOpen(true);
-      setIsSubMenuOpen(true);
-      setAnchorEl(menuItemRef.current);
-
-      if (ContainerProps.onMouseEnter) {
-        ContainerProps.onMouseEnter(e);
-      }
-    }
-  };
-
-    const handleMouseLeave = (e: MouseEvent<HTMLElement>) => {
-      setHover(false);
-
-    if (toggle === 'hover') {
-      setOpen(false);
-      setIsSubMenuOpen(false);
-      setAnchorEl(menuItemRef.current);
-
-      if (ContainerProps.onMouseLeave) {
-        ContainerProps.onMouseLeave(e);
-      }
-    }
-  };
-
-  const handleToggle = (event: MouseEvent<HTMLDivElement>) => {
-    if (toggle === 'click') {
-      setOpen(!open);
-      if (variant === 'dropdown') {
-        if (isSubMenuOpen) {
-          setAnchorEl(null);
-          setIsSubMenuOpen(false);
-        } else {
-          setAnchorEl(menuItemRef.current);
-          setIsSubMenuOpen(true);
-        }
-      }
-    }
-  };
-
-  const handleFocus = (e: FocusEvent<HTMLElement>) => {
-    if (e.target === containerRef.current) {
-      setAnchorEl(menuItemRef.current);
-      setIsSubMenuOpen(true);
-    }
-
-    if (ContainerProps.onFocus) {
-      ContainerProps.onFocus(e);
-    }
-  };
-
-  const handleKeyDown = (e: KeyboardEvent) => {
-    if (e.key === 'Escape') {
-      return;
-    }
-
-    if (isSubmenuFocused()) {
-      e.stopPropagation();
-    }
-
-    const active = containerRef.current?.ownerDocument.activeElement;
-
-    if (e.key === 'ArrowLeft' && isSubmenuFocused()) {
-      containerRef.current?.focus();
-    }
-
-    if (e.key === 'ArrowRight' && e.target === containerRef.current && e.target === active) {
-      const firstChild = menuContainerRef.current?.children[0] as HTMLDivElement;
-      firstChild?.focus();
-    }
-  };
-
-  // Check if any immediate children are active
-  const isSubmenuFocused = () => {
-    const active = containerRef.current?.ownerDocument.activeElement ?? null;
-    const childrenList = menuContainerRef.current?.children;
-
-    if (childrenList && childrenList.length > 0) {
-      for (const child of childrenList) {
-        if (child === active) {
-          return true;
-        }
-      }
-    }
-
-    return false;
-  };
-
-  // Root element must have a `tabIndex` attribute for keyboard navigation
-  let tabIndex;
-  if (!props.disabled) {
-    tabIndex = tabIndexProp !== undefined ? tabIndexProp : -1;
-  }
 
   const { pathname } = useLocation();
 
   const { match } = useMatchPath(path);
 
-  const variant = useResponsiveProp(children?.variant, 'inline');
+  const itemMenu = useResponsiveProp(sub?.menu, false);
 
-  const direction = useResponsiveProp(children?.direction, 'vertical');
+  const direction = useResponsiveProp(sub?.direction, 'vertical');
 
-  const accordion = useResponsiveProp(children?.accordion, true);
+  const menuProps = useResponsiveProp(sub?.menuProps);
 
-  const toggle = useResponsiveProp(children?.toggle, 'click');
+  const menuWidth = useResponsiveProp(sub?.menuWidth);
 
-  const hasChildren: boolean = useMemo(() => {
-    return children?.items !== undefined && children.items.length > 0;
-  }, [children]);
+  const accordion = useResponsiveProp(sub?.accordion, false);
+
+  const toggle = useResponsiveProp(sub?.toggle, 'click');
+
+  const arrow = sub?.arrow ?? true;
+
+  const hasSub: boolean = useMemo(() => {
+    return (sub?.items !== undefined && sub.items.length > 0) || sub?.wrapper;
+  }, [sub]);
 
   const minimize: boolean = collapse && !expand;
 
-  const here: boolean = children?.items ? hasActiveChild(pathname, children.items) : false;
+  const here: boolean = sub?.items ? hasActiveChild(pathname, sub.items) : false;
 
   const active: boolean = match;
 
-  const disabled: boolean = false;
-
-  const [open, setOpen] = useState(here);
+  const [open, setOpen] = useState(accordion ? here : false);
 
   const [hover, setHover] = useState(false);
 
@@ -197,166 +115,160 @@ const NavItemComponent = forwardRef<HTMLDivElement | null, NavItemType>(function
     }
   }, [pathname]);
 
-  const renderDivider = (
-    <DividerStyled
-      sx={{
-        mx: styles.ITEM_PADDING_X
-      }}
-    />
-  );
+  const handleMouseEnter = (e: MouseEvent<HTMLElement>) => {
+    setHover(true);
 
-  const renderItem = (
-    <ListItemButtonStyled
-      ref={menuItemRef}
-      onClick={handleToggle}
-      depth={depth}
-      styles={styles}
-      active={active}
-      here={here}
-      open={open}
-      hover={hover}
-      disabled={disabled}
-      collapse={collapse}
-      expand={expand}
-      tabIndex={tabIndex}
-      sx={{
-        paddingTop: depth === 1 ? styles.ROOT_ITEM_PADDING_Y : styles.SUB_ITEM_PADDING_Y,
-        paddingBottom: depth === 1 ? styles.ROOT_ITEM_PADDING_Y : styles.SUB_ITEM_PADDING_Y,
-        paddingLeft:
-          depth === 1
-            ? styles.ROOT_ITEM_PADDING_X
-            : styles.SUB_ITEM_PADDING_X * (parentVariant === 'inline' ? styles.INDENTION * depth : 1),
-        paddingRight: depth === 1 ? styles.ROOT_ITEM_PADDING_X : styles.SUB_ITEM_PADDING_X,
-        marginBottom: depth === 1 ? styles.ROOT_ITEM_GAP : styles.SUB_ITEM_GAP
-      }}
-    >
-      {icon && (
-        <ListItemIconStyled
-          depth={depth}
-          styles={styles}
-          active={active}
-          here={here}
-          hover={hover}
-          open={open}
-          disabled={disabled}
-          collapse={collapse}
-        >
-          {icon}
-        </ListItemIconStyled>
-      )}
+    if (toggle === 'hover') {
+      setSubOpen(true);
 
-      {bullet && (
-        <NavItemBullet
-          depth={depth}
-          styles={styles}
-          active={active}
-          here={here}
-          hover={hover}
-          open={open}
-          disabled={disabled}
-          collapse={collapse}
-        />
-      )}
+      if (containerProps.onMouseEnter) {
+        containerProps.onMouseEnter(e);
+      }
+    }
+  };
 
-      {!minimize && title && (
-        <ListItemTextStyled
-          depth={depth}
-          styles={styles}
-          active={active}
-          here={here}
-          hover={hover}
-          open={open}
-          disabled={disabled}
-          collapse={collapse}
-          primary={title + depth}
-        />
-      )}
+  const handleMouseLeave = (e: MouseEvent<HTMLElement>) => {
+    setHover(false);
 
-      {!minimize && badge && (
-        <BadgeStyled
-          badgeContent={badge.content}
-          color={badge.color}
-          depth={depth}
-          styles={styles}
-          active={active}
-          hover={hover}
-          here={here}
-          open={open}
-          disabled={disabled}
-          collapse={collapse}
-        />
-      )}
+    if (toggle === 'hover') {
+      setSubOpen(false);
 
-      {!minimize && hasChildren && (
-        <NavItemArrow
+      if (containerProps.onMouseLeave) {
+        containerProps.onMouseLeave(e);
+      }
+    }
+  };
+
+  const handleToggle = (e: MouseEvent<HTMLElement>) => {
+    if (toggle === 'click') {
+      setSubOpen(!open);
+    }
+  };
+
+  const handleClick = (e: MouseEvent<HTMLElement>) => {
+    handleMenuClose(e);
+
+    if (onLinksClick) {
+      onLinksClick(e, props);
+    }
+
+    if (onLinkClick) {
+      onLinkClick(e, props);
+    }
+  };
+
+  const handleMenuClose = (e: MouseEvent<HTMLElement>) => {
+    if (itemMenu) {
+      setSubOpen(false);
+    }
+
+    if (handleParentMenuClose) {
+      handleParentMenuClose(e);
+    }
+  };
+
+  const setSubOpen = (open: boolean) => {
+    setOpen(open);
+    setHover(open);
+
+    if (itemMenu) {
+      if (open) {
+        setAnchorEl(menuItemRef.current);
+        setIsSubMenuOpen(true);
+      } else {
+        setAnchorEl(null);
+        setIsSubMenuOpen(false);
+      }
+    }
+  };
+
+  const renderDivider = <DividerStyled depth={depth} styles={styles} />;
+
+  const renderItem = () => {
+    if (wrapper) {
+      if (hasSub) {
+        return (
+          <Box tabIndex={tabIndex} ref={menuItemRef} onClick={handleToggle} sx={{ ...sx }}>
+            {wrapper}
+          </Box>
+        );
+      } else {
+        return wrapper;
+      }
+    } else {
+      return (
+        <NavItemButton
           depth={depth}
-          toggle={toggle}
-          variant={variant}
+          menu={menu}
+          itemMenu={itemMenu}
           direction={direction}
+          toggle={toggle}
           accordion={accordion}
-          styles={styles}
           active={active}
           here={here}
-          open={open}
           hover={hover}
-          disabled={disabled}
+          open={open}
           collapse={collapse}
-          icon={<KeenIcon icon="down" />}
+          expand={expand}
+          color={color}
+          styles={styles}
+          tabIndex={tabIndex}
+          menuItemRef={menuItemRef}
+          handleToggle={handleToggle}
+          minimize={minimize}
+          icon={icon}
+          bullet={bullet}
+          badge={badge}
+          title={title}
+          arrow={arrow}
+          hasSub={hasSub}
         />
-      )}
-    </ListItemButtonStyled>
-  );
+      );
+    }
+  };
 
   const renderItemSub = (
     <Box ref={menuContainerRef} style={{ pointerEvents: 'auto' }}>
       <NavItemSub
-        variant={variant}
+        depth={depth + 1}
+        menu={itemMenu}
         accordion={accordion}
         open={open}
         hover={hover}
         expand={expand}
-        depth={depth + 1}
-        items={children?.items}
+        scrollbar={sub?.scrollbar}
+        scrollbarSx={sub?.scrollbarSx}
+        wrapper={sub?.wrapper}
+        items={sub?.items}
         styles={styles}
         collapse={collapse}
+        onLinksClick={onLinksClick}
+        handleParentMenuClose={handleMenuClose}
       />
     </Box>
   );
 
-  const renderItemDropdown = () => {
-    const handleClose = (event: MouseEvent<HTMLDivElement>) => {
-      setIsSubMenuOpen(false);
-
-      if (toggle === 'click') {
-        setOpen(false);
-        setAnchorEl(null);
-      }
+  const renderItemMenu = () => {
+    const handleClose = (e: MouseEvent<HTMLElement>) => {
+      setSubOpen(false);
     };
-
-    console.log('wow:' + menuItemRef.current);
 
     return (
       <MenuStyled
+        styles={styles}
         onClose={handleClose}
         sx={{
-          pointerEvents: toggle === 'click' ? 'auto' : 'none'
+          pointerEvents: toggle === 'click' ? 'auto' : 'none',
+          ...(menuWidth && { width: menuWidth })
         }}
         anchorEl={anchorEl}
-        anchorOrigin={{
-          horizontal: 'right',
-          vertical: 'top'
-        }}
-        transformOrigin={{
-          horizontal: 'left',
-          vertical: 'top'
-        }}
+        {...(menuProps && menuProps)}
         open={isSubMenuOpen}
         autoFocus={false}
         disableAutoFocus
         disableEnforceFocus
         disableScrollLock={true}
         disableRestoreFocus
-        {...MenuProps}
       >
         {renderItemSub}
       </MenuStyled>
@@ -365,45 +277,43 @@ const NavItemComponent = forwardRef<HTMLDivElement | null, NavItemType>(function
 
   const renderContent = (
     <Box
-      {...ContainerProps}
+      {...containerProps}
       ref={containerRef}
-      onFocus={handleFocus}
+      component="div"
       tabIndex={tabIndex}
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}
-      onKeyDown={handleKeyDown}
     >
-      {divider ? renderDivider : renderItem}
+      {divider ? renderDivider : renderItem()}
 
-      {!minimize && hasChildren && (variant === 'dropdown' ? renderItemDropdown() : renderItemSub)}
+      {!minimize && hasSub && (itemMenu ? renderItemMenu() : renderItemSub)}
     </Box>
   );
 
-    const renderMain = () => {
-      if (externalLink) {
-        const target = newTab ? '_blank' : '_self';
+  const renderMain = () => {
+    if (externalLink) {
+      const target = newTab ? '_blank' : '_self';
 
       return (
-        <Link href={path} target={target} rel="noopener" underline="none">
+        <Link href={path} target={target} rel="noopener" underline="none" onClick={handleClick}>
           {renderContent}
         </Link>
       );
     }
 
-    if (hasChildren) {
+    if (hasSub) {
       return renderContent;
     }
 
     return (
-      <Link component={RouterLink} to={path} underline="none">
+      <Link component={RouterLink} to={path} underline="none" onClick={handleClick}>
         {renderContent}
       </Link>
     );
   };
 
-    return renderMain();
-  }
-);
+  return renderMain();
+});
 
 const hasActiveChild = (pathname: string, items: NavConfigType): boolean => {
   for (const item of items) {

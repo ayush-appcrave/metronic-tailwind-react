@@ -2,12 +2,12 @@ import { Avatar, Box, Button, useTheme } from '@mui/material';
 import { useRef } from 'react';
 import { toAbsoluteUrl } from 'utils';
 
-import { useAuth } from '../../../auth';
+import { useAuthContext } from '../../../auth';
 import { KeenIcon } from '../../../components';
 import { Nav, NavItem, NavItemButton, NavItemSub } from '../../../components/nav';
 
 const HeaderUserMenu = () => {
-  const { currentUser, logout } = useAuth();
+  const { logout } = useAuthContext();
   const itemRef = useRef<any>(null);
   const theme = useTheme();
 
@@ -17,7 +17,7 @@ const HeaderUserMenu = () => {
 
     itemRef?.current.closeMenu();
   };
-
+ƒ
   return (
     <Box
       sx={{
