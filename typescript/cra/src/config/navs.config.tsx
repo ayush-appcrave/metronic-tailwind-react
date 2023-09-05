@@ -34,28 +34,22 @@ const NAV_COMMON: Record<string, NavConfigType> = {
       badge: {
         content: 'New',
         color: 'success'
-      },
-      onClick: () => {
-        console.log('New clicked');
       }
     },
     {
       key: 'dashboards-eCommerce',
       title: 'eCommerce',
       path: '/ecommerce',
-      bullet: true,
-      onClick: () => {
-        console.log('New clicked 2');
-      }
+      bullet: true
     },
     {
-      key: 'dashboards-eCommerce',
+      key: 'dashboards-Marketing',
       title: 'Marketing',
       path: '/marketing',
       bullet: true
     },
     {
-      key: 'dashboards-eCommerce',
+      key: 'dashboards-Crypto',
       title: 'Crypto',
       path: 'https://keenthemes.com',
       externalLink: true,
@@ -72,22 +66,35 @@ const NAV_COMMON: Record<string, NavConfigType> = {
   ],
   pages: [
     {
-      title: 'Page 1',
-      path: '#pages/page-1',
-      bullet: true
+      title: 'Page 1-1',
+      path: '/ecommerce',
+      bullet: true,
+      onLinkClick: () => {
+        console.log('New clicked');
+      }
     },
     {
-      title: 'Page 2',
+      title: 'Page 1-2',
       path: '#pages/page-1',
       bullet: true,
-      children: {
-        variant: {
+      sub: {
+        menuProps: {
+          anchorOrigin: {
+            horizontal: 'right',
+            vertical: 'top'
+          },
+          transformOrigin: {
+            horizontal: 'left',
+            vertical: 'top'
+          }
+        },
+        menu: {
           breakpoints: {
             up: {
-              md: 'dropdown'
+              md: true
             },
             down: {
-              md: 'inline'
+              md: false
             }
           }
         },
@@ -114,18 +121,21 @@ const NAV_COMMON: Record<string, NavConfigType> = {
         },
         items: [
           {
-            title: 'Page 1',
-            path: '#auth/page-1',
+            title: 'Page 2-1',
+            path: '/ecommerce',
             disabled: true,
+            bullet: true,
+            onLinkClick: () => {
+              console.log('New clicked');
+            }
+          },
+          {
+            title: 'Page 2-2',
+            path: '/dashboard',
             bullet: true
           },
           {
-            title: 'Page 2',
-            path: '#auth/page-2',
-            bullet: true
-          },
-          {
-            title: 'Page 3',
+            title: 'Page 2-3',
             path: '#auth/page-3',
             bullet: true
           }
@@ -133,11 +143,11 @@ const NAV_COMMON: Record<string, NavConfigType> = {
       }
     },
     {
-      title: 'Submenu',
+      title: 'Page 1-4',
       bullet: true
     },
     {
-      title: 'Page 3',
+      title: 'Page 1-4',
       path: '#pages/page-1',
       bullet: true
     }
@@ -236,8 +246,7 @@ const NAV_VERTICAL: NavConfigType = [
   {
     title: 'Dashboards',
     icon: <KeenIcon icon="calendar" />,
-    children: {
-      variant: 'inline',
+    sub: {
       direction: 'vertical',
       toggle: 'click',
       accordion: true,
@@ -248,15 +257,25 @@ const NAV_VERTICAL: NavConfigType = [
     title: 'Pages',
     icon: <KeenIcon icon="calendar" />,
     tabIndex: 0,
-    children: {
-      variant: {
+    sub: {
+      menu: {
         breakpoints: {
           up: {
-            md: 'dropdown'
+            md: true
           },
           down: {
-            md: 'inline'
+            md: false
           }
+        }
+      },
+      menuProps: {
+        anchorOrigin: {
+          horizontal: 'right',
+          vertical: 'top'
+        },
+        transformOrigin: {
+          horizontal: 'left',
+          vertical: 'top'
         }
       },
       accordion: {
@@ -285,7 +304,7 @@ const NAV_VERTICAL: NavConfigType = [
   {
     title: 'Authentication',
     icon: <KeenIcon icon="calendar" />,
-    children: {
+    sub: {
       accordion: true,
       items: NAV_COMMON.authentication
     }
@@ -293,7 +312,7 @@ const NAV_VERTICAL: NavConfigType = [
   {
     title: 'Account',
     icon: <KeenIcon icon="calendar" />,
-    children: {
+    sub: {
       accordion: true,
       items: NAV_COMMON.account
     }
@@ -301,7 +320,7 @@ const NAV_VERTICAL: NavConfigType = [
   {
     title: 'Apps',
     icon: <KeenIcon icon="calendar" />,
-    children: {
+    sub: {
       accordion: true,
       items: NAV_COMMON.apps
     }
@@ -309,7 +328,7 @@ const NAV_VERTICAL: NavConfigType = [
   {
     title: 'CRUD',
     icon: <KeenIcon icon="calendar" />,
-    children: {
+    sub: {
       accordion: true,
       items: NAV_COMMON.crud
     }

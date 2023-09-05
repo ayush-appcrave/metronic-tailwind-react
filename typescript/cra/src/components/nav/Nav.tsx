@@ -1,20 +1,71 @@
-import { List, type SxProps } from '@mui/material';
-import { memo, useRef } from 'react';
+import { List } from '@mui/material';
+import { Children } from 'react';
 
-import { NavItem, type NavItemOptionsType, type NavType } from './';
+import {
+  NavConfigType,
+  NavDefaultStylesConfig,
+  NavItem,
+  NavItemPropsType,
+  NavItemSubConfigType,
+  NavPropsType
+} from './';
 
-const NavComponent = ({
-  variant = 'inline',
-  direction = 'vertical',
+const Nav = ({
+  direction,
   accordion,
   collapse,
   expand,
-  height,
-  maxHeight,
+  hover,
   items,
+  styles,
   sx,
-  styles
-}: NavType) => {
+  onLinksClick,
+  children
+}: NavPropsType) => {
+  const populateConfigFromMarkup = (children: any) => {
+    const items: NavConfigType = [];
+
+    Children.map(children, (child) => {
+      const name = child.type.render.name;
+
+      if (name === 'NavItem') {
+        const item = { ...(child.props as NavItemPropsType) };
+
+        Children.map(child.props.children, (child2) => {
+          const name2 = child2.type.render.name;
+
+          if (name2 === 'NavItemButton') {
+            if (child2.props.children) {
+              item.wrapper = child2.props.children;
+            }
+          } else if (name2 === 'NavItemSub') {
+            const child3 = child2.props.children[0] || child2.props.children;
+
+            if (child3?.type.render.name === 'NavItem') {
+              item.sub = {
+                ...(child2.props satisfies NavItemSubConfigType),
+                items: populateConfigFromMarkup(child2.props.children)
+              };
+            } else {
+              item.sub = {
+                ...(child2.props satisfies NavItemSubConfigType),
+                wrapper: child2.props.children
+              };
+            }
+          }
+        });
+
+        items.push(item);
+      }
+    });
+
+    return items;
+  };
+
+  if (children) {
+    items = populateConfigFromMarkup(children);
+  }
+
   return (
     <List
       sx={{
@@ -24,20 +75,20 @@ const NavComponent = ({
       component="nav"
       aria-labelledby="nav-list"
     >
-      {(items as readonly NavItemOptionsType[]).map((item, index) => (
+      {(items as readonly NavItemPropsType[]).map((item, index) => (
         <NavItem
+          // eslint-disable-next-line @typescript-eslint/restrict-template-expressions
           key={`${index}-${item.title}`}
-          parentVariant={variant}
-          depth={1}
+          menu={false}
           collapse={collapse}
           expand={expand}
-          options={item}
-          styles={styles}
+          styles={styles ?? NavDefaultStylesConfig()}
+          onLinksClick={onLinksClick}
+          {...item}
         />
       ))}
     </List>
   );
 };
 
-const Nav = memo(NavComponent);
 export { Nav };

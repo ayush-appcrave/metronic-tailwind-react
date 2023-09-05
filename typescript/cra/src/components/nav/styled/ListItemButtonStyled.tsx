@@ -1,41 +1,130 @@
 import { ListItemButton } from '@mui/material';
 import { styled } from '@mui/material/styles';
 
-import { type NavItemChildType } from '..';
+import { type NavItemChildPropsType } from '..';
 
 export const ListItemButtonStyled = styled(ListItemButton, {
   shouldForwardProp: (prop) =>
     ![
       'depth',
-      'styles',
+      'menu',
+      'color',
       'active',
       'here',
       'hover',
       'open',
       'collapse',
       'expand',
-      'disabled'
+      'styles'
     ].includes(prop as string)
-})<NavItemChildType>(({ depth, active, here, hover, open, disabled, styles, theme }) => {
-  const activeStyle = {
-    backgroundColor: theme.palette.primary.light,
-    color: theme.palette.primary.main
-  };
-
-  const hoverStyle = {
-    backgroundColor: theme.palette.grey['100']
-  };
-
+})<NavItemChildPropsType>(({ depth, menu, active, here, hover, open, color, styles }) => {
   return {
     display: 'flex',
-    aligItems: 'center',
-    borderRadius: styles.ITEM_BORDER_RADIUS as number,
-    height: depth === 1 ? (styles.ROOT_ITEM_HEIGHT as number) : (styles.SUB_ITEM_HEIGHT as number),
-    ...(active && {
-      ...activeStyle
+    alignItems: 'center',
+    borderRadius:
+      menu === true
+        ? styles.MENU_ITEM_BUTTON_BORDER_RADIUS
+        : depth === 1
+        ? styles.ROOT_ITEM_BUTTON_BORDER_RADIUS
+        : styles.SUB_ITEM_BUTTON_BORDER_RADIUS,
+
+    height:
+      menu === true
+        ? styles.MENU_ITEM_BUTTON_HEIGHT
+        : depth === 1
+        ? styles.ROOT_ITEM_BUTTON_HEIGHT
+        : styles.SUB_ITEM_BUTTON_HEIGHT,
+
+    paddingTop:
+      menu === true
+        ? styles.MENU_ITEM_BUTTON_PADDING_Y
+        : depth === 1
+        ? styles.ROOT_ITEM_BUTTON_PADDING_Y
+        : styles.SUB_ITEM_BUTTON_PADDING_Y,
+
+    paddingBottom:
+      menu === true
+        ? styles.MENU_ITEM_BUTTON_PADDING_Y
+        : depth === 1
+        ? styles.ROOT_ITEM_BUTTON_PADDING_Y
+        : styles.SUB_ITEM_BUTTON_PADDING_Y,
+
+    paddingLeft:
+      menu === true
+        ? styles.MENU_ITEM_BUTTON_PADDING_X
+        : depth === 1
+        ? styles.ROOT_ITEM_BUTTON_PADDING_X
+        : styles.SUB_ITEM_BUTTON_PADDING_X * styles.SUB_INDENTION * depth,
+
+    paddingRight:
+      menu === true
+        ? styles.MENU_ITEM_BUTTON_PADDING_X
+        : depth === 1
+        ? styles.ROOT_ITEM_BUTTON_PADDING_X
+        : styles.SUB_ITEM_BUTTON_PADDING_X,
+
+    marginTop:
+      menu === true
+        ? styles.MENU_ITEM_BUTTON_MARGIN_Y
+        : depth === 1
+        ? styles.ROOT_ITEM_BUTTON_MARGIN_Y
+        : styles.SUB_ITEM_BUTTON_MARGIN_Y,
+
+    marginBottom:
+      menu === true
+        ? styles.MENU_ITEM_BUTTON_MARGIN_Y
+        : depth === 1
+        ? styles.ROOT_ITEM_BUTTON_MARGIN_Y
+        : styles.SUB_ITEM_BUTTON_MARGIN_Y,
+
+    marginLeft:
+      menu === true
+        ? styles.MENU_ITEM_BUTTON_MARGIN_X
+        : depth === 1
+        ? styles.ROOT_ITEM_BUTTON_MARGIN_X
+        : styles.SUB_ITEM_BUTTON_MARGIN_X,
+
+    marginRight:
+      menu === true
+        ? styles.MENU_ITEM_BUTTON_MARGIN_X
+        : depth === 1
+        ? styles.ROOT_ITEM_BUTTON_MARGIN_X
+        : styles.SUB_ITEM_BUTTON_MARGIN_X,
+
+    ...(open && {
+      backgroundColor:
+        menu === true
+          ? styles.MENU_ITEM_BUTTON_BACKGROUND_COLOR_OPEN
+          : depth === 1
+          ? styles.ROOT_ITEM_BUTTON_BACKGROUND_COLOR_OPEN
+          : styles.SUB_ITEM_BUTTON_BACKGROUND_COLOR_OPEN
     }),
-    ...(hover && {
-      ...hoverStyle
+
+    ...(here && {
+      backgroundColor:
+        menu === true
+          ? styles.MENU_ITEM_BUTTON_BACKGROUND_COLOR_HERE
+          : depth === 1
+          ? styles.ROOT_ITEM_BUTTON_BACKGROUND_COLOR_HERE
+          : styles.SUB_ITEM_BUTTON_BACKGROUND_COLOR_HERE
+    }),
+
+    '&:hover ': {
+      backgroundColor:
+        menu === true
+          ? styles.MENU_ITEM_BUTTON_BACKGROUND_COLOR_HOVER
+          : depth === 1
+          ? styles.ROOT_ITEM_BUTTON_BACKGROUND_COLOR_HOVER
+          : styles.SUB_ITEM_BUTTON_BACKGROUND_COLOR_HOVER
+    },
+
+    ...(active && {
+      backgroundColor:
+        (menu === true
+          ? styles.MENU_ITEM_BUTTON_BACKGROUND_COLOR_ACTIVE
+          : depth === 1
+          ? styles.ROOT_ITEM_BUTTON_BACKGROUND_COLOR_ACTIVE
+          : styles.SUB_ITEM_BUTTON_BACKGROUND_COLOR_ACTIVE) + ' !important'
     })
   };
 });

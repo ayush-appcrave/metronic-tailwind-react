@@ -3,6 +3,12 @@ import { styled } from '@mui/material/styles';
 
 const MenuDropdown = styled(Menu)<any>(({ theme }) => {
   return {
+    '.MuiMenu-paper.MuiPopover-paper': {
+      width: '200px',
+      borderRadius: Number(theme.shape.borderRadius) * 1.75,
+      boxShadow: theme.customShadows.menu,
+      backgroundColor: theme.palette.background.paper
+    },
     '.MuiMenuItem-root': {
       fontSize: '14px',
       fontWeight: theme.typography.fontWeightMedium,

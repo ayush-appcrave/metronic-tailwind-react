@@ -29,5 +29,5 @@
       "utils": ["./src/utils"]
     }
   },
-  "include": ["./src", "./.eslintrc.js"]
+  "include": ["./src/**/*.ts", "./src/**/*.tsx", "./.eslintrc.js"]
 }

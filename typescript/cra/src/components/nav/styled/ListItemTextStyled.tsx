@@ -1,36 +1,85 @@
 import { ListItemText } from '@mui/material';
 import { styled } from '@mui/material/styles';
 
-import { type NavItemChildType } from '..';
+import { type NavItemChildPropsType } from '..';
 
 export const ListItemTextStyled = styled(ListItemText, {
   shouldForwardProp: (prop) =>
     ![
       'depth',
+      'menu',
+      'color',
       'styles',
       'active',
       'here',
       'hover',
       'open',
       'collapse',
-      'expand',
-      'disabled'
+      'expand'
     ].includes(prop as string)
-})<NavItemChildType>(({ depth, active, here, hover, open, disabled, styles, theme }) => {
+})<NavItemChildPropsType>(({ depth, menu, active, here, hover, open, color, styles, theme }) => {
   return {
     '> .MuiListItemText-primary': {
-      fontSize: depth === 1 ? styles.ROOT_ITEM_TITLE_FONT_SIZE : styles.SUB_ITEM_TITLE_FONT_SIZE,
+      fontSize:
+        menu === true
+          ? styles.MENU_ITEM_TITLE_FONT_SIZE
+          : depth === 1
+          ? styles.ROOT_ITEM_TITLE_FONT_SIZE
+          : styles.SUB_ITEM_TITLE_FONT_SIZE,
+
       fontWeight:
-        depth === 1 ? styles.ROOT_ITEM_TITLE_FONT_WEIGHT : styles.SUB_ITEM_TITLE_FONT_WEIGHT,
-      color: depth === 1 ? styles.ROOT_ITEM_TITLE_COLOR : styles.SUB_ITEM_TITLE_COLOR,
-      ...(active && {
-        color: theme.palette.primary.main
+        menu === true
+          ? styles.MENU_ITEM_TITLE_FONT_WEIGHT
+          : depth === 1
+          ? styles.ROOT_ITEM_TITLE_FONT_WEIGHT
+          : styles.SUB_ITEM_TITLE_FONT_WEIGHT,
+
+      color:
+        color ||
+        (menu
+          ? styles.MENU_ITEM_TITLE_COLOR
+          : depth === 1
+          ? styles.ROOT_ITEM_TITLE_COLOR
+          : styles.SUB_ITEM_TITLE_COLOR),
+
+      ...(open && {
+        color:
+          color ||
+          (menu
+            ? styles.MENU_ITEM_TITLE_COLOR_OPEN
+            : depth === 1
+            ? styles.ROOT_ITEM_TITLE_COLOR_OPEN
+            : styles.SUB_ITEM_TITLE_COLOR_OPEN)
       }),
-      ...(hover && {
-        color: theme.palette.grey['700']
-      }),
+
       ...(here && {
-        color: theme.palette.grey['700']
+        color:
+          color ||
+          (menu
+            ? styles.MENU_ITEM_TITLE_COLOR_HERE
+            : depth === 1
+            ? styles.ROOT_ITEM_TITLE_COLOR_HERE
+            : styles.SUB_ITEM_TITLE_COLOR_HERE)
+      }),
+
+      ...(hover && {
+        color:
+          color ||
+          (menu
+            ? styles.MENU_ITEM_TITLE_COLOR_HOVER
+            : depth === 1
+            ? styles.ROOT_ITEM_TITLE_COLOR_HOVER
+            : styles.SUB_ITEM_TITLE_COLOR_HOVER)
+      }),
+
+      ...(active && {
+        color:
+          color ||
+          (menu
+            ? styles.MENU_ITEM_TITLE_COLOR_ACTIVE
+            : depth === 1
+            ? styles.ROOT_ITEM_TITLE_COLOR_ACTIVE
+            : styles.SUB_ITEM_TITLE_COLOR_ACTIVE)
       })
     }
   };

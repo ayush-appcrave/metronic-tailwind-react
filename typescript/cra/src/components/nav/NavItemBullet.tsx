@@ -1,45 +1,96 @@
 import { Box } from '@mui/material';
-import { memo } from 'react';
 
-import { type NavItemBulletType } from './types';
+import { type NavItemChildPropsType } from './types';
 
-const NavItemBulletComponent = ({
-  variant = 'dot',
-  active = false,
-  hover = false,
-  here = false,
-  open = false,
-  disabled = false,
-  collapse = false,
-  expand = false,
-  styles,
-  depth = 1
-}: NavItemBulletType) => {
+const NavItemBullet = ({
+  depth,
+  menu,
+  active,
+  hover,
+  here,
+  open,
+  collapse,
+  expand,
+  color,
+  styles
+}: NavItemChildPropsType) => {
   return (
     <Box
       sx={{
-        backgroundColor: (theme) => theme.palette.grey['500'],
-        marginRight: (theme) => theme.spacing(1.15),
-        ...(variant === 'dot' && {
-          height: 4,
-          width: 4,
-          borderRadius: '50%'
+        marginRight: menu
+          ? styles.MENU_ITEM_BULLET_GAP
+          : depth === 1
+          ? styles.ROOT_ITEM_BULLET_GAP
+          : styles.SUB_ITEM_BULLET_GAP,
+
+        height: menu
+          ? styles.MENU_ITEM_BULLET_HEIGHT
+          : depth === 1
+          ? styles.ROOT_ITEM_BULLET_HEIGHT
+          : styles.SUB_ITEM_BULLET_HEIGHT,
+
+        width: menu
+          ? styles.MENU_ITEM_BULLET_WIDTH
+          : depth === 1
+          ? styles.ROOT_ITEM_BULLET_WIDTH
+          : styles.SUB_ITEM_BULLET_WIDTH,
+
+        borderRadius: menu
+          ? styles.MENU_ITEM_BULLET_BORDER_RADIUS
+          : depth === 1
+          ? styles.ROOT_ITEM_BULLET_BORDER_RADIUS
+          : styles.SUB_ITEM_BULLET_BORDER_RADIUS,
+
+        backgroundColor:
+          color ||
+          (menu
+            ? styles.MENU_ITEM_BULLET_COLOR
+            : depth === 1
+            ? styles.ROOT_ITEM_BULLET_COLOR
+            : styles.SUB_ITEM_BULLET_COLOR),
+
+        ...(open && {
+          backgroundColor:
+            color ||
+            (menu
+              ? styles.MENU_ITEM_BULLET_COLOR_OPEN
+              : depth === 1
+              ? styles.ROOT_ITEM_BULLET_COLOR_OPEN
+              : styles.SUB_ITEM_BULLET_COLOR_OPEN)
         }),
-        ...(variant === 'bar' && {
-          height: 4,
-          width: 6,
-          borderRadius: 4
-        }),
-        ...(active && {
-          backgroundColor: (theme) => theme.palette.primary.main
-        }),
+
         ...(here && {
-          backgroundColor: (theme) => theme.palette.grey['700']
+          backgroundColor:
+            color ||
+            (menu
+              ? styles.MENU_ITEM_BULLET_COLOR_HERE
+              : depth === 1
+              ? styles.ROOT_ITEM_BULLET_COLOR_HERE
+              : styles.SUB_ITEM_BULLET_COLOR_HERE)
+        }),
+
+        ...(hover && {
+          backgroundColor:
+            color ||
+            (menu
+              ? styles.MENU_ITEM_BULLET_COLOR_HOVER
+              : depth === 1
+              ? styles.ROOT_ITEM_BULLET_COLOR_HOVER
+              : styles.SUB_ITEM_BULLET_COLOR_HOVER)
+        }),
+
+        ...(active && {
+          backgroundColor:
+            color ||
+            (menu
+              ? styles.MENU_ITEM_BULLET_COLOR_ACTIVE
+              : depth === 1
+              ? styles.ROOT_ITEM_BULLET_COLOR_ACTIVE
+              : styles.SUB_ITEM_BULLET_COLOR_ACTIVE)
         })
       }}
     ></Box>
   );
 };
 
-const NavItemBullet = memo(NavItemBulletComponent);
 export { NavItemBullet };

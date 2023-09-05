@@ -41,6 +41,10 @@ const GlobalStyles = ({ theme }: { theme: Theme }) => {
         img: {
           display: 'block',
           maxWidth: '100%'
+        },
+        ul: {
+          margin: 0,
+          padding: 0
         }
       }}
     />

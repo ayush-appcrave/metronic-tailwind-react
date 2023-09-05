@@ -24,7 +24,7 @@ const Table = (theme: Theme) => {
         },
         head: {
           color: theme.palette.text.secondary,
-          backgroundColor: theme.palette.background.neutral
+          backgroundColor: theme.palette.background.default
         },
         stickyHeader: {
           backgroundColor: theme.palette.background.paper

@@ -1,16 +1,14 @@
-/* eslint-disable @typescript-eslint/no-misused-promises */
-import { type PaginationState } from '@components/table/types';
 import { type FC, type ReactNode, useContext, useEffect, useMemo, useState } from 'react';
 import { useQuery } from 'react-query';
 
+import { type PaginationState } from '../../../components/table/types';
 import {
   createResponseContext,
-  initialQueryResponse,
   initialQueryState,
   QUERIES,
   stringifyRequestQuery
 } from '../helpers';
-import { type User } from './_models';
+import { type User, UsersQueryResponse } from './_models';
 import { getUsers } from './_requests';
 import { useQueryRequest } from './QueryRequestProvider';
 
@@ -18,7 +16,8 @@ interface WithChildren {
   children?: ReactNode;
 }
 
-const QueryResponseContext = createResponseContext<User>(initialQueryResponse);
+const QueryResponseContext = createResponseContext<User | null>(null);
+
 const QueryResponseProvider: FC<WithChildren> = ({ children }) => {
   const { state } = useQueryRequest();
   const [query, setQuery] = useState<string>(stringifyRequestQuery(state));
@@ -26,6 +25,7 @@ const QueryResponseProvider: FC<WithChildren> = ({ children }) => {
 
   useEffect(() => {
     if (query !== updatedQuery) {
+      console.log('query was really updated');
       setQuery(updatedQuery);
     }
   }, [updatedQuery]);
@@ -34,13 +34,16 @@ const QueryResponseProvider: FC<WithChildren> = ({ children }) => {
     isFetching,
     refetch,
     data: response
-  } = useQuery(
-    `${QUERIES.USERS_LIST}-${query}`,
-    async () => {
+  } = useQuery<UsersQueryResponse>({
+    queryKey: `${QUERIES.USERS_LIST}-${query}`,
+    queryFn: async () => {
+      console.log('Request users');
       return await getUsers(query);
     },
-    { cacheTime: 0, keepPreviousData: true, refetchOnWindowFocus: false }
-  );
+    keepPreviousData: true,
+    refetchOnWindowFocus: false,
+    refetchOnMount: false
+  });
 
   return (
     <QueryResponseContext.Provider value={{ isLoading: isFetching, refetch, response, query }}>
@@ -49,7 +52,13 @@ const QueryResponseProvider: FC<WithChildren> = ({ children }) => {
   );
 };
 
-const useQueryResponse = () => useContext(QueryResponseContext);
+const useQueryResponse = () => {
+  const context = useContext(QueryResponseContext);
+
+  if (!context) throw new Error('QueryResponseProvider is required to use useQueryResponse');
+
+  return context;
+};
 
 const useQueryResponseData = () => {
   const { response } = useQueryResponse();

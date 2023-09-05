@@ -1,39 +1,105 @@
 import { ListItemIcon } from '@mui/material';
 import { styled } from '@mui/material/styles';
 
-import { type NavItemChildType } from '..';
+import { type NavItemChildPropsType } from '..';
 
 export const ListItemIconStyled = styled(ListItemIcon, {
   shouldForwardProp: (prop) =>
     ![
       'depth',
+      'menu',
+      'color',
       'styles',
       'active',
       'here',
       'hover',
       'open',
       'collapse',
-      'expand',
-      'disabled'
+      'expand'
     ].includes(prop as string)
-})<NavItemChildType>(({ depth, active, here, hover, open, disabled, styles, theme }) => {
+})<NavItemChildPropsType>(({ depth, menu, active, here, hover, open, color, styles }) => {
   return {
-    height: 18,
-    width: 18,
     minWidth: 0,
-    marginRight: theme.spacing(1),
-    color: theme.palette.grey['500'],
-    ...(active && {
-      color: theme.palette.primary.main
+    display: 'flex',
+    alignItems: 'center',
+
+    height:
+      menu === true
+        ? styles.MENU_ITEM_ICON_SIZE
+        : depth === 1
+        ? styles.ROOT_ITEM_ICON_SIZE
+        : styles.SUB_ITEM_ICON_SIZE,
+
+    width:
+      menu === true
+        ? styles.MENU_ITEM_ICON_SIZE
+        : depth === 1
+        ? styles.ROOT_ITEM_ICON_SIZE
+        : styles.SUB_ITEM_ICON_SIZE,
+
+    marginRight:
+      menu === true
+        ? styles.MENU_ITEM_ICON_GAP
+        : depth === 1
+        ? styles.ROOT_ITEM_ICON_GAP
+        : styles.SUB_ITEM_ICON_GAP,
+
+    color:
+      color ||
+      (menu
+        ? styles.MENU_ITEM_ICON_COLOR
+        : depth === 1
+        ? styles.ROOT_ITEM_ICON_COLOR
+        : styles.SUB_ITEM_ICON_COLOR),
+
+    ...(open && {
+      color:
+        color ||
+        (menu
+          ? styles.MENU_ITEM_ICON_COLOR_OPEN
+          : depth === 1
+          ? styles.ROOT_ITEM_ICON_COLOR_OPEN
+          : styles.SUB_ITEM_ICON_COLOR_OPEN)
     }),
-    ...(hover && {
-      color: theme.palette.grey['700']
-    }),
+
     ...(here && {
-      color: theme.palette.grey['700']
+      color:
+        color ||
+        (menu
+          ? styles.MENU_ITEM_ICON_COLOR_HERE
+          : depth === 1
+          ? styles.ROOT_ITEM_ICON_COLOR_HERE
+          : styles.SUB_ITEM_ICON_COLOR_HERE)
     }),
+
+    ...(hover && {
+      color:
+        color ||
+        (menu
+          ? styles.MENU_ITEM_ICON_COLOR_HOVER
+          : depth === 1
+          ? styles.ROOT_ITEM_ICON_COLOR_HOVER
+          : styles.SUB_ITEM_ICON_COLOR_HOVER)
+    }),
+
+    ...(active && {
+      color:
+        color ||
+        (menu
+          ? styles.MENU_ITEM_ICON_COLOR_ACTIVE
+          : depth === 1
+          ? styles.ROOT_ITEM_ICON_COLOR_ACTIVE
+          : styles.SUB_ITEM_ICON_COLOR_ACTIVE)
+    }),
+
     'i ': {
-      fontSize: '18px'
+      lineHeight: '1',
+      fontSize:
+        menu === true
+          ? styles.MENU_ITEM_ICON_FONT_SIZE
+          : depth === 1
+          ? styles.ROOT_ITEM_ICON_FONT_SIZE
+          : styles.SUB_ITEM_ICON_FONT_SIZE
     }
   };
 });

@@ -1,4 +1,4 @@
-import { formatDate, QueryState, TableNoData } from '@components/table';
+import { formatDate, TableNoData } from '@components/table';
 import { TableSkeletonLoader } from '@components/table/loading/TableSkeletonLoader';
 import { type Order } from '@components/table/types';
 import {
@@ -22,13 +22,11 @@ import { toAbsoluteUrl } from 'utils';
 import {
   useListView,
   useQueryRequest,
-  useQueryResponse,
   useQueryResponseData,
   useQueryResponseLoading,
   useQueryResponsePagination,
   type User
 } from '../../core';
-import { initialQueryRequest } from '../../helpers';
 import { EnhancedTableHead } from '../table-head';
 
 interface Props {
@@ -40,7 +38,6 @@ const UserManagementSkeletonTableContainer = (props: Props) => {
   const { updateState } = useQueryRequest();
   const users = useQueryResponseData();
   const data = useMemo(() => users, [users]);
-  const { refetch } = useQueryResponse();
 
   const isLoading = useQueryResponseLoading();
 
@@ -55,7 +52,6 @@ const UserManagementSkeletonTableContainer = (props: Props) => {
   const [searchParams] = useSearchParams();
   useEffect(() => {
     if (searchParams.toString()) {
-      updateState(qs.parse(searchParams.toString()) as Partial<QueryState>);
       const sortParam = qs.parse(searchParams.toString()).sort;
       const orderParam = qs.parse(searchParams.toString()).order;
 
@@ -63,13 +59,7 @@ const UserManagementSkeletonTableContainer = (props: Props) => {
         setOrderBy(sortParam as keyof User);
         setOrder(orderParam as Order);
       }
-    } else {
-      refetch();
     }
-
-    return () => {
-      updateState(initialQueryRequest.state);
-    };
   }, []);
 
   const isSelected = (id: string) => {

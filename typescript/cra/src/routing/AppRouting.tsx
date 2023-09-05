@@ -12,37 +12,21 @@ import { useLoaders } from '../providers/LoadersProvider';
 
 const AppRouting = (): ReactElement => {
   const { setProgressBarLoader } = useLoaders();
-  const { verify } = useAuthContext();
-  const [previousLocation, setPreviousLocation] = useState('');
-  const { setScreenLoader } = useLoaders();
+  const [previousPathname, setPreviousPathname] = useState('');
   const location = useLocation();
 
-  const init = async () => {
-    try {
-      if (verify) {
-        await verify();
-      }
-    } catch (error) {
-      throw new Error('Something went wrong!');
-    } finally {
-      setProgressBarLoader(true);
-
-      setPreviousLocation(location.pathname);
-
-      if (location.pathname === previousLocation) {
-        setPreviousLocation('');
-      }
-    }
-  };
-
   useEffect(() => {
-    init();
-  }, [location]);
+    setProgressBarLoader(true);
+    setPreviousPathname(location.pathname);
+
+    if (location.pathname === previousPathname) {
+      setPreviousPathname('');
+    }
+  }, [location.pathname]);
 
   useEffect(() => {
     setProgressBarLoader(false);
-    setScreenLoader(false);
-  }, [previousLocation]);
+  }, [previousPathname]);
 
   return (
     <Routes>

@@ -1,5 +1,5 @@
 import { Drawer } from '@mui/material';
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 
 import { SettingsBody } from './SettingsBody';
 import { SettingsFooter } from './SettingsFooter';
@@ -12,14 +12,8 @@ const Settings = () => {
   const [footerHeight, setFooterHeight] = useState(0);
 
   const handleToggle = () => {
-    if (open) {
-      setOpen(false);
-    } else {
-      setOpen(true);
-    }
+    setOpen(!open);
   };
-
-  useEffect(() => {}, [open]);
 
   return (
     <>
@@ -34,7 +28,7 @@ const Settings = () => {
           }
         }}
       >
-        <SettingsHeader setHeaderHeight={setHeaderHeight} onCloseClick={handleToggle} />
+        <SettingsHeader setHeaderHeight={setHeaderHeight} handleClose={handleToggle} />
         <SettingsBody headerHeight={headerHeight} footerHeight={footerHeight} />
         <SettingsFooter setFooterHeight={setFooterHeight} />
       </Drawer>

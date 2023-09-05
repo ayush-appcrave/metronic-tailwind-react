@@ -1,40 +1,75 @@
 import { Collapse, List } from '@mui/material';
-import { forwardRef, memo, useRef } from 'react';
+import { forwardRef } from 'react';
 
-import { NavItem, type NavItemOptionsType, type NavType } from '..';
+import { useResponsiveProp } from '../../hooks/useResponsiveProp';
+import { NavItem, type NavItemPropsType, type NavItemSubPropsType } from '..';
+import Scrollbar from '../scrollbar';
 
-const NavItemSubComponent = forwardRef<HTMLDivElement, NavType>(
-  function NavItemSubComponent(props, ref) {
-    const {
-      accordion = true,
-      height = 'auto',
-      maxHeight = 0,
-      variant,
-      collapse,
-      expand,
-      items,
-      styles,
-      depth = 1,
-      open
-    } = props;
+const NavItemSub = forwardRef<HTMLDivElement, NavItemSubPropsType>(function NavItemSub(props, ref) {
+  const {
+    depth,
+    menu,
+    accordion,
+    collapse,
+    expand,
+    items,
+    wrapper,
+    styles,
+    open,
+    scrollbar,
+    scrollbarSx,
+    onLinksClick,
+    handleParentMenuClose
+  } = props;
 
-    const renderChildren = () => {
+  const renderChildren = () => {
+    if (wrapper) {
       return (
         <List ref={ref} component="div" disablePadding>
-          {(items as readonly NavItemOptionsType[]).map((item, index) => (
+          {wrapper}
+        </List>
+      );
+    } else {
+      return (
+        <List ref={ref} component="div" disablePadding>
+          {(items as readonly NavItemPropsType[]).map((item, index) => (
             <NavItem
+              // eslint-disable-next-line @typescript-eslint/restrict-template-expressions
               key={`${index}-${item.title}`}
               depth={depth}
-              options={item}
+              menu={menu}
               styles={styles}
-              parentVariant={variant}
               collapse={collapse}
               expand={expand}
+              handleParentMenuClose={handleParentMenuClose}
+              onLinksClick={onLinksClick}
+              {...item}
             />
           ))}
         </List>
       );
-    };
+    }
+  };
+
+  const renderScrollbar = () => {
+    if (useResponsiveProp(scrollbar)) {
+      return <Scrollbar sx={scrollbarSx}>{renderChildren()}</Scrollbar>;
+    } else {
+      return renderChildren();
+    }
+  };
+
+  const renderContent = () => {
+    if (accordion) {
+      return (
+        <Collapse in={open} timeout="auto" unmountOnExit>
+          {renderScrollbar()}
+        </Collapse>
+      );
+    } else {
+      return renderScrollbar();
+    }
+  };
 
     const renderContent = () => {
       if (accordion) {
@@ -52,5 +87,4 @@ const NavItemSubComponent = forwardRef<HTMLDivElement, NavType>(
   }
 );
 
-const NavItemSub = memo(NavItemSubComponent);
 export { NavItemSub };

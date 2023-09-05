@@ -4,6 +4,7 @@ import { GridFilterItem } from '@mui/x-data-grid';
 import { type Dispatch, type SetStateAction } from 'react';
 
 import { type UsersQueryResponse } from '../../core/_models';
+import { QueryObserverResult } from 'react-query';
 
 export interface SearchState {
   search?: string;
@@ -40,12 +41,12 @@ export const initialQueryRequest: QueryRequestContextProps = {
 
 export interface QueryResponseContextProps<T> {
   response?: UsersQueryResponse | undefined;
-  refetch: () => void;
+  refetch: () => Promise<QueryObserverResult<UsersQueryResponse, unknown>>;
   isLoading: boolean;
   query: string;
 }
 
-export const initialQueryResponse = { refetch: () => {}, isLoading: false, query: '' };
+export const initialQueryResponse = { isLoading: false, query: '' };
 
 export interface ListViewContextProps {
   selected: string[];

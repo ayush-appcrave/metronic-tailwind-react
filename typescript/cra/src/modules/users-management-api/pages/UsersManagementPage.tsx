@@ -2,8 +2,7 @@ import { useNavBreadcrumbs } from '@components/nav';
 import { PageContainer } from '@components/page-container';
 import { Box, Button, Card } from '@mui/material';
 import { NAV_VERTICAL } from 'configs';
-import { useSnackbar } from 'notistack';
-import React, { useState } from 'react';
+import { memo, useState } from 'react';
 import { Helmet } from 'react-helmet';
 
 import { Content, Intro, Toolbar } from '../../../layouts/default';
@@ -11,23 +10,15 @@ import {
   CreateUserDrawer,
   CreateUserStepperFormDialog,
   EnhancedTableToolbar,
-  UndoActions,
-  UserManagementTableContainer,
-  UsersManagementActionsCell
+  UserManagementTableContainer
 } from '../components';
-import { restoreMultipleUsers, useQueryResponse } from '../core';
 
-function UsersManagementPage() {
-  const { enqueueSnackbar } = useSnackbar();
+function UsersManagementPageComponent() {
   const [userStepperFormDialogOpenState, setUserStepperFormDialogOpenState] = useState(false);
   const [createUserDrawerOpenState, setCreateUserDrawerOpenState] = useState(false);
-  const { refetch } = useQueryResponse();
   const breadcrumbs = useNavBreadcrumbs(NAV_VERTICAL);
 
-  const undoAction: (ids: string[]) => Promise<void> = async (ids: string[]) => {
-    await restoreMultipleUsers(ids);
-    refetch();
-  };
+  console.log('UsersManagementPageComponent rendered');
 
   return (
     <>
@@ -64,26 +55,7 @@ function UsersManagementPage() {
             }}
           >
             <EnhancedTableToolbar />
-            <UserManagementTableContainer denseKey="MAIN">
-              {(id) => (
-                <UsersManagementActionsCell
-                  id={id}
-                  deleteHandler={() => {
-                    enqueueSnackbar('User was deleted.', {
-                      action: (snackbarKey) => (
-                        <UndoActions
-                          snackbarKey={snackbarKey}
-                          undoAction={undoAction}
-                          ids={[id]}
-                        ></UndoActions>
-                      ),
-                      anchorOrigin: { vertical: 'bottom', horizontal: 'left' },
-                      autoHideDuration: 7000
-                    });
-                  }}
-                />
-              )}
-            </UserManagementTableContainer>
+            <UserManagementTableContainer denseKey="MAIN" />
           </Card>
           <CreateUserStepperFormDialog
             open={userStepperFormDialogOpenState}
@@ -102,5 +74,7 @@ function UsersManagementPage() {
     </>
   );
 }
+
+const UsersManagementPage = memo(UsersManagementPageComponent);
 
 export { UsersManagementPage };

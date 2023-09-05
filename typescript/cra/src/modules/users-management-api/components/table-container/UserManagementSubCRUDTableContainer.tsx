@@ -1,4 +1,4 @@
-import { formatDate, QueryState, TableNoData } from '@components/table';
+import { formatDate, TableNoData } from '@components/table';
 import { TableOverlayLoader } from '@components/table/loading/TableOverlayLoader';
 import { TableSkeletonLoader } from '@components/table/loading/TableSkeletonLoader';
 import { type Order } from '@components/table/types';
@@ -34,7 +34,6 @@ import {
   useQueryResponseLoading,
   useQueryResponsePagination
 } from '../../core';
-import { initialQueryRequest } from '../../helpers';
 import { StaticDataTableCRUD } from '../static-table';
 import { EnhancedSubCRUDTableHead } from '../table-head';
 
@@ -133,7 +132,6 @@ const UserManagementSubCRUDTableContainer = (props: Props) => {
   const [searchParams] = useSearchParams();
   useEffect(() => {
     if (searchParams.toString()) {
-      updateState(qs.parse(searchParams.toString()) as Partial<QueryState>);
       const sortParam = qs.parse(searchParams.toString()).sort;
       const orderParam = qs.parse(searchParams.toString()).order;
 
@@ -142,10 +140,6 @@ const UserManagementSubCRUDTableContainer = (props: Props) => {
         setOrder(orderParam as Order);
       }
     }
-
-    return () => {
-      updateState(initialQueryRequest.state);
-    };
   }, []);
 
   const handleRequestSort = (event: React.FormEvent<unknown>, property: keyof User | null) => {
