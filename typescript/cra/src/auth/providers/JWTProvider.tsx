@@ -51,6 +51,7 @@ const AuthProvider = ({ children }: PropsWithChildren) => {
   // Verity user session and validate bearer authentication
   const verify = async () => {
     if (auth) {
+      setLoading(true);
       try {
         const { data: user } = await getUser();
         setCurrentUser(user);
@@ -64,7 +65,6 @@ const AuthProvider = ({ children }: PropsWithChildren) => {
   };
 
   useEffect(() => {
-    setLoading(true);
     verify();
   }, []);
 

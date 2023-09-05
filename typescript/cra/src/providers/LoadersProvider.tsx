@@ -25,7 +25,7 @@ const useLoaders = () => useContext(LoadersContext);
 const LoadersProvider = ({ children }: PropsWithChildren) => {
   const [contentLoader, setContentLoader] = useState(false);
   const [progressBarLoader, setProgressBarLoader] = useState(false);
-  const [screenLoader, setScreenLoader] = useState(true);
+  const [screenLoader, setScreenLoader] = useState(false);
 
   return (
     <LoadersContext.Provider

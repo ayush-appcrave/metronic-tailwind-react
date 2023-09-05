@@ -17,7 +17,7 @@ const HeaderUserMenu = () => {
 
     itemRef?.current.closeMenu();
   };
-ƒ
+
   return (
     <Box
       sx={{
