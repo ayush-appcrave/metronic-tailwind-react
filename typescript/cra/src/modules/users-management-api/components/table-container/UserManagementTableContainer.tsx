@@ -15,13 +15,14 @@ import {
   TablePagination,
   TableRow
 } from '@mui/material';
+import { useSnackbar } from 'notistack';
 import qs from 'qs';
-import React, { type ChangeEvent, useEffect, useMemo, useState } from 'react';
+import { type ChangeEvent, memo, ReactNode, useEffect, useMemo, useState } from 'react';
 import { useSearchParams } from 'react-router-dom';
 import { toAbsoluteUrl } from 'utils';
 
-import { EnhancedTableHead } from '../../components';
-import { useQueryResponse, type User } from '../../core';
+import { EnhancedTableHead, UndoActions, UsersManagementActionsCell } from '../../components';
+import { restoreMultipleUsers, useQueryResponse, type User } from '../../core';
 import {
   useListView,
   useQueryRequest,
@@ -29,16 +30,16 @@ import {
   useQueryResponseLoading,
   useQueryResponsePagination
 } from '../../core';
-import { initialQueryRequest, UserQueryState } from '../../helpers';
 
 interface Props {
   denseKey: string;
-  children: (id: string) => React.ReactNode;
+  children?: (id: string) => ReactNode;
 }
 
-const UserManagementTableContainer = (props: Props) => {
+const UserManagementTableContainerComponent = (props: Props) => {
   const { updateState } = useQueryRequest();
   const users = useQueryResponseData();
+  const { enqueueSnackbar } = useSnackbar();
   const data = useMemo(() => users, [users]);
 
   const isLoading = useQueryResponseLoading();
@@ -47,15 +48,15 @@ const UserManagementTableContainer = (props: Props) => {
   const pagination = useQueryResponsePagination();
   const [order, setOrder] = useState<Order>('asc');
   const [orderBy, setOrderBy] = useState<keyof User>('created_at');
-  const [dense, setDense] = useState(
-    localStorage.getItem(`DENSE_DEFAULT_${props.denseKey}_TABLE`) === 'true'
-  );
+  const [dense, setDense] = useState(true);
   const { onSelectAll, selected, onSelect } = useListView();
 
   const [searchParams] = useSearchParams();
+
+  console.log('---------UserManagementTableContainerComponent rerender---------');
+
   useEffect(() => {
     if (searchParams.toString()) {
-      updateState(qs.parse(searchParams.toString()) as Partial<UserQueryState>);
       const sortParam = qs.parse(searchParams.toString()).sort;
       const orderParam = qs.parse(searchParams.toString()).order;
 
@@ -63,13 +64,7 @@ const UserManagementTableContainer = (props: Props) => {
         setOrderBy(sortParam as keyof User);
         setOrder(orderParam as Order);
       }
-    } else {
-      refetch();
     }
-
-    return () => {
-      updateState(initialQueryRequest.state);
-    };
   }, []);
 
   const isSelected = (id: string) => {
@@ -94,6 +89,21 @@ const UserManagementTableContainer = (props: Props) => {
   const handleChangeDense = (event: ChangeEvent<HTMLInputElement>) => {
     localStorage.setItem(`DENSE_DEFAULT_${props.denseKey}_TABLE`, event.target.checked.toString());
     setDense(event.target.checked);
+  };
+
+  const undoAction: (ids: string[]) => Promise<void> = async (ids: string[]) => {
+    await restoreMultipleUsers(ids);
+    refetch();
+  };
+
+  const handleDelete = (id: string) => {
+    enqueueSnackbar('User was deleted.', {
+      action: (snackbarKey) => (
+        <UndoActions snackbarKey={snackbarKey} undoAction={undoAction} ids={[id]}></UndoActions>
+      ),
+      anchorOrigin: { vertical: 'bottom', horizontal: 'left' },
+      autoHideDuration: 7000
+    });
   };
 
   return (
@@ -183,7 +193,16 @@ const UserManagementTableContainer = (props: Props) => {
                     {formatDate(row.created_at)}
                   </TableCell>
                   <TableCell width={'10%'} align="left">
-                    {props.children(row.id)}
+                    {!props.children ? (
+                      <UsersManagementActionsCell
+                        id={row.id}
+                        deleteHandler={() => {
+                          handleDelete(row.id);
+                        }}
+                      />
+                    ) : (
+                      props.children(row.id)
+                    )}
                   </TableCell>
                 </TableRow>
               );
@@ -236,5 +255,7 @@ const UserManagementTableContainer = (props: Props) => {
     </>
   );
 };
+
+const UserManagementTableContainer = memo(UserManagementTableContainerComponent);
 
 export { UserManagementTableContainer };

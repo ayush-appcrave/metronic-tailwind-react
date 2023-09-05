@@ -25,6 +25,7 @@ const QueryResponseProvider: FC<WithChildren> = ({ children }) => {
 
   useEffect(() => {
     if (query !== updatedQuery) {
+      console.log('query was really updated');
       setQuery(updatedQuery);
     }
   }, [updatedQuery]);
@@ -33,13 +34,16 @@ const QueryResponseProvider: FC<WithChildren> = ({ children }) => {
     isFetching,
     refetch,
     data: response
-  } = useQuery<UsersQueryResponse>(
-    `${QUERIES.USERS_LIST}-${query}`,
-    async () => {
+  } = useQuery<UsersQueryResponse>({
+    queryKey: `${QUERIES.USERS_LIST}-${query}`,
+    queryFn: async () => {
+      console.log('Request users');
       return await getUsers(query);
     },
-    { cacheTime: 0, keepPreviousData: true, refetchOnWindowFocus: false }
-  );
+    keepPreviousData: true,
+    refetchOnWindowFocus: false,
+    refetchOnMount: false
+  });
 
   return (
     <QueryResponseContext.Provider value={{ isLoading: isFetching, refetch, response, query }}>

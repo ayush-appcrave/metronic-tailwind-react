@@ -1,5 +1,5 @@
 import { ProgressBarLoader } from '@components/loaders';
-import { formatDate, QueryState, TableNoData } from '@components/table';
+import { formatDate, TableNoData } from '@components/table';
 import { TableOverlayLoader } from '@components/table/loading/TableOverlayLoader';
 import { TableSkeletonLoader } from '@components/table/loading/TableSkeletonLoader';
 import { Order } from '@components/table/types';
@@ -36,7 +36,6 @@ import {
   useQueryResponsePagination,
   type User
 } from '../../core';
-import { initialQueryRequest } from '../../helpers';
 import { EnhancedTableHead } from '../table-head';
 
 interface RowProps {
@@ -260,7 +259,6 @@ const UserManagementInlineEditingTableContainer = () => {
   const [searchParams] = useSearchParams();
   useEffect(() => {
     if (searchParams.toString()) {
-      updateState(qs.parse(searchParams.toString()) as Partial<QueryState>);
       const sortParam = qs.parse(searchParams.toString()).sort;
       const orderParam = qs.parse(searchParams.toString()).order;
 
@@ -269,10 +267,6 @@ const UserManagementInlineEditingTableContainer = () => {
         setOrder(orderParam as Order);
       }
     }
-
-    return () => {
-      updateState(initialQueryRequest.state);
-    };
   }, []);
 
   const handleRequestSort = (property: keyof User | null) => {

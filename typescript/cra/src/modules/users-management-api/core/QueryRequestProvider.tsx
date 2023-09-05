@@ -1,3 +1,4 @@
+import qs from 'qs';
 import { createContext, type FC, type ReactNode, useContext, useState } from 'react';
 import { useSearchParams } from 'react-router-dom';
 
@@ -15,8 +16,11 @@ interface WithChildren {
 const QueryRequestContext = createContext<QueryRequestContextProps>(initialQueryRequest);
 
 const QueryRequestProvider: FC<WithChildren> = ({ children }) => {
-  const [state, setState] = useState<UserQueryState>(initialQueryRequest.state);
   const [searchParams, setSearchParams] = useSearchParams();
+  const [state, setState] = useState<UserQueryState>({
+    ...initialQueryRequest.state,
+    ...(qs.parse(searchParams.toString()) as Partial<UserQueryState>)
+  });
 
   const updateState = (updates: Partial<UserQueryState>, saveToQuery = false) => {
     const updatedState: UserQueryState = { ...state, ...updates };

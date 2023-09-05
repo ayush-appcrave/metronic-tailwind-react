@@ -5,9 +5,18 @@ import { type NavItemChildPropsType } from '..';
 
 export const ListItemIconStyled = styled(ListItemIcon, {
   shouldForwardProp: (prop) =>
-    !['depth', 'menu', 'color', 'styles', 'active', 'here', 'hover', 'open', 'collapse', 'expand'].includes(
-      prop as string
-    )
+    ![
+      'depth',
+      'menu',
+      'color',
+      'styles',
+      'active',
+      'here',
+      'hover',
+      'open',
+      'collapse',
+      'expand'
+    ].includes(prop as string)
 })<NavItemChildPropsType>(({ depth, menu, active, here, hover, open, color, styles }) => {
   return {
     minWidth: 0,
