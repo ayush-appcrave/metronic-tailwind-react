@@ -65,7 +65,7 @@ function UsersManagementOverlayPage() {
             }}
           >
             <EnhancedTableToolbar />
-            <UserManagementTableContainer denseKey="OVERLAY_MODAL">
+            <UserManagementTableContainer>
               {(id) => (
                 <Box
                   sx={{

@@ -175,24 +175,7 @@ export function UsersManagementGridContainer() {
       headerName: 'Actions',
       field: 'actions',
       renderCell: (props: GridRenderCellParams<User>) => {
-        return (
-          <UsersManagementActionsCell
-            id={props.row.id}
-            deleteHandler={() => {
-              enqueueSnackbar('User was deleted.', {
-                action: (snackbarKey) => (
-                  <UndoActions
-                    snackbarKey={snackbarKey}
-                    undoAction={undoAction}
-                    ids={[props.row.id]}
-                  ></UndoActions>
-                ),
-                anchorOrigin: { vertical: 'bottom', horizontal: 'left' },
-                autoHideDuration: 7000
-              });
-            }}
-          />
-        );
+        return <UsersManagementActionsCell id={props.row.id} />;
       },
       flex: 1,
       disableColumnMenu: true,

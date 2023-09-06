@@ -59,15 +59,7 @@ function UsersManagementSubCRUDPage() {
           >
             <EnhancedTableToolbar />
             <UserManagementSubCRUDTableContainer>
-              {(id) => (
-                <UsersManagementActionsCell
-                  id={id}
-                  deleteHandler={() => {
-                    setDeleteId(id);
-                    setOpenUndoSnackbar(true);
-                  }}
-                />
-              )}
+              {(id) => <UsersManagementActionsCell id={id} />}
             </UserManagementSubCRUDTableContainer>
           </Card>
         </PageContainer>

@@ -19,6 +19,7 @@ const QueryRequestProvider: FC<WithChildren> = ({ children }) => {
   const [searchParams, setSearchParams] = useSearchParams();
   const [state, setState] = useState<UserQueryState>({
     ...initialQueryRequest.state,
+    // initialze state with valus from query
     ...(qs.parse(searchParams.toString()) as Partial<UserQueryState>)
   });
 

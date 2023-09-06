@@ -4,14 +4,41 @@ import { useNavigate } from 'react-router';
 
 import { AlertDialogDeleteUser } from '../alerts';
 import { UpdateUserDialog } from '../edit-user/UpdateUserDialog';
+import { UndoActions } from '../undo';
+import { restoreMultipleUsers, useQueryResponse } from '../../core';
+import { useSnackbar } from 'notistack';
 
 interface IUsersManagementActionsCellProps {
   id: string;
-  deleteHandler: (state: boolean) => void;
 }
 
 function UsersManagementActionsCell(props: IUsersManagementActionsCellProps) {
   const navigate = useNavigate();
+  const { refetch } = useQueryResponse();
+  const { enqueueSnackbar } = useSnackbar();
+
+  const undoAction: (ids: string[]) => Promise<void> = async (ids: string[]) => {
+    try {
+      await restoreMultipleUsers(ids);
+      refetch();
+    } catch (err) {
+      console.log(err);
+    }
+  };
+
+  const handleDelete = () => {
+    enqueueSnackbar('User was deleted.', {
+      action: (snackbarKey) => (
+        <UndoActions
+          snackbarKey={snackbarKey}
+          undoAction={undoAction}
+          ids={[props.id]}
+        ></UndoActions>
+      ),
+      anchorOrigin: { vertical: 'bottom', horizontal: 'left' },
+      autoHideDuration: 7000
+    });
+  };
 
   const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
   const [editModalOpen, setEditModalOpen] = useState(false);
@@ -76,7 +103,7 @@ function UsersManagementActionsCell(props: IUsersManagementActionsCellProps) {
         open={openDeleteDialog}
         handleAgreeClose={() => {
           setOpenDeleteDialog(false);
-          props.deleteHandler(true);
+          handleDelete();
         }}
         handleClose={() => {
           setOpenDeleteDialog(false);

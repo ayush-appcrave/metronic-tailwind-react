@@ -55,7 +55,7 @@ function UsersManagementPageComponent() {
             }}
           >
             <EnhancedTableToolbar />
-            <UserManagementTableContainer denseKey="MAIN" />
+            <UserManagementTableContainer />
           </Card>
           <CreateUserStepperFormDialog
             open={userStepperFormDialogOpenState}

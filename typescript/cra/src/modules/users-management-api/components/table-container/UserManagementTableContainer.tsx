@@ -1,109 +1,36 @@
-import { formatDate, TableNoData } from '@components/table';
-import { TableOverlayLoader } from '@components/table/loading/TableOverlayLoader';
-import { TableSkeletonLoader } from '@components/table/loading/TableSkeletonLoader';
-import { type Order } from '@components/table/types';
+import { formatDate } from '@components/table';
 import {
   Avatar,
   Box,
   Checkbox,
-  FormControlLabel,
-  Switch,
   Table,
   TableBody,
   TableCell,
   TableContainer,
-  TablePagination,
   TableRow
 } from '@mui/material';
-import { useSnackbar } from 'notistack';
-import qs from 'qs';
-import { type ChangeEvent, memo, ReactNode, useEffect, useMemo, useState } from 'react';
-import { useSearchParams } from 'react-router-dom';
+import { memo, ReactNode, useMemo, useState } from 'react';
 import { toAbsoluteUrl } from 'utils';
 
-import { EnhancedTableHead, UndoActions, UsersManagementActionsCell } from '../../components';
-import { restoreMultipleUsers, useQueryResponse, type User } from '../../core';
-import {
-  useListView,
-  useQueryRequest,
-  useQueryResponseData,
-  useQueryResponseLoading,
-  useQueryResponsePagination
-} from '../../core';
+import { UsersManagementActionsCell } from '../../components';
+import { useListView, useQueryResponseData } from '../../core';
+import { EmptyTable } from '../empty-table/EmptyTable';
+import { TableFooter } from '../table-footer/TableFooter';
+import { EnhancedTableHeadWrapper } from '../table-head/EnhancedTableHeadWrapper';
+import { TableLoader } from '../table-loader/TableLoader';
 
 interface Props {
-  denseKey: string;
   children?: (id: string) => ReactNode;
 }
 
 const UserManagementTableContainerComponent = (props: Props) => {
-  const { updateState } = useQueryRequest();
   const users = useQueryResponseData();
-  const { enqueueSnackbar } = useSnackbar();
   const data = useMemo(() => users, [users]);
-
-  const isLoading = useQueryResponseLoading();
-  const { refetch } = useQueryResponse();
-
-  const pagination = useQueryResponsePagination();
-  const [order, setOrder] = useState<Order>('asc');
-  const [orderBy, setOrderBy] = useState<keyof User>('created_at');
+  const { selected, onSelect } = useListView();
   const [dense, setDense] = useState(true);
-  const { onSelectAll, selected, onSelect } = useListView();
-
-  const [searchParams] = useSearchParams();
-
-  console.log('---------UserManagementTableContainerComponent rerender---------');
-
-  useEffect(() => {
-    if (searchParams.toString()) {
-      const sortParam = qs.parse(searchParams.toString()).sort;
-      const orderParam = qs.parse(searchParams.toString()).order;
-
-      if (sortParam && orderParam) {
-        setOrderBy(sortParam as keyof User);
-        setOrder(orderParam as Order);
-      }
-    }
-  }, []);
 
   const isSelected = (id: string) => {
     return selected.includes(id);
-  };
-
-  const handleRequestSort = (property: keyof User | null) => {
-    if (property) {
-      setOrderBy(property);
-      const isAsc = orderBy === property && order === 'asc';
-      setOrder(isAsc ? 'desc' : 'asc');
-      updateState({ sort: property, order: isAsc ? 'desc' : 'asc' }, true);
-    }
-  };
-
-  const handleChangePage = (event: unknown, newPage: number) => {
-    updateState({ page: newPage + 1 }, true);
-  };
-  const handleChangeRowsPerPage = (event: ChangeEvent<HTMLInputElement>) => {
-    updateState({ items_per_page: event.target.value as unknown as 5 | 10 | 25 }, true);
-  };
-  const handleChangeDense = (event: ChangeEvent<HTMLInputElement>) => {
-    localStorage.setItem(`DENSE_DEFAULT_${props.denseKey}_TABLE`, event.target.checked.toString());
-    setDense(event.target.checked);
-  };
-
-  const undoAction: (ids: string[]) => Promise<void> = async (ids: string[]) => {
-    await restoreMultipleUsers(ids);
-    refetch();
-  };
-
-  const handleDelete = (id: string) => {
-    enqueueSnackbar('User was deleted.', {
-      action: (snackbarKey) => (
-        <UndoActions snackbarKey={snackbarKey} undoAction={undoAction} ids={[id]}></UndoActions>
-      ),
-      anchorOrigin: { vertical: 'bottom', horizontal: 'left' },
-      autoHideDuration: 7000
-    });
   };
 
   return (
@@ -114,14 +41,7 @@ const UserManagementTableContainerComponent = (props: Props) => {
           aria-labelledby="tableTitle"
           size={dense ? 'small' : 'medium'}
         >
-          <EnhancedTableHead
-            numSelected={selected.length}
-            order={order}
-            orderBy={orderBy}
-            onSelectAllClick={onSelectAll}
-            onRequestSort={handleRequestSort}
-            rowCount={pagination.total ? pagination.total : 0}
-          />
+          <EnhancedTableHeadWrapper />
           <TableBody
             sx={{
               position: 'relative'
@@ -194,12 +114,7 @@ const UserManagementTableContainerComponent = (props: Props) => {
                   </TableCell>
                   <TableCell width={'10%'} align="left">
                     {!props.children ? (
-                      <UsersManagementActionsCell
-                        id={row.id}
-                        deleteHandler={() => {
-                          handleDelete(row.id);
-                        }}
-                      />
+                      <UsersManagementActionsCell id={row.id} />
                     ) : (
                       props.children(row.id)
                     )}
@@ -207,51 +122,12 @@ const UserManagementTableContainerComponent = (props: Props) => {
                 </TableRow>
               );
             })}
-            {isLoading &&
-              (data.length ? (
-                <TableOverlayLoader
-                  colSpan={8}
-                  itemsPerPage={pagination.items_per_page ? pagination.items_per_page : 10}
-                  rowHeight={dense ? 49 : 69}
-                ></TableOverlayLoader>
-              ) : (
-                <TableSkeletonLoader
-                  itemsPerPage={pagination.items_per_page ? pagination.items_per_page : 10}
-                ></TableSkeletonLoader>
-              ))}
-            {!pagination.total && !isLoading && <TableNoData colSpan={8}></TableNoData>}
+            <TableLoader dense={dense}></TableLoader>
+            <EmptyTable></EmptyTable>
           </TableBody>
         </Table>
       </TableContainer>
-      <Box
-        sx={{
-          display: 'flex',
-          justifyContent: 'space-between',
-          alignItems: 'center',
-          py: {
-            sm: 1,
-            lg: 2
-          },
-          px: {
-            sm: 1,
-            lg: 3
-          }
-        }}
-      >
-        <FormControlLabel
-          label="Dense"
-          control={<Switch checked={dense} onChange={handleChangeDense} />}
-        />
-        <TablePagination
-          rowsPerPageOptions={[5, 10, 25]}
-          component="div"
-          count={pagination.total ? pagination.total : 0}
-          rowsPerPage={Number(pagination.items_per_page)}
-          page={pagination.current_page ? pagination.current_page - 1 : 0}
-          onPageChange={handleChangePage}
-          onRowsPerPageChange={handleChangeRowsPerPage}
-        />
-      </Box>
+      <TableFooter dense={dense} setDense={setDense}></TableFooter>
     </>
   );
 };

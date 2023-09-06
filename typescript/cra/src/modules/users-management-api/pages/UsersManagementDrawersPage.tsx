@@ -48,7 +48,7 @@ function UsersManagementDrawersPage() {
             }}
           >
             <EnhancedTableToolbar />
-            <UserManagementTableContainer denseKey="DRAWERS">
+            <UserManagementTableContainer>
               {(id) => (
                 <Box
                   sx={{
