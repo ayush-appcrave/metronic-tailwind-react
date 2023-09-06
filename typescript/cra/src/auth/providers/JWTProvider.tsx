@@ -51,21 +51,22 @@ const AuthProvider = ({ children }: PropsWithChildren) => {
   // Verity user session and validate bearer authentication
   const verify = async () => {
     if (auth) {
-      setLoading(true);
       try {
         const { data: user } = await getUser();
         setCurrentUser(user);
       } catch (error) {
         saveAuth(undefined);
         setCurrentUser(undefined);
-      } finally {
-        setLoading(false);
       }
     }
   };
 
   useEffect(() => {
-    verify();
+    (async () => {
+      setLoading(true);
+      await verify();
+      setLoading(false);
+    })();
   }, []);
 
   // Set auth object and save it to local storage

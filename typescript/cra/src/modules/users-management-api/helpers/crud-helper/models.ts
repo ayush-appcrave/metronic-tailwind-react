@@ -2,9 +2,9 @@
 import { type PaginationState, QueryState } from '@components/table/types';
 import { GridFilterItem } from '@mui/x-data-grid';
 import { type Dispatch, type SetStateAction } from 'react';
+import { QueryObserverResult } from 'react-query';
 
 import { type UsersQueryResponse } from '../../core/_models';
-import { QueryObserverResult } from 'react-query';
 
 export interface SearchState {
   search?: string;
@@ -30,8 +30,7 @@ export interface QueryRequestContextProps {
 export const initialQueryState: PaginationState = {
   current_page: 1,
   items_per_page: 10,
-  total: 0,
-  page: 0
+  page: 1
 };
 
 export const initialQueryRequest: QueryRequestContextProps = {
