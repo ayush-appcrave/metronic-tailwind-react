@@ -1,7 +1,7 @@
 import { ReactElement, useEffect, useState } from 'react';
 import { Navigate, Route, Routes, useLocation } from 'react-router';
 
-import { AuthPage } from '../auth';
+import { AuthPage, useAuthContext } from '../auth';
 import { RequireAuth } from '../auth/RequireAuth';
 import { DefaultLayout } from '../layouts/default';
 import { ErrorsPage } from '../modules/errors';
@@ -11,21 +11,35 @@ import { useLoaders } from '../providers/LoadersProvider';
 
 const AppRouting = (): ReactElement => {
   const { setProgressBarLoader } = useLoaders();
-  const [previousPathname, setPreviousPathname] = useState('');
+  const { verify } = useAuthContext();
+  const [previousLocation, setPreviousLocation] = useState('');
   const location = useLocation();
 
-  useEffect(() => {
-    setProgressBarLoader(true);
-    setPreviousPathname(location.pathname);
+  const init = async () => {
+    try {
+      if (verify) {
+        await verify();
+      }
+    } catch (error) {
+      throw new Error('Something went wrong!');
+    } finally {
+      setProgressBarLoader(true);
 
-    if (location.pathname === previousPathname) {
-      setPreviousPathname('');
+      setPreviousLocation(location.pathname);
+
+      if (location.pathname === previousLocation) {
+        setPreviousLocation('');
+      }
     }
-  }, [location.pathname]);
+  };
+
+  useEffect(() => {
+    init();
+  }, [location]);
 
   useEffect(() => {
     setProgressBarLoader(false);
-  }, [previousPathname]);
+  }, [previousLocation]);
 
   return (
     <Routes>
