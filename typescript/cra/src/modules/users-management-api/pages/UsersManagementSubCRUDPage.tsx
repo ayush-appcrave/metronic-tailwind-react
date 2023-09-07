@@ -2,7 +2,7 @@ import { useNavBreadcrumbs } from '@components/nav';
 import { PageContainer } from '@components/page-container';
 import { Box, Button, Card } from '@mui/material';
 import { NAV_VERTICAL } from 'configs';
-import React, { useState } from 'react';
+import { useState } from 'react';
 import { Helmet } from 'react-helmet';
 
 import { Content, Intro, Toolbar } from '../../../layouts/default';

@@ -15,7 +15,7 @@ function TableFooter(props: TableFooterProps) {
   const pageLSKey = `DENSE_DEFAULT_${locationPart}_TABLE`;
 
   useEffect(() => {
-    props.setDense(Boolean(localStorage.getItem(pageLSKey)));
+    props.setDense(localStorage.getItem(pageLSKey) === 'true');
   }, []);
 
   const handleChangeDense = (event: ChangeEvent<HTMLInputElement>) => {
