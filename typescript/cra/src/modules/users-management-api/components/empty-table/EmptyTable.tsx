@@ -6,9 +6,7 @@ function EmptyTable() {
   const pagination = useQueryResponsePagination();
   const isLoading = useQueryResponseLoading();
 
-  return (
-    <>{!pagination.total && !isLoading && <TableNoData colSpan={8}></TableNoData>}</>
-  );
+  return <>{!pagination.total && !isLoading && <TableNoData colSpan={8}></TableNoData>}</>;
 }
 
 export { EmptyTable };

@@ -1,6 +1,6 @@
 import { useNavBreadcrumbs } from '@components/nav';
 import { PageContainer } from '@components/page-container';
-import { Box, Button, Card } from '@mui/material';
+import { Button, Card } from '@mui/material';
 import { NAV_VERTICAL } from 'configs';
 import { useState } from 'react';
 import { Helmet } from 'react-helmet';
@@ -9,17 +9,12 @@ import { Content, Intro, Toolbar } from '../../../layouts/default';
 import {
   CreateUserDrawer,
   EnhancedTableToolbar,
-  UpdateUserDrawer,
-  UserManagementTableContainer,
-  ViewUserDrawer
+  UserManagementTableContainer
 } from '../components';
+import { UserManagementDrawerActionsCell } from '../components/cells/UserManagementDrawerActionsCell';
 
 function UsersManagementDrawersPage() {
   const [openCreateUserDrawerState, setOpenCreateUserDrawerState] = useState(false);
-  const [openUpdateDrawerState, setOpenUpdateDrawerState] = useState<boolean>(false);
-  const [openViewDrawerState, setOpenViewDrawerState] = useState<boolean>(false);
-  const [updateUserIdState, setUpdateUserIdState] = useState('-1');
-  const [viewUserIdState, setViewUserIdState] = useState('-1');
   const breadcrumbs = useNavBreadcrumbs(NAV_VERTICAL);
 
   return (
@@ -49,30 +44,7 @@ function UsersManagementDrawersPage() {
           >
             <EnhancedTableToolbar />
             <UserManagementTableContainer>
-              {(id) => (
-                <Box
-                  sx={{
-                    display: 'flex'
-                  }}
-                >
-                  <Button
-                    onClick={(e) => {
-                      setUpdateUserIdState(id);
-                      setOpenUpdateDrawerState(true);
-                    }}
-                  >
-                    Edit
-                  </Button>
-                  <Button
-                    onClick={(e) => {
-                      setViewUserIdState(id);
-                      setOpenViewDrawerState(true);
-                    }}
-                  >
-                    View
-                  </Button>
-                </Box>
-              )}
+              {(id) => <UserManagementDrawerActionsCell id={id}></UserManagementDrawerActionsCell>}
             </UserManagementTableContainer>
           </Card>
         </PageContainer>
@@ -82,20 +54,6 @@ function UsersManagementDrawersPage() {
             setOpenCreateUserDrawerState(false);
           }}
         ></CreateUserDrawer>
-        <UpdateUserDrawer
-          open={openUpdateDrawerState}
-          userId={updateUserIdState}
-          handleClose={() => {
-            setOpenUpdateDrawerState(false);
-          }}
-        ></UpdateUserDrawer>
-        <ViewUserDrawer
-          open={openViewDrawerState}
-          userId={viewUserIdState}
-          handleClose={() => {
-            setOpenViewDrawerState(false);
-          }}
-        ></ViewUserDrawer>
       </Content>
     </>
   );

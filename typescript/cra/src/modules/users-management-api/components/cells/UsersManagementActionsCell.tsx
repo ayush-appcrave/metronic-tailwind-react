@@ -1,12 +1,12 @@
 import { Button, Menu, MenuItem } from '@mui/material';
+import { useSnackbar } from 'notistack';
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router';
 
+import { restoreMultipleUsers, useQueryResponse } from '../../core';
 import { AlertDialogDeleteUser } from '../alerts';
 import { UpdateUserDialog } from '../edit-user/UpdateUserDialog';
 import { UndoActions } from '../undo';
-import { restoreMultipleUsers, useQueryResponse } from '../../core';
-import { useSnackbar } from 'notistack';
 
 interface IUsersManagementActionsCellProps {
   id: string;

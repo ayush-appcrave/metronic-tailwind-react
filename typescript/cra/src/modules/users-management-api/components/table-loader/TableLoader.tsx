@@ -35,4 +35,4 @@ function TableLoader(props: TableLoaderProps) {
   );
 }
 
-export { TableLoader }
+export { TableLoader };

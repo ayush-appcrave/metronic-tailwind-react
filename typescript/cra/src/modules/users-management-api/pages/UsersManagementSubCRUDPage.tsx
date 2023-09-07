@@ -10,7 +10,6 @@ import {
   CreateUserDrawer,
   CreateUserStepperFormDialog,
   EnhancedTableToolbar,
-  UndoSnackbar,
   UserManagementSubCRUDTableContainer,
   UsersManagementActionsCell
 } from '../components';
@@ -19,9 +18,6 @@ function UsersManagementSubCRUDPage() {
   const [userStepperFormDialogOpenState, setUserStepperFormDialogOpenState] = useState(false);
   const [createUserDrawerOpenState, setCreateUserDrawerOpenState] = useState(false);
   const breadcrumbs = useNavBreadcrumbs(NAV_VERTICAL);
-
-  const [openUndoSnackbar, setOpenUndoSnackbar] = useState(false);
-  const [deleteId, setDeleteId] = useState('-1');
 
   return (
     <>
@@ -75,13 +71,6 @@ function UsersManagementSubCRUDPage() {
             setCreateUserDrawerOpenState(false);
           }}
         ></CreateUserDrawer>
-        <UndoSnackbar
-          userId={deleteId}
-          open={openUndoSnackbar}
-          onClose={() => {
-            setOpenUndoSnackbar(false);
-          }}
-        ></UndoSnackbar>
       </Content>
     </>
   );
