@@ -54,13 +54,7 @@ function UsersManagementOverlayPage() {
             }}
           >
             <EnhancedTableToolbar />
-            <UserManagementTableContainer>
-              {(id) => (
-                <UserManagementModalOverlayActionCell
-                  id={id}
-                ></UserManagementModalOverlayActionCell>
-              )}
-            </UserManagementTableContainer>
+            <UserManagementTableContainer></UserManagementTableContainer>
           </Card>
         </PageContainer>
         <CreateUserStepperFormDialog

@@ -10,11 +10,10 @@ import {
   CreateUserDrawer,
   CreateUserStepperFormDialog,
   EnhancedTableToolbar,
-  UserManagementSkeletonTableContainer,
-  UsersManagementActionsCell
+  UserManagementSubCRUDTableContainer
 } from '../components';
 
-function UsersManagementSkeletonPage() {
+function UsersManagementSubCRUDPage() {
   const [userStepperFormDialogOpenState, setUserStepperFormDialogOpenState] = useState(false);
   const [createUserDrawerOpenState, setCreateUserDrawerOpenState] = useState(false);
   const breadcrumbs = useNavBreadcrumbs(NAV_VERTICAL);
@@ -22,11 +21,11 @@ function UsersManagementSkeletonPage() {
   return (
     <>
       <Helmet>
-        <title>Users Management Skeleton Loading Page</title>
+        <title>Users Management Sub CRUD Page</title>
       </Helmet>
 
       <Toolbar>
-        <Intro title={`Users Management Skeleton Loading Page`} breadcrumbs={breadcrumbs} />
+        <Intro title={`Users Management Sub CRUD Page`} breadcrumbs={breadcrumbs} />
         <Box>
           <Button
             onClick={(e) => {
@@ -54,26 +53,24 @@ function UsersManagementSkeletonPage() {
             }}
           >
             <EnhancedTableToolbar />
-            <UserManagementSkeletonTableContainer denseKey="MAIN">
-              {(id) => <UsersManagementActionsCell id={id} />}
-            </UserManagementSkeletonTableContainer>
+            <UserManagementSubCRUDTableContainer></UserManagementSubCRUDTableContainer>
           </Card>
-          <CreateUserStepperFormDialog
-            open={userStepperFormDialogOpenState}
-            handleClose={() => {
-              setUserStepperFormDialogOpenState(false);
-            }}
-          ></CreateUserStepperFormDialog>
-          <CreateUserDrawer
-            open={createUserDrawerOpenState}
-            handleClose={() => {
-              setCreateUserDrawerOpenState(false);
-            }}
-          ></CreateUserDrawer>
         </PageContainer>
+        <CreateUserStepperFormDialog
+          open={userStepperFormDialogOpenState}
+          handleClose={() => {
+            setUserStepperFormDialogOpenState(false);
+          }}
+        ></CreateUserStepperFormDialog>
+        <CreateUserDrawer
+          open={createUserDrawerOpenState}
+          handleClose={() => {
+            setCreateUserDrawerOpenState(false);
+          }}
+        ></CreateUserDrawer>
       </Content>
     </>
   );
 }
 
-export { UsersManagementSkeletonPage };
+export { UsersManagementSubCRUDPage };

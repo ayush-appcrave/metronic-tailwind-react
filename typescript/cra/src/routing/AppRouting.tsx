@@ -5,7 +5,7 @@ import { AuthPage, useAuthContext } from '../auth';
 import { RequireAuth } from '../auth/RequireAuth';
 import { DefaultLayout } from '../layouts/default';
 import { ErrorsPage } from '../modules/errors';
-import { UsersManagementWrapper } from '../modules/users-management-api';
+import { UsersManagementWrapper } from '../modules/users-management';
 import { DashboardPage, EcommercePage, MarketingPage } from '../pages';
 import { useLoaders } from '../providers/LoadersProvider';
 

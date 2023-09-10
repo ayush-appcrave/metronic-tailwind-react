@@ -6,7 +6,7 @@ import { useSnackbar } from 'notistack';
 import React, { type ChangeEvent, useState } from 'react';
 import { useMutation, useQueryClient } from 'react-query';
 
-import { AlertDialogDeleteMultiple } from '../../components';
+import { AlertDialogDeleteMultiple } from '..';
 import { type User } from '../../core';
 import {
   deleteSelectedUsers,

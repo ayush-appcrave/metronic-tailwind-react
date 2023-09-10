@@ -1,15 +1,11 @@
 import { Table, TableContainer } from '@mui/material';
-import { memo, ReactNode, useState } from 'react';
+import { memo, useState } from 'react';
 
-import { TableBodyCustom } from '../table-content/TableBodyCustom';
+import { TableBodySkeletonLoadingCustom } from '../table-content/TableBodySkeletonLoadingCustom';
 import { TableFooter } from '../table-footer/TableFooter';
 import { EnhancedTableHeadWrapper } from '../table-head/EnhancedTableHeadWrapper';
 
-interface Props {
-  children?: (id: string) => ReactNode;
-}
-
-const UserManagementTableContainerComponent = (props: Props) => {
+const UserManagementSkeletonTableContainerComponent = () => {
   const [dense, setDense] = useState(true);
 
   return (
@@ -21,7 +17,7 @@ const UserManagementTableContainerComponent = (props: Props) => {
           size={dense ? 'small' : 'medium'}
         >
           <EnhancedTableHeadWrapper />
-          <TableBodyCustom dense={dense} />
+          <TableBodySkeletonLoadingCustom dense={dense} />
         </Table>
       </TableContainer>
       <TableFooter dense={dense} setDense={setDense}></TableFooter>
@@ -29,6 +25,6 @@ const UserManagementTableContainerComponent = (props: Props) => {
   );
 };
 
-const UserManagementTableContainer = memo(UserManagementTableContainerComponent);
+const UserManagementSkeletonTableContainer = memo(UserManagementSkeletonTableContainerComponent);
 
-export { UserManagementTableContainer };
+export { UserManagementSkeletonTableContainer };

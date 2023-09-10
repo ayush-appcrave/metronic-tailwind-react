@@ -11,7 +11,6 @@ import {
   EnhancedTableToolbar,
   UserManagementTableContainer
 } from '../components';
-import { UserManagementDrawerActionsCell } from '../components/cells/UserManagementDrawerActionsCell';
 
 function UsersManagementDrawersPage() {
   const [openCreateUserDrawerState, setOpenCreateUserDrawerState] = useState(false);
@@ -43,9 +42,7 @@ function UsersManagementDrawersPage() {
             }}
           >
             <EnhancedTableToolbar />
-            <UserManagementTableContainer>
-              {(id) => <UserManagementDrawerActionsCell id={id}></UserManagementDrawerActionsCell>}
-            </UserManagementTableContainer>
+            <UserManagementTableContainer></UserManagementTableContainer>
           </Card>
         </PageContainer>
         <CreateUserDrawer

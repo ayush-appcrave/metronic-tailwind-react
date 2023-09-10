@@ -19,11 +19,7 @@ import { useEffect, useMemo, useState } from 'react';
 import { useMutation, useQueryClient } from 'react-query';
 import { toAbsoluteUrl } from 'utils';
 
-import {
-  AlertDialogDeleteMultiple,
-  UndoActions,
-  UsersManagementActionsCell
-} from '../../components';
+import { AlertDialogDeleteMultiple, UndoActions, UsersManagementActionsCell } from '..';
 import {
   deleteSelectedUsers,
   restoreMultipleUsers,
