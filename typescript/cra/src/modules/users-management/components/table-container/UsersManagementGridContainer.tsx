@@ -19,7 +19,6 @@ import { useEffect, useMemo, useState } from 'react';
 import { useMutation, useQueryClient } from 'react-query';
 import { toAbsoluteUrl } from 'utils';
 
-import { AlertDialogDeleteMultiple, UndoActions, UsersManagementActionsCell } from '..';
 import {
   deleteSelectedUsers,
   restoreMultipleUsers,
@@ -32,6 +31,7 @@ import {
   User
 } from '../../core';
 import { initialQueryRequest, initialQueryState, QUERIES } from '../../helpers';
+import { AlertDialogDeleteMultiple, UndoActions, UsersManagementActionsCell } from '..';
 
 interface Props {
   deleteHandler: () => void;

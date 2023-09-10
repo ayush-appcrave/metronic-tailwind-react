@@ -12,7 +12,6 @@ import {
   EnhancedTableToolbar,
   UserManagementTableContainer
 } from '../components';
-import { UserManagementModalOverlayActionCell } from '../components/cells/UserManagementModalOverlayActionCell';
 
 function UsersManagementOverlayPage() {
   const [userStepperDialogOpenState, setUserStepperDialogOpenState] = useState(false);

@@ -5,7 +5,7 @@ import { memo, useState } from 'react';
 import { useQueryResponseLoading } from '../../core';
 import { TableBodySubCRUDCustom } from '../table-content/TableBodySubCRUDCustom';
 import { TableFooter } from '../table-footer/TableFooter';
-import { EnhancedTableHeadWrapper } from '../table-head/EnhancedTableHeadWrapper';
+import { EnhancedSubCRUDTableHeadWrapper } from '../table-head/EnhancedSubCRUDTableHeadWrapper';
 
 const UserManagementSubCRUDTableContainerComponent = () => {
   const [dense, setDense] = useState(true);
@@ -19,7 +19,7 @@ const UserManagementSubCRUDTableContainerComponent = () => {
           aria-labelledby="tableTitle"
           size={dense ? 'small' : 'medium'}
         >
-          <EnhancedTableHeadWrapper />
+          <EnhancedSubCRUDTableHeadWrapper />
           {isLoading && (
             <Box
               sx={{
