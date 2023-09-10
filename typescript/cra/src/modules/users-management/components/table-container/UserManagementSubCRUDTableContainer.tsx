@@ -1,8 +1,9 @@
 import { Box, LinearProgress, Table, TableContainer } from '@mui/material';
 import zIndex from '@mui/material/styles/zIndex';
-import { memo, useState } from 'react';
+import { memo, useEffect, useState } from 'react';
 
-import { useQueryResponseLoading } from '../../core';
+import { useQueryRequest, useQueryResponseLoading } from '../../core';
+import { initialQueryRequest } from '../../helpers';
 import { TableBodySubCRUDCustom } from '../table-content/TableBodySubCRUDCustom';
 import { TableFooter } from '../table-footer/TableFooter';
 import { EnhancedSubCRUDTableHeadWrapper } from '../table-head/EnhancedSubCRUDTableHeadWrapper';
@@ -10,6 +11,14 @@ import { EnhancedSubCRUDTableHeadWrapper } from '../table-head/EnhancedSubCRUDTa
 const UserManagementSubCRUDTableContainerComponent = () => {
   const [dense, setDense] = useState(true);
   const isLoading = useQueryResponseLoading();
+
+  const { updateState } = useQueryRequest();
+
+  useEffect(() => {
+    return () => {
+      updateState(initialQueryRequest.state);
+    };
+  }, []);
 
   return (
     <>

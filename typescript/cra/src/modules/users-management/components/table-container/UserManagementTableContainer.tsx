@@ -1,12 +1,22 @@
 import { Table, TableContainer } from '@mui/material';
-import { memo, useState } from 'react';
+import { memo, useEffect, useState } from 'react';
 
+import { useQueryRequest } from '../../core';
+import { initialQueryRequest } from '../../helpers';
 import { TableBodyCustom } from '../table-content/TableBodyCustom';
 import { TableFooter } from '../table-footer/TableFooter';
 import { EnhancedTableHeadWrapper } from '../table-head/EnhancedTableHeadWrapper';
 
 const UserManagementTableContainerComponent = () => {
   const [dense, setDense] = useState(true);
+
+  const { updateState } = useQueryRequest();
+
+  useEffect(() => {
+    return () => {
+      updateState(initialQueryRequest.state);
+    };
+  }, []);
 
   return (
     <>

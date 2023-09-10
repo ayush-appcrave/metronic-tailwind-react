@@ -1,7 +1,8 @@
-import { Button, Menu, MenuItem } from '@mui/material';
+import { KeenIcon } from '@components/keenicons';
+import { Nav, NavItem, NavItemButton, NavItemSub } from '@components/nav';
+import { IconButton } from '@mui/material';
 import { useSnackbar } from 'notistack';
 import React, { useState } from 'react';
-import { useNavigate } from 'react-router';
 
 import { restoreMultipleUsers, useQueryResponse } from '../../core';
 import { AlertDialogDeleteUser } from '../alerts';
@@ -13,7 +14,6 @@ interface IUsersManagementActionsCellProps {
 }
 
 function UsersManagementActionsCell(props: IUsersManagementActionsCellProps) {
-  const navigate = useNavigate();
   const { refetch } = useQueryResponse();
   const { enqueueSnackbar } = useSnackbar();
 
@@ -39,65 +39,71 @@ function UsersManagementActionsCell(props: IUsersManagementActionsCellProps) {
       autoHideDuration: 7000
     });
   };
-
-  const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
   const [editModalOpen, setEditModalOpen] = useState(false);
   const [openDeleteDialog, setOpenDeleteDialog] = useState(false);
-  const open = Boolean(anchorEl);
-
-  const handleHover = (event: React.MouseEvent<any>) => {
-    setAnchorEl(event.currentTarget);
-  };
-  const handleClose = () => {
-    setAnchorEl(null);
-  };
-
-  const handleUserEdit = () => {
-    navigate(`/users-management/edit/user/${props.id}`);
-  };
-
-  const handleUserView = () => {
-    navigate(`/users-management/view/user/${props.id}`);
-  };
 
   return (
     <>
-      <Button
-        id="basic-button"
-        aria-controls={open ? 'basic-menu' : undefined}
-        aria-haspopup="true"
-        aria-expanded={open ? 'true' : undefined}
-        onClick={handleHover}
-      >
-        Actions
-      </Button>
-      <Menu
-        id="basic-menu"
-        anchorEl={anchorEl}
-        open={open}
-        onClose={handleClose}
-        onClick={handleClose}
-        MenuListProps={{
-          'aria-labelledby': 'basic-button'
-        }}
-      >
-        <MenuItem onClick={handleUserView}>View</MenuItem>
-        <MenuItem onClick={handleUserEdit}>Edit</MenuItem>
-        <MenuItem
-          onClick={(e) => {
-            setEditModalOpen(true);
-          }}
-        >
-          Edit In Modal
-        </MenuItem>
-        <MenuItem
-          onClick={() => {
-            setOpenDeleteDialog(true);
-          }}
-        >
-          Delete
-        </MenuItem>
-      </Menu>
+      <Nav>
+        <NavItem>
+          <NavItemButton>
+            <IconButton>
+              <KeenIcon icon="dots-circle" />
+            </IconButton>
+          </NavItemButton>
+          <NavItemSub
+            toggle={{
+              breakpoints: {
+                up: {
+                  md: 'hover'
+                },
+                down: {
+                  md: 'click'
+                }
+              }
+            }}
+            menu={true}
+            menuWidth="200px"
+            menuProps={{
+              anchorOrigin: {
+                horizontal: 'right',
+                vertical: 'bottom'
+              },
+              transformOrigin: {
+                horizontal: 'right',
+                vertical: 'top'
+              }
+            }}
+          >
+            <NavItem
+              title="View"
+              path={`/users-management/view/user/${props.id}`}
+              icon={<KeenIcon icon="user" />}
+            />
+            <NavItem
+              path={`/users-management/edit/user/${props.id}`}
+              title="Edit"
+              icon={<KeenIcon icon="user-edit" />}
+            />
+            <NavItem
+              path="#"
+              title="Edit (modal)"
+              onLinkClick={(e) => {
+                setEditModalOpen(true);
+              }}
+              icon={<KeenIcon icon="message-edit" />}
+            />
+            <NavItem
+              path="#"
+              onLinkClick={() => {
+                setOpenDeleteDialog(true);
+              }}
+              title="Delete"
+              icon={<KeenIcon icon="tablet-delete" />}
+            />
+          </NavItemSub>
+        </NavItem>
+      </Nav>
 
       <AlertDialogDeleteUser
         open={openDeleteDialog}

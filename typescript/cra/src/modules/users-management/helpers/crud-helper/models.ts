@@ -11,7 +11,7 @@ export interface SearchState {
 }
 
 export interface FilterState {
-  role?: 'all' | 'user' | 'admin';
+  role?: '' | 'all' | 'user' | 'admin';
   advanced?: GridFilterItem[];
 }
 
@@ -27,10 +27,12 @@ export interface QueryRequestContextProps {
   updateState: (updates: Partial<UserQueryState>, saveToQuery?: boolean | undefined) => void;
 }
 
-export const initialQueryState: PaginationState = {
+export const initialQueryState: PaginationState & FilterState & SearchState = {
   current_page: 1,
   items_per_page: 10,
-  page: 1
+  page: 1,
+  role: '',
+  search: ''
 };
 
 export const initialQueryRequest: QueryRequestContextProps = {

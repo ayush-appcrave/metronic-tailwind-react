@@ -18,8 +18,6 @@ function UsersManagementPageComponent() {
   const [createUserDrawerOpenState, setCreateUserDrawerOpenState] = useState(false);
   const breadcrumbs = useNavBreadcrumbs(NAV_VERTICAL);
 
-  console.log('UsersManagementPageComponent rendered');
-
   return (
     <>
       <Helmet>

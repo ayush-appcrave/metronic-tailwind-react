@@ -1,8 +1,9 @@
 import { ProgressBarLoader } from '@components/loaders';
 import { Table, TableContainer } from '@mui/material';
-import { memo, useState } from 'react';
+import { memo, useEffect, useState } from 'react';
 
-import { useQueryResponseLoading } from '../../core';
+import { useQueryRequest, useQueryResponseLoading } from '../../core';
+import { initialQueryRequest } from '../../helpers';
 import { TableBodyInlineEditingCustom } from '../table-content/TableBodyInlineEditingCustom';
 import { TableFooter } from '../table-footer/TableFooter';
 import { EnhancedTableHeadWrapper } from '../table-head/EnhancedTableHeadWrapper';
@@ -10,6 +11,14 @@ import { EnhancedTableHeadWrapper } from '../table-head/EnhancedTableHeadWrapper
 const UserManagementInlineEditingTableContainerComponent = () => {
   const [dense, setDense] = useState(true);
   const isLoading = useQueryResponseLoading();
+
+  const { updateState } = useQueryRequest();
+
+  useEffect(() => {
+    return () => {
+      updateState(initialQueryRequest.state);
+    };
+  }, []);
 
   return (
     <>
