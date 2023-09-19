@@ -1,7 +1,6 @@
-import { Box, MenuItem, useTheme } from '@mui/material';
+import { Box, Menu, MenuItem, useTheme } from '@mui/material';
 import { type MouseEvent, useState } from 'react';
 
-import { MenuDropdown } from '../../../components';
 import { I18N_LANGUAGES } from '../../../i18n/config';
 import { type LanguageType } from '../../../i18n/types';
 import { useLang } from '../../../providers/TranslationProvider';
@@ -47,11 +46,11 @@ const HeaderLanguageMenu = () => {
         aria-controls={open ? 'language-menu' : undefined}
         aria-expanded={open ? 'true' : undefined}
       />
-      <MenuDropdown
+      <Menu
         id="languages-menu"
+        open={open}
         disableScrollLock={false}
         anchorEl={anchorEl}
-        open={open}
         onClose={handleClose}
         onClick={handleClose}
         transformOrigin={{
@@ -64,8 +63,6 @@ const HeaderLanguageMenu = () => {
         }}
         PaperProps={{
           sx: {
-            mt: 0.5,
-            p: 1,
             [theme.breakpoints.up('lg')]: {
               width: '190px'
             },
@@ -96,7 +93,7 @@ const HeaderLanguageMenu = () => {
             <Box component="span">{language.label}</Box>
           </MenuItem>
         ))}
-      </MenuDropdown>
+      </Menu>
     </Box>
   );
 };

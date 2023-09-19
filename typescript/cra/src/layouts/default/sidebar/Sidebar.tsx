@@ -50,7 +50,7 @@ const Sidebar = () => {
         onMouseOut={handleSidebarMouseOut}
         sx={{
           position: 'relative',
-          backgroundColor: theme.palette.background.default,
+          backgroundColor: styles.SIDEBAR_BACKGROUND_COLOR,
           [theme.breakpoints.up('lg')]: {
             transition: widthTransition,
             width: sidebarWidth
@@ -70,9 +70,9 @@ const Sidebar = () => {
                   ? styles.SIDEBAR_COLLAPSE_WIDTH
                   : styles.SIDEBAR_WIDTH,
               transition: widthTransition,
-              borderRight: '1px solid #EDEFF0',
+              borderRight: styles.SIDEBAR_BORDER,
               overflow: 'visible',
-              bgcolor: 'background.paper'
+              backgroundColor: styles.SIDEBAR_BACKGROUND_COLOR
             }
           }}
         >
@@ -93,7 +93,7 @@ const Sidebar = () => {
             transition: widthTransition,
             borderRightWidth: '0px',
             overflow: 'visible',
-            bgcolor: 'background.paper'
+            backgroundColor: styles.SIDEBAR_BACKGROUND_COLOR
           }
         }}
       >

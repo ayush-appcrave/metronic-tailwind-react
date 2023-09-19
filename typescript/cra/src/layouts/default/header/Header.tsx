@@ -4,10 +4,8 @@ import { alpha, Box, useTheme } from '@mui/material';
 import useResponsive from '../../../hooks/useResponsive';
 import { DefaultLayoutStylesConfig, useDefaultLayout } from '../';
 import { HeaderLanguageMenu } from './HeaderLanguageMenu';
-import { HeaderMessagesMenu } from './HeaderMessagesMenu';
 import { HeaderMobileLogo } from './HeaderMobileLogo';
 import { HeaderModeSwitcher } from './HeaderModeSwitcher';
-import { HeaderNotificationsMenu } from './HeaderNotificationsMenu';
 import { HeaderSearch } from './HeaderSearch';
 import { HeaderUserMenu } from './HeaderUserMenu';
 
@@ -97,8 +95,6 @@ const Header = () => {
               }
             }}
           >
-            <HeaderNotificationsMenu />
-            <HeaderMessagesMenu />
             <HeaderLanguageMenu />
             <HeaderUserMenu />
             <HeaderModeSwitcher />

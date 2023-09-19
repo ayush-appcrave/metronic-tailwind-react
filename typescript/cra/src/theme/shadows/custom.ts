@@ -4,8 +4,10 @@ import { alpha, type PaletteMode } from '@mui/material';
 import { getPalette } from '../palette';
 
 interface CustomShadowOptions {
+  dialog: string;
   card: string;
   popover: string;
+  tooltip: string;
   menu: string;
 }
 
@@ -26,8 +28,10 @@ const createShadows = (color: string) => {
 
   // box-shadow: h-offset v-offset blur spread color;
   return {
+    dialog: `0px 5px 20px 0px ${opacity}`,
     card: `0px 5px 20px 0px ${opacity}`,
     popover: `0px 5px 50px 0px ${opacity}`,
+    tooltip: `0px 5px 50px 0px ${opacity}`,
     menu: `0px 5px 50px 0px ${opacity}`
   };
 };
