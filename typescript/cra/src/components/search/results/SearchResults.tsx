@@ -1,6 +1,4 @@
-import { KeenIcon } from '@components/keenicons';
-import Scrollbar from '@components/scrollbar';
-import { Box, Divider, InputBase, useTheme } from '@mui/material';
+import { Box } from '@mui/material';
 
 import { SearchResultsGeneral, type SearchResultsType } from './';
 
@@ -9,10 +7,14 @@ interface PropsType {
 }
 
 const SearchResults = ({ data }: PropsType) => {
-  const theme = useTheme();
-
   return (
-    <Box>
+    <Box
+      sx={{
+        display: 'flex',
+        flexDirection: 'column',
+        gap: 0.5
+      }}
+    >
       {data.map((item) => {
         // eslint-disable-next-line react/jsx-key
         return <SearchResultsGeneral {...item.general} />;

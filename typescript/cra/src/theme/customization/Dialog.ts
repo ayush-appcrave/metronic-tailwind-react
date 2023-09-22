@@ -2,7 +2,7 @@ import { type Theme } from '@mui/material/styles';
 
 const Dialog = (theme: Theme) => {
   return {
-    MuiModal: {
+    MuiDialog: {
       styleOverrides: {
         root: {
           '.MuiBackdrop-root': {

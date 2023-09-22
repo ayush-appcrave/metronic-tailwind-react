@@ -3,7 +3,8 @@ import { type ColorSchema } from '../../../theme/palette';
 export interface SearchResultsGeneralType {
   path: string;
   title: string;
-  badge?: {
+  description: string;
+  chip?: {
     label: string;
     color: ColorSchema;
   };

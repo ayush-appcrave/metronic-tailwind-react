@@ -19,7 +19,8 @@ const SearchInline = ({ source, dialog = false }: PropsType) => {
       general: {
         path: '#',
         title: 'Example title 1',
-        badge: {
+        description: 'Description goes here Description goes here Description goes here Description goes here Description goes here',
+        chip: {
           label: 'Blog',
           color: 'primary'
         }
@@ -29,7 +30,15 @@ const SearchInline = ({ source, dialog = false }: PropsType) => {
       general: {
         path: '#',
         title: 'Example title 1',
-        badge: {
+        description: 'Description goes here'
+      }
+    },
+    {
+      general: {
+        path: '#',
+        title: 'Example title 1',
+        description: 'Description goes here',
+        chip: {
           label: 'Blog',
           color: 'primary'
         }
@@ -39,7 +48,8 @@ const SearchInline = ({ source, dialog = false }: PropsType) => {
       general: {
         path: '#',
         title: 'Example title 1',
-        badge: {
+        description: 'Description goes here',
+        chip: {
           label: 'Blog',
           color: 'primary'
         }
@@ -49,7 +59,15 @@ const SearchInline = ({ source, dialog = false }: PropsType) => {
       general: {
         path: '#',
         title: 'Example title 1',
-        badge: {
+        description: 'Description goes here'
+      }
+    },
+    {
+      general: {
+        path: '#',
+        title: 'Example title 1',
+        description: 'Description goes here',
+        chip: {
           label: 'Blog',
           color: 'primary'
         }
@@ -59,7 +77,8 @@ const SearchInline = ({ source, dialog = false }: PropsType) => {
       general: {
         path: '#',
         title: 'Example title 1',
-        badge: {
+        description: 'Description goes here',
+        chip: {
           label: 'Blog',
           color: 'primary'
         }
@@ -69,7 +88,8 @@ const SearchInline = ({ source, dialog = false }: PropsType) => {
       general: {
         path: '#',
         title: 'Example title 1',
-        badge: {
+        description: 'Description goes here',
+        chip: {
           label: 'Blog',
           color: 'primary'
         }
@@ -79,7 +99,8 @@ const SearchInline = ({ source, dialog = false }: PropsType) => {
       general: {
         path: '#',
         title: 'Example title 1',
-        badge: {
+        description: 'Description goes here',
+        chip: {
           label: 'Blog',
           color: 'primary'
         }
@@ -89,7 +110,8 @@ const SearchInline = ({ source, dialog = false }: PropsType) => {
       general: {
         path: '#',
         title: 'Example title 1',
-        badge: {
+        description: 'Description goes here',
+        chip: {
           label: 'Blog',
           color: 'primary'
         }
@@ -99,7 +121,8 @@ const SearchInline = ({ source, dialog = false }: PropsType) => {
       general: {
         path: '#',
         title: 'Example title 1',
-        badge: {
+        description: 'Description goes here',
+        chip: {
           label: 'Blog',
           color: 'primary'
         }
@@ -109,7 +132,8 @@ const SearchInline = ({ source, dialog = false }: PropsType) => {
       general: {
         path: '#',
         title: 'Example title 1',
-        badge: {
+        description: 'Description goes here',
+        chip: {
           label: 'Blog',
           color: 'primary'
         }
@@ -119,7 +143,8 @@ const SearchInline = ({ source, dialog = false }: PropsType) => {
       general: {
         path: '#',
         title: 'Example title 1',
-        badge: {
+        description: 'Description goes here',
+        chip: {
           label: 'Blog',
           color: 'primary'
         }
@@ -129,7 +154,8 @@ const SearchInline = ({ source, dialog = false }: PropsType) => {
       general: {
         path: '#',
         title: 'Example title 1',
-        badge: {
+        description: 'Description goes here',
+        chip: {
           label: 'Blog',
           color: 'primary'
         }
@@ -139,27 +165,8 @@ const SearchInline = ({ source, dialog = false }: PropsType) => {
       general: {
         path: '#',
         title: 'Example title 1',
-        badge: {
-          label: 'Blog',
-          color: 'primary'
-        }
-      }
-    },
-    {
-      general: {
-        path: '#',
-        title: 'Example title 1',
-        badge: {
-          label: 'Blog',
-          color: 'primary'
-        }
-      }
-    },
-    {
-      general: {
-        path: '#',
-        title: 'Example title 1',
-        badge: {
+        description: 'Description goes here',
+        chip: {
           label: 'Blog',
           color: 'primary'
         }
@@ -169,7 +176,8 @@ const SearchInline = ({ source, dialog = false }: PropsType) => {
       general: {
         path: '#',
         title: 'Example title 2',
-        badge: {
+        description: 'Description goes here',
+        chip: {
           label: 'Blog',
           color: 'primary'
         }
@@ -183,7 +191,7 @@ const SearchInline = ({ source, dialog = false }: PropsType) => {
         component="form"
         sx={{
           px: theme.spacing(3),
-					py: theme.spacing(3),
+          py: theme.spacing(3),
           display: 'flex',
           alignItems: 'center'
         }}
@@ -214,16 +222,25 @@ const SearchInline = ({ source, dialog = false }: PropsType) => {
         </Box>
       </Box>
       <Divider />
-      <Scrollbar
+      <Box
         sx={{
-          maxHeight: viewportHeight / 2,
-          px: theme.spacing(3),
-					py: theme.spacing(3),
-          mx: theme.spacing(0)
+          py: theme.spacing(2.5)
         }}
       >
-        <SearchResults data={dummyData} />
-      </Scrollbar>
+        <Scrollbar
+          sx={{
+            maxHeight: viewportHeight / 2
+          }}
+        >
+          <Box
+            sx={{
+              px: theme.spacing(3)
+            }}
+          >
+            <SearchResults data={dummyData} />
+          </Box>
+        </Scrollbar>
+      </Box>
     </>
   );
 };

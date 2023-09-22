@@ -15,7 +15,7 @@ const HeaderSearch = () => {
         '.MuiDialog-paper': {
           [theme.breakpoints.up('lg')]: {
             marginTop: '125px',
-            maxWidth: '800px'
+            maxWidth: '600px'
           }
         }
       }
