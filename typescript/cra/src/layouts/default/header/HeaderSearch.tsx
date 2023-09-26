@@ -1,7 +1,8 @@
 import { Box, Dialog, DialogProps, IconButton, styled, useTheme } from '@mui/material';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 
 import { KeenIcon, SearchInline } from '../../../components';
+import { isMacDevice, isWindowsDevice } from '../../../utils/Devices';
 
 const HeaderSearch = () => {
   const theme = useTheme();
@@ -31,6 +32,24 @@ const HeaderSearch = () => {
     setOpen(false);
   };
 
+  useEffect(() => {
+    const keyDownHandler = (event: KeyboardEvent) => {
+      if (open) {
+        return;
+      }
+
+      if ((event.metaKey || event.ctrlKey) && event.key === 'k') {
+        setOpen(true);
+      }
+    };
+
+    document.addEventListener('keydown', keyDownHandler);
+
+    return () => {
+      document.removeEventListener('keydown', keyDownHandler);
+    };
+  }, []);
+
   return (
     <Box
       sx={{
@@ -49,14 +68,17 @@ const HeaderSearch = () => {
       </IconButton>
       <Box
         sx={{
-          fontSize: 13,
-          fontWeight: '500',
           display: 'flex',
           alignItems: 'center',
-          color: theme.palette.grey['500']
+          fontSize: 12,
+          fontWeight: '600',
+          color: theme.palette.grey['600'],
+          borderRadius: theme.shape.borderRadius,
+          backgroundColor: theme.palette.grey['200'],
+          p: theme.spacing(0.85)
         }}
       >
-        Search
+        {isMacDevice() ? '⌘K' : 'ctrl K'}
       </Box>
       <CustomDialog fullWidth={true} open={open} onClose={handleClose}>
         <SearchInline dataSource="" handleClose={handleClose} />

@@ -206,6 +206,7 @@ const SearchInline = ({ dataSource, handleClose }: PropsType) => {
         <InputBase
           sx={{ ml: 1, flex: 1 }}
           placeholder="Search..."
+          autoFocus
           inputProps={{ 'aria-label': 'search google maps' }}
         />
         <Box
@@ -218,7 +219,7 @@ const SearchInline = ({ dataSource, handleClose }: PropsType) => {
             borderRadius: '6px'
           }}
         >
-          Esp
+          Esc
         </Box>
       </Box>
       <Divider />
