@@ -4,9 +4,10 @@ import { SearchResultsGeneral, type SearchResultsType } from './';
 
 interface PropsType {
   data: SearchResultsType;
+  handleClose?: () => void;
 }
 
-const SearchResults = ({ data }: PropsType) => {
+const SearchResults = ({ data, handleClose }: PropsType) => {
   return (
     <Box
       sx={{
@@ -15,9 +16,14 @@ const SearchResults = ({ data }: PropsType) => {
         gap: 0.5
       }}
     >
-      {data.map((item) => {
-        // eslint-disable-next-line react/jsx-key
-        return <SearchResultsGeneral {...item.general} />;
+      {data.map((item, index) => {
+        return (
+          <SearchResultsGeneral
+            key={index}
+            {...item.general}
+            {...(handleClose && { handleClose })}
+          />
+        );
       })}
     </Box>
   );

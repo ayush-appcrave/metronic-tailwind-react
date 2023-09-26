@@ -6,21 +6,21 @@ import { useViewport } from '../../hooks';
 import { SearchResults, type SearchResultsType } from './results';
 
 interface PropsType {
-  source: string;
-  dialog: boolean;
+  dataSource: string;
+  handleClose?: () => void;
 }
 
-const SearchInline = ({ source, dialog = false }: PropsType) => {
+const SearchInline = ({ dataSource, handleClose }: PropsType) => {
   const theme = useTheme();
   const [viewportHeight] = useViewport();
 
   const dummyData: SearchResultsType = [
     {
       general: {
-        path: '#',
+        path: 'ecommerce',
         title: 'Example title 1',
-        description: 'Description goes here Description goes here Description goes here Description goes here Description goes here',
-        chip: {
+        subTitle: 'Description goes here Description goes here Description goes here Description goes',
+        category: {
           label: 'Blog',
           color: 'primary'
         }
@@ -30,15 +30,15 @@ const SearchInline = ({ source, dialog = false }: PropsType) => {
       general: {
         path: '#',
         title: 'Example title 1',
-        description: 'Description goes here'
+        subTitle: 'Description goes here'
       }
     },
     {
       general: {
         path: '#',
         title: 'Example title 1',
-        description: 'Description goes here',
-        chip: {
+        subTitle: 'Description goes here',
+        category: {
           label: 'Blog',
           color: 'primary'
         }
@@ -48,8 +48,8 @@ const SearchInline = ({ source, dialog = false }: PropsType) => {
       general: {
         path: '#',
         title: 'Example title 1',
-        description: 'Description goes here',
-        chip: {
+        subTitle: 'Description goes here',
+        category: {
           label: 'Blog',
           color: 'primary'
         }
@@ -59,15 +59,15 @@ const SearchInline = ({ source, dialog = false }: PropsType) => {
       general: {
         path: '#',
         title: 'Example title 1',
-        description: 'Description goes here'
+        subTitle: 'Description goes here'
       }
     },
     {
       general: {
         path: '#',
         title: 'Example title 1',
-        description: 'Description goes here',
-        chip: {
+        subTitle: 'Description goes here',
+        category: {
           label: 'Blog',
           color: 'primary'
         }
@@ -77,8 +77,8 @@ const SearchInline = ({ source, dialog = false }: PropsType) => {
       general: {
         path: '#',
         title: 'Example title 1',
-        description: 'Description goes here',
-        chip: {
+        subTitle: 'Description goes here',
+        category: {
           label: 'Blog',
           color: 'primary'
         }
@@ -88,8 +88,8 @@ const SearchInline = ({ source, dialog = false }: PropsType) => {
       general: {
         path: '#',
         title: 'Example title 1',
-        description: 'Description goes here',
-        chip: {
+        subTitle: 'Description goes here',
+        category: {
           label: 'Blog',
           color: 'primary'
         }
@@ -99,8 +99,8 @@ const SearchInline = ({ source, dialog = false }: PropsType) => {
       general: {
         path: '#',
         title: 'Example title 1',
-        description: 'Description goes here',
-        chip: {
+        subTitle: 'Description goes here',
+        category: {
           label: 'Blog',
           color: 'primary'
         }
@@ -110,8 +110,8 @@ const SearchInline = ({ source, dialog = false }: PropsType) => {
       general: {
         path: '#',
         title: 'Example title 1',
-        description: 'Description goes here',
-        chip: {
+        subTitle: 'Description goes here',
+        category: {
           label: 'Blog',
           color: 'primary'
         }
@@ -121,8 +121,8 @@ const SearchInline = ({ source, dialog = false }: PropsType) => {
       general: {
         path: '#',
         title: 'Example title 1',
-        description: 'Description goes here',
-        chip: {
+        subTitle: 'Description goes here',
+        category: {
           label: 'Blog',
           color: 'primary'
         }
@@ -132,8 +132,8 @@ const SearchInline = ({ source, dialog = false }: PropsType) => {
       general: {
         path: '#',
         title: 'Example title 1',
-        description: 'Description goes here',
-        chip: {
+        subTitle: 'Description goes here',
+        category: {
           label: 'Blog',
           color: 'primary'
         }
@@ -143,8 +143,8 @@ const SearchInline = ({ source, dialog = false }: PropsType) => {
       general: {
         path: '#',
         title: 'Example title 1',
-        description: 'Description goes here',
-        chip: {
+        subTitle: 'Description goes here',
+        category: {
           label: 'Blog',
           color: 'primary'
         }
@@ -154,8 +154,8 @@ const SearchInline = ({ source, dialog = false }: PropsType) => {
       general: {
         path: '#',
         title: 'Example title 1',
-        description: 'Description goes here',
-        chip: {
+        subTitle: 'Description goes here',
+        category: {
           label: 'Blog',
           color: 'primary'
         }
@@ -165,8 +165,8 @@ const SearchInline = ({ source, dialog = false }: PropsType) => {
       general: {
         path: '#',
         title: 'Example title 1',
-        description: 'Description goes here',
-        chip: {
+        subTitle: 'Description goes here',
+        category: {
           label: 'Blog',
           color: 'primary'
         }
@@ -176,8 +176,8 @@ const SearchInline = ({ source, dialog = false }: PropsType) => {
       general: {
         path: '#',
         title: 'Example title 2',
-        description: 'Description goes here',
-        chip: {
+        subTitle: 'Description goes here',
+        category: {
           label: 'Blog',
           color: 'primary'
         }
@@ -237,7 +237,7 @@ const SearchInline = ({ source, dialog = false }: PropsType) => {
               px: theme.spacing(3)
             }}
           >
-            <SearchResults data={dummyData} />
+            <SearchResults data={dummyData} {...(handleClose && { handleClose })} />
           </Box>
         </Scrollbar>
       </Box>

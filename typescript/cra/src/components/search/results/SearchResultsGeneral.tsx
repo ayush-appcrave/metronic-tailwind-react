@@ -4,18 +4,25 @@ import { Link as RouterLink } from 'react-router-dom';
 
 import { type SearchResultsGeneralType } from './';
 
-const SearchResultsGeneral = (props: SearchResultsGeneralType) => {
+const SearchResultsGeneral = ({
+  path,
+  title,
+  subTitle,
+  category,
+  handleClose
+}: SearchResultsGeneralType) => {
   const theme = useTheme();
 
   return (
     <Link
-      to={props.path}
+      to={path}
       component={RouterLink}
+      {...(handleClose && { onClick: handleClose })}
       sx={{
         display: 'flex',
         alignItems: 'start',
-        gap: 0.5,
         justifyContent: 'space-between',
+        gap: 0.5,
         borderRadius: theme.shape.borderRadius,
         py: theme.spacing(0.75),
         px: theme.spacing(1),
@@ -60,20 +67,20 @@ const SearchResultsGeneral = (props: SearchResultsGeneralType) => {
           }}
         >
           <Typography variant="subtitle1" color={theme.palette.grey['800']}>
-            {props.title}
+            {title}
           </Typography>
           <Typography variant="caption" color={theme.palette.grey['600']}>
-            {props.description}
+            {subTitle}
           </Typography>
         </Box>
 
-        {props.chip && (
+        {category && (
           <Box
             sx={{
               pt: theme.spacing(0.75)
             }}
           >
-            <Chip label={props.chip.label} color={props.chip.color} variant="outlined" />
+            <Chip label={category.label} color={category.color} variant="outlined" />
           </Box>
         )}
       </Box>

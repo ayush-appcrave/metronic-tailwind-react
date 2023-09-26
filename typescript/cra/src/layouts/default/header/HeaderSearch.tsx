@@ -27,6 +27,7 @@ const HeaderSearch = () => {
     setOpen(true);
   };
   const handleClose = () => {
+    console.log('close modal');
     setOpen(false);
   };
 
@@ -58,7 +59,7 @@ const HeaderSearch = () => {
         Search
       </Box>
       <CustomDialog fullWidth={true} open={open} onClose={handleClose}>
-        <SearchInline source="" dialog={true} />
+        <SearchInline dataSource="" handleClose={handleClose} />
       </CustomDialog>
     </Box>
   );
