@@ -11,7 +11,7 @@ interface TableFooterProps {
 
 function TableFooter(props: TableFooterProps) {
   const location = useLocation();
-  const locationPart = location.pathname.replaceAll('/', '_');
+  const locationPart = location.pathname.split('/').join('_');
   const pageLSKey = `DENSE_DEFAULT_${locationPart}_TABLE`;
 
   useEffect(() => {

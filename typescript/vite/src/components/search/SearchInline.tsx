@@ -1,5 +1,5 @@
-import { KeenIcon } from '@components/keenicons';
-import Scrollbar from '@components/scrollbar';
+import { KeenIcon } from '@/components/keenicons';
+import Scrollbar from '@/components/scrollbar';
 import { Box, Divider, InputBase, useTheme } from '@mui/material';
 
 import { useViewport } from '../../hooks';

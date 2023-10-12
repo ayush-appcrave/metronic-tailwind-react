@@ -1,4 +1,4 @@
-import { Order } from '@components/table/types';
+import { Order } from '@/components/table/types';
 import qs from 'qs';
 import { useState } from 'react';
 import { useSearchParams } from 'react-router-dom';

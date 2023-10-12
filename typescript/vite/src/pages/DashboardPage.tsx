@@ -1,5 +1,5 @@
-import { useNavBreadcrumbs } from '@components/nav';
-import { PageContainer } from '@components/page-container';
+import { useNavBreadcrumbs } from '@/components/nav';
+import { PageContainer } from '@/components/page-container';
 import { Helmet } from 'react-helmet';
 
 import { NAV_VERTICAL } from '../config/navs.config';

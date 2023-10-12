@@ -1,4 +1,4 @@
-import { ProgressBarLoader } from '@components/loaders';
+import { ProgressBarLoader } from '@/components/loaders';
 import { Table, TableContainer } from '@mui/material';
 import { memo, useEffect, useState } from 'react';
 

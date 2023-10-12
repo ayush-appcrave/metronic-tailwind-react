@@ -1,4 +1,4 @@
-import { ScreenLoader } from '@components/loaders';
+import { ScreenLoader } from '@/components/loaders';
 import { Navigate, Outlet, useLocation } from 'react-router-dom';
 
 import { useAuthContext } from './useAuthContext';

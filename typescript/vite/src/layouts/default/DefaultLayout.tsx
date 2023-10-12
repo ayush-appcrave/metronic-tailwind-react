@@ -1,4 +1,4 @@
-import { Settings } from '@components/settings';
+import { Settings } from '@/components/settings';
 
 import { DefaultLayoutProvider } from './DefaultLayoutProvider';
 import { Main } from './main/Main';

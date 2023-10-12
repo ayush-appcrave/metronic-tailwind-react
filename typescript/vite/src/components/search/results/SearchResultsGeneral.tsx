@@ -1,4 +1,4 @@
-import { KeenIcon } from '@components/keenicons';
+import { KeenIcon } from '@/components/keenicons';
 import { Box, Chip, Link, Typography, useTheme } from '@mui/material';
 import { Link as RouterLink } from 'react-router-dom';
 

@@ -1,4 +1,4 @@
-import { TableOverlayLoader, TableSkeletonLoader } from '@components/table';
+import { TableOverlayLoader, TableSkeletonLoader } from '@/components/table';
 import { useMemo } from 'react';
 
 import {

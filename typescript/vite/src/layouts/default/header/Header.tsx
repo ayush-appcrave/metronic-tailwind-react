@@ -1,4 +1,4 @@
-import { PageContainer } from '@components/page-container';
+import { PageContainer } from '@/components/page-container';
 import { alpha, Box, useTheme } from '@mui/material';
 
 import useResponsive from '../../../hooks/useResponsive';

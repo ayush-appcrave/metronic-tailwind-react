@@ -1,17 +1,16 @@
- 
-import { type PaginationState, QueryState } from '@components/table/types';
-import { GridFilterItem } from '@mui/x-data-grid';
-import { type Dispatch, type SetStateAction } from 'react';
-import { QueryObserverResult } from 'react-query';
+import { type PaginationState, QueryState } from "@/components/table/types";
+import { GridFilterItem } from "@mui/x-data-grid";
+import { type Dispatch, type SetStateAction } from "react";
+import { QueryObserverResult } from "react-query";
 
-import { type UsersQueryResponse } from '../../core/_models';
+import { type UsersQueryResponse } from "../../core/_models";
 
 export interface SearchState {
   search?: string;
 }
 
 export interface FilterState {
-  role?: '' | 'all' | 'user' | 'admin';
+  role?: "" | "all" | "user" | "admin";
   advanced?: GridFilterItem[];
 }
 
@@ -24,20 +23,23 @@ export interface Response<T> {
 
 export interface QueryRequestContextProps {
   state: UserQueryState;
-  updateState: (updates: Partial<UserQueryState>, saveToQuery?: boolean | undefined) => void;
+  updateState: (
+    updates: Partial<UserQueryState>,
+    saveToQuery?: boolean | undefined
+  ) => void;
 }
 
 export const initialQueryState: PaginationState & FilterState & SearchState = {
   current_page: 1,
   items_per_page: 10,
   page: 1,
-  role: '',
-  search: ''
+  role: "",
+  search: "",
 };
 
 export const initialQueryRequest: QueryRequestContextProps = {
   state: initialQueryState,
-  updateState: () => {}
+  updateState: () => {},
 };
 
 export interface QueryResponseContextProps<T> {
@@ -47,7 +49,7 @@ export interface QueryResponseContextProps<T> {
   query: string;
 }
 
-export const initialQueryResponse = { isLoading: false, query: '' };
+export const initialQueryResponse = { isLoading: false, query: "" };
 
 export interface ListViewContextProps {
   selected: string[];
@@ -70,5 +72,5 @@ export const initialListView: ListViewContextProps = {
   clearSelected: () => {},
   setItemIdForUpdate: () => {},
   isAllSelected: false,
-  disabled: false
+  disabled: false,
 };

@@ -1,4 +1,4 @@
-import { formatDate } from '@components/table';
+import { formatDate } from '@/components/table';
 import {
   Avatar,
   Box,

@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/rules-of-hooks */
 import { Collapse, List } from '@mui/material';
 import { forwardRef } from 'react';
 

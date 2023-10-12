@@ -1,6 +1,6 @@
-import { ContentLoader } from '@components/loaders';
-import { useNavBreadcrumbs } from '@components/nav';
-import { PageContainer } from '@components/page-container';
+import { ContentLoader } from '@/components/loaders';
+import { useNavBreadcrumbs } from '@/components/nav';
+import { PageContainer } from '@/components/page-container';
 import { Button } from '@mui/material';
 import { useEffect, useState } from 'react';
 import { Helmet } from 'react-helmet';

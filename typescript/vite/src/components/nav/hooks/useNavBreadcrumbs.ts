@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/rules-of-hooks */
 import { useMatchPath } from '../../../hooks';
 import { NavBreadcrumbsPropsType, NavConfigType, NavItemPropsType } from '../types';
 

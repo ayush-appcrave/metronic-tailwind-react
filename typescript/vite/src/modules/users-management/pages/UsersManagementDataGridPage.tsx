@@ -1,4 +1,4 @@
-import { PageContainer } from '@components/page-container';
+import { PageContainer } from '@/components/page-container';
 import { Card } from '@mui/material';
 import { Helmet } from 'react-helmet';
 

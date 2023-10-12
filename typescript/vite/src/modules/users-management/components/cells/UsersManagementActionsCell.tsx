@@ -1,5 +1,5 @@
-import { KeenIcon } from '@components/keenicons';
-import { Nav, NavItem, NavItemButton, NavItemSub } from '@components/nav';
+import { KeenIcon } from '@/components/keenicons';
+import { Nav, NavItem, NavItemButton, NavItemSub } from '@/components/nav';
 import { IconButton } from '@mui/material';
 import { useSnackbar } from 'notistack';
 import React, { useState } from 'react';

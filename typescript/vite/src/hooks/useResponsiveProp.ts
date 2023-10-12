@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/rules-of-hooks */
 import { type Breakpoint } from '@mui/material/styles';
 
 import { useResponsive } from './useResponsive';

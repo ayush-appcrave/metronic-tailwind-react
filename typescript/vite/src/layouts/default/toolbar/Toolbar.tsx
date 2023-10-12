@@ -1,4 +1,4 @@
-import { PageContainer } from '@components/page-container';
+import { PageContainer } from '@/components/page-container';
 import { Box } from '@mui/material';
 import { useTheme } from '@mui/material/styles';
 import { type PropsWithChildren } from 'react';

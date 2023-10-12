@@ -1,5 +1,5 @@
-import { TableActionsToolbar, TableHeadCustom } from '@components/table';
-import { type Order } from '@components/table/types';
+import { TableActionsToolbar, TableHeadCustom } from '@/components/table';
+import { type Order } from '@/components/table/types';
 import DeleteIcon from '@mui/icons-material/Delete';
 import { IconButton, Tooltip } from '@mui/material';
 import { useSnackbar } from 'notistack';

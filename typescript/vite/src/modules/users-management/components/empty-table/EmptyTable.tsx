@@ -1,4 +1,4 @@
-import { TableNoData } from '@components/table';
+import { TableNoData } from '@/components/table';
 
 import { useQueryResponseLoading, useQueryResponsePagination } from '../../core';
 

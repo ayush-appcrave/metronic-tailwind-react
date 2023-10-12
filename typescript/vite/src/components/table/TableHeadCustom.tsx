@@ -1,4 +1,4 @@
-import { HeadCell, Order } from '@components/table/types';
+import { HeadCell, Order } from '@/components/table/types';
 import { Box, Checkbox, TableCell, TableHead, TableRow, TableSortLabel } from '@mui/material';
 import { SxProps, Theme } from '@mui/material/styles';
 import { visuallyHidden } from '@mui/utils';

@@ -17,7 +17,7 @@ import {
 import { useSnackbar } from 'notistack';
 import { useEffect, useMemo, useState } from 'react';
 import { useMutation, useQueryClient } from 'react-query';
-import { toAbsoluteUrl } from 'utils';
+import { toAbsoluteUrl } from '@/utils';
 
 import {
   deleteSelectedUsers,

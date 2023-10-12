@@ -1,5 +1,5 @@
 import { arSA, enUS, frFR, zhCN } from '@mui/material/locale';
-import { toAbsoluteUrl } from 'utils';
+import { toAbsoluteUrl } from '@/utils';
 
 import arMessages from './messages/ar.json';
 import enMessages from './messages/en.json';
