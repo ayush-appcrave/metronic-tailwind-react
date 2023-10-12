@@ -86,7 +86,7 @@ const Login = () => {
 
       {/* begin::Form group */}
       <div className="fv-row mb-8">
-        <label className="form-label fs-6 fw-bolder text-dark">Email</label>
+        <label className="form-label fs-6 fw-bolder text-gray-900">Email</label>
         <input
           placeholder="Email"
           {...formik.getFieldProps('email')}
