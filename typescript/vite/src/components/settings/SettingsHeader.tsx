@@ -1,0 +1,54 @@
+import { Box, IconButton, Stack } from '@mui/material';
+import React, { useEffect, useRef } from 'react';
+
+import { KeenIcon } from '../';
+
+interface Props {
+  handleClose: () => void;
+  setHeaderHeight: React.Dispatch<React.SetStateAction<number>>;
+}
+
+const SettingsHeader = ({ handleClose, setHeaderHeight }: Props) => {
+  const elementRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    if (elementRef.current) {
+      setHeaderHeight(elementRef.current.clientHeight);
+    }
+  }, []);
+
+  return (
+    <Stack
+      ref={elementRef}
+      direction="row"
+      component="div"
+      justifyContent="space-between"
+      alignItems="center"
+      sx={{
+        flexShrink: 0,
+        position: 'relative',
+        px: 2,
+        py: 2
+      }}
+    >
+      <Box
+        sx={{
+          paddingLeft: 1
+        }}
+      >
+        Customization
+      </Box>
+
+      <IconButton aria-label="close" onClick={handleClose}>
+        <KeenIcon
+          icon="cross"
+          sx={{
+            fontSize: '18px'
+          }}
+        />
+      </IconButton>
+    </Stack>
+  );
+};
+
+export { SettingsHeader };
