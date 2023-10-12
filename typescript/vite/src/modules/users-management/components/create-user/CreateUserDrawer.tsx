@@ -1,5 +1,6 @@
 import { Drawer } from '@mui/material';
-import { CreateUserForm } from 'modules/users-management';
+
+import { CreateUserForm } from './CreateUserForm';
 
 interface CreateUserDrawerProps {
   open: boolean;

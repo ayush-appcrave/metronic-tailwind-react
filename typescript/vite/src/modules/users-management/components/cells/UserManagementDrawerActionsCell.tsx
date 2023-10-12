@@ -1,6 +1,8 @@
 import { Box, Button } from '@mui/material';
-import { UpdateUserDrawer, ViewUserDrawer } from 'modules/users-management';
 import { useState } from 'react';
+
+import { UpdateUserDrawer } from '../edit-user';
+import { ViewUserDrawer } from '../view';
 
 interface IUserManagementDrawerActionsCellProps {
   id: string;

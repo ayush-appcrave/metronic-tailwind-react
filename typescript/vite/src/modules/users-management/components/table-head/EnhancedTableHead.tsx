@@ -2,21 +2,21 @@ import { TableActionsToolbar, TableHeadCustom } from '@components/table';
 import { type Order } from '@components/table/types';
 import DeleteIcon from '@mui/icons-material/Delete';
 import { IconButton, Tooltip } from '@mui/material';
-import { UndoActions } from 'modules/users-management';
 import { useSnackbar } from 'notistack';
 import React, { type ChangeEvent, useState } from 'react';
 import { useMutation, useQueryClient } from 'react-query';
 
+import { AlertDialogDeleteMultiple } from '..';
+import { type User } from '../../core';
 import {
   deleteSelectedUsers,
   headCells,
   restoreMultipleUsers,
   useListView,
-  useQueryResponse,
-  type User
+  useQueryResponse
 } from '../../core';
 import { QUERIES } from '../../helpers';
-import { AlertDialogDeleteMultiple } from '..';
+import { UndoActions } from '../undo';
 
 interface EnhancedTableProps {
   numSelected: number;

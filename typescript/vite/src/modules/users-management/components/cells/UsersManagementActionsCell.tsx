@@ -1,15 +1,13 @@
 import { KeenIcon } from '@components/keenicons';
 import { Nav, NavItem, NavItemButton, NavItemSub } from '@components/nav';
 import { IconButton } from '@mui/material';
-import {
-  AlertDialogDeleteUser,
-  restoreMultipleUsers,
-  UndoActions,
-  UpdateUserDialog,
-  useQueryResponse
-} from 'modules/users-management';
 import { useSnackbar } from 'notistack';
-import { useState } from 'react';
+import React, { useState } from 'react';
+
+import { restoreMultipleUsers, useQueryResponse } from '../../core';
+import { AlertDialogDeleteUser } from '../alerts';
+import { UpdateUserDialog } from '../edit-user/UpdateUserDialog';
+import { UndoActions } from '../undo';
 
 interface IUsersManagementActionsCellProps {
   id: string;

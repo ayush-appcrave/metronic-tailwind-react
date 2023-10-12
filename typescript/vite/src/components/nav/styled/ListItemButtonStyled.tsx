@@ -13,11 +13,12 @@ export const ListItemButtonStyled = styled(ListItemButton, {
       'here',
       'hover',
       'open',
+      'disabled',
       'collapse',
       'expand',
       'styles'
     ].includes(prop as string)
-})<NavItemChildPropsType>(({ depth, menu, active, here, hover, open, color, styles }) => {
+})<NavItemChildPropsType>(({ depth, menu, active, here, hover, open, disabled, color, styles }) => {
   return {
     display: 'flex',
     alignItems: 'center',
@@ -125,6 +126,11 @@ export const ListItemButtonStyled = styled(ListItemButton, {
           : depth === 1
           ? styles.ROOT_ITEM_BUTTON_BACKGROUND_COLOR_ACTIVE
           : styles.SUB_ITEM_BUTTON_BACKGROUND_COLOR_ACTIVE) + ' !important'
+    }),
+
+    ...(disabled && {
+      opacity: styles.MENU_ITEM_BUTTON_DISABLED_OPACITY,
+      cursor: 'not-allowed'
     })
   };
 });

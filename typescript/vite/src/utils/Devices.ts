@@ -5,4 +5,12 @@ const isMobileDevice = (): boolean => {
   return isMobile;
 };
 
-export { isMobileDevice };
+const isMacDevice = (): boolean => {
+  return navigator.userAgent.includes('Mac OS X');
+}
+
+const isWindowsDevice = (): boolean => {
+  return navigator.userAgent.includes('Windows');
+}
+
+export { isMacDevice, isMobileDevice, isWindowsDevice };

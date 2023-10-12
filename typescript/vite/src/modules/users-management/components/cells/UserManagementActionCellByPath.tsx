@@ -1,9 +1,8 @@
-import {
-  UserManagementDrawerActionsCell,
-  UserManagementModalOverlayActionCell,
-  UsersManagementActionsCell
-} from 'modules/users-management';
 import { useLocation } from 'react-router';
+
+import { UserManagementDrawerActionsCell } from './UserManagementDrawerActionsCell';
+import { UserManagementModalOverlayActionCell } from './UserManagementModalOverlayActionCell';
+import { UsersManagementActionsCell } from './UsersManagementActionsCell';
 
 interface IUserManagementActionCellByPathProps {
   id: string;

@@ -26,9 +26,10 @@ import {
 const NavItem = forwardRef<HTMLDivElement | null, NavItemPropsType>(function NavItem(props, ref) {
   const {
     depth = 1,
-    menu,
+    menu = false,
     collapse = false,
     expand = false,
+    disabled = false,
     title,
     path = '',
     tabIndex,
@@ -39,6 +40,7 @@ const NavItem = forwardRef<HTMLDivElement | null, NavItemPropsType>(function Nav
     icon,
     bullet,
     badge,
+    tooltip,
     wrapper,
     color,
     styles = NavDefaultStylesConfig(),
@@ -140,12 +142,20 @@ const NavItem = forwardRef<HTMLDivElement | null, NavItemPropsType>(function Nav
   };
 
   const handleToggle = (e: MouseEvent<HTMLElement>) => {
+    if (disabled) {
+      return;
+    }
+
     if (toggle === 'click') {
       setSubOpen(!open);
     }
   };
 
   const handleClick = (e: MouseEvent<HTMLElement>) => {
+    if (disabled) {
+      return;
+    }
+
     handleMenuClose(e);
 
     if (onLinksClick) {
@@ -208,6 +218,7 @@ const NavItem = forwardRef<HTMLDivElement | null, NavItemPropsType>(function Nav
           here={here}
           hover={hover}
           open={open}
+          disabled={disabled}
           collapse={collapse}
           expand={expand}
           color={color}
@@ -220,6 +231,7 @@ const NavItem = forwardRef<HTMLDivElement | null, NavItemPropsType>(function Nav
           bullet={bullet}
           badge={badge}
           title={title}
+          tooltip={tooltip}
           arrow={arrow}
           hasSub={hasSub}
         />
@@ -278,8 +290,8 @@ const NavItem = forwardRef<HTMLDivElement | null, NavItemPropsType>(function Nav
   const renderContent = (
     <Box
       {...containerProps}
-      ref={containerRef}
       component="div"
+      ref={containerRef}
       tabIndex={tabIndex}
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}
@@ -291,6 +303,10 @@ const NavItem = forwardRef<HTMLDivElement | null, NavItemPropsType>(function Nav
   );
 
   const renderMain = () => {
+    if ((disabled || divider) ?? hasSub) {
+      return renderContent;
+    }
+
     if (externalLink) {
       const target = newTab ? '_blank' : '_self';
 
@@ -301,12 +317,8 @@ const NavItem = forwardRef<HTMLDivElement | null, NavItemPropsType>(function Nav
       );
     }
 
-    if (hasSub) {
-      return renderContent;
-    }
-
     return (
-      <Link component={RouterLink} to={path} underline="none" onClick={handleClick}>
+      <Link to={path} component={RouterLink} underline="none" onClick={handleClick}>
         {renderContent}
       </Link>
     );

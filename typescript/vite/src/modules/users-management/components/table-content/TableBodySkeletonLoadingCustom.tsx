@@ -1,6 +1,5 @@
 import { formatDate, TableSkeletonLoader } from '@components/table';
 import { Avatar, Box, Checkbox, TableBody, TableCell, TableRow } from '@mui/material';
-import { UsersManagementActionsCell } from 'modules/users-management';
 import { useMemo } from 'react';
 
 import { toAbsoluteUrl } from '../../../../utils/Assets';
@@ -10,6 +9,7 @@ import {
   useQueryResponseLoading,
   useQueryResponsePagination
 } from '../../core';
+import { UsersManagementActionsCell } from '../cells';
 import { EmptyTable } from '../empty-table/EmptyTable';
 
 interface TableBodySkeletonLoadingCustomProps {

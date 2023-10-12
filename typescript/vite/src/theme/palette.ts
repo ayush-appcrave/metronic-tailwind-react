@@ -4,6 +4,12 @@ import { alpha } from '@mui/material/styles';
 
 export type ColorSchema = 'primary' | 'secondary' | 'info' | 'success' | 'warning' | 'error';
 
+declare module '@mui/material/styles/createPalette' {
+  interface TypeBackground {
+    backdrop: string;
+  }
+}
+
 // SETUP COLORS
 const GREY_LIGHT = {
   0: '#FFFFFF',
@@ -126,13 +132,10 @@ const COMMON_LIGHT = {
   grey: GREY_LIGHT,
   divider: alpha(GREY_LIGHT[500], 0.24),
   action: {
-    hover: alpha(GREY_LIGHT[500], 0.08),
-    selected: alpha(GREY_LIGHT[500], 0.16),
-    disabled: alpha(GREY_LIGHT[500], 0.8),
-    disabledBackground: alpha(GREY_LIGHT[500], 0.24),
-    focus: alpha(GREY_LIGHT[500], 0.24),
-    hoverOpacity: 0.08,
-    disabledOpacity: 0.48
+    hover: GREY_LIGHT[100],
+    selected: alpha(GREY_LIGHT[200], 0.85),
+    focus: alpha(GREY_LIGHT[200], 0.85),
+    disabledOpacity: 0.5
   }
 };
 
@@ -147,13 +150,10 @@ const COMMON_DARK = {
   grey: GREY_DARK,
   divider: alpha(GREY_DARK[500], 0.24),
   action: {
-    hover: alpha(GREY_DARK[500], 0.08),
-    selected: alpha(GREY_DARK[500], 0.16),
-    disabled: alpha(GREY_DARK[500], 0.8),
-    disabledBackground: alpha(GREY_DARK[500], 0.24),
-    focus: alpha(GREY_DARK[500], 0.24),
-    hoverOpacity: 0.08,
-    disabledOpacity: 0.48
+    hover: GREY_DARK[100],
+    selected: alpha(GREY_DARK[200], 0.85),
+    focus: alpha(GREY_DARK[200], 0.85),
+    disabledOpacity: 0.5
   }
 };
 
@@ -167,8 +167,9 @@ const getPalette = (themeMode: 'light' | 'dark') => {
       disabled: GREY_LIGHT[500]
     },
     background: {
-      paper: '#fff',
-      default: '#fff'
+      paper: '#ffffff',
+      default: '#ffffff',
+      backdrop: alpha('#000000', 0.75)
     },
     action: {
       ...COMMON_LIGHT.action,
@@ -187,7 +188,8 @@ const getPalette = (themeMode: 'light' | 'dark') => {
     },
     background: {
       paper: GREY_DARK[100],
-      default: GREY_DARK[100]
+      default: GREY_DARK[100],
+      backdrop: alpha('#000000', 0.75)
     },
     action: {
       ...COMMON_DARK.action,

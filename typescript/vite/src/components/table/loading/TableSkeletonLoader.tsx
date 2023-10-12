@@ -1,4 +1,5 @@
 import { Box, Skeleton, TableCell, TableRow } from '@mui/material';
+import React from 'react';
 
 interface Props {
   itemsPerPage: number;

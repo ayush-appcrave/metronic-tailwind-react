@@ -1,5 +1,5 @@
  
-import { MenuProps, type SxProps } from '@mui/material';
+import { MenuProps, type SxProps, type TooltipProps } from '@mui/material';
 import { HTMLAttributes, MouseEvent, RefAttributes } from 'react';
 
 import { type ColorSchema } from '../../theme/palette';
@@ -30,6 +30,8 @@ export type NavHoverType = boolean;
 
 export type NavOpenType = boolean;
 
+export type NavDisabledType = boolean;
+
 export type NavColorType = any;
 
 export type NavHereType = boolean;
@@ -50,6 +52,12 @@ export type NavLinkClickEventType = (e: MouseEvent<HTMLElement>, props: any) => 
 export interface NavBadgeType {
   content: string;
   color: ColorSchema;
+}
+
+export interface NavTooltipType {
+  title: string;
+  placement?: any;
+  variant?: 'dark' | 'light';
 }
 
 export type NavBulletType = boolean;
@@ -119,12 +127,13 @@ export interface NavItemPropsType {
   key?: string;
   title?: string;
   path?: string;
-  disabled?: boolean;
+  disabled?: NavDisabledType;
   tabIndex?: number;
   externalLink?: boolean;
   newTab?: boolean;
   bullet?: boolean;
   badge?: NavBadgeType;
+  tooltip?: NavTooltipType;
   icon?: any;
   divider?: boolean;
   subheader?: string;
@@ -164,6 +173,7 @@ export interface NavItemButtonPropsType {
   here?: NavHereType;
   hover?: NavHoverType;
   open?: NavOpenType;
+  disabled?: NavDisabledType;
   collapse?: NavCollapseType;
   expand?: NavExpandType;
   color?: NavColorType;
@@ -176,6 +186,7 @@ export interface NavItemButtonPropsType {
   bullet?: NavBulletType;
   badge?: NavBadgeType;
   title?: NavTitleType;
+  tooltip?: NavTooltipType;
   hasSub?: NavHasSubType;
   arrow?: NavArrowType;
   children?: any;

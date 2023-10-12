@@ -16,10 +16,12 @@ import {
 } from '@mui/material';
 import axios from 'axios';
 import { useFormik } from 'formik';
-import { createUser, useQueryResponse, type User } from 'modules/users-management';
 import { useSnackbar } from 'notistack';
 import { useState } from 'react';
 import * as Yup from 'yup';
+
+import { type User } from '../../core';
+import { createUser, useQueryResponse } from '../../core';
 
 interface CreateUserFormProps {
   open: boolean;

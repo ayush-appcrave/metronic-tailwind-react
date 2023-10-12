@@ -46,6 +46,12 @@ const NAV_COMMON: Record<string, NavConfigType> = {
       key: 'dashboards-Marketing',
       title: 'Marketing',
       path: '/marketing',
+      disabled: true,
+      tooltip: {
+        title: 'Disabled',
+        placement: 'right',
+        variant: 'dark'
+      },
       bullet: true
     },
     {

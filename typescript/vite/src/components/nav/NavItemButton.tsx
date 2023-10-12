@@ -1,3 +1,4 @@
+import { Tooltip } from '@mui/material';
 import { forwardRef } from 'react';
 
 import {
@@ -10,6 +11,7 @@ import {
   NavItemButtonPropsType
 } from '..';
 import { KeenIcon } from '../keenicons';
+import { DarkTooltip, LightTooltip } from '../tooltip';
 
 const NavItemButton = forwardRef<HTMLDivElement | null, NavItemButtonPropsType>(
   function NavItemButton(props, ref) {
@@ -24,6 +26,7 @@ const NavItemButton = forwardRef<HTMLDivElement | null, NavItemButtonPropsType>(
       here,
       hover,
       open,
+      disabled,
       collapse,
       expand,
       color,
@@ -36,11 +39,12 @@ const NavItemButton = forwardRef<HTMLDivElement | null, NavItemButtonPropsType>(
       bullet,
       badge,
       title,
+      tooltip,
       hasSub,
       arrow
     } = props;
 
-    return (
+    const btn = (
       <ListItemButtonStyled
         depth={depth}
         menu={menu}
@@ -50,6 +54,7 @@ const NavItemButton = forwardRef<HTMLDivElement | null, NavItemButtonPropsType>(
         here={here}
         open={open}
         hover={hover}
+        disabled={disabled}
         collapse={collapse}
         expand={expand}
         tabIndex={tabIndex}
@@ -131,6 +136,32 @@ const NavItemButton = forwardRef<HTMLDivElement | null, NavItemButtonPropsType>(
         )}
       </ListItemButtonStyled>
     );
+
+    if (tooltip) {
+      if (tooltip?.variant === 'light') {
+        return (
+          <LightTooltip
+            describeChild
+            title={tooltip.title}
+            {...(tooltip.placement && { placement: tooltip.placement })}
+          >
+            {btn}
+          </LightTooltip>
+        );
+      } else {
+        return (
+          <DarkTooltip
+            describeChild
+            title={tooltip.title}
+            {...(tooltip.placement && { placement: tooltip.placement })}
+          >
+            {btn}
+          </DarkTooltip>
+        );
+      }
+    } else {
+      return btn;
+    }
   }
 );
 

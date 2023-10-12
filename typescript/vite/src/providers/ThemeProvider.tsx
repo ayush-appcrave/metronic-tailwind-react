@@ -20,6 +20,7 @@ const ThemeProvider = ({ children }: PropsWithChildren) => {
     () => ({
       breakpoints,
       typography,
+      shape: { borderRadius: 3 },
       palette: getPalette(getMode()),
       shadows: getSystemShadows(getMode()),
       customShadows: getCustomShadows(getMode()),

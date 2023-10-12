@@ -6,8 +6,11 @@ import {
   DialogContentText,
   DialogTitle
 } from '@mui/material';
-import { deleteUser, QUERIES, useQueryResponse } from 'modules/users-management';
 import { useMutation, useQueryClient } from 'react-query';
+
+import { deleteUser } from '../../core/_requests';
+import { useQueryResponse } from '../../core/QueryResponseProvider';
+import { QUERIES } from '../../helpers';
 
 interface AlertDialogDeleteUserProps {
   open: boolean;

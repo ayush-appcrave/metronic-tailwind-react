@@ -1,4 +1,5 @@
 import { TableCell, TableRow } from '@mui/material';
+import React from 'react';
 
 interface TableNoDataProps {
   colSpan?: number;

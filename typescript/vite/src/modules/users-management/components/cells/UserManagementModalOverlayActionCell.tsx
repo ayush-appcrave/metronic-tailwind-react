@@ -1,11 +1,10 @@
 import { Box, Button } from '@mui/material';
-import {
-  AlertDialogDeleteUser,
-  UndoSnackbar,
-  UpdateUserDialog,
-  ViewUserDialog
-} from 'modules/users-management';
 import { useState } from 'react';
+
+import { AlertDialogDeleteUser } from '../alerts';
+import { UpdateUserDialog } from '../edit-user';
+import { UndoSnackbar } from '../undo';
+import { ViewUserDialog } from '../view';
 
 interface IUserManagementModalOverlayActionCellProps {
   id: string;
