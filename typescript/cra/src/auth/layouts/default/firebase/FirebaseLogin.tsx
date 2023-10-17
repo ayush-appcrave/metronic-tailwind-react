@@ -109,7 +109,7 @@ const FirebaseLogin = () => {
       >
         {/* begin::Heading */}
         <div className="text-center mb-11">
-          <h1 className="text-dark fw-bolder mb-3">Sign In</h1>
+          <h1 className="text-gray-900 fw-bolder mb-3">Sign In</h1>
           <div className="text-gray-500 fw-semibold fs-6">Your Social Campaigns</div>
         </div>
         {/* begin::Heading */}
@@ -154,7 +154,7 @@ const FirebaseLogin = () => {
 
         {/* begin::Form group */}
         <div className="fv-row mb-3">
-          <label className="form-label fw-bolder text-dark fs-6 mb-0">Password</label>
+          <label className="form-label fw-bolder text-gray-900 fs-6 mb-0">Password</label>
           <input
             type="password"
             autoComplete="off"

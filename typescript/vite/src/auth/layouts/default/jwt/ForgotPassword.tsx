@@ -54,7 +54,7 @@ const ForgotPassword = () => {
     >
       <div className="text-center mb-10">
         {/* begin::Title */}
-        <h1 className="text-dark fw-bolder mb-3">Forgot Password ?</h1>
+        <h1 className="text-gray-900 fw-bolder mb-3">Forgot Password ?</h1>
         {/* end::Title */}
 
         {/* begin::Link */}

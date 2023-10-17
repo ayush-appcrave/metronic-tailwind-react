@@ -71,7 +71,7 @@ const FirebaseRegistration = () => {
       {/* begin::Heading */}
       <div className="text-center mb-11">
         {/* begin::Title */}
-        <h1 className="text-dark fw-bolder mb-3">Sign Up</h1>
+        <h1 className="text-gray-900 fw-bolder mb-3">Sign Up</h1>
         {/* end::Title */}
 
         <div className="text-gray-500 fw-semibold fs-6">Your Social Campaigns</div>
@@ -90,7 +90,7 @@ const FirebaseRegistration = () => {
 
       {/* begin::Form group Email */}
       <div className="fv-row mb-8">
-        <label className="form-label fw-bolder text-dark fs-6">Email</label>
+        <label className="form-label fw-bolder text-gray-900 fs-6">Email</label>
         <input
           placeholder="Email"
           type="email"
@@ -117,7 +117,7 @@ const FirebaseRegistration = () => {
       {/* begin::Form group Password */}
       <div className="fv-row mb-8" data-kt-password-meter="true">
         <div className="mb-1">
-          <label className="form-label fw-bolder text-dark fs-6">Password</label>
+          <label className="form-label fw-bolder text-gray-900 fs-6">Password</label>
           <div className="position-relative mb-3">
             <input
               type="password"
@@ -162,7 +162,7 @@ const FirebaseRegistration = () => {
 
       {/* begin::Form group Confirm password */}
       <div className="fv-row mb-5">
-        <label className="form-label fw-bolder text-dark fs-6">Confirm Password</label>
+        <label className="form-label fw-bolder text-gray-900 fs-6">Confirm Password</label>
         <input
           type="password"
           placeholder="Password confirmation"
