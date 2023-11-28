@@ -1,5 +1,6 @@
-import { ProgressBarLoader, ScreenLoader } from '@/components/loaders';
 import { createContext, type PropsWithChildren, useContext, useState } from 'react';
+
+import { ProgressBarLoader, ScreenLoader } from '@/components/loaders';
 
 export interface LoadersProviderType {
   contentLoader: boolean;

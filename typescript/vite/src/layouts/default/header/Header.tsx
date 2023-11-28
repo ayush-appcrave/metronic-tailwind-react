@@ -1,5 +1,6 @@
-import { PageContainer } from '@/components/page-container';
 import { alpha, Box, useTheme } from '@mui/material';
+
+import { PageContainer } from '@/components/page-container';
 
 import useResponsive from '../../../hooks/useResponsive';
 import { DefaultLayoutStylesConfig, useDefaultLayout } from '../';

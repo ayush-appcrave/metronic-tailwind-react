@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-non-null-assertion */
 import { Box, Link } from '@mui/material';
 import {
   forwardRef,
@@ -57,7 +58,7 @@ const NavItem = forwardRef<HTMLDivElement | null, NavItemPropsType>(function Nav
   const [anchorEl, setAnchorEl] = useState<HTMLElement | null>(null);
 
   const menuItemRef = useRef<HTMLDivElement | null>(null);
-   
+
   useImperativeHandle(ref, () => itemRef.current!);
 
   useImperativeHandle(containerRefProp, () => containerRef.current);
@@ -72,7 +73,6 @@ const NavItem = forwardRef<HTMLDivElement | null, NavItemPropsType>(function Nav
     };
   });
 
-   
   useImperativeHandle(containerRef, () => menuItemRef.current!);
 
   const menuContainerRef = useRef<HTMLDivElement | null>(null);

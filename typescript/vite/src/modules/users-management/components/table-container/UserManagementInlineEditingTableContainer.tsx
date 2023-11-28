@@ -1,6 +1,7 @@
-import { ProgressBarLoader } from '@/components/loaders';
 import { Table, TableContainer } from '@mui/material';
 import { memo, useEffect, useState } from 'react';
+
+import { ProgressBarLoader } from '@/components/loaders';
 
 import { useQueryRequest, useQueryResponseLoading } from '../../core';
 import { initialQueryRequest } from '../../helpers';

@@ -1,11 +1,7 @@
-import axios, { type AxiosResponse } from "axios";
+import axios, { type AxiosResponse } from 'axios';
 
-import { type Response } from "../helpers";
-import {
-  type User,
-  type UserPasswords,
-  type UsersQueryResponse,
-} from "./_models";
+import { type Response } from '../helpers';
+import { type User, type UserPasswords, type UsersQueryResponse } from './_models';
 
 const API_URL = import.meta.env.VITE_APP_API_URL;
 const USER_URL = `${API_URL}/user`;
@@ -28,9 +24,7 @@ const getUserById = async (id: string): Promise<User | undefined> => {
     .then((response: Response<User>) => response.data);
 };
 
-const createUser = async (
-  user: User
-): Promise<User | { data?: User | undefined } | undefined> => {
+const createUser = async (user: User): Promise<User | { data?: User | undefined } | undefined> => {
   return await axios
     .put(USER_URL, user)
     .then((response: AxiosResponse<Response<User>>) => response.data)
@@ -70,16 +64,12 @@ const restoreUser = async (
 };
 
 const deleteSelectedUsers = async (userIds: string[]): Promise<void> => {
-  const requests = userIds.map(
-    async (id) => await axios.delete(`${USER_URL}/${id}`)
-  );
+  const requests = userIds.map(async (id) => await axios.delete(`${USER_URL}/${id}`));
   await axios.all(requests).then(() => {});
 };
 
 const restoreMultipleUsers = async (userIds: string[]): Promise<void> => {
-  const requests = userIds.map(
-    async (id) => await axios.post(`${USER_RESTORE_URL}/${id}`)
-  );
+  const requests = userIds.map(async (id) => await axios.post(`${USER_RESTORE_URL}/${id}`));
   await axios.all(requests).then(() => {});
 };
 
@@ -92,5 +82,5 @@ export {
   restoreMultipleUsers,
   restoreUser,
   updateUser,
-  updateUserPassword,
+  updateUserPassword
 };

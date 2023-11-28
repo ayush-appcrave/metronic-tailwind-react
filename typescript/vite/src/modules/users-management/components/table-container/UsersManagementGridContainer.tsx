@@ -17,6 +17,7 @@ import {
 import { useSnackbar } from 'notistack';
 import { useEffect, useMemo, useState } from 'react';
 import { useMutation, useQueryClient } from 'react-query';
+
 import { toAbsoluteUrl } from '@/utils';
 
 import {
@@ -187,7 +188,6 @@ export function UsersManagementGridContainer() {
 
   const handleRequestSort = (model: GridSortModel, details: GridCallbackDetails<any>) => {
     if (model.length) {
-       
       updateState({ sort: model[0].field, order: model[0].sort ? model[0].sort : undefined }, true);
     }
   };

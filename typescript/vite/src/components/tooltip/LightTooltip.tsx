@@ -9,7 +9,7 @@ const LightTooltip = styled(({ className, ...props }: TooltipProps) => (
     color: theme.palette.grey['700'],
     boxShadow: theme.customShadows.tooltip,
     fontSize: 11
-  },
+  }
 }));
 
 export { LightTooltip };

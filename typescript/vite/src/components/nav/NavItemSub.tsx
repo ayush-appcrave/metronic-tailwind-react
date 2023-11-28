@@ -1,4 +1,3 @@
-/* eslint-disable react-hooks/rules-of-hooks */
 import { Collapse, List } from '@mui/material';
 import { forwardRef } from 'react';
 
@@ -35,7 +34,6 @@ const NavItemSub = forwardRef<HTMLDivElement, NavItemSubPropsType>(function NavI
         <List ref={ref} component="div" disablePadding>
           {(items as readonly NavItemPropsType[]).map((item, index) => (
             <NavItem
-               
               key={`${index}-${item.title}`}
               depth={depth}
               menu={menu}

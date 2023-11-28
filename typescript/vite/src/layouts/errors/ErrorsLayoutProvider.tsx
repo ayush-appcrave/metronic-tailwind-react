@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 import { createContext, type PropsWithChildren, useContext, useState } from 'react';
 
 import { type LayoutsType, useLayouts } from '../../providers/LayoutsProvider';

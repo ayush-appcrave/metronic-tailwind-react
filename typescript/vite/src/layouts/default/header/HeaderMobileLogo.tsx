@@ -1,5 +1,6 @@
 import { Box, IconButton } from '@mui/material';
 import { type MouseEvent } from 'react';
+
 import { toAbsoluteUrl } from '@/utils';
 
 import { KeenIcon } from '../../../components';

@@ -1,5 +1,6 @@
 import { Box, useTheme } from '@mui/material';
 import zIndex from '@mui/material/styles/zIndex';
+
 import { toAbsoluteUrl } from '@/utils';
 
 const ScreenLoader = () => {

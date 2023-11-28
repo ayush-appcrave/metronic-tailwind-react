@@ -1,5 +1,4 @@
- 
-import { MenuProps, type SxProps, type TooltipProps } from '@mui/material';
+import { MenuProps, type SxProps } from '@mui/material';
 import { HTMLAttributes, MouseEvent, RefAttributes } from 'react';
 
 import { type ColorSchema } from '../../theme/palette';

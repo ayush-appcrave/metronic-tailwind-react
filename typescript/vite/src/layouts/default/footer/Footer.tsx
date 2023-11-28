@@ -1,5 +1,6 @@
-import { PageContainer } from '@/components/page-container';
 import { Box, useTheme } from '@mui/material';
+
+import { PageContainer } from '@/components/page-container';
 
 import { DefaultLayoutStylesConfig, useDefaultLayout } from '../';
 

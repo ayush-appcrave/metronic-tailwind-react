@@ -1,8 +1,9 @@
-import { formatDate } from '@/components/table';
 import KeyboardArrowDownIcon from '@mui/icons-material/KeyboardArrowDown';
 import KeyboardArrowUpIcon from '@mui/icons-material/KeyboardArrowUp';
 import { Avatar, Box, Collapse, IconButton, TableCell, TableRow, Typography } from '@mui/material';
 import { useState } from 'react';
+
+import { formatDate } from '@/components/table';
 
 import { toAbsoluteUrl } from '../../../../utils/Assets';
 import { User } from '../../core';

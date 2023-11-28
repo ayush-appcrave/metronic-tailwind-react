@@ -1,6 +1,8 @@
 import { TableBody } from '@mui/material';
 import { useMemo } from 'react';
 
+import { type User } from '@/modules/users-management/core/_models';
+
 import { useQueryResponseData } from '../../core';
 import { EmptyTable } from '../empty-table/EmptyTable';
 import { UserManagementInlineEditingTableRow } from '../rows/UserManagementInlineEditingTableRow';
@@ -20,7 +22,7 @@ function TableBodyInlineEditingCustom(props: TableBodyInlineEditingCustomProps) 
         position: 'relative'
       }}
     >
-      {data.map((row, index) => {
+      {data.map((row: User, index: number) => {
         const labelId = `enhanced-table-checkbox-${index}`;
 
         return (

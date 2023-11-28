@@ -1,6 +1,7 @@
+import { Box, Divider, InputBase, useTheme } from '@mui/material';
+
 import { KeenIcon } from '@/components/keenicons';
 import Scrollbar from '@/components/scrollbar';
-import { Box, Divider, InputBase, useTheme } from '@mui/material';
 
 import { useViewport } from '../../hooks';
 import { SearchResults, type SearchResultsType } from './results';
@@ -19,7 +20,8 @@ const SearchInline = ({ dataSource, handleClose }: PropsType) => {
       general: {
         path: 'ecommerce',
         title: 'Example title 1',
-        subTitle: 'Description goes here Description goes here Description goes here Description goes',
+        subTitle:
+          'Description goes here Description goes here Description goes here Description goes',
         category: {
           label: 'Blog',
           color: 'primary'

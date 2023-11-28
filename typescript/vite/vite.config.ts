@@ -1,7 +1,7 @@
-import { fileURLToPath, URL } from "node:url";
+import { fileURLToPath, URL } from 'node:url';
 
-import { defineConfig } from 'vite'
-import react from '@vitejs/plugin-react'
+import react from '@vitejs/plugin-react';
+import { defineConfig } from 'vite';
 
 // https://vitejs.dev/config/
 export default defineConfig({
@@ -9,10 +9,10 @@ export default defineConfig({
   base: '/hero',
   resolve: {
     alias: {
-      "@": fileURLToPath(new URL("./src", import.meta.url))
-    },
+      '@': fileURLToPath(new URL('./src', import.meta.url))
+    }
   },
   build: {
-    chunkSizeWarningLimit: 3000,
-  },
-})
+    chunkSizeWarningLimit: 3000
+  }
+});

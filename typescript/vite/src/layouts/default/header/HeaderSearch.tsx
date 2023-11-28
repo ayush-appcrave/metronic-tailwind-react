@@ -2,7 +2,7 @@ import { Box, Dialog, DialogProps, IconButton, styled, useTheme } from '@mui/mat
 import { useEffect, useState } from 'react';
 
 import { KeenIcon, SearchInline } from '../../../components';
-import { isMacDevice, isWindowsDevice } from '../../../utils/Devices';
+import { isMacDevice } from '../../../utils/Devices';
 
 const HeaderSearch = () => {
   const theme = useTheme();

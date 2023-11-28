@@ -13,7 +13,7 @@ export interface PageContainerProps {
 const PageContainer = ({ children, width, sx }: PageContainerProps) => {
   const { settings } = useSettings();
   const { containerWidth } = settings;
-  const widthMode = width !== undefined ? width : containerWidth;
+  const widthMode = width ?? containerWidth;
 
   return (
     <Container maxWidth={widthMode === 'fixed' ? 'lg' : false} sx={sx}>

@@ -77,7 +77,6 @@ const Nav = ({
     >
       {(items as readonly NavItemPropsType[]).map((item, index) => (
         <NavItem
-           
           key={`${index}-${item.title}`}
           menu={false}
           collapse={collapse}

@@ -1,7 +1,8 @@
+import { Helmet } from 'react-helmet';
+
 import { useNavBreadcrumbs } from '@/components/nav';
 import { PageContainer } from '@/components/page-container';
 import { NAV_VERTICAL } from '@/config';
-import { Helmet } from 'react-helmet';
 
 import { Content, Intro, Toolbar } from '../layouts/default';
 

@@ -1,7 +1,8 @@
-import { PageContainer } from '@/components/page-container';
 import { Box } from '@mui/material';
 import { useTheme } from '@mui/material/styles';
 import { type PropsWithChildren } from 'react';
+
+import { PageContainer } from '@/components/page-container';
 
 const Toolbar = ({ children }: PropsWithChildren) => {
   const theme = useTheme();

@@ -23,7 +23,6 @@ const KeenIconComponent = ({ icon, style, className, sx }: Props) => {
 
   return (
     <Box
-       
       className={`ki-${style} ki-${icon} ${className && ' ' + className}`}
       component="i"
       {...(sx && { sx })}
@@ -32,7 +31,6 @@ const KeenIconComponent = ({ icon, style, className, sx }: Props) => {
         [...Array(KeenIconsConfig[icon])].map((e, i) => {
           return (
             <span
-               
               key={`${style}-${icon}-${className}-path-${i + 1}`}
               className={`path${i + 1}`}
             ></span>

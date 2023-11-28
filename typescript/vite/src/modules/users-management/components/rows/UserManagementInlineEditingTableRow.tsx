@@ -1,4 +1,3 @@
-import { formatDate } from '@/components/table';
 import {
   Avatar,
   Box,
@@ -12,6 +11,8 @@ import {
 } from '@mui/material';
 import { useSnackbar } from 'notistack';
 import { useEffect, useState } from 'react';
+
+import { formatDate } from '@/components/table';
 
 import { toAbsoluteUrl } from '../../../../utils/Assets';
 import { updateUser, useListView, useQueryResponse, User } from '../../core';

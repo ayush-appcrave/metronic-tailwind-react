@@ -1,9 +1,10 @@
-import { ContentLoader } from '@/components/loaders';
-import { useNavBreadcrumbs } from '@/components/nav';
-import { PageContainer } from '@/components/page-container';
 import { Button } from '@mui/material';
 import { useEffect, useState } from 'react';
 import { Helmet } from 'react-helmet';
+
+import { ContentLoader } from '@/components/loaders';
+import { useNavBreadcrumbs } from '@/components/nav';
+import { PageContainer } from '@/components/page-container';
 
 import { NAV_VERTICAL } from '../config/navs.config';
 import { Content, Intro, Toolbar, ToolbarActions } from '../layouts/default';

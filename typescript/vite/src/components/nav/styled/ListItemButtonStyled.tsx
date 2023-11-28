@@ -26,79 +26,79 @@ export const ListItemButtonStyled = styled(ListItemButton, {
       menu === true
         ? styles.MENU_ITEM_BUTTON_BORDER_RADIUS
         : depth === 1
-        ? styles.ROOT_ITEM_BUTTON_BORDER_RADIUS
-        : styles.SUB_ITEM_BUTTON_BORDER_RADIUS,
+          ? styles.ROOT_ITEM_BUTTON_BORDER_RADIUS
+          : styles.SUB_ITEM_BUTTON_BORDER_RADIUS,
 
     height:
       menu === true
         ? styles.MENU_ITEM_BUTTON_HEIGHT
         : depth === 1
-        ? styles.ROOT_ITEM_BUTTON_HEIGHT
-        : styles.SUB_ITEM_BUTTON_HEIGHT,
+          ? styles.ROOT_ITEM_BUTTON_HEIGHT
+          : styles.SUB_ITEM_BUTTON_HEIGHT,
 
     paddingTop:
       menu === true
         ? styles.MENU_ITEM_BUTTON_PADDING_Y
         : depth === 1
-        ? styles.ROOT_ITEM_BUTTON_PADDING_Y
-        : styles.SUB_ITEM_BUTTON_PADDING_Y,
+          ? styles.ROOT_ITEM_BUTTON_PADDING_Y
+          : styles.SUB_ITEM_BUTTON_PADDING_Y,
 
     paddingBottom:
       menu === true
         ? styles.MENU_ITEM_BUTTON_PADDING_Y
         : depth === 1
-        ? styles.ROOT_ITEM_BUTTON_PADDING_Y
-        : styles.SUB_ITEM_BUTTON_PADDING_Y,
+          ? styles.ROOT_ITEM_BUTTON_PADDING_Y
+          : styles.SUB_ITEM_BUTTON_PADDING_Y,
 
     paddingLeft:
       menu === true
         ? styles.MENU_ITEM_BUTTON_PADDING_X
         : depth === 1
-        ? styles.ROOT_ITEM_BUTTON_PADDING_X
-        : styles.SUB_ITEM_BUTTON_PADDING_X * styles.SUB_INDENTION * depth,
+          ? styles.ROOT_ITEM_BUTTON_PADDING_X
+          : styles.SUB_ITEM_BUTTON_PADDING_X * styles.SUB_INDENTION * depth,
 
     paddingRight:
       menu === true
         ? styles.MENU_ITEM_BUTTON_PADDING_X
         : depth === 1
-        ? styles.ROOT_ITEM_BUTTON_PADDING_X
-        : styles.SUB_ITEM_BUTTON_PADDING_X,
+          ? styles.ROOT_ITEM_BUTTON_PADDING_X
+          : styles.SUB_ITEM_BUTTON_PADDING_X,
 
     marginTop:
       menu === true
         ? styles.MENU_ITEM_BUTTON_MARGIN_Y
         : depth === 1
-        ? styles.ROOT_ITEM_BUTTON_MARGIN_Y
-        : styles.SUB_ITEM_BUTTON_MARGIN_Y,
+          ? styles.ROOT_ITEM_BUTTON_MARGIN_Y
+          : styles.SUB_ITEM_BUTTON_MARGIN_Y,
 
     marginBottom:
       menu === true
         ? styles.MENU_ITEM_BUTTON_MARGIN_Y
         : depth === 1
-        ? styles.ROOT_ITEM_BUTTON_MARGIN_Y
-        : styles.SUB_ITEM_BUTTON_MARGIN_Y,
+          ? styles.ROOT_ITEM_BUTTON_MARGIN_Y
+          : styles.SUB_ITEM_BUTTON_MARGIN_Y,
 
     marginLeft:
       menu === true
         ? styles.MENU_ITEM_BUTTON_MARGIN_X
         : depth === 1
-        ? styles.ROOT_ITEM_BUTTON_MARGIN_X
-        : styles.SUB_ITEM_BUTTON_MARGIN_X,
+          ? styles.ROOT_ITEM_BUTTON_MARGIN_X
+          : styles.SUB_ITEM_BUTTON_MARGIN_X,
 
     marginRight:
       menu === true
         ? styles.MENU_ITEM_BUTTON_MARGIN_X
         : depth === 1
-        ? styles.ROOT_ITEM_BUTTON_MARGIN_X
-        : styles.SUB_ITEM_BUTTON_MARGIN_X,
+          ? styles.ROOT_ITEM_BUTTON_MARGIN_X
+          : styles.SUB_ITEM_BUTTON_MARGIN_X,
 
     ...(open && {
       backgroundColor:
         menu === true
           ? styles.MENU_ITEM_BUTTON_BACKGROUND_COLOR_OPEN
           : depth === 1
-          ? styles.ROOT_ITEM_BUTTON_BACKGROUND_COLOR_OPEN
-          : styles.SUB_ITEM_BUTTON_BACKGROUND_COLOR_OPEN
+            ? styles.ROOT_ITEM_BUTTON_BACKGROUND_COLOR_OPEN
+            : styles.SUB_ITEM_BUTTON_BACKGROUND_COLOR_OPEN
     }),
 
     ...(here && {
@@ -106,8 +106,8 @@ export const ListItemButtonStyled = styled(ListItemButton, {
         menu === true
           ? styles.MENU_ITEM_BUTTON_BACKGROUND_COLOR_HERE
           : depth === 1
-          ? styles.ROOT_ITEM_BUTTON_BACKGROUND_COLOR_HERE
-          : styles.SUB_ITEM_BUTTON_BACKGROUND_COLOR_HERE
+            ? styles.ROOT_ITEM_BUTTON_BACKGROUND_COLOR_HERE
+            : styles.SUB_ITEM_BUTTON_BACKGROUND_COLOR_HERE
     }),
 
     '&:hover ': {
@@ -115,8 +115,8 @@ export const ListItemButtonStyled = styled(ListItemButton, {
         menu === true
           ? styles.MENU_ITEM_BUTTON_BACKGROUND_COLOR_HOVER
           : depth === 1
-          ? styles.ROOT_ITEM_BUTTON_BACKGROUND_COLOR_HOVER
-          : styles.SUB_ITEM_BUTTON_BACKGROUND_COLOR_HOVER
+            ? styles.ROOT_ITEM_BUTTON_BACKGROUND_COLOR_HOVER
+            : styles.SUB_ITEM_BUTTON_BACKGROUND_COLOR_HOVER
     },
 
     ...(active && {
@@ -124,8 +124,8 @@ export const ListItemButtonStyled = styled(ListItemButton, {
         (menu === true
           ? styles.MENU_ITEM_BUTTON_BACKGROUND_COLOR_ACTIVE
           : depth === 1
-          ? styles.ROOT_ITEM_BUTTON_BACKGROUND_COLOR_ACTIVE
-          : styles.SUB_ITEM_BUTTON_BACKGROUND_COLOR_ACTIVE) + ' !important'
+            ? styles.ROOT_ITEM_BUTTON_BACKGROUND_COLOR_ACTIVE
+            : styles.SUB_ITEM_BUTTON_BACKGROUND_COLOR_ACTIVE) + ' !important'
     }),
 
     ...(disabled && {

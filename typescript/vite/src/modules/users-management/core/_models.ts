@@ -1,4 +1,4 @@
-import { type PaginationState } from "@/components/table/types";
+import { type PaginationState } from '@/components/table/types';
 
 export interface UserGeneralInfo {
   id: string;
@@ -12,7 +12,7 @@ export interface UserGeneralInfo {
   avatar?: string;
   color?: string;
   email?: string;
-  role?: "admin" | "user";
+  role?: 'admin' | 'user';
   status?: string;
   deleted?: string;
   two_steps_auth?: boolean;
@@ -34,9 +34,9 @@ export interface UsersQueryResponse {
 }
 
 export const initialUser: User = {
-  id: "1",
-  avatar: "avatars/300-6.jpg",
-  role: "admin",
-  first_name: "",
-  email: "",
+  id: '1',
+  avatar: 'avatars/300-6.jpg',
+  role: 'admin',
+  first_name: '',
+  email: ''
 };

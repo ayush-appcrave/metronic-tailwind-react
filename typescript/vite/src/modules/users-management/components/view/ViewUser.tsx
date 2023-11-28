@@ -3,6 +3,7 @@ import { useSnackbar } from 'notistack';
 import { useEffect, useState } from 'react';
 import { useMutation, useQueryClient } from 'react-query';
 import { useNavigate } from 'react-router';
+
 import { toAbsoluteUrl } from '@/utils';
 
 import { deleteUser, getUserById, useQueryResponse } from '../../core';

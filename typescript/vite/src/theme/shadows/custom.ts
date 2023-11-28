@@ -1,4 +1,3 @@
- 
 import { alpha, type PaletteMode } from '@mui/material';
 
 import { getPalette } from '../palette';

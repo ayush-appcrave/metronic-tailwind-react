@@ -8,7 +8,7 @@ import {
   QUERIES,
   stringifyRequestQuery
 } from '../helpers';
-import { type User, UsersQueryResponse } from './_models';
+import { UsersQueryResponse } from './_models';
 import { getUsers } from './_requests';
 import { useQueryRequest } from './QueryRequestProvider';
 
@@ -16,7 +16,7 @@ interface WithChildren {
   children?: ReactNode;
 }
 
-const QueryResponseContext = createResponseContext<User | null>(null);
+const QueryResponseContext = createResponseContext(null);
 
 const QueryResponseProvider: FC<WithChildren> = ({ children }) => {
   const { state } = useQueryRequest();

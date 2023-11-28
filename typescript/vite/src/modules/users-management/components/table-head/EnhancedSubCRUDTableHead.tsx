@@ -1,6 +1,7 @@
+import { type ChangeEvent } from 'react';
+
 import { TableHeadCustom } from '@/components/table';
 import { type Order } from '@/components/table/types';
-import { type ChangeEvent } from 'react';
 
 import { headCells, type User } from '../../core';
 

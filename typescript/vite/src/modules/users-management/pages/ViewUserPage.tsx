@@ -1,9 +1,10 @@
-import { useNavBreadcrumbs } from '@/components/nav';
-import { PageContainer } from '@/components/page-container';
 import { Card } from '@mui/material';
-import { NAV_VERTICAL } from '@/config';
 import { Helmet } from 'react-helmet';
 import { useParams } from 'react-router';
+
+import { useNavBreadcrumbs } from '@/components/nav';
+import { PageContainer } from '@/components/page-container';
+import { NAV_VERTICAL } from '@/config';
 
 import { Content, Intro, Toolbar } from '../../../layouts/default';
 import { ViewUser } from '../components';

@@ -1,6 +1,8 @@
-import { formatDate } from '@/components/table';
+import { User } from '@auth0/auth0-spa-js';
 import { Avatar, Box, Checkbox, TableBody, TableCell, TableRow } from '@mui/material';
 import { useMemo } from 'react';
+
+import { formatDate } from '@/components/table';
 
 import { toAbsoluteUrl } from '../../../../utils/Assets';
 import { useListView, useQueryResponseData } from '../../core';
@@ -26,7 +28,7 @@ function TableBodyCustom(props: TableBodyCustomProps) {
         position: 'relative'
       }}
     >
-      {data.map((row, index) => {
+      {data.map((row: User, index: number) => {
         const labelId = `enhanced-table-checkbox-${index}`;
 
         return (

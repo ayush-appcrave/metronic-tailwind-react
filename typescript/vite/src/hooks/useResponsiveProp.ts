@@ -1,4 +1,3 @@
-/* eslint-disable react-hooks/rules-of-hooks */
 import { type Breakpoint } from '@mui/material/styles';
 
 import { useResponsive } from './useResponsive';
@@ -17,7 +16,7 @@ export default function useResponsiveProp(prop: any, defaultProp: any = null) {
     }
   }
 
-  value = value !== null && value !== undefined ? value : defaultProp;
+  value = value ?? defaultProp;
 
   return value;
 }

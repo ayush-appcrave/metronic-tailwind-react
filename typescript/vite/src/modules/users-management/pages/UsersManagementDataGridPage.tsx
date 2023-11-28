@@ -1,6 +1,7 @@
-import { PageContainer } from '@/components/page-container';
 import { Card } from '@mui/material';
 import { Helmet } from 'react-helmet';
+
+import { PageContainer } from '@/components/page-container';
 
 import { Content, Intro, Toolbar } from '../../../layouts/default';
 import { UsersManagementGridContainer } from '../components';

@@ -1,8 +1,9 @@
-import { KeenIcon } from '@/components/keenicons';
-import { Nav, NavItem, NavItemButton, NavItemSub } from '@/components/nav';
 import { IconButton } from '@mui/material';
 import { useSnackbar } from 'notistack';
 import React, { useState } from 'react';
+
+import { KeenIcon } from '@/components/keenicons';
+import { Nav, NavItem, NavItemButton, NavItemSub } from '@/components/nav';
 
 import { restoreMultipleUsers, useQueryResponse } from '../../core';
 import { AlertDialogDeleteUser } from '../alerts';

@@ -1,6 +1,8 @@
-import { formatDate, TableSkeletonLoader } from '@/components/table';
 import { Avatar, Box, Checkbox, TableBody, TableCell, TableRow } from '@mui/material';
 import { useMemo } from 'react';
+
+import { formatDate, TableSkeletonLoader } from '@/components/table';
+import { type User } from '@/modules/users-management/core/_models';
 
 import { toAbsoluteUrl } from '../../../../utils/Assets';
 import {
@@ -37,7 +39,7 @@ function TableBodySkeletonLoadingCustom(props: TableBodySkeletonLoadingCustomPro
           itemsPerPage={pagination.items_per_page ? pagination.items_per_page : 10}
         ></TableSkeletonLoader>
       ) : (
-        data.map((row, index) => {
+        data.map((row: User, index: number) => {
           const labelId = `enhanced-table-checkbox-${index}`;
 
           return (

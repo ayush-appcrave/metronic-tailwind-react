@@ -1,5 +1,6 @@
 import { Avatar, Box, Button, useTheme } from '@mui/material';
 import { useRef } from 'react';
+
 import { toAbsoluteUrl } from '@/utils';
 
 import { useAuthContext } from '../../../auth';

@@ -1,6 +1,7 @@
-import { KeenIcon } from '@/components/keenicons';
 import { Box, Chip, Link, Typography, useTheme } from '@mui/material';
 import { Link as RouterLink } from 'react-router-dom';
+
+import { KeenIcon } from '@/components/keenicons';
 
 import { type SearchResultsGeneralType } from './';
 

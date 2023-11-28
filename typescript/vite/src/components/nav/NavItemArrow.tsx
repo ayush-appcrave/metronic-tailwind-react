@@ -60,22 +60,22 @@ const NavItemArrow = ({
         height: menu
           ? styles.MENU_ITEM_ARROW_SIZE
           : depth === 1
-          ? styles.ROOT_ITEM_ARROW_SIZE
-          : styles.SUB_ITEM_ARROW_SIZE,
+            ? styles.ROOT_ITEM_ARROW_SIZE
+            : styles.SUB_ITEM_ARROW_SIZE,
 
         width: menu
           ? styles.MENU_ITEM_ARROW_SIZE
           : depth === 1
-          ? styles.ROOT_ITEM_ARROW_SIZE
-          : styles.SUB_ITEM_ARROW_SIZE,
+            ? styles.ROOT_ITEM_ARROW_SIZE
+            : styles.SUB_ITEM_ARROW_SIZE,
 
         color:
           color ||
           (menu
             ? styles.MENU_ITEM_ARROW_COLOR
             : depth === 1
-            ? styles.ROOT_ITEM_ARROW_COLOR
-            : styles.SUB_ITEM_ARROW_COLOR),
+              ? styles.ROOT_ITEM_ARROW_COLOR
+              : styles.SUB_ITEM_ARROW_COLOR),
 
         ...(open && {
           color:
@@ -83,8 +83,8 @@ const NavItemArrow = ({
             (menu
               ? styles.MENU_ITEM_ARROW_COLOR_OPEN
               : depth === 1
-              ? styles.ROOT_ITEM_ARROW_COLOR_OPEN
-              : styles.SUB_ITEM_ARROW_COLOR_OPEN)
+                ? styles.ROOT_ITEM_ARROW_COLOR_OPEN
+                : styles.SUB_ITEM_ARROW_COLOR_OPEN)
         }),
 
         ...(here && {
@@ -93,8 +93,8 @@ const NavItemArrow = ({
             (menu
               ? styles.MENU_ITEM_ARROW_COLOR_HERE
               : depth === 1
-              ? styles.ROOT_ITEM_ARROW_COLOR_HERE
-              : styles.SUB_ITEM_ARROW_COLOR_HERE)
+                ? styles.ROOT_ITEM_ARROW_COLOR_HERE
+                : styles.SUB_ITEM_ARROW_COLOR_HERE)
         }),
 
         ...(hover && {
@@ -103,8 +103,8 @@ const NavItemArrow = ({
             (menu
               ? styles.MENU_ITEM_ARROW_COLOR_HOVER
               : depth === 1
-              ? styles.ROOT_ITEM_ARROW_COLOR_HOVER
-              : styles.SUB_ITEM_ARROW_COLOR_HOVER)
+                ? styles.ROOT_ITEM_ARROW_COLOR_HOVER
+                : styles.SUB_ITEM_ARROW_COLOR_HOVER)
         }),
 
         ...(active && {
@@ -113,8 +113,8 @@ const NavItemArrow = ({
             (menu
               ? styles.MENU_ITEM_ARROW_COLOR_ACTIVE
               : depth === 1
-              ? styles.ROOT_ITEM_ARROW_COLOR_ACTIVE
-              : styles.SUB_ITEM_ARROW_COLOR_ACTIVE)
+                ? styles.ROOT_ITEM_ARROW_COLOR_ACTIVE
+                : styles.SUB_ITEM_ARROW_COLOR_ACTIVE)
         }),
 
         'i ': {
@@ -122,8 +122,8 @@ const NavItemArrow = ({
             menu === true
               ? styles.MENU_ITEM_ARROW_FONT_SIZE
               : depth === 1
-              ? styles.ROOT_ITEM_ARROW_FONT_SIZE
-              : styles.SUB_ITEM_ARROW_FONT_SIZE
+                ? styles.ROOT_ITEM_ARROW_FONT_SIZE
+                : styles.SUB_ITEM_ARROW_FONT_SIZE
         }
       }}
     >

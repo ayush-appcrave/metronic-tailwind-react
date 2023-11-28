@@ -1,18 +1,40 @@
 module.exports = {
-  root: true,
-  env: { browser: true, es2020: true },
-  extends: [
-    "eslint:recommended",
-    "plugin:@typescript-eslint/recommended",
-    "plugin:react-hooks/recommended",
-  ],
-  ignorePatterns: ["dist", ".eslintrc.cjs"],
-  parser: "@typescript-eslint/parser",
-  plugins: ["react-refresh"],
-  rules: {
-    "@typescript-eslint/no-explicit-any": "off",
-    "@typescript-eslint/no-unused-vars": "off",
-    "react-hooks/exhaustive-deps": "off",
-    "react-refresh/only-export-components": "off",
+  settings: {
+    react: {
+      version: 'detect'
+    }
   },
+  env: {
+    browser: true,
+    es2021: true
+  },
+  extends: [
+    'plugin:react/recommended',
+    'standard-with-typescript',
+    'eslint:recommended',
+    'plugin:prettier/recommended',
+    'prettier'
+  ],
+  overrides: [],
+  parserOptions: {
+    project: './tsconfig.json',
+    tsconfigRootDir: __dirname
+  },
+  plugins: ['react', 'unused-imports', 'simple-import-sort'],
+  rules: {
+    'no-unused-vars': 'warn',
+    '@typescript-eslint/no-unused-vars': 'off',
+    'unused-imports/no-unused-imports': 'warn',
+    'react/react-in-jsx-scope': 'off',
+    '@typescript-eslint/explicit-function-return-type': 'off',
+    '@typescript-eslint/strict-boolean-expressions': 'off',
+    '@typescript-eslint/consistent-type-imports': 'off',
+    '@typescript-eslint/no-floating-promises': 'off',
+    '@typescript-eslint/naming-convention': 'off',
+    '@typescript-eslint/restrict-template-expressions': 'off',
+    '@typescript-eslint/restrict-plus-operands': 'off',
+    'simple-import-sort/imports': 'warn',
+    'simple-import-sort/exports': 'warn',
+    'prettier/prettier': 'warn'
+  }
 };

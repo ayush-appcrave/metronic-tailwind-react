@@ -9,8 +9,8 @@ const BadgeStyled = styled(Badge, {
   const rightProp: number = menu
     ? styles.MENU_ITEM_BUTTON_PADDING_X
     : depth === 1
-    ? styles.ROOT_ITEM_BUTTON_PADDING_X
-    : styles.SUB_ITEM_BUTTON_PADDING_X;
+      ? styles.ROOT_ITEM_BUTTON_PADDING_X
+      : styles.SUB_ITEM_BUTTON_PADDING_X;
 
   return {
     '.MuiBadge-badge ': {

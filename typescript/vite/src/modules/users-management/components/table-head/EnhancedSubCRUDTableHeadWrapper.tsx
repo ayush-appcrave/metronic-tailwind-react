@@ -1,7 +1,8 @@
-import { Order } from '@/components/table/types';
 import qs from 'qs';
 import { useState } from 'react';
 import { useSearchParams } from 'react-router-dom';
+
+import { Order } from '@/components/table/types';
 
 import { useListView, useQueryRequest, useQueryResponsePagination, User } from '../../core';
 import { EnhancedSubCRUDTableHead } from './EnhancedSubCRUDTableHead';
