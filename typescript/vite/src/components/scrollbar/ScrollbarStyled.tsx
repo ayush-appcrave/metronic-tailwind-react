@@ -1,7 +1,7 @@
+import { Box } from '@mui/material';
 import { styled } from '@mui/material/styles';
-import SimpleBar from 'simplebar-react';
 
-export const ScrollbarStyled = styled(SimpleBar, {
+export const ScrollbarStyled = styled(Box, {
   shouldForwardProp: (prop) => !['styles', 'sx'].includes(prop as string)
 })<{ styles: any }>(({ theme, styles }) => {
   return {

@@ -10,8 +10,6 @@ import {
   LoadersProvider,
   SettingsProvider,
   SnackbarProvider,
-  ThemeProvider,
-  ThemeRtlProvider,
   TranslationProvider
 } from '@/providers';
 
@@ -24,15 +22,11 @@ const ProvidersWrapper = ({ children }: PropsWithChildren) => {
         <AuthProvider>
           <SettingsProvider>
             <TranslationProvider>
-              <ThemeProvider>
-                <ThemeRtlProvider>
-                  <LayoutsProvider>
-                    <LoadersProvider>
-                        {children}
-                    </LoadersProvider>
-                  </LayoutsProvider>
-                </ThemeRtlProvider>
-              </ThemeProvider>
+              <LayoutsProvider>
+                <LoadersProvider>
+                  {children}
+                </LoadersProvider>
+              </LayoutsProvider>
             </TranslationProvider>
           </SettingsProvider>
         </AuthProvider>

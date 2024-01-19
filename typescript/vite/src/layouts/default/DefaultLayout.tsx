@@ -7,9 +7,7 @@ import { Sidebar } from './sidebar/Sidebar';
 const Layout = () => {
   return (
     <>
-      <Sidebar />
-      <Main />
-      <Settings />
+      <div className="text-primary">Test</div>
     </>
   );
 };

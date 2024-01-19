@@ -1,0 +1,18 @@
+.light,
+:root {
+	--tw-card-background-color: white;
+	--tw-tooltip-background-color: white;
+	--tw-popver-background-color: white;
+	--tw-modal-background-color: white;
+	--tw-drawer-background-color: white;
+	--tw-dropdown-background-color: white;
+}
+
+.dark {
+	--tw-card-background-color: var(--tw-gray-300-dark);
+	--tw-tooltip-background-color: var(--tw-gray-300-dark);
+	--tw-popver-background-color: var(--tw-gray-300-dark);
+	--tw-modal-background-color: var(--tw-gray-300-dark);
+	--tw-drawer-background-color: var(--tw-gray-300-dark);
+	--tw-dropdown-background-color: var(--tw-gray-300-dark);
+}

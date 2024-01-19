@@ -1,0 +1,10 @@
+/* Tailwind core */
+@import "tailwindcss/base";
+@import "tailwindcss/components";
+@import "tailwindcss/utilities";
+
+/* Customization */
+@import "extend/main.css";
+
+/* Layouts  */
+@import "layouts/demo1.css";

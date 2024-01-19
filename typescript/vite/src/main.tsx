@@ -1,7 +1,7 @@
-import 'simplebar-react/dist/simplebar.min.css';
 import '@/components/keenicons/assets/duotone/style.css';
 import '@/components/keenicons/assets/outline/style.css';
 import '@/components/keenicons/assets/solid/style.css';
+import './css/styles.css';
 
 import axios from 'axios';
 import ReactDOM from 'react-dom/client';
