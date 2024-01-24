@@ -3,7 +3,7 @@ import { Navigate, Route, Routes, useLocation } from 'react-router';
 
 import { AuthPage, useAuthContext } from '../auth';
 import { RequireAuth } from '../auth/RequireAuth';
-import { DefaultLayout } from '../layouts/default';
+import { Demo1Layout } from '../layouts/demo1';
 import { ErrorsPage } from '../modules/errors';
 import { UsersManagementWrapper } from '../modules/users-management';
 import { DashboardPage, EcommercePage, MarketingPage } from '../pages';
@@ -46,11 +46,10 @@ const AppRouting = (): ReactElement => {
       <Route path="error/*" element={<ErrorsPage />} />
 
       <Route element={<RequireAuth />}>
-        <Route element={<DefaultLayout />}>
+        <Route element={<Demo1Layout />}>
           <Route path="dashboard" element={<DashboardPage />} />
           <Route path="ecommerce" element={<EcommercePage />} />
           <Route path="marketing" element={<MarketingPage />} />
-          <Route path="users-management/*" element={<UsersManagementWrapper />} />
           <Route index element={<Navigate to="/dashboard" />} />
         </Route>
       </Route>

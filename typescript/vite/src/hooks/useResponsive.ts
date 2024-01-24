@@ -1,34 +1,35 @@
-import { type Breakpoint, useTheme } from '@mui/material/styles';
-import useMediaQuery from '@mui/material/useMediaQuery';
+import tailwindConfig from 'tailwindcss/defaultConfig';
 
-type Query = 'up' | 'down' | 'between' | 'only';
-type Key = Breakpoint | number;
-type Start = Breakpoint | number;
-type End = Breakpoint | number;
+import { useMediaQuery } from './useMediaQuery';
 
-export default function useResponsive(query: Query, key?: Key, start?: Start, end?: End) {
-  const theme = useTheme();
+type BreakpointType = 'sm' | 'md' | 'lg' | 'xl' | '2xl';
+type QueryType = 'up' | 'down' | 'between';
+type Key = BreakpointType | number;
+type Start = BreakpointType | number;
+type End = BreakpointType | number;
+const breakpoints: BreakpointType[] = ['sm', 'md', 'lg', 'xl', '2xl'];
 
-  const mediaUp = useMediaQuery(theme.breakpoints.up(key as Key));
-  const mediaDown = useMediaQuery(theme.breakpoints.down(key as Key));
-  const mediaBetween = useMediaQuery(theme.breakpoints.between(start as Start, end as End));
-  const mediaOnly = useMediaQuery(theme.breakpoints.only(key as Breakpoint));
+const useResponsive = (query: QueryType, key?: Key, start?: Start, end?: End) => {
+  const screens = tailwindConfig?.theme?.screens;
 
   if (query === 'up') {
-    return mediaUp;
+    key = breakpoints.includes(key as BreakpointType) && screens ? screens[key] : key;
+
+    return useMediaQuery(`(min-width: ${key})`);
   }
 
   if (query === 'down') {
-    return mediaDown;
+    key = breakpoints.includes(key as BreakpointType) && screens ? screens[key] : key;
+
+    return useMediaQuery(`(max-width: ${key})`);
   }
 
   if (query === 'between') {
-    return mediaBetween;
-  }
+    start = breakpoints.includes(start as BreakpointType) && screens ? screens[start] : start;
+    end = breakpoints.includes(end as BreakpointType) && screens ? screens[end] : end;
 
-  if (query === 'only') {
-    return mediaOnly;
+    return useMediaQuery(`(min-width: ${start}) and (max-width: ${end})`);
   }
-}
+};
 
-export { useResponsive };
+export { type BreakpointType, useResponsive };

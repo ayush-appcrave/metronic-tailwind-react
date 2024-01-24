@@ -25,7 +25,7 @@ const ScreenLoader = () => {
     >
       <Box
         component="img"
-        src={toAbsoluteUrl('/media/logos/default.svg')}
+        src={toAbsoluteUrl('/images/brand/small-logo.svg')}
         alt="logo"
         sx={{
           height: '30px',

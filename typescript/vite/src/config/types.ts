@@ -1,20 +1,15 @@
-import { type Breakpoint, type Direction } from '@mui/material';
-
 import { type KeenIconsStyleType } from '../components/keenicons/types';
 
 export type SettingsModeOptionType = 'light' | 'dark' | 'system';
 
-export type SettingsContainerWidthType = 'fluid' | 'fixed';
+export type SettingsContainerType = 'fluid' | 'fixed';
 
 // Settings types
 export interface SettingsType {
   mode: SettingsModeOptionType;
-  direction: Direction;
-  containerWidth: SettingsContainerWidthType;
+  containerWidth: SettingsContainerType;
   keeniconsStyle: KeenIconsStyleType;
   fontFamily: string;
-  colorPreset: string;
-  mobileBreakpoint: Breakpoint;
   layout: string;
 }
 

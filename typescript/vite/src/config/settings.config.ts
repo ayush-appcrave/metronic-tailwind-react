@@ -2,13 +2,10 @@ import { type SettingsType } from './types';
 
 const defaultSettings: SettingsType = {
   mode: 'system',
-  direction: 'ltr',
   keeniconsStyle: 'duotone',
   fontFamily: 'Inter',
-  layout: 'default',
-  containerWidth: 'fluid',
-  colorPreset: 'default',
-  mobileBreakpoint: 'md'
+  layout: 'demo1',
+  containerWidth: 'fixed'
 };
 const COOKIES_EXPIRATION = 5;
 

@@ -7,4 +7,5 @@
 @import "extend/main.css";
 
 /* Layouts  */
+@import "layouts/base.css";
 @import "layouts/demo1.css";

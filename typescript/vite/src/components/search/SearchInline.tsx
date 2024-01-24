@@ -1,7 +1,6 @@
 import { Box, Divider, InputBase, useTheme } from '@mui/material';
 
 import { KeenIcon } from '@/components/keenicons';
-import Scrollbar from '@/components/scrollbar';
 
 import { useViewport } from '../../hooks';
 import { SearchResults, type SearchResultsType } from './results';
@@ -230,19 +229,13 @@ const SearchInline = ({ dataSource, handleClose }: PropsType) => {
           py: theme.spacing(2.5)
         }}
       >
-        <Scrollbar
+        <Box
           sx={{
-            maxHeight: viewportHeight / 2
+            px: theme.spacing(3)
           }}
         >
-          <Box
-            sx={{
-              px: theme.spacing(3)
-            }}
-          >
-            <SearchResults data={dummyData} {...(handleClose && { handleClose })} />
-          </Box>
-        </Scrollbar>
+          <SearchResults data={dummyData} {...(handleClose && { handleClose })} />
+        </Box>
       </Box>
     </>
   );

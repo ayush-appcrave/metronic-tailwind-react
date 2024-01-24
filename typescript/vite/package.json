@@ -27,7 +27,7 @@
     "@mui/material": "^5.14.9",
     "@mui/x-data-grid": "^6.11.0",
     "axios": "^1.4.0",
-    "clsx": "^2.0.0",
+    "clsx": "^2.1.0",
     "craco": "^0.0.3",
     "formik": "^2.4.3",
     "notistack": "^3.0.1",
