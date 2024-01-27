@@ -1,5 +1,7 @@
 import React, { useEffect, useRef } from 'react';
 
+import { getTotalHeight } from '@/utils';
+
 interface Props {
   setFooterHeight: React.Dispatch<React.SetStateAction<number>>;
 }
@@ -9,7 +11,7 @@ const SidebarFooter = ({ setFooterHeight }: Props) => {
 
   useEffect(() => {
     if (elementRef.current) {
-      setFooterHeight(elementRef.current.clientHeight);
+      setFooterHeight(getTotalHeight(elementRef.current));
     }
   }, []);
 

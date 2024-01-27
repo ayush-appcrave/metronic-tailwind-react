@@ -1,6 +1,6 @@
 import React, { useEffect, useRef } from 'react';
 
-import { toAbsoluteUrl } from '@/utils';
+import { getTotalHeight, toAbsoluteUrl } from '@/utils';
 
 import { useDemo1Layout } from '../Demo1LayoutProvider';
 import { SidebarToggle } from './SidebarToggle';
@@ -15,7 +15,7 @@ const SidebarHeader = ({ setHeaderHeight }: Props) => {
 
   useEffect(() => {
     if (elementRef.current) {
-      setHeaderHeight(elementRef.current.clientHeight);
+      setHeaderHeight(getTotalHeight(elementRef.current));
     }
   }, []);
 

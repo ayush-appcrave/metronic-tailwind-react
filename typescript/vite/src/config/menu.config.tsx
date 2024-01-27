@@ -34,13 +34,14 @@ const MENU_SIDEBAR: MenuConfigType = [
   },
   {
     title: 'Public Profile',
+    path: '/public-profile',
     icon: 'profile-circle',
     toggle: 'accordion',
     children: [
       {
         title: 'Profiles',
         icon: 'profile-circle',
-        path: '/dashboard',
+        path: '/profiles',
         toggle: 'accordion',
         children: [
           {

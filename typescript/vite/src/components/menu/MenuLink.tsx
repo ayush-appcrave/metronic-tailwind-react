@@ -16,9 +16,6 @@ const MenuLink = ({
   onLinkClick,
   children
 }: MenuLinkPropsType) => {
-
-  console.log('ppp:' + handleToggle);
-  
   if (!hasItemSub && path) {
     if (externalLink) {
       const target = newTab ? '_blank' : '_self';
@@ -46,9 +43,6 @@ const MenuLink = ({
       );
     }
   } else {
-    const handleToggle2 = () => {
-      console.log('wow');
-    }
     return (
       <div className={clsx('menu-link', className && className)} onClick={handleToggle}>
         {children}

@@ -255,17 +255,17 @@ const MenuItem = forwardRef<HTMLDivElement | null, MenuItemPropsType>(
               );
             } else {
               const handleEnd = () => {
-                //setTransitioning(false);
+                setTransitioning(false);
               };
 
               // Add some props to each child
               const modifiedProps: MenuSubPropsType = {
                 collapse,
                 expand,
-                toggle: propToggle,
-                handleClick,
                 tabIndex,
                 show,
+                toggle: propToggle,
+                handleClick,
                 handleEnd
               };
 

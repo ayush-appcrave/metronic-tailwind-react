@@ -40,7 +40,7 @@ const MenuSub = forwardRef<HTMLDivElement | null, MenuSubPropsType>(function Men
   const renderContent = () => {
     if (toggle === 'accordion') {
       return (
-        <Collapse in={show} timeout="auto" addEndListener={handleEnd} unmountOnExit>
+        <Collapse in={show} onExited={handleEnd} timeout="auto" unmountOnExit>
           {modifiedChildren}
         </Collapse>
       );
