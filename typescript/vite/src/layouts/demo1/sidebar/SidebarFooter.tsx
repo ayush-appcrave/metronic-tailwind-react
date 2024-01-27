@@ -9,7 +9,7 @@ const SidebarFooter = ({ setFooterHeight }: Props) => {
 
   useEffect(() => {
     if (elementRef.current) {
-      setFooterHeight(elementRef.current.offsetHeight);
+      setFooterHeight(elementRef.current.clientHeight);
     }
   }, []);
 

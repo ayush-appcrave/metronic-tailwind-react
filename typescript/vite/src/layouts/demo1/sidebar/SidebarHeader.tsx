@@ -15,7 +15,7 @@ const SidebarHeader = ({ setHeaderHeight }: Props) => {
 
   useEffect(() => {
     if (elementRef.current) {
-      setHeaderHeight(elementRef.current.offsetHeight);
+      setHeaderHeight(elementRef.current.clientHeight);
     }
   }, []);
 

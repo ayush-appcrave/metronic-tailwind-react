@@ -1,4 +1,5 @@
 export * from './Menu';
+export * from './MenuBullet';
 export * from './MenuHeading';
 export * from './MenuIcon';
 export * from './MenuItem';

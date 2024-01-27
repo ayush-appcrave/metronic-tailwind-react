@@ -11,9 +11,13 @@ export type MenuExpandType = boolean;
 
 export type MenuShowType = boolean;
 
-export type MenuTriggerType = any;
+export type MenuTriggerType = 'click' | 'hover';
 
-export type MenuToggleType = any;
+export type MenuItemTriggerType = Record<string, MenuToggleType> | MenuTriggerType;
+
+export type MenuToggleType = 'accordion' | 'dropdown';
+
+export type MenuItemToggleType = Record<string, MenuToggleType> | MenuToggleType;
 
 export type MenuTabIndexType = number;
 
@@ -31,14 +35,15 @@ export interface MenuItemPropsType {
   path?: string;
   collapse?: MenuCollapseType;
   expand?: MenuExpandType;
-  toggle?: MenuToggleType;
-  trigger?: MenuTriggerType;
+  toggle?: MenuItemToggleType;
+  trigger?: MenuItemTriggerType;
   disabled?: boolean;
   baseMenuProps?: MenuSubMenuPropsType;
   className?: string;
   onLinkClick?: MenuClickEventType;
   onLinksClick?: MenuClickEventType;
   handleParentClose?: MenuEventHandlerType;
+  handleClick?: MenuEventHandlerType;
   tabIndex?: MenuTabIndexType;
   itemRef?: any;
   containerProps?: HTMLAttributes<HTMLElement> & RefAttributes<HTMLElement | null>;
@@ -46,12 +51,17 @@ export interface MenuItemPropsType {
 }
 
 export interface MenuLinkPropsType {
+  path?: string;
+  externalLink?: boolean;
+  newTab?: boolean;
+  hasItemSub?: boolean;
   collapse?: MenuCollapseType;
   expand?: MenuExpandType;
   className?: string;
   tabIndex?: MenuTabIndexType;
   menuItemRef?: any;
-  handleToggle?: any;
+  handleToggle?: MenuEventHandlerType;
+  handleClick?: MenuEventHandlerType;
   onLinkClick?: MenuClickEventType;
   onLinksClick?: MenuClickEventType;
   children?: ReactNode;
@@ -61,12 +71,18 @@ export interface MenuSubPropsType {
   collapse?: MenuCollapseType;
   expand?: MenuExpandType;
   show?: MenuShowType;
+  toggle?: MenuToggleType;
   ref?: any;
   tabIndex?: number;
   className?: string;
+  onLinkClick?: MenuClickEventType;
+  onLinksClick?: MenuClickEventType;
+  handleParentClose?: MenuEventHandlerType;
+  handleClick?: MenuEventHandlerType;
+  handleEnd?: () => void;
+  accordionIn?: boolean;
   children?: ReactNode;
 }
-
 export interface MenuTitlePropsType {
   collapse?: MenuCollapseType;
   expand?: MenuExpandType;
@@ -79,6 +95,13 @@ export interface MenuIconPropsType {
   expand?: MenuExpandType;
   className?: string;
   children: ReactNode;
+}
+
+export interface MenuBulletPropsType {
+  collapse?: MenuCollapseType;
+  expand?: MenuExpandType;
+  className?: string;
+  children?: ReactNode;
 }
 
 export interface MenuTogglePropsType {
@@ -94,3 +117,27 @@ export interface MenuHeadingPropsType {
   className?: string;
   children: ReactNode;
 }
+
+export type MenuConfigType = MenuItemConfigType[];
+
+export interface MenuItemConfigType {
+  title?: string;
+  heading?: string;
+  icon?: string;
+  path?: string;
+  bullet?: boolean;
+  collapse?: boolean;
+  collapseTitle?: string;
+  expandTitle?: string;
+  toggle?: MenuItemToggleType;
+  trigger?: MenuItemTriggerType;
+  children?: MenuItemConfigType[];
+}
+
+export interface MenuBreadcrumbPropsType {
+  title?: string;
+  path?: string;
+  active?: boolean;
+}
+
+export type MenuBreadcrumbsPropsType = MenuBreadcrumbPropsType[];

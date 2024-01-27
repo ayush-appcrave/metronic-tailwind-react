@@ -1,15 +1,16 @@
-import { BreakpointType, useResponsive } from './useResponsive';
+import { useResponsive } from '.';
+import { ResponsiveBreakpointType } from './types';
 
 export default function useResponsiveProp(prop: any, defaultProp: any = null) {
   let value = prop;
 
-  if (prop?.breakpoints) {
-    for (const condition in prop.breakpoints) {
-      const breakpoint = Object.keys(prop.breakpoints[condition])[0] as BreakpointType;
+  if (prop) {
+    for (const condition in prop) {
+      const breakpoint = prop[condition] as ResponsiveBreakpointType;
       if (condition === 'up' && useResponsive('up', breakpoint)) {
-        value = prop.breakpoints[condition][breakpoint];
+        value = prop[condition][breakpoint];
       } else if (condition === 'down' && useResponsive('down', breakpoint)) {
-        value = prop.breakpoints[condition][breakpoint];
+        value = prop[condition][breakpoint];
       }
     }
   }

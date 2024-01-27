@@ -1,35 +1,36 @@
 import tailwindConfig from 'tailwindcss/defaultConfig';
 
+import { ResponsiveBreakpointType, ResponsiveQueryType } from './types';
 import { useMediaQuery } from './useMediaQuery';
 
-type BreakpointType = 'sm' | 'md' | 'lg' | 'xl' | '2xl';
-type QueryType = 'up' | 'down' | 'between';
-type Key = BreakpointType | number;
-type Start = BreakpointType | number;
-type End = BreakpointType | number;
-const breakpoints: BreakpointType[] = ['sm', 'md', 'lg', 'xl', '2xl'];
+const breakpoints: ResponsiveBreakpointType[] = ['sm', 'md', 'lg', 'xl', '2xl'];
 
-const useResponsive = (query: QueryType, key?: Key, start?: Start, end?: End) => {
-  const screens = tailwindConfig?.theme?.screens;
+const useResponsive = (
+  query: ResponsiveQueryType,
+  key?: ResponsiveBreakpointType,
+  start?: ResponsiveBreakpointType,
+  end?: ResponsiveBreakpointType
+) => {
+  const screens = tailwindConfig?.theme?.screens as Record<string, ResponsiveBreakpointType>;
 
-  if (query === 'up') {
-    key = breakpoints.includes(key as BreakpointType) && screens ? screens[key] : key;
+  if (query === 'up' && key) {
+    key = breakpoints.includes(key) && screens ? screens[key] : key;
 
     return useMediaQuery(`(min-width: ${key})`);
   }
 
-  if (query === 'down') {
-    key = breakpoints.includes(key as BreakpointType) && screens ? screens[key] : key;
+  if (query === 'down' && key) {
+    key = breakpoints.includes(key) && screens ? screens[key] : key;
 
     return useMediaQuery(`(max-width: ${key})`);
   }
 
-  if (query === 'between') {
-    start = breakpoints.includes(start as BreakpointType) && screens ? screens[start] : start;
-    end = breakpoints.includes(end as BreakpointType) && screens ? screens[end] : end;
+  if (query === 'between' && start && end) {
+    start = breakpoints.includes(start) && screens ? screens[start] : start;
+    end = breakpoints.includes(end) && screens ? screens[end] : end;
 
     return useMediaQuery(`(min-width: ${start}) and (max-width: ${end})`);
   }
 };
 
-export { type BreakpointType, useResponsive };
+export { useResponsive };

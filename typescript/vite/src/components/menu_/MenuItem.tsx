@@ -326,12 +326,18 @@ const MenuItem = forwardRef<HTMLDivElement | null, MenuItemPropsType>(function M
   return renderMain();
 });
 
-const hasActiveChild = (pathname: string, items: NavConfigType): boolean => {
-  for (const item of items) {
-    if (item.path && matchPath(item.path, pathname)) {
-      return true;
-    } else if (item.sub?.items) {
-      return hasActiveChild(pathname, item.sub.items);
+
+const hasActiveChild = (pathname: string, children: ReactNode): boolean => {
+  return false;
+
+  const childrenArray = Children.toArray(children)
+  for (const child of childrenArray) {
+    if (isValidElement(child) && child.type && child.props.path) { 
+      if (child.type == MenuItem && matchPath(child.props.path, pathname)) {
+        return true;
+      } else {
+        return hasActiveChild(pathname, child);
+      }
     }
   }
 
