@@ -1,4 +1,4 @@
-import { Button, ButtonProps } from '@mui/base/Button';
+import { Button } from '@mui/base/Button';
 import { Input } from '@mui/base/Input';
 import { Helmet } from 'react-helmet';
 

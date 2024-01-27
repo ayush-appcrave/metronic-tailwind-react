@@ -29,6 +29,6 @@ const getTotalHeight = (element: HTMLElement): number => {
     height + paddingTop + paddingBottom + borderTop + borderBottom + marginTop + marginBottom;
 
   return totalHeight;
-}
+};
 
 export { getTotalHeight, getViewPort };

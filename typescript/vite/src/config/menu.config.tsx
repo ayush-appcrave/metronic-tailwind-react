@@ -34,35 +34,33 @@ const MENU_SIDEBAR: MenuConfigType = [
   },
   {
     title: 'Public Profile',
-    path: '/public-profile',
     icon: 'profile-circle',
     toggle: 'accordion',
     children: [
       {
         title: 'Profiles',
         icon: 'profile-circle',
-        path: '/profiles',
         toggle: 'accordion',
         children: [
           {
             title: 'Default',
-            path: 'public-profile/profiles/default/index.html',
+            path: '/marketing',
             bullet: true
           },
           {
             title: 'Creator',
             bullet: true,
-            path: 'public-profile/profiles/creator/index.html'
+            path: '#'
           },
           {
             title: 'Company',
             bullet: true,
-            path: 'public-profile/profiles/company/index.html'
+            path: ''
           },
           {
             title: 'NFT',
             bullet: true,
-            path: 'public-profile/profiles/nft/index.html'
+            path: ''
           },
           {
             title: 'Blogger',
@@ -84,22 +82,22 @@ const MENU_SIDEBAR: MenuConfigType = [
               {
                 title: 'Gamer',
                 bullet: true,
-                path: 'public-profile/profiles/gamer/index.html'
+                path: '/ecommerce'
               },
               {
                 title: 'Feeds',
                 bullet: true,
-                path: 'public-profile/profiles/feeds/index.html'
+                path: '#'
               },
               {
                 title: 'Plain',
                 bullet: true,
-                path: 'public-profile/profiles/plain/index.html'
+                path: '#'
               },
               {
                 title: 'Modal',
                 bullet: true,
-                path: 'public-profile/profiles/modal/index.html'
+                path: '#'
               }
             ]
           }

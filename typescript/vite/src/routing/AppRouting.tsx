@@ -48,8 +48,8 @@ const AppRouting = (): ReactElement => {
       <Route element={<RequireAuth />}>
         <Route element={<Demo1Layout />}>
           <Route path="dashboard" element={<DashboardPage />} />
-          <Route path="ecommerce" element={<EcommercePage />} />
-          <Route path="marketing" element={<MarketingPage />} />
+          <Route path="/ecommerce" element={<EcommercePage />} />
+          <Route path="/marketing" element={<MarketingPage />} />
           <Route index element={<Navigate to="/dashboard" />} />
         </Route>
       </Route>

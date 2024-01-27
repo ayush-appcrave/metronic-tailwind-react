@@ -6,6 +6,7 @@ import {
   forwardRef,
   isValidElement,
   MouseEvent,
+  ReactElement,
   ReactNode,
   useEffect,
   useImperativeHandle,
@@ -15,6 +16,7 @@ import {
 import { useLocation } from 'react-router';
 
 import useResponsiveProp from '@/hooks/useResponsiveProp';
+import { matchPath } from '@/utils';
 
 import { useMatchPath } from '../../hooks/useMatchPath';
 import {
@@ -84,8 +86,9 @@ const MenuItem = forwardRef<HTMLDivElement | null, MenuItemPropsType>(
     const { pathname } = useLocation();
 
     useEffect(() => {
-      if (match) {
+      if (hasActiveChild(pathname, children)) {
         setShow(true);
+        setHere(true);
       }
     }, [pathname]);
 
@@ -97,11 +100,11 @@ const MenuItem = forwardRef<HTMLDivElement | null, MenuItemPropsType>(
 
     const propBaseMenuProps = useResponsiveProp(baseMenuProps);
 
-    const here: boolean = hasSub ? hasActiveChild(pathname, children) : false;
-
     const active: boolean = match;
 
-    const [show, setShow] = useState(propToggle === 'accordion' ? here : false);
+    const [here, setHere] = useState(false);
+
+    const [show, setShow] = useState(false);
 
     const [transitioning, setTransitioning] = useState(false);
 
@@ -298,7 +301,24 @@ const MenuItem = forwardRef<HTMLDivElement | null, MenuItemPropsType>(
   }
 );
 
-const hasActiveChild = (pathname: string, children: ReactNode): boolean => {
+const hasActiveChild = (path: string, children: ReactNode): boolean => {
+  const childrenArray: ReactNode[] = Children.toArray(children);
+  console.log('length:' + childrenArray.length);
+
+  for (const child of childrenArray) {
+    if (isValidElement(child)) {
+      if (
+        child.type === MenuItem &&
+        child.props.path &&
+        matchPath(child.props.path as string, path)
+      ) {
+        return true;
+      } else if (hasActiveChild(path, child.props.children as ReactNode)) {
+        return true;
+      }
+    }
+  }
+
   return false;
 };
 
