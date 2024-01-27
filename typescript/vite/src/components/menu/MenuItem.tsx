@@ -125,7 +125,7 @@ const MenuItem = forwardRef<HTMLDivElement | null, MenuItemPropsType>(
       }
     };
 
-    const handleToggle = (e?: MouseEvent<HTMLElement>) => {
+    const handleToggle = (e: MouseEvent<HTMLElement>) => {
       console.log('click!!!');
 
       if (disabled) {
@@ -255,7 +255,7 @@ const MenuItem = forwardRef<HTMLDivElement | null, MenuItemPropsType>(
               );
             } else {
               const handleEnd = () => {
-                
+                //setTransitioning(false);
               };
 
               // Add some props to each child
@@ -284,7 +284,7 @@ const MenuItem = forwardRef<HTMLDivElement | null, MenuItemPropsType>(
     return (
       <div
         className={clsx(
-          'menu-item show',
+          'menu-item',
           className && className,
           active && 'active',
           show && 'show',
