@@ -35,12 +35,10 @@ const MENU_SIDEBAR: MenuConfigType = [
   {
     title: 'Public Profile',
     icon: 'profile-circle',
-    toggle: 'accordion',
     children: [
       {
         title: 'Profiles',
         icon: 'profile-circle',
-        toggle: 'accordion',
         children: [
           {
             title: 'Default',

@@ -1,28 +1,10 @@
-import { Box, CircularProgress, type SxProps, type Theme } from '@mui/material';
-import { ReactNode } from 'react';
+import { CircularProgress } from '@mui/material';
 
-export interface ContentLoaderProps {
-  children?: ReactNode;
-  sx?: SxProps<Theme>;
-}
-
-const ContentLoader = ({ sx }: ContentLoaderProps) => {
+const ContentLoader = () => {
   return (
-    <Box
-      sx={{
-        position: 'relative',
-        top: '50%',
-        transform: 'translateY(-50%)',
-        display: 'flex',
-        alignItems: 'center',
-        justifyContent: 'center',
-        flexDirection: 'column',
-        alignSelf: 'center',
-        ...sx
-      }}
-    >
+    <div className="flex flex-col items-center justify-center self-center relative top-1/2 -translate-x-1/2">
       <CircularProgress color="primary" />
-    </Box>
+    </div>
   );
 };
 

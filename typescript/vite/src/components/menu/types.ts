@@ -5,10 +5,6 @@ export type MenuEventHandlerType = (e: MouseEvent<HTMLElement>) => void;
 
 export type MenuClickEventType = (e: MouseEvent<HTMLElement>, props: any) => void;
 
-export type MenuCollapseType = boolean;
-
-export type MenuExpandType = boolean;
-
 export type MenuShowType = boolean;
 
 export type MenuTriggerType = 'click' | 'hover';
@@ -24,8 +20,6 @@ export type MenuTabIndexType = number;
 export type MenuSubMenuPropsType = Partial<Omit<MenuProps, 'children'>>;
 
 export interface MenuPropsType {
-  collapse?: MenuCollapseType;
-  expand?: MenuExpandType;
   className?: string;
   children: ReactNode;
   onLinksClick?: MenuClickEventType;
@@ -33,8 +27,6 @@ export interface MenuPropsType {
 
 export interface MenuItemPropsType {
   path?: string;
-  collapse?: MenuCollapseType;
-  expand?: MenuExpandType;
   toggle?: MenuItemToggleType;
   trigger?: MenuItemTriggerType;
   disabled?: boolean;
@@ -55,8 +47,6 @@ export interface MenuLinkPropsType {
   externalLink?: boolean;
   newTab?: boolean;
   hasItemSub?: boolean;
-  collapse?: MenuCollapseType;
-  expand?: MenuExpandType;
   className?: string;
   tabIndex?: MenuTabIndexType;
   menuItemRef?: any;
@@ -68,9 +58,8 @@ export interface MenuLinkPropsType {
 }
 
 export interface MenuSubPropsType {
-  collapse?: MenuCollapseType;
-  expand?: MenuExpandType;
   show?: MenuShowType;
+  enter?: boolean;
   toggle?: MenuToggleType;
   ref?: any;
   tabIndex?: number;
@@ -84,36 +73,26 @@ export interface MenuSubPropsType {
   children?: ReactNode;
 }
 export interface MenuTitlePropsType {
-  collapse?: MenuCollapseType;
-  expand?: MenuExpandType;
   className?: string;
   children?: ReactNode;
 }
 
 export interface MenuIconPropsType {
-  collapse?: MenuCollapseType;
-  expand?: MenuExpandType;
   className?: string;
   children: ReactNode;
 }
 
 export interface MenuBulletPropsType {
-  collapse?: MenuCollapseType;
-  expand?: MenuExpandType;
   className?: string;
   children?: ReactNode;
 }
 
 export interface MenuTogglePropsType {
-  collapse?: MenuCollapseType;
-  expand?: MenuExpandType;
   className?: string;
   children: ReactNode;
 }
 
 export interface MenuHeadingPropsType {
-  collapse?: MenuCollapseType;
-  expand?: MenuExpandType;
   className?: string;
   children: ReactNode;
 }

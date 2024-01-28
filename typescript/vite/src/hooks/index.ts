@@ -1,3 +1,4 @@
+export * from './useIsMounted';
 export * from './useMatchPath';
 export * from './useMediaQuery';
 export * from './useResponsive';

@@ -10,9 +10,6 @@ const SidebarContent = ({ headerHeight = 0, footerHeight = 0 }: Props) => {
   const [viewportHeight] = useViewport();
   const scrollableHeight: number = viewportHeight - headerHeight - footerHeight;
 
-  console.log('headerHeight:' + headerHeight);
-  console.log('footerHeight:' + footerHeight);
-
   return (
     <div className="sidebar-content flex grow shrink-0 pt-5 lg:pt-0 pr-2">
       <div

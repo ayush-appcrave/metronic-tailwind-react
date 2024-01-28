@@ -6,7 +6,7 @@ import { AuthProvider } from '@/auth/providers/JWTProvider';
 // import { AuthProvider } from '@/auth/providers/Auth0Provider';
 // import { AuthProvider } from '@/auth/providers/FirebaseProvider';
 import {
-  LayoutsProvider,
+  LayoutStorageProvider,
   LoadersProvider,
   SettingsProvider,
   SnackbarProvider,
@@ -22,11 +22,11 @@ const ProvidersWrapper = ({ children }: PropsWithChildren) => {
         <AuthProvider>
           <SettingsProvider>
             <TranslationProvider>
-              <LayoutsProvider>
+              <LayoutStorageProvider>
                 <LoadersProvider>
                   {children}
                 </LoadersProvider>
-              </LayoutsProvider>
+              </LayoutStorageProvider>
             </TranslationProvider>
           </SettingsProvider>
         </AuthProvider>

@@ -1,15 +1,14 @@
 import clsx from 'clsx';
+import { memo } from 'react';
 import { Link as RouterLink } from 'react-router-dom';
 
 import { MenuLinkPropsType } from './';
 
-const MenuLink = ({
+const MenuLinkComponent = ({
   path,
   newTab,
   hasItemSub = false,
   externalLink,
-  collapse,
-  expand,
   className,
   handleToggle,
   handleClick,
@@ -51,4 +50,5 @@ const MenuLink = ({
   }
 };
 
+const MenuLink = memo(MenuLinkComponent);
 export { MenuLink };

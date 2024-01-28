@@ -1,16 +1,14 @@
-import React, { useEffect, useRef } from 'react';
+import React, { Dispatch, SetStateAction, useEffect, useRef } from 'react';
 
 import { getTotalHeight, toAbsoluteUrl } from '@/utils';
 
-import { useDemo1Layout } from '../Demo1LayoutProvider';
 import { SidebarToggle } from './SidebarToggle';
 
 interface Props {
-  setHeaderHeight: React.Dispatch<React.SetStateAction<number>>;
+  setHeaderHeight: Dispatch<SetStateAction<number>>;
 }
 
 const SidebarHeader = ({ setHeaderHeight }: Props) => {
-  const { sidebarCollapse, setSidebarCollapse } = useDemo1Layout();
   const elementRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
@@ -19,13 +17,6 @@ const SidebarHeader = ({ setHeaderHeight }: Props) => {
     }
   }, []);
 
-  const handleSidebarCollapse = () => {
-    if (sidebarCollapse) {
-      setSidebarCollapse(false);
-    } else {
-      setSidebarCollapse(true);
-    }
-  };
 
   return (
     <div
@@ -43,7 +34,7 @@ const SidebarHeader = ({ setHeaderHeight }: Props) => {
         />
       </a>
 
-      <SidebarToggle onToggle={handleSidebarCollapse} />
+      <SidebarToggle />
     </div>
   );
 };

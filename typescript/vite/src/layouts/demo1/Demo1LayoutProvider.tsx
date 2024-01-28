@@ -1,33 +1,25 @@
 import { createContext, type PropsWithChildren, useContext, useState } from 'react';
 
+import { deepMerge } from '@/utils';
+
 import { useScrollPosition } from '../../hooks/useScrollPosition';
-import { type LayoutsType, useLayouts } from '../../providers/LayoutsProvider';
-import { type ILayoutConfig, type ILayoutProvider } from '../';
+import { useLayoutStorage } from '../../providers/LayoutStorageProvider';
+import { type ILayoutStorageProvider } from '../';
 import { demo1LayoutConfig } from './Demo1LayoutConfig';
 
 type Demo1LayoutProviderProps = {
   headerSticky: boolean;
-  sidebarCollapse: boolean;
-  sidebarExpand: boolean;
   mobileSidebarOpen: boolean;
-  setSidebarExpand: (collapse: boolean) => void;
-  setSidebarCollapse: (collapse: boolean) => void;
   setMobileSidebarOpen: (open: boolean) => void;
-} & ILayoutProvider;
+  setSidebarCollapse: (collapse: boolean) => void;
+} & ILayoutStorageProvider;
 
 const initalLayoutProps: Demo1LayoutProviderProps = {
   layout: demo1LayoutConfig,
-  sidebarCollapse: true,
-  sidebarExpand: false,
   headerSticky: false,
   mobileSidebarOpen: false,
-  setSidebarExpand: (_: boolean) => {},
-  setSidebarCollapse: (_: boolean) => {},
-  setMobileSidebarOpen: (_: boolean) => {}
-};
-
-const getLayoutConfig = (layouts: LayoutsType): ILayoutConfig => {
-  return layouts.get(demo1LayoutConfig.name) ?? demo1LayoutConfig;
+  setMobileSidebarOpen: (_: boolean) => {},
+  setSidebarCollapse: (_: boolean) => {}
 };
 
 const LayoutContext = createContext<Demo1LayoutProviderProps>(initalLayoutProps);
@@ -35,23 +27,22 @@ const LayoutContext = createContext<Demo1LayoutProviderProps>(initalLayoutProps)
 const useDemo1Layout = () => useContext(LayoutContext);
 
 const Demo1LayoutProvider = ({ children }: PropsWithChildren) => {
-  const { layouts, updateLayout } = useLayouts();
+  const { getLayout, updateLayout } = useLayoutStorage();
 
-  const scrollPosition = useScrollPosition();
+  const getLayoutConfig = () => {
+    return deepMerge(demo1LayoutConfig, getLayout(demo1LayoutConfig.name));
+  };
 
-  const [sidebarExpand, setSidebarExpand] = useState(false);
-
-  const [layout, setLayout] = useState(getLayoutConfig(layouts));
+  const [layout, setLayout] = useState(getLayoutConfig);
 
   const [mobileSidebarOpen, setMobileSidebarOpen] = useState(false);
 
+  const scrollPosition = useScrollPosition();
+
   const headerSticky: boolean = scrollPosition > 0;
 
-  const sidebarCollapse: boolean = layout.options.sidebar.collapse;
-
   const setSidebarCollapse = (collapse: boolean) => {
-    const updatedLayout: ILayoutConfig = {
-      ...layout,
+    const updatedLayout = {
       options: {
         sidebar: {
           collapse
@@ -59,8 +50,8 @@ const Demo1LayoutProvider = ({ children }: PropsWithChildren) => {
       }
     };
 
-    setLayout(updatedLayout);
-    updateLayout(updatedLayout);
+    updateLayout(demo1LayoutConfig.name, updatedLayout);
+    setLayout(getLayoutConfig());
   };
 
   return (
@@ -68,12 +59,9 @@ const Demo1LayoutProvider = ({ children }: PropsWithChildren) => {
       value={{
         layout,
         headerSticky,
-        sidebarExpand,
-        sidebarCollapse,
         mobileSidebarOpen,
-        setSidebarExpand,
-        setSidebarCollapse,
-        setMobileSidebarOpen
+        setMobileSidebarOpen,
+        setSidebarCollapse
       }}
     >
       {children}

@@ -2,6 +2,6 @@ export interface ILayoutConfig {
   name: string;
   options: any;
 }
-export interface ILayoutProvider {
+export interface ILayoutStorageProvider {
   layout: ILayoutConfig;
 }

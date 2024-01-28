@@ -1,19 +1,10 @@
-import { Box, LinearProgress } from '@mui/material';
-import zIndex from '@mui/material/styles/zIndex';
+import { LinearProgress } from '@mui/material';
 
 const ProgressBarLoader = () => {
   return (
-    <Box
-      sx={{
-        position: 'fixed',
-        zIndex: zIndex.modal + 1,
-        top: 0,
-        left: 0,
-        right: 0
-      }}
-    >
+    <div className="fixed top-0 left-0 right-0 z-20">
       <LinearProgress color="primary" />
-    </Box>
+    </div>
   );
 };
 

@@ -29,8 +29,8 @@
 
 /* Sidebar */
 @media (min-width: theme('screens.lg')) {
-	.demo1.sidebar-minimize {
-		--tw-sidebar-width: theme('custom.layouts.demo1.sidebar.width.desktopMinimize');
+	.demo1.sidebar-collapse {
+		--tw-sidebar-width: theme('custom.layouts.demo1.sidebar.width.desktopCollapse');
 	} 
 
 	.demo1 .sidebar {
@@ -70,41 +70,41 @@
 }
 /* end */
 
-/* Sidebar minimize */
+/* Sidebar collapse */
 @media (min-width: theme('screens.lg')) {
-	.demo1.sidebar-minimize .sidebar {
+	.demo1.sidebar-collapse .sidebar {
 		transition: width var(--tw-sidebar-transition-duration) var(--tw-sidebar-transition-timing);
 	}
 
-	.demo1.sidebar-minimize .sidebar:not(:hover) .default-logo {
+	.demo1.sidebar-collapse .sidebar:not(:hover) .default-logo {
 		display: none;
 	}
 
-	.demo1.sidebar-minimize .sidebar:not(:hover) .small-logo {
+	.demo1.sidebar-collapse .sidebar:not(:hover) .small-logo {
 		display: flex;
 	}
 
-	.demo1.sidebar-minimize .sidebar-content {
+	.demo1.sidebar-collapse .sidebar-content {
 		overflow: hidden;
 	}
 
-	.demo1.sidebar-minimize .sidebar:hover:not(.animating) {
+	.demo1.sidebar-collapse .sidebar:hover:not(.animating) {
 		width: var(--tw-sidebar-defualt-width);
 		transition: width var(--tw-sidebar-transition-duration) var(--tw-sidebar-transition-timing);
 	}
 	
-	.demo1.sidebar-minimize .sidebar:not(:hover) .menu > .menu-item > .menu-link > .menu-title,
-	.demo1.sidebar-minimize .sidebar:not(:hover) .menu > .menu-item > .menu-link > .menu-toggle,
-	.demo1.sidebar-minimize .sidebar:not(:hover) .menu > .menu-item > .menu-accordion {
+	.demo1.sidebar-collapse .sidebar:not(:hover) .menu > .menu-item > .menu-link > .menu-title,
+	.demo1.sidebar-collapse .sidebar:not(:hover) .menu > .menu-item > .menu-link > .menu-toggle,
+	.demo1.sidebar-collapse .sidebar:not(:hover) .menu > .menu-item > .menu-accordion {
 		display: none;
 	}
 
-	.demo1.sidebar-minimize .sidebar:not(:hover) .menu > .menu-item > .menu-heading {
+	.demo1.sidebar-collapse .sidebar:not(:hover) .menu > .menu-item > .menu-heading {
 		visibility: hidden;
 		position: relative;
 	}
 
-	.demo1.sidebar-minimize .sidebar:not(:hover) .menu > .menu-item > .menu-heading:before {
+	.demo1.sidebar-collapse .sidebar:not(:hover) .menu > .menu-item > .menu-heading:before {
 		content: "...";
 		color: currentColor;
 		font-size: inherit;
@@ -117,7 +117,7 @@
 		transform: translateX(100%);		
 	}
 
-	.demo1.sidebar-minimize .sidebar.animating {
+	.demo1.sidebar-collapse .sidebar.animating {
 		pointer-events: none;
 	}
 }

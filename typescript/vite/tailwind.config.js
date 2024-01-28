@@ -176,7 +176,7 @@ module.exports = {
           sidebar: {
             width: {
               desktop: '280px',
-              desktopMinimize: '80px',
+              desktopCollapse: '80px',
               mobile: '250px',
             },
           },

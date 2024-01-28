@@ -1,37 +1,38 @@
 import { createContext, type PropsWithChildren, useContext, useState } from 'react';
 
-import { type LayoutsType, useLayouts } from '../../providers/LayoutsProvider';
-import { type ILayoutConfig, type ILayoutProvider } from '../';
+import { deepMerge } from '@/utils';
+
+import { useLayoutStorage } from '../../providers/LayoutStorageProvider';
+import { ILayoutStorageProvider } from '../';
 import { authLayoutConfig } from './AuthLayoutConfig';
 
-// eslint-disable-next-line @typescript-eslint/ban-types
-type AuthLayoutProviderProps = {} & ILayoutProvider;
+type AuthLayoutProviderProps = ILayoutStorageProvider;
 
 const initalLayoutProps: AuthLayoutProviderProps = {
   layout: authLayoutConfig
 };
 
-const getLayoutConfig = (layouts: LayoutsType): ILayoutConfig => {
-  return layouts.get(authLayoutConfig.name) ?? authLayoutConfig;
-};
+const LayoutContext = createContext<AuthLayoutProviderProps>(initalLayoutProps);
 
-const AuthLayoutContext = createContext<AuthLayoutProviderProps>(initalLayoutProps);
-
-const useAuthLayout = () => useContext(AuthLayoutContext);
+const useAuthLayout = () => useContext(LayoutContext);
 
 const AuthLayoutProvider = ({ children }: PropsWithChildren) => {
-  const { layouts } = useLayouts();
+  const { getLayout } = useLayoutStorage();
 
-  const [layout] = useState(getLayoutConfig(layouts));
+  const getLayoutConfig = () => {
+    return deepMerge(authLayoutConfig, getLayout(authLayoutConfig.name));
+  };
+
+  const [layout] = useState(getLayoutConfig);
 
   return (
-    <AuthLayoutContext.Provider
+    <LayoutContext.Provider
       value={{
         layout
       }}
     >
       {children}
-    </AuthLayoutContext.Provider>
+    </LayoutContext.Provider>
   );
 };
 
