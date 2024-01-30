@@ -42,59 +42,48 @@ const MENU_SIDEBAR: MenuConfigType = [
         children: [
           {
             title: 'Default',
-            path: '/marketing',
-            bullet: true
+            path: '/marketing'
           },
           {
             title: 'Creator',
-            bullet: true,
             path: '#'
           },
           {
             title: 'Company',
-            bullet: true,
             path: ''
           },
           {
             title: 'NFT',
-            bullet: true,
             path: ''
           },
           {
             title: 'Blogger',
-            bullet: true,
             path: 'public-profile/profiles/blogger/index.html'
           },
           {
             title: 'CRM',
-            bullet: true,
             path: 'public-profile/profiles/crm/index.html'
           },
           {
             title: 'More',
-            bullet: true,
             collapse: true,
             collapseTitle: 'Show less',
             expandTitle: 'Show 4 more',
             children: [
               {
                 title: 'Gamer',
-                bullet: true,
                 path: '/ecommerce'
               },
               {
                 title: 'Feeds',
-                bullet: true,
                 path: '#'
               },
               {
                 title: 'Plain',
-                bullet: true,
                 path: '#'
               },
               {
                 title: 'Modal',
-                bullet: true,
                 path: '#'
               }
             ]
@@ -106,13 +95,11 @@ const MENU_SIDEBAR: MenuConfigType = [
         children: [
           {
             title: '3 Columns',
-            path: 'public-profile/projects/3-columns/index.html',
-            bullet: true
+            path: 'public-profile/projects/3-columns/index.html'
           },
           {
             title: '2 Columns',
-            path: 'public-profile/projects/2-columns/index.html',
-            bullet: true
+            path: 'public-profile/projects/2-columns/index.html'
           }
         ]
       },
@@ -163,38 +150,31 @@ const MENU_SIDEBAR: MenuConfigType = [
         children: [
           {
             title: 'Get Started',
-            path: 'account/home/get-started/index.html',
-            bullet: true
+            path: 'account/home/get-started/index.html'
           },
           {
             title: 'User Profile',
-            path: 'account/home/user-profile/index.html',
-            bullet: true
+            path: 'account/home/user-profile/index.html'
           },
           {
             title: 'Company Profile',
-            path: 'account/home/company-profile/index.html',
-            bullet: true
+            path: 'account/home/company-profile/index.html'
           },
           {
             title: 'Settings - With Sidebar',
-            path: 'account/home/settings-sidebar/index.html',
-            bullet: true
+            path: 'account/home/settings-sidebar/index.html'
           },
           {
             title: 'Settings - Enterprise',
-            path: 'account/home/settings-enterprise/index.html',
-            bullet: true
+            path: 'account/home/settings-enterprise/index.html'
           },
           {
             title: 'Settings - Plain',
-            path: 'account/home/settings-plain/index.html',
-            bullet: true
+            path: 'account/home/settings-plain/index.html'
           },
           {
             title: 'Settings - Modal',
-            path: 'account/home/settings-modal/index.html',
-            bullet: true
+            path: 'account/home/settings-modal/index.html'
           }
         ]
       },
@@ -203,23 +183,19 @@ const MENU_SIDEBAR: MenuConfigType = [
         children: [
           {
             title: 'Billing - Basic',
-            path: 'account/billing/basic/index.html',
-            bullet: true
+            path: 'account/billing/basic/index.html'
           },
           {
             title: 'Billing - Enterprise',
-            path: 'account/billing/enterprise/index.html',
-            bullet: true
+            path: 'account/billing/enterprise/index.html'
           },
           {
             title: 'Plans',
-            path: 'account/billing/plans/index.html',
-            bullet: true
+            path: 'account/billing/plans/index.html'
           },
           {
             title: 'Billing History',
-            path: 'account/billing/history/index.html',
-            bullet: true
+            path: 'account/billing/history/index.html'
           }
         ]
       },
@@ -228,43 +204,35 @@ const MENU_SIDEBAR: MenuConfigType = [
         children: [
           {
             title: 'Get Started',
-            path: 'account/security/get-started/index.html',
-            bullet: true
+            path: 'account/security/get-started/index.html'
           },
           {
             title: 'Security Overview',
-            path: 'account/security/overview/index.html',
-            bullet: true
+            path: 'account/security/overview/index.html'
           },
           {
             title: 'Allowed IP Addresses',
-            path: 'account/security/allowed-ip-addresses/index.html',
-            bullet: true
+            path: 'account/security/allowed-ip-addresses/index.html'
           },
           {
             title: 'Privacy Settings',
-            path: 'account/security/privacy-settings/index.html',
-            bullet: true
+            path: 'account/security/privacy-settings/index.html'
           },
           {
             title: 'Device Management',
-            path: 'account/security/device-management/index.html',
-            bullet: true
+            path: 'account/security/device-management/index.html'
           },
           {
             title: 'Backup & Recovery',
-            path: 'account/security/backup-and-recovery/index.html',
-            bullet: true
+            path: 'account/security/backup-and-recovery/index.html'
           },
           {
             title: 'Current Sessions',
-            path: 'account/security/current-sessions/index.html',
-            bullet: true
+            path: 'account/security/current-sessions/index.html'
           },
           {
             title: 'Security Log',
-            path: 'account/security/log/index.html',
-            bullet: true
+            path: 'account/security/log/index.html'
           }
         ]
       },
@@ -273,48 +241,39 @@ const MENU_SIDEBAR: MenuConfigType = [
         children: [
           {
             title: 'Teams Starter',
-            path: 'account/members/team-starter/index.html',
-            bullet: true
+            path: 'account/members/team-starter/index.html'
           },
           {
             title: 'Teams',
-            path: 'account/members/teams/index.html',
-            bullet: true
+            path: 'account/members/teams/index.html'
           },
           {
             title: 'Team Details',
-            path: 'account/members/team-details/index.html',
-            bullet: true
+            path: 'account/members/team-details/index.html'
           },
           {
             title: 'Teams Members',
-            path: 'account/members/team-members/index.html',
-            bullet: true
+            path: 'account/members/team-members/index.html'
           },
           {
             title: 'Member Details',
-            path: 'account/members/member-details/index.html',
-            bullet: true
+            path: 'account/members/member-details/index.html'
           },
           {
             title: 'Import Members',
-            path: 'account/members/import/index.html',
-            bullet: true
+            path: 'account/members/import/index.html'
           },
           {
             title: 'Roles',
-            path: 'account/members/roles/index.html',
-            bullet: true
+            path: 'account/members/roles/index.html'
           },
           {
             title: 'Teams Starter',
-            path: 'account/members/role-settings/index.html',
-            bullet: true
+            path: 'account/members/role-settings/index.html'
           },
           {
             title: 'Teams Starter',
-            path: 'account/members/role-members/index.html',
-            bullet: true
+            path: 'account/members/role-members/index.html'
           }
         ]
       }

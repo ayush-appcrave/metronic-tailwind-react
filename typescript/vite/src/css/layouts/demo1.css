@@ -28,6 +28,12 @@
 /* end */
 
 /* Sidebar */
+.demo1 .sidebar {
+	width: var(--tw-sidebar-width);
+}
+/* end */
+
+/* Sidebar */
 @media (min-width: theme('screens.lg')) {
 	.demo1.sidebar-collapse {
 		--tw-sidebar-width: theme('custom.layouts.demo1.sidebar.width.desktopCollapse');

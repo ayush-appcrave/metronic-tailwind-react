@@ -124,8 +124,11 @@ module.exports = {
         dark: 'var(--tw-dark-box-shadow)',
       },
       fontSize: {
+        '4xs': ['0.563rem', { // 9px
+          lineHeight: '0.6875rem' // 11px
+        }],
         '3xs': ['0.6rem', { // 10px
-          lineHeight: '0.8125rem' // 13px
+          lineHeight: '0.75rem' // 12px
         }],
         '2xs': ['0.6875rem', { // 11px
           lineHeight: '0.75rem' // 12px
@@ -177,7 +180,7 @@ module.exports = {
             width: {
               desktop: '280px',
               desktopCollapse: '80px',
-              mobile: '250px',
+              mobile: '225px',
             },
           },
           header: {
