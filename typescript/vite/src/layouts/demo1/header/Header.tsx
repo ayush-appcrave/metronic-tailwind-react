@@ -11,9 +11,7 @@ import { MobileLogo } from './MobileLogo';
 
 const Header = () => {
   const { headerSticky } = useDemo1Layout();
-
-  console.log('desktop:' + useResponsive('up', 'lg'));
-  console.log('mobile:' + useResponsive('down', 'lg'));
+  const desktopMode = useResponsive('up', 'lg');
 
   useEffect(() => {
     if (headerSticky) {
@@ -32,7 +30,6 @@ const Header = () => {
     >
       <Container className="flex justify-between items-center">
         <MobileLogo />
-        <Breadcrumbs />
         <Topbar />
       </Container>
     </header>

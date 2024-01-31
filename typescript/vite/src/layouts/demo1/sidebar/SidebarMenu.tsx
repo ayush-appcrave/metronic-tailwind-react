@@ -20,12 +20,12 @@ import { MENU_SIDEBAR } from '../../../config/menu.config';
 const SidebarMenu = () => {
   const linkPl = 'pl-[10px]';
   const linkPr = 'pr-[10px]';
-  const linkPy = 'py-1.5';
+  const linkPy = 'py-2';
+  const subLinkPy = 'py-2';
 
   const iconWidth = 'w-[26px]';
   const iconSize = 'text-lg';
 
-  const accordionGap = 'gap-0.5';
   const accordionLinkPl = 'pl-[10px]';
   const accordionLinkGap = 'gap-[10px]';
   const accordionPl = ['pl-[10px]', 'pl-[18px]', 'pl-[18px]', 'pl-[18px]', 'pl-[18px]'];
@@ -61,8 +61,7 @@ const SidebarMenu = () => {
               className={clsx(
                 'relative before:top-0 before:bottom-0 before:border-l before:border-gray-200',
                 accordionBorderLeft[0],
-                accordionPl[0],
-                accordionGap
+                accordionPl[0]
               )}
             >
               {buildMenuSub(item.children, 1)}
@@ -125,7 +124,7 @@ const SidebarMenu = () => {
                 accordionLinkGap,
                 accordionLinkPl,
                 linkPr,
-                linkPy
+                subLinkPy
               )}
             >
               {buildMenuBullet()}
@@ -145,7 +144,6 @@ const SidebarMenu = () => {
             </MenuLink>
             <MenuSub
               className={clsx(
-                accordionGap,
                 !item.collapse &&
                   `relative before:absolute ${accordionBorderLeft[level]} ${accordionPl[level]} before:top-0 before:bottom-0 before:border-l before:border-gray-200`
               )}
@@ -163,7 +161,7 @@ const SidebarMenu = () => {
                 accordionLinkGap,
                 accordionLinkPl,
                 linkPr,
-                linkPy
+                subLinkPy
               )}
             >
               {buildMenuBullet()}

@@ -1,5 +1,6 @@
 import clsx from 'clsx';
 import { useEffect } from 'react';
+import { Outlet } from 'react-router-dom';
 
 import useIsMounted from '@/hooks/useIsMounted';
 
@@ -7,7 +8,6 @@ import { useDemo1Layout } from '../Demo1LayoutProvider';
 import { Footer } from '../footer';
 import { Header } from '../header';
 import { Sidebar } from '../sidebar';
-import { Wrapper } from '../wrapper';
 
 const Main = () => {
   const { layout } = useDemo1Layout();
@@ -40,7 +40,7 @@ const Main = () => {
         <Header />
 
         <div className="grow content" role="content">
-          <Wrapper />
+          <Outlet />
         </div>
 
         <Footer />

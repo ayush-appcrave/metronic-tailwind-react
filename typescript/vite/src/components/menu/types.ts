@@ -113,10 +113,9 @@ export interface MenuItemConfigType {
   children?: MenuItemConfigType[];
 }
 
-export interface MenuBreadcrumbPropsType {
+export interface MenuBreadcrumbType {
   title?: string;
   path?: string;
-  active?: boolean;
 }
 
-export type MenuBreadcrumbsPropsType = MenuBreadcrumbPropsType[];
+export type MenuBreadcrumbsType = MenuBreadcrumbType[];
