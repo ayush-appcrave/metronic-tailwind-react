@@ -1,8 +1,8 @@
 import clsx from 'clsx';
 
-import { MenuTogglePropsType } from './';
+import { IMenuToggleProps } from './';
 
-const MenuToggle = ({ className, children }: MenuTogglePropsType) => {
+const MenuToggle = ({ className, children }: IMenuToggleProps) => {
   return <div className={clsx('menu-toggle', className && className)}>{children}</div>;
 };
 

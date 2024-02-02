@@ -39,6 +39,10 @@ const MENU_SIDEBAR: MenuConfigType = [
       {
         title: 'Profiles',
         icon: 'profile-circle',
+        trigger: 'click',
+        dropdownProps: {
+          placement: 'bottom-start'
+        },
         children: [
           {
             title: 'Default',
@@ -46,7 +50,7 @@ const MENU_SIDEBAR: MenuConfigType = [
           },
           {
             title: 'Creator',
-            path: '#'
+            path: '/ecommerce'
           },
           {
             title: 'Company',
@@ -69,6 +73,9 @@ const MENU_SIDEBAR: MenuConfigType = [
             collapse: true,
             collapseTitle: 'Show less',
             expandTitle: 'Show 4 more',
+            dropdownProps: {
+              placement: 'right-start'
+            },
             children: [
               {
                 title: 'Gamer',

@@ -1,3 +1,4 @@
+import clsx from 'clsx';
 import { type ReactNode } from 'react';
 
 import { SettingsContainerType } from '../../config/types';
@@ -11,11 +12,11 @@ export interface PageContainerProps {
 
 const Container = ({ children, width, className = '' }: PageContainerProps) => {
   const { settings } = useSettings();
-  const { containerWidth } = settings;
-  const widthMode = width ?? containerWidth;
+  const { container } = settings;
+  const widthMode = width ?? container;
 
   return (
-    <div className={className + (widthMode === 'fixed' ? ' container-fixed' : ' container-fluid')}>
+    <div className={clsx(className, widthMode === 'fixed' ? 'container-fixed' : 'container-fluid')}>
       {children}
     </div>
   );

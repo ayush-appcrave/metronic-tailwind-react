@@ -1,13 +1,13 @@
 import clsx from 'clsx';
 import { Children, cloneElement, isValidElement, memo } from 'react';
 
-import { MenuItemPropsType, MenuPropsType } from './';
+import { IMenuItemProps, IMenuProps } from './';
 
-const MenuComponent = ({ className, onLinksClick, children }: MenuPropsType) => {
+const MenuComponent = ({ className, onLinksClick, children }: IMenuProps) => {
   const modifiedChildren = Children.map(children, (child, index) => {
     if (isValidElement(child)) {
       // Add some props to each child
-      const modifiedProps: MenuItemPropsType = {
+      const modifiedProps: IMenuItemProps = {
         onLinksClick
       };
 

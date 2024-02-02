@@ -1,8 +1,11 @@
 import { Helmet } from 'react-helmet';
 
 import { Container } from '@/components/container';
+import { PageTitle } from '@/layouts/demo1/page-title';
 
+import { MENU_SIDEBAR } from '../config/menu.config';
 import { Content } from '../layouts/demo1';
+import { NavbarMenu } from '../partials/menu/NavbarMenu';
 
 const EcommercePage = () => {
   return (
@@ -12,7 +15,10 @@ const EcommercePage = () => {
       </Helmet>
 
       <Content>
-        <Container>eCommerce content goes here...</Container>
+        <Container>
+          <PageTitle />
+          {MENU_SIDEBAR[2]?.children && <NavbarMenu items={MENU_SIDEBAR[2].children} />}
+        </Container>
       </Content>
     </>
   );

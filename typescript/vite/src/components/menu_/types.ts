@@ -67,7 +67,7 @@ export type NavHasSubType = boolean;
 
 export type NavHandleToggleType = any;
 
-export type NavMenuPropsType = Partial<Omit<MenuProps, 'children'>>;
+export type NavIMenuProps = Partial<Omit<MenuProps, 'children'>>;
 
 export type NavWrapperType = any;
 
@@ -95,7 +95,7 @@ export interface NavItemSubPropsType {
   depth?: NavDepthType;
   toggle?: NavToggleType;
   menu: NavMenuType;
-  menuProps?: NavMenuPropsType;
+  menuProps?: NavIMenuProps;
   menuWidth?: NavMenuWidthType;
   direction?: NavDirectionType;
   accordion?: NavAccordionType;
@@ -117,7 +117,7 @@ export interface NavItemSubPropsType {
 export interface NavItemPropsType {
   depth?: NavDepthType;
   menu?: NavMenuType;
-  menuProps?: NavMenuPropsType;
+  menuProps?: NavIMenuProps;
   collapse?: NavCollapseType;
   expand?: NavExpandType;
   arrow?: NavArrowType;
@@ -213,7 +213,7 @@ export type NavConfigType = NavItemPropsType[];
 
 export interface NavItemSubConfigType {
   menu?: NavMenuType;
-  menuProps?: NavMenuPropsType;
+  menuProps?: NavIMenuProps;
   menuWidth?: NavMenuWidthType;
   scrollbar?: NavScrollbarType;
   scrollbarSx?: SxProps;

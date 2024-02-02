@@ -2,9 +2,9 @@ import { Collapse } from '@mui/material';
 import clsx from 'clsx';
 import { Children, cloneElement, forwardRef, isValidElement, memo } from 'react';
 
-import { MenuItemPropsType, MenuSubPropsType } from './';
+import { IMenuItemProps, IMenuSubProps } from './';
 
-const MenuSubComponent = forwardRef<HTMLDivElement | null, MenuSubPropsType>(
+const MenuSubComponent = forwardRef<HTMLDivElement | null, IMenuSubProps>(
   function MenuSub(props, ref) {
     const {
       show,
@@ -21,7 +21,7 @@ const MenuSubComponent = forwardRef<HTMLDivElement | null, MenuSubPropsType>(
     const modifiedChildren = Children.map(children, (child, index) => {
       if (isValidElement(child)) {
         // Add some props to each child
-        const modifiedProps: MenuItemPropsType = {
+        const modifiedProps: IMenuItemProps = {
           handleParentClose,
           handleClick,
           onLinksClick

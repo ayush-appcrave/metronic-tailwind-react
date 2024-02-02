@@ -40,9 +40,9 @@ export default plugin(({addVariant, addComponents, e, theme}) => {
       'box-shadow': 'var(--tw-dropdown-box-shadow)', 
       'background-color': 'var(--tw-dropdown-background-color)', 
       'border-radius': theme('custom.components.common.borderRadius.dropdown'), 
-      '.show.menu-item-dropdown > &, &.menu.show, &.show[data-popper-placement]': {
+      '.show.menu-item-dropdown > &, .base-Popper-root > .menu-container > &, &.menu.show, &.show[data-popper-placement]': {
         'display': 'flex',
-        'will-change': 'transform',
+        'will-change': 'transform'
       }
     },
     '.menu-accordion': {

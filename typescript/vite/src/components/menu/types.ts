@@ -1,4 +1,4 @@
-import { MenuProps } from '@mui/base';
+import { PopperProps } from '@mui/material';
 import { HTMLAttributes, MouseEvent, ReactNode, RefAttributes } from 'react';
 
 export type MenuEventHandlerType = (e: MouseEvent<HTMLElement>) => void;
@@ -15,22 +15,22 @@ export type MenuToggleType = 'accordion' | 'dropdown';
 
 export type MenuItemToggleType = Record<string, MenuToggleType> | MenuToggleType;
 
+export type MenuDropdownType = Partial<Omit<PopperProps, 'children'>>;
+
 export type MenuTabIndexType = number;
 
-export type MenuSubMenuPropsType = Partial<Omit<MenuProps, 'children'>>;
-
-export interface MenuPropsType {
+export interface IMenuProps {
   className?: string;
   children: ReactNode;
   onLinksClick?: MenuClickEventType;
 }
 
-export interface MenuItemPropsType {
+export interface IMenuItemProps {
   path?: string;
   toggle?: MenuItemToggleType;
   trigger?: MenuItemTriggerType;
   disabled?: boolean;
-  baseMenuProps?: MenuSubMenuPropsType;
+  dropdownProps?: MenuDropdownType;
   className?: string;
   onLinkClick?: MenuClickEventType;
   onLinksClick?: MenuClickEventType;
@@ -42,7 +42,7 @@ export interface MenuItemPropsType {
   children?: ReactNode;
 }
 
-export interface MenuLinkPropsType {
+export interface IMenuLinkProps {
   path?: string;
   externalLink?: boolean;
   newTab?: boolean;
@@ -57,7 +57,7 @@ export interface MenuLinkPropsType {
   children?: ReactNode;
 }
 
-export interface MenuSubPropsType {
+export interface IMenuSubProps {
   show?: MenuShowType;
   enter?: boolean;
   toggle?: MenuToggleType;
@@ -72,34 +72,32 @@ export interface MenuSubPropsType {
   accordionIn?: boolean;
   children?: ReactNode;
 }
-export interface MenuTitlePropsType {
+export interface IMenuTitleProps {
   className?: string;
   children?: ReactNode;
 }
 
-export interface MenuIconPropsType {
+export interface IMenuIconProps {
   className?: string;
   children: ReactNode;
 }
 
-export interface MenuBulletPropsType {
+export interface IMenuBulletProps {
   className?: string;
   children?: ReactNode;
 }
 
-export interface MenuTogglePropsType {
+export interface IMenuToggleProps {
   className?: string;
   children: ReactNode;
 }
 
-export interface MenuHeadingPropsType {
+export interface IMenuHeadingProps {
   className?: string;
   children: ReactNode;
 }
 
-export type MenuConfigType = MenuItemConfigType[];
-
-export interface MenuItemConfigType {
+export interface IMenuItemConfig {
   title?: string;
   heading?: string;
   icon?: string;
@@ -109,14 +107,17 @@ export interface MenuItemConfigType {
   collapseTitle?: string;
   expandTitle?: string;
   toggle?: MenuItemToggleType;
+  dropdownProps?: MenuDropdownType;
   trigger?: MenuItemTriggerType;
-  children?: MenuItemConfigType[];
+  children?: IMenuItemConfig[];
 }
 
-export interface MenuBreadcrumbType {
+export type MenuConfigType = IMenuItemConfig[];
+
+export interface IMenuBreadcrumb {
   title?: string;
   path?: string;
   active?: boolean;
 }
 
-export type MenuBreadcrumbsType = MenuBreadcrumbType[];
+export type MenuBreadcrumbsType = IMenuBreadcrumb[];

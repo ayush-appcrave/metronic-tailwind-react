@@ -20,11 +20,11 @@ import {
   type NavConfigType,
   NavDefaultStylesConfig,
   MenuItemButton,
-  type MenuItemPropsType,
+  type IMenuItemProps,
   MenuItemSub
 } from '..';
 
-const MenuItem = forwardRef<HTMLDivElement | null, MenuItemPropsType>(function MenuItem(props, ref) {
+const MenuItem = forwardRef<HTMLDivElement | null, IMenuItemProps>(function MenuItem(props, ref) {
   const {
     depth = 1,
     menu = false,

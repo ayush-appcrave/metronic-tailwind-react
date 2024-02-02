@@ -1,9 +1,9 @@
 import clsx from 'clsx';
 import { memo } from 'react';
 
-import { MenuTitlePropsType } from './';
+import { IMenuTitleProps } from './';
 
-const MenuTitleComponent = ({ className, children }: MenuTitlePropsType) => {
+const MenuTitleComponent = ({ className, children }: IMenuTitleProps) => {
   return <div className={clsx('menu-title', className && className)}>{children}</div>;
 };
 

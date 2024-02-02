@@ -1,8 +1,8 @@
 import clsx from 'clsx';
 
-import { MenuIconPropsType } from './';
+import { IMenuIconProps } from './';
 
-const MenuIcon = ({ className, children }: MenuIconPropsType) => {
+const MenuIcon = ({ className, children }: IMenuIconProps) => {
   return <div className={clsx('menu-icon', className && className)}>{children}</div>;
 };
 

@@ -1,4 +1,4 @@
-import { Dropdown } from '@mui/base';
+import { ClickAwayListener, Popper } from '@mui/base';
 import clsx from 'clsx';
 import React, {
   Children,
@@ -21,23 +21,23 @@ import { matchPath } from '@/utils';
 
 import { useMatchPath } from '../../hooks/useMatchPath';
 import {
+  IMenuItemProps,
+  IMenuLinkProps,
+  IMenuSubProps,
   MenuHeading,
-  MenuItemPropsType,
   MenuLink,
-  MenuLinkPropsType,
   MenuSub,
-  MenuSubPropsType,
   MenuToggleType,
   MenuTriggerType
 } from './';
 
-const MenuItemComponent = forwardRef<HTMLDivElement | null, MenuItemPropsType>(
+const MenuItemComponent = forwardRef<HTMLDivElement | null, IMenuItemProps>(
   function MenuItem(props, ref) {
     const {
       path = '',
       toggle = 'accordion',
       trigger = 'click',
-      baseMenuProps,
+      dropdownProps,
       disabled,
       tabIndex,
       className,
@@ -86,7 +86,10 @@ const MenuItemComponent = forwardRef<HTMLDivElement | null, MenuItemPropsType>(
 
     useEffect(() => {
       if (hasActiveChild(pathname, children)) {
-        setShow(true);
+        if (propToggle === 'accordion') {
+          setShow(true);
+        }
+
         setHere(true);
       }
     }, [pathname]);
@@ -97,7 +100,7 @@ const MenuItemComponent = forwardRef<HTMLDivElement | null, MenuItemPropsType>(
 
     const propTrigger: MenuTriggerType = useResponsiveProp(trigger, 'click');
 
-    const propBaseMenuProps = useResponsiveProp(baseMenuProps);
+    const propDropdownProps = useResponsiveProp(dropdownProps);
 
     const active: boolean = match;
 
@@ -156,6 +159,8 @@ const MenuItemComponent = forwardRef<HTMLDivElement | null, MenuItemPropsType>(
       if (onLinkClick) {
         onLinkClick(e, props);
       }
+
+      console.log('clicked!!!');
     };
 
     const handleMenuClose = (e: MouseEvent<HTMLElement>) => {
@@ -172,6 +177,8 @@ const MenuItemComponent = forwardRef<HTMLDivElement | null, MenuItemPropsType>(
       setShow(state);
 
       if (propToggle === 'dropdown') {
+        console.log('state:2' + state);
+
         if (state) {
           setAnchorEl(menuItemRef.current);
           setIsSubMenuOpen(true);
@@ -186,7 +193,7 @@ const MenuItemComponent = forwardRef<HTMLDivElement | null, MenuItemPropsType>(
 
     const renderLink = (child: ReactElement) => {
       // Add some props to each child
-      const modifiedProps: MenuLinkPropsType = {
+      const modifiedProps: IMenuLinkProps = {
         path,
         hasItemSub: hasSub,
         tabIndex,
@@ -207,43 +214,30 @@ const MenuItemComponent = forwardRef<HTMLDivElement | null, MenuItemPropsType>(
 
     const renderSubDropdown = (child: ReactElement) => {
       // Add some props to each child
-      const modifiedProps: MenuSubPropsType = {
+      const modifiedProps: IMenuSubProps = {
         toggle: propToggle,
         handleClick,
-        tabIndex,
-        ref: menuItemRef
+        tabIndex
       };
 
       const modofiedChild = cloneElement(child, modifiedProps);
 
-      const handleClose = (e: MouseEvent<HTMLElement>) => {
+      const handleClose = () => {
         setSubOpen(false);
       };
 
       return (
-        <div
-          {...containerProps}
-          ref={containerRef}
-          tabIndex={tabIndex}
-          onMouseEnter={handleMouseEnter}
-          onMouseLeave={handleMouseLeave}
+        <Popper
+          style={{ pointerEvents: trigger === 'click' ? 'auto' : 'none' }}
+          {...propDropdownProps}
+          anchorEl={anchorEl}
+          open={isSubMenuOpen}
+          autoFocus={false}
         >
-          <Dropdown
-            style={{ pointerEvents: trigger === 'click' ? 'auto' : 'none' }}
-            ref={menuContainerRef}
-            {...propBaseMenuProps}
-            onClose={handleClose}
-            anchorEl={anchorEl}
-            open={isSubMenuOpen}
-            autoFocus={false}
-            disableAutoFocus
-            disableEnforceFocus
-            disableScrollLock={true}
-            disableRestoreFocus
-          >
-            {modofiedChild}
-          </Dropdown>
-        </div>
+          <div className="menu-container" ref={menuContainerRef} style={{ pointerEvents: 'auto' }}>
+            <ClickAwayListener onClickAway={handleClose}>{modofiedChild}</ClickAwayListener>
+          </div>
+        </Popper>
       );
     };
 
@@ -254,7 +248,7 @@ const MenuItemComponent = forwardRef<HTMLDivElement | null, MenuItemPropsType>(
       };
 
       // Add some props to each child
-      const modifiedProps: MenuSubPropsType = {
+      const modifiedProps: IMenuSubProps = {
         tabIndex,
         show,
         enter,
@@ -288,8 +282,16 @@ const MenuItemComponent = forwardRef<HTMLDivElement | null, MenuItemPropsType>(
 
     return (
       <div
+        {...containerProps}
+        ref={containerRef}
+        tabIndex={tabIndex}
+        {...(propToggle === 'dropdown' && {
+          onMouseEnter: handleMouseEnter,
+          onMouseLeave: handleMouseLeave
+        })}
         className={clsx(
           'menu-item',
+          propToggle === 'dropdown' && 'menu-item-dropdown',
           className && className,
           active && 'active',
           show && 'show',
