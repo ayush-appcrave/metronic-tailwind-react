@@ -1,25 +1,28 @@
 import { createContext, type PropsWithChildren, useContext } from 'react';
 
-import { type ILayoutConfig } from '../layouts/models';
 import { getData, setData } from '../utils';
+
+interface ILayoutConfig {
+  name: string;
+  options: any;
+}
+
+interface ILayoutsProps {
+  getLayout: (name: string) => Partial<ILayoutConfig> | undefined;
+  hasLayout: (name: string) => boolean;
+  updateLayout: (name: string, config: Partial<ILayoutConfig>) => void;
+}
 
 const LAYOUTS_CONFIGS_KEY = 'layouts-configs';
 
-export type LayoutsType = Map<string, any>;
-export interface LayoutsProps {
-  getLayout: (name: string) => ILayoutConfig | undefined;
-  hasLayout: (name: string) => boolean;
-  updateLayout: (name: string, config: any) => void;
-};
-
-const getLayouts = (): LayoutsType => {
+const getLayouts = (): Map<string, Partial<ILayoutConfig>> => {
   const storedLayouts = (getData(LAYOUTS_CONFIGS_KEY) as object) || {};
 
   return new Map(Object.entries(storedLayouts));
 };
 
-const initialProps: LayoutsProps = {
-  getLayout: (name: string): ILayoutConfig | undefined => {
+const initialProps: ILayoutsProps = {
+  getLayout: (name: string): Partial<ILayoutConfig> | undefined => {
     const storedLayouts = getLayouts();
 
     return storedLayouts.get(name);
@@ -29,7 +32,7 @@ const initialProps: LayoutsProps = {
 
     return storedLayouts && storedLayouts.has(name);
   },
-  updateLayout: (name: string, config: any) => {
+  updateLayout: (name: string, config: Partial<ILayoutConfig>) => {
     const storedLayouts = getLayouts();
 
     if (storedLayouts.has(name)) {
@@ -42,11 +45,11 @@ const initialProps: LayoutsProps = {
   }
 };
 
-const LayoutsContext = createContext<LayoutsProps>(initialProps);
-const useLayoutStorage = () => useContext(LayoutsContext);
+const LayoutsContext = createContext<ILayoutsProps>(initialProps);
+const useLayout = () => useContext(LayoutsContext);
 
-const LayoutStorageProvider = ({ children }: PropsWithChildren) => {
+const LayoutProvider = ({ children }: PropsWithChildren) => {
   return <LayoutsContext.Provider value={initialProps}>{children}</LayoutsContext.Provider>;
 };
 
-export { LayoutStorageProvider, useLayoutStorage };
+export { type ILayoutConfig, LayoutProvider, useLayout };

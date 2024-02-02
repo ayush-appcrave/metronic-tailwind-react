@@ -1,4 +1,4 @@
-export * from './LayoutStorageProvider';
+export * from './LayoutProvider';
 export * from './LoadersProvider';
 export * from './SettingsProvider';
 export * from './SnackbarProvider';

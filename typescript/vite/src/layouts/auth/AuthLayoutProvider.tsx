@@ -2,11 +2,12 @@ import { createContext, type PropsWithChildren, useContext, useState } from 'rea
 
 import { deepMerge } from '@/utils';
 
-import { useLayoutStorage } from '../../providers/LayoutStorageProvider';
-import { ILayoutStorageProvider } from '../';
+import { ILayoutConfig, useLayout } from '../../providers/LayoutProvider';
 import { authLayoutConfig } from './AuthLayoutConfig';
 
-type AuthLayoutProviderProps = ILayoutStorageProvider;
+interface AuthLayoutProviderProps {
+  layout: ILayoutConfig;
+}
 
 const initalLayoutProps: AuthLayoutProviderProps = {
   layout: authLayoutConfig
@@ -17,7 +18,7 @@ const LayoutContext = createContext<AuthLayoutProviderProps>(initalLayoutProps);
 const useAuthLayout = () => useContext(LayoutContext);
 
 const AuthLayoutProvider = ({ children }: PropsWithChildren) => {
-  const { getLayout } = useLayoutStorage();
+  const { getLayout } = useLayout();
 
   const getLayoutConfig = () => {
     return deepMerge(authLayoutConfig, getLayout(authLayoutConfig.name));

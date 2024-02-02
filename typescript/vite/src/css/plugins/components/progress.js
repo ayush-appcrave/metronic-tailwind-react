@@ -19,7 +19,7 @@ export default plugin(({addComponents, theme}) => {
 			'text-align': 'center',
 			'white-space': 'nowrap',
 			'background-color': 'var(--tw-gray-300)',
-      'border-radius': theme('custom.common.borderRadius.progress')
+      'border-radius': theme('custom.components.common.borderRadius.progress'),  
     },
   });
 

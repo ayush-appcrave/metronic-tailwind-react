@@ -73,7 +73,7 @@ export default plugin(({addComponents, theme}) => {
       '.apexcharts-canvas': {
         'svg': {
           'border-bottom-left-radius': theme('custom.components.common.borderRadius.card'), 
-			    'border-bottom-right-radius':theme('custom.components.common.borderRadius.card'), 
+			    'border-bottom-right-radius': theme('custom.components.common.borderRadius.card')
         }
       }
     },
@@ -87,7 +87,7 @@ export default plugin(({addComponents, theme}) => {
     '.apexcharts-rounded': {
       '.apexcharts-canvas': {
         'svg': {
-          'border-radius': theme('borderRadius'), 
+          'border-radius': theme('borderRadius.DEFAULT'), 
         }
       }
     },

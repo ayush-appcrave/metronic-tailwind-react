@@ -30,6 +30,7 @@ const Header = () => {
     >
       <Container className="flex justify-between items-center">
         <MobileLogo />
+        {desktopMode && <Breadcrumbs />}
         <Topbar />
       </Container>
     </header>

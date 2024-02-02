@@ -3,16 +3,16 @@ import { createContext, type PropsWithChildren, useContext, useState } from 'rea
 import { deepMerge } from '@/utils';
 
 import { useScrollPosition } from '../../hooks/useScrollPosition';
-import { useLayoutStorage } from '../../providers/LayoutStorageProvider';
-import { type ILayoutStorageProvider } from '../';
+import { ILayoutConfig, useLayout } from '../../providers/LayoutProvider';
 import { demo1LayoutConfig } from './Demo1LayoutConfig';
 
-type Demo1LayoutProviderProps = {
+export interface Demo1LayoutProviderProps {
+  layout: ILayoutConfig;
   headerSticky: boolean;
   mobileSidebarOpen: boolean;
   setMobileSidebarOpen: (open: boolean) => void;
   setSidebarCollapse: (collapse: boolean) => void;
-} & ILayoutStorageProvider;
+}
 
 const initalLayoutProps: Demo1LayoutProviderProps = {
   layout: demo1LayoutConfig,
@@ -27,7 +27,7 @@ const LayoutContext = createContext<Demo1LayoutProviderProps>(initalLayoutProps)
 const useDemo1Layout = () => useContext(LayoutContext);
 
 const Demo1LayoutProvider = ({ children }: PropsWithChildren) => {
-  const { getLayout, updateLayout } = useLayoutStorage();
+  const { getLayout, updateLayout } = useLayout();
 
   const getLayoutConfig = () => {
     return deepMerge(demo1LayoutConfig, getLayout(demo1LayoutConfig.name));

@@ -11,7 +11,6 @@ import { Sidebar } from '../sidebar';
 
 const Main = () => {
   const { layout } = useDemo1Layout();
-  const isMounted = useIsMounted();
 
   useEffect(() => {
     const bodyClass = document.body.classList;
@@ -33,7 +32,7 @@ const Main = () => {
   }, [layout]);
 
   return (
-    <div className={clsx('flex grow', !isMounted() && 'transition-none')}>
+    <div className="flex grow">
       <Sidebar />
 
       <div className="wrapper flex grow flex-col">

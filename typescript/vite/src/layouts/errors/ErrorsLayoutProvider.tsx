@@ -2,22 +2,23 @@ import { createContext, type PropsWithChildren, useContext, useState } from 'rea
 
 import { deepMerge } from '@/utils';
 
-import { useLayoutStorage } from '../../providers/LayoutStorageProvider';
-import { ILayoutStorageProvider } from '../';
+import { ILayoutConfig, useLayout } from '../../providers/LayoutProvider';
 import { errorsLayoutConfig } from './ErrorsLayoutConfig';
 
-type ErrorLayoutProviderProps = ILayoutStorageProvider;
+interface ErrorsLayoutProviderProps {
+  layout: ILayoutConfig;
+}
 
-const initalLayoutProps: ErrorLayoutProviderProps = {
+const initalLayoutProps: ErrorsLayoutProviderProps = {
   layout: errorsLayoutConfig
 };
 
-const LayoutContext = createContext<ErrorLayoutProviderProps>(initalLayoutProps);
+const LayoutContext = createContext<ErrorsLayoutProviderProps>(initalLayoutProps);
 
-const useAuthLayout = () => useContext(LayoutContext);
+const useErrorsLayout = () => useContext(LayoutContext);
 
 const ErrorsLayoutProvider = ({ children }: PropsWithChildren) => {
-  const { getLayout } = useLayoutStorage();
+  const { getLayout } = useLayout();
 
   const getLayoutConfig = () => {
     return deepMerge(errorsLayoutConfig, getLayout(errorsLayoutConfig.name));
@@ -36,4 +37,4 @@ const ErrorsLayoutProvider = ({ children }: PropsWithChildren) => {
   );
 };
 
-export { ErrorsLayoutProvider, useAuthLayout };
+export { ErrorsLayoutProvider, useErrorsLayout };

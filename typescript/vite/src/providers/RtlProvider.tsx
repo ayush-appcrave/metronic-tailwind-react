@@ -10,7 +10,7 @@ interface Props {
   children: ReactNode;
 }
 
-const ThemeRtlProvider = ({ children }: Props) => {
+const RtlProvider = ({ children }: Props) => {
   const { settings } = useSettings();
   const { direction } = settings;
 
@@ -22,4 +22,4 @@ const ThemeRtlProvider = ({ children }: Props) => {
   return <CacheProvider value={cacheRtl}>{children}</CacheProvider>;
 };
 
-export { ThemeRtlProvider };
+export { RtlProvider };

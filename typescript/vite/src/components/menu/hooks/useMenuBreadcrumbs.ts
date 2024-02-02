@@ -11,7 +11,8 @@ const useMenuBreadcrumbs = (pathname: string, items: MenuConfigType): MenuBreadc
         return [
           {
             title: item.title,
-            path: item.path
+            path: item.path,
+            active: true
           }
         ];
       } else if (item.children) {

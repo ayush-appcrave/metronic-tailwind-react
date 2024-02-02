@@ -1,45 +1,33 @@
-import { ReactNode } from 'react';
-import { Link as RouterLink, useLocation } from 'react-router-dom';
+import clsx from 'clsx';
+import { Fragment } from 'react';
+import { useLocation } from 'react-router';
 
-import { KeenIcon, MenuBreadcrumbsType } from '@/components';
+import { KeenIcon } from '@/components';
 import { useMenuBreadcrumbs } from '@/components/menu/hooks/useMenuBreadcrumbs';
 
 import { MENU_SIDEBAR } from '../../../config/menu.config';
 
-const Breadcrumbs = (customItems?: MenuBreadcrumbsType) => {
+const Breadcrumbs = () => {
   const { pathname } = useLocation();
-  const items = customItems ?? useMenuBreadcrumbs(pathname, MENU_SIDEBAR);
+  const items = useMenuBreadcrumbs(pathname, MENU_SIDEBAR);
 
-  const renderItems = (): ReactNode => {
+  const renderItems = () => {
     return items.map((item, index) => {
       const last = index === items.length - 1;
-      const separator = (
-        <KeenIcon icon="right" className="text-gray-500 text-xs" key={`separator-${index}`} />
-      );
 
-      if (item.path) {
-        return (
-          <>
-            <RouterLink
-              key={`item-${index}`}
-              to={item.path}
-              className="flex items-center gap-1 text-gray-600 hover:text-primary"
-            >
-              {item.title}
-            </RouterLink>
-            {!last && separator}
-          </>
-        );
-      } else {
-        return (
-          <>
-            <span key={`item-${index}`} className="text-gray-700">
-              {item.title}
-            </span>
-            {!last && separator}
-          </>
-        );
-      }
+      return (
+        <Fragment key={`root-${index}`}>
+          <span
+            className={clsx(item.active ? 'text-gray-700' : 'text-gray-600')}
+            key={`item-${index}`}
+          >
+            {item.title}
+          </span>
+          {!last && (
+            <KeenIcon icon="right" className="text-gray-500 text-xs" key={`separator-${index}`} />
+          )}
+        </Fragment>
+      );
     });
   };
 

@@ -116,6 +116,7 @@ export interface MenuItemConfigType {
 export interface MenuBreadcrumbType {
   title?: string;
   path?: string;
+  active?: boolean;
 }
 
 export type MenuBreadcrumbsType = MenuBreadcrumbType[];

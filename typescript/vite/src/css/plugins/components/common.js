@@ -1,8 +1,7 @@
 /* eslint-disable max-len */
 import plugin from 'tailwindcss/plugin';
 
-export default plugin(({addVariant, addComponents, addBase, e, theme, config}) => {
-
+export default plugin(({addVariant, e}) => {
   addVariant('overlay-open', [
     ({modifySelectors, separator}) => {
       modifySelectors(({className}) => {
@@ -138,20 +137,4 @@ export default plugin(({addVariant, addComponents, addBase, e, theme, config}) =
 			return `[data-theme-mode=system] .${e(`system-mode${separator}${className}`)}`;
 		});
 	});
-
-  addVariant('below-2lx', "@media screen and (max-width: theme('screens.lg'))");
-  addVariant('below-xl', "@media screen and (max-width: theme('screens.xl'))");
-  addVariant('below-lg', "@media screen and (max-width: theme('screens.lg'))");
-  addVariant('below-md', "@media screen and (max-width: theme('screens.md'))");
-  addVariant('below-sm', "@media screen and (max-width: theme('screens.sm'))");
-
-  const breakpoints = {};
-  const screens = config().theme.screens;
-  for (const screen of Object.keys(screens)) {
-    const pixels = screens[screen];
-    breakpoints[`--tw-${screen}`] = pixels;
-  };
-  addBase({
-    ':root': breakpoints,
-  });
 });

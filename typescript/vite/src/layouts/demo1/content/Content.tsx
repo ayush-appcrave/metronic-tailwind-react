@@ -1,12 +1,23 @@
-import { useEffect } from 'react';
 import { type PropsWithChildren } from 'react';
 
-const Content = ({ children }: PropsWithChildren) => {
-  useEffect(() => {
-    console.log('layout: content');
-  }, []);
+import { Container } from '@/components/container';
+import { useResponsive } from '@/hooks';
 
-  return <>{children}</>;
+import { Breadcrumbs } from '../breadcrumbs';
+
+const Content = ({ children }: PropsWithChildren) => {
+  const mobileMode = useResponsive('down', 'lg');
+
+  return (
+    <>
+      {mobileMode && (
+        <Container>
+          <Breadcrumbs key="mobile" />
+        </Container>
+      )}
+      {children}
+    </>
+  );
 };
 
 export { Content };

@@ -1,17 +1,13 @@
 import { type KeenIconsStyleType } from '../components/keenicons/types';
 
-export type SettingsModeOptionType = 'light' | 'dark' | 'system';
+export type SettingsModeType = 'light' | 'dark' | 'system';
 
-export type SettingsContainerType = 'fluid' | 'fixed';
+export type SettingsContainerType = 'default' | 'fluid' | 'fixed';
 
-// Settings types
-export interface SettingsType {
-  mode: SettingsModeOptionType;
-  containerWidth: SettingsContainerType;
-  keeniconsStyle: KeenIconsStyleType;
-  fontFamily: string;
-  layout: string;
+export interface ISettings {
+  mode: SettingsModeType;
+  container: SettingsContainerType;
+  keenIconsStyle: KeenIconsStyleType;
 }
 
-// Menu types
 export type PathsType = Record<string, string>;

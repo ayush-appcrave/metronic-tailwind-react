@@ -40,7 +40,7 @@ export default plugin(({addComponents, theme}) => {
       'padding-bottom': theme('custom.components.badge.lg.py'),
       'font-weight': theme('custom.components.badge.lg.fontWeight'),
       'font-size': theme('custom.components.badge.lg.fontSize'),
-    },
+    }
   });
 
   // Default option
@@ -59,7 +59,7 @@ export default plugin(({addComponents, theme}) => {
 			'color': 'var(--tw-gray-600)',
       'border-color': 'var(--tw-gray-300)',  
 			'background-color': 'var(--tw-gray-100)', 
-    },
+    }
   });
 
   // Color options
@@ -79,7 +79,7 @@ export default plugin(({addComponents, theme}) => {
 				'color': `var(--tw-${color})`,
         'background-color': `var(--tw-${color}-light)`,
         'border-color': `var(--tw-${color}-clarity)`,
-      },
+      }
     });
   });   
 });

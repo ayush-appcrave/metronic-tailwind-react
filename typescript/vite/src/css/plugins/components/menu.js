@@ -1,7 +1,7 @@
 /* eslint-disable max-len */
 import plugin from 'tailwindcss/plugin';
 
-export default plugin(({addVariant, addComponents, addBase, e, theme, config}) => {
+export default plugin(({addVariant, addComponents, e, theme}) => {
   addComponents({
     '.menu': {
       'display': 'flex',
@@ -34,7 +34,7 @@ export default plugin(({addVariant, addComponents, addBase, e, theme, config}) =
       'margin': '0',
       'display': 'none',
       'align-items': 'stretch',
-      'flex-direction': 'column',
+      'flex-direction': 'column'
     },
     '.menu-dropdown': {
       'box-shadow': 'var(--tw-dropdown-box-shadow)', 
@@ -43,15 +43,15 @@ export default plugin(({addVariant, addComponents, addBase, e, theme, config}) =
       '.show.menu-item-dropdown > &, &.menu.show, &.show[data-popper-placement]': {
         'display': 'flex',
         'will-change': 'transform',
-      },
+      }
     },
     '.menu-accordion': {
       'display': 'none',
       'transition': 'height .3s ease',
       '.show:not(.menu-dropdown) > &, .transitioning:not(.menu-dropdown) > &, &.show': {
         'display': 'flex',
-      },
-    },
+      }
+    }
   });
 
 	addVariant('menu-item-active', [
@@ -69,7 +69,7 @@ export default plugin(({addVariant, addComponents, addBase, e, theme, config}) =
       modifySelectors(({className}) => {
         return `.menu-item.active > .menu-link .${e(`menu-item-active${separator}${className}`)}`;
       });
-    },
+    }
   ]);
 
   addVariant('menu-item-here', [
@@ -87,7 +87,7 @@ export default plugin(({addVariant, addComponents, addBase, e, theme, config}) =
       modifySelectors(({className}) => {
         return `.menu-item.here > .menu-link .${e(`menu-item-here${separator}${className}`)}`;
       });
-    },
+    }
   ]);
 
   addVariant('menu-item-show', [

@@ -1,12 +1,9 @@
-import { type SettingsType } from './types';
+import { ISettings } from './types';
 
-const defaultSettings: SettingsType = {
-  mode: 'system',
-  keeniconsStyle: 'duotone',
-  fontFamily: 'Inter',
-  layout: 'demo1',
-  containerWidth: 'fixed'
+const defaultSettings: ISettings = {
+  mode: 'light',
+  keenIconsStyle: 'duotone',
+  container: 'fixed'
 };
-const COOKIES_EXPIRATION = 5;
 
-export { COOKIES_EXPIRATION, defaultSettings };
+export { defaultSettings };

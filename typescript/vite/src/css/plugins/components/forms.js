@@ -1,6 +1,8 @@
 /* eslint-disable max-len */
 import plugin from 'tailwindcss/plugin';
 
+const svgToDataUri = require('mini-svg-data-uri');
+
 export default plugin(({addVariant, addComponents, theme, e}) => {
 	// Form input
 	addComponents({

@@ -1,50 +1,48 @@
-import { type PaletteMode } from '@mui/material';
 import { createContext, type PropsWithChildren, useContext, useState } from 'react';
 
-import { defaultSettings } from '../config/settings.config';
-import { type SettingsType } from '../config/types';
-import { getData, setData } from '../utils';
+import { defaultSettings } from '@/config/';
+import { ISettings, type SettingsModeType } from '@/config/types';
 
-const SETTINGS_CONFIG_KEY = 'app-settings-config';
+import { getData, setData } from '../utils/LocalStorage';
 
-export interface SettingsProviderProps {
-  settings: SettingsType;
-  updateSettings: (_: Partial<SettingsType>) => void;
-  getMode: () => PaletteMode;
+export interface ISettingsProps {
+  settings: ISettings;
+  storeSettings: (settings: Partial<ISettings>) => void;
+  updateSettings: (settings: Partial<ISettings>) => void;
+  getMode: () => SettingsModeType;
 }
 
-const calculateInitialSettings = () => {
-  const settings = getData(SETTINGS_CONFIG_KEY) as SettingsType | undefined;
-  return settings ?? defaultSettings;
+const SETTINGS_CONFIGS_KEY = 'settings-configs';
+
+const getStoredSettings = (): Partial<ISettings> => {
+  return (getData(SETTINGS_CONFIGS_KEY) as Partial<ISettings>) || {};
 };
 
-const calculateUpdatedSettings = (
-  prop: Partial<SettingsType>,
-  oldSettings: SettingsType
-): SettingsType => {
-  const updatedSettings = { ...oldSettings, ...prop };
-  setData(SETTINGS_CONFIG_KEY, updatedSettings);
-  return updatedSettings;
-};
-
-const initialProps: SettingsProviderProps = {
-  settings: calculateInitialSettings(),
-  updateSettings: (_: Partial<SettingsType>) => {},
+const initialProps: ISettingsProps = {
+  settings: { ...defaultSettings, ...getStoredSettings() },
+  updateSettings: (_: Partial<ISettings>) => {},
+  storeSettings: (_: Partial<ISettings>) => {},
   getMode: () => 'light'
 };
 
-const SettingsContext = createContext<SettingsProviderProps>(initialProps);
-const useSettings = () => useContext(SettingsContext);
+const LayoutsContext = createContext<ISettingsProps>(initialProps);
+const useSettings = () => useContext(LayoutsContext);
 
 const SettingsProvider = ({ children }: PropsWithChildren) => {
   const [settings, setSettings] = useState(initialProps.settings);
-  const updateSettings = (prop: Partial<SettingsType>) => {
-    const updatedSettings = calculateUpdatedSettings(prop, settings);
-    setSettings(updatedSettings);
+
+  const updateSettings = (newSettings: Partial<ISettings>) => {
+    setSettings({ ...settings, ...newSettings });
   };
 
-  const getMode = () => {
+  const storeSettings = (newSettings: Partial<ISettings>) => {
+    setData(SETTINGS_CONFIGS_KEY, { ...getStoredSettings(), ...newSettings });
+    updateSettings(newSettings);
+  };
+
+  const getMode = (): SettingsModeType => {
     const { mode } = settings;
+
     if (mode === 'system') {
       return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
     } else if (mode === 'dark') {
@@ -55,15 +53,9 @@ const SettingsProvider = ({ children }: PropsWithChildren) => {
   };
 
   return (
-    <SettingsContext.Provider
-      value={{
-        settings,
-        updateSettings,
-        getMode
-      }}
-    >
+    <LayoutsContext.Provider value={{ settings, updateSettings, storeSettings, getMode }}>
       {children}
-    </SettingsContext.Provider>
+    </LayoutsContext.Provider>
   );
 };
 

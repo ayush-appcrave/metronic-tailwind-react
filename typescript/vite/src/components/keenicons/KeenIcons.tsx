@@ -1,32 +1,19 @@
-import { Box } from '@mui/material';
-import { type SxProps, type Theme } from '@mui/material/styles';
+import clsx from 'clsx';
 import { memo } from 'react';
 
 import { useSettings } from '../../providers/SettingsProvider';
 import KeenIconsConfig from './config';
-import { type KeenIconsStyleType } from './types';
+import { IKeenIconProps } from './types';
 
-interface Props {
-  icon: string;
-  style?: KeenIconsStyleType;
-  className?: string;
-  sx?: SxProps<Theme>;
-}
-
-const KeenIconComponent = ({ icon, style, className, sx }: Props) => {
+const KeenIconComponent = ({ icon, style, className = '' }: IKeenIconProps) => {
   const { settings } = useSettings();
-  const { keeniconsStyle } = settings;
 
   if (typeof style === 'undefined') {
-    style = keeniconsStyle;
+    style = settings.keenIconsStyle;
   }
 
   return (
-    <Box
-      className={`ki-${style} ki-${icon} ${className && ' ' + className}`}
-      component="i"
-      {...(sx && { sx })}
-    >
+    <i className={clsx(`ki-${style}`, `ki-${icon}`, className)}>
       {style === 'duotone' &&
         [...Array(KeenIconsConfig[icon])].map((e, i) => {
           return (
@@ -36,7 +23,7 @@ const KeenIconComponent = ({ icon, style, className, sx }: Props) => {
             ></span>
           );
         })}
-    </Box>
+    </i>
   );
 };
 
