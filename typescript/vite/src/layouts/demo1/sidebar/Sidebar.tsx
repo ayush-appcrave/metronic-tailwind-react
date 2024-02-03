@@ -3,7 +3,7 @@ import { useState } from 'react';
 
 import { useResponsive } from '@/hooks';
 
-import { useDemo1Layout } from '../Demo1LayoutProvider';
+import { useDemo1Layout } from '../';
 import { SidebarContent, SidebarFooter, SidebarHeader } from './';
 
 const Sidebar = () => {

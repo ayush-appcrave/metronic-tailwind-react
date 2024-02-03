@@ -3,7 +3,7 @@ import { type MouseEvent } from 'react';
 import { KeenIcon } from '@/components/keenicons';
 import { toAbsoluteUrl } from '@/utils';
 
-import { useDemo1Layout } from '../Demo1LayoutProvider';
+import { useDemo1Layout } from '../';
 
 const MobileLogo = () => {
   const { setMobileSidebarOpen } = useDemo1Layout();

@@ -2,7 +2,7 @@ import React, { Dispatch, SetStateAction, useEffect, useRef } from 'react';
 
 import { getTotalHeight, toAbsoluteUrl } from '@/utils';
 
-import { SidebarToggle } from './SidebarToggle';
+import { SidebarToggle } from './';
 
 interface Props {
   setHeaderHeight: Dispatch<SetStateAction<number>>;

@@ -6,7 +6,7 @@ import { defineConfig } from 'vite';
 // https://vitejs.dev/config/
 export default defineConfig({
   plugins: [react()],
-  base: '/hero',
+  base: '/metronic',
   resolve: {
     alias: {
       '@': fileURLToPath(new URL('./src', import.meta.url))

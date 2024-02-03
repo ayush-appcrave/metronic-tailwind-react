@@ -1,4 +1,5 @@
-import { useViewport } from '../../../hooks';
+import { useViewport } from '@/hooks';
+
 import { SidebarMenu } from './';
 
 interface Props {

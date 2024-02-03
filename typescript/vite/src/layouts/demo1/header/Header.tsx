@@ -2,12 +2,9 @@ import clsx from 'clsx';
 import { useEffect } from 'react';
 
 import { Container } from '@/components/container';
+import { useResponsive } from '@/hooks';
 
-import { useResponsive } from '../../../hooks';
-import { Breadcrumbs } from '../breadcrumbs';
-import { useDemo1Layout } from '../Demo1LayoutProvider';
-import { Topbar } from '../topbar';
-import { MobileLogo } from './MobileLogo';
+import { Breadcrumbs, MobileLogo, Topbar, useDemo1Layout } from '../';
 
 const Header = () => {
   const { headerSticky } = useDemo1Layout();

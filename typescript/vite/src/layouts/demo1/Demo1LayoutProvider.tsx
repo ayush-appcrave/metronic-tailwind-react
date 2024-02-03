@@ -1,10 +1,10 @@
 import { createContext, type PropsWithChildren, useContext, useState } from 'react';
 
+import { useScrollPosition } from '@/hooks/useScrollPosition';
+import { ILayoutConfig, useLayout } from '@/providers/LayoutProvider';
 import { deepMerge } from '@/utils';
 
-import { useScrollPosition } from '../../hooks/useScrollPosition';
-import { ILayoutConfig, useLayout } from '../../providers/LayoutProvider';
-import { demo1LayoutConfig } from './Demo1LayoutConfig';
+import { demo1LayoutConfig } from './';
 
 export interface Demo1LayoutProviderProps {
   layout: ILayoutConfig;

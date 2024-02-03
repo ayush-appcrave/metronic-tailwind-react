@@ -1,8 +1,9 @@
 import clsx from 'clsx';
 import { type MouseEvent } from 'react';
 
-import { KeenIcon } from '../../../components';
-import { useDemo1Layout } from '../Demo1LayoutProvider';
+import { KeenIcon } from '@/components';
+
+import { useDemo1Layout } from '../';
 
 const SidebarToggle = () => {
   const { layout, setSidebarCollapse } = useDemo1Layout();

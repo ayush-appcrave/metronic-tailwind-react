@@ -3,9 +3,8 @@ import { Fragment } from 'react';
 import { useLocation } from 'react-router';
 
 import { KeenIcon } from '@/components';
-import { useMenuBreadcrumbs } from '@/components/menu/hooks/useMenuBreadcrumbs';
-
-import { MENU_SIDEBAR } from '../../../config/menu.config';
+import { useMenuBreadcrumbs } from '@/components/menu';
+import { MENU_SIDEBAR } from '@/config/menu.config';
 
 const Breadcrumbs = () => {
   const { pathname } = useLocation();

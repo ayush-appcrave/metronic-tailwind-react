@@ -1,4 +1,4 @@
-import { type ILayoutConfig } from '../../providers/LayoutProvider';
+import { type ILayoutConfig } from '@/providers/LayoutProvider';
 
 const demo1LayoutConfig: ILayoutConfig = {
   name: 'demo1-layout',

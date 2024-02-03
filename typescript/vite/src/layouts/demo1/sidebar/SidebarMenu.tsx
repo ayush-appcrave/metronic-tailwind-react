@@ -14,8 +14,7 @@ import {
   MenuTitle,
   MenuToggle
 } from '@/components/menu';
-
-import { MENU_SIDEBAR } from '../../../config/menu.config';
+import { MENU_SIDEBAR } from '@/config/menu.config';
 
 const SidebarMenu = () => {
   const linkPl = 'pl-[10px]';

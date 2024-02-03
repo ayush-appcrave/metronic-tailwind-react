@@ -1,12 +1,13 @@
 import { ReactElement, useEffect, useState } from 'react';
 import { Navigate, Route, Routes, useLocation } from 'react-router';
 
+import { DashboardPage, EcommercePage, MarketingPage } from '@/pages';
+import { DefaultPage } from '@/pages/public-profile/profiles/default/DefaultPage';
+
 import { AuthPage, useAuthContext } from '../auth';
 import { RequireAuth } from '../auth/RequireAuth';
 import { Demo1Layout } from '../layouts/demo1';
 import { ErrorsPage } from '../modules/errors';
-import { UsersManagementWrapper } from '../modules/users-management';
-import { DashboardPage, EcommercePage, MarketingPage } from '../pages';
 import { useLoaders } from '../providers/LoadersProvider';
 
 const AppRouting = (): ReactElement => {
@@ -48,7 +49,7 @@ const AppRouting = (): ReactElement => {
       <Route element={<RequireAuth />}>
         <Route element={<Demo1Layout />}>
           <Route path="dashboard" element={<DashboardPage />} />
-          <Route path="/ecommerce" element={<EcommercePage />} />
+          <Route path="/public-profile/profiles/default" element={<DefaultPage />} />
           <Route path="/marketing" element={<MarketingPage />} />
           <Route index element={<Navigate to="/dashboard" />} />
         </Route>

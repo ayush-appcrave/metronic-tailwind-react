@@ -1,5 +1,4 @@
-import { Demo1LayoutProvider } from './Demo1LayoutProvider';
-import { Main } from './main';
+import { Demo1LayoutProvider, Main } from './';
 
 const Demo1Layout = () => {
   return (

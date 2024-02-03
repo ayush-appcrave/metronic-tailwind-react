@@ -46,7 +46,7 @@ const MENU_SIDEBAR: MenuConfigType = [
         children: [
           {
             title: 'Default',
-            path: '/marketing'
+            path: '/public-profile/profiles/default'
           },
           {
             title: 'Creator',

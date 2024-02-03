@@ -1,16 +1,16 @@
-import clsx from 'clsx';
 import { useEffect } from 'react';
-import { Outlet } from 'react-router-dom';
+import { Helmet } from 'react-helmet';
+import { useLocation } from 'react-router';
 
-import useIsMounted from '@/hooks/useIsMounted';
+import { useMenuTitle } from '@/components';
+import { MENU_SIDEBAR } from '@/config/menu.config';
 
-import { useDemo1Layout } from '../Demo1LayoutProvider';
-import { Footer } from '../footer';
-import { Header } from '../header';
-import { Sidebar } from '../sidebar';
+import { Content, Footer, Header, Sidebar, useDemo1Layout } from '../';
 
 const Main = () => {
   const { layout } = useDemo1Layout();
+  const { pathname } = useLocation();
+  const title = useMenuTitle(pathname, MENU_SIDEBAR);
 
   useEffect(() => {
     const bodyClass = document.body.classList;
@@ -32,19 +32,23 @@ const Main = () => {
   }, [layout]);
 
   return (
-    <div className="flex grow">
-      <Sidebar />
+    <>
+      <Helmet>
+        <title>{title}</title>
+      </Helmet>
 
-      <div className="wrapper flex grow flex-col">
-        <Header />
+      <div className="flex grow">
+        <Sidebar />
 
-        <div className="grow content" role="content">
-          <Outlet />
+        <div className="wrapper flex grow flex-col">
+          <Header />
+
+          <Content />
+
+          <Footer />
         </div>
-
-        <Footer />
       </div>
-    </div>
+    </>
   );
 };
 
