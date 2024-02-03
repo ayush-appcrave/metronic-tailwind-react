@@ -4,6 +4,7 @@ import { useMenuTitle } from '@/components/menu/hooks/useMenuTitle';
 
 import { MENU_SIDEBAR } from '../../../config/menu.config';
 import { IPageTitleProps } from './types';
+
 const PageTitle = ({ text }: IPageTitleProps) => {
   const { pathname } = useLocation();
   const title = useMenuTitle(pathname, MENU_SIDEBAR);

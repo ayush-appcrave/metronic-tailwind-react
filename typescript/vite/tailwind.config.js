@@ -1,5 +1,8 @@
 module.exports = {
-  content: ['./src/**/*.{ts,tsx}'],
+  content: [
+    'index.html', 
+    './src/**/*.{ts,tsx}'
+  ],
   safelist: [
     'demo1',
     'hidden',
@@ -543,7 +546,6 @@ module.exports = {
     require('./src/css/plugins/components/progress'),
     require('./src/css/plugins/components/apexcharts'),
     require('./src/css/plugins/components/prismjs'),
-    require('./src/css/plugins/layouts/base'),
     require('./src/css/plugins/layouts/demo1')
   ]
 };

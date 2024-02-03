@@ -18,10 +18,6 @@ const App = () => {
     document.body.classList.add(settings.mode);
   }, [settings]);
 
-  useEffect(() => {
-    document.body.classList.remove('app-loadeding');
-  }, []);
-
   return (
     <ProvidersWrapper>
       <BrowserRouter basename={BASE_URL}>
