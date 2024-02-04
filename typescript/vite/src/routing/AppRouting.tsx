@@ -1,8 +1,9 @@
 import { ReactElement, useEffect, useState } from 'react';
 import { Navigate, Route, Routes, useLocation } from 'react-router';
 
-import { DashboardPage, EcommercePage, MarketingPage } from '@/pages';
-import { DefaultPage } from '@/pages/public-profile/profiles/default/DefaultPage';
+import { GetStartedPage, SettingsSidebarPage } from '@/pages/account';
+import { DashboardPage } from '@/pages/dashboard';
+import { DefaultPage } from '@/pages/public-profile';
 
 import { AuthPage, useAuthContext } from '../auth';
 import { RequireAuth } from '../auth/RequireAuth';
@@ -48,9 +49,10 @@ const AppRouting = (): ReactElement => {
 
       <Route element={<RequireAuth />}>
         <Route element={<Demo1Layout />}>
-          <Route path="dashboard" element={<DashboardPage />} />
+          <Route path="/dashboard" element={<DashboardPage />} />
           <Route path="/public-profile/profiles/default" element={<DefaultPage />} />
-          <Route path="/marketing" element={<MarketingPage />} />
+          <Route path="/account/home/get-started" element={<GetStartedPage />} />
+          <Route path="/account/home/settings-sidebar" element={<SettingsSidebarPage />} />
           <Route index element={<Navigate to="/dashboard" />} />
         </Route>
       </Route>

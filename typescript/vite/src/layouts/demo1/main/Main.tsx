@@ -2,7 +2,7 @@ import { useEffect } from 'react';
 import { Helmet } from 'react-helmet';
 import { useLocation } from 'react-router';
 
-import { useMenuTitle } from '@/components';
+import { useActiveMenuItem } from '@/components/menu';
 import { MENU_SIDEBAR } from '@/config/menu.config';
 
 import { Content, Footer, Header, Sidebar, useDemo1Layout } from '../';
@@ -10,7 +10,7 @@ import { Content, Footer, Header, Sidebar, useDemo1Layout } from '../';
 const Main = () => {
   const { layout } = useDemo1Layout();
   const { pathname } = useLocation();
-  const title = useMenuTitle(pathname, MENU_SIDEBAR);
+  const menuItem = useActiveMenuItem(pathname, MENU_SIDEBAR);
 
   useEffect(() => {
     const bodyClass = document.body.classList;
@@ -34,7 +34,7 @@ const Main = () => {
   return (
     <>
       <Helmet>
-        <title>{title}</title>
+        <title>{menuItem?.title}</title>
       </Helmet>
 
       <div className="flex grow">

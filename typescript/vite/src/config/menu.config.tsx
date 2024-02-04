@@ -50,23 +50,23 @@ const MENU_SIDEBAR: MenuConfigType = [
           },
           {
             title: 'Creator',
-            path: '/ecommerce'
+            path: '/public-profile/profiles/creator'
           },
           {
             title: 'Company',
-            path: ''
+            path: '/public-profile/profiles/company'
           },
           {
             title: 'NFT',
-            path: ''
+            path: '/public-profile/profiles/nft'
           },
           {
             title: 'Blogger',
-            path: 'public-profile/profiles/blogger/index.html'
+            path: '/public-profile/profiles/blogger'
           },
           {
             title: 'CRM',
-            path: 'public-profile/profiles/crm/index.html'
+            path: '/public-profile/profiles/crm'
           },
           {
             title: 'More',
@@ -79,19 +79,19 @@ const MENU_SIDEBAR: MenuConfigType = [
             children: [
               {
                 title: 'Gamer',
-                path: '/ecommerce'
+                path: '/public-profile/profiles/gamer'
               },
               {
                 title: 'Feeds',
-                path: '#'
+                path: '/public-profile/profiles/feeds'
               },
               {
                 title: 'Plain',
-                path: '#'
+                path: '/public-profile/profiles/plain'
               },
               {
                 title: 'Modal',
-                path: '#'
+                path: '/public-profile/profiles/modal'
               }
             ]
           }
@@ -102,29 +102,29 @@ const MENU_SIDEBAR: MenuConfigType = [
         children: [
           {
             title: '3 Columns',
-            path: 'public-profile/projects/3-columns/index.html'
+            path: '/public-profile/projects/3-columns'
           },
           {
             title: '2 Columns',
-            path: 'public-profile/projects/2-columns/index.html'
+            path: '/public-profile/projects/2-columns'
           }
         ]
       },
       {
         title: 'Works',
-        path: 'public-profile/works/index.html'
+        path: '/public-profile/works'
       },
       {
         title: 'Teams',
-        path: 'public-profile/teams/index.html'
+        path: 'public-profile/teams'
       },
       {
         title: 'Network',
-        path: 'public-profile/network/index.html'
+        path: '/public-profile/network'
       },
       {
         title: 'Activity',
-        path: 'public-profile/activity/index.html'
+        path: '/public-profile/activity'
       },
       {
         title: 'More',
@@ -134,15 +134,15 @@ const MENU_SIDEBAR: MenuConfigType = [
         children: [
           {
             title: 'Campaigns - Card',
-            path: 'public-profile/campaigns/card/index.html'
+            path: '/public-profile/campaigns/card'
           },
           {
             title: 'Campaigns - List',
-            path: 'public-profile/campaigns/list/index.html'
+            path: '/public-profile/campaigns/list'
           },
           {
             title: 'Empty',
-            path: 'public-profile/empty/index.html'
+            path: '/public-profile/empty'
           }
         ]
       }
@@ -157,31 +157,31 @@ const MENU_SIDEBAR: MenuConfigType = [
         children: [
           {
             title: 'Get Started',
-            path: 'account/home/get-started/index.html'
+            path: '/account/home/get-started'
           },
           {
             title: 'User Profile',
-            path: 'account/home/user-profile/index.html'
+            path: '/account/home/user-profile'
           },
           {
             title: 'Company Profile',
-            path: 'account/home/company-profile/index.html'
+            path: '/account/home/company-profile'
           },
           {
             title: 'Settings - With Sidebar',
-            path: 'account/home/settings-sidebar/index.html'
+            path: '/account/home/settings-sidebar'
           },
           {
             title: 'Settings - Enterprise',
-            path: 'account/home/settings-enterprise/index.html'
+            path: '/account/home/settings-enterprise'
           },
           {
             title: 'Settings - Plain',
-            path: 'account/home/settings-plain/index.html'
+            path: '/account/home/settings-plain'
           },
           {
             title: 'Settings - Modal',
-            path: 'account/home/settings-modal/index.html'
+            path: '/account/home/settings-modal'
           }
         ]
       },
@@ -190,19 +190,19 @@ const MENU_SIDEBAR: MenuConfigType = [
         children: [
           {
             title: 'Billing - Basic',
-            path: 'account/billing/basic/index.html'
+            path: '/account/billing/basic'
           },
           {
             title: 'Billing - Enterprise',
-            path: 'account/billing/enterprise/index.html'
+            path: '/account/billing/enterprise'
           },
           {
             title: 'Plans',
-            path: 'account/billing/plans/index.html'
+            path: '/account/billing/plans'
           },
           {
             title: 'Billing History',
-            path: 'account/billing/history/index.html'
+            path: '/account/billing/history'
           }
         ]
       },
@@ -211,35 +211,35 @@ const MENU_SIDEBAR: MenuConfigType = [
         children: [
           {
             title: 'Get Started',
-            path: 'account/security/get-started/index.html'
+            path: '/account/security/get-started'
           },
           {
             title: 'Security Overview',
-            path: 'account/security/overview/index.html'
+            path: '/account/security/overview'
           },
           {
             title: 'Allowed IP Addresses',
-            path: 'account/security/allowed-ip-addresses/index.html'
+            path: '/account/security/allowed-ip-addresses'
           },
           {
             title: 'Privacy Settings',
-            path: 'account/security/privacy-settings/index.html'
+            path: '/account/security/privacy-settings'
           },
           {
             title: 'Device Management',
-            path: 'account/security/device-management/index.html'
+            path: '/account/security/device-management'
           },
           {
             title: 'Backup & Recovery',
-            path: 'account/security/backup-and-recovery/index.html'
+            path: '/account/security/backup-and-recovery'
           },
           {
             title: 'Current Sessions',
-            path: 'account/security/current-sessions/index.html'
+            path: '/account/security/current-sessions'
           },
           {
             title: 'Security Log',
-            path: 'account/security/log/index.html'
+            path: '/account/security/log'
           }
         ]
       },
@@ -248,39 +248,39 @@ const MENU_SIDEBAR: MenuConfigType = [
         children: [
           {
             title: 'Teams Starter',
-            path: 'account/members/team-starter/index.html'
+            path: '/account/members/team-starter'
           },
           {
             title: 'Teams',
-            path: 'account/members/teams/index.html'
+            path: '/account/members/teams'
           },
           {
             title: 'Team Details',
-            path: 'account/members/team-details/index.html'
+            path: '/account/members/team-details'
           },
           {
             title: 'Teams Members',
-            path: 'account/members/team-members/index.html'
+            path: '/account/members/team-members'
           },
           {
             title: 'Member Details',
-            path: 'account/members/member-details/index.html'
+            path: '/account/members/member-details'
           },
           {
             title: 'Import Members',
-            path: 'account/members/import/index.html'
+            path: '/account/members/import'
           },
           {
             title: 'Roles',
-            path: 'account/members/roles/index.html'
+            path: '/account/members/roles'
           },
           {
             title: 'Teams Starter',
-            path: 'account/members/role-settings/index.html'
+            path: '/account/members/role-settings'
           },
           {
             title: 'Teams Starter',
-            path: 'account/members/role-members/index.html'
+            path: '/account/members/role-members'
           }
         ]
       }

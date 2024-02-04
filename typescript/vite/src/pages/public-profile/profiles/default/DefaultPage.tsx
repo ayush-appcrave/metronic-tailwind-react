@@ -1,5 +1,3 @@
-import { Helmet } from 'react-helmet';
-
 import { Container } from '@/components/container';
 import { MENU_SIDEBAR } from '@/config/menu.config';
 import { UserProfileHero } from '@/partials/heros';
@@ -17,24 +15,20 @@ const DefaultPage = () => {
 
   return (
     <>
-      <Container>
-        <UserProfileHero
-          name="Jenny Klabber"
-          image={image}
-          info={[
-            { label: 'KeenThemes', icon: 'abstract' },
-            { label: 'SF, Bay Area', icon: 'geolocation' },
-            { email: 'jenny@kteam.com', icon: 'sms' }
-          ]}
-        />
-      </Container>
+      <UserProfileHero
+        name="Jenny Klabber"
+        image={image}
+        info={[
+          { label: 'KeenThemes', icon: 'abstract' },
+          { label: 'SF, Bay Area', icon: 'geolocation' },
+          { email: 'jenny@kteam.com', icon: 'sms' }
+        ]}
+      />
 
       <Container>
         <Navbar>
           {MENU_SIDEBAR[2]?.children && <NavbarMenu items={MENU_SIDEBAR[2].children} />}
-          <NavbarActions>
-            Buttons
-          </NavbarActions>
+          <NavbarActions>Buttons</NavbarActions>
         </Navbar>
       </Container>
     </>

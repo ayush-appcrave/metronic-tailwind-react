@@ -1,5 +1,5 @@
+export * from './hooks/useActiveMenuItem';
 export * from './hooks/useMenuBreadcrumbs';
-export * from './hooks/useMenuTitle';
 export * from './Menu';
 export * from './MenuBullet';
 export * from './MenuHeading';
