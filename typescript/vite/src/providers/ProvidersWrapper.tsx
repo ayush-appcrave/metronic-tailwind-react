@@ -8,6 +8,7 @@ import { AuthProvider } from '@/auth/providers/JWTProvider';
 import {
   LayoutProvider,
   LoadersProvider,
+  MenuProvider,
   SettingsProvider,
   SnackbarProvider,
   TranslationProvider
@@ -24,7 +25,9 @@ const ProvidersWrapper = ({ children }: PropsWithChildren) => {
             <TranslationProvider>
               <LayoutProvider>
                 <LoadersProvider>
+                  <MenuProvider>
                   {children}
+                  </MenuProvider>
                 </LoadersProvider>
               </LayoutProvider>
             </TranslationProvider>

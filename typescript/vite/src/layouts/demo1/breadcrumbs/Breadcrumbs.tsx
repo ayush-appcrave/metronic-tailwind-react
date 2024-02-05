@@ -3,14 +3,16 @@ import { Fragment } from 'react';
 import { useLocation } from 'react-router';
 
 import { KeenIcon } from '@/components';
-import { useMenuBreadcrumbs } from '@/components/menu';
-import { MENU_SIDEBAR } from '@/config/menu.config';
+import { MenuBreadcrumbsType, useMenuBreadcrumbs } from '@/components/menu';
+import { useMenu } from '@/providers/';
 
 const Breadcrumbs = () => {
   const { pathname } = useLocation();
-  const items = useMenuBreadcrumbs(pathname, MENU_SIDEBAR);
+  const { getMenuConfig } = useMenu();
+  const menuConfig = getMenuConfig('primary');
+  const items = menuConfig && useMenuBreadcrumbs(pathname, menuConfig);
 
-  const renderItems = () => {
+  const renderItems = (items: MenuBreadcrumbsType) => {
     return items.map((item, index) => {
       const last = index === items.length - 1;
 
@@ -33,7 +35,7 @@ const Breadcrumbs = () => {
   const render = () => {
     return (
       <div className="flex [.header_&]:below-lg:hidden items-center gap-1 text-xs lg:text-sm font-normal mb-2.5 lg:mb-0">
-        {renderItems()}
+        {items && renderItems(items)}
       </div>
     );
   };

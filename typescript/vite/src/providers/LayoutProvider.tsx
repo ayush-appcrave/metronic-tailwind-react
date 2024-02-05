@@ -1,4 +1,4 @@
-import { createContext, type PropsWithChildren, useContext } from 'react';
+import { createContext, type PropsWithChildren, useContext, useState } from 'react';
 
 import { getData, setData } from '../utils';
 
@@ -11,6 +11,8 @@ interface ILayoutsProps {
   getLayout: (name: string) => Partial<ILayoutConfig> | undefined;
   hasLayout: (name: string) => boolean;
   updateLayout: (name: string, config: Partial<ILayoutConfig>) => void;
+  currentLayout: any;
+  setCurrentLayout: (layoutProvider: any) => void;
 }
 
 const LAYOUTS_CONFIGS_KEY = 'layouts-configs';
@@ -23,16 +25,31 @@ const getLayouts = (): Map<string, Partial<ILayoutConfig>> => {
 
 const initialProps: ILayoutsProps = {
   getLayout: (name: string): Partial<ILayoutConfig> | undefined => {
+    return {};
+  },
+  hasLayout: (name: string): boolean => false,
+  updateLayout: (name: string, config: Partial<ILayoutConfig>) => {},
+  currentLayout: null,
+  setCurrentLayout: (layoutProvider: any) => {}
+};
+
+const LayoutContext = createContext<ILayoutsProps>(initialProps);
+const useLayout = () => useContext(LayoutContext);
+
+const LayoutProvider = ({ children }: PropsWithChildren) => {
+  const getLayout = (name: string): Partial<ILayoutConfig> | undefined => {
     const storedLayouts = getLayouts();
 
     return storedLayouts.get(name);
-  },
-  hasLayout: (name: string): boolean => {
+  };
+
+  const hasLayout = (name: string): boolean => {
     const storedLayouts = getLayouts();
 
     return storedLayouts && storedLayouts.has(name);
-  },
-  updateLayout: (name: string, config: Partial<ILayoutConfig>) => {
+  };
+
+  const updateLayout = (name: string, config: Partial<ILayoutConfig>) => {
     const storedLayouts = getLayouts();
 
     if (storedLayouts.has(name)) {
@@ -42,14 +59,17 @@ const initialProps: ILayoutsProps = {
     storedLayouts.set(name, config);
 
     setData(LAYOUTS_CONFIGS_KEY, Object.fromEntries(storedLayouts));
-  }
+  };
+
+  const [currentLayout, setCurrentLayout] = useState();
+
+  return (
+    <LayoutContext.Provider
+      value={{ getLayout, hasLayout, updateLayout, currentLayout, setCurrentLayout }}
+    >
+      {children}
+    </LayoutContext.Provider>
+  );
 };
 
-const LayoutsContext = createContext<ILayoutsProps>(initialProps);
-const useLayout = () => useContext(LayoutsContext);
-
-const LayoutProvider = ({ children }: PropsWithChildren) => {
-  return <LayoutsContext.Provider value={initialProps}>{children}</LayoutsContext.Provider>;
-};
-
-export { type ILayoutConfig, LayoutProvider, useLayout };
+export { type ILayoutConfig, LayoutContext, LayoutProvider, useLayout };

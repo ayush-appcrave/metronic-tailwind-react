@@ -14,7 +14,7 @@ import {
   MenuTitle,
   MenuToggle
 } from '@/components/menu';
-import { MENU_SIDEBAR } from '@/config/menu.config';
+import { useMenu } from '@/providers/MenuProvider';
 
 const SidebarMenu = () => {
   const linkPl = 'pl-[10px]';
@@ -190,7 +190,10 @@ const SidebarMenu = () => {
     );
   };
 
-  return <Menu className="flex flex-col grow">{buildMenu(MENU_SIDEBAR)}</Menu>;
+  const { getMenuConfig } = useMenu();
+  const menuConfig = getMenuConfig('primary');
+
+  return <Menu className="flex flex-col grow">{menuConfig && buildMenu(menuConfig)}</Menu>;
 };
 
 export { SidebarMenu };

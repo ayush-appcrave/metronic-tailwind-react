@@ -7,8 +7,6 @@ const useActiveMenuItem = (pathname: string, items: MenuConfigType): IMenuItemCo
     for (let i = 0; i < items.length; i++) {
       const item = items[i];
 
-      console.log('path->' + item.path);
-
       if (item.path && matchPath(pathname, item.path)) {
         return item ?? null;
       } else if (item.children) {
