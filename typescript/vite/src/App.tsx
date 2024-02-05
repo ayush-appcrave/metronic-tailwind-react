@@ -15,6 +15,7 @@ const App = () => {
   useEffect(() => {
     document.body.classList.remove('dark');
     document.body.classList.remove('light');
+    document.body.classList.remove('page-loading');
     document.body.classList.add(settings.mode);
   }, [settings]);
 
