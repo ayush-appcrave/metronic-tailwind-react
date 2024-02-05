@@ -1,15 +1,14 @@
 import { ReactElement, useEffect, useState } from 'react';
 import { Navigate, Route, Routes, useLocation } from 'react-router';
 
+import { AuthPage, useAuthContext } from '@/auth';
+import { RequireAuth } from '@/auth/RequireAuth';
+import { Demo1Layout } from '@/layouts/demo1';
+import { ErrorsPage } from '@/modules/errors';
 import { GetStartedPage, SettingsSidebarPage } from '@/pages/account';
 import { DashboardPage } from '@/pages/dashboard';
-import { DefaultPage } from '@/pages/public-profile';
-
-import { AuthPage, useAuthContext } from '../auth';
-import { RequireAuth } from '../auth/RequireAuth';
-import { Demo1Layout } from '../layouts/demo1';
-import { ErrorsPage } from '../modules/errors';
-import { useLoaders } from '../providers/LoadersProvider';
+import { CreatorPage, DefaultPage } from '@/pages/public-profile';
+import { useLoaders } from '@/providers/LoadersProvider';
 
 const AppRouting = (): ReactElement => {
   const { setProgressBarLoader } = useLoaders();
@@ -51,6 +50,7 @@ const AppRouting = (): ReactElement => {
         <Route element={<Demo1Layout />}>
           <Route path="/dashboard" element={<DashboardPage />} />
           <Route path="/public-profile/profiles/default" element={<DefaultPage />} />
+          <Route path="/public-profile/profiles/creator" element={<CreatorPage />} />
           <Route path="/account/home/get-started" element={<GetStartedPage />} />
           <Route path="/account/home/settings-sidebar" element={<SettingsSidebarPage />} />
           <Route index element={<Navigate to="/dashboard" />} />
