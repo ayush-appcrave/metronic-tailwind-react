@@ -5,14 +5,12 @@ import { NavbarMenu } from '@/partials/menu/NavbarMenu';
 import { Navbar, NavbarActions } from '@/partials/navbar';
 import { toAbsoluteUrl } from '@/utils/Assets';
 
-const CreatorPage = () => {
+const BloggerPage = () => {
   const image = (
-    <div className="flex items-center justify-center rounded-full border-2 border-danger-clarity h-[100px] w-[100px]">
-      <img
-        src={toAbsoluteUrl('/images/content/logos/inferno.png')}
-        className="max-h-[50px] max-w-full"
-      />
-    </div>
+    <img
+      src={toAbsoluteUrl('/images/content/avatars/300-2.jpg')}
+      className="rounded-full border-3 border-success max-h-[100px] max-w-full"
+    />
   );
 
   return (
@@ -21,7 +19,7 @@ const CreatorPage = () => {
         name="Inferno"
         image={image}
         info={[
-          { label: 'inferno.com', icon: 'abstract-39' },
+          { label: 'KeenThemes', icon: 'dribbble' },
           { label: 'SF, Bay Area', icon: 'geolocation' },
           { email: 'jenny@kteam.com', icon: 'sms' }
         ]}
@@ -39,4 +37,4 @@ const CreatorPage = () => {
   );
 };
 
-export { CreatorPage };
+export { BloggerPage };
