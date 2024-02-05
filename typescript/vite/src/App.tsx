@@ -10,12 +10,10 @@ const { BASE_URL } = import.meta.env;
 const App = () => {
   const { settings } = useSettings();
 
-  console.log('mode:' + settings.mode);
-
   useEffect(() => {
     document.body.classList.remove('dark');
     document.body.classList.remove('light');
-    document.body.classList.remove('page-loading');
+    document.body.classList.remove('app-loading');
     document.body.classList.add(settings.mode);
   }, [settings]);
 
