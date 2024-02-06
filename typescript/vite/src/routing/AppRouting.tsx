@@ -1,14 +1,20 @@
 import { ReactElement, useEffect, useState } from 'react';
 import { Navigate, Route, Routes, useLocation } from 'react-router';
 
-import { AuthPage, useAuthContext } from '@/auth';
-import { RequireAuth } from '@/auth/RequireAuth';
-import { Demo1Layout } from '@/layouts/demo1';
-import { ErrorsPage } from '@/modules/errors';
-import { GetStartedPage, SettingsSidebarPage } from '@/pages/account';
+import {
+  CompanyProfilePage,
+  GetStartedPage,
+  SettingsSidebarPage,
+  UserProfilePage
+} from '@/pages/account';
 import { DashboardPage } from '@/pages/dashboard';
-import { CreatorPage, DefaultPage } from '@/pages/public-profile';
-import { useLoaders } from '@/providers/LoadersProvider';
+import { BloggerPage, CreatorPage, DefaultPage } from '@/pages/public-profile';
+
+import { AuthPage, useAuthContext } from '../auth';
+import { RequireAuth } from '../auth/RequireAuth';
+import { Demo1Layout } from '../layouts/demo1';
+import { ErrorsPage } from '../modules/errors';
+import { useLoaders } from '../providers/LoadersProvider';
 
 const AppRouting = (): ReactElement => {
   const { setProgressBarLoader } = useLoaders();
@@ -51,7 +57,10 @@ const AppRouting = (): ReactElement => {
           <Route path="/dashboard" element={<DashboardPage />} />
           <Route path="/public-profile/profiles/default" element={<DefaultPage />} />
           <Route path="/public-profile/profiles/creator" element={<CreatorPage />} />
+          <Route path="/public-profile/profiles/blogger" element={<BloggerPage />} />
           <Route path="/account/home/get-started" element={<GetStartedPage />} />
+          <Route path="/account/home/user-profile" element={<UserProfilePage />} />
+          <Route path="/account/home/company-profile" element={<CompanyProfilePage />} />
           <Route path="/account/home/settings-sidebar" element={<SettingsSidebarPage />} />
           <Route index element={<Navigate to="/dashboard" />} />
         </Route>
