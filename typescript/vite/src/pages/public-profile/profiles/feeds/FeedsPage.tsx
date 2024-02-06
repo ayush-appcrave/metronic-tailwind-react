@@ -5,7 +5,7 @@ import { NavbarMenu } from '@/partials/menu/NavbarMenu';
 import { Navbar, NavbarActions } from '@/partials/navbar';
 import { toAbsoluteUrl } from '@/utils/Assets';
 
-const DefaultPage = () => {
+const FeedsPage = () => {
   const image = (
     <img
       src={toAbsoluteUrl('/images/content/avatars/300-2.jpg')}
@@ -37,4 +37,4 @@ const DefaultPage = () => {
   );
 };
 
-export { DefaultPage };
+export { FeedsPage };

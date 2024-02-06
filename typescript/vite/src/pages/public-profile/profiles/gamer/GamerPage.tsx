@@ -5,10 +5,10 @@ import { NavbarMenu } from '@/partials/menu/NavbarMenu';
 import { Navbar, NavbarActions } from '@/partials/navbar';
 import { toAbsoluteUrl } from '@/utils/Assets';
 
-const DefaultPage = () => {
+const GamerPage = () => {
   const image = (
     <img
-      src={toAbsoluteUrl('/images/content/avatars/300-2.jpg')}
+      src={toAbsoluteUrl('/images/content/avatars/300-11.jpg')}
       className="rounded-full border-3 border-success max-h-[100px] max-w-full"
     />
   );
@@ -16,12 +16,12 @@ const DefaultPage = () => {
   return (
     <>
       <UserProfileHero
-        name="Jenny Klabber"
+        name="Floyd Miles"
         image={image}
         info={[
-          { label: 'KeenThemes', icon: 'abstract' },
           { label: 'SF, Bay Area', icon: 'geolocation' },
-          { email: 'jenny@kteam.com', icon: 'sms' }
+          { label: 'floydgg', icon: 'twitch' },
+          { email: 'Level 22', icon: '' }
         ]}
       />
 
@@ -37,4 +37,4 @@ const DefaultPage = () => {
   );
 };
 
-export { DefaultPage };
+export { GamerPage };

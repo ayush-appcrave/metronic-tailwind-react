@@ -5,7 +5,7 @@ import { NavbarMenu } from '@/partials/menu/NavbarMenu';
 import { Navbar, NavbarActions } from '@/partials/navbar';
 import { toAbsoluteUrl } from '@/utils/Assets';
 
-const DefaultPage = () => {
+const ModalPage = () => {
   const image = (
     <img
       src={toAbsoluteUrl('/images/content/avatars/300-2.jpg')}
@@ -19,8 +19,8 @@ const DefaultPage = () => {
         name="Jenny Klabber"
         image={image}
         info={[
-          { label: 'KeenThemes', icon: 'abstract' },
-          { label: 'SF, Bay Area', icon: 'geolocation' },
+          { label: 'KeenThemes', icon: 'abstract-41' },
+          { label: '', icon: '' },
           { email: 'jenny@kteam.com', icon: 'sms' }
         ]}
       />
@@ -37,4 +37,4 @@ const DefaultPage = () => {
   );
 };
 
-export { DefaultPage };
+export { ModalPage };

@@ -5,23 +5,20 @@ import { NavbarMenu } from '@/partials/menu/NavbarMenu';
 import { Navbar, NavbarActions } from '@/partials/navbar';
 import { toAbsoluteUrl } from '@/utils/Assets';
 
-const DefaultPage = () => {
+const CompanyPage = () => {
   const image = (
-    <img
-      src={toAbsoluteUrl('/images/content/avatars/300-2.jpg')}
-      className="rounded-full border-3 border-success max-h-[100px] max-w-full"
-    />
+    <img src={toAbsoluteUrl('/images/content/logos/duolingo.png')} className="size-[100px]" />
   );
 
   return (
     <>
       <UserProfileHero
-        name="Jenny Klabber"
+        name="Duolingo"
         image={image}
         info={[
-          { label: 'KeenThemes', icon: 'abstract' },
-          { label: 'SF, Bay Area', icon: 'geolocation' },
-          { email: 'jenny@kteam.com', icon: 'sms' }
+          { label: 'Public Company', icon: 'abstract-41' },
+          { label: 'Pittsburgh, KS', icon: 'geolocation' },
+          { email: 'info@duolingo.com', icon: 'sms' }
         ]}
       />
 
@@ -37,4 +34,4 @@ const DefaultPage = () => {
   );
 };
 
-export { DefaultPage };
+export { CompanyPage };
