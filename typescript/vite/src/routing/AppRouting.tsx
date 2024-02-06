@@ -8,7 +8,27 @@ import {
   UserProfilePage
 } from '@/pages/account';
 import { DashboardPage } from '@/pages/dashboard';
-import { BloggerPage, CreatorPage, DefaultPage } from '@/pages/public-profile';
+import {
+  ActivityPage,
+  BloggerPage,
+  CampaignsCardPage,
+  CampaignsListPage,
+  Columns2Page,
+  Columns3Page,
+  CompanyPage,
+  CreatorPage,
+  CRMPage,
+  DefaultPage,
+  EmptyPage,
+  FeedsPage,
+  GamerPage,
+  ModalPage,
+  NetworkPage,
+  NFTPage,
+  PlainPage,
+  TeamsPage,
+  WorksPage
+} from '@/pages/public-profile';
 
 import { AuthPage, useAuthContext } from '../auth';
 import { RequireAuth } from '../auth/RequireAuth';
@@ -57,7 +77,23 @@ const AppRouting = (): ReactElement => {
           <Route path="/dashboard" element={<DashboardPage />} />
           <Route path="/public-profile/profiles/default" element={<DefaultPage />} />
           <Route path="/public-profile/profiles/creator" element={<CreatorPage />} />
+          <Route path="/public-profile/profiles/company" element={<CompanyPage />} />
+          <Route path="/public-profile/profiles/nft" element={<NFTPage />} />
           <Route path="/public-profile/profiles/blogger" element={<BloggerPage />} />
+          <Route path="/public-profile/profiles/crm" element={<CRMPage />} />
+          <Route path="/public-profile/profiles/gamer" element={<GamerPage />} />
+          <Route path="/public-profile/profiles/feeds" element={<FeedsPage />} />
+          <Route path="/public-profile/profiles/plain" element={<PlainPage />} />
+          <Route path="/public-profile/profiles/modal" element={<ModalPage />} />
+          <Route path="/public-profile/projects/3-columns" element={<Columns3Page />} />
+          <Route path="/public-profile/projects/2-columns" element={<Columns2Page />} />
+          <Route path="/public-profile/works" element={<WorksPage />} />
+          <Route path="/public-profile/teams" element={<TeamsPage />} />
+          <Route path="/public-profile/network" element={<NetworkPage />} />
+          <Route path="/public-profile/activity" element={<ActivityPage />} />
+          <Route path="/public-profile/campaigns/card" element={<CampaignsCardPage />} />
+          <Route path="/public-profile/campaigns/list" element={<CampaignsListPage />} />
+          <Route path="/public-profile/empty" element={<EmptyPage />} />
           <Route path="/account/home/get-started" element={<GetStartedPage />} />
           <Route path="/account/home/user-profile" element={<UserProfilePage />} />
           <Route path="/account/home/company-profile" element={<CompanyProfilePage />} />
