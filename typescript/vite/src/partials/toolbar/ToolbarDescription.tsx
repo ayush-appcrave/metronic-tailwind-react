@@ -1,4 +1,4 @@
-import { IToolbarDescriptionProps } from './types';
+import { IToolbarDescriptionProps } from './interfaces';
 
 const ToolbarDescription = ({ children }: IToolbarDescriptionProps) => {
   return (

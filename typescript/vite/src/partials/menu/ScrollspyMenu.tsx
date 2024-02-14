@@ -2,7 +2,7 @@ import clsx from 'clsx';
 
 import { Scrollspy } from '@/components/scrollspy';
 
-import { IScrollspyMenuItem, IScrollspyMenuProps, ScrollspyMenuItemsType } from './';
+import { IScrollspyMenuItem, IScrollspyMenuItems, IScrollspyMenuProps } from './';
 
 const ScrollspyMenu = ({ items }: IScrollspyMenuProps) => {
   const buildAnchor = (item: IScrollspyMenuItem, indent: boolean = false) => {
@@ -19,13 +19,13 @@ const ScrollspyMenu = ({ items }: IScrollspyMenuProps) => {
     );
   };
 
-  const buildSubAnchors = (items: ScrollspyMenuItemsType) => {
+  const buildSubAnchors = (items: IScrollspyMenuItems) => {
     return items.map((item, index) => {
       return buildAnchor(item, true);
     });
   };
 
-  const renderChildren = (items: ScrollspyMenuItemsType) => {
+  const renderChildren = (items: IScrollspyMenuItems) => {
     // eslint-disable-next-line no-unreachable-loop
     return items.map((item, index) => {
       if (item.children) {

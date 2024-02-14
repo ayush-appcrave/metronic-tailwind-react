@@ -6,13 +6,13 @@ const DefaultProjects = () => {
   const items: IDefaultProjectsItems = [
     {
       name: 'Acme software development',
-      team: partial('common/users', {
-        users: [{ filename: '300-9.jpg' }, { filename: '300-2.jpg' }, { filename: '300-3.jpg' }],
+      team: {
+        group: [{ filename: '300-9.jpg' }, { filename: '300-2.jpg' }, { filename: '300-3.jpg' }],
         more: {
           number: 3,
           variant: 'text-success-inverse ring-success-light bg-success'
         }
-      }),
+      },
       dueDate: '24 Aug, 2024',
       progress: {
         variant: 'progress-primary',
@@ -53,7 +53,7 @@ const DefaultProjects = () => {
     {
       name: 'Widget Supply Agreement',
       team: partial('common/users', {
-        users: [{ filename: '300-15.jpg' }, { filename: '300-10.jpg' }, { filename: '300-30.jpg' }],
+        group: [{ filename: '300-15.jpg' }, { filename: '300-10.jpg' }, { filename: '300-30.jpg' }],
         more: {
           number: 4,
           variant: 'text-success-inverse ring-success-light bg-success'
