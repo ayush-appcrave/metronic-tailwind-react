@@ -8,9 +8,11 @@ const Rating = ({ className, rating, round }: IRatingProps) => {
       {[...Array(5)].map((_, index) => (
         <div
           key={index}
-          className={`rating-label ${index < rating ? 'checked' : ''} ${
+          className={clsx(
+            'rating-label',
+            index < rating ? 'checked' : '',
             index === rating && round ? 'indeterminate' : ''
-          }`}
+          )}
         >
           {index === rating && round ? (
             <i
