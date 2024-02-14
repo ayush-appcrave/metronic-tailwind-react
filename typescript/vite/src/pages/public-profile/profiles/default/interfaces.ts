@@ -60,6 +60,23 @@ export interface IDefaultRecentUploadsProps {
   url: string;
 }
 
+export interface IDefaultProjectsItem {
+  name: string;
+  team: {
+    group: Array<{ filename: string }>;
+    more?: {
+      number: number;
+      variant: string;
+    };
+  };
+  dueDate: string;
+  progress: {
+    variant: string;
+    value: string;
+  };
+}
+export interface IDefaultProjectsItems extends Array<IDefaultProjectsItem> {}
+
 export interface IDefaultRecentUploadsItem {
   image: string;
   desc: string;

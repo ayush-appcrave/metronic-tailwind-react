@@ -1,4 +1,5 @@
 import { KeenIcon } from '@/components';
+import { Avatars } from '@/partials/common';
 
 import { IDefaultProjectsItem, IDefaultProjectsItems } from './interfaces';
 
@@ -21,14 +22,14 @@ const DefaultProjects = () => {
     },
     {
       name: 'Strategic Partnership Deal',
-      team: partial('common/users', {
-        users: [
+      team: {
+        group: [
           { filename: '300-11.jpg' },
           { filename: '300-13.jpg' },
           { filename: '300-21.jpg' },
           { filename: '300-1.jpg' }
         ]
-      }),
+      },
       dueDate: '10 Sep, 2024',
       progress: {
         variant: '',
@@ -37,13 +38,13 @@ const DefaultProjects = () => {
     },
     {
       name: 'Client Onboarding',
-      team: partial('common/users', {
-        users: [{ filename: '300-2.jpg' }, { filename: '300-7.jpg' }, { filename: '300-9.jpg' }],
+      team: {
+        group: [{ filename: '300-2.jpg' }, { filename: '300-7.jpg' }, { filename: '300-9.jpg' }],
         more: {
           number: 1,
           variant: 'text-success-inverse ring-success-light bg-success'
         }
-      }),
+      },
       dueDate: '19 Sep, 2024',
       progress: {
         variant: 'progress-primary',
@@ -52,13 +53,13 @@ const DefaultProjects = () => {
     },
     {
       name: 'Widget Supply Agreement',
-      team: partial('common/users', {
+      team: {
         group: [{ filename: '300-15.jpg' }, { filename: '300-10.jpg' }, { filename: '300-30.jpg' }],
         more: {
           number: 4,
           variant: 'text-success-inverse ring-success-light bg-success'
         }
-      }),
+      },
       dueDate: '5 May, 2024',
       progress: {
         variant: 'progress-success',
@@ -67,14 +68,14 @@ const DefaultProjects = () => {
     },
     {
       name: 'Project X Redesign',
-      team: partial('common/users', {
-        users: [
+      team: {
+        group: [
           { filename: '300-1.jpg' },
           { filename: '300-4.jpg' },
           { filename: '300-3.jpg' },
           { filename: '300-14.jpg' }
         ]
-      }),
+      },
       dueDate: '1 Feb, 2025',
       progress: {
         variant: 'progress-primary',
@@ -98,16 +99,18 @@ const DefaultProjects = () => {
           </div>
         </td>
 
-        <td className="float-right">{item.team | safe}</td>
+        <td className="float-right">
+          <Avatars group={item.team.group} more={item.team.more} />
+        </td>
 
         <td className="text-sm font-normal text-gray-700">{item.dueDate}</td>
 
         <td>
           <div className="menu" data-menu="true">
             <div
-              className="menu-item" 
-              data-menu-item-trigger="click" 
-              data-menu-item-toggle="dropdown" 
+              className="menu-item"
+              data-menu-item-trigger="click"
+              data-menu-item-toggle="dropdown"
               data-menu-item-placement="bottom-end"
             >
               <button className="btn btn-icon btn-light btn-clear btn-xs menu-toggle">
@@ -131,9 +134,9 @@ const DefaultProjects = () => {
 
         <div className="menu" data-menu="true">
           <div
-            className="menu-item" 
-            data-menu-item-trigger="click" 
-            data-menu-item-toggle="dropdown" 
+            className="menu-item"
+            data-menu-item-trigger="click"
+            data-menu-item-toggle="dropdown"
             data-menu-item-placement="bottom-end"
           >
             <button className="btn btn-icon btn-light btn-clear btn-xs menu-toggle">

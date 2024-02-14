@@ -4,6 +4,7 @@ export * from './_DefaultConnections';
 export * from './_DefaultContributions';
 export * from './_DefaultMediaUploads';
 export * from './_DefaultProjects';
+export * from './_DefaultProjects';
 export * from './_DefaultRecentUploads';
 export * from './_DefaultTags';
 export * from './_DefaultUnlockPartnerships';

@@ -4,6 +4,7 @@ import {
   DefaultConnections,
   DefaultContributions,
   DefaultMediaUploads,
+  DefaultProjects,
   DefaultRecentUploads,
   DefaultTags,
   DefaultUnlockPartnerships,
@@ -32,6 +33,8 @@ const DefaultContent = () => {
             <DefaultConnections title="Connections" url="#" />
             <DefaultContributions title="Contributions" />
           </div>
+
+          <DefaultProjects />
 
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-5 lg:gap-7.5">
             <DefaultRecentUploads title="Recent Uploads" url="#" />
