@@ -4,7 +4,7 @@ import { useLocation } from 'react-router';
 
 import { KeenIcon } from '@/components';
 import { MenuBreadcrumbsType, useMenuBreadcrumbs } from '@/components/menu';
-import { useMenu } from '@/providers/';
+import { useMenu } from '@/providers';
 
 const Breadcrumbs = () => {
   const { pathname } = useLocation();

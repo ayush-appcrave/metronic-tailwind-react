@@ -4,7 +4,7 @@ import { useLocation } from 'react-router';
 import { useMenuChildren } from '@/components/menu';
 import { MENU_SIDEBAR } from '@/config/menu.config';
 import { useScrollPosition } from '@/hooks/useScrollPosition';
-import { useMenu } from '@/providers/';
+import { useMenu } from '@/providers';
 import { ILayoutConfig, useLayout } from '@/providers/LayoutProvider';
 import { deepMerge } from '@/utils';
 
