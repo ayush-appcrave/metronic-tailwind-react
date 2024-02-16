@@ -1,6 +1,101 @@
+import ApexChart from 'react-apexcharts';
+
 import { KeenIcon } from '@/components';
 
+import { IApexMediaUploadsOptions } from './interfaces';
+
 const DefaultMediaUploads = () => {
+  const options: IApexMediaUploadsOptions = {
+    chart: {
+      toolbar: {
+        show: false
+      }
+    },
+    dataLabels: {
+      enabled: false
+    },
+    markers: {
+      size: 6,
+      colors: '#f2fcf6',
+      strokeColor: '#17C653',
+      hover: {
+        sizeOffset: 1.5
+      }
+    },
+    stroke: {
+      width: 2,
+      curve: 'smooth',
+      colors: ['#17C653']
+    },
+    fill: {
+      type: 'gradient',
+      gradient: {
+        shadeIntensity: 1,
+        opacityFrom: 0.3,
+        opacityTo: 0.1
+      }
+    },
+    xaxis: {
+      categories: [
+        'Jan',
+        'Feb',
+        'Mar',
+        'Apr',
+        'May',
+        'Jun',
+        'Jul',
+        'Aug',
+        'Sep',
+        'Oct',
+        'Nov',
+        'Dec'
+      ],
+      axisBorder: {
+        show: false
+      },
+      axisTicks: {
+        show: false
+      },
+      labels: {
+        style: {
+          colors: [
+            '#8a919f',
+            '#8a919f',
+            '#8a919f',
+            '#8a919f',
+            '#8a919f',
+            '#8a919f',
+            '#8a919f',
+            '#8a919f',
+            '#8a919f',
+            '#8a919f',
+            '#8a919f',
+            '#8a919f'
+          ],
+          fontSize: '11px'
+        }
+      }
+    },
+    yaxis: {
+      labels: {
+        style: {
+          colors: ['#8a919f'],
+          fontSize: '11px'
+        }
+      }
+    },
+    series: [
+      {
+        name: 'series 1',
+        data: [85, 65, 50, 70, 40, 45, 100, 55, 85, 60, 70, 90]
+      }
+    ],
+    grid: {
+      borderColor: '#EBEBEB',
+      strokeDashArray: 5
+    }
+  };
+
   return (
     <>
       <div className="card">
@@ -25,7 +120,14 @@ const DefaultMediaUploads = () => {
           </div>
         </div>
         <div className="px-3 py-1">
-          <div id="media_uploads_chart"></div>
+          <ApexChart
+            id="media_uploads_chart"
+            options={options}
+            series={options.series}
+            type="area"
+            width="705"
+            height="250"
+          />
         </div>
       </div>
     </>

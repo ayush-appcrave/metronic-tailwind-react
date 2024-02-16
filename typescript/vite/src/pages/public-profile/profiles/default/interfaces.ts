@@ -83,3 +83,77 @@ export interface IDefaultRecentUploadsItem {
   date: string;
 }
 export interface IDefaultRecentUploadsItems extends Array<IDefaultRecentUploadsItem> {}
+
+export interface IApexContributionsOptions {
+  colors: string[];
+  series: number[];
+  labels: string[];
+  dataLabels: {
+    enabled: boolean;
+  };
+}
+
+type CurveType = 'smooth' | 'straight' | 'stepline' | 'monotoneCubic';
+
+export interface IApexMediaUploadsOptions {
+  chart: {
+    toolbar: {
+      show: boolean;
+    };
+  };
+  dataLabels: {
+    enabled: boolean;
+  };
+  markers: {
+    size: number;
+    colors: string;
+    strokeColor: string;
+    hover: {
+      sizeOffset: number;
+    };
+  };
+  stroke: {
+    width: number;
+    curve: CurveType;
+    colors: string[];
+  };
+  fill: {
+    type: string;
+    gradient: {
+      shadeIntensity: number;
+      opacityFrom: number;
+      opacityTo: number;
+    };
+  };
+  xaxis: {
+    categories: string[];
+    axisBorder: {
+      show: boolean;
+    };
+    axisTicks: {
+      show: boolean;
+    };
+    labels: {
+      style: {
+        colors: string[];
+        fontSize: string;
+      };
+    };
+  };
+  yaxis: {
+    labels: {
+      style: {
+        colors: string[];
+        fontSize: string;
+      };
+    };
+  };
+  series: Array<{
+    name: string;
+    data: number[];
+  }>;
+  grid: {
+    borderColor: string;
+    strokeDashArray: number;
+  };
+}
