@@ -5,6 +5,8 @@ import { Navbar, NavbarActions } from '@/partials/navbar';
 import { useMenu } from '@/providers';
 import { toAbsoluteUrl } from '@/utils/Assets';
 
+import { CreatorContent } from '.';
+
 const CreatorPage = () => {
   const { getMenuConfig } = useMenu();
   const secondaryMenu = getMenuConfig('secondary');
@@ -37,7 +39,9 @@ const CreatorPage = () => {
         </Navbar>
       </Container>
 
-      <Container>Example content</Container>
+      <Container>
+        <CreatorContent />
+      </Container>
     </>
   );
 };
