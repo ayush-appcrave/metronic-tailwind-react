@@ -13,3 +13,11 @@ export interface ILocationProps {
   title: string;
   description: string;
 }
+
+export interface INFTProps {
+  image: string;
+  title: string;
+  id: number;
+  info: string;
+  date: string;
+}

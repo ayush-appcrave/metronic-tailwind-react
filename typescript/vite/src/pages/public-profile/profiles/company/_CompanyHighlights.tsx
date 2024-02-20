@@ -27,7 +27,7 @@ const CompanyHighlights = () => {
             ) : item.type === 2 ? (
               <span>{item.info}</span>
             ) : (
-              <span dangerouslySetInnerHTML={{ __html: item.info }} />
+              <span dangerouslySetInnerHTML={{ __html: item.info }}></span>
             )}
           </td>
         </tr>
