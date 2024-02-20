@@ -5,6 +5,8 @@ import { NavbarMenu } from '@/partials/menu/NavbarMenu';
 import { Navbar, NavbarActions } from '@/partials/navbar';
 import { toAbsoluteUrl } from '@/utils/Assets';
 
+import { CompanyContent } from '.';
+
 const CompanyPage = () => {
   const image = (
     <img src={toAbsoluteUrl('/images/content/logos/duolingo.png')} className="size-[100px]" />
@@ -29,7 +31,9 @@ const CompanyPage = () => {
         </Navbar>
       </Container>
 
-      <Container>Example content</Container>
+      <Container>
+        <CompanyContent />
+      </Container>
     </>
   );
 };

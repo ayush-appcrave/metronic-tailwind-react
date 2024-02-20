@@ -7,3 +7,9 @@ export interface IWorkProps {
   likes: number;
   comments: number;
 }
+
+export interface ILocationProps {
+  image: string;
+  title: string;
+  description: string;
+}
