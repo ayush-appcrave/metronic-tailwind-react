@@ -5,6 +5,8 @@ import { Navbar, NavbarActions } from '@/partials/navbar';
 import { useMenu } from '@/providers';
 import { toAbsoluteUrl } from '@/utils/Assets';
 
+import { BloggerContent } from '.';
+
 const BloggerPage = () => {
   const { getMenuConfig } = useMenu();
   const secondaryMenu = getMenuConfig('secondary');
@@ -35,7 +37,9 @@ const BloggerPage = () => {
         </Navbar>
       </Container>
 
-      <Container>Example content</Container>
+      <Container>
+        <BloggerContent />
+      </Container>
     </>
   );
 };

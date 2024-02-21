@@ -8,7 +8,7 @@ const CompanyNetwork = ({ data, className, title }: ICompanyNetworkProps) => {
   const renderItems = (item: ICompanyNetworkItem) => {
     return (
       <>
-        <div key={item.link} className="flex items-center gap-2.5">
+        <div className="flex items-center gap-2.5">
           <span className="">
             <KeenIcon icon={item.icon} className="text-lg text-gray-500" />
           </span>

@@ -21,3 +21,10 @@ export interface INFTProps {
   info: string;
   date: string;
 }
+
+export interface IPostProps {
+  image: string;
+  label: string;
+  description: string;
+  time: string;
+}
