@@ -5,6 +5,8 @@ import { NavbarMenu } from '@/partials/menu/NavbarMenu';
 import { Navbar, NavbarActions } from '@/partials/navbar';
 import { toAbsoluteUrl } from '@/utils/Assets';
 
+import { GamerContent } from './_GamerContent';
+
 const GamerPage = () => {
   const image = (
     <img
@@ -32,7 +34,9 @@ const GamerPage = () => {
         </Navbar>
       </Container>
 
-      <Container>Example content</Container>
+      <Container>
+        <GamerContent />
+      </Container>
     </>
   );
 };
