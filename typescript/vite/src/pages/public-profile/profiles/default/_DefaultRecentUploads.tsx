@@ -36,7 +36,7 @@ const DefaultRecentUploads = ({ title, url }: IDefaultRecentUploadsProps) => {
       <>
         <div className="flex items-center gap-3">
           <div className="flex items-center grow gap-2.5">
-            <img src={toAbsoluteUrl(`/images/content/file-types/${item.image}`)} />
+            <img src={toAbsoluteUrl(`/images/content/file-types/${item.image}`)} alt="" />
 
             <div className="flex flex-col">
               <span className="text-sm font-semibold text-gray-800 cursor-pointer hover:text-primary mb-px">

@@ -2,6 +2,7 @@ import { BloggerCollaborate } from '../blogger';
 import { CreatorStatistics, CreatorSummary } from '../creator';
 import { ICreatorStatisticsItems } from '../creator/interfaces';
 import { DefaultTags } from '../default';
+import { FeedsPost1, FeedsPost2, FeedsPost3, FeedsPost4 } from '.';
 
 const FeedsContent = () => {
   const data: ICreatorStatisticsItems = [
@@ -20,7 +21,12 @@ const FeedsContent = () => {
         </div>
       </div>
       <div className="col-span-2">
-        <div className="flex flex-col gap-5 lg:gap-7.5"></div>
+        <div className="flex flex-col gap-5 lg:gap-7.5">
+          <FeedsPost1 />
+          <FeedsPost2 />
+          <FeedsPost3 />
+          <FeedsPost4 />
+        </div>
       </div>
     </div>
   );

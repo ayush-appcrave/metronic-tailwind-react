@@ -49,6 +49,7 @@ const CreatorUpcomingEvents = () => {
             <img
               src={toAbsoluteUrl(`/images/content/stock/${item.image}`)}
               className="max-h-[120px] max-w-full"
+              alt=""
             />
           </div>
 

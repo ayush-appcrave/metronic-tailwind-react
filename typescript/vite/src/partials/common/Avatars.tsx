@@ -16,6 +16,7 @@ const Avatars = ({ group, more, className }: IAvatarsProps) => {
                 'hover:z-5 relative size-6 shrink-0 rounded-full ring-1 ring-light-light',
                 each.variant
               )}
+              alt=""
             />
           ) : each.fallback ? (
             <span

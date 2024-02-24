@@ -9,6 +9,7 @@ const CreatorUsers = ({ title, items, url }: ICreatorUsersProps) => {
         <img
           src={toAbsoluteUrl(`/images/content/avatars/${item.image}`)}
           className="rounded-full h-[36px]"
+          alt=""
         />
       </>
     );

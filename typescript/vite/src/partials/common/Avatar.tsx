@@ -20,6 +20,7 @@ const Avatar = ({
         <img
           src={toAbsoluteUrl(`/images/content/avatars/${image}`)}
           className={clsx(imageClass && imageClass)}
+          alt=""
         />
       )}
       {!image && fallback && fallback}
