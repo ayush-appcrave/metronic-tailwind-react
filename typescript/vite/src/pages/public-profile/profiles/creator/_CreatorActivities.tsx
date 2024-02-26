@@ -1,3 +1,5 @@
+import { TimelinesWrapper } from '@/partials/timelines/default/item';
+
 import { ICreatorActivitiesProps } from './interfaces';
 
 const CreatorActivities = ({ url }: ICreatorActivitiesProps) => {
@@ -18,7 +20,14 @@ const CreatorActivities = ({ url }: ICreatorActivitiesProps) => {
         </div>
       </div>
 
-      <div className="card-body">Example content</div>
+      <div className="card-body">
+        <TimelinesWrapper icon="people" line={true} />
+        <TimelinesWrapper icon="entrance-left" line={true} />
+        <TimelinesWrapper icon="share" line={true} />
+        <TimelinesWrapper icon="directbox-default" line={true} />
+        <TimelinesWrapper icon="coffee" line={true} />
+        <TimelinesWrapper icon="cup" line={false} />
+      </div>
 
       <div className="card-footer justify-center">
         <a href={url} className="btn btn-link">
