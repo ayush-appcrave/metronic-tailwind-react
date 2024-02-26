@@ -58,3 +58,83 @@ export interface INowPlayingProps {
     };
   };
 }
+
+export interface IProjectExtendedItem {
+  statistics: Array<{ total: string; description: string }>;
+}
+export interface IProjectExtendedItems extends Array<IProjectExtendedItem> {}
+
+export interface IProjectExtendedProps {
+  status: {
+    variant: string;
+    label: string;
+  };
+  logo: string;
+  title: string;
+  description: string;
+  team: {
+    group: Array<{ filename?: string; variant: string; fallback?: string }>;
+  };
+  statistics: Array<{ total: string; description: string }>;
+  progress: {
+    variant: string;
+    value: string;
+  };
+  url: string;
+}
+
+export interface IProjectExtendedRowItem {
+  statistics: Array<{ total: string; description: string }>;
+}
+export interface IProjectExtendedRowItems extends Array<IProjectExtendedRowItem> {}
+
+export interface IProjectExtendedRowProps {
+  status: {
+    variant: string;
+    label: string;
+  };
+  logo: string;
+  title: string;
+  description: string;
+  team: {
+    group: Array<{ filename?: string; variant: string; fallback?: string }>;
+  };
+  statistics: Array<{ total: string; description: string }>;
+  url: string;
+}
+
+export interface IProjectProps {
+  logo: string;
+  name: string;
+  description: string;
+  startDate?: string;
+  endDate?: string;
+  status: {
+    variant: string;
+    label: string;
+  };
+  progress: {
+    variant: string;
+    value: string;
+  };
+  team: {
+    group: Array<{ filename?: string; variant: string; fallback?: string }>;
+  };
+}
+
+export interface IProjectRowProps {
+  logo: string;
+  name: string;
+  description: string;
+  status: {
+    variant: string;
+    label: string;
+  };
+  progress: {
+    variant: string;
+    value: string;
+  };
+  team: {
+    group: Array<{ filename?: string; variant: string; fallback?: string }>;
+  };
+}

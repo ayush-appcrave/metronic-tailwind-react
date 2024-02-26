@@ -1,5 +1,5 @@
 export interface IAvatarsProps {
-  group: Array<{ filename: string; fallback?: string; variant?: string }>;
+  group: Array<{ filename?: string; fallback?: string; variant: string }>;
   more?: { variant: string; number: number };
   className?: string;
 }

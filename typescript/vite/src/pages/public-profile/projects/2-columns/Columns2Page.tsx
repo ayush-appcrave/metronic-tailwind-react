@@ -5,6 +5,8 @@ import { NavbarMenu } from '@/partials/menu/NavbarMenu';
 import { Navbar, NavbarActions } from '@/partials/navbar';
 import { toAbsoluteUrl } from '@/utils/Assets';
 
+import { Columns2Projects } from '.';
+
 const Columns2Page = () => {
   const image = (
     <img
@@ -32,7 +34,9 @@ const Columns2Page = () => {
         </Navbar>
       </Container>
 
-      <Container>Example content</Container>
+      <Container>
+        <Columns2Projects />
+      </Container>
     </>
   );
 };

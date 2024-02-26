@@ -99,7 +99,7 @@ const DefaultProjects = () => {
           </div>
         </td>
 
-        <td className="float-right">
+        <td className="flex justify-end shrink-0">
           <Avatars group={item.team.group} more={item.team.more} />
         </td>
 
