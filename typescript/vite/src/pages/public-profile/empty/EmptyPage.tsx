@@ -5,6 +5,8 @@ import { NavbarMenu } from '@/partials/menu/NavbarMenu';
 import { Navbar, NavbarActions } from '@/partials/navbar';
 import { toAbsoluteUrl } from '@/utils/Assets';
 
+import { Empty } from '.';
+
 const EmptyPage = () => {
   const image = (
     <img
@@ -32,7 +34,9 @@ const EmptyPage = () => {
         </Navbar>
       </Container>
 
-      <Container>Example content</Container>
+      <Container>
+        <Empty />
+      </Container>
     </>
   );
 };
