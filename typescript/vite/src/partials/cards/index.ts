@@ -5,6 +5,8 @@ export * from './Project';
 export * from './ProjectExtended';
 export * from './ProjectExtendedRow';
 export * from './ProjectRow';
+export * from './Team';
+export * from './TeamRow';
 export * from './Tournament';
 export * from './Work';
 export * from './WorkRow';

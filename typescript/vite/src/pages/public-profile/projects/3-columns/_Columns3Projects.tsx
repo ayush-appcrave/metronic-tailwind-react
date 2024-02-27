@@ -17,7 +17,7 @@ const Columns3Projects = () => {
       },
       progress: {
         variant: 'progress-primary',
-        value: '55'
+        value: 55
       },
       team: {
         group: [
@@ -42,7 +42,7 @@ const Columns3Projects = () => {
       },
       progress: {
         variant: 'progress-success',
-        value: '100'
+        value: 100
       },
       team: {
         group: [
@@ -67,7 +67,7 @@ const Columns3Projects = () => {
       },
       progress: {
         variant: 'progress-gray-300',
-        value: '100'
+        value: 100
       },
       team: {
         group: [
@@ -92,7 +92,7 @@ const Columns3Projects = () => {
       },
       progress: {
         variant: 'progress-primary',
-        value: '19'
+        value: 19
       },
       team: {
         group: [
@@ -117,7 +117,7 @@ const Columns3Projects = () => {
       },
       progress: {
         variant: 'progress-gray-300',
-        value: '100'
+        value: 100
       },
       team: {
         group: [
@@ -142,7 +142,7 @@ const Columns3Projects = () => {
       },
       progress: {
         variant: 'progress-success',
-        value: '100'
+        value: 100
       },
       team: {
         group: [
@@ -167,7 +167,7 @@ const Columns3Projects = () => {
       },
       progress: {
         variant: 'progress-gray-300',
-        value: '100'
+        value: 100
       },
       team: {
         group: [
@@ -192,7 +192,7 @@ const Columns3Projects = () => {
       },
       progress: {
         variant: 'progress-primary',
-        value: '35'
+        value: 35
       },
       team: {
         group: [
@@ -217,7 +217,7 @@ const Columns3Projects = () => {
       },
       progress: {
         variant: 'progress-gray-300',
-        value: '100'
+        value: 100
       },
       team: {
         group: [
@@ -242,7 +242,7 @@ const Columns3Projects = () => {
       },
       progress: {
         variant: 'progress-success',
-        value: '100'
+        value: 100
       },
       team: {
         group: [
@@ -267,7 +267,7 @@ const Columns3Projects = () => {
       },
       progress: {
         variant: 'progress-gray-300',
-        value: '100'
+        value: 100
       },
       team: {
         group: [
@@ -292,7 +292,7 @@ const Columns3Projects = () => {
       },
       progress: {
         variant: 'progress-primary',
-        value: '55'
+        value: 55
       },
       team: {
         group: [

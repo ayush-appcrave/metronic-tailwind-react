@@ -89,7 +89,7 @@ export interface IProjectExtendedProps {
   statistics: IProjectExtendedItem[];
   progress: {
     variant: string;
-    value: string;
+    value: number;
   };
   url: string;
 }
@@ -127,7 +127,7 @@ export interface IProjectProps {
   };
   progress: {
     variant: string;
-    value: string;
+    value: number;
   };
   team: {
     group: Array<{ filename?: string; variant: string; fallback?: string }>;
@@ -144,9 +144,34 @@ export interface IProjectRowProps {
   };
   progress: {
     variant: string;
-    value: string;
+    value: number;
   };
   team: {
     group: Array<{ filename?: string; variant: string; fallback?: string }>;
+  };
+}
+
+export interface ITeamItem {
+  labels: string[];
+}
+export interface ITeamItems extends Array<ITeamItem> {}
+
+export interface ITeamProps {
+  icon: string;
+  title: string;
+  description: string;
+  labels: string[];
+  team: {
+    group: Array<{ filename?: string; variant: string; fallback?: string }>;
+    more?: {
+      number: number;
+      variant: string;
+    };
+    className?: string;
+  };
+  connected: boolean;
+  rating: {
+    value: number;
+    round: number;
   };
 }

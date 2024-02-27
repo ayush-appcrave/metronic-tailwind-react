@@ -40,7 +40,7 @@ const Columns2Projects = () => {
       ],
       progress: {
         variant: 'progress-primary',
-        value: '60'
+        value: 60
       }
     },
     {
@@ -74,7 +74,7 @@ const Columns2Projects = () => {
       ],
       progress: {
         variant: 'progress-primary',
-        value: '20'
+        value: 20
       }
     },
     {
@@ -107,7 +107,7 @@ const Columns2Projects = () => {
       ],
       progress: {
         variant: 'progress-primary',
-        value: '25'
+        value: 25
       }
     },
     {
@@ -144,7 +144,7 @@ const Columns2Projects = () => {
       ],
       progress: {
         variant: 'progress-success',
-        value: '100'
+        value: 100
       }
     },
     {
@@ -182,7 +182,7 @@ const Columns2Projects = () => {
       ],
       progress: {
         variant: 'progress-success',
-        value: '100'
+        value: 100
       }
     },
     {
@@ -220,7 +220,7 @@ const Columns2Projects = () => {
       ],
       progress: {
         variant: 'progress-primary',
-        value: '20'
+        value: 20
       }
     }
   ];

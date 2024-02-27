@@ -12,7 +12,7 @@ export interface IColumns2ProjectsItem {
   statistics: Array<{ total: string; description: string }>;
   progress: {
     variant: string;
-    value: string;
+    value: number;
   };
 }
 export interface IColumns2ProjectsItems extends Array<IColumns2ProjectsItem> {}
