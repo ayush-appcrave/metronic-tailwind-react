@@ -1,3 +1,5 @@
+export * from './Connection';
+export * from './ConnectionRow';
 export * from './Location';
 export * from './NowPlaying';
 export * from './Post';

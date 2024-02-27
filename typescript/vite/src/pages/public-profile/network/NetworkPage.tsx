@@ -5,6 +5,8 @@ import { NavbarMenu } from '@/partials/menu/NavbarMenu';
 import { Navbar, NavbarActions } from '@/partials/navbar';
 import { toAbsoluteUrl } from '@/utils/Assets';
 
+import { Network } from '.';
+
 const NetworkPage = () => {
   const image = (
     <img
@@ -32,7 +34,9 @@ const NetworkPage = () => {
         </Navbar>
       </Container>
 
-      <Container>Example content</Container>
+      <Container>
+        <Network />
+      </Container>
     </>
   );
 };
