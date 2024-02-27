@@ -10,7 +10,7 @@ export interface IColumns2ProjectsItem {
     group: Array<{ filename?: string; variant: string; fallback?: string }>;
   };
   statistics: Array<{ total: string; description: string }>;
-  progress?: {
+  progress: {
     variant: string;
     value: string;
   };

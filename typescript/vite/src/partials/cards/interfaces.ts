@@ -8,6 +8,16 @@ export interface IWorkProps {
   comments: number;
 }
 
+export interface IWorkRowProps {
+  image: string;
+  description: string;
+  title: string;
+  authorAvatar: string;
+  authorName: string;
+  likes: number;
+  comments: number;
+}
+
 export interface ILocationProps {
   image: string;
   title: string;
@@ -60,7 +70,8 @@ export interface INowPlayingProps {
 }
 
 export interface IProjectExtendedItem {
-  statistics: Array<{ total: string; description: string }>;
+  total: string;
+  description: string;
 }
 export interface IProjectExtendedItems extends Array<IProjectExtendedItem> {}
 
@@ -75,7 +86,7 @@ export interface IProjectExtendedProps {
   team: {
     group: Array<{ filename?: string; variant: string; fallback?: string }>;
   };
-  statistics: Array<{ total: string; description: string }>;
+  statistics: IProjectExtendedItem[];
   progress: {
     variant: string;
     value: string;
@@ -84,7 +95,8 @@ export interface IProjectExtendedProps {
 }
 
 export interface IProjectExtendedRowItem {
-  statistics: Array<{ total: string; description: string }>;
+  total: string;
+  description: string;
 }
 export interface IProjectExtendedRowItems extends Array<IProjectExtendedRowItem> {}
 
@@ -99,7 +111,7 @@ export interface IProjectExtendedRowProps {
   team: {
     group: Array<{ filename?: string; variant: string; fallback?: string }>;
   };
-  statistics: Array<{ total: string; description: string }>;
+  statistics: IProjectExtendedRowItem[];
   url: string;
 }
 

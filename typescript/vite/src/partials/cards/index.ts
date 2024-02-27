@@ -7,3 +7,4 @@ export * from './ProjectExtendedRow';
 export * from './ProjectRow';
 export * from './Tournament';
 export * from './Work';
+export * from './WorkRow';
