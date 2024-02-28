@@ -1,3 +1,5 @@
+export * from './Campaign';
+export * from './CampaignRow';
 export * from './Connection';
 export * from './ConnectionRow';
 export * from './Location';

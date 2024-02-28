@@ -203,3 +203,43 @@ export interface IConnectionProps {
   statistics: IConnectionItem[];
   connected: boolean;
 }
+
+export interface ICampaignItem {
+  total: string;
+  description: string;
+}
+export interface ICampaignItems extends Array<ICampaignItem> {}
+
+export interface ICampaignProps {
+  logo: string;
+  title: string;
+  description: string;
+  status: {
+    variant: string;
+    label: string;
+  };
+  statistics: ICampaignItem[];
+  progress: {
+    variant: string;
+    value: number;
+  };
+  url: string;
+}
+
+export interface ICampaignRowItem {
+  total: string;
+  description: string;
+}
+export interface ICampaignRowItems extends Array<ICampaignRowItem> {}
+
+export interface ICampaignRowProps {
+  logo: string;
+  title: string;
+  description: string;
+  status: {
+    variant: string;
+    label: string;
+  };
+  statistics: ICampaignRowItem[];
+  url: string;
+}
