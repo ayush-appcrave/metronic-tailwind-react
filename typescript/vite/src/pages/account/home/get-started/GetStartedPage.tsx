@@ -10,6 +10,8 @@ import {
   ToolbarPageTitle
 } from '@/partials/toolbar';
 
+import { GetStartedContent } from '.';
+
 const GetStartedPage = () => {
   return (
     <>
@@ -38,7 +40,9 @@ const GetStartedPage = () => {
         </Toolbar>
       </Container>
 
-      <Container>Page content</Container>
+      <Container>
+        <GetStartedContent />
+      </Container>
     </>
   );
 };
