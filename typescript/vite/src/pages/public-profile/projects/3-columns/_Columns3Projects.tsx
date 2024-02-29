@@ -307,35 +307,33 @@ const Columns3Projects = () => {
     }
   ];
 
-  const renderProject = (project: IColumns3ProjectsItem) => {
+  const renderProject = (project: IColumns3ProjectsItem, index: number) => {
     return (
-      <>
-        <Project
-          logo={project.logo}
-          name={project.name}
-          description={project.description}
-          startDate={project.startDate}
-          endDate={project.endDate}
-          status={project.status}
-          progress={project.progress}
-          team={project.team}
-        />
-      </>
+      <Project
+        logo={project.logo}
+        name={project.name}
+        description={project.description}
+        startDate={project.startDate}
+        endDate={project.endDate}
+        status={project.status}
+        progress={project.progress}
+        team={project.team}
+        key={index}
+      />
     );
   };
 
-  const renderItem = (item: IColumns3ProjectsItem) => {
+  const renderItem = (item: IColumns3ProjectsItem, index: number) => {
     return (
-      <>
-        <ProjectRow
-          logo={item.logo}
-          name={item.name}
-          description={item.description}
-          status={item.status}
-          progress={item.progress}
-          team={item.team}
-        />
-      </>
+      <ProjectRow
+        logo={item.logo}
+        name={item.name}
+        description={item.description}
+        status={item.status}
+        progress={item.progress}
+        team={item.team}
+        key={index}
+      />
     );
   };
 
@@ -357,7 +355,7 @@ const Columns3Projects = () => {
       <div id="projects_cards">
         <div className="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-5 lg:gap-7.5">
           {projects.map((project, index) => {
-            return renderProject(project);
+            return renderProject(project, index);
           })}
         </div>
 
@@ -371,7 +369,7 @@ const Columns3Projects = () => {
       <div className="hidden" id="projects_list">
         <div className="flex flex-col gap-5 lg:gap-7.5">
           {projects.map((item, index) => {
-            return renderItem(item);
+            return renderItem(item, index);
           })}
         </div>
 

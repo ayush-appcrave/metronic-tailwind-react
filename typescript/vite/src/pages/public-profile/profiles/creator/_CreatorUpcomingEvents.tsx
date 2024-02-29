@@ -30,46 +30,44 @@ const CreatorUpcomingEvents = () => {
     }
   ];
 
-  const renderItem = (item: ICreatorUpcomingEventsItem) => {
+  const renderItem = (item: ICreatorUpcomingEventsItem, index: number) => {
     return (
-      <>
-        <div className="flex flex-col md:flex-row md:items-center gap-5">
-          <div className="flex items-center gap-5 shrink-0">
-            <div className="border border-brand-clarity rounded-lg">
-              <div className="flex items-center justify-center border-b border-b-brand-clarity bg-brand-light rounded-t-lg">
-                <span className="text-2sm text-brand fw-medium p-2">{item.month}</span>
-              </div>
-              <div className="flex items-center justify-center size-12">
-                <span className="fw-semibold text-gray-800 text-1.5xl tracking-tight">
-                  {item.date}
-                </span>
-              </div>
+      <div key={index} className="flex flex-col md:flex-row md:items-center gap-5">
+        <div className="flex items-center gap-5 shrink-0">
+          <div className="border border-brand-clarity rounded-lg">
+            <div className="flex items-center justify-center border-b border-b-brand-clarity bg-brand-light rounded-t-lg">
+              <span className="text-2sm text-brand fw-medium p-2">{item.month}</span>
             </div>
-
-            <img
-              src={toAbsoluteUrl(`/images/content/stock/${item.image}`)}
-              className="max-h-[120px] max-w-full"
-              alt=""
-            />
+            <div className="flex items-center justify-center size-12">
+              <span className="fw-semibold text-gray-800 text-1.5xl tracking-tight">
+                {item.date}
+              </span>
+            </div>
           </div>
 
-          <div className="flex flex-col gap-2">
-            <a
-              href="#"
-              className="text-2sm font-medium text-brand leading-[14px] hover:text-primary-active mb-px"
-            >
-              {item.label}
-            </a>
-            <a
-              href="#"
-              className="text-base font-semibold hover:text-primary text-gray-800 leading-4"
-            >
-              {item.title}
-            </a>
-            <p className="text-sm font-medium text-gray-700 leading-[22px]">{item.desc}</p>
-          </div>
+          <img
+            src={toAbsoluteUrl(`/images/content/stock/${item.image}`)}
+            className="max-h-[120px] max-w-full"
+            alt=""
+          />
         </div>
-      </>
+
+        <div className="flex flex-col gap-2">
+          <a
+            href="#"
+            className="text-2sm font-medium text-brand leading-[14px] hover:text-primary-active mb-px"
+          >
+            {item.label}
+          </a>
+          <a
+            href="#"
+            className="text-base font-semibold hover:text-primary text-gray-800 leading-4"
+          >
+            {item.title}
+          </a>
+          <p className="text-sm font-medium text-gray-700 leading-[22px]">{item.desc}</p>
+        </div>
+      </div>
     );
   };
 
@@ -85,7 +83,7 @@ const CreatorUpcomingEvents = () => {
       <div className="card-body">
         <div className="grid gap-4">
           {items.map((item, index) => {
-            return renderItem(item);
+            return renderItem(item, index);
           })}
         </div>
       </div>

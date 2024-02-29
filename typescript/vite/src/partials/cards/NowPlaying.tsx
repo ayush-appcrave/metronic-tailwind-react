@@ -1,9 +1,20 @@
 import { Avatars } from '@/partials/common';
 import { toAbsoluteUrl } from '@/utils/Assets';
 
-import { INowPlayingProps } from './interfaces';
+import { INowPlayingItem, INowPlayingProps } from './interfaces';
 
 const NowPlaying = ({ image, logo, title, date, statistics, team, label }: INowPlayingProps) => {
+  const renderItem = (statistic: INowPlayingItem, index: number) => {
+    return (
+      <div key={index} className="grid grid-cols-1 gap-1.5 text-center">
+        <span className="text-gray-800 text-2sm leading-none font-semibold">
+          {statistic.number}%
+        </span>
+        <span className="text-gray-500 text-xs font-medium">{statistic.description}</span>
+      </div>
+    );
+  };
+
   return (
     <div className="card w-[280px] border-0">
       <img
@@ -31,14 +42,9 @@ const NowPlaying = ({ image, logo, title, date, statistics, team, label }: INowP
         </div>
 
         <div className="grid grid-cols-3 gap-2">
-          {statistics.map((statistic, index) => (
-            <div key={index} className="grid grid-cols-1 gap-1.5 text-center">
-              <span className="text-gray-800 text-2sm leading-none font-semibold">
-                {statistic.number}%
-              </span>
-              <span className="text-gray-500 text-xs font-medium">{statistic.description}</span>
-            </div>
-          ))}
+          {statistics.map((statistic, index) => {
+            return renderItem(statistic, index);
+          })}
         </div>
 
         <div className="flex items-center place-content-between gap-2">

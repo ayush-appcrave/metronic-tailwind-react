@@ -60,26 +60,25 @@ const CreatorWorks = () => {
     }
   ];
 
-  const renderItem = (item: ICreatorWorksItem) => {
+  const renderItem = (item: ICreatorWorksItem, index: number) => {
     return (
-      <>
-        <Work
-          url={item.url}
-          title={item.title}
-          image={item.image}
-          authorName={item.authorName}
-          authorAvatar={item.authorAvatar}
-          likes={item.likes}
-          comments={item.comments}
-        />
-      </>
+      <Work
+        url={item.url}
+        title={item.title}
+        image={item.image}
+        authorName={item.authorName}
+        authorAvatar={item.authorAvatar}
+        likes={item.likes}
+        comments={item.comments}
+        key={index}
+      />
     );
   };
 
   return (
     <div className="grid grid-cols-1 md:grid-cols-2 gap-5 lg:gap-7.5">
       {items.map((item, index) => {
-        return renderItem(item);
+        return renderItem(item, index);
       })}
     </div>
   );

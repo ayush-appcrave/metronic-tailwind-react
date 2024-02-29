@@ -84,9 +84,9 @@ const DefaultProjects = () => {
     }
   ];
 
-  const renderItem = (item: IDefaultProjectsItem) => {
+  const renderItem = (item: IDefaultProjectsItem, index: number) => {
     return (
-      <tr>
+      <tr key={index}>
         <td className="text-left">
           <a href="#" className="text-sm font-semibold text-gray-800 hover:text-primary">
             {item.name}
@@ -162,7 +162,7 @@ const DefaultProjects = () => {
           </thead>
           <tbody>
             {items.map((item, index) => {
-              return renderItem(item);
+              return renderItem(item, index);
             })}
           </tbody>
         </table>

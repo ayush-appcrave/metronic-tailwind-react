@@ -147,7 +147,7 @@ const GamerNowPlaying = ({ url }: IGamerNowPlayingProps) => {
     }
   ];
 
-  const renderItem = (item: IGamerNowPlayingItem) => {
+  const renderItem = (item: IGamerNowPlayingItem, index: number) => {
     return (
       <>
         <NowPlaying
@@ -158,6 +158,7 @@ const GamerNowPlaying = ({ url }: IGamerNowPlayingProps) => {
           team={item.team}
           label={item.label}
           title={item.title}
+          key={index}
         />
       </>
     );
@@ -177,7 +178,7 @@ const GamerNowPlaying = ({ url }: IGamerNowPlayingProps) => {
       <div className="card-body">
         <div className="flex flex-no-wrap scrollable-x gap-5">
           {items.map((item, index) => {
-            return renderItem(item);
+            return renderItem(item, index);
           })}
         </div>
       </div>

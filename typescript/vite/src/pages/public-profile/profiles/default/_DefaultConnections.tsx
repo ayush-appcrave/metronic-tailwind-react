@@ -35,40 +35,38 @@ const DefaultConnections = ({ title, url }: IDefaultConnectionsProps) => {
     }
   ];
 
-  const renderItem = (item: IDefaultConnectionsItem) => {
+  const renderItem = (item: IDefaultConnectionsItem, index: number) => {
     return (
-      <>
-        <div className="flex items-center gap-2">
-          <div className="flex items-center grow gap-2.5">
-            <img
-              src={toAbsoluteUrl(`/images/content/avatars/${item.avatar}`)}
-              className="rounded-full size-9 shrink-0"
-              alt=""
-            />
-            <div className="flex flex-col">
-              <a
-                href="#"
-                className="text-sm font-semibold text-gray-800 hover:text-primary-active mb-px"
-              >
-                {item.name}
-              </a>
-              <span className="text-xs font-normal text-gray-500">
-                {item.connections} connections
-              </span>
-            </div>
+      <div key={index} className="flex items-center gap-2">
+        <div className="flex items-center grow gap-2.5">
+          <img
+            src={toAbsoluteUrl(`/images/content/avatars/${item.avatar}`)}
+            className="rounded-full size-9 shrink-0"
+            alt=""
+          />
+          <div className="flex flex-col">
+            <a
+              href="#"
+              className="text-sm font-semibold text-gray-800 hover:text-primary-active mb-px"
+            >
+              {item.name}
+            </a>
+            <span className="text-xs font-normal text-gray-500">
+              {item.connections} connections
+            </span>
           </div>
-
-          {item.connected ? (
-            <button className="btn btn-xs btn-icon btn-light btn-primary active rounded-full">
-              <KeenIcon icon="check" />
-            </button>
-          ) : (
-            <button className="btn btn-xs btn-icon btn-light btn-primary rounded-full">
-              <KeenIcon icon="plus" />
-            </button>
-          )}
         </div>
-      </>
+
+        {item.connected ? (
+          <button className="btn btn-xs btn-icon btn-light btn-primary active rounded-full">
+            <KeenIcon icon="check" />
+          </button>
+        ) : (
+          <button className="btn btn-xs btn-icon btn-light btn-primary rounded-full">
+            <KeenIcon icon="plus" />
+          </button>
+        )}
+      </div>
     );
   };
 
@@ -97,7 +95,7 @@ const DefaultConnections = ({ title, url }: IDefaultConnectionsProps) => {
       <div className="card-body">
         <div className="flex flex-col gap-2 lg:gap-5">
           {items.map((item, index) => {
-            return renderItem(item);
+            return renderItem(item, index);
           })}
         </div>
       </div>

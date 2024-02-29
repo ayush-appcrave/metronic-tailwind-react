@@ -223,35 +223,33 @@ const Network = () => {
     }
   ];
 
-  const renderItem = (item: INetworkItem) => {
+  const renderItem = (item: INetworkItem, index: number) => {
     return (
-      <>
-        <Connection
-          name={item.name}
-          info={item.info}
-          avatar={item.avatar}
-          email={item.email}
-          team={item.team}
-          statistics={item.statistics}
-          connected={item.connected}
-        />
-      </>
+      <Connection
+        name={item.name}
+        info={item.info}
+        avatar={item.avatar}
+        email={item.email}
+        team={item.team}
+        statistics={item.statistics}
+        connected={item.connected}
+        key={index}
+      />
     );
   };
 
-  const renderData = (data: INetworkItem) => {
+  const renderData = (data: INetworkItem, index: number) => {
     return (
-      <>
-        <ConnectionRow
-          name={data.name}
-          info={data.info}
-          avatar={data.avatar}
-          email={data.email}
-          team={data.team}
-          statistics={data.statistics}
-          connected={data.connected}
-        />
-      </>
+      <ConnectionRow
+        name={data.name}
+        info={data.info}
+        avatar={data.avatar}
+        email={data.email}
+        team={data.team}
+        statistics={data.statistics}
+        connected={data.connected}
+        key={index}
+      />
     );
   };
 
@@ -273,7 +271,7 @@ const Network = () => {
       <div id="network_cards">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-5 lg:gap-7.5">
           {items.map((item, index) => {
-            return renderItem(item);
+            return renderItem(item, index);
           })}
         </div>
 
@@ -287,7 +285,7 @@ const Network = () => {
       <div className="hidden" id="network_list">
         <div className="flex flex-col gap-5 lg:gap-7.5">
           {items.map((data, index) => {
-            return renderData(data);
+            return renderData(data, index);
           })}
         </div>
 

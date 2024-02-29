@@ -5,7 +5,7 @@ import { NavbarMenu } from '@/partials/menu/NavbarMenu';
 import { Navbar, NavbarActions } from '@/partials/navbar';
 import { toAbsoluteUrl } from '@/utils/Assets';
 
-import { CampaignsCardContent } from '.';
+import { CampaignsContent } from '.';
 
 const CampaignsCardPage = () => {
   const image = (
@@ -35,7 +35,7 @@ const CampaignsCardPage = () => {
       </Container>
 
       <Container>
-        <CampaignsCardContent mode="card" />
+        <CampaignsContent mode="card" />
       </Container>
     </>
   );

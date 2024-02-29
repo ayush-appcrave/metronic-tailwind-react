@@ -1,4 +1,4 @@
-export interface ICampaignsCardContentItem {
+export interface ICampaignsContentItem {
   logo: string;
   title: string;
   description: string;
@@ -12,8 +12,8 @@ export interface ICampaignsCardContentItem {
     value: number;
   };
 }
-export interface ICampaignsCardContentItems extends Array<ICampaignsCardContentItem> {}
+export interface ICampaignsContentItems extends Array<ICampaignsContentItem> {}
 
-export interface ICampaignsCardContentProps {
+export interface ICampaignsContentProps {
   mode: string;
 }

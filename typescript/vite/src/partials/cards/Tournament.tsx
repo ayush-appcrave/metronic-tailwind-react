@@ -3,6 +3,14 @@ import { toAbsoluteUrl } from '@/utils/Assets';
 import { ITournamentProps } from './interfaces';
 
 const Tournament = ({ image, logo, title, time, labels, progress }: ITournamentProps) => {
+  const renderItem = (label: string, index: number) => {
+    return (
+      <span key={index} className="badge badge-xs badge-outline">
+        {label}
+      </span>
+    );
+  };
+
   return (
     <div className="card w-[280px] border-0">
       <img
@@ -29,11 +37,9 @@ const Tournament = ({ image, logo, title, time, labels, progress }: ITournamentP
         </div>
 
         <div className="flex flex-wrap gap-1.5">
-          {labels.map((label, index) => (
-            <span key={index} className="badge badge-xs badge-outline">
-              {label}
-            </span>
-          ))}
+          {labels.map((label, index) => {
+            return renderItem(label, index);
+          })}
         </div>
 
         <div className="grid gap-1.5 mb-0.5">

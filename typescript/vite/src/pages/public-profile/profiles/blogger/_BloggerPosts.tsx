@@ -36,16 +36,15 @@ const BloggerPosts = ({ url }: IBloggerPostsProps) => {
     }
   ];
 
-  const renderItems = (item: IBloggerPostsItem) => {
+  const renderItems = (item: IBloggerPostsItem, index: number) => {
     return (
-      <>
-        <Post
-          image={item.image}
-          label={item.label}
-          description={item.description}
-          time={item.time}
-        />
-      </>
+      <Post
+        key={index}
+        image={item.image}
+        label={item.label}
+        description={item.description}
+        time={item.time}
+      />
     );
   };
 
@@ -63,7 +62,7 @@ const BloggerPosts = ({ url }: IBloggerPostsProps) => {
       <div className="card-body">
         <div className="flex flex-no-wrap scrollable-x gap-5">
           {items.map((item, index) => {
-            return renderItems(item);
+            return renderItems(item, index);
           })}
         </div>
       </div>

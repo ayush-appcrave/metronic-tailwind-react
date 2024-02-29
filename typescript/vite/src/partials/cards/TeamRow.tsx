@@ -1,14 +1,14 @@
 import { KeenIcon } from '@/components';
 
 import { Avatars, Rating } from '../common';
-import { ITeamItem, ITeamProps } from './interfaces';
+import { ITeamProps } from './interfaces';
 
 const TeamRow = ({ icon, title, description, labels, rating, team, connected }: ITeamProps) => {
-  const renderItem = (label: ITeamItem) => {
+  const renderItem = (label: string, index: number) => {
     return (
-      <>
-        <span className="badge badge-xs badge-outline">{label}</span>
-      </>
+      <span key={index} className="badge badge-xs badge-outline">
+        {label}
+      </span>
     );
   };
 
@@ -35,7 +35,7 @@ const TeamRow = ({ icon, title, description, labels, rating, team, connected }: 
             <span className="text-2xs font-normal text-gray-500 uppercase">skills</span>
             <div className="flex gap-1.5">
               {labels.map((label, index) => {
-                return renderItem(label);
+                return renderItem(label, index);
               })}
             </div>
           </div>

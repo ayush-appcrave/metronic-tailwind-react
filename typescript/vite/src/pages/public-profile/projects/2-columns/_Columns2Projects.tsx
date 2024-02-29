@@ -225,36 +225,34 @@ const Columns2Projects = () => {
     }
   ];
 
-  const renderProject = (project: IColumns2ProjectsItem) => {
+  const renderProject = (project: IColumns2ProjectsItem, index: number) => {
     return (
-      <>
-        <ProjectExtended
-          status={project.status}
-          logo={project.logo}
-          title={project.title}
-          description={project.description}
-          team={project.team}
-          statistics={project.statistics}
-          progress={project.progress}
-          url="#"
-        />
-      </>
+      <ProjectExtended
+        status={project.status}
+        logo={project.logo}
+        title={project.title}
+        description={project.description}
+        team={project.team}
+        statistics={project.statistics}
+        progress={project.progress}
+        url="#"
+        key={index}
+      />
     );
   };
 
-  const renderItem = (item: IColumns2ProjectsItem) => {
+  const renderItem = (item: IColumns2ProjectsItem, index: number) => {
     return (
-      <>
-        <ProjectExtendedRow
-          status={item.status}
-          logo={item.logo}
-          title={item.title}
-          description={item.description}
-          team={item.team}
-          statistics={item.statistics}
-          url="#"
-        />
-      </>
+      <ProjectExtendedRow
+        status={item.status}
+        logo={item.logo}
+        title={item.title}
+        description={item.description}
+        team={item.team}
+        statistics={item.statistics}
+        url="#"
+        key={index}
+      />
     );
   };
 
@@ -276,7 +274,7 @@ const Columns2Projects = () => {
       <div id="projects_cards">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-5 lg:gap-7.5">
           {projects.map((project, index) => {
-            return renderProject(project);
+            return renderProject(project, index);
           })}
         </div>
 
@@ -290,7 +288,7 @@ const Columns2Projects = () => {
       <div className="hidden" id="projects_list">
         <div className="flex flex-col gap-5 lg:gap-7.5">
           {projects.map((item, index) => {
-            return renderItem(item);
+            return renderItem(item, index);
           })}
         </div>
 

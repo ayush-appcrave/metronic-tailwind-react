@@ -41,44 +41,42 @@ const CRMDeals = () => {
     }
   ];
 
-  const renderItem = (item: ICRMDealsItem) => {
+  const renderItem = (item: ICRMDealsItem, index: number) => {
     return (
-      <>
-        <tr>
-          <td className="text-left">
-            <a href="#" className="text-sm font-semibold text-gray-800 hover:text-primary">
-              {item.name}
-            </a>
-          </td>
+      <tr key={index}>
+        <td className="text-left">
+          <a href="#" className="text-sm font-semibold text-gray-800 hover:text-primary">
+            {item.name}
+          </a>
+        </td>
 
-          <td className="text-sm text-gray-700 font-medium">${item.ammount}</td>
+        <td className="text-sm text-gray-700 font-medium">${item.ammount}</td>
 
-          <td>
-            <div className={`badge badge-sm ${item.color} badge-light`}>{item.label}</div>
-          </td>
+        <td>
+          <div className={`badge badge-sm ${item.color} badge-light`}>{item.label}</div>
+        </td>
 
-          <td className="text-sm font-medium text-gray-700">{item.date} days</td>
+        <td className="text-sm font-medium text-gray-700">{item.date} days</td>
 
-          <td>
-            <div className="menu" data-menu="true">
-              <div
-                className="menu-item"
-                data-menu-item-trigger="click"
-                data-menu-item-toggle="dropdown"
-                data-menu-item-placement="bottom-end"
-              >
-                <button className="btn btn-icon btn-light btn-clear btn-xs menu-toggle">
-                  <KeenIcon icon="dots-vertical" className="!text-xl" />
-                </button>
+        <td>
+          <div className="menu" data-menu="true">
+            <div
+              className="menu-item"
+              data-menu-item-trigger="click"
+              data-menu-item-toggle="dropdown"
+              data-menu-item-placement="bottom-end"
+            >
+              <button className="btn btn-icon btn-light btn-clear btn-xs menu-toggle">
+                <KeenIcon icon="dots-vertical" className="!text-xl" />
+              </button>
 
-                <div className="menu-dropdown w-[175px] text-gray-700 px-3 py-3 text-2xs">
-                  Menu content
-                </div>
+              <div className="menu-dropdown w-[175px] text-gray-700 px-3 py-3 text-2xs">
+                Menu content
               </div>
             </div>
-          </td>
-        </tr>
-      </>
+          </div>
+        </td>
+      </tr>
     );
   };
 
@@ -117,7 +115,7 @@ const CRMDeals = () => {
           </thead>
           <tbody>
             {items.map((item, index) => {
-              return renderItem(item);
+              return renderItem(item, index);
             })}
           </tbody>
         </table>

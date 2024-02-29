@@ -30,9 +30,9 @@ const DefaultCommunityBadges = () => {
     }
   ];
 
-  const renderItem = (item: IDefaultCommunityBadgesItem) => {
+  const renderItem = (item: IDefaultCommunityBadgesItem, index: number) => {
     return (
-      <div className="relative size-[50px] shrink-0">
+      <div key={index} className="relative size-[50px] shrink-0">
         <svg
           className={`w-full h-full ${item.stroke} ${item.fill}`}
           width="44"
@@ -71,7 +71,7 @@ const DefaultCommunityBadges = () => {
       <div className="card-body pb-7.5">
         <div className="flex items-center flex-wrap gap-3 lg:gap-4">
           {items.map((item, index) => {
-            return renderItem(item);
+            return renderItem(item, index);
           })}
         </div>
       </div>

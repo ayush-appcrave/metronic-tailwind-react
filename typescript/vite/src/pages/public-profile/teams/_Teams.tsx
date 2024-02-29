@@ -164,35 +164,33 @@ const Teams = () => {
     }
   ];
 
-  const renderItem = (item: ITeamsItem) => {
+  const renderItem = (item: ITeamsItem, index: number) => {
     return (
-      <>
-        <Team
-          icon={item.icon}
-          title={item.title}
-          description={item.description}
-          labels={item.labels}
-          team={item.team}
-          connected={item.connected}
-          rating={item.rating}
-        />
-      </>
+      <Team
+        icon={item.icon}
+        title={item.title}
+        description={item.description}
+        labels={item.labels}
+        team={item.team}
+        connected={item.connected}
+        rating={item.rating}
+        key={index}
+      />
     );
   };
 
-  const renderData = (data: ITeamsItem) => {
+  const renderData = (data: ITeamsItem, index: number) => {
     return (
-      <>
-        <TeamRow
-          icon={data.icon}
-          title={data.title}
-          description={data.description}
-          labels={data.labels}
-          team={data.team}
-          connected={data.connected}
-          rating={data.rating}
-        />
-      </>
+      <TeamRow
+        icon={data.icon}
+        title={data.title}
+        description={data.description}
+        labels={data.labels}
+        team={data.team}
+        connected={data.connected}
+        rating={data.rating}
+        key={index}
+      />
     );
   };
 
@@ -214,7 +212,7 @@ const Teams = () => {
       <div id="teams_cards">
         <div className="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-5 lg:gap-7.5">
           {items.map((item, index) => {
-            return renderItem(item);
+            return renderItem(item, index);
           })}
         </div>
 
@@ -228,7 +226,7 @@ const Teams = () => {
       <div className="hidden" id="teams_list">
         <div className="flex flex-col gap-5 lg:gap-7.5">
           {items.map((data, index) => {
-            return renderData(data);
+            return renderData(data, index);
           })}
         </div>
 

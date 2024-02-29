@@ -41,11 +41,16 @@ const NFTTokens3dArt = ({ url }: INFTTokens3dArtProps) => {
     }
   ];
 
-  const renderItems = (item: INFTTokens3dArtItem) => {
+  const renderItems = (item: INFTTokens3dArtItem, index: number) => {
     return (
-      <>
-        <NFT image={item.image} id={item.id} title={item.title} info={item.info} date={item.date} />
-      </>
+      <NFT
+        image={item.image}
+        id={item.id}
+        title={item.title}
+        info={item.info}
+        date={item.date}
+        key={index}
+      />
     );
   };
 
@@ -61,7 +66,7 @@ const NFTTokens3dArt = ({ url }: INFTTokens3dArtProps) => {
       <div className="card-body pb-7">
         <div className="flex gap-5 scrollable-x">
           {items.map((item, index) => {
-            return renderItems(item);
+            return renderItems(item, index);
           })}
         </div>
       </div>

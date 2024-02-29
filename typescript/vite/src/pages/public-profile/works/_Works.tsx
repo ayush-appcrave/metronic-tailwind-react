@@ -88,35 +88,33 @@ const Works = () => {
     }
   ];
 
-  const renderItem = (item: IWorksItem) => {
+  const renderItem = (item: IWorksItem, index: number) => {
     return (
-      <>
-        <Work
-          url={item.url}
-          title={item.title}
-          image={item.image}
-          authorName={item.authorName}
-          authorAvatar={item.authorAvatar}
-          likes={item.likes}
-          comments={item.comments}
-        />
-      </>
+      <Work
+        url={item.url}
+        title={item.title}
+        image={item.image}
+        authorName={item.authorName}
+        authorAvatar={item.authorAvatar}
+        likes={item.likes}
+        comments={item.comments}
+        key={index}
+      />
     );
   };
 
-  const renderData = (data: IWorksItem) => {
+  const renderData = (data: IWorksItem, index: number) => {
     return (
-      <>
-        <WorkRow
-          description={data.description}
-          title={data.title}
-          image={data.image}
-          authorName={data.authorName}
-          authorAvatar={data.authorAvatar}
-          likes={data.likes}
-          comments={data.comments}
-        />
-      </>
+      <WorkRow
+        description={data.description}
+        title={data.title}
+        image={data.image}
+        authorName={data.authorName}
+        authorAvatar={data.authorAvatar}
+        likes={data.likes}
+        comments={data.comments}
+        key={index}
+      />
     );
   };
 
@@ -138,7 +136,7 @@ const Works = () => {
       <div id="works_cards">
         <div className="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-5 lg:gap-7.5">
           {items.map((item, index) => {
-            return renderItem(item);
+            return renderItem(item, index);
           })}
           <Offer />
         </div>
@@ -153,7 +151,7 @@ const Works = () => {
       <div className="hidden" id="works_list">
         <div className="flex flex-col gap-5 lg:gap-7.5">
           {items.map((data, index) => {
-            return renderData(data);
+            return renderData(data, index);
           })}
           <OfferRow />
         </div>

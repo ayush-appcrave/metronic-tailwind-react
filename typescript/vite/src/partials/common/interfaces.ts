@@ -1,5 +1,12 @@
+export interface IAvatarsItem {
+  filename?: string;
+  fallback?: string;
+  variant?: string;
+}
+export interface IAvatarsItems extends Array<IAvatarsItem> {}
+
 export interface IAvatarsProps {
-  group: Array<{ filename?: string; fallback?: string; variant: string }>;
+  group: IAvatarsItem[];
   more?: { variant: string; number: number };
   className?: string;
 }

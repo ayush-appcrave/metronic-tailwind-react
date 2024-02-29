@@ -1,1 +1,1 @@
-export * from './_CampaignsCardContent';
+export * from './_CampaignsContent';

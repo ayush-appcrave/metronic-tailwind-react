@@ -4,9 +4,9 @@ import { toAbsoluteUrl } from '@/utils/Assets';
 import { ICommentsItem, ICommentsProps } from './interfaces';
 
 const Comments = ({ items, url }: ICommentsProps) => {
-  const renderItem = (item: ICommentsItem) => {
+  const renderItem = (item: ICommentsItem, index: number) => {
     return (
-      <div className="flex items-start gap-2.5">
+      <div key={index} className="flex items-start gap-2.5">
         <img
           src={toAbsoluteUrl(`/images/content/avatars/${item.avatar}`)}
           className="rounded-full w-9 h-9 lg:w-[50px] lg:h-[50px] mt-1"
@@ -38,7 +38,7 @@ const Comments = ({ items, url }: ICommentsProps) => {
   return (
     <div className="grid gap-2 lg:gap-5">
       {items.map((item, index) => {
-        return renderItem(item);
+        return renderItem(item, index);
       })}
 
       <div className="flex gap-2.5">

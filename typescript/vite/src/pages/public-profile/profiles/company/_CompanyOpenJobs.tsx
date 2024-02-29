@@ -30,25 +30,23 @@ const CompanyOpenJobs = ({ url }: ICompanyOpenJobsProps) => {
     }
   ];
 
-  const renderItems = (item: ICompanyOpenJobsItem) => {
+  const renderItems = (item: ICompanyOpenJobsItem, index: number) => {
     return (
-      <>
-        <div className="flex align-start gap-3.5">
-          <div className="flex items-center justify-center w-[1.875rem] h-[1.875rem] bg-gray-100 rounded-lg border border-gray-300">
-            <KeenIcon icon={item.icon} className="text-base text-gray-600" />
-          </div>
-          <div className="flex flex-col">
-            <a
-              href="#"
-              className="text-sm font-semibold leading-none text-primary hover:text-primary-active mb-1"
-            >
-              {item.link}
-            </a>
-            <span className="text-sm font-medium text-gray-700">{item.desc}</span>
-            <span className="text-xs font-medium text-gray-500">{item.price}</span>
-          </div>
+      <div key={index} className="flex align-start gap-3.5">
+        <div className="flex items-center justify-center w-[1.875rem] h-[1.875rem] bg-gray-100 rounded-lg border border-gray-300">
+          <KeenIcon icon={item.icon} className="text-base text-gray-600" />
         </div>
-      </>
+        <div className="flex flex-col">
+          <a
+            href="#"
+            className="text-sm font-semibold leading-none text-primary hover:text-primary-active mb-1"
+          >
+            {item.link}
+          </a>
+          <span className="text-sm font-medium text-gray-700">{item.desc}</span>
+          <span className="text-xs font-medium text-gray-500">{item.price}</span>
+        </div>
+      </div>
     );
   };
 
@@ -61,7 +59,7 @@ const CompanyOpenJobs = ({ url }: ICompanyOpenJobsProps) => {
       <div className="card-body">
         <div className="grid gap-5">
           {items.map((item, index) => {
-            return renderItems(item);
+            return renderItems(item, index);
           })}
         </div>
       </div>

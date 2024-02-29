@@ -14,15 +14,14 @@ const GamerFavoriteGames = () => {
     { image: '300-310.png' }
   ];
 
-  const renderItem = (item: IGamerFavoriteGamesItem) => {
+  const renderItem = (item: IGamerFavoriteGamesItem, index: number) => {
     return (
-      <>
-        <img
-          src={toAbsoluteUrl(`/images/content/logos/${item.image}`)}
-          className="rounded-xl w-11 h-11"
-          alt=""
-        />
-      </>
+      <img
+        src={toAbsoluteUrl(`/images/content/logos/${item.image}`)}
+        className="rounded-xl w-11 h-11"
+        alt=""
+        key={index}
+      />
     );
   };
 
@@ -35,7 +34,7 @@ const GamerFavoriteGames = () => {
       <div className="card-body">
         <div className="flex flex-wrap gap-2.5 xl:mr-14 mb-1.5">
           {items.map((item, index) => {
-            return renderItem(item);
+            return renderItem(item, index);
           })}
         </div>
       </div>

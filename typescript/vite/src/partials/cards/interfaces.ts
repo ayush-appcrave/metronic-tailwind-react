@@ -53,12 +53,18 @@ export interface ITournamentProps {
   };
 }
 
+export interface INowPlayingItem {
+  number: string;
+  description: string;
+}
+export interface INowPlayingItems extends Array<INowPlayingItem> {}
+
 export interface INowPlayingProps {
   image: string;
   logo: string;
   title: string;
   date: string;
-  statistics: Array<{ number: string; description: string }>;
+  statistics: INowPlayingItem[];
   label: number;
   team: {
     group: Array<{ filename: string }>;
@@ -150,11 +156,6 @@ export interface IProjectRowProps {
     group: Array<{ filename?: string; variant: string; fallback?: string }>;
   };
 }
-
-export interface ITeamItem {
-  labels: string[];
-}
-export interface ITeamItems extends Array<ITeamItem> {}
 
 export interface ITeamProps {
   icon: string;

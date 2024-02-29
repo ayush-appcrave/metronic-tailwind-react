@@ -36,34 +36,32 @@ const CRMRecentInvoices = () => {
     }
   ];
 
-  const renderItem = (item: ICRMRecentInvoicesItem) => {
+  const renderItem = (item: ICRMRecentInvoicesItem, index: number) => {
     return (
-      <>
-        <div className="flex justify-between gap-3">
-          <div className="flex items-center gap-2.5">
-            <div className="flex items-center justify-center size-7.5 shrink-0 bg-gray-100 rounded-lg border border-gray-300">
-              <KeenIcon icon={item.icon} className="text-base text-gray-600" />
-            </div>
-
-            <div className="flex flex-col gap-0.5">
-              <span className="text-2sm font-semibold text-gray-800 cursor-pointer hover:text-primary mb-px">
-                {item.number}
-              </span>
-              <span className="text-2xs font-medium text-gray-500">{item.date}</span>
-            </div>
+      <div key={index} className="flex justify-between gap-3">
+        <div className="flex items-center gap-2.5">
+          <div className="flex items-center justify-center size-7.5 shrink-0 bg-gray-100 rounded-lg border border-gray-300">
+            <KeenIcon icon={item.icon} className="text-base text-gray-600" />
           </div>
-          <div className="flex items-center gap-2.5 -mr-1">
-            <span className="text-sm font-medium text-gray-700">${item.ammount}</span>
 
-            <a
-              href="#"
-              className="btn btn-sm btn-icon btn-icon-md text-primary hover:text-primary-active"
-            >
-              <KeenIcon icon="exit-down" />
-            </a>
+          <div className="flex flex-col gap-0.5">
+            <span className="text-2sm font-semibold text-gray-800 cursor-pointer hover:text-primary mb-px">
+              {item.number}
+            </span>
+            <span className="text-2xs font-medium text-gray-500">{item.date}</span>
           </div>
         </div>
-      </>
+        <div className="flex items-center gap-2.5 -mr-1">
+          <span className="text-sm font-medium text-gray-700">${item.ammount}</span>
+
+          <a
+            href="#"
+            className="btn btn-sm btn-icon btn-icon-md text-primary hover:text-primary-active"
+          >
+            <KeenIcon icon="exit-down" />
+          </a>
+        </div>
+      </div>
     );
   };
 
@@ -92,7 +90,7 @@ const CRMRecentInvoices = () => {
       <div className="card-body">
         <div className="grid gap-5">
           {items.map((item, index) => {
-            return renderItem(item);
+            return renderItem(item, index);
           })}
         </div>
       </div>

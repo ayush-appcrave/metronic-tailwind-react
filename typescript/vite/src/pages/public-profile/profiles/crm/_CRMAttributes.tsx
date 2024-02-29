@@ -10,14 +10,12 @@ const CRMAttributes = ({ url }: ICRMAttributesProps) => {
     { label: 'orders_io:', info: 'JENNYTIME ' }
   ];
 
-  const renderItem = (item: ICRMAttributesItem) => {
+  const renderItem = (item: ICRMAttributesItem, index: number) => {
     return (
-      <>
-        <tr>
-          <td className="text-sm font-medium text-gray-500 pb-3.5 pe-4 lg:pe-6">{item.label}</td>
-          <td className="text-sm font-medium text-gray-800 pb-3">{item.info}</td>
-        </tr>
-      </>
+      <tr key={index}>
+        <td className="text-sm font-medium text-gray-500 pb-3.5 pe-4 lg:pe-6">{item.label}</td>
+        <td className="text-sm font-medium text-gray-800 pb-3">{item.info}</td>
+      </tr>
     );
   };
 
@@ -31,7 +29,7 @@ const CRMAttributes = ({ url }: ICRMAttributesProps) => {
         <table className="table-auto">
           <tbody>
             {items.map((item, index) => {
-              return renderItem(item);
+              return renderItem(item, index);
             })}
           </tbody>
         </table>

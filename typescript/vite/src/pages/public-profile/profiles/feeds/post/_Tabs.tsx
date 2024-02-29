@@ -10,7 +10,9 @@ const Tabs = ({ postId, activeTab, setActiveTab, comments, likes, saves }: ITabs
     >
       <button
         className={`${activeTab === 'comments' ? 'active' : ''} group btn px-3 text-gray-700 hover:text-primary tab-active:bg-primary-light tab-active:border-primary-clarity tab-active:text-primary`}
-        onClick={() => setActiveTab('comments')}
+        onClick={() => {
+          setActiveTab('comments');
+        }}
         data-tab-toggle={`#post_${postId}_comments`}
       >
         <KeenIcon
@@ -21,7 +23,9 @@ const Tabs = ({ postId, activeTab, setActiveTab, comments, likes, saves }: ITabs
       </button>
       <button
         className={`${activeTab === 'likes' ? 'active' : ''} group btn px-3 text-gray-700 hover:text-primary tab-active:bg-primary-light tab-active:border-primary-clarity tab-active:text-primary`}
-        onClick={() => setActiveTab('likes')}
+        onClick={() => {
+          setActiveTab('likes');
+        }}
         data-tab-toggle={`#post_${postId}_likes`}
       >
         <KeenIcon
@@ -32,7 +36,9 @@ const Tabs = ({ postId, activeTab, setActiveTab, comments, likes, saves }: ITabs
       </button>
       <button
         className={`${activeTab === 'saves' ? 'active' : ''} group btn px-3 text-gray-700 hover:text-primary tab-active:bg-primary-light tab-active:border-primary-clarity tab-active:text-primary`}
-        onClick={() => setActiveTab('saves')}
+        onClick={() => {
+          setActiveTab('saves');
+        }}
         data-tab-toggle={`#post_${postId}_saves`}
       >
         <KeenIcon

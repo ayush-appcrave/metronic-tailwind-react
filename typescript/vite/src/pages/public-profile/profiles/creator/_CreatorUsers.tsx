@@ -3,15 +3,14 @@ import { toAbsoluteUrl } from '@/utils/Assets';
 import { ICreatorUsersItem, ICreatorUsersProps } from './interfaces';
 
 const CreatorUsers = ({ title, items, url }: ICreatorUsersProps) => {
-  const renderItem = (item: ICreatorUsersItem) => {
+  const renderItem = (item: ICreatorUsersItem, index: number) => {
     return (
-      <>
-        <img
-          src={toAbsoluteUrl(`/images/content/avatars/${item.image}`)}
-          className="rounded-full h-[36px]"
-          alt=""
-        />
-      </>
+      <img
+        src={toAbsoluteUrl(`/images/content/avatars/${item.image}`)}
+        className="rounded-full h-[36px]"
+        alt=""
+        key={index}
+      />
     );
   };
 
@@ -24,7 +23,7 @@ const CreatorUsers = ({ title, items, url }: ICreatorUsersProps) => {
       <div className="card-body">
         <div className="flex flex-wrap gap-2.5 xl:mr-16">
           {items.map((item, index) => {
-            return renderItem(item);
+            return renderItem(item, index);
           })}
         </div>
       </div>

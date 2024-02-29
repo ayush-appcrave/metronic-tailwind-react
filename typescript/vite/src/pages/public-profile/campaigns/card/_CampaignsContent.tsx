@@ -2,13 +2,13 @@ import { KeenIcon } from '@/components';
 import { Campaign, CampaignRow } from '@/partials/cards';
 
 import {
-  ICampaignsCardContentItem,
-  ICampaignsCardContentItems,
-  ICampaignsCardContentProps
+  ICampaignsContentItem,
+  ICampaignsContentItems,
+  ICampaignsContentProps
 } from './interfaces';
 
-const CampaignsCardContent = ({ mode }: ICampaignsCardContentProps) => {
-  const items: ICampaignsCardContentItems = [
+const CampaignsContent = ({ mode }: ICampaignsContentProps) => {
+  const items: ICampaignsContentItems = [
     {
       logo: 'jira.png',
       title: 'Urban Dreams',
@@ -173,34 +173,32 @@ const CampaignsCardContent = ({ mode }: ICampaignsCardContentProps) => {
     }
   ];
 
-  const renderProject = (item: ICampaignsCardContentItem) => {
+  const renderProject = (item: ICampaignsContentItem, index: number) => {
     return (
-      <>
-        <Campaign
-          logo={item.logo}
-          title={item.title}
-          description={item.description}
-          status={item.status}
-          statistics={item.statistics}
-          progress={item.progress}
-          url="#"
-        />
-      </>
+      <Campaign
+        logo={item.logo}
+        title={item.title}
+        description={item.description}
+        status={item.status}
+        statistics={item.statistics}
+        progress={item.progress}
+        url="#"
+        key={index}
+      />
     );
   };
 
-  const renderItem = (data: ICampaignsCardContentItem) => {
+  const renderItem = (data: ICampaignsContentItem, index: number) => {
     return (
-      <>
-        <CampaignRow
-          logo={data.logo}
-          title={data.title}
-          description={data.description}
-          status={data.status}
-          statistics={data.statistics}
-          url="#"
-        />
-      </>
+      <CampaignRow
+        logo={data.logo}
+        title={data.title}
+        description={data.description}
+        status={data.status}
+        statistics={data.statistics}
+        url="#"
+        key={index}
+      />
     );
   };
 
@@ -230,7 +228,7 @@ const CampaignsCardContent = ({ mode }: ICampaignsCardContentProps) => {
       <div id="campaigns_cards" className={mode === 'list' ? 'hidden' : ''}>
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-5 lg:gap-7.5">
           {items.map((item, index) => {
-            return renderProject(item);
+            return renderProject(item, index);
           })}
         </div>
 
@@ -244,7 +242,7 @@ const CampaignsCardContent = ({ mode }: ICampaignsCardContentProps) => {
       <div className={mode === 'card' ? 'hidden' : ''} id="campaigns_list">
         <div className="flex flex-col gap-5 lg:gap-7.5">
           {items.map((data, index) => {
-            return renderItem(data);
+            return renderItem(data, index);
           })}
         </div>
 
@@ -258,4 +256,4 @@ const CampaignsCardContent = ({ mode }: ICampaignsCardContentProps) => {
   );
 };
 
-export { CampaignsCardContent };
+export { CampaignsContent };

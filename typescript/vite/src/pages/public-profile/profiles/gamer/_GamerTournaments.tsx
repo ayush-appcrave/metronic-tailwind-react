@@ -75,7 +75,7 @@ const GamerTournaments = ({ url }: IGamerTournamentsProps) => {
     }
   ];
 
-  const renderItem = (item: IGamerTournamentsItem) => {
+  const renderItem = (item: IGamerTournamentsItem, index: number) => {
     return (
       <>
         <Tournament
@@ -85,6 +85,7 @@ const GamerTournaments = ({ url }: IGamerTournamentsProps) => {
           time={item.time}
           labels={item.labels}
           progress={item.progress}
+          key={index}
         />
       </>
     );
@@ -104,7 +105,7 @@ const GamerTournaments = ({ url }: IGamerTournamentsProps) => {
       <div className="card-body">
         <div className="flex flex-no-wrap scrollable-x gap-5">
           {items.map((item, index) => {
-            return renderItem(item);
+            return renderItem(item, index);
           })}
         </div>
       </div>

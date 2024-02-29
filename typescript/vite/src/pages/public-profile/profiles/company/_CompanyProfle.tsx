@@ -52,33 +52,28 @@ const CompanyProfle = () => {
     { label: 'Lingo Plus' }
   ];
 
-  const renderRows = (row: ICompanyProfleRow) => {
+  const renderRows = (row: ICompanyProfleRow, index: number) => {
     return (
-      <>
-        <div className="flex items-center gap-2.5">
-          <span className="">
-            <KeenIcon icon={row.icon} className="text-lg text-gray-500" />
-          </span>
-          {row.info ? (
-            <a
-              href={row.text}
-              className="text-primary hover:text-primary-active text-sm font-medium"
-            >
-              {row.text}
-            </a>
-          ) : (
-            <span className="text-sm font-medium text-gray-800">{row.text}</span>
-          )}
-        </div>
-      </>
+      <div key={index} className="flex items-center gap-2.5">
+        <span className="">
+          <KeenIcon icon={row.icon} className="text-lg text-gray-500" />
+        </span>
+        {row.info ? (
+          <a href={row.text} className="text-primary hover:text-primary-active text-sm font-medium">
+            {row.text}
+          </a>
+        ) : (
+          <span className="text-sm font-medium text-gray-800">{row.text}</span>
+        )}
+      </div>
     );
   };
 
-  const renderProducts = (product: ICompanyProfleProduct) => {
+  const renderProducts = (product: ICompanyProfleProduct, index: number) => {
     return (
-      <>
-        <span className="badge badge-outline">{product.label}</span>
-      </>
+      <span key={index} className="badge badge-outline">
+        {product.label}
+      </span>
     );
   };
 
@@ -95,7 +90,7 @@ const CompanyProfle = () => {
 
           <div className="flex flex-col gap-2.5">
             {rows.map((row, index) => {
-              return renderRows(row);
+              return renderRows(row, index);
             })}
           </div>
         </div>
@@ -114,7 +109,7 @@ const CompanyProfle = () => {
           <div className="text-md font-semibold text-gray-900">Products</div>
           <div className="flex flex-wrap gap-2.5">
             {products.map((product, index) => {
-              return renderProducts(product);
+              return renderProducts(product, index);
             })}
           </div>
         </div>

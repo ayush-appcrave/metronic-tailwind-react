@@ -32,11 +32,9 @@ const CompanyLocations = () => {
     }
   ];
 
-  const renderItem = (item: ICompanyLocationsItem) => {
+  const renderItem = (item: ICompanyLocationsItem, index: number) => {
     return (
-      <>
-        <Location image={item.image} title={item.title} description={item.description} />
-      </>
+      <Location key={index} image={item.image} title={item.title} description={item.description} />
     );
   };
 
@@ -53,7 +51,7 @@ const CompanyLocations = () => {
       <div className="card-body">
         <div className="flex gap-5 scrollable-x">
           {items.map((item, index) => {
-            return renderItem(item);
+            return renderItem(item, index);
           })}
         </div>
       </div>

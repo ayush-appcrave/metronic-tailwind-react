@@ -10,14 +10,12 @@ const CreatorFeaturesHighlight = ({
   image,
   more
 }: ICreatorFeaturesHighlightProps) => {
-  const renderItem = (feature: string) => {
+  const renderItem = (feature: string, index: number) => {
     return (
-      <>
-        <div className="flex items-center gap-1.5">
-          <KeenIcon icon="check-circle" className="text-base text-success" />
-          <span className="text-sm font-medium text-gray-800">{feature}</span>
-        </div>
-      </>
+      <div key={index} className="flex items-center gap-1.5">
+        <KeenIcon icon="check-circle" className="text-base text-success" />
+        <span className="text-sm font-medium text-gray-800">{feature}</span>
+      </div>
     );
   };
 
@@ -35,7 +33,7 @@ const CreatorFeaturesHighlight = ({
 
             <div className="grid grid-cols-2 gap-x-6 md:gap-x-12 gap-y-1.5">
               {features.map((feature, index) => {
-                return renderItem(feature);
+                return renderItem(feature, index);
               })}
             </div>
           </div>

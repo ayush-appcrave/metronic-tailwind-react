@@ -12,16 +12,15 @@ const Connection = ({
   statistics,
   connected
 }: IConnectionProps) => {
-  const renderItem = (statistic: IConnectionItem) => {
+  const renderItem = (statistic: IConnectionItem, index: number) => {
     return (
-      <>
-        <div className="grid grid-cols-1 gap-1.5 border border-dashed border-gray-300 rounded-md px-2.5 py-2 shrink-0  min-w-24 max-w-auto">
-          <span className="text-gray-800 text-2sm leading-none font-semibold">
-            {statistic.total}
-          </span>
-          <span className="text-gray-500 text-xs font-medium">{statistic.description}</span>
-        </div>
-      </>
+      <div
+        key={index}
+        className="grid grid-cols-1 gap-1.5 border border-dashed border-gray-300 rounded-md px-2.5 py-2 shrink-0  min-w-24 max-w-auto"
+      >
+        <span className="text-gray-800 text-2sm leading-none font-semibold">{statistic.total}</span>
+        <span className="text-gray-500 text-xs font-medium">{statistic.description}</span>
+      </div>
     );
   };
 
@@ -84,7 +83,7 @@ const Connection = ({
 
         <div className="flex items-center justify-center flex-wrap gap-2 lg:gap-5">
           {statistics.map((statistic, index) => {
-            return renderItem(statistic);
+            return renderItem(statistic, index);
           })}
         </div>
       </div>
