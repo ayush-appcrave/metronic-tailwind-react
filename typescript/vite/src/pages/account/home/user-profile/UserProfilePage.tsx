@@ -3,6 +3,8 @@ import { MENU_SIDEBAR } from '@/config/menu.config';
 import { NavbarMenu } from '@/partials/menu/NavbarMenu';
 import { Navbar } from '@/partials/navbar';
 
+import { UserProfileContent } from '.';
+
 const UserProfilePage = () => {
   return (
     <>
@@ -12,7 +14,9 @@ const UserProfilePage = () => {
         </Navbar>
       </Container>
 
-      <Container>Page content</Container>
+      <Container>
+        <UserProfileContent />
+      </Container>
     </>
   );
 };

@@ -1,0 +1,77 @@
+import { KeenIcon } from '@/components';
+import { toAbsoluteUrl } from '@/utils/Assets';
+
+import { IUserProfileCalendarAccountsItem, IUserProfileCalendarAccountsItems } from './interfaces';
+
+const UserProfileCalendarAccounts = () => {
+  const items: IUserProfileCalendarAccountsItems = [
+    {
+      logo: 'google-calendar.svg',
+      title: 'Google',
+      email: 'jasontt@studio.co'
+    },
+    {
+      logo: 'monday.svg',
+      title: 'Monday',
+      email: 'jasontatum@keenthemes.com'
+    }
+  ];
+
+  const renderItem = (item: IUserProfileCalendarAccountsItem, index: number) => {
+    return (
+      <div
+        key={index}
+        className="flex items-center justify-between flex-wrap border border-gray-200 rounded-xl gap-2 px-3.5 py-2.5"
+      >
+        <div className="flex items-center flex-wrap gap-3.5">
+          <img
+            src={toAbsoluteUrl(`/images/content/brand-logos/${item.logo}`)}
+            className="size-6 shrink-0"
+            alt=""
+          />
+
+          <div className="flex flex-col">
+            <a
+              href="#"
+              className="text-sm font-semibold text-gray-800 hover:text-primary-active mb-px"
+            >
+              {item.title}
+            </a>
+            <a href="#" className="text-2sm font-medium text-gray-500 hover:text-primary-active">
+              {item.email}
+            </a>
+          </div>
+        </div>
+
+        <div className="btn btn-sm btn-icon btn-icon-lg text-gray-500 hover:text-primary-active">
+          <KeenIcon icon="trash" />
+        </div>
+      </div>
+    );
+  };
+
+  return (
+    <div className="card">
+      <div className="card-header">
+        <h3 className="card-title">
+          Calendar Accounts <span className="text-gray-600 font-medium 2sm">1/5</span>
+        </h3>
+
+        <button className="btn btn-light btn-sm">
+          <KeenIcon icon="calendar-remove" />
+          Add New
+        </button>
+      </div>
+
+      <div className="card-body">
+        <div className="grid gap-2.5">
+          {items.map((item, index) => {
+            return renderItem(item, index);
+          })}
+        </div>
+      </div>
+    </div>
+  );
+};
+
+export { UserProfileCalendarAccounts };
