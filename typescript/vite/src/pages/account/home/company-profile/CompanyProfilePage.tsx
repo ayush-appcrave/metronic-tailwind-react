@@ -3,6 +3,8 @@ import { MENU_SIDEBAR } from '@/config/menu.config';
 import { NavbarMenu } from '@/partials/menu/NavbarMenu';
 import { Navbar } from '@/partials/navbar';
 
+import { CompanyProfileContent } from '.';
+
 const CompanyProfilePage = () => {
   return (
     <>
@@ -12,7 +14,9 @@ const CompanyProfilePage = () => {
         </Navbar>
       </Container>
 
-      <Container>Page content</Container>
+      <Container>
+        <CompanyProfileContent />
+      </Container>
     </>
   );
 };

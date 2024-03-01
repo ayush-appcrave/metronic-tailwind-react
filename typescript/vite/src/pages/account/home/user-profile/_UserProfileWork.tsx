@@ -19,87 +19,88 @@ const UserProfileWork = () => {
       </div>
       <div className="card-table scrollable-x-auto pb-3">
         <table className="table align-middle text-sm text-gray-500">
-          <tr>
-            <td className="py-2 min-w-36">Language</td>
-            <td className="py-2 min-w-72 w-full text-gray-600">
-              English <span className="text-gray-500">-Fluent</span>
-            </td>
-            <td className="py-2 text-right min-w-24">
-              <a
-                href="#"
-                className="btn btn-sm btn-icon btn-icon-lg text-primary hover:text-primary-active"
-              >
-                <KeenIcon icon="notepad-edit" />
-              </a>
-            </td>
-          </tr>
+          <tbody>
+            <tr>
+              <td className="py-2 min-w-35">Language</td>
+              <td className="py-2 min-w-72 w-full text-gray-600">
+                English <span className="text-gray-500">-Fluent</span>
+              </td>
+              <td className="py-2 text-right min-w-24">
+                <a
+                  href="#"
+                  className="btn btn-sm btn-icon btn-icon-lg text-primary hover:text-primary-active"
+                >
+                  <KeenIcon icon="notepad-edit" />
+                </a>
+              </td>
+            </tr>
 
-          <tr>
-            <td className="py-2">Hourly Rate</td>
-            <td className="py-2 text-gray-600">$28 / hour</td>
-            <td className="py-2 text-right">
-              <a
-                href="#"
-                className="btn btn-sm btn-icon btn-icon-lg text-primary hover:text-primary-active"
-              >
-                <KeenIcon icon="notepad-edit" />
-              </a>
-            </td>
-          </tr>
+            <tr>
+              <td className="py-2">Hourly Rate</td>
+              <td className="py-2 text-gray-600">$28 / hour</td>
+              <td className="py-2 text-right">
+                <a
+                  href="#"
+                  className="btn btn-sm btn-icon btn-icon-lg text-primary hover:text-primary-active"
+                >
+                  <KeenIcon icon="notepad-edit" />
+                </a>
+              </td>
+            </tr>
 
-          <tr>
-            <td className="py-2">Avaibilaty</td>
-            <td className="py-2 text-gray-600">32 hours a week</td>
-            <td className="py-2 text-right">
-              <a
-                href="#"
-                className="btn btn-sm btn-icon btn-icon-lg text-primary hover:text-primary-active"
-              >
-                <KeenIcon icon="notepad-edit" />
-              </a>
-            </td>
-          </tr>
+            <tr>
+              <td className="py-2">Avaibilaty</td>
+              <td className="py-2 text-gray-600">32 hours a week</td>
+              <td className="py-2 text-right">
+                <a
+                  href="#"
+                  className="btn btn-sm btn-icon btn-icon-lg text-primary hover:text-primary-active"
+                >
+                  <KeenIcon icon="notepad-edit" />
+                </a>
+              </td>
+            </tr>
 
-          <tr>
-            <td className="py-3">Skills</td>
-            <td className="py-3 text-gray-600">
-              <div className="flex flex-wrap gap-2.5">
-                <span className="badge badge-sm badge-gray-200">Web Design</span>
-                <span className="badge badge-sm badge-gray-200">Code Review</span>
-                <span className="badge badge-sm badge-gray-200">noCode</span>
-                <span className="badge badge-sm badge-gray-200">UX</span>
-                <span className="badge badge-sm badge-gray-200">Figma</span>
-                <span className="badge badge-sm badge-gray-200">Webflow</span>
-                <span className="badge badge-sm badge-gray-200">AI</span>
-                <span className="badge badge-sm badge-gray-200">Management</span>
-              </div>
-            </td>
-            <td className="py-3 text-right">
-              <a
-                href="#"
-                className="btn btn-sm btn-icon btn-icon-lg text-primary hover:text-primary-active"
-              >
-                <KeenIcon icon="notepad-edit" />
-              </a>
-            </td>
-          </tr>
+            <tr>
+              <td className="py-3">Skills</td>
+              <td className="py-3 text-gray-600">
+                <div className="flex flex-wrap gap-2.5">
+                  <span className="badge badge-sm badge-gray-200">Web Design</span>
+                  <span className="badge badge-sm badge-gray-200">Code Review</span>
+                  <span className="badge badge-sm badge-gray-200">noCode</span>
+                  <span className="badge badge-sm badge-gray-200">UX</span>
+                  <span className="badge badge-sm badge-gray-200">Figma</span>
+                  <span className="badge badge-sm badge-gray-200">Webflow</span>
+                  <span className="badge badge-sm badge-gray-200">AI</span>
+                  <span className="badge badge-sm badge-gray-200">Management</span>
+                </div>
+              </td>
+              <td className="py-3 text-right">
+                <a
+                  href="#"
+                  className="btn btn-sm btn-icon btn-icon-lg text-primary hover:text-primary-active"
+                >
+                  <KeenIcon icon="notepad-edit" />
+                </a>
+              </td>
+            </tr>
 
-          <tr>
-            <td className="py-4">About</td>
-            <td className="py-4 text-gray-600">
-              We&apos;re open to partnerships, guest posts, and <br />
-              more. Join us to share your insights and grow <br />
-              your audience.
-            </td>
-            <td className="py-4 text-right">
-              <a
-                href="#"
-                className="btn btn-sm btn-icon btn-icon-lg text-primary hover:text-primary-active"
-              >
-                <KeenIcon icon="notepad-edit" />
-              </a>
-            </td>
-          </tr>
+            <tr>
+              <td className="py-4">About</td>
+              <td className="py-4 text-gray-600">
+                We&apos;re open to partnerships, guest posts, and more. Join us to share your
+                insights and grow your audience.
+              </td>
+              <td className="py-4 text-right">
+                <a
+                  href="#"
+                  className="btn btn-sm btn-icon btn-icon-lg text-primary hover:text-primary-active"
+                >
+                  <KeenIcon icon="notepad-edit" />
+                </a>
+              </td>
+            </tr>
+          </tbody>
         </table>
       </div>
     </div>

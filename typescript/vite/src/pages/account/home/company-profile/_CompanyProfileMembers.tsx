@@ -2,55 +2,59 @@ import { KeenIcon } from '@/components';
 import { toAbsoluteUrl } from '@/utils/Assets';
 
 import {
-  IUserProfileConnectionsItem,
-  IUserProfileConnectionsItems,
-  IUserProfileConnectionsProps
+  ICompanyProfileMembersItem,
+  ICompanyProfileMembersItems,
+  ICompanyProfileMembersProps
 } from './interfaces';
 
-const UserProfileConnections = ({ url }: IUserProfileConnectionsProps) => {
-  const tables: IUserProfileConnectionsItems = [
+const CompanyProfileMembers = ({ url }: ICompanyProfileMembersProps) => {
+  const tables: ICompanyProfileMembersItems = [
     {
       avatar: '300-3.png',
       name: 'Tyler Hero',
       connections: 26,
-      jointLinks: 6
+      label: 'Project Member',
+      joined: 'Today',
+      disabled: true
     },
     {
       avatar: '300-1.png',
       name: 'Esther Howard',
       connections: 639,
-      jointLinks: 'none'
+      label: 'Accountant',
+      joined: '5 days ago',
+      disabled: false
     },
     {
       avatar: '300-11.png',
       name: 'Jacob Jones',
       connections: 125,
-      jointLinks: 19
+      label: 'Data Analyst',
+      joined: '3 days ago',
+      disabled: false
     },
     {
       avatar: '300-2.png',
       name: 'Cody Fisher',
       connections: 81,
-      jointLinks: 'none'
+      label: 'Accountant',
+      joined: '2 weeks ago',
+      disabled: true
     },
     {
       avatar: '300-5.png',
       name: 'Leslie Alexander',
       connections: 1203,
-      jointLinks: 2
-    },
-    {
-      avatar: '300-9.png',
-      name: 'Guy Hawkins',
-      connections: 2,
-      jointLinks: 'none'
+      label: 'Director',
+      joined: '3 weeks ago',
+      disabled: false
     }
   ];
 
-  const renderItem = (table: IUserProfileConnectionsItem, index: number) => {
+  const renderItem = (table: ICompanyProfileMembersItem, index: number) => {
     return (
       <tr key={index}>
-        <td className="py-3.5">
+        <td>
           <div className="flex items-center grow gap-2.5">
             <img
               src={toAbsoluteUrl(`/images/content/avatars/${table.avatar}`)}
@@ -72,13 +76,19 @@ const UserProfileConnections = ({ url }: IUserProfileConnectionsProps) => {
           </div>
         </td>
 
-        <td className="py-2 text-right">{table.jointLinks}</td>
-
-        <td className="py-2 text-right">
-          <button className="btn btn-xs btn-icon btn-light btn-primary active rounded-full">
-            <KeenIcon icon="check" />
-          </button>
+        <td className="text-right">
+          <span className="badge badge-sm badge-outline">{table.label}</span>
         </td>
+
+        <td className="text-right">
+          <span
+            className={`badge badge-sm badge-outline ${table.disabled ? 'badge-danger' : 'badge-success'}`}
+          >
+            {table.disabled ? 'Disabled' : 'Enabled'}
+          </span>
+        </td>
+
+        <td className="text-right">{table.label}</td>
 
         <td>
           <div className="menu flex justify-end" data-menu="true">
@@ -107,19 +117,32 @@ const UserProfileConnections = ({ url }: IUserProfileConnectionsProps) => {
       <div className="card-header">
         <h3 className="card-title">Connections</h3>
 
-        <div className="menu" data-menu="true">
-          <div
-            className="menu-item"
-            data-menu-item-trigger="click"
-            data-menu-item-toggle="dropdown"
-            data-menu-item-placement="bottom-end"
-          >
-            <button className="btn btn-icon btn-light btn-clear btn-xs menu-toggle">
-              <KeenIcon icon="dots-vertical" className="!text-xl" />
-            </button>
+        <div className="flex items-center gap-5">
+          <div className="flex items-center gap-2">
+            <label className="switch">
+              <input className="order-2" type="checkbox" value="1" name="check" />
+              <span className="switch-label order-1">
+                &nbsp;Enforce 2FA
+                <span className="hidden switch-off:inline"></span>
+                <span className="hidden switch-on:inline"></span>
+              </span>
+            </label>
+          </div>
 
-            <div className="menu-dropdown w-[175px] text-gray-700 px-3 py-3 text-2xs">
-              Menu content
+          <div className="menu" data-menu="true">
+            <div
+              className="menu-item"
+              data-menu-item-trigger="click"
+              data-menu-item-toggle="dropdown"
+              data-menu-item-placement="bottom-end"
+            >
+              <button className="btn btn-icon btn-light btn-clear btn-xs menu-toggle">
+                <KeenIcon icon="dots-vertical" className="!text-xl" />
+              </button>
+
+              <div className="menu-dropdown w-[175px] text-gray-700 px-3 py-3 text-2xs">
+                Menu content
+              </div>
             </div>
           </div>
         </div>
@@ -130,9 +153,10 @@ const UserProfileConnections = ({ url }: IUserProfileConnectionsProps) => {
           <table className="table align-middle text-2sm text-gray-600">
             <tbody>
               <tr className="bg-gray-100">
-                <th className="text-start font-medium min-w-48 py-2.5">Name</th>
-                <th className="text-right font-medium min-w-20 py-2.5">Joint Links</th>
-                <th className="text-right font-medium min-w-20 py-2.5">Status</th>
+                <th className="text-start font-medium min-w-51">Name</th>
+                <th className="text-right font-medium min-w-35">Role</th>
+                <th className="text-right font-medium min-w-31">2FA</th>
+                <th className="text-right font-medium min-w-19">Joined</th>
                 <th className="min-w-16"></th>
               </tr>
 
@@ -153,4 +177,4 @@ const UserProfileConnections = ({ url }: IUserProfileConnectionsProps) => {
   );
 };
 
-export { UserProfileConnections };
+export { CompanyProfileMembers };

@@ -1,36 +1,23 @@
 import { KeenIcon } from '@/components';
 import { toAbsoluteUrl } from '@/utils/Assets';
 
-import { IUserProfileBasicSettingsProps } from './interfaces';
-
-const UserProfileBasicSettings = ({ title }: IUserProfileBasicSettingsProps) => {
+const CompanyProfileAccountSettings = () => {
   return (
     <div className="card min-w-full">
       <div className="card-header">
-        <h3 className="card-title">{title}</h3>
-
-        <div className="flex items-center gap-2">
-          <label className="switch">
-            <input className="order-2" type="checkbox" value="1" name="check" defaultChecked />
-            <span className="switch-label order-1">
-              &nbsp;Public Profile
-              <span className="hidden switch-off:inline">Off</span>
-              <span className="hidden switch-on:inline">On</span>
-            </span>
-          </label>
-        </div>
+        <h3 className="card-title">Account Settings</h3>
       </div>
       <div className="card-table scrollable-x-auto pb-3">
         <table className="table align-middle text-sm text-gray-500">
           <tbody>
             <tr>
-              <td className="py-2 min-w-36">Email</td>
-              <td className="py-2 min-w-60">
+              <td className="min-w-55">Email</td>
+              <td className="min-w-60 w-full">
                 <a href="#" className="text-gray-600 text-2sm hover:text-primary-active">
-                  jasontt@studio.co
+                  john.doe@hexlad.io
                 </a>
               </td>
-              <td className="py-2 max-w-16 text-right">
+              <td className="min-w-28 text-center">
                 <a
                   href="#"
                   className="btn btn-sm btn-icon btn-icon-lg text-primary hover:text-primary-active"
@@ -41,9 +28,9 @@ const UserProfileBasicSettings = ({ title }: IUserProfileBasicSettingsProps) => 
             </tr>
 
             <tr>
-              <td className="py-2">Password</td>
-              <td className="py-2 text-gray-600">Password last changed 2 months ago</td>
-              <td className="py-2 text-right">
+              <td>Password</td>
+              <td className="text-gray-600">Password last changed 2 months ago</td>
+              <td className="text-center">
                 <a
                   href="#"
                   className="btn btn-sm btn-icon btn-icon-lg text-primary hover:text-primary-active"
@@ -54,18 +41,8 @@ const UserProfileBasicSettings = ({ title }: IUserProfileBasicSettingsProps) => 
             </tr>
 
             <tr>
-              <td className="py-3.5">2FA</td>
-              <td className="py-3.5 text-gray-600">To be set</td>
-              <td className="py-3 text-right">
-                <a href="#" className="btn btn-link btn-sm">
-                  Setup
-                </a>
-              </td>
-            </tr>
-
-            <tr>
-              <td className="py-2">Sign-in with</td>
-              <td className="py-0.5">
+              <td>Sign-in with</td>
+              <td>
                 <div className="flex items-center gap-2.5">
                   <a
                     href="#"
@@ -101,7 +78,17 @@ const UserProfileBasicSettings = ({ title }: IUserProfileBasicSettingsProps) => 
                   </a>
                 </div>
               </td>
-              <td className="py-2 text-right">
+              <td className="text-center">
+                <a href="#" className="btn btn-link btn-sm">
+                  Setup
+                </a>
+              </td>
+            </tr>
+
+            <tr>
+              <td>Team Account</td>
+              <td className="text-gray-600">To be set</td>
+              <td className="text-center">
                 <a
                   href="#"
                   className="btn btn-sm btn-icon btn-icon-lg text-primary hover:text-primary-active"
@@ -112,18 +99,8 @@ const UserProfileBasicSettings = ({ title }: IUserProfileBasicSettingsProps) => 
             </tr>
 
             <tr>
-              <td className="py-3">Team Account</td>
-              <td className="py-3 text-gray-700">To be set</td>
-              <td className="py-3 text-right">
-                <a href="#" className="btn btn-link btn-sm">
-                  Setup
-                </a>
-              </td>
-            </tr>
-
-            <tr>
-              <td className="py-2">Social Profiles</td>
-              <td className="py-0.5">
+              <td>Social Profiles</td>
+              <td>
                 <div className="flex items-center gap-2.5">
                   <a
                     href="#"
@@ -170,7 +147,7 @@ const UserProfileBasicSettings = ({ title }: IUserProfileBasicSettingsProps) => 
                   </a>
                 </div>
               </td>
-              <td className="py-2 text-right">
+              <td className="text-center">
                 <a
                   href="#"
                   className="btn btn-sm btn-icon btn-icon-lg text-primary hover:text-primary-active"
@@ -181,14 +158,14 @@ const UserProfileBasicSettings = ({ title }: IUserProfileBasicSettingsProps) => 
             </tr>
 
             <tr>
-              <td className="py-3">Referral Link</td>
-              <td className="py-3 text-gray-600 text-2sm">
+              <td>Referral Link</td>
+              <td className="text-gray-600 text-2sm">
                 <a href="#" className="text-gray-600 text-2sm hover:text-primary-active">
                   https://studio.co/W3gvQOI35dt&nbsp;
                   <KeenIcon icon="copy" className="text-gray-500 text-sm" />
                 </a>
               </td>
-              <td className="py-3 text-right">
+              <td className="text-center">
                 <a href="#" className="btn btn-link btn-sm">
                   Re-create
                 </a>
@@ -201,4 +178,4 @@ const UserProfileBasicSettings = ({ title }: IUserProfileBasicSettingsProps) => 
   );
 };
 
-export { UserProfileBasicSettings };
+export { CompanyProfileAccountSettings };
