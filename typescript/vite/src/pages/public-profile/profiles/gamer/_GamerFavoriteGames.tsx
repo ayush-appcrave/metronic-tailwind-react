@@ -4,20 +4,20 @@ import { IGamerFavoriteGamesItem, IGamerFavoriteGamesItems } from './interfaces'
 
 const GamerFavoriteGames = () => {
   const items: IGamerFavoriteGamesItems = [
-    { image: '300-310.png' },
-    { image: '300-310.png' },
-    { image: '300-310.png' },
-    { image: '300-310.png' },
-    { image: '300-310.png' },
-    { image: '300-310.png' },
-    { image: '300-310.png' },
-    { image: '300-310.png' }
+    { image: '13.jpg' },
+    { image: '14.jpg' },
+    { image: '15.jpg' },
+    { image: '16.jpg' },
+    { image: '17.jpg' },
+    { image: '18.jpg' },
+    { image: '19.jpg' },
+    { image: '20.jpg' }
   ];
 
   const renderItem = (item: IGamerFavoriteGamesItem, index: number) => {
     return (
       <img
-        src={toAbsoluteUrl(`/images/content/logos/${item.image}`)}
+        src={toAbsoluteUrl(`/images/content/600x600/${item.image}`)}
         className="rounded-xl w-11 h-11"
         alt=""
         key={index}

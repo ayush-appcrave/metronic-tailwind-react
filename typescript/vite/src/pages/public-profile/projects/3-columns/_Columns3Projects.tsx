@@ -6,7 +6,7 @@ import { IColumns3ProjectsItem, IColumns3ProjectsItems } from './interfaces';
 const Columns3Projects = () => {
   const projects: IColumns3ProjectsItems = [
     {
-      logo: 'jira.png',
+      logo: 'plurk.svg',
       name: 'Phoenix SaaS',
       description: 'Real-time photo sharing app',
       startDate: 'Mar 06',
@@ -21,8 +21,8 @@ const Columns3Projects = () => {
       },
       team: {
         group: [
-          { filename: '300-1.jpg', variant: 'size-7' },
-          { filename: '300-2.jpg', variant: 'size-7' },
+          { filename: '300-4.png', variant: 'size-7' },
+          { filename: '300-2.png', variant: 'size-7' },
           {
             fallback: 'A',
             variant: 'text-success-inverse size-7 ring-success-light bg-success'
@@ -31,7 +31,7 @@ const Columns3Projects = () => {
       }
     },
     {
-      logo: 'jira.png',
+      logo: 'telegram.svg',
       name: 'Radiant Wave',
       description: 'Short-term accommodation marketplace',
       startDate: 'Mar 09',
@@ -46,8 +46,8 @@ const Columns3Projects = () => {
       },
       team: {
         group: [
-          { filename: '300-3.jpg', variant: 'size-7' },
-          { filename: '300-4.jpg', variant: 'size-7' },
+          { filename: '300-3.png', variant: 'size-7' },
+          { filename: '300-4.png', variant: 'size-7' },
           {
             fallback: 'S',
             variant: 'text-primary-inverse size-7 ring-primary-light bg-primary'
@@ -56,7 +56,7 @@ const Columns3Projects = () => {
       }
     },
     {
-      logo: 'jira.png',
+      logo: 'kickstarter.svg',
       name: 'Dreamweaver',
       description: 'Social media photo sharing',
       startDate: 'Mar 05',
@@ -71,8 +71,8 @@ const Columns3Projects = () => {
       },
       team: {
         group: [
-          { filename: '300-5.jpg', variant: 'size-7' },
-          { filename: '300-6.jpg', variant: 'size-7' },
+          { filename: '300-5.png', variant: 'size-7' },
+          { filename: '300-6.png', variant: 'size-7' },
           {
             fallback: 'R',
             variant: 'text-warning-inverse size-7 ring-warning-light bg-warning'
@@ -81,7 +81,7 @@ const Columns3Projects = () => {
       }
     },
     {
-      logo: 'jira.png',
+      logo: 'quickbooks.svg',
       name: 'Horizon Quest',
       description: 'collaboration',
       startDate: 'Mar 03',
@@ -96,8 +96,8 @@ const Columns3Projects = () => {
       },
       team: {
         group: [
-          { filename: '300-7.jpg', variant: 'size-7' },
-          { filename: '300-8.jpg', variant: 'size-7' },
+          { filename: '300-7.png', variant: 'size-7' },
+          { filename: '300-8.png', variant: 'size-7' },
           {
             fallback: 'E',
             variant: 'text-info-inverse size-7 ring-info-light bg-info'
@@ -106,7 +106,7 @@ const Columns3Projects = () => {
       }
     },
     {
-      logo: 'jira.png',
+      logo: 'google-analytics.svg',
       name: 'Golden Gate Analytics',
       description: 'Note-taking and organization app',
       startDate: 'Mar 22',
@@ -121,8 +121,8 @@ const Columns3Projects = () => {
       },
       team: {
         group: [
-          { filename: '300-9.jpg', variant: 'size-7' },
-          { filename: '300-10.jpg', variant: 'size-7' },
+          { filename: '300-9.png', variant: 'size-7' },
+          { filename: '300-10.png', variant: 'size-7' },
           {
             fallback: 'B',
             variant: 'text-danger-inverse size-7 ring-danger-light bg-danger'
@@ -131,7 +131,7 @@ const Columns3Projects = () => {
       }
     },
     {
-      logo: 'jira.png',
+      logo: 'google-webdev.svg',
       name: 'Celestial SaaS',
       description: 'CRM App application to HR efficienty',
       startDate: 'Mar 14',
@@ -146,8 +146,8 @@ const Columns3Projects = () => {
       },
       team: {
         group: [
-          { filename: '300-11.jpg', variant: 'size-7' },
-          { filename: '300-12.jpg', variant: 'size-7' },
+          { filename: '300-11.png', variant: 'size-7' },
+          { filename: '300-12.png', variant: 'size-7' },
           {
             fallback: 'S',
             variant: 'text-primary-inverse size-7 ring-primary-light bg-primary'
@@ -156,7 +156,7 @@ const Columns3Projects = () => {
       }
     },
     {
-      logo: 'jira.png',
+      logo: 'figma.svg',
       name: 'Nexus Design System',
       description: 'Online discussion and forum platform',
       startDate: 'Mar 17',
@@ -171,8 +171,8 @@ const Columns3Projects = () => {
       },
       team: {
         group: [
-          { filename: '300-13.jpg', variant: 'size-7' },
-          { filename: '300-14.jpg', variant: 'size-7' },
+          { filename: '300-13.png', variant: 'size-7' },
+          { filename: '300-14.png', variant: 'size-7' },
           {
             fallback: 'N',
             variant: 'text-primary-inverse size-7 ring-primary-light bg-primary'
@@ -181,7 +181,7 @@ const Columns3Projects = () => {
       }
     },
     {
-      logo: 'jira.png',
+      logo: 'btcchina.svg',
       name: 'Neptune App',
       description: 'Team messaging and collaboration',
       startDate: 'Mar 09',
@@ -196,8 +196,8 @@ const Columns3Projects = () => {
       },
       team: {
         group: [
-          { filename: '300-15.jpg', variant: 'size-7' },
-          { filename: '300-16.jpg', variant: 'size-7' },
+          { filename: '300-15.png', variant: 'size-7' },
+          { filename: '300-16.png', variant: 'size-7' },
           {
             fallback: 'M',
             variant: 'text-success-inverse size-7 ring-success-light bg-success'
@@ -206,7 +206,7 @@ const Columns3Projects = () => {
       }
     },
     {
-      logo: 'jira.png',
+      logo: 'patientory.svg',
       name: 'SparkleTech',
       description: 'Meditation and relaxation app',
       startDate: 'Mar 14',
@@ -221,8 +221,8 @@ const Columns3Projects = () => {
       },
       team: {
         group: [
-          { filename: '300-17.jpg', variant: 'size-7' },
-          { filename: '300-18.jpg', variant: 'size-7' },
+          { filename: '300-17.png', variant: 'size-7' },
+          { filename: '300-18.png', variant: 'size-7' },
           {
             fallback: 'P',
             variant: 'text-warning-inverse size-7 ring-warning-light bg-warning'
@@ -246,8 +246,8 @@ const Columns3Projects = () => {
       },
       team: {
         group: [
-          { filename: '300-19.jpg', variant: 'size-7' },
-          { filename: '300-20.jpg', variant: 'size-7' },
+          { filename: '300-19.png', variant: 'size-7' },
+          { filename: '300-20.png', variant: 'size-7' },
           {
             fallback: 'D',
             variant: 'text-danger-inverse size-7 ring-danger-light bg-danger'
@@ -256,7 +256,7 @@ const Columns3Projects = () => {
       }
     },
     {
-      logo: 'jira.png',
+      logo: 'plastic-scm.svg',
       name: 'LunaLink',
       description: 'Meditation and relaxation app',
       startDate: 'Mar 14',
@@ -271,8 +271,8 @@ const Columns3Projects = () => {
       },
       team: {
         group: [
-          { filename: '300-21.jpg', variant: 'size-7' },
-          { filename: '300-22.jpg', variant: 'size-7' },
+          { filename: '300-21.png', variant: 'size-7' },
+          { filename: '300-22.png', variant: 'size-7' },
           {
             fallback: 'B',
             variant: 'text-info-inverse size-7 ring-info-light bg-info'
@@ -281,7 +281,7 @@ const Columns3Projects = () => {
       }
     },
     {
-      logo: 'jira.png',
+      logo: 'perrier.svg',
       name: 'TerraCrest App',
       description: 'Video conferencing software',
       startDate: 'Mar 22',
@@ -296,8 +296,8 @@ const Columns3Projects = () => {
       },
       team: {
         group: [
-          { filename: '300-23.jpg', variant: 'size-7' },
-          { filename: '300-24.jpg', variant: 'size-7' },
+          { filename: '300-23.png', variant: 'size-7' },
+          { filename: '300-24.png', variant: 'size-7' },
           {
             fallback: 'C',
             variant: 'text-success-inverse size-7 ring-success-light bg-success'

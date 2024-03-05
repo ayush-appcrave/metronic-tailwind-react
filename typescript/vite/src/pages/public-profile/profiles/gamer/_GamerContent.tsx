@@ -15,22 +15,22 @@ import { IGamerStatisticsItems } from './interfaces';
 
 const GamerContent = () => {
   const details: IGamerStatisticsItems = [
-    { image: 'gamer-online-game.png', number: '164', label: 'Tournaments' },
-    { image: 'gamer-online-game.png', number: '73.2%', label: 'Game Win-rate' },
-    { image: 'gamer-online-game.png', number: '257', label: 'Duels Played' },
-    { image: 'gamer-online-game.png', number: '19', label: 'Trophies' }
+    { image: 'coinhodler.svg', number: '164', label: 'Tournaments' },
+    { image: 'gamer-online-game.svg', number: '73.2%', label: 'Game Win-rate' },
+    { image: 'gamer-online-game.svg', number: '257', label: 'Duels Played' },
+    { image: 'gamer-online-game.svg', number: '19', label: 'Trophies' }
   ];
 
   const items: ICreatorUsersItems = [
-    { image: '300-11.jpg' },
-    { image: '300-2.jpg' },
-    { image: '300-1.jpg' },
-    { image: '300-3.jpg' },
-    { image: '300-20.jpg' },
-    { image: '300-4.jpg' },
-    { image: '300-15.jpg' },
-    { image: '300-13.jpg' },
-    { image: '300-10.jpg' }
+    { image: '300-27.png' },
+    { image: '300-1.png' },
+    { image: '300-2.png' },
+    { image: '300-3.png' },
+    { image: '300-5.png' },
+    { image: '300-23.png' },
+    { image: '300-6.png' },
+    { image: '300-11.png' },
+    { image: '300-12.png' }
   ];
 
   const data: ICompanyNetworkItems = [

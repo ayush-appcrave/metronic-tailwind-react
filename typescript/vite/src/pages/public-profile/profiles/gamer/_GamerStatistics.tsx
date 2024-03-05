@@ -8,7 +8,11 @@ const GamerStatistics = ({ details }: IGamerStatisticsProps) => {
       <>
         <div className="grid flex-1">
           <div className="flex justify-self-center items-center gap-3">
-            <img src={toAbsoluteUrl(`/images/content/logos/${item.image}`)} className="" alt="" />
+            <img
+              src={toAbsoluteUrl(`/images/content/brand-logos/${item.image}`)}
+              className=""
+              alt=""
+            />
 
             <div className="grid grid-cols-1 place-content-center flex-1">
               <span className="text-gray-800 text-2x lg:text-2.5xl font-semibold">

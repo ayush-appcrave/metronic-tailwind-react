@@ -50,7 +50,7 @@ export interface ICreatorWorksItems extends Array<ICreatorWorksItem> {}
 
 export interface ICreatorUpcomingEventsItem {
   month: string;
-  date: number;
+  date: string;
   image: string;
   label: string;
   title: string;

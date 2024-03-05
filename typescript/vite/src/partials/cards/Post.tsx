@@ -7,7 +7,7 @@ const Post = ({ image, label, description, time }: IPostProps) => {
   return (
     <div className="card w-[280px] border-0 mb-5">
       <img
-        src={toAbsoluteUrl(`/images/content/stock/${image}`)}
+        src={toAbsoluteUrl(`/images/content/600x400/${image}`)}
         className="rounded-t-xl max-w-[280px] shrink-0"
         alt=""
       />

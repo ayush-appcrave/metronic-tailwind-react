@@ -49,7 +49,11 @@ const Campaign = ({
         </div>
 
         <div className="flex justify-center mb-2">
-          <img src={toAbsoluteUrl(`/images/content/logos/${logo}`)} className="" alt="" />
+          <img
+            src={toAbsoluteUrl(`/images/content/brand-logos/${logo}`)}
+            className="size-[50px] shrink-0"
+            alt=""
+          />
         </div>
 
         <div className="text-center mb-7">

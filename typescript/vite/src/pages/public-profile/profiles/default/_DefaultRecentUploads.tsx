@@ -20,12 +20,12 @@ const DefaultRecentUploads = ({ title, url }: IDefaultRecentUploadsProps) => {
       date: '2.3 MB 1 Oct 2024 12:00 PM'
     },
     {
-      image: 'adobe illustrator.svg',
+      image: 'ai.svg',
       desc: 'Framework-App.js',
       date: '0.8 MB 17 Oct 2024 6:46 PM'
     },
     {
-      image: 'javascript.svg',
+      image: 'js.svg',
       desc: 'Mobile-logo.ai',
       date: '0.2 MB 4 Nov 2024 11:30 AM'
     }

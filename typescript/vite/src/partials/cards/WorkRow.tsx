@@ -17,8 +17,8 @@ const WorkRow = ({
       <div className="flex flex-wrap justify-between items-center gap-7">
         <div className="flex flex-wrap items-center gap-5">
           <img
-            src={toAbsoluteUrl(`${image}`)}
-            className="rounded-md max-h-[80px] max-w-full shrink-0"
+            src={toAbsoluteUrl(`/images/content/600x400/${image}`)}
+            className="rounded-md max-h-20 max-w-full shrink-0"
             alt=""
           />
 
@@ -35,7 +35,11 @@ const WorkRow = ({
 
         <div className="flex flex-wrap items-center gap-7.5">
           <div className="flex items-center gap-1.5">
-            <img src={toAbsoluteUrl(`${authorAvatar}`)} className="rounded-full h-[28px]" alt="" />
+            <img
+              src={toAbsoluteUrl(`/images/content/avatars/${authorAvatar}`)}
+              className="rounded-full h-[28px]"
+              alt=""
+            />
 
             <a
               href="#"

@@ -31,7 +31,7 @@ const ProjectExtendedRow = ({
         <div className="flex items-center gap-3.5">
           <div className="flex items-center">
             <img
-              src={toAbsoluteUrl(`/images/content/logos/${logo}`)}
+              src={toAbsoluteUrl(`/images/content/brand-logos/${logo}`)}
               className="min-w-12 shrink-0"
               alt=""
             />

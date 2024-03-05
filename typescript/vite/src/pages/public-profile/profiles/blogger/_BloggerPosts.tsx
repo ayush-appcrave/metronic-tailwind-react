@@ -5,19 +5,19 @@ import { IBloggerPostsItem, IBloggerPostsItems, IBloggerPostsProps } from './int
 const BloggerPosts = ({ url }: IBloggerPostsProps) => {
   const items: IBloggerPostsItems = [
     {
-      image: '11.jpg',
+      image: '14.jpg',
       label: 'Software',
       description: 'Maximizing Efficiency with Modern Software',
       time: '4 hours ago'
     },
     {
-      image: '12.jpg',
+      image: '15.jpg',
       label: 'Work-Life',
       description: 'Balancing Work and Life: Strategies for Success',
       time: '2 days ago'
     },
     {
-      image: '13.jpg',
+      image: '16.jpg',
       label: 'Technology',
       description: 'Exploring the Latest Technological',
       time: 'A week ago'

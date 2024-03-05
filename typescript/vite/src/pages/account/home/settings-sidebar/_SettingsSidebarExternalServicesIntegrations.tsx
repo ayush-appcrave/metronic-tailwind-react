@@ -47,7 +47,10 @@ const SettingsSidebarExternalServicesIntegrations = () => {
 
   const renderItem = (item: ISettingsSidebarExternalServicesIntegrationsItem, index: number) => {
     return (
-      <div className="flex items-center justify-between flex-wrap border border-gray-200 rounded-xl gap-2 p-3.5">
+      <div
+        key={index}
+        className="flex items-center justify-between flex-wrap border border-gray-200 rounded-xl gap-2 p-3.5"
+      >
         <div className="flex items-center flex-wrap gap-3.5">
           <img
             src={toAbsoluteUrl(`/images/content/brand-logos/${item.logo}`)}

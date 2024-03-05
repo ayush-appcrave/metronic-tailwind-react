@@ -8,13 +8,13 @@ const FeedsPost3 = () => {
 
   const comments: ICommentsItems = [
     {
-      avatar: '300-3.jpg',
+      avatar: '300-3.png',
       author: 'Mr. Anderson',
       date: '1 Day ago',
       text: 'Long before you sit dow to put digital pen to paper you need to make sure you have to sit down and write. I’ll show you how to write a great blog post in five simple steps that people will actually want to read. Ready?'
     },
     {
-      avatar: '300-10.jpg',
+      avatar: '300-15.png',
       author: 'Mrs. Anderson',
       date: '1 Day ago',
       text: 'Long before you sit dow to put digital pen to paper.'

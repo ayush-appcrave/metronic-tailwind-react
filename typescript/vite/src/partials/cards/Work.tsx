@@ -6,7 +6,11 @@ import { IWorkProps } from './interfaces';
 const Work = ({ image, url, title, authorAvatar, authorName, likes, comments }: IWorkProps) => {
   return (
     <div className="card border-0">
-      <img src={toAbsoluteUrl(`${image}`)} className="w-full h-auto" alt="" />
+      <img
+        src={toAbsoluteUrl(`/images/content/600x400/${image}`)}
+        className="w-full h-auto rounded-t-xl"
+        alt=""
+      />
 
       <div className="card-border card-rounded-b flex flex-col gap-2 p-5">
         <a href={url} className="text-lg font-semibold text-gray-800 hover:text-primary">
@@ -16,8 +20,8 @@ const Work = ({ image, url, title, authorAvatar, authorName, likes, comments }: 
         <div className="flex items-center justify-between grow">
           <div className="flex items-center grow">
             <img
-              src={toAbsoluteUrl(`${authorAvatar}`)}
-              className="rounded-full h-[28px] me-2"
+              src={toAbsoluteUrl(`/images/content/avatars/${authorAvatar}`)}
+              className="rounded-full size-7 me-2"
               alt=""
             />
 

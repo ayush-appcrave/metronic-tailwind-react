@@ -9,8 +9,8 @@ import {
 const GamerTournaments = ({ url }: IGamerTournamentsProps) => {
   const items: IGamerTournamentsItems = [
     {
-      image: '11.jpg',
-      logo: 'gamer-online-game.png',
+      image: '9.jpg',
+      logo: 'clusterhq.svg',
       title: 'CyberStorm Cup',
       time: 'WED, FEB 16, 12:30 CET',
       labels: ['CS 2', 'PUBG', 'RAID', 'COD', 'Fortnite'],
@@ -23,7 +23,7 @@ const GamerTournaments = ({ url }: IGamerTournamentsProps) => {
     },
     {
       image: '11.jpg',
-      logo: 'gamer-online-game.png',
+      logo: 'jira.svg',
       title: 'PixelPulse Showdown',
       time: 'MON, MAR 2, 16:00 CET',
       labels: ['TERA', 'MK11', 'PUBG', 'HOTS', 'R6'],
@@ -36,7 +36,7 @@ const GamerTournaments = ({ url }: IGamerTournamentsProps) => {
     },
     {
       image: '11.jpg',
-      logo: 'gamer-online-game.png',
+      logo: 'xostme-ltd.svg',
       title: 'NexusRift Masters',
       time: 'SUN, APR 29, 11:00 CET',
       labels: ['HS', 'Valorant', 'Dota 2', 'PUBG', 'COD'],
@@ -49,7 +49,7 @@ const GamerTournaments = ({ url }: IGamerTournamentsProps) => {
     },
     {
       image: '11.jpg',
-      logo: 'gamer-online-game.png',
+      logo: 'tezos.svg',
       title: 'CyberStorm Cup',
       time: 'WED, FEB 16, 12:30 CET',
       labels: ['CS 2', 'PUBG', 'RAID', 'COD', 'Fortnite'],
@@ -62,7 +62,7 @@ const GamerTournaments = ({ url }: IGamerTournamentsProps) => {
     },
     {
       image: '11.jpg',
-      logo: 'gamer-online-game.png',
+      logo: 'paccion.svg',
       title: 'PixelPulse Showdown',
       time: 'MON, MAR 2, 16:00 CET',
       labels: ['TERA', 'MK11', 'PUBG', 'HOTS', 'R6'],

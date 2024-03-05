@@ -52,7 +52,7 @@ const ProjectExtended = ({
 
         <div className="flex justify-center mb-2">
           <img
-            src={toAbsoluteUrl(`/images/content/logos/${logo}`)}
+            src={toAbsoluteUrl(`/images/content/brand-logos/${logo}`)}
             className="min-w-12 shrink-0"
             alt=""
           />

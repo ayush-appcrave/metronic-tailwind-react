@@ -23,7 +23,10 @@ const SettingsSidebarAuthTwoFactor = () => {
 
   const renderItem = (item: ISettingsSidebarAuthTwoFactorItem, index: number) => {
     return (
-      <div className="flex items-center justify-between flex-wrap border border-gray-200 rounded-xl gap-2 px-3.5 py-2.5">
+      <div
+        key={index}
+        className="flex items-center justify-between flex-wrap border border-gray-200 rounded-xl gap-2 px-3.5 py-2.5"
+      >
         <div className="flex items-center flex-wrap gap-3.5">
           <div className="flex items-center">
             <div className="relative size-[50px] shrink-0">

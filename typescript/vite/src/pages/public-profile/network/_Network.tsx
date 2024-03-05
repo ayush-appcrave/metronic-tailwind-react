@@ -10,7 +10,7 @@ const Network = () => {
       info: 'Pinnacle Innovate',
       avatar: {
         className: 'size-20 relative',
-        image: '300-2.jpg',
+        image: '300-1.png',
         imageClass: 'rounded-full',
         badgeClass:
           'flex size-2.5 bg-success rounded-full absolute bottom-0.5 left-16 transform -translate-y-1/2'
@@ -18,9 +18,9 @@ const Network = () => {
       email: 'kevin@pinnacle.com',
       team: {
         group: [
-          { filename: '300-9.jpg', variant: 'size-7' },
-          { filename: '300-2.jpg', variant: 'size-7' },
-          { filename: '300-1.jpg', variant: 'size-7' }
+          { filename: '300-4.png', variant: 'size-7' },
+          { filename: '300-1.png', variant: 'size-7' },
+          { filename: '300-2.png', variant: 'size-7' }
         ],
         more: {
           number: 10,
@@ -56,10 +56,10 @@ const Network = () => {
       email: 'sarahj@innx.com',
       team: {
         group: [
-          { filename: '300-24.jpg', variant: 'size-7' },
-          { filename: '300-15.jpg', variant: 'size-7' },
-          { filename: '300-22.jpg', variant: 'size-7' },
-          { filename: '300-13.jpg', variant: 'size-7' }
+          { filename: '300-5.png', variant: 'size-7' },
+          { filename: '300-6.png', variant: 'size-7' },
+          { filename: '300-7.png', variant: 'size-7' },
+          { filename: '300-11.png', variant: 'size-7' }
         ]
       },
       statistics: [
@@ -91,10 +91,10 @@ const Network = () => {
       email: 'kevin@pinnacle.com',
       team: {
         group: [
-          { filename: '300-7.jpg', variant: 'size-7' },
-          { filename: '300-5.jpg', variant: 'size-7' },
-          { filename: '300-4.jpg', variant: 'size-7' },
-          { filename: '300-11.jpg', variant: 'size-7' }
+          { filename: '300-29.png', variant: 'size-7' },
+          { filename: '300-33.png', variant: 'size-7' },
+          { filename: '300-23.png', variant: 'size-7' },
+          { filename: '300-31.png', variant: 'size-7' }
         ]
       },
       statistics: [
@@ -118,7 +118,7 @@ const Network = () => {
       info: 'Vortex Tech',
       avatar: {
         className: 'size-20 relative',
-        image: '300-30.jpg',
+        image: '300-9.png',
         imageClass: 'rounded-full',
         badgeClass:
           'flex size-2.5 bg-success rounded-full absolute bottom-0.5 left-16 transform -translate-y-1/2'
@@ -126,10 +126,10 @@ const Network = () => {
       email: 'brian@vortextech.com',
       team: {
         group: [
-          { filename: '300-7.jpg', variant: 'size-7' },
-          { filename: '300-3.jpg', variant: 'size-7' },
-          { filename: '300-12.jpg', variant: 'size-7' },
-          { filename: '300-20.jpg', variant: 'size-7' }
+          { filename: '300-14.png', variant: 'size-7' },
+          { filename: '300-3.png', variant: 'size-7' },
+          { filename: '300-19.png', variant: 'size-7' },
+          { filename: '300-15.png', variant: 'size-7' }
         ]
       },
       statistics: [
@@ -161,10 +161,10 @@ const Network = () => {
       email: 'megan@catalyst.com',
       team: {
         group: [
-          { filename: '300-14.jpg', variant: 'size-7' },
-          { filename: '300-23.jpg', variant: 'size-7' },
-          { filename: '300-25.jpg', variant: 'size-7' },
-          { filename: '300-2.jpg', variant: 'size-7' }
+          { filename: '300-5.png', variant: 'size-7' },
+          { filename: '300-26.png', variant: 'size-7' },
+          { filename: '300-6.png', variant: 'size-7' },
+          { filename: '300-1.png', variant: 'size-7' }
         ]
       },
       statistics: [
@@ -188,7 +188,7 @@ const Network = () => {
       info: 'Precision Solutions',
       avatar: {
         className: 'size-20 relative',
-        image: '300-7.jpg',
+        image: '300-8.png',
         imageClass: 'rounded-full',
         badgeClass:
           'flex size-2.5 bg-success rounded-full absolute bottom-0.5 left-16 transform -translate-y-1/2'
@@ -196,9 +196,9 @@ const Network = () => {
       email: 'alex@kteam.com',
       team: {
         group: [
-          { filename: '300-9.jpg', variant: 'size-7' },
-          { filename: '300-12.jpg', variant: 'size-7' },
-          { filename: '300-13.jpg', variant: 'size-7' }
+          { filename: '300-4.png', variant: 'size-7' },
+          { filename: '300-5.png', variant: 'size-7' },
+          { filename: '300-11.png', variant: 'size-7' }
         ],
         more: {
           number: 10,

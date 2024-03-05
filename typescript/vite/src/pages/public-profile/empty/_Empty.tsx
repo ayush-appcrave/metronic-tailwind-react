@@ -7,7 +7,7 @@ const Empty = () => {
         <div className="card-body">
           <div className="grid justify-center">
             <img
-              src={toAbsoluteUrl('/images/content/illustrations/welcome.png')}
+              src={toAbsoluteUrl('/images/content/illustration/11.svg')}
               className="max-h-[200px]"
               alt=""
             />

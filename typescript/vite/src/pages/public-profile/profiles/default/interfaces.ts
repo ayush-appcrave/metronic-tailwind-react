@@ -72,7 +72,7 @@ export interface IDefaultProjectsItem {
   dueDate: string;
   progress: {
     variant: string;
-    value: string;
+    value: number;
   };
 }
 export interface IDefaultProjectsItems extends Array<IDefaultProjectsItem> {}

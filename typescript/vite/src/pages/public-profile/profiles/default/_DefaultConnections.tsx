@@ -10,25 +10,25 @@ import {
 const DefaultConnections = ({ title, url }: IDefaultConnectionsProps) => {
   const items: IDefaultConnectionsItems = [
     {
-      avatar: '300-3.jpg',
+      avatar: '300-3.png',
       name: 'Tyler Hero',
       connections: 6,
       connected: false
     },
     {
-      avatar: '300-2.jpg',
+      avatar: '300-1.png',
       name: 'Esther Howard',
       connections: 29,
       connected: true
     },
     {
-      avatar: '300-7.jpg',
+      avatar: '300-14.png',
       name: 'Cody Fisher',
       connections: 34,
       connected: false
     },
     {
-      avatar: '300-14.jpg',
+      avatar: '300-7.png',
       name: 'Arlene McCoy',
       connections: 1,
       connected: true

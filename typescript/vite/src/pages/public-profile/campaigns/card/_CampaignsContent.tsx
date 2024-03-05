@@ -10,7 +10,7 @@ import {
 const CampaignsContent = ({ mode }: ICampaignsContentProps) => {
   const items: ICampaignsContentItems = [
     {
-      logo: 'jira.png',
+      logo: 'twitch-purple.svg',
       title: 'Urban Dreams',
       description: 'Live Gaming Spectacle Unveiled',
       status: {
@@ -37,7 +37,7 @@ const CampaignsContent = ({ mode }: ICampaignsContentProps) => {
       }
     },
     {
-      logo: 'jira.png',
+      logo: 'instagram.svg',
       title: 'Photo Promotion',
       description: 'Visual Stories Unleashed Worldwide',
       status: {
@@ -64,7 +64,7 @@ const CampaignsContent = ({ mode }: ICampaignsContentProps) => {
       }
     },
     {
-      logo: 'jira.png',
+      logo: 'youtube.svg',
       title: 'Video Viral',
       description: 'Video Content Showcase Spotlighted',
       status: {
@@ -91,7 +91,7 @@ const CampaignsContent = ({ mode }: ICampaignsContentProps) => {
       }
     },
     {
-      logo: 'jira.png',
+      logo: 'amazon-2.svg',
       title: 'Product Push',
       description: 'Prime Shopping Bliss Delivered',
       status: {
@@ -118,7 +118,7 @@ const CampaignsContent = ({ mode }: ICampaignsContentProps) => {
       }
     },
     {
-      logo: 'jira.png',
+      logo: 'mailchimp-1.svg',
       title: 'Email Engagement',
       description: 'Email Engagement Power Unleashed',
       status: {
@@ -145,7 +145,7 @@ const CampaignsContent = ({ mode }: ICampaignsContentProps) => {
       }
     },
     {
-      logo: 'jira.png',
+      logo: 'linkedin.svg',
       title: 'Career Boost',
       description: 'Pro Connections Empowered Globally',
       status: {

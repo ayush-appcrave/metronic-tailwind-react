@@ -12,9 +12,9 @@ const Teams = () => {
       labels: ['Ul', 'DevOps'],
       team: {
         group: [
-          { filename: '300-9.jpg', variant: 'size-7' },
-          { filename: '300-2.jpg', variant: 'size-7' },
-          { filename: '300-1.jpg', variant: 'size-7' }
+          { filename: '300-4.png', variant: 'size-7' },
+          { filename: '300-1.png', variant: 'size-7' },
+          { filename: '300-2.png', variant: 'size-7' }
         ],
         more: {
           number: 10,
@@ -31,9 +31,9 @@ const Teams = () => {
       labels: ['Dev', 'Al', 'Cloud'],
       team: {
         group: [
-          { filename: '300-6.jpg', variant: 'size-7' },
-          { filename: '300-10.jpg', variant: 'size-7' },
-          { filename: '300-13.jpg', variant: 'size-7' }
+          { filename: '300-5.png', variant: 'size-7' },
+          { filename: '300-7.png', variant: 'size-7' },
+          { filename: '300-11.png', variant: 'size-7' }
         ]
       },
       connected: true,
@@ -46,9 +46,9 @@ const Teams = () => {
       labels: ['Marketing', 'Brand'],
       team: {
         group: [
-          { filename: '300-4.jpg', variant: 'size-7' },
-          { filename: '300-5.jpg', variant: 'size-7' },
-          { filename: '300-6.jpg', variant: 'size-7' },
+          { filename: '300-4.png', variant: 'size-7' },
+          { filename: '300-5.png', variant: 'size-7' },
+          { filename: '300-6.png', variant: 'size-7' },
           {
             fallback: 'S',
             variant: 'text-primary-inverse size-7 ring-primary-light bg-primary'
@@ -65,8 +65,8 @@ const Teams = () => {
       labels: ['Analytics', 'Data'],
       team: {
         group: [
-          { filename: '300-4.jpg', variant: 'size-7' },
-          { filename: '300-7.jpg', variant: 'size-7' }
+          { filename: '300-23.png', variant: 'size-7' },
+          { filename: '300-31.png', variant: 'size-7' }
         ],
         className: 'lg:justify-end'
       },
@@ -80,9 +80,9 @@ const Teams = () => {
       labels: ['Marketing', 'Brand'],
       team: {
         group: [
-          { filename: '300-11.jpg', variant: 'size-7' },
-          { filename: '300-12.jpg', variant: 'size-7' },
-          { filename: '300-14.jpg', variant: 'size-7' },
+          { filename: '300-11.png', variant: 'size-7' },
+          { filename: '300-1.png', variant: 'size-7' },
+          { filename: '300-14.png', variant: 'size-7' },
           {
             fallback: 'A',
             variant: 'text-primary-inverse size-7 ring-primary-light bg-primary'
@@ -99,10 +99,10 @@ const Teams = () => {
       labels: ['Dev', 'Al', 'Cloud'],
       team: {
         group: [
-          { filename: '300-16.jpg', variant: 'size-7' },
-          { filename: '300-15.jpg', variant: 'size-7' },
-          { filename: '300-17.jpg', variant: 'size-7' },
-          { filename: '300-20.jpg', variant: 'size-7' }
+          { filename: '300-16.png', variant: 'size-7' },
+          { filename: '300-15.png', variant: 'size-7' },
+          { filename: '300-17.png', variant: 'size-7' },
+          { filename: '300-20.png', variant: 'size-7' }
         ]
       },
       connected: true,
@@ -115,9 +115,9 @@ const Teams = () => {
       labels: ['Creative', 'Strat'],
       team: {
         group: [
-          { filename: '300-21.jpg', variant: 'size-7' },
-          { filename: '300-23.jpg', variant: 'size-7' },
-          { filename: '300-25.jpg', variant: 'size-7' }
+          { filename: '300-21.png', variant: 'size-7' },
+          { filename: '300-23.png', variant: 'size-7' },
+          { filename: '300-25.png', variant: 'size-7' }
         ],
         more: {
           number: 10,
@@ -134,10 +134,10 @@ const Teams = () => {
       labels: ['Innovation', 'Tech'],
       team: {
         group: [
-          { filename: '300-7.jpg', variant: 'size-7' },
-          { filename: '300-3.jpg', variant: 'size-7' },
-          { filename: '300-12.jpg', variant: 'size-7' },
-          { filename: '300-19.jpg', variant: 'size-7' }
+          { filename: '300-7.png', variant: 'size-7' },
+          { filename: '300-3.png', variant: 'size-7' },
+          { filename: '300-12.png', variant: 'size-7' },
+          { filename: '300-19.png', variant: 'size-7' }
         ]
       },
       connected: true,
@@ -150,9 +150,9 @@ const Teams = () => {
       labels: ['Marketing', 'Brand'],
       team: {
         group: [
-          { filename: '300-22.jpg', variant: 'size-7' },
-          { filename: '300-24.jpg', variant: 'size-7' },
-          { filename: '300-29.jpg', variant: 'size-7' },
+          { filename: '300-22.png', variant: 'size-7' },
+          { filename: '300-24.png', variant: 'size-7' },
+          { filename: '300-29.png', variant: 'size-7' },
           {
             fallback: 'K',
             variant: 'text-info-inverse size-7 ring-info-light bg-info'

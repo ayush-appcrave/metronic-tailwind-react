@@ -21,7 +21,7 @@ const BloggerPage = () => {
   return (
     <>
       <UserProfileHero
-        name="Inferno"
+        name="Jenny Klabber"
         image={image}
         info={[
           { label: 'KeenThemes', icon: 'dribbble' },

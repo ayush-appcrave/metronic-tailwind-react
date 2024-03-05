@@ -5,7 +5,7 @@ const Offer = () => {
   return (
     <div
       className="card border-dashed border-brand-clarity bg-center bg-cover bg-no-repeat"
-      style={{ backgroundImage: toAbsoluteUrl('/images/content/patterns/1600x800/5.png') }}
+      style={{ backgroundImage: toAbsoluteUrl('/images/content/patterns/2600x1200/5.png') }}
     >
       <div className="card-body grid items-center">
         <div className="grid gap-5">
@@ -34,7 +34,7 @@ const Offer = () => {
                 />
               </svg>
               <div className="absolute leading-none left-2/4 top-2/4 -translate-y-2/4 -translate-x-2/4">
-                <KeenIcon icon="rocket" className="text-[2rem] ps-px text-brand" />
+                <KeenIcon icon="rocket" className="text-3xl ps-px text-brand" />
               </div>
             </div>
           </div>

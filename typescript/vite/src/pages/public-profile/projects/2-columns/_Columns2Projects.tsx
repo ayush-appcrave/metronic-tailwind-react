@@ -10,14 +10,14 @@ const Columns2Projects = () => {
         variant: 'badge-primary',
         label: 'In Progress'
       },
-      logo: 'jira.png',
+      logo: 'office.svg',
       title: 'Phoenix SaaS',
       description: 'Cloud storage and file sharing',
       team: {
         group: [
-          { filename: '300-9.jpg', variant: 'size-7' },
-          { filename: '300-2.jpg', variant: 'size-7' },
-          { filename: '300-1.jpg', variant: 'size-7' },
+          { filename: '300-4.png', variant: 'size-7' },
+          { filename: '300-1.png', variant: 'size-7' },
+          { filename: '300-2.png', variant: 'size-7' },
           {
             fallback: 'S',
             variant: 'text-primary-inverse size-7 ring-primary-light bg-primary'
@@ -48,14 +48,14 @@ const Columns2Projects = () => {
         variant: '',
         label: 'Upcoming'
       },
-      logo: 'jira.png',
+      logo: 'btcchina.svg',
       title: 'Golden Gate Analytics',
       description: 'Team communication and collaboration tool',
       team: {
         group: [
-          { filename: '300-3.jpg', variant: 'size-7' },
-          { filename: '300-4.jpg', variant: 'size-7' },
-          { filename: '300-5.jpg', variant: 'size-7' }
+          { filename: '300-5.png', variant: 'size-7' },
+          { filename: '300-17.png', variant: 'size-7' },
+          { filename: '300-16.png', variant: 'size-7' }
         ]
       },
       statistics: [
@@ -82,13 +82,13 @@ const Columns2Projects = () => {
         variant: '',
         label: 'Upcoming'
       },
-      logo: 'jira.png',
+      logo: 'jira.svg',
       title: 'SparkleTech',
       description: 'Short-term accommodation marketplace',
       team: {
         group: [
-          { filename: '300-6.jpg', variant: 'size-7' },
-          { filename: '300-7.jpg', variant: 'size-7' }
+          { filename: '300-19.png', variant: 'size-7' },
+          { filename: '300-9.png', variant: 'size-7' }
         ]
       },
       statistics: [
@@ -115,13 +115,13 @@ const Columns2Projects = () => {
         variant: 'badge-success',
         label: 'Completed'
       },
-      logo: 'jira.png',
+      logo: 'equacoin.svg',
       title: 'Nexus Design System',
       description: 'Visual discovery and inspiration',
       team: {
         group: [
-          { filename: '300-12.jpg', variant: 'size-7' },
-          { filename: '300-13.jpg', variant: 'size-7' },
+          { filename: '300-5.png', variant: 'size-7' },
+          { filename: '300-11.png', variant: 'size-7' },
           {
             fallback: 'W',
             variant: 'text-warning-inverse size-7 ring-warning-light bg-warning'
@@ -152,14 +152,14 @@ const Columns2Projects = () => {
         variant: 'badge-success',
         label: 'Completed'
       },
-      logo: 'jira.png',
+      logo: 'slack.svg',
       title: 'Neptune App',
       description: 'Peer-to-peer mobile payment service',
       team: {
         group: [
-          { filename: '300-3.jpg', variant: 'size-7' },
-          { filename: '300-2.jpg', variant: 'size-7' },
-          { filename: '300-6.jpg', variant: 'size-7' },
+          { filename: '300-17.png', variant: 'size-7' },
+          { filename: '300-1.png', variant: 'size-7' },
+          { filename: '300-19.png', variant: 'size-7' },
           {
             fallback: 'P',
             variant: 'text-info-inverse size-7 ring-info-light bg-info'
@@ -190,14 +190,14 @@ const Columns2Projects = () => {
         variant: 'badge-primary',
         label: 'In Progress'
       },
-      logo: 'jira.png',
+      logo: 'grab.svg',
       title: 'Radiant Wave',
       description: 'Team communication and collaboration',
       team: {
         group: [
-          { filename: '300-9.jpg', variant: 'size-7' },
-          { filename: '300-2.jpg', variant: 'size-7' },
-          { filename: '300-1.jpg', variant: 'size-7' },
+          { filename: '300-24.png', variant: 'size-7' },
+          { filename: '300-7.png', variant: 'size-7' },
+          { filename: '300-9.png', variant: 'size-7' },
           {
             fallback: 'S',
             variant: 'text-primary-inverse size-7 ring-primary-light bg-primary'
