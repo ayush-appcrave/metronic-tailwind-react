@@ -10,7 +10,7 @@ import {
   ToolbarPageTitle
 } from '@/partials/toolbar';
 
-import { AdvancedSettingsAddress, SidebarScrollspyMenu  } from './';
+import { SettingsSidebarContent } from './';
 
 const SettingsSidebarPage = () => {
   return (
@@ -41,13 +41,7 @@ const SettingsSidebarPage = () => {
       </Container>
 
       <Container>
-        <div className="flex grow gap-5 lg:gap-7.5">
-          <SidebarScrollspyMenu />
-
-          <div className="flex flex-col items-stretch grow gap-5 lg:gap-7.5">
-            <AdvancedSettingsAddress />
-          </div>
-        </div>
+        <SettingsSidebarContent />
       </Container>
     </>
   );

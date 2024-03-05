@@ -1,6 +1,6 @@
 export interface IScrollspyMenuItem {
-  title?: string;
-  path?: string;
+  title: string;
+  url?: string;
   active?: boolean;
   children?: IScrollspyMenuItem[];
 }
@@ -8,5 +8,6 @@ export interface IScrollspyMenuItem {
 export interface IScrollspyMenuItems extends Array<IScrollspyMenuItem> {}
 
 export interface IScrollspyMenuProps {
-  items: IScrollspyMenuItems;
+  items: IScrollspyMenuItem[];
+  offset: string;
 }
