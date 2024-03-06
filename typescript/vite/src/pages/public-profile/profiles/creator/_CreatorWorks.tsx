@@ -7,54 +7,54 @@ const CreatorWorks = () => {
     {
       url: '#',
       title: 'Urban Dreams',
-      image: '/images/content/600x400/1.jpg',
+      image: '1.jpg',
       authorName: 'Cody Fisher',
-      authorAvatar: '/images/content/avatars/300-6.png',
+      authorAvatar: '300-6.png',
       likes: 24,
       comments: 5
     },
     {
       url: '#',
       title: 'Timeless Elegance',
-      image: '/images/content/600x400/2.jpg',
+      image: '2.jpg',
       authorName: 'Jenny Wilson',
-      authorAvatar: '/images/content/avatars/300-5.png',
+      authorAvatar: '300-5.png',
       likes: 6,
       comments: 1
     },
     {
       url: '#',
       title: 'Whispered Emotions',
-      image: '/images/content/600x400/3.jpg',
+      image: '3.jpg',
       authorName: 'Wade Warren',
-      authorAvatar: '/images/content/avatars/300-14.png',
+      authorAvatar: '300-14.png',
       likes: 187,
       comments: 49
     },
     {
       url: '#',
       title: 'Golden Serenity',
-      image: '/images/content/600x400/4.jpg',
+      image: '4.jpg',
       authorName: 'Albert Flores',
-      authorAvatar: '/images/content/avatars/300-11.png',
+      authorAvatar: '300-11.png',
       likes: 60,
       comments: 13
     },
     {
       url: '#',
       title: 'Wild Beauty',
-      image: '/images/content/600x400/9.jpg',
+      image: '9.jpg',
       authorName: 'Devon Lane',
-      authorAvatar: '/images/content/avatars/300-16.png',
+      authorAvatar: '300-16.png',
       likes: 625,
       comments: 109
     },
     {
       url: '#',
       title: 'Mystic Shadows',
-      image: '/images/content/600x400/10.jpg',
+      image: '10.jpg',
       authorName: 'Kathryn Murphy',
-      authorAvatar: '/images/content/avatars/300-1.png',
+      authorAvatar: '300-1.png',
       likes: 37,
       comments: 16
     }

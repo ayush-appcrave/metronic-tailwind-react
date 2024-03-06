@@ -1,3 +1,11 @@
+import {
+  BloggingConference,
+  Login,
+  NewProduct,
+  ProductSpecific,
+  ProductWebinar
+} from '@/partials/activities/items';
+
 import { IGamerActivityProps } from './interfaces';
 
 const GamerActivity = ({ url }: IGamerActivityProps) => {
@@ -10,7 +18,7 @@ const GamerActivity = ({ url }: IGamerActivityProps) => {
           <label className="switch">
             <input className="order-2" type="checkbox" value="1" name="check" defaultChecked />
             <span className="switch-label order-1">
-              Auto refresh:
+              &nbsp;Auto refresh:
               <span className="hidden switch-off:inline">Off</span>
               <span className="hidden switch-on:inline">On</span>
             </span>
@@ -18,7 +26,18 @@ const GamerActivity = ({ url }: IGamerActivityProps) => {
         </div>
       </div>
 
-      <div className="card-body">Example content</div>
+      <div className="card-body">
+        <NewProduct />
+        <ProductWebinar url="#" />
+        <Login />
+        <BloggingConference
+          image="media/illustration/10.svg"
+          heading="Email campaign sent to Jenny for a special promotion."
+          datetime="1 week ago, 11:45 AM"
+          title="First Campaign Created"
+        />
+        <ProductSpecific />
+      </div>
 
       <div className="card-footer justify-center">
         <a href={url} className="btn btn-link">

@@ -1,9 +1,8 @@
 import { KeenIcon } from '@/components';
-import { NewArticle } from '@/partials/activities/items';
 
 import { ITimelinesWrapperProps } from './interfaces';
 
-const TimelinesWrapper = ({ line, icon }: ITimelinesWrapperProps) => {
+const TimelinesWrapper = ({ line, icon, children }: ITimelinesWrapperProps) => {
   return (
     <div className="flex items-start relative">
       {line && (
@@ -13,9 +12,7 @@ const TimelinesWrapper = ({ line, icon }: ITimelinesWrapperProps) => {
       <div className="flex items-center justify-center shrink-0 rounded-full bg-gray-100 border border-gray-300 size-9 text-gray-600">
         <KeenIcon icon={icon} className="text-base" />
       </div>
-      <div className="pl-2.5 mb-7 text-md grow">
-        <NewArticle />
-      </div>
+      <div className="pl-2.5 mb-7 text-md grow">{children}</div>
     </div>
   );
 };

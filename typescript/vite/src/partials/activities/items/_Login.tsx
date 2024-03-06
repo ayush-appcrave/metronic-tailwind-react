@@ -1,19 +1,19 @@
 import { TimelinesWrapper } from '@/partials/timelines/default/item';
 
-const NewArticle = () => {
+const Login = () => {
   return (
-    <TimelinesWrapper icon="people" line={true}>
+    <TimelinesWrapper icon="entrance-left" line={true}>
       <div className="flex flex-col">
         <div className="text-sm font-medium text-gray-800">
-          Posted a new article
+          Jenny&apos;s last login to the
           <a href="#" className="text-sm font-medium text-primary hover:text-primary-active">
-            &nbsp;Top 10 Tech Trends&nbsp;
+            &nbsp;Customer Portal&nbsp;
           </a>
         </div>
-        <span className="text-xs font-medium text-gray-500">Today, 9:00 AM</span>
+        <span className="text-xs font-medium text-gray-500">5 days ago, 4:07 PM</span>
       </div>
     </TimelinesWrapper>
   );
 };
 
-export { NewArticle };
+export { Login };

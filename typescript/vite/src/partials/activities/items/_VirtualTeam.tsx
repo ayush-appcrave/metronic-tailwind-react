@@ -1,19 +1,20 @@
 import { TimelinesWrapper } from '@/partials/timelines/default/item';
 
-const NewArticle = () => {
+const VirtualTeam = () => {
   return (
-    <TimelinesWrapper icon="people" line={true}>
+    <TimelinesWrapper icon="like-shapes" line={false}>
       <div className="flex flex-col">
         <div className="text-sm font-medium text-gray-800">
-          Posted a new article
+          Hosted a virtual
           <a href="#" className="text-sm font-medium text-primary hover:text-primary-active">
-            &nbsp;Top 10 Tech Trends&nbsp;
+            &nbsp;team-building event
           </a>
+          , fostering collaboration and strengthening bonds among team members.
         </div>
-        <span className="text-xs font-medium text-gray-500">Today, 9:00 AM</span>
+        <span className="text-xs font-medium text-gray-500">1 month ago, 13:56 PM</span>
       </div>
     </TimelinesWrapper>
   );
 };
 
-export { NewArticle };
+export { VirtualTeam };

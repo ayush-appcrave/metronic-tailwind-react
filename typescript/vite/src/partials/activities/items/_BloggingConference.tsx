@@ -1,10 +1,11 @@
+import { TimelinesWrapper } from '@/partials/timelines/default/item';
 import { toAbsoluteUrl } from '@/utils/Assets';
 
 import { IBloggingConferenceProps } from './interfaces';
 
 const BloggingConference = ({ heading, datetime, image, title }: IBloggingConferenceProps) => {
   return (
-    <>
+    <TimelinesWrapper icon="directbox-default" line={true}>
       <div className="flex flex-col pb-2.5">
         <span className="text-sm font-medium text-gray-800">
           {heading ?? 'Attending the virtual blogging conference was an enriching experience'}
@@ -29,14 +30,14 @@ const BloggingConference = ({ heading, datetime, image, title }: IBloggingConfer
           </div>
           <div className="flex items-center justify-center gap-1">
             <a href="#" className="text-2sm font-semibold text-primary hover:text-primary-active">
-              Axio new release
+              &nbsp;Axio new release&nbsp;
             </a>
             <span className="text-2sm font-medium text-gray-600 mr-2">email campaign</span>
             <span className="badge badge-sm badge-success badge-outline">Public</span>
           </div>
         </div>
       </div>
-    </>
+    </TimelinesWrapper>
   );
 };
 

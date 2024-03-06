@@ -4,3 +4,7 @@ export interface IBloggingConferenceProps {
   image?: string;
   title?: string;
 }
+
+export interface IProductWebinarProps {
+  url: string;
+}
