@@ -4,7 +4,6 @@ export interface IScrollspyMenuItem {
   active?: boolean;
   children?: IScrollspyMenuItem[];
 }
-
 export interface IScrollspyMenuItems extends Array<IScrollspyMenuItem> {}
 
 export interface IScrollspyMenuProps {
