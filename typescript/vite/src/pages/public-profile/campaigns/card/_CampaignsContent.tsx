@@ -1,3 +1,5 @@
+import { useState } from 'react';
+
 import { KeenIcon } from '@/components';
 import { Campaign, CampaignRow } from '@/partials/cards';
 
@@ -8,6 +10,8 @@ import {
 } from './interfaces';
 
 const CampaignsContent = ({ mode }: ICampaignsContentProps) => {
+  const [currentMode, setCurrentMode] = useState(mode);
+
   const items: ICampaignsContentItems = [
     {
       logo: 'twitch-purple.svg',
@@ -210,22 +214,28 @@ const CampaignsContent = ({ mode }: ICampaignsContentProps) => {
         <div className="btn-group" data-tabs="true">
           <a
             href="#"
-            className={`btn btn-icon btn-sm ${mode === 'card' ? 'active' : ''}`}
+            className={`btn btn-icon btn-sm ${currentMode === 'card' ? 'active' : ''}`}
             data-tab-toggle="#campaigns_cards"
+            onClick={() => {
+              setCurrentMode('cards');
+            }}
           >
             <KeenIcon icon="category" />
           </a>
           <a
             href="#"
-            className={`btn btn-icon btn-sm ${mode === 'list' ? 'active' : ''}`}
+            className={`btn btn-icon btn-sm ${currentMode === 'list' ? 'active' : ''}`}
             data-tab-toggle="#campaigns_list"
+            onClick={() => {
+              setCurrentMode('list');
+            }}
           >
             <KeenIcon icon="row-horizontal" />
           </a>
         </div>
       </div>
 
-      <div id="campaigns_cards" className={mode === 'list' ? 'hidden' : ''}>
+      <div id="campaigns_cards" className={currentMode === 'list' ? 'hidden' : ''}>
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-5 lg:gap-7.5">
           {items.map((item, index) => {
             return renderProject(item, index);
@@ -239,7 +249,7 @@ const CampaignsContent = ({ mode }: ICampaignsContentProps) => {
         </div>
       </div>
 
-      <div className={mode === 'card' ? 'hidden' : ''} id="campaigns_list">
+      <div className={currentMode === 'card' ? 'hidden' : ''} id="campaigns_list">
         <div className="flex flex-col gap-5 lg:gap-7.5">
           {items.map((data, index) => {
             return renderItem(data, index);

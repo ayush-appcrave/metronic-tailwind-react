@@ -1,9 +1,13 @@
+import { useState } from 'react';
+
 import { KeenIcon } from '@/components';
 import { Team, TeamRow } from '@/partials/cards';
 
 import { ITeamsItem, ITeamsItems } from './interfaces';
 
 const Teams = () => {
+  const [activeView, setActiveView] = useState('cards');
+
   const items: ITeamsItems = [
     {
       icon: 'ghost',
@@ -200,42 +204,60 @@ const Teams = () => {
         <h3 className="text-lg text-gray-800 font-semibold">{items.length} Teams</h3>
 
         <div className="btn-group" data-tabs="true">
-          <a href="#" className="btn btn-icon btn-sm active" data-tab-toggle="#teams_cards">
+          <a
+            href="#"
+            className={`btn btn-icon btn-sm ${activeView === 'cards' ? 'active' : ''}`}
+            data-tab-toggle="#teams_cards"
+            onClick={() => {
+              setActiveView('cards');
+            }}
+          >
             <KeenIcon icon="category" />
           </a>
-          <a href="#" className="btn btn-icon btn-sm" data-tab-toggle="#teams_list">
+          <a
+            href="#"
+            className={`btn btn-icon btn-sm ${activeView === 'list' ? 'active' : ''}`}
+            data-tab-toggle="#teams_list"
+            onClick={() => {
+              setActiveView('list');
+            }}
+          >
             <KeenIcon icon="row-horizontal" />
           </a>
         </div>
       </div>
 
-      <div id="teams_cards">
-        <div className="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-5 lg:gap-7.5">
-          {items.map((item, index) => {
-            return renderItem(item, index);
-          })}
-        </div>
+      {activeView === 'cards' && (
+        <div id="teams_cards">
+          <div className="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-5 lg:gap-7.5">
+            {items.map((item, index) => {
+              return renderItem(item, index);
+            })}
+          </div>
 
-        <div className="flex grow justify-center pt-5 lg:pt-7.5">
-          <a href="#" className="btn btn-link">
-            Show more Teams
-          </a>
+          <div className="flex grow justify-center pt-5 lg:pt-7.5">
+            <a href="#" className="btn btn-link">
+              Show more Teams
+            </a>
+          </div>
         </div>
-      </div>
+      )}
 
-      <div className="hidden" id="teams_list">
-        <div className="flex flex-col gap-5 lg:gap-7.5">
-          {items.map((data, index) => {
-            return renderData(data, index);
-          })}
-        </div>
+      {activeView === 'list' && (
+        <div id="teams_list">
+          <div className="flex flex-col gap-5 lg:gap-7.5">
+            {items.map((data, index) => {
+              return renderData(data, index);
+            })}
+          </div>
 
-        <div className="flex grow justify-center pt-5 lg:pt-7.5">
-          <a href="#" className="btn btn-link">
-            Show more Teams
-          </a>
+          <div className="flex grow justify-center pt-5 lg:pt-7.5">
+            <a href="#" className="btn btn-link">
+              Show more Teams
+            </a>
+          </div>
         </div>
-      </div>
+      )}
     </div>
   );
 };

@@ -1,9 +1,13 @@
+import { useState } from 'react';
+
 import { KeenIcon } from '@/components';
 import { Project, ProjectRow } from '@/partials/cards';
 
 import { IColumns3ProjectsItem, IColumns3ProjectsItems } from './interfaces';
 
 const Columns3Projects = () => {
+  const [activeView, setActiveView] = useState('cards');
+
   const projects: IColumns3ProjectsItems = [
     {
       logo: 'plurk.svg',
@@ -343,42 +347,60 @@ const Columns3Projects = () => {
         <h3 className="text-lg text-gray-800 font-semibold">{projects.length} Projects</h3>
 
         <div className="btn-group" data-tabs="true">
-          <a href="#" className="btn btn-icon btn-sm active" data-tab-toggle="#projects_cards">
+          <a
+            href="#"
+            className={`btn btn-icon btn-sm ${activeView === 'cards' ? 'active' : ''}`}
+            data-tab-toggle="#projects_cards"
+            onClick={() => {
+              setActiveView('cards');
+            }}
+          >
             <KeenIcon icon="category" />
           </a>
-          <a href="#" className="btn btn-icon btn-sm" data-tab-toggle="#projects_list">
+          <a
+            href="#"
+            className={`btn btn-icon btn-sm ${activeView === 'list' ? 'active' : ''}`}
+            data-tab-toggle="#projects_list"
+            onClick={() => {
+              setActiveView('list');
+            }}
+          >
             <KeenIcon icon="row-horizontal" />
           </a>
         </div>
       </div>
 
-      <div id="projects_cards">
-        <div className="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-5 lg:gap-7.5">
-          {projects.map((project, index) => {
-            return renderProject(project, index);
-          })}
-        </div>
+      {activeView === 'cards' && (
+        <div id="projects_cards">
+          <div className="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-5 lg:gap-7.5">
+            {projects.map((project, index) => {
+              return renderProject(project, index);
+            })}
+          </div>
 
-        <div className="flex grow justify-center pt-5 lg:pt-7.5">
-          <a href="#" className="btn btn-link">
-            Show more projects
-          </a>
+          <div className="flex grow justify-center pt-5 lg:pt-7.5">
+            <a href="#" className="btn btn-link">
+              Show more projects
+            </a>
+          </div>
         </div>
-      </div>
+      )}
 
-      <div className="hidden" id="projects_list">
-        <div className="flex flex-col gap-5 lg:gap-7.5">
-          {projects.map((item, index) => {
-            return renderItem(item, index);
-          })}
-        </div>
+      {activeView === 'list' && (
+        <div id="projects_list">
+          <div className="flex flex-col gap-5 lg:gap-7.5">
+            {projects.map((item, index) => {
+              return renderItem(item, index);
+            })}
+          </div>
 
-        <div className="flex grow justify-center pt-5 lg:pt-7.5">
-          <a href="#" className="btn btn-link">
-            Show more projects
-          </a>
+          <div className="flex grow justify-center pt-5 lg:pt-7.5">
+            <a href="#" className="btn btn-link">
+              Show more projects
+            </a>
+          </div>
         </div>
-      </div>
+      )}
     </div>
   );
 };

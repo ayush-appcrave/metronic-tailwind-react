@@ -1,3 +1,5 @@
+import { useState } from 'react';
+
 import { KeenIcon } from '@/components';
 import { Work, WorkRow } from '@/partials/cards';
 
@@ -5,6 +7,8 @@ import { Offer, OfferRow } from './cards';
 import { IWorksItem, IWorksItems } from './interfaces';
 
 const Works = () => {
+  const [activeView, setActiveView] = useState('cards');
+
   const items: IWorksItems = [
     {
       url: '#',
@@ -124,43 +128,61 @@ const Works = () => {
         <h3 className="text-lg text-gray-800 font-semibold">{items.length} Works</h3>
 
         <div className="btn-group" data-tabs="true">
-          <a href="#" className="btn btn-icon btn-sm active" data-tab-toggle="#works_cards">
+          <a
+            href="#"
+            className={`btn btn-icon btn-sm ${activeView === 'cards' ? 'active' : ''}`}
+            data-tab-toggle="#works_cards"
+            onClick={() => {
+              setActiveView('cards');
+            }}
+          >
             <KeenIcon icon="category" />
           </a>
-          <a href="#" className="btn btn-icon btn-sm" data-tab-toggle="#works_list">
+          <a
+            href="#"
+            className={`btn btn-icon btn-sm ${activeView === 'list' ? 'active' : ''}`}
+            data-tab-toggle="#works_list"
+            onClick={() => {
+              setActiveView('list');
+            }}
+          >
             <KeenIcon icon="row-horizontal" />
           </a>
         </div>
       </div>
 
-      <div id="works_cards">
-        <div className="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-5 lg:gap-7.5">
-          {items.map((item, index) => {
-            return renderItem(item, index);
-          })}
-          <Offer />
-        </div>
+      {activeView === 'cards' && (
+        <div id="works_cards">
+          <div className="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-5 lg:gap-7.5">
+            {items.map((item, index) => {
+              return renderItem(item, index);
+            })}
+            <Offer />
+          </div>
 
-        <div className="flex grow justify-center pt-5 lg:pt-7.5">
-          <a href="#" className="btn btn-link">
-            Show more works
-          </a>
+          <div className="flex grow justify-center pt-5 lg:pt-7.5">
+            <a href="#" className="btn btn-link">
+              Show more works
+            </a>
+          </div>
         </div>
-      </div>
+      )}
 
-      <div className="hidden" id="works_list">
-        <div className="flex flex-col gap-5 lg:gap-7.5">
-          {items.map((data, index) => {
-            return renderData(data, index);
-          })}
-          <OfferRow />
+      {activeView === 'list' && (
+        <div id="works_list">
+          <div className="flex flex-col gap-5 lg:gap-7.5">
+            {items.map((data, index) => {
+              return renderData(data, index);
+            })}
+            <OfferRow />
+          </div>
+          <div className="flex grow justify-center pt-5 lg:pt-7.5">
+            <a href="#" className="btn btn-link">
+              Show more works
+            </a>
+          </div>
         </div>
-        <div className="flex grow justify-center pt-5 lg:pt-7.5">
-          <a href="#" className="btn btn-link">
-            Show more works
-          </a>
-        </div>
-      </div>
+      )}
     </div>
   );
 };

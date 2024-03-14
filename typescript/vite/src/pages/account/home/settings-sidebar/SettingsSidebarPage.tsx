@@ -26,14 +26,9 @@ const SettingsSidebarPage = () => {
           <ToolbarHeading>
             <ToolbarPageTitle />
             <ToolbarDescription>
-              <span className="text-gray-700">Jayson Tatum</span>
-              <a href="mailto:jaytatum@ktstudio.com" className="text-gray-600 hover:text-primary">
-                jaytatum@ktstudio.com
-              </a>
-              <span className="size-0.75 bg-gray-600 rounded-full"></span>
-              <a href="#" className="font-semibold text-primary hover:text-primary-active">
-                Personal Info
-              </a>
+              <span className="flex items-center gap-2 text-sm font-medium text-gray-600">
+                Intuitive Access to In-Depth Customization
+              </span>
             </ToolbarDescription>
           </ToolbarHeading>
           <ToolbarActions>Buttons</ToolbarActions>
