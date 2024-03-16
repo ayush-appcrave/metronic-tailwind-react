@@ -2,12 +2,16 @@ import { createContext, type PropsWithChildren, useContext, useState } from 'rea
 
 import { getData, setData } from '../utils';
 
-interface ILayoutConfig {
+export interface ILayoutConfig {
   name: string;
   options: any;
 }
 
-interface ILayoutsProps {
+export interface ILayoutProvider {
+  layout: ILayoutConfig;
+}
+
+export interface ILayoutsProps {
   getLayout: (name: string) => Partial<ILayoutConfig> | undefined;
   hasLayout: (name: string) => boolean;
   updateLayout: (name: string, config: Partial<ILayoutConfig>) => void;
@@ -72,4 +76,4 @@ const LayoutProvider = ({ children }: PropsWithChildren) => {
   );
 };
 
-export { type ILayoutConfig, LayoutContext, LayoutProvider, useLayout };
+export { LayoutContext, LayoutProvider, useLayout };

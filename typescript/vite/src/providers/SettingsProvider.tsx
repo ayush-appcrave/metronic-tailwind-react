@@ -1,9 +1,14 @@
 import { createContext, type PropsWithChildren, useContext, useState } from 'react';
 
-import { defaultSettings } from '@/config/';
+import { defaultSettings } from '@/config/settings.config';
 import { ISettings, type SettingsModeType } from '@/config/types';
 
 import { getData, setData } from '../utils/LocalStorage';
+
+export interface ISetttingsConfig {
+  name: string;
+  options: any;
+}
 
 export interface ISettingsProps {
   settings: ISettings;

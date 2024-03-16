@@ -1,11 +1,16 @@
 import { Container } from '@/components/container';
-import { MENU_SIDEBAR } from '@/config/menu.config';
 import { UserProfileHero } from '@/partials/heros';
 import { NavbarMenu } from '@/partials/menu/NavbarMenu';
 import { Navbar, NavbarActions } from '@/partials/navbar';
+import { useMenu } from '@/providers';
 import { toAbsoluteUrl } from '@/utils/Assets';
 
+import { CreatorContent } from '.';
+
 const CreatorPage = () => {
+  const { getMenuConfig } = useMenu();
+  const secondaryMenu = getMenuConfig('secondary');
+
   const image = (
     <div className="flex items-center justify-center rounded-full border-2 border-danger-clarity h-[100px] w-[100px]">
       <img
@@ -18,7 +23,7 @@ const CreatorPage = () => {
   return (
     <>
       <UserProfileHero
-        name="Inferno"
+        name="Duolingo"
         image={image}
         info={[
           { label: 'inferno.com', icon: 'abstract-39' },
@@ -29,12 +34,14 @@ const CreatorPage = () => {
 
       <Container>
         <Navbar>
-          {MENU_SIDEBAR[2]?.children && <NavbarMenu items={MENU_SIDEBAR[2].children} />}
+          {secondaryMenu && <NavbarMenu items={secondaryMenu} />}
           <NavbarActions>Buttons</NavbarActions>
         </Navbar>
       </Container>
 
-      <Container>Example content</Container>
+      <Container>
+        <CreatorContent />
+      </Container>
     </>
   );
 };

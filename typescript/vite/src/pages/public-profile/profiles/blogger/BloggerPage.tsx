@@ -1,11 +1,16 @@
 import { Container } from '@/components/container';
-import { MENU_SIDEBAR } from '@/config/menu.config';
 import { UserProfileHero } from '@/partials/heros';
 import { NavbarMenu } from '@/partials/menu/NavbarMenu';
 import { Navbar, NavbarActions } from '@/partials/navbar';
+import { useMenu } from '@/providers';
 import { toAbsoluteUrl } from '@/utils/Assets';
 
+import { BloggerContent } from '.';
+
 const BloggerPage = () => {
+  const { getMenuConfig } = useMenu();
+  const secondaryMenu = getMenuConfig('secondary');
+
   const image = (
     <img
       src={toAbsoluteUrl('/images/content/avatars/300-2.jpg')}
@@ -27,12 +32,14 @@ const BloggerPage = () => {
 
       <Container>
         <Navbar>
-          {MENU_SIDEBAR[2]?.children && <NavbarMenu items={MENU_SIDEBAR[2].children} />}
+          {secondaryMenu && <NavbarMenu items={secondaryMenu} />}
           <NavbarActions>Buttons</NavbarActions>
         </Navbar>
       </Container>
 
-      <Container>Example content</Container>
+      <Container>
+        <BloggerContent />
+      </Container>
     </>
   );
 };

@@ -5,6 +5,8 @@ import { Navbar, NavbarActions } from '@/partials/navbar';
 import { useMenu } from '@/providers';
 import { toAbsoluteUrl } from '@/utils/Assets';
 
+import { DefaultContent } from '.';
+
 const DefaultPage = () => {
   const { getMenuConfig } = useMenu();
   const secondaryMenu = getMenuConfig('secondary');
@@ -33,6 +35,10 @@ const DefaultPage = () => {
           {secondaryMenu && <NavbarMenu items={secondaryMenu} />}
           <NavbarActions>Buttons</NavbarActions>
         </Navbar>
+      </Container>
+
+      <Container>
+        <DefaultContent />
       </Container>
     </>
   );

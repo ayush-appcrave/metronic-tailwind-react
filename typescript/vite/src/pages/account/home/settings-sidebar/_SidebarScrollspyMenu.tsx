@@ -1,6 +1,5 @@
 import { ScrollspyMenu, ScrollspyMenuItemsType } from '@/partials/menu';
 
-
 const SidebarScrollspyMenu = () => {
   const scrollspyItems: ScrollspyMenuItemsType = [
     {

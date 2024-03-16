@@ -5,8 +5,8 @@ export interface IScrollspyMenuItem {
   children?: IScrollspyMenuItem[];
 }
 
-export type ScrollspyMenuItemsType = IScrollspyMenuItem[];
+export interface IScrollspyMenuItems extends Array<IScrollspyMenuItem> {}
 
 export interface IScrollspyMenuProps {
-  items: ScrollspyMenuItemsType;
+  items: IScrollspyMenuItems;
 }
