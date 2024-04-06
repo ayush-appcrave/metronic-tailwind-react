@@ -1,9 +1,11 @@
 import { useEffect, useState } from 'react';
 
 const getMatches = (query: string): boolean => {
-  const [ maches, setMatches ] = useState<string[]>();
-
-  return window.matchMedia(query).matches;
+  // Prevents SSR issues
+  // if (typeof window !== 'undefined') {
+  //   return window.matchMedia(query).matches;
+  // }
+  return false;
 };
 
 const useMediaQuery = (query: string): boolean => {

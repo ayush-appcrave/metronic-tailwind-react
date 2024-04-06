@@ -6,9 +6,6 @@ import { Navbar, NavbarActions } from '@/partials/navbar';
 import { toAbsoluteUrl } from '@/utils/Assets';
 
 import { GamerContent } from './_GamerContent';
-import {ReactElement} from "react";
-import {Demo1Layout} from "@/layouts/demo1";
-import FeedsPage from "@/pages/public-profile/profiles/feeds/FeedsPage";
 
 const GamerPage = () => {
   const image = (
@@ -43,7 +40,5 @@ const GamerPage = () => {
     </>
   );
 };
-
-GamerPage.getLayout = (page: ReactElement) => <Demo1Layout>{page}</Demo1Layout>;
 
 export default  GamerPage ;

@@ -4,7 +4,7 @@ import {PropsWithChildren} from "react";
 const Demo1Layout = ({ children }: PropsWithChildren) => {
   return (
     <Demo1LayoutProvider>
-      <Main children={children} />
+        <Main>{children}</Main>
     </Demo1LayoutProvider>
   );
 };

@@ -8,13 +8,13 @@ import { SidebarContent, SidebarFooter, SidebarHeader } from './';
 
 const Sidebar = () => {
   const desktopMode = useResponsive('up', 'lg');
-  const { mobileSidebarOpen, setMobileSidebarOpen } = useDemo1Layout();
+  // const { mobileSidebarOpen, setMobileSidebarOpen } = useDemo1Layout();
   const [headerHeight, setHeaderHeight] = useState(0);
   const [footerHeight, setFooterHeight] = useState(0);
 
-  const handleMobileSidebarClose = () => {
-    setMobileSidebarOpen(false);
-  };
+  // const handleMobileSidebarClose = () => {
+  //   setMobileSidebarOpen(false);
+  // };
 
   const renderContent = () => {
     return (
@@ -31,8 +31,6 @@ const Sidebar = () => {
   } else {
     return (
       <Drawer
-        open={mobileSidebarOpen}
-        onClose={handleMobileSidebarClose}
         PaperProps={{
           sx: {
             borderRightWidth: '0px',

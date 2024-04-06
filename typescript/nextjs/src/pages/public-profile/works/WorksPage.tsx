@@ -4,8 +4,6 @@ import { UserProfileHero } from '@/partials/heros';
 import { NavbarMenu } from '@/partials/menu/NavbarMenu';
 import { Navbar, NavbarActions } from '@/partials/navbar';
 import { toAbsoluteUrl } from '@/utils/Assets';
-import {ReactElement} from "react";
-import {Demo1Layout} from "@/layouts/demo1";
 
 const WorksPage = () => {
   const image = (
@@ -38,7 +36,5 @@ const WorksPage = () => {
     </>
   );
 };
-
-WorksPage.getLayout = (page: ReactElement) => <Demo1Layout>{page}</Demo1Layout>;
 
 export default  WorksPage ;

@@ -1,6 +1,6 @@
 import type { Metadata, NextPage } from 'next'
 import type { AppProps } from 'next/app'
-import { ReactElement, ReactNode } from 'react'
+import {ReactElement, ReactNode, useEffect} from 'react'
 import '@/components/keenicons/assets/duotone/style.css';
 import '@/components/keenicons/assets/outline/style.css';
 import '@/components/keenicons/assets/solid/style.css';
@@ -20,6 +20,7 @@ type AppPropsWithLayout = AppProps & {
 }
 
 export default function MyApp({ Component, pageProps }: AppPropsWithLayout) {
+
   // Use the layout defined at the page level, if available
   const getLayout = Component.getLayout || ((page) => page)
  

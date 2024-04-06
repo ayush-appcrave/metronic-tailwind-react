@@ -6,9 +6,6 @@ import { Navbar, NavbarActions } from '@/partials/navbar';
 import { toAbsoluteUrl } from '@/utils/Assets';
 
 import { CRMContent } from '.';
-import {ReactElement} from "react";
-import {Demo1Layout} from "@/layouts/demo1";
-import CreatorPage from "@/pages/public-profile/profiles/creator/CreatorPage";
 
 const CRMPage = () => {
   const image = (
@@ -43,7 +40,5 @@ const CRMPage = () => {
     </>
   );
 };
-
-CRMPage.getLayout = (page: ReactElement) => <Demo1Layout>{page}</Demo1Layout>;
 
 export default  CRMPage ;

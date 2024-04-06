@@ -6,9 +6,6 @@ import { useMenu } from '@/providers';
 import { toAbsoluteUrl } from '@/utils/Assets';
 
 import { CreatorContent } from '.';
-import {ReactElement} from "react";
-import {Demo1Layout} from "@/layouts/demo1";
-import CompanyPage from "@/pages/public-profile/profiles/company/CompanyPage";
 
 const CreatorPage = () => {
   const { getMenuConfig } = useMenu();
@@ -48,7 +45,5 @@ const CreatorPage = () => {
     </>
   );
 };
-
-CreatorPage.getLayout = (page: ReactElement) => <Demo1Layout>{page}</Demo1Layout>;
 
 export default  CreatorPage ;

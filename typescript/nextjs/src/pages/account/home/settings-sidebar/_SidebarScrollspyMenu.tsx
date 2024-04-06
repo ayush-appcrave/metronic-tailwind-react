@@ -1,7 +1,7 @@
 import { ScrollspyMenu, ScrollspyMenuItemsType } from '@/partials/menu';
 import {ReactElement} from "react";
 import {Demo1Layout} from "@/layouts/demo1";
-import GetStartedPage from "@/pages/account/home/get-started/GetStartedPage";
+import {GetStartedPage} from "@/pages/account";
 
 const SidebarScrollspyMenu = () => {
   const scrollspyItems: ScrollspyMenuItemsType = [

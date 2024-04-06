@@ -4,9 +4,6 @@ import { UserProfileHero } from '@/partials/heros';
 import { NavbarMenu } from '@/partials/menu/NavbarMenu';
 import { Navbar, NavbarActions } from '@/partials/navbar';
 import { toAbsoluteUrl } from '@/utils/Assets';
-import {ReactElement} from "react";
-import {Demo1Layout} from "@/layouts/demo1";
-import CampaignsCardPage from "@/pages/public-profile/campaigns/card/CampaignsCardPage";
 
 const CampaignsListPage = () => {
   const image = (
@@ -39,7 +36,5 @@ const CampaignsListPage = () => {
     </>
   );
 };
-
-CampaignsListPage.getLayout = (page: ReactElement) => <Demo1Layout>{page}</Demo1Layout>;
 
 export default  CampaignsListPage ;

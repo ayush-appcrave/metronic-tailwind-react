@@ -6,9 +6,6 @@ import { Navbar, NavbarActions } from '@/partials/navbar';
 import { toAbsoluteUrl } from '@/utils/Assets';
 
 import { CompanyContent } from '.';
-import {ReactElement} from "react";
-import {Demo1Layout} from "@/layouts/demo1";
-import BloggerPage from "@/pages/public-profile/profiles/blogger/BloggerPage";
 
 const CompanyPage = () => {
   const image = (
@@ -40,7 +37,5 @@ const CompanyPage = () => {
     </>
   );
 };
-
-CompanyPage.getLayout = (page: ReactElement) => <Demo1Layout>{page}</Demo1Layout>;
 
 export default  CompanyPage ;

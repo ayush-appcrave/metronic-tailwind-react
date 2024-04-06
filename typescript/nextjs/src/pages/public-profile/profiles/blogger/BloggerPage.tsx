@@ -6,9 +6,6 @@ import { useMenu } from '@/providers';
 import { toAbsoluteUrl } from '@/utils/Assets';
 
 import { BloggerContent } from '.';
-import {ReactElement} from "react";
-import {Demo1Layout} from "@/layouts/demo1";
-import NetworkPage from "@/pages/public-profile/network/NetworkPage";
 
 const BloggerPage = () => {
   const { getMenuConfig } = useMenu();
@@ -46,7 +43,5 @@ const BloggerPage = () => {
     </>
   );
 };
-
-BloggerPage.getLayout = (page: ReactElement) => <Demo1Layout>{page}</Demo1Layout>;
 
 export default  BloggerPage ;

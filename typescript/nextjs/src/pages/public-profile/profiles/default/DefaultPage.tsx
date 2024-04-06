@@ -6,9 +6,6 @@ import { useMenu } from '@/providers';
 import { toAbsoluteUrl } from '@/utils/Assets';
 
 import { DefaultContent } from '.';
-import {ReactElement} from "react";
-import {Demo1Layout} from "@/layouts/demo1";
-import CRMPage from "@/pages/public-profile/profiles/crm/CRMPage";
 
 const DefaultPage = () => {
   const { getMenuConfig } = useMenu();
@@ -46,7 +43,5 @@ const DefaultPage = () => {
     </>
   );
 };
-
-DefaultPage.getLayout = (page: ReactElement) => <Demo1Layout>{page}</Demo1Layout>;
 
 export default  DefaultPage ;

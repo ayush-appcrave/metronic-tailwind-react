@@ -6,9 +6,6 @@ import { Navbar, NavbarActions } from '@/partials/navbar';
 import { toAbsoluteUrl } from '@/utils/Assets';
 
 import { PlainContent } from '.';
-import {ReactElement} from "react";
-import {Demo1Layout} from "@/layouts/demo1";
-import NFTPage from "@/pages/public-profile/profiles/nft/NFTPage";
 
 const PlainPage = () => {
   const image = (
@@ -43,7 +40,5 @@ const PlainPage = () => {
     </>
   );
 };
-
-PlainPage.getLayout = (page: ReactElement) => <Demo1Layout>{page}</Demo1Layout>;
 
 export default  PlainPage ;

@@ -8,8 +8,8 @@ interface Props {
 }
 
 const SidebarContent = ({ headerHeight = 0, footerHeight = 0 }: Props) => {
-  const [viewportHeight] = useViewport();
-  const scrollableHeight: number = viewportHeight - headerHeight - footerHeight;
+  // const [viewportHeight] = useViewport();
+  const scrollableHeight: number = 0;
 
   return (
     <div className="sidebar-content flex grow shrink-0 pt-5 lg:pt-0 pr-2">

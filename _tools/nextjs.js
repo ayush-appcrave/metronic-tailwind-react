@@ -5,10 +5,13 @@ const glob = require("glob");
 const path = require("path");
 const { promisify } = require('util');
 
-const vitePath = `../vite/src`;
-const nextJs = `nextjs/src`;
+const vitePath = `../typescript/vite`;
+const vitePathSrc = `../typescript/vite/src`;
+const nextJs = `../typescript/nextjs`
+const nextJsSrc = `../typescript/nextjs/src`;
 
 const filesToCopy = [
+  "css",
   "auth",
   "components",
   "config",
@@ -105,14 +108,12 @@ function searchFiles(directory) {
 
 
 const generateNextjs = async () => {
-
-  console.log("deleting folder");
-
+  console.log(">> Deleting folder <<");
   try {
-    await removeAsync('./nextjs');
-    console.log('Folder removed successfully.');
+    await removeAsync('nextjs');
+    console.log('>> Folder removed successfully. <<');
   } catch (error) {
-    console.error(`Error removing folder: ${error}`);
+    console.error(`>> Error removing folder: ${error} <<`);
   }
 
 console.log("creating new nextjs projecs");
@@ -121,68 +122,66 @@ exec(
   `npx create-next-app nextjs --ts --no-tailwind --eslint --app --src-dir --import-alias @/*`,
   async (err, output) => {
     if (err) {
-      console.error("Could not execute command: ", err);
+      console.error(">> Could not execute command: ", err);
       return;
     }
     console.log("Output: \n", output);
     console.log(">>> Created empty nextjs project <<<\n");
 
-    try {
+    await removeAsync(nextJs);
+    await fse.copy(`nextjs`, nextJs);
 
+    try {
         // copy entire src folder from vite
         await Promise.all(filesToCopy.map(async (file) => {
-          return await fse.copy(`${vitePath}/${file}`, `${nextJs}/${file}`)
+          return await fse.copy(`${vitePathSrc}/${file}`, `${nextJsSrc}/${file}`)
         }));
 
-        await fse.copy(`../vite/.env`, `nextjs/.env`);
-        await fse.copy(`../vite/tailwind.config.d.ts`, `nextjs/tailwind.config.d.ts`);
-        await fse.copy(`../vite/tailwind.config.js`, `nextjs/tailwind.config.js`);
-        await fse.copy(`../vite/postcss.config.cjs`, `nextjs/postcss.config.cjs`);
+        await fse.copy(`${vitePath}/.env`, `${nextJs}/.env`);
+        await fse.copy(`${vitePath}/tailwind.config.d.ts`, `${nextJs}/tailwind.config.d.ts`);
+        await fse.copy(`${vitePath}/tailwind.config.js`, `${nextJs}/tailwind.config.js`);
+        await fse.copy(`${vitePath}/postcss.config.cjs`, `${nextJs}/postcss.config.cjs`);
 
         console.log('Folder copied successfully.');
 
-        glob(path.join(nextJs, '**/*'), { nodir: true }, (error, files) => {
+        glob(path.join(nextJsSrc, '**/*'), { nodir: true }, (error, files) => {
           if (error) {
             console.error('Error:', error);
           } else {
             console.log('All files:', files);
 
-            searchFiles(nextJs);  
+            searchFiles(nextJsSrc);
           }
         });
 
         try {
-          await removeAsync('./nextjs/src/app');
+          await removeAsync(`${nextJsSrc}/app`);
           console.log('app folder removed successfully.');
         } catch (error) {
           console.error(`Error removing folder: ${error}`);
         }
 
-        await fse.copy(`nextjs-related-files/_app.tsx`, `${nextJs}/pages/_app.tsx`);
-        await fse.copy(`nextjs-related-files/index.ts`, `${nextJs}/pages/index.ts`);
+        await fse.copy(`nextjs-related-files/_app.tsx`, `${nextJsSrc}/pages/_app.tsx`);
+        await fse.copy(`nextjs-related-files/index.ts`, `${nextJsSrc}/pages/index.ts`);
         await fse.copy(`nextjs-related-files/next.config.mjs`, `nextjs/next.config.mjs`);
-        await fse.copy(`nextjs-related-files/useMatchPath.ts`, `${nextJs}/hooks/useMatchPath.ts`);
-        await fse.copy(`nextjs-related-files/wrapper/Wrapper.tsx`, `${nextJs}/layouts/demo1/wrapper/Wrapper.tsx`);
+        await fse.copy(`nextjs-related-files/useMatchPath.ts`, `${nextJsSrc}/hooks/useMatchPath.ts`);
+        await fse.copy(`nextjs-related-files/wrapper/Wrapper.tsx`, `${nextJsSrc}/layouts/demo1/wrapper/Wrapper.tsx`);
 
-        // Read the content of the source package.json file
-        const sourcePackageJson = fse.readJsonSync(`../vite/package.json`);
+        const sourcePackageJson = fse.readJsonSync(`${vitePath}/package.json`);
 
-        // Read the content of the destination package.json file
-        let destinationPackageJson = fse.readJsonSync(`nextjs/package.json`);
+        let destinationPackageJson = fse.readJsonSync(`${nextJs}/package.json`);
 
-        // Merge dependencies from source to destination
         destinationPackageJson.dependencies = {
           ...destinationPackageJson.dependencies,
           ...sourcePackageJson.dependencies,
         };
 
-        // Merge devDependencies if needed
         destinationPackageJson.devDependencies = {
           ...destinationPackageJson.devDependencies,
           ...sourcePackageJson.devDependencies,
         };
 
-        fse.writeJsonSync(`nextjs/package.json`, destinationPackageJson, { spaces: 2 });   
+        fse.writeJsonSync(`${nextJs}/package.json`, destinationPackageJson, { spaces: 2 });
 
       } catch (error) {
         console.log(error.message);
