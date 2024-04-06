@@ -109,7 +109,7 @@ const generateJsVersion = async () => {
           return;
         }
 
-        await fse.copy(`javascript`, `../javascript/vite`);
+        await fse.copy(`javascript`, outputPath);
 
         console.log(">> Successfully created empty vite javascript project <<");
 
