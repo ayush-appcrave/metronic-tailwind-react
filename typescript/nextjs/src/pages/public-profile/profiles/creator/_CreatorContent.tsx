@@ -1,13 +1,12 @@
-import { DefaultCommunityBadges, DefaultTags } from '../default';
-import {
-  CreatorActivities,
-  CreatorFeaturesHighlight,
-  CreatorStatistics,
-  CreatorSummary,
-  CreatorUpcomingEvents,
-  CreatorUsers,
-  CreatorWorks
-} from '.';
+import { DefaultTags } from '@/pages/public-profile/profiles/default/_DefaultTags'
+import { DefaultCommunityBadges } from '@/pages/public-profile/profiles/default/_DefaultCommunityBadges'
+import {CreatorActivities} from '@/pages/public-profile/profiles/creator/_CreatorActivities';
+import {CreatorFeaturesHighlight} from '@/pages/public-profile/profiles/creator/_CreatorFeaturesHighlight';
+import {CreatorStatistics} from '@/pages/public-profile/profiles/creator/_CreatorStatistics';
+import {CreatorSummary} from '@/pages/public-profile/profiles/creator/_CreatorSummary';
+import {CreatorUpcomingEvents} from '@/pages/public-profile/profiles/creator/_CreatorUpcomingEvents';
+import {CreatorUsers} from '@/pages/public-profile/profiles/creator/_CreatorUsers';
+import {CreatorWorks} from '@/pages/public-profile/profiles/creator/_CreatorWorks';
 import { ICreatorStatisticsItems, ICreatorUsersItems } from './interfaces';
 
 const CreatorContent = () => {
@@ -56,4 +55,4 @@ const CreatorContent = () => {
   );
 };
 
-export default  CreatorContent ;
+export { CreatorContent };

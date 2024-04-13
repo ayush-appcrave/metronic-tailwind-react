@@ -27,4 +27,4 @@ const CreatorStatistics = ({ data }: ICreatorStatisticsProps) => {
   );
 };
 
-export default  CreatorStatistics ;
+export { CreatorStatistics };

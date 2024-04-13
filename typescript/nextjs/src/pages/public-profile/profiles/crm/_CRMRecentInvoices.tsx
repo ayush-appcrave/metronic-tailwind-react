@@ -100,4 +100,4 @@ const CRMRecentInvoices = () => {
   );
 };
 
-export default  CRMRecentInvoices ;
+export { CRMRecentInvoices };

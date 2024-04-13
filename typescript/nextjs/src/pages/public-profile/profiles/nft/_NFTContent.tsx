@@ -32,4 +32,4 @@ const NFTContent = () => {
   );
 };
 
-export default  NFTContent ;
+export { NFTContent };

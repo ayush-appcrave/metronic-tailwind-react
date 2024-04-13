@@ -1,4 +1,5 @@
-import ApexChart from 'react-apexcharts';
+import dynamic from "next/dynamic";
+const ApexChart = dynamic(() => import("react-apexcharts"), { ssr: false });
 
 import { KeenIcon } from '@/components';
 
@@ -134,4 +135,4 @@ const DefaultMediaUploads = () => {
   );
 };
 
-export default  DefaultMediaUploads ;
+export { DefaultMediaUploads }

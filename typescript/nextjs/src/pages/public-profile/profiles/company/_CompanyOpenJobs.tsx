@@ -75,4 +75,4 @@ const CompanyOpenJobs = ({ url }: ICompanyOpenJobsProps) => {
   );
 };
 
-export default  CompanyOpenJobs ;
+export { CompanyOpenJobs };

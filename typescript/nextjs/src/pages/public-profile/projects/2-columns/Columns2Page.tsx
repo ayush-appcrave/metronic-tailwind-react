@@ -4,6 +4,8 @@ import { UserProfileHero } from '@/partials/heros';
 import { NavbarMenu } from '@/partials/menu/NavbarMenu';
 import { Navbar, NavbarActions } from '@/partials/navbar';
 import { toAbsoluteUrl } from '@/utils/Assets';
+import {Demo1Layout} from "@/layouts/demo1";
+import PlainPage from "@/pages/public-profile/profiles/plain/PlainPage";
 
 const Columns2Page = () => {
   const image = (
@@ -36,5 +38,7 @@ const Columns2Page = () => {
     </>
   );
 };
+
+Columns2Page.getLayout = (page: React.ReactElement) => <Demo1Layout>{page}</Demo1Layout>;
 
 export default  Columns2Page ;

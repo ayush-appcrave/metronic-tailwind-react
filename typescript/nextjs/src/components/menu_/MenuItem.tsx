@@ -318,7 +318,7 @@ const MenuItem = forwardRef<HTMLDivElement | null, IMenuItemProps>(function Menu
     }
 
     return (
-      <Link to={path} component={RouterLink} underline="none" onClick={handleClick}>
+      <Link ={path} component={RouterLink} underline="none" onClick={handleClick}>
         {renderContent}
       </Link>
     );

@@ -1,4 +1,4 @@
-import { createContext, type PropsWithChildren, useContext, useState } from 'react';
+import { createContext, PropsWithChildren, useContext, useEffect, useState } from 'react';
 import { useRouter } from 'next/router';
 
 import { useMenuChildren } from '@/components/menu';
@@ -18,7 +18,7 @@ export interface Demo1LayoutProviderProps {
   setSidebarCollapse: (collapse: boolean) => void;
 }
 
-const initalLayoutProps: Demo1LayoutProviderProps = {
+const initialLayoutProps: Demo1LayoutProviderProps = {
   layout: demo1LayoutConfig,
   headerSticky: false,
   mobileSidebarOpen: false,
@@ -26,17 +26,30 @@ const initalLayoutProps: Demo1LayoutProviderProps = {
   setSidebarCollapse: (_: boolean) => {}
 };
 
-const Demo1LayoutContext = createContext<Demo1LayoutProviderProps>(initalLayoutProps);
+const Demo1LayoutContext = createContext<Demo1LayoutProviderProps>(initialLayoutProps);
 
 const useDemo1Layout = () => useContext(Demo1LayoutContext);
 
-const Demo1LayoutProvider = ({ children }: PropsWithChildren) => {
-  const pathname = useRouter().asPath;
+const Demo1LayoutProvider = ({ children }: PropsWithChildren<{}>) => {
+  const router = useRouter();
   const { setMenuConfig } = useMenu();
+  const [pathname, setPathname] = useState<string>(router.pathname);
   const secondaryMenu = useMenuChildren(pathname, MENU_SIDEBAR, 0);
 
-  setMenuConfig('primary', MENU_SIDEBAR);
-  setMenuConfig('secondary', secondaryMenu);
+  useEffect(() => {
+    setMenuConfig('primary', MENU_SIDEBAR);
+    setMenuConfig('secondary', secondaryMenu);
+
+    const handleRouteChange = (url: string) => {
+      setPathname(url);
+    };
+
+    router.events.on('routeChangeComplete', handleRouteChange);
+
+    return () => {
+      router.events.off('routeChangeComplete', handleRouteChange);
+    };
+  }, []);
 
   const { getLayout, updateLayout } = useLayout();
 
@@ -44,9 +57,9 @@ const Demo1LayoutProvider = ({ children }: PropsWithChildren) => {
     return deepMerge(demo1LayoutConfig, getLayout(demo1LayoutConfig.name));
   };
 
-  const [layout, setLayout] = useState(getLayoutConfig);
+  const [layout, setLayout] = useState<ILayoutConfig>(getLayoutConfig);
 
-  const [mobileSidebarOpen, setMobileSidebarOpen] = useState(false);
+  const [mobileSidebarOpen, setMobileSidebarOpen] = useState<boolean>(false);
 
   const scrollPosition = useScrollPosition();
 
@@ -66,17 +79,17 @@ const Demo1LayoutProvider = ({ children }: PropsWithChildren) => {
   };
 
   return (
-    <Demo1LayoutContext.Provider
-      value={{
-        layout,
-        headerSticky,
-        mobileSidebarOpen,
-        setMobileSidebarOpen,
-        setSidebarCollapse
-      }}
-    >
-      {children}
-    </Demo1LayoutContext.Provider>
+      <Demo1LayoutContext.Provider
+          value={{
+            layout,
+            headerSticky,
+            mobileSidebarOpen,
+            setMobileSidebarOpen,
+            setSidebarCollapse
+          }}
+      >
+        {children}
+      </Demo1LayoutContext.Provider>
   );
 };
 

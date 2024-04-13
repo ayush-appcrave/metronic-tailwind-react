@@ -92,4 +92,4 @@ const CreatorUpcomingEvents = () => {
   );
 };
 
-export default  CreatorUpcomingEvents ;
+export { CreatorUpcomingEvents };

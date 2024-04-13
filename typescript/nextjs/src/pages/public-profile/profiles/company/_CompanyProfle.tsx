@@ -123,4 +123,4 @@ const CompanyProfle = () => {
   );
 };
 
-export default  CompanyProfle ;
+export { CompanyProfle };

@@ -49,4 +49,4 @@ const CreatorFeaturesHighlight = ({
   );
 };
 
-export default  CreatorFeaturesHighlight ;
+export { CreatorFeaturesHighlight };

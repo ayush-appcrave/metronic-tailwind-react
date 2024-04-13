@@ -32,4 +32,4 @@ const BloggerContent = () => {
   );
 };
 
-export default  BloggerContent ;
+export { BloggerContent } ;

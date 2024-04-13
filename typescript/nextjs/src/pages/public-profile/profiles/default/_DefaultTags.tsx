@@ -34,4 +34,4 @@ const DefaultTags = ({ title, className }: IDefaultTagsProps) => {
   );
 };
 
-export default  DefaultTags ;
+export { DefaultTags }

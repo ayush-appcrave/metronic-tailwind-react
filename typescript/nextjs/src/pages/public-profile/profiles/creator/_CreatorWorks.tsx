@@ -85,4 +85,4 @@ const CreatorWorks = () => {
   );
 };
 
-export default  CreatorWorks ;
+export { CreatorWorks };

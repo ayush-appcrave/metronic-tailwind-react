@@ -29,4 +29,4 @@ const CompanyStatistics = ({ items }: ICompanyStatisticsProps) => {
   );
 };
 
-export default  CompanyStatistics ;
+export { CompanyStatistics };

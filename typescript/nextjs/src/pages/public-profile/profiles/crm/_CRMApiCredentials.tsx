@@ -47,4 +47,4 @@ const CRMApiCredentials = ({ url }: ICRMApiCredentialsProps) => {
   );
 };
 
-export default  CRMApiCredentials ;
+export { CRMApiCredentials };

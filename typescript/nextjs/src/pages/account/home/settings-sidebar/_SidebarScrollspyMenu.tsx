@@ -1,10 +1,7 @@
-import { ScrollspyMenu, ScrollspyMenuItemsType } from '@/partials/menu';
-import {ReactElement} from "react";
-import {Demo1Layout} from "@/layouts/demo1";
-import {GetStartedPage} from "@/pages/account";
+import { ScrollspyMenu } from '@/partials/menu';
 
 const SidebarScrollspyMenu = () => {
-  const scrollspyItems: ScrollspyMenuItemsType = [
+  const scrollspyItems = [
     {
       title: 'Basic Settings',
       path: '#basic_settings',
@@ -84,6 +81,4 @@ const SidebarScrollspyMenu = () => {
   );
 };
 
-SidebarScrollspyMenu.getLayout = (page: ReactElement) => <Demo1Layout>{page}</Demo1Layout>;
-
-export default  SidebarScrollspyMenu ;
+export { SidebarScrollspyMenu };

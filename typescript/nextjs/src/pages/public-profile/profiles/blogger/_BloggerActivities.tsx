@@ -20,4 +20,4 @@ const BloggerActivities = () => {
   );
 };
 
-export default  BloggerActivities ;
+export { BloggerActivities };

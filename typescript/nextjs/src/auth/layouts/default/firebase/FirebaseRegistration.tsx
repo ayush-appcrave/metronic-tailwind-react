@@ -237,7 +237,7 @@ const FirebaseRegistration = () => {
             </span>
           )}
         </button>
-        <Link to="/auth/login">
+        <Link href="/auth/login">
           <button
             type="button"
             id="kt_login_signup_form_cancel_button"

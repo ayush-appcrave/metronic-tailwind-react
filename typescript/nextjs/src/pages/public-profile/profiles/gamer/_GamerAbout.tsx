@@ -50,4 +50,4 @@ const GamerAbout = () => {
   );
 };
 
-export default  GamerAbout ;
+export { GamerAbout };

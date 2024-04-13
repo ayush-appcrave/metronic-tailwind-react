@@ -112,4 +112,4 @@ const GamerTournaments = ({ url }: IGamerTournamentsProps) => {
   );
 };
 
-export default  GamerTournaments ;
+export { GamerTournaments };

@@ -44,4 +44,4 @@ const PlainContent = () => {
   );
 };
 
-export default  PlainContent ;
+export { PlainContent };

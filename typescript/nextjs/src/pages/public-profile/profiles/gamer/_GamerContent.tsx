@@ -68,4 +68,4 @@ const GamerContent = () => {
   );
 };
 
-export default  GamerContent ;
+export { GamerContent };

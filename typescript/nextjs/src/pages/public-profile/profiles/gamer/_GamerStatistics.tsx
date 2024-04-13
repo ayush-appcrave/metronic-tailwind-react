@@ -37,4 +37,4 @@ const GamerStatistics = ({ details }: IGamerStatisticsProps) => {
   );
 };
 
-export default  GamerStatistics ;
+export { GamerStatistics };

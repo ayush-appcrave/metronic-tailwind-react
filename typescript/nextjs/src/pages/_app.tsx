@@ -1,6 +1,7 @@
 import type { Metadata, NextPage } from 'next'
 import type { AppProps } from 'next/app'
 import {ReactElement, ReactNode, useEffect} from 'react'
+import {ProvidersWrapper} from "@/providers"
 import '@/components/keenicons/assets/duotone/style.css';
 import '@/components/keenicons/assets/outline/style.css';
 import '@/components/keenicons/assets/solid/style.css';
@@ -20,9 +21,20 @@ type AppPropsWithLayout = AppProps & {
 }
 
 export default function MyApp({ Component, pageProps }: AppPropsWithLayout) {
+  useEffect(() => {
+    document.children[0].classList.add("h-full");
+    document.body.classList.add("flex");
+    document.body.classList.add("flex-col");
+    document.body.classList.add("h-full");
+    document.body.classList.add("light");
+    document.getElementById("__next")?.classList.add("flex");
+    document.getElementById("__next")?.classList.add("grow");
+  }, []);
 
   // Use the layout defined at the page level, if available
   const getLayout = Component.getLayout || ((page) => page)
  
-  return getLayout(<Component {...pageProps} />)
+  return <ProvidersWrapper>
+    {getLayout(<Component {...pageProps} />)}
+  </ProvidersWrapper>
 }

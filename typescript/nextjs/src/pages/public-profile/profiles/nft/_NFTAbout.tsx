@@ -46,4 +46,4 @@ const NFTAbout = () => {
   );
 };
 
-export default  NFTAbout ;
+export { NFTAbout };

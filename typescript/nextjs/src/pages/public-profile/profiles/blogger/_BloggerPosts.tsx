@@ -71,4 +71,4 @@ const BloggerPosts = ({ url }: IBloggerPostsProps) => {
   );
 };
 
-export default  BloggerPosts ;
+export { BloggerPosts };

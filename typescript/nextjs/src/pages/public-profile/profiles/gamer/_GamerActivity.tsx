@@ -29,4 +29,4 @@ const GamerActivity = ({ url }: IGamerActivityProps) => {
   );
 };
 
-export default  GamerActivity ;
+export { GamerActivity };

@@ -11,7 +11,6 @@ import {
 } from '@/partials/toolbar';
 import {ReactElement} from "react";
 import {Demo1Layout} from "@/layouts/demo1";
-import CompanyProfilePage from "@/pages/account/home/company-profile/CompanyProfilePage.tsx";
 
 const GetStartedPage = () => {
   return (

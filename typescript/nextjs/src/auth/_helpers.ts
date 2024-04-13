@@ -3,8 +3,8 @@ import { User as Auth0UserModel } from '@auth0/auth0-spa-js';
 import { getData, setData } from '../utils';
 import { type AuthModel } from './_models';
 
-const AUTH_LOCAL_STORAGE_KEY = `${import.meta.env.VITE_APP_NAME}-auth-v${
-  import.meta.env.VITE_APP_VERSION
+const AUTH_LOCAL_STORAGE_KEY = `${process.env.VITE_APP_NAME}-auth-v${
+  process.env.VITE_APP_VERSION
 }`;
 
 const getAuth = (): AuthModel | undefined => {

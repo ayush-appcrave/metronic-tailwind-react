@@ -25,7 +25,6 @@ const QueryResponseProvider: FC<WithChildren> = ({ children }) => {
 
   useEffect(() => {
     if (query !== updatedQuery) {
-      console.log('query was really updated');
       setQuery(updatedQuery);
     }
   }, [updatedQuery]);
@@ -37,7 +36,6 @@ const QueryResponseProvider: FC<WithChildren> = ({ children }) => {
   } = useQuery<UsersQueryResponse>({
     queryKey: `${QUERIES.USERS_LIST}-${query}`,
     queryFn: async () => {
-      console.log('Request users');
       return await getUsers(query);
     },
     keepPreviousData: true,

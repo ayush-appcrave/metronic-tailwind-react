@@ -131,4 +131,4 @@ const CRMDeals = () => {
   );
 };
 
-export default  CRMDeals ;
+export { CRMDeals };

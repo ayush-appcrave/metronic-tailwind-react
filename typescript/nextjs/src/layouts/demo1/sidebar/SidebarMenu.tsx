@@ -36,7 +36,6 @@ const SidebarMenu = () => {
   ];
 
   const buildMenu = (items: MenuConfigType) => {
-    // eslint-disable-next-line no-unreachable-loop
     return items.map((item, index) => {
       if (item.children) {
         return (

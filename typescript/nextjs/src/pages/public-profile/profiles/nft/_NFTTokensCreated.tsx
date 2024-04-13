@@ -73,4 +73,4 @@ const NFTTokensCreated = ({ url }: INFTTokensCreatedProps) => {
   );
 };
 
-export default  NFTTokensCreated ;
+export { NFTTokensCreated };

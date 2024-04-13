@@ -1,3 +1,4 @@
+import { ReactElement } from 'react';
 import { Container } from '@/components/container';
 import { UserProfileHero } from '@/partials/heros';
 import { NavbarMenu } from '@/partials/menu/NavbarMenu';
@@ -5,9 +6,10 @@ import { Navbar, NavbarActions } from '@/partials/navbar';
 import { useMenu } from '@/providers';
 import { toAbsoluteUrl } from '@/utils/Assets';
 
-import { DefaultContent } from '.';
+import { DefaultContent } from '@/pages/public-profile/profiles/default/_DefaultContent';
+import {Demo1Layout} from "@/layouts/demo1";
 
-const DefaultPage = () => {
+function DefaultPage() {
   const { getMenuConfig } = useMenu();
   const secondaryMenu = getMenuConfig('secondary');
 
@@ -44,4 +46,6 @@ const DefaultPage = () => {
   );
 };
 
-export default  DefaultPage ;
+DefaultPage.getLayout = (page: ReactElement) => <Demo1Layout>{page}</Demo1Layout>;
+
+export default DefaultPage;

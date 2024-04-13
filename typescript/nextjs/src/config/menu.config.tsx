@@ -26,7 +26,7 @@ const PATHS_GENERAL: PathsType = {
 const MENU_SIDEBAR: MenuConfigType = [
   {
     title: 'Dashboard',
-    path: '/dashboard',
+    path: '/dashboard/DashboardPage',
     icon: 'element-11'
   },
   {
@@ -46,27 +46,27 @@ const MENU_SIDEBAR: MenuConfigType = [
         children: [
           {
             title: 'Default',
-            path: '/public-profile/profiles/default'
+            path: '/public-profile/profiles/default/DefaultPage'
           },
           {
             title: 'Creator',
-            path: '/public-profile/profiles/creator'
+            path: '/public-profile/profiles/creator/CreatorPage'
           },
           {
             title: 'Company',
-            path: '/public-profile/profiles/company'
+            path: '/public-profile/profiles/company/CompanyPap'
           },
           {
             title: 'NFT',
-            path: '/public-profile/profiles/nft'
+            path: '/public-profile/profiles/nft/NFTPage'
           },
           {
             title: 'Blogger',
-            path: '/public-profile/profiles/blogger'
+            path: '/public-profile/profiles/blogger/BloggerPage'
           },
           {
             title: 'CRM',
-            path: '/public-profile/profiles/crm'
+            path: '/public-profile/profiles/crm/CRMPage'
           },
           {
             title: 'More',
@@ -79,19 +79,19 @@ const MENU_SIDEBAR: MenuConfigType = [
             children: [
               {
                 title: 'Gamer',
-                path: '/public-profile/profiles/gamer'
+                path: '/public-profile/profiles/game/GamerPage'
               },
               {
                 title: 'Feeds',
-                path: '/public-profile/profiles/feeds'
+                path: '/public-profile/profiles/feeds/FeedsPage'
               },
               {
                 title: 'Plain',
-                path: '/public-profile/profiles/plain'
+                path: '/public-profile/profiles/plain/PlainPage'
               },
               {
                 title: 'Modal',
-                path: '/public-profile/profiles/modal'
+                path: '/public-profile/profiles/modal/ModalPage'
               }
             ]
           }
@@ -102,29 +102,29 @@ const MENU_SIDEBAR: MenuConfigType = [
         children: [
           {
             title: '3 Columns',
-            path: '/public-profile/projects/3-columns'
+            path: '/public-profile/projects/3-columns/Column3Page'
           },
           {
             title: '2 Columns',
-            path: '/public-profile/projects/2-columns'
+            path: '/public-profile/projects/2-columns/Column2Page'
           }
         ]
       },
       {
         title: 'Works',
-        path: '/public-profile/works'
+        path: '/public-profile/works/WorksPage'
       },
       {
         title: 'Teams',
-        path: 'public-profile/teams'
+        path: 'public-profile/teams/TeamsPage'
       },
       {
         title: 'Network',
-        path: '/public-profile/network'
+        path: '/public-profile/network/NetworkPage'
       },
       {
         title: 'Activity',
-        path: '/public-profile/activity'
+        path: '/public-profile/activity/ActivityPage'
       },
       {
         title: 'More',
@@ -134,15 +134,15 @@ const MENU_SIDEBAR: MenuConfigType = [
         children: [
           {
             title: 'Campaigns - Card',
-            path: '/public-profile/campaigns/card'
+            path: '/public-profile/campaigns/card/CampignsCardPage'
           },
           {
             title: 'Campaigns - List',
-            path: '/public-profile/campaigns/list'
+            path: '/public-profile/campaigns/list/CampignsListPage'
           },
           {
             title: 'Empty',
-            path: '/public-profile/empty'
+            path: '/public-profile/empty/EmptyPage'
           }
         ]
       }
@@ -157,31 +157,31 @@ const MENU_SIDEBAR: MenuConfigType = [
         children: [
           {
             title: 'Get Started',
-            path: '/account/home/get-started'
+            path: '/account/home/get-started/GetStartedPage'
           },
           {
             title: 'User Profile',
-            path: '/account/home/user-profile'
+            path: '/account/home/user-profile/UserProfilePage'
           },
           {
             title: 'Company Profile',
-            path: '/account/home/company-profile'
+            path: '/account/home/company-profile/CompanyProfilePage'
           },
           {
             title: 'Settings - With Sidebar',
-            path: '/account/home/settings-sidebar'
+            path: '/account/home/settings-sidebar/SettingsSidebarPage'
           },
           {
             title: 'Settings - Enterprise',
-            path: '/account/home/settings-enterprise'
+            path: '/account/home/settings-enterprise/SettingsEnterprisePage'
           },
           {
             title: 'Settings - Plain',
-            path: '/account/home/settings-plain'
+            path: '/account/home/settings-plain/SettingsPlainPage'
           },
           {
             title: 'Settings - Modal',
-            path: '/account/home/settings-modal'
+            path: '/account/home/settings-modal/SettingsModalPage'
           }
         ]
       },

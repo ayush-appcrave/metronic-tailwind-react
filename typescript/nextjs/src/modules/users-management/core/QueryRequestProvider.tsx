@@ -23,10 +23,6 @@ const QueryRequestProvider: FC<WithChildren> = ({ children }) => {
     ...(qs.parse(searchParams.toString()) as Partial<UserQueryState>)
   });
 
-  useEffect(() => {
-    console.log('state', state);
-  }, [state]);
-
   const updateState = (updates: Partial<UserQueryState>, saveToQuery = false) => {
     const updatedState: UserQueryState = { ...state, ...updates };
     if (saveToQuery) {

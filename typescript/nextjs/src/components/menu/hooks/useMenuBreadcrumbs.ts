@@ -1,13 +1,16 @@
-import { matchPath } from 'react-router';
-
+import { useRouter } from 'next/router';
 import { IMenuItemProps, MenuBreadcrumbsType, MenuConfigType } from '../types';
 
-const useMenuBreadcrumbs = (pathname: string, items: MenuConfigType): MenuBreadcrumbsType => {
+const useMenuBreadcrumbs = (items: MenuConfigType): MenuBreadcrumbsType => {
+  const router = useRouter();
+
   const findParents = (items: MenuConfigType, parent?: IMenuItemProps): MenuBreadcrumbsType => {
+    const pathname = router.pathname;
+
     for (let i = 0; i < items.length; i++) {
       const item = items[i];
 
-      if (item.path && matchPath(pathname, item.path)) {
+      if (item.path && item.path === pathname) {
         return [
           {
             title: item.title,

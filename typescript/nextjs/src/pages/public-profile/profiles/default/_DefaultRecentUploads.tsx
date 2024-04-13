@@ -89,4 +89,4 @@ const DefaultRecentUploads = ({ title, url }: IDefaultRecentUploadsProps) => {
   );
 };
 
-export default  DefaultRecentUploads ;
+export { DefaultRecentUploads }

@@ -86,4 +86,4 @@ const DefaultWorkExperience = ({ url }: IDefaultWorkExperienceProps) => {
   );
 };
 
-export default  DefaultWorkExperience ;
+export { DefaultWorkExperience }

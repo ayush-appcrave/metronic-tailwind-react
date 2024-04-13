@@ -61,4 +61,4 @@ const CompanyLocations = () => {
   );
 };
 
-export default  CompanyLocations ;
+export { CompanyLocations };

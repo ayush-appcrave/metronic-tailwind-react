@@ -8,13 +8,13 @@ const Layout = () => {
       <h1>Auth layout</h1>
       <ul>
         <li>
-          <Link to="/auth/login">Sign in</Link>
+          <Link href="/auth/login">Sign in</Link>
         </li>
         <li>
-          <Link to="/auth/registration">Registration</Link>
+          <Link href="/auth/registration">Registration</Link>
         </li>
         <li>
-          <Link to="/auth/forgot-password">Forgot password</Link>
+          <Link href="/auth/forgot-password">Forgot password</Link>
         </li>
       </ul>
       <h5>Auth content</h5>

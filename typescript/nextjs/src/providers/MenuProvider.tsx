@@ -1,4 +1,4 @@
-import { createContext, type PropsWithChildren, useContext } from 'react';
+import {createContext, type PropsWithChildren, useContext, useEffect} from 'react';
 
 import { MenuConfigType } from '@/components/menu';
 

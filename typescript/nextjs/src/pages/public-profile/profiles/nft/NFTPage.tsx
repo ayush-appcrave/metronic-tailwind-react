@@ -6,6 +6,8 @@ import { Navbar, NavbarActions } from '@/partials/navbar';
 import { toAbsoluteUrl } from '@/utils/Assets';
 
 import { NFTContent } from '.';
+import {Demo1Layout} from "@/layouts/demo1";
+import ModalPage from "@/pages/public-profile/profiles/modal/ModalPage";
 
 const NFTPage = () => {
   const image = (
@@ -40,5 +42,7 @@ const NFTPage = () => {
     </>
   );
 };
+
+NFTPage.getLayout = (page: React.ReactElement) => <Demo1Layout>{page}</Demo1Layout>;
 
 export default  NFTPage ;

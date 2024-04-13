@@ -26,4 +26,4 @@ const FeedsContent = () => {
   );
 };
 
-export default  FeedsContent ;
+export { FeedsContent };

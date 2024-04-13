@@ -4,6 +4,8 @@ import { UserProfileHero } from '@/partials/heros';
 import { NavbarMenu } from '@/partials/menu/NavbarMenu';
 import { Navbar, NavbarActions } from '@/partials/navbar';
 import { toAbsoluteUrl } from '@/utils/Assets';
+import {Demo1Layout} from "@/layouts/demo1";
+import EmptyPage from "@/pages/public-profile/empty/EmptyPage";
 
 const NetworkPage = () => {
   const image = (
@@ -36,5 +38,7 @@ const NetworkPage = () => {
     </>
   );
 };
+
+NetworkPage.getLayout = (page: React.ReactElement) => <Demo1Layout>{page}</Demo1Layout>;
 
 export default  NetworkPage ;

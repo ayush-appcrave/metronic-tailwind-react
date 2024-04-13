@@ -42,4 +42,4 @@ const DefaultAbout = () => {
   );
 };
 
-export default  DefaultAbout ;
+export { DefaultAbout }

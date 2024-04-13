@@ -27,4 +27,4 @@ const PlainAboutMe = ({ className }: IPlainAboutMeProps) => {
   );
 };
 
-export default  PlainAboutMe ;
+export { PlainAboutMe };

@@ -73,4 +73,4 @@ const BloggerReplies = () => {
   );
 };
 
-export default  BloggerReplies ;
+export { BloggerReplies } ;

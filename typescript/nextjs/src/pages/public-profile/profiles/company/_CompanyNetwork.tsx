@@ -36,4 +36,4 @@ const CompanyNetwork = ({ data, className, title }: ICompanyNetworkProps) => {
   );
 };
 
-export default  CompanyNetwork ;
+export { CompanyNetwork };

@@ -79,4 +79,4 @@ const DefaultCommunityBadges = () => {
   );
 };
 
-export default  DefaultCommunityBadges ;
+export { DefaultCommunityBadges }

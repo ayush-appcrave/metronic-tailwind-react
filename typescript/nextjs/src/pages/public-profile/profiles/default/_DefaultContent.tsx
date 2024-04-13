@@ -1,15 +1,13 @@
-import {
-  DefaultAbout,
-  DefaultCommunityBadges,
-  DefaultConnections,
-  DefaultContributions,
-  DefaultMediaUploads,
-  DefaultProjects,
-  DefaultRecentUploads,
-  DefaultTags,
-  DefaultUnlockPartnerships,
-  DefaultWorkExperience
-} from '.';
+import { DefaultAbout } from '@/pages/public-profile/profiles/default/_DefaultAbout'
+import { DefaultCommunityBadges } from '@/pages/public-profile/profiles/default/_DefaultCommunityBadges'
+import { DefaultConnections } from '@/pages/public-profile/profiles/default/_DefaultConnections'
+import { DefaultContributions } from '@/pages/public-profile/profiles/default/_DefaultContributions'
+import { DefaultMediaUploads } from '@/pages/public-profile/profiles/default/_DefaultMediaUploads'
+import { DefaultProjects } from '@/pages/public-profile/profiles/default/_DefaultProjects'
+import { DefaultRecentUploads } from '@/pages/public-profile/profiles/default/_DefaultRecentUploads'
+import { DefaultTags } from '@/pages/public-profile/profiles/default/_DefaultTags'
+import { DefaultUnlockPartnerships } from '@/pages/public-profile/profiles/default/_DefaultUnlockPartnerships'
+import { DefaultWorkExperience } from '@/pages/public-profile/profiles/default/_DefaultWorkExperience'
 
 const DefaultContent = () => {
   return (
@@ -45,4 +43,4 @@ const DefaultContent = () => {
   );
 };
 
-export default  DefaultContent ;
+export { DefaultContent }

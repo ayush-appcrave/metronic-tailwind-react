@@ -46,4 +46,4 @@ const CRMAttributes = ({ url }: ICRMAttributesProps) => {
   );
 };
 
-export default  CRMAttributes ;
+export { CRMAttributes };

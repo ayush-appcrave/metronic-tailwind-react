@@ -10,7 +10,8 @@ const Breadcrumbs = () => {
   const pathname = useRouter().asPath;
   const { getMenuConfig } = useMenu();
   const menuConfig = getMenuConfig('primary');
-  const items = menuConfig && useMenuBreadcrumbs(pathname, menuConfig);
+
+  const items = menuConfig && useMenuBreadcrumbs(menuConfig);
 
   const renderItems = (items: MenuBreadcrumbsType) => {
     return items.map((item, index) => {

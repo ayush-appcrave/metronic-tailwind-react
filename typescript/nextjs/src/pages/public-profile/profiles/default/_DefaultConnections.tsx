@@ -111,4 +111,4 @@ const DefaultConnections = ({ title, url }: IDefaultConnectionsProps) => {
   );
 };
 
-export default  DefaultConnections ;
+export { DefaultConnections }

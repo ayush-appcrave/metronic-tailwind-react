@@ -52,4 +52,4 @@ const CRMGeneralInfo = () => {
   );
 };
 
-export default  CRMGeneralInfo ;
+export { CRMGeneralInfo };

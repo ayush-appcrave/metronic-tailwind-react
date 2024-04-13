@@ -29,4 +29,4 @@ const CRMActivity = ({ url }: ICRMActivityProps) => {
   );
 };
 
-export default  CRMActivity ;
+export { CRMActivity };

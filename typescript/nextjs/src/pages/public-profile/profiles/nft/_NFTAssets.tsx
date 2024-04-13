@@ -24,4 +24,4 @@ const NFTAssets = () => {
   );
 };
 
-export default  NFTAssets ;
+export { NFTAssets };

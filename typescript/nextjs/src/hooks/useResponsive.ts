@@ -6,10 +6,10 @@ import { useMediaQuery } from './useMediaQuery';
 const breakpoints: ResponsiveBreakpointType[] = ['sm', 'md', 'lg', 'xl', '2xl'];
 
 const useResponsive = (
-  query: ResponsiveQueryType,
-  key?: ResponsiveBreakpointType,
-  start?: ResponsiveBreakpointType,
-  end?: ResponsiveBreakpointType
+    query: ResponsiveQueryType,
+    key?: ResponsiveBreakpointType,
+    start?: ResponsiveBreakpointType,
+    end?: ResponsiveBreakpointType
 ) => {
   const screens = tailwindConfig?.theme?.screens as Record<string, ResponsiveBreakpointType>;
 

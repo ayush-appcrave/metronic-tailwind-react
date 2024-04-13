@@ -176,4 +176,4 @@ const DefaultProjects = () => {
   );
 };
 
-export default  DefaultProjects ;
+export { DefaultProjects }

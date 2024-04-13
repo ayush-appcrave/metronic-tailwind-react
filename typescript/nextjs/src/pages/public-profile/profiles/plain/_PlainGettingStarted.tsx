@@ -28,4 +28,4 @@ const PlainGettingStarted = () => {
   );
 };
 
-export default  PlainGettingStarted ;
+export { PlainGettingStarted };

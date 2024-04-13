@@ -54,4 +54,4 @@ const CompanyHighlights = () => {
   );
 };
 
-export default  CompanyHighlights ;
+export { CompanyHighlights } ;

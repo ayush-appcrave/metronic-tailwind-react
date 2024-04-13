@@ -93,7 +93,6 @@ const AuthProvider = ({ children }: PropsWithChildren) => {
     try {
       const { user } = await createUserWithEmailAndPassword(firebaseAuth, email, password);
       setAuth(user);
-      console.log(user);
     } catch (error) {
       setAuth(null);
       enqueueSnackbar(`${error}`, { variant: 'error', autoHideDuration: 5000 });

@@ -43,4 +43,4 @@ const GamerFavoriteGames = () => {
   );
 };
 
-export default  GamerFavoriteGames ;
+export { GamerFavoriteGames };

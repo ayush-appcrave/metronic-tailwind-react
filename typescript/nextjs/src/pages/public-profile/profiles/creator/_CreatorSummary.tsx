@@ -51,4 +51,4 @@ const CreatorSummary = ({ title }: ICreatorSummaryProps) => {
   );
 };
 
-export default  CreatorSummary ;
+export { CreatorSummary };

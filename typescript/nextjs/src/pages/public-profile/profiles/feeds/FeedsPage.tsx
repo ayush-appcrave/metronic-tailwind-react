@@ -6,6 +6,8 @@ import { Navbar, NavbarActions } from '@/partials/navbar';
 import { toAbsoluteUrl } from '@/utils/Assets';
 
 import { FeedsContent } from '.';
+import {Demo1Layout} from "@/layouts/demo1";
+import DefaultPage from "@/pages/public-profile/profiles/default/DefaultPage";
 
 const FeedsPage = () => {
   const image = (
@@ -40,5 +42,7 @@ const FeedsPage = () => {
     </>
   );
 };
+
+FeedsPage.getLayout = (page: React.ReactElement) => <Demo1Layout>{page}</Demo1Layout>;
 
 export default  FeedsPage ;

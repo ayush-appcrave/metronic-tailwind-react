@@ -1,4 +1,3 @@
-/* eslint-disable prettier/prettier */
 import { PropsWithChildren } from 'react';
 import { QueryClient, QueryClientProvider } from 'react-query';
 
@@ -18,23 +17,13 @@ const queryClient = new QueryClient();
 
 const ProvidersWrapper = ({ children }: PropsWithChildren) => {
   return (
-    <QueryClientProvider client={queryClient}>
-      <SnackbarProvider>
-        <AuthProvider>
-          <SettingsProvider>
-            <TranslationProvider>
-              <LayoutProvider>
-                <LoadersProvider>
-                  <MenuProvider>
+      <LayoutProvider>
+          <LoadersProvider>
+              <MenuProvider>
                   {children}
-                  </MenuProvider>
-                </LoadersProvider>
-              </LayoutProvider>
-            </TranslationProvider>
-          </SettingsProvider>
-        </AuthProvider>
-      </SnackbarProvider>
-    </QueryClientProvider>
+              </MenuProvider>
+          </LoadersProvider>
+      </LayoutProvider>
   );
 };
 

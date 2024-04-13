@@ -43,4 +43,4 @@ const NFTNetwork = () => {
   );
 };
 
-export default  NFTNetwork ;
+export { NFTNetwork };

@@ -35,13 +35,13 @@ const MenuLinkComponent = forwardRef<HTMLDivElement | null, IMenuLinkProps>(
         );
       } else {
         return (
-          <RouterLink
-            to={path}
+          <Link
+            href={path}
             onClick={handleClick}
             className={clsx('menu-link', className && className)}
           >
             {children}
-          </RouterLink>
+          </Link>
         );
       }
     } else {

@@ -19,7 +19,7 @@ import { useRouter } from 'next/router';
 import useResponsiveProp from '@/hooks/useResponsiveProp';
 import { matchPath } from '@/utils';
 
-import { useMatchPath } from '../../hooks/useMatchPath';
+import { useMatchPath } from '@/hooks';
 import {
   IMenuItemProps,
   IMenuLinkProps,
@@ -55,14 +55,12 @@ const MenuItemComponent = forwardRef<HTMLDivElement | null, IMenuItemProps>(
 
     const menuItemRef = useRef<HTMLDivElement | null>(null);
 
-    // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
     useImperativeHandle(ref, () => itemRef.current!);
 
     useImperativeHandle(containerRefProp, () => containerRef.current);
 
     const containerRef = useRef<HTMLDivElement | null>(null);
 
-    // eslint-disable-next-line @typescript-eslint/no-unsafe-argument
     useImperativeHandle(itemRef, () => {
       return {
         closeMenu: () => {
@@ -71,7 +69,6 @@ const MenuItemComponent = forwardRef<HTMLDivElement | null, IMenuItemProps>(
       };
     });
 
-    // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
     useImperativeHandle(containerRef, () => menuItemRef.current!);
 
     const menuContainerRef = useRef<HTMLDivElement | null>(null);

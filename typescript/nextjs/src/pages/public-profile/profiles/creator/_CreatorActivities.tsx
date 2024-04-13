@@ -29,4 +29,4 @@ const CreatorActivities = ({ url }: ICreatorActivitiesProps) => {
   );
 };
 
-export default  CreatorActivities ;
+export { CreatorActivities };

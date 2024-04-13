@@ -45,6 +45,4 @@ const AdvancedSettingsAddress = () => {
   );
 };
 
-
-
-export default  AdvancedSettingsAddress ;
+export { AdvancedSettingsAddress };

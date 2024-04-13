@@ -55,7 +55,6 @@ function UpdateUserPasswordAccordion(props: UpdateUserPasswordProps) {
         refetch();
         setLoading(false);
       } catch (error) {
-        console.log(error);
         if (axios.isAxiosError(error)) {
           if (typeof error.response?.data.message === 'string') {
             enqueueSnackbar(error.response?.data.message, { variant: 'error' });

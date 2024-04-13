@@ -24,4 +24,4 @@ const PlainOpenToWork = ({ className, title, url }: IPlainOpenToWorkProps) => {
   );
 };
 
-export default  PlainOpenToWork ;
+export { PlainOpenToWork };

@@ -5,7 +5,8 @@ import { Navbar, NavbarActions } from '@/partials/navbar';
 import { useMenu } from '@/providers';
 import { toAbsoluteUrl } from '@/utils/Assets';
 
-import { BloggerContent } from '.';
+import { BloggerContent } from '@/pages/public-profile/profiles/blogger/index';
+import {Demo1Layout} from "@/layouts/demo1";
 
 const BloggerPage = () => {
   const { getMenuConfig } = useMenu();
@@ -43,5 +44,7 @@ const BloggerPage = () => {
     </>
   );
 };
+
+BloggerPage.getLayout = (page: React.ReactElement) => <Demo1Layout>{page}</Demo1Layout>;
 
 export default  BloggerPage ;

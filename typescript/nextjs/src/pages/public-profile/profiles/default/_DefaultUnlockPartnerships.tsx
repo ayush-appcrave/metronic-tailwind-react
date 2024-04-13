@@ -36,4 +36,4 @@ const DefaultUnlockPartnerships = ({ url }: IDefaultUnlockPartnershipsProps) => 
   );
 };
 
-export default  DefaultUnlockPartnerships ;
+export { DefaultUnlockPartnerships }

@@ -11,6 +11,8 @@ import {
 } from '@/partials/toolbar';
 
 import { AdvancedSettingsAddress, SidebarScrollspyMenu  } from './';
+import {ReactElement} from "react";
+import {Demo1Layout} from "@/layouts/demo1";
 
 const SettingsSidebarPage = () => {
   return (
@@ -52,5 +54,7 @@ const SettingsSidebarPage = () => {
     </>
   );
 };
+
+SettingsSidebarPage.getLayout = (page: ReactElement) => <Demo1Layout>{page}</Demo1Layout>;
 
 export default  SettingsSidebarPage ;

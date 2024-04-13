@@ -21,4 +21,4 @@ const BloggerCollaborate = ({ title, url }: IBloggerCollaborateProps) => {
   );
 };
 
-export default  BloggerCollaborate ;
+export { BloggerCollaborate } ;

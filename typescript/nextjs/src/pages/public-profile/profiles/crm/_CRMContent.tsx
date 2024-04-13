@@ -35,4 +35,4 @@ const CRMContent = () => {
   );
 };
 
-export default  CRMContent ;
+export { CRMContent };

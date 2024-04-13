@@ -37,4 +37,4 @@ const CreatorUsers = ({ title, items, url }: ICreatorUsersProps) => {
   );
 };
 
-export default  CreatorUsers ;
+export { CreatorUsers };

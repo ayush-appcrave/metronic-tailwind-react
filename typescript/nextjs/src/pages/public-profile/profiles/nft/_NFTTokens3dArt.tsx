@@ -69,4 +69,4 @@ const NFTTokens3dArt = ({ url }: INFTTokens3dArtProps) => {
   );
 };
 
-export default  NFTTokens3dArt ;
+export { NFTTokens3dArt };

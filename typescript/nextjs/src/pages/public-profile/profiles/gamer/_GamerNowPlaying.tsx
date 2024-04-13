@@ -185,4 +185,4 @@ const GamerNowPlaying = ({ url }: IGamerNowPlayingProps) => {
   );
 };
 
-export default  GamerNowPlaying ;
+export { GamerNowPlaying };

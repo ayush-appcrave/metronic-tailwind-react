@@ -5,7 +5,8 @@ import { Navbar, NavbarActions } from '@/partials/navbar';
 import { useMenu } from '@/providers';
 import { toAbsoluteUrl } from '@/utils/Assets';
 
-import { CreatorContent } from '.';
+import { CreatorContent } from '@/pages/public-profile/profiles/creator/_CreatorContent';
+import {Demo1Layout} from "@/layouts/demo1";
 
 const CreatorPage = () => {
   const { getMenuConfig } = useMenu();
@@ -45,5 +46,7 @@ const CreatorPage = () => {
     </>
   );
 };
+
+CreatorPage.getLayout = (page: React.ReactElement) => <Demo1Layout>{page}</Demo1Layout>;
 
 export default  CreatorPage ;
