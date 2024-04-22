@@ -43,6 +43,7 @@ const AppRouting = (): ReactElement => {
   const location = useLocation();
 
   const init = async () => {
+    setProgressBarLoader(true);
     try {
       if (verify) {
         await verify();
@@ -50,8 +51,6 @@ const AppRouting = (): ReactElement => {
     } catch (error) {
       throw new Error('Something went wrong!');
     } finally {
-      setProgressBarLoader(true);
-
       setPreviousLocation(location.pathname);
 
       if (location.pathname === previousLocation) {
