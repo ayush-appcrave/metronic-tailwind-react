@@ -5,7 +5,6 @@ const glob = require("glob");
 const path = require("path");
 const { promisify } = require('util');
 const babel = require('@babel/core');
-const ts = require('typescript');
 
 const viteTypescriptSourcePath = `../typescript/vite`;
 const outputPath = `../javascript/vite`;
@@ -38,7 +37,6 @@ const filesToCopy = [
 
 const removeAsync = promisify(fse.remove);
 
-// Function to recursively search for files in a directory
 async function searchFiles(directory) {
     const files = fs.readdirSync(directory);
   
@@ -101,7 +99,6 @@ const generateJsVersion = async () => {
       console.error(`>> Error removing folder: ${error} <<`);
     }
 
-    // create new javascript vite project
     exec(`npm create vite@latest javascript -- --template react`,
       async (err, output) => {
         if (err) {
@@ -114,19 +111,15 @@ const generateJsVersion = async () => {
         console.log(">> Successfully created empty vite javascript project <<");
 
         try {
-          // copy entire src folder from vite
           await Promise.all(filesToCopy.map(async (file) => {
             return await fse.copy(`${viteTypescriptSourcePath}/${file}`, `${outputPath}/${file}`)
           }));
 
           await fse.copy(`${viteTypescriptSourcePath}/vite.config.ts`, `${outputPath}/vite.config.js`);
-
-          // update tailwind configuration
           let tailWindConfigContent = fs.readFileSync(`${outputPath}/tailwind.config.js`, 'utf-8');
           tailWindConfigContent = tailWindConfigContent.replace("./src/**/*.{ts,tsx}", "./src/**/*.{js,jsx}");
           fs.writeFileSync(`${outputPath}/tailwind.config.js`, tailWindConfigContent, 'utf-8');
 
-          // update index.html
           let indexHTMLContent = fs.readFileSync(`${outputPath}/index.html`, 'utf-8');
           indexHTMLContent = indexHTMLContent.replace("main.tsx", "main.jsx");
           fs.writeFileSync(`${outputPath}/index.html`, indexHTMLContent, 'utf-8');
@@ -141,19 +134,14 @@ const generateJsVersion = async () => {
             }
           });
 
-          // Read the content of the source package.json file
           const sourcePackageJson = fse.readJsonSync(`${viteTypescriptSourcePath}/package.json`);
-
-          // Read the content of the destination package.json file
           let destinationPackageJson = fse.readJsonSync(`${outputPath}/package.json`);
 
-          // Merge dependencies from source to destination
           destinationPackageJson.dependencies = {
             ...destinationPackageJson.dependencies,
             ...sourcePackageJson.dependencies,
           };
 
-          // Merge devDependencies if needed
           destinationPackageJson.devDependencies = {
             ...destinationPackageJson.devDependencies,
             ...sourcePackageJson.devDependencies,

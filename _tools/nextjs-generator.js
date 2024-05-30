@@ -7,7 +7,7 @@ const { promisify } = require('util');
 
 const vitePath = `../typescript/vite`;
 const vitePathSrc = `../typescript/vite/src`;
-const nextJs = `../typescript/nextjs`
+const nextjsGenerator = `../typescript/nextjs`
 const nextJsSrc = `../typescript/nextjs/src`;
 
 const filesToCopy = [
@@ -128,8 +128,8 @@ exec(
     console.log("Output: \n", output);
     console.log(">>> Created empty nextjs project <<<\n");
 
-    await removeAsync(nextJs);
-    await fse.copy(`nextjs`, nextJs);
+    await removeAsync(nextjsGenerator);
+    await fse.copy(`nextjs`, nextjsGenerator);
 
     try {
         // copy entire src folder from vite
@@ -137,10 +137,10 @@ exec(
           return await fse.copy(`${vitePathSrc}/${file}`, `${nextJsSrc}/${file}`)
         }));
 
-        await fse.copy(`${vitePath}/.env`, `${nextJs}/.env`);
-        await fse.copy(`${vitePath}/tailwind.config.d.ts`, `${nextJs}/tailwind.config.d.ts`);
-        await fse.copy(`${vitePath}/tailwind.config.js`, `${nextJs}/tailwind.config.js`);
-        await fse.copy(`${vitePath}/postcss.config.cjs`, `${nextJs}/postcss.config.cjs`);
+        await fse.copy(`${vitePath}/.env`, `${nextjsGenerator}/.env`);
+        await fse.copy(`${vitePath}/tailwind.config.d.ts`, `${nextjsGenerator}/tailwind.config.d.ts`);
+        await fse.copy(`${vitePath}/tailwind.config.js`, `${nextjsGenerator}/tailwind.config.js`);
+        await fse.copy(`${vitePath}/postcss.config.cjs`, `${nextjsGenerator}/postcss.config.cjs`);
 
         console.log('Folder copied successfully.');
 
@@ -169,7 +169,7 @@ exec(
 
         const sourcePackageJson = fse.readJsonSync(`${vitePath}/package.json`);
 
-        let destinationPackageJson = fse.readJsonSync(`${nextJs}/package.json`);
+        let destinationPackageJson = fse.readJsonSync(`${nextjsGenerator}/package.json`);
 
         destinationPackageJson.dependencies = {
           ...destinationPackageJson.dependencies,
@@ -181,7 +181,7 @@ exec(
           ...sourcePackageJson.devDependencies,
         };
 
-        fse.writeJsonSync(`${nextJs}/package.json`, destinationPackageJson, { spaces: 2 });
+        fse.writeJsonSync(`${nextjsGenerator}/package.json`, destinationPackageJson, { spaces: 2 });
 
       } catch (error) {
         console.log(error.message);

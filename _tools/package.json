@@ -1,11 +1,11 @@
 {
   "name": "tools",
   "version": "1.0.0",
-  "description": "",
-  "main": "nextjs.js",
+  "description": "React version generation tool",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "nextjs": "node nextjs.js"
+    "nextjs": "node nextjs-generator.js",
+    "javascript": "node nextjs-generator.js"
   },
   "devDependencies": {
     "fs-extra": "^10.0.1",
