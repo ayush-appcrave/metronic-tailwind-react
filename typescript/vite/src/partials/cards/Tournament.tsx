@@ -14,14 +14,14 @@ const Tournament = ({ image, logo, title, time, labels, progress }: ITournamentP
   return (
     <div className="card w-[280px] border-0">
       <img
-        src={toAbsoluteUrl(`/images/content/stock/${image}`)}
+        src={toAbsoluteUrl(`/images/content/600x600/${image}`)}
         className="rounded-t-xl max-w-[280px] shrink-0"
         alt=""
       />
 
       <div className="card-border card-rounded-b grid h-full gap-6 px-5 pt-3.5 pb-3 mb-5">
         <div className="flex items-center gap-3">
-          <img src={toAbsoluteUrl(`/images/content/stock/${logo}`)} className="" alt="" />
+          <img src={toAbsoluteUrl(`/images/content/brand-logos/${logo}`)} className="size" alt="" />
 
           <div className="grid grid-cols-1 gap-0.5">
             <a

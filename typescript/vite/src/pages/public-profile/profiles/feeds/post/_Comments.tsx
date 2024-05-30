@@ -50,7 +50,7 @@ const Comments = ({ items, url }: ICommentsProps) => {
         <div className="relative grow">
           <input type="text" className="input w-full" placeholder="your comment.." value="" />
           <button className="btn btn-clear btn-icon btn-sm absolute right-0 top-2/4 -translate-y-2/4 me-1.5">
-            <KeenIcon icon="picture" />
+            <KeenIcon icon="picture" className="text-gray-500" />
           </button>
         </div>
       </div>

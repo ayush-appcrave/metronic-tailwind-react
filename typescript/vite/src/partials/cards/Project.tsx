@@ -17,7 +17,7 @@ const Project = ({
     <div className="card p-7.5">
       <div className="flex items-center justify-between mb-3 lg:mb-6">
         <div className="flex items-center justify-center size-[50px] rounded-lg bg-gray-100">
-          <img src={toAbsoluteUrl(`/images/content/logos/${logo}`)} className="" alt="" />
+          <img src={toAbsoluteUrl(`/images/content/brand-logos/${logo}`)} className="" alt="" />
         </div>
         <span className={`badge badge-md ${status.variant} badge-outline`}>{status.label}</span>
       </div>

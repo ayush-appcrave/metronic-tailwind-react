@@ -7,7 +7,7 @@ const NFT = ({ image, id, title, info, date }: INFTProps) => {
   return (
     <div className="card border-0 mb-5">
       <img
-        src={toAbsoluteUrl(`/images/content/stock/${image}`)}
+        src={toAbsoluteUrl(`/images/content/600x600/${image}`)}
         className="rounded-t-xl max-w-[270px] shrink-0"
         alt=""
       />

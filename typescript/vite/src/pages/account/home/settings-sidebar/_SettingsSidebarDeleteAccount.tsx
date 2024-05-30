@@ -1,0 +1,33 @@
+const SettingsSidebarDeleteAccount = () => {
+  return (
+    <div className="card">
+      <div className="card-header" id="delete_account">
+        <h3 className="card-title">Delete Account</h3>
+      </div>
+      <div className="card-body lg:py-7.5 lg:gap-7.5 gap-5">
+        <div className="flex flex-col gap-5">
+          <div className="text-2sm font-medium text-gray-700">
+            We regret to see you leave. Confirm account deletion below. Your data will be
+            permanently removed. Thank you for being part of our community. Please check our
+            <a href="#" className="text-primary hover:text-primary-active">
+              Setup Guidelines
+            </a>
+            if you still wish continue.
+          </div>
+
+          <label className="flex items-center gap-1.5">
+            <input type="checkbox" className="checkbox checkbox-sm" value="1" />
+            <span className="switch-label text-2sm font-semibold">Confirm deleting account</span>
+          </label>
+        </div>
+
+        <div className="flex justify-end gap-2.5">
+          <button className="btn btn-light">Deactivate Instead</button>
+          <button className="btn btn-danger">Delete Account</button>
+        </div>
+      </div>
+    </div>
+  );
+};
+
+export { SettingsSidebarDeleteAccount };

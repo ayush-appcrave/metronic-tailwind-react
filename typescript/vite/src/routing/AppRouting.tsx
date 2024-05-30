@@ -4,6 +4,8 @@ import { Navigate, Route, Routes, useLocation } from 'react-router';
 import {
   CompanyProfilePage,
   GetStartedPage,
+  SettingsEnterprisePage,
+  SettingsPlainPage,
   SettingsSidebarPage,
   UserProfilePage
 } from '@/pages/account';
@@ -97,6 +99,8 @@ const AppRouting = (): ReactElement => {
           <Route path="/account/home/user-profile" element={<UserProfilePage />} />
           <Route path="/account/home/company-profile" element={<CompanyProfilePage />} />
           <Route path="/account/home/settings-sidebar" element={<SettingsSidebarPage />} />
+          <Route path="/account/home/settings-enterprise" element={<SettingsEnterprisePage />} />
+          <Route path="/account/home/settings-plain" element={<SettingsPlainPage />} />
           <Route index element={<Navigate to="/dashboard" />} />
         </Route>
       </Route>

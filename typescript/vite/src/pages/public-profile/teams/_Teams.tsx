@@ -1,9 +1,13 @@
+import { useState } from 'react';
+
 import { KeenIcon } from '@/components';
 import { Team, TeamRow } from '@/partials/cards';
 
 import { ITeamsItem, ITeamsItems } from './interfaces';
 
 const Teams = () => {
+  const [activeView, setActiveView] = useState('cards');
+
   const items: ITeamsItems = [
     {
       icon: 'ghost',
@@ -12,9 +16,9 @@ const Teams = () => {
       labels: ['Ul', 'DevOps'],
       team: {
         group: [
-          { filename: '300-9.jpg', variant: 'size-7' },
-          { filename: '300-2.jpg', variant: 'size-7' },
-          { filename: '300-1.jpg', variant: 'size-7' }
+          { filename: '300-4.png', variant: 'size-7' },
+          { filename: '300-1.png', variant: 'size-7' },
+          { filename: '300-2.png', variant: 'size-7' }
         ],
         more: {
           number: 10,
@@ -31,9 +35,9 @@ const Teams = () => {
       labels: ['Dev', 'Al', 'Cloud'],
       team: {
         group: [
-          { filename: '300-6.jpg', variant: 'size-7' },
-          { filename: '300-10.jpg', variant: 'size-7' },
-          { filename: '300-13.jpg', variant: 'size-7' }
+          { filename: '300-5.png', variant: 'size-7' },
+          { filename: '300-7.png', variant: 'size-7' },
+          { filename: '300-11.png', variant: 'size-7' }
         ]
       },
       connected: true,
@@ -46,9 +50,9 @@ const Teams = () => {
       labels: ['Marketing', 'Brand'],
       team: {
         group: [
-          { filename: '300-4.jpg', variant: 'size-7' },
-          { filename: '300-5.jpg', variant: 'size-7' },
-          { filename: '300-6.jpg', variant: 'size-7' },
+          { filename: '300-4.png', variant: 'size-7' },
+          { filename: '300-5.png', variant: 'size-7' },
+          { filename: '300-6.png', variant: 'size-7' },
           {
             fallback: 'S',
             variant: 'text-primary-inverse size-7 ring-primary-light bg-primary'
@@ -65,8 +69,8 @@ const Teams = () => {
       labels: ['Analytics', 'Data'],
       team: {
         group: [
-          { filename: '300-4.jpg', variant: 'size-7' },
-          { filename: '300-7.jpg', variant: 'size-7' }
+          { filename: '300-23.png', variant: 'size-7' },
+          { filename: '300-31.png', variant: 'size-7' }
         ],
         className: 'lg:justify-end'
       },
@@ -80,9 +84,9 @@ const Teams = () => {
       labels: ['Marketing', 'Brand'],
       team: {
         group: [
-          { filename: '300-11.jpg', variant: 'size-7' },
-          { filename: '300-12.jpg', variant: 'size-7' },
-          { filename: '300-14.jpg', variant: 'size-7' },
+          { filename: '300-11.png', variant: 'size-7' },
+          { filename: '300-1.png', variant: 'size-7' },
+          { filename: '300-14.png', variant: 'size-7' },
           {
             fallback: 'A',
             variant: 'text-primary-inverse size-7 ring-primary-light bg-primary'
@@ -99,10 +103,10 @@ const Teams = () => {
       labels: ['Dev', 'Al', 'Cloud'],
       team: {
         group: [
-          { filename: '300-16.jpg', variant: 'size-7' },
-          { filename: '300-15.jpg', variant: 'size-7' },
-          { filename: '300-17.jpg', variant: 'size-7' },
-          { filename: '300-20.jpg', variant: 'size-7' }
+          { filename: '300-16.png', variant: 'size-7' },
+          { filename: '300-15.png', variant: 'size-7' },
+          { filename: '300-17.png', variant: 'size-7' },
+          { filename: '300-20.png', variant: 'size-7' }
         ]
       },
       connected: true,
@@ -115,9 +119,9 @@ const Teams = () => {
       labels: ['Creative', 'Strat'],
       team: {
         group: [
-          { filename: '300-21.jpg', variant: 'size-7' },
-          { filename: '300-23.jpg', variant: 'size-7' },
-          { filename: '300-25.jpg', variant: 'size-7' }
+          { filename: '300-21.png', variant: 'size-7' },
+          { filename: '300-23.png', variant: 'size-7' },
+          { filename: '300-25.png', variant: 'size-7' }
         ],
         more: {
           number: 10,
@@ -134,10 +138,10 @@ const Teams = () => {
       labels: ['Innovation', 'Tech'],
       team: {
         group: [
-          { filename: '300-7.jpg', variant: 'size-7' },
-          { filename: '300-3.jpg', variant: 'size-7' },
-          { filename: '300-12.jpg', variant: 'size-7' },
-          { filename: '300-19.jpg', variant: 'size-7' }
+          { filename: '300-7.png', variant: 'size-7' },
+          { filename: '300-3.png', variant: 'size-7' },
+          { filename: '300-12.png', variant: 'size-7' },
+          { filename: '300-19.png', variant: 'size-7' }
         ]
       },
       connected: true,
@@ -150,9 +154,9 @@ const Teams = () => {
       labels: ['Marketing', 'Brand'],
       team: {
         group: [
-          { filename: '300-22.jpg', variant: 'size-7' },
-          { filename: '300-24.jpg', variant: 'size-7' },
-          { filename: '300-29.jpg', variant: 'size-7' },
+          { filename: '300-22.png', variant: 'size-7' },
+          { filename: '300-24.png', variant: 'size-7' },
+          { filename: '300-29.png', variant: 'size-7' },
           {
             fallback: 'K',
             variant: 'text-info-inverse size-7 ring-info-light bg-info'
@@ -200,42 +204,60 @@ const Teams = () => {
         <h3 className="text-lg text-gray-800 font-semibold">{items.length} Teams</h3>
 
         <div className="btn-group" data-tabs="true">
-          <a href="#" className="btn btn-icon btn-sm active" data-tab-toggle="#teams_cards">
+          <a
+            href="#"
+            className={`btn btn-icon btn-sm ${activeView === 'cards' ? 'active' : ''}`}
+            data-tab-toggle="#teams_cards"
+            onClick={() => {
+              setActiveView('cards');
+            }}
+          >
             <KeenIcon icon="category" />
           </a>
-          <a href="#" className="btn btn-icon btn-sm" data-tab-toggle="#teams_list">
+          <a
+            href="#"
+            className={`btn btn-icon btn-sm ${activeView === 'list' ? 'active' : ''}`}
+            data-tab-toggle="#teams_list"
+            onClick={() => {
+              setActiveView('list');
+            }}
+          >
             <KeenIcon icon="row-horizontal" />
           </a>
         </div>
       </div>
 
-      <div id="teams_cards">
-        <div className="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-5 lg:gap-7.5">
-          {items.map((item, index) => {
-            return renderItem(item, index);
-          })}
-        </div>
+      {activeView === 'cards' && (
+        <div id="teams_cards">
+          <div className="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-5 lg:gap-7.5">
+            {items.map((item, index) => {
+              return renderItem(item, index);
+            })}
+          </div>
 
-        <div className="flex grow justify-center pt-5 lg:pt-7.5">
-          <a href="#" className="btn btn-link">
-            Show more Teams
-          </a>
+          <div className="flex grow justify-center pt-5 lg:pt-7.5">
+            <a href="#" className="btn btn-link">
+              Show more Teams
+            </a>
+          </div>
         </div>
-      </div>
+      )}
 
-      <div className="hidden" id="teams_list">
-        <div className="flex flex-col gap-5 lg:gap-7.5">
-          {items.map((data, index) => {
-            return renderData(data, index);
-          })}
-        </div>
+      {activeView === 'list' && (
+        <div id="teams_list">
+          <div className="flex flex-col gap-5 lg:gap-7.5">
+            {items.map((data, index) => {
+              return renderData(data, index);
+            })}
+          </div>
 
-        <div className="flex grow justify-center pt-5 lg:pt-7.5">
-          <a href="#" className="btn btn-link">
-            Show more Teams
-          </a>
+          <div className="flex grow justify-center pt-5 lg:pt-7.5">
+            <a href="#" className="btn btn-link">
+              Show more Teams
+            </a>
+          </div>
         </div>
-      </div>
+      )}
     </div>
   );
 };

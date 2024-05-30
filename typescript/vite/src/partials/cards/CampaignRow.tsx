@@ -20,7 +20,11 @@ const CampaignRow = ({ logo, title, description, status, statistics, url }: ICam
     <div className="card p-5 lg:p-7.5">
       <div className="flex items-center flex-wrap justify-between gap-5">
         <div className="flex items-center gap-3.5">
-          <img src={toAbsoluteUrl(`/images/content/logos/${logo}`)} className="" alt="" />
+          <img
+            src={toAbsoluteUrl(`/images/content/brand-logos/${logo}`)}
+            className="size-[50px] shrink-0"
+            alt=""
+          />
 
           <div className="">
             <a href={url} className="text-lg font-semibold text-gray-800 hover:text-primary">

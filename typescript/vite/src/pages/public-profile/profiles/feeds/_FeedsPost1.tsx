@@ -10,13 +10,13 @@ const FeedsPost1 = () => {
 
   const comments: ICommentsItems = [
     {
-      avatar: '300-3.jpg',
+      avatar: '300-3.png',
       author: 'Mr. Anderson',
       date: '1 Day ago',
       text: 'Long before you sit dow to put digital pen to paper you need to make sure you have to sit down and write. I’ll show you how to write a great blog post in five simple steps that people will actually want to read. Ready?'
     },
     {
-      avatar: '300-10.jpg',
+      avatar: '300-15.png',
       author: 'Mrs. Anderson',
       date: '1 Day ago',
       text: 'Long before you sit dow to put digital pen to paper.'
@@ -30,7 +30,7 @@ const FeedsPost1 = () => {
     <div className="card p-7.5">
       <Heading
         author="Jenny Klabber"
-        avatar={{ image: '300-2.jpg', imageClass: 'rounded-full size-[50px]' }}
+        avatar={{ image: '300-1.png', imageClass: 'rounded-full size-[50px]' }}
         date="Yesterday at  5:06 PM"
       />
       <div className="grid gap-5 mb-5">
@@ -44,7 +44,7 @@ const FeedsPost1 = () => {
         <div className="grid grid-cols-12 gap-2.5 xl:gap-7.5">
           <div className="col-span-6">
             <img
-              src={toAbsoluteUrl('/images/content/stock/2.jpg')}
+              src={toAbsoluteUrl('/images/content/600x600/2.jpg')}
               className="rounded-xl max-h-[340px] size-full"
               alt=""
             />
@@ -53,12 +53,12 @@ const FeedsPost1 = () => {
           <div className="col-span-6">
             <div className="grid grid-cols-1 gap-2.5 xl:gap-7.5">
               <img
-                src={toAbsoluteUrl('/images/content/stock/5.jpg')}
+                src={toAbsoluteUrl('/images/content/600x400/19.jpg')}
                 className="rounded-xl max-h-[155px] size-full"
                 alt=""
               />
               <img
-                src={toAbsoluteUrl('/images/content/stock/5.jpg')}
+                src={toAbsoluteUrl('/images/content/600x400/20.jpg')}
                 className="rounded-xl max-h-[155px] size-full"
                 alt=""
               />

@@ -8,7 +8,7 @@ const DefaultProjects = () => {
     {
       name: 'Acme software development',
       team: {
-        group: [{ filename: '300-9.jpg' }, { filename: '300-2.jpg' }, { filename: '300-3.jpg' }],
+        group: [{ filename: '300-9.png' }, { filename: '300-2.png' }, { filename: '300-3.png' }],
         more: {
           number: 3,
           variant: 'text-success-inverse ring-success-light bg-success'
@@ -17,29 +17,29 @@ const DefaultProjects = () => {
       dueDate: '24 Aug, 2024',
       progress: {
         variant: 'progress-primary',
-        value: '60'
+        value: 60
       }
     },
     {
       name: 'Strategic Partnership Deal',
       team: {
         group: [
-          { filename: '300-11.jpg' },
-          { filename: '300-13.jpg' },
-          { filename: '300-21.jpg' },
-          { filename: '300-1.jpg' }
+          { filename: '300-11.png' },
+          { filename: '300-13.png' },
+          { filename: '300-21.png' },
+          { filename: '300-1.png' }
         ]
       },
       dueDate: '10 Sep, 2024',
       progress: {
         variant: '',
-        value: '100'
+        value: 100
       }
     },
     {
       name: 'Client Onboarding',
       team: {
-        group: [{ filename: '300-2.jpg' }, { filename: '300-7.jpg' }, { filename: '300-9.jpg' }],
+        group: [{ filename: '300-2.png' }, { filename: '300-7.png' }, { filename: '300-9.png' }],
         more: {
           number: 1,
           variant: 'text-success-inverse ring-success-light bg-success'
@@ -48,13 +48,13 @@ const DefaultProjects = () => {
       dueDate: '19 Sep, 2024',
       progress: {
         variant: 'progress-primary',
-        value: '20'
+        value: 20
       }
     },
     {
       name: 'Widget Supply Agreement',
       team: {
-        group: [{ filename: '300-15.jpg' }, { filename: '300-10.jpg' }, { filename: '300-30.jpg' }],
+        group: [{ filename: '300-15.png' }, { filename: '300-10.png' }, { filename: '300-30.png' }],
         more: {
           number: 4,
           variant: 'text-success-inverse ring-success-light bg-success'
@@ -63,23 +63,23 @@ const DefaultProjects = () => {
       dueDate: '5 May, 2024',
       progress: {
         variant: 'progress-success',
-        value: '100'
+        value: 100
       }
     },
     {
       name: 'Project X Redesign',
       team: {
         group: [
-          { filename: '300-1.jpg' },
-          { filename: '300-4.jpg' },
-          { filename: '300-3.jpg' },
-          { filename: '300-14.jpg' }
+          { filename: '300-1.png' },
+          { filename: '300-4.png' },
+          { filename: '300-3.png' },
+          { filename: '300-14.png' }
         ]
       },
       dueDate: '1 Feb, 2025',
       progress: {
         variant: 'progress-primary',
-        value: '80'
+        value: 80
       }
     }
   ];

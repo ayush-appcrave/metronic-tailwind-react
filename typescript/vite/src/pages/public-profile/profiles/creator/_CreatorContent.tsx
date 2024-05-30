@@ -17,14 +17,14 @@ const CreatorContent = () => {
   ];
 
   const items: ICreatorUsersItems = [
-    { image: '300-2.jpg' },
-    { image: '300-1.jpg' },
-    { image: '300-3.jpg' },
-    { image: '300-4.jpg' },
-    { image: '300-5.jpg' },
-    { image: '300-6.jpg' },
-    { image: '300-7.jpg' },
-    { image: '300-8.jpg' }
+    { image: '300-1.png' },
+    { image: '300-2.png' },
+    { image: '300-3.png' },
+    { image: '300-5.png' },
+    { image: '300-6.png' },
+    { image: '300-11.png' },
+    { image: '300-7.png' },
+    { image: '300-12.png' }
   ];
 
   return (

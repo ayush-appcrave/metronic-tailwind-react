@@ -1,3 +1,5 @@
+import { useState } from 'react';
+
 import { KeenIcon } from '@/components';
 import { Work, WorkRow } from '@/partials/cards';
 
@@ -5,14 +7,16 @@ import { Offer, OfferRow } from './cards';
 import { IWorksItem, IWorksItems } from './interfaces';
 
 const Works = () => {
+  const [activeView, setActiveView] = useState('cards');
+
   const items: IWorksItems = [
     {
       url: '#',
       title: 'Urban Dreams',
       description: 'Cloud storage and file sharing',
-      image: '/images/content/stock/1.jpg',
+      image: '21.jpg',
       authorName: 'Cody Fisher',
-      authorAvatar: '/images/content/avatars/300-3.jpg',
+      authorAvatar: '300-6.png',
       likes: 24,
       comments: 5
     },
@@ -20,9 +24,9 @@ const Works = () => {
       url: '#',
       title: 'Timeless Elegance',
       description: 'Neutrals are the epitome of timeless elegance',
-      image: '/images/content/stock/2.jpg',
+      image: '3.jpg',
       authorName: 'Jenny Wilson',
-      authorAvatar: '/images/content/avatars/300-20.jpg',
+      authorAvatar: '300-14.png',
       likes: 6,
       comments: 1
     },
@@ -30,9 +34,9 @@ const Works = () => {
       url: '#',
       title: 'Whispered Emotions',
       description: 'Choose the right time. ',
-      image: '/images/content/stock/7.jpg',
+      image: '22.jpg',
       authorName: 'Wade Warren',
-      authorAvatar: '/images/content/avatars/300-9.jpg',
+      authorAvatar: '300-11.png',
       likes: 187,
       comments: 49
     },
@@ -40,9 +44,9 @@ const Works = () => {
       url: '#',
       title: 'Golden Serenity',
       description: 'Her alluring appearance radiates calmness.',
-      image: '/images/content/stock/9.jpg',
+      image: '23.jpg',
       authorName: 'Albert Flores',
-      authorAvatar: '/images/content/avatars/300-15.jpg',
+      authorAvatar: '300-1.png',
       likes: 60,
       comments: 13
     },
@@ -50,9 +54,9 @@ const Works = () => {
       url: '#',
       title: 'Wild Beauty',
       description: 'Pulled apart by reality',
-      image: '/images/content/stock/10.jpg',
+      image: '14.jpg',
       authorName: 'Devon Lane',
-      authorAvatar: '/images/content/avatars/300-18.jpg',
+      authorAvatar: '300-16.png',
       likes: 625,
       comments: 109
     },
@@ -60,9 +64,9 @@ const Works = () => {
       url: '#',
       title: 'Mystic Shadows',
       description: 'The charm and limit of shadows',
-      image: '/images/content/stock/1.jpg',
+      image: '25.jpg',
       authorName: 'Kathryn Murphy',
-      authorAvatar: '/images/content/avatars/300-22.jpg',
+      authorAvatar: '300-5.png',
       likes: 37,
       comments: 16
     },
@@ -70,9 +74,9 @@ const Works = () => {
       url: '#',
       title: 'Intrepid Travel',
       description: 'Understand the world with us',
-      image: '/images/content/stock/1.jpg',
+      image: '26.jpg',
       authorName: 'Jhon Smith',
-      authorAvatar: '/images/content/avatars/300-21.jpg',
+      authorAvatar: '300-25.png',
       likes: 30,
       comments: 22
     },
@@ -80,9 +84,9 @@ const Works = () => {
       url: '#',
       title: 'We rise together',
       description: 'We share the best experiences with you',
-      image: '/images/content/stock/1.jpg',
+      image: '2.jpg',
       authorName: 'Adam Cruse',
-      authorAvatar: '/images/content/avatars/300-25.jpg',
+      authorAvatar: '300-29.png',
       likes: 19,
       comments: 23
     }
@@ -124,43 +128,61 @@ const Works = () => {
         <h3 className="text-lg text-gray-800 font-semibold">{items.length} Works</h3>
 
         <div className="btn-group" data-tabs="true">
-          <a href="#" className="btn btn-icon btn-sm active" data-tab-toggle="#works_cards">
+          <a
+            href="#"
+            className={`btn btn-icon btn-sm ${activeView === 'cards' ? 'active' : ''}`}
+            data-tab-toggle="#works_cards"
+            onClick={() => {
+              setActiveView('cards');
+            }}
+          >
             <KeenIcon icon="category" />
           </a>
-          <a href="#" className="btn btn-icon btn-sm" data-tab-toggle="#works_list">
+          <a
+            href="#"
+            className={`btn btn-icon btn-sm ${activeView === 'list' ? 'active' : ''}`}
+            data-tab-toggle="#works_list"
+            onClick={() => {
+              setActiveView('list');
+            }}
+          >
             <KeenIcon icon="row-horizontal" />
           </a>
         </div>
       </div>
 
-      <div id="works_cards">
-        <div className="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-5 lg:gap-7.5">
-          {items.map((item, index) => {
-            return renderItem(item, index);
-          })}
-          <Offer />
-        </div>
+      {activeView === 'cards' && (
+        <div id="works_cards">
+          <div className="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-5 lg:gap-7.5">
+            {items.map((item, index) => {
+              return renderItem(item, index);
+            })}
+            <Offer />
+          </div>
 
-        <div className="flex grow justify-center pt-5 lg:pt-7.5">
-          <a href="#" className="btn btn-link">
-            Show more works
-          </a>
+          <div className="flex grow justify-center pt-5 lg:pt-7.5">
+            <a href="#" className="btn btn-link">
+              Show more works
+            </a>
+          </div>
         </div>
-      </div>
+      )}
 
-      <div className="hidden" id="works_list">
-        <div className="flex flex-col gap-5 lg:gap-7.5">
-          {items.map((data, index) => {
-            return renderData(data, index);
-          })}
-          <OfferRow />
+      {activeView === 'list' && (
+        <div id="works_list">
+          <div className="flex flex-col gap-5 lg:gap-7.5">
+            {items.map((data, index) => {
+              return renderData(data, index);
+            })}
+            <OfferRow />
+          </div>
+          <div className="flex grow justify-center pt-5 lg:pt-7.5">
+            <a href="#" className="btn btn-link">
+              Show more works
+            </a>
+          </div>
         </div>
-        <div className="flex grow justify-center pt-5 lg:pt-7.5">
-          <a href="#" className="btn btn-link">
-            Show more works
-          </a>
-        </div>
-      </div>
+      )}
     </div>
   );
 };
