@@ -9,7 +9,7 @@ import {
   SettingsSidebarPage,
   UserProfilePage
 } from '@/pages/account';
-import { DashboardPage } from '@/pages/dashboard';
+import {DashboardPage, ImageInputExamples} from '@/pages/dashboard';
 import {
   ActivityPage,
   BloggerPage,
@@ -76,6 +76,7 @@ const AppRouting = (): ReactElement => {
       <Route element={<RequireAuth />}>
         <Route element={<Demo1Layout />}>
           <Route path="/dashboard" element={<DashboardPage />} />
+          <Route path="/image-input-examples" element={<ImageInputExamples />} />
           <Route path="/public-profile/profiles/default" element={<DefaultPage />} />
           <Route path="/public-profile/profiles/creator" element={<CreatorPage />} />
           <Route path="/public-profile/profiles/company" element={<CompanyPage />} />

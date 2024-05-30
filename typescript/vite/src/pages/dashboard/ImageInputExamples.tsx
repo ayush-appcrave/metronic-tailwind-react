@@ -4,7 +4,7 @@ import { Helmet } from 'react-helmet';
 import { Container } from '@/components/container';
 import { ImageInput, ImageType } from '@/components/image-input';
 
-const DashboardPage = () => {
+const ImageInputExamples = () => {
   const [images1, setImages1] = useState<ImageType[]>([]);
   const [images2, setImages2] = useState<ImageType[]>([]);
   const [images3, setImages3] = useState<ImageType[]>([]);
@@ -27,7 +27,7 @@ const DashboardPage = () => {
   return (
     <>
       <Helmet>
-        <title>Dashboard Page</title>
+        <title>Image Input Examples</title>
       </Helmet>
 
       <Container>
@@ -143,4 +143,4 @@ const DashboardPage = () => {
   );
 };
 
-export { DashboardPage };
+export { ImageInputExamples };
