@@ -25,9 +25,18 @@ const PATHS_GENERAL: PathsType = {
 
 const MENU_SIDEBAR: MenuConfigType = [
   {
-    title: 'Dashboard',
-    path: '/dashboard',
-    icon: 'element-11'
+    title: 'Dashboards',
+    icon: 'element-11',
+    children: [
+      {
+        title: 'Light Sidebar',
+        path: '/'
+      },
+      {
+        title: 'Dark Sidebar',
+        path: '/dashboard/dark-sidebar'
+      },
+    ]
   },
   {
     heading: 'User'
@@ -288,15 +297,6 @@ const MENU_SIDEBAR: MenuConfigType = [
   },
   {
     title: 'Community',
-    icon: 'profile-circle',
-    children: [
-      { title: 'Link', path: '#' },
-      { title: 'Link', path: '#' },
-      { title: 'Link', path: '#' }
-    ]
-  },
-  {
-    title: 'User Management',
     icon: 'profile-circle',
     children: [
       { title: 'Link', path: '#' },

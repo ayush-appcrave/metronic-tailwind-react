@@ -1,6 +1,6 @@
-export type KeenIconsStyleType = 'duotone' | 'solid' | 'outline';
+export type KeenIconsStyleType = 'duotone' | 'filled' | 'solid' | 'outline';
 
-export interface IKeenIconProps {
+export interface IKeenIconsProps {
   icon: string;
   style?: KeenIconsStyleType;
   className?: string;

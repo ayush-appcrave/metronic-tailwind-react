@@ -2,10 +2,9 @@ import clsx from 'clsx';
 import { memo } from 'react';
 
 import { useSettings } from '../../providers/SettingsProvider';
-import KeenIconsConfig from './config';
-import { IKeenIconProps } from './types';
+import { IKeenIconsProps } from './types';
 
-const KeenIconComponent = ({ icon, style, className = '' }: IKeenIconProps) => {
+const KeenIconComponent = ({ icon, style, className = '' }: IKeenIconsProps) => {
   const { settings } = useSettings();
 
   if (typeof style === 'undefined') {
@@ -13,17 +12,7 @@ const KeenIconComponent = ({ icon, style, className = '' }: IKeenIconProps) => {
   }
 
   return (
-    <i className={clsx(`ki-${style}`, `ki-${icon}`, className)}>
-      {style === 'duotone' &&
-        [...Array(KeenIconsConfig[icon])].map((e, i) => {
-          return (
-            <span
-              key={`${style}-${icon}-${className}-path-${i + 1}`}
-              className={`path${i + 1}`}
-            ></span>
-          );
-        })}
-    </i>
+    <i className={clsx(`ki-${style}`, `ki-${icon}`, className)}></i>
   );
 };
 

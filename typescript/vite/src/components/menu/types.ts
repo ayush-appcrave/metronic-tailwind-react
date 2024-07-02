@@ -27,6 +27,7 @@ export interface IMenuProps {
 
 export interface IMenuItemProps {
   path?: string;
+  soon?: boolean;
   toggle?: MenuItemToggleType;
   trigger?: MenuItemTriggerType;
   disabled?: boolean;
@@ -47,6 +48,24 @@ export interface IMenuLinkProps {
   externalLink?: boolean;
   newTab?: boolean;
   hasItemSub?: boolean;
+  className?: string;
+  tabIndex?: MenuTabIndexType;
+  menuItemRef?: any;
+  handleToggle?: MenuEventHandlerType;
+  handleClick?: MenuEventHandlerType;
+  onLinkClick?: MenuClickEventType;
+  onLinksClick?: MenuClickEventType;
+  children?: ReactNode;
+}
+
+export interface IMenuLabelProps {
+  className?: string;
+  tabIndex?: MenuTabIndexType;
+  menuItemRef?: any;
+  children?: ReactNode;
+}
+
+export interface IMenuToggleProps {
   className?: string;
   tabIndex?: MenuTabIndexType;
   menuItemRef?: any;
@@ -82,14 +101,14 @@ export interface IMenuIconProps {
   children: ReactNode;
 }
 
+export interface IMenuBadgeProps {
+  className?: string;
+  children: ReactNode;
+}
+
 export interface IMenuBulletProps {
   className?: string;
   children?: ReactNode;
-}
-
-export interface IMenuToggleProps {
-  className?: string;
-  children: ReactNode;
 }
 
 export interface IMenuHeadingProps {
@@ -99,6 +118,7 @@ export interface IMenuHeadingProps {
 
 export interface IMenuItemConfig {
   title?: string;
+  soon?: boolean;
   heading?: string;
   icon?: string;
   path?: string;
