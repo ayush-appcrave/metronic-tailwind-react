@@ -7,8 +7,6 @@ export default plugin(({addComponents, theme}) => {
     '.dropdown': {
       'display': 'flex',
     },
-    '.dropdown-toggle': {      
-    },
     '.dropdown-content': {
       'display': 'none',
       'align-items': 'stretch',

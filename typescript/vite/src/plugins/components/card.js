@@ -39,7 +39,7 @@ export default plugin(({addComponents, theme}) => {
     '.card-footer': {
       'display': 'flex',
       'align-items': 'center',
-      'justify-content': 'between',
+      'justify-content': 'space-between',
       'border-top': 'var(--tw-card-border)',
       'padding-left': theme('custom.components.card.px'),
       'padding-right': theme('custom.components.card.px'),

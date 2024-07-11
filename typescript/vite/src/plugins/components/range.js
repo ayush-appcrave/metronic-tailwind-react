@@ -9,10 +9,7 @@ export default plugin(({addComponents}) => {
 			'padding': '0',
 			'appearance': 'none',
 			'&:focus': {
-				'outline': 0,
-				'&::-webkit-slider-thumb, &::-webkit-slider-thumb': { 
-					'box-shadow': '' 
-				}
+				'outline': 0
 			},		
 			'&::-moz-focus-outer': {
 				'border': '0'

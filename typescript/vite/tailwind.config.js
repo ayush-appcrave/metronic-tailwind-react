@@ -598,7 +598,6 @@ module.exports = {
 	},
 	plugins: [
 		require('./src/plugins/plugin'),
-		require('./src/plugins/layouts/demo1'),
 		require('./src/plugins/components/theme'),
 		require('./src/plugins/components/breakpoints'),		
 		require('./src/plugins/components/typography'),

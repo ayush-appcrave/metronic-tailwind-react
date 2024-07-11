@@ -18,8 +18,6 @@ export default plugin(({addComponents, theme}) => {
     '.menu-default': {
       'padding-top': theme('spacing')['2.5'],
       'padding-bottom': theme('spacing')['2.5'],
-      '.menu-item': {
-      },
       '.menu-link': {
         'margin-left': theme('spacing')['2.5'],
         'margin-right': theme('spacing')['2.5'],
