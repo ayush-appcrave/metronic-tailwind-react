@@ -30,7 +30,7 @@ const MENU_SIDEBAR: MenuConfigType = [
     children: [
       {
         title: 'Light Sidebar',
-        path: '/'
+        path: '/dashboard'
       },
       {
         title: 'Dark Sidebar',

@@ -25,7 +25,7 @@ const SidebarMenu = () => {
   const linkPl = 'pl-[10px]';
   const linkPr = 'pr-[10px]';
   const linkPy = 'py-[6px]';
-  const itemsGap = 'gap-0.5';
+  const itemsGap = 'gap-0.5 ';
   const subLinkPy = 'py-[8px]';
   const rightOffset = 'mr-[-10px]';
   const iconWidth = 'w-[20px]';
@@ -73,13 +73,13 @@ const SidebarMenu = () => {
           </MenuLink>
           <MenuSub
             className={clsx(
-              'before:top-0 before:bottom-0 before:border-l before:border-gray-200',
+              'relative before:absolute before:top-0 before:bottom-0 before:border-l before:border-gray-200',
               itemsGap,
               accordionBorderLeft[0],
               accordionPl[0]
             )}
           >
-            {buildMenuItemChildren(item.children, 1)}
+            {buildMenuItemChildren(item.children, index, 1)}
           </MenuSub>
         </MenuItem>
       );
@@ -162,7 +162,7 @@ const SidebarMenu = () => {
           {...(item.trigger && { trigger: item.trigger })}
         >
           <MenuLink
-            className={clsx('border border-transparent grow cursor-pointer', accordionLinkGap[0], accordionLinkPl, linkPr, subLinkPy)}
+            className={clsx('border border-transparent grow cursor-pointer', accordionLinkGap[level], accordionLinkPl, linkPr, subLinkPy)}
           >
             {buildMenuBullet()}
 
@@ -183,14 +183,14 @@ const SidebarMenu = () => {
           </MenuLink>
           <MenuSub
             className={clsx(
-              'before:top-0 before:bottom-0 before:border-l before:border-gray-200',
+              !item.collapse && 'before:top-0 before:bottom-0 before:border-l before:border-gray-200',
               itemsGap,
-              accordionBorderLeft[level],
-              accordionPl[level],
-              (!item.collapse && 'relative before:absolute')
+              !item.collapse && accordionBorderLeft[level],
+              !item.collapse && accordionPl[level],
+              !item.collapse && 'relative before:absolute'
             )}
           >
-            {buildMenuItemChildren(item.children, 1)}
+            {buildMenuItemChildren(item.children, index, item.collapse ? level : (level+1), !item.collapse)}
           </MenuSub>
         </MenuItem>
       );
@@ -285,7 +285,7 @@ const SidebarMenu = () => {
   const { getMenuConfig } = useMenu();
   const menuConfig = getMenuConfig('primary');
 
-  return <Menu className="flex flex-col grow">{menuConfig && buildMenu(menuConfig)}</Menu>;
+  return <Menu className="flex flex-col grow gap-0.5">{menuConfig && buildMenu(menuConfig)}</Menu>;
 };
 
 export { SidebarMenu };
