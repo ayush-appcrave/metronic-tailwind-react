@@ -160,6 +160,7 @@ const SidebarMenu = () => {
           key={'item-' + index}
           {...(item.toggle && { toggle: item.toggle })}
           {...(item.trigger && { trigger: item.trigger })}
+          className={clsx(item.collapse && 'flex-col-reverse')}
         >
           <MenuLink
             className={clsx('border border-transparent grow cursor-pointer', accordionLinkGap[level], accordionLinkPl, linkPr, subLinkPy)}

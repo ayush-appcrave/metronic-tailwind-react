@@ -4,7 +4,7 @@ import { useState } from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import * as Yup from 'yup';
 
-import { useAuthContext } from '../../../useAuthContext';
+import { useAuthContext } from '../../useAuthContext';
 
 const initialValues = {
   firstname: '',
@@ -15,7 +15,7 @@ const initialValues = {
   acceptTerms: false
 };
 
-const registrationSchema = Yup.object().shape({
+const signupSchema = Yup.object().shape({
   firstname: Yup.string()
     .min(3, 'Minimum 3 symbols')
     .max(50, 'Maximum 50 symbols')
@@ -41,7 +41,7 @@ const registrationSchema = Yup.object().shape({
   acceptTerms: Yup.bool().required('You must accept the terms and conditions')
 });
 
-const Registration = () => {
+const Signup = () => {
   const [loading, setLoading] = useState(false);
   const { register } = useAuthContext();
   const navigate = useNavigate();
@@ -50,7 +50,7 @@ const Registration = () => {
 
   const formik = useFormik({
     initialValues,
-    validationSchema: registrationSchema,
+    validationSchema: signupSchema,
     onSubmit: async (values, { setStatus, setSubmitting }) => {
       setLoading(true);
       try {
@@ -68,7 +68,7 @@ const Registration = () => {
         navigate(from, { replace: true });
       } catch (error) {
         console.error(error);
-        setStatus('The registration details are incorrect');
+        setStatus('The signup details are incorrect');
         setSubmitting(false);
         setLoading(false);
       }
@@ -320,4 +320,4 @@ const Registration = () => {
   );
 };
 
-export { Registration };
+export { Signup };
