@@ -37,11 +37,6 @@ const Login = () => {
   const navigate = useNavigate();
   const location = useLocation();
   const from = location.state?.from?.pathname || '/';
-  const [showPassword, setShowPassword] = useState(false);
-
-  const handleTogglePassword = () => {
-    setShowPassword(!showPassword);
-  };
 
   const formik = useFormik({
     initialValues,
@@ -83,6 +78,19 @@ const Login = () => {
           </div>
         </div>
         {/* begin::Heading */}
+
+        {/* {formik.status ? (
+          <div className="mb-lg-15 alert alert-danger">
+            <div className="alert-text font-weight-bold">{formik.status}</div>
+          </div>
+        ) : (
+          <div className="mb-10 bg-light-info p-8 rounded">
+            <div className="text-info">
+              Use account <strong>admin@demo.com</strong> and password <strong>demo</strong> to
+              continue.
+            </div>
+          </div>
+        )} */}
         
         <div className="grid grid-cols-2 gap-2.5">
           <a href="#" className="btn btn-light btn-sm justify-center">
