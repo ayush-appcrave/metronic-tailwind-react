@@ -13,7 +13,7 @@ const DefaultPage = () => {
 
   const image = (
     <img
-      src={toAbsoluteUrl('/images/content/avatars/300-2.jpg')}
+      src={toAbsoluteUrl('/media/avatars/300-1.png')}
       className="rounded-full border-3 border-success max-h-[100px] max-w-full"
     />
   );

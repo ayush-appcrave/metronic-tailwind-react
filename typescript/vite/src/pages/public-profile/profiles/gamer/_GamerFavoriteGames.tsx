@@ -17,7 +17,7 @@ const GamerFavoriteGames = () => {
   const renderItem = (item: IGamerFavoriteGamesItem, index: number) => {
     return (
       <img
-        src={toAbsoluteUrl(`/images/content/600x600/${item.image}`)}
+        src={toAbsoluteUrl(`/media/images/600x600/${item.image}`)}
         className="rounded-xl w-11 h-11"
         alt=""
         key={index}

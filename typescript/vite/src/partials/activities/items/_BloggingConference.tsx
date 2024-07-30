@@ -19,8 +19,8 @@ const BloggingConference = ({ heading, datetime, image, title }: IBloggingConfer
         <div className="card-body lg:py-9">
           <div className="flex justify-center">
             <img
-              src={toAbsoluteUrl(image ?? '/images/content/illustrations/welcome.png')}
-              className="max-h-[200px]"
+              src={toAbsoluteUrl(image ?? '/media/illustrations/10-dark.svg')}
+              className="max-h-[160px]"
               alt=""
             />
           </div>

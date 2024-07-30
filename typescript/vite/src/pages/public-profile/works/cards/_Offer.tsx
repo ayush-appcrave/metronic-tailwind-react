@@ -5,7 +5,7 @@ const Offer = () => {
   return (
     <div
       className="card border-dashed border-brand-clarity bg-center bg-cover bg-no-repeat"
-      style={{ backgroundImage: toAbsoluteUrl('/images/content/patterns/2600x1200/5.png') }}
+      style={{ backgroundImage: toAbsoluteUrl('/media/patterns/2600x1200/5.png') }}
     >
       <div className="card-body grid items-center">
         <div className="grid gap-5">

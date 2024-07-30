@@ -33,7 +33,7 @@ const CompanyProfileBranding = () => {
           <div className="flex flex-wrap sm:flex-nowrap w-full gap-5 lg:gap-7.5">
             <div className="mt-1.5">
               <img
-                src={toAbsoluteUrl('/images/content/brand-logos/html.svg')}
+                src={toAbsoluteUrl('/media/brand-logos/hex-lab.svg')}
                 className="h-9 min-w-32"
                 alt=""
               />
@@ -41,7 +41,7 @@ const CompanyProfileBranding = () => {
 
             <div
               className="flex bg-center min-w-48 lg:w-full p-5 lg:p-7 bg-no-repeat bg-[length:450px] border border-gray-300 rounded-xl border-dashed"
-              style={{ backgroundImage: toAbsoluteUrl('/images/content/2600x1200/bg-5.png') }}
+              style={{ backgroundImage: toAbsoluteUrl('/media/images/2600x1200/bg-5.png') }}
             >
               <div className="flex flex-col place-items-center place-content-center text-center rounded-xl w-full">
                 <div className="flex items-center mb-2.5">

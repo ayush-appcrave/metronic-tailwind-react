@@ -10,7 +10,7 @@ const ProjectRow = ({ logo, name, description, status, progress, team }: IProjec
       <div className="flex items-center flex-wrap justify-between gap-5">
         <div className="flex items-center gap-3.5">
           <div className="flex items-center justify-center size-14 shrink-0 rounded-lg bg-gray-100">
-            <img src={toAbsoluteUrl(`/images/content/brand-logos/${logo}`)} className="" alt="" />
+            <img src={toAbsoluteUrl(`/media/brand-logos/${logo}`)} className="" alt="" />
           </div>
 
           <div className="flex flex-col">

@@ -5,7 +5,7 @@ const OfferRow = () => {
   return (
     <div
       className="card border-dashed border-brand-clarity bg-center bg-no-repeat bg-cover"
-      style={{ backgroundImage: toAbsoluteUrl('/images/content/patterns/2600x1200/3.png') }}
+      style={{ backgroundImage: toAbsoluteUrl('/media/patterns/2600x1200/3.png') }}
     >
       <div className="card-body">
         <div className="flex items-center justify-center gap-5">

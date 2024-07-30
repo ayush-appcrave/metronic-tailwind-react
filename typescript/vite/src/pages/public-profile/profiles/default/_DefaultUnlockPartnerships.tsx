@@ -20,7 +20,7 @@ const DefaultUnlockPartnerships = ({ url }: IDefaultUnlockPartnershipsProps) => 
               </p>
             </div>
             <img
-              src={toAbsoluteUrl('/images/content/illustration/1.svg')}
+              src={toAbsoluteUrl('/media/illustrations/1.svg')}
               className="max-h-[160px]"
               alt=""
             />

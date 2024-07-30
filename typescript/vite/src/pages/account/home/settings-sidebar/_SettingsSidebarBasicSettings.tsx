@@ -30,11 +30,11 @@ const SettingsSidebarBasicSettings = () => {
 
               <div
                 className="image-input-placeholder rounded-full border-2 border-success image-input-empty:border-gray-300"
-                style={{ backgroundImage: toAbsoluteUrl('/images/content/avatars/blank.png') }}
+                style={{ backgroundImage: toAbsoluteUrl('/media/avatars/blank.png') }}
               >
                 <div
                   className="image-input-preview rounded-full"
-                  style={{ backgroundImage: toAbsoluteUrl('/images/content/avatars/300-2.png') }}
+                  style={{ backgroundImage: toAbsoluteUrl('/media/avatars/300-2.png') }}
                 ></div>
                 <div className="flex items-center justify-center cursor-pointer h-5 left-0 right-0 bottom-0 bg-dark-dark-clarity absolute">
                   <svg

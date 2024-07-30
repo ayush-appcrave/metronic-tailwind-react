@@ -28,12 +28,12 @@ const SettingsSidebarAuthSingleSingOn = () => {
     return (
       <label
         className="flex align-stretch cursor-pointer bg-center h-44 bg-no-repeat border border-gray-300 rounded-xl border-dashed has-[:checked]:border-primary bg-[length:500px]"
-        style={{ backgroundImage: toAbsoluteUrl('/images/content/2600x1200/bg-5.png') }}
+        style={{ backgroundImage: toAbsoluteUrl('/media/images/2600x1200/bg-5.png') }}
         key={index}
       >
         <div className="flex flex-col place-items-center place-content-center rounded-xl grow has-[:checked]:bg-[rgba(239,246,255,1)]">
           <img
-            src={toAbsoluteUrl(`/images/content/brand-logos/${item.logo}`)}
+            src={toAbsoluteUrl(`/media/brand-logos/${item.logo}`)}
             className={item.size}
             alt=""
           />

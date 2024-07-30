@@ -44,12 +44,12 @@ const SettingsEnterpriseAccount = ({ title }: ISettingsEnterpriseAccountProps) =
 
                   <div
                     className="image-input-placeholder rounded-full border-2 border-success image-input-empty:border-gray-300"
-                    style={{ backgroundImage: toAbsoluteUrl('/images/content/avatars/blank.png') }}
+                    style={{ backgroundImage: toAbsoluteUrl('/media/avatars/blank.png') }}
                   >
                     <div
                       className="image-input-preview rounded-full"
                       style={{
-                        backgroundImage: toAbsoluteUrl('/images/content/avatars/300-2.png')
+                        backgroundImage: toAbsoluteUrl('/media/avatars/300-2.png')
                       }}
                     ></div>
                     <div className="flex items-center justify-center cursor-pointer h-5 left-0 right-0 bottom-0 bg-dark-dark-clarity absolute">
@@ -142,7 +142,7 @@ const SettingsEnterpriseAccount = ({ title }: ISettingsEnterpriseAccountProps) =
                     className="flex items-center justify-center size-8 bg-white rounded-full border border-gray-300"
                   >
                     <img
-                      src={toAbsoluteUrl('/images/content/brand-logos/google.svg')}
+                      src={toAbsoluteUrl('/media/brand-logos/google.svg')}
                       className="size-4"
                       alt=""
                     />
@@ -153,7 +153,7 @@ const SettingsEnterpriseAccount = ({ title }: ISettingsEnterpriseAccountProps) =
                     className="flex items-center justify-center size-8 bg-white rounded-full border border-gray-300"
                   >
                     <img
-                      src={toAbsoluteUrl('/images/content/brand-logos/facebook.svg')}
+                      src={toAbsoluteUrl('/media/brand-logos/facebook.svg')}
                       className="size-4"
                       alt=""
                     />
@@ -164,7 +164,7 @@ const SettingsEnterpriseAccount = ({ title }: ISettingsEnterpriseAccountProps) =
                     className="flex items-center justify-center size-8 bg-white rounded-full border border-gray-300"
                   >
                     <img
-                      src={toAbsoluteUrl('/images/content/brand-logos/apple-black.svg')}
+                      src={toAbsoluteUrl('/media/brand-logos/apple-black.svg')}
                       className="size-4"
                       alt=""
                     />
@@ -200,7 +200,7 @@ const SettingsEnterpriseAccount = ({ title }: ISettingsEnterpriseAccountProps) =
                     className="flex items-center justify-center size-8 bg-white rounded-full border border-gray-300"
                   >
                     <img
-                      src={toAbsoluteUrl('/images/content/brand-logos/linkedin.svg')}
+                      src={toAbsoluteUrl('/media/brand-logos/linkedin.svg')}
                       className="size-4"
                       alt=""
                     />
@@ -211,7 +211,7 @@ const SettingsEnterpriseAccount = ({ title }: ISettingsEnterpriseAccountProps) =
                     className="flex items-center justify-center size-8 bg-white rounded-full border border-gray-300"
                   >
                     <img
-                      src={toAbsoluteUrl('/images/content/brand-logos/twitch-purple.svg')}
+                      src={toAbsoluteUrl('/media/brand-logos/twitch-purple.svg')}
                       className="size-4"
                       alt=""
                     />
@@ -222,7 +222,7 @@ const SettingsEnterpriseAccount = ({ title }: ISettingsEnterpriseAccountProps) =
                     className="flex items-center justify-center size-8 bg-white rounded-full border border-gray-300"
                   >
                     <img
-                      src={toAbsoluteUrl('/images/content/brand-logos/x.svg')}
+                      src={toAbsoluteUrl('/media/brand-logos/x.svg')}
                       className="size-4"
                       alt=""
                     />
@@ -233,7 +233,7 @@ const SettingsEnterpriseAccount = ({ title }: ISettingsEnterpriseAccountProps) =
                     className="flex items-center justify-center size-8 bg-white rounded-full border border-gray-300"
                   >
                     <img
-                      src={toAbsoluteUrl('/images/content/brand-logos/dribbble.svg')}
+                      src={toAbsoluteUrl('/media/brand-logos/dribbble.svg')}
                       className="size-4"
                       alt=""
                     />

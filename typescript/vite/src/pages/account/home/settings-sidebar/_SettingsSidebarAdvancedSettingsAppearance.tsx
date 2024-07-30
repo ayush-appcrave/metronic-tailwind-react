@@ -33,7 +33,7 @@ const SettingsSidebarAdvancedSettingsAppearance = () => {
       <div key={index}>
         <label
           className="flex items-end border bg-no-repeat bg-cover border-gray-300 rounded-xl has-[:checked]:border-success has-[:checked]:border-3 [&_.checked]:has-[:checked]:flex h-[170px] mb-0.5"
-          style={{ backgroundImage: toAbsoluteUrl(`/images/content/600x400/${item.image}`) }}
+          style={{ backgroundImage: toAbsoluteUrl(`/media/images/600x400/${item.image}`) }}
         >
           <input
             className="appearance-none"

@@ -18,7 +18,7 @@ const NowPlaying = ({ image, logo, title, date, statistics, team, label }: INowP
   return (
     <div className="card w-[280px] border-0">
       <img
-        src={toAbsoluteUrl(`/images/content/600x600/${image}`)}
+        src={toAbsoluteUrl(`/media/images/600x600/${image}`)}
         className="rounded-t-xl max-w-[280px] shrink-0"
         alt=""
       />
@@ -26,7 +26,7 @@ const NowPlaying = ({ image, logo, title, date, statistics, team, label }: INowP
       <div className="card-border card-rounded-b grid h-full gap-6 px-5 py-3.5 mb-5">
         <div className="flex items-center gap-3">
           <img
-            src={toAbsoluteUrl(`/images/content/600x600/${logo}`)}
+            src={toAbsoluteUrl(`/media/images/600x600/${logo}`)}
             className="rounded-full size-10"
             alt=""
           />

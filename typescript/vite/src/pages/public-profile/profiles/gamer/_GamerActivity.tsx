@@ -31,7 +31,7 @@ const GamerActivity = ({ url }: IGamerActivityProps) => {
         <ProductWebinar url="#" />
         <Login />
         <BloggingConference
-          image="media/illustration/10.svg"
+          image="/media/illustrations/10.svg"
           heading="Email campaign sent to Jenny for a special promotion."
           datetime="1 week ago, 11:45 AM"
           title="First Campaign Created"

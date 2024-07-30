@@ -8,7 +8,7 @@ const Comments = ({ items, url }: ICommentsProps) => {
     return (
       <div key={index} className="flex items-start gap-2.5">
         <img
-          src={toAbsoluteUrl(`/images/content/avatars/${item.avatar}`)}
+          src={toAbsoluteUrl(`/media/avatars/${item.avatar}`)}
           className="rounded-full w-9 h-9 lg:w-[50px] lg:h-[50px] mt-1"
           alt=""
         />
@@ -43,7 +43,7 @@ const Comments = ({ items, url }: ICommentsProps) => {
 
       <div className="flex gap-2.5">
         <img
-          src={toAbsoluteUrl('/images/content/avatars/300-3.jpg')}
+          src={toAbsoluteUrl('/media/avatars/300-3.jpg')}
           className="rounded-full size-10 shrink-0"
           alt=""
         />

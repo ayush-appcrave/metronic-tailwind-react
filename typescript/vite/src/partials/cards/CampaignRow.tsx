@@ -21,7 +21,7 @@ const CampaignRow = ({ logo, title, description, status, statistics, url }: ICam
       <div className="flex items-center flex-wrap justify-between gap-5">
         <div className="flex items-center gap-3.5">
           <img
-            src={toAbsoluteUrl(`/images/content/brand-logos/${logo}`)}
+            src={toAbsoluteUrl(`/media/brand-logos/${logo}`)}
             className="size-[50px] shrink-0"
             alt=""
           />

@@ -27,7 +27,7 @@ const SettingsSidebarExternalServicesManageApi = () => {
 
         <div
           className="flex items-center justify-between flex-wrap grow border border-gray-200 rounded-xl gap-2 p-5 bg-right bg-no-repeat bg-[length:600px]"
-          style={{ backgroundImage: toAbsoluteUrl('/images/content/2600x1200/bg-5.png') }}
+          style={{ backgroundImage: toAbsoluteUrl('/media/images/2600x1200/bg-5.png') }}
         >
           <div className="flex items-center flex-wrap gap-4">
             <div className="relative size-[50px] shrink-0">

@@ -40,7 +40,7 @@ const DefaultConnections = ({ title, url }: IDefaultConnectionsProps) => {
       <div key={index} className="flex items-center gap-2">
         <div className="flex items-center grow gap-2.5">
           <img
-            src={toAbsoluteUrl(`/images/content/avatars/${item.avatar}`)}
+            src={toAbsoluteUrl(`/media/avatars/${item.avatar}`)}
             className="rounded-full size-9 shrink-0"
             alt=""
           />

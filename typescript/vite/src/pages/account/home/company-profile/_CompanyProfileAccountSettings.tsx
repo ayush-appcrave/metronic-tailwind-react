@@ -49,7 +49,7 @@ const CompanyProfileAccountSettings = () => {
                     className="flex items-center justify-center size-8 bg-white rounded-full border border-gray-300"
                   >
                     <img
-                      src={toAbsoluteUrl('/images/content/brand-logos/google.svg')}
+                      src={toAbsoluteUrl('/media/brand-logos/google.svg')}
                       className="size-4"
                       alt=""
                     />
@@ -60,7 +60,7 @@ const CompanyProfileAccountSettings = () => {
                     className="flex items-center justify-center size-8 bg-white rounded-full border border-gray-300"
                   >
                     <img
-                      src={toAbsoluteUrl('/images/content/brand-logos/facebook.svg')}
+                      src={toAbsoluteUrl('/media/brand-logos/facebook.svg')}
                       className="size-4"
                       alt=""
                     />
@@ -71,7 +71,7 @@ const CompanyProfileAccountSettings = () => {
                     className="flex items-center justify-center size-8 bg-white rounded-full border border-gray-300"
                   >
                     <img
-                      src={toAbsoluteUrl('/images/content/brand-logos/apple-black.svg')}
+                      src={toAbsoluteUrl('/media/brand-logos/apple-black.svg')}
                       className="size-4"
                       alt=""
                     />
@@ -107,7 +107,7 @@ const CompanyProfileAccountSettings = () => {
                     className="flex items-center justify-center size-8 bg-white rounded-full border border-gray-300"
                   >
                     <img
-                      src={toAbsoluteUrl('/images/content/brand-logos/linkedin.svg')}
+                      src={toAbsoluteUrl('/media/brand-logos/linkedin.svg')}
                       className="size-4"
                       alt=""
                     />
@@ -118,7 +118,7 @@ const CompanyProfileAccountSettings = () => {
                     className="flex items-center justify-center size-8 bg-white rounded-full border border-gray-300"
                   >
                     <img
-                      src={toAbsoluteUrl('/images/content/brand-logos/twitch-purple.svg')}
+                      src={toAbsoluteUrl('/media/brand-logos/twitch-purple.svg')}
                       className="size-4"
                       alt=""
                     />
@@ -129,7 +129,7 @@ const CompanyProfileAccountSettings = () => {
                     className="flex items-center justify-center size-8 bg-white rounded-full border border-gray-300"
                   >
                     <img
-                      src={toAbsoluteUrl('/images/content/brand-logos/x.svg')}
+                      src={toAbsoluteUrl('/media/brand-logos/x.svg')}
                       className="size-4"
                       alt=""
                     />
@@ -140,7 +140,7 @@ const CompanyProfileAccountSettings = () => {
                     className="flex items-center justify-center size-8 bg-white rounded-full border border-gray-300"
                   >
                     <img
-                      src={toAbsoluteUrl('/images/content/brand-logos/dribbble.svg')}
+                      src={toAbsoluteUrl('/media/brand-logos/dribbble.svg')}
                       className="size-4"
                       alt=""
                     />

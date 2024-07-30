@@ -53,7 +53,7 @@ const CRMDeals = () => {
         <td className="text-sm text-gray-700 font-medium">${item.ammount}</td>
 
         <td>
-          <div className={`badge badge-sm ${item.color} badge-light`}>{item.label}</div>
+          <div className={`badge badge-sm ${item.color} badge-outline`}>{item.label}</div>
         </td>
 
         <td className="text-sm font-medium text-gray-700">{item.date} days</td>

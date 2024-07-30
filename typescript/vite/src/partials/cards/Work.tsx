@@ -7,7 +7,7 @@ const Work = ({ image, url, title, authorAvatar, authorName, likes, comments }: 
   return (
     <div className="card border-0">
       <img
-        src={toAbsoluteUrl(`/images/content/600x400/${image}`)}
+        src={toAbsoluteUrl(`/media/images/600x400/${image}`)}
         className="w-full h-auto rounded-t-xl"
         alt=""
       />
@@ -20,7 +20,7 @@ const Work = ({ image, url, title, authorAvatar, authorName, likes, comments }: 
         <div className="flex items-center justify-between grow">
           <div className="flex items-center grow">
             <img
-              src={toAbsoluteUrl(`/images/content/avatars/${authorAvatar}`)}
+              src={toAbsoluteUrl(`/media/avatars/${authorAvatar}`)}
               className="rounded-full size-7 me-2"
               alt=""
             />

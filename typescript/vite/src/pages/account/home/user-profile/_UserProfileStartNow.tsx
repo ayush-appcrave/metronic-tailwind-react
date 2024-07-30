@@ -4,7 +4,7 @@ const UserProfileStartNow = () => {
   return (
     <div
       className="card bg-center bg-cover bg-no-repeat pt-5  px-5"
-      style={{ backgroundImage: toAbsoluteUrl('/images/content/patterns/1600x800/2.jpg') }}
+      style={{ backgroundImage: toAbsoluteUrl('/media/patterns/1600x800/2.jpg') }}
     >
       <div className="text-center">
         <h3 className="text-gray-900 text-lg font-semibold leading-6 mb-1.5">
@@ -22,8 +22,8 @@ const UserProfileStartNow = () => {
 
       <div className="flex justify-center ">
         <img
-          src={toAbsoluteUrl('/images/content/illustration/1.svg')}
-          className="max-h-[160px]"
+          src={toAbsoluteUrl('/media/images/2600x1200/3.png')}
+          className="max-h-[300px]"
           alt=""
         />
       </div>

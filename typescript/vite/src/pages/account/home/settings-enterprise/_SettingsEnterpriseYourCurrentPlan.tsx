@@ -70,7 +70,7 @@ const SettingsEnterpriseYourCurrentPlan = () => {
         <div className="flex flex-col sm:flex-row lg:flex-col xl:flex-row lg:gap-7.5 gap-5">
           <div className="md:flex-1 grid content-between border border-gray-200 rounded-xl">
             <img
-              src={toAbsoluteUrl('/images/content/600x600/22.jpg')}
+              src={toAbsoluteUrl('/media/images/600x600/22.jpg')}
               className="shrink-0 w-full rounded-t-xl"
               alt=""
             />

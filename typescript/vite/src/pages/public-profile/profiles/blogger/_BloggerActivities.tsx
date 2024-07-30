@@ -28,7 +28,7 @@ const BloggerActivities = () => {
         <NewArticle />
         <Interview />
         <UpcomingContent />
-        <BloggingConference image="/images/content/illustration/3.svg" />
+        <BloggingConference image="/media/illustrations/3.svg" />
         <FollowersMilestone />
         <Anniversary />
       </div>

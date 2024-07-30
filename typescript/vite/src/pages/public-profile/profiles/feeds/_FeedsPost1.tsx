@@ -44,7 +44,7 @@ const FeedsPost1 = () => {
         <div className="grid grid-cols-12 gap-2.5 xl:gap-7.5">
           <div className="col-span-6">
             <img
-              src={toAbsoluteUrl('/images/content/600x600/2.jpg')}
+              src={toAbsoluteUrl('/media/images/600x600/21.jpg')}
               className="rounded-xl max-h-[340px] size-full"
               alt=""
             />
@@ -53,12 +53,12 @@ const FeedsPost1 = () => {
           <div className="col-span-6">
             <div className="grid grid-cols-1 gap-2.5 xl:gap-7.5">
               <img
-                src={toAbsoluteUrl('/images/content/600x400/19.jpg')}
+                src={toAbsoluteUrl('/media/images/600x400/19.jpg')}
                 className="rounded-xl max-h-[155px] size-full"
                 alt=""
               />
               <img
-                src={toAbsoluteUrl('/images/content/600x400/20.jpg')}
+                src={toAbsoluteUrl('/media/images/600x400/20.jpg')}
                 className="rounded-xl max-h-[155px] size-full"
                 alt=""
               />

@@ -47,7 +47,7 @@ const CreatorUpcomingEvents = () => {
             </div>
 
             <img
-              src={toAbsoluteUrl(`/images/content/600x400/${item.image}`)}
+              src={toAbsoluteUrl(`/media/images/600x400/${item.image}`)}
               className="rounded-lg max-h-[120px] max-w-full"
               alt=""
             />

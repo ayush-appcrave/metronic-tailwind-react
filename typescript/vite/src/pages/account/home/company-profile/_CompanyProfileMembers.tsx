@@ -57,7 +57,7 @@ const CompanyProfileMembers = ({ url }: ICompanyProfileMembersProps) => {
         <td>
           <div className="flex items-center grow gap-2.5">
             <img
-              src={toAbsoluteUrl(`/images/content/avatars/${table.avatar}`)}
+              src={toAbsoluteUrl(`/media/avatars/${table.avatar}`)}
               className="rounded-full size-9 shrink-0"
               alt=""
             />

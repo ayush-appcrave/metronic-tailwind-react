@@ -41,7 +41,7 @@ const CreatorContent = () => {
       <div className="col-span-2">
         <div className="flex flex-col gap-5 lg:gap-7.5">
           <CreatorFeaturesHighlight
-            image="/images/content/illustrations/restile.png"
+            image="/media/illustrations/18.svg"
             title="Restyle Your Space:<br>Soft Goods Makeover Ideas"
             description="Transform your living space beautifully with our Restyle Your Space: Soft Goods Makeover Ideas tutorial"
             more={{ title: 'Get Started', url: '#' }}

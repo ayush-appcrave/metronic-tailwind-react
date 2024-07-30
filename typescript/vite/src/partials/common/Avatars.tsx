@@ -10,7 +10,7 @@ const Avatars = ({ group, more, className }: IAvatarsProps) => {
       <div key={index} className="flex">
         {each.filename ? (
           <img
-            src={toAbsoluteUrl(`/images/content/avatars/${each.filename}`)}
+            src={toAbsoluteUrl(`/media/avatars/${each.filename}`)}
             className={clsx(
               'hover:z-5 relative size-6 shrink-0 rounded-full ring-1 ring-light-light',
               each.variant

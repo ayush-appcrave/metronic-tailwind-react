@@ -15,10 +15,10 @@ import { IGamerStatisticsItems } from './interfaces';
 
 const GamerContent = () => {
   const details: IGamerStatisticsItems = [
-    { image: 'coinhodler.svg', number: '164', label: 'Tournaments' },
-    { image: 'gamer-online-game.svg', number: '73.2%', label: 'Game Win-rate' },
-    { image: 'gamer-online-game.svg', number: '257', label: 'Duels Played' },
-    { image: 'gamer-online-game.svg', number: '19', label: 'Trophies' }
+    { image: 'online-game.svg', number: '164', label: 'Tournaments' },
+    { image: 'gamer-coin.svg', number: '73.2%', label: 'Game Win-rate' },
+    { image: 'gamer-diamond.svg', number: '257', label: 'Duels Played' },
+    { image: 'gamer-trophy.svg', number: '19', label: 'Trophies' }
   ];
 
   const items: ICreatorUsersItems = [

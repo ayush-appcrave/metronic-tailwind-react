@@ -47,7 +47,7 @@ const SettingsSidebarAuthSocialSignIn = () => {
       >
         <div className="flex items-center flex-wrap gap-3.5">
           <img
-            src={toAbsoluteUrl(`/images/content/brand-logos/${item.logo}`)}
+            src={toAbsoluteUrl(`/media/brand-logos/${item.logo}`)}
             className="size-6 shrink-0"
             alt=""
           />
@@ -84,7 +84,7 @@ const SettingsSidebarAuthSocialSignIn = () => {
       >
         <a href="#" className="flex items-center">
           <img
-            src={toAbsoluteUrl(`/images/content/brand-logos/${block.logo}`)}
+            src={toAbsoluteUrl(`/media/brand-logos/${block.logo}`)}
             className="size-5 shrink-0"
             alt=""
           />

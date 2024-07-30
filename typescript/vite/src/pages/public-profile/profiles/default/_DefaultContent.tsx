@@ -20,6 +20,7 @@ const DefaultContent = () => {
           <DefaultAbout />
           <DefaultWorkExperience url="#" />
           <DefaultTags title="Skills" />
+          <DefaultRecentUploads title="Recent Uploads" url="#" />
         </div>
       </div>
       <div className="col-span-2">
@@ -35,10 +36,6 @@ const DefaultContent = () => {
           </div>
 
           <DefaultProjects />
-
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-5 lg:gap-7.5">
-            <DefaultRecentUploads title="Recent Uploads" url="#" />
-          </div>
         </div>
       </div>
     </div>

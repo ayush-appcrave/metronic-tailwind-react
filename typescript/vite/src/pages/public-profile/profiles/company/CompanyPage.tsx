@@ -11,7 +11,7 @@ const CompanyPage = () => {
   const image = (
     <div className="flex items-center justify-center rounded-full border-2 border-success-clarity h-[100px] w-[100px]">
       <img
-        src={toAbsoluteUrl('/images/content/brand-logos/duolingo.svg')}
+        src={toAbsoluteUrl('/media/brand-logos/duolingo.svg')}
         className="size-[50px]"
       />
     </div>

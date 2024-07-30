@@ -57,7 +57,7 @@ const SettingsSidebarAdvancedSettingsNotifications = () => {
                   <KeenIcon icon="message-text-2" className="text-[1.35rem] ps-px text-gray-500" />
                 ) : (
                   <img
-                    src={toAbsoluteUrl('/images/content/brand-logos/slack.svg')}
+                    src={toAbsoluteUrl('/media/brand-logos/slack.svg')}
                     className="h-5"
                     alt=""
                   />

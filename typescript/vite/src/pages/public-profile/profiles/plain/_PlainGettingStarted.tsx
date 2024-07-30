@@ -6,7 +6,7 @@ const PlainGettingStarted = () => {
       <div className="card-body lg:py-9">
         <div className="flex justify-center">
           <img
-            src={toAbsoluteUrl('/images/content/illustration/11.svg')}
+            src={toAbsoluteUrl('/media/illustrations/11.svg')}
             className="max-h-[200px]"
             alt=""
           />

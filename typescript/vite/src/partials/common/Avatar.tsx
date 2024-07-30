@@ -18,7 +18,7 @@ const Avatar = ({
     <div className={clsx(className && className)}>
       {image && (
         <img
-          src={toAbsoluteUrl(`/images/content/avatars/${image}`)}
+          src={toAbsoluteUrl(`/media/avatars/${image}`)}
           className={clsx(imageClass && imageClass)}
           alt=""
         />

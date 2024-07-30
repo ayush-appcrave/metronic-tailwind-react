@@ -18,7 +18,7 @@ const CompanyProfileDataImport = () => {
 
         <div className="flex items-center group border border-gray-200 cursor-pointer rounded-md gap-1.5 px-3.5 py-2.5 max-w-43">
           <img
-            src={toAbsoluteUrl('/images/content/brand-logos/google.svg')}
+            src={toAbsoluteUrl('/media/brand-logos/google.svg')}
             className="size-4 shrink-0"
             alt=""
           />

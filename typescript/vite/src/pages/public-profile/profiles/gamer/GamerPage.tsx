@@ -10,7 +10,7 @@ import { GamerContent } from './_GamerContent';
 const GamerPage = () => {
   const image = (
     <img
-      src={toAbsoluteUrl('/images/content/avatars/300-11.jpg')}
+      src={toAbsoluteUrl('/media/avatars/300-27.png')}
       className="rounded-full border-3 border-success max-h-[100px] max-w-full"
     />
   );

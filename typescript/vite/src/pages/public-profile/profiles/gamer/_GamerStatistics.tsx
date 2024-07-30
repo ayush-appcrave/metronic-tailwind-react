@@ -9,8 +9,8 @@ const GamerStatistics = ({ details }: IGamerStatisticsProps) => {
         <div className="grid flex-1">
           <div className="flex justify-self-center items-center gap-3">
             <img
-              src={toAbsoluteUrl(`/images/content/brand-logos/${item.image}`)}
-              className=""
+              src={toAbsoluteUrl(`/media/brand-logos/${item.image}`)}
+              className="h-10 max-w-full"
               alt=""
             />
 

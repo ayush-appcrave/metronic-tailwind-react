@@ -6,7 +6,7 @@ const CreatorUsers = ({ title, items, url }: ICreatorUsersProps) => {
   const renderItem = (item: ICreatorUsersItem, index: number) => {
     return (
       <img
-        src={toAbsoluteUrl(`/images/content/avatars/${item.image}`)}
+        src={toAbsoluteUrl(`/media/avatars/${item.image}`)}
         className="rounded-full h-[36px]"
         alt=""
         key={index}

@@ -60,7 +60,7 @@ const ActivityContent = () => {
               <FollowersMilestone />
               {(year === 2024 || year === 2021) && <ProjectStatus />}
               {(year === 2024 || year === 2018) && (
-                <BloggingConference image="/images/content/illustration/28.svg" />
+                <BloggingConference image="/media/illustrations/3.svg" />
               )}
               <DesignerWelcome />
               {(year === 2024 || year === 2017) && <NewTeam />}

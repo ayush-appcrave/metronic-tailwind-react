@@ -9,20 +9,20 @@ import {
 const DefaultWorkExperience = ({ url }: IDefaultWorkExperienceProps) => {
   const items: IDefaultWorkExperienceItems = [
     {
-      image: 'jira.png',
+      image: 'jira.svg',
       title: 'Esprito Studios',
       desc: 'Senior Project Manager',
       date: '2019 - Present'
     },
     { heading: 'Previous Jobs' },
     {
-      image: 'paccion.png',
+      image: 'paccion.svg',
       title: 'Pesto Plus',
       desc: 'CRM Product Lead ',
       date: '2012 - 2019'
     },
     {
-      image: 'perrier.png',
+      image: 'perrier.svg',
       title: 'Perrier Technologies',
       desc: 'UX Research',
       date: '2010 - 2012'
@@ -38,7 +38,7 @@ const DefaultWorkExperience = ({ url }: IDefaultWorkExperienceProps) => {
           <div className="flex align-start gap-3.5">
             {item.image && (
               <img
-                src={toAbsoluteUrl(`/images/content/logos/${item.image}`)}
+                src={toAbsoluteUrl(`/media/brand-logos/${item.image}`)}
                 className="h-9"
                 alt=""
               />
