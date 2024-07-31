@@ -99,7 +99,7 @@ const Login = () => {
 
         <div className="flex flex-col gap-1">
           <label className="form-label text-gray-900">Email</label>
-          <label className="input" data-toggle-password="true">
+          <label className="input">
             <input
               placeholder="email@email.com"
               {...formik.getFieldProps('email')}
@@ -123,7 +123,7 @@ const Login = () => {
             <label className="form-label text-gray-900">Password</label>
             <Link to="/auth/forgot-password" className="text-2sm link shrink-0">Forgot Password?</Link>
           </div>
-          <label className="input" data-toggle-password="true">
+          <label className="input">
             <input
               type={showPassword ? 'text' : 'password'}
               placeholder="Enter Password"
@@ -141,8 +141,8 @@ const Login = () => {
             />
             {formik.touched.password && formik.errors.password && (<span role="alert">{formik.errors.password}</span>)}
             <button className="btn btn-icon" onClick={togglePassword}>
-            <KeenIcon icon="eye" className={clsx('text-gray-500', { 'hidden': showPassword })} />
-            <KeenIcon icon="eye-slash" className={clsx('text-gray-500', { 'hidden': !showPassword })} />
+              <KeenIcon icon="eye" className={clsx('text-gray-500', { 'hidden': showPassword })} />
+              <KeenIcon icon="eye-slash" className={clsx('text-gray-500', { 'hidden': !showPassword })} />
             </button>
           </label>
         </div>

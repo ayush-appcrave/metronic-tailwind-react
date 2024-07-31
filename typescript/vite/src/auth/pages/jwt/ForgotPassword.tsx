@@ -5,6 +5,7 @@ import { Link } from 'react-router-dom';
 import * as Yup from 'yup';
 
 import { useAuthContext } from '../../useAuthContext';
+import { KeenIcon } from '@/components';
 
 const initialValues = {
   email: 'admin@demo.com'
@@ -46,90 +47,63 @@ const ForgotPassword = () => {
     }
   });
   return (
-    <form
-      className="form w-100 fv-plugins-bootstrap5 fv-plugins-framework"
-      noValidate
-      id="kt_login_password_reset_form"
-      onSubmit={formik.handleSubmit}
-    >
-      <div className="text-center mb-10">
-        {/* begin::Title */}
-        <h1 className="text-gray-900 fw-bolder mb-3">Forgot Password ?</h1>
-        {/* end::Title */}
-
-        {/* begin::Link */}
-        <div className="text-gray-500 fw-semibold fs-6">
-          Enter your email to reset your password.
+    <div className="card max-w-[370px] w-full">
+      <form
+        className="card-body flex flex-col gap-5 p-10"
+        noValidate
+        onSubmit={formik.handleSubmit}
+      >
+        <div className="text-center">
+          <h3 className="text-lg font-semibold text-gray-900">Your Email</h3>       
+          <span className="text-2sm text-gray-600 font-medium">Enter your email to reset password</span>
         </div>
-        {/* end::Link */}
-      </div>
 
-      {/* begin::Title */}
-      {hasErrors === true && (
-        <div className="mb-lg-15 alert alert-danger">
-          <div className="alert-text font-weight-bold">
-            Sorry, looks like there are some errors detected, please try again.
-          </div>
-        </div>
-      )}
-
-      {hasErrors === false && (
-        <div className="mb-10 bg-light-info p-8 rounded">
-          <div className="text-info">Sent password reset. Please check your email</div>
-        </div>
-      )}
-      {/* end::Title */}
-
-      {/* begin::Form group */}
-      <div className="fv-row mb-8">
-        <label className="form-label fw-bolder text-gray-900 fs-6">Email</label>
-        <input
-          type="email"
-          placeholder=""
-          autoComplete="off"
-          {...formik.getFieldProps('email')}
-          className={clsx(
-            'form-control bg-transparent',
-            { 'is-invalid': formik.touched.email && formik.errors.email },
-            {
-              'is-valid': formik.touched.email && !formik.errors.email
-            }
-          )}
-        />
-        {formik.touched.email && formik.errors.email && (
-          <div className="fv-plugins-message-container">
-            <div className="fv-help-block">
-              <span role="alert">{formik.errors.email}</span>
+        {hasErrors === true && (
+          <div className="mb-lg-15 alert alert-danger">
+            <div className="alert-text font-weight-bold">
+              Sorry, looks like there are some errors detected, please try again.
             </div>
           </div>
         )}
-      </div>
-      {/* end::Form group */}
 
-      {/* begin::Form group */}
-      <div className="d-flex flex-wrap justify-content-center pb-lg-0">
-        <button type="submit" id="kt_password_reset_submit" className="btn btn-primary me-4">
-          <span className="indicator-label">Submit</span>
+        {hasErrors === false && (
+          <div className="mb-10 bg-light-info p-8 rounded">
+            <div className="text-info">Sent password reset. Please check your email</div>
+          </div>
+        )}
+
+        <div className="flex flex-col gap-1">
+          <label className="form-label text-gray-900">Email</label>
+          <label className="input">
+            <input
+              type="email"
+              placeholder="email@email.com"
+              autoComplete="off"
+              {...formik.getFieldProps('email')}
+              className={clsx(
+                'form-control bg-transparent',
+                { 'is-invalid': formik.touched.email && formik.errors.email },
+                {
+                  'is-valid': formik.touched.email && !formik.errors.email
+                }
+              )}
+            />
+          </label>
+          {formik.touched.email && formik.errors.email && (<span role="alert">{formik.errors.email}</span>)}
+        </div>
+
+        <Link to="/auth/login" className="btn btn-primary flex justify-center grow">
+          Continue
+          <KeenIcon icon="black-right" />
           {loading && (
-            <span className="indicator-progress">
+            <span className="indicator-progress" style={{ display: 'block' }}>
               Please wait...
               <span className="spinner-border spinner-border-sm align-middle ms-2"></span>
             </span>
           )}
-        </button>
-        <Link to="/auth/login">
-          <button
-            type="button"
-            id="kt_login_password_reset_form_cancel_button"
-            className="btn btn-light"
-            disabled={formik.isSubmitting || !formik.isValid}
-          >
-            Cancel
-          </button>
-        </Link>{' '}
-      </div>
-      {/* end::Form group */}
-    </form>
+        </Link>
+      </form>
+    </div>
   );
 };
 

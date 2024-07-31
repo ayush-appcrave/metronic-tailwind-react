@@ -5,6 +5,8 @@ import { Link, useLocation, useNavigate } from 'react-router-dom';
 import * as Yup from 'yup';
 
 import { useAuthContext } from '../../useAuthContext';
+import { toAbsoluteUrl } from '@/utils';
+import { KeenIcon } from '@/components';
 
 const initialValues = {
   firstname: '',
@@ -47,6 +49,16 @@ const Signup = () => {
   const navigate = useNavigate();
   const location = useLocation();
   const from = location.state?.from?.pathname || '/';
+  const [showPassword, setShowPassword] = useState(false);
+  const [showConfirmPassword, setShowConfirmPassword] = useState(false);
+
+  const togglePassword = () => {
+    setShowPassword(!showPassword);
+  };
+
+  const toggleConfirmPassword = () => {
+    setShowConfirmPassword(!showConfirmPassword);
+  };
 
   const formik = useFormik({
     initialValues,
@@ -76,121 +88,71 @@ const Signup = () => {
   });
 
   return (
-    <form
-      className="form w-100 fv-plugins-bootstrap5 fv-plugins-framework"
-      noValidate
-      id="kt_login_signup_form"
-      onSubmit={formik.handleSubmit}
-    >
-      {/* begin::Heading */}
-      <div className="text-center mb-11">
-        {/* begin::Title */}
-        <h1 className="text-gray-900 fw-bolder mb-3">Sign Up</h1>
-        {/* end::Title */}
-
-        <div className="text-gray-500 fw-semibold fs-6">Your Social Campaigns</div>
-      </div>
-      {/* end::Heading */}
-
-      <div className="separator separator-content my-14">
-        <span className="w-125px text-gray-500 fw-semibold fs-7">Or with email</span>
-      </div>
-
-      {formik.status && (
-        <div className="mb-lg-15 alert alert-danger">
-          <div className="alert-text font-weight-bold">{formik.status}</div>
+    <div className="card max-w-[370px] w-full">
+      <form
+        className="card-body flex flex-col gap-5 p-10"
+        noValidate
+        onSubmit={formik.handleSubmit}
+      >
+        <div className="text-center mb-2.5">
+          <h3 className="text-lg font-semibold text-gray-900 leading-none mb-2.5">Sign up</h3>
+          <div className="flex items-center justify-center font-medium">
+            <span className="text-2sm text-gray-600 me-1.5">Already have an Account ?</span>
+            <Link to="/auth/login" className="text-2sm link">Sign In</Link>
+          </div>
         </div>
-      )}
 
-      {/* begin::Form group Firstname */}
-      <div className="fv-row mb-8">
-        <label className="form-label fw-bolder text-gray-900 fs-6">First name</label>
-        <input
-          placeholder="First name"
-          type="text"
-          autoComplete="off"
-          {...formik.getFieldProps('firstname')}
-          className={clsx(
-            'form-control bg-transparent',
-            {
-              'is-invalid': formik.touched.firstname && formik.errors.firstname
-            },
-            {
-              'is-valid': formik.touched.firstname && !formik.errors.firstname
-            }
-          )}
-        />
-        {formik.touched.firstname && formik.errors.firstname && (
-          <div className="fv-plugins-message-container">
-            <div className="fv-help-block">
-              <span role="alert">{formik.errors.firstname}</span>
-            </div>
+        <div className="grid grid-cols-2 gap-2.5">
+          <a href="#" className="btn btn-light btn-sm justify-center">
+            <img src={toAbsoluteUrl('/media/brand-logos/google.svg')} className="size-3.5 shrink-0" />
+            Use Google
+          </a>
+
+          <a href="#" className="btn btn-light btn-sm justify-center">
+            <img src={toAbsoluteUrl('/media/brand-logos/apple-black.svg')} className="size-3.5 shrink-0 dark:hidden" />
+            <img src={toAbsoluteUrl('/media/brand-logos/apple-white.svg')} className="size-3.5 shrink-0 light:hidden" />
+            Use Apple
+          </a>
+        </div>  
+
+        <div className="flex items-center gap-2">
+          <span className="border-t border-gray-200 w-full"></span> 
+          <span className="text-2xs text-gray-500 font-medium uppercase">Or</span>  
+          <span className="border-t border-gray-200 w-full"></span> 
+        </div>
+
+        {formik.status && (
+          <div className="mb-lg-15 alert alert-danger">
+            <div className="alert-text font-weight-bold">{formik.status}</div>
           </div>
         )}
-      </div>
-      {/* end::Form group */}
-      <div className="fv-row mb-8">
-        {/* begin::Form group Lastname */}
-        <label className="form-label fw-bolder text-gray-900 fs-6">Last name</label>
-        <input
-          placeholder="Last name"
-          type="text"
-          autoComplete="off"
-          {...formik.getFieldProps('lastname')}
-          className={clsx(
-            'form-control bg-transparent',
-            {
-              'is-invalid': formik.touched.lastname && formik.errors.lastname
-            },
-            {
-              'is-valid': formik.touched.lastname && !formik.errors.lastname
-            }
-          )}
-        />
-        {formik.touched.lastname && formik.errors.lastname && (
-          <div className="fv-plugins-message-container">
-            <div className="fv-help-block">
-              <span role="alert">{formik.errors.lastname}</span>
-            </div>
-          </div>
-        )}
-        {/* end::Form group */}
-      </div>
 
-      {/* begin::Form group Email */}
-      <div className="fv-row mb-8">
-        <label className="form-label fw-bolder text-gray-900 fs-6">Email</label>
-        <input
-          placeholder="Email"
-          type="email"
-          autoComplete="off"
-          {...formik.getFieldProps('email')}
-          className={clsx(
-            'form-control bg-transparent',
-            { 'is-invalid': formik.touched.email && formik.errors.email },
-            {
-              'is-valid': formik.touched.email && !formik.errors.email
-            }
-          )}
-        />
-        {formik.touched.email && formik.errors.email && (
-          <div className="fv-plugins-message-container">
-            <div className="fv-help-block">
-              <span role="alert">{formik.errors.email}</span>
-            </div>
-          </div>
-        )}
-      </div>
-      {/* end::Form group */}
-
-      {/* begin::Form group Password */}
-      <div className="fv-row mb-8" data-kt-password-meter="true">
-        <div className="mb-1">
-          <label className="form-label fw-bolder text-gray-900 fs-6">Password</label>
-          <div className="position-relative mb-3">
+        <div className="flex flex-col gap-1">
+          <label className="form-label text-gray-900">Email</label>
+          <label className="input">
             <input
-              type="password"
-              placeholder="Password"
+              placeholder="email@email.com"
+              type="email"
+              autoComplete="off"
+              {...formik.getFieldProps('email')}
+              className={clsx(
+                'form-control bg-transparent',
+                { 'is-invalid': formik.touched.email && formik.errors.email },
+                {
+                  'is-valid': formik.touched.email && !formik.errors.email
+                }
+              )}
+            />
+          </label>
+          {formik.touched.email && formik.errors.email && (<span role="alert">{formik.errors.email}</span>)}
+        </div>
+
+        <div className="flex flex-col gap-1">
+          <label className="form-label text-gray-900">Password</label>
+          <label className="input">
+            <input
+              type={showPassword ? 'text' : 'password'}
+              placeholder="Enter Password"
               autoComplete="off"
               {...formik.getFieldProps('password')}
               className={clsx(
@@ -203,120 +165,68 @@ const Signup = () => {
                 }
               )}
             />
-            {formik.touched.password && formik.errors.password && (
-              <div className="fv-plugins-message-container">
-                <div className="fv-help-block">
-                  <span role="alert">{formik.errors.password}</span>
-                </div>
-              </div>
-            )}
-          </div>
-          {/* begin::Meter */}
-          <div
-            className="d-flex align-items-center mb-3"
-            data-kt-password-meter-control="highlight"
-          >
-            <div className="flex-grow-1 bg-secondary bg-active-success rounded h-5px me-2"></div>
-            <div className="flex-grow-1 bg-secondary bg-active-success rounded h-5px me-2"></div>
-            <div className="flex-grow-1 bg-secondary bg-active-success rounded h-5px me-2"></div>
-            <div className="flex-grow-1 bg-secondary bg-active-success rounded h-5px"></div>
-          </div>
-          {/* end::Meter */}
+            {formik.touched.password && formik.errors.password && (<span role="alert">{formik.errors.password}</span>)}
+            <button className="btn btn-icon" onClick={togglePassword}>
+              <KeenIcon icon="eye" className={clsx('text-gray-500', { 'hidden': showPassword })} />
+              <KeenIcon icon="eye-slash" className={clsx('text-gray-500', { 'hidden': !showPassword })} />
+            </button>
+          </label>
         </div>
-        <div className="text-muted">
-          Use 8 or more characters with a mix of letters, numbers & symbols.
+
+        <div className="flex flex-col gap-1">
+          <label className="form-label text-gray-900">Confirm Password</label>
+          <label className="input">
+            <input
+              type={showConfirmPassword ? 'text' : 'password'}
+              placeholder="Re-enter Password"
+              autoComplete="off"
+              {...formik.getFieldProps('changepassword')}
+              className={clsx(
+                'form-control bg-transparent',
+                {
+                  'is-invalid': formik.touched.changepassword && formik.errors.changepassword
+                },
+                {
+                  'is-valid': formik.touched.changepassword && !formik.errors.changepassword
+                }
+              )}
+            />
+            {formik.touched.changepassword && formik.errors.changepassword && (<span role="alert">{formik.errors.changepassword}</span>)}
+            <button className="btn btn-icon" onClick={toggleConfirmPassword}>
+              <KeenIcon icon="eye" className={clsx('text-gray-500', { 'hidden': showConfirmPassword })} />
+              <KeenIcon icon="eye-slash" className={clsx('text-gray-500', { 'hidden': !showConfirmPassword })} />
+            </button>
+          </label>
         </div>
-      </div>
-      {/* end::Form group */}
 
-      {/* begin::Form group Confirm password */}
-      <div className="fv-row mb-5">
-        <label className="form-label fw-bolder text-gray-900 fs-6">Confirm Password</label>
-        <input
-          type="password"
-          placeholder="Password confirmation"
-          autoComplete="off"
-          {...formik.getFieldProps('changepassword')}
-          className={clsx(
-            'form-control bg-transparent',
-            {
-              'is-invalid': formik.touched.changepassword && formik.errors.changepassword
-            },
-            {
-              'is-valid': formik.touched.changepassword && !formik.errors.changepassword
-            }
-          )}
-        />
-        {formik.touched.changepassword && formik.errors.changepassword && (
-          <div className="fv-plugins-message-container">
-            <div className="fv-help-block">
-              <span role="alert">{formik.errors.changepassword}</span>
-            </div>
-          </div>
-        )}
-      </div>
-      {/* end::Form group */}
-
-      {/* begin::Form group */}
-      <div className="fv-row mb-8">
-        <label className="form-check form-check-inline" htmlFor="kt_login_toc_agree">
+        <label className="checkbox-group">
           <input
-            className="form-check-input"
+            className="checkbox checkbox-sm"
             type="checkbox"
-            id="kt_login_toc_agree"
             {...formik.getFieldProps('acceptTerms')}
           />
-          <span>
-            I Accept the{' '}
-            <a
-              href="https://keenthemes.com/metronic/?page=faq"
-              target="_blank"
-              className="ms-1 link-primary"
-              rel="noreferrer"
-            >
-              Terms
-            </a>
-            .
+          <span className="checkbox-label">
+            I accept{' '}
+            <Link to="https://keenthemes.com/metronic/?page=faq" className="text-2sm link">Terms & Conditions</Link>
           </span>
         </label>
-        {formik.touched.acceptTerms && formik.errors.acceptTerms && (
-          <div className="fv-plugins-message-container">
-            <div className="fv-help-block">
-              <span role="alert">{formik.errors.acceptTerms}</span>
-            </div>
-          </div>
-        )}
-      </div>
-      {/* end::Form group */}
+        {formik.touched.acceptTerms && formik.errors.acceptTerms && (<span role="alert">{formik.errors.acceptTerms}</span>)}
 
-      {/* begin::Form group */}
-      <div className="text-center">
         <button
           type="submit"
-          id="kt_sign_up_submit"
-          className="btn btn-lg btn-primary w-100 mb-5"
-          disabled={formik.isSubmitting || !formik.isValid || !formik.values.acceptTerms}
+          className="btn btn-primary flex justify-center grow"
+          disabled={formik.isSubmitting || !formik.isValid}
         >
-          {!loading && <span className="indicator-label">Submit</span>}
+          {!loading && <span className="indicator-label">Sign up</span>}
           {loading && (
             <span className="indicator-progress" style={{ display: 'block' }}>
-              Please wait...{' '}
+              Please wait...
               <span className="spinner-border spinner-border-sm align-middle ms-2"></span>
             </span>
           )}
         </button>
-        <Link to="/auth/login">
-          <button
-            type="button"
-            id="kt_login_signup_form_cancel_button"
-            className="btn btn-lg btn-light-primary w-100 mb-5"
-          >
-            Cancel
-          </button>
-        </Link>
-      </div>
-      {/* end::Form group */}
-    </form>
+      </form>
+    </div>
   );
 };
 
