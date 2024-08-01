@@ -9,8 +9,6 @@ import { toAbsoluteUrl } from '@/utils';
 import { KeenIcon } from '@/components';
 
 const initialValues = {
-  firstname: '',
-  lastname: '',
   email: '',
   password: '',
   changepassword: '',
@@ -18,19 +16,11 @@ const initialValues = {
 };
 
 const signupSchema = Yup.object().shape({
-  firstname: Yup.string()
-    .min(3, 'Minimum 3 symbols')
-    .max(50, 'Maximum 50 symbols')
-    .required('First name is required'),
   email: Yup.string()
     .email('Wrong email format')
     .min(3, 'Minimum 3 symbols')
     .max(50, 'Maximum 50 symbols')
     .required('Email is required'),
-  lastname: Yup.string()
-    .min(3, 'Minimum 3 symbols')
-    .max(50, 'Maximum 50 symbols')
-    .required('Last name is required'),
   password: Yup.string()
     .min(3, 'Minimum 3 symbols')
     .max(50, 'Maximum 50 symbols')
@@ -52,14 +42,6 @@ const Signup = () => {
   const [showPassword, setShowPassword] = useState(false);
   const [showConfirmPassword, setShowConfirmPassword] = useState(false);
 
-  const togglePassword = () => {
-    setShowPassword(!showPassword);
-  };
-
-  const toggleConfirmPassword = () => {
-    setShowConfirmPassword(!showConfirmPassword);
-  };
-
   const formik = useFormik({
     initialValues,
     validationSchema: signupSchema,
@@ -73,8 +55,6 @@ const Signup = () => {
         await register(
           values.email,
           values.password,
-          values.firstname,
-          values.lastname,
           values.changepassword
         );
         navigate(from, { replace: true });
@@ -86,6 +66,16 @@ const Signup = () => {
       }
     }
   });
+
+  const togglePassword = (event: { preventDefault: () => void; }) => {
+    event.preventDefault();
+    setShowPassword(!showPassword);
+  };
+
+  const toggleConfirmPassword = (event: { preventDefault: () => void; }) => {
+    event.preventDefault();
+    setShowConfirmPassword(!showConfirmPassword);
+  };
 
   return (
     <div className="card max-w-[370px] w-full">
@@ -120,12 +110,6 @@ const Signup = () => {
           <span className="text-2xs text-gray-500 font-medium uppercase">Or</span>  
           <span className="border-t border-gray-200 w-full"></span> 
         </div>
-
-        {formik.status && (
-          <div className="mb-lg-15 alert alert-danger">
-            <div className="alert-text font-weight-bold">{formik.status}</div>
-          </div>
-        )}
 
         <div className="flex flex-col gap-1">
           <label className="form-label text-gray-900">Email</label>
@@ -165,14 +149,14 @@ const Signup = () => {
                 }
               )}
             />
-            {formik.touched.password && formik.errors.password && (<span role="alert">{formik.errors.password}</span>)}
             <button className="btn btn-icon" onClick={togglePassword}>
               <KeenIcon icon="eye" className={clsx('text-gray-500', { 'hidden': showPassword })} />
               <KeenIcon icon="eye-slash" className={clsx('text-gray-500', { 'hidden': !showPassword })} />
             </button>
           </label>
+          {formik.touched.password && formik.errors.password && (<span role="alert">{formik.errors.password}</span>)}
         </div>
-
+        
         <div className="flex flex-col gap-1">
           <label className="form-label text-gray-900">Confirm Password</label>
           <label className="input">
@@ -191,12 +175,12 @@ const Signup = () => {
                 }
               )}
             />
-            {formik.touched.changepassword && formik.errors.changepassword && (<span role="alert">{formik.errors.changepassword}</span>)}
             <button className="btn btn-icon" onClick={toggleConfirmPassword}>
               <KeenIcon icon="eye" className={clsx('text-gray-500', { 'hidden': showConfirmPassword })} />
               <KeenIcon icon="eye-slash" className={clsx('text-gray-500', { 'hidden': !showConfirmPassword })} />
             </button>
           </label>
+          {formik.touched.changepassword && formik.errors.changepassword && (<span role="alert">{formik.errors.changepassword}</span>)}
         </div>
 
         <label className="checkbox-group">

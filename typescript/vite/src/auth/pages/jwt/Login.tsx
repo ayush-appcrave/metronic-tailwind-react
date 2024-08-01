@@ -21,8 +21,8 @@ const loginSchema = Yup.object().shape({
 });
 
 const initialValues = {
-  email: 'admin@demo.com',
-  password: 'demo'
+  email: '',
+  password: ''
 };
 
 const Login = () => {
@@ -32,15 +32,6 @@ const Login = () => {
   const location = useLocation();
   const from = location.state?.from?.pathname || '/';
   const [showPassword, setShowPassword] = useState(false);
-  const [rememberMe, setRememberMe] = useState(false);
-
-  const togglePassword = () => {
-    setShowPassword(!showPassword);
-  };
-
-  const handleRememberMeChange = (event: { target: { checked: boolean | ((prevState: boolean) => boolean); }; }) => {
-    setRememberMe(event.target.checked);
-  };
 
   const formik = useFormik({
     initialValues,
@@ -62,6 +53,11 @@ const Login = () => {
       setLoading(false);
     }
   });
+
+  const togglePassword = (event: { preventDefault: () => void; }) => {
+    event.preventDefault();
+    setShowPassword(!showPassword);
+  };
 
   return (
     <div className="card max-w-[370px] w-full">
@@ -139,20 +135,18 @@ const Login = () => {
                 }
               )}
             />
-            {formik.touched.password && formik.errors.password && (<span role="alert">{formik.errors.password}</span>)}
             <button className="btn btn-icon" onClick={togglePassword}>
               <KeenIcon icon="eye" className={clsx('text-gray-500', { 'hidden': showPassword })} />
               <KeenIcon icon="eye-slash" className={clsx('text-gray-500', { 'hidden': !showPassword })} />
             </button>
           </label>
+          {formik.touched.password && formik.errors.password && (<span role="alert">{formik.errors.password}</span>)}
         </div>
 
         <label className="checkbox-group">
           <input
             className="checkbox checkbox-sm"
             type="checkbox"
-            checked={rememberMe}
-            onChange={handleRememberMeChange}
           />
           <span className="checkbox-label">Remember me</span>
         </label>

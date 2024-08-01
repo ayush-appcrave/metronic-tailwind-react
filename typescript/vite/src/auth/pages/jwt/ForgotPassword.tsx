@@ -8,7 +8,7 @@ import { useAuthContext } from '../../useAuthContext';
 import { KeenIcon } from '@/components';
 
 const initialValues = {
-  email: 'admin@demo.com'
+  email: ''
 };
 
 const forgotPasswordSchema = Yup.object().shape({
