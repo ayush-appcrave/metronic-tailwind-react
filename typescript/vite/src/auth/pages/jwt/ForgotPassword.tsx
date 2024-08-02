@@ -54,7 +54,7 @@ const ForgotPassword = () => {
         onSubmit={formik.handleSubmit}
       >
         <div className="text-center">
-          <h3 className="text-lg font-semibold text-gray-900">Your Email</h3>       
+          <h3 className="text-lg font-semibold text-gray-900">Your Email</h3>
           <span className="text-2sm text-gray-600 font-medium">Enter your email to reset password</span>
         </div>
 
@@ -89,7 +89,9 @@ const ForgotPassword = () => {
               )}
             />
           </label>
-          {formik.touched.email && formik.errors.email && (<span role="alert">{formik.errors.email}</span>)}
+          {formik.touched.email && formik.errors.email && (
+            <span role="alert" className="text-red-500 text-xs mt-1">{formik.errors.email}</span>
+          )}
         </div>
 
         <Link to="/auth/login" className="btn btn-primary flex justify-center grow">

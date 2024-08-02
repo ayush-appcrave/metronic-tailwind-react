@@ -103,12 +103,12 @@ const Signup = () => {
             <img src={toAbsoluteUrl('/media/brand-logos/apple-white.svg')} className="size-3.5 shrink-0 light:hidden" />
             Use Apple
           </a>
-        </div>  
+        </div>
 
         <div className="flex items-center gap-2">
-          <span className="border-t border-gray-200 w-full"></span> 
-          <span className="text-2xs text-gray-500 font-medium uppercase">Or</span>  
-          <span className="border-t border-gray-200 w-full"></span> 
+          <span className="border-t border-gray-200 w-full"></span>
+          <span className="text-2xs text-gray-500 font-medium uppercase">Or</span>
+          <span className="border-t border-gray-200 w-full"></span>
         </div>
 
         <div className="flex flex-col gap-1">
@@ -128,7 +128,9 @@ const Signup = () => {
               )}
             />
           </label>
-          {formik.touched.email && formik.errors.email && (<span role="alert">{formik.errors.email}</span>)}
+          {formik.touched.email && formik.errors.email && (
+            <span role="alert" className="text-red-500 text-xs mt-1">{formik.errors.email}</span>
+          )}
         </div>
 
         <div className="flex flex-col gap-1">
@@ -154,7 +156,9 @@ const Signup = () => {
               <KeenIcon icon="eye-slash" className={clsx('text-gray-500', { 'hidden': !showPassword })} />
             </button>
           </label>
-          {formik.touched.password && formik.errors.password && (<span role="alert">{formik.errors.password}</span>)}
+          {formik.touched.password && formik.errors.password && (
+            <span role="alert" className="text-red-500 text-xs mt-1">{formik.errors.password}</span>
+          )}
         </div>
         
         <div className="flex flex-col gap-1">
@@ -180,7 +184,9 @@ const Signup = () => {
               <KeenIcon icon="eye-slash" className={clsx('text-gray-500', { 'hidden': !showConfirmPassword })} />
             </button>
           </label>
-          {formik.touched.changepassword && formik.errors.changepassword && (<span role="alert">{formik.errors.changepassword}</span>)}
+          {formik.touched.changepassword && formik.errors.changepassword && (
+            <span role="alert" className="text-red-500 text-xs mt-1">{formik.errors.changepassword}</span>
+          )}
         </div>
 
         <label className="checkbox-group">
@@ -194,7 +200,9 @@ const Signup = () => {
             <Link to="https://keenthemes.com/metronic/?page=faq" className="text-2sm link">Terms & Conditions</Link>
           </span>
         </label>
-        {formik.touched.acceptTerms && formik.errors.acceptTerms && (<span role="alert">{formik.errors.acceptTerms}</span>)}
+        {formik.touched.acceptTerms && formik.errors.acceptTerms && (
+          <span role="alert" className="text-red-500 text-xs mt-1">{formik.errors.acceptTerms}</span>
+        )}
 
         <button
           type="submit"
