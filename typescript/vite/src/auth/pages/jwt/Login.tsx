@@ -17,12 +17,14 @@ const loginSchema = Yup.object().shape({
   password: Yup.string()
     .min(3, 'Minimum 3 symbols')
     .max(50, 'Maximum 50 symbols')
-    .required('Password is required')
+    .required('Password is required'),
+  rememberMe: Yup.boolean(),
 });
 
 const initialValues = {
   email: '',
-  password: ''
+  password: '',
+  rememberMe: false,
 };
 
 const Login = () => {
@@ -44,6 +46,12 @@ const Login = () => {
         }
 
         await login(values.email, values.password);
+
+        if (values.rememberMe) {
+          localStorage.setItem('email', values.email);
+        } else {
+          localStorage.removeItem('email');
+        }
 
         navigate(from, { replace: true });
       } catch (error) {
@@ -148,7 +156,11 @@ const Login = () => {
         </div>
 
         <label className="checkbox-group">
-          <input className="checkbox checkbox-sm" type="checkbox"/>
+          <input
+            className="checkbox checkbox-sm"
+            type="checkbox"
+            {...formik.getFieldProps('rememberMe')}
+          />
           <span className="checkbox-label">Remember me</span>
         </label>
 
@@ -165,6 +177,12 @@ const Login = () => {
             </span>
           )}
         </button>
+
+        {formik.status && (
+          <div className="text-red-500 text-xs mt-1" role="alert">
+            {formik.status}
+          </div>
+        )}
       </form>
     </div>
   );
