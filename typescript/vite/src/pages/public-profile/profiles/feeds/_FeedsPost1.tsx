@@ -27,47 +27,50 @@ const FeedsPost1 = () => {
   const saves: ISavesItems = [];
 
   return (
-    <div className="card p-7.5">
+    <div className="card">
       <Heading
         author="Jenny Klabber"
         avatar={{ image: '300-1.png', imageClass: 'rounded-full size-[50px]' }}
         date="Yesterday at  5:06 PM"
       />
-      <div className="grid gap-5 mb-5">
-        <p className="text-sm font-medium text-gray-600 leading-5.5">
+      <div className="grid gap-5 mb-5 px-7.5">
+        <p className="text-sm font-medium text-gray-700 leading-5.5">
           Now that I’m done thoroughly mangling that vague metaphor, let’s get down to business. You
           know you need to start blogging to grow your business, but you don’t know how. In this
           post, I’ll show you how to write a great blog post in five simple steps that people will
           actually want to read. Ready? Let’s get started.
         </p>
 
-        <div className="grid grid-cols-12 gap-2.5 xl:gap-7.5">
-          <div className="col-span-6">
-            <img
-              src={toAbsoluteUrl('/media/images/600x600/21.jpg')}
-              className="rounded-xl max-h-[340px] size-full"
-              alt=""
-            />
+        <div className="grid grid-cols-2 gap-2.5 xl:gap-7.5">
+          <div>
+            <div 
+              className="bg-cover bg-no-repeat min-h-[340px] w-full rounded-xl" 
+              style={{ backgroundImage: `url(${toAbsoluteUrl(`/media/images/600x600//21.jpg`)})` }}
+            >
+            </div>
           </div>
 
-          <div className="col-span-6">
-            <div className="grid grid-cols-1 gap-2.5 xl:gap-7.5">
-              <img
-                src={toAbsoluteUrl('/media/images/600x400/19.jpg')}
-                className="rounded-xl max-h-[155px] size-full"
-                alt=""
-              />
-              <img
-                src={toAbsoluteUrl('/media/images/600x400/20.jpg')}
-                className="rounded-xl max-h-[155px] size-full"
-                alt=""
-              />
+          <div className="grid grid-rows-2 gap-2.5 xl:gap-7.5">
+            <div>
+              <div 
+                className="bg-cover bg-no-repeat rounded-xl h-full w-full" 
+                style={{ backgroundImage: `url(${toAbsoluteUrl(`/media/images/600x400/19.jpg`)})` }}
+              >
+              </div>
+            </div>
+
+            <div>
+              <div 
+                className="bg-cover bg-no-repeat rounded-xl h-full w-full" 
+                style={{ backgroundImage: `url(${toAbsoluteUrl(`/media/images/600x400/20.jpg`)})` }}
+              >
+              </div>
             </div>
           </div>
         </div>
       </div>
 
-      <div className="grid gap-5">
+      <div>
         <Tabs
           postId={1}
           activeTab={activeTab}
@@ -75,6 +78,7 @@ const FeedsPost1 = () => {
           comments={2}
           likes="47k"
           saves={900}
+          className='mx-7.5'
         />
 
         {activeTab === 'comments' && (

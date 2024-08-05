@@ -8,7 +8,7 @@ const DefaultProjects = () => {
     {
       name: 'Acme software development',
       team: {
-        group: [{ filename: '300-9.png' }, { filename: '300-2.png' }, { filename: '300-3.png' }],
+        group: [{ filename: '300-4.png' }, { filename: '300-1.png' }, { filename: '300-2.png' }],
         more: {
           number: 3,
           variant: 'text-success-inverse ring-success-light bg-success'
@@ -24,10 +24,12 @@ const DefaultProjects = () => {
       name: 'Strategic Partnership Deal',
       team: {
         group: [
-          { filename: '300-11.png' },
-          { filename: '300-13.png' },
-          { filename: '300-21.png' },
-          { filename: '300-1.png' }
+          { filename: '300-1.png' },
+          { filename: '300-2.png' },
+          {
+            fallback: 'M',
+            variant: 'text-danger-inverse ring-danger-light bg-danger'
+          }
         ]
       },
       dueDate: '10 Sep, 2024',
@@ -39,11 +41,7 @@ const DefaultProjects = () => {
     {
       name: 'Client Onboarding',
       team: {
-        group: [{ filename: '300-2.png' }, { filename: '300-7.png' }, { filename: '300-9.png' }],
-        more: {
-          number: 1,
-          variant: 'text-success-inverse ring-success-light bg-success'
-        }
+        group: [{ filename: '300-20.png' }, { filename: '300-7.png' }],
       },
       dueDate: '19 Sep, 2024',
       progress: {
@@ -54,10 +52,10 @@ const DefaultProjects = () => {
     {
       name: 'Widget Supply Agreement',
       team: {
-        group: [{ filename: '300-15.png' }, { filename: '300-10.png' }, { filename: '300-30.png' }],
+        group: [{ filename: '300-6.png' }, { filename: '300-23.png' }, { filename: '300-12.png' }],
         more: {
-          number: 4,
-          variant: 'text-success-inverse ring-success-light bg-success'
+          number: 1,
+          variant: 'text-primary-inverse ring-primary-light bg-primary'
         }
       },
       dueDate: '5 May, 2024',
@@ -70,11 +68,14 @@ const DefaultProjects = () => {
       name: 'Project X Redesign',
       team: {
         group: [
-          { filename: '300-1.png' },
-          { filename: '300-4.png' },
-          { filename: '300-3.png' },
-          { filename: '300-14.png' }
-        ]
+          { filename: '300-2.png' },
+          { filename: '300-15.png' },
+          { filename: '300-18.png' }
+        ],
+        more: {
+          number: 2,
+          variant: 'text-success-inverse ring-success-light bg-success'
+        }
       },
       dueDate: '1 Feb, 2025',
       progress: {
@@ -88,7 +89,7 @@ const DefaultProjects = () => {
     return (
       <tr key={index}>
         <td className="text-left">
-          <a href="#" className="text-sm font-semibold text-gray-800 hover:text-primary">
+          <a href="#" className="text-sm font-semibold text-gray-900 hover:text-primary">
             {item.name}
           </a>
         </td>
@@ -99,13 +100,15 @@ const DefaultProjects = () => {
           </div>
         </td>
 
-        <td className="flex justify-end shrink-0">
-          <Avatars group={item.team.group} more={item.team.more} />
+        <td>
+          <div className="flex justify-end shrink-0">
+            <Avatars group={item.team.group} more={item.team.more} />
+          </div>
         </td>
 
-        <td className="text-sm font-normal text-gray-700">{item.dueDate}</td>
+        <td className="text-sm font-medium text-gray-700">{item.dueDate}</td>
 
-        <td>
+        <td className="text-left">
           <div className="menu" data-menu="true">
             <div
               className="menu-item"
@@ -113,8 +116,8 @@ const DefaultProjects = () => {
               data-menu-item-toggle="dropdown"
               data-menu-item-placement="bottom-end"
             >
-              <button className="btn btn-icon btn-light btn-clear btn-xs menu-toggle">
-                <KeenIcon icon="dots-vertical" className="!text-xl" />
+              <button className="menu-toggle btn btn-sm btn-icon btn-light btn-clear">
+                <KeenIcon icon="dots-vertical" />
               </button>
 
               <div className="menu-dropdown w-[175px] text-gray-700 px-3 py-3 text-2xs">
@@ -139,8 +142,8 @@ const DefaultProjects = () => {
             data-menu-item-toggle="dropdown"
             data-menu-item-placement="bottom-end"
           >
-            <button className="btn btn-icon btn-light btn-clear btn-xs menu-toggle">
-              <KeenIcon icon="dots-vertical" className="!text-xl" />
+            <button className="menu-toggle btn btn-sm btn-icon btn-light btn-clear">
+              <KeenIcon icon="dots-vertical" />
             </button>
 
             <div className="menu-dropdown w-[175px] text-gray-700 px-3 py-3 text-2xs">
@@ -150,13 +153,13 @@ const DefaultProjects = () => {
         </div>
       </div>
       <div className="card-table scrollable-x-auto">
-        <table className="table table-auto text-right">
+        <table className="table text-right">
           <thead>
             <tr>
-              <th className="text-left min-w-[150px]">Project Name</th>
-              <th className="min-w-[100px]">Progress</th>
-              <th className="min-w-[100px]">People</th>
-              <th className="min-w-[110px]">Due Date</th>
+              <th className="text-left min-w-52">Project Name</th>
+              <th className="min-w-40">Progress</th>
+              <th className="min-w-32">People</th>
+              <th className="min-w-32">Due Date</th>
               <th className="w-[30px]"></th>
             </tr>
           </thead>

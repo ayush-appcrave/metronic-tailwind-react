@@ -15,7 +15,7 @@ const NFTContent = () => {
         <div className="grid gap-5 lg:gap-7.5">
           <NFTAssets />
           <NFTAbout />
-          <DefaultCommunityBadges />
+          <DefaultCommunityBadges title="Badges" />
           <NFTNetwork />
         </div>
       </div>

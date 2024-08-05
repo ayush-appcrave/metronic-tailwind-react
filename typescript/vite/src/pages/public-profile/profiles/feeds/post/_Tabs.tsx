@@ -2,11 +2,11 @@ import { KeenIcon } from '@/components';
 
 import { ITabsProps } from './interfaces';
 
-const Tabs = ({ postId, activeTab, setActiveTab, comments, likes, saves }: ITabsProps) => {
+const Tabs = ({ postId, activeTab, setActiveTab, comments, likes, saves, className }: ITabsProps) => {
   return (
     <div
       data-tabs="true"
-      className="flex items-center flex-wrap gap-2.5 border-gray-300 border-t border-b border-dashed py-1.5 mb-4"
+      className={`flex items-center flex-wrap gap-2.5 border-gray-300 border-t border-b border-dashed py-1.5 mb-4 ${className}`}
     >
       <button
         className={`${activeTab === 'comments' ? 'active' : ''} group btn px-3 text-gray-700 hover:text-primary tab-active:bg-primary-light tab-active:border-primary-clarity tab-active:text-primary`}

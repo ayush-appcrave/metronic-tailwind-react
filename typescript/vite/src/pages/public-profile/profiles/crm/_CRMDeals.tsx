@@ -45,7 +45,7 @@ const CRMDeals = () => {
     return (
       <tr key={index}>
         <td className="text-left">
-          <a href="#" className="text-sm font-semibold text-gray-800 hover:text-primary">
+          <a href="#" className="text-sm font-semibold text-gray-900 hover:text-primary">
             {item.name}
           </a>
         </td>
@@ -58,7 +58,7 @@ const CRMDeals = () => {
 
         <td className="text-sm font-medium text-gray-700">{item.date} days</td>
 
-        <td>
+        <td className="text-left">
           <div className="menu" data-menu="true">
             <div
               className="menu-item"
@@ -66,8 +66,8 @@ const CRMDeals = () => {
               data-menu-item-toggle="dropdown"
               data-menu-item-placement="bottom-end"
             >
-              <button className="btn btn-icon btn-light btn-clear btn-xs menu-toggle">
-                <KeenIcon icon="dots-vertical" className="!text-xl" />
+              <button className="menu-toggle btn btn-sm btn-icon btn-light btn-clear">
+                <KeenIcon icon="dots-vertical" />
               </button>
 
               <div className="menu-dropdown w-[175px] text-gray-700 px-3 py-3 text-2xs">
@@ -92,8 +92,8 @@ const CRMDeals = () => {
             data-menu-item-toggle="dropdown"
             data-menu-item-placement="bottom-end"
           >
-            <button className="btn btn-icon btn-light btn-clear btn-xs menu-toggle">
-              <KeenIcon icon="dots-vertical" className="!text-xl" />
+            <button className="menu-toggle btn btn-sm btn-icon btn-light btn-clear">
+              <KeenIcon icon="dots-vertical" />
             </button>
 
             <div className="menu-dropdown w-[175px] text-gray-700 px-3 py-3 text-2xs">

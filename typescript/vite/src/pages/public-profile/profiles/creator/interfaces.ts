@@ -34,7 +34,7 @@ export interface ICreatorFeaturesHighlightProps {
   title: string;
   description: string;
   more: { title: string; url: string };
-  features: string[];
+  features: string[][];
 }
 
 export interface ICreatorWorksItem {

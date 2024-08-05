@@ -25,7 +25,7 @@ const FeedsPost3 = () => {
   const saves: ISavesItems = [];
 
   return (
-    <div className="card p-7.5">
+    <div className="card">
       <Heading
         author="Finance Deprt - Annual Report"
         avatar={{
@@ -37,13 +37,17 @@ const FeedsPost3 = () => {
         date="1 week ago"
       />
 
-      <p className="mb-5 text-sm font-medium text-gray-600 leading-5.5">
+      <p className="text-sm font-medium text-gray-600 leading-5.5 px-7.5">
         You also need to be able to accept that not every post is going to get your motor running.
         Some posts will feel like a chore, but if you have editorial control over what you write
         about, then choose topics you’d want to read – even if they relate to niche industries.
       </p>
 
-      <div className="grid gap-5">
+      <div className="p-7.5 pb-5">
+        <iframe className="w-full aspect-video rounded-xl min-h-[400px]" src="https://www.youtube.com/embed/2uWJpnuCMKQ?si=6-ohuJieU2Fg3pDr"></iframe>
+      </div>
+
+      <div>
         <Tabs
           postId={3}
           activeTab={activeTab}

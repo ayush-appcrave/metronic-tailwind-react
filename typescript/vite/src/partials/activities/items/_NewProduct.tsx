@@ -6,11 +6,11 @@ const NewProduct = () => {
       <div className="flex flex-col">
         <div className="text-sm font-medium text-gray-800">
           Jenny sent an
-          <a href="#" className="text-sm font-medium text-primary hover:text-primary-active">
+          <a href="#" className="text-sm font-medium link">
             &nbsp;inquiry&nbsp;
           </a>
           about a
-          <a href="#" className="text-sm font-medium text-primary hover:text-primary-active">
+          <a href="#" className="text-sm font-medium link">
             &nbsp;new product&nbsp;
           </a>
           .

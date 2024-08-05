@@ -1,8 +1,12 @@
 import { KeenIcon } from '@/components';
 
-import { IDefaultCommunityBadgesItem, IDefaultCommunityBadgesItems } from './interfaces';
+import { 
+  IDefaultCommunityBadgesItem, 
+  IDefaultCommunityBadgesItems, 
+  IDefaultCommunityBadgesProps 
+} from './interfaces';
 
-const DefaultCommunityBadges = () => {
+const DefaultCommunityBadges = ({ title }: IDefaultCommunityBadgesProps) => {
   const items: IDefaultCommunityBadgesItems = [
     {
       stroke: 'stroke-primary-clarity',
@@ -66,7 +70,7 @@ const DefaultCommunityBadges = () => {
   return (
     <div className="card">
       <div className="card-header">
-        <h3 className="card-title">Community Badges</h3>
+        <h3 className="card-title">{title}</h3>
       </div>
       <div className="card-body pb-7.5">
         <div className="flex items-center flex-wrap gap-3 lg:gap-4">

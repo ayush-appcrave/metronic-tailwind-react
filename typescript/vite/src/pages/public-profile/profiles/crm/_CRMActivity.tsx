@@ -16,12 +16,13 @@ const CRMActivity = ({ url }: ICRMActivityProps) => {
 
         <div className="flex items-center gap-2">
           <label className="switch">
-            <input className="order-2" type="checkbox" value="1" name="check" defaultChecked />
-            <span className="switch-label order-1">
-              &nbsp;Auto refresh:
-              <span className="hidden switch-off:inline">Off</span>
+            <span className="switch-label">
+              Auto refresh:&nbsp;
+              <span className="switch-on:hidden">Off</span>
               <span className="hidden switch-on:inline">On</span>
             </span>
+
+            <input className="order-2" type="checkbox" value="1" name="check" defaultChecked />
           </label>
         </div>
       </div>

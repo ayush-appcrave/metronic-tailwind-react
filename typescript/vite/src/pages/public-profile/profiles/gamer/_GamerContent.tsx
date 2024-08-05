@@ -50,7 +50,7 @@ const GamerContent = () => {
         <div className="grid gap-5 lg:gap-7.5">
           <GamerFavoriteGames />
           <GamerAbout />
-          <DefaultCommunityBadges />
+          <DefaultCommunityBadges title="Badges" />
           <CreatorUsers title="Floyd’s Team" url="#" items={items} />
           <CompanyNetwork title="Network" data={data} />
         </div>

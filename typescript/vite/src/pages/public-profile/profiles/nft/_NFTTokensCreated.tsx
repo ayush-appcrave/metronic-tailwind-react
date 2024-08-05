@@ -67,7 +67,7 @@ const NFTTokensCreated = ({ url }: INFTTokensCreatedProps) => {
           View All
         </a>
       </div>
-      <div className="card-body pb-7">
+      <div className="card-body p-5 lg:p-7.5 lg:pb-7">
         <div className="flex gap-5 scrollable-x">
           {items.map((item, index) => {
             return renderItems(item, index);

@@ -25,19 +25,19 @@ const FeedsPost2 = () => {
   const saves: ISavesItems = [];
 
   return (
-    <div className="card p-7.5">
+    <div className="card">
       <Heading
         author="Jenny Klabber"
-        avatar={{ image: '300-2.jpg', imageClass: 'rounded-full size-[50px]' }}
+        avatar={{ image: '300-1.png', imageClass: 'rounded-full size-[50px]' }}
         date="2 days ago"
       />
 
-      <p className="mb-5 text-sm font-medium text-gray-600 leading-5.5">
+      <p className="mb-5 text-sm font-medium text-gray-600 leading-5.5 px-7.5">
         I can hear your objections already. “But Dan, I have to blog for a cardboard box
         manufacturing company.” I feel your pain, I really do.
       </p>
 
-      <div className="grid gap-5">
+      <div>
         <Tabs
           postId={2}
           activeTab={activeTab}
@@ -45,6 +45,7 @@ const FeedsPost2 = () => {
           comments={2}
           likes="24"
           saves={16}
+          className='mx-7.5'
         />
 
         {activeTab === 'comments' && (

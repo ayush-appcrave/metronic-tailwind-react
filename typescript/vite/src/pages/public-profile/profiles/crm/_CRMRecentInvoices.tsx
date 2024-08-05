@@ -77,8 +77,8 @@ const CRMRecentInvoices = () => {
             data-menu-item-toggle="dropdown"
             data-menu-item-placement="bottom-end"
           >
-            <button className="btn btn-icon btn-light btn-clear btn-xs menu-toggle">
-              <KeenIcon icon="dots-vertical" className="!text-xl" />
+            <button className="menu-toggle btn btn-sm btn-icon btn-light btn-clear">
+              <KeenIcon icon="dots-vertical" />
             </button>
 
             <div className="menu-dropdown w-[175px] text-gray-700 px-3 py-3 text-2xs">

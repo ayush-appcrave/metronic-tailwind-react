@@ -19,19 +19,19 @@ const ProductWebinar = ({ url }: IProductWebinarProps) => {
   return (
     <TimelinesWrapper icon="calendar-tick" line={true}>
       <div className="flex flex-col pb-2.5">
-        <span className="text-sm font-medium text-gray-800">
+        <span className="text-sm font-medium text-gray-700">
           Jenny attended a webinar on new product features.
         </span>
         <span className="text-xs font-medium text-gray-500">3 days ago, 11:45 AM</span>
       </div>
 
-      <div className="card p-4">
+      <div className="card shadow-none p-4">
         <div className="flex flex-wrap gap-2.5">
           <KeenIcon icon="code" className="text-lg text-info" />
           <div className="flex flex-col gap-5 grow">
             <div className="flex flex-wrap items-center justify-between">
               <div className="flex flex-col gap-0.5">
-                <span className="text-md font-semibold text-gray-800 cursor-pointer hover:text-primary mb-px">
+                <span className="text-md font-semibold text-gray-900 cursor-pointer hover:text-primary mb-px">
                   Leadership Development Series: Part 1
                 </span>
                 <span className="text-xs font-medium text-gray-500">

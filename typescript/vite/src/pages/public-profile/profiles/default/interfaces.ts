@@ -6,6 +6,10 @@ export interface IDefaultCommunityBadgesItem {
 }
 export interface IDefaultCommunityBadgesItems extends Array<IDefaultCommunityBadgesItem> {}
 
+export interface IDefaultCommunityBadgesProps {
+  title: string;
+}
+
 export interface IDefaultUnlockPartnershipsProps {
   url: string;
 }
@@ -63,7 +67,7 @@ export interface IDefaultRecentUploadsProps {
 export interface IDefaultProjectsItem {
   name: string;
   team: {
-    group: Array<{ filename: string }>;
+    group: Array<{ filename?: string, fallback?: string, variant?: string }>;
     more?: {
       number: number;
       variant: string;

@@ -16,7 +16,7 @@ const DefaultContent = () => {
     <div className="grid grid-cols-1 xl:grid-cols-3 gap-5 lg:gap-7.5">
       <div className="col-span-1">
         <div className="grid gap-5 lg:gap-7.5">
-          <DefaultCommunityBadges />
+          <DefaultCommunityBadges title="Community Badges" />
           <DefaultAbout />
           <DefaultWorkExperience url="#" />
           <DefaultTags title="Skills" />
@@ -31,8 +31,8 @@ const DefaultContent = () => {
           </div>
 
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-5 lg:gap-7.5">
-            <DefaultConnections title="Connections" url="#" />
-            <DefaultContributions title="Contributions" />
+            <DefaultConnections title="Contributors" url="#" />
+            <DefaultContributions title="Assistance" />
           </div>
 
           <DefaultProjects />

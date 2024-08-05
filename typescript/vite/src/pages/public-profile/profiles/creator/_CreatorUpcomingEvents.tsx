@@ -84,8 +84,8 @@ const CreatorUpcomingEvents = () => {
         </a>
       </div>
 
-      <div className="card-body">
-        <div className="grid gap-4">
+      <div className="card-body lg:pt-7 pt-5 pb-2">
+        <div className="grid gap-3.5">
           {items.map((item, index) => {
             return renderItem(item, index);
           })}

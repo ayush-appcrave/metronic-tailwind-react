@@ -43,7 +43,7 @@ const CreatorWorks = () => {
     {
       url: '#',
       title: 'Wild Beauty',
-      image: '9.jpg',
+      image: '5.jpg',
       authorName: 'Devon Lane',
       authorAvatar: '300-16.png',
       likes: 625,
@@ -52,7 +52,7 @@ const CreatorWorks = () => {
     {
       url: '#',
       title: 'Mystic Shadows',
-      image: '10.jpg',
+      image: '6.jpg',
       authorName: 'Kathryn Murphy',
       authorAvatar: '300-1.png',
       likes: 37,

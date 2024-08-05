@@ -5,7 +5,7 @@ import { IGamerNowPlayingItem, IGamerNowPlayingItems, IGamerNowPlayingProps } fr
 const GamerNowPlaying = ({ url }: IGamerNowPlayingProps) => {
   const items: IGamerNowPlayingItems = [
     {
-      image: '11.jpg',
+      image: '10.jpg',
       logo: '13.jpg',
       title: 'Call of Duty',
       date: 'Playing since 6 Aug, 2018',
@@ -62,7 +62,7 @@ const GamerNowPlaying = ({ url }: IGamerNowPlayingProps) => {
       }
     },
     {
-      image: '11.jpg',
+      image: '12.jpg',
       logo: '15.jpg',
       title: 'GTA 5',
       date: 'Playing since 24 Dec, 2018',
@@ -90,7 +90,7 @@ const GamerNowPlaying = ({ url }: IGamerNowPlayingProps) => {
       }
     },
     {
-      image: '11.jpg',
+      image: '14.jpg',
       logo: '16.jpg',
       title: 'CyberStorm Cup',
       date: 'Playing since 12 Sep, 2019',
@@ -118,7 +118,7 @@ const GamerNowPlaying = ({ url }: IGamerNowPlayingProps) => {
       }
     },
     {
-      image: '11.jpg',
+      image: '15.jpg',
       logo: '17.jpg',
       title: 'Call of Duty',
       date: 'Playing since 23 Nov, 2021',
@@ -175,7 +175,7 @@ const GamerNowPlaying = ({ url }: IGamerNowPlayingProps) => {
           </a>
         </div>
       </div>
-      <div className="card-body">
+      <div className="card-body p-5 lg:p-7.5 lg:pb-7">
         <div className="flex flex-no-wrap scrollable-x gap-5">
           {items.map((item, index) => {
             return renderItem(item, index);

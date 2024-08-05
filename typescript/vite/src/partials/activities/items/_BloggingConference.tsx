@@ -15,9 +15,9 @@ const BloggingConference = ({ heading, datetime, image, title }: IBloggingConfer
         </span>
       </div>
 
-      <div className="card">
-        <div className="card-body lg:py-9">
-          <div className="flex justify-center">
+      <div className="card shadow-none">
+        <div className="card-body lg:py-4">
+          <div className="flex justify-center py-4">
             <img
               src={toAbsoluteUrl(image ?? '/media/illustrations/10-dark.svg')}
               className="max-h-[160px]"
@@ -25,15 +25,17 @@ const BloggingConference = ({ heading, datetime, image, title }: IBloggingConfer
             />
           </div>
 
-          <div className="text-md font-semibold text-gray-900 text-center">
-            {title ?? 'Blogging Conference'}
-          </div>
-          <div className="flex items-center justify-center gap-1">
-            <a href="#" className="text-2sm font-semibold text-primary hover:text-primary-active">
-              &nbsp;Axio new release&nbsp;
-            </a>
-            <span className="text-2sm font-medium text-gray-600 mr-2">email campaign</span>
-            <span className="badge badge-sm badge-success badge-outline">Public</span>
+          <div className="flex flex-col gap-1">
+            <div className="text-md font-semibold text-gray-900 text-center">
+              {title ?? 'Blogging Conference'}
+            </div>
+            <div className="flex items-center justify-center gap-1">
+              <a href="#" className="text-2sm font-semibold link">
+                Axio new release
+              </a>
+              <span className="text-2sm font-medium text-gray-600 mr-2">email campaign</span>
+              <span className="badge badge-sm badge-success badge-outline">Public</span>
+            </div>
           </div>
         </div>
       </div>

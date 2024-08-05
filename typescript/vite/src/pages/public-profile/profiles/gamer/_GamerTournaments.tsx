@@ -22,7 +22,7 @@ const GamerTournaments = ({ url }: IGamerTournamentsProps) => {
       }
     },
     {
-      image: '11.jpg',
+      image: '33.jpg',
       logo: 'jira.svg',
       title: 'PixelPulse Showdown',
       time: 'MON, MAR 2, 16:00 CET',
@@ -35,7 +35,7 @@ const GamerTournaments = ({ url }: IGamerTournamentsProps) => {
       }
     },
     {
-      image: '11.jpg',
+      image: '34.jpg',
       logo: 'xostme-ltd.svg',
       title: 'NexusRift Masters',
       time: 'SUN, APR 29, 11:00 CET',
@@ -61,7 +61,7 @@ const GamerTournaments = ({ url }: IGamerTournamentsProps) => {
       }
     },
     {
-      image: '11.jpg',
+      image: '12.jpg',
       logo: 'paccion.svg',
       title: 'PixelPulse Showdown',
       time: 'MON, MAR 2, 16:00 CET',
@@ -102,7 +102,7 @@ const GamerTournaments = ({ url }: IGamerTournamentsProps) => {
           </a>
         </div>
       </div>
-      <div className="card-body">
+      <div className="card-body p-5 lg:p-7.5 lg:pb-7">
         <div className="flex flex-no-wrap scrollable-x gap-5">
           {items.map((item, index) => {
             return renderItem(item, index);

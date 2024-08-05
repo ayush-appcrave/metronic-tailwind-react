@@ -6,7 +6,7 @@ const Anniversary = () => {
       <div className="flex flex-col">
         <div className="text-sm font-medium text-gray-800">
           We recently
-          <a href="#" className="text-sm font-medium text-primary hover:text-primary-active">
+          <a href="#" className="text-sm font-medium link">
             &nbsp;celebrated&nbsp;
           </a>
           the blog&apos;s 1-year anniversary

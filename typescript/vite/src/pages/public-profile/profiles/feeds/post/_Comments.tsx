@@ -16,10 +16,10 @@ const Comments = ({ items, url }: ICommentsProps) => {
         <div className="grid gap-2.5 grow">
           <div className="flex justify-between items-center">
             <div className="flex items-center gap-1.5">
-              <a href="#" className="text-md font-semibold text-gray-800 hover:text-primary-active">
+              <a href="#" className="text-md font-semibold text-gray-900 hover:text-primary-active">
                 {item.author}
               </a>
-              <span className="text-sm font-medium text-gray-500">{item.date}</span>
+              <span className="text-sm font-medium text-gray-600">{item.date}</span>
             </div>
 
             <div className="justify-center">
@@ -36,21 +36,21 @@ const Comments = ({ items, url }: ICommentsProps) => {
   };
 
   return (
-    <div className="grid gap-2 lg:gap-5">
+    <div className="grid gap-2 lg:gap-5 p-7.5 pt-0">
       {items.map((item, index) => {
         return renderItem(item, index);
       })}
 
-      <div className="flex gap-2.5">
+      <div className="flex items-center gap-2.5">
         <img
           src={toAbsoluteUrl('/media/avatars/300-3.jpg')}
           className="rounded-full size-10 shrink-0"
           alt=""
         />
-        <div className="relative grow">
-          <input type="text" className="input w-full" placeholder="your comment.." value="" />
-          <button className="btn btn-clear btn-icon btn-sm absolute right-0 top-2/4 -translate-y-2/4 me-1.5">
-            <KeenIcon icon="picture" className="text-gray-500" />
+        <div className="input input-lg">
+          <input type="text" placeholder="your comment.." value="" />
+          <button className="btn btn-icon btn-sm">
+            <KeenIcon icon="picture" />
           </button>
         </div>
       </div>

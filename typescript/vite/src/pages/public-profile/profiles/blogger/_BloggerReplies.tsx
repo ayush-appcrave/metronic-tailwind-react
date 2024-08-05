@@ -7,7 +7,7 @@ const BloggerReplies = () => {
     {
       borderColor: 'border-brand',
       date: '10 Jan',
-      comments: 5,
+      comments: 24,
       text: 'Experienced UI/UX designer seeking new opportunities.'
     },
     {
@@ -46,7 +46,7 @@ const BloggerReplies = () => {
 
           <div className="flex gap-1 items-center">
             <KeenIcon icon="heart" className="text-base text-gray-500" />
-            <span className="text-sm font-medium text-gray-700">{item.comments}</span>
+            <span className="text-2sm font-medium text-gray-600">{item.comments}</span>
           </div>
         </div>
 
@@ -61,7 +61,7 @@ const BloggerReplies = () => {
         <h3 className="card-title">Jenny’s Replies</h3>
       </div>
       <div className="card-body pb-7">
-        <div className="flex flex-col gap-4">
+        <div className="flex flex-col gap-5">
           {items.map((item, index) => {
             return renderItem(item, index);
           })}

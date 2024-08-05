@@ -45,7 +45,10 @@ const CreatorContent = () => {
             title="Restyle Your Space:<br>Soft Goods Makeover Ideas"
             description="Transform your living space beautifully with our Restyle Your Space: Soft Goods Makeover Ideas tutorial"
             more={{ title: 'Get Started', url: '#' }}
-            features={['Time-Saving', 'Easy Revamp', 'Budget-Friendly', 'Fresh Look']}
+            features={[
+              ['Time-Saving', 'Easy Revamp'],
+              ['Budget-Friendly', 'Fresh Look']
+            ]}
           />
           <CreatorWorks />
           <CreatorUpcomingEvents />

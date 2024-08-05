@@ -15,7 +15,7 @@ const BloggerContent = () => {
         <div className="grid gap-5 lg:gap-7.5">
           <CreatorStatistics data={data} />
           <CreatorSummary title="Profile" />
-          <DefaultCommunityBadges />
+          <DefaultCommunityBadges title="Community Badges" />
           <BloggerCollaborate title="Collaborate" url="#" />
           <DefaultTags title="Skills" />
         </div>

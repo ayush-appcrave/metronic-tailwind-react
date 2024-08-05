@@ -61,13 +61,13 @@ const NFTTokensCollected = ({ url }: INFTTokensCollectedProps) => {
   return (
     <div className="card">
       <div className="card-header">
-        <h3 className="card-title">Collection</h3>
+        <h3 className="card-title">Collected</h3>
 
         <a href={url} className="btn btn-link">
           View All
         </a>
       </div>
-      <div className="card-body pb-7">
+      <div className="card-body p-5 lg:p-7.5 lg:pb-7">
         <div className="flex gap-5 scrollable-x">
           {items.map((item, index) => {
             return renderItems(item, index);

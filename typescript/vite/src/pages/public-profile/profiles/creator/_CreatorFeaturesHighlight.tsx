@@ -10,34 +10,45 @@ const CreatorFeaturesHighlight = ({
   image,
   more
 }: ICreatorFeaturesHighlightProps) => {
-  const renderItem = (feature: string, index: number) => {
+  const renderItem = (cell: string, index: number) => {
     return (
-      <div key={index} className="flex items-center gap-1.5">
-        <KeenIcon icon="check-circle" className="text-base text-success" />
-        <span className="text-sm font-medium text-gray-800">{feature}</span>
-      </div>
+      <td key={index} className="py-1 pe-7.5">
+        <div className="flex items-center gap-1.5">
+          <KeenIcon icon="check-circle" className="text-base text-success" />
+          <span className="text-sm font-medium text-gray-800">{cell}</span>
+        </div>
+      </td>
     );
   };
 
   return (
     <div className="card">
-      <div className="card-body">
-        <div className="flex flex-wrap md:flex-nowrap items-center gap-6 md:gap-10">
-          <div className="flex flex-col items-start gap-3">
+      <div className="card-body px-10 py-7.5 lg:pr-12.5">
+        <div className="flex flex-wrap items-center justify-between gap-6 md:gap-10 p-2.5">
+          <div className="flex flex-col items-start gap-3 md:max-w-[60%]">
             <h2
               className="text-1.5xl font-semibold text-gray-900"
               dangerouslySetInnerHTML={{ __html: title }}
             ></h2>
 
-            <p className="text-sm font-medium text-gray-700 leading-5.5 mb-2.5">{description}</p>
+            <p className="text-sm text-gray-700 leading-5.5 mb-2.5">{description}</p>
 
-            <div className="grid grid-cols-2 gap-x-6 md:gap-x-12 gap-y-1.5">
-              {features.map((feature, index) => {
-                return renderItem(feature, index);
-              })}
-            </div>
+            <table>
+              <tbody>
+                {features.map((feature, index) => (
+                  <tr key={index}>
+                    {feature.map((cell, index) => {
+                      return renderItem(cell, index);
+                    })}
+                  </tr>
+                ))}
+              </tbody>
+            </table>
           </div>
-          <img src={toAbsoluteUrl(`${image}`)} className="max-h-[200px]" alt="" />
+
+          <div className="shrink-0">
+            <img src={toAbsoluteUrl(`${image}`)} className="max-h-[200px]" alt="" />
+          </div>
         </div>
       </div>
 

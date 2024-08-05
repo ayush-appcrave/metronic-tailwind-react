@@ -59,7 +59,7 @@ const BloggerPosts = ({ url }: IBloggerPostsProps) => {
           </a>
         </div>
       </div>
-      <div className="card-body">
+      <div className="card-body p-5 lg:p-7.5 lg:pb-7">
         <div className="flex flex-no-wrap scrollable-x gap-5">
           {items.map((item, index) => {
             return renderItems(item, index);

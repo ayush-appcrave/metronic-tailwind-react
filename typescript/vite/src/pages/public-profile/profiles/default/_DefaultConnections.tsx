@@ -51,18 +51,18 @@ const DefaultConnections = ({ title, url }: IDefaultConnectionsProps) => {
             >
               {item.name}
             </a>
-            <span className="text-xs font-normal text-gray-500">
-              {item.connections} connections
+            <span className="text-xs font-medium text-gray-600">
+              {item.connections} contributors
             </span>
           </div>
         </div>
 
         {item.connected ? (
-          <button className="btn btn-xs btn-icon btn-light btn-primary active rounded-full">
+          <button className="btn btn-xs btn-icon btn-primary btn-outline rounded-full active">
             <KeenIcon icon="check" />
           </button>
         ) : (
-          <button className="btn btn-xs btn-icon btn-light btn-primary rounded-full">
+          <button className="btn btn-xs btn-icon btn-primary btn-outline rounded-full">
             <KeenIcon icon="plus" />
           </button>
         )}
@@ -72,7 +72,7 @@ const DefaultConnections = ({ title, url }: IDefaultConnectionsProps) => {
 
   return (
     <div className="card">
-      <div className="card-header">
+      <div className="card-header gap-2">
         <h3 className="card-title">{title}</h3>
 
         <div className="menu" data-menu="true">
@@ -82,8 +82,8 @@ const DefaultConnections = ({ title, url }: IDefaultConnectionsProps) => {
             data-menu-item-toggle="dropdown"
             data-menu-item-placement="bottom-end"
           >
-            <button className="btn btn-icon btn-light btn-clear btn-xs menu-toggle">
-              <KeenIcon icon="dots-vertical" className="!text-xl" />
+            <button className="menu-toggle btn btn-sm btn-icon btn-light btn-clear">
+              <KeenIcon icon="dots-vertical" />
             </button>
 
             <div className="menu-dropdown w-[175px] text-gray-700 px-3 py-3 text-2xs">
@@ -102,7 +102,7 @@ const DefaultConnections = ({ title, url }: IDefaultConnectionsProps) => {
 
       <div className="card-footer justify-center">
         <a href={url} className="btn btn-link">
-          All Connections
+          All Contributors
         </a>
       </div>
     </div>

@@ -5,7 +5,7 @@ import { IHeadingProps } from './interfaces';
 
 const Heading = ({ author, avatar, date }: IHeadingProps) => {
   return (
-    <div className="flex justify-between items-center mb-5">
+    <div className="flex justify-between items-center mb-5 p-7.5 pb-0">
       <div className="flex items-center gap-3">
         <Avatar
           image={avatar.image}
@@ -18,11 +18,11 @@ const Heading = ({ author, avatar, date }: IHeadingProps) => {
         <div className="flex flex-col">
           <a
             href="#"
-            className="text-md font-semibold text-gray-800 hover:text-primary-active mb-1"
+            className="text-md font-semibold text-gray-900 hover:text-primary-active mb-1"
           >
             {author}
           </a>
-          <time className="text-xs font-medium text-gray-600">{date}</time>
+          <time className="text-sm font-medium text-gray-600">{date}</time>
         </div>
       </div>
 
@@ -33,7 +33,7 @@ const Heading = ({ author, avatar, date }: IHeadingProps) => {
           data-menu-item-toggle="dropdown"
           data-menu-item-placement="bottom-end"
         >
-          <button className="btn btn-icon btn-light btn-icon-xl btn-clear btn-xs menu-toggle">
+          <button className="menu-toggle btn btn-sm btn-icon btn-light btn-clear">
             <KeenIcon icon="dots-vertical" />
           </button>
 

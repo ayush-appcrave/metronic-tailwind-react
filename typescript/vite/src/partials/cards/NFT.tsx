@@ -5,24 +5,24 @@ import { INFTProps } from './interfaces';
 
 const NFT = ({ image, id, title, info, date }: INFTProps) => {
   return (
-    <div className="card border-0 mb-5">
-      <img
-        src={toAbsoluteUrl(`/media/images/600x600/${image}`)}
-        className="rounded-t-xl max-w-[270px] shrink-0"
-        alt=""
-      />
+    <div className="card shadow-none border-0 mb-5">
+      <div 
+        className="rounded-t-xl w-[280px] h-[240px] bg-cover bg-center" 
+        style={{ backgroundImage: `url(${toAbsoluteUrl(`/media/images/600x600/${image}`)})` }}
+      >
+      </div>
 
-      <div className="card-border card-rounded-b px-3.5 h-full pt-5 pb-3.5">
+      <div className="card-border card-rounded-b px-3.5 pt-5 pb-3.5">
         <div className="pb-6">
           <a
             href="#"
-            className="font-semibold block text-gray-800 hover:text-primary text-md leading-4 mb-2"
+            className="font-semibold block text-gray-900 hover:text-primary text-md leading-4 mb-2"
           >
             {title}
           </a>
-          <div className="text-sm font-medium text-gray-600">
-            Token ID:
-            <span className="text-sm font-semibold text-gray-800">{id}</span>
+          <div className="text-2sm font-medium text-gray-600">
+            Token ID:&nbsp;
+            <span className="text-2sm font-semibold text-gray-800">{id}</span>
           </div>
         </div>
         <div className="grid grid-cols-2 items-center">

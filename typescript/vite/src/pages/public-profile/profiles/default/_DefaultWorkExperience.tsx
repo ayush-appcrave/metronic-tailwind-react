@@ -53,7 +53,7 @@ const DefaultWorkExperience = ({ url }: IDefaultWorkExperienceProps) => {
                   {item.title}
                 </a>
               )}
-              {item.desc && <span className="text-sm font-normal text-gray-700">{item.desc}</span>}
+              {item.desc && <span className="text-sm font-medium text-gray-800">{item.desc}</span>}
               {item.date && (
                 <span className="text-xs font-normal text-gray-500 leading-none">{item.date}</span>
               )}

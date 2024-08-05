@@ -1,4 +1,5 @@
 import { Container } from '@/components/container';
+import { MENU_SIDEBAR } from '@/config/menu.config';
 import { UserProfileHero } from '@/partials/heros';
 import { NavbarMenu } from '@/partials/menu/NavbarMenu';
 import { Navbar, NavbarActions } from '@/partials/navbar';
@@ -32,7 +33,7 @@ const DefaultPage = () => {
 
       <Container>
         <Navbar>
-          {secondaryMenu && <NavbarMenu items={secondaryMenu} />}
+          {MENU_SIDEBAR[2]?.children && <NavbarMenu items={MENU_SIDEBAR[2].children} />}
           <NavbarActions>Buttons</NavbarActions>
         </Navbar>
       </Container>

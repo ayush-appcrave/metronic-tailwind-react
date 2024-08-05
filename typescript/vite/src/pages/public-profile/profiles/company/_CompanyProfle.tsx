@@ -59,7 +59,7 @@ const CompanyProfle = () => {
           <KeenIcon icon={row.icon} className="text-lg text-gray-500" />
         </span>
         {row.info ? (
-          <a href={row.text} className="text-primary hover:text-primary-active text-sm font-medium">
+          <a href={row.text} className="link text-sm font-medium">
             {row.text}
           </a>
         ) : (
@@ -85,8 +85,8 @@ const CompanyProfle = () => {
       <div className="card-body">
         <h3 className="text-base font-semibold text-gray-900 leading-none mb-5">Headquarter</h3>
 
-        <div className="flex flex-wrap items-center gap-5 mt-10">
-          {/* <div className="rounded-xl w-full md:w-80 min-h-52" id="company_profile_map"></div> */}
+        <div className="flex flex-wrap items-center gap-5 mb-10">
+          <div className="rounded-xl w-full md:w-80 min-h-52" id="company_profile_map"></div>
 
           <div className="flex flex-col gap-2.5">
             {rows.map((row, index) => {

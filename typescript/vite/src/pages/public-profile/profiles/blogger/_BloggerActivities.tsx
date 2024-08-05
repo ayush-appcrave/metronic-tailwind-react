@@ -17,8 +17,8 @@ const BloggerActivities = () => {
           <label className="switch">
             <input className="order-2" type="checkbox" value="1" name="check" defaultChecked />
             <span className="switch-label order-1">
-              &nbsp;Auto refresh:
-              <span className="hidden switch-off:inline">Off</span>
+              Auto refresh:&nbsp;
+              <span className="switch-on:hidden">Off</span>
               <span className="hidden switch-on:inline">On</span>
             </span>
           </label>
@@ -31,6 +31,12 @@ const BloggerActivities = () => {
         <BloggingConference image="/media/illustrations/3.svg" />
         <FollowersMilestone />
         <Anniversary />
+      </div>
+
+      <div className="card-footer justify-center">
+        <a href="#" className="btn btn-link">
+          All-time Activities
+        </a>
       </div>
     </div>
   );
