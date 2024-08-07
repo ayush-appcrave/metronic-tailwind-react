@@ -207,16 +207,21 @@ const Signup = () => {
         <button
           type="submit"
           className="btn btn-primary flex justify-center grow"
-          disabled={formik.isSubmitting || !formik.isValid}
+          disabled={formik.isSubmitting}
         >
           {!loading && <span className="indicator-label">Sign up</span>}
           {loading && (
             <span className="indicator-progress" style={{ display: 'block' }}>
               Please wait...
-              <span className="spinner-border spinner-border-sm align-middle ms-2"></span>
             </span>
           )}
         </button>
+
+        {formik.status && (
+          <div className="text-red-500 text-xs mt-1" role="alert">
+            {formik.status}
+          </div>
+        )}
       </form>
     </div>
   );

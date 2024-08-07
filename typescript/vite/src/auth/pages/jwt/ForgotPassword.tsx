@@ -95,14 +95,14 @@ const ForgotPassword = () => {
         </div>
 
         <Link to="/auth/login" className="btn btn-primary flex justify-center grow">
-          Continue
-          <KeenIcon icon="black-right" />
+          {!loading && <span className="indicator-label">Continue</span>}
           {loading && (
             <span className="indicator-progress" style={{ display: 'block' }}>
               Please wait...
-              <span className="spinner-border spinner-border-sm align-middle ms-2"></span>
             </span>
           )}
+          
+          <KeenIcon icon="black-right" />
         </Link>
       </form>
     </div>
