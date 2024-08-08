@@ -2,6 +2,8 @@ import { KeenIcon } from '@/components';
 import { Avatars } from '@/partials/common';
 
 import { IDefaultProjectsItem, IDefaultProjectsItems } from './interfaces';
+import { Link } from 'react-router-dom';
+import { Crud1, CrudItem1 } from '@/partials/dropdowns/general';
 
 const DefaultProjects = () => {
   const items: IDefaultProjectsItems = [
@@ -120,9 +122,7 @@ const DefaultProjects = () => {
                 <KeenIcon icon="dots-vertical" />
               </button>
 
-              <div className="menu-dropdown w-[175px] text-gray-700 px-3 py-3 text-2xs">
-                Menu content
-              </div>
+              <CrudItem1 />
             </div>
           </div>
         </td>
@@ -146,12 +146,11 @@ const DefaultProjects = () => {
               <KeenIcon icon="dots-vertical" />
             </button>
 
-            <div className="menu-dropdown w-[175px] text-gray-700 px-3 py-3 text-2xs">
-              Menu content
-            </div>
+            <Crud1 />
           </div>
         </div>
       </div>
+
       <div className="card-table scrollable-x-auto">
         <table className="table text-right">
           <thead>
@@ -163,6 +162,7 @@ const DefaultProjects = () => {
               <th className="w-[30px]"></th>
             </tr>
           </thead>
+
           <tbody>
             {items.map((item, index) => {
               return renderItem(item, index);
@@ -170,10 +170,9 @@ const DefaultProjects = () => {
           </tbody>
         </table>
       </div>
+
       <div className="card-footer justify-center">
-        <a href="#" className="btn btn-link">
-          All Projects
-        </a>
+        <Link to="/public-profile/projects/3-columns" className="btn btn-link">All Projects</Link>
       </div>
     </div>
   );

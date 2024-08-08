@@ -6,8 +6,10 @@ import {
   IDefaultRecentUploadsItems,
   IDefaultRecentUploadsProps
 } from './interfaces';
+import { Link } from 'react-router-dom';
+import { Card1, CardItem1 } from '@/partials/dropdowns/general';
 
-const DefaultRecentUploads = ({ title, url }: IDefaultRecentUploadsProps) => {
+const DefaultRecentUploads = ({ title }: IDefaultRecentUploadsProps) => {
   const items: IDefaultRecentUploadsItems = [
     {
       image: 'pdf.svg',
@@ -38,27 +40,18 @@ const DefaultRecentUploads = ({ title, url }: IDefaultRecentUploadsProps) => {
           <img src={toAbsoluteUrl(`/media/file-types/${item.image}`)} alt="" />
 
           <div className="flex flex-col">
-            <span className="text-sm font-semibold text-gray-800 cursor-pointer hover:text-primary mb-px">
-              {item.desc}
-            </span>
-            <span className="text-xs font-normal text-gray-500">{item.date}</span>
+            <span className="text-sm font-semibold text-gray-900 cursor-pointer hover:text-primary mb-px">{item.desc}</span>
+            <span className="text-xs font-normal text-gray-600">{item.date}</span>
           </div>
         </div>
 
         <div className="menu" data-menu="true">
-          <div
-            className="menu-item"
-            data-menu-item-trigger="click"
-            data-menu-item-toggle="dropdown"
-            data-menu-item-placement="bottom-end"
-          >
-            <button className="btn btn-icon btn-light btn-clear btn-xs menu-toggle">
-              <KeenIcon icon="dots-vertical" className="!text-xl" />
+          <div className="menu-item" data-menu-item-trigger="click|lg:click" data-menu-item-toggle="dropdown" data-menu-item-placement="bottom-end" data-menu-item-offset="0, 10px">
+            <button className="menu-toggle btn btn-sm btn-icon btn-light btn-clear">
+              <KeenIcon icon="dots-vertical" />
             </button>
 
-            <div className="menu-dropdown w-[175px] text-gray-700 px-3 py-3 text-2xs">
-              Menu content
-            </div>
+            <CardItem1 />
           </div>
         </div>
       </div>
@@ -69,7 +62,18 @@ const DefaultRecentUploads = ({ title, url }: IDefaultRecentUploadsProps) => {
     <div className="card">
       <div className="card-header">
         <h3 className="card-title">{title}</h3>
+
+        <div className="menu" data-menu="true">
+          <div className="menu-item" data-menu-item-trigger="click|lg:click" data-menu-item-toggle="dropdown" data-menu-item-placement="bottom-end" data-menu-item-offset="0, 10px">
+            <button className="menu-toggle btn btn-sm btn-icon btn-light btn-clear">
+              <KeenIcon icon="dots-vertical" />
+            </button>
+
+            <Card1 />
+          </div>
+        </div>
       </div>
+
       <div className="card-body">
         <div className="grid gap-2.5 lg:gap-5">
           {items.map((item, index) => {
@@ -79,9 +83,7 @@ const DefaultRecentUploads = ({ title, url }: IDefaultRecentUploadsProps) => {
       </div>
 
       <div className="card-footer justify-center">
-        <a href={url} className="btn btn-link">
-          All Files
-        </a>
+        <Link to="/account/integrations" className="btn btn-link">All Files</Link>
       </div>
     </div>
   );

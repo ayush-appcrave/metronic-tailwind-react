@@ -3,6 +3,7 @@ import ApexChart from 'react-apexcharts';
 import { KeenIcon } from '@/components';
 
 import { IApexContributionsOptions, IDefaultContributionsProps } from './interfaces';
+import { Card1 } from '@/partials/dropdowns/general';
 
 const DefaultContributions = ({ title }: IDefaultContributionsProps) => {
   const options: IApexContributionsOptions = {
@@ -18,6 +19,7 @@ const DefaultContributions = ({ title }: IDefaultContributionsProps) => {
     <div className="card">
       <div className="card-header">
         <h3 className="card-title">{title}</h3>
+
         <div className="menu" data-menu="true">
           <div
             className="menu-item"
@@ -28,12 +30,12 @@ const DefaultContributions = ({ title }: IDefaultContributionsProps) => {
             <button className="btn btn-icon btn-light btn-clear btn-xs menu-toggle">
               <KeenIcon icon="dots-vertical" className="!text-xl" />
             </button>
-            <div className="menu-dropdown w-[175px] text-gray-700 px-3 py-3 text-2xs">
-              Menu content
-            </div>
+            
+            <Card1 />
           </div>
         </div>
       </div>
+
       <div className="flex flex-col justify-center items-center grow px-3 py-1">
         <ApexChart
           id="contributions_chart"

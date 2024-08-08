@@ -10,10 +10,6 @@ export interface IDefaultCommunityBadgesProps {
   title: string;
 }
 
-export interface IDefaultUnlockPartnershipsProps {
-  url: string;
-}
-
 export interface IDefaultAboutTable {
   status: string;
   info: string;
@@ -30,10 +26,6 @@ export interface IDefaultTagsItem {
 }
 export interface IDefaultTagsItems extends Array<IDefaultTagsItem> {}
 
-export interface IDefaultWorkExperienceProps {
-  url: string;
-}
-
 export interface IDefaultWorkExperienceItem {
   image?: string;
   title?: string;
@@ -45,7 +37,6 @@ export interface IDefaultWorkExperienceItems extends Array<IDefaultWorkExperienc
 
 export interface IDefaultConnectionsProps {
   title: string;
-  url: string;
 }
 export interface IDefaultConnectionsItem {
   avatar: string;
@@ -61,7 +52,6 @@ export interface IDefaultContributionsProps {
 
 export interface IDefaultRecentUploadsProps {
   title: string;
-  url: string;
 }
 
 export interface IDefaultProjectsItem {

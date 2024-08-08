@@ -3,10 +3,10 @@ import { toAbsoluteUrl } from '@/utils/Assets';
 import {
   IDefaultWorkExperienceItem,
   IDefaultWorkExperienceItems,
-  IDefaultWorkExperienceProps
 } from './interfaces';
+import { Link } from 'react-router-dom';
 
-const DefaultWorkExperience = ({ url }: IDefaultWorkExperienceProps) => {
+const DefaultWorkExperience = () => {
   const items: IDefaultWorkExperienceItems = [
     {
       image: 'jira.svg',
@@ -69,6 +69,7 @@ const DefaultWorkExperience = ({ url }: IDefaultWorkExperienceProps) => {
       <div className="card-header">
         <h3 className="card-title">Work Experience</h3>
       </div>
+
       <div className="card-body">
         <div className="grid gap-y-5">
           {items.map((item, index) => {
@@ -78,9 +79,7 @@ const DefaultWorkExperience = ({ url }: IDefaultWorkExperienceProps) => {
       </div>
 
       <div className="card-footer justify-center">
-        <a href={url} className="btn btn-link">
-          Open to Work
-        </a>
+        <Link to="/public-profile/works" className="btn btn-link">Open to Work</Link>
       </div>
     </div>
   );

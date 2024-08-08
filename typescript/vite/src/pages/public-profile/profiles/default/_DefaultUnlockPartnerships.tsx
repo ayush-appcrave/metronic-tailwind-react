@@ -1,8 +1,7 @@
 import { toAbsoluteUrl } from '@/utils/Assets';
+import { Link } from 'react-router-dom';
 
-import { IDefaultUnlockPartnershipsProps } from './interfaces';
-
-const DefaultUnlockPartnerships = ({ url }: IDefaultUnlockPartnershipsProps) => {
+const DefaultUnlockPartnerships = () => {
   return (
     <>
       <div className="card">
@@ -13,12 +12,14 @@ const DefaultUnlockPartnerships = ({ url }: IDefaultUnlockPartnershipsProps) => 
                 Unlock Creative <br />
                 Partnerships on Our Blog
               </h2>
+
               <p className="text-sm text-gray-700 leading-5.5">
                 Explore exciting collaboration opportunities with our blog. We&apos;re open to
                 partnerships, guest posts, and more. Join us to share your insights and grow your
                 audience.
               </p>
             </div>
+
             <img
               src={toAbsoluteUrl('/media/illustrations/1.svg')}
               className="max-h-[160px]"
@@ -28,9 +29,7 @@ const DefaultUnlockPartnerships = ({ url }: IDefaultUnlockPartnershipsProps) => 
         </div>
 
         <div className="card-footer justify-center">
-          <a href={url} className="btn btn-link">
-            Get Started
-          </a>
+          <Link to="/network/get-started" className="btn btn-link">Get Started</Link>
         </div>
       </div>
     </>

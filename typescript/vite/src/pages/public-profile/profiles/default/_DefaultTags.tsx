@@ -27,6 +27,7 @@ const DefaultTags = ({ title, className }: IDefaultTagsProps) => {
       <div className="card-header">
         <h3 className="card-title">{title}</h3>
       </div>
+
       <div className="card-body">
         <div className="flex flex-wrap gap-2.5 mb-2">
           {items.map((item, index) => {

@@ -3,6 +3,7 @@ import ApexChart from 'react-apexcharts';
 import { KeenIcon } from '@/components';
 
 import { IApexMediaUploadsOptions } from './interfaces';
+import { Card2 } from '@/partials/dropdowns/general';
 
 const DefaultMediaUploads = () => {
   const options: IApexMediaUploadsOptions = {
@@ -105,17 +106,16 @@ const DefaultMediaUploads = () => {
           <div className="menu" data-menu="true">
             <div
               className="menu-item"
-              data-menu-item-trigger="click"
+              data-menu-item-trigger="click|lg:click"
               data-menu-item-toggle="dropdown"
               data-menu-item-placement="bottom-end"
+              data-menu-item-offset="0, 10px"
             >
-              <button className="btn btn-icon btn-light btn-clear btn-xs menu-toggle">
+              <button className="menu-toggle btn btn-sm btn-icon btn-light btn-clear">
                 <KeenIcon icon="dots-vertical" className="!text-xl" />
               </button>
 
-              <div className="menu-dropdown w-[175px] text-gray-700 px-3 py-3 text-2xs">
-                Menu content
-              </div>
+              <Card2 />
             </div>
           </div>
         </div>

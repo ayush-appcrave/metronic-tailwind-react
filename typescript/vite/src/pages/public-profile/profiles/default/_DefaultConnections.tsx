@@ -6,8 +6,10 @@ import {
   IDefaultConnectionsItems,
   IDefaultConnectionsProps
 } from './interfaces';
+import { Link } from 'react-router-dom';
+import { Card1 } from '@/partials/dropdowns/general';
 
-const DefaultConnections = ({ title, url }: IDefaultConnectionsProps) => {
+const DefaultConnections = ({ title }: IDefaultConnectionsProps) => {
   const items: IDefaultConnectionsItems = [
     {
       avatar: '300-3.png',
@@ -44,18 +46,12 @@ const DefaultConnections = ({ title, url }: IDefaultConnectionsProps) => {
             className="rounded-full size-9 shrink-0"
             alt=""
           />
+
           <div className="flex flex-col">
-            <a
-              href="#"
-              className="text-sm font-semibold text-gray-800 hover:text-primary-active mb-px"
-            >
-              {item.name}
-            </a>
-            <span className="text-xs font-medium text-gray-600">
-              {item.connections} contributors
-            </span>
+            <a href="#" className="text-sm font-semibold text-gray-900 hover:text-primary-active mb-px">{item.name}</a>
+            <span className="text-xs font-medium text-gray-600">{item.connections} connections</span>
           </div>
-        </div>
+        </div> 
 
         {item.connected ? (
           <button className="btn btn-xs btn-icon btn-primary btn-outline rounded-full active">
@@ -76,22 +72,21 @@ const DefaultConnections = ({ title, url }: IDefaultConnectionsProps) => {
         <h3 className="card-title">{title}</h3>
 
         <div className="menu" data-menu="true">
-          <div
-            className="menu-item"
-            data-menu-item-trigger="click"
-            data-menu-item-toggle="dropdown"
-            data-menu-item-placement="bottom-end"
+          <div 
+            className="menu-item" 
+            data-menu-item-trigger="click|lg:click" 
+            data-menu-item-toggle="dropdown" 
+            data-menu-item-placement="bottom-end" 
+            data-menu-item-offset="0, 10px"
           >
             <button className="menu-toggle btn btn-sm btn-icon btn-light btn-clear">
               <KeenIcon icon="dots-vertical" />
             </button>
-
-            <div className="menu-dropdown w-[175px] text-gray-700 px-3 py-3 text-2xs">
-              Menu content
-            </div>
+            <Card1 />
           </div>
         </div>
       </div>
+
       <div className="card-body">
         <div className="flex flex-col gap-2 lg:gap-5">
           {items.map((item, index) => {
@@ -101,9 +96,7 @@ const DefaultConnections = ({ title, url }: IDefaultConnectionsProps) => {
       </div>
 
       <div className="card-footer justify-center">
-        <a href={url} className="btn btn-link">
-          All Contributors
-        </a>
+        <Link to="/public-profile/network" className="btn btn-link">All Contributors</Link>
       </div>
     </div>
   );

@@ -72,6 +72,7 @@ const DefaultCommunityBadges = ({ title }: IDefaultCommunityBadgesProps) => {
       <div className="card-header">
         <h3 className="card-title">{title}</h3>
       </div>
+
       <div className="card-body pb-7.5">
         <div className="flex items-center flex-wrap gap-3 lg:gap-4">
           {items.map((item, index) => {
