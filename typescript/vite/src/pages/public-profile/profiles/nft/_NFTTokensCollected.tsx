@@ -1,12 +1,9 @@
 import { NFT } from '@/partials/cards/NFT';
 
-import {
-  INFTTokensCollectedItem,
-  INFTTokensCollectedItems,
-  INFTTokensCollectedProps
-} from './interfaces';
+import { INFTTokensCollectedItem, INFTTokensCollectedItems } from './interfaces';
+import { Link } from 'react-router-dom';
 
-const NFTTokensCollected = ({ url }: INFTTokensCollectedProps) => {
+const NFTTokensCollected = () => {
   const items: INFTTokensCollectedItems = [
     {
       image: '4.jpg',
@@ -63,9 +60,7 @@ const NFTTokensCollected = ({ url }: INFTTokensCollectedProps) => {
       <div className="card-header">
         <h3 className="card-title">Collected</h3>
 
-        <a href={url} className="btn btn-link">
-          View All
-        </a>
+        <Link to="/network/user-cards/author" className="btn btn-link">View All</Link>
       </div>
       <div className="card-body p-5 lg:p-7.5 lg:pb-7">
         <div className="flex gap-5 scrollable-x">

@@ -22,9 +22,9 @@ const NFTContent = () => {
       <div className="col-span-1 lg:col-span-2">
         <div className="flex flex-col gap-5 lg:gap-7.5">
           <div className="flex flex-col gap-5 lg:gap-7.5">
-            <NFTTokensCreated url="#" />
-            <NFTTokensCollected url="#" />
-            <NFTTokens3dArt url="#" />
+            <NFTTokensCreated />
+            <NFTTokensCollected />
+            <NFTTokens3dArt />
           </div>
         </div>
       </div>

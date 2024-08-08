@@ -1,8 +1,9 @@
 import { Post } from '@/partials/cards';
 
-import { IBloggerPostsItem, IBloggerPostsItems, IBloggerPostsProps } from './interfaces';
+import { IBloggerPostsItem, IBloggerPostsItems } from './interfaces';
+import { Link } from 'react-router-dom';
 
-const BloggerPosts = ({ url }: IBloggerPostsProps) => {
+const BloggerPosts = () => {
   const items: IBloggerPostsItems = [
     {
       image: '14.jpg',
@@ -54,9 +55,7 @@ const BloggerPosts = ({ url }: IBloggerPostsProps) => {
         <h3 className="card-title">Jenny’s Posts</h3>
 
         <div className="justify-center">
-          <a href={url} className="btn btn-link">
-            View details
-          </a>
+          <Link to="/public-profile/profiles/feeds" className="btn btn-link">View All</Link>
         </div>
       </div>
       <div className="card-body p-5 lg:p-7.5 lg:pb-7">

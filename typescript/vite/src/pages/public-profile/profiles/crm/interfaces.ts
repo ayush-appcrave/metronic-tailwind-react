@@ -11,14 +11,6 @@ export interface ICRMAttributesItem {
 }
 export interface ICRMAttributesItems extends Array<ICRMAttributesItem> {}
 
-export interface ICRMAttributesProps {
-  url: string;
-}
-
-export interface ICRMApiCredentialsProps {
-  url: string;
-}
-
 export interface ICRMDealsItem {
   name: string;
   ammount: string;
@@ -27,10 +19,6 @@ export interface ICRMDealsItem {
   color: string;
 }
 export interface ICRMDealsItems extends Array<ICRMDealsItem> {}
-
-export interface ICRMActivityProps {
-  url: string;
-}
 
 export interface ICRMRecentInvoicesItem {
   icon: string;

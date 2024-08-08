@@ -1,14 +1,14 @@
 import { KeenIcon } from '@/components';
 
 import {
-  ICompanyProfleProduct,
-  ICompanyProfleProducts,
-  ICompanyProfleRow,
-  ICompanyProfleRows
+  ICompanyProfileProduct,
+  ICompanyProfileProducts,
+  ICompanyProfileRow,
+  ICompanyProfileRows
 } from './interfaces';
 
-const CompanyProfle = () => {
-  const rows: ICompanyProfleRows = [
+const CompanyProfile = () => {
+  const rows: ICompanyProfileRows = [
     {
       icon: 'dribbble',
       text: 'https://duolingo.com',
@@ -36,7 +36,7 @@ const CompanyProfle = () => {
     }
   ];
 
-  const products: ICompanyProfleProducts = [
+  const products: ICompanyProfileProducts = [
     { label: 'Lingo Kids' },
     { label: 'Lingo Express' },
     { label: 'Fun Learning' },
@@ -52,12 +52,10 @@ const CompanyProfle = () => {
     { label: 'Lingo Plus' }
   ];
 
-  const renderRows = (row: ICompanyProfleRow, index: number) => {
+  const renderRows = (row: ICompanyProfileRow, index: number) => {
     return (
       <div key={index} className="flex items-center gap-2.5">
-        <span className="">
-          <KeenIcon icon={row.icon} className="text-lg text-gray-500" />
-        </span>
+        <span><KeenIcon icon={row.icon} className="text-lg text-gray-500" /></span>
         {row.info ? (
           <a href={row.text} className="link text-sm font-medium">
             {row.text}
@@ -69,7 +67,7 @@ const CompanyProfle = () => {
     );
   };
 
-  const renderProducts = (product: ICompanyProfleProduct, index: number) => {
+  const renderProducts = (product: ICompanyProfileProduct, index: number) => {
     return (
       <span key={index} className="badge badge-outline">
         {product.label}
@@ -118,4 +116,4 @@ const CompanyProfle = () => {
   );
 };
 
-export { CompanyProfle };
+export { CompanyProfile };

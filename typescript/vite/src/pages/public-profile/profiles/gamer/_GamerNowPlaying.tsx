@@ -1,8 +1,8 @@
 import { NowPlaying } from '@/partials/cards';
 
-import { IGamerNowPlayingItem, IGamerNowPlayingItems, IGamerNowPlayingProps } from './interfaces';
+import { IGamerNowPlayingItem, IGamerNowPlayingItems } from './interfaces';
 
-const GamerNowPlaying = ({ url }: IGamerNowPlayingProps) => {
+const GamerNowPlaying = () => {
   const items: IGamerNowPlayingItems = [
     {
       image: '10.jpg',
@@ -170,7 +170,7 @@ const GamerNowPlaying = ({ url }: IGamerNowPlayingProps) => {
         <h3 className="card-title">Now Playing</h3>
 
         <div className="justify-center">
-          <a href={url} className="btn btn-link">
+          <a href="#" className="btn btn-link">
             View All
           </a>
         </div>

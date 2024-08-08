@@ -1,4 +1,5 @@
 import { toAbsoluteUrl } from '@/utils/Assets';
+import { Link } from 'react-router-dom';
 
 const PlainGettingStarted = () => {
   return (
@@ -19,9 +20,7 @@ const PlainGettingStarted = () => {
           <span className="text-sm font-medium text-gray-600">
             Begin by crafting your inaugural list in minutes.
           </span>
-          <a href="#" className="text-sm font-semibold text-primary hover:text-primary-active">
-            Get Started!
-          </a>
+          <Link to="/account/billing/plans" className="text-sm font-medium link">Get Started!</Link>
         </div>
       </div>
     </div>

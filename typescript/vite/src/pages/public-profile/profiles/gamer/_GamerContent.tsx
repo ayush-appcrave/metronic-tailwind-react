@@ -51,16 +51,16 @@ const GamerContent = () => {
           <GamerFavoriteGames />
           <GamerAbout />
           <DefaultCommunityBadges title="Badges" />
-          <CreatorUsers title="Floyd’s Team" url="#" items={items} />
+          <CreatorUsers title="Floyd’s Team" items={items} />
           <CompanyNetwork title="Network" data={data} />
         </div>
       </div>
       <div className="col-span-2">
         <div className="flex flex-col gap-5 lg:gap-7.5">
           <div className="flex flex-col gap-5 lg:gap-7.5">
-            <GamerTournaments url="#" />
-            <GamerNowPlaying url="#" />
-            <GamerActivity url="#" />
+            <GamerTournaments />
+            <GamerNowPlaying />
+            <GamerActivity />
           </div>
         </div>
       </div>

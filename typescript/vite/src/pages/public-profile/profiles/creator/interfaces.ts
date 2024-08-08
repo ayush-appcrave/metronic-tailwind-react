@@ -16,7 +16,6 @@ export interface ICreatorUsersItems extends Array<ICreatorUsersItem> {}
 export interface ICreatorUsersProps {
   items: ICreatorUsersItem[];
   title: string;
-  url: string;
 }
 
 export interface ICreatorSummaryItem {
@@ -57,7 +56,3 @@ export interface ICreatorUpcomingEventsItem {
   desc: string;
 }
 export interface ICreatorUpcomingEventsItems extends Array<ICreatorUpcomingEventsItem> {}
-
-export interface ICreatorActivitiesProps {
-  url: string;
-}

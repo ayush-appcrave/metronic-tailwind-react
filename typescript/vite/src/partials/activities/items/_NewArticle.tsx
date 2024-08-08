@@ -1,4 +1,5 @@
 import { TimelinesWrapper } from '@/partials/timelines/default/item';
+import { Link } from 'react-router-dom';
 
 const NewArticle = () => {
   return (
@@ -6,9 +7,9 @@ const NewArticle = () => {
       <div className="flex flex-col">
         <div className="text-sm font-medium text-gray-800">
           Posted a new article
-          <a href="#" className="text-sm font-medium text-primary hover:text-primary-active">
+          <Link to="/public-profile/profiles/blogger" className="text-sm font-medium link">
             &nbsp;Top 10 Tech Trends&nbsp;
-          </a>
+          </Link>
         </div>
         <span className="text-xs font-medium text-gray-500">Today, 9:00 AM</span>
       </div>

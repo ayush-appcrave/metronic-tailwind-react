@@ -1,4 +1,5 @@
 import { TimelinesWrapper } from '@/partials/timelines/default/item';
+import { Link } from 'react-router-dom';
 
 const Anniversary = () => {
   return (
@@ -6,9 +7,9 @@ const Anniversary = () => {
       <div className="flex flex-col">
         <div className="text-sm font-medium text-gray-800">
           We recently
-          <a href="#" className="text-sm font-medium link">
+          <Link to="/public-profile/profiles/nft" className="text-sm font-medium link">
             &nbsp;celebrated&nbsp;
-          </a>
+          </Link>
           the blog&apos;s 1-year anniversary
         </div>
         <span className="text-xs font-medium text-gray-500">3 months ago, 4:07 PM</span>

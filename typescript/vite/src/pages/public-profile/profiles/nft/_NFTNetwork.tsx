@@ -16,7 +16,7 @@ const NFTNetwork = () => {
         <KeenIcon icon={item.logo} className="text-base text-gray-500" />
         <a
           href="#"
-          className="text-sm font-medium leading-none text-gray-800  hover:text-primary-active"
+          className="text-sm font-medium leading-none text-gray-800 hover:text-primary-active"
         >
           {item.info}
         </a>

@@ -1,4 +1,5 @@
 import { TimelinesWrapper } from '@/partials/timelines/default/item';
+import { Link } from 'react-router-dom';
 
 const FollowersMilestone = () => {
   return (
@@ -6,9 +7,9 @@ const FollowersMilestone = () => {
       <div className="flex flex-col">
         <div className="text-sm font-medium text-gray-800">
           Reaching the milestone of
-          <a href="#" className="text-sm font-medium text-primary hover:text-primary-active">
+          <Link to="/public-profile/profiles/feeds" className="text-sm font-medium link">
             &nbsp;10,000 followers&nbsp;
-          </a>
+          </Link>
           on the blog was a dream come true
         </div>
         <span className="text-xs font-medium text-gray-500">5 days ago, 4:07 PM</span>

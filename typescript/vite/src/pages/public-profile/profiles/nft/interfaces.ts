@@ -19,10 +19,6 @@ export interface INFTTokensCreatedItem {
 }
 export interface INFTTokensCreatedItems extends Array<INFTTokensCreatedItem> {}
 
-export interface INFTTokensCreatedProps {
-  url: string;
-}
-
 export interface INFTTokensCollectedItem {
   image: string;
   title: string;
@@ -32,10 +28,6 @@ export interface INFTTokensCollectedItem {
 }
 export interface INFTTokensCollectedItems extends Array<INFTTokensCollectedItem> {}
 
-export interface INFTTokensCollectedProps {
-  url: string;
-}
-
 export interface INFTTokens3dArtItem {
   image: string;
   title: string;
@@ -44,7 +36,3 @@ export interface INFTTokens3dArtItem {
   date: string;
 }
 export interface INFTTokens3dArtItems extends Array<INFTTokens3dArtItem> {}
-
-export interface INFTTokens3dArtProps {
-  url: string;
-}

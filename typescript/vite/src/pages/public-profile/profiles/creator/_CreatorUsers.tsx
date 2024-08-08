@@ -1,8 +1,9 @@
 import { toAbsoluteUrl } from '@/utils/Assets';
 
 import { ICreatorUsersItem, ICreatorUsersProps } from './interfaces';
+import { Link } from 'react-router-dom';
 
-const CreatorUsers = ({ title, items, url }: ICreatorUsersProps) => {
+const CreatorUsers = ({ title, items }: ICreatorUsersProps) => {
   const renderItem = (item: ICreatorUsersItem, index: number) => {
     return (
       <img
@@ -29,9 +30,7 @@ const CreatorUsers = ({ title, items, url }: ICreatorUsersProps) => {
       </div>
 
       <div className="card-footer justify-center">
-        <a href={url} className="btn btn-link">
-          Join Our Team
-        </a>
+        <Link to="/account/members/teams" className="btn btn-link">Join Our Team</Link>
       </div>
     </div>
   );

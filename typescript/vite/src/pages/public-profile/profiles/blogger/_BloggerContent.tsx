@@ -16,14 +16,14 @@ const BloggerContent = () => {
           <CreatorStatistics data={data} />
           <CreatorSummary title="Profile" />
           <DefaultCommunityBadges title="Community Badges" />
-          <BloggerCollaborate title="Collaborate" url="#" />
+          <BloggerCollaborate title="Collaborate" />
           <DefaultTags title="Skills" />
         </div>
       </div>
       <div className="col-span-1 lg:col-span-2">
         <div className="flex flex-col gap-5 lg:gap-7.5">
-          <DefaultUnlockPartnerships url="#" />
-          <BloggerPosts url="#" />
+          <DefaultUnlockPartnerships />
+          <BloggerPosts />
           <BloggerReplies />
           <BloggerActivities />
         </div>

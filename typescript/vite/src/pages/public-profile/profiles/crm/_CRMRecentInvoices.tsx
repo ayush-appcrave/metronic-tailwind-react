@@ -1,6 +1,7 @@
 import { KeenIcon } from '@/components';
 
 import { ICRMRecentInvoicesItem, ICRMRecentInvoicesItems } from './interfaces';
+import { Card2, CardItem2 } from '@/partials/dropdowns/general';
 
 const CRMRecentInvoices = () => {
   const items: ICRMRecentInvoicesItems = [
@@ -45,21 +46,31 @@ const CRMRecentInvoices = () => {
           </div>
 
           <div className="flex flex-col gap-0.5">
-            <span className="text-2sm font-semibold text-gray-800 cursor-pointer hover:text-primary mb-px">
+            <span className="text-2sm font-semibold text-gray-900 cursor-pointer hover:text-primary mb-px">
               {item.number}
             </span>
-            <span className="text-2xs font-medium text-gray-500">{item.date}</span>
+            <span className="text-2xs font-medium text-gray-600">{item.date}</span>
           </div>
         </div>
-        <div className="flex items-center gap-2.5 -mr-1">
+
+        <div className="flex items-center gap-2.5">
           <span className="text-sm font-medium text-gray-700">${item.ammount}</span>
 
-          <a
-            href="#"
-            className="btn btn-sm btn-icon btn-icon-md text-primary hover:text-primary-active"
-          >
-            <KeenIcon icon="exit-down" />
-          </a>
+          <div className="menu" data-menu="true">
+            <div
+              className="menu-item"
+              data-menu-item-trigger="click|lg:click"
+              data-menu-item-toggle="dropdown"
+              data-menu-item-placement="bottom-end"
+              data-menu-item-offset="0, 10px"
+            >
+              <button className="btn btn-sm btn-icon btn-icon-md text-primary hover:text-primary-active">
+                <KeenIcon icon="exit-down" />
+              </button>
+              
+              <CardItem2 />
+            </div>
+          </div>
         </div>
       </div>
     );
@@ -73,17 +84,16 @@ const CRMRecentInvoices = () => {
         <div className="menu" data-menu="true">
           <div
             className="menu-item"
-            data-menu-item-trigger="click"
+            data-menu-item-trigger="click|lg:click"
             data-menu-item-toggle="dropdown"
             data-menu-item-placement="bottom-end"
+            data-menu-item-offset="0, 10px"
           >
             <button className="menu-toggle btn btn-sm btn-icon btn-light btn-clear">
               <KeenIcon icon="dots-vertical" />
             </button>
 
-            <div className="menu-dropdown w-[175px] text-gray-700 px-3 py-3 text-2xs">
-              Menu content
-            </div>
+            <Card2 />
           </div>
         </div>
       </div>

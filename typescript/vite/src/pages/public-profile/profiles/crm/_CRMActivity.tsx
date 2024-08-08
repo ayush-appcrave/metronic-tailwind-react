@@ -5,10 +5,9 @@ import {
   ProductSpecific,
   ProductWebinar
 } from '@/partials/activities/items';
+import { Link } from 'react-router-dom';
 
-import { ICRMActivityProps } from './interfaces';
-
-const CRMActivity = ({ url }: ICRMActivityProps) => {
+const CRMActivity = () => {
   return (
     <div className="card">
       <div className="card-header">
@@ -29,7 +28,7 @@ const CRMActivity = ({ url }: ICRMActivityProps) => {
 
       <div className="card-body">
         <NewProduct />
-        <ProductWebinar url="#" />
+        <ProductWebinar />
         <Login />
         <BloggingConference
           heading="Email campaign sent to Jenny for a special promotion."
@@ -40,9 +39,7 @@ const CRMActivity = ({ url }: ICRMActivityProps) => {
       </div>
 
       <div className="card-footer justify-center">
-        <a href={url} className="btn btn-link">
-          All-time Activities
-        </a>
+        <Link to="/public-profile/activity" className="btn btn-link">All-time Activities</Link>
       </div>
     </div>
   );

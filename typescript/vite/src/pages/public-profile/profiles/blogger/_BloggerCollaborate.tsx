@@ -1,6 +1,7 @@
+import { Link } from 'react-router-dom';
 import { IBloggerCollaborateProps } from './interfaces';
 
-const BloggerCollaborate = ({ title, url }: IBloggerCollaborateProps) => {
+const BloggerCollaborate = ({ title }: IBloggerCollaborateProps) => {
   return (
     <div className="card">
       <div className="card-header">
@@ -13,9 +14,7 @@ const BloggerCollaborate = ({ title, url }: IBloggerCollaborateProps) => {
       </div>
 
       <div className="card-footer justify-center">
-        <a href={url} className="btn btn-link">
-          View details
-        </a>
+        <Link to="/public-profile/works" className="btn btn-link">View details</Link>
       </div>
     </div>
   );

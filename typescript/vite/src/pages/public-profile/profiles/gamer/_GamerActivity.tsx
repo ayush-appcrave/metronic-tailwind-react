@@ -5,10 +5,9 @@ import {
   ProductSpecific,
   ProductWebinar
 } from '@/partials/activities/items';
+import { Link } from 'react-router-dom';
 
-import { IGamerActivityProps } from './interfaces';
-
-const GamerActivity = ({ url }: IGamerActivityProps) => {
+const GamerActivity = () => {
   return (
     <div className="card">
       <div className="card-header">
@@ -28,7 +27,7 @@ const GamerActivity = ({ url }: IGamerActivityProps) => {
 
       <div className="card-body">
         <NewProduct />
-        <ProductWebinar url="#" />
+        <ProductWebinar />
         <Login />
         <BloggingConference
           image="/media/illustrations/10.svg"
@@ -40,9 +39,7 @@ const GamerActivity = ({ url }: IGamerActivityProps) => {
       </div>
 
       <div className="card-footer justify-center">
-        <a href={url} className="btn btn-link">
-          All-time Activities
-        </a>
+        <Link to="/public-profile/activity" className="btn btn-link">All-time Activities</Link>
       </div>
     </div>
   );

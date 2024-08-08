@@ -5,5 +5,4 @@ export interface IPlainAboutMeProps {
 export interface IPlainOpenToWorkProps {
   className: string;
   title: string;
-  url: string;
 }

@@ -6,10 +6,9 @@ import {
   NewArticle,
   UpcomingContent
 } from '@/partials/activities/items';
+import { Link } from 'react-router-dom';
 
-import { ICreatorActivitiesProps } from './interfaces';
-
-const CreatorActivities = ({ url }: ICreatorActivitiesProps) => {
+const CreatorActivities = () => {
   return (
     <div className="card">
       <div className="card-header">
@@ -28,20 +27,16 @@ const CreatorActivities = ({ url }: ICreatorActivitiesProps) => {
       </div>
 
       <div className="card-body">
-        <div className="flex flex-col">
-          <NewArticle />
-          <Interview />
-          <UpcomingContent />
-          <BloggingConference image="/media/illustrations/3.svg" />
-          <FollowersMilestone />
-          <Anniversary />
-        </div>
+        <NewArticle />
+        <Interview />
+        <UpcomingContent />
+        <BloggingConference image="/media/illustrations/3.svg" />
+        <FollowersMilestone />
+        <Anniversary />
       </div>
 
       <div className="card-footer justify-center">
-        <a href={url} className="btn btn-link">
-          All-time Activities
-        </a>
+        <Link to="/public-profile/activity" className="btn btn-link">All-time Activities</Link>
       </div>
     </div>
   );

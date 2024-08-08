@@ -32,12 +32,13 @@ const CreatorContent = () => {
       <div className="col-span-1">
         <div className="grid gap-5 lg:gap-7.5">
           <CreatorStatistics data={data} />
-          <CreatorUsers title="Members" url="#" items={items} />
+          <CreatorUsers title="Members" items={items} />
           <CreatorSummary title="About" />
-          <DefaultCommunityBadges />
+          <DefaultCommunityBadges title="Community Badges" />
           <DefaultTags title="Skills" />
         </div>
       </div>
+      
       <div className="col-span-2">
         <div className="flex flex-col gap-5 lg:gap-7.5">
           <CreatorFeaturesHighlight
@@ -52,7 +53,7 @@ const CreatorContent = () => {
           />
           <CreatorWorks />
           <CreatorUpcomingEvents />
-          <CreatorActivities url="#" />
+          <CreatorActivities />
         </div>
       </div>
     </div>

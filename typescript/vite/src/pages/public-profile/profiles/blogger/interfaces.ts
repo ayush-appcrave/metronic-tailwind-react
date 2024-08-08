@@ -6,7 +6,6 @@ export interface ICreatorStatisticsItems extends Array<ICreatorStatisticsItem> {
 
 export interface IBloggerCollaborateProps {
   title: string;
-  url: string;
 }
 
 export interface IBloggerPostsItem {
@@ -16,10 +15,6 @@ export interface IBloggerPostsItem {
   time: string;
 }
 export interface IBloggerPostsItems extends Array<IBloggerPostsItem> {}
-
-export interface IBloggerPostsProps {
-  url: string;
-}
 
 export interface IBloggerRepliesItem {
   borderColor: string;

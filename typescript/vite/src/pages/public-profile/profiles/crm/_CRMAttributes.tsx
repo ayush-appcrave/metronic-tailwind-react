@@ -1,6 +1,7 @@
-import { ICRMAttributesItem, ICRMAttributesItems, ICRMAttributesProps } from './interfaces';
+import { Link } from 'react-router-dom';
+import { ICRMAttributesItem, ICRMAttributesItems } from './interfaces';
 
-const CRMAttributes = ({ url }: ICRMAttributesProps) => {
+const CRMAttributes = () => {
   const items: ICRMAttributesItems = [
     { label: 'customer_id:', info: 'CUST567' },
     { label: 'c_name:', info: 'jenny' },
@@ -36,9 +37,7 @@ const CRMAttributes = ({ url }: ICRMAttributesProps) => {
       </div>
 
       <div className="card-footer justify-center">
-        <a href={url} className="btn btn-link">
-          All Attributes
-        </a>
+        <Link to="/network/user-table/store-clients" className="btn btn-link">All Attributes</Link>
       </div>
     </div>
   );

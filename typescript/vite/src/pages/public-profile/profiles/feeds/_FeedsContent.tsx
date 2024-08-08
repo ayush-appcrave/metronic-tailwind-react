@@ -16,7 +16,7 @@ const FeedsContent = () => {
         <div className="grid gap-5 lg:gap-7.5">
           <CreatorStatistics data={data} />
           <CreatorSummary title="Profile" />
-          <BloggerCollaborate title="Open to work" url="#" />
+          <BloggerCollaborate title="Open to work" />
           <DefaultTags title="Skills" />
         </div>
       </div>

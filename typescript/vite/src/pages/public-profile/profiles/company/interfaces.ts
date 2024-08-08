@@ -23,10 +23,6 @@ export interface ICompanyOpenJobsItem {
 }
 export interface ICompanyOpenJobsItems extends Array<ICompanyOpenJobsItem> {}
 
-export interface ICompanyOpenJobsProps {
-  url: string;
-}
-
 export interface ICompanyNetworkItem {
   icon: string;
   link: string;
@@ -39,17 +35,17 @@ export interface ICompanyNetworkProps {
   className?: string;
 }
 
-export interface ICompanyProfleRow {
+export interface ICompanyProfileRow {
   icon: string;
   text: string;
   info: boolean;
 }
-export interface ICompanyProfleRows extends Array<ICompanyProfleRow> {}
+export interface ICompanyProfileRows extends Array<ICompanyProfileRow> {}
 
-export interface ICompanyProfleProduct {
+export interface ICompanyProfileProduct {
   label: string;
 }
-export interface ICompanyProfleProducts extends Array<ICompanyProfleProduct> {}
+export interface ICompanyProfileProducts extends Array<ICompanyProfileProduct> {}
 
 export interface ICompanyLocationsItem {
   image: string;

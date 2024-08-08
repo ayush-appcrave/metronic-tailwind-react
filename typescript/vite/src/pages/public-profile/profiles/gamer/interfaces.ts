@@ -36,10 +36,6 @@ export interface IGamerTournamentsItem {
 }
 export interface IGamerTournamentsItems extends Array<IGamerTournamentsItem> {}
 
-export interface IGamerTournamentsProps {
-  url: string;
-}
-
 export interface IGamerNowPlayingItem {
   image: string;
   logo: string;
@@ -56,11 +52,3 @@ export interface IGamerNowPlayingItem {
   };
 }
 export interface IGamerNowPlayingItems extends Array<IGamerNowPlayingItem> {}
-
-export interface IGamerNowPlayingProps {
-  url: string;
-}
-
-export interface IGamerActivityProps {
-  url: string;
-}

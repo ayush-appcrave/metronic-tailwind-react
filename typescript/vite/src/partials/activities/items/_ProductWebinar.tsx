@@ -3,9 +3,9 @@ import { Avatars } from '@/partials/common';
 import { IAvatarsItems } from '@/partials/common/interfaces';
 import { TimelinesWrapper } from '@/partials/timelines/default/item';
 
-import { IProductWebinarProps } from './interfaces';
+import { Link } from 'react-router-dom';
 
-const ProductWebinar = ({ url }: IProductWebinarProps) => {
+const ProductWebinar = () => {
   const group: IAvatarsItems = [
     { filename: '300-4.png', variant: 'size-7' },
     { filename: '300-1.png', variant: 'size-7' },
@@ -39,9 +39,7 @@ const ProductWebinar = ({ url }: IProductWebinarProps) => {
                 </span>
               </div>
 
-              <a href={url} className="btn btn-link">
-                View
-              </a>
+              <Link to="/account/members/teams" className="btn btn-link">View</Link>
             </div>
 
             <div className="flex flex-wrap gap-7.5">

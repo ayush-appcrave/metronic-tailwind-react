@@ -1,8 +1,9 @@
 import { KeenIcon } from '@/components';
 
-import { ICompanyOpenJobsItem, ICompanyOpenJobsItems, ICompanyOpenJobsProps } from './interfaces';
+import { ICompanyOpenJobsItem, ICompanyOpenJobsItems } from './interfaces';
+import { Link } from 'react-router-dom';
 
-const CompanyOpenJobs = ({ url }: ICompanyOpenJobsProps) => {
+const CompanyOpenJobs = () => {
   const items: ICompanyOpenJobsItems = [
     {
       icon: 'chart-line-star',
@@ -65,9 +66,7 @@ const CompanyOpenJobs = ({ url }: ICompanyOpenJobsProps) => {
       </div>
 
       <div className="card-footer justify-center">
-        <a href={url} className="btn btn-link">
-          View & Apply
-        </a>
+        <Link to="/public-profile/works" className="btn btn-link">View & Apply</Link>
       </div>
     </div>
   );

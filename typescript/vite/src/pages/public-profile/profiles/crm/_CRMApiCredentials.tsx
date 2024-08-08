@@ -1,8 +1,7 @@
 import { KeenIcon } from '@/components';
+import { Link } from 'react-router-dom';
 
-import { ICRMApiCredentialsProps } from './interfaces';
-
-const CRMApiCredentials = ({ url }: ICRMApiCredentialsProps) => {
+const CRMApiCredentials = () => {
   return (
     <div className="card">
       <div className="card-header">
@@ -39,9 +38,7 @@ const CRMApiCredentials = ({ url }: ICRMApiCredentialsProps) => {
       </div>
 
       <div className="card-footer justify-center">
-        <a href={url} className="btn btn-link">
-          Check API’s
-        </a>
+        <Link to="/account/api-keys" className="btn btn-link">Check API’s</Link>
       </div>
     </div>
   );

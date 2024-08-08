@@ -6,6 +6,7 @@ import {
   NewArticle,
   UpcomingContent
 } from '@/partials/activities/items';
+import { Link } from 'react-router-dom';
 
 const BloggerActivities = () => {
   return (
@@ -34,9 +35,7 @@ const BloggerActivities = () => {
       </div>
 
       <div className="card-footer justify-center">
-        <a href="#" className="btn btn-link">
-          All-time Activities
-        </a>
+        <Link to="/public-profile/activity" className="btn btn-link">All-time Activities</Link>
       </div>
     </div>
   );

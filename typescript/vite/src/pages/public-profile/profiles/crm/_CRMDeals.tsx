@@ -1,6 +1,8 @@
 import { KeenIcon } from '@/components';
 
 import { ICRMDealsItem, ICRMDealsItems } from './interfaces';
+import { Link } from 'react-router-dom';
+import { Crud1, CrudItem1 } from '@/partials/dropdowns/general';
 
 const CRMDeals = () => {
   const items: ICRMDealsItems = [
@@ -70,9 +72,7 @@ const CRMDeals = () => {
                 <KeenIcon icon="dots-vertical" />
               </button>
 
-              <div className="menu-dropdown w-[175px] text-gray-700 px-3 py-3 text-2xs">
-                Menu content
-              </div>
+              <CrudItem1 />
             </div>
           </div>
         </td>
@@ -88,17 +88,16 @@ const CRMDeals = () => {
         <div className="menu" data-menu="true">
           <div
             className="menu-item"
-            data-menu-item-trigger="click"
+            data-menu-item-trigger="click|lg:click"
             data-menu-item-toggle="dropdown"
             data-menu-item-placement="bottom-end"
+            data-menu-item-offset="0, 10px"
           >
             <button className="menu-toggle btn btn-sm btn-icon btn-light btn-clear">
               <KeenIcon icon="dots-vertical" />
             </button>
 
-            <div className="menu-dropdown w-[175px] text-gray-700 px-3 py-3 text-2xs">
-              Menu content
-            </div>
+            <Crud1 />
           </div>
         </div>
       </div>
@@ -121,9 +120,7 @@ const CRMDeals = () => {
         </table>
       </div>
       <div className="card-footer justify-center">
-        <a href="#" className="btn btn-link">
-          All Deals
-        </a>
+        <Link to="/account/billing/history" className="btn btn-link">All Deals</Link>
       </div>
     </div>
   );

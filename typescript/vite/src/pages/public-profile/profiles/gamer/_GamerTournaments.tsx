@@ -1,12 +1,8 @@
 import { Tournament } from '@/partials/cards';
 
-import {
-  IGamerTournamentsItem,
-  IGamerTournamentsItems,
-  IGamerTournamentsProps
-} from './interfaces';
+import { IGamerTournamentsItem, IGamerTournamentsItems } from './interfaces';
 
-const GamerTournaments = ({ url }: IGamerTournamentsProps) => {
+const GamerTournaments = () => {
   const items: IGamerTournamentsItems = [
     {
       image: '9.jpg',
@@ -97,7 +93,7 @@ const GamerTournaments = ({ url }: IGamerTournamentsProps) => {
         <h3 className="card-title">Floyd’s Tournaments</h3>
 
         <div className="justify-center">
-          <a href={url} className="btn btn-link">
+          <a href="#" className="btn btn-link">
             View All
           </a>
         </div>

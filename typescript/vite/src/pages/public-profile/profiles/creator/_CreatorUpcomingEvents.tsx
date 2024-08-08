@@ -1,6 +1,7 @@
 import { toAbsoluteUrl } from '@/utils/Assets';
 
 import { ICreatorUpcomingEventsItem, ICreatorUpcomingEventsItems } from './interfaces';
+import { Link } from 'react-router-dom';
 
 const CreatorUpcomingEvents = () => {
   const items: ICreatorUpcomingEventsItems = [
@@ -62,7 +63,7 @@ const CreatorUpcomingEvents = () => {
             </a>
             <a
               href="#"
-              className="text-base font-semibold hover:text-primary text-gray-800 leading-4"
+              className="text-base font-semibold hover:text-primary text-gray-900 leading-4"
             >
               {item.title}
             </a>
@@ -79,9 +80,7 @@ const CreatorUpcomingEvents = () => {
     <div className="card">
       <div className="card-header">
         <h3 className="card-title">Upcoming Events</h3>
-        <a href="#" className="btn btn-link">
-          View All
-        </a>
+        <Link to="/public-profile/works" className="btn btn-link">View All</Link>
       </div>
 
       <div className="card-body lg:pt-7 pt-5 pb-2">
