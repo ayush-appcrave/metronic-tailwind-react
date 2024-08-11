@@ -1,26 +1,15 @@
 import { KeenIcon } from '@/components';
 import { Avatars, Rating } from '@/partials/common';
-import { IAvatarsItems } from '@/partials/common/interfaces';
 import { TimelinesWrapper } from '@/partials/timelines/default/item';
 
 const NewTeam = () => {
-  const group: IAvatarsItems = [
-    { filename: '300-4.png', variant: 'size-7' },
-    { filename: '300-1.png', variant: 'size-7' },
-    { filename: '300-2.png', variant: 'size-7' },
-    {
-      fallback: 'S',
-      variant: 'text-primary-inverse size-7 ring-primary-light bg-primary'
-    }
-  ];
-
   return (
     <TimelinesWrapper icon="code" line={true}>
       <div className="grow">
         <div className="flex flex-col pb-2.5">
           <div className="text-sm font-medium text-gray-700">
             A new team
-            <a href="#" className="text-sm font-semibold text-gray-800 hover:text-primary-active">
+            <a href="#" className="text-sm font-semibold text-gray-900 hover:text-primary-active">
               &nbsp;Market Mavericks&nbsp;
             </a>
             joined community
@@ -28,7 +17,7 @@ const NewTeam = () => {
           <span className="text-xs font-medium text-gray-500">1 month ago, 11:45 AM</span>
         </div>
 
-        <div className="card p-4">
+        <div className="card shadow-none p-4">
           <div className="flex flex-wrap justify-between items-center gap-7">
             <div className="flex items-center gap-4">
               <div className="relative size-[50px] shrink-0">
@@ -77,7 +66,18 @@ const NewTeam = () => {
 
               <div className="flex flex-col items-end gap-3 lg:min-w-24 shrink-0 max-w-auto">
                 <span className="text-2xs font-normal text-gray-500 uppercase">memebers</span>
-                <Avatars group={group} />
+                <Avatars
+                  size='size-7'
+                  group={[
+                    {filename: '300-4.png'},
+                    {filename: '300-1.png'},
+                    {filename: '300-2.png'},
+                    {
+                      fallback: 'S',
+                      variant: 'text-primary-inverse ring-primary-light bg-primary'
+                    }
+                  ]}
+                />
               </div>
 
               <div className="grid justify-end min-w-20">

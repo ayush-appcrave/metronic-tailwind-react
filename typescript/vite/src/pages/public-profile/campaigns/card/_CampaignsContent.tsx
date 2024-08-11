@@ -8,6 +8,7 @@ import {
   ICampaignsContentItems,
   ICampaignsContentProps
 } from './interfaces';
+import { Link } from 'react-router-dom';
 
 const CampaignsContent = ({ mode }: ICampaignsContentProps) => {
   const [currentMode, setCurrentMode] = useState(mode);
@@ -15,6 +16,7 @@ const CampaignsContent = ({ mode }: ICampaignsContentProps) => {
   const items: ICampaignsContentItems = [
     {
       logo: 'twitch-purple.svg',
+      logoSize: '50px',
       title: 'Urban Dreams',
       description: 'Live Gaming Spectacle Unveiled',
       status: {
@@ -42,6 +44,7 @@ const CampaignsContent = ({ mode }: ICampaignsContentProps) => {
     },
     {
       logo: 'instagram.svg',
+      logoSize: '50px',
       title: 'Photo Promotion',
       description: 'Visual Stories Unleashed Worldwide',
       status: {
@@ -69,6 +72,7 @@ const CampaignsContent = ({ mode }: ICampaignsContentProps) => {
     },
     {
       logo: 'youtube.svg',
+      logoSize: '50px',
       title: 'Video Viral',
       description: 'Video Content Showcase Spotlighted',
       status: {
@@ -96,6 +100,8 @@ const CampaignsContent = ({ mode }: ICampaignsContentProps) => {
     },
     {
       logo: 'amazon-2.svg',
+      logoDark: 'amazon-dark.svg',
+      logoSize: '50px',
       title: 'Product Push',
       description: 'Prime Shopping Bliss Delivered',
       status: {
@@ -123,6 +129,7 @@ const CampaignsContent = ({ mode }: ICampaignsContentProps) => {
     },
     {
       logo: 'mailchimp-1.svg',
+      logoSize: '50px',
       title: 'Email Engagement',
       description: 'Email Engagement Power Unleashed',
       status: {
@@ -150,6 +157,7 @@ const CampaignsContent = ({ mode }: ICampaignsContentProps) => {
     },
     {
       logo: 'linkedin.svg',
+      logoSize: '50px',
       title: 'Career Boost',
       description: 'Pro Connections Empowered Globally',
       status: {
@@ -209,29 +217,31 @@ const CampaignsContent = ({ mode }: ICampaignsContentProps) => {
   return (
     <div className="flex flex-col items-stretch gap-5 lg:gap-7.5">
       <div className="flex flex-wrap items-center gap-5 justify-between">
-        <h3 className="text-lg text-gray-800 font-semibold">{items.length} Campaigns</h3>
+        <h3 className="text-lg text-gray-900 font-semibold">{items.length} Campaigns</h3>
 
-        <div className="btn-group" data-tabs="true">
-          <a
-            href="#"
-            className={`btn btn-icon btn-sm ${currentMode === 'card' ? 'active' : ''}`}
-            data-tab-toggle="#campaigns_cards"
-            onClick={() => {
-              setCurrentMode('cards');
-            }}
-          >
-            <KeenIcon icon="category" />
-          </a>
-          <a
-            href="#"
-            className={`btn btn-icon btn-sm ${currentMode === 'list' ? 'active' : ''}`}
-            data-tab-toggle="#campaigns_list"
-            onClick={() => {
-              setCurrentMode('list');
-            }}
-          >
-            <KeenIcon icon="row-horizontal" />
-          </a>
+        <div className="flex gap-5">
+          <div className="btn-tabs" data-tabs="true">
+            <a
+              href="#"
+              className={`btn btn-icon btn-sm ${currentMode === 'card' ? 'active' : ''}`}
+              data-tab-toggle="#campaigns_cards"
+              onClick={() => {
+                setCurrentMode('cards');
+              }}
+            >
+              <KeenIcon icon="category" />
+            </a>
+            <a
+              href="#"
+              className={`btn btn-icon btn-sm ${currentMode === 'list' ? 'active' : ''}`}
+              data-tab-toggle="#campaigns_list"
+              onClick={() => {
+                setCurrentMode('list');
+              }}
+            >
+              <KeenIcon icon="row-horizontal" />
+            </a>
+          </div>
         </div>
       </div>
 
@@ -243,9 +253,7 @@ const CampaignsContent = ({ mode }: ICampaignsContentProps) => {
         </div>
 
         <div className="flex grow justify-center pt-5 lg:pt-7.5">
-          <a href="#" className="btn btn-link">
-            Show more Campaigns
-          </a>
+          <Link to="/account/integrations" className="btn btn-link">Show more Campaigns</Link>
         </div>
       </div>
 
@@ -257,9 +265,7 @@ const CampaignsContent = ({ mode }: ICampaignsContentProps) => {
         </div>
 
         <div className="flex grow justify-center pt-5 lg:pt-7.5">
-          <a href="#" className="btn btn-link">
-            Show more Campaigns
-          </a>
+          <Link to="/account/integrations" className="btn btn-link">Show more Campaigns</Link>
         </div>
       </div>
     </div>

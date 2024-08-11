@@ -22,33 +22,33 @@ const Works = () => {
     },
     {
       url: '#',
-      title: 'Timeless Elegance',
+      title: 'Whispered Emotions',
       description: 'Neutrals are the epitome of timeless elegance',
       image: '3.jpg',
-      authorName: 'Jenny Wilson',
-      authorAvatar: '300-14.png',
-      likes: 6,
-      comments: 1
-    },
-    {
-      url: '#',
-      title: 'Whispered Emotions',
-      description: 'Choose the right time. ',
-      image: '22.jpg',
       authorName: 'Wade Warren',
-      authorAvatar: '300-11.png',
+      authorAvatar: '300-14.png',
       likes: 187,
       comments: 49
     },
     {
       url: '#',
       title: 'Golden Serenity',
-      description: 'Her alluring appearance radiates calmness.',
-      image: '23.jpg',
+      description: 'Choose the right time. ',
+      image: '22.jpg',
       authorName: 'Albert Flores',
-      authorAvatar: '300-1.png',
+      authorAvatar: '300-11.png',
       likes: 60,
       comments: 13
+    },
+    {
+      url: '#',
+      title: 'Mystic Shadows',
+      description: 'Her alluring appearance radiates calmness.',
+      image: '23.jpg',
+      authorName: 'Kathryn Murphy',
+      authorAvatar: '300-1.png',
+      likes: 37,
+      comments: 16
     },
     {
       url: '#',
@@ -62,13 +62,13 @@ const Works = () => {
     },
     {
       url: '#',
-      title: 'Mystic Shadows',
+      title: 'Timeless Elegance',
       description: 'The charm and limit of shadows',
       image: '25.jpg',
-      authorName: 'Kathryn Murphy',
+      authorName: 'Jenny Wilson',
       authorAvatar: '300-5.png',
-      likes: 37,
-      comments: 16
+      likes: 6,
+      comments: 1
     },
     {
       url: '#',
@@ -125,12 +125,12 @@ const Works = () => {
   return (
     <div className="flex flex-col items-stretch gap-5 lg:gap-7.5">
       <div className="flex flex-wrap items-center gap-5 justify-between">
-        <h3 className="text-lg text-gray-800 font-semibold">{items.length} Works</h3>
+        <h3 className="text-lg text-gray-900 font-semibold">{items.length} Works</h3>
 
-        <div className="btn-group" data-tabs="true">
+        <div className="btn-tabs" data-tabs="true">
           <a
             href="#"
-            className={`btn btn-icon btn-sm ${activeView === 'cards' ? 'active' : ''}`}
+            className={`btn btn-icon ${activeView === 'cards' ? 'active' : ''}`}
             data-tab-toggle="#works_cards"
             onClick={() => {
               setActiveView('cards');
@@ -140,7 +140,7 @@ const Works = () => {
           </a>
           <a
             href="#"
-            className={`btn btn-icon btn-sm ${activeView === 'list' ? 'active' : ''}`}
+            className={`btn btn-icon${activeView === 'list' ? 'active' : ''}`}
             data-tab-toggle="#works_list"
             onClick={() => {
               setActiveView('list');
@@ -157,7 +157,13 @@ const Works = () => {
             {items.map((item, index) => {
               return renderItem(item, index);
             })}
-            <Offer />
+            <Offer
+              path="#"
+              size="size-[90px]"
+              iconSize="text-[2.25rem]"
+              title="Offer a Work"
+              subTitle="Ignite Professional Adventures"
+            />
           </div>
 
           <div className="flex grow justify-center pt-5 lg:pt-7.5">
@@ -174,7 +180,13 @@ const Works = () => {
             {items.map((data, index) => {
               return renderData(data, index);
             })}
-            <OfferRow />
+            <OfferRow
+              path="#"
+              size="size-[70px]"
+              iconSize="text-[1.875rem]"
+              title="Offer a Work"
+              subTitle="Ignite Professional Adventures"
+            />
           </div>
           <div className="flex grow justify-center pt-5 lg:pt-7.5">
             <a href="#" className="btn btn-link">

@@ -5,7 +5,7 @@ const Empty = () => {
     <>
       <div className="card p-8 lg:p-12">
         <div className="card-body">
-          <div className="grid justify-center">
+          <div className="grid justify-center py-5">
             <img
               src={toAbsoluteUrl('/media/illustrations/11.svg')}
               className="max-h-[170px]"

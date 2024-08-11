@@ -2,9 +2,12 @@ import { KeenIcon } from '@/components';
 import { toAbsoluteUrl } from '@/utils/Assets';
 
 import { ICampaignItem, ICampaignProps } from './interfaces';
+import { Card2 } from '../dropdowns/general';
 
 const Campaign = ({
   logo,
+  logoSize,
+  logoDark,
   title,
   description,
   status,
@@ -16,10 +19,10 @@ const Campaign = ({
     return (
       <div
         key={index}
-        className="grid grid-cols-1 content-between gap-1.5 border border-dashed border-gray-300 shrink-0 rounded-md px-2.5 py-2 min-w-24 max-w-auto"
+        className="flex flex-col gap-1.5 border border-dashed border-gray-300 rounded-md px-2.5 py-2"
       >
-        <span className="text-gray-800 text-2sm leading-none font-semibold">{statistic.total}</span>
-        <span className="text-gray-500 text-xs font-medium">{statistic.description}</span>
+        <span className="text-gray-900 text-sm leading-none font-semibold">{statistic.total}</span>
+        <span className="text-gray-600 text-xs font-medium">{statistic.description}</span>
       </div>
     );
   };
@@ -28,36 +31,50 @@ const Campaign = ({
     <div className="card overflow-hidden grow justify-between">
       <div className="p-5 mb-5">
         <div className="flex items-center justify-between mb-5">
-          <span className={`badge badge-md ${status.variant} badge-outline`}>{status.label}</span>
+          <span className={`badge ${status.variant} badge-outline`}>{status.label}</span>
 
           <div className="menu" data-menu="true">
             <div
               className="menu-item"
-              data-menu-item-trigger="click"
+              data-menu-item-trigger="click|lg:click"
               data-menu-item-toggle="dropdown"
               data-menu-item-placement="bottom-end"
+              data-menu-item-offset="0, 10px"
             >
-              <button className="btn btn-icon btn-light btn-clear btn-xs menu-toggle">
-                <KeenIcon icon="dots-vertical" className="!text-xl" />
+              <button className="menu-toggle btn btn-sm btn-icon btn-light btn-clear">
+                <KeenIcon icon="dots-vertical" />
               </button>
 
-              <div className="menu-dropdown w-[175px] text-gray-700 px-3 py-3 text-2xs">
-                Menu content
-              </div>
+              <Card2 />
             </div>
           </div>
         </div>
 
-        <div className="flex justify-center mb-2">
-          <img
-            src={toAbsoluteUrl(`/media/brand-logos/${logo}`)}
-            className="size-[50px] shrink-0"
-            alt=""
-          />
+        <div className="flex items-center justify-center h-[50px] mb-2">
+          {logoDark ? (
+            <>
+              <img
+                src={toAbsoluteUrl(`/media/brand-logos/${logo}`)}
+                className={`dark:hidden size-[${logoSize}] shrink-0`}
+                alt=""
+              />
+              <img
+                src={toAbsoluteUrl(`/media/brand-logos/${logoDark}`)}
+                className={`light:hidden size-[${logoSize}] shrink-0`}
+                alt=""
+              />
+            </>
+          ) : (
+            <img
+              src={toAbsoluteUrl(`/media/brand-logos/${logo}`)}
+              className={`size-[${logoSize}] shrink-0`}
+              alt=""
+            />
+          )}
         </div>
 
         <div className="text-center mb-7">
-          <a href={url} className="text-lg font-semibold text-gray-800 hover:text-primary">
+          <a href={url} className="text-lg font-semibold text-gray-900 hover:text-primary">
             {title}
           </a>
 

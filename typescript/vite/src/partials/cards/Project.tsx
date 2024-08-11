@@ -23,10 +23,10 @@ const Project = ({
       </div>
 
       <div className="flex flex-col mb-3 lg:mb-6">
-        <a href="#" className="text-lg font-semibold text-gray-800 hover:text-primary-active mb-px">
+        <a href="#" className="text-lg font-semibold text-gray-900 hover:text-primary-active mb-px">
           {name}
         </a>
-        <span className="text-sm font-normal text-gray-600">{description}</span>
+        <span className="text-sm font-medium text-gray-600">{description}</span>
       </div>
 
       <div className="flex items-center gap-5 mb-3.5 lg:mb-7">
@@ -44,7 +44,7 @@ const Project = ({
         <div className="progress-bar" style={{ width: `${progress.value}%` }}></div>
       </div>
 
-      <Avatars group={team.group} />
+      <Avatars group={team.group} size={team.size} more={team.more} />
     </div>
   );
 };

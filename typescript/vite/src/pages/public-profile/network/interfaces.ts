@@ -10,7 +10,8 @@ export interface INetworkItem {
   };
   email: string;
   team: {
-    group: Array<{ filename?: string; variant: string; fallback?: string }>;
+    size?: string;
+    group: Array<{ filename?: string; variant?: string; fallback?: string }>;
     more?: {
       number: number;
       variant: string;

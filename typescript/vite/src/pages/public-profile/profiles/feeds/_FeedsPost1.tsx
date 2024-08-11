@@ -83,7 +83,7 @@ const FeedsPost1 = () => {
 
         {activeTab === 'comments' && (
           <div id="post_1_comments">
-            <Comments items={comments} url="#" />
+            <Comments items={comments} />
           </div>
         )}
         {activeTab === 'likes' && (

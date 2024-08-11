@@ -29,7 +29,7 @@ const FeedsPost3 = () => {
       <Heading
         author="Finance Deprt - Annual Report"
         avatar={{
-          icon: 'tablet-book',
+          icon: 'tab-tablet',
           className:
             'flex items-center justify-center uppercase rounded-full size-[50px] shrink-0 bg-primary-light text-primary',
           iconClass: 'text-2xl'

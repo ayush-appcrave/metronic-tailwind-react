@@ -1,21 +1,10 @@
 import { KeenIcon } from '@/components';
 import { Avatars } from '@/partials/common';
-import { IAvatarsItems } from '@/partials/common/interfaces';
 import { TimelinesWrapper } from '@/partials/timelines/default/item';
 
 import { Link } from 'react-router-dom';
 
 const ProductWebinar = () => {
-  const group: IAvatarsItems = [
-    { filename: '300-4.png', variant: 'size-7' },
-    { filename: '300-1.png', variant: 'size-7' },
-    { filename: '300-2.png', variant: 'size-7' },
-    {
-      fallback: '+24',
-      variant: 'text-primary-inverse size-7 ring-primary-light bg-primary'
-    }
-  ];
-
   return (
     <TimelinesWrapper icon="calendar-tick" line={true}>
       <div className="flex flex-col pb-2.5">
@@ -57,7 +46,18 @@ const ProductWebinar = () => {
 
               <div className="flex items-center gap-1.5 lg:min-w-24 shrink-0 max-w-auto">
                 <span className="text-2sm font-medium text-gray-500">Guests:</span>
-                <Avatars group={group} />
+                <Avatars 
+                  size='size-7'
+                  group={[
+                    {filename: '300-4.png'},
+                    {filename: '300-1.png'},
+                    {filename: '300-2.png'},
+                    {
+                      fallback: '+24',
+                      variant: 'text-primary-inverse ring-primary-light bg-primary'
+                    }
+                  ]}
+                />
               </div>
             </div>
           </div>

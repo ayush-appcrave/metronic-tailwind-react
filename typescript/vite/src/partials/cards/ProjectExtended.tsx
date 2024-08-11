@@ -3,6 +3,7 @@ import { toAbsoluteUrl } from '@/utils/Assets';
 
 import { Avatars } from '../common';
 import { IProjectExtendedItem, IProjectExtendedProps } from './interfaces';
+import { Card2 } from '../dropdowns/general';
 
 const ProjectExtended = ({
   status,
@@ -20,8 +21,8 @@ const ProjectExtended = ({
         key={index}
         className="grid grid-cols-1 content-between gap-1.5 border border-dashed border-gray-300 shrink-0 rounded-md px-2.5 py-2 min-w-24 max-w-auto"
       >
-        <span className="text-gray-800 text-2sm leading-none font-semibold">{statistic.total}</span>
-        <span className="text-gray-500 text-xs font-medium">{statistic.description}</span>
+        <span className="text-gray-900 text-sm leading-none font-semibold">{statistic.total}</span>
+        <span className="text-gray-600 text-xs font-medium">{statistic.description}</span>
       </div>
     );
   };
@@ -30,22 +31,21 @@ const ProjectExtended = ({
     <div className="card overflow-hidden grow justify-between">
       <div className="p-5 mb-5">
         <div className="flex items-center justify-between mb-5">
-          <span className={`badge badge-md ${status.variant} badge-outline`}>{status.label}</span>
+          <span className={`badge ${status.variant} badge-outline`}>{status.label}</span>
 
           <div className="menu" data-menu="true">
             <div
               className="menu-item"
-              data-menu-item-trigger="click"
+              data-menu-item-trigger="click|lg:click"
               data-menu-item-toggle="dropdown"
               data-menu-item-placement="bottom-end"
+              data-menu-item-offset="0, 10px"
             >
               <button className="btn btn-icon btn-light btn-clear btn-xs menu-toggle">
-                <KeenIcon icon="dots-vertical" className="!text-xl" />
+                <KeenIcon icon="dots-vertical" />
               </button>
 
-              <div className="menu-dropdown w-[175px] text-gray-700 px-3 py-3 text-2xs">
-                Menu content
-              </div>
+              <Card2 />
             </div>
           </div>
         </div>
@@ -59,7 +59,7 @@ const ProjectExtended = ({
         </div>
 
         <div className="text-center mb-7">
-          <a href={url} className="text-lg font-semibold text-gray-800 hover:text-primary">
+          <a href={url} className="text-lg font-semibold text-gray-900 hover:text-primary">
             {title}
           </a>
 
@@ -67,8 +67,8 @@ const ProjectExtended = ({
         </div>
 
         <div className="grid justify-center gap-1.5 mb-7.5">
-          <span className="text-2xs font-medium uppercase ext-gray-500 text-center">team</span>
-          <Avatars group={team.group} />
+          <span className="text-2xs font-medium uppercase text-gray-500 text-center">team</span>
+          <Avatars group={team.group} size={team.size} />
         </div>
 
         <div className="flex items-center justify-center flex-wrap gap-2 lg:gap-5">

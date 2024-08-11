@@ -32,13 +32,12 @@ export interface ICommentsItems extends Array<ICommentsItem> {}
 
 export interface ICommentsProps {
   items: ICommentsItem[];
-  url: string;
 }
 
-export interface ILikesProps {
-  items: any;
+export interface ILikesItem {
+  avatar: string;
+  name: string;
+  subscribers: number;
+  connected: boolean;
 }
-
-export interface ISavesProps {
-  items: any;
-}
+export interface ILikesItems extends Array<ILikesItem> {}

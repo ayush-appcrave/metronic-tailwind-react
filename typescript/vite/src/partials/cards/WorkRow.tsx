@@ -22,10 +22,10 @@ const WorkRow = ({
             alt=""
           />
 
-          <div className="grid grid-col gap-2">
+          <div className="grid grid-col gap-1">
             <a
               href="#"
-              className="text-lg font-semibold text-gray-800 hover:text-primary-active mb-px"
+              className="text-lg font-semibold text-gray-900 hover:text-primary-active mb-px"
             >
               {title}
             </a>
@@ -33,11 +33,11 @@ const WorkRow = ({
           </div>
         </div>
 
-        <div className="flex flex-wrap items-center gap-7.5">
+        <div className="flex flex-wrap items-center gap-5 lg:gap-7.5">
           <div className="flex items-center gap-1.5">
             <img
               src={toAbsoluteUrl(`/media/avatars/${authorAvatar}`)}
-              className="rounded-full h-[28px]"
+              className="rounded-full h-7"
               alt=""
             />
 
@@ -49,34 +49,21 @@ const WorkRow = ({
             </a>
           </div>
 
-          <div className="flex gap-1 items-center">
+          <div className="flex gap-1 items-center w-20 justify-end">
             <KeenIcon icon="heart" className="text-base text-gray-500" />
-            <span className="text-sm font-medium text-gray-700 py-2">{likes}</span>
+            <span className="text-2sm font-medium text-gray-700 py-2">{likes}</span>
             <span className="text-2sm font-medium text-gray-700">Likes</span>
           </div>
 
-          <div className="flex gap-1 items-center">
+          <div className="flex gap-1 items-center w-28 justify-end">
             <KeenIcon icon="messages" className="text-base text-gray-500" />
-            <span className="text-sm font-medium text-gray-700 py-2">{comments}</span>
+            <span className="text-2sm font-medium text-gray-700 py-2">{comments}</span>
             <span className="text-2sm font-medium text-gray-700">Comments</span>
           </div>
 
-          <div className="menu" data-menu="true">
-            <div
-              className="menu-item"
-              data-menu-item-trigger="click"
-              data-menu-item-toggle="dropdown"
-              data-menu-item-placement="bottom-end"
-            >
-              <button className="btn btn-icon btn-light btn-clear btn-xs menu-toggle">
-                <KeenIcon icon="dots-vertical" className="!text-xl" />
-              </button>
-
-              <div className="menu-dropdown w-[175px] text-gray-700 px-3 py-3 text-2xs">
-                Menu content
-              </div>
-            </div>
-          </div>
+          <button className="btn btn-icon btn-light btn-clear btn-sm">
+            <KeenIcon icon="dots-vertical" />
+          </button>
         </div>
       </div>
     </div>

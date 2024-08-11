@@ -13,7 +13,12 @@ export interface IColumns3ProjectsItem {
     value: number;
   };
   team: {
-    group: Array<{ filename?: string; variant: string; fallback?: string }>;
+    size?: string,
+    group: Array<{ filename?: string; variant?: string; fallback?: string }>;
+    more?: {
+      variant?: string;
+      number?: number;
+    };
   };
 }
 export interface IColumns3ProjectsItems extends Array<IColumns3ProjectsItem> {}

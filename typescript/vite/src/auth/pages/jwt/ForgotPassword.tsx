@@ -31,7 +31,7 @@ const ForgotPassword = () => {
       setHasErrors(undefined);
       try {
         if (!requestPassword) {
-          throw new Error('JWTProveder is required for thir form.');
+          throw new Error('JWTProvider is required for this form.');
         }
 
         await requestPassword(values.email);

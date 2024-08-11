@@ -6,8 +6,9 @@ export interface IAvatarsItem {
 export interface IAvatarsItems extends Array<IAvatarsItem> {}
 
 export interface IAvatarsProps {
+  size?: string;
   group: IAvatarsItem[];
-  more?: { variant: string; number: number };
+  more?: { variant?: string; number?: number };
   className?: string;
 }
 
@@ -25,4 +26,11 @@ export interface IRatingProps {
   className?: string;
   rating: number;
   round?: number;
+}
+
+export interface IHexagonBadgeProps {
+  size: string;
+  stroke: string;
+  fill: string;
+  badge: any;
 }

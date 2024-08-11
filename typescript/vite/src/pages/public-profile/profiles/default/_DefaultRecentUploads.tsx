@@ -64,7 +64,13 @@ const DefaultRecentUploads = ({ title }: IDefaultRecentUploadsProps) => {
         <h3 className="card-title">{title}</h3>
 
         <div className="menu" data-menu="true">
-          <div className="menu-item" data-menu-item-trigger="click|lg:click" data-menu-item-toggle="dropdown" data-menu-item-placement="bottom-end" data-menu-item-offset="0, 10px">
+          <div
+            className="menu-item"
+            data-menu-item-trigger="click|lg:click"
+            data-menu-item-toggle="dropdown"
+            data-menu-item-placement="bottom-end"
+            data-menu-item-offset="0, 10px"
+          >
             <button className="menu-toggle btn btn-sm btn-icon btn-light btn-clear">
               <KeenIcon icon="dots-vertical" />
             </button>

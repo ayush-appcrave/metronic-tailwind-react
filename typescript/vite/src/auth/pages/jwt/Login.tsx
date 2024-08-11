@@ -42,7 +42,7 @@ const Login = () => {
       setLoading(true);
       try {
         if (!login) {
-          throw new Error('JWTProveder is required for thir form.');
+          throw new Error('JWTProvider is required for this form.');
         }
 
         await login(values.email, values.password);
@@ -62,7 +62,7 @@ const Login = () => {
     }
   });
 
-  const togglePassword = (event: { preventDefault: () => void; }) => {
+  const togglePassword = (event: React.MouseEvent<HTMLButtonElement>) => {
     event.preventDefault();
     setShowPassword(!showPassword);
   };

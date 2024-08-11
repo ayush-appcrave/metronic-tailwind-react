@@ -49,7 +49,7 @@ const Signup = () => {
       setLoading(true);
       try {
         if (!register) {
-          throw new Error('JWTProveder is required for thir form.');
+          throw new Error('JWTProvider is required for this form.');
         }
 
         await register(
@@ -60,7 +60,7 @@ const Signup = () => {
         navigate(from, { replace: true });
       } catch (error) {
         console.error(error);
-        setStatus('The signup details are incorrect');
+        setStatus('The sign up details are incorrect');
         setSubmitting(false);
         setLoading(false);
       }

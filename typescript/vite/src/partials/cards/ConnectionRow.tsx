@@ -16,10 +16,10 @@ const ConnectionRow = ({
     return (
       <div
         key={index}
-        className="grid grid-cols-1 gap-1.5 border border-dashed border-gray-300 shrink-0 rounded-md px-2.5 py-2"
+        className="grid grid-cols-1 gap-1.5 border-[0.5px] border-dashed border-gray-400 shrink-0 rounded-md px-2.5 py-2"
       >
-        <span className="text-gray-800 text-2sm leading-none font-semibold">{statistic.total}</span>
-        <span className="text-gray-500 text-xs font-medium">{statistic.description}</span>
+        <span className="text-gray-900 text-sm leading-none font-semibold">{statistic.total}</span>
+        <span className="text-gray-600 text-xs font-medium">{statistic.description}</span>
       </div>
     );
   };
@@ -44,7 +44,7 @@ const ConnectionRow = ({
             <div className="flex items-center gap-1.5 mb-2.5">
               <a
                 href="#"
-                className="text-base leading-5 font-semibold hover:text-primary-active text-gray-800"
+                className="text-base leading-5 font-semibold hover:text-primary-active text-gray-900"
               >
                 {name}
               </a>
@@ -66,12 +66,12 @@ const ConnectionRow = ({
 
             <div className="flex items-center flex-wrap gap-x-4">
               <div className="flex items-center text-sm font-medium text-gray-600">
-                <KeenIcon icon="abstract-41" className="me-1" />
+                <KeenIcon icon="abstract-41" className="me-1 text-gray-500" />
                 {info}
               </div>
 
               <div className="flex items-center text-sm font-medium text-gray-600">
-                <KeenIcon icon="sms" className="me-1" />
+                <KeenIcon icon="sms" className="me-1 text-gray-500" />
                 <a href="#" className="text-gray-600 hover:text-primary-active">
                   {email}
                 </a>
@@ -80,7 +80,7 @@ const ConnectionRow = ({
           </div>
         </div>
 
-        <div className="flex items-center flex-wrap gap-5 lg:gap-12">
+        <div className="flex items-center flex-wrap gap-5 lg:gap-11">
           <div className="flex items-center  flex-wrap gap-2 lg:gap-5">
             {statistics.map((statistic, index) => {
               return renderItem(statistic, index);
@@ -88,17 +88,17 @@ const ConnectionRow = ({
           </div>
 
           <div className="">
-            <Avatars group={team.group} more={team.more} />
+            <Avatars group={team.group} more={team.more} size={team.size} />
           </div>
 
-          <div className="text-right">
+          <div className="text-right w-28">
             {connected ? (
               <a className="btn btn-light btn-sm">
-                <KeenIcon icon="check-circle" className="" /> Connected
+                <KeenIcon icon="check-circle" /> Connected
               </a>
             ) : (
               <a className="btn btn-sm btn-primary">
-                <KeenIcon icon="profile-user" className="" /> Connect
+                <KeenIcon icon="users" /> Connect
               </a>
             )}
           </div>

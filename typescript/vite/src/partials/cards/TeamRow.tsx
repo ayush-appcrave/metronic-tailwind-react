@@ -6,7 +6,7 @@ import { ITeamProps } from './interfaces';
 const TeamRow = ({ icon, title, description, labels, rating, team, connected }: ITeamProps) => {
   const renderItem = (label: string, index: number) => {
     return (
-      <span key={index} className="badge badge-xs badge-outline">
+      <span key={index} className="badge badge-sm badge-outline">
         {label}
       </span>
     );
@@ -19,10 +19,10 @@ const TeamRow = ({ icon, title, description, labels, rating, team, connected }: 
           <div className="flex justify-center items-center size-14 shrink-0 rounded-full ring-1 ring-gray-300 bg-gray-100">
             <KeenIcon icon={icon} className="text-2xl text-gray-600" />
           </div>
-          <div className="grid grid-col">
+          <div className="grid grid-col gap-1">
             <a
               href="#"
-              className="text-base font-semibold text-gray-800 hover:text-primary-active mb-px"
+              className="text-base font-semibold text-gray-900 hover:text-primary-active mb-px"
             >
               {title}
             </a>
@@ -47,7 +47,7 @@ const TeamRow = ({ icon, title, description, labels, rating, team, connected }: 
 
           <div className="grid justify-end gap-3.5 lg:text-right lg:min-w-24 shrink-0 max-w-auto">
             <span className="text-2xs font-normal text-gray-500 uppercase">memebers</span>
-            <Avatars group={team.group} more={team.more} className={team.className} />
+            <Avatars group={team.group} more={team.more} className={team.className} size={team.size} />
           </div>
 
           <div className="grid justify-end min-w-20">

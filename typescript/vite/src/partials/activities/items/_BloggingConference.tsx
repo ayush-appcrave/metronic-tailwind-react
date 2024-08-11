@@ -1,8 +1,8 @@
 import { TimelinesWrapper } from '@/partials/timelines/default/item';
-import { toAbsoluteUrl } from '@/utils/Assets';
 
 import { IBloggingConferenceProps } from './interfaces';
 import { Link } from 'react-router-dom';
+import { toAbsoluteUrl } from '@/utils';
 
 const BloggingConference = ({ heading, datetime, image, title }: IBloggingConferenceProps) => {
   return (
@@ -20,11 +20,33 @@ const BloggingConference = ({ heading, datetime, image, title }: IBloggingConfer
       <div className="card shadow-none">
         <div className="card-body lg:py-4">
           <div className="flex justify-center py-4">
-            <img
-              src={toAbsoluteUrl(image ?? '/media/illustrations/10-dark.svg')}
-              className="max-h-[160px]"
-              alt=""
-            />
+            {image ? (
+              <>
+                <img
+                  src={toAbsoluteUrl('/media/illustrations/28.svg')}
+                  className="dark:hidden max-h-[160px]"
+                  alt=""
+                />
+                <img
+                  src={toAbsoluteUrl('/media/illustrations/28-dark.svg')}
+                  className="light:hidden max-h-[160px]"
+                  alt=""
+                />
+              </>
+            ) : (
+              <>
+                <img
+                  src={toAbsoluteUrl('/media/illustrations/3.svg')}
+                  className="dark:hidden max-h-[160px]"
+                  alt=""
+                />
+                <img
+                  src={toAbsoluteUrl('/media/illustrations/3-dark.svg')}
+                  className="light:hidden max-h-[160px]"
+                  alt=""
+                />
+              </>
+            )}
           </div>
 
           <div className="flex flex-col gap-1">

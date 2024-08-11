@@ -90,7 +90,8 @@ export interface IProjectExtendedProps {
   title: string;
   description: string;
   team: {
-    group: Array<{ filename?: string; variant: string; fallback?: string }>;
+    size?: string;
+    group: Array<{ filename?: string; variant?: string; fallback?: string }>;
   };
   statistics: IProjectExtendedItem[];
   progress: {
@@ -115,7 +116,8 @@ export interface IProjectExtendedRowProps {
   title: string;
   description: string;
   team: {
-    group: Array<{ filename?: string; variant: string; fallback?: string }>;
+    size?: string;
+    group: Array<{ filename?: string; variant?: string; fallback?: string }>;
   };
   statistics: IProjectExtendedRowItem[];
   url: string;
@@ -136,7 +138,12 @@ export interface IProjectProps {
     value: number;
   };
   team: {
-    group: Array<{ filename?: string; variant: string; fallback?: string }>;
+    size?: string,
+    group: Array<{ filename?: string; variant?: string; fallback?: string }>;
+    more?: {
+      variant?: string;
+      number?: number;
+    };
   };
 }
 
@@ -153,7 +160,12 @@ export interface IProjectRowProps {
     value: number;
   };
   team: {
-    group: Array<{ filename?: string; variant: string; fallback?: string }>;
+    size?: string;
+    group: Array<{ filename?: string; variant?: string; fallback?: string }>;
+    more?: {
+      variant?: string;
+      number?: number;
+    };
   };
 }
 
@@ -163,7 +175,8 @@ export interface ITeamProps {
   description: string;
   labels: string[];
   team: {
-    group: Array<{ filename?: string; variant: string; fallback?: string }>;
+    size?: string;
+    group: Array<{ filename?: string; variant?: string; fallback?: string }>;
     more?: {
       number: number;
       variant: string;
@@ -195,7 +208,8 @@ export interface IConnectionProps {
   };
   email: string;
   team: {
-    group: Array<{ filename?: string; variant: string; fallback?: string }>;
+    size?: string;
+    group: Array<{ filename?: string; variant?: string; fallback?: string }>;
     more?: {
       number: number;
       variant: string;
@@ -213,6 +227,8 @@ export interface ICampaignItems extends Array<ICampaignItem> {}
 
 export interface ICampaignProps {
   logo: string;
+  logoSize?: string;
+  logoDark?: string;
   title: string;
   description: string;
   status: {
@@ -235,6 +251,8 @@ export interface ICampaignRowItems extends Array<ICampaignRowItem> {}
 
 export interface ICampaignRowProps {
   logo: string;
+  logoSize?: string;
+  logoDark?: string;
   title: string;
   description: string;
   status: {

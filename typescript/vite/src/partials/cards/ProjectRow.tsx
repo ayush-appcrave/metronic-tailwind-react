@@ -3,6 +3,7 @@ import { toAbsoluteUrl } from '@/utils/Assets';
 
 import { Avatars } from '../common';
 import { IProjectRowProps } from './interfaces';
+import { Card2 } from '../dropdowns/general';
 
 const ProjectRow = ({ logo, name, description, status, progress, team }: IProjectRowProps) => {
   return (
@@ -34,7 +35,7 @@ const ProjectRow = ({ logo, name, description, status, progress, team }: IProjec
           </div>
 
           <div className="flex items-center gap-5 lg:gap-14">
-            <Avatars group={team.group} />
+            <Avatars group={team.group} size={team.size} more={team.more} />
 
             <div className="menu" data-menu="true">
               <div
@@ -47,9 +48,7 @@ const ProjectRow = ({ logo, name, description, status, progress, team }: IProjec
                   <KeenIcon icon="dots-vertical" className="!text-xl" />
                 </button>
 
-                <div className="menu-dropdown w-[175px] text-gray-700 px-3 py-3 text-2xs">
-                  Menu content
-                </div>
+                <Card2 />
               </div>
             </div>
           </div>

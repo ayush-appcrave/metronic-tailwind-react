@@ -2,8 +2,12 @@ import { KeenIcon } from '@/components';
 import { Connection, ConnectionRow } from '@/partials/cards';
 
 import { INetworkItem, INetworkItems } from './interfaces';
+import { Link } from 'react-router-dom';
+import { useState } from 'react';
 
 const Network = () => {
+  const [activeView, setActiveView] = useState('cards');
+
   const items: INetworkItems = [
     {
       name: 'Jenny Klabber',
@@ -17,10 +21,11 @@ const Network = () => {
       },
       email: 'kevin@pinnacle.com',
       team: {
+        size: 'size-7',
         group: [
-          { filename: '300-4.png', variant: 'size-7' },
-          { filename: '300-1.png', variant: 'size-7' },
-          { filename: '300-2.png', variant: 'size-7' }
+          { filename: '300-4.png' },
+          { filename: '300-1.png' },
+          { filename: '300-2.png' }
         ],
         more: {
           number: 10,
@@ -48,18 +53,19 @@ const Network = () => {
       info: 'InnovateX',
       avatar: {
         className:
-          'flex items-center justify-center relative text-2.5xl text-info size-20 ring-1 ring-info bg-info-light rounded-full',
+          'flex items-center justify-center relative text-2.5xl text-info size-20 ring-1 ring-info-clarity bg-info-light rounded-full',
         fallback: 'S',
         badgeClass:
           'flex size-2.5 bg-success rounded-full absolute bottom-0.5 left-16 transform -translate-y-1/2'
       },
       email: 'sarahj@innx.com',
       team: {
+        size: 'size-7',
         group: [
-          { filename: '300-5.png', variant: 'size-7' },
-          { filename: '300-6.png', variant: 'size-7' },
-          { filename: '300-7.png', variant: 'size-7' },
-          { filename: '300-11.png', variant: 'size-7' }
+          { filename: '300-5.png' },
+          { filename: '300-6.png' },
+          { filename: '300-7.png' },
+          { filename: '300-11.png' }
         ]
       },
       statistics: [
@@ -83,18 +89,19 @@ const Network = () => {
       info: 'Pinnacle Innovate',
       avatar: {
         className:
-          'flex items-center justify-center relative text-2.5xl text-danger size-20 ring-1 ring-danger bg-danger-light rounded-full',
+          'flex items-center justify-center relative text-2.5xl text-danger size-20 ring-1 ring-danger-clarity bg-danger-light rounded-full',
         fallback: 'K',
         badgeClass:
           'flex size-2.5 bg-success rounded-full absolute bottom-0.5 left-16 transform -translate-y-1/2'
       },
       email: 'kevin@pinnacle.com',
       team: {
+        size: 'size-7',
         group: [
-          { filename: '300-29.png', variant: 'size-7' },
-          { filename: '300-33.png', variant: 'size-7' },
-          { filename: '300-23.png', variant: 'size-7' },
-          { filename: '300-31.png', variant: 'size-7' }
+          { filename: '300-29.png' },
+          { filename: '300-33.png' },
+          { filename: '300-23.png' },
+          { filename: '300-31.png' }
         ]
       },
       statistics: [
@@ -125,11 +132,12 @@ const Network = () => {
       },
       email: 'brian@vortextech.com',
       team: {
+        size: 'size-7',
         group: [
-          { filename: '300-14.png', variant: 'size-7' },
-          { filename: '300-3.png', variant: 'size-7' },
-          { filename: '300-19.png', variant: 'size-7' },
-          { filename: '300-15.png', variant: 'size-7' }
+          { filename: '300-14.png' },
+          { filename: '300-3.png' },
+          { filename: '300-19.png' },
+          { filename: '300-15.png' }
         ]
       },
       statistics: [
@@ -153,18 +161,19 @@ const Network = () => {
       info: 'Catalyst',
       avatar: {
         className:
-          'flex items-center justify-center relative text-2.5xl text-success size-20 ring-1 ring-success bg-success-light rounded-full',
+          'flex items-center justify-center relative text-2.5xl text-success size-20 ring-1 ring-success-clarity bg-success-light rounded-full',
         fallback: 'M',
         badgeClass:
           'flex size-2.5 bg-gray-400 rounded-full absolute bottom-0.5 left-16 transform -translate-y-1/2'
       },
       email: 'megan@catalyst.com',
       team: {
+        size: 'size-7',
         group: [
-          { filename: '300-5.png', variant: 'size-7' },
-          { filename: '300-26.png', variant: 'size-7' },
-          { filename: '300-6.png', variant: 'size-7' },
-          { filename: '300-1.png', variant: 'size-7' }
+          { filename: '300-5.png' },
+          { filename: '300-26.png' },
+          { filename: '300-6.png' },
+          { filename: '300-1.png' }
         ]
       },
       statistics: [
@@ -195,10 +204,11 @@ const Network = () => {
       },
       email: 'alex@kteam.com',
       team: {
+        size: 'size-7',
         group: [
-          { filename: '300-4.png', variant: 'size-7' },
-          { filename: '300-5.png', variant: 'size-7' },
-          { filename: '300-11.png', variant: 'size-7' }
+          { filename: '300-4.png' },
+          { filename: '300-5.png' },
+          { filename: '300-11.png' }
         ],
         more: {
           number: 10,
@@ -256,45 +266,59 @@ const Network = () => {
   return (
     <div className="flex flex-col items-stretch gap-5 lg:gap-7.5">
       <div className="flex flex-wrap items-center gap-5 justify-between">
-        <h3 className="text-lg text-gray-800 font-semibold">{items.length} Connections</h3>
+        <h3 className="text-lg text-gray-900 font-semibold">{items.length} Connections</h3>
 
-        <div className="btn-group" data-tabs="true">
-          <a href="#" className="btn btn-icon btn-sm active" data-tab-toggle="#network_cards">
+        <div className="btn-tabs" data-tabs="true">
+          <a
+            href="#"
+            className={`btn btn-icon btn-sm ${activeView === 'cards' ? 'active' : ''}`}
+            data-tab-toggle="#network_cards"
+            onClick={() => {
+              setActiveView('cards');
+            }}
+          >
             <KeenIcon icon="category" />
           </a>
-          <a href="#" className="btn btn-icon btn-sm" data-tab-toggle="#network_list">
+          <a
+            href="#"
+            className={`btn btn-icon btn-sm ${activeView === 'list' ? 'active' : ''}`}
+            data-tab-toggle="#network_list"
+            onClick={() => {
+              setActiveView('list');
+            }}
+          >
             <KeenIcon icon="row-horizontal" />
           </a>
         </div>
       </div>
 
-      <div id="network_cards">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-5 lg:gap-7.5">
-          {items.map((item, index) => {
-            return renderItem(item, index);
-          })}
-        </div>
+      {activeView === 'cards' && (
+        <div id="network_cards">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-5 lg:gap-7.5">
+            {items.map((item, index) => {
+              return renderItem(item, index);
+            })}
+          </div>
 
-        <div className="flex grow justify-center pt-5 lg:pt-7.5">
-          <a href="#" className="btn btn-link">
-            Show more Connections
-          </a>
+          <div className="flex grow justify-center pt-5 lg:pt-7.5">
+            <Link to="/account/members/team-info" className="btn btn-link">Show more Connections</Link>
+          </div>
         </div>
-      </div>
+      )}
 
-      <div className="hidden" id="network_list">
-        <div className="flex flex-col gap-5 lg:gap-7.5">
-          {items.map((data, index) => {
-            return renderData(data, index);
-          })}
-        </div>
+      {activeView === 'list' && (
+        <div id="network_list">
+          <div className="flex flex-col gap-5 lg:gap-7.5">
+            {items.map((data, index) => {
+              return renderData(data, index);
+            })}
+          </div>
 
-        <div className="flex grow justify-center pt-5 lg:pt-7.5">
-          <a href="#" className="btn btn-link">
-            Show more Connections
-          </a>
+          <div className="flex grow justify-center pt-5 lg:pt-7.5">
+            <Link to="/account/members/team-info" className="btn btn-link">Show more Connections</Link>
+          </div>
         </div>
-      </div>
+      )}
     </div>
   );
 };

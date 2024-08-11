@@ -4,6 +4,7 @@ import { KeenIcon } from '@/components';
 import { Team, TeamRow } from '@/partials/cards';
 
 import { ITeamsItem, ITeamsItems } from './interfaces';
+import { Link } from 'react-router-dom';
 
 const Teams = () => {
   const [activeView, setActiveView] = useState('cards');
@@ -15,14 +16,15 @@ const Teams = () => {
       description: 'Crafting digital experiences for the world',
       labels: ['Ul', 'DevOps'],
       team: {
+        size: 'size-7',
         group: [
-          { filename: '300-4.png', variant: 'size-7' },
-          { filename: '300-1.png', variant: 'size-7' },
-          { filename: '300-2.png', variant: 'size-7' }
+          { filename: '300-4.png' },
+          { filename: '300-1.png' },
+          { filename: '300-2.png' }
         ],
         more: {
           number: 10,
-          variant: 'text-success-inverse ring-success-light bg-success size-7'
+          variant: 'text-success-inverse ring-success-light bg-success'
         }
       },
       connected: true,
@@ -34,10 +36,11 @@ const Teams = () => {
       description: 'Coding the future, one line at a time',
       labels: ['Dev', 'Al', 'Cloud'],
       team: {
+        size: 'size-7',
         group: [
-          { filename: '300-5.png', variant: 'size-7' },
-          { filename: '300-7.png', variant: 'size-7' },
-          { filename: '300-11.png', variant: 'size-7' }
+          { filename: '300-5.png' },
+          { filename: '300-7.png' },
+          { filename: '300-11.png' }
         ]
       },
       connected: true,
@@ -49,13 +52,14 @@ const Teams = () => {
       description: 'Navigating markets with strategic solutions',
       labels: ['Marketing', 'Brand'],
       team: {
+        size: 'size-7',
         group: [
-          { filename: '300-4.png', variant: 'size-7' },
-          { filename: '300-5.png', variant: 'size-7' },
-          { filename: '300-6.png', variant: 'size-7' },
+          { filename: '300-4.png' },
+          { filename: '300-1.png' },
+          { filename: '300-2.png' },
           {
             fallback: 'S',
-            variant: 'text-primary-inverse size-7 ring-primary-light bg-primary'
+            variant: 'text-primary-inverse ring-primary-light bg-primary'
           }
         ]
       },
@@ -68,9 +72,10 @@ const Teams = () => {
       description: 'Transforming data into actionable insights',
       labels: ['Analytics', 'Data'],
       team: {
+        size: 'size-7',
         group: [
-          { filename: '300-23.png', variant: 'size-7' },
-          { filename: '300-31.png', variant: 'size-7' }
+          { filename: '300-23.png' },
+          { filename: '300-31.png' }
         ],
         className: 'lg:justify-end'
       },
@@ -83,13 +88,14 @@ const Teams = () => {
       description: 'Navigating markets with strategic solutions',
       labels: ['Marketing', 'Brand'],
       team: {
+        size: 'size-7',
         group: [
-          { filename: '300-11.png', variant: 'size-7' },
-          { filename: '300-1.png', variant: 'size-7' },
-          { filename: '300-14.png', variant: 'size-7' },
+          { filename: '300-4.png' },
+          { filename: '300-1.png' },
+          { filename: '300-14.png' },
           {
             fallback: 'A',
-            variant: 'text-primary-inverse size-7 ring-primary-light bg-primary'
+            variant: 'text-primary-inverse ring-primary-light bg-primary'
           }
         ]
       },
@@ -102,11 +108,12 @@ const Teams = () => {
       description: 'Coding the future, one line at a time',
       labels: ['Dev', 'Al', 'Cloud'],
       team: {
+        size: 'size-7',
         group: [
-          { filename: '300-16.png', variant: 'size-7' },
-          { filename: '300-15.png', variant: 'size-7' },
-          { filename: '300-17.png', variant: 'size-7' },
-          { filename: '300-20.png', variant: 'size-7' }
+          { filename: '300-5.png' },
+          { filename: '300-6.png' },
+          { filename: '300-7.png' },
+          { filename: '300-11.png' }
         ]
       },
       connected: true,
@@ -118,13 +125,14 @@ const Teams = () => {
       description: 'Merging strategy for impactful results',
       labels: ['Creative', 'Strat'],
       team: {
+        size: 'size-7',
         group: [
-          { filename: '300-21.png', variant: 'size-7' },
-          { filename: '300-23.png', variant: 'size-7' },
-          { filename: '300-25.png', variant: 'size-7' }
+          { filename: '300-2.png' },
+          { filename: '300-17.png' },
+          { filename: '300-12.png' }
         ],
         more: {
-          number: 10,
+          number: 23,
           variant: 'text-success-inverse ring-success-light bg-success size-7'
         }
       },
@@ -137,11 +145,12 @@ const Teams = () => {
       description: ' Igniting ideas into powerful solutions',
       labels: ['Innovation', 'Tech'],
       team: {
+        size: 'size-7',
         group: [
-          { filename: '300-7.png', variant: 'size-7' },
-          { filename: '300-3.png', variant: 'size-7' },
-          { filename: '300-12.png', variant: 'size-7' },
-          { filename: '300-19.png', variant: 'size-7' }
+          { filename: '300-14.png' },
+          { filename: '300-3.png' },
+          { filename: '300-19.png' },
+          { filename: '300-9.png' }
         ]
       },
       connected: true,
@@ -153,13 +162,13 @@ const Teams = () => {
       description: 'Infusing concepts into cutting-edge tech',
       labels: ['Marketing', 'Brand'],
       team: {
+        size: 'size-7',
         group: [
-          { filename: '300-22.png', variant: 'size-7' },
-          { filename: '300-24.png', variant: 'size-7' },
-          { filename: '300-29.png', variant: 'size-7' },
+          { filename: '300-1.png' },
+          { filename: '300-16.png' },
           {
             fallback: 'K',
-            variant: 'text-info-inverse size-7 ring-info-light bg-info'
+            variant: 'text-info-inverse ring-info-light bg-info'
           }
         ]
       },
@@ -203,7 +212,7 @@ const Teams = () => {
       <div className="flex flex-wrap items-center gap-5 justify-between">
         <h3 className="text-lg text-gray-800 font-semibold">{items.length} Teams</h3>
 
-        <div className="btn-group" data-tabs="true">
+        <div className="btn-tabs" data-tabs="true">
           <a
             href="#"
             className={`btn btn-icon btn-sm ${activeView === 'cards' ? 'active' : ''}`}
@@ -236,9 +245,7 @@ const Teams = () => {
           </div>
 
           <div className="flex grow justify-center pt-5 lg:pt-7.5">
-            <a href="#" className="btn btn-link">
-              Show more Teams
-            </a>
+            <Link to="/account/members/teams" className="btn btn-link">Show more Teams</Link>
           </div>
         </div>
       )}
@@ -252,9 +259,7 @@ const Teams = () => {
           </div>
 
           <div className="flex grow justify-center pt-5 lg:pt-7.5">
-            <a href="#" className="btn btn-link">
-              Show more Teams
-            </a>
+            <Link to="/account/members/teams" className="btn btn-link">Show more Teams</Link>
           </div>
         </div>
       )}

@@ -2,6 +2,7 @@ import { KeenIcon } from '@/components';
 import { Avatar } from '@/partials/common';
 
 import { IHeadingProps } from './interfaces';
+import { Card1 } from '@/partials/dropdowns/general';
 
 const Heading = ({ author, avatar, date }: IHeadingProps) => {
   return (
@@ -29,17 +30,16 @@ const Heading = ({ author, avatar, date }: IHeadingProps) => {
       <div className="menu" data-menu="true">
         <div
           className="menu-item"
-          data-menu-item-trigger="click"
+          data-menu-item-trigger="click|lg:click"
           data-menu-item-toggle="dropdown"
           data-menu-item-placement="bottom-end"
+          data-menu-item-offset="0, 10px"
         >
           <button className="menu-toggle btn btn-sm btn-icon btn-light btn-clear">
             <KeenIcon icon="dots-vertical" />
           </button>
 
-          <div className="menu-dropdown w-[175px] text-gray-700 px-3 py-3 text-2xs">
-            Menu content
-          </div>
+          <Card1 />
         </div>
       </div>
     </div>

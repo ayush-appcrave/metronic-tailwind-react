@@ -3,7 +3,7 @@ import { toAbsoluteUrl } from '@/utils/Assets';
 
 import { ICommentsItem, ICommentsProps } from './interfaces';
 
-const Comments = ({ items, url }: ICommentsProps) => {
+const Comments = ({ items }: ICommentsProps) => {
   const renderItem = (item: ICommentsItem, index: number) => {
     return (
       <div key={index} className="flex items-start gap-2.5">
@@ -23,7 +23,7 @@ const Comments = ({ items, url }: ICommentsProps) => {
             </div>
 
             <div className="justify-center">
-              <a href={url} className="btn btn-link">
+              <a href="#" className="btn btn-link">
                 Reply
               </a>
             </div>
@@ -43,7 +43,7 @@ const Comments = ({ items, url }: ICommentsProps) => {
 
       <div className="flex items-center gap-2.5">
         <img
-          src={toAbsoluteUrl('/media/avatars/300-3.jpg')}
+          src={toAbsoluteUrl('/media/avatars/300-3.png')}
           className="rounded-full size-10 shrink-0"
           alt=""
         />

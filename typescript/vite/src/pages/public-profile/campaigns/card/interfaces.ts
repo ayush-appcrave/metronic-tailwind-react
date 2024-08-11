@@ -1,5 +1,7 @@
 export interface ICampaignsContentItem {
   logo: string;
+  logoSize?: string;
+  logoDark?: string;
   title: string;
   description: string;
   status: {

@@ -20,10 +20,8 @@ const ActivityContent = () => {
   const years = Array.from({ length: 8 }, (_, i) => 2024 - i);
 
   return (
-    <div className="flex flex-col items-stretch gap-5 lg:gap-7.5">
-      <div className="flex flex-wrap items-center gap-5 justify-between">
-        <h3 className="text-lg text-gray-800 font-semibold">Activity</h3>
-      </div>
+    <div className="flex flex-wrap items-center gap-5 justify-between mb-7.5">
+      <h3 className="text-lg text-gray-900 font-semibold">Activity</h3>
 
       <div className="flex gap-5 lg:gap-7.5">
         {years.map((year, index) => (
@@ -43,9 +41,9 @@ const ActivityContent = () => {
                     name="check"
                     defaultChecked
                   />
-                  <span className="switch-label order-1">
-                    &nbsp;Auto refresh:
-                    <span className="hidden switch-off:inline">Off</span>
+                  <span className="switch-label">
+                    Auto refresh:&nbsp;
+                    <span className="switch-on:hidden">Off</span>
                     <span className="hidden switch-on:inline">On</span>
                   </span>
                 </label>
@@ -56,11 +54,11 @@ const ActivityContent = () => {
               {(year === 2024 || year === 2022) && <Interview />}
               {(year === 2024 || year === 2021) && <PhotographyWorkshop />}
               <UpcomingContent />
-              {(year === 2024 || year === 2019) && <ProductWebinar url="#" />}
+              {(year === 2024 || year === 2019) && <ProductWebinar />}
               <FollowersMilestone />
               {(year === 2024 || year === 2021) && <ProjectStatus />}
               {(year === 2024 || year === 2018) && (
-                <BloggingConference image="/media/illustrations/3.svg" />
+                <BloggingConference image="" />
               )}
               <DesignerWelcome />
               {(year === 2024 || year === 2017) && <NewTeam />}

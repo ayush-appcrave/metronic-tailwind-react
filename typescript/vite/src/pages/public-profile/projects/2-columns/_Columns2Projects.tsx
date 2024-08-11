@@ -18,13 +18,14 @@ const Columns2Projects = () => {
       title: 'Phoenix SaaS',
       description: 'Cloud storage and file sharing',
       team: {
+        size: 'size-7',
         group: [
-          { filename: '300-4.png', variant: 'size-7' },
-          { filename: '300-1.png', variant: 'size-7' },
-          { filename: '300-2.png', variant: 'size-7' },
+          { filename: '300-4.png' },
+          { filename: '300-1.png' },
+          { filename: '300-2.png' },
           {
             fallback: 'S',
-            variant: 'text-primary-inverse size-7 ring-primary-light bg-primary'
+            variant: 'text-primary-inverse ring-primary-light bg-primary'
           }
         ]
       },
@@ -56,10 +57,11 @@ const Columns2Projects = () => {
       title: 'Golden Gate Analytics',
       description: 'Team communication and collaboration tool',
       team: {
+        size: 'size-7',
         group: [
-          { filename: '300-5.png', variant: 'size-7' },
-          { filename: '300-17.png', variant: 'size-7' },
-          { filename: '300-16.png', variant: 'size-7' }
+          { filename: '300-5.png' },
+          { filename: '300-17.png' },
+          { filename: '300-16.png' }
         ]
       },
       statistics: [
@@ -90,9 +92,10 @@ const Columns2Projects = () => {
       title: 'SparkleTech',
       description: 'Short-term accommodation marketplace',
       team: {
+        size: 'size-7',
         group: [
-          { filename: '300-19.png', variant: 'size-7' },
-          { filename: '300-9.png', variant: 'size-7' }
+          { filename: '300-19.png' },
+          { filename: '300-9.png' }
         ]
       },
       statistics: [
@@ -123,12 +126,13 @@ const Columns2Projects = () => {
       title: 'Nexus Design System',
       description: 'Visual discovery and inspiration',
       team: {
+        size: 'size-7',
         group: [
-          { filename: '300-5.png', variant: 'size-7' },
-          { filename: '300-11.png', variant: 'size-7' },
+          { filename: '300-5.png' },
+          { filename: '300-11.png' },
           {
             fallback: 'W',
-            variant: 'text-warning-inverse size-7 ring-warning-light bg-warning'
+            variant: 'text-warning-inverse ring-warning-light bg-warning'
           }
         ]
       },
@@ -160,13 +164,14 @@ const Columns2Projects = () => {
       title: 'Neptune App',
       description: 'Peer-to-peer mobile payment service',
       team: {
+        size: 'size-7',
         group: [
-          { filename: '300-17.png', variant: 'size-7' },
-          { filename: '300-1.png', variant: 'size-7' },
-          { filename: '300-19.png', variant: 'size-7' },
+          { filename: '300-17.png' },
+          { filename: '300-1.png' },
+          { filename: '300-19.png' },
           {
             fallback: 'P',
-            variant: 'text-info-inverse size-7 ring-info-light bg-info'
+            variant: 'text-info-inverse ring-info-light bg-info'
           }
         ]
       },
@@ -198,13 +203,14 @@ const Columns2Projects = () => {
       title: 'Radiant Wave',
       description: 'Team communication and collaboration',
       team: {
+        size: 'size-7',
         group: [
-          { filename: '300-24.png', variant: 'size-7' },
-          { filename: '300-7.png', variant: 'size-7' },
-          { filename: '300-9.png', variant: 'size-7' },
+          { filename: '300-24.png' },
+          { filename: '300-7.png' },
+          { filename: '300-9.png' },
           {
             fallback: 'S',
-            variant: 'text-primary-inverse size-7 ring-primary-light bg-primary'
+            variant: 'text-primary-inverse ring-primary-light bg-primary'
           }
         ]
       },
@@ -263,12 +269,12 @@ const Columns2Projects = () => {
   return (
     <div className="flex flex-col items-stretch gap-5 lg:gap-7.5">
       <div className="flex flex-wrap items-center gap-5 justify-between">
-        <h3 className="text-lg text-gray-800 font-semibold">{projects.length} Projects</h3>
+        <h3 className="text-lg text-gray-900 font-semibold">{projects.length} Projects</h3>
 
-        <div className="btn-group" data-tabs="true">
+        <div className="btn-tabs" data-tabs="true">
           <a
             href="#"
-            className={`btn btn-icon btn-sm ${activeView === 'cards' ? 'active' : ''}`}
+            className={`btn btn-icon ${activeView === 'cards' ? 'active' : ''}`}
             data-tab-toggle="#projects_cards"
             onClick={() => {
               setActiveView('cards');
@@ -278,7 +284,7 @@ const Columns2Projects = () => {
           </a>
           <a
             href="#"
-            className={`btn btn-icon btn-sm ${activeView === 'list' ? 'active' : ''}`}
+            className={`btn btn-icon ${activeView === 'list' ? 'active' : ''}`}
             data-tab-toggle="#projects_list"
             onClick={() => {
               setActiveView('list');
