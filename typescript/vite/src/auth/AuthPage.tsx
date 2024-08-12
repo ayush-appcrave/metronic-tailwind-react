@@ -7,10 +7,11 @@ import { AuthLayout } from '../layouts/auth';
 // import { FirebaseLogin, FirebaseRegistration } from './layouts/default/firebase';
 // JWT auth pages
 import { ForgotPassword, Login, Signup } from './pages/jwt';
+import { AuthBrandedLayout } from '@/layouts/auth-branded';
 
 const AuthPage = () => (
   <Routes>
-    <Route element={<AuthLayout />}>
+    <Route element={<AuthBrandedLayout />}>
       <Route path="login" element={<Login />} />
       <Route path="registration" element={<Signup />} />
       <Route path="forgot-password" element={<ForgotPassword />} />

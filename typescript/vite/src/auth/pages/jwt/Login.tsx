@@ -167,14 +167,9 @@ const Login = () => {
         <button
           type="submit"
           className="btn btn-primary flex justify-center grow"
-          disabled={formik.isSubmitting}
+          disabled={loading || formik.isSubmitting}
         >
-          {!loading && <span className="indicator-label">Sign In</span>}
-          {loading && (
-            <span className="indicator-progress" style={{ display: 'block' }}>
-              Please wait...
-            </span>
-          )}
+          <span className="indicator-label">{loading ? 'Please wait...' : 'Sign In'}</span>
         </button>
 
         {formik.status && (

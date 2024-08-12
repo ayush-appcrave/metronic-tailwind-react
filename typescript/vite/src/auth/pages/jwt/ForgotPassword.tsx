@@ -95,13 +95,7 @@ const ForgotPassword = () => {
         </div>
 
         <Link to="/auth/login" className="btn btn-primary flex justify-center grow">
-          {!loading && <span className="indicator-label">Continue</span>}
-          {loading && (
-            <span className="indicator-progress" style={{ display: 'block' }}>
-              Please wait...
-            </span>
-          )}
-          
+          <span className="indicator-label">{loading ? 'Please wait...' : 'Continue'}</span>
           <KeenIcon icon="black-right" />
         </Link>
       </form>
