@@ -1,17 +1,19 @@
 import { CompanyProfileDataImport } from '../company-profile';
-import { UserProfileCalendarAccounts, UserProfileConnections } from '../user-profile';
+import { UserProfileCalendarAccounts } from '../user-profile';
 import {
   SettingsEnterpriseAccount,
   SettingsEnterpriseAuthTwoFactor,
+  SettingsEnterpriseConnections,
   SettingsEnterprisePaymentHistory,
-  SettingsEnterpriseUserAccess,
+  SettingsEnterpriseSetGoal,
+  SettingsEnterpriseUpgrade,
   SettingsEnterpriseYourCurrentPlan
 } from '.';
 
 const SettingsEnterpriseContent = () => {
   return (
     <div className="grid gap-5 lg:gap-7.5">
-      <SettingsEnterpriseUserAccess />
+      <SettingsEnterpriseUpgrade />
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-5 lg:gap-7.5">
         <div className="col-span-1">
           <div className="flex flex-col gap-5 lg:gap-7.5">
@@ -25,8 +27,9 @@ const SettingsEnterpriseContent = () => {
         <div className="col-span-1">
           <div className="flex flex-col gap-5 lg:gap-7.5">
             <SettingsEnterpriseYourCurrentPlan />
+            <SettingsEnterpriseSetGoal />
             <SettingsEnterprisePaymentHistory />
-            <UserProfileConnections url="#" />
+            <SettingsEnterpriseConnections />
           </div>
         </div>
       </div>

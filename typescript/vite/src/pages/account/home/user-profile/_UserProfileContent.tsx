@@ -27,7 +27,7 @@ const UserProfileContent = () => {
           <UserProfileStartNow />
           <UserProfileCalendarAccounts />
           <UserProfileConnections url="#" />
-          <DefaultRecentUploads title="My Files" url="#" />
+          <DefaultRecentUploads title="My Files" />
         </div>
       </div>
     </div>

@@ -24,6 +24,7 @@ export interface IUserProfileConnectionsItem {
   name: string;
   connections: number;
   jointLinks: number | string;
+  connected: boolean;
 }
 export interface IUserProfileConnectionsItems extends Array<IUserProfileConnectionsItem> {}
 

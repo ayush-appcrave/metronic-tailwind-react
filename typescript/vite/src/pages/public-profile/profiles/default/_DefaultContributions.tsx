@@ -28,7 +28,7 @@ const DefaultContributions = ({ title }: IDefaultContributionsProps) => {
             data-menu-item-placement="bottom-end"
           >
             <button className="btn btn-icon btn-light btn-clear btn-xs menu-toggle">
-              <KeenIcon icon="dots-vertical" className="!text-xl" />
+              <KeenIcon icon="dots-vertical" />
             </button>
             
             <Card1 />

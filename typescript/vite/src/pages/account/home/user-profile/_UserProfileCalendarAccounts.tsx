@@ -33,17 +33,17 @@ const UserProfileCalendarAccounts = () => {
           <div className="flex flex-col">
             <a
               href="#"
-              className="text-sm font-semibold text-gray-800 hover:text-primary-active mb-px"
+              className="text-sm font-semibold text-gray-900 hover:text-primary-active mb-px"
             >
               {item.title}
             </a>
-            <a href="#" className="text-2sm font-medium text-gray-500 hover:text-primary-active">
+            <a href="#" className="text-2sm font-medium text-gray-600 hover:text-primary-active">
               {item.email}
             </a>
           </div>
         </div>
 
-        <div className="btn btn-sm btn-icon btn-icon-lg text-gray-500 hover:text-primary-active">
+        <div className="btn btn-sm btn-icon btn-clear btn-light">
           <KeenIcon icon="trash" />
         </div>
       </div>
@@ -54,7 +54,7 @@ const UserProfileCalendarAccounts = () => {
     <div className="card">
       <div className="card-header">
         <h3 className="card-title">
-          Calendar Accounts <span className="text-gray-600 font-medium 2sm">1/5</span>
+          Calendar Accounts <span className="text-gray-600 font-medium text-2sm">1/5</span>
         </h3>
 
         <button className="btn btn-light btn-sm">

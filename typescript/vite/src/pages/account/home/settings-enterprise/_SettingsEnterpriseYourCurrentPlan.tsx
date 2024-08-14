@@ -5,6 +5,7 @@ import {
   ISettingsEnterpriseYourCurrentPlanItem,
   ISettingsEnterpriseYourCurrentPlanItems
 } from './interfaces';
+import { Card1 } from '@/partials/dropdowns/general';
 
 const SettingsEnterpriseYourCurrentPlan = () => {
   const items: ISettingsEnterpriseYourCurrentPlanItems = [
@@ -31,7 +32,7 @@ const SettingsEnterpriseYourCurrentPlan = () => {
   const renderItem = (item: ISettingsEnterpriseYourCurrentPlanItem, index: number) => {
     return (
       <div key={index} className="flex flex-col items-start gap-2.5">
-        <a href={item.path} className="text-md text-gray-800 font-semibold hover:text-primary">
+        <a href={item.path} className="text-md text-gray-900 font-semibold hover:text-primary">
           {item.title}
         </a>
 
@@ -52,35 +53,33 @@ const SettingsEnterpriseYourCurrentPlan = () => {
         <div className="menu" data-menu="true">
           <div
             className="menu-item"
-            data-menu-item-trigger="click"
+            data-menu-item-trigger="click|lg:click"
             data-menu-item-toggle="dropdown"
             data-menu-item-placement="bottom-end"
+            data-menu-item-offset="0, 10px"
           >
-            <button className="btn btn-icon btn-light btn-clear btn-xs menu-toggle">
-              <KeenIcon icon="dots-vertical" className="!text-xl" />
+            <button className="menu-toggle btn btn-sm btn-icon btn-light btn-clear">
+              <KeenIcon icon="dots-vertical" />
             </button>
 
-            <div className="menu-dropdown w-[175px] text-gray-700 px-3 py-3 text-2xs">
-              Menu content
-            </div>
+            <Card1 />
           </div>
         </div>
       </div>
       <div className="card-body lg:py-7.5">
         <div className="flex flex-col sm:flex-row lg:flex-col xl:flex-row lg:gap-7.5 gap-5">
           <div className="md:flex-1 grid content-between border border-gray-200 rounded-xl">
-            <img
-              src={toAbsoluteUrl('/media/images/600x600/22.jpg')}
-              className="shrink-0 w-full rounded-t-xl"
-              alt=""
-            />
+            <div
+              className="bg-cover bg-no-repeat rounded-t-lg h-48"
+              style={{ backgroundImage: `url(${toAbsoluteUrl(`/media/images/600x600/22.jpg`)})` }}
+            ></div>
 
-            <div className="flex flex-col gap-2.5 p-5">
-              <a href="#" className="text-base text-gray-800 font-semibold hover:text-primary">
+            <div className="flex flex-col gap-2 p-5 pt-4">
+              <a href="#" className="text-base text-gray-900 font-semibold hover:text-primary">
                 Premium Plan
               </a>
 
-              <p className="text-2sm font-medium text-gray-600">
+              <p className="text-2sm font-medium text-gray-600 mb-2">
                 Access premium perks through our exclusive Premium Plan
               </p>
 
@@ -98,6 +97,10 @@ const SettingsEnterpriseYourCurrentPlan = () => {
             </div>
           </div>
         </div>
+      </div>
+
+      <div className="card-footer justify-center">
+        <a href="#" className="btn btn-link">Go to Billing</a>
       </div>
     </div>
   );

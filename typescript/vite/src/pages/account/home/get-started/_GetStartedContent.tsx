@@ -7,73 +7,73 @@ const GetStartedContent = () => {
       icon: 'badge',
       title: 'Personal info',
       desc: "We're open to partnerships, guest posts, promo bannersand more.",
-      path: ''
+      path: 'account/members/team-info'
     },
     {
       icon: 'security-user',
       title: 'Login & Security',
-      desc: '',
-      path: ''
+      desc: 'Safeguarding your information with strong authentication measures.',
+      path: 'account/security/security-log'
     },
     {
       icon: 'cheque',
       title: 'Billing & Payments',
-      desc: '',
-      path: ''
+      desc: 'Simplify payments today with secure, user-friendly transaction processes.',
+      path: 'account/billing/basic'
     },
     {
       icon: 'notification-on',
       title: 'Notifications',
-      desc: '',
-      path: ''
+      desc: 'Keep updated with important notices and event reminders.',
+      path: 'account/notifications'
     },
     {
       icon: 'dropbox',
       title: 'Integrations',
-      desc: '',
-      path: ''
+      desc: 'Enhance Workflows with Advanced Integrations.',
+      path: 'account/integrations'
     },
     {
-      icon: 'profile-user',
+      icon: 'user',
       title: 'Members, Teams & Roles',
-      desc: '',
-      path: ''
+      desc: 'Efficient management of members, teams, and roles.',
+      path: 'account/members/roles'
     },
     {
       icon: 'key-square',
       title: 'API Keys',
-      desc: '',
-      path: ''
+      desc: 'Secure and manage Your API Keys effectively and efficiently.',
+      path: 'account/api-keys'
     },
     {
       icon: 'mouse-square',
       title: 'Appearance',
-      desc: '',
-      path: ''
+      desc: 'Transforming your online presence with flawless appearance.',
+      path: 'account/appearance'
     },
     {
-      icon: 'monitor-mobile',
+      icon: 'desktop-mobile',
       title: 'Devices',
-      desc: '',
+      desc: 'Stay ahead with the latest devices and innovations news',
       path: ''
     },
     {
       icon: 'color-swatch',
       title: 'Brand',
-      desc: '',
-      path: ''
+      desc: 'Trending brand designs, identities, and logos.',
+      path: 'account/invite-a-friend'
     },
     {
       icon: 'chart-line-star',
       title: 'Activity',
-      desc: '',
-      path: ''
+      desc: 'Central Hub for Personal Customization.',
+      path: 'account/activity'
     }
   ];
 
   return (
     <>
-      <GetStartedOptions items={items} />
+      <GetStartedOptions items={items} dropdown={true} />
 
       <div className="flex grow justify-center pt-5 lg:pt-7.5">
         <a href="#" className="btn btn-link">

@@ -27,3 +27,12 @@ export interface ISettingsEnterprisePaymentHistoryItem {
 }
 export interface ISettingsEnterprisePaymentHistoryItems
   extends Array<ISettingsEnterprisePaymentHistoryItem> {}
+
+export interface ISettingsEnterpriseConnection {
+  avatar: string;
+  name: string;
+  connections: number | 'none';
+  jointLinks: number | 'none';
+}
+export interface ISettingsEnterpriseConnections
+  extends Array<ISettingsEnterpriseConnection> {}
