@@ -55,6 +55,8 @@ const Signup = () => {
         await register(
           values.email,
           values.password,
+          undefined,
+          undefined,
           values.changepassword
         );
         navigate(from, { replace: true });
