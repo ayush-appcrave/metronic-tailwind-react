@@ -1,0 +1,49 @@
+import { KeenIcon } from '@/components';
+import { toAbsoluteUrl } from '@/utils/Assets';
+
+import { IAddNewProps } from './interfaces';
+import { Link } from 'react-router-dom';
+import { HexagonBadge } from '../common';
+
+const AddNewRow = ({ path, size, iconSize, title, subTitle }: IAddNewProps) => {
+  return (
+    <>
+      <style>
+        {`
+          .add-new-bg {
+            background-image: url('${toAbsoluteUrl('/media/images/2600x1200/bg-3.png')}');
+          }
+          .dark .add-new-bg {
+            background-image: url('${toAbsoluteUrl('/media/images/2600x1200/bg-3-dark.png')}');
+          }
+        `}
+      </style>
+
+      <Link to={`/${path}`} className="card border-2 border-dashed border-brand-clarity bg-center bg-cover bg-no-repeat">
+        <div className="card-body">
+          <div className="flex items-center justify-center gap-5">
+            <div className="flex justify-center">
+              <HexagonBadge
+                size={size}
+                badge={<KeenIcon icon="rocket" className={`${iconSize} text-brand`} />}
+                stroke="stroke-brand-clarity"
+                fill="fill-light"
+              />
+            </div>
+
+            <div className="flex flex-col text-start">
+              <span className="text-lg font-semibold text-gray-900 hover:text-primary-active mb-px">
+                {title}
+              </span>
+              <span className="text-2sm font-normal text-gray-600">
+                {subTitle}
+              </span>
+            </div>
+          </div>
+        </div>
+      </Link>
+    </>
+  );
+};
+
+export { AddNewRow };

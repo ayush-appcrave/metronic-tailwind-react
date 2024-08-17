@@ -163,7 +163,7 @@ const MENU_SIDEBAR: MenuConfigType = [
         title: 'Account Home',
         children: [
           {
-            title: 'Get Started',
+            title: 'Account',
             path: '/account/home/get-started'
           },
           {
@@ -193,7 +193,7 @@ const MENU_SIDEBAR: MenuConfigType = [
         ]
       },
       {
-        title: 'Billing',
+        title: 'Billing History',
         children: [
           {
             title: 'Billing - Basic',

@@ -29,8 +29,8 @@ export interface IRatingProps {
 }
 
 export interface IHexagonBadgeProps {
-  size: string;
-  stroke: string;
-  fill: string;
-  badge: any;
+  size?: string;
+  stroke?: string;
+  fill?: string;
+  badge?: any;
 }

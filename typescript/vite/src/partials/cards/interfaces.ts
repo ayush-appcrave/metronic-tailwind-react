@@ -262,3 +262,59 @@ export interface ICampaignRowProps {
   statistics: ICampaignRowItem[];
   url: string;
 }
+
+export interface IAddNewProps {
+  path: string;
+  size: string;
+  iconSize: string;
+  title: string;
+  subTitle: string;
+}
+
+export interface IAuthorItem {
+  title: string;
+  id: string;
+  image: string;
+}
+export interface IAuthorItems extends Array<IAuthorItem> {}
+
+export interface IAuthorProps {
+  bgImage: string;
+  name: string;
+  location: string;
+  works: IAuthorItem[];
+}
+
+export interface IIntegrationProps {
+  logo: string;
+  path: string;
+  name: string;
+  description: string;
+}
+
+export interface INFT2Item {
+  total: string;
+  description: string;
+}
+export interface INFT2Items extends Array<INFT2Item> {}
+
+export interface INFT2Props {
+  bgImage: string;
+  name: string;
+  email: string;
+  info: string;
+  statistics: INFT2Item[];
+}
+
+export interface INotificationProps {
+  icon: string;
+  description: string;
+}
+
+export interface IRoleProps {
+  path: string;
+  title: string;
+  subTitle: string;
+  description: string;
+  team: string;
+}
