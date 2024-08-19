@@ -16,29 +16,29 @@ const NFT = ({ image, id, title, info, date }: INFTProps) => {
         <div className="pb-6">
           <a
             href="#"
-            className="font-semibold block text-gray-900 hover:text-primary text-md leading-4 mb-2"
+            className="font-media/images/600x600/ block font-medium text-gray-900 hover:text-primary text-md leading-4 mb-2"
           >
             {title}
           </a>
-          <div className="text-2sm font-medium text-gray-600">
-            Token ID:&nbsp;
-            <span className="text-2sm font-semibold text-gray-800">{id}</span>
+          <div className="text-2sm text-gray-700">
+            Token ID:
+            <span className="text-2sm font-medium text-gray-800">{id}</span>
           </div>
         </div>
         <div className="grid grid-cols-2 items-center">
           <div className="flex flex-col gap-2">
-            <span className="text-2sm font-medium text-gray-600">Current bid</span>
+            <span className="text-2sm text-gray-700">Current bid</span>
 
             <div className="flex items-center gap-1">
               <KeenIcon icon="xmr" className="text-lg text-brand leading-none" />
-              <span className="text-sm font-semibold text-gray-800 leading-none tracking-tight">
+              <span className="text-sm font-semibold text-gray-900 leading-none tracking-tight">
                 {info}
               </span>
             </div>
           </div>
           <div className="flex flex-col justify-self-end text-right gap-2">
-            <span className="text-2sm font-medium text-gray-600">Ending in</span>
-            <span className="text-2sm font-semibold text-gray-800 leading-none tracking-tight">
+            <span className="text-2sm text-gray-700">Ending in</span>
+            <span className="text-2sm font-semibold text-gray-900 leading-none tracking-tight">
               {date}
             </span>
           </div>

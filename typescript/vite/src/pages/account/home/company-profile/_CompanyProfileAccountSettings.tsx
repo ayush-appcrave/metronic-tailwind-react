@@ -11,17 +11,14 @@ const CompanyProfileAccountSettings = () => {
         <table className="table align-middle text-sm text-gray-500">
           <tbody>
             <tr>
-              <td className="min-w-55">Email</td>
+              <td className="min-w-56">Email</td>
               <td className="min-w-60 w-full">
-                <a href="#" className="text-gray-600 text-2sm hover:text-primary-active">
+                <a href="#" className="text-gray-700 text-sm hover:text-primary-active">
                   john.doe@hexlad.io
                 </a>
               </td>
               <td className="min-w-28 text-center">
-                <a
-                  href="#"
-                  className="btn btn-sm btn-icon btn-icon-lg text-primary hover:text-primary-active"
-                >
+                <a href="#" className="btn btn-sm btn-icon btn-clear btn-primary">
                   <KeenIcon icon="notepad-edit" />
                 </a>
               </td>
@@ -29,12 +26,9 @@ const CompanyProfileAccountSettings = () => {
 
             <tr>
               <td>Password</td>
-              <td className="text-gray-600">Password last changed 2 months ago</td>
+              <td className="text-gray-600 text-2sm">Password last changed 2 months ago</td>
               <td className="text-center">
-                <a
-                  href="#"
-                  className="btn btn-sm btn-icon btn-icon-lg text-primary hover:text-primary-active"
-                >
+                <a href="#" className="btn btn-sm btn-icon btn-clear btn-primary">
                   <KeenIcon icon="notepad-edit" />
                 </a>
               </td>
@@ -46,7 +40,7 @@ const CompanyProfileAccountSettings = () => {
                 <div className="flex items-center gap-2.5">
                   <a
                     href="#"
-                    className="flex items-center justify-center size-8 bg-white rounded-full border border-gray-300"
+                    className="flex items-center justify-center size-8 bg-light rounded-full border border-gray-300"
                   >
                     <img
                       src={toAbsoluteUrl('/media/brand-logos/google.svg')}
@@ -57,7 +51,7 @@ const CompanyProfileAccountSettings = () => {
 
                   <a
                     href="#"
-                    className="flex items-center justify-center size-8 bg-white rounded-full border border-gray-300"
+                    className="flex items-center justify-center size-8 bg-light rounded-full border border-gray-300"
                   >
                     <img
                       src={toAbsoluteUrl('/media/brand-logos/facebook.svg')}
@@ -68,31 +62,31 @@ const CompanyProfileAccountSettings = () => {
 
                   <a
                     href="#"
-                    className="flex items-center justify-center size-8 bg-white rounded-full border border-gray-300"
+                    className="flex items-center justify-center size-8 bg-light rounded-full border border-gray-300"
                   >
                     <img
                       src={toAbsoluteUrl('/media/brand-logos/apple-black.svg')}
-                      className="size-4"
-                      alt=""
+                      className="dark:hidden h-4"
+                      alt="product logo"
+                    />
+                    <img
+                      src={toAbsoluteUrl('/media/brand-logos/apple-white.svg')}
+                      className="light:hidden h-4"
+                      alt="product logo"
                     />
                   </a>
                 </div>
               </td>
               <td className="text-center">
-                <a href="#" className="btn btn-link btn-sm">
-                  Setup
-                </a>
+                <a href="#" className="btn btn-link btn-sm">Setup</a>
               </td>
             </tr>
 
             <tr>
               <td>Team Account</td>
-              <td className="text-gray-600">To be set</td>
+              <td className="text-gray-600 text-2sm">To be set</td>
               <td className="text-center">
-                <a
-                  href="#"
-                  className="btn btn-sm btn-icon btn-icon-lg text-primary hover:text-primary-active"
-                >
+                <a href="#" className="btn btn-sm btn-icon btn-clear btn-primary">
                   <KeenIcon icon="notepad-edit" />
                 </a>
               </td>
@@ -104,7 +98,7 @@ const CompanyProfileAccountSettings = () => {
                 <div className="flex items-center gap-2.5">
                   <a
                     href="#"
-                    className="flex items-center justify-center size-8 bg-white rounded-full border border-gray-300"
+                    className="flex items-center justify-center size-8 bg-light rounded-full border border-gray-300"
                   >
                     <img
                       src={toAbsoluteUrl('/media/brand-logos/linkedin.svg')}
@@ -115,7 +109,7 @@ const CompanyProfileAccountSettings = () => {
 
                   <a
                     href="#"
-                    className="flex items-center justify-center size-8 bg-white rounded-full border border-gray-300"
+                    className="flex items-center justify-center size-8 bg-light rounded-full border border-gray-300"
                   >
                     <img
                       src={toAbsoluteUrl('/media/brand-logos/twitch-purple.svg')}
@@ -126,18 +120,23 @@ const CompanyProfileAccountSettings = () => {
 
                   <a
                     href="#"
-                    className="flex items-center justify-center size-8 bg-white rounded-full border border-gray-300"
+                    className="flex items-center justify-center size-8 bg-light rounded-full border border-gray-300"
                   >
                     <img
                       src={toAbsoluteUrl('/media/brand-logos/x.svg')}
-                      className="size-4"
+                      className="dark:hidden size-4"
+                      alt=""
+                    />
+                    <img
+                      src={toAbsoluteUrl('/media/brand-logos/x-dark.svg')}
+                      className="light:hidden size-4"
                       alt=""
                     />
                   </a>
 
                   <a
                     href="#"
-                    className="flex items-center justify-center size-8 bg-white rounded-full border border-gray-300"
+                    className="flex items-center justify-center size-8 bg-light rounded-full border border-gray-300"
                   >
                     <img
                       src={toAbsoluteUrl('/media/brand-logos/dribbble.svg')}
@@ -148,10 +147,7 @@ const CompanyProfileAccountSettings = () => {
                 </div>
               </td>
               <td className="text-center">
-                <a
-                  href="#"
-                  className="btn btn-sm btn-icon btn-icon-lg text-primary hover:text-primary-active"
-                >
+                <a href="#" className="btn btn-sm btn-icon btn-clear btn-primary">
                   <KeenIcon icon="notepad-edit" />
                 </a>
               </td>
@@ -160,15 +156,18 @@ const CompanyProfileAccountSettings = () => {
             <tr>
               <td>Referral Link</td>
               <td className="text-gray-600 text-2sm">
-                <a href="#" className="text-gray-600 text-2sm hover:text-primary-active">
-                  https://studio.co/W3gvQOI35dt&nbsp;
-                  <KeenIcon icon="copy" className="text-gray-500 text-sm" />
-                </a>
+                <div className="flex items-center gap-0.5">
+                  <a href="#" className="text-gray-700 text-sm hover:text-primary-active">
+                    https://studio.co/W3gvQOI35dt
+                  </a>
+                  <button className="btn btn-icon btn-xs btn-clear btn-light">
+                  <KeenIcon icon="copy" />
+                  </button>
+                </div>
               </td>
+
               <td className="text-center">
-                <a href="#" className="btn btn-link btn-sm">
-                  Re-create
-                </a>
+                <a href="#" className="btn btn-link btn-sm">Re-create</a>
               </td>
             </tr>
           </tbody>

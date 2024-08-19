@@ -6,6 +6,7 @@ import {
   ICompanyProfileMembersItems,
   ICompanyProfileMembersProps
 } from './interfaces';
+import { Crud1, CrudItem1 } from '@/partials/dropdowns/general';
 
 const CompanyProfileMembers = ({ url }: ICompanyProfileMembersProps) => {
   const tables: ICompanyProfileMembersItems = [
@@ -65,11 +66,11 @@ const CompanyProfileMembers = ({ url }: ICompanyProfileMembersProps) => {
             <div className="flex flex-col">
               <a
                 href="#"
-                className="text-sm font-semibold text-gray-800 hover:text-primary-active mb-px"
+                className="text-sm font-semibold text-gray-900 hover:text-primary-active mb-px"
               >
                 {table.name}
               </a>
-              <span className="text-xs font-normal text-gray-500">
+              <span className="text-xs font-normal text-gray-600">
                 {table.connections} connections
               </span>
             </div>
@@ -94,17 +95,16 @@ const CompanyProfileMembers = ({ url }: ICompanyProfileMembersProps) => {
           <div className="menu flex justify-end" data-menu="true">
             <div
               className="menu-item"
-              data-menu-item-trigger="click"
+              data-menu-item-trigger="click|lg:click"
               data-menu-item-toggle="dropdown"
               data-menu-item-placement="bottom-end"
+              data-menu-item-offset="0, 10px"
             >
-              <button className="btn btn-icon btn-light btn-clear btn-xs menu-toggle">
-                <KeenIcon icon="dots-vertical" className="!text-xl" />
+              <button className="menu-toggle btn btn-sm btn-icon btn-light btn-clear">
+                <KeenIcon icon="dots-vertical" />
               </button>
 
-              <div className="menu-dropdown w-[175px] text-gray-700 px-3 py-3 text-2xs">
-                Menu content
-              </div>
+              <CrudItem1 />
             </div>
           </div>
         </td>
@@ -119,30 +119,27 @@ const CompanyProfileMembers = ({ url }: ICompanyProfileMembersProps) => {
 
         <div className="flex items-center gap-5">
           <div className="flex items-center gap-2">
-            <label className="switch">
-              <input className="order-2" type="checkbox" value="1" name="check" />
-              <span className="switch-label order-1">
-                &nbsp;Enforce 2FA
-                <span className="hidden switch-off:inline"></span>
-                <span className="hidden switch-on:inline"></span>
+            <label className="switch switch-sm">
+              <span className="switch-label">
+                Enforce 2FA
               </span>
+              <input type="checkbox" value="1" name="check" />    
             </label>
           </div>
 
           <div className="menu" data-menu="true">
             <div
               className="menu-item"
-              data-menu-item-trigger="click"
+              data-menu-item-trigger="click|lg:click"
               data-menu-item-toggle="dropdown"
               data-menu-item-placement="bottom-end"
+              data-menu-item-offset="0, 10px"
             >
-              <button className="btn btn-icon btn-light btn-clear btn-xs menu-toggle">
-                <KeenIcon icon="dots-vertical" className="!text-xl" />
+              <button className="menu-toggle btn btn-sm btn-icon btn-light btn-clear">
+                <KeenIcon icon="dots-vertical" />
               </button>
 
-              <div className="menu-dropdown w-[175px] text-gray-700 px-3 py-3 text-2xs">
-                Menu content
-              </div>
+              <Crud1 />
             </div>
           </div>
         </div>
@@ -153,10 +150,10 @@ const CompanyProfileMembers = ({ url }: ICompanyProfileMembersProps) => {
           <table className="table align-middle text-2sm text-gray-600">
             <tbody>
               <tr className="bg-gray-100">
-                <th className="text-start font-medium min-w-51">Name</th>
-                <th className="text-right font-medium min-w-35">Role</th>
-                <th className="text-right font-medium min-w-31">2FA</th>
-                <th className="text-right font-medium min-w-19">Joined</th>
+                <th className="text-start font-medium min-w-52">Name</th>
+                <th className="text-right font-medium min-w-36">Role</th>
+                <th className="text-right font-medium min-w-32">2FA</th>
+                <th className="text-right font-medium min-w-20">Joined</th>
                 <th className="min-w-16"></th>
               </tr>
 

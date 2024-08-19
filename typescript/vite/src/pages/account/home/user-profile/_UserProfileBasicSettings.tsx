@@ -10,13 +10,9 @@ const UserProfileBasicSettings = ({ title }: IUserProfileBasicSettingsProps) => 
         <h3 className="card-title">{title}</h3>
 
         <div className="flex items-center gap-2">
-          <label className="switch">
-            <input className="order-2" type="checkbox" value="1" name="check" defaultChecked />
-            <span className="switch-label order-1">
-              &nbsp;Public Profile
-              <span className="hidden switch-off:inline">Off</span>
-              <span className="hidden switch-on:inline">On</span>
-            </span>
+          <label className="switch switch-sm">
+            <span className="switch-label">Public Profile</span>
+            <input type="checkbox" value="1" name="check" defaultChecked />
           </label>
         </div>
       </div>
@@ -26,15 +22,12 @@ const UserProfileBasicSettings = ({ title }: IUserProfileBasicSettingsProps) => 
             <tr>
               <td className="py-2 min-w-36">Email</td>
               <td className="py-2 min-w-60">
-                <a href="#" className="text-gray-600 text-2sm hover:text-primary-active">
+                <a href="#" className="text-gray-700 text-sm hover:text-primary-active">
                   jasontt@studio.co
                 </a>
               </td>
               <td className="py-2 max-w-16 text-right">
-                <a
-                  href="#"
-                  className="btn btn-sm btn-icon btn-icon-lg text-primary hover:text-primary-active"
-                >
+                <a href="#" className="btn btn-sm btn-icon btn-clear btn-primary">
                   <KeenIcon icon="notepad-edit" />
                 </a>
               </td>
@@ -44,10 +37,7 @@ const UserProfileBasicSettings = ({ title }: IUserProfileBasicSettingsProps) => 
               <td className="py-2">Password</td>
               <td className="py-2 text-gray-600">Password last changed 2 months ago</td>
               <td className="py-2 text-right">
-                <a
-                  href="#"
-                  className="btn btn-sm btn-icon btn-icon-lg text-primary hover:text-primary-active"
-                >
+                <a href="#" className="btn btn-sm btn-icon btn-clear btn-primary">
                   <KeenIcon icon="notepad-edit" />
                 </a>
               </td>
@@ -69,7 +59,7 @@ const UserProfileBasicSettings = ({ title }: IUserProfileBasicSettingsProps) => 
                 <div className="flex items-center gap-2.5">
                   <a
                     href="#"
-                    className="flex items-center justify-center size-8 bg-white rounded-full border border-gray-300"
+                    className="flex items-center justify-center size-8 bg-light rounded-full border border-gray-300"
                   >
                     <img
                       src={toAbsoluteUrl('/media/brand-logos/google.svg')}
@@ -95,17 +85,19 @@ const UserProfileBasicSettings = ({ title }: IUserProfileBasicSettingsProps) => 
                   >
                     <img
                       src={toAbsoluteUrl('/media/brand-logos/apple-black.svg')}
-                      className="size-4"
-                      alt=""
+                      className="dark:hidden h-4"
+                      alt="product logo"
+                    />
+                    <img
+                      src={toAbsoluteUrl('/media/brand-logos/apple-white.svg')}
+                      className="light:hidden h-4"
+                      alt="product logo"
                     />
                   </a>
                 </div>
               </td>
               <td className="py-2 text-right">
-                <a
-                  href="#"
-                  className="btn btn-sm btn-icon btn-icon-lg text-primary hover:text-primary-active"
-                >
+                <a href="#" className="btn btn-sm btn-icon btn-clear btn-primary">
                   <KeenIcon icon="notepad-edit" />
                 </a>
               </td>
@@ -113,7 +105,7 @@ const UserProfileBasicSettings = ({ title }: IUserProfileBasicSettingsProps) => 
 
             <tr>
               <td className="py-3">Team Account</td>
-              <td className="py-3 text-gray-700">To be set</td>
+              <td className="py-3 text-gray-600">To be set</td>
               <td className="py-3 text-right">
                 <a href="#" className="btn btn-link btn-sm">
                   Setup
@@ -127,7 +119,7 @@ const UserProfileBasicSettings = ({ title }: IUserProfileBasicSettingsProps) => 
                 <div className="flex items-center gap-2.5">
                   <a
                     href="#"
-                    className="flex items-center justify-center size-8 bg-white rounded-full border border-gray-300"
+                    className="flex items-center justify-center size-8 bg-light rounded-full border border-gray-300"
                   >
                     <img
                       src={toAbsoluteUrl('/media/brand-logos/linkedin.svg')}
@@ -153,7 +145,12 @@ const UserProfileBasicSettings = ({ title }: IUserProfileBasicSettingsProps) => 
                   >
                     <img
                       src={toAbsoluteUrl('/media/brand-logos/x.svg')}
-                      className="size-4"
+                      className="dark:hidden size-4"
+                      alt=""
+                    />
+                    <img
+                      src={toAbsoluteUrl('/media/brand-logos/x-dark.svg')}
+                      className="light:hidden size-4"
                       alt=""
                     />
                   </a>
@@ -171,10 +168,7 @@ const UserProfileBasicSettings = ({ title }: IUserProfileBasicSettingsProps) => 
                 </div>
               </td>
               <td className="py-2 text-right">
-                <a
-                  href="#"
-                  className="btn btn-sm btn-icon btn-icon-lg text-primary hover:text-primary-active"
-                >
+                <a href="#" className="btn btn-sm btn-icon btn-clear btn-primary">
                   <KeenIcon icon="notepad-edit" />
                 </a>
               </td>
@@ -183,10 +177,14 @@ const UserProfileBasicSettings = ({ title }: IUserProfileBasicSettingsProps) => 
             <tr>
               <td className="py-3">Referral Link</td>
               <td className="py-3 text-gray-600 text-2sm">
-                <a href="#" className="text-gray-600 text-2sm hover:text-primary-active">
-                  https://studio.co/W3gvQOI35dt&nbsp;
-                  <KeenIcon icon="copy" className="text-gray-500 text-sm" />
-                </a>
+                <div className="flex items-center gap-0.5">
+                  <a href="#" className="text-gray-700 text-sm hover:text-primary-active">
+                    https://studio.co/W3gvQOI35dt
+                  </a>
+                  <button className="btn btn-xs btn-light btn-clear btn-icon">
+                    <KeenIcon icon="copy" className="text-gray-500 text-sm" />
+                  </button>
+                </div>
               </td>
               <td className="py-3 text-right">
                 <a href="#" className="btn btn-link btn-sm">

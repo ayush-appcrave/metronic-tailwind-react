@@ -1,14 +1,6 @@
 import { ReactElement, useEffect, useState } from 'react';
 import { Navigate, Route, Routes, useLocation } from 'react-router';
 
-import {
-  CompanyProfilePage,
-  GetStartedPage,
-  SettingsEnterprisePage,
-  SettingsPlainPage,
-  SettingsSidebarPage,
-  UserProfilePage
-} from '@/pages/account';
 import {DashboardPage, ImageInputExamples} from '@/pages/dashboard';
 import {
   ActivityPage,
@@ -31,6 +23,18 @@ import {
   TeamsPage,
   WorksPage
 } from '@/pages/public-profile';
+import {
+  BasicPage,
+  CompanyProfilePage,
+  EnterprisePage,
+  GetStartedPage,
+  HistoryPage,
+  PlansPage,
+  SettingsEnterprisePage,
+  SettingsPlainPage,
+  SettingsSidebarPage,
+  UserProfilePage
+} from '@/pages/account';
 
 import { AuthPage, useAuthContext } from '../auth';
 import { RequireAuth } from '../auth/RequireAuth';
@@ -102,6 +106,10 @@ const AppRouting = (): ReactElement => {
           <Route path="/account/home/settings-sidebar" element={<SettingsSidebarPage />} />
           <Route path="/account/home/settings-enterprise" element={<SettingsEnterprisePage />} />
           <Route path="/account/home/settings-plain" element={<SettingsPlainPage />} />
+          <Route path="/account/billing/basic" element={<BasicPage />} />
+          <Route path="/account/billing/enterprise" element={<EnterprisePage />} />
+          <Route path="/account/billing/plans" element={<PlansPage />} />
+          <Route path="/account/billing/history" element={<HistoryPage />} />
           <Route index element={<Navigate to="/dashboard" />} />
         </Route>
       </Route>

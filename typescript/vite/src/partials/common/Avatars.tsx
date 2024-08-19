@@ -12,14 +12,14 @@ const Avatars = ({ size, group, more, className }: IAvatarsProps) => {
           <img
             src={toAbsoluteUrl(`/media/avatars/${each.filename}`)}
             className={clsx(
-              `hover:z-5 relative shrink-0 rounded-full ring-1 ring-light-light ${size}`,
+              `hover:z-5 relative shrink-0 rounded-full ring-1 ring-light-light ${size} size-6`,
             )}
             alt=""
           />
         ) : each.fallback ? (
           <span
             className={clsx(
-              `hover:z-5 relative inline-flex items-center justify-center shrink-0 rounded-full ring-1 font-semibold leading-none text-3xs ${size}`,
+              `hover:z-5 relative inline-flex items-center justify-center shrink-0 rounded-full ring-1 font-semibold leading-none text-3xs ${size} size-6`,
               each.variant
             )}
           >
@@ -40,7 +40,7 @@ const Avatars = ({ size, group, more, className }: IAvatarsProps) => {
         <div className="flex">
           <span
             className={clsx(
-              `relative inline-flex items-center justify-center shrink-0 rounded-full ring-1 font-semibold leading-none text-3xs ${size}`,
+              `relative inline-flex items-center justify-center shrink-0 rounded-full ring-1 font-semibold leading-none text-3xs ${size} size-6`,
               more.variant
             )}
           >

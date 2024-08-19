@@ -4,6 +4,7 @@ import {
   ISettingsEnterprisePaymentHistoryItem,
   ISettingsEnterprisePaymentHistoryItems
 } from './interfaces';
+import { Crud2, CrudItem1 } from '@/partials/dropdowns/general';
 
 const SettingsEnterprisePaymentHistory = () => {
   const tables: ISettingsEnterprisePaymentHistoryItems = [
@@ -31,28 +32,27 @@ const SettingsEnterprisePaymentHistory = () => {
 
   const renderItem = (table: ISettingsEnterprisePaymentHistoryItem, index: number) => {
     return (
-      <tr>
+      <tr key={index}>
         <td className="text-sm font-medium text-gray-700">{table.date}</td>
 
-        <td className="text-sm font-medium text-gray-700 lg:text-right">${table.type}</td>
+        <td className="text-sm font-medium text-gray-700 lg:text-right">{table.type}</td>
 
-        <td className="text-sm font-medium text-gray-700 lg:text-right">{table.amount} days</td>
+        <td className="text-sm font-medium text-gray-700 lg:text-right">{table.amount}</td>
 
         <td>
           <div className="menu" data-menu="true">
             <div
               className="menu-item"
-              data-menu-item-trigger="click"
+              data-menu-item-trigger="click|lg:click"
               data-menu-item-toggle="dropdown"
               data-menu-item-placement="bottom-end"
+              data-menu-item-offset="0, 10px"
             >
-              <button className="btn btn-icon btn-light btn-clear btn-xs menu-toggle">
-                <KeenIcon icon="dots-vertical" className="!text-xl" />
+              <button className="menu-toggle btn btn-sm btn-icon btn-light btn-clear">
+                <KeenIcon icon="dots-vertical" />
               </button>
 
-              <div className="menu-dropdown w-[175px] text-gray-700 px-3 py-3 text-2xs">
-                Menu content
-              </div>
+              <CrudItem1 />
             </div>
           </div>
         </td>
@@ -68,17 +68,16 @@ const SettingsEnterprisePaymentHistory = () => {
         <div className="menu" data-menu="true">
           <div
             className="menu-item"
-            data-menu-item-trigger="click"
+            data-menu-item-trigger="click|lg:click"
             data-menu-item-toggle="dropdown"
             data-menu-item-placement="bottom-end"
+            data-menu-item-offset="0, 10px"
           >
-            <button className="btn btn-icon btn-light btn-clear btn-xs menu-toggle">
-              <KeenIcon icon="dots-vertical" className="!text-xl" />
+            <button className="menu-toggle btn btn-sm btn-icon btn-light btn-clear">
+              <KeenIcon icon="dots-vertical" />
             </button>
 
-            <div className="menu-dropdown w-[175px] text-gray-700 px-3 py-3 text-2xs">
-              Menu content
-            </div>
+            <Crud2 />
           </div>
         </div>
       </div>
@@ -87,7 +86,7 @@ const SettingsEnterprisePaymentHistory = () => {
           <thead>
             <tr>
               <th className="min-w-40">Date</th>
-              <th className="min-w-40 lg:text-right">Amount</th>
+              <th className="min-w-40 lg:text-right">Type</th>
               <th className="min-w-40 lg:text-right">Amount</th>
               <th className="w-8"></th>
             </tr>
@@ -100,9 +99,7 @@ const SettingsEnterprisePaymentHistory = () => {
         </table>
       </div>
       <div className="card-footer justify-center">
-        <a href="#" className="btn btn-link">
-          View all Payments
-        </a>
+        <a href="#" className="btn btn-link">View all Payments</a>
       </div>
     </div>
   );

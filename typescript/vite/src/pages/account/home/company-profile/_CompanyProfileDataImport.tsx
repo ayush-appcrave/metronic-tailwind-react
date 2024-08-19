@@ -11,24 +11,18 @@ const CompanyProfileDataImport = () => {
         </div>
       </div>
       <div className="card-body lg:py-7.5 py-5">
-        <span className="text-md font-semibold text-gray-900 block mb-6">
-          Define aspirations, outline the path. Set a goal to transform dreams into measurable
-          achievements.
-        </span>
+        <div className="text-sm font-medium text-gray-700 mb-4">
+          Define aspirations, outline the path. Set a goal to transform dreams into measurable achievements.
+        </div>
 
-        <div className="flex items-center group border border-gray-200 cursor-pointer rounded-md gap-1.5 px-3.5 py-2.5 max-w-43">
+        <a href="#" className="btn btn-sm btn-light">
           <img
             src={toAbsoluteUrl('/media/brand-logos/google.svg')}
             className="size-4 shrink-0"
             alt=""
           />
-          <a
-            href="#"
-            className="text-[0.75rem] font-medium text-gray-700 group-hover:text-primary-active"
-          >
-            Continue with Google
-          </a>
-        </div>
+          Continue with Google
+        </a>
       </div>
     </div>
   );
