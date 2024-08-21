@@ -29,7 +29,7 @@ export interface ICreatorSummaryProps {
 }
 
 export interface ICreatorFeaturesHighlightProps {
-  image: string;
+  image: React.ReactNode;
   title: string;
   description: string;
   more: { title: string; url: string };

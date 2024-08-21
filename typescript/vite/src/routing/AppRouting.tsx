@@ -24,12 +24,20 @@ import {
   WorksPage
 } from '@/pages/public-profile';
 import {
+  AllowedIPAddressesPage,
+  BackupAndRecoveryPage,
   BasicPage,
   CompanyProfilePage,
+  CurrentSessionsPage,
+  DeviceManagementPage,
   EnterprisePage,
   GetStartedPage,
   HistoryPage,
+  OverviewPage,
   PlansPage,
+  PrivacySettingsPage,
+  SecurityGetStartedPage,
+  SecurityLogPage,
   SettingsEnterprisePage,
   SettingsPlainPage,
   SettingsSidebarPage,
@@ -110,6 +118,14 @@ const AppRouting = (): ReactElement => {
           <Route path="/account/billing/enterprise" element={<EnterprisePage />} />
           <Route path="/account/billing/plans" element={<PlansPage />} />
           <Route path="/account/billing/history" element={<HistoryPage />} />
+          <Route path="/account/security/get-started" element={<SecurityGetStartedPage />} />
+          <Route path="/account/security/overview" element={<OverviewPage />} />
+          <Route path="/account/security/allowed-ip-addresses" element={<AllowedIPAddressesPage />} />
+          <Route path="/account/security/privacy-settings" element={<PrivacySettingsPage />} />
+          <Route path="/account/security/device-management" element={<DeviceManagementPage />} />
+          <Route path="/account/security/backup-and-recovery" element={<BackupAndRecoveryPage />} />
+          <Route path="/account/security/current-sessions" element={<CurrentSessionsPage />} />
+          <Route path="/account/security/log" element={<SecurityLogPage />} />
           <Route index element={<Navigate to="/dashboard" />} />
         </Route>
       </Route>
