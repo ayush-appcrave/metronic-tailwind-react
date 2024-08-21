@@ -1,5 +1,9 @@
 import { KeenIcon } from '@/components';
-import { IBasicPaymentMethodsItem, IBasicPaymentMethodsItems, IBasicPaymentMethodsProps } from './interfaces';
+import {
+  IBasicPaymentMethodsItem,
+  IBasicPaymentMethodsItems,
+  IBasicPaymentMethodsProps
+} from './interfaces';
 import { toAbsoluteUrl } from '@/utils';
 
 const BasicPaymentMethods = ({ icon }: IBasicPaymentMethodsProps) => {

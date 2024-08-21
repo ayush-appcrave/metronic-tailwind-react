@@ -33,14 +33,23 @@ import {
   EnterprisePage,
   GetStartedPage,
   HistoryPage,
+  ImportMembersPage,
+  MembersStarterPage,
   OverviewPage,
+  PermissionsCheckPage,
+  PermissionsTogglePage,
   PlansPage,
   PrivacySettingsPage,
+  RolesPage,
   SecurityGetStartedPage,
   SecurityLogPage,
   SettingsEnterprisePage,
   SettingsPlainPage,
   SettingsSidebarPage,
+  TeamInfoPage,
+  TeamMembersPage,
+  TeamPage,
+  TeamsStarterPage,
   UserProfilePage
 } from '@/pages/account';
 
@@ -126,6 +135,15 @@ const AppRouting = (): ReactElement => {
           <Route path="/account/security/backup-and-recovery" element={<BackupAndRecoveryPage />} />
           <Route path="/account/security/current-sessions" element={<CurrentSessionsPage />} />
           <Route path="/account/security/log" element={<SecurityLogPage />} />
+          <Route path="/account/members/team-starter" element={<TeamsStarterPage />} />
+          <Route path="/account/members/teams" element={<TeamPage />} />
+          <Route path="/account/members/team-info" element={<TeamInfoPage />} />
+          <Route path="/account/members/members-starter" element={<MembersStarterPage />} />
+          <Route path="/account/members/team-members" element={<TeamMembersPage />} />
+          <Route path="/account/members/import-members" element={<ImportMembersPage />} />
+          <Route path="/account/members/roles" element={<RolesPage />} />
+          <Route path="/account/members/permissions-toggler" element={<PermissionsTogglePage />} />
+          <Route path="/account/members/permissions-check" element={<PermissionsCheckPage />} />
           <Route index element={<Navigate to="/dashboard" />} />
         </Route>
       </Route>

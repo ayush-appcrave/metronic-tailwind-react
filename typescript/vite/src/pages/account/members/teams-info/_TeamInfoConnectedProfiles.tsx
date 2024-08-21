@@ -1,0 +1,93 @@
+import { KeenIcon } from '@/components';
+import { ITeamInfoConnectedProfilesItem, ITeamInfoConnectedProfilesItems } from './interfaces';
+import { CardItem1 } from '@/partials/dropdowns/general';
+import { toAbsoluteUrl } from '@/utils';
+
+const TeamInfoConnectedProfiles = () => {
+  const items: ITeamInfoConnectedProfilesItems = [
+    {
+      user: {
+        name: 'Tyler Hero',
+        tasks: 26,
+        avatar: '300-3.png'
+      }, 
+      socialLogo: 'x.svg',
+      socialLogoDark: 'x-dark.svg',
+    },
+    {
+      user: {
+        name: 'Leslie Alexander',
+        tasks: 26,
+        avatar: '300-5.png'
+      }, 
+      socialLogo: 'google.svg'
+    }
+  ];
+
+  const renderItem = (item: ITeamInfoConnectedProfilesItem, index: number) => {
+    return (
+      <div key={index} className="card-group flex justify-between items-center py-4">
+        <div className="flex items-center grow gap-2.5">
+          <img
+            src={toAbsoluteUrl(`/media/avatars/${item.user.avatar}`)}
+            className="rounded-full size-9 shrink-0"
+            alt=""
+          />
+
+          <div className="flex flex-col gap-1">
+            <a href="#" className="text-sm font-medium text-gray-900 hover:text-primary-active">{item.user.name}</a>
+            <span className="text-xs text-gray-700">{item.user.tasks} tasks</span>
+          </div>
+        </div> 
+
+        <div className="flex items-center gap-1.5">
+          {item.socialLogoDark ? (
+            <>
+              <img
+                src={toAbsoluteUrl(`/media/brand-logos/${item.socialLogo}`)}
+                className="dark:hidden max-h-5"
+                alt=""
+              />
+              <img
+                src={toAbsoluteUrl(`/media/brand-logos/${item.socialLogoDark}`)}
+                className="light:hidden max-h-5"
+                alt=""
+              />
+            </>
+          ) : (
+            <img
+              src={toAbsoluteUrl(`/media/brand-logos/${item.socialLogo}`)}
+              className="max-h-5"
+              alt=""
+            />
+          )}
+
+          <div className="menu inline-flex" data-menu="true">
+            <div className="menu-item" data-menu-item-trigger="click|lg:click" data-menu-item-toggle="dropdown" data-menu-item-placement="bottom-end" data-menu-item-offset="0, 10px">
+              <button className="menu-toggle btn btn-sm btn-icon btn-light btn-clear">
+                <KeenIcon icon="dots-vertical" />
+              </button>
+              <CardItem1 />
+            </div>
+          </div>
+        </div>
+      </div>
+    );
+  };
+
+  return (
+    <div className="card">
+      <div className="card-header">
+        <h3 className="card-title">2 Profiles Connected</h3>
+      </div>
+      {items.map((item, index) => {
+        return renderItem(item, index);
+      })}
+      <div className="card-footer justify-center">
+        <a href="#" className="btn btn-sm btn-light btn-outline">Connect Profile</a>
+      </div>
+    </div>
+  );
+};
+
+export { TeamInfoConnectedProfiles };

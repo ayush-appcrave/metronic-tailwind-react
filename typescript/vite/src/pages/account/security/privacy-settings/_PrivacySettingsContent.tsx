@@ -1,6 +1,11 @@
 import { Faq, HighlightedPosts } from "@/partials/misc";
 import { IHighlightedPostsItems } from "@/partials/misc/interfaces";
-import { PrivacySettingsBlockList, PrivacySettingsManageData, PrivacySettingsPrivacySettings, PrivacySettingsReportSettings } from ".";
+import {
+  PrivacySettingsBlockList,
+  PrivacySettingsManageData,
+  PrivacySettingsPrivacySettings,
+  PrivacySettingsReportSettings
+} from ".";
 
 const PrivacySettingsContent = () => {
   const posts: IHighlightedPostsItems = [

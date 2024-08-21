@@ -1,1 +1,1 @@
-export * from './AllowedIPAddressesContent';
+export * from './_AllowedIPAddressesContent';

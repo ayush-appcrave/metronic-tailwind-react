@@ -1,5 +1,3 @@
-import { KeenIcon } from '@/components';
-import { toAbsoluteUrl } from '@/utils/Assets';
 import { ISettingsPlainGeneralSettingsProps } from './interfaces';
 import { AvatarUpload } from '@/partials/crud';
 

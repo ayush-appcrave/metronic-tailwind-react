@@ -1,5 +1,9 @@
 import { KeenIcon } from '@/components';
-import { IPrivacySettingsBlockListItem, IPrivacySettingsBlockListItems, IPrivacySettingsBlockListProps } from './interfaces';
+import {
+  IPrivacySettingsBlockListItem,
+  IPrivacySettingsBlockListItems,
+  IPrivacySettingsBlockListProps
+} from './interfaces';
 import { Link } from 'react-router-dom';
 import { Avatar } from '@/partials/common';
 import clsx from 'clsx';
