@@ -26,6 +26,7 @@ import {
   IMenuSubProps,
   MenuHeading,
   MenuLink,
+  MenuSeparator,
   MenuSub,
   MenuToggleType,
   MenuTriggerType
@@ -38,6 +39,7 @@ const MenuItemComponent = forwardRef<HTMLDivElement | null, IMenuItemProps>(
       toggle = 'accordion',
       trigger = 'click',
       dropdownProps,
+      dropdownZIndex = 100,
       disabled,
       tabIndex,
       className,
@@ -77,7 +79,7 @@ const MenuItemComponent = forwardRef<HTMLDivElement | null, IMenuItemProps>(
     const menuContainerRef = useRef<HTMLDivElement | null>(null);
 
     const [isSubMenuOpen, setIsSubMenuOpen] = useState(false);
-
+    
     const hasSub = Children.toArray(children).some(
       (child) => isValidElement(child) && child.type === MenuSub
     );
@@ -160,10 +162,11 @@ const MenuItemComponent = forwardRef<HTMLDivElement | null, IMenuItemProps>(
         onLinkClick(e, props);
       }
 
-      console.log('clicked!!!');
     };
 
     const handleMenuClose = (e: MouseEvent<HTMLElement>) => {
+      console.log('propToggle:' + propToggle);
+
       if (propToggle === 'dropdown') {
         setSubOpen(false);
       }
@@ -177,8 +180,6 @@ const MenuItemComponent = forwardRef<HTMLDivElement | null, IMenuItemProps>(
       setShow(state);
 
       if (propToggle === 'dropdown') {
-        console.log('state:2' + state);
-
         if (state) {
           setAnchorEl(menuItemRef.current);
           setIsSubMenuOpen(true);
@@ -228,7 +229,10 @@ const MenuItemComponent = forwardRef<HTMLDivElement | null, IMenuItemProps>(
 
       return (
         <Popper
-          style={{ pointerEvents: trigger === 'click' ? 'auto' : 'none' }}
+          style={{ 
+            zIndex: dropdownZIndex,
+            pointerEvents: trigger === 'click' ? 'auto' : 'none',  
+          }}
           {...propDropdownProps}
           anchorEl={anchorEl}
           open={isSubMenuOpen}

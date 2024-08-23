@@ -32,6 +32,7 @@ export interface IMenuItemProps {
   trigger?: MenuItemTriggerType;
   disabled?: boolean;
   dropdownProps?: MenuDropdownType;
+  dropdownZIndex?: number;
   className?: string;
   onLinkClick?: MenuClickEventType;
   onLinksClick?: MenuClickEventType;
@@ -106,6 +107,10 @@ export interface IMenuBadgeProps {
   children: ReactNode;
 }
 
+export interface IMenuSeparatorProps {
+  className?: string;
+}
+
 export interface IMenuBulletProps {
   className?: string;
   children?: ReactNode;
@@ -121,6 +126,9 @@ export interface IMenuItemConfig {
   soon?: boolean;
   heading?: string;
   icon?: string;
+  badge?: string;
+  separator?: boolean;
+  tooltip?: string;
   path?: string;
   bullet?: boolean;
   collapse?: boolean;
@@ -129,6 +137,7 @@ export interface IMenuItemConfig {
   toggle?: MenuItemToggleType;
   dropdownProps?: MenuDropdownType;
   trigger?: MenuItemTriggerType;
+  memo?: string;
   children?: IMenuItemConfig[];
 }
 

@@ -3,6 +3,7 @@ export * from './hooks/useMenuBreadcrumbs';
 export * from './hooks/useMenuChildren';
 export * from './Menu';
 export * from './MenuBullet';
+export * from './MenuSeparator';
 export * from './MenuHeading';
 export * from './MenuIcon';
 export * from './MenuBadge';
