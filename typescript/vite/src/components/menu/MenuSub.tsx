@@ -2,7 +2,7 @@ import { Collapse } from '@mui/material';
 import clsx from 'clsx';
 import { Children, cloneElement, forwardRef, isValidElement, memo } from 'react';
 
-import { IMenuItemProps, IMenuSubProps } from './';
+import { IMenuItemProps, IMenuSubProps, MenuItem } from './';
 
 const MenuSubComponent = forwardRef<HTMLDivElement | null, IMenuSubProps>(
   function MenuSub(props, ref) {
@@ -12,15 +12,15 @@ const MenuSubComponent = forwardRef<HTMLDivElement | null, IMenuSubProps>(
       toggle = 'accordion',
       className,
       onLinksClick,
-      handleParentClose,
       handleClick,
+      handleParentClose,
       handleEnd,
       children
     } = props;
 
     const modifiedChildren = Children.map(children, (child, index) => {
-      if (isValidElement(child)) {       
-        if (child.type === "MenuItem") {
+      if (isValidElement(child)) {    
+        if (child.type === MenuItem) {
           // Add some props to each child
           const modifiedProps: IMenuItemProps = {
             handleParentClose,
@@ -29,7 +29,7 @@ const MenuSubComponent = forwardRef<HTMLDivElement | null, IMenuSubProps>(
           };
 
           // Return the child with modified props
-          return cloneElement(child);
+          return cloneElement(child, modifiedProps);
         } else {
           return cloneElement(child);
         }

@@ -723,12 +723,12 @@ const MENU_MEGA: MenuConfigType = [
       {
         title: "General Pages",
         children: [
-          { title: "Integrations", icon: "technology-2", path: "account/integrations" },
-          { title: "Notifications", icon: "notification-1", path: "account/notifications" },
-          { title: "API Keys", icon: "key", path: "account/api-keys" },
-          { title: "Appearance", icon: "eye", path: "account/appearance" },
-          { title: "Invite a Friend", icon: "user-tick", path: "account/invite-a-friend" },
-          { title: "Activity", icon: "support", path: "account/activity" },
+          { title: "Integrations", icon: "technology-2", path: "/account/integrations" },
+          { title: "Notifications", icon: "notification-1", path: "/account/notifications" },
+          { title: "API Keys", icon: "key", path: "/account/api-keys" },
+          { title: "Appearance", icon: "eye", path: "/account/appearance" },
+          { title: "Invite a Friend", icon: "user-tick", path: "/account/invite-a-friend" },
+          { title: "Activity", icon: "support", path: "/account/activity" },
           { title: "Brand", icon: "verify", soon: true },
           { title: "Get Paid", icon: "euro", soon: true }
         ]
@@ -739,22 +739,22 @@ const MENU_MEGA: MenuConfigType = [
           {
             title: "Account Home",
             children: [
-              { title: "Get Started", path: "account/home/get-started" },
-              { title: "User Profile", path: "account/home/user-profile" },
-              { title: "Company Profile", path: "account/home/company-profile" },
-              { title: "With Sidebar", path: "account/home/settings-sidebar" },
-              { title: "Enterprise", path: "account/home/settings-enterprise" },
-              { title: "Plain", path: "account/home/settings-plain" },
-              { title: "Modal", path: "account/home/settings-modal" }
+              { title: "Get Started + ", path: "/account/home/get-started" },
+              { title: "User Profile", path: "/account/home/user-profile" },
+              { title: "Company Profile", path: "/account/home/company-profile" },
+              { title: "With Sidebar", path: "/account/home/settings-sidebar" },
+              { title: "Enterprise", path: "/account/home/settings-enterprise" },
+              { title: "Plain", path: "/account/home/settings-plain" },
+              { title: "Modal", path: "/account/home/settings-modal" }
             ]
           },
           {
             title: "Billing",
             children: [
-              { title: "Basic Billing", path: "account/billing/basic" },
-              { title: "Enterprise", path: "account/billing/enterprise" },
-              { title: "Plans", path: "account/billing/plans" },
-              { title: "Billing History", path: "account/billing/history" },
+              { title: "Basic Billing", path: "/account/billing/basic" },
+              { title: "Enterprise", path: "/account/billing/enterprise" },
+              { title: "Plans", path: "/account/billing/plans" },
+              { title: "Billing History", path: "/account/billing/history" },
               { title: "Tax Info", soon: true },
               { title: "Invoices", soon: true },
               { title: "Gateaways", soon: true }
@@ -763,39 +763,39 @@ const MENU_MEGA: MenuConfigType = [
           {
             title: "Security",
             children: [
-              { title: "Get Started", path: "account/security/get-started" },
-              { title: "Security Overview", path: "account/security/overview" },
-              { title: "IP Addresses", path: "account/security/allowed-ip-addresses" },
-              { title: "Privacy Settings", path: "account/security/privacy-settings" },
-              { title: "Device Management", path: "account/security/device-management" },
-              { title: "Backup & Recovery", path: "account/security/backup-and-recovery" },
-              { title: "Current Sessions", path: "account/security/current-sessions" },
-              { title: "Security Log", path: "account/security/security-log" }
+              { title: "Get Started", path: "/security/get-started" },
+              { title: "Security Overview", path: "/account/security/overview" },
+              { title: "IP Addresses", path: "/account/security/allowed-ip-addresses" },
+              { title: "Privacy Settings", path: "/account/security/privacy-settings" },
+              { title: "Device Management", path: "/account/security/device-management" },
+              { title: "Backup & Recovery", path: "/account/security/backup-and-recovery" },
+              { title: "Current Sessions", path: "/account/security/current-sessions" },
+              { title: "Security Log", path: "/account/security/security-log" }
             ]
           },
           {
             title: "Members & Roles",
             children: [
-              { title: "Teams Starter", path: "account/members/team-starter" },
-              { title: "Teams", path: "account/members/teams" },
-              { title: "Team Info", path: "account/members/team-info" },
-              { title: "Members Starter", path: "account/members/members-starter" },
-              { title: "Team Members", path: "account/members/team-members" },
-              { title: "Import Members", path: "account/members/import-members" },
-              { title: "Roles", path: "account/members/roles" },
-              { title: "Permissions - Toggler", path: "account/members/permissions-toggle" },
-              { title: "Permissions - Check", path: "account/members/permissions-check" }
+              { title: "Teams Starter", path: "/account/members/team-starter" },
+              { title: "Teams", path: "/account/members/teams" },
+              { title: "Team Info", path: "/account/members/team-info" },
+              { title: "Members Starter", path: "/account/members/members-starter" },
+              { title: "Team Members", path: "/account/members/team-members" },
+              { title: "Import Members", path: "/account/members/import-members" },
+              { title: "Roles", path: "/account/members/roles" },
+              { title: "Permissions - Toggler", path: "/account/members/permissions-toggle" },
+              { title: "Permissions - Check", path: "/account/members/permissions-check" }
             ]
           },
           {
             title: "Other Pages",
             children: [
-              { title: "Integrations", path: "account/integrations" },
-              { title: "Notifications", path: "account/notifications" },
-              { title: "API Keys", path: "account/api-keys" },
-              { title: "Appearance", path: "account/appearance" },
-              { title: "Invite a Friend", path: "account/invite-a-friend" },
-              { title: "Activity", path: "account/activity" }
+              { title: "Integrations", path: "/account/integrations" },
+              { title: "Notifications", path: "/account/notifications" },
+              { title: "API Keys", path: "/account/api-keys" },
+              { title: "Appearance", path: "/account/appearance" },
+              { title: "Invite a Friend", path: "/account/invite-a-friend" },
+              { title: "Activity", path: "/account/activity" }
             ]
           }
         ]

@@ -36,8 +36,8 @@ const MenuItemComponent = forwardRef<HTMLDivElement | null, IMenuItemProps>(
   function MenuItem(props, ref) {
     const {
       path = '',
-      toggle = 'accordion',
-      trigger = 'click',
+      toggle,
+      trigger,
       dropdownProps,
       dropdownZIndex = 100,
       disabled,
@@ -93,6 +93,16 @@ const MenuItemComponent = forwardRef<HTMLDivElement | null, IMenuItemProps>(
         }
 
         setHere(true);
+      } else {
+        if (propToggle === 'accordion') {
+          setShow(false);
+        }
+
+        setHere(false);
+      }
+
+      if (hasSub && propToggle === 'dropdown' ) {
+        setSubOpen(false);
       }
     }, [pathname]);
 
@@ -151,8 +161,8 @@ const MenuItemComponent = forwardRef<HTMLDivElement | null, IMenuItemProps>(
       if (disabled) {
         return;
       }
-
-      handleMenuClose(e);
+      
+      handleMenuClose();
 
       if (onLinksClick) {
         onLinksClick(e, props);
@@ -161,18 +171,15 @@ const MenuItemComponent = forwardRef<HTMLDivElement | null, IMenuItemProps>(
       if (onLinkClick) {
         onLinkClick(e, props);
       }
-
     };
 
-    const handleMenuClose = (e: MouseEvent<HTMLElement>) => {
-      console.log('propToggle:' + propToggle);
-
-      if (propToggle === 'dropdown') {
+    const handleMenuClose = () => {
+      if (hasSub && propToggle === 'dropdown' ) {
         setSubOpen(false);
       }
 
       if (handleParentClose) {
-        handleParentClose(e);
+        handleParentClose();
       }
     };
 
@@ -218,6 +225,7 @@ const MenuItemComponent = forwardRef<HTMLDivElement | null, IMenuItemProps>(
       const modifiedProps: IMenuSubProps = {
         toggle: propToggle,
         handleClick,
+        handleParentClose: handleMenuClose,
         tabIndex
       };
 
@@ -226,7 +234,6 @@ const MenuItemComponent = forwardRef<HTMLDivElement | null, IMenuItemProps>(
       const handleClose = () => {
         setSubOpen(false);
       };
-
       return (
         <Popper
           style={{ 

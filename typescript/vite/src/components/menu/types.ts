@@ -34,9 +34,10 @@ export interface IMenuItemProps {
   dropdownProps?: MenuDropdownType;
   dropdownZIndex?: number;
   className?: string;
+  closeParentMenu?: CallableFunction;
   onLinkClick?: MenuClickEventType;
   onLinksClick?: MenuClickEventType;
-  handleParentClose?: MenuEventHandlerType;
+  handleParentClose?: CallableFunction;
   handleClick?: MenuEventHandlerType;
   tabIndex?: MenuTabIndexType;
   itemRef?: any;
@@ -86,7 +87,7 @@ export interface IMenuSubProps {
   className?: string;
   onLinkClick?: MenuClickEventType;
   onLinksClick?: MenuClickEventType;
-  handleParentClose?: MenuEventHandlerType;
+  handleParentClose?: CallableFunction;
   handleClick?: MenuEventHandlerType;
   handleEnd?: () => void;
   accordionIn?: boolean;
@@ -137,7 +138,6 @@ export interface IMenuItemConfig {
   toggle?: MenuItemToggleType;
   dropdownProps?: MenuDropdownType;
   trigger?: MenuItemTriggerType;
-  memo?: string;
   children?: IMenuItemConfig[];
 }
 
