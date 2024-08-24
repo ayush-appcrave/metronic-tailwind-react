@@ -9,6 +9,7 @@ import {
   CreatorWorks
 } from '.';
 import { ICreatorStatisticsItems, ICreatorUsersItems } from './interfaces';
+import { toAbsoluteUrl } from '@/utils';
 
 const CreatorContent = () => {
   const data: ICreatorStatisticsItems = [
@@ -42,7 +43,20 @@ const CreatorContent = () => {
       <div className="col-span-2">
         <div className="flex flex-col gap-5 lg:gap-7.5">
           <CreatorFeaturesHighlight
-            image="/media/illustrations/18.svg"
+            image={
+              <>
+                <img
+                  src={toAbsoluteUrl('/media/illustrations/18.svg')}
+                  className="dark:hidden max-h-[200px]"
+                  alt=""
+                />
+                <img
+                  src={toAbsoluteUrl('/media/illustrations/18-dark.svg')}
+                  className="light:hidden max-h-[200px]"
+                  alt=""
+                />
+              </>
+            }
             title="Restyle Your Space:<br>Soft Goods Makeover Ideas"
             description="Transform your living space beautifully with our Restyle Your Space: Soft Goods Makeover Ideas tutorial"
             more={{ title: 'Get Started', url: '#' }}

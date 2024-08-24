@@ -1,6 +1,7 @@
 import { Helmet } from 'react-helmet';
 
 import { Container } from '@/components/container';
+import { LightSidebarContent } from './light-sidebar';
 
 const DashboardPage = () => {
   return (
@@ -9,7 +10,9 @@ const DashboardPage = () => {
         <title>Dashboard Page</title>
       </Helmet>
 
-      <Container>Dashboard page</Container>
+      <Container>
+        <LightSidebarContent />
+      </Container>
     </>
   );
 };

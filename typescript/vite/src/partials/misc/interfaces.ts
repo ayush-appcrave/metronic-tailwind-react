@@ -39,9 +39,9 @@ export interface IFaqItem {
 export interface IFaqItems extends Array<IFaqItem> {}
 
 export interface IStarterProps {
-  image: string;
+  image: React.ReactNode;
   title: string;
-  subTitle: string;
+  subTitle: React.ReactNode;
   engage: {
     path: string;
     btnColor: string;

@@ -32,5 +32,5 @@ export interface IHexagonBadgeProps {
   size?: string;
   stroke?: string;
   fill?: string;
-  badge?: any;
+  badge?: React.ReactNode;
 }

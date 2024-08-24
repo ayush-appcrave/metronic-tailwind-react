@@ -1,5 +1,11 @@
 import { Help } from "@/partials/misc";
-import { EnterpriseBillingInvoicing, EnterpriseCompanyProfile, EnterpriseLatestPayment, EnterpriseNextPayment, EnterpriseUpgrade } from ".";
+import {
+  EnterpriseBillingInvoicing,
+  EnterpriseCompanyProfile,
+  EnterpriseLatestPayment,
+  EnterpriseNextPayment,
+  EnterpriseUpgrade
+} from ".";
 import { BasicPaymentMethods } from "../basic";
 
 const EnterpriseContent = () => {

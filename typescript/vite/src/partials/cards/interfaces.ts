@@ -317,4 +317,5 @@ export interface IRoleProps {
   subTitle: string;
   description: string;
   team: string;
+  badge: React.ReactNode;
 }

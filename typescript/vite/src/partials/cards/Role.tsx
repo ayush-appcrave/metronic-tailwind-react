@@ -5,12 +5,12 @@ import { HexagonBadge } from '../common';
 import { CardItem1 } from '../dropdowns/general';
 import { Link } from 'react-router-dom';
 
-const Role = ({ path, title, subTitle, description, team }: IRoleProps) => {
+const Role = ({ path, title, subTitle, description, team, badge }: IRoleProps) => {
   return (
     <div className="card flex flex-col gap-5 p-5 lg:p-7.5">
       <div className="flex items-center flex-wrap justify-between gap-1">
         <div className="flex items-center gap-2.5">
-          <HexagonBadge />
+          <HexagonBadge badge={badge} />
           
           <div className="flex flex-col">
             <Link to={`/${path}`} className="text-md font-semibold text-gray-900 hover:text-primary-active mb-px">
