@@ -11,18 +11,17 @@ const App = () => {
   const { settings } = useSettings();
 
   useEffect(() => {
-    document.body.classList.remove('dark');
-    document.body.classList.remove('light');
-    document.body.classList.remove('page-loading');
-    document.body.classList.add(settings.mode);
+    console.log('settings updated:' + settings);
+    document.documentElement.classList.remove('dark');
+    document.documentElement.classList.remove('light');
+    document.documentElement.classList.remove('page-loading');
+    document.documentElement.classList.add(settings.mode);
   }, [settings]);
 
   return (
-    <ProvidersWrapper>
-      <BrowserRouter basename={BASE_URL}>
-        <AppRouting />
-      </BrowserRouter>
-    </ProvidersWrapper>
+    <BrowserRouter basename={BASE_URL}>
+      <AppRouting />
+    </BrowserRouter>
   );
 };
 

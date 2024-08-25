@@ -5,11 +5,13 @@ import { useResponsive } from '@/hooks';
 
 import { useDemo1Layout } from '../';
 import { SidebarContent, SidebarFooter, SidebarHeader } from './';
+import clsx from 'clsx';
 
 const Sidebar = () => {
   const desktopMode = useResponsive('up', 'lg');
   const { mobileSidebarOpen, setMobileSidebarOpen } = useDemo1Layout();
-  const [headerHeight, setHeaderHeight] = useState(0);
+  const [ headerHeight, setHeaderHeight ] = useState(0);
+  const { layout } = useDemo1Layout();
 
   const handleMobileSidebarClose = () => {
     setMobileSidebarOpen(false);
@@ -17,7 +19,10 @@ const Sidebar = () => {
 
   const renderContent = () => {
     return (
-      <div className="sidebar lg:fixed lg:z-20 lg:top-0 lg:bottom-0 lg:left-0 lg:translate-x-0 lg:flex flex-col items-stretch shrink-0 bg-white lg:border lg:border-r-gray-200">
+      <div className={clsx(
+          'sidebar lg:fixed lg:z-20 lg:top-0 lg:bottom-0 lg:left-0 lg:translate-x-0 lg:flex flex-col items-stretch shrink-0 bg-light lg:border lg:border-r-gray-200',
+          layout.options.sidebar.theme === 'dark' ? 'dark [&.dark]:bg-coal-600' : 'dark:bg-coal-600'
+        )}>
         {desktopMode && <SidebarHeader setHeaderHeight={setHeaderHeight} />}
         <SidebarContent {...(desktopMode && { headerHeight })}/>
       </div>

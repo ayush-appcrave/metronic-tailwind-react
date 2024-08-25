@@ -35,7 +35,7 @@ const useSettings = () => useContext(LayoutsContext);
 
 const SettingsProvider = ({ children }: PropsWithChildren) => {
   const [settings, setSettings] = useState(initialProps.settings);
-
+  
   const updateSettings = (newSettings: Partial<ISettings>) => {
     setSettings({ ...settings, ...newSettings });
   };

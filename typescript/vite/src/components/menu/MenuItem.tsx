@@ -245,7 +245,10 @@ const MenuItemComponent = forwardRef<HTMLDivElement | null, IMenuItemProps>(
           open={isSubMenuOpen}
           autoFocus={false}
         >
-          <div className="menu-container" ref={menuContainerRef} style={{ pointerEvents: 'auto' }}>
+          <div 
+            className={clsx('menu-container', child.props.rootClassName && child.props.rootClassName)} 
+            ref={menuContainerRef} style={{ pointerEvents: 'auto' }}
+          >
             <ClickAwayListener onClickAway={handleClose}>{modofiedChild}</ClickAwayListener>
           </div>
         </Popper>

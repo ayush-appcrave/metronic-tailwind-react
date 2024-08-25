@@ -1,7 +1,7 @@
 import { ISettings } from './types';
 
 const defaultSettings: ISettings = {
-  mode: 'light',
+  mode: 'dark',
   keenIconsStyle: 'filled',
   container: 'fixed'
 };

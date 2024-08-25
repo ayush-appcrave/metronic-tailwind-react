@@ -26,7 +26,7 @@ const MegaMenu = () => {
 
   const renderContent = () => {
     return (
-      <Menu className="menu flex-col lg:flex-row gap-5 lg:gap-7.5">
+      <Menu className="flex-col lg:flex-row gap-5 lg:gap-7.5">
         {MegaMenuContent(MENU_MEGA)}
       </Menu>
     );

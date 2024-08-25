@@ -85,6 +85,7 @@ export interface IMenuSubProps {
   ref?: any;
   tabIndex?: number;
   className?: string;
+  rootClassName?: string;
   onLinkClick?: MenuClickEventType;
   onLinksClick?: MenuClickEventType;
   handleParentClose?: CallableFunction;

@@ -36,7 +36,7 @@ const MegaMenuContent = (items: MenuConfigType) => {
   const build = (items: MenuConfigType) => {
     return (
       <>
-        <MenuItem key="home" path={homeItem.path} className="">
+        <MenuItem key="home" path={homeItem.path}>
           <MenuLink className="text-sm text-gray-800 menu-item-hover:text-primary menu-item-active:text-gray-900 menu-item-active:font-medium">
             <MenuTitle className="text-nowrap">
               {homeItem.title}
@@ -45,8 +45,7 @@ const MegaMenuContent = (items: MenuConfigType) => {
         </MenuItem>
         
         <MenuItem 
-          key="public-profiles" 
-          className=""
+          key="public-profiles"
           toggle="dropdown"
           trigger="hover"
           dropdownProps={{
@@ -86,7 +85,6 @@ const MegaMenuContent = (items: MenuConfigType) => {
         
         <MenuItem 
           key="my-account" 
-          className=""
           toggle="dropdown"
           trigger="hover"
           dropdownProps={{
@@ -135,7 +133,6 @@ const MegaMenuContent = (items: MenuConfigType) => {
         
         <MenuItem 
           key="network" 
-          className=""
           toggle="dropdown"
           trigger="hover"
           dropdownProps={{
@@ -190,7 +187,6 @@ const MegaMenuContent = (items: MenuConfigType) => {
         
         <MenuItem 
           key="auth" 
-          className=""
           toggle="dropdown"
           trigger="hover"
           dropdownProps={{
@@ -245,7 +241,6 @@ const MegaMenuContent = (items: MenuConfigType) => {
         
         <MenuItem 
           key="help" 
-          className=""
           toggle="dropdown"
           trigger="hover"
           dropdownProps={{
