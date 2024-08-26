@@ -79,18 +79,66 @@ export interface IDefaultRecentUploadsItem {
 export interface IDefaultRecentUploadsItems extends Array<IDefaultRecentUploadsItem> {}
 
 export interface IApexContributionsOptions {
-  colors: string[];
-  series: number[];
+  series: any[];
   labels: string[];
+  colors: string[];
+  fill: {
+    colors: string[];
+  };
+  chart: {
+    type: 'donut';
+  };
+  stroke: {
+    show: boolean;
+    width: number;
+    colors: string | string[];
+  };
   dataLabels: {
     enabled: boolean;
   };
+  plotOptions: {
+    pie: {
+      expandOnClick: boolean;
+    };
+  };
+  legend: {
+    offsetY: number;
+    offsetX: number;
+    fontSize: string;
+    fontWeight: string;
+    itemMargin: {
+      vertical: number;
+    };
+    labels: {
+      colors: string;
+      useSeriesColors: boolean;
+    };
+    markers: {
+      width: number;
+      height: number;
+    };
+  };
+  responsive: {
+    breakpoint: number;
+    options: {
+      chart: {
+        width: number;
+      };
+      legend: {
+        position: string;
+      };
+    };
+  }[];
 }
 
-type CurveType = 'smooth' | 'straight' | 'stepline' | 'monotoneCubic';
-
 export interface IApexMediaUploadsOptions {
+  series: {
+    name: string;
+    data: number[];
+  }[];
   chart: {
+    height: number;
+    type: 'area';
     toolbar: {
       show: boolean;
     };
@@ -98,26 +146,14 @@ export interface IApexMediaUploadsOptions {
   dataLabels: {
     enabled: boolean;
   };
-  markers: {
-    size: number;
-    colors: string;
-    strokeColor: string;
-    hover: {
-      sizeOffset: number;
-    };
+  legend: {
+    show: boolean;
   };
   stroke: {
+    curve: 'smooth';
+    show: boolean;
     width: number;
-    curve: CurveType;
     colors: string[];
-  };
-  fill: {
-    type: string;
-    gradient: {
-      shadeIntensity: number;
-      opacityFrom: number;
-      opacityTo: number;
-    };
   };
   xaxis: {
     categories: string[];
@@ -129,25 +165,82 @@ export interface IApexMediaUploadsOptions {
     };
     labels: {
       style: {
-        colors: string[];
+        colors: string;
+        fontSize: string;
+      };
+    };
+    crosshairs: {
+      position: string;
+      stroke: {
+        color: string;
+        width: number;
+        dashArray: number;
+      };
+    };
+    tooltip: {
+      enabled: boolean;
+      formatter?: undefined;
+      offsetY: number;
+      style: {
         fontSize: string;
       };
     };
   };
   yaxis: {
+    min: number;
+    max: number;
+    tickAmount: number;
+    axisTicks: {
+      show: boolean;
+    };
     labels: {
       style: {
-        colors: string[];
+        colors: string;
         fontSize: string;
       };
+      formatter: (value: number) => string;
     };
   };
-  series: Array<{
-    name: string;
-    data: number[];
-  }>;
+  tooltip: {
+    enabled: boolean;
+    custom: ({ series, seriesIndex, dataPointIndex, w }: any) => string;
+  };
+  markers: {
+    size: number;
+    colors: string;
+    strokeColors: string;
+    strokeWidth: number;
+    strokeOpacity: number;
+    strokeDashArray: number;
+    fillOpacity: number;
+    shape: ApexMarkerShape;
+    radius: number;
+    showNullDataPoints: boolean;
+    hover: {
+      size: number;
+      sizeOffset: number;
+    };
+  };
+  fill: {
+    gradient: {
+      enabled: boolean;
+      opacityFrom: number;
+      opacityTo: number;
+    };
+  };
   grid: {
     borderColor: string;
     strokeDashArray: number;
+    clipMarkers: boolean;
+    yaxis: {
+      lines: {
+        show: boolean;
+      };
+    };
+    xaxis: {
+      lines: {
+        show: boolean;
+      };
+    };
   };
 }
