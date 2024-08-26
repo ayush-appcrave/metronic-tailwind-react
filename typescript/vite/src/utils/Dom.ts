@@ -13,22 +13,18 @@ const getViewPort = (): { width: number; height: number } => {
   };
 };
 
-const getTotalHeight = (element: HTMLElement): number => {
+const getHeight = (element: HTMLElement): number => {
   if (!element) return 0;
 
   const styles = window.getComputedStyle(element);
-  const height = element.offsetHeight;
-  const paddingTop = parseFloat(styles.paddingTop);
-  const paddingBottom = parseFloat(styles.paddingBottom);
-  const borderTop = parseFloat(styles.borderTopWidth);
-  const borderBottom = parseFloat(styles.borderBottomWidth);
+
+  const height = element.getBoundingClientRect().height; // Actual height of the element
   const marginTop = parseFloat(styles.marginTop);
   const marginBottom = parseFloat(styles.marginBottom);
 
-  const totalHeight =
-    height + paddingTop + paddingBottom + borderTop + borderBottom + marginTop + marginBottom;
+  const totalHeight = height + marginTop + marginBottom;
 
   return totalHeight;
 };
 
-export { getTotalHeight, getViewPort };
+export { getHeight, getViewPort };

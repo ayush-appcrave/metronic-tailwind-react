@@ -1,17 +1,34 @@
 import { Drawer } from '@mui/material';
-import { useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 
-import { useResponsive } from '@/hooks';
+import { useResponsive, useViewport } from '@/hooks';
 
 import { useDemo1Layout } from '../';
-import { SidebarContent, SidebarFooter, SidebarHeader } from './';
+import { SidebarContent, SidebarHeader } from './';
 import clsx from 'clsx';
+import { getHeight } from '@/utils';
 
 const Sidebar = () => {
+  const selfRef = useRef<HTMLDivElement>(null);
+  const headerRef = useRef<HTMLDivElement>(null);
+  const [contentHeight, setContentHeight] = useState<number>(0);
+  const [viewportHeight] = useViewport();
+
+  useEffect(() => {
+    if (headerRef.current) {
+      const headerHeight = getHeight(headerRef.current);
+      const availableHeight = viewportHeight - headerHeight;
+      setContentHeight(availableHeight);
+    } else {
+      setContentHeight(viewportHeight);
+    }
+  }, [viewportHeight]);
+
   const desktopMode = useResponsive('up', 'lg');
   const { mobileSidebarOpen, setMobileSidebarOpen } = useDemo1Layout();
-  const [ headerHeight, setHeaderHeight ] = useState(0);
+  const [headerHeight, setHeaderHeight] = useState(0);
   const { layout } = useDemo1Layout();
+  const themeClass:string = layout.options.sidebar.theme === 'dark' ? 'dark [&.dark]:bg-coal-600' : 'dark:bg-coal-600';
 
   const handleMobileSidebarClose = () => {
     setMobileSidebarOpen(false);
@@ -19,12 +36,9 @@ const Sidebar = () => {
 
   const renderContent = () => {
     return (
-      <div className={clsx(
-          'sidebar lg:fixed lg:z-20 lg:top-0 lg:bottom-0 lg:left-0 lg:translate-x-0 lg:flex flex-col items-stretch shrink-0 bg-light lg:border lg:border-r-gray-200',
-          layout.options.sidebar.theme === 'dark' ? 'dark [&.dark]:bg-coal-600' : 'dark:bg-coal-600'
-        )}>
-        {desktopMode && <SidebarHeader setHeaderHeight={setHeaderHeight} />}
-        <SidebarContent {...(desktopMode && { headerHeight })}/>
+      <div ref={selfRef} className={clsx('sidebar lg:fixed lg:z-20 lg:top-0 lg:bottom-0 lg:left-0 lg:translate-x-0 lg:flex flex-col items-stretch shrink-0 bg-light lg:border lg:border-r-gray-200', themeClass)}>
+        {desktopMode && <SidebarHeader ref={headerRef} />}
+        <SidebarContent {...(desktopMode && { height: contentHeight})}/>
       </div>
     );
   };
