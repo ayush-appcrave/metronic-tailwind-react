@@ -4,7 +4,7 @@ import { toAbsoluteUrl } from '@/utils/Assets';
 import { IIntegrationProps } from './interfaces';
 import { Link } from 'react-router-dom';
 
-const Integration = ({ logo, path, name, description }: IIntegrationProps) => {
+const Integration = ({ logo, path, name, description, actions }: IIntegrationProps) => {
   return (
     <div className="card">
       <div className="card-body p-5 lg:p-7.5">
@@ -35,7 +35,7 @@ const Integration = ({ logo, path, name, description }: IIntegrationProps) => {
           Connect
         </a>
         <div className="flex items-center gap-2.5">
-
+          {actions}
         </div>
       </div>
     </div>

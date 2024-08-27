@@ -290,6 +290,7 @@ export interface IIntegrationProps {
   path: string;
   name: string;
   description: string;
+  actions: React.ReactNode;
 }
 
 export interface INFT2Item {

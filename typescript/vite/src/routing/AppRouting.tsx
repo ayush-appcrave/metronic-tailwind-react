@@ -34,6 +34,7 @@ import {
   GetStartedPage,
   HistoryPage,
   ImportMembersPage,
+  IntegrationsPage,
   MembersStarterPage,
   OverviewPage,
   PermissionsCheckPage,
@@ -146,6 +147,7 @@ const AppRouting = (): ReactElement => {
           <Route path="/account/members/roles" element={<RolesPage />} />
           <Route path="/account/members/permissions-toggler" element={<PermissionsTogglePage />} />
           <Route path="/account/members/permissions-check" element={<PermissionsCheckPage />} />
+          <Route path="/account/members/integrations" element={<IntegrationsPage />} />
           <Route index element={<Navigate to="/dashboard" />} />
         </Route>
       </Route>
