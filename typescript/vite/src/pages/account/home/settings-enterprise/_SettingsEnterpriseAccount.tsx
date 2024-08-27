@@ -15,7 +15,7 @@ const SettingsEnterpriseAccount = ({ title }: ISettingsEnterpriseAccountProps) =
             <span className="switch-label">
               Public Profile
             </span>
-            <input type="checkbox" value="1" name="check" defaultChecked />    
+            <input type="checkbox" value="1" name="check" defaultChecked readOnly />    
           </label>
         </div>
       </div>

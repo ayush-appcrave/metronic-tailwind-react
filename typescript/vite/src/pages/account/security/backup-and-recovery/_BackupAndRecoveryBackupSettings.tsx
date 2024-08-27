@@ -8,7 +8,7 @@ const BackupAndRecoveryBackupSettings = () => {
       control: (
         <>
           <label className="switch switch-sm">
-            <input checked name="check" type="checkbox" value="1" className="order-2" />
+            <input defaultChecked name="check" type="checkbox" value="1" className="order-2" readOnly />
           </label>
         </>
       )
@@ -20,7 +20,7 @@ const BackupAndRecoveryBackupSettings = () => {
         <>
           <select className="select select-sm max-w-24">
             <option value="daily">Daily</option>
-            <option value="weekly" selected>Weekly</option>
+            <option value="weekly">Weekly</option>
             <option value="monthly">Monthly</option>
             <option value="yearly">Yearly</option>
           </select>

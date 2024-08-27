@@ -15,7 +15,7 @@ const PrivacySettingsManageData = () => {
     {
       title: 'No one',
       description: 'Reports will be visible only for you.',
-      control: <div className="switch switch-sm"><input type="checkbox" name="param" value="1" /></div>
+      control: <div className="switch switch-sm"><input type="checkbox" name="param" value="1" readOnly /></div>
     }
   ];
 

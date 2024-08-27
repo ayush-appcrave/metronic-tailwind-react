@@ -32,63 +32,67 @@ const TeamInfo = () => {
       </div>
       <div className="card-table scrollable-x-auto pb-3">
         <table className="table align-middle text-sm">
-          <tr>
-            <td className="py-2 min-w-32 text-gray-600 font-normal">Thumbnail</td>
-            <td className="py-2 text-gray-700 font-normal min-w-32 text-2sm">150x150px JPEG, PNG Image</td>
-            <td className="py-2 text-center min-w-16">
-              <AvatarUpload image="/media/images/600x600/23.jpg"/>
-            </td>
-          </tr>
-          <tr>
-            <td className="py-2 text-gray-600 font-normal">Team Name</td>
-            <td className="py-2 text-gray-700 font-normal">
-              Product Management
-            </td>
-            <td className="py-2 text-center">
-              <a href="#" className="btn btn-sm btn-icon btn-clear btn-primary">
-                <KeenIcon icon="notepad-edit" />
-              </a>
-            </td>
-          </tr>
-          <tr>
-            <td className="py-2 text-gray-600 font-normal">Description</td>
-            <td className="py-2 text-gray-700 font-normal">
-              We're open to partnerships, guest posts, and more. Join us to share your insights and grow your audience.
-            </td>
-            <td className="py-2 text-center">
-              <a href="#" className="btn btn-sm btn-icon btn-clear btn-primary">
-                <KeenIcon icon="notepad-edit" />
-              </a>
-            </td>
-          </tr>
-          <tr>
-            <td className="py-3  text-gray-600 font-normal">View as</td>
-            <td className="py-3 text-gray-700">
-              <span className="badge badge-sm badge-outline badge-success">
-                Public
-              </span>
-            </td>
-            <td className="py-3 text-center">
-              <a href="#" className="btn btn-sm btn-icon btn-clear btn-primary">
-                <KeenIcon icon="notepad-edit" />
-              </a>
-            </td>
-          </tr>
-          <tr>
-            <td className="py-3 text-gray-600 font-normal">Skills</td>
-            <td className="py-3 text-gray-700">
-              <div className="flex flex-wrap gap-2.5">
-                {skills.map((skill, index) => {
-                  return renderItem(skill, index);
-                })}
-              </div>
-            </td>
-            <td className="py-3 text-center">
-              <a href="#" className="btn btn-sm btn-icon btn-clear btn-primary">
-                <KeenIcon icon="notepad-edit" />
-              </a>
-            </td>
-          </tr>
+          <thead>
+            <tr>
+              <td className="py-2 min-w-32 text-gray-600 font-normal">Thumbnail</td>
+              <td className="py-2 text-gray-700 font-normal min-w-32 text-2sm">150x150px JPEG, PNG Image</td>
+              <td className="py-2 text-center min-w-16">
+                <AvatarUpload image="/media/images/600x600/23.jpg"/>
+              </td>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td className="py-2 text-gray-600 font-normal">Team Name</td>
+              <td className="py-2 text-gray-700 font-normal">
+                Product Management
+              </td>
+              <td className="py-2 text-center">
+                <a href="#" className="btn btn-sm btn-icon btn-clear btn-primary">
+                  <KeenIcon icon="notepad-edit" />
+                </a>
+              </td>
+            </tr>
+            <tr>
+              <td className="py-2 text-gray-600 font-normal">Description</td>
+              <td className="py-2 text-gray-700 font-normal">
+                We're open to partnerships, guest posts, and more. Join us to share your insights and grow your audience.
+              </td>
+              <td className="py-2 text-center">
+                <a href="#" className="btn btn-sm btn-icon btn-clear btn-primary">
+                  <KeenIcon icon="notepad-edit" />
+                </a>
+              </td>
+            </tr>
+            <tr>
+              <td className="py-3  text-gray-600 font-normal">View as</td>
+              <td className="py-3 text-gray-700">
+                <span className="badge badge-sm badge-outline badge-success">
+                  Public
+                </span>
+              </td>
+              <td className="py-3 text-center">
+                <a href="#" className="btn btn-sm btn-icon btn-clear btn-primary">
+                  <KeenIcon icon="notepad-edit" />
+                </a>
+              </td>
+            </tr>
+            <tr>
+              <td className="py-3 text-gray-600 font-normal">Skills</td>
+              <td className="py-3 text-gray-700">
+                <div className="flex flex-wrap gap-2.5">
+                  {skills.map((skill, index) => {
+                    return renderItem(skill, index);
+                  })}
+                </div>
+              </td>
+              <td className="py-3 text-center">
+                <a href="#" className="btn btn-sm btn-icon btn-clear btn-primary">
+                  <KeenIcon icon="notepad-edit" />
+                </a>
+              </td>
+            </tr>
+          </tbody>
         </table>
       </div>
     </div>

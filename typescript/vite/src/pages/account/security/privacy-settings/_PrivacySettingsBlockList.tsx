@@ -74,7 +74,7 @@ const PrivacySettingsBlockList = ({ text, limit, className }: IPrivacySettingsBl
         </div>
 
         <div className="input-group">
-          <input className="input" placeholder="Block new user" type="text" value=""/>
+          <input className="input" placeholder="Block new user" type="text" value="" readOnly/>
           <span className="btn btn-primary">
             Add
           </span>

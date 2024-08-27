@@ -100,6 +100,7 @@ const Roles = () => {
   const renderItem = (item: IRolesItem, index: number) => {
     return (
       <Role
+        key={index}
         title={item.title}
         subTitle={item.subTitle}
         description={item.description}

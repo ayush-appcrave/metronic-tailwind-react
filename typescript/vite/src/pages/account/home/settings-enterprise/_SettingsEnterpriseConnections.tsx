@@ -120,16 +120,20 @@ const SettingsEnterpriseConnections = () => {
       <div className="card-table scrollable-x-auto">
         <div className="scrollable-auto">
           <table className="table align-middle text-2sm text-gray-600">
-            <tr className="bg-gray-100">
-              <th className="text-start font-medium min-w-48 py-2.5">Name</th>
-              <th className="text-right font-medium min-w-20 py-2.5">Joint Links</th>
-              <th className="text-right font-medium min-w-20 py-2.5">Status</th>
-              <th className="min-w-16"></th>
-            </tr>
+            <thead>
+              <tr className="bg-gray-100">
+                <th className="text-start font-medium min-w-48 py-2.5">Name</th>
+                <th className="text-right font-medium min-w-20 py-2.5">Joint Links</th>
+                <th className="text-right font-medium min-w-20 py-2.5">Status</th>
+                <th className="min-w-16"></th>
+              </tr>
+            </thead>
           
-            {tables.map((table, index) => {
-              return renderItem(table, index);
-            })}
+            <tbody>
+              {tables.map((table, index) => {
+                return renderItem(table, index);
+              })}
+            </tbody>
           </table>
         </div>
       </div>

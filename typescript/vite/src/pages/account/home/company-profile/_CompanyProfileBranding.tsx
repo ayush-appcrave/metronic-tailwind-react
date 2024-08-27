@@ -23,7 +23,7 @@ const CompanyProfileBranding = () => {
           <div className="flex items-center gap-2">
             <label className="switch switch-sm">
               <span className="switch-label">Publish</span>
-              <input type="checkbox" value="1" name="check" />
+              <input type="checkbox" value="1" name="check" readOnly />
             </label>
           </div>
         </div>
@@ -69,7 +69,7 @@ const CompanyProfileBranding = () => {
                             18.4282V29.5718C43.1506 33.6804 40.9587 37.4768 37.4006 39.5311L27.75 45.1029C24.1919 47.1572 19.8081 47.1572 16.25 45.1029L6.59937 
                             39.5311C3.04125 37.4768 0.849365 33.6803 0.849365 29.5718V18.4282C0.849365 14.3196 3.04125 10.5232 6.59937 8.46891L16.25 2.89711Z"
                           stroke=""
-                          stroke-opacity="0.2"
+                          strokeOpacity="0.2"
                         />
                       </svg>
 
@@ -105,7 +105,7 @@ const CompanyProfileBranding = () => {
 
             <label className="input">
               <KeenIcon icon="mouse-square" className="text-success solid" />
-              <input type="text" value="#BA35A0"/> 
+              <input type="text" value="#BA35A0" readOnly /> 
             </label>
           </div>
 
@@ -122,21 +122,21 @@ const CompanyProfileBranding = () => {
             <div className="flex flex-col gap-5 grow">
               <div className="flex flex-col gap-2.5">
                 <label className="checkbox-group">
-                  <input type="checkbox" className="checkbox checkbox-sm" value="1" />
+                  <input type="checkbox" className="checkbox checkbox-sm" value="1" readOnly />
                   <span className="checkbox-label">Security Questionaries</span>
                 </label>
                 <div className="form-hint">Detailed Risk Assessment & Compliance Verification</div>
               </div>
               <div className="flex flex-col gap-2.5">
                 <label className="checkbox-group">
-                  <input type="checkbox" className="checkbox checkbox-sm" checked value="1" />
+                  <input type="checkbox" className="checkbox checkbox-sm" checked value="1" readOnly />
                   <span className="checkbox-label">Emails</span>
                 </label>
                 <div className="form-hint">Electronic Message Communication</div>
               </div>
               <div className="flex flex-col gap-2.5">
                 <label className="checkbox-group">
-                  <input type="checkbox" className="checkbox checkbox-sm" checked value="1" />
+                  <input type="checkbox" className="checkbox checkbox-sm" checked value="1" readOnly />
                   <span className="checkbox-label">Vendor Reports</span>
                 </label>
                 <div className="form-hint">Supplier Performance & Reliability Evaluations</div>

@@ -15,6 +15,7 @@ const TeamMembersInvitePeople = () => {
             placeholder=""
             name="user_email"
             value="jason@studio.io"
+            readOnly
           />
         </div>
 
@@ -22,7 +23,7 @@ const TeamMembersInvitePeople = () => {
           <label className="form-label max-w-32">Role</label>
           <div className="flex flex-col items-start grow gap-5">
             <select className="select" name="user_role">
-              <option value="1" selected>Member</option>
+              <option value="1">Member</option>
               <option value="2">Editor</option>
               <option value="3">Designer</option>
               <option value="4">Admin</option>

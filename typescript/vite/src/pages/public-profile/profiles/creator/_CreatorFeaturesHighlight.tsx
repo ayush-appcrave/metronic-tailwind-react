@@ -1,5 +1,4 @@
 import { KeenIcon } from '@/components';
-import { toAbsoluteUrl } from '@/utils/Assets';
 
 import { ICreatorFeaturesHighlightProps } from './interfaces';
 
@@ -12,7 +11,7 @@ const CreatorFeaturesHighlight = ({
 }: ICreatorFeaturesHighlightProps) => {
   const renderItem = (cell: string, index: number) => {
     return (
-      <div className="flex items-center gap-1.5 pe-7.5">
+      <div key={index} className="flex items-center gap-1.5 pe-7.5">
         <KeenIcon icon="check-circle" className="text-base text-success" />
         <span className="text-sm text-gray-900 text-nowrap">{cell}</span>
       </div>
@@ -33,11 +32,11 @@ const CreatorFeaturesHighlight = ({
 
             <div className="grid md:grid-cols-2 gap-2">
               {features.map((feature, index) => (
-                <tr key={index}>
+                <div key={index}>
                   {feature.map((cell, index) => {
                     return renderItem(cell, index);
                   })}
-                </tr>
+                </div>
               ))}
             </div>
           </div>

@@ -2,6 +2,7 @@ import { toAbsoluteUrl } from '@/utils/Assets';
 
 import { ICreatorUpcomingEventsItem, ICreatorUpcomingEventsItems } from './interfaces';
 import { Link } from 'react-router-dom';
+import React from 'react';
 
 const CreatorUpcomingEvents = () => {
   const items: ICreatorUpcomingEventsItems = [
@@ -33,7 +34,7 @@ const CreatorUpcomingEvents = () => {
 
   const renderItem = (item: ICreatorUpcomingEventsItem, index: number) => {
     return (
-      <>
+      <React.Fragment key={index}>
         <div className="flex flex-col md:flex-row md:items-center gap-5">
           <div className="flex items-center gap-5 shrink-0">
             <div className="border border-brand-clarity rounded-lg">
@@ -72,7 +73,7 @@ const CreatorUpcomingEvents = () => {
         </div>
 
         <div className="[&:not(:last-child)]:border-b border-b-gray-200"></div>
-      </>
+      </React.Fragment>
     );
   };
 

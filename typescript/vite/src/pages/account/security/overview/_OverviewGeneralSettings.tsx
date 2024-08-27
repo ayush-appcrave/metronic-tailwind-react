@@ -13,7 +13,7 @@ const OverviewGeneralSettings = () => {
         </>
       ),
       description: 'Restrict members from sending invites to new potential members.',
-      actions: <div className="switch switch-sm"><input type="checkbox" name="param" value="1" /></div>
+      actions: <div className="switch switch-sm"><input type="checkbox" name="param" value="1" readOnly /></div>
     },
     {
       icon: 'abstract-37',
@@ -24,13 +24,13 @@ const OverviewGeneralSettings = () => {
         </>
       ),
       description: 'Prohibit the installation of external apps or integrations by members..',
-      actions: <div className="switch switch-sm"><input type="checkbox" name="param" value="1" /></div>
+      actions: <div className="switch switch-sm"><input type="checkbox" name="param" value="1" readOnly /></div>
     },
     {
       icon: 'geolocation',
       title: 'Allow use location',
       description: "Enable feature to use and share the user's location.",
-      actions: <div className="switch switch-sm"><input type="checkbox" name="param" checked value="1" /></div>
+      actions: <div className="switch switch-sm"><input type="checkbox" name="param" checked value="1" readOnly /></div>
     },
     {
       icon: 'shield-tick',
@@ -47,13 +47,13 @@ const OverviewGeneralSettings = () => {
       icon: 'badge',
       title: 'Allow public profile',
       description: 'Enable users to create and display a profile publicly.',
-      actions: <div className="switch switch-sm"><input type="checkbox" name="param" checked value="1" /></div>
+      actions: <div className="switch switch-sm"><input type="checkbox" name="param" checked value="1" readOnly /></div>
     },
     {
       icon: 'check-circle',
       title: 'Allow use location',
       description: "Enable feature to use and share the user's location.",
-      actions: <div className="switch switch-sm"><input type="checkbox" name="param" value="1" /></div>
+      actions: <div className="switch switch-sm"><input type="checkbox" name="param" value="1" readOnly /></div>
     },
     {
       icon: 'questionnaire-tablet',

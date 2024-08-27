@@ -44,6 +44,7 @@ import {
   SecurityGetStartedPage,
   SecurityLogPage,
   SettingsEnterprisePage,
+  SettingsModalPage,
   SettingsPlainPage,
   SettingsSidebarPage,
   TeamInfoPage,
@@ -123,6 +124,7 @@ const AppRouting = (): ReactElement => {
           <Route path="/account/home/settings-sidebar" element={<SettingsSidebarPage />} />
           <Route path="/account/home/settings-enterprise" element={<SettingsEnterprisePage />} />
           <Route path="/account/home/settings-plain" element={<SettingsPlainPage />} />
+          <Route path="/account/home/settings-modal" element={<SettingsModalPage />} />
           <Route path="/account/billing/basic" element={<BasicPage />} />
           <Route path="/account/billing/enterprise" element={<EnterprisePage />} />
           <Route path="/account/billing/plans" element={<PlansPage />} />

@@ -9,7 +9,7 @@ const SettingsPlainGeneralSettings = ({ title }: ISettingsPlainGeneralSettingsPr
         <div className="flex items-center gap-2">
           <label className="switch switch-sm">
             <span className="switch-label">Public Profile</span> 
-            <input type="checkbox" value="1" name="check" defaultChecked />
+            <input type="checkbox" value="1" name="check" defaultChecked readOnly />
           </label>
         </div>
       </div>
@@ -25,25 +25,25 @@ const SettingsPlainGeneralSettings = ({ title }: ISettingsPlainGeneralSettingsPr
         <div className="flex items-baseline flex-wrap lg:flex-nowrap gap-2.5">
           <label className="form-label max-w-56">Name</label>
           
-          <input type="text" className="input" value="Jason Tatum" />
+          <input type="text" className="input" value="Jason Tatum" readOnly />
         </div>
 
         <div className="flex items-baseline flex-wrap lg:flex-nowrap gap-2.5">
           <label className="form-label max-w-56">Phone number</label>
           
-          <input type="text" className="input" placeholder="Phone number" value="" />
+          <input type="text" className="input" placeholder="Phone number" value="" readOnly />
         </div>
 
         <div className="flex items-baseline flex-wrap lg:flex-nowrap gap-2.5">
           <label className="form-label max-w-56">Email</label>
         
-          <input type="text" className="input" value="jason@studio.io" />
+          <input type="text" className="input" value="jason@studio.io" readOnly />
         </div>   
 
         <div className="flex items-baseline flex-wrap lg:flex-nowrap gap-2.5">
           <label className="form-label max-w-56">Address</label>
 
-          <input type="text" className="input" placeholder="" value="Avinguda Imaginària, 789" />
+          <input type="text" className="input" placeholder="" value="Avinguda Imaginària, 789" readOnly />
         </div>
 
         <div className="flex items-baseline flex-wrap lg:flex-nowrap gap-2.5">
@@ -59,19 +59,19 @@ const SettingsPlainGeneralSettings = ({ title }: ISettingsPlainGeneralSettingsPr
         <div className="flex items-baseline flex-wrap lg:flex-nowrap gap-2.5">
           <label className="form-label max-w-56">State</label>
           
-          <input type="text" className="input" placeholder="State" value="" />
+          <input type="text" className="input" placeholder="State" value="" readOnly />
         </div>
 
         <div className="flex items-baseline flex-wrap lg:flex-nowrap gap-2.5">
           <label className="form-label max-w-56">City</label>
           
-          <input type="text" className="input" value="Barcelona" />
+          <input type="text" className="input" value="Barcelona" readOnly />
         </div>
 
         <div className="flex items-baseline flex-wrap lg:flex-nowrap gap-2.5 mb-2.5">
           <label className="form-label max-w-56">Postcode</label>
           
-          <input type="text" className="input" value="08012" />
+          <input type="text" className="input" value="08012" readOnly />
         </div>
 
         <div className="flex justify-end">

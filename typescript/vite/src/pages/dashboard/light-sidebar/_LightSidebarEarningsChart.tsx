@@ -75,8 +75,8 @@ const LightSidebarEarningsChart = () => {
           colors: 'var(--tw-gray-500)',
           fontSize: '12px'
         },
-        formatter: (value) => {
-          return `$${value}K`;
+        formatter: (defaultValue) => {
+          return `$${defaultValue}K`;
         }
       }
     },
@@ -159,7 +159,7 @@ const LightSidebarEarningsChart = () => {
 
         <div className="flex gap-5">
           <label className="switch switch-sm">
-            <input name="check" type="checkbox" value="1" className="order-2" />
+            <input name="check" type="checkbox" value="1" className="order-2" readOnly />
             <span className="switch-label order-1">
               Referrals only 
             </span>
@@ -175,7 +175,7 @@ const LightSidebarEarningsChart = () => {
             <option value="3">
               6 month
             </option>
-            <option selected value="4">
+            <option value="4">
               12 month
             </option>
           </select>

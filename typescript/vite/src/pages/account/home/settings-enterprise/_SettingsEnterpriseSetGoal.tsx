@@ -41,7 +41,7 @@ const SettingsEnterpriseSetGoal = () => {
           </div>
 
           <div className="mb-3">
-            <input className="range card" id="range_1" max="10" min="0" type="range" value="1" />
+            <input className="range card" id="range_1" max="10" min="0" type="range" value="1" readOnly />
           </div>
         </div>
       </div>

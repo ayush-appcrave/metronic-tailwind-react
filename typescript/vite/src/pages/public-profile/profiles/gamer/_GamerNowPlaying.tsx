@@ -1,6 +1,7 @@
 import { NowPlaying } from '@/partials/cards';
 
 import { IGamerNowPlayingItem, IGamerNowPlayingItems } from './interfaces';
+import React from 'react';
 
 const GamerNowPlaying = () => {
   const items: IGamerNowPlayingItems = [
@@ -149,7 +150,7 @@ const GamerNowPlaying = () => {
 
   const renderItem = (item: IGamerNowPlayingItem, index: number) => {
     return (
-      <>
+      <React.Fragment key={index}>
         <NowPlaying
           image={item.image}
           logo={item.logo}
@@ -158,9 +159,8 @@ const GamerNowPlaying = () => {
           team={item.team}
           label={item.label}
           title={item.title}
-          key={index}
         />
-      </>
+      </React.Fragment>
     );
   };
 

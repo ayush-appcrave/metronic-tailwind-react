@@ -48,7 +48,7 @@ const Comments = ({ items }: ICommentsProps) => {
           alt=""
         />
         <div className="input input-lg">
-          <input type="text" placeholder="your comment.." value="" />
+          <input type="text" placeholder="your comment.." value="" readOnly />
           <button className="btn btn-icon btn-sm">
             <KeenIcon icon="picture" />
           </button>

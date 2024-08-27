@@ -98,7 +98,7 @@ export interface IApexEarningsChartOptions {
         colors: string;
         fontSize: string;
       };
-      formatter: (value: number) => string;
+      formatter: (defaultValue: number) => string;
     };
   };
   tooltip: {

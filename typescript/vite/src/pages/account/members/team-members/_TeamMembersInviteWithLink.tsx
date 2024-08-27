@@ -18,6 +18,7 @@ const TeamMembersInviteWithLink = () => {
                 placeholder=""
                 name="user_email"
                 value="https://www.ktstudio.com/RSVP?c=12345XYZt"
+                readOnly
               />
               <button className="btn btn-clear btn-light btn-icon btn-sm absolute right-0 top-2/4 -translate-y-2/4 me-1.5">
                 <KeenIcon icon="copy" />

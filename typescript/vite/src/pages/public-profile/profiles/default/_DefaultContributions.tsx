@@ -37,14 +37,14 @@ const DefaultContributions = ({ title }: IDefaultContributionsProps) => {
     legend: {
       offsetY: -10,
       offsetX: -10,
-      fontSize: '13px', // Set the font size
-      fontWeight: '500', // Set the font weight
+      fontSize: '13px',
+      fontWeight: '500',
       itemMargin: {
-        vertical: 1 // Reduce the vertical margin between legend items
+        vertical: 1
       },
       labels: {
-        colors: 'var(--tw-gray-700)', // Set the font color for the legend text
-        useSeriesColors: false // Optional: Set to true to use series colors for legend text
+        colors: 'var(--tw-gray-700)',
+        useSeriesColors: false
       },
       markers: {
         width: 8,

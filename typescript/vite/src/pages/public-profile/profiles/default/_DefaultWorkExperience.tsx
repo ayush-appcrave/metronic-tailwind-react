@@ -29,9 +29,9 @@ const DefaultWorkExperience = () => {
     }
   ];
 
-  const renderItem = (item: IDefaultWorkExperienceItem) => {
+  const renderItem = (item: IDefaultWorkExperienceItem, index: number) => {
     return (
-      <>
+      <div key={index}>
         {item.heading ? (
           <div className="text-gray-600 font-semibold text-sm leading-none">{item.heading}</div>
         ) : (
@@ -60,7 +60,7 @@ const DefaultWorkExperience = () => {
             </div>
           </div>
         )}
-      </>
+      </div>
     );
   };
 
@@ -73,7 +73,7 @@ const DefaultWorkExperience = () => {
       <div className="card-body">
         <div className="grid gap-y-5">
           {items.map((item, index) => {
-            return renderItem(item);
+            return renderItem(item, index);
           })}
         </div>
       </div>

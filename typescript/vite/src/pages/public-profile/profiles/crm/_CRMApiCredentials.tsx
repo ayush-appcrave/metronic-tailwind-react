@@ -23,6 +23,7 @@ const CRMApiCredentials = () => {
               className="input w-full input-sm"
               placeholder="hwewe4654fdd5sdfh"
               value=""
+              readOnly
             />
             <button className="btn btn-clear btn-icon btn-sm text-gray-600 absolute right-0 top-2/4 -translate-y-2/4 me-1.5">
               <KeenIcon icon="copy" />

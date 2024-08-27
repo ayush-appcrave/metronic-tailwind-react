@@ -77,7 +77,7 @@ const DefaultMediaUploads = () => {
           colors: 'var(--tw-gray-500)',
           fontSize: '12px'
         },
-        formatter: (value: number) => `$${value}K`
+        formatter: (defaultValue: number) => `$${defaultValue}K`
       }
     },
     tooltip: {

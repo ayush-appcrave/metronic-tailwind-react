@@ -8,7 +8,7 @@ const OverviewQuickSettings = () => {
       icon: 'shield-tick',
       title: 'Enforce two-step verification',
       description: 'Add an extra layer of security with two-step verification.',
-      actions: <div className="switch switch-sm"><input type="checkbox" checked name="param" value="1" /></div>
+      actions: <div className="switch switch-sm"><input type="checkbox" checked name="param" value="1" readOnly /></div>
     },
     {
       icon: 'exit-right',

@@ -198,7 +198,7 @@ export interface IApexMediaUploadsOptions {
         colors: string;
         fontSize: string;
       };
-      formatter: (value: number) => string;
+      formatter: (defaultValue: number) => string;
     };
   };
   tooltip: {

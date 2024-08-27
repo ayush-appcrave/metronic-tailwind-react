@@ -8,19 +8,19 @@ const SettingsPlainPassword = () => {
         <div className="flex items-baseline flex-wrap lg:flex-nowrap gap-2.5">
           <label className="form-label max-w-56">Current Password</label>
 
-          <input type="text" className="input" placeholder="Your current password" value="" /> 
+          <input type="text" className="input" placeholder="Your current password" value="" readOnly /> 
         </div>
 
         <div className="flex items-baseline flex-wrap lg:flex-nowrap gap-2.5">
           <label className="form-label max-w-56">New Password</label>
 
-          <input type="text" className="input" placeholder="New password" value="" /> 
+          <input type="text" className="input" placeholder="New password" value="" readOnly /> 
         </div>
 
         <div className="flex items-baseline flex-wrap lg:flex-nowrap gap-2.5 mb-2.5">
           <label className="form-label max-w-56">Confirm New Password</label>
 
-          <input type="text" className="input" placeholder="Confirm new password" value="" /> 
+          <input type="text" className="input" placeholder="Confirm new password" value="" readOnly /> 
         </div> 
         
         <div className="flex justify-end">

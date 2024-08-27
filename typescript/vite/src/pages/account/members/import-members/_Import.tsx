@@ -33,7 +33,8 @@ const Import = () => {
             className="checkbox checkbox-sm"
             defaultChecked={option.checked}
             name="option"
-            value={index}
+            value={option.label}
+            readOnly
           />
           <span className="checkbox-label text-gray-800 font-medium">{option.label}</span>
         </label>
@@ -71,6 +72,8 @@ const Import = () => {
             name="message"
             className="textarea text-2sm text-gray-600 font-normal"
             rows={5}
+            value="Your welcome message here"
+            readOnly
           >
             Your welcome message here
           </textarea>

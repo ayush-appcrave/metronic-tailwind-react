@@ -2,7 +2,7 @@ import { useState } from 'react';
 
 import { toAbsoluteUrl } from '@/utils/Assets';
 
-import { ICommentsItems, ILikesItems, ISavesItems } from './interfaces';
+import { ICommentsItems } from './interfaces';
 import { Comments, Heading, Likes, Saves, Tabs } from './post';
 
 const FeedsPost1 = () => {
@@ -22,9 +22,6 @@ const FeedsPost1 = () => {
       text: 'Long before you sit dow to put digital pen to paper.'
     }
   ];
-
-  const likes: ILikesItems = [];
-  const saves: ISavesItems = [];
 
   return (
     <div className="card">
@@ -88,12 +85,12 @@ const FeedsPost1 = () => {
         )}
         {activeTab === 'likes' && (
           <div id="post_1_likes">
-            <Likes items={likes} />
+            <Likes />
           </div>
         )}
         {activeTab === 'saves' && (
           <div id="post_1_saves">
-            <Saves items={saves} />
+            <Saves />
           </div>
         )}
       </div>

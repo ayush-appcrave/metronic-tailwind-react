@@ -1,11 +1,12 @@
 import { toAbsoluteUrl } from '@/utils/Assets';
 
 import { IGamerStatisticsItem, IGamerStatisticsProps } from './interfaces';
+import React from 'react';
 
 const GamerStatistics = ({ details }: IGamerStatisticsProps) => {
-  const renderData = (item: IGamerStatisticsItem) => {
+  const renderData = (item: IGamerStatisticsItem, index: number) => {
     return (
-      <>
+      <React.Fragment key={index}>
         <div className="grid flex-1">
           <div className="flex justify-self-center items-center gap-3">
             <img
@@ -24,7 +25,7 @@ const GamerStatistics = ({ details }: IGamerStatisticsProps) => {
         </div>
 
         <span className="[&:not(:last-child)]:border-r border-r-gray-300 my-1"></span>
-      </>
+      </React.Fragment>
     );
   };
 
@@ -32,8 +33,8 @@ const GamerStatistics = ({ details }: IGamerStatisticsProps) => {
     <div className="card">
       <div className="card-body">
         <div className="flex lg:px-10 py-1 gap-2">
-          {details.map((item) => {
-            return renderData(item);
+          {details.map((item, index) => {
+            return renderData(item, index);
           })}
         </div>
       </div>

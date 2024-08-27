@@ -1,6 +1,7 @@
 import { Tournament } from '@/partials/cards';
 
 import { IGamerTournamentsItem, IGamerTournamentsItems } from './interfaces';
+import React from 'react';
 
 const GamerTournaments = () => {
   const items: IGamerTournamentsItems = [
@@ -73,7 +74,7 @@ const GamerTournaments = () => {
 
   const renderItem = (item: IGamerTournamentsItem, index: number) => {
     return (
-      <>
+      <React.Fragment key={index}>
         <Tournament
           image={item.image}
           logo={item.logo}
@@ -81,9 +82,8 @@ const GamerTournaments = () => {
           time={item.time}
           labels={item.labels}
           progress={item.progress}
-          key={index}
         />
-      </>
+      </React.Fragment>
     );
   };
 

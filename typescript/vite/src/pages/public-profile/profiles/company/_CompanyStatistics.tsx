@@ -1,9 +1,10 @@
+import React from 'react';
 import { ICompanyStatisticsItem, ICompanyStatisticsProps } from './interfaces';
 
 const CompanyStatistics = ({ items }: ICompanyStatisticsProps) => {
   const renderItems = (item: ICompanyStatisticsItem, index: number) => {
     return (
-      <>
+      <React.Fragment key={index}>
         <div className="grid grid-cols-1 place-content-center flex-1 gap-1 text-center">
           <span className="text-gray-900 text-2xl lg:text-2.5xl leading-none font-semibold">
             {item.number}
@@ -12,7 +13,7 @@ const CompanyStatistics = ({ items }: ICompanyStatisticsProps) => {
         </div>
 
         {index !== items.length - 1 && <span className="[&:not(:last-child)]:border-r border-r-gray-300 my-1"></span>}
-      </>
+      </React.Fragment>
     );
   };
 

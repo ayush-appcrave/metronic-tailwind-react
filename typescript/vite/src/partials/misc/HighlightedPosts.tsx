@@ -3,11 +3,12 @@ import { KeenIcon } from '@/components';
 import { IHighlightedPostsItem, IHighlightedPostsProps } from './interfaces';
 import { Link } from 'react-router-dom';
 import { HexagonBadge } from '../common';
+import React from 'react';
 
 const HighlightedPosts = ({ posts }: IHighlightedPostsProps) => {
-  const renderItem = (post: IHighlightedPostsItem) => {
+  const renderItem = (post: IHighlightedPostsItem, index: number) => {
     return (
-      <>
+      <React.Fragment key={index}>
         <div className="flex flex-col items-start gap-2.5">
           <div className="mb-2.5">
             <HexagonBadge
@@ -33,7 +34,7 @@ const HighlightedPosts = ({ posts }: IHighlightedPostsProps) => {
         </div>
 
         <span className="hidden [&:not(:last-child)]:block [&:not(:last-child)]:border-b border-b-gray-200"></span>
-      </>
+      </React.Fragment>
     );
   };
 
@@ -41,7 +42,7 @@ const HighlightedPosts = ({ posts }: IHighlightedPostsProps) => {
     <div className="card">
       <div className="card-body py-10 flex flex-col gap-5 lg:gap-7.5">
         {posts.map((post, index) => {
-          return renderItem(post);
+          return renderItem(post, index);
         })}
       </div>
     </div>

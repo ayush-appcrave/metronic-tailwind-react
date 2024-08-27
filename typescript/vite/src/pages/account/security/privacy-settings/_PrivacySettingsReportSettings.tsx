@@ -37,7 +37,7 @@ const PrivacySettingsReportSettings = ({ limit, className }: IPrivacySettingsRep
           <span className="text-2sm text-gray-600">{item.description}</span>
         </div>
 
-        <input type="radio" className="radio" name="sharing-setting" value={index} defaultChecked={item.checked} />
+        <input type="radio" className="radio" name="sharing-setting" value={index} defaultChecked={item.checked} readOnly />
       </label>
     );
   };
