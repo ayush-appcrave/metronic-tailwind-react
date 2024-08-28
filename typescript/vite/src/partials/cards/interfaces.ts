@@ -309,7 +309,10 @@ export interface INFT2Props {
 
 export interface INotificationProps {
   icon: string;
+  title: string;
   description: string;
+  button?: boolean;
+  actions: React.ReactNode;
 }
 
 export interface IRoleProps {

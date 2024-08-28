@@ -10,9 +10,9 @@ import {
   ToolbarPageTitle
 } from '@/partials/toolbar';
 
-import { IntegrationsContent } from '.';
+import { APIKeysContent } from '.';
 
-const IntegrationsPage = () => {
+const APIKeysPage = () => {
   return (
     <>
       <Container>
@@ -27,7 +27,7 @@ const IntegrationsPage = () => {
             <ToolbarPageTitle />
             <ToolbarDescription>
               <span className="flex items-center gap-2 text-sm font-medium text-gray-600">
-                Enhance Workflows with Advanced Integrations.
+                Central Hub for Personal Customization
               </span>
             </ToolbarDescription>
           </ToolbarHeading>
@@ -36,10 +36,10 @@ const IntegrationsPage = () => {
       </Container>
 
       <Container>
-        <IntegrationsContent />
+        <APIKeysContent />
       </Container>
     </>
   );
 };
 
-export { IntegrationsPage };
+export { APIKeysPage };

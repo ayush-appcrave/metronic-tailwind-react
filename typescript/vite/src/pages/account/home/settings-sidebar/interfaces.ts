@@ -57,3 +57,8 @@ export interface ISettingsSidebarExternalServicesIntegrationsItem {
 }
 export interface ISettingsSidebarExternalServicesIntegrationsItems
   extends Array<ISettingsSidebarExternalServicesIntegrationsItem> {}
+
+export interface ISettingsSidebarExternalServicesManageApiProps {
+  title: string;
+  switch: boolean;
+}

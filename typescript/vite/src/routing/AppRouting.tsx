@@ -25,6 +25,7 @@ import {
 } from '@/pages/public-profile';
 import {
   AllowedIPAddressesPage,
+  APIKeysPage,
   BackupAndRecoveryPage,
   BasicPage,
   CompanyProfilePage,
@@ -36,6 +37,7 @@ import {
   ImportMembersPage,
   IntegrationsPage,
   MembersStarterPage,
+  NotificationsPage,
   OverviewPage,
   PermissionsCheckPage,
   PermissionsTogglePage,
@@ -148,6 +150,8 @@ const AppRouting = (): ReactElement => {
           <Route path="/account/members/permissions-toggler" element={<PermissionsTogglePage />} />
           <Route path="/account/members/permissions-check" element={<PermissionsCheckPage />} />
           <Route path="/account/members/integrations" element={<IntegrationsPage />} />
+          <Route path="/account/members/notifications" element={<NotificationsPage />} />
+          <Route path="/account/members/api-keys" element={<APIKeysPage />} />
           <Route index element={<Navigate to="/dashboard" />} />
         </Route>
       </Route>

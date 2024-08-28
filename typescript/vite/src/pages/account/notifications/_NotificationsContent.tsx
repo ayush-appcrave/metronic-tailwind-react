@@ -1,26 +1,26 @@
 import { Engage, Faq, HighlightedPosts } from "@/partials/misc";
 import { toAbsoluteUrl } from "@/utils";
-import { Import } from ".";
+import { Channels, DoNotDistrub, OtherNotifications } from ".";
 import { IHighlightedPostsItems } from "@/partials/misc/interfaces";
 
-const ImportMembersContent = () => {
+const NotificationsContent = () => {
   const posts: IHighlightedPostsItems = [
     {
-      icon: 'people',
-      title: 'Streamlining Member Integration: Import Tools and Resources',
-      summary: 'Dive into seamless member onboarding with our robust import tools. Leverage detailed walkthroughs, practical resources, and support to simplify the process.',
+      icon: 'notification-on',
+      title: 'Streamlined Alerts Setup: Custom Notification Preferences',
+      summary: 'Tailor your alert preferences with our streamlined setup. Stay informed with notifications that matter to you most.',
       path: '#'
     },
     {
-      icon: 'exit-up',
-      title: 'Simplifying Roster Management: Bulk Upload Features',
-      summary: 'Manage your community efficiently with our bulk member import feature. Find step-by-step instructions, helpful tips, and best practices for a smooth update.',
+      icon: 'message-notify',
+      title: 'Effective Communication: Instant Notification Tools',
+      summary: 'Ensure timely communication with our instant notification tools. Customize alerts to stay ahead in real-time collaboration.',
       path: '#'
     },
     {
-      icon: 'mouse-circle',
-      title: 'Effortless Member Enrollment: Importation and Setup',
-      summary: 'Initiate a hassle-free member import with our guided tools. Access comprehensive tutorials, insightful advice, and technical documentation for effortless setup.',
+      icon: 'notification-status',
+      title: 'Personalized Updates: Smart Alert System',
+      summary: 'Control how you receive updates with our smart alert system. Personalize notifications for a more efficient workflow.',
       path: '#'
     }
   ];
@@ -29,7 +29,8 @@ const ImportMembersContent = () => {
     <div className="grid grid-cols-1 xl:grid-cols-3 gap-5 lg:gap-7.5">
       <div className="col-span-2">
         <div className="flex flex-col gap-5 lg:gap-7.5">
-          <Import />
+          <Channels />
+          <OtherNotifications />
           <Faq />
 
           <Engage
@@ -58,6 +59,8 @@ const ImportMembersContent = () => {
       </div>
       <div className="col-span-1">
         <div className="flex flex-col gap-5 lg:gap-7.5">
+          <DoNotDistrub />
+
           <HighlightedPosts posts={posts} />
         </div>
       </div>
@@ -65,4 +68,4 @@ const ImportMembersContent = () => {
   );
 };
 
-export { ImportMembersContent };
+export { NotificationsContent };

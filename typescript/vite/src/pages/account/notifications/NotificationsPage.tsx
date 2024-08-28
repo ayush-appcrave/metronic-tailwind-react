@@ -10,9 +10,9 @@ import {
   ToolbarPageTitle
 } from '@/partials/toolbar';
 
-import { IntegrationsContent } from '.';
+import { NotificationsContent } from '.';
 
-const IntegrationsPage = () => {
+const NotificationsPage = () => {
   return (
     <>
       <Container>
@@ -27,7 +27,7 @@ const IntegrationsPage = () => {
             <ToolbarPageTitle />
             <ToolbarDescription>
               <span className="flex items-center gap-2 text-sm font-medium text-gray-600">
-                Enhance Workflows with Advanced Integrations.
+                Central Hub for Personal Customization
               </span>
             </ToolbarDescription>
           </ToolbarHeading>
@@ -36,10 +36,10 @@ const IntegrationsPage = () => {
       </Container>
 
       <Container>
-        <IntegrationsContent />
+        <NotificationsContent />
       </Container>
     </>
   );
 };
 
-export { IntegrationsPage };
+export { NotificationsPage };

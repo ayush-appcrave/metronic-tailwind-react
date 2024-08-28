@@ -1,10 +1,9 @@
 import { KeenIcon } from '@/components';
-import { toAbsoluteUrl } from '@/utils/Assets';
 
 import { INotificationProps } from './interfaces';
 import { HexagonBadge } from '../common';
 
-const Notification = ({ icon, description }: INotificationProps) => {
+const Notification = ({ icon, title, description, button, actions }: INotificationProps) => {
   return (
     <div className="card-group flex items-center justify-between py-4 gap-2.5">
       <div className="flex items-center gap-3.5">
@@ -16,21 +15,21 @@ const Notification = ({ icon, description }: INotificationProps) => {
         />
 
         <div className="flex flex-col gap-0.5">
-          <span className="flex items-center gap-1.5 leading-none font-semibold text-sm text-gray-900">
-            
+          <span className="flex items-center gap-1.5 leading-none font-medium text-sm text-gray-900">
+            {title}
           </span>
-          <span className="text-2sm text-gray-600 font-medium">{description}</span>
+          <span className="text-2sm text-gray-700">{description}</span>
         </div>
       </div>
 
       <div className="flex items-center gap-5">
-        <a href="#" className="btn btn-xs btn-icon btn-primary btn-clear">
-          <KeenIcon icon="notepad-edit" />
-        </a>
-                
-        <div className="flex items-center gap-2.5">
+        {button && (
+          <a href="#" className="btn btn-xs btn-icon btn-primary btn-clear">
+            <KeenIcon icon="notepad-edit" />
+          </a>
+        )}
 
-        </div>
+        <div className="flex items-center gap-2.5">{actions}</div>
       </div>
     </div>
   );
