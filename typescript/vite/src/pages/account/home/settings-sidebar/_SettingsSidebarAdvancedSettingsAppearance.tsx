@@ -3,10 +3,11 @@ import { toAbsoluteUrl } from '@/utils/Assets';
 
 import {
   ISettingsSidebarAdvancedSettingsAppearanceItem,
-  ISettingsSidebarAdvancedSettingsAppearanceItems
+  ISettingsSidebarAdvancedSettingsAppearanceItems,
+  ISettingsSidebarAdvancedSettingsAppearanceProps
 } from './interfaces';
 
-const SettingsSidebarAdvancedSettingsAppearance = () => {
+const SettingsSidebarAdvancedSettingsAppearance = ({ title = "Appearance" }: ISettingsSidebarAdvancedSettingsAppearanceProps) => {
   const items: ISettingsSidebarAdvancedSettingsAppearanceItems = [
     {
       image: '28.jpg',
@@ -40,14 +41,15 @@ const SettingsSidebarAdvancedSettingsAppearance = () => {
             type="radio"
             name="appearance_option"
             defaultChecked={item.checked}
-            value={item.checked ? '1' : '2'}
+            value="2"
+            readOnly
           />
           <KeenIcon
             icon="check-circle"
             className="checked ml-5 mb-5 text-xl text-success leading-none hidden solid"
           />
-        </label>
-        <span className="text-sm font-semibold text-gray-900">{item.label}</span>
+        </label> 	
+        <span className="text-sm font-medium text-gray-900">{item.label}</span>
       </div>
     );
   };
@@ -55,44 +57,42 @@ const SettingsSidebarAdvancedSettingsAppearance = () => {
   return (
     <div className="card">
       <div className="card-header" id="advanced_settings_appearance">
-        <h3 className="card-title">Appearance</h3>
+        <h3 className="card-title">{title}</h3>
       </div>
 
-      <div className="card-body lg:py-7.5">
+      <div className="card-body lg:py-7.5"> 
         <div className="mb-5">
-          <h3 className="text-md font-semibold text-gray-900">Theme mode</h3>
-          <span className="text-2sm font-medium text-gray-700">
-            Select or customize your ui theme
-          </span>
+          <h3 className="text-md font-medium text-gray-900">Theme mode</h3>
+          <span className="text-2sm text-gray-700">Select or customize your ui theme</span>
         </div>
 
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-5 lg:gap-7.5">
           {items.map((item, index) => {
             return renderItem(item, index);
           })}
-        </div>
-
+        </div>   
+        
         <div className="border-t border-gray-200 mt-7 mb-8"></div>
 
-        <div className="flex items-center flex-wrap lg:flex-nowrap gap-2.5 mb-8">
-          <span className="text-2sm font-medium text-gray-700 max-w-56 w-full">
-            Transparent sidebar
-          </span>
-          <div className="flex items-center gap-5 lg:gap-7.5 grow min-w-48">
+        <div className="flex items-baseline flex-wrap lg:flex-nowrap gap-2.5 mb-8">
+          <label className="form-label max-w-48 text-gray-800 font-normal">Transparent sidebar</label>
+          <div className="flex items-center gap-7.5 grow">
             <label className="switch">
-              <span className="switch-label">Active</span>
-              <input type="checkbox" defaultChecked value="1" />
+              <span className="switch-label text-700 font-semibold">Active</span>
+              <input type="checkbox" defaultChecked value="1" readOnly />
             </label>
 
-            <span className="text-2sm font-medium text-gray-700">
-              Toggle the transparent sidebar for a sleek interface.Switch it on for <br />
-              transparency or off for a solid background.
+            <span className="form-info text-gray-800 font-normal">
+              Toggle the transparent sidebar for a sleek interface.Switch it on for
+              transparency or off for a solid background. 
             </span>
           </div>
-        </div>
+        </div> 
 
         <div className="flex justify-end">
-          <button className="btn btn-primary">Save Changes</button>
+          <button className="btn btn-primary">
+            Save Changes
+          </button>
         </div>
       </div>
     </div>

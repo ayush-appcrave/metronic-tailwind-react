@@ -69,7 +69,8 @@ const Integrations = () => {
         name={item.name}
         description={item.description}
         actions={item.actions}
-        key={index} />
+        key={index}
+      />
     );
   };
 

@@ -26,6 +26,7 @@ import {
 import {
   AllowedIPAddressesPage,
   APIKeysPage,
+  AppearancePage,
   BackupAndRecoveryPage,
   BasicPage,
   CompanyProfilePage,
@@ -152,6 +153,7 @@ const AppRouting = (): ReactElement => {
           <Route path="/account/members/integrations" element={<IntegrationsPage />} />
           <Route path="/account/members/notifications" element={<NotificationsPage />} />
           <Route path="/account/members/api-keys" element={<APIKeysPage />} />
+          <Route path="/account/members/appearance" element={<AppearancePage />} />
           <Route index element={<Navigate to="/dashboard" />} />
         </Route>
       </Route>

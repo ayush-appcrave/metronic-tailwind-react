@@ -40,6 +40,10 @@ export interface ISettingsSidebarAdvancedSettingsAppearanceItem {
 export interface ISettingsSidebarAdvancedSettingsAppearanceItems
   extends Array<ISettingsSidebarAdvancedSettingsAppearanceItem> {}
 
+export interface ISettingsSidebarAdvancedSettingsAppearanceProps {
+  title: string;
+}
+
 export interface ISettingsSidebarAdvancedSettingsNotificationsItem {
   title: string;
   description: string;

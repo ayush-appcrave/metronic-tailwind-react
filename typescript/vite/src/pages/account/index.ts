@@ -5,3 +5,4 @@ export * from './members';
 export * from './integrations/IntegrationsPage';
 export * from './notifications/NotificationsPage';
 export * from './api-keys/APIKeysPage';
+export * from './appearance/AppearancePage';
