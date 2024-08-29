@@ -5,7 +5,7 @@ import { NavbarMenu } from '@/partials/menu/NavbarMenu';
 import { Navbar, NavbarActions } from '@/partials/navbar';
 import { toAbsoluteUrl } from '@/utils/Assets';
 
-import { ActivityContent } from '.';
+import { Activity } from '.';
 
 const ActivityPage = () => {
   const image = (
@@ -35,7 +35,7 @@ const ActivityPage = () => {
       </Container>
 
       <Container>
-        <ActivityContent />
+        <Activity />
       </Container>
     </>
   );

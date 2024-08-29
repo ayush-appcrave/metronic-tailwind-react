@@ -1,26 +1,27 @@
-import { Engage, Faq, HighlightedPosts } from "@/partials/misc";
-import { toAbsoluteUrl } from "@/utils";
-import { Channels, DoNotDistrub, OtherNotifications } from ".";
+import { Engage, HighlightedPosts } from "@/partials/misc";
 import { IHighlightedPostsItems } from "@/partials/misc/interfaces";
+import { toAbsoluteUrl } from "@/utils";
+import { TeamMembersInviteWithLink } from "../members/team-members";
+import { InvitePeople, Invites } from ".";
 
-const NotificationsContent = () => {
+const InviteAFriendContent = () => {
   const posts: IHighlightedPostsItems = [
     {
-      icon: 'notification-on',
-      title: 'Streamlined Alerts Setup: Custom Notification Preferences',
-      summary: 'Tailor your alert preferences with our streamlined setup. Stay informed with notifications that matter to you most.',
+      icon: 'users',
+      title: 'Expand Your Network: Seamless Friend Invitation System',
+      summary: 'Invite colleagues to join and collaborate with ease using our streamlined invitation process. Share the experience and grow your professional network effortlessly.',
       path: '#'
     },
     {
-      icon: 'message-notify',
-      title: 'Effective Communication: Instant Notification Tools',
-      summary: 'Ensure timely communication with our instant notification tools. Customize alerts to stay ahead in real-time collaboration.',
+      icon: 'message-add',
+      title: 'Collaboration Growth: Refer Peers with Custom Invites',
+      summary: 'Enhance your team\'s capabilities by inviting peers directly through personalized invitations. Strengthen your projects by collaborating with trusted professionals.',
       path: '#'
     },
     {
-      icon: 'notification-status',
-      title: 'Personalized Updates: Smart Alert System',
-      summary: 'Control how you receive updates with our smart alert system. Personalize notifications for a more efficient workflow.',
+      icon: 'address-book',
+      title: 'Team Building: Easy Referral of Professional Contacts',
+      summary: 'Strengthen your team\'s dynamics by inviting industry friends to collaborate. Use our intuitive referral system to bring in expertise and foster collaboration.',
       path: '#'
     }
   ];
@@ -29,9 +30,11 @@ const NotificationsContent = () => {
     <div className="grid grid-cols-1 xl:grid-cols-3 gap-5 lg:gap-7.5">
       <div className="col-span-2">
         <div className="flex flex-col gap-5 lg:gap-7.5">
-          <Channels />
-          <OtherNotifications />
-          <Faq />
+          <InvitePeople />
+
+          <Invites />
+
+          <TeamMembersInviteWithLink />
 
           <Engage
             title='Contact Support'
@@ -52,15 +55,13 @@ const NotificationsContent = () => {
             }
             more={{
               title: 'Contact Support',
-              url: ''
+              url: 'https://keenthemes.com/contact'
             }}
           />
         </div>
       </div>
       <div className="col-span-1">
         <div className="flex flex-col gap-5 lg:gap-7.5">
-          <DoNotDistrub />
-
           <HighlightedPosts posts={posts} />
         </div>
       </div>
@@ -68,4 +69,4 @@ const NotificationsContent = () => {
   );
 };
 
-export { NotificationsContent };
+export { InviteAFriendContent };

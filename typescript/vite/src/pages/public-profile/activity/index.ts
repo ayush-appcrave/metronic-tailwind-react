@@ -1,1 +1,1 @@
-export * from './_ActivityContent';
+export * from './_Activity';
