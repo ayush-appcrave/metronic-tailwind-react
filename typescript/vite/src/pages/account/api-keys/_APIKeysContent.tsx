@@ -52,7 +52,7 @@ const APIKeysContent = () => {
                   alt=""
                 />
                 <img
-                  src={toAbsoluteUrl('media/illustrations/31-dark.svg')}
+                  src={toAbsoluteUrl('/media/illustrations/31-dark.svg')}
                   className="light:hidden max-h-[150px]"
                   alt=""
                 />

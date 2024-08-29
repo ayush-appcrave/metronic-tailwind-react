@@ -24,6 +24,7 @@ import {
   WorksPage
 } from '@/pages/public-profile';
 import {
+  ActivityPages,
   AllowedIPAddressesPage,
   APIKeysPage,
   AppearancePage,
@@ -37,6 +38,7 @@ import {
   HistoryPage,
   ImportMembersPage,
   IntegrationsPage,
+  InviteAFriendPage,
   MembersStarterPage,
   NotificationsPage,
   OverviewPage,
@@ -154,6 +156,8 @@ const AppRouting = (): ReactElement => {
           <Route path="/account/members/notifications" element={<NotificationsPage />} />
           <Route path="/account/members/api-keys" element={<APIKeysPage />} />
           <Route path="/account/members/appearance" element={<AppearancePage />} />
+          <Route path="/account/members/invite-a-friend" element={<InviteAFriendPage />} />
+          <Route path="/account/members/activity" element={<ActivityPages />} />
           <Route index element={<Navigate to="/dashboard" />} />
         </Route>
       </Route>
