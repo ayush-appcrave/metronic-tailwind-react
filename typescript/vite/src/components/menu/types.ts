@@ -1,5 +1,5 @@
 import { PopperProps } from '@mui/material';
-import { HTMLAttributes, MouseEvent, ReactNode, RefAttributes } from 'react';
+import { HTMLAttributes, MouseEvent, ReactNode, RefAttributes, RefObject } from 'react';
 
 export type MenuEventHandlerType = (e: MouseEvent<HTMLElement>) => void;
 
@@ -23,6 +23,11 @@ export interface IMenuProps {
   className?: string;
   children: ReactNode;
   onLinksClick?: MenuClickEventType;
+}
+
+export interface IMenuItemRef {
+  current?: RefObject<HTMLDivElement>;
+  closeMenu?: () => void;
 }
 
 export interface IMenuItemProps {
@@ -63,7 +68,10 @@ export interface IMenuLinkProps {
 export interface IMenuLabelProps {
   className?: string;
   tabIndex?: MenuTabIndexType;
+  hasItemSub?: boolean;
   menuItemRef?: any;
+  handleToggle?: MenuEventHandlerType;
+  handleClick?: MenuEventHandlerType;
   children?: ReactNode;
 }
 
@@ -83,9 +91,11 @@ export interface IMenuSubProps {
   enter?: boolean;
   toggle?: MenuToggleType;
   ref?: any;
+  menuItemRef?: any;
   tabIndex?: number;
   className?: string;
   rootClassName?: string;
+  baseClassName?: string;
   onLinkClick?: MenuClickEventType;
   onLinksClick?: MenuClickEventType;
   handleParentClose?: CallableFunction;

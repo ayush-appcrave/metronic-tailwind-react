@@ -22,9 +22,11 @@ import { matchPath } from '@/utils';
 import { useMatchPath } from '../../hooks/useMatchPath';
 import {
   IMenuItemProps,
+  IMenuLabelProps,
   IMenuLinkProps,
   IMenuSubProps,
   MenuHeading,
+  MenuLabel,
   MenuLink,
   MenuSeparator,
   MenuSub,
@@ -216,6 +218,20 @@ const MenuItemComponent = forwardRef<HTMLDivElement | null, IMenuItemProps>(
       return cloneElement(child, modifiedProps);
     };
 
+    const renderLabel = (child: ReactElement) => {
+      // Add some props to each child
+      const modifiedProps: IMenuLabelProps = {
+        hasItemSub: hasSub,
+        tabIndex,
+        handleToggle,
+        handleClick,
+        menuItemRef
+      };
+
+      // Return the child with modified props
+      return cloneElement(child, modifiedProps);
+    };
+
     const renderHeading = (child: ReactElement) => {
       return cloneElement(child);
     };
@@ -226,7 +242,8 @@ const MenuItemComponent = forwardRef<HTMLDivElement | null, IMenuItemProps>(
         toggle: propToggle,
         handleClick,
         handleParentClose: handleMenuClose,
-        tabIndex
+        tabIndex,
+        menuItemRef:itemRef
       };
 
       const modofiedChild = cloneElement(child, modifiedProps);
@@ -234,6 +251,7 @@ const MenuItemComponent = forwardRef<HTMLDivElement | null, IMenuItemProps>(
       const handleClose = () => {
         setSubOpen(false);
       };
+      
       return (
         <Popper
           style={{ 
@@ -244,9 +262,10 @@ const MenuItemComponent = forwardRef<HTMLDivElement | null, IMenuItemProps>(
           anchorEl={anchorEl}
           open={isSubMenuOpen}
           autoFocus={false}
+          className={clsx(child.props.rootClassName && child.props.rootClassName)} 
         >
           <div 
-            className={clsx('menu-container', child.props.rootClassName && child.props.rootClassName)} 
+            className={clsx('menu-container', child.props.baseClassName && child.props.baseClassName)} 
             ref={menuContainerRef} style={{ pointerEvents: 'auto' }}
           >
             <ClickAwayListener onClickAway={handleClose}>{modofiedChild}</ClickAwayListener>
@@ -279,6 +298,8 @@ const MenuItemComponent = forwardRef<HTMLDivElement | null, IMenuItemProps>(
         if (isValidElement(child)) {
           if (child.type === MenuLink) {
             return renderLink(child);
+          } else if (child.type === MenuLabel) {
+            return renderLabel(child);
           } else if (child.type === MenuHeading) {
             return renderHeading(child);
           } else if (child.type === MenuSub && propToggle === 'dropdown') {

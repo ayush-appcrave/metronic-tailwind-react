@@ -12,6 +12,8 @@ const MenuSubComponent = forwardRef<HTMLDivElement | null, IMenuSubProps>(
       toggle = 'accordion',
       className,
       rootClassName,
+      baseClassName,
+      menuItemRef,
       onLinksClick,
       handleClick,
       handleParentClose,
