@@ -1,5 +1,5 @@
 import { KeenIcon } from '@/components';
-import { Card2 } from '@/partials/dropdowns/general';
+import { DropdownCrud2 } from '@/partials/dropdowns/general';
 
 const SettingsEnterpriseSetGoal = () => {
   return (
@@ -19,7 +19,7 @@ const SettingsEnterpriseSetGoal = () => {
               <KeenIcon icon="dots-vertical" />
             </button>
 
-            <Card2 />
+            <DropdownCrud2 />
           </div>
         </div>
       </div>

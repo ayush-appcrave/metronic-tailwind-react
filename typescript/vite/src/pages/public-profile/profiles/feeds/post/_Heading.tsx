@@ -2,7 +2,7 @@ import { KeenIcon } from '@/components';
 import { Avatar } from '@/partials/common';
 
 import { IHeadingProps } from './interfaces';
-import { Card1 } from '@/partials/dropdowns/general';
+import { DropdownCard1 } from '@/partials/dropdowns/general';
 
 const Heading = ({ author, avatar, date }: IHeadingProps) => {
   return (
@@ -39,7 +39,7 @@ const Heading = ({ author, avatar, date }: IHeadingProps) => {
             <KeenIcon icon="dots-vertical" />
           </button>
 
-          <Card1 />
+          <DropdownCard1 />
         </div>
       </div>
     </div>

@@ -1,7 +1,7 @@
 import { KeenIcon } from '@/components';
 
 import { ICRMRecentInvoicesItem, ICRMRecentInvoicesItems } from './interfaces';
-import { Card2, CardItem2 } from '@/partials/dropdowns/general';
+import { DropdownDropdownCrud2, DropdownCardItem2 } from '@/partials/dropdowns/general';
 
 const CRMRecentInvoices = () => {
   const items: ICRMRecentInvoicesItems = [
@@ -68,7 +68,7 @@ const CRMRecentInvoices = () => {
                 <KeenIcon icon="exit-down" />
               </button>
               
-              <CardItem2 />
+              <DropdownCardItem2 />
             </div>
           </div>
         </div>
@@ -93,7 +93,7 @@ const CRMRecentInvoices = () => {
               <KeenIcon icon="dots-vertical" />
             </button>
 
-            <Card2 />
+            <DropdownCrud2 />
           </div>
         </div>
       </div>

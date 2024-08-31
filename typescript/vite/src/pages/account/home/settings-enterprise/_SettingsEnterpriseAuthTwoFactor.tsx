@@ -4,7 +4,7 @@ import {
   ISettingsEnterpriseAuthTwoFactorItem,
   ISettingsEnterpriseAuthTwoFactorItems
 } from './interfaces';
-import { Card2 } from '@/partials/dropdowns/general';
+import { DropdownCrud2 } from '@/partials/dropdowns/general';
 import { HexagonBadge } from '@/partials/common';
 
 const SettingsEnterpriseAuthTwoFactor = () => {
@@ -72,7 +72,7 @@ const SettingsEnterpriseAuthTwoFactor = () => {
               <KeenIcon icon="dots-vertical" />
             </button>
 
-            <Card2 />
+            <DropdownCrud2 />
           </div>
         </div>
       </div>

@@ -1,5 +1,5 @@
 import { IInvitesItem, IInvitesItems, IInvitesProps } from './interfaces';
-import { CrudItem1 } from '@/partials/dropdowns/general';
+import { DropdownCrudItem1 } from '@/partials/dropdowns/general';
 import { DatatableToolbar } from '@/partials/crud';
 import { KeenIcon } from '@/components';
 import { Link } from 'react-router-dom';
@@ -609,7 +609,7 @@ const Invites = ({ title = 'Invites' }: IInvitesProps) => {
               <button className="menu-toggle btn btn-sm btn-icon btn-light btn-clear">
                 <KeenIcon icon="dots-vertical" />
               </button>
-              <CrudItem1 />
+              <DropdownCrudItem1 />
             </div>
           </div>
         </td>

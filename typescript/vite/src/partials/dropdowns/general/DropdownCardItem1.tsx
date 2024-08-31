@@ -1,6 +1,6 @@
 import { KeenIcon } from '@/components';
 
-const CardItem1 = () => {
+const DropdownCardItem1 = () => {
   return (
     <div className="menu-dropdown menu-default w-full max-w-[175px]" data-menu-dismiss="true">
       <div className="menu-item">
@@ -27,4 +27,4 @@ const CardItem1 = () => {
   );
 };
 
-export { CardItem1 };
+export { DropdownCardItem1 };

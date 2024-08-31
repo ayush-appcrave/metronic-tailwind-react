@@ -4,7 +4,7 @@ import { ApexOptions } from 'apexcharts';
 import { KeenIcon } from '@/components';
 
 import { IApexContributionsOptions, IDefaultContributionsProps } from './interfaces';
-import { Card1 } from '@/partials/dropdowns/general';
+import { DropdownCard1 } from '@/partials/dropdowns/general';
 
 const DefaultContributions = ({ title }: IDefaultContributionsProps) => {
   const data: number[] = [44, 55, 41, 17, 15];
@@ -81,7 +81,7 @@ const DefaultContributions = ({ title }: IDefaultContributionsProps) => {
               <KeenIcon icon="dots-vertical" />
             </button>
             
-            <Card1 />
+            <DropdownCard1 />
           </div>
         </div>
       </div>

@@ -3,7 +3,7 @@ import { toAbsoluteUrl } from '@/utils/Assets';
 
 import { INFT2Item, INFT2Props } from './interfaces';
 import { Avatar } from '@mui/material';
-import { CardItem1 } from '../dropdowns/general';
+import { DropdownCardItem1 } from '../dropdowns/general';
 import { Link } from 'react-router-dom';
 
 const NFT2 = ({ bgImage, name, email, info, statistics }: INFT2Props) => {
@@ -37,7 +37,7 @@ const NFT2 = ({ bgImage, name, email, info, statistics }: INFT2Props) => {
               <KeenIcon icon="setting-2" />
             </button>
             
-            <CardItem1 />
+            <DropdownCardItem1 />
           </div>
         </div>
       </div>

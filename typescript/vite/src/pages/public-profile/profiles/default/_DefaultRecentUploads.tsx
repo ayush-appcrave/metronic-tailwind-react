@@ -7,7 +7,7 @@ import {
   IDefaultRecentUploadsProps
 } from './interfaces';
 import { Link } from 'react-router-dom';
-import { Card1, CardItem1 } from '@/partials/dropdowns/general';
+import { DropdownCard1, DropdownCardItem1 } from '@/partials/dropdowns/general';
 
 const DefaultRecentUploads = ({ title }: IDefaultRecentUploadsProps) => {
   const items: IDefaultRecentUploadsItems = [
@@ -51,7 +51,7 @@ const DefaultRecentUploads = ({ title }: IDefaultRecentUploadsProps) => {
               <KeenIcon icon="dots-vertical" />
             </button>
 
-            <CardItem1 />
+            <DropdownCardItem1 />
           </div>
         </div>
       </div>
@@ -75,7 +75,7 @@ const DefaultRecentUploads = ({ title }: IDefaultRecentUploadsProps) => {
               <KeenIcon icon="dots-vertical" />
             </button>
 
-            <Card1 />
+            <DropdownCard1 />
           </div>
         </div>
       </div>

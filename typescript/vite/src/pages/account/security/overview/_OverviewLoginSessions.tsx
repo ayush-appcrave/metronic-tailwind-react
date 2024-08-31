@@ -1,6 +1,6 @@
 import { KeenIcon } from '@/components';
 import { IOverviewLoginSessionsItem, IOverviewLoginSessionsItems } from './interfaces';
-import { CardItem1, Crud1 } from '@/partials/dropdowns/general';
+import { DropdownCardItem1, DropdownCrud1 } from '@/partials/dropdowns/general';
 import { Avatar } from '@/partials/common';
 
 const OverviewLoginSessions = () => {
@@ -77,7 +77,7 @@ const OverviewLoginSessions = () => {
               <button className="menu-toggle btn btn-sm btn-icon btn-light btn-clear">
                 <KeenIcon icon="dots-vertical" />
               </button>
-              <CardItem1 />
+              <DropdownCardItem1 />
             </div>
           </div>
         </td>
@@ -95,7 +95,7 @@ const OverviewLoginSessions = () => {
             <button className="menu-toggle btn btn-sm btn-icon btn-light btn-clear">
               <KeenIcon icon="dots-vertical" />
             </button>
-            <Crud1 />
+            <DropdownCrud1 />
           </div>
         </div>
       </div>

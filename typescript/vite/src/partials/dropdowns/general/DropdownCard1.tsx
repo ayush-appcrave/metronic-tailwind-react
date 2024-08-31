@@ -2,7 +2,7 @@ import { KeenIcon } from '@/components';
 
 import { Link } from 'react-router-dom';
 
-const Card1 = () => {
+const DropdownCard1 = () => {
   return (
     <div className="menu-dropdown menu-default w-full max-w-[200px]" data-menu-dismiss="true">
       <div className="menu-item">
@@ -75,4 +75,4 @@ const Card1 = () => {
   );
 };
 
-export { Card1 };
+export { DropdownCard1 };

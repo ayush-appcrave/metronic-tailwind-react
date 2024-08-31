@@ -7,7 +7,7 @@ import { useDemo1Layout } from '../';
 import { Menu, MenuItem, MenuLabel, MenuLink, MenuToggle } from '@/components';
 import { DropdownUser } from '@/partials/dropdowns/user';
 import { DropdownNotification } from '@/partials/dropdowns/notifications';
-
+import { DropdownApps } from '@/partials/dropdowns/apps';
 
 const HeaderTopbar = () => {
   const { setMobileSidebarOpen } = useDemo1Layout();
@@ -23,9 +23,32 @@ const HeaderTopbar = () => {
          <KeenIcon icon="messages"/>
       </button>
 
-      <button className="btn btn-icon btn-icon-lg size-9 rounded-full hover:bg-primary-light hover:text-primary text-gray-500">
-         <KeenIcon icon="element-11"/>
-      </button>
+      <Menu className="items-stretch">
+        <MenuItem 
+          itemRef={itemRef}
+          toggle="dropdown"
+          trigger="click"
+          dropdownProps={{
+            placement: "bottom-end",
+            modifiers: [
+              {
+                name: 'offset',
+                options: {
+                  offset: [70, 0], // [skid, distance]
+                }
+              }
+            ]
+          }}
+        >
+          <MenuLabel>
+            <div className="btn btn-icon btn-icon-lg size-9 rounded-full hover:bg-primary-light hover:text-primary text-gray-500">
+              <KeenIcon icon="element-11"/>
+            </div>
+          </MenuLabel>
+
+         {DropdownApps()}
+        </MenuItem>
+      </Menu>
 
       <Menu className="items-stretch">
         <MenuItem 
@@ -49,7 +72,8 @@ const HeaderTopbar = () => {
               <KeenIcon icon="notification-on"/>
             </div>
           </MenuLabel>
-          {DropdownNotification(itemRef)}
+
+         {DropdownNotification({menuTtemRef: itemRef})}
         </MenuItem>
       </Menu>
 

@@ -1,6 +1,6 @@
 import { KeenIcon } from '@/components';
 import { IOverviewTrustedDevicesItem, IOverviewTrustedDevicesItems } from './interfaces';
-import { Card2 } from '@/partials/dropdowns/general';
+import { DropdownCrud2 } from '@/partials/dropdowns/general';
 import { toAbsoluteUrl } from '@/utils';
 
 const OverviewTrustedDevices = () => {
@@ -80,7 +80,7 @@ const OverviewTrustedDevices = () => {
             <button className="menu-toggle btn btn-sm btn-icon btn-light btn-clear">
               <KeenIcon icon="dots-vertical" />
             </button>
-            <Card2 />
+            <DropdownCrud2 />
           </div>
         </div>
       </div>

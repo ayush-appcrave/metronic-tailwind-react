@@ -1,6 +1,6 @@
 import { KeenIcon } from '@/components';
 import { ITeamInfoConnectedProfilesItem, ITeamInfoConnectedProfilesItems } from './interfaces';
-import { CardItem1 } from '@/partials/dropdowns/general';
+import { DropdownCardItem1 } from '@/partials/dropdowns/general';
 import { toAbsoluteUrl } from '@/utils';
 
 const TeamInfoConnectedProfiles = () => {
@@ -67,7 +67,7 @@ const TeamInfoConnectedProfiles = () => {
               <button className="menu-toggle btn btn-sm btn-icon btn-light btn-clear">
                 <KeenIcon icon="dots-vertical" />
               </button>
-              <CardItem1 />
+              <DropdownCardItem1 />
             </div>
           </div>
         </div>

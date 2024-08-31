@@ -3,7 +3,7 @@ import { Avatars } from '@/partials/common';
 
 import { IDefaultProjectsItem, IDefaultProjectsItems } from './interfaces';
 import { Link } from 'react-router-dom';
-import { Crud1, CrudItem1 } from '@/partials/dropdowns/general';
+import { DropdownCrud1, DropdownCrudItem1 } from '@/partials/dropdowns/general';
 
 const DefaultProjects = () => {
   const items: IDefaultProjectsItems = [
@@ -122,7 +122,7 @@ const DefaultProjects = () => {
                 <KeenIcon icon="dots-vertical" />
               </button>
 
-              <CrudItem1 />
+              <DropdownCrudItem1 />
             </div>
           </div>
         </td>
@@ -146,7 +146,7 @@ const DefaultProjects = () => {
               <KeenIcon icon="dots-vertical" />
             </button>
 
-            <Crud1 />
+            <DropdownCrud1 />
           </div>
         </div>
       </div>

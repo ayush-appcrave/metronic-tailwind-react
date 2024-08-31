@@ -71,6 +71,9 @@ const MenuItemComponent = forwardRef<HTMLDivElement | null, IMenuItemProps>(
       return {
         closeMenu: () => {
           setSubOpen(false);
+        },
+        isOpen: ():boolean => {
+          return show;
         }
       };
     });

@@ -4,7 +4,7 @@ import { ApexOptions } from 'apexcharts';
 import { KeenIcon } from '@/components';
 
 import { IApexMediaUploadsOptions } from './interfaces';
-import { Card2 } from '@/partials/dropdowns/general';
+import { DropdownCrud2 } from '@/partials/dropdowns/general';
 
 const DefaultMediaUploads = () => {
   const data: number[] = [85, 65, 50, 70, 40, 45, 100, 55, 85, 60, 70, 90];
@@ -163,7 +163,7 @@ const DefaultMediaUploads = () => {
                 <KeenIcon icon="dots-vertical" />
               </button>
 
-              <Card2 />
+              <DropdownCrud2 />
             </div>
           </div>
         </div>

@@ -6,7 +6,7 @@ import {
   IUserProfileConnectionsItems,
   IUserProfileConnectionsProps
 } from './interfaces';
-import { Crud1, CrudItem1 } from '@/partials/dropdowns/general';
+import { DropdownCrud1, DropdownCrudItem1 } from '@/partials/dropdowns/general';
 import { Link } from 'react-router-dom';
 
 const UserProfileConnections = ({ url }: IUserProfileConnectionsProps) => {
@@ -108,7 +108,7 @@ const UserProfileConnections = ({ url }: IUserProfileConnectionsProps) => {
                 <KeenIcon icon="dots-vertical" />
               </button>
 
-              <CrudItem1 />
+              <DropdownCrudItem1 />
             </div>
           </div>
         </td>
@@ -133,7 +133,7 @@ const UserProfileConnections = ({ url }: IUserProfileConnectionsProps) => {
               <KeenIcon icon="dots-vertical" />
             </button>
 
-            <Crud1 />
+            <DropdownCrud1 />
           </div>
         </div>
       </div>

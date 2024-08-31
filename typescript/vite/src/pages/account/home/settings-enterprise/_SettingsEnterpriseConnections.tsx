@@ -5,7 +5,7 @@ import {
   ISettingsEnterpriseConnection,
   ISettingsEnterpriseConnections
 } from './interfaces';
-import { Card2, CardItem1 } from '@/partials/dropdowns/general';
+import { DropdownDropdownCrud2, DropdownCardItem1 } from '@/partials/dropdowns/general';
 
 const SettingsEnterpriseConnections = () => {
   const tables: ISettingsEnterpriseConnections = [
@@ -87,7 +87,7 @@ const SettingsEnterpriseConnections = () => {
               <button className="menu-toggle btn btn-sm btn-icon btn-light btn-clear">
                 <KeenIcon icon="dots-vertical" />
               </button>
-              <CardItem1 />
+              <DropdownCardItem1 />
             </div>
           </div>
         </td>
@@ -112,7 +112,7 @@ const SettingsEnterpriseConnections = () => {
               <KeenIcon icon="dots-vertical" />
             </button>
 
-            <Card2 />
+            <DropdownCrud2 />
           </div>
         </div>
       </div>

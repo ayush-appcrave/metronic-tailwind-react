@@ -2,7 +2,7 @@ import { KeenIcon } from '@/components';
 
 import { ICRMDealsItem, ICRMDealsItems } from './interfaces';
 import { Link } from 'react-router-dom';
-import { Crud1, CrudItem1 } from '@/partials/dropdowns/general';
+import { DropdownCrud1, DropdownCrudItem1 } from '@/partials/dropdowns/general';
 
 const CRMDeals = () => {
   const items: ICRMDealsItems = [
@@ -72,7 +72,7 @@ const CRMDeals = () => {
                 <KeenIcon icon="dots-vertical" />
               </button>
 
-              <CrudItem1 />
+              <DropdownCrudItem1 />
             </div>
           </div>
         </td>
@@ -97,7 +97,7 @@ const CRMDeals = () => {
               <KeenIcon icon="dots-vertical" />
             </button>
 
-            <Crud1 />
+            <DropdownCrud1 />
           </div>
         </div>
       </div>

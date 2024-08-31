@@ -2,7 +2,7 @@ import { KeenIcon } from '@/components';
 
 import { IRoleProps } from './interfaces';
 import { HexagonBadge } from '../common';
-import { CardItem1 } from '../dropdowns/general';
+import { DropdownCardItem1 } from '../dropdowns/general';
 import { Link } from 'react-router-dom';
 
 const Role = ({ path, title, subTitle, description, team, badge }: IRoleProps) => {
@@ -32,7 +32,7 @@ const Role = ({ path, title, subTitle, description, team, badge }: IRoleProps) =
               <KeenIcon icon="dots-vertical" />
             </button>
 
-            <CardItem1 />
+            <DropdownCardItem1 />
           </div>
         </div>
       </div>

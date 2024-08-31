@@ -1,7 +1,7 @@
 import { KeenIcon } from '@/components';
 
 import { IGetStartedContentItem, IGetStartedOptionsProps } from './interfaces';
-import { Card2 } from '@/partials/dropdowns/general';
+import { DropdownCrud2 } from '@/partials/dropdowns/general';
 import { Link } from 'react-router-dom';
 
 const GetStartedOptions = ({ items, dropdown }: IGetStartedOptionsProps) => {
@@ -25,7 +25,7 @@ const GetStartedOptions = ({ items, dropdown }: IGetStartedOptionsProps) => {
                     <KeenIcon icon="dots-vertical" />
                   </button>
 
-                  <Card2 />
+                  <DropdownCrud2 />
                 </div>
               </div>
             )}

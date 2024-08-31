@@ -1,6 +1,6 @@
 import { KeenIcon } from '@/components';
 import { IEnterpriseBillingInvoicingItem, IEnterpriseBillingInvoicingItems } from './interfaces';
-import { CardItem2 } from '@/partials/dropdowns/general';
+import { DropdownCardItem2 } from '@/partials/dropdowns/general';
 
 const EnterpriseBillingInvoicing = () => {
   const tables: IEnterpriseBillingInvoicingItems = [
@@ -55,7 +55,7 @@ const EnterpriseBillingInvoicing = () => {
               <button className="menu-toggle btn btn-sm btn-icon btn-light btn-clear">
                 <KeenIcon icon="dots-vertical" />
               </button>
-              <CardItem2 />
+              <DropdownCardItem2 />
             </div>
           </div>
         </td>

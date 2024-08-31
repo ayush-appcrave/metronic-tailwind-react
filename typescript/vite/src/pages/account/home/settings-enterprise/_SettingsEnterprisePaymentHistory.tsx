@@ -4,7 +4,7 @@ import {
   ISettingsEnterprisePaymentHistoryItem,
   ISettingsEnterprisePaymentHistoryItems
 } from './interfaces';
-import { Crud2, CrudItem1 } from '@/partials/dropdowns/general';
+import { DropdownCrud2, DropdownCrudItem1 } from '@/partials/dropdowns/general';
 
 const SettingsEnterprisePaymentHistory = () => {
   const tables: ISettingsEnterprisePaymentHistoryItems = [
@@ -52,7 +52,7 @@ const SettingsEnterprisePaymentHistory = () => {
                 <KeenIcon icon="dots-vertical" />
               </button>
 
-              <CrudItem1 />
+              <DropdownCrudItem1 />
             </div>
           </div>
         </td>

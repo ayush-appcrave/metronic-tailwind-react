@@ -3,7 +3,7 @@ import { toAbsoluteUrl } from '@/utils/Assets';
 
 import { Avatars } from '../common';
 import { IProjectExtendedRowItem, IProjectExtendedRowProps } from './interfaces';
-import { Card2 } from '../dropdowns/general';
+import { DropdownCrud2 } from '../dropdowns/general';
 
 const ProjectExtendedRow = ({
   status,
@@ -77,7 +77,7 @@ const ProjectExtendedRow = ({
                   <KeenIcon icon="dots-vertical" />
                 </button>
 
-                <Card2 />
+                <DropdownCrud2 />
               </div>
             </div>
           </div>

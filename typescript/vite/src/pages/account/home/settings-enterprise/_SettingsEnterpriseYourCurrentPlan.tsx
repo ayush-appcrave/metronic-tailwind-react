@@ -5,7 +5,7 @@ import {
   ISettingsEnterpriseYourCurrentPlanItem,
   ISettingsEnterpriseYourCurrentPlanItems
 } from './interfaces';
-import { Card1 } from '@/partials/dropdowns/general';
+import { DropdownCard1 } from '@/partials/dropdowns/general';
 
 const SettingsEnterpriseYourCurrentPlan = () => {
   const items: ISettingsEnterpriseYourCurrentPlanItems = [
@@ -62,7 +62,7 @@ const SettingsEnterpriseYourCurrentPlan = () => {
               <KeenIcon icon="dots-vertical" />
             </button>
 
-            <Card1 />
+            <DropdownCard1 />
           </div>
         </div>
       </div>

@@ -7,7 +7,7 @@ import {
   IDefaultConnectionsProps
 } from './interfaces';
 import { Link } from 'react-router-dom';
-import { Card1 } from '@/partials/dropdowns/general';
+import { DropdownCard1 } from '@/partials/dropdowns/general';
 
 const DefaultConnections = ({ title }: IDefaultConnectionsProps) => {
   const items: IDefaultConnectionsItems = [
@@ -82,7 +82,7 @@ const DefaultConnections = ({ title }: IDefaultConnectionsProps) => {
             <button className="menu-toggle btn btn-sm btn-icon btn-light btn-clear">
               <KeenIcon icon="dots-vertical" />
             </button>
-            <Card1 />
+            <DropdownCard1 />
           </div>
         </div>
       </div>

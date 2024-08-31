@@ -6,7 +6,7 @@ import {
   ICompanyProfileMembersItems,
   ICompanyProfileMembersProps
 } from './interfaces';
-import { Crud1, CrudItem1 } from '@/partials/dropdowns/general';
+import { DropdownCrud1, DropdownCrudItem1 } from '@/partials/dropdowns/general';
 
 const CompanyProfileMembers = ({ url }: ICompanyProfileMembersProps) => {
   const tables: ICompanyProfileMembersItems = [
@@ -104,7 +104,7 @@ const CompanyProfileMembers = ({ url }: ICompanyProfileMembersProps) => {
                 <KeenIcon icon="dots-vertical" />
               </button>
 
-              <CrudItem1 />
+              <DropdownCrudItem1 />
             </div>
           </div>
         </td>
@@ -139,7 +139,7 @@ const CompanyProfileMembers = ({ url }: ICompanyProfileMembersProps) => {
                 <KeenIcon icon="dots-vertical" />
               </button>
 
-              <Crud1 />
+              <DropdownCrud1 />
             </div>
           </div>
         </div>

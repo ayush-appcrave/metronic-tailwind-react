@@ -2,7 +2,7 @@ import { KeenIcon } from '@/components';
 import { toAbsoluteUrl } from '@/utils/Assets';
 
 import { ICampaignRowItem, ICampaignRowProps } from './interfaces';
-import { Card2 } from '../dropdowns/general';
+import { DropdownCrud2 } from '../dropdowns/general';
 
 const CampaignRow = ({ 
   logo,
@@ -85,7 +85,7 @@ const CampaignRow = ({
                   <KeenIcon icon="dots-vertical" />
                 </button>
 
-                <Card2 />
+                <DropdownCrud2 />
               </div>
             </div>
           </div>

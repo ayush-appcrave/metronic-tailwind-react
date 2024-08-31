@@ -3,7 +3,7 @@ import { toAbsoluteUrl } from '@/utils/Assets';
 
 import { Avatars } from '../common';
 import { IProjectRowProps } from './interfaces';
-import { Card2 } from '../dropdowns/general';
+import { DropdownCrud2 } from '../dropdowns/general';
 
 const ProjectRow = ({ logo, name, description, status, progress, team }: IProjectRowProps) => {
   return (
@@ -48,7 +48,7 @@ const ProjectRow = ({ logo, name, description, status, progress, team }: IProjec
                   <KeenIcon icon="dots-vertical" className="!text-xl" />
                 </button>
 
-                <Card2 />
+                <DropdownCrud2 />
               </div>
             </div>
           </div>
