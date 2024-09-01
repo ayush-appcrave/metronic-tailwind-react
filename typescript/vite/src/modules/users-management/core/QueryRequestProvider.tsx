@@ -1,5 +1,5 @@
 import qs from 'qs';
-import { createContext, type FC, type ReactNode, useContext, useEffect, useState } from 'react';
+import { createContext, type FC, type ReactNode, useContext, useState } from 'react';
 import { useSearchParams } from 'react-router-dom';
 
 import {
@@ -19,13 +19,8 @@ const QueryRequestProvider: FC<WithChildren> = ({ children }) => {
   const [searchParams, setSearchParams] = useSearchParams();
   const [state, setState] = useState<UserQueryState>({
     ...initialQueryRequest.state,
-    // initialze state with valus from query
     ...(qs.parse(searchParams.toString()) as Partial<UserQueryState>)
   });
-
-  useEffect(() => {
-    console.log('state', state);
-  }, [state]);
 
   const updateState = (updates: Partial<UserQueryState>, saveToQuery = false) => {
     const updatedState: UserQueryState = { ...state, ...updates };

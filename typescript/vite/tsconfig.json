@@ -25,7 +25,8 @@
     /* Path alias */
     "paths": {
       "@/*": ["./src/*"]
-    }
+    },
+    "allowSyntheticDefaultImports": true
   },
   "include": ["./src", "./vite.config.ts"],
   "references": [{ "path": "./tsconfig.node.json" }]
