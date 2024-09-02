@@ -1,4 +1,5 @@
 export interface IAvatarsItem {
+  path?: string;
   filename?: string;
   fallback?: string;
   variant?: string;

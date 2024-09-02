@@ -98,10 +98,7 @@ const DropdownNotification = ({menuTtemRef}: IDropdownNotificationProps) => {
   }
 
   return (
-    <MenuSub 
-      rootClassName="w-full max-w-[460px]"
-      className="light:border-gray-300"
-    >
+    <MenuSub rootClassName="w-full max-w-[460px]" className="light:border-gray-300">
       {buildHeader()}   
       {buildTabs()}   
     </MenuSub>

@@ -201,10 +201,7 @@ const DropdownUser = () => {
   }
 
   return (
-    <MenuSub 
-      className="menu-default light:border-gray-300 w-[200px] md:w-[250px]" 
-      rootClassName="p-0"
-    >
+    <MenuSub className="menu-default light:border-gray-300 w-[200px] md:w-[250px]" rootClassName="p-0">
       {buildHeader()}
       {buildMenu()}
       {buildFooter()}      

@@ -8,6 +8,7 @@ import { Menu, MenuItem, MenuLabel, MenuLink, MenuToggle } from '@/components';
 import { DropdownUser } from '@/partials/dropdowns/user';
 import { DropdownNotification } from '@/partials/dropdowns/notifications';
 import { DropdownApps } from '@/partials/dropdowns/apps';
+import { DropdownChat } from '@/partials/dropdowns/chat';
 
 const HeaderTopbar = () => {
   const { setMobileSidebarOpen } = useDemo1Layout();
@@ -15,13 +16,11 @@ const HeaderTopbar = () => {
 
   return (
     <div className="flex items-stretch gap-2 lg:gap-3.5">
-      <button className="btn btn-icon btn-icon-lg size-9 rounded-full hover:bg-primary-light hover:text-primary text-gray-500">
-         <KeenIcon icon="magnifier"/>
-      </button>
-
-      <button className="btn btn-icon btn-icon-lg size-9 rounded-full hover:bg-primary-light hover:text-primary text-gray-500">
-         <KeenIcon icon="messages"/>
-      </button>
+      <div className="flex items-center">
+        <button className="btn btn-icon btn-icon-lg size-9 rounded-full hover:bg-primary-light hover:text-primary text-gray-500">
+          <KeenIcon icon="magnifier"/>
+        </button>
+      </div>     
 
       <Menu className="items-stretch">
         <MenuItem 
@@ -34,7 +33,34 @@ const HeaderTopbar = () => {
               {
                 name: 'offset',
                 options: {
-                  offset: [70, 0], // [skid, distance]
+                  offset: [170, 0] // [skid, distance]
+                }
+              }
+            ]
+          }}
+        >
+          <MenuLabel>
+            <div className="btn btn-icon btn-icon-lg size-9 rounded-full hover:bg-primary-light hover:text-primary text-gray-500">
+              <KeenIcon icon="messages"/>
+            </div>
+          </MenuLabel>
+
+         {DropdownChat({menuTtemRef: itemRef})}
+        </MenuItem>
+      </Menu>
+
+      <Menu className="items-stretch">
+        <MenuItem 
+          itemRef={itemRef}
+          toggle="dropdown"
+          trigger="click"
+          dropdownProps={{
+            placement: "bottom-end",
+            modifiers: [
+              {
+                name: 'offset',
+                options: {
+                  offset: [10, 0], // [skid, distance]
                 }
               }
             ]

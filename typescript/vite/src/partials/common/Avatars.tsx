@@ -8,9 +8,9 @@ const Avatars = ({ size, group, more, className }: IAvatarsProps) => {
   const renderItem = (each: IAvatarsItem, index: number) => {
     return (
       <div key={index} className="flex">
-        {each.filename ? (
+        {each.filename || each.path ? (
           <img
-            src={toAbsoluteUrl(`/media/avatars/${each.filename}`)}
+            src={toAbsoluteUrl(each.path || `/media/avatars/${each.filename}`)}
             className={clsx(
               `hover:z-5 relative shrink-0 rounded-full ring-1 ring-light-light ${size} size-6`,
             )}
