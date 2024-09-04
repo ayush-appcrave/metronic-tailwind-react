@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 import { KeenIcon } from '@/components';
 import { useViewport } from '@/hooks';
 
-const DropdownNotificationTeam = () => {   
+const DropdownNotificationsInbox = () => {   
   const footerRef = useRef<HTMLDivElement>(null);
   const [listHeight, setListHeight] = useState<number>(0);
   const [viewportHeight] = useViewport();
@@ -21,7 +21,7 @@ const DropdownNotificationTeam = () => {
   const buildList = () => {
     return (
       <div className="flex flex-col gap-5 pt-3 pb-4 divider-y divider-gray-200">
-        <p>Team</p>
+        <p>Inbox</p>
         <p>Test</p>
         <p>Test</p>
         <p>Test</p>
@@ -93,4 +93,4 @@ const DropdownNotificationTeam = () => {
   );
 };
 
-export { DropdownNotificationTeam };
+export { DropdownNotificationsInbox };

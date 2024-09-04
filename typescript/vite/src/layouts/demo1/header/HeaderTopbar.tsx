@@ -6,13 +6,14 @@ import { toAbsoluteUrl } from '@/utils';
 import { useDemo1Layout } from '../';
 import { Menu, MenuItem, MenuLabel, MenuLink, MenuToggle } from '@/components';
 import { DropdownUser } from '@/partials/dropdowns/user';
-import { DropdownNotification } from '@/partials/dropdowns/notifications';
+import { DropdownNotifications } from '@/partials/dropdowns/notifications';
 import { DropdownApps } from '@/partials/dropdowns/apps';
 import { DropdownChat } from '@/partials/dropdowns/chat';
 
 const HeaderTopbar = () => {
   const { setMobileSidebarOpen } = useDemo1Layout();
-  const itemRef = useRef<any>(null);
+  const itemChatRef = useRef<any>(null);
+  const itemNotificationsRef = useRef<any>(null);
 
   return (
     <div className="flex items-stretch gap-2 lg:gap-3.5">
@@ -24,7 +25,7 @@ const HeaderTopbar = () => {
 
       <Menu className="items-stretch">
         <MenuItem 
-          itemRef={itemRef}
+          itemRef={itemChatRef}
           toggle="dropdown"
           trigger="click"
           dropdownProps={{
@@ -45,13 +46,12 @@ const HeaderTopbar = () => {
             </div>
           </MenuLabel>
 
-         {DropdownChat({menuTtemRef: itemRef})}
+         {DropdownChat({menuTtemRef: itemChatRef})}
         </MenuItem>
       </Menu>
 
       <Menu className="items-stretch">
         <MenuItem 
-          itemRef={itemRef}
           toggle="dropdown"
           trigger="click"
           dropdownProps={{
@@ -78,7 +78,7 @@ const HeaderTopbar = () => {
 
       <Menu className="items-stretch">
         <MenuItem 
-          itemRef={itemRef}
+          itemRef={itemNotificationsRef}
           toggle="dropdown"
           trigger="click"
           dropdownProps={{
@@ -99,7 +99,7 @@ const HeaderTopbar = () => {
             </div>
           </MenuLabel>
 
-         {DropdownNotification({menuTtemRef: itemRef})}
+         {DropdownNotifications({menuTtemRef: itemNotificationsRef})}
         </MenuItem>
       </Menu>
 

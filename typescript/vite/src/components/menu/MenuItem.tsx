@@ -70,7 +70,7 @@ const MenuItemComponent = forwardRef<HTMLDivElement | null, IMenuItemProps>(
     useImperativeHandle(itemRef, () => {
       return {
         closeMenu: () => {
-          setSubOpen(false);
+          handleMenuClose();
         },
         isOpen: ():boolean => {
           return show;
@@ -158,7 +158,12 @@ const MenuItemComponent = forwardRef<HTMLDivElement | null, IMenuItemProps>(
         if (propToggle === 'accordion') {
           setEnter(true);
         }
+        
         setSubOpen(!show);
+
+        if (propToggle === 'dropdown' && !show && handleParentClose) {
+          handleParentClose();
+        }
       }
     };
 
@@ -178,7 +183,7 @@ const MenuItemComponent = forwardRef<HTMLDivElement | null, IMenuItemProps>(
       }
     };
 
-    const handleMenuClose = () => {
+    const handleMenuClose = () => {      
       if (hasSub && propToggle === 'dropdown' ) {
         setSubOpen(false);
       }
@@ -189,15 +194,15 @@ const MenuItemComponent = forwardRef<HTMLDivElement | null, IMenuItemProps>(
     };
 
     const setSubOpen = (state: boolean) => {
-      setShow(state);
+      setShow(state);      
 
       if (propToggle === 'dropdown') {
         if (state) {
           setAnchorEl(menuItemRef.current);
           setIsSubMenuOpen(true);
         } else {
-          setAnchorEl(null);
-          setIsSubMenuOpen(false);
+          setAnchorEl(null);      
+          setIsSubMenuOpen(false);          
         }
       } else {
         setTransitioning(true);
@@ -250,10 +255,6 @@ const MenuItemComponent = forwardRef<HTMLDivElement | null, IMenuItemProps>(
       };
 
       const modofiedChild = cloneElement(child, modifiedProps);
-
-      const handleClose = () => {
-        setSubOpen(false);
-      };
       
       return (
         <Popper
@@ -267,12 +268,14 @@ const MenuItemComponent = forwardRef<HTMLDivElement | null, IMenuItemProps>(
           autoFocus={false}
           className={clsx(child.props.rootClassName && child.props.rootClassName)} 
         >
-          <div 
-            className={clsx('menu-container', child.props.baseClassName && child.props.baseClassName)} 
-            ref={menuContainerRef} style={{ pointerEvents: 'auto' }}
-          >
-            <ClickAwayListener onClickAway={handleClose}>{modofiedChild}</ClickAwayListener>
-          </div>
+          <ClickAwayListener onClickAway={handleMenuClose}>
+            <div 
+              className={clsx('menu-container', child.props.baseClassName && child.props.baseClassName)} 
+              ref={menuContainerRef} style={{ pointerEvents: 'auto' }}
+            >
+              {modofiedChild}
+            </div>
+          </ClickAwayListener>
         </Popper>
       );
     };

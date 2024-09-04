@@ -23,7 +23,6 @@ import { IDropdownChatProps, IDropdownMessage } from './types';
 import { DropdownChatMessageOut } from './DropdownChatMessageOut';
 import { DropdownChatMessageIn } from './DropdownChatMessageIn';
 
-
 const DropdownChat = ({menuTtemRef}: IDropdownChatProps) => {    
   const messagesRef = useRef<HTMLDivElement>(null);
   const [scrollableHeight, setScrollableHeight] = useState<number>(0);
@@ -45,9 +44,9 @@ const DropdownChat = ({menuTtemRef}: IDropdownChatProps) => {
   };
 
   const handleFormInput = () => {
-
+    
   }
-  
+
   const buildHeader = () => {
     return (
       <>
@@ -321,7 +320,7 @@ const DropdownChat = ({menuTtemRef}: IDropdownChatProps) => {
       {buildHeader()}   
       {buildTopbar()}   
 
-      <div className="scrollable-y-auto" ref={messagesRef} style={{ height: `${scrollableHeight}px` }}>
+      <div className="scrollable-y-auto" ref={messagesRef} style={{ height: `100%` }}>
         {buildMessages()}
       </div>
       

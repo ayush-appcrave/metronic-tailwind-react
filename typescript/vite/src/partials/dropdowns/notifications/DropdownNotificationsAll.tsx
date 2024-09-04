@@ -2,9 +2,22 @@ import { ChangeEvent, useEffect, useLayoutEffect, useRef, useState } from 'react
 import { getHeight, toAbsoluteUrl } from '@/utils';
 import { Link } from 'react-router-dom';
 import { KeenIcon } from '@/components';
+import {
+  Menu,
+  MenuItem,
+  MenuLink,
+  MenuSub,
+  MenuTitle,
+  MenuSeparator,
+  MenuToggle,
+  MenuArrow,
+  MenuIcon,
+  MenuClickEventType,
+  MenuLabel
+} from '@/components/menu';
 import { useViewport } from '@/hooks';
 
-const DropdownNotificationInbox = () => {   
+const DropdownNotificationsAll = () => {   
   const footerRef = useRef<HTMLDivElement>(null);
   const [listHeight, setListHeight] = useState<number>(0);
   const [viewportHeight] = useViewport();
@@ -21,7 +34,7 @@ const DropdownNotificationInbox = () => {
   const buildList = () => {
     return (
       <div className="flex flex-col gap-5 pt-3 pb-4 divider-y divider-gray-200">
-        <p>Inbox</p>
+        <p>All</p>
         <p>Test</p>
         <p>Test</p>
         <p>Test</p>
@@ -93,4 +106,4 @@ const DropdownNotificationInbox = () => {
   );
 };
 
-export { DropdownNotificationInbox };
+export { DropdownNotificationsAll };

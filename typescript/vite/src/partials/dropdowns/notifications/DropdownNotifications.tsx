@@ -17,16 +17,16 @@ import {
 } from '@/components/menu';
 import { Tab, TabPanel, Tabs, TabsList  } from '@/components/tabs';
 import { DropdownCrud2 } from '@/partials/dropdowns/general';
-import { DropdownNotificationAll } from './DropdownNotificationAll';
-import { DropdownNotificationInbox } from './DropdownNotificationInbox';
-import { DropdownNotificationTeam } from './DropdownNotificationTeam';
-import { DropdownNotificationFollowing } from './DropdownNotificationFollowing';
+import { DropdownNotificationsAll } from './DropdownNotificationsAll';
+import { DropdownNotificationsInbox } from './DropdownNotificationsInbox';
+import { DropdownNotificationsTeam } from './DropdownNotificationsTeam';
+import { DropdownNotificationsFollowing } from './DropdownNotificationsFollowing';
 
 interface IDropdownNotificationProps {
   menuTtemRef: any;
 };
 
-const DropdownNotification = ({menuTtemRef}: IDropdownNotificationProps) => {    
+const DropdownNotifications = ({menuTtemRef}: IDropdownNotificationProps) => {    
   const handleClose = () => {
     if (menuTtemRef.current) {
       menuTtemRef.current.closeMenu(); // Call the closeMenu method to hide the submenu
@@ -82,16 +82,16 @@ const DropdownNotification = ({menuTtemRef}: IDropdownNotificationProps) => {
       </Menu>
         </TabsList>
         <TabPanel value={1}>
-          <DropdownNotificationAll/>
+          <DropdownNotificationsAll/>
         </TabPanel>
         <TabPanel value={2}>
-          <DropdownNotificationInbox/>
+          <DropdownNotificationsInbox/>
         </TabPanel>
         <TabPanel value={3}>
-          <DropdownNotificationTeam/>
+          <DropdownNotificationsTeam/>
         </TabPanel>
         <TabPanel value={4}>
-          <DropdownNotificationFollowing/>
+          <DropdownNotificationsFollowing/>
         </TabPanel>
       </Tabs>
     )
@@ -105,4 +105,4 @@ const DropdownNotification = ({menuTtemRef}: IDropdownNotificationProps) => {
   );
 };
 
-export { DropdownNotification };
+export { DropdownNotifications };

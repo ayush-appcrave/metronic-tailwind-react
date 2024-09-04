@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom';
 import { KeenIcon } from '@/components';
 import { useViewport } from '@/hooks';
 
-const DropdownNotificationFollowing = () => {   
+const DropdownNotificationsFollowing = () => {   
   const footerRef = useRef<HTMLDivElement>(null);
   const [listHeight, setListHeight] = useState<number>(0);
   const [viewportHeight] = useViewport();
@@ -93,4 +93,4 @@ const DropdownNotificationFollowing = () => {
   );
 };
 
-export { DropdownNotificationFollowing };
+export { DropdownNotificationsFollowing };
