@@ -29,7 +29,7 @@ interface IDropdownNotificationProps {
 const DropdownNotifications = ({menuTtemRef}: IDropdownNotificationProps) => {    
   const handleClose = () => {
     if (menuTtemRef.current) {
-      menuTtemRef.current.closeMenu(); // Call the closeMenu method to hide the submenu
+      menuTtemRef.current.hide(); // Call the closeMenu method to hide the submenu
     }
   };
   

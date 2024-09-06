@@ -12,8 +12,6 @@ import React, {
   RefObject,
   useEffect,
   useImperativeHandle,
-  useLayoutEffect,
-  useReducer,
   useRef,
   useState
 } from 'react';
@@ -49,23 +47,18 @@ const MenuItemComponent = forwardRef<IMenuItemRef | null, IMenuItemProps>(
       disabled,
       tabIndex,
       className,
-      onLinkClick,
-      onLinksClick,
-      handleParentClose,
+      onClick,
+      handleParentHide,
       containerProps: ContainerPropsProp = {},
       children
     } = props;
 
     const { ref: containerRefProp, ...containerProps } = ContainerPropsProp;
 
-    const [anchorEl, setAnchorEl] = useState<HTMLElement | null>(null);
-
     const menuItemRef = useRef<HTMLDivElement | null>(null);
      
     const menuContainerRef = useRef<HTMLDivElement | null>(null);
 
-    const [isSubMenuOpen, setIsSubMenuOpen] = useState(false);
-    
     const { pathname } = useLocation();
 
     const { match } = useMatchPath(path);
@@ -85,38 +78,32 @@ const MenuItemComponent = forwardRef<IMenuItemRef | null, IMenuItemProps>(
     const [transitioning, setTransitioning] = useState(false);
 
     const [enter, setEnter] = useState(false);
-
+    
     useImperativeHandle(ref, () => ({      
       current: menuItemRef.current,
-      
-      closeMenu: () => {
-        handleMenuClose();
+      show: () => {
+        setShow(true);
+      },      
+      hide: () => {
+        setShow(false);
+        handleHide();
       },
       isOpen: () => {
-        return isSubMenuOpen;
+        return show;
       }
-    }), [isSubMenuOpen]);
-
-    useEffect(() => {
-    }, [isSubMenuOpen]);
+    }), [show]);
 
     useEffect(() => {
       if (hasActiveChild(pathname, children)) {
         if (propToggle === 'accordion') {
           setShow(true);
-        }
-
+        }        
         setHere(true);
       } else {
         if (propToggle === 'accordion') {
           setShow(false);
         }
-
         setHere(false);
-      }
-
-      if (hasSub && propToggle === 'dropdown' ) {
-        setSubOpen(false);
       }
     }, [pathname]);
 
@@ -126,7 +113,7 @@ const MenuItemComponent = forwardRef<IMenuItemRef | null, IMenuItemProps>(
 
     const handleMouseEnter = (e: MouseEvent<HTMLElement>) => {
       if (propTrigger === 'hover') {
-        setSubOpen(true);
+        setShow(true);
 
         if (containerProps.onMouseEnter) {
           containerProps.onMouseEnter(e);
@@ -136,7 +123,7 @@ const MenuItemComponent = forwardRef<IMenuItemRef | null, IMenuItemProps>(
 
     const handleMouseLeave = (e: MouseEvent<HTMLElement>) => {
       if (propTrigger === 'hover') {
-        setSubOpen(false);
+        setShow(false);
 
         if (containerProps.onMouseLeave) {
           containerProps.onMouseLeave(e);
@@ -154,53 +141,38 @@ const MenuItemComponent = forwardRef<IMenuItemRef | null, IMenuItemProps>(
           setEnter(true);
         }
         
-        setSubOpen(!show);
+        setShow(!show);
+      }
 
-        if (propToggle === 'dropdown' && !show && handleParentClose) {
-          handleParentClose();
-        }
+      if (onClick) {
+        onClick(e, props);
       }
     };
 
     const handleClick = (e: MouseEvent<HTMLElement>) => {
       if (disabled) {
         return;
-      }
-      
-      handleMenuClose();
+      }     
 
-      if (onLinksClick) {
-        onLinksClick(e, props);
+      handleHide();
+
+      if (onClick) {
+        onClick(e, props);
       }
 
-      if (onLinkClick) {
-        onLinkClick(e, props);
-      }
+      console.log('click!');
     };
 
-    const handleMenuClose = () => {      
-      if (hasSub && propToggle === 'dropdown' ) {
-        setSubOpen(false);
+    const handleHide = () => {     
+      console.log('propToggle:', propToggle); 
+
+      if (propToggle === 'dropdown' ) {
+        setShow(false);
       }
 
-      if (handleParentClose) {
-        handleParentClose();
-      }
-    };
-
-    const setSubOpen = (state: boolean) => {
-      setShow(state);      
-
-      if (propToggle === 'dropdown') {
-        if (state) {
-          setAnchorEl(menuItemRef.current);
-          setIsSubMenuOpen(true);
-        } else {
-          setAnchorEl(null);      
-          setIsSubMenuOpen(false);          
-        }
-      } else {
-        setTransitioning(true);
+      if (handleParentHide) {
+        console.log('parent hide'); 
+        handleParentHide();
       }
     };
 
@@ -210,8 +182,6 @@ const MenuItemComponent = forwardRef<IMenuItemRef | null, IMenuItemProps>(
         path,
         hasItemSub: hasSub,
         tabIndex,
-        onLinkClick,
-        onLinksClick,
         handleToggle,
         handleClick
       };
@@ -242,7 +212,7 @@ const MenuItemComponent = forwardRef<IMenuItemRef | null, IMenuItemProps>(
       const modifiedProps: IMenuSubProps = {
         toggle: propToggle,
         handleClick,
-        handleParentClose: handleMenuClose,
+        handleParentHide: handleHide,
         tabIndex,
         menuItemRef:ref
       };
@@ -256,12 +226,12 @@ const MenuItemComponent = forwardRef<IMenuItemRef | null, IMenuItemProps>(
             pointerEvents: trigger === 'click' ? 'auto' : 'none',  
           }}
           {...propDropdownProps}
-          anchorEl={anchorEl}
-          open={isSubMenuOpen}
+          anchorEl={show ? menuItemRef.current : null}
+          open={show}
           autoFocus={false}
           className={clsx(child.props.rootClassName && child.props.rootClassName)} 
         >
-          <ClickAwayListener onClickAway={handleMenuClose}>
+          <ClickAwayListener onClickAway={handleHide}>
             <div 
               className={clsx('menu-container', child.props.baseClassName && child.props.baseClassName)} 
               ref={menuContainerRef} style={{ pointerEvents: 'auto' }}
@@ -279,6 +249,11 @@ const MenuItemComponent = forwardRef<IMenuItemRef | null, IMenuItemProps>(
         setEnter(false);
       };
 
+      const handleStart = () => {
+        setTransitioning(true);
+        setEnter(false);
+      };
+
       // Add some props to each child
       const modifiedProps: IMenuSubProps = {
         tabIndex,
@@ -286,7 +261,8 @@ const MenuItemComponent = forwardRef<IMenuItemRef | null, IMenuItemProps>(
         enter,
         toggle: propToggle,
         handleClick,
-        handleEnd
+        handleEnd,
+        handleStart
       };
 
       return cloneElement(child, modifiedProps);
@@ -360,4 +336,5 @@ const hasActiveChild = (path: string, children: ReactNode): boolean => {
 };
 
 const MenuItem = memo(MenuItemComponent);
+
 export { MenuItem };

@@ -4,7 +4,7 @@ import { KeenIcon } from '@/components/keenicons';
 import { toAbsoluteUrl } from '@/utils';
 
 import { useDemo1Layout } from '../';
-import { Menu, MenuItem, MenuLabel, MenuLink, MenuToggle } from '@/components';
+import { IMenuItemProps, Menu, MenuItem, MenuLabel, MenuLink, MenuToggle } from '@/components';
 import { DropdownUser } from '@/partials/dropdowns/user';
 import { DropdownNotifications } from '@/partials/dropdowns/notifications';
 import { DropdownApps } from '@/partials/dropdowns/apps';
@@ -15,11 +15,6 @@ const HeaderTopbar = () => {
   const itemChatRef = useRef<any>(null);
   const itemAppsRef = useRef<any>(null);
   const itemNotificationsRef = useRef<any>(null);
-
-  useEffect(() => {
-    if (itemAppsRef.current) {
-    }
-  }, [itemAppsRef.current]);
 
   return (
     <div className="flex items-stretch gap-2 lg:gap-3.5">

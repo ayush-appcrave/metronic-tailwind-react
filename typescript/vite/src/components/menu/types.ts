@@ -22,11 +22,12 @@ export type MenuTabIndexType = number;
 export interface IMenuProps {
   className?: string;
   children: ReactNode;
-  onLinksClick?: MenuClickEventType;
+  onClick?: MenuClickEventType;
 }
 
 export interface IMenuItemRef {
-  closeMenu: () => void;
+  show: () => void;
+  hide: () => void;
   isOpen: () => boolean;
 }
 
@@ -40,9 +41,8 @@ export interface IMenuItemProps {
   dropdownZIndex?: number;
   className?: string;
   closeParentMenu?: CallableFunction;
-  onLinkClick?: MenuClickEventType;
-  onLinksClick?: MenuClickEventType;
-  handleParentClose?: CallableFunction;
+  onClick?: MenuClickEventType;
+  handleParentHide?: CallableFunction;
   handleClick?: MenuEventHandlerType;
   tabIndex?: MenuTabIndexType;
   itemRef?: any;
@@ -61,8 +61,7 @@ export interface IMenuLinkProps {
   menuItemRef?: any;
   handleToggle?: MenuEventHandlerType;
   handleClick?: MenuEventHandlerType;
-  onLinkClick?: MenuClickEventType;
-  onLinksClick?: MenuClickEventType;
+  onClick?: MenuClickEventType;
   children?: ReactNode;
 }
 
@@ -82,8 +81,7 @@ export interface IMenuToggleProps {
   menuItemRef?: any;
   handleToggle?: MenuEventHandlerType;
   handleClick?: MenuEventHandlerType;
-  onLinkClick?: MenuClickEventType;
-  onLinksClick?: MenuClickEventType;
+  onClick?: MenuClickEventType;
   children?: ReactNode;
 }
 
@@ -97,11 +95,11 @@ export interface IMenuSubProps {
   className?: string;
   rootClassName?: string;
   baseClassName?: string;
-  onLinkClick?: MenuClickEventType;
-  onLinksClick?: MenuClickEventType;
-  handleParentClose?: CallableFunction;
+  onClick?: MenuClickEventType;
+  handleParentHide?: CallableFunction;
   handleClick?: MenuEventHandlerType;
   handleEnd?: () => void;
+  handleStart?: () => void;
   accordionIn?: boolean;
   children?: ReactNode;
 }

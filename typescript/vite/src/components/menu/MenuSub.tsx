@@ -1,7 +1,6 @@
 import { Collapse } from '@mui/material';
 import clsx from 'clsx';
 import { Children, cloneElement, forwardRef, isValidElement, memo } from 'react';
-
 import { IMenuItemProps, IMenuSubProps, MenuItem } from './';
 
 const MenuSubComponent = forwardRef<HTMLDivElement | null, IMenuSubProps>(
@@ -14,10 +13,10 @@ const MenuSubComponent = forwardRef<HTMLDivElement | null, IMenuSubProps>(
       rootClassName,
       baseClassName,
       menuItemRef,
-      onLinksClick,
       handleClick,
-      handleParentClose,
+      handleParentHide,
       handleEnd,
+      handleStart,
       children
     } = props;
 
@@ -26,9 +25,8 @@ const MenuSubComponent = forwardRef<HTMLDivElement | null, IMenuSubProps>(
         if (child.type === MenuItem) {
           // Add some props to each child
           const modifiedProps: IMenuItemProps = {
-            handleParentClose,
-            handleClick,
-            onLinksClick
+            handleParentHide,
+            handleClick            
           };
 
           // Return the child with modified props
@@ -48,7 +46,7 @@ const MenuSubComponent = forwardRef<HTMLDivElement | null, IMenuSubProps>(
           <Collapse
             in={show}
             onExited={handleEnd}
-            onEntered={handleEnd}
+            onEntered={handleStart}
             timeout="auto"
             enter={enter}
           >
