@@ -1,4 +1,4 @@
-import { useRef, type MouseEvent } from 'react';
+import { useCallback, useEffect, useRef, useState, type MouseEvent } from 'react';
 
 import { KeenIcon } from '@/components/keenicons';
 import { toAbsoluteUrl } from '@/utils';
@@ -13,7 +13,13 @@ import { DropdownChat } from '@/partials/dropdowns/chat';
 const HeaderTopbar = () => {
   const { setMobileSidebarOpen } = useDemo1Layout();
   const itemChatRef = useRef<any>(null);
+  const itemAppsRef = useRef<any>(null);
   const itemNotificationsRef = useRef<any>(null);
+
+  useEffect(() => {
+    if (itemAppsRef.current) {
+    }
+  }, [itemAppsRef.current]);
 
   return (
     <div className="flex items-stretch gap-2 lg:gap-3.5">
@@ -25,7 +31,7 @@ const HeaderTopbar = () => {
 
       <Menu className="items-stretch">
         <MenuItem 
-          itemRef={itemChatRef}
+          ref={itemChatRef}
           toggle="dropdown"
           trigger="click"
           dropdownProps={{
@@ -52,6 +58,7 @@ const HeaderTopbar = () => {
 
       <Menu className="items-stretch">
         <MenuItem 
+          ref={itemAppsRef}
           toggle="dropdown"
           trigger="click"
           dropdownProps={{
@@ -70,6 +77,7 @@ const HeaderTopbar = () => {
             <div className="btn btn-icon btn-icon-lg size-9 rounded-full hover:bg-primary-light hover:text-primary text-gray-500">
               <KeenIcon icon="element-11"/>
             </div>
+            {itemAppsRef.current?.isOpen() ? 'open' : 'closed'}
           </MenuLabel>
 
          {DropdownApps()}
@@ -78,7 +86,7 @@ const HeaderTopbar = () => {
 
       <Menu className="items-stretch">
         <MenuItem 
-          itemRef={itemNotificationsRef}
+          ref={itemNotificationsRef}
           toggle="dropdown"
           trigger="click"
           dropdownProps={{

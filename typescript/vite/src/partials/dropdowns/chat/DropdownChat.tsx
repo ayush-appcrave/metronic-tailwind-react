@@ -1,4 +1,4 @@
-import { ChangeEvent, useEffect, useRef, useState } from 'react';
+import { ChangeEvent, useEffect, useLayoutEffect, useRef, useState } from 'react';
 import { getHeight, toAbsoluteUrl } from '@/utils';
 import { Link } from 'react-router-dom';
 import { KeenIcon } from '@/components';
@@ -24,18 +24,23 @@ import { DropdownChatMessageOut } from './DropdownChatMessageOut';
 import { DropdownChatMessageIn } from './DropdownChatMessageIn';
 
 const DropdownChat = ({menuTtemRef}: IDropdownChatProps) => {    
+  const headerRef = useRef<HTMLDivElement>(null);
   const messagesRef = useRef<HTMLDivElement>(null);
+  const footerRef = useRef<HTMLDivElement>(null);
   const [scrollableHeight, setScrollableHeight] = useState<number>(0);
   const [viewportHeight] = useViewport();
-  const offset = 200;
+  const offset = 110;
 
   useEffect(() => {
     if (messagesRef.current) {
-      const footerHeight = getHeight(messagesRef.current);
-      const availableHeight = viewportHeight - footerHeight - offset;
-      setScrollableHeight(availableHeight);
+      let availableHeigh:number = viewportHeight - offset;
+
+      if (headerRef.current) availableHeigh -= getHeight(headerRef.current);
+      if (footerRef.current) availableHeigh -= getHeight(footerRef.current);
+
+      setScrollableHeight(availableHeigh);
     }
-  }, [viewportHeight]);
+  }, [menuTtemRef.current?.isOpen(), viewportHeight]);
 
   const handleClose = () => {
     if (menuTtemRef.current) {
@@ -44,7 +49,7 @@ const DropdownChat = ({menuTtemRef}: IDropdownChatProps) => {
   };
 
   const handleFormInput = () => {
-    
+
   }
 
   const buildHeader = () => {
@@ -317,15 +322,19 @@ const DropdownChat = ({menuTtemRef}: IDropdownChatProps) => {
 
   return (
     <MenuSub rootClassName="w-full max-w-[450px]" className="light:border-gray-300">
-      {buildHeader()}   
-      {buildTopbar()}   
+      <div ref={headerRef}>
+        {buildHeader()}   
+        {buildTopbar()}   
+      </div>
 
-      <div className="scrollable-y-auto" ref={messagesRef} style={{ height: `100%` }}>
+      <div ref={messagesRef} className="scrollable-y-auto" style={{ maxHeight: `${scrollableHeight}px` }}>
         {buildMessages()}
       </div>
       
-      {buildInviteNotification()}
-      {buildForm()}   
+      <div ref={footerRef}>
+        {buildInviteNotification()}
+        {buildForm()}   
+      </div>
     </MenuSub>
   );
 };

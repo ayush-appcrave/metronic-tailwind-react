@@ -26,8 +26,8 @@ export interface IMenuProps {
 }
 
 export interface IMenuItemRef {
-  current?: RefObject<HTMLDivElement>;
-  closeMenu?: () => void;
+  closeMenu: () => void;
+  isOpen: () => boolean;
 }
 
 export interface IMenuItemProps {
@@ -47,6 +47,7 @@ export interface IMenuItemProps {
   tabIndex?: MenuTabIndexType;
   itemRef?: any;
   containerProps?: HTMLAttributes<HTMLElement> & RefAttributes<HTMLElement | null>;
+  containerRef?: RefObject<HTMLDivElement>;
   children?: ReactNode;
 }
 

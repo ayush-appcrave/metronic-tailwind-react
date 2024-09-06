@@ -11,7 +11,6 @@ const App = () => {
   const { settings } = useSettings();
 
   useEffect(() => {
-    console.log('settings updated:' + settings);
     document.documentElement.classList.remove('dark');
     document.documentElement.classList.remove('light');
     document.documentElement.classList.remove('page-loading');

@@ -2,6 +2,7 @@ import { ChangeEvent, useEffect, useRef, useState } from 'react';
 import { toAbsoluteUrl } from '@/utils';
 import { Link } from 'react-router-dom';
 import { KeenIcon, MenuSub } from '@/components';
+import { useResponsive } from '@/hooks';
 
 interface IDropdownAppsItem {
   logo: string;
@@ -11,6 +12,8 @@ interface IDropdownAppsItem {
 }
 
 const DropdownApps = () => {    
+  const desktopMode = useResponsive('up', 'lg');
+  
   const items: IDropdownAppsItem[] = [
     {
       logo: 'jira.svg',
@@ -110,7 +113,11 @@ const DropdownApps = () => {
       className="light:border-gray-300"
     >
       {buildHeader()}   
-      {buildList(items)}
+
+      <div className="scrollable-y-auto" style={{ maxHeight: desktopMode ? '400px' : '75vh' }}>
+        {buildList(items)}
+      </div>
+      
       {buildFooter()}   
     </MenuSub>
   );

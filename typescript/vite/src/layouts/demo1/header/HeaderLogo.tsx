@@ -14,13 +14,14 @@ const HeaderLogo = () => {
 
   return (
     <div className="flex gap-1 lg:hidden items-center">
-      <Link to="/">
-        <img src={toAbsoluteUrl('/images/brand/small-logo.svg')} className="max-h-[22px] w-full" />
-      </Link>
-
-      <button className="btn btn-icon btn-light btn-clear btn-sm" onClick={handleSidebarOpen}>
+      <button className="btn btn-icon btn-light btn-clear btn-sm -ms-2" onClick={handleSidebarOpen}>
         <KeenIcon icon="abstract-14" className="text-2xl" />
       </button>
+
+      <Link to="/">
+        <img src={toAbsoluteUrl('/media/app/mini-logo.svg')} className="h-6 dark:hidden" />
+        <img src={toAbsoluteUrl('/media/app/mini-logo-dark.svg')} className="h-6 light:hidden" />
+      </Link>
     </div>
   );
 };

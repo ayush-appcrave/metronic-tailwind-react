@@ -9,8 +9,11 @@ import React, {
   MouseEvent,
   ReactElement,
   ReactNode,
+  RefObject,
   useEffect,
   useImperativeHandle,
+  useLayoutEffect,
+  useReducer,
   useRef,
   useState
 } from 'react';
@@ -21,6 +24,7 @@ import { matchPath } from '@/utils';
 
 import { useMatchPath } from '../../hooks/useMatchPath';
 import {
+  IMenuItemRef,
   IMenuItemProps,
   IMenuLabelProps,
   IMenuLinkProps,
@@ -34,7 +38,7 @@ import {
   MenuTriggerType
 } from './';
 
-const MenuItemComponent = forwardRef<HTMLDivElement | null, IMenuItemProps>(
+const MenuItemComponent = forwardRef<IMenuItemRef | null, IMenuItemProps>(
   function MenuItem(props, ref) {
     const {
       path = '',
@@ -49,7 +53,6 @@ const MenuItemComponent = forwardRef<HTMLDivElement | null, IMenuItemProps>(
       onLinksClick,
       handleParentClose,
       containerProps: ContainerPropsProp = {},
-      itemRef,
       children
     } = props;
 
@@ -58,38 +61,44 @@ const MenuItemComponent = forwardRef<HTMLDivElement | null, IMenuItemProps>(
     const [anchorEl, setAnchorEl] = useState<HTMLElement | null>(null);
 
     const menuItemRef = useRef<HTMLDivElement | null>(null);
-
-    // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
-    useImperativeHandle(ref, () => itemRef.current!);
-
-    useImperativeHandle(containerRefProp, () => containerRef.current);
-
-    const containerRef = useRef<HTMLDivElement | null>(null);
-
-    // eslint-disable-next-line @typescript-eslint/no-unsafe-argument
-    useImperativeHandle(itemRef, () => {
-      return {
-        closeMenu: () => {
-          handleMenuClose();
-        },
-        isOpen: ():boolean => {
-          return show;
-        }
-      };
-    });
-
-    // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
-    useImperativeHandle(containerRef, () => menuItemRef.current!);
-
+     
     const menuContainerRef = useRef<HTMLDivElement | null>(null);
 
     const [isSubMenuOpen, setIsSubMenuOpen] = useState(false);
     
-    const hasSub = Children.toArray(children).some(
-      (child) => isValidElement(child) && child.type === MenuSub
-    );
-
     const { pathname } = useLocation();
+
+    const { match } = useMatchPath(path);
+
+    const propToggle: MenuToggleType = useResponsiveProp(toggle, 'accordion');
+
+    const propTrigger: MenuTriggerType = useResponsiveProp(trigger, 'click');
+
+    const propDropdownProps = useResponsiveProp(dropdownProps);
+
+    const active: boolean = match;
+
+    const [here, setHere] = useState(false);
+
+    const [show, setShow] = useState(false);
+
+    const [transitioning, setTransitioning] = useState(false);
+
+    const [enter, setEnter] = useState(false);
+
+    useImperativeHandle(ref, () => ({      
+      current: menuItemRef.current,
+      
+      closeMenu: () => {
+        handleMenuClose();
+      },
+      isOpen: () => {
+        return isSubMenuOpen;
+      }
+    }), [isSubMenuOpen]);
+
+    useEffect(() => {
+    }, [isSubMenuOpen]);
 
     useEffect(() => {
       if (hasActiveChild(pathname, children)) {
@@ -111,23 +120,9 @@ const MenuItemComponent = forwardRef<HTMLDivElement | null, IMenuItemProps>(
       }
     }, [pathname]);
 
-    const { match } = useMatchPath(path);
-
-    const propToggle: MenuToggleType = useResponsiveProp(toggle, 'accordion');
-
-    const propTrigger: MenuTriggerType = useResponsiveProp(trigger, 'click');
-
-    const propDropdownProps = useResponsiveProp(dropdownProps);
-
-    const active: boolean = match;
-
-    const [here, setHere] = useState(false);
-
-    const [show, setShow] = useState(false);
-
-    const [transitioning, setTransitioning] = useState(false);
-
-    const [enter, setEnter] = useState(false);
+    const hasSub = Children.toArray(children).some(
+      (child) => isValidElement(child) && child.type === MenuSub
+    );
 
     const handleMouseEnter = (e: MouseEvent<HTMLElement>) => {
       if (propTrigger === 'hover') {
@@ -218,8 +213,7 @@ const MenuItemComponent = forwardRef<HTMLDivElement | null, IMenuItemProps>(
         onLinkClick,
         onLinksClick,
         handleToggle,
-        handleClick,
-        menuItemRef
+        handleClick
       };
 
       // Return the child with modified props
@@ -232,8 +226,7 @@ const MenuItemComponent = forwardRef<HTMLDivElement | null, IMenuItemProps>(
         hasItemSub: hasSub,
         tabIndex,
         handleToggle,
-        handleClick,
-        menuItemRef
+        handleClick
       };
 
       // Return the child with modified props
@@ -251,7 +244,7 @@ const MenuItemComponent = forwardRef<HTMLDivElement | null, IMenuItemProps>(
         handleClick,
         handleParentClose: handleMenuClose,
         tabIndex,
-        menuItemRef:itemRef
+        menuItemRef:ref
       };
 
       const modofiedChild = cloneElement(child, modifiedProps);
@@ -324,7 +317,7 @@ const MenuItemComponent = forwardRef<HTMLDivElement | null, IMenuItemProps>(
     return (
       <div
         {...containerProps}
-        ref={containerRef}
+        ref={menuItemRef}
         tabIndex={tabIndex}
         {...(propToggle === 'dropdown' && {
           onMouseEnter: handleMouseEnter,
