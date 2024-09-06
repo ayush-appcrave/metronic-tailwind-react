@@ -12,8 +12,6 @@ import React, {
   RefObject,
   useEffect,
   useImperativeHandle,
-  useLayoutEffect,
-  useReducer,
   useRef,
   useState
 } from 'react';
@@ -49,22 +47,18 @@ const MenuItemComponent = forwardRef<IMenuItemRef | null, IMenuItemProps>(
       disabled,
       tabIndex,
       className,
-      handleParentHide,
       onClick,
+      handleParentHide,
       containerProps: ContainerPropsProp = {},
       children
     } = props;
 
     const { ref: containerRefProp, ...containerProps } = ContainerPropsProp;
 
-    const [anchorEl, setAnchorEl] = useState<HTMLElement | null>(null);
-
     const menuItemRef = useRef<HTMLDivElement | null>(null);
      
     const menuContainerRef = useRef<HTMLDivElement | null>(null);
 
-    const [isSubMenuOpen, setIsSubMenuOpen] = useState(false);
-    
     const { pathname } = useLocation();
 
     const { match } = useMatchPath(path);
@@ -84,37 +78,32 @@ const MenuItemComponent = forwardRef<IMenuItemRef | null, IMenuItemProps>(
     const [transitioning, setTransitioning] = useState(false);
 
     const [enter, setEnter] = useState(false);
-
+    
     useImperativeHandle(ref, () => ({      
       current: menuItemRef.current,
       show: () => {
         setShow(true);
-      },
+      },      
       hide: () => {
+        setShow(false);
         handleHide();
       },
       isOpen: () => {
-        return isSubMenuOpen;
+        return show;
       }
-    }), [isSubMenuOpen]);
+    }), [show]);
 
     useEffect(() => {
       if (hasActiveChild(pathname, children)) {
         if (propToggle === 'accordion') {
           setShow(true);
-        }
-
+        }        
         setHere(true);
       } else {
         if (propToggle === 'accordion') {
           setShow(false);
         }
-
         setHere(false);
-      }
-
-      if (hasSub && propToggle === 'dropdown' ) {
-        setSubOpen(false);
       }
     }, [pathname]);
 
@@ -124,7 +113,7 @@ const MenuItemComponent = forwardRef<IMenuItemRef | null, IMenuItemProps>(
 
     const handleMouseEnter = (e: MouseEvent<HTMLElement>) => {
       if (propTrigger === 'hover') {
-        setSubOpen(true);
+        setShow(true);
 
         if (containerProps.onMouseEnter) {
           containerProps.onMouseEnter(e);
@@ -134,7 +123,7 @@ const MenuItemComponent = forwardRef<IMenuItemRef | null, IMenuItemProps>(
 
     const handleMouseLeave = (e: MouseEvent<HTMLElement>) => {
       if (propTrigger === 'hover') {
-        setSubOpen(false);
+        setShow(false);
 
         if (containerProps.onMouseLeave) {
           containerProps.onMouseLeave(e);
@@ -152,49 +141,38 @@ const MenuItemComponent = forwardRef<IMenuItemRef | null, IMenuItemProps>(
           setEnter(true);
         }
         
-        setSubOpen(!show);
-
-        if (propToggle === 'dropdown' && !show && handleParentHide) {
-          handleParentHide();
-        }
+        setShow(!show);
       }
-    };
-
-    const handleClick = (e: MouseEvent<HTMLElement>) => {
-      if (disabled) {
-        return;
-      }
-      
-      handleHide();
 
       if (onClick) {
         onClick(e, props);
       }
     };
 
-    const handleHide = () => {      
-      if (hasSub && propToggle === 'dropdown' ) {
-        setSubOpen(false);
+    const handleClick = (e: MouseEvent<HTMLElement>) => {
+      if (disabled) {
+        return;
+      }     
+
+      handleHide();
+
+      if (onClick) {
+        onClick(e, props);
+      }
+
+      console.log('click!');
+    };
+
+    const handleHide = () => {     
+      console.log('propToggle:', propToggle); 
+
+      if (propToggle === 'dropdown' ) {
+        setShow(false);
       }
 
       if (handleParentHide) {
+        console.log('parent hide'); 
         handleParentHide();
-      }
-    };
-
-    const setSubOpen = (state: boolean) => {
-      setShow(state);      
-
-      if (propToggle === 'dropdown') {
-        if (state) {
-          setAnchorEl(menuItemRef.current);
-          setIsSubMenuOpen(true);
-        } else {
-          setAnchorEl(null);      
-          setIsSubMenuOpen(false);          
-        }
-      } else {
-        setTransitioning(true);
       }
     };
 
@@ -248,8 +226,8 @@ const MenuItemComponent = forwardRef<IMenuItemRef | null, IMenuItemProps>(
             pointerEvents: trigger === 'click' ? 'auto' : 'none',  
           }}
           {...propDropdownProps}
-          anchorEl={anchorEl}
-          open={isSubMenuOpen}
+          anchorEl={show ? menuItemRef.current : null}
+          open={show}
           autoFocus={false}
           className={clsx(child.props.rootClassName && child.props.rootClassName)} 
         >
@@ -266,13 +244,13 @@ const MenuItemComponent = forwardRef<IMenuItemRef | null, IMenuItemProps>(
     };
 
     const renderSubAccordion = (child: ReactElement) => {
-      const handleStart = () => {
-        setTransitioning(true);
+      const handleEnd = () => {
+        setTransitioning(false);
         setEnter(false);
       };
 
-      const handleEnd = () => {
-        setTransitioning(false);
+      const handleStart = () => {
+        setTransitioning(true);
         setEnter(false);
       };
 
@@ -283,8 +261,8 @@ const MenuItemComponent = forwardRef<IMenuItemRef | null, IMenuItemProps>(
         enter,
         toggle: propToggle,
         handleClick,
-        handleStart,
-        handleEnd
+        handleEnd,
+        handleStart
       };
 
       return cloneElement(child, modifiedProps);
@@ -358,4 +336,5 @@ const hasActiveChild = (path: string, children: ReactNode): boolean => {
 };
 
 const MenuItem = memo(MenuItemComponent);
+
 export { MenuItem };
