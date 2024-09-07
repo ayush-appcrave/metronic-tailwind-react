@@ -3,3 +3,4 @@ export * from './loaders';
 export * from './menu';
 export * from './scrollspy';
 export * from './table';
+export * from './modal';

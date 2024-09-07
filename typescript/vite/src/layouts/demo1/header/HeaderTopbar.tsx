@@ -9,6 +9,7 @@ import { DropdownUser } from '@/partials/dropdowns/user';
 import { DropdownNotifications } from '@/partials/dropdowns/notifications';
 import { DropdownApps } from '@/partials/dropdowns/apps';
 import { DropdownChat } from '@/partials/dropdowns/chat';
+import { ModalSearch } from '@/partials/modals/search/ModalSearch';
 
 const HeaderTopbar = () => {
   const { setMobileSidebarOpen } = useDemo1Layout();
@@ -20,12 +21,19 @@ const HeaderTopbar = () => {
     window.dispatchEvent(new Event('resize'));
   }
 
+  const [searchModalOpen, setSearchModalOpen] = useState(false);
+  const handleOpen = () => setSearchModalOpen(true);
+  const handleClose = () => { 
+    setSearchModalOpen(false);
+  }
+
   return (
     <div className="flex items-stretch gap-2 lg:gap-3.5">
       <div className="flex items-center">
-        <button className="btn btn-icon btn-icon-lg size-9 rounded-full hover:bg-primary-light hover:text-primary text-gray-500">
+        <button onClick={handleOpen} className="btn btn-icon btn-icon-lg size-9 rounded-full hover:bg-primary-light hover:text-primary text-gray-500">
           <KeenIcon icon="magnifier"/>
         </button>
+        <ModalSearch open={searchModalOpen} onClose={handleClose}/>
       </div>     
 
       <Menu className="items-stretch">
