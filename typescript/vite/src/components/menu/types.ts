@@ -42,6 +42,8 @@ export interface IMenuItemProps {
   className?: string;
   closeParentMenu?: CallableFunction;
   onClick?: MenuClickEventType;
+  onShow?: CallableFunction;
+  onHide?: CallableFunction;
   handleParentHide?: CallableFunction;
   handleClick?: MenuEventHandlerType;
   tabIndex?: MenuTabIndexType;

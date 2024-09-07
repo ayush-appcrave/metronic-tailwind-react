@@ -50,6 +50,8 @@ const MenuItemComponent = forwardRef<IMenuItemRef | null, IMenuItemProps>(
       tabIndex,
       className,
       handleParentHide,
+      onShow,
+      onHide,
       onClick,
       containerProps: ContainerPropsProp = {},
       children
@@ -57,13 +59,9 @@ const MenuItemComponent = forwardRef<IMenuItemRef | null, IMenuItemProps>(
 
     const { ref: containerRefProp, ...containerProps } = ContainerPropsProp;
 
-    const [anchorEl, setAnchorEl] = useState<HTMLElement | null>(null);
-
     const menuItemRef = useRef<HTMLDivElement | null>(null);
      
     const menuContainerRef = useRef<HTMLDivElement | null>(null);
-
-    const [isSubMenuOpen, setIsSubMenuOpen] = useState(false);
     
     const { pathname } = useLocation();
 
@@ -94,9 +92,21 @@ const MenuItemComponent = forwardRef<IMenuItemRef | null, IMenuItemProps>(
         handleHide();
       },
       isOpen: () => {
-        return isSubMenuOpen;
+        return show;
       }
-    }), [isSubMenuOpen]);
+    }), [show]);
+
+    useEffect(() => {
+      if (show) {
+        if (onShow) {
+          onShow();
+        }
+      } else {
+        if (onHide) {
+          onHide();
+        }
+      }
+    }, [show]);
 
     useEffect(() => {
       if (hasActiveChild(pathname, children)) {
@@ -114,7 +124,7 @@ const MenuItemComponent = forwardRef<IMenuItemRef | null, IMenuItemProps>(
       }
 
       if (hasSub && propToggle === 'dropdown' ) {
-        setSubOpen(false);
+        setShow(false);
       }
     }, [pathname]);
 
@@ -124,7 +134,7 @@ const MenuItemComponent = forwardRef<IMenuItemRef | null, IMenuItemProps>(
 
     const handleMouseEnter = (e: MouseEvent<HTMLElement>) => {
       if (propTrigger === 'hover') {
-        setSubOpen(true);
+        setShow(true);
 
         if (containerProps.onMouseEnter) {
           containerProps.onMouseEnter(e);
@@ -134,7 +144,7 @@ const MenuItemComponent = forwardRef<IMenuItemRef | null, IMenuItemProps>(
 
     const handleMouseLeave = (e: MouseEvent<HTMLElement>) => {
       if (propTrigger === 'hover') {
-        setSubOpen(false);
+        setShow(false);
 
         if (containerProps.onMouseLeave) {
           containerProps.onMouseLeave(e);
@@ -147,16 +157,22 @@ const MenuItemComponent = forwardRef<IMenuItemRef | null, IMenuItemProps>(
         return;
       }
 
-      if (propTrigger === 'click') {
-        if (propToggle === 'accordion') {
-          setEnter(true);
-        }
-        
-        setSubOpen(!show);
+      if (propToggle === 'accordion') {
+        setEnter(true);
+      }
+      
+      if (show) {
+        setShow(false);
+      } else {
+        setShow(true);
+      }
 
-        if (propToggle === 'dropdown' && !show && handleParentHide) {
-          handleParentHide();
-        }
+      if (propToggle === 'dropdown' && !show && handleParentHide) {
+        handleParentHide();
+      }
+
+      if (onClick) {
+        onClick(e, props);
       }
     };
 
@@ -174,29 +190,13 @@ const MenuItemComponent = forwardRef<IMenuItemRef | null, IMenuItemProps>(
 
     const handleHide = () => {      
       if (hasSub && propToggle === 'dropdown' ) {
-        setSubOpen(false);
+        setShow(false);
       }
 
       if (handleParentHide) {
         handleParentHide();
       }
-    };
-
-    const setSubOpen = (state: boolean) => {
-      setShow(state);      
-
-      if (propToggle === 'dropdown') {
-        if (state) {
-          setAnchorEl(menuItemRef.current);
-          setIsSubMenuOpen(true);
-        } else {
-          setAnchorEl(null);      
-          setIsSubMenuOpen(false);          
-        }
-      } else {
-        setTransitioning(true);
-      }
-    };
+    };;
 
     const renderLink = (child: ReactElement) => {
       // Add some props to each child
@@ -248,8 +248,8 @@ const MenuItemComponent = forwardRef<IMenuItemRef | null, IMenuItemProps>(
             pointerEvents: trigger === 'click' ? 'auto' : 'none',  
           }}
           {...propDropdownProps}
-          anchorEl={anchorEl}
-          open={isSubMenuOpen}
+          anchorEl={show ? menuItemRef.current : null}
+          open={show}
           autoFocus={false}
           className={clsx(child.props.rootClassName && child.props.rootClassName)} 
         >
