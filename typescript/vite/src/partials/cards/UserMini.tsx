@@ -1,62 +1,27 @@
-import { KeenIcon } from '@/components';
-import { toAbsoluteUrl } from '@/utils/Assets';
-
-import { INFT2Item, INFT2Props } from './interfaces';
-import { CardItem1 } from '../dropdowns/general';
-import { Link } from 'react-router-dom';
+import { IUserMiniProps } from './interfaces';
 import { Avatar } from '../common';
 
-const NFT2 = ({ avatar, bgImage, name, email, info, statistics }: INFT2Props) => {
-  const renderItem = (statistic: INFT2Item, index: number) => {
-    return (
-      <div
-        key={index}
-        className="grid grid-cols-1 gap-1.5 border-[0.5px] border-dashed border-gray-400 rounded-md px-2.5 py-2 shrink-0 max-w-auto"
-      >
-        <span className="text-gray-900 text-sm leading-none font-medium">{statistic.total}</span>
-        <span className="text-gray-700 text-xs">{statistic.description}</span>
-      </div>
-    );
-  };
-
+const UserMini = ({ avatar, verify, name, email, }: IUserMiniProps) => {
   return (
-    <div className="card">
-      <div
-        className="card-header card-rounded-t flex justify-end items-start relative p-0 bg-no-repeat bg-cover bg-center h-[120px]"
-        style={{ backgroundImage: toAbsoluteUrl(`/media/images/2600x1200/${bgImage}`) }}
-      >
-        <div className="menu mt-2.5 mr-2.5" data-menu="true">
-          <div
-            className="menu-item"
-            data-menu-item-trigger="click|lg:click"
-            data-menu-item-toggle="dropdown"
-            data-menu-item-placement="bottom-end"
-            data-menu-item-offset="0, 10px"
-          >
-            <button className="menu-toggle btn btn-sm btn-icon text-gray-600 menu-item-show:text-gray-800 hover:text-gray-800">
-              <KeenIcon icon="setting-2" />
-            </button>
-            
-            <CardItem1 />
-          </div>
-        </div>
-      </div>
-
-      <div className="card-body pt-0">
-        <div className="flex justify-center transform -translate-y-1/2">
+    <div className="card flex flex-col items-center p-5 lg:py-10"> 
+      <div className="mb-3.5">
+        {avatar && (
           <Avatar
             className={avatar?.className}
             image={avatar?.image}
             imageClass={avatar?.imageClass}
+            fallback={avatar?.fallback}
             badgeClass={avatar?.badgeClass}
           />
-        </div>
+        )}
+      </div>
 
-        <div className="flex items-center justify-center gap-1.5 mb-px -mt-7.5">
-          <a href="#" className="hover:text-primary-active text-base leading-5 font-medium text-gray-900">
-            {name}
-          </a>
+      <div className="flex items-center justify-center gap-1.5 mb-2">
+        <a href="#" className="hover:text-primary-active text-base leading-5 font-medium text-gray-900">
+          {name}
+        </a>
 
+        {verify && (
           <svg
             xmlns="http://www.w3.org/2000/svg"
             width="15"
@@ -70,32 +35,11 @@ const NFT2 = ({ avatar, bgImage, name, email, info, statistics }: INFT2Props) =>
               fill="currentColor"
             />
           </svg>
-        </div>
-
-        <div className="flex flex-wrap justify-center items-center gap-3.5 mb-7">
-          <a href="#" className="text-xs text-gray-700 hover:text-primary-active">
-            {email}
-          </a>
-          <div className="flex items-center text-xs font-medium text-success">
-            {info}
-            <KeenIcon icon="copy" className="ml-1 text-gray-400 text-md" />
-          </div>
-        </div>
-
-        <div className="flex items-center justify-center flex-wrap gap-2 lg:gap-5 mb-3">
-          {statistics.map((statistic, index) => {
-            return renderItem(statistic, index);
-          })}
-        </div>
+        )}
       </div>
-
-      <div className="card-footer justify-center">
-        <Link to="/public-profile/profiles/nft" className="btn btn-link">
-          View NFT’s
-        </Link>
-      </div>
+      <a href="#" className="text-gray-700 text-sm hover:text-primary-active">{email}</a>
     </div>
   );
 };
 
-export { NFT2 };
+export { UserMini };

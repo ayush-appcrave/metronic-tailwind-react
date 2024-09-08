@@ -1,11 +1,11 @@
 import { KeenIcon } from '@/components';
 import { toAbsoluteUrl } from '@/utils/Assets';
 
-import { IAuthorItem, IAuthorProps } from './interfaces';
-import { Avatar } from '@mui/material';
+import { IWork, IAuthorProps } from './interfaces';
+import { Avatar } from '../common';
 
-const AuthorRow = ({ name, location, works }: IAuthorProps) => {
-  const renderItem = (work: IAuthorItem, index: number) => {
+const AuthorRow = ({ avatar, name, location, works }: IAuthorProps) => {
+  const renderItem = (work: IWork, index: number) => {
     return (
       <div key={index} className="flex items-center gap-3.5 min-w-64 last:mr-5">
         <div
@@ -30,7 +30,12 @@ const AuthorRow = ({ name, location, works }: IAuthorProps) => {
     <div className="card">
       <div className="card-body flex flex-wrap gap-5 items-center justify-between">
         <div className="flex items-center flex-wrap gap-3.5">
-          <Avatar />
+          <Avatar
+            className={avatar?.className}
+            image={avatar?.image}
+            imageClass={avatar?.imageClass}
+            badgeClass={avatar?.badgeClass}
+          />
 
           <div className="flex flex-col gap-1.5">
             <div className="flex items-center gap-1.5">

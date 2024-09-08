@@ -22,5 +22,8 @@ export * from './Role';
 export * from './Team';
 export * from './TeamRow';
 export * from './Tournament';
+export * from './UserMini';
+export * from './UserSocial';
+export * from './UserSocialRow';
 export * from './Work';
 export * from './WorkRow';
