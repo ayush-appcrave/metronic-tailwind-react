@@ -60,11 +60,8 @@ const ScrollSpy = ({
   const scrollContainerRef = useRef<HTMLDivElement | null>(null);
   const [navContainerItems, setNavContainerItems] = useState<NodeListOf<Element> | undefined>(); // prettier-ignore
 
-  // keeps track of the Id in navcontainer which is active
-  // so as to not update classLists unless it has been updated
   const prevIdTracker = useRef("");
 
-  // To get the nav container items depending on whether the parent ref for the nav container is passed or not
   useEffect(() => {
     navContainerRef
         ? setNavContainerItems(
@@ -79,7 +76,6 @@ const ScrollSpy = ({
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [navContainerRef]);
 
-  // fire once after nav container items are set
   useEffect(() => {
     checkAndUpdateActiveScrollSpy();
 
@@ -102,7 +98,6 @@ const ScrollSpy = ({
           hitbox_top > element_top - offsetTop
       );
     } else {
-      // this decides how much of the element should be visible
       const leniency = parentScrollContainerRef?.current
           ? parentScrollContainerRef.current!.offsetHeight * 0.5
           : window.innerHeight * 0.5;
@@ -121,45 +116,30 @@ const ScrollSpy = ({
   const checkAndUpdateActiveScrollSpy = () => {
     const scrollParentContainer = scrollContainerRef.current;
 
-    // if there are no children, return
     if (!(scrollParentContainer && navContainerItems)) return;
 
-    // loop over all children in scroll container
     for (let i = 0; i < scrollParentContainer.children.length; i++) {
       // get child element
       const useChild = scrollParentContainer.children.item(i) as HTMLDivElement;
 
       const elementIsVisible = isVisible(useChild);
 
-      // check if the element is in the viewport
       if (elementIsVisible) {
-        // if so, get its ID
         const changeHighlightedItemId = useChild.id;
-
-        // if the element was same as the one currently active ignore it
         if (prevIdTracker.current === changeHighlightedItemId) return;
-
-        // now loop over each element in the nav Container
         navContainerItems.forEach((el) => {
           const attrId = el.getAttribute(`data-${useDataAttribute}`);
-
-          // if the element contains 'active' the class remove it
           if (el.classList.contains(activeClass ?? "active")) {
             el.classList.remove(activeClass ?? "active");
           }
-
-          // check if its ID matches the ID we got from the viewport
-          // also make sure it does not already contain the 'active' class
           if (
               attrId === changeHighlightedItemId &&
               !el.classList.contains(activeClass ?? "active")
           ) {
             el.classList.add(activeClass ?? "active");
-
             if (onUpdateCallback) {
               onUpdateCallback(changeHighlightedItemId);
             }
-
             prevIdTracker.current = changeHighlightedItemId;
             if (updateHistoryStack) {
               window.history.replaceState(
@@ -176,14 +156,16 @@ const ScrollSpy = ({
   };
 
   useEffect(() => {
-    // listen for scroll event
     parentScrollContainerRef
-        ? // if ref for scrollable div is provided
+        ?
         parentScrollContainerRef.current!.addEventListener(
             "scroll",
-            throttle(checkAndUpdateActiveScrollSpy, scrollThrottle)
+            () => {
+              throttle(checkAndUpdateActiveScrollSpy, scrollThrottle)
+              console.log(parentScrollContainerRef);
+            }
         )
-        : // else listen for scroll in window
+        :
         window.addEventListener(
             "scroll",
             throttle(checkAndUpdateActiveScrollSpy, scrollThrottle)
