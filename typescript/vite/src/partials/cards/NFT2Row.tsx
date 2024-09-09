@@ -1,10 +1,10 @@
 import { KeenIcon } from '@/components';
 
 import { INFT2Item, INFT2Props } from './interfaces';
-import { Avatar } from '@mui/material';
 import { Link } from 'react-router-dom';
+import { Avatar } from '../common';
 
-const NFT2Row = ({ name, email, info, statistics }: INFT2Props) => {
+const NFT2Row = ({ avatar, name, email, info, statistics }: INFT2Props) => {
   const renderItem = (statistic: INFT2Item, index: number) => {
     return (
       <div
@@ -21,7 +21,13 @@ const NFT2Row = ({ name, email, info, statistics }: INFT2Props) => {
     <div className="card p-7.5">
       <div className="flex items-center flex-wrap justify-between gap-5">
         <div className="flex items-center gap-3.5">
-          <Avatar />
+          <Avatar
+            className={avatar?.className}
+            fallback={avatar?.fallback}
+            image={avatar?.image}
+            imageClass={avatar?.imageClass}
+            badgeClass={avatar?.badgeClass}
+          />
         
           <div className="flex flex-col gap-2">
             <div className="flex items-center gap-1.5 mb-px">

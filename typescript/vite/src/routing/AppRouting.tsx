@@ -59,6 +59,14 @@ import {
   TeamsStarterPage,
   UserProfilePage
 } from '@/pages/account';
+import {
+  NetworkAuthorPage,
+  NetworkGetStartedPage,
+  NetworkMiniCardsPage,
+  NetworkNFTPage,
+  NetworkSocialPage,
+  NetworkTeamCrewPage
+} from '@/pages/network';
 
 import { AuthPage, useAuthContext } from '../auth';
 import { RequireAuth } from '../auth/RequireAuth';
@@ -67,6 +75,7 @@ import { ErrorsPage } from '../modules/errors';
 import { useLoaders } from '../providers/LoadersProvider';
 import Example1 from "@/pages/crud/Example1.tsx";
 import {ScrollSpyExample} from "@/pages/scroll-spy/ScrollSpyExample.tsx";
+
 
 const AppRouting = (): ReactElement => {
   const { setProgressBarLoader } = useLoaders();
@@ -162,6 +171,12 @@ const AppRouting = (): ReactElement => {
           <Route path="/account/members/activity" element={<ActivityPages />} />
           <Route path="/crud/example-1" element={<Example1 />} />
           <Route path="/scroll-spy/example-1" element={<ScrollSpyExample />} />
+          <Route path="/network/get-started" element={<NetworkGetStartedPage />} />
+          <Route path="/network/user-cards/mini-cards" element={<NetworkMiniCardsPage />} />
+          <Route path="/network/user-cards/team-crew" element={<NetworkTeamCrewPage />} />
+          <Route path="/network/user-cards/author" element={<NetworkAuthorPage />} />
+          <Route path="/network/user-cards/nft" element={<NetworkNFTPage />} />
+          <Route path="/network/user-cards/social" element={<NetworkSocialPage />} />
           <Route index element={<Navigate to="/dashboard" />} />
         </Route>
       </Route>

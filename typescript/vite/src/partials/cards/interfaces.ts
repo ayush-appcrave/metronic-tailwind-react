@@ -271,18 +271,25 @@ export interface IAddNewProps {
   subTitle: string;
 }
 
-export interface IAuthorItem {
-  title: string;
-  id: string;
-  image: string;
+interface IAvatar {
+  className?: string;
+  image?: string;
+  imageClass?: string;
+  fallback?: string;
+  badgeClass?: string;
 }
-export interface IAuthorItems extends Array<IAuthorItem> {}
 
+export interface IWork {
+  image: string;
+  title: string;
+  id: number;
+}
 export interface IAuthorProps {
+  avatar?: IAvatar;
   bgImage: string;
   name: string;
   location: string;
-  works: IAuthorItem[];
+  works: IWork[];
 }
 
 export interface IIntegrationProps {
@@ -300,6 +307,7 @@ export interface INFT2Item {
 export interface INFT2Items extends Array<INFT2Item> {}
 
 export interface INFT2Props {
+  avatar?: IAvatar;
   bgImage: string;
   name: string;
   email: string;
@@ -322,4 +330,18 @@ export interface IRoleProps {
   description: string;
   team: string;
   badge: React.ReactNode;
+}
+
+export interface IUserMiniProps {
+  avatar?: IAvatar;
+  name: string;
+  verify: boolean;
+  email: string;
+}
+
+export interface IUserSocialProps {
+  avatar: IAvatar;
+  name: string;
+  description: string;
+  verify: boolean;
 }
