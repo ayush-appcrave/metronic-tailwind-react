@@ -74,12 +74,12 @@ const DropdownNotifications = ({menuTtemRef}: IDropdownNotificationProps) => {
                 ]
               }}
             >
-            <MenuLabel className="btn btn-sm btn-icon btn-light btn-clear">
-              <KeenIcon icon="setting-2"/>
-            </MenuLabel>
-            {DropdownCrud2()}
-        </MenuItem>
-      </Menu>
+              <MenuLabel className="btn btn-sm btn-icon btn-light btn-clear">
+                <KeenIcon icon="setting-2"/>
+              </MenuLabel>
+              {DropdownCrud2()}
+            </MenuItem>
+          </Menu>
         </TabsList>
         <TabPanel value={1}>
           <DropdownNotificationsAll/>
