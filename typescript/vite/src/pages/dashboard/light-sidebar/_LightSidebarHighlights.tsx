@@ -5,7 +5,7 @@ import {
   ILightSidebarHighlightsRow,
   ILightSidebarHighlightsRows
 } from './interfaces';
-import { KeenIcon } from '@/components';
+import { KeenIcon, Menu, MenuItem, MenuLabel } from '@/components';
 import { DropdownCard1 } from '@/partials/dropdowns/general';
 
 const LightSidebarHighlights = ({ limit }: ILightSidebarHighlightsProps) => {
@@ -59,21 +59,30 @@ const LightSidebarHighlights = ({ limit }: ILightSidebarHighlightsProps) => {
       <div className="card-header">
         <h3 className="card-title">Highlights</h3>
 
-        <div className="menu" data-menu="true">
-          <div
-            className="menu-item"
-            data-menu-item-trigger="click|lg:click"
-            data-menu-item-toggle="dropdown"
-            data-menu-item-placement="bottom-end"
-            data-menu-item-offset="0, 10px"
+        <Menu className="items-stretch">
+          <MenuItem 
+            toggle="dropdown"
+            trigger="click"
+            dropdownProps={{
+              placement: "bottom-end",
+              modifiers: [
+                {
+                  name: 'offset',
+                  options: {
+                    offset: [0, 10] // [skid, distance]
+                  }
+                }
+              ]
+            }}
           >
-            <button className="menu-toggle btn btn-sm btn-icon btn-light btn-clear">
-              <KeenIcon icon="dots-vertical" />
-            </button>
-            <DropdownCard1 />
-          </div>
-        </div>
+            <MenuLabel className="btn btn-sm btn-icon btn-light btn-clear mb-2.5-">
+              <KeenIcon icon="dots-vertical"/>
+            </MenuLabel>
+            {DropdownCard1()}
+          </MenuItem>
+        </Menu>
       </div>
+      
       <div className="card-body flex flex-col gap-4 p-5 lg:p-7.5 lg:pt-4">
         <div className="flex flex-col gap-0.5">
           <span className="text-sm font-normal text-gray-700">All time sales</span>
