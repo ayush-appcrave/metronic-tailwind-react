@@ -11,7 +11,7 @@ const Author = ({ avatar, bgImage, name, location, works }: IAuthorProps) => {
       <div key={index} className="card mb-4 border-0 last:mr-5">
         <div
           className="bg-cover bg-no-repeat card-rounded-t w-[240px] shrink-0 h-44"
-          style={{ backgroundImage: toAbsoluteUrl(`/media/images/600x600/${work.image}`) }}
+          style={{ backgroundImage: `url(${toAbsoluteUrl(`/media/images/600x600/${work.image}`)})` }}
         ></div>
 
         <div className="card-border card-rounded-b px-3.5 pt-5 pb-2.5">
@@ -34,7 +34,7 @@ const Author = ({ avatar, bgImage, name, location, works }: IAuthorProps) => {
     <div className="card">
       <div
         className="card-header p-0 bg-no-repeat bg-cover bg-center card-rounded-t h-40"
-        style={{ backgroundImage: toAbsoluteUrl(`/media/images/2600x1200/${bgImage}`) }}
+        style={{ backgroundImage: `url(${toAbsoluteUrl(`/media/images/2600x1200/${bgImage}`)})` }}
       ></div>
 
       <div className="card-body mb-7.5 p-0">

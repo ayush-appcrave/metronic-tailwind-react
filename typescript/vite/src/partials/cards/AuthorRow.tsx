@@ -10,7 +10,7 @@ const AuthorRow = ({ avatar, name, location, works }: IAuthorProps) => {
       <div key={index} className="flex items-center gap-3.5 min-w-64 last:mr-5">
         <div
           className="rounded-md bg-no-repeat bg-cover min-w-24 max-w-24 h-12 shrink-0"
-          style={{ backgroundImage: toAbsoluteUrl(`/media/images/600x600/${work.image}`) }}
+          style={{ backgroundImage: `url(${toAbsoluteUrl(`/media/images/600x600/${work.image}`)})` }}
         ></div>
 
         <div className="flex flex-col">

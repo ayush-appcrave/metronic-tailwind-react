@@ -10,6 +10,7 @@ const UserSocial = ({ avatar, name, description, verify }: IUserSocialProps) => 
         <div className="mb-3">
           <Avatar
             className={avatar?.className}
+            fallback={avatar?.fallback}
             image={avatar?.image}
             imageClass={avatar?.imageClass}
             badgeClass={avatar?.badgeClass}

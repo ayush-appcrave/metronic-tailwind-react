@@ -23,7 +23,7 @@ const NFT2 = ({ avatar, bgImage, name, email, info, statistics }: INFT2Props) =>
     <div className="card">
       <div
         className="card-header card-rounded-t flex justify-end items-start relative p-0 bg-no-repeat bg-cover bg-center h-[120px]"
-        style={{ backgroundImage: toAbsoluteUrl(`/media/images/2600x1200/${bgImage}`) }}
+        style={{ backgroundImage: `url(${toAbsoluteUrl(`/media/images/2600x1200/${bgImage}`)})` }}
       >
         <div className="menu mt-2.5 mr-2.5" data-menu="true">
           <div
@@ -46,6 +46,7 @@ const NFT2 = ({ avatar, bgImage, name, email, info, statistics }: INFT2Props) =>
         <div className="flex justify-center transform -translate-y-1/2">
           <Avatar
             className={avatar?.className}
+            fallback={avatar?.fallback}
             image={avatar?.image}
             imageClass={avatar?.imageClass}
             badgeClass={avatar?.badgeClass}

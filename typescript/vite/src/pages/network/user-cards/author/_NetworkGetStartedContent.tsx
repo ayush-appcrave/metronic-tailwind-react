@@ -1,8 +1,15 @@
 import { KeenIcon } from '@/components';
 import { Author, AuthorRow } from '@/partials/cards';
 import { INetworkAuthorContentItem, INetworkAuthorContentItems } from './interfaces';
+import { useState } from 'react';
 
 const NetworkAuthorContent = () => {
+  const [activeTab, setActiveTab] = useState<'cards' | 'list'>('cards');
+
+  const handleTabClick = (tab: 'cards' | 'list') => {
+    setActiveTab(tab);
+  };
+
   const items: INetworkAuthorContentItems = [
     {
       avatar: {
@@ -198,39 +205,51 @@ const NetworkAuthorContent = () => {
           </div>  
 
           <div className="btn-tabs btn-tabs-sm" data-tabs="true">
-            <a href="#" className="btn btn-icon active" data-tab-toggle="#author_cards">
+            <a
+              href="#"
+              className={`btn btn-icon ${activeTab === 'cards' ? 'active' : ''}`}
+              onClick={() => handleTabClick('cards')}
+              data-tab-toggle="#author_cards"
+            >
               <KeenIcon icon="category" />
             </a>
-            <a href="#" className="btn btn-icon" data-tab-toggle="#author_list">
+            <a
+              href="#"
+              className={`btn btn-icon ${activeTab === 'list' ? '' : 'active'}`}
+              onClick={() => handleTabClick('list')}
+              data-tab-toggle="#author_list"
+            >
               <KeenIcon icon="row-horizontal" />
             </a>
           </div>
         </div>		
       </div>
 
-      <div id="author_cards" className="flex flex-col gap-5 lg:gap-7.5">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-5 lg:gap-7.5">
-          {items.map((item, index) => {
-            return renderCard(item, index);
-          })}
+      {activeTab === 'cards' ? (
+        <div id="author_cards" className="flex flex-col gap-5 lg:gap-7.5">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-5 lg:gap-7.5">
+            {items.map((item, index) => {
+              return renderCard(item, index);
+            })}
+          </div>
+        
+          <div className="flex justify-center">
+            <a href="#" className="btn btn-link">Show more Users</a>
+          </div>
         </div>
-      
-        <div className="flex justify-center">
-          <a href="#" className="btn btn-link">Show more Users</a>
-        </div>
-      </div>
-      
-      <div className="authors-row hidden" id="author_list">
-        <div className="grid grid-cols-1 gap-5 lg:gap-7.5">
-          {items.map((item, index) => {
-            return renderListItem(item, index);
-          })}
-        </div>
+      ) : (
+        <div className="authors-row" id="author_list">
+          <div className="grid grid-cols-1 gap-5 lg:gap-7.5">
+            {items.map((item, index) => {
+              return renderListItem(item, index);
+            })}
+          </div>
 
-        <div className="flex grow justify-center pt-5 lg:pt-7.5">
-          <a href="#" className="btn btn-link">Show more Users</a>
+          <div className="flex grow justify-center pt-5 lg:pt-7.5">
+            <a href="#" className="btn btn-link">Show more Users</a>
+          </div>
         </div>
-      </div>
+      )}
     </div>
   );
 };

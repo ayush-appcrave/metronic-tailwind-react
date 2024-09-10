@@ -40,13 +40,21 @@ const DefaultRecentUploads = ({ title }: IDefaultRecentUploadsProps) => {
           <img src={toAbsoluteUrl(`/media/file-types/${item.image}`)} alt="" />
 
           <div className="flex flex-col">
-            <span className="text-sm font-semibold text-gray-900 cursor-pointer hover:text-primary mb-px">{item.desc}</span>
+            <span className="text-sm font-semibold text-gray-900 cursor-pointer hover:text-primary mb-px">
+              {item.desc}
+            </span>
             <span className="text-xs font-normal text-gray-600">{item.date}</span>
           </div>
         </div>
 
         <div className="menu" data-menu="true">
-          <div className="menu-item" data-menu-item-trigger="click|lg:click" data-menu-item-toggle="dropdown" data-menu-item-placement="bottom-end" data-menu-item-offset="0, 10px">
+          <div
+            className="menu-item"
+            data-menu-item-trigger="click|lg:click"
+            data-menu-item-toggle="dropdown"
+            data-menu-item-placement="bottom-end"
+            data-menu-item-offset="0, 10px"
+          >
             <button className="menu-toggle btn btn-sm btn-icon btn-light btn-clear">
               <KeenIcon icon="dots-vertical" />
             </button>

@@ -2,8 +2,15 @@ import { KeenIcon } from '@/components';
 import { INetworkNFTContentItem, INetworkNFTContentItems } from './interfaces';
 import { Link } from 'react-router-dom';
 import { NFT2, NFT2Row } from '@/partials/cards';
+import { useState } from 'react';
 
 const NetworkNFTContent = () => {
+  const [activeTab, setActiveTab] = useState<'cards' | 'list'>('cards');
+
+  const handleTabClick = (tab: 'cards' | 'list') => {
+    setActiveTab(tab);
+  };
+
   const items: INetworkNFTContentItems = [
     {
       bgImage: 'bg-11.png',
@@ -297,41 +304,53 @@ const NetworkNFTContent = () => {
           </div>  
 
           <div className="btn-tabs btn-tabs-sm" data-tabs="true">
-            <a href="#" className="btn btn-icon active" data-tab-toggle="#network_cards">
+            <a
+              href="#"
+              className={`btn btn-icon ${activeTab === 'cards' ? 'active' : ''}`}
+              onClick={() => handleTabClick('cards')}
+              data-tab-toggle="#network_cards"
+            >
               <KeenIcon icon="category" />
             </a>
-            <a href="#" className="btn btn-icon" data-tab-toggle="#network_list">
+            <a
+              href="#"
+              className={`btn btn-icon ${activeTab === 'list' ? '' : 'active'}`}
+              onClick={() => handleTabClick('list')}
+              data-tab-toggle="#network_list"
+            >
               <KeenIcon icon="row-horizontal" />
             </a>
           </div>
         </div>		
       </div>
 
-      <div id="network_cards">
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-5 lg:gap-7.5">
-          {items.map((item, index) => {
-            return renderItem(item, index);
-          })}
-        </div>
+      {activeTab === 'cards' ? (
+        <div id="network_cards">
+          <div className="grid grid-cols-1 lg:grid-cols-3 gap-5 lg:gap-7.5">
+            {items.map((item, index) => {
+              return renderItem(item, index);
+            })}
+          </div>
 
-        <div className="flex grow justify-center pt-5 lg:pt-7.5">
-          <a href="#" className="btn btn-link">Show more Users</a>
+          <div className="flex grow justify-center pt-5 lg:pt-7.5">
+            <a href="#" className="btn btn-link">Show more Users</a>
+          </div>
         </div>
-      </div>
+      ) : (
+        <div id="network_list">
+          <div className="flex flex-col gap-5 lg:gap-7.5">
+            {items.map((item, index) => {
+              return renderRowItem(item, index);
+            })}
+          </div>
 
-      <div className="hidden" id="network_list">
-        <div className="flex flex-col gap-5 lg:gap-7.5">
-          {items.map((item, index) => {
-            return renderRowItem(item, index);
-          })}
+          <div className="flex grow justify-center pt-5 lg:pt-7.5">
+            <Link to="/public-profile/profiles/nft" className="btn btn-link">
+              Show more Users
+            </Link>
+          </div>
         </div>
-
-        <div className="flex grow justify-center pt-5 lg:pt-7.5">
-          <Link to="/public-profile/profiles/nft" className="btn btn-link">
-            Show more Users
-          </Link>
-        </div>
-      </div>
+      )}
     </div>
   );
 };

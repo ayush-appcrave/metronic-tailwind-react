@@ -1,8 +1,15 @@
 import { KeenIcon } from '@/components';
 import { INetworkSocialContentItem, INetworkSocialContentItems } from './interfaces';
 import { UserSocial, UserSocialRow } from '@/partials/cards';
+import { useState } from 'react';
 
 const NetworkSocialContent = () => {
+  const [activeTab, setActiveTab] = useState<'cards' | 'list'>('cards');
+
+  const handleTabClick = (tab: 'cards' | 'list') => {
+    setActiveTab(tab);
+  };
+
   const items: INetworkSocialContentItems = [
     {
       avatar: {
@@ -11,8 +18,8 @@ const NetworkSocialContent = () => {
         imageClass: 'rounded-full',
         badgeClass: 'flex size-2.5 bg-success rounded-full ring-2 ring-light absolute bottom-0.5 left-16 transform -translate-y-1/2'
       },
-      name: 'Jenny Klabber',  
-      description: 'San Antonio, TX', 
+      name: 'Jenny Klabber',
+      description: 'San Antonio, TX',
       verify: true
     },
     {
@@ -21,8 +28,8 @@ const NetworkSocialContent = () => {
         fallback: 'K',
         badgeClass: 'flex size-2.5 bg-success rounded-full ring-2 ring-light absolute bottom-0.5 left-16 transform -translate-y-1/2'
       },
-      name: 'Kevin Warren', 
-      description: 'Fort Wayne, IN', 
+      name: 'Kevin Warren',
+      description: 'Fort Wayne, IN',
       verify: true
     },
     {
@@ -32,8 +39,8 @@ const NetworkSocialContent = () => {
         imageClass: 'rounded-full',
         badgeClass: 'flex size-2.5 bg-success rounded-full ring-2 ring-light absolute bottom-0.5 left-16 transform -translate-y-1/2'
       },
-      name: 'Brian Davis',  
-      description: 'Reno, NV', 
+      name: 'Brian Davis',
+      description: 'Reno, NV',
       verify: false
     },
     {
@@ -43,8 +50,8 @@ const NetworkSocialContent = () => {
         imageClass: 'rounded-full',
         badgeClass: 'flex size-2.5 bg-success rounded-full ring-2 ring-light absolute bottom-0.5 left-16 transform -translate-y-1/2'
       },
-      name: 'Guy Hawkins',  
-      description: 'Irving, TX', 
+      name: 'Guy Hawkins',
+      description: 'Irving, TX',
       verify: true
     },
     {
@@ -54,8 +61,8 @@ const NetworkSocialContent = () => {
         imageClass: 'rounded-full',
         badgeClass: 'flex size-2.5 bg-success rounded-full ring-2 ring-light absolute bottom-0.5 left-16 transform -translate-y-1/2'
       },
-      name: 'Albert Flores',  
-      description: 'Boise, ID', 
+      name: 'Albert Flores',
+      description: 'Boise, ID',
       verify: false
     },
     {
@@ -64,8 +71,8 @@ const NetworkSocialContent = () => {
         fallback: 'S',
         badgeClass: 'flex size-2.5 bg-success rounded-full ring-2 ring-light absolute bottom-0.5 left-16 transform -translate-y-1/2'
       },
-      name: 'Savannah Nguyen', 
-      description: 'Spokane, WA', 
+      name: 'Savannah Nguyen',
+      description: 'Spokane, WA',
       verify: true
     },
     {
@@ -74,8 +81,8 @@ const NetworkSocialContent = () => {
         fallback: 'M',
         badgeClass: 'flex size-2.5 bg-gray-400 rounded-full ring-2 ring-light absolute bottom-0.5 left-16 transform -translate-y-1/2'
       },
-      name: 'Marvin McKinney', 
-      description: 'Richmond, VA', 
+      name: 'Marvin McKinney',
+      description: 'Richmond, VA',
       verify: false
     },
     {
@@ -85,8 +92,8 @@ const NetworkSocialContent = () => {
         imageClass: 'rounded-full',
         badgeClass: 'flex size-2.5 bg-success rounded-full ring-2 ring-light absolute bottom-0.5 left-16 transform -translate-y-1/2'
       },
-      name: 'Darrell Steward',  
-      description: 'Baton Rouge, LA', 
+      name: 'Darrell Steward',
+      description: 'Baton Rouge, LA',
       verify: true
     },
     {
@@ -96,8 +103,8 @@ const NetworkSocialContent = () => {
         imageClass: 'rounded-full',
         badgeClass: 'flex size-2.5 bg-success rounded-full ring-2 ring-light absolute bottom-0.5 left-16 transform -translate-y-1/2'
       },
-      name: 'Eleanor Pena',  
-      description: 'Des Moines, IA', 
+      name: 'Eleanor Pena',
+      description: 'Des Moines, IA',
       verify: true
     }
   ];
@@ -156,39 +163,51 @@ const NetworkSocialContent = () => {
           </div>  
 
           <div className="btn-tabs btn-tabs-sm" data-tabs="true">
-            <a href="#" className="btn btn-icon active" data-tab-toggle="#social_card">
+            <a
+              href="#"
+              className={`btn btn-icon ${activeTab === 'cards' ? 'active' : ''}`}
+              onClick={() => handleTabClick('cards')}
+              data-tab-toggle="#social_card"
+            >
               <KeenIcon icon="category" />
             </a>
-            <a href="#" className="btn btn-icon" data-tab-toggle="#social_list">
+            <a
+              href="#"
+              className={`btn btn-icon ${activeTab === 'list' ? '' : 'active'}`}
+              onClick={() => handleTabClick('list')}
+              data-tab-toggle="#social_list"
+            >
               <KeenIcon icon="row-horizontal" />
             </a>
           </div>
         </div>		
       </div>
 
-      <div id="social_card" className="flex flex-col gap-5 lg:gap-7.5">
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-5 lg:gap-7.5">
-          {items.map((item, index) => {
-            return renderItem(item, index);
-          })}
+      {activeTab === 'cards' ? (
+        <div id="social_card" className="flex flex-col gap-5 lg:gap-7.5">
+          <div className="grid grid-cols-1 lg:grid-cols-3 gap-5 lg:gap-7.5">
+            {items.map((item, index) => {
+              return renderItem(item, index);
+            })}
+          </div>
+        
+          <div className="flex justify-center">
+            <a href="#" className="btn btn-link">Show more Users</a>
+          </div>
         </div>
-      
-        <div className="flex justify-center">
-          <a href="#" className="btn btn-link">Show more Users</a>
-        </div>
-      </div>
+      ) : (
+        <div id="social_list">
+          <div className="grid grid-cols-1 gap-5 lg:gap-7.5">
+            {items.map((item, index) => {
+              return renderRowItem(item, index);
+            })}
+          </div>
 
-      <div className="hidden" id="social_list">
-        <div className="grid grid-cols-1 gap-5 lg:gap-7.5">
-          {items.map((item, index) => {
-            return renderRowItem(item, index);
-          })}
+          <div className="flex grow justify-center pt-5 lg:pt-7.5">
+            <a href="#" className="btn btn-link">Show more Users</a>
+          </div>
         </div>
-
-        <div className="flex grow justify-center pt-5 lg:pt-7.5">
-          <a href="#" className="btn btn-link">Show more Users</a>
-        </div>
-      </div>
+      )}
     </div>
   );
 };
