@@ -73,7 +73,7 @@ import { RequireAuth } from '../auth/RequireAuth';
 import { Demo1Layout } from '../layouts/demo1';
 import { ErrorsPage } from '../modules/errors';
 import { useLoaders } from '../providers/LoadersProvider';
-import Example1 from "@/pages/crud/Example1.tsx";
+import { Example1 } from "@/pages/crud/Example1.tsx";
 import {ScrollSpyExample} from "@/pages/scroll-spy/ScrollSpyExample.tsx";
 
 
