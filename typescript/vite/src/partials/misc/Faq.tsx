@@ -1,6 +1,7 @@
 import { KeenIcon } from '@/components';
 
 import { IFaqItem, IFaqItems } from './interfaces';
+import { Accordion, AccordionItem } from '@/components/accordion';
 
 const Faq = () => {
   const items: IFaqItems = [
@@ -30,25 +31,15 @@ const Faq = () => {
     }
   ];
 
-  const renderItem = (item: IFaqItem, index: number) => {
+  const generateItems = () => {
     return (
-      <div
-        key={index}
-        className="accordion-item [&:not(:last-child)]:border-b border-b-gray-200"
-        data-accordion-item="true"
-      >
-        <button data-accordion-toggle="#faq_{{ loop.index }}_content" className="accordion-toggle py-4">
-          <span className="text-base text-gray-900">{item.title}</span>
-
-          <KeenIcon icon="plus" className="text-gray-600 text-sm accordion-active:hidden block" />
-          <KeenIcon icon="minus" className="text-gray-600 text-sm accordion-active:block hidden" />
-        </button>
-        <div id="faq_{{ loop.index }}_content" className="accordion-content hidden">
-          <div className="text-gray-700 text-md pb-4">
+      <Accordion allowMultiple={false}>
+        {items.map((item, index) => (
+          <AccordionItem key={index} title={item.title}>
             {item.text}
-          </div>
-        </div>
-      </div>
+          </AccordionItem>
+        ))}
+      </Accordion>
     );
   };
 
@@ -58,11 +49,7 @@ const Faq = () => {
         <h3 className="card-title">FAQ</h3>
       </div>
       <div className="card-body py-3">
-        <div data-accordion="true" data-accordion-expand-all="true">
-          {items.map((item, index) => {
-            return renderItem(item, index);
-          })}
-        </div>
+        {generateItems()}
       </div>
     </div>
   );

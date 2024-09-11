@@ -22,49 +22,6 @@ const DropdownNotificationsTeam = () => {
     return (
       <div className="flex flex-col gap-5 pt-3 pb-4 divider-y divider-gray-200">
         <p>Team</p>
-        <p>Test</p>
-        <p>Test</p>
-        <p>Test</p>
-        <p>Test</p>
-        <p>Test</p>
-        <p>Test</p>
-        <p>Test</p>
-        <p>Test</p>
-        <p>Test</p>
-        <p>Test</p>
-        <p>Test</p>
-        <p>Test</p>
-        <p>Test</p>
-        <p>Test</p>
-        <p>Test</p>
-        <p>Test</p>
-        <p>Test</p>
-        <p>Test</p>
-        <p>Test</p>
-        <p>Test</p>
-        <p>Test</p>
-        <p>Test</p>
-        <p>Test</p>
-        <p>Test</p>
-        <p>Test</p>
-        <p>Test</p>
-        <p>Test</p>
-        <p>Test</p>
-        <p>Test</p>
-        <p>Test</p>
-        <p>Test</p>
-        <p>Test</p>
-        <p>Test</p>
-        <p>Test</p>
-        <p>Test</p>
-        <p>Test</p>
-        <p>Test</p>
-        <p>Test</p>
-        <p>Test</p>
-        <p>Test</p>
-        <p>Test</p>
-        <p>Test</p>
-        <p>Test</p>        
       </div>
     );
   }
@@ -83,7 +40,7 @@ const DropdownNotificationsTeam = () => {
 
   return (
     <div className="grow">
-      <div className="scrollable-y-auto" style={{ height: `${listHeight}px` }}>
+      <div className="scrollable-y-auto" style={{ maxHeight: `${listHeight}px` }}>
         {buildList()}        
       </div>
       <div ref={footerRef}>
