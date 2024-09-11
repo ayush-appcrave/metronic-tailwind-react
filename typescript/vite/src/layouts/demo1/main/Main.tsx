@@ -2,7 +2,7 @@ import { useEffect } from 'react';
 import { Helmet } from 'react-helmet';
 import { useLocation } from 'react-router';
 
-import { useActiveMenuItem } from '@/components/menu';
+import { useMenuCurrentItem } from '@/components/menu';
 import { MENU_SIDEBAR } from '@/config/menu.config';
 
 import { Content, Footer, Header, Sidebar, useDemo1Layout } from '../';
@@ -10,7 +10,7 @@ import { Content, Footer, Header, Sidebar, useDemo1Layout } from '../';
 const Main = () => {
   const { layout } = useDemo1Layout();
   const { pathname } = useLocation();
-  const menuItem = useActiveMenuItem(pathname, MENU_SIDEBAR);
+  const menuItem = useMenuCurrentItem(pathname, MENU_SIDEBAR);
 
   useEffect(() => {
     const bodyClass = document.body.classList;

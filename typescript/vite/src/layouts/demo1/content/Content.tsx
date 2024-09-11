@@ -10,7 +10,7 @@ const Content = ({ children }: PropsWithChildren) => {
   const mobileMode = useResponsive('down', 'lg');
 
   return (
-    <div className="grow content" role="content">
+    <div className="grow content pt-5" role="content">
       {mobileMode && (
         <Container>
           <Breadcrumbs />

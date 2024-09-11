@@ -2,15 +2,17 @@ import { matchPath } from 'react-router';
 
 import { IMenuItemConfig, type MenuConfigType } from '../types';
 
-const useActiveMenuItem = (pathname: string, items: MenuConfigType): IMenuItemConfig | null => {
-  const findActiveItem = (items: MenuConfigType): IMenuItemConfig | null => {
+const useMenuCurrentItem = (pathname: string, items: MenuConfigType | null): IMenuItemConfig | null => {
+  const findCurrentItem = (items: MenuConfigType | null): IMenuItemConfig | null => {
+    if (!items) return null;
+    
     for (let i = 0; i < items.length; i++) {
       const item = items[i];
 
       if (item.path && matchPath(pathname, item.path)) {
         return item ?? null;
       } else if (item.children) {
-        const childItem = findActiveItem(item.children as MenuConfigType);
+        const childItem = findCurrentItem(item.children as MenuConfigType);
         if (childItem) {
           return childItem;
         }
@@ -20,7 +22,7 @@ const useActiveMenuItem = (pathname: string, items: MenuConfigType): IMenuItemCo
     return null;
   };
 
-  return findActiveItem(items);
+  return findCurrentItem(items);
 };
 
-export { useActiveMenuItem };
+export { useMenuCurrentItem };

@@ -1,6 +1,3 @@
-export * from './hooks/useActiveMenuItem';
-export * from './hooks/useMenuBreadcrumbs';
-export * from './hooks/useMenuChildren';
 export * from './Menu';
 export * from './MenuBullet';
 export * from './MenuSeparator';
@@ -15,3 +12,6 @@ export * from './MenuTitle';
 export * from './MenuLabel';
 export * from './MenuArrow';
 export * from './types';
+export * from './hooks/useMenuCurrentItem';
+export * from './hooks/useMenuBreadcrumbs';
+export * from './hooks/useMenuChildren';
