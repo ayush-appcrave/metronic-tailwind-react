@@ -8,9 +8,9 @@ const DropdownNotificationsItem4 = () => {
         <img
           src={toAbsoluteUrl('/media/avatars/300-1.png')}
           className="rounded-full size-8"
-          alt="Leslie Alexander avatar"
+          alt="Jane Perez"
         />
-        <span className="size-1.5 badge badge-circle badge-gray-400 absolute top-7 end-0.5 ring-1 ring-light transform -translate-y-1/2"></span>
+        <span className="size-1.5 badge badge-circle bg-gray-400 absolute top-7 end-0.5 ring-1 ring-light transform -translate-y-1/2"></span>
       </div>
 
       <div className="flex flex-col gap-3.5">
