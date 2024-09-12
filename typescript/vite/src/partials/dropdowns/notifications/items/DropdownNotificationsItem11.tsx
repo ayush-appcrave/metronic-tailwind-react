@@ -1,6 +1,5 @@
 import { toAbsoluteUrl } from '@/utils';
-import { Link } from 'react-router-dom';
-import { Avatars } from '@/partials/common';
+import { Link } from 'react-router-dom'; 
 
 const DropdownNotificationsItem11 = () => {
   return (
