@@ -3,7 +3,14 @@ import { getHeight, toAbsoluteUrl } from '@/utils';
 import { Link } from 'react-router-dom';
 import { KeenIcon } from '@/components';
 import { useViewport } from '@/hooks';
-import { DropdownNotificationsItem1, DropdownNotificationsItem2 } from './items';
+import { 
+  DropdownNotificationsItem1, 
+  DropdownNotificationsItem2, 
+  DropdownNotificationsItem3, 
+  DropdownNotificationsItem4,
+  DropdownNotificationsItem5,
+  DropdownNotificationsItem6,
+} from './items';
 
 const DropdownNotificationsAll = () => {   
   const footerRef = useRef<HTMLDivElement>(null);
@@ -36,6 +43,39 @@ const DropdownNotificationsAll = () => {
         <div className="border-b border-b-gray-200"></div>
 
         <DropdownNotificationsItem2/>
+
+        <div className="border-b border-b-gray-200"></div>
+        
+        <DropdownNotificationsItem3
+          userName="Guy Hawkins"
+          avatar="300-27.png"
+          badgeColor="bg-gray-400"
+          description="requested access to"
+          link="AirSpace"
+          day="project"
+          date="14 hours ago"
+          info="Dev Team" 
+        /> 
+
+        <div className="border-b border-b-gray-200"></div>
+
+        <DropdownNotificationsItem4/>
+
+        <div className="border-b border-b-gray-200"></div>
+
+        <DropdownNotificationsItem5
+          userName="Raymond Pawell"
+          avatar="300-11.png"
+          badgeColor= "bg-success"
+          description="posted a new article"
+          link="2024 Roadmap" 
+          date="1 hour ago"
+          info="Roadmap"
+        />
+
+        <div className="border-b border-b-gray-200"></div>
+
+        <DropdownNotificationsItem6/>
       </div>
     );
   }
