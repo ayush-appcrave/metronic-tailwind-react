@@ -3,6 +3,9 @@ import { getHeight, toAbsoluteUrl } from '@/utils';
 import { Link } from 'react-router-dom';
 import { KeenIcon } from '@/components';
 import { useViewport } from '@/hooks';
+import { 
+  DropdownNotificationsItem13,  
+} from './items';
 
 const DropdownNotificationsFollowing = () => {   
   const footerRef = useRef<HTMLDivElement>(null);
@@ -21,7 +24,9 @@ const DropdownNotificationsFollowing = () => {
   const buildList = () => {
     return (
       <div className="flex flex-col gap-5 pt-3 pb-4 divider-y divider-gray-200">
-        Wow
+        <DropdownNotificationsItem13/>
+
+        <div className="border-b border-b-gray-200"></div>
       </div>
     );
   }

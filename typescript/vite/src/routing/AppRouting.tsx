@@ -75,19 +75,21 @@ import { useLoaders } from '../providers/LoadersProvider';
 import { Example1 } from "@/pages/crud/Example1.tsx";
 import {ScrollSpyExample} from "@/pages/scroll-spy/ScrollSpyExample.tsx";
 
-
 const AppRouting = (): ReactElement => {
   const { setProgressBarLoader } = useLoaders();
   const { verify } = useAuthContext();
   const [previousLocation, setPreviousLocation] = useState('');
-  const path = useLocation().pathname.trim();
+  const location = useLocation(); 
+  const path = location.pathname.trim();
 
   const init = async () => {
     setProgressBarLoader(true);
+    
     try {
       if (verify) {
         await verify();
       }
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
     } catch (error) {
       throw new Error('Something went wrong!');
     } finally {
@@ -177,7 +179,6 @@ const AppRouting = (): ReactElement => {
           <Route path="/network/user-cards/social" element={<NetworkSocialPage />} />    
         </Route>
       </Route>
-
       <Route path="error/*" element={<ErrorsPage />} />
       <Route path="auth/*" element={<AuthPage />} />
       <Route path="*" element={<Navigate to="/error/404" />} />

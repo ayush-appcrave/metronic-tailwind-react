@@ -3,6 +3,14 @@ import { getHeight, toAbsoluteUrl } from '@/utils';
 import { Link } from 'react-router-dom';
 import { KeenIcon } from '@/components';
 import { useViewport } from '@/hooks';
+import { 
+  DropdownNotificationsItem13,  
+  DropdownNotificationsItem14,
+  DropdownNotificationsItem15,
+  DropdownNotificationsItem16,
+  DropdownNotificationsItem3,
+  DropdownNotificationsItem5
+} from './items';
 
 const DropdownNotificationsInbox = () => {   
   const footerRef = useRef<HTMLDivElement>(null);
@@ -21,7 +29,47 @@ const DropdownNotificationsInbox = () => {
   const buildList = () => {
     return (
       <div className="flex flex-col gap-5 pt-3 pb-4 divider-y divider-gray-200">
-        <p>Inbox</p>
+        <DropdownNotificationsItem13/>
+
+        <div className="border-b border-b-gray-200"></div>
+
+        <DropdownNotificationsItem14/>
+
+        <div className="border-b border-b-gray-200"></div>
+
+        <DropdownNotificationsItem15/>
+
+        <div className="border-b border-b-gray-200"></div>
+
+        <DropdownNotificationsItem16/>
+
+        <div className="border-b border-b-gray-200"></div>
+
+        <DropdownNotificationsItem3
+          userName="Benjamin Harris"
+          avatar="300-30.png"
+          badgeColor="bg-gray-400"
+          description="requested to upgrade plan"
+          link=""
+          day=""
+          date="4 days ago"
+          info="Marketing" 
+        /> 
+
+        <div className="border-b border-b-gray-200"></div>
+
+        <DropdownNotificationsItem5
+          userName="Isaac Morgan"
+          avatar="300-24.png"
+          badgeColor= "badge-success"
+          description="mentioned you in"
+          link="Data Transmission" 
+          day="topic"
+          date="6 days ago"
+          info="Dev Team"
+        /> 
+
+        <div className="border-b border-b-gray-200"></div>
       </div>
     );
   }

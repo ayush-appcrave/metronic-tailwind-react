@@ -1,6 +1,5 @@
 import { toAbsoluteUrl } from '@/utils';
-import { Link } from 'react-router-dom';
-import { KeenIcon } from '@/components';
+import { Link } from 'react-router-dom'; 
 import { useState } from 'react';
 
 interface IDropdownNotificationsItemProps {
@@ -8,6 +7,7 @@ interface IDropdownNotificationsItemProps {
   avatar: string;
   badgeColor: string;
   description: string;
+  day: string; 
   link: string; 
   date: string;
   info: string;
@@ -18,6 +18,7 @@ const DropdownNotificationsItem5 = ({
   avatar,
   badgeColor,
   description,
+  day,
   link, 
   date,
   info
@@ -36,7 +37,7 @@ const DropdownNotificationsItem5 = ({
           className="rounded-full size-8"
           alt={`${userName} avatar`}
         /> 
-        <span className="size-1.5 badge badge-circle {colorBadge} absolute top-7 end-0.5 ring-1 ring-light transform -translate-y-1/2"></span>
+        <span className={`size-1.5 badge badge-circle ${badgeColor} absolute top-7 end-0.5 ring-1 ring-light transform -translate-y-1/2`}></span>
       </div>  
 
       <div className="flex flex-col gap-1">
@@ -47,7 +48,7 @@ const DropdownNotificationsItem5 = ({
           <span className="text-gray-700"> {description} </span>   
           <Link to="#" className="hover:text-primary-active text-primary">
             {link}
-          </Link> 
+          </Link> {day}
         </div>
         <span className="flex items-center text-2xs font-medium text-gray-500"> {date} 
           <span className="badge badge-circle bg-gray-500 size-1 mx-1.5"></span>

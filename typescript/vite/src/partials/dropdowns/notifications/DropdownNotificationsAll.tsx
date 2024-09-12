@@ -66,9 +66,10 @@ const DropdownNotificationsAll = () => {
         <DropdownNotificationsItem5
           userName="Raymond Pawell"
           avatar="300-11.png"
-          badgeColor= "bg-success"
+          badgeColor= "badge-success"
           description="posted a new article"
           link="2024 Roadmap" 
+          day=""
           date="1 hour ago"
           info="Roadmap"
         />

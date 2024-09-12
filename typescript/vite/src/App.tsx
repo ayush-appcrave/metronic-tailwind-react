@@ -1,7 +1,5 @@
 import { useEffect } from 'react';
 import { BrowserRouter } from 'react-router-dom';
-
-import { ProvidersWrapper } from './providers/ProvidersWrapper';
 import { useSettings } from './providers/SettingsProvider';
 import { AppRouting } from './routing';
 

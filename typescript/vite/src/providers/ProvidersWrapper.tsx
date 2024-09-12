@@ -1,4 +1,3 @@
-/* eslint-disable prettier/prettier */
 import { PropsWithChildren } from 'react';
 import { QueryClient, QueryClientProvider } from 'react-query';
 

@@ -3,6 +3,11 @@ import { getHeight, toAbsoluteUrl } from '@/utils';
 import { Link } from 'react-router-dom';
 import { KeenIcon } from '@/components';
 import { useViewport } from '@/hooks';
+import { 
+  DropdownNotificationsItem10,   
+  DropdownNotificationsItem5, 
+  DropdownNotificationsItem11, 
+} from './items';
 
 const DropdownNotificationsTeam = () => {   
   const footerRef = useRef<HTMLDivElement>(null);
@@ -21,7 +26,24 @@ const DropdownNotificationsTeam = () => {
   const buildList = () => {
     return (
       <div className="flex flex-col gap-5 pt-3 pb-4 divider-y divider-gray-200">
-        <p>Team</p>
+        <DropdownNotificationsItem10/>
+
+        <div className="border-b border-b-gray-200"></div>
+
+        <DropdownNotificationsItem5
+          userName="Adrian Vale"
+          avatar="300-6.png"
+          badgeColor= "bg-gray-400"
+          description="posted a new article"
+          link="Marketing" 
+          day="to 13 May"
+          date="2 days ago"
+          info="Marketing"
+        />
+
+        <div className="border-b border-b-gray-200"></div> 
+		 
+        <DropdownNotificationsItem11/>
       </div>
     );
   }
