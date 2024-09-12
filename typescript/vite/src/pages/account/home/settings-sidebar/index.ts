@@ -13,3 +13,4 @@ export * from './_SettingsSidebarContent';
 export * from './_SettingsSidebarDeleteAccount';
 export * from './_SettingsSidebarExternalServicesIntegrations';
 export * from './_SettingsSidebarExternalServicesManageApi';
+export * from './types';

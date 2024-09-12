@@ -1,4 +1,4 @@
-import { Help } from "@/partials/misc";
+import { MiscHelp } from "@/partials/misc";
 import {
   EnterpriseBillingInvoicing,
   EnterpriseCompanyProfile,
@@ -33,7 +33,7 @@ const EnterpriseContent = () => {
       </div>  
 
       <div className="col-span-2">
-        <Help />
+        <MiscHelp />
       </div>
     </div>
   );

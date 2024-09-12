@@ -1,4 +1,4 @@
-import { IToolbarProps } from './interfaces';
+import { IToolbarProps } from './types';
 
 const Toolbar = ({ children }: IToolbarProps) => {
   return (

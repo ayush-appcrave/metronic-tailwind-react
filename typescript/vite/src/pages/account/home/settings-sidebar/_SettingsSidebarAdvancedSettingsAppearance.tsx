@@ -5,7 +5,7 @@ import {
   ISettingsSidebarAdvancedSettingsAppearanceItem,
   ISettingsSidebarAdvancedSettingsAppearanceItems,
   ISettingsSidebarAdvancedSettingsAppearanceProps
-} from './interfaces';
+} from './types';
 
 const SettingsSidebarAdvancedSettingsAppearance = ({ title = "Appearance" }: ISettingsSidebarAdvancedSettingsAppearanceProps) => {
   const items: ISettingsSidebarAdvancedSettingsAppearanceItems = [

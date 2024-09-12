@@ -1,4 +1,4 @@
-import { IGamerAboutItem, IGamerAboutItems } from './interfaces';
+import { IGamerAboutItem, IGamerAboutItems } from './types';
 
 const GamerAbout = () => {
   const items: IGamerAboutItems = [

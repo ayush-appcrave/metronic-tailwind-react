@@ -1,4 +1,4 @@
-import { Faq, Help2 } from "@/partials/misc";
+import { MiscFaq, MiscHelp2 } from "@/partials/misc";
 import { TeamMembersInvitePeople, TeamMembersInviteWithLink } from ".";
 
 const TeamMembersContent = () => {
@@ -12,9 +12,9 @@ const TeamMembersContent = () => {
         <TeamMembersInviteWithLink />
       </div>
 
-      <Faq />
+      <MiscFaq />
 
-      <Help2 />
+      <MiscHelp2 />
     </div>
   );
 };

@@ -3,7 +3,7 @@ import { Navigate, Route, Routes, useLocation } from 'react-router';
 
 import {DashboardPage, ImageInputExamples} from '@/pages/dashboard';
 import {
-  ActivityPage,
+  PublicProfileActivityPage,
   BloggerPage,
   CampaignsCardPage,
   CampaignsListPage,
@@ -24,7 +24,7 @@ import {
   WorksPage
 } from '@/pages/public-profile';
 import {
-  ActivityPages,
+  AccountActivityPages,
   AllowedIPAddressesPage,
   APIKeysPage,
   AppearancePage,
@@ -55,7 +55,7 @@ import {
   SettingsSidebarPage,
   TeamInfoPage,
   TeamMembersPage,
-  TeamPage,
+  MembersTeamPage,
   TeamsStarterPage,
   UserProfilePage
 } from '@/pages/account';
@@ -131,7 +131,7 @@ const AppRouting = (): ReactElement => {
           <Route path="/public-profile/works" element={<WorksPage />} />
           <Route path="/public-profile/teams" element={<TeamsPage />} />
           <Route path="/public-profile/network" element={<NetworkPage />} />
-          <Route path="/public-profile/activity" element={<ActivityPage />} />
+          <Route path="/public-profile/activity" element={<PublicProfileActivityPage />} />
           <Route path="/public-profile/campaigns/card" element={<CampaignsCardPage />} />
           <Route path="/public-profile/campaigns/list" element={<CampaignsListPage />} />
           <Route path="/public-profile/empty" element={<EmptyPage />} />
@@ -155,7 +155,7 @@ const AppRouting = (): ReactElement => {
           <Route path="/account/security/current-sessions" element={<CurrentSessionsPage />} />
           <Route path="/account/security/log" element={<SecurityLogPage />} />
           <Route path="/account/members/team-starter" element={<TeamsStarterPage />} />
-          <Route path="/account/members/teams" element={<TeamPage />} />
+          <Route path="/account/members/teams" element={<MembersTeamPage />} />
           <Route path="/account/members/team-info" element={<TeamInfoPage />} />
           <Route path="/account/members/members-starter" element={<MembersStarterPage />} />
           <Route path="/account/members/team-members" element={<TeamMembersPage />} />
@@ -163,12 +163,12 @@ const AppRouting = (): ReactElement => {
           <Route path="/account/members/roles" element={<RolesPage />} />
           <Route path="/account/members/permissions-toggler" element={<PermissionsTogglePage />} />
           <Route path="/account/members/permissions-check" element={<PermissionsCheckPage />} />
-          <Route path="/account/members/integrations" element={<IntegrationsPage />} />
-          <Route path="/account/members/notifications" element={<NotificationsPage />} />
-          <Route path="/account/members/api-keys" element={<APIKeysPage />} />
+          <Route path="/account/integrations" element={<IntegrationsPage />} />
+          <Route path="/account/notifications" element={<NotificationsPage />} />
+          <Route path="/account/api-keys" element={<APIKeysPage />} />
           <Route path="/account/members/appearance" element={<AppearancePage />} />
           <Route path="/account/members/invite-a-friend" element={<InviteAFriendPage />} />
-          <Route path="/account/members/activity" element={<ActivityPages />} />
+          <Route path="/account/activity" element={<AccountActivityPages />} />
           <Route path="/crud/example-1" element={<Example1 />} />
           <Route path="/scroll-spy/example-1" element={<ScrollSpyExample />} />
           <Route path="/network/get-started" element={<NetworkGetStartedPage />} />

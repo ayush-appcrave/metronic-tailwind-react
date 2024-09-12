@@ -1,4 +1,4 @@
-import { IDefaultAboutTable, IDefaultAboutTables } from './interfaces';
+import { IDefaultAboutTable, IDefaultAboutTables } from './types';
 
 const DefaultAbout = () => {
   const tables: IDefaultAboutTables = [

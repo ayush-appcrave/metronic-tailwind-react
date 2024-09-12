@@ -1,7 +1,7 @@
 import ApexChart from 'react-apexcharts';
 import { ApexOptions } from 'apexcharts';
 
-import { IApexEarningsChartOptions } from './interfaces';
+import { IApexEarningsChartOptions } from './types';
 
 const LightSidebarEarningsChart = () => {
   const data: number[] = [75, 25, 45, 15, 85, 35, 70, 25, 35, 15, 45, 30];

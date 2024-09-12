@@ -1,5 +1,5 @@
-import { Notification } from '@/partials/cards';
-import { IAccessibilityItem, IAccessibilityItems } from './interfaces';
+import { CardNotification } from '@/partials/cards';
+import { IAccessibilityItem, IAccessibilityItems } from './types';
 
 const Accessibility = () => {
   const items: IAccessibilityItems = [
@@ -37,7 +37,7 @@ const Accessibility = () => {
 
   const renderItem = (item: IAccessibilityItem, index: number) => {
     return (
-      <Notification
+      <CardNotification
         icon={item.icon}
         title={item.title}
         description={item.description}

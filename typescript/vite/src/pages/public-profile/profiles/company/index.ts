@@ -5,3 +5,4 @@ export * from './_CompanyNetwork';
 export * from './_CompanyOpenJobs';
 export * from './_CompanyProfile';
 export * from './_CompanyStatistics';
+export * from './types';

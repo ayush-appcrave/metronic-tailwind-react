@@ -1,13 +1,13 @@
 import { useState } from 'react';
 
 import { KeenIcon } from '@/components';
-import { Campaign, CampaignRow } from '@/partials/cards';
+import { CardCampaign, CardCampaignRow } from '@/partials/cards';
 
 import {
   ICampaignsContentItem,
   ICampaignsContentItems,
   ICampaignsContentProps
-} from './interfaces';
+} from './types';
 import { Link } from 'react-router-dom';
 
 const CampaignsContent = ({ mode }: ICampaignsContentProps) => {
@@ -187,7 +187,7 @@ const CampaignsContent = ({ mode }: ICampaignsContentProps) => {
 
   const renderProject = (item: ICampaignsContentItem, index: number) => {
     return (
-      <Campaign
+      <CardCampaign
         logo={item.logo}
         title={item.title}
         description={item.description}
@@ -202,7 +202,7 @@ const CampaignsContent = ({ mode }: ICampaignsContentProps) => {
 
   const renderItem = (data: ICampaignsContentItem, index: number) => {
     return (
-      <CampaignRow
+      <CardCampaignRow
         logo={data.logo}
         title={data.title}
         description={data.description}

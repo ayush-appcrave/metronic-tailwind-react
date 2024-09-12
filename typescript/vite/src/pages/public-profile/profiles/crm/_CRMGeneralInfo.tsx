@@ -1,4 +1,4 @@
-import { ICRMGeneralInfoItem, ICRMGeneralInfoItems } from './interfaces';
+import { ICRMGeneralInfoItem, ICRMGeneralInfoItems } from './types';
 
 const CRMGeneralInfo = () => {
   const items: ICRMGeneralInfoItems = [

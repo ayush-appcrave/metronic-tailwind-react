@@ -1,7 +1,7 @@
 import { KeenIcon } from '@/components';
-import { INetworkMiniCardsContentItem, INetworkMiniCardsContentItems } from './interfaces';
+import { INetworkMiniCardsContentItem, INetworkMiniCardsContentItems } from './types';
 import { Link } from 'react-router-dom';
-import { UserMini } from '@/partials/cards';
+import { CardUserMini } from '@/partials/cards';
 
 const NetworkMiniCardsContent = () => {
   const items: INetworkMiniCardsContentItems = [
@@ -167,7 +167,7 @@ const NetworkMiniCardsContent = () => {
   ];
 
   const renderItem = (item: INetworkMiniCardsContentItem, index: number) => (
-    <UserMini
+    <CardUserMini
       avatar={item.avatar}
       name={item.name}
       email={item.email}

@@ -1,4 +1,4 @@
-import { INFTAboutItem, INFTAboutItems } from './interfaces';
+import { INFTAboutItem, INFTAboutItems } from './types';
 
 const NFTAbout = () => {
   const items: INFTAboutItems = [

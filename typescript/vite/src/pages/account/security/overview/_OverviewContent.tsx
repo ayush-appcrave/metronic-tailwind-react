@@ -7,8 +7,7 @@ import {
   OverviewQuickSettings,
   OverviewTrustedDevices
 } from ".";
-import { HighlightedPosts } from "@/partials/misc";
-import { IHighlightedPostsItems } from "@/partials/misc/interfaces";
+import { MiscHighlightedPosts, IHighlightedPostsItems } from "@/partials/misc";
 import { CreatorFeaturesHighlight } from "@/pages/public-profile/profiles/creator";
 
 const OverviewContent = () => {
@@ -103,7 +102,7 @@ const OverviewContent = () => {
             number={35}
           />
 
-          <HighlightedPosts posts={posts} />
+          <MiscHighlightedPosts posts={posts} />
         </div>
       </div>
     </div>

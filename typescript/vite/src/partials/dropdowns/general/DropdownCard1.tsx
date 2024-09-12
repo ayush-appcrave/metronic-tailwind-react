@@ -1,10 +1,15 @@
-import { KeenIcon, MenuArrow, MenuIcon, MenuItem, MenuLink, MenuSeparator, MenuSub, MenuTitle } from '@/components';
-
-import { Link } from 'react-router-dom';
+import {
+  KeenIcon,
+  MenuArrow,
+  MenuIcon,
+  MenuItem,
+  MenuLink,
+  MenuSeparator,
+  MenuSub,
+  MenuTitle
+} from '@/components';
 
 const DropdownCard1 = () => {
-
-
   return (
     <MenuSub className="menu-default" rootClassName="w-full max-w-[200px]">
       <MenuItem path="/account/activity">
@@ -32,7 +37,7 @@ const DropdownCard1 = () => {
             {
               name: 'offset',
               options: {
-                offset: [-15, 50] // [skid, distance]
+                offset: [-15,   0] // [skid, distance]
               }
             }
           ]

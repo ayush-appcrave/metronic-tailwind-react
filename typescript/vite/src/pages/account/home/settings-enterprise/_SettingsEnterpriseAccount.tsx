@@ -1,8 +1,8 @@
 import { KeenIcon } from '@/components';
 import { toAbsoluteUrl } from '@/utils/Assets';
 
-import { ISettingsEnterpriseAccountProps } from './interfaces';
-import { AvatarUpload } from '@/partials/crud';
+import { ISettingsEnterpriseAccountProps } from './types';
+import { CrudAvatarUpload } from '@/partials/crud';
 
 const SettingsEnterpriseAccount = ({ title }: ISettingsEnterpriseAccountProps) => {
   return (
@@ -27,7 +27,7 @@ const SettingsEnterpriseAccount = ({ title }: ISettingsEnterpriseAccountProps) =
               <td className="text-gray-600 min-w-32 text-2sm">150x150px JPEG, PNG Image</td>
               <td className="text-center">
                 <div className="flex justify-center items-center">
-                  <AvatarUpload />
+                  <CrudAvatarUpload />
                 </div>
               </td>
             </tr>

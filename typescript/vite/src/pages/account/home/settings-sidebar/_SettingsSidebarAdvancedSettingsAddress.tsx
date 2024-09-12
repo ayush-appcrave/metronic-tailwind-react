@@ -13,6 +13,7 @@ const SettingsSidebarAdvancedSettingsAddress = () => {
               className="input w-full"
               placeholder="Avinguda Imaginària, 789"
               value=""
+              readOnly
             />
           </div>
         </div>
@@ -31,7 +32,7 @@ const SettingsSidebarAdvancedSettingsAddress = () => {
         <div className="flex items-center flex-wrap lg:flex-nowrap gap-2.5">
           <span className="text-2sm font-medium text-gray-700 max-w-56 w-full">State</span>
           <div className="grow min-w-48">
-            <input type="text" className="input w-full" placeholder="State" value="" />
+            <input type="text" className="input w-full" placeholder="State" value="" readOnly />
           </div>
         </div>
 
@@ -43,6 +44,7 @@ const SettingsSidebarAdvancedSettingsAddress = () => {
               className="input w-full placeholder:text-gray-500"
               placeholder="Barcelona"
               value=""
+              readOnly
             />
           </div>
         </div>
@@ -55,6 +57,7 @@ const SettingsSidebarAdvancedSettingsAddress = () => {
               className="input w-full placeholder:text-gray-500"
               placeholder="08012"
               value=""
+              readOnly
             />
           </div>
         </div>

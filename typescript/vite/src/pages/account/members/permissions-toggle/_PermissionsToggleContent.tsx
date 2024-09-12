@@ -1,4 +1,4 @@
-import { Faq, Help2 } from "@/partials/misc";
+import { MiscFaq, MiscHelp2 } from "@/partials/misc";
 import { PermissionsToggle } from ".";
 
 const PermissionsToggleContent = () => {
@@ -8,9 +8,9 @@ const PermissionsToggleContent = () => {
 
       {/* {{ theme.page('_members') }} */}
 
-      <Faq />
+      <MiscFaq />
 
-      <Help2 />
+      <MiscHelp2 />
     </div>
   );
 };

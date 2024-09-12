@@ -1,5 +1,5 @@
-import { Notification } from '@/partials/cards';
-import { IChannelsItem, IChannelsItems } from './interfaces';
+import { CardNotification } from '@/partials/cards';
+import { IChannelsItem, IChannelsItems } from './types';
 
 const Channels = () => {
   const items: IChannelsItems = [
@@ -33,7 +33,7 @@ const Channels = () => {
 
   const renderItem = (item: IChannelsItem, index: number) => {
     return (
-      <Notification
+      <CardNotification
         icon={item.icon}
         title={item.title}
         description={item.description}

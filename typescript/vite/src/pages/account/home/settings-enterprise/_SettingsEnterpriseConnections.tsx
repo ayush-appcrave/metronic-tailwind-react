@@ -1,11 +1,11 @@
-import { KeenIcon } from '@/components';
+import { KeenIcon, Menu, MenuItem, MenuLabel } from '@/components';
 import { toAbsoluteUrl } from '@/utils/Assets';
 
 import {
   ISettingsEnterpriseConnection,
   ISettingsEnterpriseConnections
-} from './interfaces';
-import { DropdownDropdownCrud2, DropdownCardItem1 } from '@/partials/dropdowns/general';
+} from './types';
+import { DropdownCard2, DropdownCardItem1 } from '@/partials/dropdowns/general';
 
 const SettingsEnterpriseConnections = () => {
   const tables: ISettingsEnterpriseConnections = [
@@ -76,20 +76,28 @@ const SettingsEnterpriseConnections = () => {
         </td>
 
         <td className="text-right">
-          <div className="menu inline-flex" data-menu="true">
-            <div
-              className="menu-item"
-              data-menu-item-trigger="click|lg:click"
-              data-menu-item-toggle="dropdown"
-              data-menu-item-placement="bottom-end"
-              data-menu-item-offset="0, 10px"
+          <Menu className="items-stretch">
+            <MenuItem 
+              toggle="dropdown"
+              trigger="click"
+              dropdownProps={{
+                placement: "bottom-end",
+                modifiers: [
+                  {
+                    name: 'offset',
+                    options: {
+                      offset: [0, 10] // [skid, distance]
+                    }
+                  }
+                ]
+              }}
             >
-              <button className="menu-toggle btn btn-sm btn-icon btn-light btn-clear">
-                <KeenIcon icon="dots-vertical" />
-              </button>
-              <DropdownCardItem1 />
-            </div>
-          </div>
+              <MenuLabel className="btn btn-sm btn-icon btn-light btn-clear mb-2.5-">
+                <KeenIcon icon="dots-vertical"/>
+              </MenuLabel>
+              {DropdownCardItem1()}
+            </MenuItem>
+          </Menu>
         </td>
       </tr>
     );
@@ -100,21 +108,28 @@ const SettingsEnterpriseConnections = () => {
       <div className="card-header">
         <h3 className="card-title">Connections</h3>
 
-        <div className="menu" data-menu="true">
-          <div
-            className="menu-item"
-            data-menu-item-trigger="click|lg:click"
-            data-menu-item-toggle="dropdown"
-            data-menu-item-placement="bottom-end"
-            data-menu-item-offset="0, 10px"
+        <Menu className="items-stretch">
+          <MenuItem 
+            toggle="dropdown"
+            trigger="click"
+            dropdownProps={{
+              placement: "bottom-end",
+              modifiers: [
+                {
+                  name: 'offset',
+                  options: {
+                    offset: [0, 10] // [skid, distance]
+                  }
+                }
+              ]
+            }}
           >
-            <button className="menu-toggle btn btn-sm btn-icon btn-light btn-clear">
-              <KeenIcon icon="dots-vertical" />
-            </button>
-
-            <DropdownCrud2 />
-          </div>
-        </div>
+            <MenuLabel className="btn btn-sm btn-icon btn-light btn-clear mb-2.5-">
+              <KeenIcon icon="dots-vertical"/>
+            </MenuLabel>
+            {DropdownCard2()}
+          </MenuItem>
+        </Menu>
       </div>
 
       <div className="card-table scrollable-x-auto">
@@ -139,7 +154,7 @@ const SettingsEnterpriseConnections = () => {
       </div>
 
       <div className="card-footer justify-center">
-        <a href="{{ url }}" className="btn btn-link">View 64 more</a>
+        <a href="#" className="btn btn-link">View 64 more</a>
       </div>
     </div>
   );

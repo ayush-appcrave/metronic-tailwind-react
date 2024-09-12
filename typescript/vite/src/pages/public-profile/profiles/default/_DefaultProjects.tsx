@@ -1,7 +1,7 @@
-import { KeenIcon } from '@/components';
-import { Avatars } from '@/partials/common';
+import { KeenIcon, Menu, MenuItem, MenuLabel } from '@/components';
+import { CommonAvatars } from '@/partials/common';
 
-import { IDefaultProjectsItem, IDefaultProjectsItems } from './interfaces';
+import { IDefaultProjectsItem, IDefaultProjectsItems } from './types';
 import { Link } from 'react-router-dom';
 import { DropdownCrud1, DropdownCrudItem1 } from '@/partials/dropdowns/general';
 
@@ -104,27 +104,35 @@ const DefaultProjects = () => {
 
         <td>
           <div className="flex justify-end shrink-0">
-            <Avatars group={item.team.group} more={item.team.more} />
+            <CommonAvatars group={item.team.group} more={item.team.more} />
           </div>
         </td>
 
         <td className="text-sm font-medium text-gray-700">{item.dueDate}</td>
 
         <td className="text-left">
-          <div className="menu" data-menu="true">
-            <div
-              className="menu-item"
-              data-menu-item-trigger="click"
-              data-menu-item-toggle="dropdown"
-              data-menu-item-placement="bottom-end"
+          <Menu className="items-stretch">
+            <MenuItem 
+              toggle="dropdown"
+              trigger="click"
+              dropdownProps={{
+                placement: "bottom-end",
+                modifiers: [
+                  {
+                    name: 'offset',
+                    options: {
+                      offset: [0, 10] // [skid, distance]
+                    }
+                  }
+                ]
+              }}
             >
-              <button className="menu-toggle btn btn-sm btn-icon btn-light btn-clear">
-                <KeenIcon icon="dots-vertical" />
-              </button>
-
-              <DropdownCrudItem1 />
-            </div>
-          </div>
+              <MenuLabel className="btn btn-sm btn-icon btn-light btn-clear mb-2.5-">
+                <KeenIcon icon="dots-vertical"/>
+              </MenuLabel>
+              {DropdownCrudItem1()}
+            </MenuItem>
+          </Menu>
         </td>
       </tr>
     );
@@ -135,20 +143,28 @@ const DefaultProjects = () => {
       <div className="card-header">
         <h3 className="card-title">Projects</h3>
 
-        <div className="menu" data-menu="true">
-          <div
-            className="menu-item"
-            data-menu-item-trigger="click"
-            data-menu-item-toggle="dropdown"
-            data-menu-item-placement="bottom-end"
+        <Menu className="items-stretch">
+          <MenuItem 
+            toggle="dropdown"
+            trigger="click"
+            dropdownProps={{
+              placement: "bottom-end",
+              modifiers: [
+                {
+                  name: 'offset',
+                  options: {
+                    offset: [0, 10] // [skid, distance]
+                  }
+                }
+              ]
+            }}
           >
-            <button className="menu-toggle btn btn-sm btn-icon btn-light btn-clear">
-              <KeenIcon icon="dots-vertical" />
-            </button>
-
-            <DropdownCrud1 />
-          </div>
-        </div>
+            <MenuLabel className="btn btn-sm btn-icon btn-light btn-clear mb-2.5-">
+              <KeenIcon icon="dots-vertical"/>
+            </MenuLabel>
+            {DropdownCrud1()}
+          </MenuItem>
+        </Menu>
       </div>
 
       <div className="card-table scrollable-x-auto">

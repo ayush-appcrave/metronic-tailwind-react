@@ -8,7 +8,7 @@ import {
   CreatorUsers,
   CreatorWorks
 } from '.';
-import { ICreatorStatisticsItems, ICreatorUsersItems } from './interfaces';
+import { ICreatorStatisticsItems, ICreatorUsersItems } from './types';
 import { toAbsoluteUrl } from '@/utils';
 
 const CreatorContent = () => {
@@ -59,7 +59,7 @@ const CreatorContent = () => {
             }
             title="Restyle Your Space:<br>Soft Goods Makeover Ideas"
             description="Transform your living space beautifully with our Restyle Your Space: Soft Goods Makeover Ideas tutorial"
-            more={{ title: 'Get Started', url: '#' }}
+            more={{ title: 'Get Started', url: '/network/get-started' }}
             features={[
               ['Time-Saving', 'Easy Revamp'],
               ['Budget-Friendly', 'Fresh Look']

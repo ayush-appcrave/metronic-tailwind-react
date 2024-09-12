@@ -1,4 +1,4 @@
-import { IImportItem, IImportItems } from './interfaces';
+import { IImportItem, IImportItems } from './types';
 
 const Import = () => {
   const options: IImportItems = [

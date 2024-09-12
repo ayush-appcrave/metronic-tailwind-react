@@ -1,6 +1,7 @@
 import { KeenIcon } from '@/components';
 
-import { ICreatorFeaturesHighlightProps } from './interfaces';
+import { ICreatorFeaturesHighlightProps } from './types';
+import { Link } from 'react-router-dom';
 
 const CreatorFeaturesHighlight = ({
   title,
@@ -48,9 +49,9 @@ const CreatorFeaturesHighlight = ({
       </div>
 
       <div className="card-footer justify-center">
-        <a href={more.url} className="btn btn-link">
+        <Link to={more.url} className="btn btn-link">
           {more.title}
-        </a>
+        </Link>
       </div>
     </div>
   );

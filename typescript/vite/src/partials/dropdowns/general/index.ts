@@ -1,5 +1,5 @@
 export * from './DropdownCard1';
-export * from './DropdownCrud2';
+export * from './DropdownCard2';
 export * from './DropdownCardItem1';
 export * from './DropdownCardItem2';
 export * from './DropdownCrud1';

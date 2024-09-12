@@ -1,4 +1,4 @@
-import { IBackupAndRecoveryBackupSettingsItem, IBackupAndRecoveryBackupSettingsItems } from "./interfaces";
+import { IBackupAndRecoveryBackupSettingsItem, IBackupAndRecoveryBackupSettingsItems } from "./types";
 
 const BackupAndRecoveryBackupSettings = () => {
   const items: IBackupAndRecoveryBackupSettingsItems = [

@@ -1,7 +1,11 @@
-import { Engage, Faq, HighlightedPosts } from "@/partials/misc";
+import {
+  MiscEngage,
+  MiscFaq,
+  MiscHighlightedPosts,
+  IHighlightedPostsItems
+} from "@/partials/misc";
 import { PermissionsCheck } from ".";
 import { toAbsoluteUrl } from "@/utils";
-import { IHighlightedPostsItems } from "@/partials/misc/interfaces";
 
 const PermissionsCheckContent = () => {
   const posts: IHighlightedPostsItems = [
@@ -38,9 +42,9 @@ const PermissionsCheckContent = () => {
           }} */}
             
 
-          <Faq />
+          <MiscFaq />
 
-          <Engage 
+          <MiscEngage 
             title='Contact Support'
             description='Need assistance? Contact our support team for prompt, personalized help your queries & concerns.'
             image={
@@ -66,7 +70,7 @@ const PermissionsCheckContent = () => {
       </div>
       <div className="col-span-1">
         <div className="flex flex-col gap-5 lg:gap-7.5">
-          <HighlightedPosts posts={posts} />
+          <MiscHighlightedPosts posts={posts} />
         </div>
       </div>
     </div>

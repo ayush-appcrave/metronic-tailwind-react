@@ -1,9 +1,9 @@
 import { useState } from 'react';
 
 import { KeenIcon } from '@/components';
-import { Project, ProjectRow } from '@/partials/cards';
+import { CardProject, CardProjectRow } from '@/partials/cards';
 
-import { IColumns3ProjectsItem, IColumns3ProjectsItems } from './interfaces';
+import { IColumns3ProjectsItem, IColumns3ProjectsItems } from './types';
 
 const Columns3Projects = () => {
   const [activeView, setActiveView] = useState('cards');
@@ -315,7 +315,7 @@ const Columns3Projects = () => {
 
   const renderProject = (project: IColumns3ProjectsItem, index: number) => {
     return (
-      <Project
+      <CardProject
         logo={project.logo}
         name={project.name}
         description={project.description}
@@ -331,7 +331,7 @@ const Columns3Projects = () => {
 
   const renderItem = (item: IColumns3ProjectsItem, index: number) => {
     return (
-      <ProjectRow
+      <CardProjectRow
         logo={item.logo}
         name={item.name}
         description={item.description}

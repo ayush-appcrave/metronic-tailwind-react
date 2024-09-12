@@ -1,6 +1,6 @@
 import clsx from 'clsx';
 
-import { IPlainOpenToWorkProps } from './interfaces';
+import { IPlainOpenToWorkProps } from './types';
 import { Link } from 'react-router-dom';
 
 const PlainOpenToWork = ({ className, title }: IPlainOpenToWorkProps) => {

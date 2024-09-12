@@ -10,3 +10,4 @@ export * from './_DefaultRecentUploads';
 export * from './_DefaultTags';
 export * from './_DefaultUnlockPartnerships';
 export * from './_DefaultWorkExperience';
+export * from './types';

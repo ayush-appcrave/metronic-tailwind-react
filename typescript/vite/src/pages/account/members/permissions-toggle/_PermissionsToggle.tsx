@@ -1,5 +1,5 @@
-import { HexagonBadge } from '@/partials/common';
-import { IPermissionsToggleItem, IPermissionsToggleItems } from './interfaces';
+import { CommonHexagonBadge } from '@/partials/common';
+import { IPermissionsToggleItem, IPermissionsToggleItems } from './types';
 import { KeenIcon } from '@/components';
 
 const PermissionsToggle = () => {
@@ -70,7 +70,7 @@ const PermissionsToggle = () => {
     return (
       <div key={index} className="rounded-xl border p-4 flex items-center justify-between gap-2.5">
         <div className="flex items-center gap-3.5">
-          <HexagonBadge
+          <CommonHexagonBadge
             stroke='stroke-gray-300'
             fill='fill-gray-100'
             size='size-[45px]'

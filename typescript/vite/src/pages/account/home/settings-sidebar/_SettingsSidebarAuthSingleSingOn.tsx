@@ -3,7 +3,7 @@ import { toAbsoluteUrl } from '@/utils/Assets';
 import {
   ISettingsSidebarAuthSingleSingOnItem,
   ISettingsSidebarAuthSingleSingOnItems
-} from './interfaces';
+} from './types';
 
 const SettingsSidebarAuthSingleSingOn = () => {
   const items: ISettingsSidebarAuthSingleSingOnItems = [
@@ -46,6 +46,7 @@ const SettingsSidebarAuthSingleSingOn = () => {
             name="sso_option"
             defaultChecked={index === 2}
             value="1"
+            readOnly
           />
         </div>
       </label>
@@ -85,6 +86,7 @@ const SettingsSidebarAuthSingleSingOn = () => {
                 className="input w-full placeholder:text-gray-500"
                 placeholder="02874374-367145773"
                 value=""
+                readOnly
               />
             </div>
           </div>
@@ -99,6 +101,7 @@ const SettingsSidebarAuthSingleSingOn = () => {
                 className="input w-full placeholder:text-gray-500"
                 placeholder="23djfn784957f8022we2232307822-cey2442"
                 value=""
+                readOnly
               />
             </div>
           </div>
@@ -126,6 +129,7 @@ const SettingsSidebarAuthSingleSingOn = () => {
                   className="input w-full "
                   placeholder="https://devs.keenthemes.com/rl/AirMikeStudios"
                   value=""
+                  readOnly
                 />
                 <button className="btn btn-primary">Copy</button>
               </div>

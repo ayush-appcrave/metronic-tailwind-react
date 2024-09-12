@@ -1,11 +1,11 @@
-import { KeenIcon } from '@/components';
+import { KeenIcon, Menu, MenuItem, MenuLabel } from '@/components';
 import { toAbsoluteUrl } from '@/utils/Assets';
 
 import {
   IUserProfileConnectionsItem,
   IUserProfileConnectionsItems,
   IUserProfileConnectionsProps
-} from './interfaces';
+} from './types';
 import { DropdownCrud1, DropdownCrudItem1 } from '@/partials/dropdowns/general';
 import { Link } from 'react-router-dom';
 
@@ -96,21 +96,28 @@ const UserProfileConnections = ({ url }: IUserProfileConnectionsProps) => {
         </td>
 
         <td className="text-right">
-          <div className="menu inline-flex" data-menu="true">
-            <div
-              className="menu-item"
-              data-menu-item-trigger="click|lg:click"
-              data-menu-item-toggle="dropdown"
-              data-menu-item-placement="bottom-end"
-              data-menu-item-offset="0, 10px"
+          <Menu className="items-stretch">
+            <MenuItem 
+              toggle="dropdown"
+              trigger="click"
+              dropdownProps={{
+                placement: "bottom-end",
+                modifiers: [
+                  {
+                    name: 'offset',
+                    options: {
+                      offset: [0, 10] // [skid, distance]
+                    }
+                  }
+                ]
+              }}
             >
-              <button className="menu-toggle btn btn-sm btn-icon btn-light btn-clear">
-                <KeenIcon icon="dots-vertical" />
-              </button>
-
-              <DropdownCrudItem1 />
-            </div>
-          </div>
+              <MenuLabel className="btn btn-sm btn-icon btn-light btn-clear mb-2.5-">
+                <KeenIcon icon="dots-vertical"/>
+              </MenuLabel>
+              {DropdownCrudItem1()}
+            </MenuItem>
+          </Menu>
         </td>
       </tr>
     );
@@ -121,21 +128,28 @@ const UserProfileConnections = ({ url }: IUserProfileConnectionsProps) => {
       <div className="card-header">
         <h3 className="card-title">Connections</h3>
 
-        <div className="menu" data-menu="true">
-          <div
-            className="menu-item"
-            data-menu-item-trigger="click|lg:click"
-            data-menu-item-toggle="dropdown"
-            data-menu-item-placement="bottom-end"
-            data-menu-item-offset="0, 10px"
+        <Menu className="items-stretch">
+          <MenuItem 
+            toggle="dropdown"
+            trigger="click"
+            dropdownProps={{
+              placement: "bottom-end",
+              modifiers: [
+                {
+                  name: 'offset',
+                  options: {
+                    offset: [0, 10] // [skid, distance]
+                  }
+                }
+              ]
+            }}
           >
-            <button className="btn btn-icon btn-light btn-clear btn-xs menu-toggle">
-              <KeenIcon icon="dots-vertical" />
-            </button>
-
-            <DropdownCrud1 />
-          </div>
-        </div>
+            <MenuLabel className="btn btn-sm btn-icon btn-light btn-clear mb-2.5-">
+              <KeenIcon icon="dots-vertical"/>
+            </MenuLabel>
+            {DropdownCrud1()}
+          </MenuItem>
+        </Menu>
       </div>
 
       <div className="card-table scrollable-x-auto">

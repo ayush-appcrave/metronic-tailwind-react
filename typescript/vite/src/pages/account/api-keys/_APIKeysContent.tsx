@@ -1,6 +1,10 @@
-import { Engage, Faq, HighlightedPosts } from "@/partials/misc";
+import {
+  MiscEngage,
+  MiscFaq,
+  MiscHighlightedPosts,
+  IHighlightedPostsItems
+} from "@/partials/misc";
 import { toAbsoluteUrl } from "@/utils";
-import { IHighlightedPostsItems } from "@/partials/misc/interfaces";
 import { KeenIcon } from "@/components";
 import { DoNotDistrub } from "../notifications";
 import { SettingsSidebarExternalServicesManageApi } from "../home/settings-sidebar";
@@ -39,9 +43,9 @@ const APIKeysContent = () => {
 
           <ApiIntegrations />
           <Webhooks />
-          <Faq />
+          <MiscFaq />
 
-          <Engage
+          <MiscEngage
             title='Contact Support'
             description='Need assistance? Contact our support team for prompt, personalized help your queries & concerns.'
             image={
@@ -73,7 +77,7 @@ const APIKeysContent = () => {
             text='Client Docs'
           />
 
-          <HighlightedPosts posts={posts} />
+          <MiscHighlightedPosts posts={posts} />
         </div>
       </div>
     </div>

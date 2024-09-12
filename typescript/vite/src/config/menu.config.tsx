@@ -120,7 +120,7 @@ const MENU_SIDEBAR: MenuConfigType = [
       },
       {
         title: 'Teams',
-        path: 'public-profile/teams'
+        path: '/public-profile/teams'
       },
       {
         title: 'Network',
@@ -293,15 +293,15 @@ const MENU_SIDEBAR: MenuConfigType = [
       },
       {
         title: 'Integrations',
-        path: '/account/members/integrations'
+        path: '/account/integrations'
       },
       {
         title: 'Notifications',
-        path: '/account/members/notifications'
+        path: '/account/notifications'
       },
       {
         title: 'API Keys',
-        path: '/account/members/api-keys'
+        path: '/account/api-keys'
       },
       {
         title: 'More',
@@ -322,7 +322,7 @@ const MENU_SIDEBAR: MenuConfigType = [
           },
           {
             title: 'Activity',
-            path: '/account/members/activity'
+            path: '/account/activity'
           }
         ]
       }

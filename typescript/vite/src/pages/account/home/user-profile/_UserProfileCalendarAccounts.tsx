@@ -1,7 +1,7 @@
 import { KeenIcon } from '@/components';
 import { toAbsoluteUrl } from '@/utils/Assets';
 
-import { IUserProfileCalendarAccountsItem, IUserProfileCalendarAccountsItems } from './interfaces';
+import { IUserProfileCalendarAccountsItem, IUserProfileCalendarAccountsItems } from './types';
 
 const UserProfileCalendarAccounts = () => {
   const items: IUserProfileCalendarAccountsItems = [

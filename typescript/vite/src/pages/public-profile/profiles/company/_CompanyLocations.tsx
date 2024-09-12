@@ -1,7 +1,7 @@
 import { KeenIcon } from '@/components';
-import { Location } from '@/partials/cards';
+import { CardLocation } from '@/partials/cards';
 
-import { ICompanyLocationsItem, ICompanyLocationsItems } from './interfaces';
+import { ICompanyLocationsItem, ICompanyLocationsItems } from './types';
 
 const CompanyLocations = () => {
   const items: ICompanyLocationsItems = [
@@ -34,7 +34,7 @@ const CompanyLocations = () => {
 
   const renderItem = (item: ICompanyLocationsItem, index: number) => {
     return (
-      <Location key={index} image={item.image} title={item.title} description={item.description} />
+      <CardLocation key={index} image={item.image} title={item.title} description={item.description} />
     );
   };
 

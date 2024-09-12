@@ -1,10 +1,10 @@
-import { KeenIcon } from '@/components';
+import { KeenIcon, Menu, MenuItem, MenuLabel } from '@/components';
 import { toAbsoluteUrl } from '@/utils/Assets';
 
 import {
   ISettingsEnterpriseYourCurrentPlanItem,
   ISettingsEnterpriseYourCurrentPlanItems
-} from './interfaces';
+} from './types';
 import { DropdownCard1 } from '@/partials/dropdowns/general';
 
 const SettingsEnterpriseYourCurrentPlan = () => {
@@ -50,21 +50,28 @@ const SettingsEnterpriseYourCurrentPlan = () => {
       <div className="card-header gap-2" id="settings_auth_two_factor">
         <h3 className="card-title">Your Current Plan</h3>
 
-        <div className="menu" data-menu="true">
-          <div
-            className="menu-item"
-            data-menu-item-trigger="click|lg:click"
-            data-menu-item-toggle="dropdown"
-            data-menu-item-placement="bottom-end"
-            data-menu-item-offset="0, 10px"
+        <Menu className="items-stretch">
+          <MenuItem 
+            toggle="dropdown"
+            trigger="click"
+            dropdownProps={{
+              placement: "bottom-end",
+              modifiers: [
+                {
+                  name: 'offset',
+                  options: {
+                    offset: [0, 10] // [skid, distance]
+                  }
+                }
+              ]
+            }}
           >
-            <button className="menu-toggle btn btn-sm btn-icon btn-light btn-clear">
-              <KeenIcon icon="dots-vertical" />
-            </button>
-
-            <DropdownCard1 />
-          </div>
-        </div>
+            <MenuLabel className="btn btn-sm btn-icon btn-light btn-clear mb-2.5-">
+              <KeenIcon icon="dots-vertical"/>
+            </MenuLabel>
+            {DropdownCard1()}
+          </MenuItem>
+        </Menu>
       </div>
       <div className="card-body lg:py-7.5">
         <div className="flex flex-col sm:flex-row lg:flex-col xl:flex-row lg:gap-7.5 gap-5">

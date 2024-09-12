@@ -1,6 +1,6 @@
 import { KeenIcon } from '@/components';
-import { ITeamInfoItem, ITeamInfoItems } from './interfaces';
-import { AvatarUpload } from '@/partials/crud';
+import { ITeamInfoItem, ITeamInfoItems } from './types';
+import { CrudAvatarUpload } from '@/partials/crud';
 
 const TeamInfo = () => {
   const skills: ITeamInfoItems = [
@@ -37,7 +37,7 @@ const TeamInfo = () => {
               <td className="py-2 min-w-32 text-gray-600 font-normal">Thumbnail</td>
               <td className="py-2 text-gray-700 font-normal min-w-32 text-2sm">150x150px JPEG, PNG Image</td>
               <td className="py-2 text-center min-w-16">
-                <AvatarUpload image="/media/images/600x600/23.jpg"/>
+                <CrudAvatarUpload image="/media/images/600x600/23.jpg"/>
               </td>
             </tr>
           </thead>

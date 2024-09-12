@@ -1,6 +1,6 @@
 import { KeenIcon } from '@/components';
-import { Author, AuthorRow } from '@/partials/cards';
-import { INetworkAuthorContentItem, INetworkAuthorContentItems } from './interfaces';
+import { CardAuthor, CardAuthorRow } from '@/partials/cards';
+import { INetworkAuthorContentItem, INetworkAuthorContentItems } from './types';
 import { useState } from 'react';
 
 const NetworkAuthorContent = () => {
@@ -55,7 +55,7 @@ const NetworkAuthorContent = () => {
       bgImage: 'bg-8.png',
       name: 'Ralph Edwards',
       location: 'Sacramento, California',
-      url: '',
+      url: '#',
       works: [
         {
           image: '1.jpg',
@@ -89,7 +89,7 @@ const NetworkAuthorContent = () => {
       bgImage: 'bg-9.png',
       name: 'Jacob Jones',
       location: 'Boston, Massachusetts',
-      url: '',
+      url: '#',
       works: [
         {
           image: '27.jpg',
@@ -123,7 +123,7 @@ const NetworkAuthorContent = () => {
       bgImage: 'bg-10.png',
       name: 'Kristin Watson',
       location: 'Cleveland, Ohio',
-      url: '',
+      url: '#',
       works: [
         {
           image: '30.jpg',
@@ -150,7 +150,7 @@ const NetworkAuthorContent = () => {
   ];
 
   const renderCard = (item: INetworkAuthorContentItem, index: number) => (
-    <Author
+    <CardAuthor
       avatar={item.avatar}
       bgImage={item.bgImage}
       name={item.name}
@@ -161,7 +161,7 @@ const NetworkAuthorContent = () => {
   );
 
   const renderListItem = (item: INetworkAuthorContentItem, index: number) => (
-    <AuthorRow
+    <CardAuthorRow
       avatar={item.avatar}
       bgImage={item.bgImage}
       name={item.name}

@@ -1,6 +1,6 @@
 import { KeenIcon } from '@/components';
-import { IOverviewQuickSettingsItem, IOverviewQuickSettingsItems } from './interfaces';
-import { HexagonBadge } from '@/partials/common';
+import { IOverviewQuickSettingsItem, IOverviewQuickSettingsItems } from './types';
+import { CommonHexagonBadge } from '@/partials/common';
 
 const OverviewQuickSettings = () => {
   const items: IOverviewQuickSettingsItems = [
@@ -22,7 +22,7 @@ const OverviewQuickSettings = () => {
     return (
       <div key={index} className="card-group flex items-center justify-between py-4 gap-2.5">
         <div className="flex items-center gap-3.5">
-          <HexagonBadge
+          <CommonHexagonBadge
             stroke='stroke-gray-300'
             fill='fill-gray-100'
             size='size-[50px]'

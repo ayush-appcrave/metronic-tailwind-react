@@ -4,7 +4,7 @@ import { toAbsoluteUrl } from '@/utils/Assets';
 import {
   ISettingsSidebarExternalServicesIntegrationsItem,
   ISettingsSidebarExternalServicesIntegrationsItems
-} from './interfaces';
+} from './types';
 
 const SettingsSidebarExternalServicesIntegrations = () => {
   const items: ISettingsSidebarExternalServicesIntegrationsItems = [
@@ -74,11 +74,11 @@ const SettingsSidebarExternalServicesIntegrations = () => {
         <div className="flex items-center gap-2 lg:gap-5">
           {item.checkbox ? (
             <label className="switch switch-sm">
-              <input type="checkbox" defaultChecked value="1" />
+              <input type="checkbox" defaultChecked value="1" readOnly />
             </label>
           ) : (
             <label className="switch switch-sm">
-              <input type="checkbox" value="2" />
+              <input type="checkbox" value="2" readOnly />
             </label>
           )}
 

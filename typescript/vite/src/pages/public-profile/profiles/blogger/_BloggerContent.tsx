@@ -1,7 +1,7 @@
 import { CreatorStatistics, CreatorSummary } from '../creator';
 import { DefaultCommunityBadges, DefaultTags, DefaultUnlockPartnerships } from '../default';
 import { BloggerActivities, BloggerCollaborate, BloggerPosts, BloggerReplies } from '.';
-import { ICreatorStatisticsItems } from './interfaces';
+import { ICreatorStatisticsItems } from './types';
 
 const BloggerContent = () => {
   const data: ICreatorStatisticsItems = [

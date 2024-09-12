@@ -1,4 +1,4 @@
-import { IPermissionsCheckItem, IPermissionsCheckItems } from './interfaces';
+import { IPermissionsCheckItem, IPermissionsCheckItems } from './types';
 
 const PermissionsCheck = () => {
   const data: IPermissionsCheckItems = [

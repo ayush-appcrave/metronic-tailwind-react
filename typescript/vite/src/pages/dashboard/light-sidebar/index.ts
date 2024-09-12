@@ -4,3 +4,4 @@ export * from './_LightSidebarEarningsChart';
 export * from './_LightSidebarEntryCallout';
 export * from './_LightSidebarHighlights';
 export * from './_LightSidebarTeamMeeting';
+export * from './types';

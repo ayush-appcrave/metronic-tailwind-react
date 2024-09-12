@@ -6,7 +6,7 @@ import {
   ISettingsSidebarAuthSocialSignInBlocks,
   ISettingsSidebarAuthSocialSignInItem,
   ISettingsSidebarAuthSocialSignInItems
-} from './interfaces';
+} from './types';
 
 const SettingsSidebarAuthSocialSignIn = () => {
   const items: ISettingsSidebarAuthSocialSignInItems = [
@@ -66,7 +66,7 @@ const SettingsSidebarAuthSocialSignIn = () => {
         </div>
 
         <div className="flex items-center gap-2 lg:gap-6">
-          <input type="checkbox" defaultChecked={item.checkbox} value={item.checkbox ? '1' : '2'} />
+          <input type="checkbox" defaultChecked={item.checkbox} value={item.checkbox ? '1' : '2'} readOnly />
 
           <div className="btn btn-sm btn-icon btn-icon-lg text-gray-500 hover:text-primary-active">
             <KeenIcon icon="trash" />
@@ -82,18 +82,13 @@ const SettingsSidebarAuthSocialSignIn = () => {
         key={index}
         className="flex items-center group border border-gray-200 cursor-pointer rounded-md gap-2.5 px-3.5 py-2.5"
       >
-        <a href="#" className="flex items-center">
+        <a href="#" className="btn btn-light">
           <img
             src={toAbsoluteUrl(`/media/brand-logos/${block.logo}`)}
             className="size-5 shrink-0"
             alt=""
           />
-          <a
-            href="#"
-            className="text-2sm font-medium text-gray-700 group-hover:text-primary-active"
-          >
-            &nbsp;&nbsp;&nbsp;{block.title}
-          </a>
+          {block.title}
         </a>
       </div>
     );

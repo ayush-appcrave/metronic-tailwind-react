@@ -1,6 +1,5 @@
 import { BloggerCollaborate } from '../blogger';
-import { CreatorStatistics, CreatorSummary } from '../creator';
-import { ICreatorStatisticsItems } from '../creator/interfaces';
+import { CreatorStatistics, CreatorSummary, ICreatorStatisticsItems } from '../creator';
 import { DefaultTags } from '../default';
 import { FeedsPost1, FeedsPost2, FeedsPost3, FeedsPost4 } from '.';
 

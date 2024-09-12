@@ -16,6 +16,7 @@ const SettingsSidebarAuthPassword = () => {
               className="input w-full placeholder:text-gray-500"
               placeholder="Your current password"
               value=""
+              readOnly
             />
           </div>
         </div>
@@ -28,6 +29,7 @@ const SettingsSidebarAuthPassword = () => {
               className="input w-full placeholder:text-gray-500"
               placeholder="New password"
               value=""
+              readOnly
             />
           </div>
         </div>
@@ -42,6 +44,7 @@ const SettingsSidebarAuthPassword = () => {
               className="input w-full placeholder:text-gray-500"
               placeholder="Confirm new password"
               value=""
+              readOnly
             />
           </div>
         </div>

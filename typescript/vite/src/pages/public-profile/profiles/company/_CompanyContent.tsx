@@ -7,7 +7,7 @@ import {
   CompanyProfile,
   CompanyStatistics
 } from '.';
-import { ICompanyNetworkItems, ICompanyStatisticsItems } from './interfaces';
+import { ICompanyNetworkItems, ICompanyStatisticsItems } from './types';
 
 const CompanyContent = () => {
   const items: ICompanyStatisticsItems = [

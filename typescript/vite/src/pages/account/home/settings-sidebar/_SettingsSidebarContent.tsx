@@ -41,11 +41,11 @@ const SettingsSidebarContent = () => {
         <SettingsSidebarAuthTwoFactor />
 
         <SettingsSidebarAdvancedSettingsPreferences />
-        <SettingsSidebarAdvancedSettingsAppearance />
+        <SettingsSidebarAdvancedSettingsAppearance title={''} />
         <SettingsSidebarAdvancedSettingsNotifications />
         <SettingsSidebarAdvancedSettingsAddress />
 
-        <SettingsSidebarExternalServicesManageApi />
+        <SettingsSidebarExternalServicesManageApi title={''} switch={false} />
         <SettingsSidebarExternalServicesIntegrations />
 
         <SettingsSidebarDeleteAccount />

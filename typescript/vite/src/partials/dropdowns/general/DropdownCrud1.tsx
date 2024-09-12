@@ -1,65 +1,83 @@
-import { KeenIcon } from '@/components';
-
-import { Link } from 'react-router-dom';
+import {
+  KeenIcon,
+  MenuArrow,
+  MenuIcon,
+  MenuItem,
+  MenuLink,
+  MenuSub,
+  MenuTitle
+} from '@/components';
 
 const DropdownCrud1 = () => {
   return (
-    <div className="menu-dropdown menu-default w-full max-w-[175px]" data-menu-dismiss="true">
-      <div className="menu-item">
-        <Link to="/account/home/settings-plain" className="menu-link">
-          <span className="menu-icon"><KeenIcon icon="add-files" /></span>
-          <span className="menu-title">Add</span>
-        </Link>
-      </div>
-
-      <div className="menu-item">
-        <Link to="/account/members/import-members" className="menu-link">
-          <span className="menu-icon"><KeenIcon icon="file-down" /></span>
-          <span className="menu-title">Import</span>
-        </Link>
-      </div>
-
-      <div
-        className="menu-item"
-        data-menu-item-trigger="click|lg:hover"
-        data-menu-item-toggle="dropdown"
-        data-menu-item-placement="right-start"
-        data-menu-item-offset="-15px, 0"
+    <MenuSub className="menu-default" rootClassName="w-full max-w-[175px]">
+      <MenuItem path="/account/home/settings-plain">
+        <MenuLink>
+          <MenuIcon>
+            <KeenIcon icon="add-files"/>
+          </MenuIcon>
+          <MenuTitle>Add</MenuTitle>
+        </MenuLink>
+      </MenuItem>
+      <MenuItem path="/account/members/import-members">
+        <MenuLink>
+          <MenuIcon>
+            <KeenIcon icon="file-down"/>
+          </MenuIcon>
+          <MenuTitle>Import</MenuTitle>
+        </MenuLink>
+      </MenuItem>
+      <MenuItem
+        toggle="dropdown"
+        trigger="hover"
+        dropdownProps={{
+          placement: "right-start",
+          modifiers: [
+            {
+              name: 'offset',
+              options: {
+                offset: [-15,   0] // [skid, distance]
+              }
+            }
+          ]
+        }}
       >
-        <div className="menu-link">
-          <span className="menu-icon"><KeenIcon icon="file-up" /></span>
-          <span className="menu-title">Export</span>
-          <span className="menu-arrow"><KeenIcon icon="right" className="text-3xs" /></span>
-        </div>
-
-        <div className="menu-dropdown menu-default w-full max-w-[125px]">
-          <div className="menu-item">
-            <Link to="/account/home/settings-sidebar" className="menu-link">
-              <span className="menu-title">PDF</span>
-            </Link>
-          </div>
-
-          <div className="menu-item">
-            <Link to="/account/home/settings-sidebar" className="menu-link">
-              <span className="menu-title">CVS</span>
-            </Link>
-          </div>
-
-          <div className="menu-item">
-            <Link to="/account/home/settings-sidebar" className="menu-link">
-              <span className="menu-title">Excel</span>
-            </Link>
-          </div>
-        </div>
-      </div>
-
-      <div className="menu-item">
-        <Link to="/account/security/privacy-settings" className="menu-link">
-          <span className="menu-icon"><KeenIcon icon="setting-3" /></span>
-          <span className="menu-title">Settings</span>
-        </Link>
-      </div>
-    </div>
+        <MenuLink>
+          <MenuIcon>
+            <KeenIcon icon="file-up"/>
+          </MenuIcon>
+          <MenuTitle>Export</MenuTitle>
+          <MenuArrow>
+            <KeenIcon icon="right" className="text-3xs" />
+          </MenuArrow>
+        </MenuLink>
+        <MenuSub className="menu-default" rootClassName="w-full max-w-[125px]">
+          <MenuItem path="/account/home/settings-sidebar">
+            <MenuLink>
+              <MenuTitle>PDF</MenuTitle>
+            </MenuLink>
+          </MenuItem>
+          <MenuItem path="/account/home/settings-sidebar">
+            <MenuLink>
+              <MenuTitle>CVS</MenuTitle>
+            </MenuLink>
+          </MenuItem>
+          <MenuItem path="/account/home/settings-sidebar">
+            <MenuLink>
+              <MenuTitle>Excel</MenuTitle>
+            </MenuLink>
+          </MenuItem>
+        </MenuSub>
+      </MenuItem>
+      <MenuItem path="/account/security/privacy-settings">
+        <MenuLink>
+          <MenuIcon>
+            <KeenIcon icon="setting-3" />
+          </MenuIcon>
+          <MenuTitle>Settings</MenuTitle>
+        </MenuLink>
+      </MenuItem>
+    </MenuSub>
   );
 };
 

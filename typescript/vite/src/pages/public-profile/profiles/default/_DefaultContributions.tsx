@@ -1,10 +1,10 @@
 import ApexChart from 'react-apexcharts';
 import { ApexOptions } from 'apexcharts';
 
-import { KeenIcon } from '@/components';
+import { KeenIcon, Menu, MenuItem, MenuLabel } from '@/components';
 
-import { IApexContributionsOptions, IDefaultContributionsProps } from './interfaces';
-import { DropdownCard1 } from '@/partials/dropdowns/general';
+import { IApexContributionsOptions, IDefaultContributionsProps } from './types';
+import { DropdownCard2 } from '@/partials/dropdowns/general';
 
 const DefaultContributions = ({ title }: IDefaultContributionsProps) => {
   const data: number[] = [44, 55, 41, 17, 15];
@@ -69,21 +69,28 @@ const DefaultContributions = ({ title }: IDefaultContributionsProps) => {
       <div className="card-header">
         <h3 className="card-title">{title}</h3>
 
-        <div className="menu" data-menu="true">
-          <div
-            className="menu-item"
-            data-menu-item-trigger="click|lg:click"
-            data-menu-item-toggle="dropdown"
-            data-menu-item-placement="bottom-end"
-            data-menu-item-offset="0, 10px"
+        <Menu className="items-stretch">
+          <MenuItem 
+            toggle="dropdown"
+            trigger="click"
+            dropdownProps={{
+              placement: "bottom-end",
+              modifiers: [
+                {
+                  name: 'offset',
+                  options: {
+                    offset: [0, 10] // [skid, distance]
+                  }
+                }
+              ]
+            }}
           >
-            <button className="menu-toggle btn btn-sm btn-icon btn-light btn-clear">
-              <KeenIcon icon="dots-vertical" />
-            </button>
-            
-            <DropdownCard1 />
-          </div>
-        </div>
+            <MenuLabel className="btn btn-sm btn-icon btn-light btn-clear mb-2.5-">
+              <KeenIcon icon="dots-vertical"/>
+            </MenuLabel>
+            {DropdownCard2()}
+          </MenuItem>
+        </Menu>
       </div>
 
       <div className="card-body flex justify-center items-center px-3 py-1">

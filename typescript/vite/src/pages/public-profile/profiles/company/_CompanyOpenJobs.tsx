@@ -1,6 +1,6 @@
 import { KeenIcon } from '@/components';
 
-import { ICompanyOpenJobsItem, ICompanyOpenJobsItems } from './interfaces';
+import { ICompanyOpenJobsItem, ICompanyOpenJobsItems } from './types';
 import { Link } from 'react-router-dom';
 
 const CompanyOpenJobs = () => {

@@ -7,4 +7,4 @@ export * from './notifications/NotificationsPage';
 export * from './api-keys/APIKeysPage';
 export * from './appearance/AppearancePage';
 export * from './invite-a-friend/InviteAFriendPage';
-export * from './activity/ActivityPages';
+export * from './activity/AccountActivityPages';

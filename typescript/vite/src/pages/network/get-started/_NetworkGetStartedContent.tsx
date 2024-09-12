@@ -1,5 +1,5 @@
 import { Options } from '.';
-import { IOptionsItems } from './interfaces';
+import { IOptionsItems } from './types';
 
 const NetworkGetStartedContent = () => {
   const items: IOptionsItems = [

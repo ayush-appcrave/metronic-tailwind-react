@@ -1,6 +1,6 @@
 import { toAbsoluteUrl } from '@/utils/Assets';
 
-import { IGamerFavoriteGamesItem, IGamerFavoriteGamesItems } from './interfaces';
+import { IGamerFavoriteGamesItem, IGamerFavoriteGamesItems } from './types';
 
 const GamerFavoriteGames = () => {
   const items: IGamerFavoriteGamesItems = [

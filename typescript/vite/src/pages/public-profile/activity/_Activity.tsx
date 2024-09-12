@@ -1,18 +1,18 @@
 import { useState } from 'react';
 
 import {
-  Anniversary,
-  BloggingConference,
-  DesignerWelcome,
-  FollowersMilestone,
-  Interview,
-  NewArticle,
-  NewTeam,
-  PhotographyWorkshop,
-  ProductWebinar,
-  ProjectStatus,
-  UpcomingContent,
-  VirtualTeam
+  ActivitiesAnniversary,
+  ActivitiesBloggingConference,
+  ActivitiesDesignerWelcome,
+  ActivitiesFollowersMilestone,
+  ActivitiesInterview,
+  ActivitiesNewArticle,
+  ActivitiesNewTeam,
+  ActivitiesPhotographyWorkshop,
+  ActivitiesProductWebinar,
+  ActivitiesProjectStatus,
+  ActivitiesUpcomingContent,
+  ActivitiesVirtualTeam
 } from '@/partials/activities/items';
 
 const Activity = () => {
@@ -47,20 +47,20 @@ const Activity = () => {
             </div>
           </div>
           <div className="card-body">
-            {(year === 2024 || year === 2023 || year === 2022) && <NewArticle />}
-            {(year === 2024 || year === 2022) && <Interview />}
-            {(year === 2024 || year === 2021) && <PhotographyWorkshop />}
-            <UpcomingContent />
-            {(year === 2024 || year === 2019) && <ProductWebinar />}
-            <FollowersMilestone />
-            {(year === 2024 || year === 2021) && <ProjectStatus />}
+            {(year === 2024 || year === 2023 || year === 2022) && <ActivitiesNewArticle />}
+            {(year === 2024 || year === 2022) && <ActivitiesInterview />}
+            {(year === 2024 || year === 2021) && <ActivitiesPhotographyWorkshop />}
+            <ActivitiesUpcomingContent />
+            {(year === 2024 || year === 2019) && <ActivitiesProductWebinar />}
+            <ActivitiesFollowersMilestone />
+            {(year === 2024 || year === 2021) && <ActivitiesProjectStatus />}
             {(year === 2024 || year === 2018) && (
-              <BloggingConference image="" />
+              <ActivitiesBloggingConference image="" />
             )}
-            <DesignerWelcome />
-            {(year === 2024 || year === 2017) && <NewTeam />}
-            <VirtualTeam />
-            <Anniversary />
+            <ActivitiesDesignerWelcome />
+            {(year === 2024 || year === 2017) && <ActivitiesNewTeam />}
+            <ActivitiesVirtualTeam />
+            <ActivitiesAnniversary />
           </div>
           <div className="card-footer justify-center">
             <a href="#" className="btn btn-link">

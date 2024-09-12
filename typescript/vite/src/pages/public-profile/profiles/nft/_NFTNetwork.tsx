@@ -1,6 +1,6 @@
 import { KeenIcon } from '@/components';
 
-import { INFTNetworkItem, INFTNetworkItems } from './interfaces';
+import { INFTNetworkItem, INFTNetworkItems } from './types';
 
 const NFTNetwork = () => {
   const items: INFTNetworkItems = [

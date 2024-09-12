@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom';
-import { IBloggerCollaborateProps } from './interfaces';
+import { IBloggerCollaborateProps } from './types';
 
 const BloggerCollaborate = ({ title }: IBloggerCollaborateProps) => {
   return (

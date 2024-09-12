@@ -1,5 +1,5 @@
-import { Integration } from '@/partials/cards';
-import { IIntegrationsItem, IIntegrationsItems } from './interfaces';
+import { CardIntegration } from '@/partials/cards';
+import { IIntegrationsItem, IIntegrationsItems } from './types';
 
 const Integrations = () => {
   const items: IIntegrationsItems = [
@@ -63,7 +63,7 @@ const Integrations = () => {
 
   const renderItem = (item: IIntegrationsItem, index: number) => {
     return (
-      <Integration
+      <CardIntegration
         logo={item.logo}
         path={item.path}
         name={item.name}

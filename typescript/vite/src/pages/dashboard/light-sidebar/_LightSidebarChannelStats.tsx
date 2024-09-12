@@ -1,5 +1,5 @@
 import { toAbsoluteUrl } from '@/utils/Assets';
-import { ILightSidebarChannelStatsItem, ILightSidebarChannelStatsItems } from './interfaces';
+import { ILightSidebarChannelStatsItem, ILightSidebarChannelStatsItems } from './types';
 
 const LightSidebarChannelStats = () => {
   const items: ILightSidebarChannelStatsItems = [

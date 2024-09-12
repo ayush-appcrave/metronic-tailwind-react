@@ -1,7 +1,5 @@
-import { CompanyNetwork } from '../company';
-import { ICompanyNetworkItems } from '../company/interfaces';
-import { CreatorUsers } from '../creator';
-import { ICreatorUsersItems } from '../creator/interfaces';
+import { CompanyNetwork, ICompanyNetworkItems } from '../company';
+import { CreatorUsers, ICreatorUsersItems } from '../creator';
 import { DefaultCommunityBadges } from '../default';
 import {
   GamerAbout,
@@ -11,7 +9,7 @@ import {
   GamerStatistics,
   GamerTournaments
 } from '.';
-import { IGamerStatisticsItems } from './interfaces';
+import { IGamerStatisticsItems } from './types';
 
 const GamerContent = () => {
   const details: IGamerStatisticsItems = [

@@ -1,5 +1,9 @@
-import { CompanyNetwork, CompanyStatistics } from '../company';
-import { ICompanyNetworkItems, ICompanyStatisticsItems } from '../company/interfaces';
+import {
+  CompanyNetwork,
+  CompanyStatistics,
+  ICompanyNetworkItems,
+  ICompanyStatisticsItems
+} from '../company';
 import { DefaultTags } from '../default';
 import { PlainAboutMe, PlainGettingStarted, PlainOpenToWork } from '.';
 

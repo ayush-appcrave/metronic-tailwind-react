@@ -1,7 +1,7 @@
 import { KeenIcon } from '@/components';
-import { Connection, ConnectionRow } from '@/partials/cards';
+import { CardConnection, CardConnectionRow } from '@/partials/cards';
 
-import { INetworkItem, INetworkItems } from './interfaces';
+import { INetworkItem, INetworkItems } from './types';
 import { Link } from 'react-router-dom';
 import { useState } from 'react';
 
@@ -235,7 +235,7 @@ const Network = () => {
 
   const renderItem = (item: INetworkItem, index: number) => {
     return (
-      <Connection
+      <CardConnection
         name={item.name}
         info={item.info}
         avatar={item.avatar}
@@ -250,7 +250,7 @@ const Network = () => {
 
   const renderData = (data: INetworkItem, index: number) => {
     return (
-      <ConnectionRow
+      <CardConnectionRow
         name={data.name}
         info={data.info}
         avatar={data.avatar}

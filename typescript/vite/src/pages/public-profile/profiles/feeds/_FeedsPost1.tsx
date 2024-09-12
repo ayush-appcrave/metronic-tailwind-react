@@ -2,7 +2,7 @@ import { useState } from 'react';
 
 import { toAbsoluteUrl } from '@/utils/Assets';
 
-import { ICommentsItems } from './interfaces';
+import { ICommentsItems } from './types';
 import { Comments, Heading, Likes, Saves, Tabs } from './post';
 
 const FeedsPost1 = () => {

@@ -1,5 +1,5 @@
 import { KeenIcon } from '@/components';
-import { AvatarUpload } from '@/partials/crud';
+import { CrudAvatarUpload } from '@/partials/crud';
 
 const UserProfilePersonalInfo = () => {
   return (
@@ -15,7 +15,7 @@ const UserProfilePersonalInfo = () => {
               <td className="py-2 text-gray-600 min-w-32 text-2sm">150x150px JPEG, PNG Image</td>
               <td className="py-2 text-center">
                 <div className="flex justify-center items-center">
-                  <AvatarUpload />
+                  <CrudAvatarUpload />
                 </div>
               </td>
             </tr>

@@ -1,7 +1,6 @@
-import { Avatars } from '@/partials/common';
-import { IEnterpriseCompanyProfileItem, IEnterpriseCompanyProfileItems } from './interfaces';
+import { CommonAvatars, IAvatarsItems } from '@/partials/common';
+import { IEnterpriseCompanyProfileItem, IEnterpriseCompanyProfileItems } from './types';
 import { toAbsoluteUrl } from '@/utils';
-import { IAvatarsItems } from '@/partials/common/interfaces';
 
 const EnterpriseCompanyProfile = () => {
   const statistics: IEnterpriseCompanyProfileItems = [
@@ -100,7 +99,7 @@ const EnterpriseCompanyProfile = () => {
                 <div className="text-2sm font-medium text-gray-600">Seats: 
                   <span className="text-2sm font-semibold text-gray-800">29 of 120 used</span>
                 </div>
-                <Avatars group={group} />
+                <CommonAvatars group={group} />
               </div>
             </div>
           </div>

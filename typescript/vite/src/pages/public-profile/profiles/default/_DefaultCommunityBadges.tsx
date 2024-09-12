@@ -4,7 +4,7 @@ import {
   IDefaultCommunityBadgesItem, 
   IDefaultCommunityBadgesItems, 
   IDefaultCommunityBadgesProps 
-} from './interfaces';
+} from './types';
 
 const DefaultCommunityBadges = ({ title }: IDefaultCommunityBadgesProps) => {
   const items: IDefaultCommunityBadgesItems = [

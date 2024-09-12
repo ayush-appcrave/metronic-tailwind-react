@@ -1,6 +1,11 @@
-import { HighlightedPosts } from "@/partials/misc";
-import { IBasicContentItems } from "./interfaces";
-import { BasicBillingDetails, BasicBillingInvoicing, BasicPaymentMethods, BasicPlan } from ".";
+import { MiscHighlightedPosts } from "@/partials/misc";
+import { IBasicContentItems } from "./types";
+import {
+  BasicBillingDetails,
+  BasicBillingInvoicing,
+  BasicPaymentMethods,
+  BasicPlan
+} from ".";
 
 const BasicContent = () => {
   const posts: IBasicContentItems = [
@@ -36,7 +41,7 @@ const BasicContent = () => {
       </div>
       <div className="col-span-1">
         <div className="flex flex-col gap-5 lg:gap-7.5">
-          <HighlightedPosts posts={posts} />
+          <MiscHighlightedPosts posts={posts} />
         </div>
       </div>
     </div>

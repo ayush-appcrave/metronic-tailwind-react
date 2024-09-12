@@ -1,11 +1,11 @@
-import { KeenIcon } from '@/components';
+import { KeenIcon, Menu, MenuItem, MenuLabel } from '@/components';
 
 import {
   ISettingsEnterpriseAuthTwoFactorItem,
   ISettingsEnterpriseAuthTwoFactorItems
-} from './interfaces';
-import { DropdownCrud2 } from '@/partials/dropdowns/general';
-import { HexagonBadge } from '@/partials/common';
+} from './types';
+import { DropdownCard2 } from '@/partials/dropdowns/general';
+import { CommonHexagonBadge } from '@/partials/common';
 
 const SettingsEnterpriseAuthTwoFactor = () => {
   const items: ISettingsEnterpriseAuthTwoFactorItems = [
@@ -30,7 +30,7 @@ const SettingsEnterpriseAuthTwoFactor = () => {
         className="flex items-center justify-between flex-wrap lg:flex-nowrap border border-gray-200 rounded-xl gap-2 px-3.5 py-2.5"
       >
         <div className="flex items-center flex-wrap lg:flex-nowrap gap-3.5">
-          <HexagonBadge
+          <CommonHexagonBadge
             stroke='stroke-gray-300'
             fill='fill-gray-100'
             size='size-[50px]'
@@ -60,21 +60,28 @@ const SettingsEnterpriseAuthTwoFactor = () => {
       <div className="card-header gap-2" id="settings_auth_two_factor">
         <h3 className="card-title">Two-Factor authentication(2FA)</h3>
 
-        <div className="menu" data-menu="true">
-          <div
-            className="menu-item"
-            data-menu-item-trigger="click|lg:click"
-            data-menu-item-toggle="dropdown"
-            data-menu-item-placement="bottom-end"
-            data-menu-item-offset="0, 10px"
+        <Menu className="items-stretch">
+          <MenuItem 
+            toggle="dropdown"
+            trigger="click"
+            dropdownProps={{
+              placement: "bottom-end",
+              modifiers: [
+                {
+                  name: 'offset',
+                  options: {
+                    offset: [0, 10] // [skid, distance]
+                  }
+                }
+              ]
+            }}
           >
-            <button className="menu-toggle btn btn-sm btn-icon btn-light btn-clear">
-              <KeenIcon icon="dots-vertical" />
-            </button>
-
-            <DropdownCrud2 />
-          </div>
-        </div>
+            <MenuLabel className="btn btn-sm btn-icon btn-light btn-clear mb-2.5-">
+              <KeenIcon icon="dots-vertical"/>
+            </MenuLabel>
+            {DropdownCard2()}
+          </MenuItem>
+        </Menu>
       </div>
       <div className="card-body lg:py-7.5">
         <div className="grid gap-5">

@@ -1,7 +1,11 @@
-import { Engage, Faq, HighlightedPosts } from "@/partials/misc";
+import {
+  MiscEngage,
+  MiscFaq,
+  MiscHighlightedPosts,
+  IHighlightedPostsItems
+} from "@/partials/misc";
 import { toAbsoluteUrl } from "@/utils";
 import { Channels, DoNotDistrub, OtherNotifications } from ".";
-import { IHighlightedPostsItems } from "@/partials/misc/interfaces";
 
 const NotificationsContent = () => {
   const posts: IHighlightedPostsItems = [
@@ -31,9 +35,9 @@ const NotificationsContent = () => {
         <div className="flex flex-col gap-5 lg:gap-7.5">
           <Channels />
           <OtherNotifications />
-          <Faq />
+          <MiscFaq />
 
-          <Engage
+          <MiscEngage
             title='Contact Support'
             description='Need assistance? Contact our support team for prompt, personalized help your queries & concerns.'
             image={
@@ -61,7 +65,7 @@ const NotificationsContent = () => {
         <div className="flex flex-col gap-5 lg:gap-7.5">
           <DoNotDistrub />
 
-          <HighlightedPosts posts={posts} />
+          <MiscHighlightedPosts posts={posts} />
         </div>
       </div>
     </div>

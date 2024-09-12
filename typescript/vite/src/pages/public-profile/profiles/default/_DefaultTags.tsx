@@ -1,6 +1,6 @@
 import clsx from 'clsx';
 
-import { IDefaultTagsItem, IDefaultTagsItems, IDefaultTagsProps } from './interfaces';
+import { IDefaultTagsItem, IDefaultTagsItems, IDefaultTagsProps } from './types';
 
 const DefaultTags = ({ title, className }: IDefaultTagsProps) => {
   const items: IDefaultTagsItems = [

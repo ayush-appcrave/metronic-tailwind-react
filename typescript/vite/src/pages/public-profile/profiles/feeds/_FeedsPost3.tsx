@@ -1,10 +1,10 @@
 import { useState } from 'react';
 
-import { ICommentsItems, ILikesItems, ISavesItems } from './interfaces';
+import { ICommentsItems } from './types';
 import { Comments, Heading, Likes, Saves, Tabs } from './post';
 
 const FeedsPost3 = () => {
-  const [activeTab, setActiveTab] = useState('comments');
+  const [activeTab, setActiveTab] = useState('likes');
 
   const comments: ICommentsItems = [
     {
@@ -20,9 +20,6 @@ const FeedsPost3 = () => {
       text: 'Long before you sit dow to put digital pen to paper.'
     }
   ];
-
-  const likes: ILikesItems = [];
-  const saves: ISavesItems = [];
 
   return (
     <div className="card">
@@ -59,17 +56,17 @@ const FeedsPost3 = () => {
 
         {activeTab === 'comments' && (
           <div id="post_3_comments">
-            <Comments items={comments} url="#" />
+            <Comments items={comments} />
           </div>
         )}
         {activeTab === 'likes' && (
           <div id="post_3_likes">
-            <Likes items={likes} />
+            <Likes />
           </div>
         )}
         {activeTab === 'saves' && (
           <div id="post_3_saves">
-            <Saves items={saves} />
+            <Saves />
           </div>
         )}
       </div>
