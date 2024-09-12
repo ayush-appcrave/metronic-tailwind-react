@@ -6,3 +6,4 @@ export * from './_UserProfileContent';
 export * from './_UserProfilePersonalInfo';
 export * from './_UserProfileStartNow';
 export * from './_UserProfileWork';
+export * from './types';

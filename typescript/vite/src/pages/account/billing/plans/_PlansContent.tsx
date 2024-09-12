@@ -1,12 +1,12 @@
-import { Faq, Help } from "@/partials/misc";
+import { MiscFaq, MiscHelp } from "@/partials/misc";
 
 const PlansContent = () => {
   return (
     <div className="grid gap-5 lg:gap-7.5">
       {/* {{ theme.page('_plans') }} */}
 
-      <Faq />
-      <Help />
+      <MiscFaq />
+      <MiscHelp />
     </div>
   );
 };

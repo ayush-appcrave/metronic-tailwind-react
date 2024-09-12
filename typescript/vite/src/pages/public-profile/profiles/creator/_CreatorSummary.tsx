@@ -1,6 +1,6 @@
 import { KeenIcon } from '@/components';
 
-import { ICreatorSummaryItem, ICreatorSummaryItems, ICreatorSummaryProps } from './interfaces';
+import { ICreatorSummaryItem, ICreatorSummaryItems, ICreatorSummaryProps } from './types';
 
 const CreatorSummary = ({ title }: ICreatorSummaryProps) => {
   const items: ICreatorSummaryItems = [

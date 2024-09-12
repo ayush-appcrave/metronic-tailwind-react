@@ -1,7 +1,7 @@
 import { KeenIcon } from '@/components';
 import { Container } from '@/components/container';
 
-import { IUserProfileHeroInfo, IUserProfileHeroProps } from './interfaces';
+import { IUserProfileHeroInfo, IUserProfileHeroProps } from './types';
 
 const UserProfileHero = ({ image, name, info }: IUserProfileHeroProps) => {
   const buildInfo = (info: IUserProfileHeroInfo[]) => {

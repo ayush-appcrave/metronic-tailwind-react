@@ -1,11 +1,10 @@
-import { Work } from '@/partials/cards';
+import { CardWork } from '@/partials/cards';
 
-import { ICreatorWorksItem, ICreatorWorksItems } from './interfaces';
+import { ICreatorWorksItem, ICreatorWorksItems } from './types';
 
 const CreatorWorks = () => {
   const items: ICreatorWorksItems = [
     {
-      url: '#',
       title: 'Urban Dreams',
       image: '1.jpg',
       authorName: 'Cody Fisher',
@@ -14,7 +13,6 @@ const CreatorWorks = () => {
       comments: 5
     },
     {
-      url: '#',
       title: 'Timeless Elegance',
       image: '2.jpg',
       authorName: 'Jenny Wilson',
@@ -23,7 +21,6 @@ const CreatorWorks = () => {
       comments: 1
     },
     {
-      url: '#',
       title: 'Whispered Emotions',
       image: '3.jpg',
       authorName: 'Wade Warren',
@@ -32,7 +29,6 @@ const CreatorWorks = () => {
       comments: 49
     },
     {
-      url: '#',
       title: 'Golden Serenity',
       image: '4.jpg',
       authorName: 'Albert Flores',
@@ -41,7 +37,6 @@ const CreatorWorks = () => {
       comments: 13
     },
     {
-      url: '#',
       title: 'Wild Beauty',
       image: '5.jpg',
       authorName: 'Devon Lane',
@@ -50,7 +45,6 @@ const CreatorWorks = () => {
       comments: 109
     },
     {
-      url: '#',
       title: 'Mystic Shadows',
       image: '6.jpg',
       authorName: 'Kathryn Murphy',
@@ -62,8 +56,7 @@ const CreatorWorks = () => {
 
   const renderItem = (item: ICreatorWorksItem, index: number) => {
     return (
-      <Work
-        url={item.url}
+      <CardWork
         title={item.title}
         image={item.image}
         authorName={item.authorName}

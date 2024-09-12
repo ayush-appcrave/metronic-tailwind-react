@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom';
-import { ICRMAttributesItem, ICRMAttributesItems } from './interfaces';
+import { ICRMAttributesItem, ICRMAttributesItems } from './types';
 
 const CRMAttributes = () => {
   const items: ICRMAttributesItems = [

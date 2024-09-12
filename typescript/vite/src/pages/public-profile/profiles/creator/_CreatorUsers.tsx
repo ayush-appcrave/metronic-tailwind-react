@@ -1,6 +1,6 @@
 import { toAbsoluteUrl } from '@/utils/Assets';
 
-import { ICreatorUsersItem, ICreatorUsersProps } from './interfaces';
+import { ICreatorUsersItem, ICreatorUsersProps } from './types';
 import { Link } from 'react-router-dom';
 
 const CreatorUsers = ({ title, items }: ICreatorUsersProps) => {

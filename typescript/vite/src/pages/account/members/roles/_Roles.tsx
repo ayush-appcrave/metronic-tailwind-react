@@ -1,6 +1,6 @@
 import { KeenIcon } from '@/components';
-import { IRolesItem, IRolesItems } from './interfaces';
-import { AddNew, Role } from '@/partials/cards';
+import { IRolesItem, IRolesItems } from './types';
+import { CardAddNew, CardRole } from '@/partials/cards';
 
 const Roles = () => {
   const items: IRolesItems = [
@@ -99,7 +99,7 @@ const Roles = () => {
 
   const renderItem = (item: IRolesItem, index: number) => {
     return (
-      <Role
+      <CardRole
         key={index}
         title={item.title}
         subTitle={item.subTitle}
@@ -117,7 +117,7 @@ const Roles = () => {
         return renderItem(item, index);
       })}
 
-      <AddNew
+      <CardAddNew
         path='/public-profile/works'     
         size='size-[60px]'
         iconSize='text-2xl'

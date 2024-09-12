@@ -1,9 +1,9 @@
 import {
-  BloggingConference,
-  Login,
-  NewProduct,
-  ProductSpecific,
-  ProductWebinar
+  ActivitiesBloggingConference,
+  ActivitiesLogin,
+  ActivitiesNewProduct,
+  ActivitiesProductSpecific,
+  ActivitiesProductWebinar
 } from '@/partials/activities/items';
 import { Link } from 'react-router-dom';
 
@@ -26,16 +26,16 @@ const GamerActivity = () => {
       </div>
 
       <div className="card-body">
-        <NewProduct />
-        <ProductWebinar />
-        <Login />
-        <BloggingConference
+        <ActivitiesNewProduct />
+        <ActivitiesProductWebinar />
+        <ActivitiesLogin />
+        <ActivitiesBloggingConference
           image="/media/illustrations/10.svg"
           heading="Email campaign sent to Jenny for a special promotion."
           datetime="1 week ago, 11:45 AM"
           title="First Campaign Created"
         />
-        <ProductSpecific />
+        <ActivitiesProductSpecific />
       </div>
 
       <div className="card-footer justify-center">

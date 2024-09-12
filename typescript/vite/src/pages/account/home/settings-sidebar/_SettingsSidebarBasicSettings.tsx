@@ -14,8 +14,8 @@ const SettingsSidebarBasicSettings = () => {
             <span className="text-2sm font-medium text-gray-600">150x150px JPEG, PNG Image</span>
 
             <div className="image-input size-16 mt-1.5" data-image-input="true">
-              <input type="file" name="avatar" accept=".png, .jpg, .jpeg" />
-              <input type="hidden" name="avatar_remove" />
+              <input type="file" name="avatar" accept=".png, .jpg, .jpeg" readOnly />
+              <input type="hidden" name="avatar_remove" readOnly />
 
               <div
                 data-image-input-remove
@@ -62,7 +62,7 @@ const SettingsSidebarBasicSettings = () => {
         <div className="flex items-center flex-wrap lg:flex-nowrap gap-2.5">
           <span className="text-2sm font-medium text-gray-700 max-w-56 w-full">Name</span>
           <div className="grow min-w-48">
-            <input type="text" className="input w-full" placeholder="Jason Tatum" value="" />
+            <input type="text" className="input w-full" placeholder="Jason Tatum" value="" readOnly />
           </div>
         </div>
 
@@ -74,6 +74,7 @@ const SettingsSidebarBasicSettings = () => {
               className="input w-full placeholder:text-gray-500"
               placeholder="Phone number"
               value=""
+              readOnly
             />
           </div>
         </div>
@@ -94,7 +95,7 @@ const SettingsSidebarBasicSettings = () => {
           <div className="grow min-w-48">
             <label className="switch">
               <span className="switch-label">Available to hire</span>
-              <input className="checkbox" defaultChecked value=" 1" />
+              <input className="checkbox" defaultChecked value=" 1" readOnly />
             </label>
           </div>
         </div>

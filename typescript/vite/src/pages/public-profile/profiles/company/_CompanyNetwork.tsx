@@ -2,7 +2,7 @@ import clsx from 'clsx';
 
 import { KeenIcon } from '@/components';
 
-import { ICompanyNetworkItem, ICompanyNetworkProps } from './interfaces';
+import { ICompanyNetworkItem, ICompanyNetworkProps } from './types';
 
 const CompanyNetwork = ({ data, className, title }: ICompanyNetworkProps) => {
   const renderItems = (item: ICompanyNetworkItem, index: number) => {

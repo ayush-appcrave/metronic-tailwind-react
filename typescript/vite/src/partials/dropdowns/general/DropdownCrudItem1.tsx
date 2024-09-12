@@ -1,47 +1,59 @@
-import { KeenIcon } from '@/components';
+import {
+  KeenIcon,
+  MenuIcon,
+  MenuItem,
+  MenuLink,
+  MenuSeparator,
+  MenuSub,
+  MenuTitle
+} from '@/components';
 
 const DropdownCrudItem1 = () => {
   return (
-    <div className="menu-dropdown menu-default w-full max-w-[175px]" data-menu-dismiss="true">
-      <div className="menu-item">
-        <a href="#" className="menu-link">
-          <span className="menu-icon"><KeenIcon icon="search-list" /></span>
-          <span className="menu-title">View</span>
-        </a>
-      </div>
-
-      <div className="menu-item">
-        <a href="#" className="menu-link">
-          <span className="menu-icon"><KeenIcon icon="file-up" /></span>
-          <span className="menu-title">Export</span>
-        </a>
-      </div>
-
-      <div className="menu-separator"></div>
-
-      <div className="menu-item">
-        <a href="#" className="menu-link">
-          <span className="menu-icon"><KeenIcon icon="pencil" /></span>
-          <span className="menu-title">Edit</span>
-        </a>
-      </div>
-
-      <div className="menu-item">
-        <a href="#" className="menu-link">
-          <span className="menu-icon"><KeenIcon icon="copy" /></span>
-          <span className="menu-title">Make a copy</span>
-        </a>
-      </div>
-
-      <div className="menu-separator"></div>
-
-      <div className="menu-item">
-        <a href="#" className="menu-link">
-          <span className="menu-icon"><KeenIcon icon="trash" /></span>
-          <span className="menu-title">Remove</span>
-        </a>
-      </div>
-    </div>
+    <MenuSub className="menu-default" rootClassName="w-full max-w-[175px]">
+      <MenuItem path="#">
+        <MenuLink>
+          <MenuIcon>
+            <KeenIcon icon="search-list"/>
+          </MenuIcon>
+          <MenuTitle>View</MenuTitle>
+        </MenuLink>
+      </MenuItem>
+      <MenuItem path="#">
+        <MenuLink>
+          <MenuIcon>
+            <KeenIcon icon="file-up"/>
+          </MenuIcon>
+          <MenuTitle>Export</MenuTitle>
+        </MenuLink>
+      </MenuItem>
+      <MenuSeparator/>
+      <MenuItem path="#">
+        <MenuLink>
+          <MenuIcon>
+            <KeenIcon icon="pencil"/>
+          </MenuIcon>
+          <MenuTitle>Edit</MenuTitle>
+        </MenuLink>
+      </MenuItem>
+      <MenuItem path="#">
+        <MenuLink>
+          <MenuIcon>
+            <KeenIcon icon="copy"/>
+          </MenuIcon>
+          <MenuTitle>Make a copy</MenuTitle>
+        </MenuLink>
+      </MenuItem>
+      <MenuSeparator/>
+      <MenuItem path="#">
+        <MenuLink>
+          <MenuIcon>
+            <KeenIcon icon="trash"/>
+          </MenuIcon>
+          <MenuTitle>Remove</MenuTitle>
+        </MenuLink>
+      </MenuItem>
+    </MenuSub>
   );
 };
 

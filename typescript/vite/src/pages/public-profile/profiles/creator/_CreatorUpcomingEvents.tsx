@@ -1,6 +1,6 @@
 import { toAbsoluteUrl } from '@/utils/Assets';
 
-import { ICreatorUpcomingEventsItem, ICreatorUpcomingEventsItems } from './interfaces';
+import { ICreatorUpcomingEventsItem, ICreatorUpcomingEventsItems } from './types';
 import { Link } from 'react-router-dom';
 import React from 'react';
 

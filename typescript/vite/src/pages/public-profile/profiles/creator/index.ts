@@ -6,3 +6,4 @@ export * from './_CreatorSummary';
 export * from './_CreatorUpcomingEvents';
 export * from './_CreatorUsers';
 export * from './_CreatorWorks';
+export * from './types';

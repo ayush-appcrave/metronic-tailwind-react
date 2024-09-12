@@ -1,7 +1,7 @@
-import { KeenIcon } from '@/components';
-import { IOverviewLoginSessionsItem, IOverviewLoginSessionsItems } from './interfaces';
+import { KeenIcon, Menu, MenuItem, MenuLabel } from '@/components';
+import { IOverviewLoginSessionsItem, IOverviewLoginSessionsItems } from './types';
 import { DropdownCardItem1, DropdownCrud1 } from '@/partials/dropdowns/general';
-import { Avatar } from '@/partials/common';
+import { CommonAvatar } from '@/partials/common';
 
 const OverviewLoginSessions = () => {
   const rows: IOverviewLoginSessionsItems = [
@@ -47,7 +47,7 @@ const OverviewLoginSessions = () => {
       <tr key={index}>
         <td>
           <div className="flex items-center grow gap-2.5">
-            <Avatar
+            <CommonAvatar
               image={row.avatar}
               imageClass='rounded-full size-9 shrink-0'
             />
@@ -72,14 +72,28 @@ const OverviewLoginSessions = () => {
         </td>
 
         <td className="!pr-7.5">
-          <div className="menu" data-menu="true">
-            <div className="menu-item" data-menu-item-trigger="click|lg:click" data-menu-item-toggle="dropdown" data-menu-item-placement="bottom-end" data-menu-item-offset="0, 10px">
-              <button className="menu-toggle btn btn-sm btn-icon btn-light btn-clear">
-                <KeenIcon icon="dots-vertical" />
-              </button>
-              <DropdownCardItem1 />
-            </div>
-          </div>
+          <Menu className="items-stretch">
+            <MenuItem 
+              toggle="dropdown"
+              trigger="click"
+              dropdownProps={{
+                placement: "bottom-end",
+                modifiers: [
+                  {
+                    name: 'offset',
+                    options: {
+                      offset: [0, 10] // [skid, distance]
+                    }
+                  }
+                ]
+              }}
+            >
+              <MenuLabel className="btn btn-sm btn-icon btn-light btn-clear mb-2.5-">
+                <KeenIcon icon="dots-vertical"/>
+              </MenuLabel>
+              {DropdownCardItem1()}
+            </MenuItem>
+          </Menu>
         </td>
       </tr>
     );
@@ -90,14 +104,28 @@ const OverviewLoginSessions = () => {
       <div className="card-header">
         <h3 className="card-title">Login Sessions</h3>
 
-        <div className="menu" data-menu="true">
-          <div className="menu-item" data-menu-item-trigger="click|lg:click" data-menu-item-toggle="dropdown" data-menu-item-placement="bottom-end" data-menu-item-offset="0, 10px">
-            <button className="menu-toggle btn btn-sm btn-icon btn-light btn-clear">
-              <KeenIcon icon="dots-vertical" />
-            </button>
-            <DropdownCrud1 />
-          </div>
-        </div>
+        <Menu className="items-stretch">
+          <MenuItem 
+            toggle="dropdown"
+            trigger="click"
+            dropdownProps={{
+              placement: "bottom-end",
+              modifiers: [
+                {
+                  name: 'offset',
+                  options: {
+                    offset: [0, 10] // [skid, distance]
+                  }
+                }
+              ]
+            }}
+          >
+            <MenuLabel className="btn btn-sm btn-icon btn-light btn-clear mb-2.5-">
+              <KeenIcon icon="dots-vertical"/>
+            </MenuLabel>
+            {DropdownCrud1()}
+          </MenuItem>
+        </Menu>
       </div>
 
       <div className="card-table scrollable-x-auto">

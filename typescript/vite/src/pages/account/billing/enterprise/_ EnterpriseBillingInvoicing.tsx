@@ -1,5 +1,5 @@
-import { KeenIcon } from '@/components';
-import { IEnterpriseBillingInvoicingItem, IEnterpriseBillingInvoicingItems } from './interfaces';
+import { KeenIcon, Menu, MenuItem, MenuLabel } from '@/components';
+import { IEnterpriseBillingInvoicingItem, IEnterpriseBillingInvoicingItems } from './types';
 import { DropdownCardItem2 } from '@/partials/dropdowns/general';
 
 const EnterpriseBillingInvoicing = () => {
@@ -44,20 +44,28 @@ const EnterpriseBillingInvoicing = () => {
         <td className="text-sm font-medium text-gray-700 lg:text-right">{table.date}</td>
         <td className="text-sm text-gray-700 font-medium lg:text-right">${table.ammount}</td>
         <td>
-          <div className="menu" data-menu="true">
-            <div
-              className="menu-item"
-              data-menu-item-trigger="click|lg:click"
-              data-menu-item-toggle="dropdown"
-              data-menu-item-placement="bottom-end"
-              data-menu-item-offset="0, 10px"
+          <Menu className="items-stretch">
+            <MenuItem 
+              toggle="dropdown"
+              trigger="click"
+              dropdownProps={{
+                placement: "bottom-end",
+                modifiers: [
+                  {
+                    name: 'offset',
+                    options: {
+                      offset: [0, 10] // [skid, distance]
+                    }
+                  }
+                ]
+              }}
             >
-              <button className="menu-toggle btn btn-sm btn-icon btn-light btn-clear">
-                <KeenIcon icon="dots-vertical" />
-              </button>
-              <DropdownCardItem2 />
-            </div>
-          </div>
+              <MenuLabel className="btn btn-sm btn-icon btn-light btn-clear mb-2.5-">
+                <KeenIcon icon="dots-vertical"/>
+              </MenuLabel>
+              {DropdownCardItem2()}
+            </MenuItem>
+          </Menu>
         </td>
       </tr>
     );

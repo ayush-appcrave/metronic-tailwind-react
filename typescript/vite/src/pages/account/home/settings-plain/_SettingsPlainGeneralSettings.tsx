@@ -1,5 +1,5 @@
-import { ISettingsPlainGeneralSettingsProps } from './interfaces';
-import { AvatarUpload } from '@/partials/crud';
+import { ISettingsPlainGeneralSettingsProps } from './types';
+import { CrudAvatarUpload } from '@/partials/crud';
 
 const SettingsPlainGeneralSettings = ({ title }: ISettingsPlainGeneralSettingsProps) => {
   return (
@@ -18,7 +18,7 @@ const SettingsPlainGeneralSettings = ({ title }: ISettingsPlainGeneralSettingsPr
           <label className="text-2sm font-medium text-gray-700 max-w-56 w-full">Photo</label>
           <div className="flex items-center justify-between flex-wrap grow gap-2.5">
             <span className="text-2sm font-medium text-gray-600">150x150px JPEG, PNG Image</span>
-            <AvatarUpload />
+            <CrudAvatarUpload />
           </div>
         </div>
 

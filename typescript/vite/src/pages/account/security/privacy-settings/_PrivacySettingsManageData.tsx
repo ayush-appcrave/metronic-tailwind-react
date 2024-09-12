@@ -1,4 +1,4 @@
-import { IPrivacySettingsManageDataItem, IPrivacySettingsManageDataItems } from './interfaces';
+import { IPrivacySettingsManageDataItem, IPrivacySettingsManageDataItems } from './types';
 
 const PrivacySettingsManageData = () => {
   const items: IPrivacySettingsManageDataItems = [

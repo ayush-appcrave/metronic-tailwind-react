@@ -1,7 +1,7 @@
 import { KeenIcon } from '@/components';
 import { toAbsoluteUrl } from '@/utils/Assets';
 
-import { IUserProfileBasicSettingsProps } from './interfaces';
+import { IUserProfileBasicSettingsProps } from './types';
 
 const UserProfileBasicSettings = ({ title }: IUserProfileBasicSettingsProps) => {
   return (

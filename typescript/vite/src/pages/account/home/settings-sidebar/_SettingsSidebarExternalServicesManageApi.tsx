@@ -1,7 +1,7 @@
 import { KeenIcon } from '@/components';
-import { HexagonBadge } from '@/partials/common';
+import { CommonHexagonBadge } from '@/partials/common';
 import { toAbsoluteUrl } from '@/utils/Assets';
-import { ISettingsSidebarExternalServicesManageApiProps } from './interfaces';
+import { ISettingsSidebarExternalServicesManageApiProps } from './types';
 
 const SettingsSidebarExternalServicesManageApi = ({ title, switch: showSwitch }: ISettingsSidebarExternalServicesManageApiProps) => {
   return (
@@ -44,7 +44,7 @@ const SettingsSidebarExternalServicesManageApi = ({ title, switch: showSwitch }:
 
           <div className="flex items-center justify-between grow border border-gray-200 rounded-xl gap-2 p-5 [background-position:220%_44%] bg-no-repeat bg-[length:650px] user-access-bg">
             <div className="flex items-center gap-4">
-              <HexagonBadge
+              <CommonHexagonBadge
                 stroke='stroke-brand-clarity'
                 fill='fill-brand-light'
                 size='size-[50px]'

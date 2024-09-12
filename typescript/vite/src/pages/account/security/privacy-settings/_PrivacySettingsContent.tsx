@@ -1,5 +1,4 @@
-import { Faq, HighlightedPosts } from "@/partials/misc";
-import { IHighlightedPostsItems } from "@/partials/misc/interfaces";
+import { MiscFaq, MiscHighlightedPosts, IHighlightedPostsItems } from "@/partials/misc";
 import {
   PrivacySettingsBlockList,
   PrivacySettingsManageData,
@@ -35,13 +34,13 @@ const PrivacySettingsContent = () => {
             <PrivacySettingsManageData />
           </div>
 
-          <Faq />
+          <MiscFaq />
         </div>
       </div>
       <div className="col-span-1">
         <div className="flex flex-col gap-5 lg:gap-7.5">
           <PrivacySettingsBlockList text="Users on the block list are unable to send chat requests or messages to you." />
-          <HighlightedPosts posts={posts} />
+          <MiscHighlightedPosts posts={posts} />
         </div>
       </div>
     </div>

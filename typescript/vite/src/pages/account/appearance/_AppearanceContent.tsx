@@ -1,5 +1,9 @@
-import { Engage, Faq, HighlightedPosts } from "@/partials/misc";
-import { IHighlightedPostsItems } from "@/partials/misc/interfaces";
+import {
+  MiscEngage,
+  MiscFaq,
+  MiscHighlightedPosts,
+  IHighlightedPostsItems
+} from "@/partials/misc";
 import { toAbsoluteUrl } from "@/utils";
 import { CompanyProfileBranding } from "../home/company-profile";
 import { SettingsSidebarAdvancedSettingsAppearance } from "../home/settings-sidebar";
@@ -40,9 +44,9 @@ const AppearanceContent = () => {
           <SettingsSidebarAdvancedSettingsAppearance title="Theme" />
           <CompanyProfileBranding />
           <Accessibility />
-          <Faq />
+          <MiscFaq />
 
-          <Engage
+          <MiscEngage
             title='Contact Support'
             description='Need assistance? Contact our support team for prompt, personalized help your queries & concerns.'
             image={
@@ -70,7 +74,7 @@ const AppearanceContent = () => {
         <div className="flex flex-col gap-5 lg:gap-7.5">
           <DisableDefaultBrand />
 
-          <HighlightedPosts posts={posts} />
+          <MiscHighlightedPosts posts={posts} />
         </div>
       </div>
     </div>

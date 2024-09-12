@@ -1,5 +1,5 @@
 import { KeenIcon } from '@/components';
-import { IOptionsItem, IOptionsProps } from './interfaces';
+import { IOptionsItem, IOptionsProps } from './types';
 import { Link } from 'react-router-dom';
 import React from 'react';
 

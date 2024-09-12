@@ -82,7 +82,7 @@ const HighlightsBlock = ({ limit }: IHighlightsProps) => {
           </MenuItem>
         </Menu>
       </div>
-      
+
       <div className="card-body flex flex-col gap-4 p-5 lg:p-7.5 lg:pt-4">
         <div className="flex flex-col gap-0.5">
           <span className="text-sm font-normal text-gray-700">All time sales</span>

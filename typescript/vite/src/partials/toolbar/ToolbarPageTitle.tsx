@@ -3,7 +3,7 @@ import { useLocation } from 'react-router';
 import { useMenuCurrentItem } from '@/components/menu';
 import { useMenu } from '@/providers';
 
-import { IToolbarPageTitleProps } from './interfaces';
+import { IToolbarPageTitleProps } from './types';
 
 const ToolbarPageTitle = ({ text }: IToolbarPageTitleProps) => {
   const { pathname } = useLocation();

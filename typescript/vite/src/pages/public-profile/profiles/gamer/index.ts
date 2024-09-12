@@ -5,3 +5,4 @@ export * from './_GamerFavoriteGames';
 export * from './_GamerNowPlaying';
 export * from './_GamerStatistics';
 export * from './_GamerTournaments';
+export * from './types';

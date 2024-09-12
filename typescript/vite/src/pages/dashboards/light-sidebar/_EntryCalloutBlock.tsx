@@ -1,6 +1,6 @@
 import { toAbsoluteUrl } from '@/utils/Assets';
 import { Link } from 'react-router-dom';
-import { Avatars } from '@/partials/common';
+import { CommonAvatars } from '@/partials/common';
 import { IEntryCalloutProps } from './types';
 import { Fragment } from 'react/jsx-runtime';
 
@@ -21,7 +21,7 @@ const EntryCalloutBlock = ({ className }: IEntryCalloutProps) => {
       <div className={`card h-full ${className}`}>
         <div className="card-body p-10 bg-[length:80%] [background-position:175%_25%] bg-no-repeat entry-callout-bg">
           <div className="flex flex-col justify-center gap-4">
-            <Avatars
+            <CommonAvatars
               size='size-10'
               group={[
                 { filename: '300-4.png'},

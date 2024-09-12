@@ -1,5 +1,5 @@
-import { DatatableToolbar } from '@/partials/crud';
-import { IApiIntegrationsItem, IApiIntegrationsItems } from './interfaces';
+import { CrudDatatableToolbar } from '@/partials/crud';
+import { IApiIntegrationsItem, IApiIntegrationsItems } from './types';
 import { KeenIcon } from '@/components';
 
 const ApiIntegrations = () => {
@@ -288,7 +288,7 @@ const ApiIntegrations = () => {
               </tbody>
             </table>
           </div>
-          <DatatableToolbar />
+          <CrudDatatableToolbar />
         </div>
       </div>
     </div>

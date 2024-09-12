@@ -1,17 +1,16 @@
 import { useState } from 'react';
 
 import { KeenIcon } from '@/components';
-import { Work, WorkRow } from '@/partials/cards';
+import { CardWork, CardWorkRow } from '@/partials/cards';
 
 import { Offer, OfferRow } from './cards';
-import { IWorksItem, IWorksItems } from './interfaces';
+import { IWorksItem, IWorksItems } from './types';
 
 const Works = () => {
   const [activeView, setActiveView] = useState('cards');
 
   const items: IWorksItems = [
     {
-      url: '#',
       title: 'Urban Dreams',
       description: 'Cloud storage and file sharing',
       image: '21.jpg',
@@ -21,7 +20,6 @@ const Works = () => {
       comments: 5
     },
     {
-      url: '#',
       title: 'Whispered Emotions',
       description: 'Neutrals are the epitome of timeless elegance',
       image: '3.jpg',
@@ -31,7 +29,6 @@ const Works = () => {
       comments: 49
     },
     {
-      url: '#',
       title: 'Golden Serenity',
       description: 'Choose the right time. ',
       image: '22.jpg',
@@ -41,7 +38,6 @@ const Works = () => {
       comments: 13
     },
     {
-      url: '#',
       title: 'Mystic Shadows',
       description: 'Her alluring appearance radiates calmness.',
       image: '23.jpg',
@@ -51,7 +47,6 @@ const Works = () => {
       comments: 16
     },
     {
-      url: '#',
       title: 'Wild Beauty',
       description: 'Pulled apart by reality',
       image: '14.jpg',
@@ -61,7 +56,6 @@ const Works = () => {
       comments: 109
     },
     {
-      url: '#',
       title: 'Timeless Elegance',
       description: 'The charm and limit of shadows',
       image: '25.jpg',
@@ -71,7 +65,6 @@ const Works = () => {
       comments: 1
     },
     {
-      url: '#',
       title: 'Intrepid Travel',
       description: 'Understand the world with us',
       image: '26.jpg',
@@ -81,7 +74,6 @@ const Works = () => {
       comments: 22
     },
     {
-      url: '#',
       title: 'We rise together',
       description: 'We share the best experiences with you',
       image: '2.jpg',
@@ -94,8 +86,7 @@ const Works = () => {
 
   const renderItem = (item: IWorksItem, index: number) => {
     return (
-      <Work
-        url={item.url}
+      <CardWork
         title={item.title}
         image={item.image}
         authorName={item.authorName}
@@ -109,7 +100,7 @@ const Works = () => {
 
   const renderData = (data: IWorksItem, index: number) => {
     return (
-      <WorkRow
+      <CardWorkRow
         description={data.description}
         title={data.title}
         image={data.image}

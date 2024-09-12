@@ -1,8 +1,8 @@
 import { KeenIcon } from '@/components';
 import { toAbsoluteUrl } from '@/utils/Assets';
 import { Link } from 'react-router-dom';
-import { IOfferRowProps } from './interfaces';
-import { HexagonBadge } from '@/partials/common';
+import { IOfferRowProps } from './types';
+import { CommonHexagonBadge } from '@/partials/common';
 
 const Offer = ({ path, size, iconSize, title, subTitle }: IOfferRowProps) => {
   return (
@@ -25,7 +25,7 @@ const Offer = ({ path, size, iconSize, title, subTitle }: IOfferRowProps) => {
         <div className="card-body grid items-center">
           <div className="flex flex-col gap-5">
             <div className="flex justify-center pt-5">
-              <HexagonBadge
+              <CommonHexagonBadge
                 size={size}
                 badge={<KeenIcon icon="rocket" className={`${iconSize} text-brand`} />}
                 stroke='stroke-brand-clarity'

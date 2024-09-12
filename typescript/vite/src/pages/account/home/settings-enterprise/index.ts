@@ -6,3 +6,4 @@ export * from './_SettingsEnterprisePaymentHistory';
 export * from './_SettingsEnterpriseSetGoal';
 export * from './_SettingsEnterpriseUpgrade';
 export * from './_SettingsEnterpriseYourCurrentPlan';
+export * from './types';

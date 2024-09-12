@@ -1,6 +1,6 @@
-import { Tournament } from '@/partials/cards';
+import { CardTournament } from '@/partials/cards';
 
-import { IGamerTournamentsItem, IGamerTournamentsItems } from './interfaces';
+import { IGamerTournamentsItem, IGamerTournamentsItems } from './types';
 import React from 'react';
 
 const GamerTournaments = () => {
@@ -75,7 +75,7 @@ const GamerTournaments = () => {
   const renderItem = (item: IGamerTournamentsItem, index: number) => {
     return (
       <React.Fragment key={index}>
-        <Tournament
+        <CardTournament
           image={item.image}
           logo={item.logo}
           title={item.title}

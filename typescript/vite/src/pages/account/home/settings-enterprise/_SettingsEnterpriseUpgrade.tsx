@@ -1,5 +1,5 @@
 import { KeenIcon } from '@/components';
-import { HexagonBadge } from '@/partials/common';
+import { CommonHexagonBadge } from '@/partials/common';
 import { toAbsoluteUrl } from '@/utils/Assets';
 
 const SettingsEnterpriseUpgrade = () => {
@@ -19,7 +19,7 @@ const SettingsEnterpriseUpgrade = () => {
       <div className="card rounded-xl">
         <div className="flex items-center justify-between grow gap-2 p-5 [background-position:121%_41%] bg-no-repeat bg-[length:660px_310px] upgrade-bg">
           <div className="flex items-center gap-4">
-            <HexagonBadge
+            <CommonHexagonBadge
               stroke='stroke-brand-clarity'
               fill='fill-brand-light'
               size='size-[50px]'

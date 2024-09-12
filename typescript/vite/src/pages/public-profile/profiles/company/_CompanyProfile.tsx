@@ -5,7 +5,7 @@ import {
   ICompanyProfileProducts,
   ICompanyProfileRow,
   ICompanyProfileRows
-} from './interfaces';
+} from './types';
 
 const CompanyProfile = () => {
   const rows: ICompanyProfileRows = [

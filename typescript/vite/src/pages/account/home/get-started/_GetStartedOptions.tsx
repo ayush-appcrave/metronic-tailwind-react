@@ -1,7 +1,7 @@
-import { KeenIcon } from '@/components';
+import { KeenIcon, Menu, MenuItem, MenuLabel } from '@/components';
 
-import { IGetStartedContentItem, IGetStartedOptionsProps } from './interfaces';
-import { DropdownCrud2 } from '@/partials/dropdowns/general';
+import { IGetStartedContentItem, IGetStartedOptionsProps } from './types';
+import { DropdownCard2 } from '@/partials/dropdowns/general';
 import { Link } from 'react-router-dom';
 
 const GetStartedOptions = ({ items, dropdown }: IGetStartedOptionsProps) => {
@@ -13,27 +13,34 @@ const GetStartedOptions = ({ items, dropdown }: IGetStartedOptionsProps) => {
             <KeenIcon icon={item.icon} className="text-2xl link" />
 
             {dropdown && (
-              <div className="menu" data-menu="true">
-                <div
-                  className="menu-item"
-                  data-menu-item-trigger="click|lg:click"
-                  data-menu-item-toggle="dropdown"
-                  data-menu-item-placement="bottom-end"
-                  data-menu-item-offset="0, 10px"
+              <Menu className="items-stretch">
+                <MenuItem 
+                  toggle="dropdown"
+                  trigger="click"
+                  dropdownProps={{
+                    placement: "bottom-end",
+                    modifiers: [
+                      {
+                        name: 'offset',
+                        options: {
+                          offset: [0, 10] // [skid, distance]
+                        }
+                      }
+                    ]
+                  }}
                 >
-                  <button className="menu-toggle btn btn-sm btn-icon btn-light btn-clear">
-                    <KeenIcon icon="dots-vertical" />
-                  </button>
-
-                  <DropdownCrud2 />
-                </div>
-              </div>
+                  <MenuLabel className="btn btn-sm btn-icon btn-light btn-clear mb-2.5-">
+                    <KeenIcon icon="dots-vertical"/>
+                  </MenuLabel>
+                  {DropdownCard2()}
+                </MenuItem>
+              </Menu>
             )}
           </div>
 
           <div className="flex flex-col gap-3">
             <Link 
-              to={`/${item.path}`} 
+              to={`${item.path}`} 
               className="text-base font-semibold leading-none text-gray-900 hover:text-primary-active"
             >
               {item.title}

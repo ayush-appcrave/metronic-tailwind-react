@@ -3,7 +3,7 @@ import { KeenIcon } from '@/components';
 import {
   ISettingsSidebarAuthTwoFactorItem,
   ISettingsSidebarAuthTwoFactorItems
-} from './interfaces';
+} from './types';
 
 const SettingsSidebarAuthTwoFactor = () => {
   const items: ISettingsSidebarAuthTwoFactorItems = [
@@ -71,7 +71,7 @@ const SettingsSidebarAuthTwoFactor = () => {
         </div>
 
         <div className="flex items-center gap-2 lg:gap-6">
-          <input type="checkbox" defaultChecked={item.checkbox} value={item.checkbox ? '1' : '2'} />
+          <input type="checkbox" defaultChecked={item.checkbox} value={item.checkbox ? '1' : '2'} readOnly />
         </div>
       </div>
     );
@@ -95,7 +95,7 @@ const SettingsSidebarAuthTwoFactor = () => {
           </span>
 
           <div className="grow grid gap-2.5">
-            <input type="text" className="input w-full" placeholder="Enter password" value="" />
+            <input type="text" className="input w-full" placeholder="Enter password" value="" readOnly />
 
             <p className="text-2sm font-medium text-gray-700">
               Enter your password to setup Two-Factor authentication

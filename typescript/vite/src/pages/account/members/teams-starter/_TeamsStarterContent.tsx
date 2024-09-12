@@ -1,10 +1,10 @@
-import { Faq, Help2, Starter } from "@/partials/misc";
+import { MiscFaq, MiscHelp2, MiscStarter } from "@/partials/misc";
 import { toAbsoluteUrl } from "@/utils";
 
 const TeamsStarterContent = () => {
   return (
     <div className="grid gap-5 lg:gap-7.5">
-      <Starter
+      <MiscStarter
         image={
           <>
             <img src={toAbsoluteUrl('/media/illustrations/32.svg')} className="dark:hidden max-h-[230px]" alt="" />
@@ -27,9 +27,9 @@ const TeamsStarterContent = () => {
         }}
       />
 
-      <Faq />
+      <MiscFaq />
 
-      <Help2 />
+      <MiscHelp2 />
     </div>
   );
 };

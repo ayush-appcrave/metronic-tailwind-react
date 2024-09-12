@@ -1,5 +1,5 @@
 import { KeenIcon } from "@/components";
-import { ILikesItem, ILikesItems } from "./interfaces";
+import { ILikesItem, ILikesItems } from "./types";
 import { toAbsoluteUrl } from "@/utils";
 
 const Likes = () => {

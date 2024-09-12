@@ -1,5 +1,5 @@
 import React from 'react';
-import { ICreatorStatisticsItem, ICreatorStatisticsProps } from './interfaces';
+import { ICreatorStatisticsItem, ICreatorStatisticsProps } from './types';
 
 const CreatorStatistics = ({ data }: ICreatorStatisticsProps) => {
   const renderData = (item: ICreatorStatisticsItem, index: number) => {

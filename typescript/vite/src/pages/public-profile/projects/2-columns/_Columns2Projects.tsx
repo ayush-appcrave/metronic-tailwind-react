@@ -1,9 +1,9 @@
 import { useState } from 'react';
 
 import { KeenIcon } from '@/components';
-import { ProjectExtended, ProjectExtendedRow } from '@/partials/cards';
+import { CardProjectExtended, CardProjectExtendedRow } from '@/partials/cards';
 
-import { IColumns2ProjectsItem, IColumns2ProjectsItems } from './interfaces';
+import { IColumns2ProjectsItem, IColumns2ProjectsItems } from './types';
 
 const Columns2Projects = () => {
   const [activeView, setActiveView] = useState('cards');
@@ -237,7 +237,7 @@ const Columns2Projects = () => {
 
   const renderProject = (project: IColumns2ProjectsItem, index: number) => {
     return (
-      <ProjectExtended
+      <CardProjectExtended
         status={project.status}
         logo={project.logo}
         title={project.title}
@@ -253,7 +253,7 @@ const Columns2Projects = () => {
 
   const renderItem = (item: IColumns2ProjectsItem, index: number) => {
     return (
-      <ProjectExtendedRow
+      <CardProjectExtendedRow
         status={item.status}
         logo={item.logo}
         title={item.title}

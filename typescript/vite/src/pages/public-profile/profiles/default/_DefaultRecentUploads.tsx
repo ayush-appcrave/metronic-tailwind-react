@@ -1,11 +1,11 @@
-import { KeenIcon } from '@/components';
+import { KeenIcon, Menu, MenuItem, MenuLabel } from '@/components';
 import { toAbsoluteUrl } from '@/utils/Assets';
 
 import {
   IDefaultRecentUploadsItem,
   IDefaultRecentUploadsItems,
   IDefaultRecentUploadsProps
-} from './interfaces';
+} from './types';
 import { Link } from 'react-router-dom';
 import { DropdownCard1, DropdownCardItem1 } from '@/partials/dropdowns/general';
 
@@ -47,21 +47,28 @@ const DefaultRecentUploads = ({ title }: IDefaultRecentUploadsProps) => {
           </div>
         </div>
 
-        <div className="menu" data-menu="true">
-          <div
-            className="menu-item"
-            data-menu-item-trigger="click|lg:click"
-            data-menu-item-toggle="dropdown"
-            data-menu-item-placement="bottom-end"
-            data-menu-item-offset="0, 10px"
+        <Menu className="items-stretch">
+          <MenuItem 
+            toggle="dropdown"
+            trigger="click"
+            dropdownProps={{
+              placement: "bottom-end",
+              modifiers: [
+                {
+                  name: 'offset',
+                  options: {
+                    offset: [0, 10] // [skid, distance]
+                  }
+                }
+              ]
+            }}
           >
-            <button className="menu-toggle btn btn-sm btn-icon btn-light btn-clear">
-              <KeenIcon icon="dots-vertical" />
-            </button>
-
-            <DropdownCardItem1 />
-          </div>
-        </div>
+            <MenuLabel className="btn btn-sm btn-icon btn-light btn-clear mb-2.5-">
+              <KeenIcon icon="dots-vertical"/>
+            </MenuLabel>
+            {DropdownCardItem1()}
+          </MenuItem>
+        </Menu>
       </div>
     );
   };
@@ -71,21 +78,28 @@ const DefaultRecentUploads = ({ title }: IDefaultRecentUploadsProps) => {
       <div className="card-header">
         <h3 className="card-title">{title}</h3>
 
-        <div className="menu" data-menu="true">
-          <div
-            className="menu-item"
-            data-menu-item-trigger="click|lg:click"
-            data-menu-item-toggle="dropdown"
-            data-menu-item-placement="bottom-end"
-            data-menu-item-offset="0, 10px"
+        <Menu className="items-stretch">
+          <MenuItem 
+            toggle="dropdown"
+            trigger="click"
+            dropdownProps={{
+              placement: "bottom-end",
+              modifiers: [
+                {
+                  name: 'offset',
+                  options: {
+                    offset: [0, 10] // [skid, distance]
+                  }
+                }
+              ]
+            }}
           >
-            <button className="menu-toggle btn btn-sm btn-icon btn-light btn-clear">
-              <KeenIcon icon="dots-vertical" />
-            </button>
-
-            <DropdownCard1 />
-          </div>
-        </div>
+            <MenuLabel className="btn btn-sm btn-icon btn-light btn-clear mb-2.5-">
+              <KeenIcon icon="dots-vertical"/>
+            </MenuLabel>
+            {DropdownCard1()}
+          </MenuItem>
+        </Menu>
       </div>
 
       <div className="card-body">

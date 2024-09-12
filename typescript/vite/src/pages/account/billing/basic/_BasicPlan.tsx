@@ -1,4 +1,4 @@
-import { IBasicPlanItem, IBasicPlanItems } from './interfaces';
+import { IBasicPlanItem, IBasicPlanItems } from './types';
 
 const BasicPlan = () => {
   const statistics: IBasicPlanItems = [

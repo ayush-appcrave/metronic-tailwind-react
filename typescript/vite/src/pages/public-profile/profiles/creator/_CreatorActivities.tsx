@@ -1,10 +1,10 @@
 import {
-  Anniversary,
-  BloggingConference,
-  FollowersMilestone,
-  Interview,
-  NewArticle,
-  UpcomingContent
+  ActivitiesAnniversary,
+  ActivitiesBloggingConference,
+  ActivitiesFollowersMilestone,
+  ActivitiesInterview,
+  ActivitiesNewArticle,
+  ActivitiesUpcomingContent
 } from '@/partials/activities/items';
 import { Link } from 'react-router-dom';
 
@@ -27,12 +27,12 @@ const CreatorActivities = () => {
       </div>
 
       <div className="card-body">
-        <NewArticle />
-        <Interview />
-        <UpcomingContent />
-        <BloggingConference image="/media/illustrations/3.svg" />
-        <FollowersMilestone />
-        <Anniversary />
+        <ActivitiesNewArticle />
+        <ActivitiesInterview />
+        <ActivitiesUpcomingContent />
+        <ActivitiesBloggingConference image="/media/illustrations/3.svg" />
+        <ActivitiesFollowersMilestone />
+        <ActivitiesAnniversary />
       </div>
 
       <div className="card-footer justify-center">

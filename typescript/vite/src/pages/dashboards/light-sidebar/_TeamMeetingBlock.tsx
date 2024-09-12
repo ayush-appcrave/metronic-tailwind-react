@@ -1,5 +1,5 @@
 import { KeenIcon } from "@/components";
-import { Avatars } from "@/partials/common";
+import { CommonAvatars } from "@/partials/common";
 import { toAbsoluteUrl } from "@/utils";
 
 const TeamMeetingBlock = () => {
@@ -40,7 +40,7 @@ const TeamMeetingBlock = () => {
               Team
             </div>
 
-            <Avatars
+            <CommonAvatars
               size='size-[30px]'
               group={[
                 { filename: '300-4.png'},

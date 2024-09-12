@@ -1,5 +1,5 @@
 import React from 'react';
-import { ICompanyStatisticsItem, ICompanyStatisticsProps } from './interfaces';
+import { ICompanyStatisticsItem, ICompanyStatisticsProps } from './types';
 
 const CompanyStatistics = ({ items }: ICompanyStatisticsProps) => {
   const renderItems = (item: ICompanyStatisticsItem, index: number) => {

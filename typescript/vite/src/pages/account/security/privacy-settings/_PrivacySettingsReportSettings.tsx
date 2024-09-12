@@ -3,7 +3,7 @@ import {
   IPrivacySettingsReportSettingsItem,
   IPrivacySettingsReportSettingsItems,
   IPrivacySettingsReportSettingsProps
-} from './interfaces';
+} from './types';
 
 const PrivacySettingsReportSettings = ({ limit, className }: IPrivacySettingsReportSettingsProps) => {
   const items: IPrivacySettingsReportSettingsItems = [

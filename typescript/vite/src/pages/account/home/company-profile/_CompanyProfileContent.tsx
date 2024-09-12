@@ -1,5 +1,5 @@
-import { HighlightedPosts } from '@/partials/misc';
-import { IHighlightedPostsItems } from '@/partials/misc/interfaces';
+import { MiscHighlightedPosts } from '@/partials/misc';
+import { IHighlightedPostsItems } from '@/partials/misc/types';
 
 import {
   CompanyProfileAccountSettings,
@@ -48,7 +48,7 @@ const CompanyProfileContent = () => {
 
       <div className="col-span-1">
         <div className="flex flex-col gap-5 lg:gap-7.5">
-          <HighlightedPosts posts={posts} />
+          <MiscHighlightedPosts posts={posts} />
         </div>
       </div>
     </div>

@@ -1,9 +1,9 @@
 import { useState } from 'react';
 
 import { KeenIcon } from '@/components';
-import { Team, TeamRow } from '@/partials/cards';
+import { CardTeam, CardTeamRow } from '@/partials/cards';
 
-import { ITeamsItem, ITeamsItems } from './interfaces';
+import { ITeamsItem, ITeamsItems } from './types';
 import { Link } from 'react-router-dom';
 
 const Teams = () => {
@@ -179,7 +179,7 @@ const Teams = () => {
 
   const renderItem = (item: ITeamsItem, index: number) => {
     return (
-      <Team
+      <CardTeam
         icon={item.icon}
         title={item.title}
         description={item.description}
@@ -194,7 +194,7 @@ const Teams = () => {
 
   const renderData = (data: ITeamsItem, index: number) => {
     return (
-      <TeamRow
+      <CardTeamRow
         icon={data.icon}
         title={data.title}
         description={data.description}

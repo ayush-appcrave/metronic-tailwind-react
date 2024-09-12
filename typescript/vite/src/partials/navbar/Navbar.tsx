@@ -1,4 +1,4 @@
-import { INavbarProps } from './interfaces';
+import { INavbarProps } from './types';
 
 const Navbar = ({ children }: INavbarProps) => {
   return (

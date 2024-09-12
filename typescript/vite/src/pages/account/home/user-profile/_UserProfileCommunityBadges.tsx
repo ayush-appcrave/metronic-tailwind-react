@@ -1,7 +1,7 @@
 import { KeenIcon } from '@/components';
 
-import { IUserProfileCommunityBadgesItem, IUserProfileCommunityBadgesItems } from './interfaces';
-import { HexagonBadge } from '@/partials/common';
+import { IUserProfileCommunityBadgesItem, IUserProfileCommunityBadgesItems } from './types';
+import { CommonHexagonBadge } from '@/partials/common';
 
 const UserProfileCommunityBadges = () => {
   const items: IUserProfileCommunityBadgesItems = [
@@ -42,7 +42,7 @@ const UserProfileCommunityBadges = () => {
         className="flex items-center justify-between flex-wrap group border border-gray-200 rounded-xl gap-2 px-3.5 py-2.5"
       >
         <div className="flex items-center flex-wrap gap-2.5">
-          <HexagonBadge
+          <CommonHexagonBadge
             size='size-[50px]'
             badge={<KeenIcon icon={item.icon} className={`text-1.5xl ps-px ${item.iconColor}`} />}
             stroke={item.stroke}

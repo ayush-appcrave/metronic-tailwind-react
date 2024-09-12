@@ -1,9 +1,16 @@
 import { KeenIcon } from '@/components';
-import { INetworkTeamCrewContentItem, INetworkTeamCrewContentItems } from './interfaces';
+import { INetworkTeamCrewContentItem, INetworkTeamCrewContentItems } from './types';
 import { Link } from 'react-router-dom';
-import { Connection, ConnectionRow } from '@/partials/cards';
+import { CardConnection, CardConnectionRow } from '@/partials/cards';
+import { useState } from 'react';
 
 const NetworkTeamCrewContent = () => {
+  const [activeTab, setActiveTab] = useState<'cards' | 'list'>('cards');
+
+  const handleTabClick = (tab: 'cards' | 'list') => {
+    setActiveTab(tab);
+  };
+
   const items: INetworkTeamCrewContentItems = [
     {
       name: 'Jenny Klabber',
@@ -221,7 +228,7 @@ const NetworkTeamCrewContent = () => {
   ];
 
   const renderItem = (item: INetworkTeamCrewContentItem, index: number) => (
-    <Connection
+    <CardConnection
       name={item.name}
       info={item.info}
       avatar={item.avatar}
@@ -234,7 +241,7 @@ const NetworkTeamCrewContent = () => {
   );
 
   const renderRowItem = (item: INetworkTeamCrewContentItem, index: number) => (
-    <ConnectionRow
+    <CardConnectionRow
       name={item.name}
       info={item.info}
       avatar={item.avatar}
@@ -280,43 +287,55 @@ const NetworkTeamCrewContent = () => {
           </div> 
 
           <div className="btn-tabs btn-tabs-sm" data-tabs="true">
-            <a href="#" className="btn btn-icon active" data-tab-toggle="#team_crew_card">
+            <a
+              href="#"
+              className={`btn btn-icon ${activeTab === 'cards' ? 'active' : ''}`}
+              onClick={() => handleTabClick('cards')}
+              data-tab-toggle="#team_crew_card"
+            >
               <KeenIcon icon="category" />
             </a>
-            <a href="#" className="btn btn-icon" data-tab-toggle="#team_crew_list">
+            <a
+              href="#"
+              className={`btn btn-icon ${activeTab === 'list' ? '' : 'active'}`}
+              onClick={() => handleTabClick('list')}
+              data-tab-toggle="#team_crew_list"
+            >
               <KeenIcon icon="row-horizontal" />
             </a>
           </div>
         </div>		
       </div>
 
-      <div id="team_crew_card" className="flex flex-col gap-5 lg:gap-7.5">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-5 lg:gap-7.5">
-          {items.map((item, index) => {
-            return renderItem(item, index);
-          })}
+      {activeTab === 'cards' ? (
+        <div id="team_crew_card" className="flex flex-col gap-5 lg:gap-7.5">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-5 lg:gap-7.5">
+            {items.map((item, index) => {
+              return renderItem(item, index);
+            })}
+          </div>
+        
+          <div className="flex justify-center">
+            <Link to="/public-profile/projects/3-columns" className="btn btn-link">
+              Show more projects
+            </Link>
+          </div>
         </div>
-      
-        <div className="flex justify-center">
-          <Link to="/public-profile/projects/3-columns" className="btn btn-link">
-            Show more projects
-          </Link>
-        </div>
-      </div>
+      ) : (
+        <div id="team_crew_list">
+          <div className="grid grid-cols-1 gap-5 lg:gap-7.5">
+            {items.map((item, index) => {
+              return renderRowItem(item, index);
+            })}
+          </div>
 
-      <div className="hidden" id="team_crew_list">
-        <div className="grid grid-cols-1 gap-5 lg:gap-7.5">
-          {items.map((item, index) => {
-            return renderRowItem(item, index);
-          })}
+          <div className="flex grow justify-center pt-5 lg:pt-7.5">
+            <Link to="/account/members/team-members" className="btn btn-link">
+              Show more Users
+            </Link>
+          </div>
         </div>
-
-        <div className="flex grow justify-center pt-5 lg:pt-7.5">
-          <Link to="/account/members/team-members" className="btn btn-link">
-            Show more Users
-          </Link>
-        </div>
-      </div>
+      )}
     </div>
   );
 };

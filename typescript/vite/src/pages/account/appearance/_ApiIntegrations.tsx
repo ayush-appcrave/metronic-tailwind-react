@@ -1,5 +1,5 @@
-import { CardFooter } from '@/partials/crud';
-import { IApiIntegrationsItem, IApiIntegrationsItems } from './interfaces';
+import { CrudCardFooter } from '@/partials/crud';
+import { IApiIntegrationsItem, IApiIntegrationsItems } from './types';
 import { KeenIcon } from '@/components';
 
 const ApiIntegrations = () => {
@@ -156,7 +156,7 @@ const ApiIntegrations = () => {
           </table>
       </div>
 
-      <CardFooter />
+      <CrudCardFooter />
     </div>
   );
 };

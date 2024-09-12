@@ -1,6 +1,6 @@
 import { toAbsoluteUrl } from '@/utils/Assets';
 
-import { IGamerStatisticsItem, IGamerStatisticsProps } from './interfaces';
+import { IGamerStatisticsItem, IGamerStatisticsProps } from './types';
 import React from 'react';
 
 const GamerStatistics = ({ details }: IGamerStatisticsProps) => {

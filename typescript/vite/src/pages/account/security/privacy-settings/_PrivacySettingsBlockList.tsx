@@ -3,9 +3,9 @@ import {
   IPrivacySettingsBlockListItem,
   IPrivacySettingsBlockListItems,
   IPrivacySettingsBlockListProps
-} from './interfaces';
+} from './types';
 import { Link } from 'react-router-dom';
-import { Avatar } from '@/partials/common';
+import { CommonAvatar } from '@/partials/common';
 import clsx from 'clsx';
 
 const PrivacySettingsBlockList = ({ text, limit, className }: IPrivacySettingsBlockListProps) => {
@@ -36,7 +36,7 @@ const PrivacySettingsBlockList = ({ text, limit, className }: IPrivacySettingsBl
     return (
       <div key={index} className="flex items-center justify-between gap-2.5">
         <div className="flex items-center gap-2.5">
-          <Avatar
+          <CommonAvatar
             image={item.avatar}
             imageClass='h-9 rounded-full'
           />

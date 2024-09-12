@@ -1,6 +1,6 @@
-import { NFT } from '@/partials/cards/NFT';
+import { CardNFT } from '@/partials/cards';
 
-import { INFTTokensCreatedItem, INFTTokensCreatedItems } from './interfaces';
+import { INFTTokensCreatedItem, INFTTokensCreatedItems } from './types';
 import { Link } from 'react-router-dom';
 
 const NFTTokensCreated = () => {
@@ -44,7 +44,7 @@ const NFTTokensCreated = () => {
 
   const renderItems = (item: INFTTokensCreatedItem, index: number) => {
     return (
-      <NFT
+      <CardNFT
         image={item.image}
         id={item.id}
         title={item.title}

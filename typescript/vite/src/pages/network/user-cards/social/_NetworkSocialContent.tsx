@@ -1,6 +1,6 @@
 import { KeenIcon } from '@/components';
-import { INetworkSocialContentItem, INetworkSocialContentItems } from './interfaces';
-import { UserSocial, UserSocialRow } from '@/partials/cards';
+import { INetworkSocialContentItem, INetworkSocialContentItems } from './types';
+import { CardUserSocial, CardUserSocialRow } from '@/partials/cards';
 import { useState } from 'react';
 
 const NetworkSocialContent = () => {
@@ -110,7 +110,7 @@ const NetworkSocialContent = () => {
   ];
 
   const renderItem = (item: INetworkSocialContentItem, index: number) => (
-    <UserSocial
+    <CardUserSocial
       avatar={item.avatar}
       name={item.name}
       description={item.description}
@@ -120,7 +120,7 @@ const NetworkSocialContent = () => {
   );
 
   const renderRowItem = (item: INetworkSocialContentItem, index: number) => (
-    <UserSocialRow
+    <CardUserSocialRow
       avatar={item.avatar}
       name={item.name}
       description={item.description}

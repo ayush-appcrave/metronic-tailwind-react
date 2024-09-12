@@ -1,6 +1,6 @@
 import { KeenIcon } from '@/components';
 
-import { ITimelinesWrapperProps } from './interfaces';
+import { ITimelinesWrapperProps } from './types';
 
 const TimelinesWrapper = ({ line, icon, children }: ITimelinesWrapperProps) => {
   return (

@@ -1,5 +1,5 @@
 import { KeenIcon } from '@/components';
-import { IBasicBillingDetailsItem, IBasicBillingDetailsItems } from './interfaces';
+import { IBasicBillingDetailsItem, IBasicBillingDetailsItems } from './types';
 
 const BasicBillingDetails = () => {
   const tables: IBasicBillingDetailsItems = [

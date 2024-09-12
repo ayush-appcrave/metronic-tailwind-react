@@ -1,7 +1,10 @@
-import { Engage, Faq, HighlightedPosts } from "@/partials/misc";
+import {
+  MiscEngage,
+  MiscFaq, MiscHighlightedPosts,
+  IHighlightedPostsItems
+} from "@/partials/misc";
 import { toAbsoluteUrl } from "@/utils";
 import { Import } from ".";
-import { IHighlightedPostsItems } from "@/partials/misc/interfaces";
 
 const ImportMembersContent = () => {
   const posts: IHighlightedPostsItems = [
@@ -30,9 +33,9 @@ const ImportMembersContent = () => {
       <div className="col-span-2">
         <div className="flex flex-col gap-5 lg:gap-7.5">
           <Import />
-          <Faq />
+          <MiscFaq />
 
-          <Engage
+          <MiscEngage
             title='Contact Support'
             description='Need assistance? Contact our support team for prompt, personalized help your queries & concerns.'
             image={
@@ -58,7 +61,7 @@ const ImportMembersContent = () => {
       </div>
       <div className="col-span-1">
         <div className="flex flex-col gap-5 lg:gap-7.5">
-          <HighlightedPosts posts={posts} />
+          <MiscHighlightedPosts posts={posts} />
         </div>
       </div>
     </div>

@@ -1,5 +1,5 @@
-import { KeenIcon } from '@/components';
-import { DropdownCrud2 } from '@/partials/dropdowns/general';
+import { KeenIcon, Menu, MenuItem, MenuLabel } from '@/components';
+import { DropdownCard2 } from '@/partials/dropdowns/general';
 
 const SettingsEnterpriseSetGoal = () => {
   return (
@@ -7,21 +7,28 @@ const SettingsEnterpriseSetGoal = () => {
       <div className="card-header gap-2" id="settings_set_goal">
         <h3 className="card-title">Set a Goal</h3>
 
-        <div className="menu" data-menu="true">
-          <div
-            className="menu-item"
-            data-menu-item-trigger="click|lg:click"
-            data-menu-item-toggle="dropdown"
-            data-menu-item-placement="bottom-end"
-            data-menu-item-offset="0, 10px"
+        <Menu className="items-stretch">
+          <MenuItem 
+            toggle="dropdown"
+            trigger="click"
+            dropdownProps={{
+              placement: "bottom-end",
+              modifiers: [
+                {
+                  name: 'offset',
+                  options: {
+                    offset: [0, 10] // [skid, distance]
+                  }
+                }
+              ]
+            }}
           >
-            <button className="menu-toggle btn btn-sm btn-icon btn-light btn-clear">
-              <KeenIcon icon="dots-vertical" />
-            </button>
-
-            <DropdownCrud2 />
-          </div>
-        </div>
+            <MenuLabel className="btn btn-sm btn-icon btn-light btn-clear mb-2.5-">
+              <KeenIcon icon="dots-vertical"/>
+            </MenuLabel>
+            {DropdownCard2()}
+          </MenuItem>
+        </Menu>
       </div>
       <div className="card-body lg:p-7.5 p-5">
         <p className="text-2sm font-medium text-gray-700 leading-5 mb-3.5">

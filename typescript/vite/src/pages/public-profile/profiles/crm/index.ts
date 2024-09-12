@@ -5,3 +5,4 @@ export * from './_CRMContent';
 export * from './_CRMDeals';
 export * from './_CRMGeneralInfo';
 export * from './_CRMRecentInvoices';
+export * from './types';

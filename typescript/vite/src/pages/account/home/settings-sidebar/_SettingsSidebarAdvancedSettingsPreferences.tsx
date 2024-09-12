@@ -44,11 +44,11 @@ const SettingsSidebarAdvancedSettingsPreferences = () => {
           </span>
           <div className="flex items-center grow min-w-48 gap-5">
             <label className="flex items-center gap-1.5">
-              <input type="radio" className="radio" name="radio" defaultChecked value="1" />
+              <input type="radio" className="radio" name="radio" defaultChecked value="1" readOnly />
               <span className="switch-label">Modal</span>
             </label>
             <label className="flex items-center gap-1.5">
-              <input type="radio" className="radio" name="radio" value="1" />
+              <input type="radio" className="radio" name="radio" value="1" readOnly />
               <span className="switch-label">Fullscreen</span>
             </label>
           </div>
@@ -60,7 +60,7 @@ const SettingsSidebarAdvancedSettingsPreferences = () => {
           </span>
           <div className="grow min-w-48">
             <label className="flex items-center gap-1.5">
-              <input type="checkbox" className="checkbox" value="1" />
+              <input type="checkbox" className="checkbox" value="1" readOnly />
               <span className="switch-label">Show list names</span>
             </label>
             <span className="text-2xs font-medium text-gray-600">
@@ -68,7 +68,7 @@ const SettingsSidebarAdvancedSettingsPreferences = () => {
             </span>
 
             <label className="flex items-center gap-1.5 pt-4">
-              <input type="checkbox" className="checkbox" defaultChecked value="1" />
+              <input type="checkbox" className="checkbox" defaultChecked value="1" readOnly />
               <span className="switch-label">Show linked task names</span>
             </label>
             <span className="text-2xs font-medium text-gray-600">
@@ -83,7 +83,7 @@ const SettingsSidebarAdvancedSettingsPreferences = () => {
           </span>
           <div className="grow min-w-48">
             <label className="switch">
-              <input type="checkbox" defaultChecked value="1" />
+              <input type="checkbox" defaultChecked value="1" readOnly />
               <span className="switch-label">Visible</span>
             </label>
           </div>

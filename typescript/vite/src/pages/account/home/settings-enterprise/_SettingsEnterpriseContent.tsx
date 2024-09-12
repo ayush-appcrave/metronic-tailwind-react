@@ -9,6 +9,7 @@ import {
   SettingsEnterpriseUpgrade,
   SettingsEnterpriseYourCurrentPlan
 } from '.';
+import { OverviewTrustedDevices } from '../../security/overview';
 
 const SettingsEnterpriseContent = () => {
   return (
@@ -21,6 +22,7 @@ const SettingsEnterpriseContent = () => {
             <SettingsEnterpriseAuthTwoFactor />
             <UserProfileCalendarAccounts />
             <CompanyProfileDataImport />
+            <OverviewTrustedDevices />
           </div>
         </div>
 

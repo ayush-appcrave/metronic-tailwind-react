@@ -4,7 +4,7 @@ import { toAbsoluteUrl } from '@/utils/Assets';
 import {
   ISettingsSidebarAdvancedSettingsNotificationsItem,
   ISettingsSidebarAdvancedSettingsNotificationsItems
-} from './interfaces';
+} from './types';
 
 const SettingsSidebarAdvancedSettingsNotifications = () => {
   const items: ISettingsSidebarAdvancedSettingsNotificationsItems = [
@@ -78,7 +78,7 @@ const SettingsSidebarAdvancedSettingsNotifications = () => {
         </div>
 
         <label className="switch switch-sm">
-          <input type="checkbox" defaultChecked value="1" />
+          <input type="checkbox" defaultChecked value="1" readOnly />
         </label>
       </div>
     );
@@ -100,15 +100,15 @@ const SettingsSidebarAdvancedSettingsNotifications = () => {
           <span className="text-md font-semibold text-gray-900 pb-0.5">Desktop notifications</span>
 
           <label className="flex items-center gap-1.5">
-            <input type="radio" className="radio radio-sm" name="radio" value="1" />
+            <input type="radio" className="radio radio-sm" name="radio" value="1" readOnly />
             <span className="switch-label text-2sm">Direct @mentions</span>
           </label>
           <label className="flex items-center gap-1.5">
-            <input type="radio" className="radio radio-sm" name="radio" value="1" />
+            <input type="radio" className="radio radio-sm" name="radio" value="1" readOnly />
             <span className="switch-label text-2sm">All new messages (Recommended)</span>
           </label>
           <label className="flex items-center gap-1.5">
-            <input type="radio" className="radio radio-sm" name="radio" defaultChecked value="1" />
+            <input type="radio" className="radio radio-sm" name="radio" defaultChecked value="1" readOnly />
             <span className="switch-label text-2sm">Disabled</span>
           </label>
         </div>
@@ -117,7 +117,7 @@ const SettingsSidebarAdvancedSettingsNotifications = () => {
           <span className="text-md font-semibold text-gray-900 pb-0.5">Email notifications</span>
 
           <label className="flex items-center gap-1.5">
-            <input type="radio" className="radio radio-sm" name="radio-1" value="2" />
+            <input type="radio" className="radio radio-sm" name="radio-1" value="2" readOnly />
             <span className="switch-label text-2sm">All new messages and statuses</span>
           </label>
           <label className="flex items-center gap-1.5">
@@ -127,13 +127,14 @@ const SettingsSidebarAdvancedSettingsNotifications = () => {
               name="radio-1"
               defaultChecked
               value="2"
+              readOnly
             />
             <span className="switch-label text-2sm">
               Unread messages and statuses () Recommended
             </span>
           </label>
           <label className="flex items-center gap-1.5">
-            <input type="radio" className="radio radio-sm" name="radio-1" value="2" />
+            <input type="radio" className="radio radio-sm" name="radio-1" value="2" readOnly />
             <span className="switch-label text-2sm">Disabled</span>
           </label>
         </div>
@@ -142,7 +143,7 @@ const SettingsSidebarAdvancedSettingsNotifications = () => {
           <span className="text-md font-semibold text-gray-900 pb-0.5">Subscriptions</span>
 
           <label className="flex items-center gap-1.5">
-            <input type="checkbox" className="checkbox checkbox-sm" defaultChecked value="3" />
+            <input type="checkbox" className="checkbox checkbox-sm" defaultChecked value="3" readOnly />
             <span className="switch-label text-2sm">
               Automatically subscribe to tasks you create
             </span>

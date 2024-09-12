@@ -1,6 +1,6 @@
 import { KeenIcon } from '@/components';
 
-import { HexagonBadge } from '@/partials/common';
+import { CommonHexagonBadge } from '@/partials/common';
 
 const EnterpriseNextPayment = () => {
   return (
@@ -13,7 +13,7 @@ const EnterpriseNextPayment = () => {
         <div className="flex flex-col gap-5">
           <div className="flex items-center justify-between flex-wrap border border-gray-200 rounded-xl gap-2 px-4 py-4 bg-secondary-clarity">
             <div className="flex items-center gap-3.5">
-              <HexagonBadge
+              <CommonHexagonBadge
                 stroke='stroke-brand-clarity'
                 fill='fill-brand-light'
                 size='size-[50px]'

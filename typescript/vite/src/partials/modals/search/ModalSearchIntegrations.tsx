@@ -1,6 +1,6 @@
 import React from 'react';
 import { toAbsoluteUrl } from '@/utils';
-import { Avatars } from '@/partials/common';
+import { CommonAvatars } from '@/partials/common';
 import { IModalSearchIntegrationsItem } from './types';
 
 
@@ -38,7 +38,7 @@ const ModalSearchIntegrations = ({ items }: IModalSearchIntegrationsProps) => {
 
             {/* Team avatars */}
             <div className="flex justify-end shrink-0">
-              <Avatars size='size-[30px]' group={item.team}/>
+              <CommonAvatars size='size-[30px]' group={item.team}/>
             </div>
           </div>
         </div>

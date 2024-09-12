@@ -1,5 +1,9 @@
-import { Engage, Faq, HighlightedPosts } from "@/partials/misc";
-import { IHighlightedPostsItems } from "@/partials/misc/interfaces";
+import {
+  MiscEngage,
+  MiscFaq,
+  MiscHighlightedPosts,
+  IHighlightedPostsItems
+} from "@/partials/misc";
 import { TeamInfo, TeamInfoConnectedProfiles, TeamInfoSeats } from ".";
 import { toAbsoluteUrl } from "@/utils";
 
@@ -33,9 +37,9 @@ const TeamInfoContent = () => {
 
           {/* {{ theme.page('_members') }} */}
 
-          <Faq />
+          <MiscFaq />
 
-          <Engage 
+          <MiscEngage 
             title='Questions ?'
             description='Visit our Help Center for detailed assistance on billing, payments, and subscriptions.'
             image={
@@ -65,7 +69,7 @@ const TeamInfoContent = () => {
 
           <TeamInfoConnectedProfiles />
 
-          <HighlightedPosts posts={posts} />
+          <MiscHighlightedPosts posts={posts} />
         </div>
       </div>
     </div>

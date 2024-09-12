@@ -1,10 +1,10 @@
-import { IInvitesItem, IInvitesItems, IInvitesProps } from './interfaces';
+import { IInvitesItem, IInvitesItems, IInvitesProps } from './types';
 import { DropdownCrudItem1 } from '@/partials/dropdowns/general';
-import { DatatableToolbar } from '@/partials/crud';
+import { CrudDatatableToolbar } from '@/partials/crud';
 import { KeenIcon } from '@/components';
 import { Link } from 'react-router-dom';
 import { toAbsoluteUrl } from '@/utils';
-import { Avatar } from '@/partials/common';
+import { CommonAvatar } from '@/partials/common';
 
 const Invites = ({ title = 'Invites' }: IInvitesProps) => {
   const data: IInvitesItems = [
@@ -553,7 +553,7 @@ const Invites = ({ title = 'Invites' }: IInvitesProps) => {
 
         <td>
           <div className="flex items-center gap-2.5">
-            <Avatar 
+            <CommonAvatar 
               image={each.member.avatar}
               imageClass='h-9 rounded-full'
             />
@@ -688,7 +688,7 @@ const Invites = ({ title = 'Invites' }: IInvitesProps) => {
               </tbody>
             </table>
           </div>
-          <DatatableToolbar />
+          <CrudDatatableToolbar />
         </div>
       </div>
     </div>

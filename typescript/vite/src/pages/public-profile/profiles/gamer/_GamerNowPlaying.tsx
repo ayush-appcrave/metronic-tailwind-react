@@ -1,6 +1,6 @@
-import { NowPlaying } from '@/partials/cards';
+import { CardNowPlaying } from '@/partials/cards';
 
-import { IGamerNowPlayingItem, IGamerNowPlayingItems } from './interfaces';
+import { IGamerNowPlayingItem, IGamerNowPlayingItems } from './types';
 import React from 'react';
 
 const GamerNowPlaying = () => {
@@ -151,7 +151,7 @@ const GamerNowPlaying = () => {
   const renderItem = (item: IGamerNowPlayingItem, index: number) => {
     return (
       <React.Fragment key={index}>
-        <NowPlaying
+        <CardNowPlaying
           image={item.image}
           logo={item.logo}
           date={item.date}

@@ -1,6 +1,6 @@
-import { Post } from '@/partials/cards';
+import { CardPost } from '@/partials/cards';
 
-import { IBloggerPostsItem, IBloggerPostsItems } from './interfaces';
+import { IBloggerPostsItem, IBloggerPostsItems } from './types';
 import { Link } from 'react-router-dom';
 
 const BloggerPosts = () => {
@@ -39,7 +39,7 @@ const BloggerPosts = () => {
 
   const renderItems = (item: IBloggerPostsItem, index: number) => {
     return (
-      <Post
+      <CardPost
         key={index}
         image={item.image}
         label={item.label}

@@ -1,4 +1,4 @@
-import { ICompanyHighlightsItem, ICompanyHighlightsItems } from './interfaces';
+import { ICompanyHighlightsItem, ICompanyHighlightsItems } from './types';
 
 const CompanyHighlights = () => {
   const items: ICompanyHighlightsItems = [

@@ -1,5 +1,5 @@
-import { HexagonBadge } from '@/partials/common';
-import { IPrivacySettingsPrivacySettingsItem, IPrivacySettingsPrivacySettingsItems } from './interfaces';
+import { CommonHexagonBadge } from '@/partials/common';
+import { IPrivacySettingsPrivacySettingsItem, IPrivacySettingsPrivacySettingsItems } from './types';
 import { KeenIcon } from '@/components';
 
 const PrivacySettingsPrivacySettings = () => {
@@ -77,7 +77,7 @@ const PrivacySettingsPrivacySettings = () => {
     return (
       <div key={index} className="card-group flex items-center justify-between py-4 gap-2.5">
         <div className="flex items-center gap-3.5">
-          <HexagonBadge
+          <CommonHexagonBadge
             stroke='stroke-gray-300'
             fill='fill-gray-100'
             size='size-[50px]'

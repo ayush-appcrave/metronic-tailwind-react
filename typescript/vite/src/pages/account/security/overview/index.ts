@@ -5,3 +5,4 @@ export * from './_OverviewLoginSessions';
 export * from './_OverviewProductInsight';
 export * from './_OverviewQuickSettings';
 export * from './_OverviewTrustedDevices';
+export * from './types';

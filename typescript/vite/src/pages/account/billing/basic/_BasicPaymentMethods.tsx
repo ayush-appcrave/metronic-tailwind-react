@@ -3,7 +3,7 @@ import {
   IBasicPaymentMethodsItem,
   IBasicPaymentMethodsItems,
   IBasicPaymentMethodsProps
-} from './interfaces';
+} from './types';
 import { toAbsoluteUrl } from '@/utils';
 
 const BasicPaymentMethods = ({ icon }: IBasicPaymentMethodsProps) => {

@@ -1,5 +1,5 @@
 import { KeenIcon } from '@/components';
-import { IEnterpriseLatestPaymentItem, IEnterpriseLatestPaymentItems } from './interfaces';
+import { IEnterpriseLatestPaymentItem, IEnterpriseLatestPaymentItems } from './types';
 import { toAbsoluteUrl } from '@/utils';
 
 const EnterpriseLatestPayment = () => {

@@ -18,7 +18,7 @@ import {
 import { Tab, TabPanel, Tabs, TabsList  } from '@/components/tabs';
 import { DropdownCrud2 } from '@/partials/dropdowns/general';
 import { useViewport } from '@/hooks';
-import { Avatars } from '@/partials/common';
+import { CommonAvatars } from '@/partials/common';
 import { IDropdownChatProps, IDropdownMessage } from './types';
 import { DropdownChatMessageOut } from './DropdownChatMessageOut';
 import { DropdownChatMessageIn } from './DropdownChatMessageIn';
@@ -82,7 +82,7 @@ const DropdownChat = ({menuTtemRef}: IDropdownChatProps) => {
           </div>  
         
           <div className="flex items-center gap-2.5">
-            <Avatars
+            <CommonAvatars
               size='size-[30px]'
               group={[
                 { path: '/media/avatars/300-4.png'},

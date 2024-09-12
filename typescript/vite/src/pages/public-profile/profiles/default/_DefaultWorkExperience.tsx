@@ -3,7 +3,7 @@ import { toAbsoluteUrl } from '@/utils/Assets';
 import {
   IDefaultWorkExperienceItem,
   IDefaultWorkExperienceItems,
-} from './interfaces';
+} from './types';
 import { Link } from 'react-router-dom';
 
 const DefaultWorkExperience = () => {

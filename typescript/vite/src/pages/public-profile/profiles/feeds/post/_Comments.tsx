@@ -1,7 +1,7 @@
 import { KeenIcon } from '@/components';
 import { toAbsoluteUrl } from '@/utils/Assets';
 
-import { ICommentsItem, ICommentsProps } from './interfaces';
+import { ICommentsItem, ICommentsProps } from './types';
 
 const Comments = ({ items }: ICommentsProps) => {
   const renderItem = (item: ICommentsItem, index: number) => {

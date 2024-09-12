@@ -1,7 +1,7 @@
 import { KeenIcon } from '@/components';
-import { INetworkNFTContentItem, INetworkNFTContentItems } from './interfaces';
+import { INetworkNFTContentItem, INetworkNFTContentItems } from './types';
 import { Link } from 'react-router-dom';
-import { NFT2, NFT2Row } from '@/partials/cards';
+import { CardNFT2, CardNFT2Row } from '@/partials/cards';
 import { useState } from 'react';
 
 const NetworkNFTContent = () => {
@@ -247,7 +247,7 @@ const NetworkNFTContent = () => {
   ];
 
   const renderItem = (item: INetworkNFTContentItem, index: number) => (
-    <NFT2
+    <CardNFT2
       bgImage={item.bgImage}
       avatar={item.avatar}
       name={item.name}
@@ -259,7 +259,7 @@ const NetworkNFTContent = () => {
   );
 
   const renderRowItem = (item: INetworkNFTContentItem, index: number) => (
-    <NFT2Row
+    <CardNFT2Row
       bgImage={item.bgImage}
       avatar={item.avatar}
       name={item.name}

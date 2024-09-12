@@ -1,5 +1,4 @@
-import { Faq, HighlightedPosts } from "@/partials/misc";
-import { IHighlightedPostsItems } from "@/partials/misc/interfaces";
+import { MiscFaq, MiscHighlightedPosts, IHighlightedPostsItems } from "@/partials/misc";
 import { BackupAndRecoveryBackupSettings } from ".";
 
 const BackupAndRecoveryContent = () => {
@@ -24,14 +23,14 @@ const BackupAndRecoveryContent = () => {
         <div className="flex flex-col gap-5 lg:gap-7.5">
           {/* {{ theme.page('_backups') }} */}
 
-          <Faq />
+          <MiscFaq />
         </div>
       </div>
       <div className="col-span-1">
         <div className="flex flex-col gap-5 lg:gap-7.5">
           <BackupAndRecoveryBackupSettings />
 
-          <HighlightedPosts posts={posts} />
+          <MiscHighlightedPosts posts={posts} />
         </div>
       </div>
     </div>

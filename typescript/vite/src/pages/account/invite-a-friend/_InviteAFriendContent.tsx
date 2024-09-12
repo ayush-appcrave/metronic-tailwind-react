@@ -1,5 +1,5 @@
-import { Engage, HighlightedPosts } from "@/partials/misc";
-import { IHighlightedPostsItems } from "@/partials/misc/interfaces";
+import { MiscEngage, MiscHighlightedPosts } from "@/partials/misc";
+import { IHighlightedPostsItems } from "@/partials/misc/types";
 import { toAbsoluteUrl } from "@/utils";
 import { TeamMembersInviteWithLink } from "../members/team-members";
 import { InvitePeople, Invites } from ".";
@@ -36,7 +36,7 @@ const InviteAFriendContent = () => {
 
           <TeamMembersInviteWithLink />
 
-          <Engage
+          <MiscEngage
             title='Contact Support'
             description='Need assistance? Contact our support team for prompt, personalized help your queries & concerns.'
             image={
@@ -62,7 +62,7 @@ const InviteAFriendContent = () => {
       </div>
       <div className="col-span-1">
         <div className="flex flex-col gap-5 lg:gap-7.5">
-          <HighlightedPosts posts={posts} />
+          <MiscHighlightedPosts posts={posts} />
         </div>
       </div>
     </div>
