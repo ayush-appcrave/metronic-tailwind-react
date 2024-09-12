@@ -546,7 +546,7 @@ const MENU_SIDEBAR: MenuConfigType = [
 
 const MENU_MEGA: MenuConfigType = [
   {
-    title: 'Dashboard',
+    title: 'Home',
     path: '/'
   },
   {
