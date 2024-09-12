@@ -54,11 +54,11 @@ const HeaderTopbar = () => {
             ]
           }}
         >
-          <MenuLabel>
+          <MenuToggle>
             <div className="btn btn-icon btn-icon-lg size-9 rounded-full hover:bg-primary-light hover:text-primary text-gray-500 menu-item-show:bg-primary-light menu-item-show:text-primary">
               <KeenIcon icon="messages"/>
             </div>
-          </MenuLabel>
+          </MenuToggle>
 
          {DropdownChat({menuTtemRef: itemChatRef})}
         </MenuItem>
@@ -81,11 +81,11 @@ const HeaderTopbar = () => {
             ]
           }}
         >
-          <MenuLabel>
+          <MenuToggle>
             <div className="btn btn-icon btn-icon-lg size-9 rounded-full hover:bg-primary-light hover:text-primary text-gray-500 menu-item-show:bg-primary-light menu-item-show:text-primary">
               <KeenIcon icon="element-11"/>
             </div>
-          </MenuLabel>
+          </MenuToggle>
 
          {DropdownApps()}
         </MenuItem>
@@ -108,11 +108,11 @@ const HeaderTopbar = () => {
             ]
           }}
         >
-          <MenuLabel>
+          <MenuToggle>
             <div className="btn btn-icon btn-icon-lg size-9 rounded-full hover:bg-primary-light hover:text-primary text-gray-500 menu-item-show:bg-primary-light menu-item-show:text-primary">
               <KeenIcon icon="notification-on"/>
             </div>
-          </MenuLabel>
+          </MenuToggle>
 
          {DropdownNotifications({menuTtemRef: itemNotificationsRef})}
         </MenuItem>
@@ -134,11 +134,11 @@ const HeaderTopbar = () => {
             ]
           }}
         >
-          <MenuLabel>
+          <MenuToggle>
             <div className="btn btn-icon rounded-full">
               <img className="size-9 rounded-full border-2 border-success shrink-0" src={toAbsoluteUrl('/media/avatars/300-2.png')} alt=""/>
             </div>           
-          </MenuLabel>
+          </MenuToggle>
           {DropdownUser()}
         </MenuItem>
       </Menu>

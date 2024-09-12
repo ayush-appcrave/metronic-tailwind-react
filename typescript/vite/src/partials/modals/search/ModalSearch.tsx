@@ -1,6 +1,6 @@
-import React, { FC, forwardRef, useEffect, useRef, useState } from 'react';
-import { Modal, ModalContent, ModalBody, ModalHeader, ModalTitle } from '@/components/modal'; // Import your custom Modal component
-import { KeenIcon, Menu, MenuItem, MenuLabel } from '@/components';
+import React, { forwardRef, useEffect, useState } from 'react';
+import { Modal, ModalContent, ModalBody, ModalHeader } from '@/components/modal'; // Import your custom Modal component
+import { KeenIcon, Menu, MenuItem, MenuToggle } from '@/components';
 import { Tab, TabPanel, Tabs, TabsList } from '@/components/tabs';
 import { DropdownCrud2 } from '@/partials/dropdowns/general';
 import { useViewport } from '@/hooks';
@@ -262,9 +262,9 @@ const ModalSearch = forwardRef<HTMLDivElement, ModalSearchProps>(({ open, onClos
                     ]
                   }}
                 >
-                  <MenuLabel className="btn btn-sm btn-icon btn-light btn-clear">
+                  <MenuToggle className="btn btn-sm btn-icon btn-light btn-clear">
                     <KeenIcon icon="setting-2"/>
-                  </MenuLabel>
+                  </MenuToggle>
                   {DropdownCrud2()}
                 </MenuItem>
               </Menu>

@@ -1,4 +1,4 @@
-import { ChangeEvent, useEffect, useLayoutEffect, useRef, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { getHeight, toAbsoluteUrl } from '@/utils';
 import { Link } from 'react-router-dom';
 import { KeenIcon } from '@/components';
@@ -8,15 +8,10 @@ import {
   MenuLink,
   MenuSub,
   MenuTitle,
-  MenuSeparator,
   MenuToggle,
   MenuArrow,
   MenuIcon,
-  MenuClickEventType,
-  MenuLabel
 } from '@/components/menu';
-import { Tab, TabPanel, Tabs, TabsList  } from '@/components/tabs';
-import { DropdownCrud2 } from '@/partials/dropdowns/general';
 import { useViewport } from '@/hooks';
 import { CommonAvatars } from '@/partials/common';
 import { IDropdownChatProps, IDropdownMessage } from './types';
@@ -111,9 +106,9 @@ const DropdownChat = ({menuTtemRef}: IDropdownChatProps) => {
                   ]
                 }}
               >
-                <MenuLabel className="btn btn-sm btn-icon btn-light btn-clear">
+                <MenuToggle className="btn btn-sm btn-icon btn-light btn-clear">
                   <KeenIcon icon="dots-vertical"/>
-                </MenuLabel>
+                </MenuToggle>
                 <MenuSub className="menu-default" rootClassName="w-full max-w-[175px] pt-2">
                   <MenuItem path="/account/members/teams">
                     <MenuLink>

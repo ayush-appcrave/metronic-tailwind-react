@@ -1,4 +1,4 @@
-import { KeenIcon, Menu, MenuItem, MenuLabel } from '@/components';
+import { KeenIcon, Menu, MenuItem, MenuToggle } from '@/components';
 import { toAbsoluteUrl } from '@/utils/Assets';
 
 import {
@@ -87,9 +87,9 @@ const DefaultConnections = ({ title }: IDefaultConnectionsProps) => {
               ]
             }}
           >
-            <MenuLabel className="btn btn-sm btn-icon btn-light btn-clear mb-2.5-">
+            <MenuToggle className="btn btn-sm btn-icon btn-light btn-clear mb-2.5-">
               <KeenIcon icon="dots-vertical"/>
-            </MenuLabel>
+            </MenuToggle>
             {DropdownCard1()}
           </MenuItem>
         </Menu>

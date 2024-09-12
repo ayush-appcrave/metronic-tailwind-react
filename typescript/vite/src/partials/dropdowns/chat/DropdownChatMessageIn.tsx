@@ -1,9 +1,4 @@
-import { ChangeEvent, useEffect, useRef, useState } from 'react';
-import { getHeight, toAbsoluteUrl } from '@/utils';
-import { Link } from 'react-router-dom';
-import { KeenIcon } from '@/components';
-import { useViewport } from '@/hooks';
-import { Avatars } from '@/partials/common';
+import { toAbsoluteUrl } from '@/utils';
 
 interface IDropdownChatMessageInProps {
   text: string;

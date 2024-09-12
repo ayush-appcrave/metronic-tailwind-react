@@ -1,16 +1,11 @@
-import { ChangeEvent, useEffect, useRef, useState } from 'react';
-import { getHeight, toAbsoluteUrl } from '@/utils';
-import { Link } from 'react-router-dom';
+import { toAbsoluteUrl } from '@/utils';
 import { KeenIcon } from '@/components';
-import { useViewport } from '@/hooks';
-import { Avatars } from '@/partials/common';
-import { c } from 'node_modules/vite/dist/node/types.d-aGj9QkWt';
 import clsx from 'clsx';
 
 interface IDropdownChatMessageOutProps {
   text: string;
   time: string;
-  read: Boolean;
+  read: boolean;
 };
 
 const DropdownChatMessageOut = ({text, time, read}: IDropdownChatMessageOutProps) => {    

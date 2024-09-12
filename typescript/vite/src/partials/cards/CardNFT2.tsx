@@ -1,4 +1,4 @@
-import { KeenIcon, Menu, MenuItem, MenuLabel } from '@/components';
+import { KeenIcon, Menu, MenuItem, MenuToggle } from '@/components';
 import { toAbsoluteUrl } from '@/utils/Assets';
 
 import { INFT2Item, INFT2Props } from './types';
@@ -42,9 +42,9 @@ const CardNFT2 = ({ avatar, bgImage, name, email, info, statistics }: INFT2Props
                 ]
               }}
             >
-              <MenuLabel className="btn btn-sm btn-icon btn-light btn-clear mb-2.5-">
+              <MenuToggle className="btn btn-sm btn-icon btn-light btn-clear mb-2.5-">
                 <KeenIcon icon="setting-2"/>
-              </MenuLabel>
+              </MenuToggle>
               {DropdownCardItem1()}
             </MenuItem>
           </Menu>

@@ -1,4 +1,4 @@
-import { KeenIcon, Menu, MenuItem, MenuLabel } from '@/components';
+import { KeenIcon, Menu, MenuItem, MenuToggle } from '@/components';
 
 import { ICRMDealsItem, ICRMDealsItems } from './types';
 import { Link } from 'react-router-dom';
@@ -77,9 +77,9 @@ const CRMDeals = () => {
                 ]
               }}
             >
-              <MenuLabel className="btn btn-sm btn-icon btn-light btn-clear mb-2.5-">
+              <MenuToggle className="btn btn-sm btn-icon btn-light btn-clear mb-2.5-">
                 <KeenIcon icon="dots-vertical"/>
-              </MenuLabel>
+              </MenuToggle>
               {DropdownCrudItem1()}
             </MenuItem>
           </Menu>
@@ -109,9 +109,9 @@ const CRMDeals = () => {
                 ]
               }}
             >
-              <MenuLabel className="btn btn-sm btn-icon btn-light btn-clear mb-2.5-">
+              <MenuToggle className="btn btn-sm btn-icon btn-light btn-clear mb-2.5-">
                 <KeenIcon icon="dots-vertical"/>
-              </MenuLabel>
+              </MenuToggle>
               {DropdownCrud1()}
             </MenuItem>
           </Menu>

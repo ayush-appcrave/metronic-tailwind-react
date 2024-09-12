@@ -1,19 +1,10 @@
-import { ChangeEvent, useEffect, useRef, useState } from 'react';
-import { toAbsoluteUrl } from '@/utils';
-import { Link } from 'react-router-dom';
+
 import { KeenIcon } from '@/components';
 import {
   Menu,
   MenuItem,
-  MenuLink,
   MenuSub,
-  MenuTitle,
-  MenuSeparator,
-  MenuToggle,
-  MenuArrow,
-  MenuIcon,
-  MenuClickEventType,
-  MenuLabel
+  MenuToggle
 } from '@/components/menu';
 import { Tab, TabPanel, Tabs, TabsList  } from '@/components/tabs';
 import { DropdownCrud2 } from '@/partials/dropdowns/general';
@@ -74,9 +65,9 @@ const DropdownNotifications = ({menuTtemRef}: IDropdownNotificationProps) => {
                 ]
               }}
             >
-              <MenuLabel className="btn btn-sm btn-icon btn-light btn-clear">
+              <MenuToggle className="btn btn-sm btn-icon btn-light btn-clear">
                 <KeenIcon icon="setting-2"/>
-              </MenuLabel>
+              </MenuToggle>
               {DropdownCrud2()}
             </MenuItem>
           </Menu>

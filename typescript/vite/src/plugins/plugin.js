@@ -27,13 +27,19 @@ export default plugin(({config, addBase, addComponents, addVariant, e}) => {
       'flex-grow': '1',
       'line-height': '1',
     },
+    '.menu-toggle': {
+      'display': 'flex',
+      'align-items': 'center',
+      'flex-grow': '1',
+      'line-height': '1',
+    },
     '.menu-title': {
       'display': 'flex',
       'align-items': 'center',
       'line-height': '1',
       'flex-grow': '1',
     },
-    '.menu-icon, .menu-toggle, .menu-bullet, .menu-badge, .menu-arrow': {
+    '.menu-icon, .menu-bullet, .menu-badge, .menu-arrow': {
       'display': 'flex',
       'align-items': 'center',
       'flex-shrink': '0',

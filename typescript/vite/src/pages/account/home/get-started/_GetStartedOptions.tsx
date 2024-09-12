@@ -1,4 +1,4 @@
-import { KeenIcon, Menu, MenuItem, MenuLabel } from '@/components';
+import { KeenIcon, Menu, MenuItem, MenuToggle } from '@/components';
 
 import { IGetStartedContentItem, IGetStartedOptionsProps } from './types';
 import { DropdownCard2 } from '@/partials/dropdowns/general';
@@ -29,9 +29,9 @@ const GetStartedOptions = ({ items, dropdown }: IGetStartedOptionsProps) => {
                     ]
                   }}
                 >
-                  <MenuLabel className="btn btn-sm btn-icon btn-light btn-clear mb-2.5-">
+                  <MenuToggle className="btn btn-sm btn-icon btn-light btn-clear mb-2.5-">
                     <KeenIcon icon="dots-vertical"/>
-                  </MenuLabel>
+                  </MenuToggle>
                   {DropdownCard2()}
                 </MenuItem>
               </Menu>

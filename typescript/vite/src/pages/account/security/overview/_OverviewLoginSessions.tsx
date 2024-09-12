@@ -88,9 +88,9 @@ const OverviewLoginSessions = () => {
                 ]
               }}
             >
-              <MenuLabel className="btn btn-sm btn-icon btn-light btn-clear mb-2.5-">
+              <MenuToggle className="btn btn-sm btn-icon btn-light btn-clear mb-2.5-">
                 <KeenIcon icon="dots-vertical"/>
-              </MenuLabel>
+              </MenuToggle>
               {DropdownCardItem1()}
             </MenuItem>
           </Menu>
@@ -120,9 +120,9 @@ const OverviewLoginSessions = () => {
               ]
             }}
           >
-            <MenuLabel className="btn btn-sm btn-icon btn-light btn-clear mb-2.5-">
+            <MenuToggle className="btn btn-sm btn-icon btn-light btn-clear mb-2.5-">
               <KeenIcon icon="dots-vertical"/>
-            </MenuLabel>
+            </MenuToggle>
             {DropdownCrud1()}
           </MenuItem>
         </Menu>
