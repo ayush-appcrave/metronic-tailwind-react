@@ -1,15 +1,15 @@
 import { toAbsoluteUrl } from '@/utils/Assets';
-import { ILightSidebarChannelStatsItem, ILightSidebarChannelStatsItems } from './interfaces';
+import { IChannelStatsItem, IChannelStatsItems } from './types';
 
-const LightSidebarChannelStats = () => {
-  const items: ILightSidebarChannelStatsItems = [
+const ChannelStatsBlock = () => {
+  const items: IChannelStatsItems = [
     { logo: 'linkedin-2.svg', info: '9.3k', desc: 'Amazing mates', path: '' },
     { logo: 'youtube-2.svg', info: '24k', desc: 'Lessons Views', path: '' },
     { logo: 'instagram-03.svg', info: '608', desc: 'New subscribers', path: '' },
     { logo: 'tiktok.svg', logoDark: 'tiktok-dark.svg', info: '2.5k', desc: 'Stream audience', path: '' }
   ];
 
-  const renderItem = (item: ILightSidebarChannelStatsItem, index: number) => {
+  const renderItem = (item: IChannelStatsItem, index: number) => {
     return (
       <div
         key={index}
@@ -64,4 +64,4 @@ const LightSidebarChannelStats = () => {
   );
 };
 
-export { LightSidebarChannelStats };
+export { ChannelStatsBlock };

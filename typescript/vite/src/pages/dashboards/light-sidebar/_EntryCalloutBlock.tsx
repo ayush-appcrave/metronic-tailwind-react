@@ -1,11 +1,12 @@
 import { toAbsoluteUrl } from '@/utils/Assets';
 import { Link } from 'react-router-dom';
 import { Avatars } from '@/partials/common';
-import { ILightSidebarEntryCalloutProps } from './interfaces';
+import { IEntryCalloutProps } from './types';
+import { Fragment } from 'react/jsx-runtime';
 
-const LightSidebarEntryCallout = ({ className }: ILightSidebarEntryCalloutProps) => {
+const EntryCalloutBlock = ({ className }: IEntryCalloutProps) => {
   return (
-    <>
+    <Fragment>
       <style>
         {`
           .entry-callout-bg {
@@ -52,8 +53,8 @@ const LightSidebarEntryCallout = ({ className }: ILightSidebarEntryCalloutProps)
           </Link>
         </div>
       </div>
-    </>
+    </Fragment>
   );
 };
 
-export { LightSidebarEntryCallout };
+export { EntryCalloutBlock };

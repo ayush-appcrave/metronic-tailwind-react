@@ -30,11 +30,11 @@ const MENU_SIDEBAR: MenuConfigType = [
     children: [
       {
         title: 'Light Sidebar',
-        path: '/dashboard'
+        path: '/'
       },
       {
         title: 'Dark Sidebar',
-        path: '/dashboard/dark-sidebar'
+        path: '/dark-sidebar'
       },
     ]
   },
@@ -547,7 +547,7 @@ const MENU_SIDEBAR: MenuConfigType = [
 const MENU_MEGA: MenuConfigType = [
   {
     title: 'Dashboard',
-    path: '/dashboard'
+    path: '/'
   },
   {
     title: 'Public Profile',

@@ -7,21 +7,33 @@ const MenuToggleComponent = forwardRef<HTMLDivElement | null, IMenuToggleProps>(
   function MenuToggleComponent(props, ref) {
     const {
       className,
+      hasItemSub = false,
       menuItemRef,
       handleToggle,
       handleClick,
       children
     } = props;
 
-    return (
-      <div
-        className={clsx('menu-toggle', className && className)}
-        ref={menuItemRef}
-        onClick={handleToggle}
-      >
+    if (!hasItemSub) {
+      return (
+        <div
+          className={clsx('menu-toggle', className && className)}
+          onClick={handleToggle}
+        >
         {children}
       </div>
-    );
+      );
+    } else {
+      return (
+        <div
+          className={clsx('menu-toggle', className && className)}
+          ref={menuItemRef}
+          onClick={handleToggle}
+        >
+          {children}
+        </div>
+      );
+    }
   }
 );
 

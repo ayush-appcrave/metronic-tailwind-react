@@ -1,7 +1,6 @@
 import { ReactElement, useEffect, useState } from 'react';
 import { Navigate, Route, Routes, useLocation } from 'react-router';
-
-import {DashboardPage, ImageInputExamples} from '@/pages/dashboard';
+import {LightSidebarPage, DarkSidebarPage, ImageInputExamples} from '@/pages/dashboards';
 import {
   ActivityPage,
   BloggerPage,
@@ -81,9 +80,11 @@ const AppRouting = (): ReactElement => {
   const { setProgressBarLoader } = useLoaders();
   const { verify } = useAuthContext();
   const [previousLocation, setPreviousLocation] = useState('');
-  const location = useLocation();
+  const path = useLocation().pathname.trim();
 
   const init = async () => {
+    console.log('pathname:' + path);
+
     setProgressBarLoader(true);
     try {
       if (verify) {
@@ -92,9 +93,9 @@ const AppRouting = (): ReactElement => {
     } catch (error) {
       throw new Error('Something went wrong!');
     } finally {
-      setPreviousLocation(location.pathname);
+      setPreviousLocation(path);
 
-      if (location.pathname === previousLocation) {
+      if (path === previousLocation) {
         setPreviousLocation('');
       }
     }
@@ -110,11 +111,10 @@ const AppRouting = (): ReactElement => {
 
   return (
     <Routes>
-      <Route path="error/*" element={<ErrorsPage />} />
-
       <Route element={<RequireAuth />}>
-        <Route element={<Demo1Layout />}>
-          <Route path="/dashboard" element={<DashboardPage />} />
+        <Route element={<Demo1Layout />}>         
+          <Route path="/" element={<LightSidebarPage />} />
+          <Route path="/dark-sidebar" element={<DarkSidebarPage />} />
           <Route path="/image-input-examples" element={<ImageInputExamples />} />
           <Route path="/public-profile/profiles/default" element={<DefaultPage />} />
           <Route path="/public-profile/profiles/creator" element={<CreatorPage />} />
@@ -176,11 +176,11 @@ const AppRouting = (): ReactElement => {
           <Route path="/network/user-cards/team-crew" element={<NetworkTeamCrewPage />} />
           <Route path="/network/user-cards/author" element={<NetworkAuthorPage />} />
           <Route path="/network/user-cards/nft" element={<NetworkNFTPage />} />
-          <Route path="/network/user-cards/social" element={<NetworkSocialPage />} />
-          <Route index element={<Navigate to="/dashboard" />} />
+          <Route path="/network/user-cards/social" element={<NetworkSocialPage />} />    
         </Route>
       </Route>
 
+      <Route path="error/*" element={<ErrorsPage />} />
       <Route path="auth/*" element={<AuthPage />} />
       <Route path="*" element={<Navigate to="/error/404" />} />
     </Routes>

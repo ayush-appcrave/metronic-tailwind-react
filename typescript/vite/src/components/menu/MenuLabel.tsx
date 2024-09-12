@@ -6,34 +6,15 @@ import { IMenuLabelProps } from './';
 const MenuLabelComponent = forwardRef<HTMLDivElement | null, IMenuLabelProps>(
   function MenuLabelComponent(props, ref) {
     const {
-      className,
-      hasItemSub = false,
-      menuItemRef,
-      handleToggle,
-      handleClick,
+      className,      
       children
     } = props;
 
-    if (!hasItemSub) {
-      return (
-        <div
-          className={clsx('menu-label', className && className)}
-          onClick={handleToggle}
-        >
+    return (
+      <div className={clsx('menu-label', className && className)}>
         {children}
       </div>
-      );
-    } else {
-      return (
-        <div
-          className={clsx('menu-label', className && className)}
-          ref={menuItemRef}
-          onClick={handleToggle}
-        >
-          {children}
-        </div>
-      );
-    }
+    );
   }
 );
 

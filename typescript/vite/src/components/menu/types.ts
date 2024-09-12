@@ -21,8 +21,8 @@ export type MenuTabIndexType = number;
 
 export interface IMenuProps {
   className?: string;
-  children: ReactNode;
-  onClick?: MenuClickEventType;
+  children?: ReactNode;
+  highlight?: boolean;
 }
 
 export interface IMenuItemRef {
@@ -70,16 +70,13 @@ export interface IMenuLinkProps {
 export interface IMenuLabelProps {
   className?: string;
   tabIndex?: MenuTabIndexType;
-  hasItemSub?: boolean;
-  menuItemRef?: any;
-  handleToggle?: MenuEventHandlerType;
-  handleClick?: MenuEventHandlerType;
   children?: ReactNode;
 }
 
 export interface IMenuToggleProps {
   className?: string;
   tabIndex?: MenuTabIndexType;
+  hasItemSub?: boolean;
   menuItemRef?: any;
   handleToggle?: MenuEventHandlerType;
   handleClick?: MenuEventHandlerType;

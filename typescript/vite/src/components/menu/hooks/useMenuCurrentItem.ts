@@ -3,6 +3,8 @@ import { matchPath } from 'react-router';
 import { IMenuItemConfig, type MenuConfigType } from '../types';
 
 const useMenuCurrentItem = (pathname: string, items: MenuConfigType | null): IMenuItemConfig | null => {
+  pathname = pathname.trim();
+  
   const findCurrentItem = (items: MenuConfigType | null): IMenuItemConfig | null => {
     if (!items) return null;
     

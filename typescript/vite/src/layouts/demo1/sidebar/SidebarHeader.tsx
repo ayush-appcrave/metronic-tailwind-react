@@ -37,7 +37,7 @@ const SidebarHeader = forwardRef<HTMLDivElement, SidebarHeaderProps>((props, ref
   );
 
   const darkLogo = () => (
-    <Link to="/" className="dark:hidden">
+    <Link to="/">
       <img 
         src={toAbsoluteUrl('/media/app/default-logo-dark.svg')}  
         className="default-logo min-h-[22px] max-w-none"

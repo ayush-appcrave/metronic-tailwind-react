@@ -1,15 +1,15 @@
 import {
-  ILightSidebarHighlightsItem,
-  ILightSidebarHighlightsItems,
-  ILightSidebarHighlightsProps,
-  ILightSidebarHighlightsRow,
-  ILightSidebarHighlightsRows
-} from './interfaces';
-import { KeenIcon, Menu, MenuItem, MenuLabel } from '@/components';
+  IHighlightsItem,
+  IHighlightsItems,
+  IHighlightsProps,
+  IHighlightsRow,
+  IHighlightsRows
+} from './types';
+import { KeenIcon, Menu, MenuItem, MenuToggle } from '@/components';
 import { DropdownCard1 } from '@/partials/dropdowns/general';
 
-const LightSidebarHighlights = ({ limit }: ILightSidebarHighlightsProps) => {
-  const rows: ILightSidebarHighlightsRows = [
+const HighlightsBlock = ({ limit }: IHighlightsProps) => {
+  const rows: IHighlightsRows = [
     { icon: 'shop', text: 'Online Store', total: 172, stats: 3.9, increase: true },
     { icon: 'facebook', text: 'Facebook', total: 85, stats: 0.7, increase: false },
     { icon: 'instagram', text: 'Instagram', total: 36, stats: 8.2, increase: true },
@@ -17,13 +17,13 @@ const LightSidebarHighlights = ({ limit }: ILightSidebarHighlightsProps) => {
     { icon: 'shop', text: 'Retail', total: 7, stats: 0.7, increase: false }
   ];
 
-  const items: ILightSidebarHighlightsItems = [
+  const items: IHighlightsItems = [
     { badgeColor: 'badge-success', lebel: 'Metronic'}, 
     { badgeColor: 'badge-danger', lebel: 'Bundle'}, 
     { badgeColor: 'badge-info', lebel: 'MetronicNest'}
   ];
 
-  const renderRow = (row: ILightSidebarHighlightsRow, index: number) => {
+  const renderRow = (row: IHighlightsRow, index: number) => {
     return (
       <div key={index} className="flex items-center justify-between flex-wrap gap-2">
         <div className="flex items-center gap-1.5">
@@ -45,7 +45,7 @@ const LightSidebarHighlights = ({ limit }: ILightSidebarHighlightsProps) => {
     );
   };
 
-  const renderItem = (item: ILightSidebarHighlightsItem, index: number) => {
+  const renderItem = (item: IHighlightsItem, index: number) => {
     return (
       <div key={index} className="flex items-center gap-1.5">
         <span className={`badge badge-dot size-2 ${item.badgeColor}`}></span>
@@ -75,9 +75,9 @@ const LightSidebarHighlights = ({ limit }: ILightSidebarHighlightsProps) => {
               ]
             }}
           >
-            <MenuLabel className="btn btn-sm btn-icon btn-light btn-clear mb-2.5-">
+            <MenuToggle className="btn btn-sm btn-icon btn-light btn-clear mb-2.5-">
               <KeenIcon icon="dots-vertical"/>
-            </MenuLabel>
+            </MenuToggle>
             {DropdownCard1()}
           </MenuItem>
         </Menu>
@@ -115,4 +115,4 @@ const LightSidebarHighlights = ({ limit }: ILightSidebarHighlightsProps) => {
   );
 };
 
-export { LightSidebarHighlights };
+export { HighlightsBlock };

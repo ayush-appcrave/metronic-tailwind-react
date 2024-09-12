@@ -3,6 +3,9 @@ const getCurrentUrl = (path: string): string => {
 };
 
 const matchPath = (path: string, pathname: string): boolean => {
+  path = path.trim();
+  pathname = pathname.trim();
+
   const current = getCurrentUrl(path);
   
   if (!current || !pathname) {

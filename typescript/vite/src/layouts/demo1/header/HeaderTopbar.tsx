@@ -118,7 +118,7 @@ const HeaderTopbar = () => {
         </MenuItem>
       </Menu>
 
-      <Menu className="items-stretch">
+      <Menu className="items-stretch" highlight={false}>
         <MenuItem 
           toggle="dropdown"
           trigger="hover"

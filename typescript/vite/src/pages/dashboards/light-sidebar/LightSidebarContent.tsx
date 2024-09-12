@@ -1,10 +1,16 @@
+import { Helmet } from 'react-helmet';
+import { Fragment } from 'react';
+import { Container } from '@/components/container';
+import { useMenu } from '@/providers';
+import { Toolbar, ToolbarActions, ToolbarHeading } from '@/layouts/demo1/toolbar';
+import { Link } from 'react-router-dom';
 import {
-  LightSidebarChannelStats,
-  LightSidebarEarningsChart,
-  LightSidebarEntryCallout,
-  LightSidebarHighlights,
-  LightSidebarTeamMeeting
-} from ".";
+  ChannelStatsBlock,
+  EarningsChartBlock,
+  EntryCalloutBlock,
+  HighlightsBlock,
+  TeamMeetingBlock
+} from "./";
 
 const LightSidebarContent = () => {
   return (
@@ -12,28 +18,28 @@ const LightSidebarContent = () => {
       <div className="grid lg:grid-cols-3 gap-y-5 lg:gap-7.5 items-stretch">
         <div className="lg:col-span-1">
           <div className="grid grid-cols-2 gap-5 lg:gap-7.5 h-full items-stretch">
-            <LightSidebarChannelStats />
+            <ChannelStatsBlock/>
           </div>  
         </div>
 
         <div className="lg:col-span-2">
-          <LightSidebarEntryCallout className="h-full" />
+          <EntryCalloutBlock className="h-full" />
         </div>
       </div>
 
       <div className="grid lg:grid-cols-3 gap-5 lg:gap-7.5 items-stretch">
         <div className="lg:col-span-1">
-          <LightSidebarHighlights limit={3} />
+          <HighlightsBlock limit={3} />
         </div>
 
         <div className="lg:col-span-2">
-          <LightSidebarEarningsChart />
+          <EarningsChartBlock />
         </div>
       </div>
 
       <div className="grid lg:grid-cols-3 gap-5 lg:gap-7.5 items-stretch">
         <div className="lg:col-span-1">
-          <LightSidebarTeamMeeting />
+          <TeamMeetingBlock />
         </div>
 
         <div className="lg:col-span-2">

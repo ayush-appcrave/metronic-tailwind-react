@@ -35,7 +35,10 @@ import {
   MenuSeparator,
   MenuSub,
   MenuToggleType,
-  MenuTriggerType
+  MenuTriggerType,
+  IMenuToggleProps,
+  MenuToggle,
+  useMenuProps
 } from './';
 
 const MenuItemComponent = forwardRef<IMenuItemRef | null, IMenuItemProps>(
@@ -60,10 +63,14 @@ const MenuItemComponent = forwardRef<IMenuItemRef | null, IMenuItemProps>(
     const { ref: containerRefProp, ...containerProps } = ContainerPropsProp;
 
     const menuItemRef = useRef<HTMLDivElement | null>(null);
+
+    const {highlight} = useMenuProps();
      
     const menuContainerRef = useRef<HTMLDivElement | null>(null);
     
     const { pathname } = useLocation();
+
+    const currentPath = pathname.trim();
 
     const { match } = useMatchPath(path);
 
@@ -73,7 +80,7 @@ const MenuItemComponent = forwardRef<IMenuItemRef | null, IMenuItemProps>(
 
     const propDropdownProps = useResponsiveProp(dropdownProps);
 
-    const active: boolean = match;
+    const active: boolean = highlight ? (path.length > 0 && match) : false;
 
     const [here, setHere] = useState(false);
 
@@ -109,7 +116,9 @@ const MenuItemComponent = forwardRef<IMenuItemRef | null, IMenuItemProps>(
     }, [show]);
 
     useEffect(() => {
-      if (hasActiveChild(pathname, children)) {
+      if (highlight === false) return;
+
+      if (hasActiveChild(currentPath, children)) {
         if (propToggle === 'accordion') {
           setShow(true);
         }
@@ -126,7 +135,7 @@ const MenuItemComponent = forwardRef<IMenuItemRef | null, IMenuItemProps>(
       if (hasSub && propToggle === 'dropdown' ) {
         setShow(false);
       }
-    }, [pathname]);
+    }, [currentPath]);
 
     const hasSub = Children.toArray(children).some(
       (child) => isValidElement(child) && child.type === MenuSub
@@ -212,13 +221,23 @@ const MenuItemComponent = forwardRef<IMenuItemRef | null, IMenuItemProps>(
       return cloneElement(child, modifiedProps);
     };
 
-    const renderLabel = (child: ReactElement) => {
+    const renderToggle = (child: ReactElement) => {
       // Add some props to each child
-      const modifiedProps: IMenuLabelProps = {
+      const modifiedProps: IMenuToggleProps = {
         hasItemSub: hasSub,
         tabIndex,
         handleToggle,
         handleClick
+      };
+
+      // Return the child with modified props
+      return cloneElement(child, modifiedProps);
+    };
+
+    const renderLabel = (child: ReactElement) => {
+      // Add some props to each child
+      const modifiedProps: IMenuLabelProps = {
+        tabIndex
       };
 
       // Return the child with modified props
@@ -295,6 +314,8 @@ const MenuItemComponent = forwardRef<IMenuItemRef | null, IMenuItemProps>(
         if (isValidElement(child)) {
           if (child.type === MenuLink) {
             return renderLink(child);
+          } else if (child.type === MenuToggle) {
+            return renderToggle(child);
           } else if (child.type === MenuLabel) {
             return renderLabel(child);
           } else if (child.type === MenuHeading) {
@@ -341,13 +362,17 @@ const hasActiveChild = (path: string, children: ReactNode): boolean => {
   const childrenArray: ReactNode[] = Children.toArray(children);
 
   for (const child of childrenArray) {
-    if (isValidElement(child)) {
-      if (
-        child.type === MenuItem &&
-        child.props.path &&
-        matchPath(child.props.path as string, path)
-      ) {
-        return true;
+    if (isValidElement(child)) {      
+      if (child.type === MenuItem && child.props.path) {
+        if (path === '/') {
+          if (child.props.path === path) {
+            return true;
+          }          
+        } else {
+          if (matchPath(child.props.path as string, path)) {
+            return true;
+          }          
+        }        
       } else if (hasActiveChild(path, child.props.children as ReactNode)) {
         return true;
       }

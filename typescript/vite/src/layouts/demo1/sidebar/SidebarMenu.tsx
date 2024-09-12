@@ -25,7 +25,7 @@ const SidebarMenu = () => {
   const linkPl = 'pl-[10px]';
   const linkPr = 'pr-[10px]';
   const linkPy = 'py-[6px]';
-  const itemsGap = 'gap-0.5 ';
+  const itemsGap = 'gap-0.5';
   const subLinkPy = 'py-[8px]';
   const rightOffset = 'mr-[-10px]';
   const iconWidth = 'w-[20px]';
@@ -74,6 +74,7 @@ const SidebarMenu = () => {
           <MenuSub
             className={clsx(
               'relative before:absolute before:top-0 before:bottom-0 before:border-l before:border-gray-200',
+              '[&_.MuiCollapse-wrapperInner]:flex [&_.MuiCollapse-wrapperInner]:flex-col [&_.MuiCollapse-wrapperInner]:' + itemsGap,
               itemsGap,
               accordionBorderLeft[0],
               accordionPl[0]

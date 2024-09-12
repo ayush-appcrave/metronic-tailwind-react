@@ -1,16 +1,14 @@
 import { Helmet } from 'react-helmet';
-
+import { Fragment } from 'react';
 import { Container } from '@/components/container';
-import { LightSidebarContent } from './light-sidebar';
 import { useMenu } from '@/providers';
-import { Toolbar, ToolbarActions, ToolbarHeading } from '../../layouts/demo1/toolbar';
+import { Toolbar, ToolbarActions, ToolbarHeading } from '@/layouts/demo1/toolbar';
 import { Link } from 'react-router-dom';
+import { LightSidebarContent } from './';
 
-const DashboardPage = () => {
-  const { getCurrentMenuItem } = useMenu();
-
+const LightSidebarPage = () => {
   return (
-    <>
+    <Fragment>
       <Container>
         <Toolbar>
           <ToolbarHeading title="Dashboard" description="Central Hub for Personal Customization"/>
@@ -20,11 +18,11 @@ const DashboardPage = () => {
         </Toolbar>
       </Container>
 
-      <Container>
-        <LightSidebarContent />
-      </Container>
-    </>
+      <Container> 
+        <LightSidebarContent/>
+      </Container>       
+    </Fragment>
   );
 };
 
-export { DashboardPage };
+export { LightSidebarPage };

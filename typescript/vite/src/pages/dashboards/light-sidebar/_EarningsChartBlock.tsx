@@ -1,9 +1,9 @@
 import ApexChart from 'react-apexcharts';
 import { ApexOptions } from 'apexcharts';
 
-import { IApexEarningsChartOptions } from './interfaces';
+import { IApexEarningsChartOptions } from './types';
 
-const LightSidebarEarningsChart = () => {
+const EarningsChartBlock = () => {
   const data: number[] = [75, 25, 45, 15, 85, 35, 70, 25, 35, 15, 45, 30];
   const categories: string[] = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
 
@@ -195,4 +195,4 @@ const LightSidebarEarningsChart = () => {
   );
 };
 
-export { LightSidebarEarningsChart };
+export { EarningsChartBlock };

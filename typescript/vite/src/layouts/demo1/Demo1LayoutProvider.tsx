@@ -16,6 +16,7 @@ export interface Demo1LayoutProviderProps {
   mobileSidebarOpen: boolean;
   setMobileSidebarOpen: (open: boolean) => void;
   setSidebarCollapse: (collapse: boolean) => void;
+  setSidebarTheme: (mode: string) => void;
 }
 
 const initalLayoutProps: Demo1LayoutProviderProps = {
@@ -23,7 +24,8 @@ const initalLayoutProps: Demo1LayoutProviderProps = {
   headerSticky: false,
   mobileSidebarOpen: false,
   setMobileSidebarOpen: (_: boolean) => {},
-  setSidebarCollapse: (_: boolean) => {}
+  setSidebarCollapse: (_: boolean) => {},
+  setSidebarTheme: (_: string) => {}
 };
 
 const Demo1LayoutContext = createContext<Demo1LayoutProviderProps>(initalLayoutProps);
@@ -65,6 +67,18 @@ const Demo1LayoutProvider = ({ children }: PropsWithChildren) => {
     setLayout(getLayoutConfig());
   };
 
+  const setSidebarTheme = (mode: string) => {
+    const updatedLayout = {
+      options: {
+        sidebar: {
+          theme: mode
+        }
+      }
+    };
+
+    setLayout(deepMerge(layout, updatedLayout));
+  };
+
   return (
     <Demo1LayoutContext.Provider
       value={{
@@ -72,7 +86,8 @@ const Demo1LayoutProvider = ({ children }: PropsWithChildren) => {
         headerSticky,
         mobileSidebarOpen,
         setMobileSidebarOpen,
-        setSidebarCollapse
+        setSidebarCollapse,
+        setSidebarTheme
       }}
     >
       {children}

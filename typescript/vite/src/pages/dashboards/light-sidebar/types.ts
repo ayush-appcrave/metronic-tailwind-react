@@ -1,32 +1,34 @@
-export interface ILightSidebarChannelStatsItem {
+export interface IChannelStatsItem {
   logo: string;
   logoDark?: string;
   info: string;
   desc: string;
   path: string;
 }
-export interface ILightSidebarChannelStatsItems extends Array<ILightSidebarChannelStatsItem> {}
+export interface IChannelStatsItems extends Array<IChannelStatsItem> {}
 
-export interface ILightSidebarEntryCalloutProps {
+export interface IEntryCalloutProps {
   className: string;
 }
 
-export interface ILightSidebarHighlightsRow {
+export interface IHighlightsRow {
   icon: string;
   text: string;
   total: number;
   stats: number;
   increase: boolean;
 }
-export interface ILightSidebarHighlightsRows extends Array<ILightSidebarHighlightsRow> {}
 
-export interface ILightSidebarHighlightsItem {
+export interface IHighlightsRows extends Array<IHighlightsRow> {}
+
+export interface IHighlightsItem {
   badgeColor: string;
   lebel: string;
 }
-export interface ILightSidebarHighlightsItems extends Array<ILightSidebarHighlightsItem> {}
 
-export interface ILightSidebarHighlightsProps {
+export interface IHighlightsItems extends Array<IHighlightsItem> {}
+
+export interface IHighlightsProps {
   limit?: number;
 }
 
