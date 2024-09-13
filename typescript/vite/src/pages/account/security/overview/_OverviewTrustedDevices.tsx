@@ -1,4 +1,4 @@
-import { KeenIcon, Menu, MenuItem, MenuLabel } from '@/components';
+import { KeenIcon, Menu, MenuItem, MenuToggle } from '@/components';
 import { IOverviewTrustedDevicesItem, IOverviewTrustedDevicesItems } from './types';
 import { DropdownCard2 } from '@/partials/dropdowns/general';
 import { toAbsoluteUrl } from '@/utils';

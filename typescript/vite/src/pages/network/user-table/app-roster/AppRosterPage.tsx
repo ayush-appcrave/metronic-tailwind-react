@@ -7,9 +7,9 @@ import {
   ToolbarPageTitle
 } from '@/partials/toolbar';
 
-import { NetworkSocialContent } from '.';
+import { AppRosterContent } from '.';
 
-const NetworkSocialPage = () => {
+const AppRosterPage = () => {
   return (
     <>
       <Container>
@@ -27,10 +27,10 @@ const NetworkSocialPage = () => {
       </Container>
 
       <Container>
-        <NetworkSocialContent />
+        <AppRosterContent />
       </Container>
     </>
   );
 };
 
-export { NetworkSocialPage };
+export { AppRosterPage };

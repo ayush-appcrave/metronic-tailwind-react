@@ -59,12 +59,18 @@ import {
   UserProfilePage
 } from '@/pages/account';
 import {
+  AppRosterPage,
+  MarketAuthorsPage,
   NetworkAuthorPage,
   NetworkGetStartedPage,
   NetworkMiniCardsPage,
   NetworkNFTPage,
   NetworkSocialPage,
-  NetworkTeamCrewPage
+  NetworkTeamCrewPage,
+  SaasUsersPage,
+  StoreClientsPage,
+  TeamCrewPage,
+  VisitorsPage
 } from '@/pages/network';
 
 import { AuthPage, useAuthContext } from '../auth';
@@ -176,7 +182,13 @@ const AppRouting = (): ReactElement => {
           <Route path="/network/user-cards/team-crew" element={<NetworkTeamCrewPage />} />
           <Route path="/network/user-cards/author" element={<NetworkAuthorPage />} />
           <Route path="/network/user-cards/nft" element={<NetworkNFTPage />} />
-          <Route path="/network/user-cards/social" element={<NetworkSocialPage />} />    
+          <Route path="/network/user-cards/social" element={<NetworkSocialPage />} />
+          <Route path="/network/user-table/team-crew" element={<TeamCrewPage />} />
+          <Route path="/network/user-table/app-roster" element={<AppRosterPage />} />
+          <Route path="/network/user-table/market-authors" element={<MarketAuthorsPage />} />
+          <Route path="/network/user-table/saas-users" element={<SaasUsersPage />} />
+          <Route path="/network/user-table/store-clients" element={<StoreClientsPage />} />
+          <Route path="/network/user-table/visitors" element={<VisitorsPage />} />
         </Route>
       </Route>
       <Route path="error/*" element={<ErrorsPage />} />

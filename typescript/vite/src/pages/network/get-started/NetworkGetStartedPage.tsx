@@ -1,10 +1,6 @@
 import { Container } from '@/components/container';
-import { MENU_SIDEBAR } from '@/config/menu.config';
-import { NavbarMenu } from '@/partials/menu';
-import { Navbar } from '@/partials/navbar';
 import {
   Toolbar,
-  ToolbarActions,
   ToolbarDescription,
   ToolbarHeading,
   ToolbarPageTitle
@@ -16,12 +12,6 @@ import { Link } from 'react-router-dom';
 const NetworkGetStartedPage = () => {
   return (
     <>
-      <Container>
-        <Navbar>
-          {MENU_SIDEBAR[3]?.children && <NavbarMenu items={MENU_SIDEBAR[3].children} />}
-        </Navbar>
-      </Container>
-
       <Container>
         <Toolbar>
           <ToolbarHeading>
@@ -37,7 +27,6 @@ const NetworkGetStartedPage = () => {
               </Link>
             </ToolbarDescription>
           </ToolbarHeading>
-          <ToolbarActions>Buttons</ToolbarActions>
         </Toolbar>
       </Container>
 

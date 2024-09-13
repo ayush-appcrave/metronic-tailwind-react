@@ -1,4 +1,4 @@
-import { KeenIcon, Menu, MenuItem, MenuLabel } from '@/components';
+import { KeenIcon, Menu, MenuItem, MenuToggle } from '@/components';
 import { ITeamInfoConnectedProfilesItem, ITeamInfoConnectedProfilesItems } from './types';
 import { DropdownCardItem1 } from '@/partials/dropdowns/general';
 import { toAbsoluteUrl } from '@/utils';
