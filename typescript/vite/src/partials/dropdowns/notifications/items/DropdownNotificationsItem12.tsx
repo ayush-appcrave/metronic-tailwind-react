@@ -1,25 +1,7 @@
 import { toAbsoluteUrl } from '@/utils';
 import { Link } from 'react-router-dom'; 
-import { useState } from 'react';
-import React from 'react'; 
 
-interface IDropdownNotificationsItemProps {
-  image: string;
-  title: string;
-  id: string; 
-}
-
-const DropdownNotificationsItem12 = ({
-  image,
-  title,
-  id, 
-}: IDropdownNotificationsItemProps) => {
-  const [inputValue, setInputValue] = useState('');
-
-  const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setInputValue(event.target.value);
-  };
-
+const DropdownNotificationsItem12 = () => {
   const items = [
     {
       image: '6.jpg',
@@ -37,7 +19,7 @@ const DropdownNotificationsItem12 = ({
     <div className="flex grow gap-2.5 px-5">
        <div className="relative shrink-0 mt-0.5">
        <img
-          src={toAbsoluteUrl(`media/avatars/300-1.png`)}
+          src={toAbsoluteUrl(`/media/avatars/300-1.png`)}
           className="rounded-full size-8"
           alt=""
         /> 
@@ -68,7 +50,7 @@ const DropdownNotificationsItem12 = ({
               <div className="card shadow-none flex flex-col gap-3.5 bg-light-active w-40" key={item.id}>
                 <div
                   className="bg-cover bg-no-repeat card-rounded-t shrink-0 h-24"
-                  style={{ backgroundImage: `url(${process.env.PUBLIC_URL}/media/images/600x600/${item.image})` }}
+                  style={{ backgroundImage: `url(${toAbsoluteUrl(`/media/images/600x600/${item.image}`)}` }}
                 ></div>
 
                 <div className="px-2.5 pb-2">

@@ -1,7 +1,7 @@
 import clsx from 'clsx';
 import { Children, cloneElement, createContext, isValidElement, memo, useContext } from 'react';
 
-import { IMenuItemProps, IMenuProps } from './';
+import { IMenuProps } from './';
 
 const initalProps: IMenuProps = {
   highlight: true  

@@ -1,10 +1,7 @@
-import { ChangeEvent, useEffect, useLayoutEffect, useRef, useState } from 'react';
-import { getHeight, toAbsoluteUrl } from '@/utils';
-import { Link } from 'react-router-dom'; 
+import { useEffect, useRef, useState } from 'react';
+import { getHeight } from '@/utils';
 import { useViewport } from '@/hooks';
-import { 
-  DropdownNotificationsItem12,  
-} from './items';
+import { DropdownNotificationsItem12 } from './items';
 
 const DropdownNotificationsFollowing = () => {   
   const footerRef = useRef<HTMLDivElement>(null);
