@@ -3,7 +3,7 @@ import { HTMLAttributes, MouseEvent, ReactNode, RefAttributes, RefObject } from 
 
 export type MenuEventHandlerType = (e: MouseEvent<HTMLElement>) => void;
 
-export type MenuClickEventType = (e: MouseEvent<HTMLElement>, props: any) => void;
+export type MenuClickEventType = (e: MouseEvent<HTMLElement>, props: unknown) => void;
 
 export type MenuShowType = boolean;
 
@@ -23,6 +23,7 @@ export interface IMenuProps {
   className?: string;
   children?: ReactNode;
   highlight?: boolean;
+  multipleAccordion?: boolean;
 }
 
 export interface IMenuItemRef {
@@ -47,7 +48,7 @@ export interface IMenuItemProps {
   handleParentHide?: CallableFunction;
   handleClick?: MenuEventHandlerType;
   tabIndex?: MenuTabIndexType;
-  itemRef?: any;
+  itemRef?: unknown;
   containerProps?: HTMLAttributes<HTMLElement> & RefAttributes<HTMLElement | null>;
   containerRef?: RefObject<HTMLDivElement>;
   children?: ReactNode;
@@ -60,7 +61,7 @@ export interface IMenuLinkProps {
   hasItemSub?: boolean;
   className?: string;
   tabIndex?: MenuTabIndexType;
-  menuItemRef?: any;
+  menuItemRef?: unknown;
   handleToggle?: MenuEventHandlerType;
   handleClick?: MenuEventHandlerType;
   onClick?: MenuClickEventType;
@@ -77,7 +78,7 @@ export interface IMenuToggleProps {
   className?: string;
   tabIndex?: MenuTabIndexType;
   hasItemSub?: boolean;
-  menuItemRef?: any;
+  menuItemRef?: unknown;
   handleToggle?: MenuEventHandlerType;
   handleClick?: MenuEventHandlerType;
   onClick?: MenuClickEventType;
@@ -88,8 +89,8 @@ export interface IMenuSubProps {
   show?: MenuShowType;
   enter?: boolean;
   toggle?: MenuToggleType;
-  ref?: any;
-  menuItemRef?: any;
+  ref?: unknown;
+  menuItemRef?: unknown;
   tabIndex?: number;
   className?: string;
   rootClassName?: string;

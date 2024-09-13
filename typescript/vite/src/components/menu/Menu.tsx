@@ -4,7 +4,8 @@ import { Children, cloneElement, createContext, isValidElement, memo, useContext
 import { IMenuProps } from './';
 
 const initalProps: IMenuProps = {
-  highlight: true  
+  highlight: true,
+  multipleAccordion: false  
 };
 
 // Create a Menu Context
@@ -13,8 +14,8 @@ const MenuContext = createContext(initalProps);
 // Custom hook to use the Menu Context
 const useMenuProps = () => useContext(MenuContext);
 
-const MenuComponent = ({className, children, highlight = true}: IMenuProps) => {
-  const modifiedChildren = Children.map(children, (child, index) => {
+const MenuComponent = ({className, children, highlight = true, multipleAccordion = false}: IMenuProps) => {
+  const modifiedChildren = Children.map(children, (child) => {
     if (isValidElement(child)) {
       // Return the child with modified props
       return cloneElement(child);
@@ -24,7 +25,7 @@ const MenuComponent = ({className, children, highlight = true}: IMenuProps) => {
   });
 
   return (
-    <MenuContext.Provider value={{highlight}}>
+    <MenuContext.Provider value={{highlight, multipleAccordion}}>
       <div className={clsx('menu', className && className)}>
         {modifiedChildren}
       </div>

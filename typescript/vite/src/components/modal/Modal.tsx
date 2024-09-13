@@ -1,8 +1,6 @@
-import React, { FC, forwardRef } from 'react';
+import { forwardRef } from 'react';
 import { Modal as MuiModal, ModalProps as BaseModalProps } from '@mui/base/Modal';
 import { ModalBackdrop } from './ModalBackdrop';
-import { ModalContent } from './ModalContent';
-import Fade from '@mui/material/Fade';  // Import Fade for transitions
 import clsx from 'clsx';
 
 interface ModalProps extends BaseModalProps {

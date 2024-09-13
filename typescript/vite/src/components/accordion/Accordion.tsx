@@ -1,5 +1,5 @@
 import clsx from 'clsx';
-import { Children, cloneElement, isValidElement, memo, ReactElement, useState } from 'react';
+import { Children, cloneElement, isValidElement, memo, useState } from 'react';
 import { IAccordionProps, IAccordionItemProps } from './types';
 
 const AccordionComponent = ({ className, children, allowMultiple }: IAccordionProps) => {

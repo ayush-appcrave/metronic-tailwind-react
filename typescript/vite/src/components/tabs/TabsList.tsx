@@ -1,6 +1,5 @@
 import React, { forwardRef } from 'react';
 import { TabsList as MuiTabsList, TabsListProps as MuiTabProps } from '@mui/base/TabsList';
-import clsx from 'clsx';
 
 // Define the extended tab component
 const TabsList = forwardRef<HTMLDivElement, MuiTabProps>((props, ref) => {

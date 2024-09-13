@@ -9,11 +9,8 @@ import React, {
   MouseEvent,
   ReactElement,
   ReactNode,
-  RefObject,
   useEffect,
   useImperativeHandle,
-  useLayoutEffect,
-  useReducer,
   useRef,
   useState
 } from 'react';
@@ -32,7 +29,6 @@ import {
   MenuHeading,
   MenuLabel,
   MenuLink,
-  MenuSeparator,
   MenuSub,
   MenuToggleType,
   MenuTriggerType,
@@ -60,11 +56,11 @@ const MenuItemComponent = forwardRef<IMenuItemRef | null, IMenuItemProps>(
       children
     } = props;
 
-    const { ref: containerRefProp, ...containerProps } = ContainerPropsProp;
+    const { ...containerProps } = ContainerPropsProp;
 
     const menuItemRef = useRef<HTMLDivElement | null>(null);
 
-    const {highlight} = useMenuProps();
+    const {highlight, multipleAccordion } = useMenuProps();
      
     const menuContainerRef = useRef<HTMLDivElement | null>(null);
     
@@ -310,7 +306,7 @@ const MenuItemComponent = forwardRef<IMenuItemRef | null, IMenuItemProps>(
     };
 
     const renderChildren = () => {
-      const modifiedChildren = Children.map(children, (child, index) => {
+      const modifiedChildren = Children.map(children, (child) => {
         if (isValidElement(child)) {
           if (child.type === MenuLink) {
             return renderLink(child);
