@@ -32,8 +32,8 @@ const DropdownNotificationsItem12 = () => {
             <Link to="#" className="hover:text-primary-active text-primary font-semibold me-1">
               Jane Perez
             </Link> 
-            <span className="text-gray-700">added 2 new works to</span>    
-            <Link to="#" className="hover:text-primary-active text-primary font-semibold me-1">
+            <span className="text-gray-700 me-1">added 2 new works to</span>    
+            <Link to="#" className="hover:text-primary-active text-primary font-semibold">
               Inspirations 2024
             </Link> 
           </div>
