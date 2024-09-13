@@ -1,10 +1,9 @@
 import { ChangeEvent, useEffect, useLayoutEffect, useRef, useState } from 'react';
 import { getHeight, toAbsoluteUrl } from '@/utils';
-import { Link } from 'react-router-dom';
-import { KeenIcon } from '@/components';
+import { Link } from 'react-router-dom'; 
 import { useViewport } from '@/hooks';
 import { 
-  DropdownNotificationsItem13,  
+  DropdownNotificationsItem12,  
 } from './items';
 
 const DropdownNotificationsFollowing = () => {   
@@ -24,7 +23,7 @@ const DropdownNotificationsFollowing = () => {
   const buildList = () => {
     return (
       <div className="flex flex-col gap-5 pt-3 pb-4 divider-y divider-gray-200">
-        <DropdownNotificationsItem13/>
+        <DropdownNotificationsItem12/>
 
         <div className="border-b border-b-gray-200"></div>
       </div>

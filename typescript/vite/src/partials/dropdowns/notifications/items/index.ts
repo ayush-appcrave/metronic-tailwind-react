@@ -6,6 +6,7 @@ export * from './DropdownNotificationsItem5';
 export * from './DropdownNotificationsItem6'; 
 export * from './DropdownNotificationsItem10';
 export * from './DropdownNotificationsItem11';
+export * from './DropdownNotificationsItem12';
 export * from './DropdownNotificationsItem13'; 
 export * from './DropdownNotificationsItem14'; 
 export * from './DropdownNotificationsItem15'; 

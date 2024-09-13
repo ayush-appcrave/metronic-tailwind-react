@@ -7,6 +7,8 @@ import {
   DropdownNotificationsItem10,   
   DropdownNotificationsItem5, 
   DropdownNotificationsItem11, 
+  DropdownNotificationsItem1,
+  DropdownNotificationsItem3,
 } from './items';
 
 const DropdownNotificationsTeam = () => {   
@@ -39,11 +41,37 @@ const DropdownNotificationsTeam = () => {
           day="to 13 May"
           date="2 days ago"
           info="Marketing"
-        />
+        /> 
 
         <div className="border-b border-b-gray-200"></div> 
 		 
         <DropdownNotificationsItem11/>
+
+        <DropdownNotificationsItem1
+          userName="Selene Silverleaf"
+          avatar="300-21.png"
+          description="commented on"
+          link="SiteSculpt"
+          label=""
+          time="4 days ago"
+          specialist="Manager"
+          text="This design  is simply stunning! From layout to color, it's a work of art!"
+        />
+
+        <div className="border-b border-b-gray-200"></div> 
+
+        <DropdownNotificationsItem3
+          userName="Thalia Fox"
+          avatar="300-13.png"
+          badgeColor="badge-success"
+          description="has invited you to join"
+          link="Design Research"
+          day=""
+          date="4 days ago"
+          info="Dev Team" 
+        /> 
+
+        <div className="border-b border-b-gray-200"></div>  
       </div>
     );
   }
