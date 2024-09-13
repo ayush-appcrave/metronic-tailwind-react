@@ -45,26 +45,24 @@ const DropdownNotificationsItem12 = () => {
         </div>
       
         <div className="flex items-center gap-2.5">
-          <div>
-            {items.map((item) => (
-              <div className="card shadow-none flex flex-col gap-3.5 bg-light-active w-40" key={item.id}>
-                <div
-                  className="bg-cover bg-no-repeat card-rounded-t shrink-0 h-24"
-                  style={{ backgroundImage: `url(${toAbsoluteUrl(`/media/images/600x600/${item.image}`)}` }}
-                ></div>
+          {items.map((item) => (
+            <div className="card shadow-none flex flex-col gap-3.5 bg-light-active w-40" key={item.id}>
+              <div
+                className="bg-cover bg-no-repeat card-rounded-t shrink-0 h-24"
+                style={{ backgroundImage: `url(${toAbsoluteUrl(`/media/images/600x600/${item.image}`)}` }}
+              ></div>
 
-                <div className="px-2.5 pb-2">
-                  <Link to="#" className="font-medium block text-gray-700 hover:text-primary text-xs leading-4 mb-0.5">
-                    {item.title}
-                  </Link>
-                  <div className="text-2xs font-medium text-gray-500">
-                    Token ID:
-                    <span className="text-2xs font-medium text-gray-700">{item.id}</span>
-                  </div>
+              <div className="px-2.5 pb-2">
+                <Link to="#" className="font-medium block text-gray-700 hover:text-primary text-xs leading-4 mb-0.5">
+                  {item.title}
+                </Link>
+                <div className="text-2xs font-medium text-gray-500">
+                  Token ID:
+                  <span className="text-2xs font-medium text-gray-700">{item.id}</span>
                 </div>
               </div>
-            ))}
-          </div>
+            </div>
+          ))}
         </div> 
       </div> 
     </div>
