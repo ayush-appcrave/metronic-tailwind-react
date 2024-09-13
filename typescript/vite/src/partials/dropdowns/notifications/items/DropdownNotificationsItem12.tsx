@@ -29,11 +29,11 @@ const DropdownNotificationsItem12 = () => {
       <div className="flex flex-col gap-2.5 grow">
         <div className="flex flex-col gap-1 mb-1">
           <div className="text-2sm font-medium mb-px">
-            <Link to="#" className="hover:text-primary-active text-primary font-semibold">
+            <Link to="#" className="hover:text-primary-active text-primary font-semibold me-1">
               Jane Perez
             </Link> 
             <span className="text-gray-700">added 2 new works to</span>    
-            <Link to="#" className="hover:text-primary-active text-primary font-semibold">
+            <Link to="#" className="hover:text-primary-active text-primary font-semibold me-1">
               Inspirations 2024
             </Link> 
           </div>
