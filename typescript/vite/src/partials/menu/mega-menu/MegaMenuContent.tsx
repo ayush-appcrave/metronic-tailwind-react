@@ -7,7 +7,6 @@ import {
   MenuLink,
   MenuSub,
   MenuTitle,
-  MenuToggle,
   MenuArrow
 } from '@/components/menu';
 import { MegaMenuSubDefault } from './MegaMenuSubDefault';
@@ -15,7 +14,6 @@ import { MegaMenuSubHighlighted } from './MegaMenuSubHighlighted';
 import { MegaMenuSubDropdown } from './MegaMenuSubDropdown';
 
 const MegaMenuContent = (items: MenuConfigType) => {
-  const level: number = 1;
   const homeItem = items[0];
   const publicProfilesItem = items[1];
 
@@ -33,7 +31,7 @@ const MegaMenuContent = (items: MenuConfigType) => {
 
   const helpItem = items[5];  
 
-  const build = (items: MenuConfigType) => {
+  const build = () => {
     return (
       <>
         <MenuItem key="home" path={homeItem.path}>
@@ -292,7 +290,7 @@ const MegaMenuContent = (items: MenuConfigType) => {
 
   return (
     <Menu className="menu flex-col lg:flex-row gap-5 lg:gap-7.5">
-      {build(items)}
+      {build()}
     </Menu>
   );
 };

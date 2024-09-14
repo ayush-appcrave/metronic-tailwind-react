@@ -12,18 +12,21 @@ const MenuSubComponent = forwardRef<HTMLDivElement | null, IMenuSubProps>(
       className,
       handleClick,
       handleParentHide,
-      handleEnd,
-      handleStart,
-      children
+      handleEntered,
+      handleExited,
+      children,
+      level,
     } = props;
 
-    const modifiedChildren = Children.map(children, (child) => {
+    const modifiedChildren = Children.map(children, (child, index) => {
       if (isValidElement(child)) {    
         if (child.type === MenuItem) {
           // Add some props to each child
           const modifiedProps: IMenuItemProps = {
             handleParentHide,
-            handleClick            
+            handleClick,
+            level,
+            index     
           };
 
           // Return the child with modified props
@@ -42,8 +45,8 @@ const MenuSubComponent = forwardRef<HTMLDivElement | null, IMenuSubProps>(
         return (
           <Collapse
             in={show}
-            onExited={handleEnd}
-            onEntered={handleStart}
+            onEntered={handleEntered}
+            onExited={handleExited}
             timeout="auto"
             enter={enter}
           >

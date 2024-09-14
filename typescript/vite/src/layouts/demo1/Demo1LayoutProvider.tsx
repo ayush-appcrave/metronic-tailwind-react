@@ -1,7 +1,6 @@
 import { createContext, type PropsWithChildren, useContext, useState } from 'react';
 import { useLocation } from 'react-router';
-
-import { MenuBreadcrumbsType, useMenuCurrentItem, useMenuBreadcrumbs, useMenuChildren } from '@/components/menu';
+import { useMenuChildren } from '@/components/menu';
 import { MENU_SIDEBAR } from '@/config/menu.config';
 import { useScrollPosition } from '@/hooks/useScrollPosition';
 import { useMenu } from '@/providers';
@@ -34,7 +33,7 @@ const useDemo1Layout = () => useContext(Demo1LayoutContext);
 
 const Demo1LayoutProvider = ({ children }: PropsWithChildren) => {
   const { pathname } = useLocation();
-  const { setMenuConfig, setCurrentMenuItem } = useMenu();
+  const { setMenuConfig } = useMenu();
   const secondaryMenu = useMenuChildren(pathname, MENU_SIDEBAR, 0);
 
   setMenuConfig('primary', MENU_SIDEBAR);

@@ -1,19 +1,8 @@
 import { Drawer } from '@mui/material';
 import { useResponsive } from '@/hooks';
-import { KeenIcon } from '@/components';
 import { MENU_MEGA } from '@/config/menu.config';
 import { MegaMenuContent } from './';
-import {
-  Menu,
-  MenuConfigType,
-  IMenuItemConfig,
-  MenuItem,
-  MenuLink,
-  MenuSub,
-  MenuTitle,
-  MenuToggle,
-  MenuArrow
-} from '@/components/menu';
+import { Menu } from '@/components/menu';
 import { useState } from 'react';
 
 const MegaMenu = () => {

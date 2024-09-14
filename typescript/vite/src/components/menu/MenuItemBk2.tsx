@@ -69,6 +69,8 @@ const MenuItemComponent = forwardRef<IMenuItemRef | null, IMenuItemProps>(
     
     const { pathname } = useLocation();
 
+    const currentPath = pathname.trim();
+
     const { match } = useMatchPath(path);
 
     const propToggle: MenuToggleType = useResponsiveProp(toggle, 'accordion');
@@ -83,11 +85,9 @@ const MenuItemComponent = forwardRef<IMenuItemRef | null, IMenuItemProps>(
 
     const [show, setShow] = useState(false);
 
-    const accordionShow = isOpenAccordion(level, index);
-
     const [transitioning, setTransitioning] = useState(false);
 
-    const [accordionEnter, setAccordionEnter] = useState(false);
+    const [enter, setEnter] = useState(false);
 
     const hasSub = Children.toArray(children).some(
       (child) => isValidElement(child) && child.type === MenuSub
@@ -95,7 +95,7 @@ const MenuItemComponent = forwardRef<IMenuItemRef | null, IMenuItemProps>(
 
     const handleMouseEnter = (e: MouseEvent<HTMLElement>) => {
       if (propTrigger === 'hover') {
-        handleShow();
+        setShow(true);
 
         if (containerProps.onMouseEnter) {
           containerProps.onMouseEnter(e);
@@ -105,7 +105,7 @@ const MenuItemComponent = forwardRef<IMenuItemRef | null, IMenuItemProps>(
 
     const handleMouseLeave = (e: MouseEvent<HTMLElement>) => {
       if (propTrigger === 'hover') {
-        handleHide();
+        setShow(false);
 
         if (containerProps.onMouseLeave) {
           containerProps.onMouseLeave(e);
@@ -116,21 +116,22 @@ const MenuItemComponent = forwardRef<IMenuItemRef | null, IMenuItemProps>(
     const handleToggle = (e: MouseEvent<HTMLElement>) => {
       if (disabled) {
         return;
-      }     
+      }
+
+      if (propToggle === 'accordion') {
+        setEnter(true);
+      }
       
       if (show) {
-        if (propToggle === 'accordion') {
-          setAccordionEnter(true);
-        }
-
-        handleHide();
-        
+        setShow(false);
+        if (multipleAccordion) setOpenAccordion(level, index);
       } else {
-        if (propToggle === 'accordion') {
-          setAccordionEnter(true);
-        }
-        handleShow();        
-      }      
+        setShow(true);
+      }
+
+      if (propToggle === 'dropdown' && !show && handleParentHide) {
+        handleParentHide();
+      }
 
       if (onClick) {
         onClick(e, props);
@@ -149,32 +150,18 @@ const MenuItemComponent = forwardRef<IMenuItemRef | null, IMenuItemProps>(
       }
     };
 
-    const handleHide = () => {   
-      if (!hasSub) return;
-
-      setShow(false);
-
-      if (propToggle === 'accordion') {
-        if (multipleAccordion === false) {
-          setOpenAccordion(level, -1);
-        } 
+    const handleHide = () => {      
+      if (hasSub && propToggle === 'dropdown' ) {
+        setShow(false);
       }
 
-      if (propToggle === 'dropdown' && handleParentHide) {
+      if (handleParentHide) {
         handleParentHide();
       }
     };
 
     const handleShow = () => {
-      if (!hasSub) return;
-
-      setShow(true);
-
-      if (propToggle === 'accordion') {      
-        if (multipleAccordion === false) {
-          setOpenAccordion(level, index);    
-        }        
-      }
+      
     }
 
     const renderLink = (child: ReactElement) => {
@@ -256,13 +243,14 @@ const MenuItemComponent = forwardRef<IMenuItemRef | null, IMenuItemProps>(
     };
 
     const renderSubAccordion = (child: ReactElement) => {
-      const handleEntered = () => {
+      const handleStart = () => {
         setTransitioning(true);
+        setEnter(false);
       };
 
-      const handleExited = () => {
-        setTransitioning(true);
-        setAccordionEnter(true);
+      const handleEnd = () => {
+        setTransitioning(false);
+        setEnter(false);
       };
 
       // Add some props to each child
@@ -270,11 +258,11 @@ const MenuItemComponent = forwardRef<IMenuItemRef | null, IMenuItemProps>(
         level: level+1,
         tabIndex,
         show,
-        enter: accordionEnter,
+        enter,
         toggle: propToggle,
         handleClick,
-        handleEntered,
-        handleExited
+        handleStart,
+        handleEnd
       };
 
       return cloneElement(child, modifiedProps);
@@ -304,10 +292,10 @@ const MenuItemComponent = forwardRef<IMenuItemRef | null, IMenuItemProps>(
       return modifiedChildren;
     };
 
-    useImperativeHandle(ref, () => ({      
+   useImperativeHandle(ref, () => ({      
       current: menuItemRef.current,
       show: () => {
-        handleShow();
+        setShow(true);
       },
       hide: () => {
         handleHide();
@@ -330,34 +318,26 @@ const MenuItemComponent = forwardRef<IMenuItemRef | null, IMenuItemProps>(
     }, [show]);
 
     useEffect(() => {
-      if (propToggle === 'accordion' && multipleAccordion === false) {
-        setShow(accordionShow);
-      } 
-    }, [accordionShow]);
-
-    useEffect(() => {
       if (highlight === false) return;
 
-      if (hasActiveChild(pathname, children)) {
+      if (hasActiveChild(currentPath, children)) {
         if (propToggle === 'accordion') {
-          console.log('wah!!!');
-          handleShow();
+          setShow(true);
         }
 
         setHere(true);
       } else {
         if (propToggle === 'accordion') {
-          handleHide();
+          setShow(false);
         }
 
         setHere(false);
       }
 
       if (hasSub && propToggle === 'dropdown' ) {
-        console.log('route change')
-        handleHide();
+        setShow(false);
       }
-    }, [pathname]);
+    }, [currentPath]);
 
     return (
       <div

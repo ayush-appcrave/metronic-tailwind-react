@@ -24,6 +24,8 @@ export interface IMenuProps {
   children?: ReactNode;
   highlight?: boolean;
   multipleAccordion?: boolean;
+  setOpenAccordion?: (id: number, level: number) => void;
+  isOpenAccordion?: (id: number, level: number) => boolean;
 }
 
 export interface IMenuItemRef {
@@ -33,6 +35,8 @@ export interface IMenuItemRef {
 }
 
 export interface IMenuItemProps {
+  level?: number,
+  index?: number;
   path?: string;
   soon?: boolean;
   toggle?: MenuItemToggleType;
@@ -55,6 +59,7 @@ export interface IMenuItemProps {
 }
 
 export interface IMenuLinkProps {
+  ref?: unknown;
   path?: string;
   externalLink?: boolean;
   newTab?: boolean;
@@ -86,6 +91,7 @@ export interface IMenuToggleProps {
 }
 
 export interface IMenuSubProps {
+  level?: number;
   show?: MenuShowType;
   enter?: boolean;
   toggle?: MenuToggleType;
@@ -98,8 +104,8 @@ export interface IMenuSubProps {
   onClick?: MenuClickEventType;
   handleParentHide?: CallableFunction;
   handleClick?: MenuEventHandlerType;
-  handleEnd?: () => void;
-  handleStart?: () => void;
+  handleEntered?: () => void;
+  handleExited?: () => void;
   accordionIn?: boolean;
   children?: ReactNode;
 }

@@ -1,62 +1,46 @@
 import clsx from 'clsx';
-import { forwardRef, memo } from 'react';
-import { Link as RouterLink } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 import { IMenuLinkProps } from './';
 
-const MenuLinkComponent = forwardRef<HTMLDivElement | null, IMenuLinkProps>(
-  function MenuLinkComponent(props, ref) {
-    const {
-      path,
-      newTab,
-      hasItemSub = false,
-      externalLink,
-      className,
-      menuItemRef,
-      handleToggle,
-      handleClick,
-      children
-    } = props;
+const MenuLink = ({path, newTab, hasItemSub = false, externalLink, className, handleToggle, handleClick, children}: IMenuLinkProps) => {
 
-    if (!hasItemSub && path) {
-      if (externalLink) {
-        const target = newTab ? '_blank' : '_self';
+  if (!hasItemSub && path) {
+    if (externalLink) {
+      const target = newTab ? '_blank' : '_self';
 
-        return (
-          <a
-            href={path}
-            target={target}
-            rel="noopener"
-            onClick={handleClick}
-            className={clsx('menu-link', className && className)}
-          >
-            {children}
-          </a>
-        );
-      } else {
-        return (
-          <RouterLink
-            to={path}
-            onClick={handleClick}
-            className={clsx('menu-link', className && className)}
-          >
-            {children}
-          </RouterLink>
-        );
-      }
-    } else {
       return (
-        <div
+        <a
+          href={path}
+          target={target}
+          rel="noopener"
+          onClick={handleClick}
           className={clsx('menu-link', className && className)}
-          ref={menuItemRef}
-          onClick={handleToggle}
         >
           {children}
-        </div>
+        </a>
+      );
+    } else {
+      return (
+        <Link
+          to={path}
+          onClick={handleClick}
+          className={clsx('menu-link', className && className)}
+        >
+          {children}
+        </Link>
       );
     }
+  } else {
+    return (
+      <div
+        className={clsx('menu-link', className && className)}
+        onClick={handleToggle}
+      >
+        {children}
+      </div>
+    );
   }
-);
+};
 
-const MenuLink = memo(MenuLinkComponent);
 export { MenuLink };
