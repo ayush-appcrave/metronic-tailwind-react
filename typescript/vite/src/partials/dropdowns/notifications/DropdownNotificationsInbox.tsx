@@ -4,10 +4,10 @@ import { Link } from 'react-router-dom';
 import { KeenIcon } from '@/components';
 import { useViewport } from '@/hooks';
 import { 
-  DropdownNotificationsItem13,  
-  DropdownNotificationsItem14,
-  DropdownNotificationsItem15,
-  DropdownNotificationsItem16,
+  DropdownNotificationsItem10,  
+  DropdownNotificationsItem11,
+  DropdownNotificationsItem12,
+  DropdownNotificationsItem13,
   DropdownNotificationsItem3,
   DropdownNotificationsItem5
 } from './items';
@@ -29,19 +29,19 @@ const DropdownNotificationsInbox = () => {
   const buildList = () => {
     return (
       <div className="flex flex-col gap-5 pt-3 pb-4 divider-y divider-gray-200">
+        <DropdownNotificationsItem10/>
+
+        <div className="border-b border-b-gray-200"></div>
+
+        <DropdownNotificationsItem11/>
+
+        <div className="border-b border-b-gray-200"></div>
+
+        <DropdownNotificationsItem12/>
+
+        <div className="border-b border-b-gray-200"></div>
+
         <DropdownNotificationsItem13/>
-
-        <div className="border-b border-b-gray-200"></div>
-
-        <DropdownNotificationsItem14/>
-
-        <div className="border-b border-b-gray-200"></div>
-
-        <DropdownNotificationsItem15/>
-
-        <div className="border-b border-b-gray-200"></div>
-
-        <DropdownNotificationsItem16/>
 
         <div className="border-b border-b-gray-200"></div>
 
