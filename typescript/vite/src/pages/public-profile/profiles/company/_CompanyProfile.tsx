@@ -1,3 +1,7 @@
+import { MapContainer, TileLayer, Marker, Popup } from 'react-leaflet';
+import L from 'leaflet';
+import 'leaflet/dist/leaflet.css';
+
 import { KeenIcon } from '@/components';
 
 import {
@@ -75,6 +79,14 @@ const CompanyProfile = () => {
     );
   };
 
+  const customIcon = L.divIcon({
+    html: `<i class="ki-solid ki-geolocation text-3xl text-success"></i>`,
+    className: 'leaflet-marker',
+    bgPos: [10, 10],
+    iconAnchor: [20, 37],
+    popupAnchor: [0, -37]
+  });
+
   return (
     <div className="card">
       <div className="card-header">
@@ -84,7 +96,15 @@ const CompanyProfile = () => {
         <h3 className="text-base font-semibold text-gray-900 leading-none mb-5">Headquarter</h3>
 
         <div className="flex flex-wrap items-center gap-5 mb-10">
-          <div className="rounded-xl w-full md:w-80 min-h-52" id="company_profile_map"></div>
+          <MapContainer center={[40.725, -73.985]} zoom={30} className="rounded-xl w-full md:w-80 min-h-52">
+            <TileLayer
+              attribution='&copy; <a href="https://osm.org/copyright">OpenStreetMap</a> contributors'
+              url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+            />
+            <Marker position={[40.724716, -73.984789]} icon={customIcon}>
+              <Popup>430 E 6th St, New York, 10009.</Popup>
+            </Marker>
+          </MapContainer>
 
           <div className="flex flex-col gap-2.5">
             {rows.map((row, index) => {
