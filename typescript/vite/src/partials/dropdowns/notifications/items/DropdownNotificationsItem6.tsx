@@ -28,17 +28,20 @@ const DropdownNotificationsItem6 = () => {
           </span>
         </div>
 
-        <div className="card shadow-none flex items-center flex-row gap-1.5 p-2.5 rounded-lg bg-light-active"> 
-          <img
-            src={toAbsoluteUrl('/media/file-types/pdf.svg')}
-            className="h-5"
-            alt=""
-          />
+        <div className="card shadow-none flex items-center flex-row gap-1.5 p-2.5 rounded-lg bg-light-active">
+          <div className="flex items-center justify-center w-[26px] h-[30px] shrink-0 bg-light rounded border border-gray-200">
+            <img
+              src={toAbsoluteUrl('/media/file-types/figma.svg')}
+              className="h-5"
+              alt=""
+            />
+          </div>
+          
           <Link to="#" className="hover:text-primary-active font-medium text-gray-700 text-xs me-1">
             Launch_nov24.pptx
           </Link>
-          <span className="font-medium text-gray-500 text-2xs">Edited 39 mins ago</span>
-        </div>
+          <span className="font-medium text-gray-500 text-2xs">Edited 2 mins ago</span>
+        </div> 
       </div>
     </div>
   );
