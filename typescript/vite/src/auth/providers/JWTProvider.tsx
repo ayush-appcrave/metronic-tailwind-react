@@ -106,8 +106,8 @@ const AuthProvider = ({ children }: PropsWithChildren) => {
       console.log(password_confirmation);
       const { data: auth } = await axios.post(REGISTER_URL, {
         email,
-        first_name: "DefaultName",
-        last_name: "DefaultSurname",
+        first_name: 'DefaultName',
+        last_name: 'DefaultSurname',
         password,
         password_confirmation
       });

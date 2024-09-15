@@ -1,6 +1,6 @@
 import { ReactElement, useEffect, useState } from 'react';
 import { Navigate, Route, Routes, useLocation } from 'react-router';
-import {LightSidebarPage, DarkSidebarPage, ImageInputExamples} from '@/pages/dashboards';
+import { LightSidebarPage, DarkSidebarPage, ImageInputExamples } from '@/pages/dashboards';
 import {
   PublicProfileActivityPage,
   BloggerPage,
@@ -78,24 +78,24 @@ import { RequireAuth } from '../auth/RequireAuth';
 import { Demo1Layout } from '../layouts/demo1';
 import { ErrorsPage } from '../modules/errors';
 import { useLoaders } from '../providers/LoadersProvider';
-import { Example1 } from "@/pages/crud/Example1.tsx";
-import {ScrollSpyExample} from "@/pages/scroll-spy/ScrollSpyExample.tsx";
+import { Example1 } from '@/pages/crud/Example1.tsx';
+import { ScrollSpyExample } from '@/pages/scroll-spy/ScrollSpyExample.tsx';
 
 const AppRouting = (): ReactElement => {
   const { setProgressBarLoader } = useLoaders();
   const { verify } = useAuthContext();
   const [previousLocation, setPreviousLocation] = useState('');
-  const location = useLocation(); 
+  const location = useLocation();
   const path = location.pathname.trim();
 
   const init = async () => {
     setProgressBarLoader(true);
-    
+
     try {
       if (verify) {
         await verify();
       }
-    // eslint-disable-next-line @typescript-eslint/no-unused-vars
+      // eslint-disable-next-line @typescript-eslint/no-unused-vars
     } catch (error) {
       throw new Error('Something went wrong!');
     } finally {
@@ -109,7 +109,7 @@ const AppRouting = (): ReactElement => {
 
   useEffect(() => {
     init();
-  }, [location]);
+  }, [init, location]);
 
   useEffect(() => {
     setProgressBarLoader(false);
@@ -118,7 +118,7 @@ const AppRouting = (): ReactElement => {
   return (
     <Routes>
       <Route element={<RequireAuth />}>
-        <Route element={<Demo1Layout />}>         
+        <Route element={<Demo1Layout />}>
           <Route path="/" element={<LightSidebarPage />} />
           <Route path="/dark-sidebar" element={<DarkSidebarPage />} />
           <Route path="/image-input-examples" element={<ImageInputExamples />} />
@@ -154,7 +154,10 @@ const AppRouting = (): ReactElement => {
           <Route path="/account/billing/history" element={<HistoryPage />} />
           <Route path="/account/security/get-started" element={<SecurityGetStartedPage />} />
           <Route path="/account/security/overview" element={<OverviewPage />} />
-          <Route path="/account/security/allowed-ip-addresses" element={<AllowedIPAddressesPage />} />
+          <Route
+            path="/account/security/allowed-ip-addresses"
+            element={<AllowedIPAddressesPage />}
+          />
           <Route path="/account/security/privacy-settings" element={<PrivacySettingsPage />} />
           <Route path="/account/security/device-management" element={<DeviceManagementPage />} />
           <Route path="/account/security/backup-and-recovery" element={<BackupAndRecoveryPage />} />

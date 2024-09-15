@@ -13,11 +13,10 @@ const CardTournament = ({ image, logo, title, time, labels, progress }: ITournam
 
   return (
     <div className="card shadow-none w-[285px] border-0">
-      <div 
-        className="bg-cover bg-center bg-no-repeat rounded-t-xl h-56 w-[285px]" 
+      <div
+        className="bg-cover bg-center bg-no-repeat rounded-t-xl h-56 w-[285px]"
         style={{ backgroundImage: `url(${toAbsoluteUrl(`/media/images/600x600/${image}`)})` }}
-      >
-      </div>
+      ></div>
 
       <div className="card-border card-rounded-b grid gap-6 px-5 pt-3.5 pb-3 mb-4">
         <div className="flex items-center gap-2.5">

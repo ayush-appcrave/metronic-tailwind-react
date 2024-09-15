@@ -48,10 +48,17 @@ const DefaultConnections = ({ title }: IDefaultConnectionsProps) => {
           />
 
           <div className="flex flex-col">
-            <a href="#" className="text-sm font-semibold text-gray-900 hover:text-primary-active mb-px">{item.name}</a>
-            <span className="text-xs font-medium text-gray-600">{item.connections} connections</span>
+            <a
+              href="#"
+              className="text-sm font-semibold text-gray-900 hover:text-primary-active mb-px"
+            >
+              {item.name}
+            </a>
+            <span className="text-xs font-medium text-gray-600">
+              {item.connections} connections
+            </span>
           </div>
-        </div> 
+        </div>
 
         {item.connected ? (
           <button className="btn btn-xs btn-icon btn-primary btn-outline rounded-full active">
@@ -72,11 +79,11 @@ const DefaultConnections = ({ title }: IDefaultConnectionsProps) => {
         <h3 className="card-title">{title}</h3>
 
         <Menu className="items-stretch">
-          <MenuItem 
+          <MenuItem
             toggle="dropdown"
             trigger="click"
             dropdownProps={{
-              placement: "bottom-end",
+              placement: 'bottom-end',
               modifiers: [
                 {
                   name: 'offset',
@@ -88,7 +95,7 @@ const DefaultConnections = ({ title }: IDefaultConnectionsProps) => {
             }}
           >
             <MenuToggle className="btn btn-sm btn-icon btn-light btn-clear mb-2.5-">
-              <KeenIcon icon="dots-vertical"/>
+              <KeenIcon icon="dots-vertical" />
             </MenuToggle>
             {DropdownCard1()}
           </MenuItem>
@@ -104,7 +111,9 @@ const DefaultConnections = ({ title }: IDefaultConnectionsProps) => {
       </div>
 
       <div className="card-footer justify-center">
-        <Link to="/public-profile/network" className="btn btn-link">All Contributors</Link>
+        <Link to="/public-profile/network" className="btn btn-link">
+          All Contributors
+        </Link>
       </div>
     </div>
   );

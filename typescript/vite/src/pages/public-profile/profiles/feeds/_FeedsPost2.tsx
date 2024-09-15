@@ -42,7 +42,7 @@ const FeedsPost2 = () => {
           comments={2}
           likes="24"
           saves={16}
-          className='mx-7.5'
+          className="mx-7.5"
         />
 
         {activeTab === 'comments' && (

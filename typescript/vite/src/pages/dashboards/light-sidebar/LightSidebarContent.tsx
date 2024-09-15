@@ -10,7 +10,7 @@ import {
   EntryCalloutBlock,
   HighlightsBlock,
   TeamMeetingBlock
-} from "./";
+} from './';
 
 const LightSidebarContent = () => {
   return (
@@ -18,8 +18,8 @@ const LightSidebarContent = () => {
       <div className="grid lg:grid-cols-3 gap-y-5 lg:gap-7.5 items-stretch">
         <div className="lg:col-span-1">
           <div className="grid grid-cols-2 gap-5 lg:gap-7.5 h-full items-stretch">
-            <ChannelStatsBlock/>
-          </div>  
+            <ChannelStatsBlock />
+          </div>
         </div>
 
         <div className="lg:col-span-2">
@@ -42,9 +42,7 @@ const LightSidebarContent = () => {
           <TeamMeetingBlock />
         </div>
 
-        <div className="lg:col-span-2">
-          {/* {{ theme.page('_teams') }} */}
-        </div>
+        <div className="lg:col-span-2">{/* {{ theme.page('_teams') }} */}</div>
       </div>
     </div>
   );

@@ -36,10 +36,7 @@ const PrivacySettingsBlockList = ({ text, limit, className }: IPrivacySettingsBl
     return (
       <div key={index} className="flex items-center justify-between gap-2.5">
         <div className="flex items-center gap-2.5">
-          <CommonAvatar
-            image={item.avatar}
-            imageClass='h-9 rounded-full'
-          />
+          <CommonAvatar image={item.avatar} imageClass="h-9 rounded-full" />
 
           <div className="flex flex-col gap-0.5">
             <Link
@@ -69,15 +66,11 @@ const PrivacySettingsBlockList = ({ text, limit, className }: IPrivacySettingsBl
         <h3 className="card-title">Block List</h3>
       </div>
       <div className="card-body flex flex-col gap-5">
-        <div className="text-sm text-gray-800">
-          {text}
-        </div>
+        <div className="text-sm text-gray-800">{text}</div>
 
         <div className="input-group">
-          <input className="input" placeholder="Block new user" type="text" value="" readOnly/>
-          <span className="btn btn-primary">
-            Add
-          </span>
+          <input className="input" placeholder="Block new user" type="text" value="" readOnly />
+          <span className="btn btn-primary">Add</span>
         </div>
 
         <div className="flex flex-col gap-5">

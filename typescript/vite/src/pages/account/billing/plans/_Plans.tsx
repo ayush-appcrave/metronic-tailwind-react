@@ -160,14 +160,18 @@ const Plans = () => {
             >
               {isAnnual ? info.price?.regular : info.price?.annual}
             </div>
-            <div className="text-gray-700 text-2xs">
-              {isAnnual ? 'per month' : 'per year'}
-            </div>
+            <div className="text-gray-700 text-2xs">{isAnnual ? 'per month' : 'per year'}</div>
           </div>
         )}
       </div>
       <div>
-        <button className={info.free ? 'btn btn-light btn-sm flex justify-center w-full' : 'btn btn-primary btn-sm text-center flex justify-center w-full'}>
+        <button
+          className={
+            info.free
+              ? 'btn btn-light btn-sm flex justify-center w-full'
+              : 'btn btn-primary btn-sm text-center flex justify-center w-full'
+          }
+        >
           {info.free ? 'Switch to Team' : 'Upgrade'}
         </button>
       </div>
@@ -184,15 +188,9 @@ const Plans = () => {
   const renderItem = (feature: IPlansItem, index: number) => {
     return (
       <tr key={index}>
-        <td className="table-border-l !px-5 !py-3.5">
-          {feature.title}
-        </td>
-        <td className="table-border-l !px-5 !py-3.5">
-          {renderFeatureDetail(feature.plans.basic)}
-        </td>
-        <td className="table-border-l !px-5 !py-3.5">
-          {renderFeatureDetail(feature.plans.pro)}
-        </td>
+        <td className="table-border-l !px-5 !py-3.5">{feature.title}</td>
+        <td className="table-border-l !px-5 !py-3.5">{renderFeatureDetail(feature.plans.basic)}</td>
+        <td className="table-border-l !px-5 !py-3.5">{renderFeatureDetail(feature.plans.pro)}</td>
         <td className="table-border-l !px-5 !py-3.5">
           {renderFeatureDetail(feature.plans.premium)}
         </td>
@@ -217,9 +215,7 @@ const Plans = () => {
                   onChange={handleToggleBilling}
                 />
                 <div className="switch-label order-2">
-                  <span className="text-gray-800 text-2sm font-semibold">
-                    Annual Billing
-                  </span>
+                  <span className="text-gray-800 text-2sm font-semibold">Annual Billing</span>
                 </div>
               </label>
             </td>

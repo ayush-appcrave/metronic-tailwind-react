@@ -34,5 +34,4 @@ export interface ISettingsEnterpriseConnection {
   connections: number | 'none';
   jointLinks: number | 'none';
 }
-export interface ISettingsEnterpriseConnections
-  extends Array<ISettingsEnterpriseConnection> {}
+export interface ISettingsEnterpriseConnections extends Array<ISettingsEnterpriseConnection> {}

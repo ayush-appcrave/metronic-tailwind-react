@@ -19,7 +19,7 @@ const DropdownNotificationsItem4 = () => {
             <Link to="#" className="hover:text-primary-active text-gray-900 font-semibold me-1">
               Jane Perez
             </Link>
-            <span className="text-gray-700">invites you to review a file.</span> 
+            <span className="text-gray-700">invites you to review a file.</span>
           </div>
           <span className="flex items-center text-2xs font-medium text-gray-500">
             3 hours ago
@@ -28,12 +28,8 @@ const DropdownNotificationsItem4 = () => {
           </span>
         </div>
 
-        <div className="card shadow-none flex items-center flex-row gap-1.5 p-2.5 rounded-lg bg-light-active"> 
-          <img
-            src={toAbsoluteUrl('/media/file-types/pdf.svg')}
-            className="h-5"
-            alt=""
-          />
+        <div className="card shadow-none flex items-center flex-row gap-1.5 p-2.5 rounded-lg bg-light-active">
+          <img src={toAbsoluteUrl('/media/file-types/pdf.svg')} className="h-5" alt="" />
           <Link to="#" className="hover:text-primary-active font-medium text-gray-700 text-xs me-1">
             Launch_nov24.pptx
           </Link>

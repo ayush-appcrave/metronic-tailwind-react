@@ -6,7 +6,7 @@ const SecurityGetStartedContent = () => {
     {
       icon: 'subtitle',
       title: 'Overview',
-      desc: "A Broad Perspective on Our Comprehensive Security Features and Policies.",
+      desc: 'A Broad Perspective on Our Comprehensive Security Features and Policies.',
       path: '/account/security/overview'
     },
     {
@@ -47,9 +47,7 @@ const SecurityGetStartedContent = () => {
     }
   ];
 
-  return (
-    <GetStartedOptions items={items} dropdown={true} />
-  );
+  return <GetStartedOptions items={items} dropdown={true} />;
 };
 
 export { SecurityGetStartedContent };

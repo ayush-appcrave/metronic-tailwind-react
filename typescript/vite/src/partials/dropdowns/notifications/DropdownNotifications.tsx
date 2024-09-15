@@ -1,12 +1,6 @@
-
 import { KeenIcon } from '@/components';
-import {
-  Menu,
-  MenuItem,
-  MenuSub,
-  MenuToggle
-} from '@/components/menu';
-import { Tab, TabPanel, Tabs, TabsList  } from '@/components/tabs';
+import { Menu, MenuItem, MenuSub, MenuToggle } from '@/components/menu';
+import { Tab, TabPanel, Tabs, TabsList } from '@/components/tabs';
 import { DropdownCrud2 } from '@/partials/dropdowns/general';
 import { DropdownNotificationsAll } from './DropdownNotificationsAll';
 import { DropdownNotificationsInbox } from './DropdownNotificationsInbox';
@@ -15,26 +9,25 @@ import { DropdownNotificationsFollowing } from './DropdownNotificationsFollowing
 
 interface IDropdownNotificationProps {
   menuTtemRef: any;
-};
+}
 
-const DropdownNotifications = ({menuTtemRef}: IDropdownNotificationProps) => {    
+const DropdownNotifications = ({ menuTtemRef }: IDropdownNotificationProps) => {
   const handleClose = () => {
     if (menuTtemRef.current) {
       menuTtemRef.current.hide(); // Call the closeMenu method to hide the submenu
     }
   };
-  
+
   const buildHeader = () => {
     return (
       <div className="flex items-center justify-between gap-2.5 text-sm text-gray-900 font-semibold px-5 py-2.5 border-b border-b-gray-200">
         Notifications
-
         <button className="btn btn-sm btn-icon btn-light btn-clear shrink-0" onClick={handleClose}>
-          <KeenIcon icon="cross"/>
+          <KeenIcon icon="cross" />
         </button>
       </div>
-    )
-  }
+    );
+  };
 
   const buildTabs = () => {
     return (
@@ -50,11 +43,11 @@ const DropdownNotifications = ({menuTtemRef}: IDropdownNotificationProps) => {
             <Tab value={4}>Following</Tab>
           </div>
           <Menu className="items-stretch">
-            <MenuItem 
+            <MenuItem
               toggle="dropdown"
               trigger="click"
               dropdownProps={{
-                placement: "bottom-end",
+                placement: 'bottom-end',
                 modifiers: [
                   {
                     name: 'offset',
@@ -66,32 +59,32 @@ const DropdownNotifications = ({menuTtemRef}: IDropdownNotificationProps) => {
               }}
             >
               <MenuToggle className="btn btn-sm btn-icon btn-light btn-clear">
-                <KeenIcon icon="setting-2"/>
+                <KeenIcon icon="setting-2" />
               </MenuToggle>
               {DropdownCrud2()}
             </MenuItem>
           </Menu>
         </TabsList>
         <TabPanel value={1}>
-          <DropdownNotificationsAll/>
+          <DropdownNotificationsAll />
         </TabPanel>
         <TabPanel value={2}>
-          <DropdownNotificationsInbox/>
+          <DropdownNotificationsInbox />
         </TabPanel>
         <TabPanel value={3}>
-          <DropdownNotificationsTeam/>
+          <DropdownNotificationsTeam />
         </TabPanel>
         <TabPanel value={4}>
-          <DropdownNotificationsFollowing/>
+          <DropdownNotificationsFollowing />
         </TabPanel>
       </Tabs>
-    )
-  }
+    );
+  };
 
   return (
     <MenuSub rootClassName="w-full max-w-[460px]" className="light:border-gray-300">
-      {buildHeader()}   
-      {buildTabs()}   
+      {buildHeader()}
+      {buildTabs()}
     </MenuSub>
   );
 };

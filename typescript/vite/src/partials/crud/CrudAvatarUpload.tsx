@@ -5,11 +5,12 @@ import { IAvatarUploadProps } from './types';
 const CrudAvatarUpload = ({ image }: IAvatarUploadProps) => {
   return (
     <div className="image-input size-16" data-image-input="true">
-      <input type="file" name="avatar" accept=".png, .jpg, .jpeg"/>
-      <input type="hidden" name="avatar_remove"/>
+      <input type="file" name="avatar" accept=".png, .jpg, .jpeg" />
+      <input type="hidden" name="avatar_remove" />
 
       <div
-        data-image-input-remove data-tooltip="#image_input_tooltip"
+        data-image-input-remove
+        data-tooltip="#image_input_tooltip"
         data-tooltip-trigger="hover"
         className="btn btn-icon btn-icon-xs btn-light shadow-default absolute z-1 size-5 -top-0.5 -right-0.5 rounded-full"
       >

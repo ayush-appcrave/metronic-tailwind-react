@@ -12,10 +12,8 @@ const SettingsEnterpriseAccount = ({ title }: ISettingsEnterpriseAccountProps) =
 
         <div className="flex items-center gap-2">
           <label className="switch switch-sm">
-            <span className="switch-label">
-              Public Profile
-            </span>
-            <input type="checkbox" value="1" name="check" defaultChecked readOnly />    
+            <span className="switch-label">Public Profile</span>
+            <input type="checkbox" value="1" name="check" defaultChecked readOnly />
           </label>
         </div>
       </div>
@@ -132,7 +130,9 @@ const SettingsEnterpriseAccount = ({ title }: ISettingsEnterpriseAccountProps) =
               <td>Team Account</td>
               <td className="text-gray-600 text-2sm">To be set</td>
               <td className="text-right">
-                <a href="#" className="btn btn-link btn-sm">Setup</a>
+                <a href="#" className="btn btn-link btn-sm">
+                  Setup
+                </a>
               </td>
             </tr>
 
@@ -201,8 +201,11 @@ const SettingsEnterpriseAccount = ({ title }: ISettingsEnterpriseAccountProps) =
               <td>Referral Link</td>
               <td className="text-gray-600 text-2sm">
                 <div className="flex items-center gap-1">
-                  <a href="#" className="text-gray-700 font-medium text-2sm hover:text-primary-active">
-                    https://studio.co/W3gvQOI35dt 
+                  <a
+                    href="#"
+                    className="text-gray-700 font-medium text-2sm hover:text-primary-active"
+                  >
+                    https://studio.co/W3gvQOI35dt
                   </a>
                   <button className="btn btn-xs btn-icon btn-clear btn-light">
                     <KeenIcon icon="copy" />
@@ -210,7 +213,9 @@ const SettingsEnterpriseAccount = ({ title }: ISettingsEnterpriseAccountProps) =
                 </div>
               </td>
               <td className="text-right">
-                <a href="#" className="btn btn-link btn-sm">Re-create</a>
+                <a href="#" className="btn btn-link btn-sm">
+                  Re-create
+                </a>
               </td>
             </tr>
           </tbody>

@@ -66,7 +66,12 @@ const SettingsSidebarAuthSocialSignIn = () => {
         </div>
 
         <div className="flex items-center gap-2 lg:gap-6">
-          <input type="checkbox" defaultChecked={item.checkbox} value={item.checkbox ? '1' : '2'} readOnly />
+          <input
+            type="checkbox"
+            defaultChecked={item.checkbox}
+            value={item.checkbox ? '1' : '2'}
+            readOnly
+          />
 
           <div className="btn btn-sm btn-icon btn-icon-lg text-gray-500 hover:text-primary-active">
             <KeenIcon icon="trash" />

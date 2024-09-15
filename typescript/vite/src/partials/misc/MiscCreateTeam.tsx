@@ -6,9 +6,7 @@ const MiscCreateTeam = ({ className, image, title, subTitle, engage }: ICreateTe
   return (
     <div className={clsx(className && className)}>
       <div className="card-body flex flex-col place-content-center gap-5">
-        <div className="flex justify-center">
-          {image}
-        </div>
+        <div className="flex justify-center">{image}</div>
 
         <div className="flex flex-col gap-4">
           <div className="flex flex-col gap-3 text-center">
@@ -17,10 +15,7 @@ const MiscCreateTeam = ({ className, image, title, subTitle, engage }: ICreateTe
           </div>
 
           <div className="flex justify-center">
-            <Link 
-              to={`${engage.path}`} 
-              className={`btn ${engage.btnColor}`}
-            >
+            <Link to={`${engage.path}`} className={`btn ${engage.btnColor}`}>
               {engage.label}
             </Link>
           </div>

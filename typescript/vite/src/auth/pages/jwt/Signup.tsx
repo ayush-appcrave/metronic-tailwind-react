@@ -52,13 +52,7 @@ const Signup = () => {
           throw new Error('JWTProvider is required for this form.');
         }
 
-        await register(
-          values.email,
-          values.password,
-          undefined,
-          undefined,
-          values.changepassword
-        );
+        await register(values.email, values.password, undefined, undefined, values.changepassword);
         navigate(from, { replace: true });
       } catch (error) {
         console.error(error);
@@ -69,12 +63,12 @@ const Signup = () => {
     }
   });
 
-  const togglePassword = (event: { preventDefault: () => void; }) => {
+  const togglePassword = (event: { preventDefault: () => void }) => {
     event.preventDefault();
     setShowPassword(!showPassword);
   };
 
-  const toggleConfirmPassword = (event: { preventDefault: () => void; }) => {
+  const toggleConfirmPassword = (event: { preventDefault: () => void }) => {
     event.preventDefault();
     setShowConfirmPassword(!showConfirmPassword);
   };
@@ -90,19 +84,30 @@ const Signup = () => {
           <h3 className="text-lg font-semibold text-gray-900 leading-none mb-2.5">Sign up</h3>
           <div className="flex items-center justify-center font-medium">
             <span className="text-2sm text-gray-600 me-1.5">Already have an Account ?</span>
-            <Link to="/auth/login" className="text-2sm link">Sign In</Link>
+            <Link to="/auth/login" className="text-2sm link">
+              Sign In
+            </Link>
           </div>
         </div>
 
         <div className="grid grid-cols-2 gap-2.5">
           <a href="#" className="btn btn-light btn-sm justify-center">
-            <img src={toAbsoluteUrl('/media/brand-logos/google.svg')} className="size-3.5 shrink-0" />
+            <img
+              src={toAbsoluteUrl('/media/brand-logos/google.svg')}
+              className="size-3.5 shrink-0"
+            />
             Use Google
           </a>
 
           <a href="#" className="btn btn-light btn-sm justify-center">
-            <img src={toAbsoluteUrl('/media/brand-logos/apple-black.svg')} className="size-3.5 shrink-0 dark:hidden" />
-            <img src={toAbsoluteUrl('/media/brand-logos/apple-white.svg')} className="size-3.5 shrink-0 light:hidden" />
+            <img
+              src={toAbsoluteUrl('/media/brand-logos/apple-black.svg')}
+              className="size-3.5 shrink-0 dark:hidden"
+            />
+            <img
+              src={toAbsoluteUrl('/media/brand-logos/apple-white.svg')}
+              className="size-3.5 shrink-0 light:hidden"
+            />
             Use Apple
           </a>
         </div>
@@ -131,7 +136,9 @@ const Signup = () => {
             />
           </label>
           {formik.touched.email && formik.errors.email && (
-            <span role="alert" className="text-red-500 text-xs mt-1">{formik.errors.email}</span>
+            <span role="alert" className="text-red-500 text-xs mt-1">
+              {formik.errors.email}
+            </span>
           )}
         </div>
 
@@ -154,15 +161,20 @@ const Signup = () => {
               )}
             />
             <button className="btn btn-icon" onClick={togglePassword}>
-              <KeenIcon icon="eye" className={clsx('text-gray-500', { 'hidden': showPassword })} />
-              <KeenIcon icon="eye-slash" className={clsx('text-gray-500', { 'hidden': !showPassword })} />
+              <KeenIcon icon="eye" className={clsx('text-gray-500', { hidden: showPassword })} />
+              <KeenIcon
+                icon="eye-slash"
+                className={clsx('text-gray-500', { hidden: !showPassword })}
+              />
             </button>
           </label>
           {formik.touched.password && formik.errors.password && (
-            <span role="alert" className="text-red-500 text-xs mt-1">{formik.errors.password}</span>
+            <span role="alert" className="text-red-500 text-xs mt-1">
+              {formik.errors.password}
+            </span>
           )}
         </div>
-        
+
         <div className="flex flex-col gap-1">
           <label className="form-label text-gray-900">Confirm Password</label>
           <label className="input">
@@ -182,12 +194,20 @@ const Signup = () => {
               )}
             />
             <button className="btn btn-icon" onClick={toggleConfirmPassword}>
-              <KeenIcon icon="eye" className={clsx('text-gray-500', { 'hidden': showConfirmPassword })} />
-              <KeenIcon icon="eye-slash" className={clsx('text-gray-500', { 'hidden': !showConfirmPassword })} />
+              <KeenIcon
+                icon="eye"
+                className={clsx('text-gray-500', { hidden: showConfirmPassword })}
+              />
+              <KeenIcon
+                icon="eye-slash"
+                className={clsx('text-gray-500', { hidden: !showConfirmPassword })}
+              />
             </button>
           </label>
           {formik.touched.changepassword && formik.errors.changepassword && (
-            <span role="alert" className="text-red-500 text-xs mt-1">{formik.errors.changepassword}</span>
+            <span role="alert" className="text-red-500 text-xs mt-1">
+              {formik.errors.changepassword}
+            </span>
           )}
         </div>
 
@@ -199,11 +219,15 @@ const Signup = () => {
           />
           <span className="checkbox-label">
             I accept{' '}
-            <Link to="https://keenthemes.com/metronic/?page=faq" className="text-2sm link">Terms & Conditions</Link>
+            <Link to="https://keenthemes.com/metronic/?page=faq" className="text-2sm link">
+              Terms & Conditions
+            </Link>
           </span>
         </label>
         {formik.touched.acceptTerms && formik.errors.acceptTerms && (
-          <span role="alert" className="text-red-500 text-xs mt-1">{formik.errors.acceptTerms}</span>
+          <span role="alert" className="text-red-500 text-xs mt-1">
+            {formik.errors.acceptTerms}
+          </span>
         )}
 
         <button

@@ -44,7 +44,14 @@ const SettingsSidebarAdvancedSettingsPreferences = () => {
           </span>
           <div className="flex items-center grow min-w-48 gap-5">
             <label className="flex items-center gap-1.5">
-              <input type="radio" className="radio" name="radio" defaultChecked value="1" readOnly />
+              <input
+                type="radio"
+                className="radio"
+                name="radio"
+                defaultChecked
+                value="1"
+                readOnly
+              />
               <span className="switch-label">Modal</span>
             </label>
             <label className="flex items-center gap-1.5">

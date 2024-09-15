@@ -22,7 +22,7 @@ const MegaMenu = () => {
 
     // Cleanup the timer when the component unmounts
     return () => clearTimeout(timer);
-  }, []);  
+  }, []);
 
   const renderContent = () => {
     return (

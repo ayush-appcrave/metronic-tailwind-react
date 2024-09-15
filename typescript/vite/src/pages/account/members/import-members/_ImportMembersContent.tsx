@@ -1,29 +1,28 @@
-import {
-  MiscEngage,
-  MiscFaq, MiscHighlightedPosts,
-  IHighlightedPostsItems
-} from "@/partials/misc";
-import { toAbsoluteUrl } from "@/utils";
-import { Import } from ".";
+import { MiscEngage, MiscFaq, MiscHighlightedPosts, IHighlightedPostsItems } from '@/partials/misc';
+import { toAbsoluteUrl } from '@/utils';
+import { Import } from '.';
 
 const ImportMembersContent = () => {
   const posts: IHighlightedPostsItems = [
     {
       icon: 'people',
       title: 'Streamlining Member Integration: Import Tools and Resources',
-      summary: 'Dive into seamless member onboarding with our robust import tools. Leverage detailed walkthroughs, practical resources, and support to simplify the process.',
+      summary:
+        'Dive into seamless member onboarding with our robust import tools. Leverage detailed walkthroughs, practical resources, and support to simplify the process.',
       path: '#'
     },
     {
       icon: 'exit-up',
       title: 'Simplifying Roster Management: Bulk Upload Features',
-      summary: 'Manage your community efficiently with our bulk member import feature. Find step-by-step instructions, helpful tips, and best practices for a smooth update.',
+      summary:
+        'Manage your community efficiently with our bulk member import feature. Find step-by-step instructions, helpful tips, and best practices for a smooth update.',
       path: '#'
     },
     {
       icon: 'mouse-circle',
       title: 'Effortless Member Enrollment: Importation and Setup',
-      summary: 'Initiate a hassle-free member import with our guided tools. Access comprehensive tutorials, insightful advice, and technical documentation for effortless setup.',
+      summary:
+        'Initiate a hassle-free member import with our guided tools. Access comprehensive tutorials, insightful advice, and technical documentation for effortless setup.',
       path: '#'
     }
   ];
@@ -36,8 +35,8 @@ const ImportMembersContent = () => {
           <MiscFaq />
 
           <MiscEngage
-            title='Contact Support'
-            description='Need assistance? Contact our support team for prompt, personalized help your queries & concerns.'
+            title="Contact Support"
+            description="Need assistance? Contact our support team for prompt, personalized help your queries & concerns."
             image={
               <>
                 <img

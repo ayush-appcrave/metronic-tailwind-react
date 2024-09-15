@@ -1,9 +1,7 @@
-import { Roles } from ".";
+import { Roles } from '.';
 
 const RolesContent = () => {
-  return (
-    <Roles />
-  );
+  return <Roles />;
 };
 
 export { RolesContent };

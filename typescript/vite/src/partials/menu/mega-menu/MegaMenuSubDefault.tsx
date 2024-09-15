@@ -17,9 +17,7 @@ const MegaMenuSubDefault = (items: MenuConfigType) => {
         return (
           <div key={index}>
             <MenuItem className="pt-1">
-              <span className="text-gray-600 font-medium text-2sm p-2.5">
-                { item.title }
-              </span>
+              <span className="text-gray-600 font-medium text-2sm p-2.5">{item.title}</span>
             </MenuItem>
             {buildItems(item.children)}
           </div>
@@ -28,15 +26,25 @@ const MegaMenuSubDefault = (items: MenuConfigType) => {
         return (
           <MenuItem key={index}>
             <MenuLink path={item.path}>
-              {item.icon && <MenuIcon><KeenIcon icon={item.icon}/></MenuIcon>}
+              {item.icon && (
+                <MenuIcon>
+                  <KeenIcon icon={item.icon} />
+                </MenuIcon>
+              )}
 
-              <MenuTitle className={clsx('grow-0')}>
-                {item.title}
-              </MenuTitle>
+              <MenuTitle className={clsx('grow-0')}>{item.title}</MenuTitle>
 
-              {item.disabled && <MenuBadge><span className="badge badge-xs">Soon</span></MenuBadge>}
+              {item.disabled && (
+                <MenuBadge>
+                  <span className="badge badge-xs">Soon</span>
+                </MenuBadge>
+              )}
 
-              {item.badge && <MenuBadge><span className="badge badge-primary badge-outline badge-xs">{item.badge}</span></MenuBadge>}
+              {item.badge && (
+                <MenuBadge>
+                  <span className="badge badge-primary badge-outline badge-xs">{item.badge}</span>
+                </MenuBadge>
+              )}
             </MenuLink>
           </MenuItem>
         );

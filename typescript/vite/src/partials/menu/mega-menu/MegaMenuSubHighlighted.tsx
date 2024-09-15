@@ -14,23 +14,36 @@ const MegaMenuSubHighlighted = (items: MenuConfigType) => {
   const buildItems = (items: MenuConfigType): ReactNode => {
     return items.map((item, index) => {
       return (
-        <MenuItem key={index} >
-          <MenuLink path={item.path} className="
+        <MenuItem key={index}>
+          <MenuLink
+            path={item.path}
+            className="
             menu-link border border-transparent 
             menu-link-hover:!bg-light menu-link-hover:border-gray-200 
             menu-item-active:!bg-light menu-item-active:border-gray-200 
             dark:menu-link-hover:!bg-coal-600 dark:menu-link-hover:border-gray-100 
             dark:menu-item-active:!bg-coal-600 dark:menu-item-active:border-gray-100
-          ">
-            {item.icon && <MenuIcon><KeenIcon icon={item.icon}/></MenuIcon>}
+          "
+          >
+            {item.icon && (
+              <MenuIcon>
+                <KeenIcon icon={item.icon} />
+              </MenuIcon>
+            )}
 
-            <MenuTitle className={clsx('grow-0')}>
-              {item.title}
-            </MenuTitle>
+            <MenuTitle className={clsx('grow-0')}>{item.title}</MenuTitle>
 
-            {item.disabled && <MenuBadge><span className="badge badge-xs">Soon</span></MenuBadge>}
+            {item.disabled && (
+              <MenuBadge>
+                <span className="badge badge-xs">Soon</span>
+              </MenuBadge>
+            )}
 
-            {item.badge && <MenuBadge><span className="badge badge-primary badge-outline badge-xs">{item.badge}</span></MenuBadge>}
+            {item.badge && (
+              <MenuBadge>
+                <span className="badge badge-primary badge-outline badge-xs">{item.badge}</span>
+              </MenuBadge>
+            )}
           </MenuLink>
         </MenuItem>
       );

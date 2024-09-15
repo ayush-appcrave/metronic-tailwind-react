@@ -137,7 +137,7 @@ export interface IProjectProps {
     value: number;
   };
   team: {
-    size?: string,
+    size?: string;
     group: Array<{ filename?: string; variant?: string; fallback?: string }>;
     more?: {
       variant?: string;

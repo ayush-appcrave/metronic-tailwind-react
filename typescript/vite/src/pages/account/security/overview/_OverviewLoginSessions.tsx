@@ -6,36 +6,36 @@ import { CommonAvatar } from '@/partials/common';
 const OverviewLoginSessions = () => {
   const rows: IOverviewLoginSessionsItems = [
     {
-      avatar: '300-3.png', 
-      name: 'Tyler Hero', 
+      avatar: '300-3.png',
+      name: 'Tyler Hero',
       connections: 26,
       location: 'New Zealand',
       recent: 'Current session'
     },
     {
-      avatar: '300-1.png', 
-      name: 'Esther Howard', 
+      avatar: '300-1.png',
+      name: 'Esther Howard',
       connections: 639,
       location: 'Canada',
-      recent: 'Week ago', 
+      recent: 'Week ago'
     },
     {
-      avatar: '300-11.png', 
-      name: 'Jacob Jones',  
+      avatar: '300-11.png',
+      name: 'Jacob Jones',
       connections: 125,
       location: 'Malaysia',
       recent: 'Today, 9:53 am'
     },
     {
-      avatar: '300-2.png', 
-      name: 'Cody Fisher', 
+      avatar: '300-2.png',
+      name: 'Cody Fisher',
       connections: 81,
       location: 'Turkey',
       recent: 'Current session'
     },
     {
-      avatar: '300-5.png', 
-      name: 'Leslie Alexander', 
+      avatar: '300-5.png',
+      name: 'Leslie Alexander',
       connections: 1203,
       location: 'United States',
       recent: 'Month ago'
@@ -47,37 +47,30 @@ const OverviewLoginSessions = () => {
       <tr key={index}>
         <td>
           <div className="flex items-center grow gap-2.5">
-            <CommonAvatar
-              image={row.avatar}
-              imageClass='rounded-full size-9 shrink-0'
-            />
-    
+            <CommonAvatar image={row.avatar} imageClass="rounded-full size-9 shrink-0" />
+
             <div className="flex flex-col gap-0.5">
-                <a href="#" className="text-sm font-medium text-gray-900 hover:text-primary-actives">
-                  {row.name}
-                </a>
-                <span className="text-xs font-normal text-gray-700">
-                  {row.connections} connections
-                </span>
+              <a href="#" className="text-sm font-medium text-gray-900 hover:text-primary-actives">
+                {row.name}
+              </a>
+              <span className="text-xs font-normal text-gray-700">
+                {row.connections} connections
+              </span>
             </div>
-          </div> 
+          </div>
         </td>
 
-        <td className="text-right text-gray-700 font-normal">
-          {row.location} 
-        </td>
+        <td className="text-right text-gray-700 font-normal">{row.location}</td>
 
-        <td className="text-right text-gray-700 font-normal">
-          {row.recent} 
-        </td>
+        <td className="text-right text-gray-700 font-normal">{row.recent}</td>
 
         <td className="!pr-7.5">
           <Menu className="items-stretch">
-            <MenuItem 
+            <MenuItem
               toggle="dropdown"
               trigger="click"
               dropdownProps={{
-                placement: "bottom-end",
+                placement: 'bottom-end',
                 modifiers: [
                   {
                     name: 'offset',
@@ -89,7 +82,7 @@ const OverviewLoginSessions = () => {
               }}
             >
               <MenuToggle className="btn btn-sm btn-icon btn-light btn-clear mb-2.5-">
-                <KeenIcon icon="dots-vertical"/>
+                <KeenIcon icon="dots-vertical" />
               </MenuToggle>
               {DropdownCardItem1()}
             </MenuItem>
@@ -105,11 +98,11 @@ const OverviewLoginSessions = () => {
         <h3 className="card-title">Login Sessions</h3>
 
         <Menu className="items-stretch">
-          <MenuItem 
+          <MenuItem
             toggle="dropdown"
             trigger="click"
             dropdownProps={{
-              placement: "bottom-end",
+              placement: 'bottom-end',
               modifiers: [
                 {
                   name: 'offset',
@@ -121,7 +114,7 @@ const OverviewLoginSessions = () => {
             }}
           >
             <MenuToggle className="btn btn-sm btn-icon btn-light btn-clear mb-2.5-">
-              <KeenIcon icon="dots-vertical"/>
+              <KeenIcon icon="dots-vertical" />
             </MenuToggle>
             {DropdownCrud1()}
           </MenuItem>
@@ -140,9 +133,9 @@ const OverviewLoginSessions = () => {
               </tr>
             </thead>
             <tbody>
-            {rows.map((row, index) => {
-              return renderItem(row, index);
-            })}
+              {rows.map((row, index) => {
+                return renderItem(row, index);
+              })}
             </tbody>
           </table>
         </div>

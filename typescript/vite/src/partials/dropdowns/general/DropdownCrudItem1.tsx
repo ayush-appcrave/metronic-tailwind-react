@@ -14,7 +14,7 @@ const DropdownCrudItem1 = () => {
       <MenuItem path="#">
         <MenuLink>
           <MenuIcon>
-            <KeenIcon icon="search-list"/>
+            <KeenIcon icon="search-list" />
           </MenuIcon>
           <MenuTitle>View</MenuTitle>
         </MenuLink>
@@ -22,16 +22,16 @@ const DropdownCrudItem1 = () => {
       <MenuItem path="#">
         <MenuLink>
           <MenuIcon>
-            <KeenIcon icon="file-up"/>
+            <KeenIcon icon="file-up" />
           </MenuIcon>
           <MenuTitle>Export</MenuTitle>
         </MenuLink>
       </MenuItem>
-      <MenuSeparator/>
+      <MenuSeparator />
       <MenuItem path="#">
         <MenuLink>
           <MenuIcon>
-            <KeenIcon icon="pencil"/>
+            <KeenIcon icon="pencil" />
           </MenuIcon>
           <MenuTitle>Edit</MenuTitle>
         </MenuLink>
@@ -39,16 +39,16 @@ const DropdownCrudItem1 = () => {
       <MenuItem path="#">
         <MenuLink>
           <MenuIcon>
-            <KeenIcon icon="copy"/>
+            <KeenIcon icon="copy" />
           </MenuIcon>
           <MenuTitle>Make a copy</MenuTitle>
         </MenuLink>
       </MenuItem>
-      <MenuSeparator/>
+      <MenuSeparator />
       <MenuItem path="#">
         <MenuLink>
           <MenuIcon>
-            <KeenIcon icon="trash"/>
+            <KeenIcon icon="trash" />
           </MenuIcon>
           <MenuTitle>Remove</MenuTitle>
         </MenuLink>

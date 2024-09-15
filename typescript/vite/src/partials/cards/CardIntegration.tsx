@@ -22,7 +22,10 @@ const CardIntegration = ({ logo, path, name, description, actions }: IIntegratio
         </div>
 
         <div className="flex flex-col gap-1 lg:gap-2.5">
-          <Link to={`${path}`} className="text-base font-semibold text-gray-900 hover:text-primary-active">
+          <Link
+            to={`${path}`}
+            className="text-base font-semibold text-gray-900 hover:text-primary-active"
+          >
             {name}
           </Link>
           <span className="text-2sm font-medium text-gray-600">{description}</span>
@@ -34,9 +37,7 @@ const CardIntegration = ({ logo, path, name, description, actions }: IIntegratio
           <KeenIcon icon="mouse-square" />
           Connect
         </a>
-        <div className="flex items-center gap-2.5">
-          {actions}
-        </div>
+        <div className="flex items-center gap-2.5">{actions}</div>
       </div>
     </div>
   );

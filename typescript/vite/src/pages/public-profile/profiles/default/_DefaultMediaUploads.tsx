@@ -8,13 +8,28 @@ import { DropdownCard2 } from '@/partials/dropdowns/general';
 
 const DefaultMediaUploads = () => {
   const data: number[] = [85, 65, 50, 70, 40, 45, 100, 55, 85, 60, 70, 90];
-  const categories: string[] = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+  const categories: string[] = [
+    'Jan',
+    'Feb',
+    'Mar',
+    'Apr',
+    'May',
+    'Jun',
+    'Jul',
+    'Aug',
+    'Sep',
+    'Oct',
+    'Nov',
+    'Dec'
+  ];
 
   const options: IApexMediaUploadsOptions = {
-    series: [{
-      name: 'series1',
-      data: data
-    }],
+    series: [
+      {
+        name: 'series1',
+        data: data
+      }
+    ],
     chart: {
       height: 250,
       type: 'area',
@@ -89,7 +104,7 @@ const DefaultMediaUploads = () => {
 
         const formatter = new Intl.NumberFormat('en-US', {
           style: 'currency',
-          currency: 'USD',
+          currency: 'USD'
         });
 
         const formattedNumber = formatter.format(number);
@@ -152,11 +167,11 @@ const DefaultMediaUploads = () => {
           <h3 className="card-title">Media Uploads</h3>
 
           <Menu className="items-stretch">
-            <MenuItem 
+            <MenuItem
               toggle="dropdown"
               trigger="click"
               dropdownProps={{
-                placement: "bottom-end",
+                placement: 'bottom-end',
                 modifiers: [
                   {
                     name: 'offset',
@@ -168,7 +183,7 @@ const DefaultMediaUploads = () => {
               }}
             >
               <MenuToggle className="btn btn-sm btn-icon btn-light btn-clear mb-2.5-">
-                <KeenIcon icon="dots-vertical"/>
+                <KeenIcon icon="dots-vertical" />
               </MenuToggle>
               {DropdownCard2()}
             </MenuItem>

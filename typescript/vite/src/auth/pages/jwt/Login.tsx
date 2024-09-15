@@ -18,13 +18,13 @@ const loginSchema = Yup.object().shape({
     .min(3, 'Minimum 3 symbols')
     .max(50, 'Maximum 50 symbols')
     .required('Password is required'),
-  rememberMe: Yup.boolean(),
+  rememberMe: Yup.boolean()
 });
 
 const initialValues = {
   email: '',
   password: '',
-  rememberMe: false,
+  rememberMe: false
 };
 
 const Login = () => {
@@ -78,19 +78,30 @@ const Login = () => {
           <h3 className="text-lg font-semibold text-gray-900 leading-none mb-2.5">Sign in</h3>
           <div className="flex items-center justify-center font-medium">
             <span className="text-2sm text-gray-600 me-1.5">Need an account?</span>
-            <Link to="/auth/registration" className="text-2sm link">Sign up</Link>
+            <Link to="/auth/registration" className="text-2sm link">
+              Sign up
+            </Link>
           </div>
         </div>
-        
+
         <div className="grid grid-cols-2 gap-2.5">
           <a href="#" className="btn btn-light btn-sm justify-center">
-            <img src={toAbsoluteUrl('/media/brand-logos/google.svg')} className="size-3.5 shrink-0" />
+            <img
+              src={toAbsoluteUrl('/media/brand-logos/google.svg')}
+              className="size-3.5 shrink-0"
+            />
             Use Google
           </a>
 
           <a href="#" className="btn btn-light btn-sm justify-center">
-            <img src={toAbsoluteUrl('/media/brand-logos/apple-black.svg')} className="size-3.5 shrink-0 dark:hidden" />
-            <img src={toAbsoluteUrl('/media/brand-logos/apple-white.svg')} className="size-3.5 shrink-0 light:hidden" />
+            <img
+              src={toAbsoluteUrl('/media/brand-logos/apple-black.svg')}
+              className="size-3.5 shrink-0 dark:hidden"
+            />
+            <img
+              src={toAbsoluteUrl('/media/brand-logos/apple-white.svg')}
+              className="size-3.5 shrink-0 light:hidden"
+            />
             Use Apple
           </a>
         </div>
@@ -120,14 +131,18 @@ const Login = () => {
             />
           </label>
           {formik.touched.email && formik.errors.email && (
-            <span role="alert" className="text-red-500 text-xs mt-1">{formik.errors.email}</span>
+            <span role="alert" className="text-red-500 text-xs mt-1">
+              {formik.errors.email}
+            </span>
           )}
         </div>
 
         <div className="flex flex-col gap-1">
           <div className="flex items-center justify-between gap-1">
             <label className="form-label text-gray-900">Password</label>
-            <Link to="/auth/forgot-password" className="text-2sm link shrink-0">Forgot Password?</Link>
+            <Link to="/auth/forgot-password" className="text-2sm link shrink-0">
+              Forgot Password?
+            </Link>
           </div>
           <label className="input">
             <input
@@ -146,12 +161,17 @@ const Login = () => {
               )}
             />
             <button className="btn btn-icon" onClick={togglePassword}>
-              <KeenIcon icon="eye" className={clsx('text-gray-500', { 'hidden': showPassword })} />
-              <KeenIcon icon="eye-slash" className={clsx('text-gray-500', { 'hidden': !showPassword })} />
+              <KeenIcon icon="eye" className={clsx('text-gray-500', { hidden: showPassword })} />
+              <KeenIcon
+                icon="eye-slash"
+                className={clsx('text-gray-500', { hidden: !showPassword })}
+              />
             </button>
           </label>
           {formik.touched.password && formik.errors.password && (
-            <span role="alert" className="text-red-500 text-xs mt-1">{formik.errors.password}</span>
+            <span role="alert" className="text-red-500 text-xs mt-1">
+              {formik.errors.password}
+            </span>
           )}
         </div>
 

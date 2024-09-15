@@ -1,9 +1,6 @@
 import { toAbsoluteUrl } from '@/utils/Assets';
 
-import {
-  IDefaultWorkExperienceItem,
-  IDefaultWorkExperienceItems,
-} from './types';
+import { IDefaultWorkExperienceItem, IDefaultWorkExperienceItems } from './types';
 import { Link } from 'react-router-dom';
 
 const DefaultWorkExperience = () => {
@@ -37,11 +34,7 @@ const DefaultWorkExperience = () => {
         ) : (
           <div className="flex align-start gap-3.5">
             {item.image && (
-              <img
-                src={toAbsoluteUrl(`/media/brand-logos/${item.image}`)}
-                className="h-9"
-                alt=""
-              />
+              <img src={toAbsoluteUrl(`/media/brand-logos/${item.image}`)} className="h-9" alt="" />
             )}
 
             <div className="flex flex-col gap-1">
@@ -79,7 +72,9 @@ const DefaultWorkExperience = () => {
       </div>
 
       <div className="card-footer justify-center">
-        <Link to="/public-profile/works" className="btn btn-link">Open to Work</Link>
+        <Link to="/public-profile/works" className="btn btn-link">
+          Open to Work
+        </Link>
       </div>
     </div>
   );

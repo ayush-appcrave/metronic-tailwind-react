@@ -1,4 +1,4 @@
-import { MiscFaq, MiscHelp } from "@/partials/misc";
+import { MiscFaq, MiscHelp } from '@/partials/misc';
 
 const AllowedIPAddressesContent = () => {
   return (

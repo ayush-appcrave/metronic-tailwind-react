@@ -12,16 +12,18 @@ const DarkSidebarPage = () => {
     <Fragment>
       <Container>
         <Toolbar>
-          <ToolbarHeading title="Dashboard" description="Central Hub for Personal Customization"/>
+          <ToolbarHeading title="Dashboard" description="Central Hub for Personal Customization" />
           <ToolbarActions>
-            <Link to="/public-profile/profiles/default" className="btn btn-sm btn-light">View Profile</Link>
+            <Link to="/public-profile/profiles/default" className="btn btn-sm btn-light">
+              View Profile
+            </Link>
           </ToolbarActions>
         </Toolbar>
       </Container>
 
-      <Container> 
-        <LightSidebarContent/>
-      </Container>       
+      <Container>
+        <LightSidebarContent />
+      </Container>
     </Fragment>
   );
 };

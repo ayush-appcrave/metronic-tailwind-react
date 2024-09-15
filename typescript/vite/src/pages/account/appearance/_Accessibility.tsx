@@ -7,31 +7,45 @@ const Accessibility = () => {
       icon: 'exit-right-corner',
       title: 'Shortcuts require modifier',
       description: 'Enable modifier keys for quick keyboard shortcuts.',
-      actions: <div className="switch switch-sm"><input type="checkbox" name="param" defaultChecked value="1" readOnly /></div>
+      actions: (
+        <div className="switch switch-sm">
+          <input type="checkbox" name="param" defaultChecked value="1" readOnly />
+        </div>
+      )
     },
     {
       icon: 'disguise',
       title: 'High color contrast',
       description: 'Improve readability with high-contrast interface colors.',
-      actions: <div className="switch switch-sm"><input type="checkbox" name="param" value="1" readOnly /></div>
+      actions: (
+        <div className="switch switch-sm">
+          <input type="checkbox" name="param" value="1" readOnly />
+        </div>
+      )
     },
     {
       icon: 'double-right-arrow',
       title: 'Autoplay videos',
-      description: "Choose preferences for automatic video playback.",
-      actions: <div className="grow min-w-48">
-                  <select className="select w-full">
-                    <option>System preferences</option>
-                    <option>Sound</option>
-                    <option>Focus</option>
-                  </select>
-                </div>
+      description: 'Choose preferences for automatic video playback.',
+      actions: (
+        <div className="grow min-w-48">
+          <select className="select w-full">
+            <option>System preferences</option>
+            <option>Sound</option>
+            <option>Focus</option>
+          </select>
+        </div>
+      )
     },
     {
       icon: 'screen',
       title: 'Open links in Desktop',
       description: 'Links open in the desktop app for convenience.',
-      actions: <div className="switch switch-sm"><input type="checkbox" name="param" defaultChecked value="1" readOnly /></div>
+      actions: (
+        <div className="switch switch-sm">
+          <input type="checkbox" name="param" defaultChecked value="1" readOnly />
+        </div>
+      )
     }
   ];
 

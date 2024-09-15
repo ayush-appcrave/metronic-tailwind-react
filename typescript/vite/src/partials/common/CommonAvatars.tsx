@@ -12,7 +12,7 @@ const CommonAvatars = ({ size, group, more, className }: IAvatarsProps) => {
           <img
             src={toAbsoluteUrl(each.path || `/media/avatars/${each.filename}`)}
             className={clsx(
-              `hover:z-5 relative shrink-0 rounded-full ring-1 ring-light-light ${size} size-6`,
+              `hover:z-5 relative shrink-0 rounded-full ring-1 ring-light-light ${size} size-6`
             )}
             alt=""
           />

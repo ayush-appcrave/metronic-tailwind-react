@@ -3,7 +3,15 @@ import { toAbsoluteUrl } from '@/utils/Assets';
 
 import { INowPlayingItem, INowPlayingProps } from './types';
 
-const CardNowPlaying = ({ image, logo, title, date, statistics, team, label }: INowPlayingProps) => {
+const CardNowPlaying = ({
+  image,
+  logo,
+  title,
+  date,
+  statistics,
+  team,
+  label
+}: INowPlayingProps) => {
   const renderItem = (statistic: INowPlayingItem, index: number) => {
     return (
       <div key={index} className="grid grid-cols-1 gap-1.5 text-center">

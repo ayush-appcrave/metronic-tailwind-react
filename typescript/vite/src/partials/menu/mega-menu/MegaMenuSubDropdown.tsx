@@ -17,43 +17,55 @@ const MegaMenuSubDropdown = (items: MenuConfigType) => {
   const buildItems = (items: MenuConfigType): ReactNode => {
     return items.map((item, index) => {
       if (item.separator) {
-        return (<MenuSeparator key={index}/>);
+        return <MenuSeparator key={index} />;
       } else if (item.children) {
         return (
-          <MenuItem 
+          <MenuItem
             key={index}
             toggle="dropdown"
             trigger="hover"
             dropdownProps={{
-              placement: "right-start"
+              placement: 'right-start'
             }}
           >
             <MenuLink className="grow-0">
-              {item.icon && <MenuIcon><KeenIcon icon={item.icon}/></MenuIcon>}
-              <MenuTitle className={clsx('')}>
-                {item.title}
-              </MenuTitle>            
+              {item.icon && (
+                <MenuIcon>
+                  <KeenIcon icon={item.icon} />
+                </MenuIcon>
+              )}
+              <MenuTitle className={clsx('')}>{item.title}</MenuTitle>
               <MenuArrow>
-                <KeenIcon icon="right" className="text-3xs"/>
+                <KeenIcon icon="right" className="text-3xs" />
               </MenuArrow>
             </MenuLink>
             <MenuSub className="menu-default w-[175px] lg:w-[220px]">
               {buildItems(item.children)}
             </MenuSub>
           </MenuItem>
-        )
+        );
       } else {
         return (
           <MenuItem key={index}>
             <MenuLink path={item.path} className={clsx('grow-0')}>
-              {item.icon && <MenuIcon><KeenIcon icon={item.icon}/></MenuIcon>}
-              <MenuTitle className={clsx('grow-0')}>
-                {item.title}
-              </MenuTitle>            
-              
-              {item.disabled && <MenuBadge><span className="badge badge-xs">Soon</span></MenuBadge>}
+              {item.icon && (
+                <MenuIcon>
+                  <KeenIcon icon={item.icon} />
+                </MenuIcon>
+              )}
+              <MenuTitle className={clsx('grow-0')}>{item.title}</MenuTitle>
 
-              {item.badge && <MenuBadge><span className="badge badge-primary badge-outline badge-xs">{item.badge}</span></MenuBadge>}
+              {item.disabled && (
+                <MenuBadge>
+                  <span className="badge badge-xs">Soon</span>
+                </MenuBadge>
+              )}
+
+              {item.badge && (
+                <MenuBadge>
+                  <span className="badge badge-primary badge-outline badge-xs">{item.badge}</span>
+                </MenuBadge>
+              )}
             </MenuLink>
           </MenuItem>
         );

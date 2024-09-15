@@ -10,7 +10,7 @@ const Roles = () => {
         badge: <KeenIcon icon="setting" className="text-1.5xl text-primary" />,
         fill: 'fill-primary-light',
         stroke: 'stroke-primary-clarity'
-      }, 
+      },
       title: 'Administrator',
       subTitle: 'Default role',
       description: 'Manages system settings and user access, ensures system stability.',
@@ -23,7 +23,7 @@ const Roles = () => {
         badge: <KeenIcon icon="eye" className="text-1.5xl text-brand" />,
         fill: 'fill-brand-light',
         stroke: 'stroke-brand-clarity'
-      }, 
+      },
       title: 'Viewer',
       subTitle: 'Default role',
       description: "Can view data but doesn't have editing privileges.",
@@ -36,7 +36,7 @@ const Roles = () => {
         badge: <KeenIcon icon="face-id" className="text-1.5xl text-success" />,
         fill: 'fill-success-light',
         stroke: 'stroke-success-clarity'
-      }, 
+      },
       title: 'Remote Developer',
       subTitle: 'Remote role',
       description: 'Provides assistance and resolves customer inquiries and issues.',
@@ -49,7 +49,7 @@ const Roles = () => {
         badge: <KeenIcon icon="delivery-24" className="text-1.5xl text-danger" />,
         fill: 'fill-danger-light',
         stroke: 'stroke-danger-clarity'
-      }, 
+      },
       title: 'Customer Support',
       subTitle: 'Default role',
       description: 'Provides assistance and resolves customer inquiries and issues.',
@@ -62,10 +62,10 @@ const Roles = () => {
         badge: <KeenIcon icon="chart-line-up-2" className="text-1.5xl text-info" />,
         fill: 'fill-info-light',
         stroke: 'stroke-info-clarity'
-      }, 
+      },
       title: 'Project Manager',
       subTitle: 'Default role',
-      description: "Oversees projects, ensures they\'re on time and within budget.",
+      description: "Oversees projects, ensures they're on time and within budget.",
       team: '6 people',
       path: '/public-profile/profiles/crm'
     },
@@ -75,7 +75,7 @@ const Roles = () => {
         badge: <KeenIcon icon="design-1" className="text-1.5xl text-gray-500" />,
         fill: 'fill-gray-100',
         stroke: 'stroke-gray-300'
-      }, 
+      },
       title: 'Remote Designer',
       subTitle: 'Remote role',
       description: 'Creates visual designs remotely for various projects.',
@@ -88,7 +88,7 @@ const Roles = () => {
         badge: <KeenIcon icon="people" className="text-1.5xl text-success" />,
         fill: 'fill-success-light',
         stroke: 'stroke-success-clarity'
-      }, 
+      },
       title: 'HR Manager',
       subTitle: 'Default role',
       description: 'Manages human resources, recruitment, and employee relations.',
@@ -118,11 +118,11 @@ const Roles = () => {
       })}
 
       <CardAddNew
-        path='/public-profile/works'     
-        size='size-[60px]'
-        iconSize='text-2xl'
-        title='Add New Role'
-        subTitle='Ignite Professional Adventures'
+        path="/public-profile/works"
+        size="size-[60px]"
+        iconSize="text-2xl"
+        title="Add New Role"
+        subTitle="Ignite Professional Adventures"
       />
     </div>
   );

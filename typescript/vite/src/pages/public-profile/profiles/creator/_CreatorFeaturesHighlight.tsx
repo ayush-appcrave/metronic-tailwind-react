@@ -42,9 +42,7 @@ const CreatorFeaturesHighlight = ({
             </div>
           </div>
 
-          <div className="shrink-0">
-            {image}
-          </div>
+          <div className="shrink-0">{image}</div>
         </div>
       </div>
 

@@ -1,34 +1,32 @@
-import {
-  MiscEngage,
-  MiscFaq,
-  MiscHighlightedPosts,
-  IHighlightedPostsItems
-} from "@/partials/misc";
-import { TeamInfo, TeamInfoConnectedProfiles, TeamInfoSeats } from ".";
-import { toAbsoluteUrl } from "@/utils";
+import { MiscEngage, MiscFaq, MiscHighlightedPosts, IHighlightedPostsItems } from '@/partials/misc';
+import { TeamInfo, TeamInfoConnectedProfiles, TeamInfoSeats } from '.';
+import { toAbsoluteUrl } from '@/utils';
 
 const TeamInfoContent = () => {
   const posts: IHighlightedPostsItems = [
     {
       icon: 'address-book',
       title: 'Centralizing Team Profiles: Management and Directory Tools',
-      summary: 'Centralize your team information with our management tools. Access detailed instructions, expert advice, and technical documentation to maintain an up-to-date team directory.',
+      summary:
+        'Centralize your team information with our management tools. Access detailed instructions, expert advice, and technical documentation to maintain an up-to-date team directory.',
       path: '#'
     },
     {
       icon: 'profile-circle',
       title: 'Building a Cohesive Team: Resources for Profile Compilation',
-      summary: 'Craft a unified team environment by compiling profiles in one place. Utilize our resources for easy information gathering and profile management.',
+      summary:
+        'Craft a unified team environment by compiling profiles in one place. Utilize our resources for easy information gathering and profile management.',
       path: '#'
     },
     {
       icon: 'questionnaire-tablet',
       title: 'Organizing Team Data: Efficient Roster Solutions',
-      summary: 'Organize your team details with our efficient roster solutions. From quick imports to detailed management, our resources guide you through every step.',
+      summary:
+        'Organize your team details with our efficient roster solutions. From quick imports to detailed management, our resources guide you through every step.',
       path: '#'
     }
   ];
-  
+
   return (
     <div className="grid grid-cols-1 xl:grid-cols-3 gap-5 lg:gap-7.5">
       <div className="col-span-2">
@@ -39,9 +37,9 @@ const TeamInfoContent = () => {
 
           <MiscFaq />
 
-          <MiscEngage 
-            title='Questions ?'
-            description='Visit our Help Center for detailed assistance on billing, payments, and subscriptions.'
+          <MiscEngage
+            title="Questions ?"
+            description="Visit our Help Center for detailed assistance on billing, payments, and subscriptions."
             image={
               <>
                 <img

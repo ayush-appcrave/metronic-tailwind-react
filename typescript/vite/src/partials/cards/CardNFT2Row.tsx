@@ -28,13 +28,16 @@ const CardNFT2Row = ({ avatar, name, email, info, statistics }: INFT2Props) => {
             imageClass={avatar?.imageClass}
             badgeClass={avatar?.badgeClass}
           />
-        
+
           <div className="flex flex-col gap-2">
             <div className="flex items-center gap-1.5 mb-px">
-              <a href="#" className="hover:text-primary-active text-base leading-5 font-medium text-gray-900">
+              <a
+                href="#"
+                className="hover:text-primary-active text-base leading-5 font-medium text-gray-900"
+              >
                 {name}
               </a>
-        
+
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 width="15"
@@ -49,9 +52,11 @@ const CardNFT2Row = ({ avatar, name, email, info, statistics }: INFT2Props) => {
                 />
               </svg>
             </div>
-        
+
             <div className="flex flex-wrap items-center gap-3.5">
-              <a href="#" className="text-sm text-gray-700 hover:text-primary-active">{email}</a>
+              <a href="#" className="text-sm text-gray-700 hover:text-primary-active">
+                {email}
+              </a>
               <div className="flex items-center text-sm text-success">
                 {info}
                 <KeenIcon icon="copy" className="ml-1 text-gray-500 text-md" />

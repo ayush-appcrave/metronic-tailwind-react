@@ -17,7 +17,9 @@ const PlainOpenToWork = ({ className, title }: IPlainOpenToWorkProps) => {
       </div>
 
       <div className="card-footer justify-center lg:pb-9">
-        <Link to="/public-profile/works" className="btn btn-link">View details</Link>
+        <Link to="/public-profile/works" className="btn btn-link">
+          View details
+        </Link>
       </div>
     </div>
   );

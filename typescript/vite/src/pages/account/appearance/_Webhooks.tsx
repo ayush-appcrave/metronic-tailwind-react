@@ -6,13 +6,14 @@ const Webhooks = () => {
       </div>
       <div className="card-body grid gap-5">
         <p className="text-2sm font-medium text-gray-700">
-          Set up Webhooks to trigger actions on external services in real-time. Stay informed on updates and changes to <br/> 
+          Set up Webhooks to trigger actions on external services in real-time. Stay informed on
+          updates and changes to <br />
           ensure seamless integration.
         </p>
 
         <div className="flex items-center flex-wrap lg:flex-nowrap gap-2.5">
           <span className="text-2sm font-medium text-gray-700 max-w-56 w-full">Webhook URL</span>
-          <div className="grow min-w-48"> 
+          <div className="grow min-w-48">
             <input type="text" className="input w-full" placeholder="Enter URL" value="" readOnly />
           </div>
         </div>
@@ -47,7 +48,7 @@ const Webhooks = () => {
             <label className="switch">
               <span className="switch-label">Use Custom Header</span>
               <input type="checkbox" defaultChecked value="1" readOnly />
-            </label> 
+            </label>
           </div>
         </div>
 

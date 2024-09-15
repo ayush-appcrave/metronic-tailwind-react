@@ -18,8 +18,8 @@ const Options = ({ items }: IOptionsProps) => {
           <div className="flex items-center flex-wrap">
             {item.sub.map((link, subIndex) => (
               <React.Fragment key={subIndex}>
-                <Link 
-                  to={link.path} 
+                <Link
+                  to={link.path}
                   className="text-2sm font-medium text-primary hover:text-primary mb-1"
                 >
                   {link.title}

@@ -3,4 +3,5 @@ export interface IBackupAndRecoveryBackupSettingsItem {
   description: string;
   control: React.ReactNode;
 }
-export interface IBackupAndRecoveryBackupSettingsItems extends Array<IBackupAndRecoveryBackupSettingsItem> {}
+export interface IBackupAndRecoveryBackupSettingsItems
+  extends Array<IBackupAndRecoveryBackupSettingsItem> {}

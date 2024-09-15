@@ -13,7 +13,11 @@ const PrivacySettingsPrivacySettings = () => {
         </>
       ),
       description: 'Control your visibility by choosing if you appear in search results.',
-      actions: <div className="switch switch-sm"><input type="checkbox" name="param" value="1" readOnly /></div>
+      actions: (
+        <div className="switch switch-sm">
+          <input type="checkbox" name="param" value="1" readOnly />
+        </div>
+      )
     },
     {
       icon: 'message-notify',
@@ -24,13 +28,21 @@ const PrivacySettingsPrivacySettings = () => {
         </>
       ),
       description: 'Enable or disable read receipts for private messages.',
-      actions: <div className="switch switch-sm"><input type="checkbox" name="param" value="1" readOnly /></div> 
+      actions: (
+        <div className="switch switch-sm">
+          <input type="checkbox" name="param" value="1" readOnly />
+        </div>
+      )
     },
     {
       icon: 'geolocation',
       title: 'Enable Location-Based Services',
-      description: "Allow the app to access and use your location for personalized content.",
-      actions: <div className="switch switch-sm"><input type="checkbox" name="param" defaultChecked value="1" readOnly /></div> 
+      description: 'Allow the app to access and use your location for personalized content.',
+      actions: (
+        <div className="switch switch-sm">
+          <input type="checkbox" name="param" defaultChecked value="1" readOnly />
+        </div>
+      )
     },
     {
       icon: 'discount',
@@ -41,19 +53,31 @@ const PrivacySettingsPrivacySettings = () => {
         </>
       ),
       description: 'Customize how ads are targeted to your interests.',
-      actions: <a href="#" className="btn btn-sm btn-light btn-outline">Setup</a>
+      actions: (
+        <a href="#" className="btn btn-sm btn-light btn-outline">
+          Setup
+        </a>
+      )
     },
     {
       icon: 'badge',
       title: 'Allow public profile',
       description: 'Enable users to create and display a profile publicly.',
-      actions: <div className="switch switch-sm"><input type="checkbox" name="param" defaultChecked value="1" readOnly /></div> 
+      actions: (
+        <div className="switch switch-sm">
+          <input type="checkbox" name="param" defaultChecked value="1" readOnly />
+        </div>
+      )
     },
     {
       icon: 'check-circle',
       title: 'Allow use location',
       description: "Enable feature to use and share the user's location.",
-      actions: <div className="switch switch-sm"><input type="checkbox" name="param" value="1" readOnly /></div>
+      actions: (
+        <div className="switch switch-sm">
+          <input type="checkbox" name="param" value="1" readOnly />
+        </div>
+      )
     },
     {
       icon: 'questionnaire-tablet',
@@ -66,8 +90,12 @@ const PrivacySettingsPrivacySettings = () => {
       description: 'Confidential channel for reporting system vulnerabilities.',
       actions: (
         <>
-          <a href="#" className="btn btn-sm btn-light btn-danger btn-outline">Disable all</a> 
-          <a href="#" className="btn btn-sm btn-light btn-outline">Enable all</a>
+          <a href="#" className="btn btn-sm btn-light btn-danger btn-outline">
+            Disable all
+          </a>
+          <a href="#" className="btn btn-sm btn-light btn-outline">
+            Enable all
+          </a>
         </>
       )
     }
@@ -78,9 +106,9 @@ const PrivacySettingsPrivacySettings = () => {
       <div key={index} className="card-group flex items-center justify-between py-4 gap-2.5">
         <div className="flex items-center gap-3.5">
           <CommonHexagonBadge
-            stroke='stroke-gray-300'
-            fill='fill-gray-100'
-            size='size-[50px]'
+            stroke="stroke-gray-300"
+            fill="fill-gray-100"
+            size="size-[50px]"
             badge={<KeenIcon icon={item.icon} className="text-1.5xl text-gray-500" />}
           />
 
@@ -92,9 +120,7 @@ const PrivacySettingsPrivacySettings = () => {
           </div>
         </div>
 
-        <div className="flex items-center gap-2.5">
-          {item.actions}
-        </div>
+        <div className="flex items-center gap-2.5">{item.actions}</div>
       </div>
     );
   };

@@ -93,11 +93,11 @@ const CompanyProfileMembers = ({ url }: ICompanyProfileMembersProps) => {
 
         <td>
           <Menu className="items-stretch">
-            <MenuItem 
+            <MenuItem
               toggle="dropdown"
               trigger="click"
               dropdownProps={{
-                placement: "bottom-end",
+                placement: 'bottom-end',
                 modifiers: [
                   {
                     name: 'offset',
@@ -109,7 +109,7 @@ const CompanyProfileMembers = ({ url }: ICompanyProfileMembersProps) => {
               }}
             >
               <MenuToggle className="btn btn-sm btn-icon btn-light btn-clear mb-2.5-">
-                <KeenIcon icon="dots-vertical"/>
+                <KeenIcon icon="dots-vertical" />
               </MenuToggle>
               {DropdownCrudItem1()}
             </MenuItem>
@@ -127,19 +127,17 @@ const CompanyProfileMembers = ({ url }: ICompanyProfileMembersProps) => {
         <div className="flex items-center gap-5">
           <div className="flex items-center gap-2">
             <label className="switch switch-sm">
-              <span className="switch-label">
-                Enforce 2FA
-              </span>
-              <input type="checkbox" value="1" name="check" />    
+              <span className="switch-label">Enforce 2FA</span>
+              <input type="checkbox" value="1" name="check" />
             </label>
           </div>
 
           <Menu className="items-stretch">
-            <MenuItem 
+            <MenuItem
               toggle="dropdown"
               trigger="click"
               dropdownProps={{
-                placement: "bottom-end",
+                placement: 'bottom-end',
                 modifiers: [
                   {
                     name: 'offset',
@@ -151,7 +149,7 @@ const CompanyProfileMembers = ({ url }: ICompanyProfileMembersProps) => {
               }}
             >
               <MenuToggle className="btn btn-sm btn-icon btn-light btn-clear mb-2.5-">
-                <KeenIcon icon="dots-vertical"/>
+                <KeenIcon icon="dots-vertical" />
               </MenuToggle>
               {DropdownCrud1()}
             </MenuItem>

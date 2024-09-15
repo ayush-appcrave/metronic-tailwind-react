@@ -29,30 +29,30 @@ const SidebarToggle = () => {
         />
       </button>
     );
-  }
+  };
 
   const darkToggle = () => {
     return (
       <div onClick={handleClick}>
-				<div className="hidden [html.dark_&]:block">
+        <div className="hidden [html.dark_&]:block">
           <button className="btn btn-icon btn-icon-md size-[30px] rounded-lg border border-gray-300 bg-light text-gray-500 hover:text-gray-700 group absolute left-full top-2/4 -translate-x-2/4 -translate-y-2/4">
             <KeenIcon
               icon="black-left-line"
               className="group-[.active]:rotate-180 transition-all duration-300"
             />
-					</button>
-				</div>
-				<div className="[html.dark_&]:hidden light">
-					<button className="btn btn-icon btn-icon-md size-[30px] rounded-lg border border-gray-300 bg-light text-gray-500 hover:text-gray-700 group absolute left-full top-2/4 -translate-x-2/4 -translate-y-2/4">
+          </button>
+        </div>
+        <div className="[html.dark_&]:hidden light">
+          <button className="btn btn-icon btn-icon-md size-[30px] rounded-lg border border-gray-300 bg-light text-gray-500 hover:text-gray-700 group absolute left-full top-2/4 -translate-x-2/4 -translate-y-2/4">
             <KeenIcon
               icon="black-left-line"
               className="group-[.active]:rotate-180 transition-all duration-300"
             />
-					</button>
-				</div>
-			</div>
+          </button>
+        </div>
+      </div>
     );
-  }
+  };
 
   return layout.options.sidebar.theme === 'light' ? lightToggle() : darkToggle();
 };

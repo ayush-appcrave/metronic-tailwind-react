@@ -13,7 +13,7 @@ export interface IMenuProps {
 const initialProps: IMenuProps = {
   configs: new Map(),
   setMenuConfig: () => {},
-  getMenuConfig: () => null, 
+  getMenuConfig: () => null,
   setCurrentMenuItem: () => {},
   getCurrentMenuItem: () => null
 };
@@ -38,7 +38,9 @@ const MenuProvider = ({ children }: PropsWithChildren) => {
   };
 
   return (
-    <MenuContext.Provider value={{ configs, setMenuConfig, getMenuConfig, setCurrentMenuItem, getCurrentMenuItem }}>
+    <MenuContext.Provider
+      value={{ configs, setMenuConfig, getMenuConfig, setCurrentMenuItem, getCurrentMenuItem }}
+    >
       {children}
     </MenuContext.Provider>
   );

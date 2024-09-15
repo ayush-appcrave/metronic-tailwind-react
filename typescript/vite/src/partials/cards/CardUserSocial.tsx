@@ -5,7 +5,7 @@ import { CommonAvatar } from '../common';
 
 const CardUserSocial = ({ avatar, name, description, verify }: IUserSocialProps) => {
   return (
-    <div className="card"> 
+    <div className="card">
       <div className="card-body flex flex-col items-center lg:pt-10">
         <div className="mb-3">
           <CommonAvatar
@@ -18,7 +18,10 @@ const CardUserSocial = ({ avatar, name, description, verify }: IUserSocialProps)
         </div>
 
         <div className="flex items-center justify-center gap-1.5 mb-3">
-          <a href="#" className="hover:text-primary-active text-base leading-5 font-medium text-gray-900">
+          <a
+            href="#"
+            className="hover:text-primary-active text-base leading-5 font-medium text-gray-900"
+          >
             {name}
           </a>
 

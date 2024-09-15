@@ -1,4 +1,4 @@
-import { MiscFaq, MiscHelp2 } from "@/partials/misc";
+import { MiscFaq, MiscHelp2 } from '@/partials/misc';
 
 const TeamCrewContent = () => {
   return (

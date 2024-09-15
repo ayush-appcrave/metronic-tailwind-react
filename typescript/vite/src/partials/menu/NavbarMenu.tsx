@@ -19,11 +19,9 @@ const NavbarMenu = ({ items }: { items: MenuConfigType }) => {
             toggle="dropdown"
             trigger="click"
             className="text-sm border-b-2 border-b-transparent menu-item-active:border-b-primary menu-item-here:border-b-primary"
-            {...(
-              item.dropdownProps && { 
-                dropdownProps: item.dropdownProps 
-              }
-            )}
+            {...(item.dropdownProps && {
+              dropdownProps: item.dropdownProps
+            })}
           >
             <MenuLink className="pb-4 px-2 gap-0.5 cursor-pointer">
               <MenuTitle className="font-medium text-gray-700 menu-item-active:text-primary menu-item-active:font-semibold menu-item-here:text-primary menu-item-here:font-semibold menu-item-show:text-primary menu-link-hover:text-primary">
@@ -62,12 +60,9 @@ const NavbarMenu = ({ items }: { items: MenuConfigType }) => {
             toggle="dropdown"
             trigger="hover"
             className="text-sm"
-            {...(
-              item.dropdownProps && 
-              { 
-                dropdownProps: item.dropdownProps 
-              }
-            )}
+            {...(item.dropdownProps && {
+              dropdownProps: item.dropdownProps
+            })}
           >
             <MenuLink className="py-1.5 px-2 gap-0.5 cursor-pointer">
               <MenuTitle className="mr-1 font-normal text-gray-700 menu-item-active:text-primary menu-item-here:text-gray-900 menu-item-show:text-gray-900 menu-link-hover:!text-primary">
@@ -83,7 +78,10 @@ const NavbarMenu = ({ items }: { items: MenuConfigType }) => {
       } else {
         return (
           <MenuItem className="text-sm" key={index}>
-            <MenuLink path={item.path} className="py-1.5 px-2 gap-0.5 rounded-lg menu-item-active:bg-secondary-active">
+            <MenuLink
+              path={item.path}
+              className="py-1.5 px-2 gap-0.5 rounded-lg menu-item-active:bg-secondary-active"
+            >
               <MenuTitle className="font-normal text-gray-700 menu-item-active:text-primary menu-item-here:text-primary menu-item-show:text-primary menu-link-hover:!text-primary">
                 {item.title}
               </MenuTitle>
@@ -102,7 +100,11 @@ const NavbarMenu = ({ items }: { items: MenuConfigType }) => {
     );
   };
 
-  return <Menu highlight={true} className="menu gap-3 lg:-mb-px">{buildMenu(items)}</Menu>;
+  return (
+    <Menu highlight={true} className="menu gap-3 lg:-mb-px">
+      {buildMenu(items)}
+    </Menu>
+  );
 };
 
 export { NavbarMenu };

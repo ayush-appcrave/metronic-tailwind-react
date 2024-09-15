@@ -11,9 +11,7 @@ const KeenIconComponent = ({ icon, style, className = '' }: IKeenIconsProps) => 
     style = settings.keenIconsStyle;
   }
 
-  return (
-    <i className={clsx(`ki-${style}`, `ki-${icon}`, className)}></i>
-  );
+  return <i className={clsx(`ki-${style}`, `ki-${icon}`, className)}></i>;
 };
 
 const KeenIcon = memo(KeenIconComponent);

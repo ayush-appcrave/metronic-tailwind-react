@@ -27,11 +27,11 @@ const CardNFT2 = ({ avatar, bgImage, name, email, info, statistics }: INFT2Props
       >
         <div className="menu mt-2.5 mr-2.5" data-menu="true">
           <Menu className="items-stretch">
-            <MenuItem 
+            <MenuItem
               toggle="dropdown"
               trigger="click"
               dropdownProps={{
-                placement: "bottom-end",
+                placement: 'bottom-end',
                 modifiers: [
                   {
                     name: 'offset',
@@ -43,7 +43,7 @@ const CardNFT2 = ({ avatar, bgImage, name, email, info, statistics }: INFT2Props
               }}
             >
               <MenuToggle className="btn btn-sm btn-icon btn-light btn-clear mb-2.5-">
-                <KeenIcon icon="setting-2"/>
+                <KeenIcon icon="setting-2" />
               </MenuToggle>
               {DropdownCardItem1()}
             </MenuItem>
@@ -63,7 +63,10 @@ const CardNFT2 = ({ avatar, bgImage, name, email, info, statistics }: INFT2Props
         </div>
 
         <div className="flex items-center justify-center gap-1.5 mb-px -mt-7.5">
-          <a href="#" className="hover:text-primary-active text-base leading-5 font-medium text-gray-900">
+          <a
+            href="#"
+            className="hover:text-primary-active text-base leading-5 font-medium text-gray-900"
+          >
             {name}
           </a>
 

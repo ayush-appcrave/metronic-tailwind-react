@@ -44,8 +44,8 @@ export interface IMenuItemRef {
 }
 
 export interface IMenuItemProps {
-  path?: string,
-  level?: number,
+  path?: string;
+  level?: number;
   index?: number;
   toggle?: MenuItemToggleType;
   trigger?: MenuItemTriggerType;

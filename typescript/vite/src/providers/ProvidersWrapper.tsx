@@ -24,9 +24,7 @@ const ProvidersWrapper = ({ children }: PropsWithChildren) => {
             <TranslationProvider>
               <LayoutProvider>
                 <LoadersProvider>
-                  <MenuProvider>
-                  {children}
-                  </MenuProvider>
+                  <MenuProvider>{children}</MenuProvider>
                 </LoadersProvider>
               </LayoutProvider>
             </TranslationProvider>

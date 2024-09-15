@@ -5,13 +5,28 @@ import { IApexEarningsChartOptions } from './types';
 
 const EarningsChartBlock = () => {
   const data: number[] = [75, 25, 45, 15, 85, 35, 70, 25, 35, 15, 45, 30];
-  const categories: string[] = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+  const categories: string[] = [
+    'Jan',
+    'Feb',
+    'Mar',
+    'Apr',
+    'May',
+    'Jun',
+    'Jul',
+    'Aug',
+    'Sep',
+    'Oct',
+    'Nov',
+    'Dec'
+  ];
 
   const options: IApexEarningsChartOptions = {
-    series: [{
-      name: 'series1',
-      data: data
-    }],
+    series: [
+      {
+        name: 'series1',
+        data: data
+      }
+    ],
     chart: {
       height: 250,
       type: 'area',
@@ -34,7 +49,7 @@ const EarningsChartBlock = () => {
     xaxis: {
       categories: categories,
       axisBorder: {
-        show: false,
+        show: false
       },
       maxTicks: 12,
       axisTicks: {
@@ -82,20 +97,19 @@ const EarningsChartBlock = () => {
     },
     tooltip: {
       enabled: true,
-      custom({series, seriesIndex, dataPointIndex, w}) {
+      custom({ series, seriesIndex, dataPointIndex, w }) {
         const number = parseInt(series[seriesIndex][dataPointIndex]) * 1000;
         const month = w.globals.seriesX[seriesIndex][dataPointIndex];
         const monthName = categories[month];
 
         const formatter = new Intl.NumberFormat('en-US', {
           style: 'currency',
-          currency: 'USD',
+          currency: 'USD'
         });
 
         const formattedNumber = formatter.format(number);
 
-        return (
-          `
+        return `
           <div class="flex flex-col gap-2 p-3.5">
             <div class="font-medium text-2sm text-gray-600">${monthName}, 2024 Sales</div>
             <div class="flex items-center gap-1.5">
@@ -103,8 +117,7 @@ const EarningsChartBlock = () => {
               <span class="badge badge-outline badge-success badge-xs">+24%</span>
             </div>
           </div>
-          `
-        );
+          `;
       }
     },
     markers: {
@@ -116,7 +129,7 @@ const EarningsChartBlock = () => {
       strokeDashArray: 0,
       fillOpacity: 1,
       discrete: [],
-      shape: "circle",
+      shape: 'circle',
       radius: 2,
       offsetX: 0,
       offsetY: 0,
@@ -160,24 +173,14 @@ const EarningsChartBlock = () => {
         <div className="flex gap-5">
           <label className="switch switch-sm">
             <input name="check" type="checkbox" value="1" className="order-2" readOnly />
-            <span className="switch-label order-1">
-              Referrals only 
-            </span>
+            <span className="switch-label order-1">Referrals only</span>
           </label>
 
           <select className="select select-sm w-28" name="select">
-            <option value="1">
-              1 month
-            </option>
-            <option value="2">
-              3 month
-            </option>
-            <option value="3">
-              6 month
-            </option>
-            <option value="4">
-              12 month
-            </option>
+            <option value="1">1 month</option>
+            <option value="2">3 month</option>
+            <option value="3">6 month</option>
+            <option value="4">12 month</option>
           </select>
         </div>
       </div>

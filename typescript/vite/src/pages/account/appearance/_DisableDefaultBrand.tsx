@@ -10,11 +10,12 @@ const DisableDefaultBrand = () => {
       <div className="card-body flex flex-col gap-4">
         <div className="flex flex-col gap-1.5">
           <p className="text-2sm text-gray-700">
-            Remove any ktstudio.io branding and media. 
-            I.e. powered by ktstudio.io
+            Remove any ktstudio.io branding and media. I.e. powered by ktstudio.io
           </p>
           <div>
-            <a href="#" className="btn btn-link flex-none">View Plans</a>
+            <a href="#" className="btn btn-link flex-none">
+              View Plans
+            </a>
           </div>
         </div>
         <div className="switch">

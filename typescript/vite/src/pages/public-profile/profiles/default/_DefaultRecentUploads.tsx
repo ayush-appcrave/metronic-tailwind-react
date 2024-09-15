@@ -48,11 +48,11 @@ const DefaultRecentUploads = ({ title }: IDefaultRecentUploadsProps) => {
         </div>
 
         <Menu className="items-stretch">
-          <MenuItem 
+          <MenuItem
             toggle="dropdown"
             trigger="click"
             dropdownProps={{
-              placement: "bottom-end",
+              placement: 'bottom-end',
               modifiers: [
                 {
                   name: 'offset',
@@ -64,7 +64,7 @@ const DefaultRecentUploads = ({ title }: IDefaultRecentUploadsProps) => {
             }}
           >
             <MenuToggle className="btn btn-sm btn-icon btn-light btn-clear mb-2.5-">
-              <KeenIcon icon="dots-vertical"/>
+              <KeenIcon icon="dots-vertical" />
             </MenuToggle>
             {DropdownCardItem1()}
           </MenuItem>
@@ -79,11 +79,11 @@ const DefaultRecentUploads = ({ title }: IDefaultRecentUploadsProps) => {
         <h3 className="card-title">{title}</h3>
 
         <Menu className="items-stretch">
-          <MenuItem 
+          <MenuItem
             toggle="dropdown"
             trigger="click"
             dropdownProps={{
-              placement: "bottom-end",
+              placement: 'bottom-end',
               modifiers: [
                 {
                   name: 'offset',
@@ -95,7 +95,7 @@ const DefaultRecentUploads = ({ title }: IDefaultRecentUploadsProps) => {
             }}
           >
             <MenuToggle className="btn btn-sm btn-icon btn-light btn-clear mb-2.5-">
-              <KeenIcon icon="dots-vertical"/>
+              <KeenIcon icon="dots-vertical" />
             </MenuToggle>
             {DropdownCard1()}
           </MenuItem>
@@ -111,7 +111,9 @@ const DefaultRecentUploads = ({ title }: IDefaultRecentUploadsProps) => {
       </div>
 
       <div className="card-footer justify-center">
-        <Link to="/account/integrations" className="btn btn-link">All Files</Link>
+        <Link to="/account/integrations" className="btn btn-link">
+          All Files
+        </Link>
       </div>
     </div>
   );

@@ -6,16 +6,16 @@ import { toAbsoluteUrl } from '@/utils';
 const OverviewTrustedDevices = () => {
   const items: IOverviewTrustedDevicesItems = [
     {
-      logo: 'chrome.svg', 
-      browser: 'Chrome', 
+      logo: 'chrome.svg',
+      browser: 'Chrome',
       location: 'Seville, Spain',
       flag: 'spain.svg',
       device: 'MacOS 12.19.6',
       datetime: 'Active: Today at 9:03 AM'
     },
     {
-      logo: 'chrome.svg', 
-      browser: 'Chrome', 
+      logo: 'chrome.svg',
+      browser: 'Chrome',
       location: 'Lyon, France',
       flag: 'france.svg',
       device: 'Android 14.35',
@@ -51,7 +51,8 @@ const OverviewTrustedDevices = () => {
         </td>
 
         <td className="min-w-56 text-gray-700 font-normal">
-          {item.device}<br />
+          {item.device}
+          <br />
           {item.datetime}
         </td>
 
@@ -70,11 +71,11 @@ const OverviewTrustedDevices = () => {
         <h3 className="card-title">Trusted Devices</h3>
 
         <Menu className="items-stretch">
-          <MenuItem 
+          <MenuItem
             toggle="dropdown"
             trigger="click"
             dropdownProps={{
-              placement: "bottom-end",
+              placement: 'bottom-end',
               modifiers: [
                 {
                   name: 'offset',
@@ -86,7 +87,7 @@ const OverviewTrustedDevices = () => {
             }}
           >
             <MenuToggle className="btn btn-sm btn-icon btn-light btn-clear mb-2.5-">
-              <KeenIcon icon="dots-vertical"/>
+              <KeenIcon icon="dots-vertical" />
             </MenuToggle>
             {DropdownCard2()}
           </MenuItem>

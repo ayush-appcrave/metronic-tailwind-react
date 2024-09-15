@@ -14,7 +14,7 @@ const DropdownCrud2 = () => {
       <MenuItem path="#">
         <MenuLink>
           <MenuIcon>
-            <KeenIcon icon="document"/>
+            <KeenIcon icon="document" />
           </MenuIcon>
           <MenuTitle>View</MenuTitle>
         </MenuLink>
@@ -23,12 +23,12 @@ const DropdownCrud2 = () => {
         toggle="dropdown"
         trigger="hover"
         dropdownProps={{
-          placement: "right-start",
+          placement: 'right-start',
           modifiers: [
             {
               name: 'offset',
               options: {
-                offset: [-15,   0] // [skid, distance]
+                offset: [-15, 0] // [skid, distance]
               }
             }
           ]
@@ -36,7 +36,7 @@ const DropdownCrud2 = () => {
       >
         <MenuLink>
           <MenuIcon>
-            <KeenIcon icon="notification-status"/>
+            <KeenIcon icon="notification-status" />
           </MenuIcon>
           <MenuTitle>Export</MenuTitle>
           <MenuArrow>
@@ -81,7 +81,7 @@ const DropdownCrud2 = () => {
       <MenuItem path="#">
         <MenuLink>
           <MenuIcon>
-            <KeenIcon icon="trash"/>
+            <KeenIcon icon="trash" />
           </MenuIcon>
           <MenuTitle>Delete</MenuTitle>
         </MenuLink>

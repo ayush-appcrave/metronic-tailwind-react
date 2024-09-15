@@ -10,18 +10,23 @@ const CardAuthorRow = ({ avatar, name, location, works }: IAuthorProps) => {
       <div key={index} className="flex items-center gap-3.5 min-w-64 last:mr-5">
         <div
           className="rounded-md bg-no-repeat bg-cover min-w-24 max-w-24 h-12 shrink-0"
-          style={{ backgroundImage: `url(${toAbsoluteUrl(`/media/images/600x600/${work.image}`)})` }}
+          style={{
+            backgroundImage: `url(${toAbsoluteUrl(`/media/images/600x600/${work.image}`)})`
+          }}
         ></div>
 
         <div className="flex flex-col">
-          <a href="#" className="font-medium block text-gray-900 hover:text-primary text-md leading-4 mb-2">
+          <a
+            href="#"
+            className="font-medium block text-gray-900 hover:text-primary text-md leading-4 mb-2"
+          >
             {work.title}
           </a>
           <div className="text-2sm text-gray-700">
             Token ID:
             <span className="text-2sm font-medium text-gray-800">{work.id}</span>
           </div>
-        </div> 
+        </div>
       </div>
     );
   };
@@ -78,7 +83,9 @@ const CardAuthorRow = ({ avatar, name, location, works }: IAuthorProps) => {
             </div>
           </div>
 
-          <a href="#" className="btn btn-link">View Profile</a>
+          <a href="#" className="btn btn-link">
+            View Profile
+          </a>
 
           <button className="btn btn-sm btn-light">
             <KeenIcon icon="like-shapes" />

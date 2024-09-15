@@ -37,7 +37,9 @@ const CRMAttributes = () => {
       </div>
 
       <div className="card-footer justify-center">
-        <Link to="/network/user-table/store-clients" className="btn btn-link">All Attributes</Link>
+        <Link to="/network/user-table/store-clients" className="btn btn-link">
+          All Attributes
+        </Link>
       </div>
     </div>
   );

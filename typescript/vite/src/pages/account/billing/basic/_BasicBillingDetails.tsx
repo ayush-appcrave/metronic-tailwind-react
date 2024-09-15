@@ -3,10 +3,10 @@ import { IBasicBillingDetailsItem, IBasicBillingDetailsItems } from './types';
 
 const BasicBillingDetails = () => {
   const tables: IBasicBillingDetailsItems = [
-    {status: 'Company Name', info: 'KeenThemes'},
-    {status: 'Address', info: 'Keizersgracht 136, 1015 CW Amsterdam, Netherlands'},
-    {status: 'Contact', info: 'Jason Tatum'},
-    {status: 'VAT ID', info: 'NL123456789B01'}
+    { status: 'Company Name', info: 'KeenThemes' },
+    { status: 'Address', info: 'Keizersgracht 136, 1015 CW Amsterdam, Netherlands' },
+    { status: 'Contact', info: 'Jason Tatum' },
+    { status: 'VAT ID', info: 'NL123456789B01' }
   ];
 
   const renderItem = (table: IBasicBillingDetailsItem, index: number) => {

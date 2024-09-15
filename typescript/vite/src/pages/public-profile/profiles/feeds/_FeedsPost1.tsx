@@ -40,28 +40,25 @@ const FeedsPost1 = () => {
 
         <div className="grid grid-cols-2 gap-2.5 xl:gap-7.5">
           <div>
-            <div 
-              className="bg-cover bg-no-repeat min-h-[340px] w-full rounded-xl" 
+            <div
+              className="bg-cover bg-no-repeat min-h-[340px] w-full rounded-xl"
               style={{ backgroundImage: `url(${toAbsoluteUrl(`/media/images/600x600//21.jpg`)})` }}
-            >
-            </div>
+            ></div>
           </div>
 
           <div className="grid grid-rows-2 gap-2.5 xl:gap-7.5">
             <div>
-              <div 
-                className="bg-cover bg-no-repeat rounded-xl h-full w-full" 
+              <div
+                className="bg-cover bg-no-repeat rounded-xl h-full w-full"
                 style={{ backgroundImage: `url(${toAbsoluteUrl(`/media/images/600x400/19.jpg`)})` }}
-              >
-              </div>
+              ></div>
             </div>
 
             <div>
-              <div 
-                className="bg-cover bg-no-repeat rounded-xl h-full w-full" 
+              <div
+                className="bg-cover bg-no-repeat rounded-xl h-full w-full"
                 style={{ backgroundImage: `url(${toAbsoluteUrl(`/media/images/600x400/20.jpg`)})` }}
-              >
-              </div>
+              ></div>
             </div>
           </div>
         </div>
@@ -75,7 +72,7 @@ const FeedsPost1 = () => {
           comments={2}
           likes="47k"
           saves={900}
-          className='mx-7.5'
+          className="mx-7.5"
         />
 
         {activeTab === 'comments' && (

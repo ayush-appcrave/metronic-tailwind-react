@@ -12,7 +12,8 @@ const CompanyProfileDataImport = () => {
       </div>
       <div className="card-body lg:py-7.5 py-5">
         <div className="text-sm font-medium text-gray-700 mb-4">
-          Define aspirations, outline the path. Set a goal to transform dreams into measurable achievements.
+          Define aspirations, outline the path. Set a goal to transform dreams into measurable
+          achievements.
         </div>
 
         <a href="#" className="btn btn-sm btn-light">

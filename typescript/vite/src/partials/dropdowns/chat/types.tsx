@@ -1,6 +1,6 @@
 export interface IDropdownChatProps {
   menuTtemRef: any;
-};
+}
 
 export type DropdownChatMessageType = 'in' | 'out';
 
@@ -12,4 +12,3 @@ export interface IDropdownMessage {
   in?: boolean;
   out?: boolean;
 }
-

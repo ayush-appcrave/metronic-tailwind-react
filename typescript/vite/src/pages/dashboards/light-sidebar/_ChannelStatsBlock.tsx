@@ -6,7 +6,13 @@ const ChannelStatsBlock = () => {
     { logo: 'linkedin-2.svg', info: '9.3k', desc: 'Amazing mates', path: '' },
     { logo: 'youtube-2.svg', info: '24k', desc: 'Lessons Views', path: '' },
     { logo: 'instagram-03.svg', info: '608', desc: 'New subscribers', path: '' },
-    { logo: 'tiktok.svg', logoDark: 'tiktok-dark.svg', info: '2.5k', desc: 'Stream audience', path: '' }
+    {
+      logo: 'tiktok.svg',
+      logoDark: 'tiktok-dark.svg',
+      info: '2.5k',
+      desc: 'Stream audience',
+      path: ''
+    }
   ];
 
   const renderItem = (item: IChannelStatsItem, index: number) => {

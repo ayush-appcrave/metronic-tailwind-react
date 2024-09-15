@@ -58,11 +58,7 @@ const Columns2Projects = () => {
       description: 'Team communication and collaboration tool',
       team: {
         size: 'size-7',
-        group: [
-          { filename: '300-5.png' },
-          { filename: '300-17.png' },
-          { filename: '300-16.png' }
-        ]
+        group: [{ filename: '300-5.png' }, { filename: '300-17.png' }, { filename: '300-16.png' }]
       },
       statistics: [
         {
@@ -93,10 +89,7 @@ const Columns2Projects = () => {
       description: 'Short-term accommodation marketplace',
       team: {
         size: 'size-7',
-        group: [
-          { filename: '300-19.png' },
-          { filename: '300-9.png' }
-        ]
+        group: [{ filename: '300-19.png' }, { filename: '300-9.png' }]
       },
       statistics: [
         {

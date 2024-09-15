@@ -31,9 +31,9 @@ const SettingsEnterpriseAuthTwoFactor = () => {
       >
         <div className="flex items-center flex-wrap lg:flex-nowrap gap-3.5">
           <CommonHexagonBadge
-            stroke='stroke-gray-300'
-            fill='fill-gray-100'
-            size='size-[50px]'
+            stroke="stroke-gray-300"
+            fill="fill-gray-100"
+            size="size-[50px]"
             badge={<KeenIcon icon={item.icon} className="text-xl text-gray-500" />}
           />
 
@@ -61,11 +61,11 @@ const SettingsEnterpriseAuthTwoFactor = () => {
         <h3 className="card-title">Two-Factor authentication(2FA)</h3>
 
         <Menu className="items-stretch">
-          <MenuItem 
+          <MenuItem
             toggle="dropdown"
             trigger="click"
             dropdownProps={{
-              placement: "bottom-end",
+              placement: 'bottom-end',
               modifiers: [
                 {
                   name: 'offset',
@@ -77,7 +77,7 @@ const SettingsEnterpriseAuthTwoFactor = () => {
             }}
           >
             <MenuToggle className="btn btn-sm btn-icon btn-light btn-clear mb-2.5-">
-              <KeenIcon icon="dots-vertical"/>
+              <KeenIcon icon="dots-vertical" />
             </MenuToggle>
             {DropdownCard2()}
           </MenuItem>

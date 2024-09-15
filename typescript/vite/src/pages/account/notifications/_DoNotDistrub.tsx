@@ -1,5 +1,5 @@
-import { KeenIcon } from "@/components";
-import { IDoNotDistrubProps } from "./types";
+import { KeenIcon } from '@/components';
+import { IDoNotDistrubProps } from './types';
 
 const DoNotDistrub = ({ title, icon, text }: IDoNotDistrubProps) => {
   return (
@@ -9,11 +9,13 @@ const DoNotDistrub = ({ title, icon, text }: IDoNotDistrubProps) => {
       </div>
       <div className="card-body flex flex-col gap-2.5">
         <p className="text-2sm text-gray-700">
-          Activate 'Do Not Disturb' to silence all notifications and focus 
-          without interruptions during specified hours or tasks.
+          Activate 'Do Not Disturb' to silence all notifications and focus without interruptions
+          during specified hours or tasks.
         </p>
         <div>
-          <a href="#" className="btn btn-link flex-none">Learn more</a>
+          <a href="#" className="btn btn-link flex-none">
+            Learn more
+          </a>
         </div>
       </div>
       <div className="card-footer justify-center">

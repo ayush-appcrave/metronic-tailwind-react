@@ -19,7 +19,7 @@ export interface ITabsProps {
   comments: number;
   likes: string;
   saves: number;
-  className?: string
+  className?: string;
 }
 
 export interface ICommentsItem {

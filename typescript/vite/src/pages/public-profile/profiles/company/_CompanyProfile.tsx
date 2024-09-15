@@ -59,7 +59,9 @@ const CompanyProfile = () => {
   const renderRows = (row: ICompanyProfileRow, index: number) => {
     return (
       <div key={index} className="flex items-center gap-2.5">
-        <span><KeenIcon icon={row.icon} className="text-lg text-gray-500" /></span>
+        <span>
+          <KeenIcon icon={row.icon} className="text-lg text-gray-500" />
+        </span>
         {row.info ? (
           <a href={row.text} className="link text-sm font-medium">
             {row.text}
@@ -96,7 +98,11 @@ const CompanyProfile = () => {
         <h3 className="text-base font-semibold text-gray-900 leading-none mb-5">Headquarter</h3>
 
         <div className="flex flex-wrap items-center gap-5 mb-10">
-          <MapContainer center={[40.725, -73.985]} zoom={30} className="rounded-xl w-full md:w-80 min-h-52">
+          <MapContainer
+            center={[40.725, -73.985]}
+            zoom={30}
+            className="rounded-xl w-full md:w-80 min-h-52"
+          >
             <TileLayer
               attribution='&copy; <a href="https://osm.org/copyright">OpenStreetMap</a> contributors'
               url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"

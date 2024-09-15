@@ -43,7 +43,7 @@ const DefaultProjects = () => {
     {
       name: 'Client Onboarding',
       team: {
-        group: [{ filename: '300-20.png' }, { filename: '300-7.png' }],
+        group: [{ filename: '300-20.png' }, { filename: '300-7.png' }]
       },
       dueDate: '19 Sep, 2024',
       progress: {
@@ -69,11 +69,7 @@ const DefaultProjects = () => {
     {
       name: 'Project X Redesign',
       team: {
-        group: [
-          { filename: '300-2.png' },
-          { filename: '300-15.png' },
-          { filename: '300-18.png' }
-        ],
+        group: [{ filename: '300-2.png' }, { filename: '300-15.png' }, { filename: '300-18.png' }],
         more: {
           number: 2,
           variant: 'text-success-inverse ring-success-light bg-success'
@@ -112,11 +108,11 @@ const DefaultProjects = () => {
 
         <td className="text-left">
           <Menu className="items-stretch">
-            <MenuItem 
+            <MenuItem
               toggle="dropdown"
               trigger="click"
               dropdownProps={{
-                placement: "bottom-end",
+                placement: 'bottom-end',
                 modifiers: [
                   {
                     name: 'offset',
@@ -128,7 +124,7 @@ const DefaultProjects = () => {
               }}
             >
               <MenuToggle className="btn btn-sm btn-icon btn-light btn-clear mb-2.5-">
-                <KeenIcon icon="dots-vertical"/>
+                <KeenIcon icon="dots-vertical" />
               </MenuToggle>
               {DropdownCrudItem1()}
             </MenuItem>
@@ -144,11 +140,11 @@ const DefaultProjects = () => {
         <h3 className="card-title">Projects</h3>
 
         <Menu className="items-stretch">
-          <MenuItem 
+          <MenuItem
             toggle="dropdown"
             trigger="click"
             dropdownProps={{
-              placement: "bottom-end",
+              placement: 'bottom-end',
               modifiers: [
                 {
                   name: 'offset',
@@ -160,7 +156,7 @@ const DefaultProjects = () => {
             }}
           >
             <MenuToggle className="btn btn-sm btn-icon btn-light btn-clear mb-2.5-">
-              <KeenIcon icon="dots-vertical"/>
+              <KeenIcon icon="dots-vertical" />
             </MenuToggle>
             {DropdownCrud1()}
           </MenuItem>
@@ -188,7 +184,9 @@ const DefaultProjects = () => {
       </div>
 
       <div className="card-footer justify-center">
-        <Link to="/public-profile/projects/3-columns" className="btn btn-link">All Projects</Link>
+        <Link to="/public-profile/projects/3-columns" className="btn btn-link">
+          All Projects
+        </Link>
       </div>
     </div>
   );

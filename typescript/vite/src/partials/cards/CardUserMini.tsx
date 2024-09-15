@@ -1,9 +1,9 @@
 import { IUserMiniProps } from './types';
 import { CommonAvatar } from '../common';
 
-const CardUserMini = ({ avatar, verify, name, email, }: IUserMiniProps) => {
+const CardUserMini = ({ avatar, verify, name, email }: IUserMiniProps) => {
   return (
-    <div className="card flex flex-col items-center p-5 lg:py-10"> 
+    <div className="card flex flex-col items-center p-5 lg:py-10">
       <div className="mb-3.5">
         {avatar && (
           <CommonAvatar
@@ -17,7 +17,10 @@ const CardUserMini = ({ avatar, verify, name, email, }: IUserMiniProps) => {
       </div>
 
       <div className="flex items-center justify-center gap-1.5 mb-2">
-        <a href="#" className="hover:text-primary-active text-base leading-5 font-medium text-gray-900">
+        <a
+          href="#"
+          className="hover:text-primary-active text-base leading-5 font-medium text-gray-900"
+        >
           {name}
         </a>
 
@@ -37,7 +40,9 @@ const CardUserMini = ({ avatar, verify, name, email, }: IUserMiniProps) => {
           </svg>
         )}
       </div>
-      <a href="#" className="text-gray-700 text-sm hover:text-primary-active">{email}</a>
+      <a href="#" className="text-gray-700 text-sm hover:text-primary-active">
+        {email}
+      </a>
     </div>
   );
 };

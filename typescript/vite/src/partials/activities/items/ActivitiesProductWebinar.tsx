@@ -28,7 +28,9 @@ const ActivitiesProductWebinar = () => {
                 </span>
               </div>
 
-              <Link to="/account/members/teams" className="btn btn-link">View</Link>
+              <Link to="/account/members/teams" className="btn btn-link">
+                View
+              </Link>
             </div>
 
             <div className="flex flex-wrap gap-7.5">
@@ -46,12 +48,12 @@ const ActivitiesProductWebinar = () => {
 
               <div className="flex items-center gap-1.5 lg:min-w-24 shrink-0 max-w-auto">
                 <span className="text-2sm font-medium text-gray-500">Guests:</span>
-                <CommonAvatars 
-                  size='size-7'
+                <CommonAvatars
+                  size="size-7"
                   group={[
-                    {filename: '300-4.png'},
-                    {filename: '300-1.png'},
-                    {filename: '300-2.png'},
+                    { filename: '300-4.png' },
+                    { filename: '300-1.png' },
+                    { filename: '300-2.png' },
                     {
                       fallback: '+24',
                       variant: 'text-primary-inverse ring-primary-light bg-primary'

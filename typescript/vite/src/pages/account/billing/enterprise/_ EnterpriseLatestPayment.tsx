@@ -4,10 +4,10 @@ import { toAbsoluteUrl } from '@/utils';
 
 const EnterpriseLatestPayment = () => {
   const tables: IEnterpriseLatestPaymentItems = [
-    {status: 'Typ of Plan', info: 'Cloud One Enterprise'},
-    {status: 'Payment Date', info: '6 Aug, 2024'},
-    {status: 'Card used to pay:', logo: true, info: 'Ending 3604'},
-    {status: 'Total Payment:', info: '$24.00'}
+    { status: 'Typ of Plan', info: 'Cloud One Enterprise' },
+    { status: 'Payment Date', info: '6 Aug, 2024' },
+    { status: 'Card used to pay:', logo: true, info: 'Ending 3604' },
+    { status: 'Total Payment:', info: '$24.00' }
   ];
 
   const renderItem = (table: IEnterpriseLatestPaymentItem, index: number) => {
@@ -17,12 +17,12 @@ const EnterpriseLatestPayment = () => {
         <td className="flex items-center gap-2.5 text-sm text-gray-800">
           {table.logo && (
             <img
-            src={toAbsoluteUrl('/media/brand-logos/visa.svg')}
-            className="w-10 shrink-0"
-            alt=""
-           />
+              src={toAbsoluteUrl('/media/brand-logos/visa.svg')}
+              className="w-10 shrink-0"
+              alt=""
+            />
           )}
-          
+
           {table.info}
         </td>
       </tr>

@@ -3,7 +3,6 @@ import { toAbsoluteUrl } from '@/utils';
 import { CommonAvatars } from '@/partials/common';
 import { IModalSearchIntegrationsItem } from './types';
 
-
 // Define the props interface
 interface IModalSearchIntegrationsProps {
   items: IModalSearchIntegrationsItem[];
@@ -27,18 +26,19 @@ const ModalSearchIntegrations = ({ items }: IModalSearchIntegrationsProps) => {
 
               {/* Name and description */}
               <div className="flex flex-col gap-0.5">
-                <a href="#" className="text-2sm font-semibold text-gray-900 hover:text-primary-active">
+                <a
+                  href="#"
+                  className="text-2sm font-semibold text-gray-900 hover:text-primary-active"
+                >
                   {item.name}
                 </a>
-                <span className="text-2xs font-medium text-gray-600">
-                  {item.description}
-                </span>
+                <span className="text-2xs font-medium text-gray-600">{item.description}</span>
               </div>
             </div>
 
             {/* Team avatars */}
             <div className="flex justify-end shrink-0">
-              <CommonAvatars size='size-[30px]' group={item.team}/>
+              <CommonAvatars size="size-[30px]" group={item.team} />
             </div>
           </div>
         </div>

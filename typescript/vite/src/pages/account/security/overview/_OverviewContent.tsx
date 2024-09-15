@@ -1,4 +1,4 @@
-import { toAbsoluteUrl } from "@/utils";
+import { toAbsoluteUrl } from '@/utils';
 import {
   OverviewAuthentification,
   OverviewGeneralSettings,
@@ -6,28 +6,31 @@ import {
   OverviewProductInsight,
   OverviewQuickSettings,
   OverviewTrustedDevices
-} from ".";
-import { MiscHighlightedPosts, IHighlightedPostsItems } from "@/partials/misc";
-import { CreatorFeaturesHighlight } from "@/pages/public-profile/profiles/creator";
+} from '.';
+import { MiscHighlightedPosts, IHighlightedPostsItems } from '@/partials/misc';
+import { CreatorFeaturesHighlight } from '@/pages/public-profile/profiles/creator';
 
 const OverviewContent = () => {
   const posts: IHighlightedPostsItems = [
     {
       icon: 'shield-slash',
       title: 'Enhancing Security Knowledge: Guides, Tips, and Documentation',
-      summary: 'Explore comprehensive resources to strengthen security understanding through detailed guides, expert tips, and documentation.',
+      summary:
+        'Explore comprehensive resources to strengthen security understanding through detailed guides, expert tips, and documentation.',
       path: '#'
     },
     {
       icon: 'ensure',
       title: 'Mastering Security Protocols: Learning Through Expert Guidance',
-      summary: 'Delve into the realm of security with specialized learning materials, expert guidance, and practical tips for implementation.',
+      summary:
+        'Delve into the realm of security with specialized learning materials, expert guidance, and practical tips for implementation.',
       path: '#'
     },
     {
       icon: 'shield-search',
       title: 'Navigating Digital Security: A Comprehensive Learning Journey',
-      summary: 'Embark on a journey of digital security enlightenment with our extensive collection of educational guides and practical advice..',
+      summary:
+        'Embark on a journey of digital security enlightenment with our extensive collection of educational guides and practical advice..',
       path: '#'
     }
   ];
@@ -84,21 +87,17 @@ const OverviewContent = () => {
                 />
               </>
             }
-            title='iOS'
-            description='Active Sessions'
+            title="iOS"
+            description="Active Sessions"
             number={24}
           />
 
           <OverviewProductInsight
             image={
-              <img
-                src={toAbsoluteUrl('/media/brand-logos/android.svg')}
-                className="h-5"
-                alt=""
-              />
+              <img src={toAbsoluteUrl('/media/brand-logos/android.svg')} className="h-5" alt="" />
             }
-            title='Android'
-            description='Active Sessions'
+            title="Android"
+            description="Active Sessions"
             number={35}
           />
 

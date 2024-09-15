@@ -11,7 +11,7 @@ const CardRole = ({ path, title, subTitle, description, team, badge }: IRoleProp
       <div className="flex items-center flex-wrap justify-between gap-1">
         <div className="flex items-center gap-2.5">
           <CommonHexagonBadge badge={badge} />
-          
+
           <div className="flex flex-col">
             <Link
               to={`${path}`}
@@ -24,11 +24,11 @@ const CardRole = ({ path, title, subTitle, description, team, badge }: IRoleProp
         </div>
 
         <Menu className="items-stretch">
-          <MenuItem 
+          <MenuItem
             toggle="dropdown"
             trigger="click"
             dropdownProps={{
-              placement: "bottom-end",
+              placement: 'bottom-end',
               modifiers: [
                 {
                   name: 'offset',
@@ -40,7 +40,7 @@ const CardRole = ({ path, title, subTitle, description, team, badge }: IRoleProp
             }}
           >
             <MenuToggle className="btn btn-sm btn-icon btn-light btn-clear mb-2.5-">
-              <KeenIcon icon="dots-vertical"/>
+              <KeenIcon icon="dots-vertical" />
             </MenuToggle>
             {DropdownCardItem1()}
           </MenuItem>

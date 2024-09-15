@@ -62,11 +62,11 @@ const CRMDeals = () => {
 
         <td className="text-left">
           <Menu className="items-stretch">
-            <MenuItem 
+            <MenuItem
               toggle="dropdown"
               trigger="click"
               dropdownProps={{
-                placement: "bottom-end",
+                placement: 'bottom-end',
                 modifiers: [
                   {
                     name: 'offset',
@@ -78,7 +78,7 @@ const CRMDeals = () => {
               }}
             >
               <MenuToggle className="btn btn-sm btn-icon btn-light btn-clear mb-2.5-">
-                <KeenIcon icon="dots-vertical"/>
+                <KeenIcon icon="dots-vertical" />
               </MenuToggle>
               {DropdownCrudItem1()}
             </MenuItem>
@@ -94,27 +94,27 @@ const CRMDeals = () => {
         <h3 className="card-title">Deals</h3>
 
         <Menu className="items-stretch">
-            <MenuItem 
-              toggle="dropdown"
-              trigger="click"
-              dropdownProps={{
-                placement: "bottom-end",
-                modifiers: [
-                  {
-                    name: 'offset',
-                    options: {
-                      offset: [0, 10] // [skid, distance]
-                    }
+          <MenuItem
+            toggle="dropdown"
+            trigger="click"
+            dropdownProps={{
+              placement: 'bottom-end',
+              modifiers: [
+                {
+                  name: 'offset',
+                  options: {
+                    offset: [0, 10] // [skid, distance]
                   }
-                ]
-              }}
-            >
-              <MenuToggle className="btn btn-sm btn-icon btn-light btn-clear mb-2.5-">
-                <KeenIcon icon="dots-vertical"/>
-              </MenuToggle>
-              {DropdownCrud1()}
-            </MenuItem>
-          </Menu>
+                }
+              ]
+            }}
+          >
+            <MenuToggle className="btn btn-sm btn-icon btn-light btn-clear mb-2.5-">
+              <KeenIcon icon="dots-vertical" />
+            </MenuToggle>
+            {DropdownCrud1()}
+          </MenuItem>
+        </Menu>
       </div>
       <div className="card-table scrollable-x-auto">
         <table className="table text-right">
@@ -135,7 +135,9 @@ const CRMDeals = () => {
         </table>
       </div>
       <div className="card-footer justify-center">
-        <Link to="/account/billing/history" className="btn btn-link">All Deals</Link>
+        <Link to="/account/billing/history" className="btn btn-link">
+          All Deals
+        </Link>
       </div>
     </div>
   );

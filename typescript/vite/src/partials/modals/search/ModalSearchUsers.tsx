@@ -8,7 +8,7 @@ interface IModalSearchUsersProps {
   more?: boolean;
 }
 
-const ModalSearchUsers = ({items, more = true}: IModalSearchUsersProps) => {
+const ModalSearchUsers = ({ items, more = true }: IModalSearchUsersProps) => {
   return (
     <div className="menu menu-default p-0 flex-col">
       <div className="grid gap-1">
@@ -23,10 +23,15 @@ const ModalSearchUsers = ({items, more = true}: IModalSearchUsersProps) => {
                   alt={item.name}
                 />
                 <div className="flex flex-col">
-                  <a href="#" className="text-sm font-semibold text-gray-900 hover:text-primary-active mb-px">
+                  <a
+                    href="#"
+                    className="text-sm font-semibold text-gray-900 hover:text-primary-active mb-px"
+                  >
                     {item.name}
                   </a>
-                  <span className="text-2sm font-normal text-gray-500">{item.email} connections</span>
+                  <span className="text-2sm font-normal text-gray-500">
+                    {item.email} connections
+                  </span>
                 </div>
               </div>
 

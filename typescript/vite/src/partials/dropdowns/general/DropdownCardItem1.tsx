@@ -1,11 +1,4 @@
-import {
-  KeenIcon,
-  MenuIcon,
-  MenuItem,
-  MenuLink,
-  MenuSub,
-  MenuTitle
-} from '@/components';
+import { KeenIcon, MenuIcon, MenuItem, MenuLink, MenuSub, MenuTitle } from '@/components';
 
 const DropdownCardItem1 = () => {
   return (
@@ -13,7 +6,7 @@ const DropdownCardItem1 = () => {
       <MenuItem path="#">
         <MenuLink>
           <MenuIcon>
-            <KeenIcon icon="document"/>
+            <KeenIcon icon="document" />
           </MenuIcon>
           <MenuTitle>Details</MenuTitle>
         </MenuLink>
@@ -21,7 +14,7 @@ const DropdownCardItem1 = () => {
       <MenuItem path="#">
         <MenuLink>
           <MenuIcon>
-            <KeenIcon icon="share"/>
+            <KeenIcon icon="share" />
           </MenuIcon>
           <MenuTitle>Share</MenuTitle>
         </MenuLink>
@@ -29,7 +22,7 @@ const DropdownCardItem1 = () => {
       <MenuItem path="#">
         <MenuLink>
           <MenuIcon>
-            <KeenIcon icon="file-up"/>
+            <KeenIcon icon="file-up" />
           </MenuIcon>
           <MenuTitle>Export</MenuTitle>
         </MenuLink>

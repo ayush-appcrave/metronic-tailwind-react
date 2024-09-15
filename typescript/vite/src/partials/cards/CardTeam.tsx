@@ -55,7 +55,12 @@ const CardTeam = ({ icon, title, description, labels, rating, team, connected }:
           <div className="flex items-center justify-between flex-wrap gap-2">
             <span className="text-2xs font-medium text-gray-500 uppercase">memebers</span>
 
-            <CommonAvatars group={team.group} more={team.more} className={team.className} size={team.size} />
+            <CommonAvatars
+              group={team.group}
+              more={team.more}
+              className={team.className}
+              size={team.size}
+            />
           </div>
         </div>
       </div>

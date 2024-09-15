@@ -1,12 +1,6 @@
-import * as React from "react";
-import {
-  MutableRefObject,
-  ReactNode,
-  useEffect,
-  useRef,
-  useState,
-} from "react";
-import { throttle } from "./utils/throttle";
+import * as React from 'react';
+import { MutableRefObject, ReactNode, useEffect, useRef, useState } from 'react';
+import { throttle } from './utils/throttle';
 
 interface ScrollSpyProps {
   children: ReactNode;
@@ -34,44 +28,40 @@ interface ScrollSpyProps {
 }
 
 const ScrollSpy = ({
- children,
+  children,
 
- // refs
- navContainerRef,
- parentScrollContainerRef,
+  // refs
+  navContainerRef,
+  parentScrollContainerRef,
 
- // throttle
- scrollThrottle = 300,
+  // throttle
+  scrollThrottle = 300,
 
- // callback
- onUpdateCallback,
+  // callback
+  onUpdateCallback,
 
- // offsets
- offsetTop = 0,
- offsetBottom = 0,
+  // offsets
+  offsetTop = 0,
+  offsetBottom = 0,
 
- // customize attributes
- useDataAttribute = "to-scrollspy-id",
- activeClass = "active-scroll-spy",
+  // customize attributes
+  useDataAttribute = 'to-scrollspy-id',
+  activeClass = 'active-scroll-spy',
 
- useBoxMethod = true,
- updateHistoryStack = true,
+  useBoxMethod = true,
+  updateHistoryStack = true
 }: ScrollSpyProps) => {
   const scrollContainerRef = useRef<HTMLDivElement | null>(null);
   const [navContainerItems, setNavContainerItems] = useState<NodeListOf<Element> | undefined>(); // prettier-ignore
 
-  const prevIdTracker = useRef("");
+  const prevIdTracker = useRef('');
 
   useEffect(() => {
     navContainerRef
-        ? setNavContainerItems(
-            navContainerRef.current!.querySelectorAll(
-                `[data-${useDataAttribute}]`
-            )
+      ? setNavContainerItems(
+          navContainerRef.current!.querySelectorAll(`[data-${useDataAttribute}]`)
         )
-        : setNavContainerItems(
-            document.querySelectorAll(`[data-${useDataAttribute}]`)
-        );
+      : setNavContainerItems(document.querySelectorAll(`[data-${useDataAttribute}]`));
 
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [navContainerRef]);
@@ -87,28 +77,25 @@ const ScrollSpy = ({
 
     if (useBoxMethod) {
       const useHeight = parentScrollContainerRef?.current
-          ? parentScrollContainerRef.current!.offsetHeight
-          : window.innerHeight;
+        ? parentScrollContainerRef.current!.offsetHeight
+        : window.innerHeight;
       const hitbox_top = useHeight;
       const element_top = rectInView.top;
       const element_bottom = rectInView.top + useHeight;
 
-      return (
-          hitbox_top < element_bottom + offsetBottom &&
-          hitbox_top > element_top - offsetTop
-      );
+      return hitbox_top < element_bottom + offsetBottom && hitbox_top > element_top - offsetTop;
     } else {
       const leniency = parentScrollContainerRef?.current
-          ? parentScrollContainerRef.current!.offsetHeight * 0.5
-          : window.innerHeight * 0.5;
+        ? parentScrollContainerRef.current!.offsetHeight * 0.5
+        : window.innerHeight * 0.5;
 
       const useHeight = parentScrollContainerRef?.current
-          ? parentScrollContainerRef?.current!.offsetHeight
-          : window.innerHeight;
+        ? parentScrollContainerRef?.current!.offsetHeight
+        : window.innerHeight;
 
       return (
-          rectInView.top + leniency + offsetTop >= 0 &&
-          rectInView.bottom - leniency - offsetBottom <= useHeight
+        rectInView.top + leniency + offsetTop >= 0 &&
+        rectInView.bottom - leniency - offsetBottom <= useHeight
       );
     }
   };
@@ -129,24 +116,20 @@ const ScrollSpy = ({
         if (prevIdTracker.current === changeHighlightedItemId) return;
         navContainerItems.forEach((el) => {
           const attrId = el.getAttribute(`data-${useDataAttribute}`);
-          if (el.classList.contains(activeClass ?? "active")) {
-            el.classList.remove(activeClass ?? "active");
+          if (el.classList.contains(activeClass ?? 'active')) {
+            el.classList.remove(activeClass ?? 'active');
           }
           if (
-              attrId === changeHighlightedItemId &&
-              !el.classList.contains(activeClass ?? "active")
+            attrId === changeHighlightedItemId &&
+            !el.classList.contains(activeClass ?? 'active')
           ) {
-            el.classList.add(activeClass ?? "active");
+            el.classList.add(activeClass ?? 'active');
             if (onUpdateCallback) {
               onUpdateCallback(changeHighlightedItemId);
             }
             prevIdTracker.current = changeHighlightedItemId;
             if (updateHistoryStack) {
-              window.history.replaceState(
-                  {},
-                  "",
-                  `#${changeHighlightedItemId}`
-              );
+              window.history.replaceState({}, '', `#${changeHighlightedItemId}`);
             }
           }
         });
@@ -157,19 +140,11 @@ const ScrollSpy = ({
 
   useEffect(() => {
     parentScrollContainerRef
-        ?
-        parentScrollContainerRef.current!.addEventListener(
-            "scroll",
-            () => {
-              throttle(checkAndUpdateActiveScrollSpy, scrollThrottle)
-              console.log(parentScrollContainerRef);
-            }
-        )
-        :
-        window.addEventListener(
-            "scroll",
-            throttle(checkAndUpdateActiveScrollSpy, scrollThrottle)
-        );
+      ? parentScrollContainerRef.current!.addEventListener('scroll', () => {
+          throttle(checkAndUpdateActiveScrollSpy, scrollThrottle);
+          console.log(parentScrollContainerRef);
+        })
+      : window.addEventListener('scroll', throttle(checkAndUpdateActiveScrollSpy, scrollThrottle));
   });
 
   return <div ref={scrollContainerRef}>{children}</div>;

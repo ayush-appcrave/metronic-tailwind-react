@@ -46,8 +46,8 @@ const BloggerReplies = () => {
           <div className="rounded-full w-1.5 h-1.5 bg-gray-300 gap-1.5"></div>
 
           <div className="flex gap-1 items-center">
-              <KeenIcon icon="heart" className="text-base text-gray-500" />
-              <span className="text-2sm text-gray-600">{item.comments}</span>
+            <KeenIcon icon="heart" className="text-base text-gray-500" />
+            <span className="text-2sm text-gray-600">{item.comments}</span>
           </div>
         </div>
 
@@ -61,7 +61,9 @@ const BloggerReplies = () => {
       <div className="card-header">
         <h3 className="card-title">Jenny’s Replies</h3>
 
-        <Link to="/public-profile/profiles/feeds" className="btn btn-link">View All</Link>
+        <Link to="/public-profile/profiles/feeds" className="btn btn-link">
+          View All
+        </Link>
       </div>
       <div className="card-body pb-7">
         <div className="flex flex-col gap-5">

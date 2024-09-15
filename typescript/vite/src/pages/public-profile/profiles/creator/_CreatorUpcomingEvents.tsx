@@ -81,7 +81,9 @@ const CreatorUpcomingEvents = () => {
     <div className="card">
       <div className="card-header">
         <h3 className="card-title">Upcoming Events</h3>
-        <Link to="/public-profile/works" className="btn btn-link">View All</Link>
+        <Link to="/public-profile/works" className="btn btn-link">
+          View All
+        </Link>
       </div>
 
       <div className="card-body lg:pt-7 pt-5 pb-2">

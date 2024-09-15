@@ -29,7 +29,7 @@ const DropdownNotificationsItem1 = ({
   const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     setInputValue(event.target.value);
   };
-  
+
   return (
     <div className="flex grow gap-2.5 px-5">
       <div className="relative shrink-0 mt-0.5">
@@ -69,7 +69,7 @@ const DropdownNotificationsItem1 = ({
           </div>
 
           <label className="input input-sm">
-            <input placeholder="Reply" type="text" value="" onChange={handleInputChange}/>
+            <input placeholder="Reply" type="text" value="" onChange={handleInputChange} />
             <button className="btn btn-icon">
               <KeenIcon icon="picture" />
             </button>

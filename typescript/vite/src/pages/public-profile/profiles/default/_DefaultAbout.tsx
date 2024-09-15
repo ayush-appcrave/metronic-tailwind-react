@@ -8,7 +8,10 @@ const DefaultAbout = () => {
     { status: 'Country:', info: 'Netherlands' },
     { status: 'Postcode:', info: '1092 NL' },
     { status: 'Phone:', info: '+31 6 1234 56 78' },
-    { status: 'Email:', info: '<a href="#" class="text-gray-800 hover:text-primary-active">jenny@ktstudio.com</a>' }
+    {
+      status: 'Email:',
+      info: '<a href="#" class="text-gray-800 hover:text-primary-active">jenny@ktstudio.com</a>'
+    }
   ];
 
   const renderTable = (table: IDefaultAboutTable, index: number) => {

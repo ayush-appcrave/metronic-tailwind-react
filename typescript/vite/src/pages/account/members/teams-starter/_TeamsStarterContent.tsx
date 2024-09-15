@@ -1,5 +1,5 @@
-import { MiscFaq, MiscHelp2, MiscStarter } from "@/partials/misc";
-import { toAbsoluteUrl } from "@/utils";
+import { MiscFaq, MiscHelp2, MiscStarter } from '@/partials/misc';
+import { toAbsoluteUrl } from '@/utils';
 
 const TeamsStarterContent = () => {
   return (
@@ -7,12 +7,20 @@ const TeamsStarterContent = () => {
       <MiscStarter
         image={
           <>
-            <img src={toAbsoluteUrl('/media/illustrations/32.svg')} className="dark:hidden max-h-[230px]" alt="" />
+            <img
+              src={toAbsoluteUrl('/media/illustrations/32.svg')}
+              className="dark:hidden max-h-[230px]"
+              alt=""
+            />
             ||
-            <img src={toAbsoluteUrl('/media/illustrations/32-dark.svg')} className="light:hidden max-h-[230px]" alt="" />
+            <img
+              src={toAbsoluteUrl('/media/illustrations/32-dark.svg')}
+              className="light:hidden max-h-[230px]"
+              alt=""
+            />
           </>
         }
-        title='Swift Setup for New Teams'
+        title="Swift Setup for New Teams"
         subTitle={
           <>
             Enhance team formation and management with easy-to-use tools for communication,

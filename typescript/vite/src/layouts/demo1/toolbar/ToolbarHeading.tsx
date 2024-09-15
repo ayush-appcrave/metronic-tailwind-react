@@ -1,7 +1,7 @@
 import { ReactNode, useEffect, useRef, useState } from 'react';
 import clsx from 'clsx';
 import { useMenu } from '@/providers';
-import { useMenuCurrentItem  } from '@/components';
+import { useMenuCurrentItem } from '@/components';
 import { useLocation } from 'react-router';
 
 export interface IToolbarHeadingProps {
@@ -9,9 +9,9 @@ export interface IToolbarHeadingProps {
   description?: string | ReactNode;
 }
 
-const ToolbarHeading = ({title = '', description}: IToolbarHeadingProps) => {
-  const {getMenuConfig} = useMenu();
-  const {pathname} = useLocation();
+const ToolbarHeading = ({ title = '', description }: IToolbarHeadingProps) => {
+  const { getMenuConfig } = useMenu();
+  const { pathname } = useLocation();
   const currentMenuItem = useMenuCurrentItem(pathname, getMenuConfig('primary'));
 
   return (
@@ -19,12 +19,11 @@ const ToolbarHeading = ({title = '', description}: IToolbarHeadingProps) => {
       <h1 className="text-xl font-medium leading-none text-gray-900">
         {title || currentMenuItem?.title}
       </h1>
-      {
-        description && 
+      {description && (
         <div className="flex items-center gap-2 text-sm font-normal text-gray-700">
           {description}
         </div>
-      }
+      )}
     </div>
   );
 };

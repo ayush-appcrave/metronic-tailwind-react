@@ -7,43 +7,67 @@ const OtherNotifications = () => {
       icon: 'tab-tablet',
       title: 'Task Alert',
       description: 'Notification when a task is assigned to you.',
-      actions: <div className="switch switch-sm"><input type="checkbox" name="param" defaultChecked value="1" readOnly /></div>
+      actions: (
+        <div className="switch switch-sm">
+          <input type="checkbox" name="param" defaultChecked value="1" readOnly />
+        </div>
+      )
     },
     {
       icon: 'dollar',
       title: 'Budget Warning',
       description: 'Get notified if nearing budget limit.',
-      actions: <div className="switch switch-sm"><input type="checkbox" name="param" defaultChecked value="1" readOnly /></div>
+      actions: (
+        <div className="switch switch-sm">
+          <input type="checkbox" name="param" defaultChecked value="1" readOnly />
+        </div>
+      )
     },
     {
       icon: 'cheque',
       title: 'Invoice Alert',
-      description: "Alert for new and unpaid invoices.",
-      actions:'<a href="#" class="btn btn-sm btn-light btn-outline">View Invoices</a>'
+      description: 'Alert for new and unpaid invoices.',
+      actions: '<a href="#" class="btn btn-sm btn-light btn-outline">View Invoices</a>'
     },
     {
       icon: 'message-text',
       title: 'Feedback Alert',
       description: 'When a client submits new feedback.',
-      actions: <div className="switch switch-sm"><input type="checkbox" name="param" defaultChecked value="1" readOnly /></div>
+      actions: (
+        <div className="switch switch-sm">
+          <input type="checkbox" name="param" defaultChecked value="1" readOnly />
+        </div>
+      )
     },
     {
       icon: 'people',
       title: 'Collaboration Request',
       description: 'Invite to collaborate on a new document.',
-      actions: <div className="switch switch-sm"><input type="checkbox" name="param" defaultChecked value="1" readOnly /></div>
+      actions: (
+        <div className="switch switch-sm">
+          <input type="checkbox" name="param" defaultChecked value="1" readOnly />
+        </div>
+      )
     },
     {
       icon: 'abstract-42',
       title: 'Meeting Reminder',
-      description: "Reminder of scheduled meetings for the day.",
-      actions: <a href="#" className="btn btn-sm btn-light btn-outline">Show Meetings</a>
+      description: 'Reminder of scheduled meetings for the day.',
+      actions: (
+        <a href="#" className="btn btn-sm btn-light btn-outline">
+          Show Meetings
+        </a>
+      )
     },
     {
       icon: 'tablet-ok',
       title: 'Status Change',
       description: 'Notifies changes in project or task status.',
-      actions: <div className="switch switch-sm"><input type="checkbox" name="param" defaultChecked value="1" readOnly /></div>
+      actions: (
+        <div className="switch switch-sm">
+          <input type="checkbox" name="param" defaultChecked value="1" readOnly />
+        </div>
+      )
     }
   ];
 
@@ -68,9 +92,7 @@ const OtherNotifications = () => {
         <div className="flex items-center gap-2">
           <label className="switch">
             <input className="order-2" type="checkbox" value="1" name="check" readOnly />
-            <span className="switch-label order-1">
-              Team-Wide Alerts
-            </span>
+            <span className="switch-label order-1">Team-Wide Alerts</span>
           </label>
         </div>
       </div>

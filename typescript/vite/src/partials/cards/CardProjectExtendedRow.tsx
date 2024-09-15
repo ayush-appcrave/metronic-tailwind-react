@@ -56,7 +56,9 @@ const CardProjectExtendedRow = ({
             </div>
 
             <div className="w-[125px] shrink-0">
-              <span className={`badge badge-md ${status.variant} badge-outline`}>{status.label}</span>
+              <span className={`badge badge-md ${status.variant} badge-outline`}>
+                {status.label}
+              </span>
             </div>
           </div>
 
@@ -66,11 +68,11 @@ const CardProjectExtendedRow = ({
             </div>
 
             <Menu className="items-stretch">
-              <MenuItem 
+              <MenuItem
                 toggle="dropdown"
                 trigger="click"
                 dropdownProps={{
-                  placement: "bottom-end",
+                  placement: 'bottom-end',
                   modifiers: [
                     {
                       name: 'offset',
@@ -82,7 +84,7 @@ const CardProjectExtendedRow = ({
                 }}
               >
                 <MenuToggle className="btn btn-sm btn-icon btn-light btn-clear mb-2.5-">
-                  <KeenIcon icon="dots-vertical"/>
+                  <KeenIcon icon="dots-vertical" />
                 </MenuToggle>
                 {DropdownCard2()}
               </MenuItem>

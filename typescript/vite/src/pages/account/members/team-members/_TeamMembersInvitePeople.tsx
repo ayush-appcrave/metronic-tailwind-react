@@ -1,4 +1,4 @@
-import { KeenIcon } from "@/components";
+import { KeenIcon } from '@/components';
 
 const TeamMembersInvitePeople = () => {
   return (
@@ -33,11 +33,13 @@ const TeamMembersInvitePeople = () => {
               <KeenIcon icon="plus-squared" />
               Add more
             </a>
-          </div>			
-        </div>		
+          </div>
+        </div>
       </div>
       <div className="card-footer justify-center">
-        <a href="#" className="btn btn-sm btn-primary">Invite People</a>
+        <a href="#" className="btn btn-sm btn-primary">
+          Invite People
+        </a>
       </div>
     </form>
   );

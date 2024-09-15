@@ -5,28 +5,28 @@ import { DropdownCardItem2 } from '@/partials/dropdowns/general';
 const EnterpriseBillingInvoicing = () => {
   const tables: IEnterpriseBillingInvoicingItems = [
     {
-      number: 'Invoice-2024-xd912c', 
+      number: 'Invoice-2024-xd912c',
       date: '6 Aug, 2024',
       ammount: '24.00',
       label: 'Upcoming',
       color: 'warning'
     },
     {
-      number: 'Invoice-2024-rq857m', 
+      number: 'Invoice-2024-rq857m',
       date: '17 Jun, 2024',
       ammount: '29.99',
       label: 'Paid',
       color: 'success'
     },
     {
-      number: 'Invoice-2024-hg234x', 
+      number: 'Invoice-2024-hg234x',
       date: '21 Apr, 2024',
       ammount: '6.59',
       label: 'Declined',
       color: 'danger'
     },
     {
-      number: 'Invoice-2024-lp098y', 
+      number: 'Invoice-2024-lp098y',
       date: '14 mar, 2024',
       ammount: '24.00',
       label: 'Paid',
@@ -45,11 +45,11 @@ const EnterpriseBillingInvoicing = () => {
         <td className="text-sm text-gray-700 font-medium lg:text-right">${table.ammount}</td>
         <td>
           <Menu className="items-stretch">
-            <MenuItem 
+            <MenuItem
               toggle="dropdown"
               trigger="click"
               dropdownProps={{
-                placement: "bottom-end",
+                placement: 'bottom-end',
                 modifiers: [
                   {
                     name: 'offset',
@@ -61,7 +61,7 @@ const EnterpriseBillingInvoicing = () => {
               }}
             >
               <MenuToggle className="btn btn-sm btn-icon btn-light btn-clear mb-2.5-">
-                <KeenIcon icon="dots-vertical"/>
+                <KeenIcon icon="dots-vertical" />
               </MenuToggle>
               {DropdownCardItem2()}
             </MenuItem>

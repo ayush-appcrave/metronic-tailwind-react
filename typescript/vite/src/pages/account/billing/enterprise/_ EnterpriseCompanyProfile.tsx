@@ -6,30 +6,30 @@ const EnterpriseCompanyProfile = () => {
   const statistics: IEnterpriseCompanyProfileItems = [
     {
       total: 'Trial',
-      description: 'Status',
+      description: 'Status'
     },
     {
       total: '10,000',
-      description: 'Query runs',
+      description: 'Query runs'
     },
     {
       total: 'Unlimited',
-      description: 'API calls',
+      description: 'API calls'
     },
     {
       total: '$99.00',
-      description: 'Price',
+      description: 'Price'
     },
     {
       total: '17 Aug, 2024',
-      description: 'Next bill date',
+      description: 'Next bill date'
     }
   ];
 
   const group: IAvatarsItems = [
-    {filename: '300-4.png', variant: 'size-6'},
-    {filename: '300-1.png', variant: 'size-6'},
-    {filename: '300-2.png', variant: 'size-6'},
+    { filename: '300-4.png', variant: 'size-6' },
+    { filename: '300-1.png', variant: 'size-6' },
+    { filename: '300-2.png', variant: 'size-6' },
     {
       fallback: '+16',
       variant: 'text-primary-inverse size-6 ring-success-light bg-success'
@@ -38,7 +38,10 @@ const EnterpriseCompanyProfile = () => {
 
   const renderItem = (statistic: IEnterpriseCompanyProfileItem, index: number) => {
     return (
-      <div key={index} className="flex flex-col gap-1.5 px-2.75 py-2.25 border border-dashed border-gray-400 rounded-md">
+      <div
+        key={index}
+        className="flex flex-col gap-1.5 px-2.75 py-2.25 border border-dashed border-gray-400 rounded-md"
+      >
         <span className="text-gray-800 text-sm leading-none font-semibold">{statistic.total}</span>
         <span className="text-gray-600 text-xs font-medium">{statistic.description}</span>
       </div>
@@ -61,9 +64,7 @@ const EnterpriseCompanyProfile = () => {
             <div className="flex flex-wrap items-center justify-between gap-2">
               <div className="flex flex-col gap-1">
                 <div className="flex items-center gap-2.5">
-                  <h2 className="text-2xl font-semibold text-gray-900">
-                    Cloud One Enterprise
-                  </h2>
+                  <h2 className="text-2xl font-semibold text-gray-900">Cloud One Enterprise</h2>
                   <span className="badge badge-sm badge-success badge-outline">Monthly Plan</span>
                 </div>
                 <p className="text-2sm font-medium text-gray-600">
@@ -72,8 +73,12 @@ const EnterpriseCompanyProfile = () => {
               </div>
 
               <div className="flex items-center gap-2.5">
-                <a href="#" className="btn btn-sm btn-light">Cancel Plan</a>
-                <a href="#" className="btn btn-sm btn-primary">Upgrade Plan</a>
+                <a href="#" className="btn btn-sm btn-light">
+                  Cancel Plan
+                </a>
+                <a href="#" className="btn btn-sm btn-primary">
+                  Upgrade Plan
+                </a>
               </div>
             </div>
 
@@ -83,20 +88,19 @@ const EnterpriseCompanyProfile = () => {
               })}
             </div>
 
-            <div className="flex flex-wrap gap-6 lg:gap-12"> 
-              <div className="flex flex-col gap-3.5 grow"> 
+            <div className="flex flex-wrap gap-6 lg:gap-12">
+              <div className="flex flex-col gap-3.5 grow">
                 <div className="text-2sm font-medium text-gray-600">
                   UQuery runs:
-                  <span className="text-2sm font-semibold text-gray-900">
-                    2239 of 10,000 used
-                  </span>
+                  <span className="text-2sm font-semibold text-gray-900">2239 of 10,000 used</span>
                 </div>
                 <div className="progress progress-primary max-w-2xl w-full">
                   <div className="progress-bar" style={{ width: '47%' }}></div>
                 </div>
               </div>
               <div className="flex flex-col gap-2.5 lg:min-w-24 shrink-0 -mt-3 max-w-auto">
-                <div className="text-2sm font-medium text-gray-600">Seats: 
+                <div className="text-2sm font-medium text-gray-600">
+                  Seats:
                   <span className="text-2sm font-semibold text-gray-800">29 of 120 used</span>
                 </div>
                 <CommonAvatars group={group} />

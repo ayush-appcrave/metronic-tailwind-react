@@ -36,7 +36,9 @@ const CreatorActivities = () => {
       </div>
 
       <div className="card-footer justify-center">
-        <Link to="/public-profile/activity" className="btn btn-link">All-time Activities</Link>
+        <Link to="/public-profile/activity" className="btn btn-link">
+          All-time Activities
+        </Link>
       </div>
     </div>
   );

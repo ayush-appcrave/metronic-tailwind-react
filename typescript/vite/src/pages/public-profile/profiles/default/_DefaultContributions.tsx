@@ -9,17 +9,23 @@ import { DropdownCard2 } from '@/partials/dropdowns/general';
 const DefaultContributions = ({ title }: IDefaultContributionsProps) => {
   const data: number[] = [44, 55, 41, 17, 15];
   const labels: string[] = ['ERP', 'HRM', 'DMS', 'CRM', 'DAM'];
-  const colors: string[] = ['var(--tw-primary)', 'var(--tw-brand)', 'var(--tw-success)', 'var(--tw-info)', 'var(--tw-warning)'];
+  const colors: string[] = [
+    'var(--tw-primary)',
+    'var(--tw-brand)',
+    'var(--tw-success)',
+    'var(--tw-info)',
+    'var(--tw-warning)'
+  ];
 
   const options: IApexContributionsOptions = {
     series: data,
     labels: labels,
     colors: colors,
     fill: {
-      colors: colors,
+      colors: colors
     },
     chart: {
-      type: 'donut',
+      type: 'donut'
     },
     stroke: {
       show: true,
@@ -27,11 +33,11 @@ const DefaultContributions = ({ title }: IDefaultContributionsProps) => {
       colors: 'var(--tw-light)'
     },
     dataLabels: {
-      enabled: false,
+      enabled: false
     },
     plotOptions: {
       pie: {
-        expandOnClick: false,
+        expandOnClick: false
       }
     },
     legend: {
@@ -51,17 +57,19 @@ const DefaultContributions = ({ title }: IDefaultContributionsProps) => {
         height: 8
       }
     },
-    responsive: [{
-      breakpoint: 480,
-      options: {
-        chart: {
-          width: 200
-        },
-        legend: {
-          position: 'bottom'
+    responsive: [
+      {
+        breakpoint: 480,
+        options: {
+          chart: {
+            width: 200
+          },
+          legend: {
+            position: 'bottom'
+          }
         }
       }
-    }]
+    ]
   };
 
   return (
@@ -70,11 +78,11 @@ const DefaultContributions = ({ title }: IDefaultContributionsProps) => {
         <h3 className="card-title">{title}</h3>
 
         <Menu className="items-stretch">
-          <MenuItem 
+          <MenuItem
             toggle="dropdown"
             trigger="click"
             dropdownProps={{
-              placement: "bottom-end",
+              placement: 'bottom-end',
               modifiers: [
                 {
                   name: 'offset',
@@ -86,7 +94,7 @@ const DefaultContributions = ({ title }: IDefaultContributionsProps) => {
             }}
           >
             <MenuToggle className="btn btn-sm btn-icon btn-light btn-clear mb-2.5-">
-              <KeenIcon icon="dots-vertical"/>
+              <KeenIcon icon="dots-vertical" />
             </MenuToggle>
             {DropdownCard2()}
           </MenuItem>

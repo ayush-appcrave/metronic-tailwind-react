@@ -93,7 +93,8 @@ const PermissionsCheck = () => {
           <input
             type="checkbox"
             className="checkbox checkbox-sm"
-            value="" name=""
+            value=""
+            name=""
             defaultChecked={each.publish}
           />
         </td>
@@ -114,12 +115,16 @@ const PermissionsCheck = () => {
     <div className="card">
       <div className="card-header">
         <h3 className="card-title">
-          <a href="#" className="link">Project Manager</a>
+          <a href="#" className="link">
+            Project Manager
+          </a>
           &nbsp;Role Permissions
         </h3>
 
         <div className="flex gap-5">
-          <a href="#" className="btn btn-sm btn-light btn-outline">New Permission</a>
+          <a href="#" className="btn btn-sm btn-light btn-outline">
+            New Permission
+          </a>
         </div>
       </div>
       <div className="card-table scrollable-x-auto">
@@ -141,8 +146,12 @@ const PermissionsCheck = () => {
         </table>
       </div>
       <div className="card-footer justify-end py-7.5 gap-2.5">
-        <a href="#" className="btn btn-light btn-outline">Restore Defaults</a>
-        <a href="#" className="btn btn-primary">Save Changes</a>
+        <a href="#" className="btn btn-light btn-outline">
+          Restore Defaults
+        </a>
+        <a href="#" className="btn btn-primary">
+          Save Changes
+        </a>
       </div>
     </div>
   );

@@ -1,30 +1,28 @@
-import {
-  MiscEngage,
-  MiscFaq,
-  MiscHighlightedPosts,
-  IHighlightedPostsItems
-} from "@/partials/misc";
-import { toAbsoluteUrl } from "@/utils";
-import { Channels, DoNotDistrub, OtherNotifications } from ".";
+import { MiscEngage, MiscFaq, MiscHighlightedPosts, IHighlightedPostsItems } from '@/partials/misc';
+import { toAbsoluteUrl } from '@/utils';
+import { Channels, DoNotDistrub, OtherNotifications } from '.';
 
 const NotificationsContent = () => {
   const posts: IHighlightedPostsItems = [
     {
       icon: 'notification-on',
       title: 'Streamlined Alerts Setup: Custom Notification Preferences',
-      summary: 'Tailor your alert preferences with our streamlined setup. Stay informed with notifications that matter to you most.',
+      summary:
+        'Tailor your alert preferences with our streamlined setup. Stay informed with notifications that matter to you most.',
       path: '#'
     },
     {
       icon: 'message-notify',
       title: 'Effective Communication: Instant Notification Tools',
-      summary: 'Ensure timely communication with our instant notification tools. Customize alerts to stay ahead in real-time collaboration.',
+      summary:
+        'Ensure timely communication with our instant notification tools. Customize alerts to stay ahead in real-time collaboration.',
       path: '#'
     },
     {
       icon: 'notification-status',
       title: 'Personalized Updates: Smart Alert System',
-      summary: 'Control how you receive updates with our smart alert system. Personalize notifications for a more efficient workflow.',
+      summary:
+        'Control how you receive updates with our smart alert system. Personalize notifications for a more efficient workflow.',
       path: '#'
     }
   ];
@@ -38,8 +36,8 @@ const NotificationsContent = () => {
           <MiscFaq />
 
           <MiscEngage
-            title='Contact Support'
-            description='Need assistance? Contact our support team for prompt, personalized help your queries & concerns.'
+            title="Contact Support"
+            description="Need assistance? Contact our support team for prompt, personalized help your queries & concerns."
             image={
               <>
                 <img

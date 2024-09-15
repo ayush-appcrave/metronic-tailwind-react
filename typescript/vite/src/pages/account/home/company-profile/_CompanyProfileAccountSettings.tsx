@@ -78,7 +78,9 @@ const CompanyProfileAccountSettings = () => {
                 </div>
               </td>
               <td className="text-center">
-                <a href="#" className="btn btn-link btn-sm">Setup</a>
+                <a href="#" className="btn btn-link btn-sm">
+                  Setup
+                </a>
               </td>
             </tr>
 
@@ -161,13 +163,15 @@ const CompanyProfileAccountSettings = () => {
                     https://studio.co/W3gvQOI35dt
                   </a>
                   <button className="btn btn-icon btn-xs btn-clear btn-light">
-                  <KeenIcon icon="copy" />
+                    <KeenIcon icon="copy" />
                   </button>
                 </div>
               </td>
 
               <td className="text-center">
-                <a href="#" className="btn btn-link btn-sm">Re-create</a>
+                <a href="#" className="btn btn-link btn-sm">
+                  Re-create
+                </a>
               </td>
             </tr>
           </tbody>

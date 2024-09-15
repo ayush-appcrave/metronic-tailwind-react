@@ -62,7 +62,13 @@ const SettingsSidebarBasicSettings = () => {
         <div className="flex items-center flex-wrap lg:flex-nowrap gap-2.5">
           <span className="text-2sm font-medium text-gray-700 max-w-56 w-full">Name</span>
           <div className="grow min-w-48">
-            <input type="text" className="input w-full" placeholder="Jason Tatum" value="" readOnly />
+            <input
+              type="text"
+              className="input w-full"
+              placeholder="Jason Tatum"
+              value=""
+              readOnly
+            />
           </div>
         </div>
 

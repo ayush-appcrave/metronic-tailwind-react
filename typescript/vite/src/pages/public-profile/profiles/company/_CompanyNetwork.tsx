@@ -8,7 +8,9 @@ const CompanyNetwork = ({ data, className, title }: ICompanyNetworkProps) => {
   const renderItems = (item: ICompanyNetworkItem, index: number) => {
     return (
       <div key={index} className="flex items-center gap-2.5">
-        <span><KeenIcon icon={item.icon} className="text-lg text-gray-500" /></span>
+        <span>
+          <KeenIcon icon={item.icon} className="text-lg text-gray-500" />
+        </span>
         <a href="#" className="text-gray-800 hover:text-primary-active text-sm font-medium">
           {item.link}
         </a>

@@ -39,7 +39,7 @@ const CreatorContent = () => {
           <DefaultTags title="Skills" />
         </div>
       </div>
-      
+
       <div className="col-span-2">
         <div className="flex flex-col gap-5 lg:gap-7.5">
           <CreatorFeaturesHighlight

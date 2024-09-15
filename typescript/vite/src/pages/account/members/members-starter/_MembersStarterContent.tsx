@@ -1,5 +1,5 @@
-import { MiscFaq, MiscHelp2, MiscStarter } from "@/partials/misc";
-import { toAbsoluteUrl } from "@/utils";
+import { MiscFaq, MiscHelp2, MiscStarter } from '@/partials/misc';
+import { toAbsoluteUrl } from '@/utils';
 
 const MembersStarterContent = () => {
   return (
@@ -7,12 +7,20 @@ const MembersStarterContent = () => {
       <MiscStarter
         image={
           <>
-            <img src={toAbsoluteUrl('/media/illustrations/22.svg')} className="dark:hidden max-h-[230px]" alt="" />
+            <img
+              src={toAbsoluteUrl('/media/illustrations/22.svg')}
+              className="dark:hidden max-h-[230px]"
+              alt=""
+            />
             ||
-            <img src={toAbsoluteUrl('/media/illustrations/22-dark.svg')} className="light:hidden max-h-[230px]" alt="" />
+            <img
+              src={toAbsoluteUrl('/media/illustrations/22-dark.svg')}
+              className="light:hidden max-h-[230px]"
+              alt=""
+            />
           </>
         }
-        title='New Member Onboarding and Registration'
+        title="New Member Onboarding and Registration"
         subTitle={
           <>
             A streamlined process to welcome and integrate new members into the team,

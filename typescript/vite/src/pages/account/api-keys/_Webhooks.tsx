@@ -6,7 +6,8 @@ const Webhooks = () => {
       </div>
       <div className="card-body grid gap-5">
         <p className="text-2sm text-gray-800">
-          Set up Webhooks to trigger actions on external services in real-time. Stay informed on updates and changes to <br/>
+          Set up Webhooks to trigger actions on external services in real-time. Stay informed on
+          updates and changes to <br />
           ensure seamless integration.
         </p>
 
@@ -47,9 +48,7 @@ const Webhooks = () => {
         </div>
 
         <div className="flex justify-end">
-          <button className="btn btn-primary">
-            Save Changes
-          </button>
+          <button className="btn btn-primary">Save Changes</button>
         </div>
       </div>
     </div>

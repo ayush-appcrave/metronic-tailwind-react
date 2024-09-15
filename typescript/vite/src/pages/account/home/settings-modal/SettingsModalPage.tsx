@@ -32,9 +32,7 @@ const SettingsModalPage = () => {
         </Navbar>
       </Container>
 
-      <Container>
-        Content
-      </Container>
+      <Container>Content</Container>
     </>
   );
 };

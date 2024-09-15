@@ -20,35 +20,45 @@ const DropdownUser = () => {
   const handleThemeMode = (event: ChangeEvent<HTMLInputElement>) => {
     console.log('checked:' + event.target.checked);
     const newMode = event.target.checked ? 'dark' : 'light';
-    
+
     storeSettings({
       mode: newMode
     });
-  }
+  };
 
   const buildHeader = () => {
     return (
       <div className="flex items-center justify-between px-5 py-1.5 gap-1.5">
         <div className="flex items-center gap-2">
-          <img className="size-9 rounded-full border-2 border-success" src={toAbsoluteUrl('/media/avatars/300-2.png')} alt=""/>
+          <img
+            className="size-9 rounded-full border-2 border-success"
+            src={toAbsoluteUrl('/media/avatars/300-2.png')}
+            alt=""
+          />
           <div className="flex flex-col gap-1.5">
-            <Link to="/account/hoteme/get-stard" className="text-sm text-gray-800 hover:text-primary font-semibold leading-none">
+            <Link
+              to="/account/hoteme/get-stard"
+              className="text-sm text-gray-800 hover:text-primary font-semibold leading-none"
+            >
               Cody Fisher
             </Link>
-            <a href="mailto:c.fisher@gmail.com" className="text-xs text-gray-600 hover:text-primary font-medium leading-none">
+            <a
+              href="mailto:c.fisher@gmail.com"
+              className="text-xs text-gray-600 hover:text-primary font-medium leading-none"
+            >
               c.fisher@gmail.com
             </a>
           </div>
         </div>
         <span className="badge badge-xs badge-primary badge-outline">Pro</span>
       </div>
-    )
-  }
+    );
+  };
 
   const buildMenu = () => {
     return (
       <Fragment>
-        <MenuSeparator/>
+        <MenuSeparator />
         <div className="flex flex-col">
           <MenuItem>
             <MenuLink path="/public-profile/profiles/default">
@@ -70,12 +80,12 @@ const DropdownUser = () => {
             toggle="dropdown"
             trigger="hover"
             dropdownProps={{
-              placement: "left-start",
+              placement: 'left-start',
               modifiers: [
                 {
                   name: 'offset',
                   options: {
-                    offset: [-50, 0], // [skid, distance]
+                    offset: [-50, 0] // [skid, distance]
                   }
                 }
               ]
@@ -83,7 +93,7 @@ const DropdownUser = () => {
           >
             <MenuLink>
               <MenuIcon>
-                <KeenIcon icon="setting-2"/>
+                <KeenIcon icon="setting-2" />
               </MenuIcon>
               <MenuTitle>My Account</MenuTitle>
               <MenuArrow>
@@ -146,8 +156,8 @@ const DropdownUser = () => {
                     <KeenIcon icon="shield-tick" />
                   </MenuIcon>
                   <MenuTitle>Notifications</MenuTitle>
-                  <label className="switch switch-sm">                
-                    <input name="check" type="checkbox" checked onChange={() => {}} value="1"/>
+                  <label className="switch switch-sm">
+                    <input name="check" type="checkbox" checked onChange={() => {}} value="1" />
                   </label>
                 </MenuLink>
               </MenuItem>
@@ -156,17 +166,17 @@ const DropdownUser = () => {
           <MenuItem>
             <MenuLink path="https://devs.keenthemes.com">
               <MenuIcon>
-                <KeenIcon icon="message-programming"/>
+                <KeenIcon icon="message-programming" />
               </MenuIcon>
               <MenuTitle>Dev Forum</MenuTitle>
             </MenuLink>
           </MenuItem>
-          <DropdownUserLanguages/>
-          <MenuSeparator/>
+          <DropdownUserLanguages />
+          <MenuSeparator />
         </div>
       </Fragment>
-    )
-  }
+    );
+  };
 
   const buildFooter = () => {
     return (
@@ -174,11 +184,9 @@ const DropdownUser = () => {
         <div className="menu-item mb-0.5">
           <div className="menu-link">
             <span className="menu-icon">
-              <KeenIcon icon="moon"/>
+              <KeenIcon icon="moon" />
             </span>
-            <span className="menu-title">
-              Dark Mode
-            </span>
+            <span className="menu-title">Dark Mode</span>
             <label className="switch switch-sm">
               <input
                 name="theme"
@@ -192,17 +200,22 @@ const DropdownUser = () => {
         </div>
 
         <div className="menu-item px-4 py-1.5">
-          <Link to="#" className="btn btn-sm btn-light justify-center">Log out</Link>
+          <Link to="#" className="btn btn-sm btn-light justify-center">
+            Log out
+          </Link>
         </div>
       </div>
-    )
-  }
+    );
+  };
 
   return (
-    <MenuSub className="menu-default light:border-gray-300 w-[200px] md:w-[250px]" rootClassName="p-0">
+    <MenuSub
+      className="menu-default light:border-gray-300 w-[200px] md:w-[250px]"
+      rootClassName="p-0"
+    >
       {buildHeader()}
       {buildMenu()}
-      {buildFooter()}      
+      {buildFooter()}
     </MenuSub>
   );
 };

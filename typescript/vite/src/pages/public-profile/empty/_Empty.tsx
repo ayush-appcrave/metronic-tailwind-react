@@ -24,13 +24,17 @@ const Empty = () => {
           </div>
           <div className="text-sm text-gray-700 text-center gap-1">
             Begin by crafting your inaugural list in minutes.&nbsp;
-            <Link to="/account/billing/plans" className="text-sm font-medium link">Get Started!</Link>
+            <Link to="/account/billing/plans" className="text-sm font-medium link">
+              Get Started!
+            </Link>
           </div>
         </div>
       </div>
 
       <div className="flex grow justify-center pt-5 lg:pt-7.5">
-        <Link to="/public-profile/profiles/default" className="btn btn-link">Check ready Templates</Link>
+        <Link to="/public-profile/profiles/default" className="btn btn-link">
+          Check ready Templates
+        </Link>
       </div>
     </>
   );

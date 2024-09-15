@@ -3,11 +3,7 @@ import { useState } from 'react';
 import { KeenIcon } from '@/components';
 import { CardCampaign, CardCampaignRow } from '@/partials/cards';
 
-import {
-  ICampaignsContentItem,
-  ICampaignsContentItems,
-  ICampaignsContentProps
-} from './types';
+import { ICampaignsContentItem, ICampaignsContentItems, ICampaignsContentProps } from './types';
 import { Link } from 'react-router-dom';
 
 const CampaignsContent = ({ mode }: ICampaignsContentProps) => {
@@ -253,7 +249,9 @@ const CampaignsContent = ({ mode }: ICampaignsContentProps) => {
         </div>
 
         <div className="flex grow justify-center pt-5 lg:pt-7.5">
-          <Link to="/account/integrations" className="btn btn-link">Show more Campaigns</Link>
+          <Link to="/account/integrations" className="btn btn-link">
+            Show more Campaigns
+          </Link>
         </div>
       </div>
 
@@ -265,7 +263,9 @@ const CampaignsContent = ({ mode }: ICampaignsContentProps) => {
         </div>
 
         <div className="flex grow justify-center pt-5 lg:pt-7.5">
-          <Link to="/account/integrations" className="btn btn-link">Show more Campaigns</Link>
+          <Link to="/account/integrations" className="btn btn-link">
+            Show more Campaigns
+          </Link>
         </div>
       </div>
     </div>

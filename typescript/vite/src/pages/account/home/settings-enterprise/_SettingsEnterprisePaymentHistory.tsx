@@ -41,11 +41,11 @@ const SettingsEnterprisePaymentHistory = () => {
 
         <td>
           <Menu className="items-stretch">
-            <MenuItem 
+            <MenuItem
               toggle="dropdown"
               trigger="click"
               dropdownProps={{
-                placement: "bottom-end",
+                placement: 'bottom-end',
                 modifiers: [
                   {
                     name: 'offset',
@@ -57,7 +57,7 @@ const SettingsEnterprisePaymentHistory = () => {
               }}
             >
               <MenuToggle className="btn btn-sm btn-icon btn-light btn-clear mb-2.5-">
-                <KeenIcon icon="dots-vertical"/>
+                <KeenIcon icon="dots-vertical" />
               </MenuToggle>
               {DropdownCrudItem1()}
             </MenuItem>
@@ -73,11 +73,11 @@ const SettingsEnterprisePaymentHistory = () => {
         <h3 className="card-title">Payment History</h3>
 
         <Menu className="items-stretch">
-          <MenuItem 
+          <MenuItem
             toggle="dropdown"
             trigger="click"
             dropdownProps={{
-              placement: "bottom-end",
+              placement: 'bottom-end',
               modifiers: [
                 {
                   name: 'offset',
@@ -89,7 +89,7 @@ const SettingsEnterprisePaymentHistory = () => {
             }}
           >
             <MenuToggle className="btn btn-sm btn-icon btn-light btn-clear mb-2.5-">
-              <KeenIcon icon="dots-vertical"/>
+              <KeenIcon icon="dots-vertical" />
             </MenuToggle>
             {DropdownCrud2()}
           </MenuItem>
@@ -113,7 +113,9 @@ const SettingsEnterprisePaymentHistory = () => {
         </table>
       </div>
       <div className="card-footer justify-center">
-        <a href="#" className="btn btn-link">View all Payments</a>
+        <a href="#" className="btn btn-link">
+          View all Payments
+        </a>
       </div>
     </div>
   );

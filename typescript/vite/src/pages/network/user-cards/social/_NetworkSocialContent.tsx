@@ -16,7 +16,8 @@ const NetworkSocialContent = () => {
         className: 'size-20 relative',
         image: '300-1.png',
         imageClass: 'rounded-full',
-        badgeClass: 'flex size-2.5 bg-success rounded-full ring-2 ring-light absolute bottom-0.5 left-16 transform -translate-y-1/2'
+        badgeClass:
+          'flex size-2.5 bg-success rounded-full ring-2 ring-light absolute bottom-0.5 left-16 transform -translate-y-1/2'
       },
       name: 'Jenny Klabber',
       description: 'San Antonio, TX',
@@ -24,9 +25,11 @@ const NetworkSocialContent = () => {
     },
     {
       avatar: {
-        className: 'flex items-center justify-center relative text-2.5xl text-danger size-20 ring-1 ring-danger-clarity bg-danger-light rounded-full',
+        className:
+          'flex items-center justify-center relative text-2.5xl text-danger size-20 ring-1 ring-danger-clarity bg-danger-light rounded-full',
         fallback: 'K',
-        badgeClass: 'flex size-2.5 bg-success rounded-full ring-2 ring-light absolute bottom-0.5 left-16 transform -translate-y-1/2'
+        badgeClass:
+          'flex size-2.5 bg-success rounded-full ring-2 ring-light absolute bottom-0.5 left-16 transform -translate-y-1/2'
       },
       name: 'Kevin Warren',
       description: 'Fort Wayne, IN',
@@ -37,7 +40,8 @@ const NetworkSocialContent = () => {
         className: 'size-20 relative',
         image: '300-9.png',
         imageClass: 'rounded-full',
-        badgeClass: 'flex size-2.5 bg-success rounded-full ring-2 ring-light absolute bottom-0.5 left-16 transform -translate-y-1/2'
+        badgeClass:
+          'flex size-2.5 bg-success rounded-full ring-2 ring-light absolute bottom-0.5 left-16 transform -translate-y-1/2'
       },
       name: 'Brian Davis',
       description: 'Reno, NV',
@@ -48,7 +52,8 @@ const NetworkSocialContent = () => {
         className: 'size-20 relative',
         image: '300-11.png',
         imageClass: 'rounded-full',
-        badgeClass: 'flex size-2.5 bg-success rounded-full ring-2 ring-light absolute bottom-0.5 left-16 transform -translate-y-1/2'
+        badgeClass:
+          'flex size-2.5 bg-success rounded-full ring-2 ring-light absolute bottom-0.5 left-16 transform -translate-y-1/2'
       },
       name: 'Guy Hawkins',
       description: 'Irving, TX',
@@ -59,7 +64,8 @@ const NetworkSocialContent = () => {
         className: 'size-20 relative',
         image: '300-30.png',
         imageClass: 'rounded-full',
-        badgeClass: 'flex size-2.5 bg-success rounded-full ring-2 ring-light absolute bottom-0.5 left-16 transform -translate-y-1/2'
+        badgeClass:
+          'flex size-2.5 bg-success rounded-full ring-2 ring-light absolute bottom-0.5 left-16 transform -translate-y-1/2'
       },
       name: 'Albert Flores',
       description: 'Boise, ID',
@@ -67,9 +73,11 @@ const NetworkSocialContent = () => {
     },
     {
       avatar: {
-        className: 'flex items-center justify-center relative text-2.5xl text-info size-20 ring-1 ring-info-clarity bg-info-light rounded-full',
+        className:
+          'flex items-center justify-center relative text-2.5xl text-info size-20 ring-1 ring-info-clarity bg-info-light rounded-full',
         fallback: 'S',
-        badgeClass: 'flex size-2.5 bg-success rounded-full ring-2 ring-light absolute bottom-0.5 left-16 transform -translate-y-1/2'
+        badgeClass:
+          'flex size-2.5 bg-success rounded-full ring-2 ring-light absolute bottom-0.5 left-16 transform -translate-y-1/2'
       },
       name: 'Savannah Nguyen',
       description: 'Spokane, WA',
@@ -77,9 +85,11 @@ const NetworkSocialContent = () => {
     },
     {
       avatar: {
-        className: 'flex items-center justify-center relative text-2.5xl text-success size-20 ring-1 ring-success-clarity bg-success-light rounded-full',
+        className:
+          'flex items-center justify-center relative text-2.5xl text-success size-20 ring-1 ring-success-clarity bg-success-light rounded-full',
         fallback: 'M',
-        badgeClass: 'flex size-2.5 bg-gray-400 rounded-full ring-2 ring-light absolute bottom-0.5 left-16 transform -translate-y-1/2'
+        badgeClass:
+          'flex size-2.5 bg-gray-400 rounded-full ring-2 ring-light absolute bottom-0.5 left-16 transform -translate-y-1/2'
       },
       name: 'Marvin McKinney',
       description: 'Richmond, VA',
@@ -90,7 +100,8 @@ const NetworkSocialContent = () => {
         className: 'size-20 relative',
         image: '300-3.png',
         imageClass: 'rounded-full',
-        badgeClass: 'flex size-2.5 bg-success rounded-full ring-2 ring-light absolute bottom-0.5 left-16 transform -translate-y-1/2'
+        badgeClass:
+          'flex size-2.5 bg-success rounded-full ring-2 ring-light absolute bottom-0.5 left-16 transform -translate-y-1/2'
       },
       name: 'Darrell Steward',
       description: 'Baton Rouge, LA',
@@ -101,7 +112,8 @@ const NetworkSocialContent = () => {
         className: 'size-20 relative',
         image: '300-5.png',
         imageClass: 'rounded-full',
-        badgeClass: 'flex size-2.5 bg-success rounded-full ring-2 ring-light absolute bottom-0.5 left-16 transform -translate-y-1/2'
+        badgeClass:
+          'flex size-2.5 bg-success rounded-full ring-2 ring-light absolute bottom-0.5 left-16 transform -translate-y-1/2'
       },
       name: 'Eleanor Pena',
       description: 'Des Moines, IA',
@@ -132,24 +144,22 @@ const NetworkSocialContent = () => {
   return (
     <div className="flex flex-col items-stretch gap-5 lg:gap-7.5">
       <div className="flex flex-wrap items-center gap-5 justify-between">
-        <h3 className="text-md text-gray-900 font-medium">
-          Showing {items.length} Users
-        </h3>
+        <h3 className="text-md text-gray-900 font-medium">Showing {items.length} Users</h3>
 
         <div className="flex items-center gap-5">
-          <div className="flex items-center gap-2.5">	
+          <div className="flex items-center gap-2.5">
             <select className="select select-sm w-28">
               <option value="1">Active</option>
               <option value="2">Disabled</option>
               <option value="2">Pending</option>
             </select>
-        
+
             <select className="select select-sm w-28">
               <option value="1">Latest</option>
               <option value="2">Older</option>
               <option value="3">Oldest</option>
             </select>
-        
+
             <button className="btn btn-sm btn-outline btn-primary">
               <KeenIcon icon="setting-4" /> Filters
             </button>
@@ -159,8 +169,8 @@ const NetworkSocialContent = () => {
             <label className="input input-sm">
               <KeenIcon icon="magnifier" />
               <input placeholder="Type name, team" type="text" value="" readOnly />
-            </label> 
-          </div>  
+            </label>
+          </div>
 
           <div className="btn-tabs btn-tabs-sm" data-tabs="true">
             <a
@@ -180,7 +190,7 @@ const NetworkSocialContent = () => {
               <KeenIcon icon="row-horizontal" />
             </a>
           </div>
-        </div>		
+        </div>
       </div>
 
       {activeTab === 'cards' ? (
@@ -190,9 +200,11 @@ const NetworkSocialContent = () => {
               return renderItem(item, index);
             })}
           </div>
-        
+
           <div className="flex justify-center">
-            <a href="#" className="btn btn-link">Show more Users</a>
+            <a href="#" className="btn btn-link">
+              Show more Users
+            </a>
           </div>
         </div>
       ) : (
@@ -204,7 +216,9 @@ const NetworkSocialContent = () => {
           </div>
 
           <div className="flex grow justify-center pt-5 lg:pt-7.5">
-            <a href="#" className="btn btn-link">Show more Users</a>
+            <a href="#" className="btn btn-link">
+              Show more Users
+            </a>
           </div>
         </div>
       )}

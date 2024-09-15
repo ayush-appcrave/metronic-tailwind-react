@@ -30,7 +30,9 @@ const CreatorUsers = ({ title, items }: ICreatorUsersProps) => {
       </div>
 
       <div className="card-footer justify-center">
-        <Link to="/account/members/teams" className="btn btn-link">Join Our Team</Link>
+        <Link to="/account/members/teams" className="btn btn-link">
+          Join Our Team
+        </Link>
       </div>
     </div>
   );

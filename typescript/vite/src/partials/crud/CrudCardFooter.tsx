@@ -22,21 +22,11 @@ const CrudCardFooter = () => {
             <KeenIcon icon="black-left" />
           </button>
 
-          <button className="btn">
-            1
-          </button>
-          <button className="btn active">
-            2
-          </button>
-          <button className="btn">
-            3
-          </button>
-          <button className="btn">
-            4
-          </button>
-          <button className="btn">
-            5
-          </button>
+          <button className="btn">1</button>
+          <button className="btn active">2</button>
+          <button className="btn">3</button>
+          <button className="btn">4</button>
+          <button className="btn">5</button>
 
           <button className="btn">
             <KeenIcon icon="black-right" />

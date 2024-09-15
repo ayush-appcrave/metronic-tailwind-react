@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState } from 'react';
 import { getHeight } from '@/utils';
 import { useViewport } from '@/hooks';
-import { 
+import {
   DropdownNotificationsItem9,
   DropdownNotificationsItem15,
   DropdownNotificationsItem16,
@@ -10,7 +10,7 @@ import {
   DropdownNotificationsItem3
 } from './items';
 
-const DropdownNotificationsFollowing = () => {   
+const DropdownNotificationsFollowing = () => {
   const footerRef = useRef<HTMLDivElement>(null);
   const [listHeight, setListHeight] = useState<number>(0);
   const [viewportHeight] = useViewport();
@@ -27,32 +27,32 @@ const DropdownNotificationsFollowing = () => {
   const buildList = () => {
     return (
       <div className="flex flex-col gap-5 pt-3 pb-4 divider-y divider-gray-200">
-        <DropdownNotificationsItem9/>
+        <DropdownNotificationsItem9 />
 
         <div className="border-b border-b-gray-200"></div>
 
-        <DropdownNotificationsItem15/>
+        <DropdownNotificationsItem15 />
 
         <div className="border-b border-b-gray-200"></div>
 
-        <DropdownNotificationsItem16/>
+        <DropdownNotificationsItem16 />
 
         <div className="border-b border-b-gray-200"></div>
 
         <DropdownNotificationsItem5
           userName="Chloe Morgan "
           avatar="300-34.png"
-          badgeColor= "badge-success"
+          badgeColor="badge-success"
           description="posted a new article"
-          link="User Experience" 
+          link="User Experience"
           day=""
           date="1day ago"
           info="Nexus"
-        /> 
+        />
 
         <div className="border-b border-b-gray-200"></div>
 
-        <DropdownNotificationsItem17/>
+        <DropdownNotificationsItem17 />
 
         <div className="border-b border-b-gray-200"></div>
 
@@ -64,11 +64,11 @@ const DropdownNotificationsFollowing = () => {
           link="Design Research"
           day=""
           date="4 days ago"
-          info="Dev Team" 
-        /> 
+          info="Dev Team"
+        />
       </div>
     );
-  }
+  };
 
   const buildFooter = () => {
     return (
@@ -78,18 +78,16 @@ const DropdownNotificationsFollowing = () => {
           <button className="btn btn-sm btn-light justify-center">Archive all</button>
           <button className="btn btn-sm btn-light justify-center">Mark all as read</button>
         </div>
-      </>      
-    )
-  }
+      </>
+    );
+  };
 
   return (
     <div className="grow">
       <div className="scrollable-y-auto" style={{ maxHeight: `${listHeight}px` }}>
-        {buildList()}        
+        {buildList()}
       </div>
-      <div ref={footerRef}>
-        {buildFooter()}        
-      </div>
+      <div ref={footerRef}>{buildFooter()}</div>
     </div>
   );
 };

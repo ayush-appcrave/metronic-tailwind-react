@@ -11,7 +11,9 @@ const CardAuthor = ({ avatar, bgImage, name, location, works }: IAuthorProps) =>
       <div key={index} className="card mb-4 border-0 last:mr-5">
         <div
           className="bg-cover bg-no-repeat card-rounded-t w-[240px] shrink-0 h-44"
-          style={{ backgroundImage: `url(${toAbsoluteUrl(`/media/images/600x600/${work.image}`)})` }}
+          style={{
+            backgroundImage: `url(${toAbsoluteUrl(`/media/images/600x600/${work.image}`)})`
+          }}
         ></div>
 
         <div className="card-border card-rounded-b px-3.5 pt-5 pb-2.5">
@@ -50,10 +52,13 @@ const CardAuthor = ({ avatar, bgImage, name, location, works }: IAuthorProps) =>
             <div className="flex items-center justify-between flex-wrap gap-2">
               <div className="flex flex-col justify-end gap-0.5">
                 <div className="flex items-center gap-1.5">
-                  <a href="#" className="hover:text-primary-active text-base leading-5 font-medium text-gray-900">
+                  <a
+                    href="#"
+                    className="hover:text-primary-active text-base leading-5 font-medium text-gray-900"
+                  >
                     {name}
                   </a>
-              
+
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
                     width="15"
@@ -69,15 +74,15 @@ const CardAuthor = ({ avatar, bgImage, name, location, works }: IAuthorProps) =>
                   </svg>
                 </div>
                 <span className="text-gray-700 text-xs">{location}</span>
-              </div> 
-        
+              </div>
+
               <button className="btn btn-sm btn-light">
                 <KeenIcon icon="like-shapes" /> Work with me
               </button>
-            </div>  
-          </div>  
-        </div> 
-        
+            </div>
+          </div>
+        </div>
+
         <div className="flex gap-5 scrollable-x -mt-8 ml-7.5">
           {works.map((work, index) => {
             return renderItem(work, index);
@@ -86,7 +91,9 @@ const CardAuthor = ({ avatar, bgImage, name, location, works }: IAuthorProps) =>
       </div>
 
       <div className="card-footer justify-center">
-        <Link to='/account/members/team-members' className="btn btn-link">View Profile</Link>
+        <Link to="/account/members/team-members" className="btn btn-link">
+          View Profile
+        </Link>
       </div>
     </div>
   );

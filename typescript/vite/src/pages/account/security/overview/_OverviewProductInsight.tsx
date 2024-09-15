@@ -1,15 +1,20 @@
 import { IOverviewProductInsightProps } from './types';
 import { CommonHexagonBadge } from '@/partials/common';
 
-const OverviewProductInsight = ({ image, title, description, number }: IOverviewProductInsightProps) => {
+const OverviewProductInsight = ({
+  image,
+  title,
+  description,
+  number
+}: IOverviewProductInsightProps) => {
   return (
     <div className="card p-5">
       <div className="flex flex-wrap items-center justify-between gap-5">
         <div className="flex items-center gap-2.5">
           <CommonHexagonBadge
-            stroke='stroke-gray-300'
-            fill='fill-gray-100'
-            size='size-[50px]'
+            stroke="stroke-gray-300"
+            fill="fill-gray-100"
+            size="size-[50px]"
             badge={image}
           />
           <div className="flex flex-col gap-0.5">
@@ -18,9 +23,7 @@ const OverviewProductInsight = ({ image, title, description, number }: IOverview
           </div>
         </div>
 
-        <div className="font-semibold text-2xl text-gray-800">
-          {number}
-        </div>
+        <div className="font-semibold text-2xl text-gray-800">{number}</div>
       </div>
     </div>
   );

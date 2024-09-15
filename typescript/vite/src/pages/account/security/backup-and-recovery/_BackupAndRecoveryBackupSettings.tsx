@@ -1,4 +1,7 @@
-import { IBackupAndRecoveryBackupSettingsItem, IBackupAndRecoveryBackupSettingsItems } from "./types";
+import {
+  IBackupAndRecoveryBackupSettingsItem,
+  IBackupAndRecoveryBackupSettingsItems
+} from './types';
 
 const BackupAndRecoveryBackupSettings = () => {
   const items: IBackupAndRecoveryBackupSettingsItems = [
@@ -8,7 +11,14 @@ const BackupAndRecoveryBackupSettings = () => {
       control: (
         <>
           <label className="switch switch-sm">
-            <input defaultChecked name="check" type="checkbox" value="1" className="order-2" readOnly />
+            <input
+              defaultChecked
+              name="check"
+              type="checkbox"
+              value="1"
+              className="order-2"
+              readOnly
+            />
           </label>
         </>
       )
@@ -30,7 +40,11 @@ const BackupAndRecoveryBackupSettings = () => {
     {
       title: 'Manual Backup',
       description: 'Backup When Needed',
-      control: <a href="#" className="btn btn-sm btn-light btn-outline">Start</a>
+      control: (
+        <a href="#" className="btn btn-sm btn-light btn-outline">
+          Start
+        </a>
+      )
     }
   ];
 

@@ -4,22 +4,26 @@ const Import = () => {
   const options: IImportItems = [
     {
       label: 'Create new users',
-      description: 'Select this option to create new user accounts for individuals whose details are included in the import data but who do not have an existing account in the system.',
+      description:
+        'Select this option to create new user accounts for individuals whose details are included in the import data but who do not have an existing account in the system.',
       checked: true
     },
     {
       label: 'Update existing users',
-      description: 'When checked, the system will update the information for users already in the database with any new or altered details provided in the import file.',
+      description:
+        'When checked, the system will update the information for users already in the database with any new or altered details provided in the import file.',
       checked: false
     },
     {
       label: 'Send email notification on password change',
-      description: 'This option ensures users are promptly notified via email in the event of a password change, enhancing security and keeping users informed of their account status.',
+      description:
+        'This option ensures users are promptly notified via email in the event of a password change, enhancing security and keeping users informed of their account status.',
       checked: true
     },
     {
       label: 'Include external IDs in import results',
-      description: 'By including external IDs in the import results, administrators can more easily reconcile and track user records across different systems and databases.',
+      description:
+        'By including external IDs in the import results, administrators can more easily reconcile and track user records across different systems and databases.',
       checked: false
     }
   ];
@@ -53,21 +57,20 @@ const Import = () => {
         {options.map((option, index) => {
           return renderItem(option, index);
         })}
-          
+
         <div className="flex flex-col gap-2.5">
           <div className="flex gap-2.5">
             <button className="btn btn-sm btn-primary">Select CSV File</button>
             <button className="btn btn-sm btn-clear btn-light">Choose File</button>
           </div>
           <p className="text-gray-700 text-2sm">
-            Use the 'Choose file' button to locate and upload the CSV file that contains the user data.
+            Use the 'Choose file' button to locate and upload the CSV file that contains the user
+            data.
           </p>
         </div>
 
         <div className="flex flex-col gap-4">
-          <div className="text-gray-900 text-2sm font-medium">
-            Custom welcome message
-          </div>
+          <div className="text-gray-900 text-2sm font-medium">Custom welcome message</div>
           <textarea
             name="message"
             className="textarea text-2sm text-gray-600 font-normal"
@@ -86,10 +89,10 @@ const Import = () => {
         </div>
 
         <div className="text-gray-800 text-2sm">
-          <span className="text-danger uppercase">Warning:</span> 
-          An email will be sent to all users created unless the welcome message is disabled in settings. 
-          Ensure the correct communication preferences are set.
-        </div>		
+          <span className="text-danger uppercase">Warning:</span>
+          An email will be sent to all users created unless the welcome message is disabled in
+          settings. Ensure the correct communication preferences are set.
+        </div>
       </div>
 
       <div className="card-footer justify-center py-3.5">

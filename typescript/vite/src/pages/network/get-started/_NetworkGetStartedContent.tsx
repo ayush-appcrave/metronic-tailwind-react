@@ -4,9 +4,9 @@ import { IOptionsItems } from './types';
 const NetworkGetStartedContent = () => {
   const items: IOptionsItems = [
     {
-      icon: 'user-square', 
-      title: 'User Cards', 
-      description: "A Broad Perspective on Our Comprehensive Security Features and Policies.",
+      icon: 'user-square',
+      title: 'User Cards',
+      description: 'A Broad Perspective on Our Comprehensive Security Features and Policies.',
       sub: [
         {
           title: 'Mini Cards',
@@ -31,9 +31,9 @@ const NetworkGetStartedContent = () => {
       ]
     },
     {
-      icon: 'subtitle', 
-      title: 'User Base', 
-      description: "A Broad Perspective on Our Comprehensive Security Features and Policies.",
+      icon: 'subtitle',
+      title: 'User Base',
+      description: 'A Broad Perspective on Our Comprehensive Security Features and Policies.',
       sub: [
         {
           title: 'Team Crew',
@@ -62,9 +62,9 @@ const NetworkGetStartedContent = () => {
       ]
     },
     {
-      icon: 'key-square', 
-      title: 'Cooperators', 
-      description: "A Broad Perspective on Our Comprehensive Security Features and Policies.",
+      icon: 'key-square',
+      title: 'Cooperators',
+      description: 'A Broad Perspective on Our Comprehensive Security Features and Policies.',
       sub: [
         {
           title: 'Contacts',
@@ -93,9 +93,9 @@ const NetworkGetStartedContent = () => {
       ]
     },
     {
-      icon: 'chart-pie-3', 
-      title: 'Community Engagement', 
-      description: "A Broad Perspective on Our Comprehensive Security Features and Policies.",
+      icon: 'chart-pie-3',
+      title: 'Community Engagement',
+      description: 'A Broad Perspective on Our Comprehensive Security Features and Policies.',
       sub: [
         {
           title: 'Contacts',
@@ -124,9 +124,9 @@ const NetworkGetStartedContent = () => {
       ]
     },
     {
-      icon: 'calendar-tick', 
-      title: 'Donatiors', 
-      description: "A Broad Perspective on Our Comprehensive Security Features and Policies.",
+      icon: 'calendar-tick',
+      title: 'Donatiors',
+      description: 'A Broad Perspective on Our Comprehensive Security Features and Policies.',
       sub: [
         {
           title: 'Contacts',

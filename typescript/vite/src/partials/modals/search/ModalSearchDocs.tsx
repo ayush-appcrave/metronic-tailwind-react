@@ -5,10 +5,10 @@ import { IModalSearchDocsItem } from './types';
 
 // Define the interface for the items
 interface IModalSearchDocsProps {
-  items: IModalSearchDocsItem[]
+  items: IModalSearchDocsItem[];
 }
 
-const ModalSearchDocs = ({items}: IModalSearchDocsProps) => {
+const ModalSearchDocs = ({ items }: IModalSearchDocsProps) => {
   // Example items moved inside the component
   return (
     <div className="menu menu-default p-0 flex-col">
@@ -26,7 +26,7 @@ const ModalSearchDocs = ({items}: IModalSearchDocsProps) => {
                 </div>
               </div>
               <button className="btn btn-icon btn-light btn-clear btn-sm">
-                <KeenIcon icon="dots-vertical"/>
+                <KeenIcon icon="dots-vertical" />
               </button>
             </div>
           </div>
@@ -40,6 +40,6 @@ const ModalSearchDocs = ({items}: IModalSearchDocsProps) => {
       </div>
     </div>
   );
-}
+};
 
 export { ModalSearchDocs };

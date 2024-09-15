@@ -51,11 +51,11 @@ const SettingsEnterpriseYourCurrentPlan = () => {
         <h3 className="card-title">Your Current Plan</h3>
 
         <Menu className="items-stretch">
-          <MenuItem 
+          <MenuItem
             toggle="dropdown"
             trigger="click"
             dropdownProps={{
-              placement: "bottom-end",
+              placement: 'bottom-end',
               modifiers: [
                 {
                   name: 'offset',
@@ -67,7 +67,7 @@ const SettingsEnterpriseYourCurrentPlan = () => {
             }}
           >
             <MenuToggle className="btn btn-sm btn-icon btn-light btn-clear mb-2.5-">
-              <KeenIcon icon="dots-vertical"/>
+              <KeenIcon icon="dots-vertical" />
             </MenuToggle>
             {DropdownCard1()}
           </MenuItem>
@@ -107,7 +107,9 @@ const SettingsEnterpriseYourCurrentPlan = () => {
       </div>
 
       <div className="card-footer justify-center">
-        <a href="#" className="btn btn-link">Go to Billing</a>
+        <a href="#" className="btn btn-link">
+          Go to Billing
+        </a>
       </div>
     </div>
   );

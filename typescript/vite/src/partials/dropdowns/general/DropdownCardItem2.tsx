@@ -14,7 +14,7 @@ const DropdownCardItem2 = () => {
       <MenuItem path="#">
         <MenuLink>
           <MenuIcon>
-            <KeenIcon icon="search-list"/>
+            <KeenIcon icon="search-list" />
           </MenuIcon>
           <MenuTitle>View</MenuTitle>
         </MenuLink>
@@ -22,7 +22,7 @@ const DropdownCardItem2 = () => {
       <MenuItem path="#">
         <MenuLink>
           <MenuIcon>
-            <KeenIcon icon="pencil"/>
+            <KeenIcon icon="pencil" />
           </MenuIcon>
           <MenuTitle>Edit</MenuTitle>
         </MenuLink>
@@ -35,11 +35,11 @@ const DropdownCardItem2 = () => {
           <MenuTitle>Export</MenuTitle>
         </MenuLink>
       </MenuItem>
-      <MenuSeparator/>
+      <MenuSeparator />
       <MenuItem path="#">
         <MenuLink>
           <MenuIcon>
-            <KeenIcon icon="trash"/>
+            <KeenIcon icon="trash" />
           </MenuIcon>
           <MenuTitle>Share</MenuTitle>
         </MenuLink>

@@ -39,7 +39,9 @@ const CRMApiCredentials = () => {
       </div>
 
       <div className="card-footer justify-center">
-        <Link to="/account/api-keys" className="btn btn-link">Check API’s</Link>
+        <Link to="/account/api-keys" className="btn btn-link">
+          Check API’s
+        </Link>
       </div>
     </div>
   );

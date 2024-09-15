@@ -1,11 +1,11 @@
-import { ReactNode } from "react";
+import { ReactNode } from 'react';
 
 export interface IModalBackdropProps {
   className: string;
   open: boolean;
-};
+}
 
 export interface IModalContentProps {
-	children: ReactNode;
+  children: ReactNode;
   className?: string;
 }

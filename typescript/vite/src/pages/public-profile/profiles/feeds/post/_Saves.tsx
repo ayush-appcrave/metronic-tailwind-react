@@ -1,4 +1,4 @@
-import { toAbsoluteUrl } from "@/utils";
+import { toAbsoluteUrl } from '@/utils';
 
 const Saves = () => {
   return (
@@ -24,7 +24,7 @@ const Saves = () => {
           Access Restricted for this Option
         </div>
         <span className="text-sm font-medium text-gray-500 block mb-7.5">
-          The user may not have the necessary privileges or permissions <br/>
+          The user may not have the necessary privileges or permissions <br />
           to access this option in this page
         </span>
 
@@ -33,7 +33,7 @@ const Saves = () => {
         </div>
       </div>
     </>
-  )
+  );
 };
 
 export { Saves };

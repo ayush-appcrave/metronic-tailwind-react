@@ -22,11 +22,7 @@ const Network = () => {
       email: 'kevin@pinnacle.com',
       team: {
         size: 'size-7',
-        group: [
-          { filename: '300-4.png' },
-          { filename: '300-1.png' },
-          { filename: '300-2.png' }
-        ],
+        group: [{ filename: '300-4.png' }, { filename: '300-1.png' }, { filename: '300-2.png' }],
         more: {
           number: 10,
           variant: 'text-success-inverse ring-success-light bg-success size-7'
@@ -205,11 +201,7 @@ const Network = () => {
       email: 'alex@kteam.com',
       team: {
         size: 'size-7',
-        group: [
-          { filename: '300-4.png' },
-          { filename: '300-5.png' },
-          { filename: '300-11.png' }
-        ],
+        group: [{ filename: '300-4.png' }, { filename: '300-5.png' }, { filename: '300-11.png' }],
         more: {
           number: 10,
           variant: 'text-success-inverse ring-success-light bg-success size-7'
@@ -301,7 +293,9 @@ const Network = () => {
           </div>
 
           <div className="flex grow justify-center pt-5 lg:pt-7.5">
-            <Link to="/account/members/team-info" className="btn btn-link">Show more Connections</Link>
+            <Link to="/account/members/team-info" className="btn btn-link">
+              Show more Connections
+            </Link>
           </div>
         </div>
       )}
@@ -315,7 +309,9 @@ const Network = () => {
           </div>
 
           <div className="flex grow justify-center pt-5 lg:pt-7.5">
-            <Link to="/account/members/team-info" className="btn btn-link">Show more Connections</Link>
+            <Link to="/account/members/team-info" className="btn btn-link">
+              Show more Connections
+            </Link>
           </div>
         </div>
       )}

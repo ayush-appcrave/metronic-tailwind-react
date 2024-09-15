@@ -43,7 +43,7 @@ const UserProfileCommunityBadges = () => {
       >
         <div className="flex items-center flex-wrap gap-2.5">
           <CommonHexagonBadge
-            size='size-[50px]'
+            size="size-[50px]"
             badge={<KeenIcon icon={item.icon} className={`text-1.5xl ps-px ${item.iconColor}`} />}
             stroke={item.stroke}
             fill={item.fill}

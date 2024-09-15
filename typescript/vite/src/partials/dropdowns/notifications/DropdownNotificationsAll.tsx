@@ -1,16 +1,16 @@
 import { useEffect, useRef, useState } from 'react';
 import { getHeight } from '@/utils';
 import { useViewport } from '@/hooks';
-import { 
-  DropdownNotificationsItem1, 
-  DropdownNotificationsItem2, 
-  DropdownNotificationsItem3, 
+import {
+  DropdownNotificationsItem1,
+  DropdownNotificationsItem2,
+  DropdownNotificationsItem3,
   DropdownNotificationsItem4,
   DropdownNotificationsItem5,
-  DropdownNotificationsItem6,
+  DropdownNotificationsItem6
 } from './items';
 
-const DropdownNotificationsAll = () => {   
+const DropdownNotificationsAll = () => {
   const footerRef = useRef<HTMLDivElement>(null);
   const [listHeight, setListHeight] = useState<number>(0);
   const [viewportHeight] = useViewport();
@@ -37,13 +37,13 @@ const DropdownNotificationsAll = () => {
           specialist="Web Design 2024"
           text="For an expert opinion, check out what Mike has to say on this topic!"
         />
-        
-        <div className="border-b border-b-gray-200"></div>
-
-        <DropdownNotificationsItem2/>
 
         <div className="border-b border-b-gray-200"></div>
-        
+
+        <DropdownNotificationsItem2 />
+
+        <div className="border-b border-b-gray-200"></div>
+
         <DropdownNotificationsItem3
           userName="Guy Hawkins"
           avatar="300-27.png"
@@ -52,21 +52,21 @@ const DropdownNotificationsAll = () => {
           link="AirSpace"
           day="project"
           date="14 hours ago"
-          info="Dev Team" 
-        /> 
+          info="Dev Team"
+        />
 
         <div className="border-b border-b-gray-200"></div>
 
-        <DropdownNotificationsItem4/>
+        <DropdownNotificationsItem4 />
 
         <div className="border-b border-b-gray-200"></div>
 
         <DropdownNotificationsItem5
           userName="Raymond Pawell"
           avatar="300-11.png"
-          badgeColor= "badge-success"
+          badgeColor="badge-success"
           description="posted a new article"
-          link="2024 Roadmap" 
+          link="2024 Roadmap"
           day=""
           date="1 hour ago"
           info="Roadmap"
@@ -74,10 +74,10 @@ const DropdownNotificationsAll = () => {
 
         <div className="border-b border-b-gray-200"></div>
 
-        <DropdownNotificationsItem6/>
+        <DropdownNotificationsItem6 />
       </div>
     );
-  }
+  };
 
   const buildFooter = () => {
     return (
@@ -87,18 +87,16 @@ const DropdownNotificationsAll = () => {
           <button className="btn btn-sm btn-light justify-center">Archive all</button>
           <button className="btn btn-sm btn-light justify-center">Mark all as read</button>
         </div>
-      </>      
-    )
-  }
+      </>
+    );
+  };
 
   return (
     <div className="grow">
       <div className="scrollable-y-auto" style={{ maxHeight: `${listHeight}px` }}>
-        {buildList()}        
+        {buildList()}
       </div>
-      <div ref={footerRef}>
-        {buildFooter()}        
-      </div>
+      <div ref={footerRef}>{buildFooter()}</div>
     </div>
   );
 };

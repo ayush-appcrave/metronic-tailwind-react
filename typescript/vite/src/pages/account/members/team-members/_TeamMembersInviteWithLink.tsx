@@ -1,4 +1,4 @@
-import { KeenIcon } from "@/components";
+import { KeenIcon } from '@/components';
 
 const TeamMembersInviteWithLink = () => {
   return (
@@ -29,16 +29,18 @@ const TeamMembersInviteWithLink = () => {
               <KeenIcon icon="arrows-circle" />
               Reset Link
             </a>
-          </div>			
-        </div>		
+          </div>
+        </div>
 
         <p className="text-gray-800 text-2sm">
-          Click below to RSVP for our exclusive event. Limited spaces available, so don't miss out. 
+          Click below to RSVP for our exclusive event. Limited spaces available, so don't miss out.
           Reserve your spot now with this special invitation link!
         </p>
       </div>
       <div className="card-footer justify-center">
-        <a href="#" className="btn btn-sm btn-primary">Invite People</a>
+        <a href="#" className="btn btn-sm btn-primary">
+          Invite People
+        </a>
       </div>
     </form>
   );

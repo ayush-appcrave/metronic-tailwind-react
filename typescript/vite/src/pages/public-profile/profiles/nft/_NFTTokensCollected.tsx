@@ -60,7 +60,9 @@ const NFTTokensCollected = () => {
       <div className="card-header">
         <h3 className="card-title">Collected</h3>
 
-        <Link to="/network/user-cards/author" className="btn btn-link">View All</Link>
+        <Link to="/network/user-cards/author" className="btn btn-link">
+          View All
+        </Link>
       </div>
       <div className="card-body p-5 lg:p-7.5 lg:pb-7">
         <div className="flex gap-5 scrollable-x">

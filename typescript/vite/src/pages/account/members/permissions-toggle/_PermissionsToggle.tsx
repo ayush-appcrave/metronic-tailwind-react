@@ -71,9 +71,9 @@ const PermissionsToggle = () => {
       <div key={index} className="rounded-xl border p-4 flex items-center justify-between gap-2.5">
         <div className="flex items-center gap-3.5">
           <CommonHexagonBadge
-            stroke='stroke-gray-300'
-            fill='fill-gray-100'
-            size='size-[45px]'
+            stroke="stroke-gray-300"
+            fill="fill-gray-100"
+            size="size-[45px]"
             badge={<KeenIcon icon={item.icon} className="text-lg text-gray-500" />}
           />
 
@@ -96,7 +96,7 @@ const PermissionsToggle = () => {
     <div className="card">
       <div className="card-header">
         <h3 className="card-title">
-          Role Permissions for 
+          Role Permissions for
           <a href="#" className="link">
             Project Manager
           </a>
@@ -108,7 +108,9 @@ const PermissionsToggle = () => {
         })}
       </div>
       <div className="card-footer justify-center">
-        <a href="#" className="btn btn-sm btn-light btn-outline">New Permission</a>
+        <a href="#" className="btn btn-sm btn-light btn-outline">
+          New Permission
+        </a>
       </div>
     </div>
   );

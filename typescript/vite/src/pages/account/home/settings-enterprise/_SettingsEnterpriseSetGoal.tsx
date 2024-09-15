@@ -8,11 +8,11 @@ const SettingsEnterpriseSetGoal = () => {
         <h3 className="card-title">Set a Goal</h3>
 
         <Menu className="items-stretch">
-          <MenuItem 
+          <MenuItem
             toggle="dropdown"
             trigger="click"
             dropdownProps={{
-              placement: "bottom-end",
+              placement: 'bottom-end',
               modifiers: [
                 {
                   name: 'offset',
@@ -24,7 +24,7 @@ const SettingsEnterpriseSetGoal = () => {
             }}
           >
             <MenuToggle className="btn btn-sm btn-icon btn-light btn-clear mb-2.5-">
-              <KeenIcon icon="dots-vertical"/>
+              <KeenIcon icon="dots-vertical" />
             </MenuToggle>
             {DropdownCard2()}
           </MenuItem>
@@ -32,7 +32,7 @@ const SettingsEnterpriseSetGoal = () => {
       </div>
       <div className="card-body lg:p-7.5 p-5">
         <p className="text-2sm font-medium text-gray-700 leading-5 mb-3.5">
-          Define aspirations, outline the path. Set a goal to transform dreams into <br/>
+          Define aspirations, outline the path. Set a goal to transform dreams into <br />
           measurable achievements.
         </p>
         <div className="card shadow-none p-3.5">
@@ -40,7 +40,7 @@ const SettingsEnterpriseSetGoal = () => {
             <div className="flex items-center gap-3.5 pt-1">
               <span className="text-2.5xl font-semibold text-gray-800">$0</span>
               <span className="text-2sm font-medium text-gray-600">
-                Pursuing opportunities, earning zero. Growth <br/> beyond monetary measures.
+                Pursuing opportunities, earning zero. Growth <br /> beyond monetary measures.
               </span>
             </div>
 
@@ -48,7 +48,15 @@ const SettingsEnterpriseSetGoal = () => {
           </div>
 
           <div className="mb-3">
-            <input className="range card" id="range_1" max="10" min="0" type="range" value="1" readOnly />
+            <input
+              className="range card"
+              id="range_1"
+              max="10"
+              min="0"
+              type="range"
+              value="1"
+              readOnly
+            />
           </div>
         </div>
       </div>

@@ -17,8 +17,8 @@ const OfferRow = ({ path, size, iconSize, title, subTitle }: IOfferRowProps) => 
           }
         `}
       </style>
-    
-      <Link 
+
+      <Link
         to={path}
         className="card border-2 border-dashed border-brand-clarity bg-center bg-[length:600px] bg-no-repeat offer-bg"
       >
@@ -28,13 +28,15 @@ const OfferRow = ({ path, size, iconSize, title, subTitle }: IOfferRowProps) => 
               <CommonHexagonBadge
                 size={size}
                 badge={<KeenIcon icon="rocket" className={`${iconSize} text-brand`} />}
-                stroke='stroke-brand-clarity'
-                fill='fill-light'
+                stroke="stroke-brand-clarity"
+                fill="fill-light"
               />
             </div>
 
             <div className="flex flex-col text-start">
-              <span className="text-xl font-semibold text-gray-900 hover:text-primary-active mb-px">{title}</span>
+              <span className="text-xl font-semibold text-gray-900 hover:text-primary-active mb-px">
+                {title}
+              </span>
               <span className="text-sm font-medium text-gray-600">{subTitle}</span>
             </div>
           </div>

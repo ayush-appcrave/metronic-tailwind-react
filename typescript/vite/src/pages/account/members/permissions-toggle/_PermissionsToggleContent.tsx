@@ -1,5 +1,5 @@
-import { MiscFaq, MiscHelp2 } from "@/partials/misc";
-import { PermissionsToggle } from ".";
+import { MiscFaq, MiscHelp2 } from '@/partials/misc';
+import { PermissionsToggle } from '.';
 
 const PermissionsToggleContent = () => {
   return (

@@ -7,7 +7,9 @@ import {
   ISettingsSidebarAdvancedSettingsAppearanceProps
 } from './types';
 
-const SettingsSidebarAdvancedSettingsAppearance = ({ title = "Appearance" }: ISettingsSidebarAdvancedSettingsAppearanceProps) => {
+const SettingsSidebarAdvancedSettingsAppearance = ({
+  title = 'Appearance'
+}: ISettingsSidebarAdvancedSettingsAppearanceProps) => {
   const items: ISettingsSidebarAdvancedSettingsAppearanceItems = [
     {
       image: '28.jpg',
@@ -48,7 +50,7 @@ const SettingsSidebarAdvancedSettingsAppearance = ({ title = "Appearance" }: ISe
             icon="check-circle"
             className="checked ml-5 mb-5 text-xl text-success leading-none hidden solid"
           />
-        </label> 	
+        </label>
         <span className="text-sm font-medium text-gray-900">{item.label}</span>
       </div>
     );
@@ -60,7 +62,7 @@ const SettingsSidebarAdvancedSettingsAppearance = ({ title = "Appearance" }: ISe
         <h3 className="card-title">{title}</h3>
       </div>
 
-      <div className="card-body lg:py-7.5"> 
+      <div className="card-body lg:py-7.5">
         <div className="mb-5">
           <h3 className="text-md font-medium text-gray-900">Theme mode</h3>
           <span className="text-2sm text-gray-700">Select or customize your ui theme</span>
@@ -70,12 +72,14 @@ const SettingsSidebarAdvancedSettingsAppearance = ({ title = "Appearance" }: ISe
           {items.map((item, index) => {
             return renderItem(item, index);
           })}
-        </div>   
-        
+        </div>
+
         <div className="border-t border-gray-200 mt-7 mb-8"></div>
 
         <div className="flex items-baseline flex-wrap lg:flex-nowrap gap-2.5 mb-8">
-          <label className="form-label max-w-48 text-gray-800 font-normal">Transparent sidebar</label>
+          <label className="form-label max-w-48 text-gray-800 font-normal">
+            Transparent sidebar
+          </label>
           <div className="flex items-center gap-7.5 grow">
             <label className="switch">
               <span className="switch-label text-700 font-semibold">Active</span>
@@ -83,16 +87,14 @@ const SettingsSidebarAdvancedSettingsAppearance = ({ title = "Appearance" }: ISe
             </label>
 
             <span className="form-info text-gray-800 font-normal">
-              Toggle the transparent sidebar for a sleek interface.Switch it on for
-              transparency or off for a solid background. 
+              Toggle the transparent sidebar for a sleek interface.Switch it on for transparency or
+              off for a solid background.
             </span>
           </div>
-        </div> 
+        </div>
 
         <div className="flex justify-end">
-          <button className="btn btn-primary">
-            Save Changes
-          </button>
+          <button className="btn btn-primary">Save Changes</button>
         </div>
       </div>
     </div>

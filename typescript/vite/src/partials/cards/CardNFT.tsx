@@ -6,11 +6,10 @@ import { INFTProps } from './types';
 const CardNFT = ({ image, id, title, info, date }: INFTProps) => {
   return (
     <div className="card shadow-none border-0 mb-5">
-      <div 
-        className="rounded-t-xl w-[280px] h-[240px] bg-cover bg-center" 
+      <div
+        className="rounded-t-xl w-[280px] h-[240px] bg-cover bg-center"
         style={{ backgroundImage: `url(${toAbsoluteUrl(`/media/images/600x600/${image}`)})` }}
-      >
-      </div>
+      ></div>
 
       <div className="card-border card-rounded-b px-3.5 pt-5 pb-3.5">
         <div className="pb-6">

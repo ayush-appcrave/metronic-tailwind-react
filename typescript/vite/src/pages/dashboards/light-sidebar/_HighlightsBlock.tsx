@@ -18,9 +18,9 @@ const HighlightsBlock = ({ limit }: IHighlightsProps) => {
   ];
 
   const items: IHighlightsItems = [
-    { badgeColor: 'badge-success', lebel: 'Metronic'}, 
-    { badgeColor: 'badge-danger', lebel: 'Bundle'}, 
-    { badgeColor: 'badge-info', lebel: 'MetronicNest'}
+    { badgeColor: 'badge-success', lebel: 'Metronic' },
+    { badgeColor: 'badge-danger', lebel: 'Bundle' },
+    { badgeColor: 'badge-info', lebel: 'MetronicNest' }
   ];
 
   const renderRow = (row: IHighlightsRow, index: number) => {
@@ -34,10 +34,11 @@ const HighlightsBlock = ({ limit }: IHighlightsProps) => {
         <div className="flex items-center text-sm font-medium text-gray-800 gap-6">
           <span className="lg:text-right">${row.total}k</span>
           <span className="lg:text-right">
-            {row.increase
-              ? <KeenIcon icon="arrow-up" className="text-success" />
-              : <KeenIcon icon="arrow-down" className="text-danger" />
-            }
+            {row.increase ? (
+              <KeenIcon icon="arrow-up" className="text-success" />
+            ) : (
+              <KeenIcon icon="arrow-down" className="text-danger" />
+            )}
             {row.stats}%
           </span>
         </div>
@@ -60,11 +61,11 @@ const HighlightsBlock = ({ limit }: IHighlightsProps) => {
         <h3 className="card-title">Highlights</h3>
 
         <Menu className="items-stretch">
-          <MenuItem 
+          <MenuItem
             toggle="dropdown"
             trigger="click"
             dropdownProps={{
-              placement: "bottom-end",
+              placement: 'bottom-end',
               modifiers: [
                 {
                   name: 'offset',
@@ -76,7 +77,7 @@ const HighlightsBlock = ({ limit }: IHighlightsProps) => {
             }}
           >
             <MenuToggle className="btn btn-sm btn-icon btn-light btn-clear mb-2.5-">
-              <KeenIcon icon="dots-vertical"/>
+              <KeenIcon icon="dots-vertical" />
             </MenuToggle>
             {DropdownCard1()}
           </MenuItem>
@@ -87,29 +88,27 @@ const HighlightsBlock = ({ limit }: IHighlightsProps) => {
         <div className="flex flex-col gap-0.5">
           <span className="text-sm font-normal text-gray-700">All time sales</span>
 
-          <div className="flex items-center gap-2.5"> 
+          <div className="flex items-center gap-2.5">
             <span className="text-3xl font-semibold text-gray-900">$295.7k</span>
             <span className="badge badge-outline badge-success badge-sm">+2.7%</span>
           </div>
         </div>
 
-        <div className="flex items-center gap-1 mb-1.5"> 
+        <div className="flex items-center gap-1 mb-1.5">
           <div className="bg-success h-2 w-full max-w-[60%] rounded-sm"></div>
           <div className="bg-brand h-2 w-full max-w-[25%] rounded-sm"></div>
           <div className="bg-info h-2 w-full max-w-[15%] rounded-sm"></div>
         </div>
 
-        <div className="flex items-center flex-wrap gap-4 mb-1"> 
+        <div className="flex items-center flex-wrap gap-4 mb-1">
           {items.map((item, index) => {
             return renderItem(item, index);
           })}
         </div>
 
         <div className="border-b border-gray-300"></div>
-          
-        <div className="grid gap-3">
-          {rows.slice(0, limit).map(renderRow)}
-        </div>
+
+        <div className="grid gap-3">{rows.slice(0, limit).map(renderRow)}</div>
       </div>
     </div>
   );

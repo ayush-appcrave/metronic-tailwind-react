@@ -38,9 +38,7 @@ const CardAddNew = ({ path, size, iconSize, title, subTitle }: IAddNewProps) => 
               <span className="text-lg font-semibold text-gray-900 hover:text-primary-active mb-px">
                 {title}
               </span>
-              <span className="text-2sm font-normal text-gray-600">
-                {subTitle}
-              </span>
+              <span className="text-2sm font-normal text-gray-600">{subTitle}</span>
             </div>
           </div>
         </div>

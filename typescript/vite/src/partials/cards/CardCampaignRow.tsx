@@ -4,7 +4,7 @@ import { toAbsoluteUrl } from '@/utils/Assets';
 import { ICampaignRowItem, ICampaignRowProps } from './types';
 import { DropdownCard2 } from '../dropdowns/general';
 
-const CardCampaignRow = ({ 
+const CardCampaignRow = ({
   logo,
   logoSize,
   logoDark,
@@ -30,7 +30,6 @@ const CardCampaignRow = ({
     <div className="card p-5 lg:p-7.5">
       <div className="flex items-center flex-wrap justify-between gap-5">
         <div className="flex items-center gap-3.5">
-
           <div className="flex items-center justify-center w-[50px]">
             {logoDark ? (
               <>
@@ -74,11 +73,11 @@ const CardCampaignRow = ({
             <span className={`badge ${status.variant} badge-outline`}>{status.label}</span>
 
             <Menu className="items-stretch">
-              <MenuItem 
+              <MenuItem
                 toggle="dropdown"
                 trigger="click"
                 dropdownProps={{
-                  placement: "bottom-end",
+                  placement: 'bottom-end',
                   modifiers: [
                     {
                       name: 'offset',
@@ -90,7 +89,7 @@ const CardCampaignRow = ({
                 }}
               >
                 <MenuToggle className="btn btn-sm btn-icon btn-light btn-clear mb-2.5-">
-                  <KeenIcon icon="dots-vertical"/>
+                  <KeenIcon icon="dots-vertical" />
                 </MenuToggle>
                 {DropdownCard2()}
               </MenuItem>

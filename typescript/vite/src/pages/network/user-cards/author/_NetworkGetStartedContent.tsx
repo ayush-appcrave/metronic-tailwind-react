@@ -16,7 +16,8 @@ const NetworkAuthorContent = () => {
         className: 'size-[120px] [.authors-row_&]:size-[80px] shrink-0 relative',
         image: '300-1.png',
         imageClass: 'rounded-full',
-        badgeClass: 'flex size-3 bg-success rounded-full ring-2 ring-light absolute bottom-2 left-[93px] [.authors-row_&]:left-[64px]'
+        badgeClass:
+          'flex size-3 bg-success rounded-full ring-2 ring-light absolute bottom-2 left-[93px] [.authors-row_&]:left-[64px]'
       },
       bgImage: 'bg-7.png',
       name: 'Jenny Klabber',
@@ -50,7 +51,8 @@ const NetworkAuthorContent = () => {
         className: 'size-[120px] [.authors-row_&]:size-[80px] shrink-0 relative',
         image: '300-3.png',
         imageClass: 'rounded-full',
-        badgeClass: 'flex size-3 bg-success rounded-full ring-2 ring-light absolute bottom-2 left-[93px] [.authors-row_&]:left-[64px]'
+        badgeClass:
+          'flex size-3 bg-success rounded-full ring-2 ring-light absolute bottom-2 left-[93px] [.authors-row_&]:left-[64px]'
       },
       bgImage: 'bg-8.png',
       name: 'Ralph Edwards',
@@ -84,7 +86,8 @@ const NetworkAuthorContent = () => {
         className: 'size-[120px] [.authors-row_&]:size-[80px] shrink-0 relative',
         image: '300-17.png',
         imageClass: 'rounded-full',
-        badgeClass: 'flex size-3 bg-gray-400 rounded-full ring-2 ring-light absolute bottom-2 left-[93px] [.authors-row_&]:left-[64px]'
+        badgeClass:
+          'flex size-3 bg-gray-400 rounded-full ring-2 ring-light absolute bottom-2 left-[93px] [.authors-row_&]:left-[64px]'
       },
       bgImage: 'bg-9.png',
       name: 'Jacob Jones',
@@ -118,7 +121,8 @@ const NetworkAuthorContent = () => {
         className: 'size-[120px] [.authors-row_&]:size-[80px] shrink-0 relative',
         image: '300-5.png',
         imageClass: 'rounded-full',
-        badgeClass: 'flex size-3 bg-gray-400 rounded-full ring-2 ring-light absolute bottom-2 left-[93px] [.authors-row_&]:left-[64px]'
+        badgeClass:
+          'flex size-3 bg-gray-400 rounded-full ring-2 ring-light absolute bottom-2 left-[93px] [.authors-row_&]:left-[64px]'
       },
       bgImage: 'bg-10.png',
       name: 'Kristin Watson',
@@ -174,24 +178,22 @@ const NetworkAuthorContent = () => {
   return (
     <div className="flex flex-col items-stretch gap-5 lg:gap-7.5">
       <div className="flex flex-wrap items-center gap-5 justify-between">
-        <h3 className="text-md text-gray-900 font-medium">
-          Showing {items.length} Users
-        </h3>
+        <h3 className="text-md text-gray-900 font-medium">Showing {items.length} Users</h3>
 
         <div className="flex items-center gap-5">
-          <div className="flex items-center gap-2.5">	
+          <div className="flex items-center gap-2.5">
             <select className="select select-sm w-28">
               <option value="1">Active</option>
               <option value="2">Disabled</option>
               <option value="2">Pending</option>
             </select>
-        
+
             <select className="select select-sm w-28">
               <option value="1">Latest</option>
               <option value="2">Older</option>
               <option value="3">Oldest</option>
             </select>
-        
+
             <button className="btn btn-sm btn-outline btn-primary">
               <KeenIcon icon="setting-4" /> Filters
             </button>
@@ -201,8 +203,8 @@ const NetworkAuthorContent = () => {
             <label className="input input-sm">
               <KeenIcon icon="magnifier" />
               <input placeholder="Type name, team" type="text" value="" readOnly />
-            </label> 
-          </div>  
+            </label>
+          </div>
 
           <div className="btn-tabs btn-tabs-sm" data-tabs="true">
             <a
@@ -222,7 +224,7 @@ const NetworkAuthorContent = () => {
               <KeenIcon icon="row-horizontal" />
             </a>
           </div>
-        </div>		
+        </div>
       </div>
 
       {activeTab === 'cards' ? (
@@ -232,9 +234,11 @@ const NetworkAuthorContent = () => {
               return renderCard(item, index);
             })}
           </div>
-        
+
           <div className="flex justify-center">
-            <a href="#" className="btn btn-link">Show more Users</a>
+            <a href="#" className="btn btn-link">
+              Show more Users
+            </a>
           </div>
         </div>
       ) : (
@@ -246,7 +250,9 @@ const NetworkAuthorContent = () => {
           </div>
 
           <div className="flex grow justify-center pt-5 lg:pt-7.5">
-            <a href="#" className="btn btn-link">Show more Users</a>
+            <a href="#" className="btn btn-link">
+              Show more Users
+            </a>
           </div>
         </div>
       )}

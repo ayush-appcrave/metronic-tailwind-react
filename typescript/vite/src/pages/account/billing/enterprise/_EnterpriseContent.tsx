@@ -1,12 +1,12 @@
-import { MiscHelp } from "@/partials/misc";
+import { MiscHelp } from '@/partials/misc';
 import {
   EnterpriseBillingInvoicing,
   EnterpriseCompanyProfile,
   EnterpriseLatestPayment,
   EnterpriseNextPayment,
   EnterpriseUpgrade
-} from ".";
-import { BasicPaymentMethods } from "../basic";
+} from '.';
+import { BasicPaymentMethods } from '../basic';
 
 const EnterpriseContent = () => {
   return (
@@ -16,21 +16,21 @@ const EnterpriseContent = () => {
       </div>
       <div className="col-span-2">
         <EnterpriseCompanyProfile />
-      </div> 
-    
+      </div>
+
       <div className="col-span-2 lg:col-span-1 flex">
         <EnterpriseLatestPayment />
       </div>
       <div className="col-span-2 lg:col-span-1 flex">
         <EnterpriseNextPayment />
-      </div> 
+      </div>
 
       <div className="col-span-2 lg:col-span-1 flex">
         <BasicPaymentMethods icon="credit-cart" />
       </div>
       <div className="col-span-2 lg:col-span-1">
         <EnterpriseBillingInvoicing />
-      </div>  
+      </div>
 
       <div className="col-span-2">
         <MiscHelp />

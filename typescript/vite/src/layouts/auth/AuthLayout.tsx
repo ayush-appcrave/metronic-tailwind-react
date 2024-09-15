@@ -6,7 +6,7 @@ import useBodyClasses from '@/hooks/useBodyClasses';
 
 const Layout = () => {
   useBodyClasses('dark:bg-coal-500');
-  
+
   return (
     <>
       <style>

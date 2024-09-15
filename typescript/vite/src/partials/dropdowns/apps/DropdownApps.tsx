@@ -11,51 +11,51 @@ interface IDropdownAppsItem {
   checkbox: boolean;
 }
 
-const DropdownApps = () => {    
+const DropdownApps = () => {
   const desktopMode = useResponsive('up', 'lg');
-  
+
   const items: IDropdownAppsItem[] = [
     {
       logo: 'jira.svg',
       title: 'Jira',
       description: 'Project management',
-      checkbox: false,
+      checkbox: false
     },
     {
       logo: 'inferno.svg',
       title: 'Inferno',
       description: 'Ensures healthcare app',
-      checkbox: true,
+      checkbox: true
     },
     {
       logo: 'evernote.svg',
       title: 'Evernote',
       description: 'Notes management app',
-      checkbox: true,
+      checkbox: true
     },
     {
       logo: 'gitlab.svg',
       title: 'Gitlab',
       description: 'DevOps platform',
-      checkbox: false,
+      checkbox: false
     },
     {
       logo: 'google-webdev.svg',
       title: 'Google webdev',
       description: 'Building web experiences',
-      checkbox: true,
-    },
+      checkbox: true
+    }
   ];
 
   const buildHeader = () => {
     return (
       <div className="flex items-center justify-between gap-2.5 text-2xs text-gray-600 font-medium px-5 py-3 border-b border-b-gray-200">
-        <span>Apps</span> 
+        <span>Apps</span>
         <span>Enabled</span>
       </div>
-    )
-  }
-  
+    );
+  };
+
   const buildFooter = () => {
     return (
       <div className="grid p-5 border-t border-t-gray-200">
@@ -63,8 +63,8 @@ const DropdownApps = () => {
           Go to Apps
         </Link>
       </div>
-    )
-  }
+    );
+  };
 
   const buildList = (items: IDropdownAppsItem[]) => {
     return (
@@ -82,7 +82,7 @@ const DropdownApps = () => {
                   alt={item.title}
                 />
               </div>
-  
+
               <div className="flex flex-col">
                 <a
                   href="#"
@@ -90,12 +90,10 @@ const DropdownApps = () => {
                 >
                   {item.title}
                 </a>
-                <span className="text-2xs font-medium text-gray-600">
-                  {item.description}
-                </span>
+                <span className="text-2xs font-medium text-gray-600">{item.description}</span>
               </div>
             </div>
-  
+
             <div className="flex items-center gap-2 lg:gap-5">
               <label className="switch switch-sm">
                 <input type="checkbox" defaultChecked={item.checkbox} />
@@ -108,17 +106,14 @@ const DropdownApps = () => {
   };
 
   return (
-    <MenuSub 
-      rootClassName="w-full max-w-[320px]"
-      className="light:border-gray-300"
-    >
-      {buildHeader()}   
+    <MenuSub rootClassName="w-full max-w-[320px]" className="light:border-gray-300">
+      {buildHeader()}
 
       <div className="scrollable-y-auto" style={{ maxHeight: desktopMode ? '400px' : '75vh' }}>
         {buildList(items)}
       </div>
-      
-      {buildFooter()}   
+
+      {buildFooter()}
     </MenuSub>
   );
 };

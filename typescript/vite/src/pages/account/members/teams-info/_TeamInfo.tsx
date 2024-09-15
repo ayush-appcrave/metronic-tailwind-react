@@ -14,7 +14,9 @@ const TeamInfo = () => {
 
   const renderItem = (skill: ITeamInfoItem, index: number) => {
     return (
-      <span key={index} className="badge badge-sm badge-gray-200">{skill.label}</span>
+      <span key={index} className="badge badge-sm badge-gray-200">
+        {skill.label}
+      </span>
     );
   };
 
@@ -25,9 +27,7 @@ const TeamInfo = () => {
 
         <label className="switch switch-sm">
           <input name="check" type="checkbox" value="1" className="order-2" />
-          <span className="switch-label order-1">
-            Visible to all
-          </span>
+          <span className="switch-label order-1">Visible to all</span>
         </label>
       </div>
       <div className="card-table scrollable-x-auto pb-3">
@@ -35,18 +35,18 @@ const TeamInfo = () => {
           <thead>
             <tr>
               <td className="py-2 min-w-32 text-gray-600 font-normal">Thumbnail</td>
-              <td className="py-2 text-gray-700 font-normal min-w-32 text-2sm">150x150px JPEG, PNG Image</td>
+              <td className="py-2 text-gray-700 font-normal min-w-32 text-2sm">
+                150x150px JPEG, PNG Image
+              </td>
               <td className="py-2 text-center min-w-16">
-                <CrudAvatarUpload image="/media/images/600x600/23.jpg"/>
+                <CrudAvatarUpload image="/media/images/600x600/23.jpg" />
               </td>
             </tr>
           </thead>
           <tbody>
             <tr>
               <td className="py-2 text-gray-600 font-normal">Team Name</td>
-              <td className="py-2 text-gray-700 font-normal">
-                Product Management
-              </td>
+              <td className="py-2 text-gray-700 font-normal">Product Management</td>
               <td className="py-2 text-center">
                 <a href="#" className="btn btn-sm btn-icon btn-clear btn-primary">
                   <KeenIcon icon="notepad-edit" />
@@ -56,7 +56,8 @@ const TeamInfo = () => {
             <tr>
               <td className="py-2 text-gray-600 font-normal">Description</td>
               <td className="py-2 text-gray-700 font-normal">
-                We're open to partnerships, guest posts, and more. Join us to share your insights and grow your audience.
+                We're open to partnerships, guest posts, and more. Join us to share your insights
+                and grow your audience.
               </td>
               <td className="py-2 text-center">
                 <a href="#" className="btn btn-sm btn-icon btn-clear btn-primary">
@@ -67,9 +68,7 @@ const TeamInfo = () => {
             <tr>
               <td className="py-3  text-gray-600 font-normal">View as</td>
               <td className="py-3 text-gray-700">
-                <span className="badge badge-sm badge-outline badge-success">
-                  Public
-                </span>
+                <span className="badge badge-sm badge-outline badge-success">Public</span>
               </td>
               <td className="py-3 text-center">
                 <a href="#" className="btn btn-sm btn-icon btn-clear btn-primary">

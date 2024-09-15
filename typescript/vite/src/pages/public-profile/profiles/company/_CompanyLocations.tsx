@@ -34,7 +34,12 @@ const CompanyLocations = () => {
 
   const renderItem = (item: ICompanyLocationsItem, index: number) => {
     return (
-      <CardLocation key={index} image={item.image} title={item.title} description={item.description} />
+      <CardLocation
+        key={index}
+        image={item.image}
+        title={item.title}
+        description={item.description}
+      />
     );
   };
 

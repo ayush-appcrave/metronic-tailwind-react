@@ -20,9 +20,9 @@ const SettingsEnterpriseUpgrade = () => {
         <div className="flex items-center justify-between grow gap-2 p-5 [background-position:121%_41%] bg-no-repeat bg-[length:660px_310px] upgrade-bg">
           <div className="flex items-center gap-4">
             <CommonHexagonBadge
-              stroke='stroke-brand-clarity'
-              fill='fill-brand-light'
-              size='size-[50px]'
+              stroke="stroke-brand-clarity"
+              fill="fill-brand-light"
+              size="size-[50px]"
               badge={<KeenIcon icon="information-4" className="text-xl text-brand" />}
             />
 
@@ -38,8 +38,9 @@ const SettingsEnterpriseUpgrade = () => {
               </div>
 
               <div className="text-2sm font-medium text-gray-700">
-                Elevate business information for a standout profile. 
-                Utilize premium features, ensuring success with enhanced details.<br/>
+                Elevate business information for a standout profile. Utilize premium features,
+                ensuring success with enhanced details.
+                <br />
                 Upgrade now for heightened visibility and broader impact.
               </div>
             </div>
@@ -49,7 +50,9 @@ const SettingsEnterpriseUpgrade = () => {
             <div>
               <button className="btn btn-sm btn-dark">Start</button>
             </div>
-            <a href="#" className="btn btn-sm btn-clear btn-light">Skip</a>
+            <a href="#" className="btn btn-sm btn-clear btn-light">
+              Skip
+            </a>
           </div>
         </div>
       </div>

@@ -14,7 +14,9 @@ const BloggerCollaborate = ({ title }: IBloggerCollaborateProps) => {
       </div>
 
       <div className="card-footer justify-center">
-        <Link to="/public-profile/works" className="btn btn-link">View details</Link>
+        <Link to="/public-profile/works" className="btn btn-link">
+          View details
+        </Link>
       </div>
     </div>
   );

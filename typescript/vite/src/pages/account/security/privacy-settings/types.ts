@@ -24,14 +24,16 @@ export interface IPrivacySettingsPrivacySettingsItem {
   description: string;
   actions: React.ReactNode;
 }
-export interface IPrivacySettingsPrivacySettingsItems extends Array<IPrivacySettingsPrivacySettingsItem> {}
+export interface IPrivacySettingsPrivacySettingsItems
+  extends Array<IPrivacySettingsPrivacySettingsItem> {}
 
 export interface IPrivacySettingsReportSettingsItem {
   title: string;
   description: string;
   checked: boolean;
 }
-export interface IPrivacySettingsReportSettingsItems extends Array<IPrivacySettingsReportSettingsItem> {}
+export interface IPrivacySettingsReportSettingsItems
+  extends Array<IPrivacySettingsReportSettingsItem> {}
 
 export interface IPrivacySettingsReportSettingsProps {
   limit?: number;

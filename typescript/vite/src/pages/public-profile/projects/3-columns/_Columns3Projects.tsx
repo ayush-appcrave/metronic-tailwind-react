@@ -51,10 +51,7 @@ const Columns3Projects = () => {
       },
       team: {
         size: 'size-[30px]',
-        group: [
-          { filename: '300-24.png' },
-          { filename: '300-7.png' },
-        ]
+        group: [{ filename: '300-24.png' }, { filename: '300-7.png' }]
       }
     },
     {
@@ -73,11 +70,7 @@ const Columns3Projects = () => {
       },
       team: {
         size: 'size-[30px]',
-        group: [
-          { filename: '300-21.png' },
-          { filename: '300-1.png' },
-          { filename: '300-2.png' },
-        ],
+        group: [{ filename: '300-21.png' }, { filename: '300-1.png' }, { filename: '300-2.png' }],
         more: {
           number: 10,
           variant: 'text-success-inverse ring-success-light bg-success'
@@ -126,11 +119,7 @@ const Columns3Projects = () => {
       },
       team: {
         size: 'size-[30px]',
-        group: [
-          { filename: '300-5.png' },
-          { filename: '300-17.png' },
-          { filename: '300-16.png' },
-        ]
+        group: [{ filename: '300-5.png' }, { filename: '300-17.png' }, { filename: '300-16.png' }]
       }
     },
     {
@@ -149,11 +138,7 @@ const Columns3Projects = () => {
       },
       team: {
         size: 'size-[30px]',
-        group: [
-          { filename: '300-6.png' },
-          { filename: '300-23.png' },
-          { filename: '300-12.png' },
-        ],
+        group: [{ filename: '300-6.png' }, { filename: '300-23.png' }, { filename: '300-12.png' }],
         more: {
           number: 10,
           variant: 'text-primary-inverse ring-primary-light bg-primary'
@@ -180,7 +165,7 @@ const Columns3Projects = () => {
           { filename: '300-14.png' },
           { filename: '300-3.png' },
           { filename: '300-19.png' },
-          { filename: '300-9.png' },
+          { filename: '300-9.png' }
         ]
       }
     },
@@ -200,11 +185,7 @@ const Columns3Projects = () => {
       },
       team: {
         size: 'size-[30px]',
-        group: [
-          { filename: '300-21.png' },
-          { filename: '300-32.png' },
-          { filename: '300-2.png' }
-        ],
+        group: [{ filename: '300-21.png' }, { filename: '300-32.png' }, { filename: '300-2.png' }],
         more: {
           number: 1,
           variant: 'text-success-inverse ring-success-light bg-success'
@@ -253,11 +234,7 @@ const Columns3Projects = () => {
       },
       team: {
         size: 'size-[30px]',
-        group: [
-          { filename: '300-12.png' },
-          { filename: '300-20.png' },
-          { filename: '300-3.png' },
-        ],
+        group: [{ filename: '300-12.png' }, { filename: '300-20.png' }, { filename: '300-3.png' }],
         more: {
           number: 5,
           variant: 'text-success-inverse ring-success-light bg-success'
@@ -280,9 +257,7 @@ const Columns3Projects = () => {
       },
       team: {
         size: 'size-[30px]',
-        group: [
-          { filename: '300-16.png' }
-        ]
+        group: [{ filename: '300-16.png' }]
       }
     },
     {

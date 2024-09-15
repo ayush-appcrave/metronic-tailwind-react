@@ -1,6 +1,6 @@
-import { KeenIcon } from "@/components";
-import { ILikesItem, ILikesItems } from "./types";
-import { toAbsoluteUrl } from "@/utils";
+import { KeenIcon } from '@/components';
+import { ILikesItem, ILikesItems } from './types';
+import { toAbsoluteUrl } from '@/utils';
 
 const Likes = () => {
   const items: ILikesItems = [
@@ -47,15 +47,26 @@ const Likes = () => {
           />
 
           <div className="flex flex-col">
-            <a href="#" className="text-md font-semibold text-gray-900 hover:text-primary-active mb-px">{item.name}</a>
-            <span className="text-2sm font-medium text-gray-500">{item.subscribers} mutual subscribers</span>
+            <a
+              href="#"
+              className="text-md font-semibold text-gray-900 hover:text-primary-active mb-px"
+            >
+              {item.name}
+            </a>
+            <span className="text-2sm font-medium text-gray-500">
+              {item.subscribers} mutual subscribers
+            </span>
           </div>
         </div>
 
         {item.connected ? (
-          <a className="btn btn-light btn-sm"><KeenIcon icon="check-circle" /> Connected</a>
+          <a className="btn btn-light btn-sm">
+            <KeenIcon icon="check-circle" /> Connected
+          </a>
         ) : (
-          <a className="btn btn-sm btn-primary"><KeenIcon icon="people" /> Connect</a>
+          <a className="btn btn-sm btn-primary">
+            <KeenIcon icon="people" /> Connect
+          </a>
         )}
       </div>
     );
@@ -70,10 +81,12 @@ const Likes = () => {
       </div>
 
       <div className="card-footer justify-center">
-        <a href="#" className="btn btn-link">Show more Likes</a>
+        <a href="#" className="btn btn-link">
+          Show more Likes
+        </a>
       </div>
     </>
-  )
+  );
 };
 
 export { Likes };

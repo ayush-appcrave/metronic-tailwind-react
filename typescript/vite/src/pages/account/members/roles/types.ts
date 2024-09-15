@@ -4,7 +4,7 @@ export interface IRolesItem {
     badge: React.ReactNode;
     fill: string;
     stroke: string;
-  }
+  };
   title: string;
   subTitle: string;
   description: string;

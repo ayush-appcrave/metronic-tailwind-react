@@ -12,7 +12,9 @@ const CompanyStatistics = ({ items }: ICompanyStatisticsProps) => {
           <span className="text-gray-600 text-sm font-medium">{item.label}</span>
         </div>
 
-        {index !== items.length - 1 && <span className="[&:not(:last-child)]:border-r border-r-gray-300 my-1"></span>}
+        {index !== items.length - 1 && (
+          <span className="[&:not(:last-child)]:border-r border-r-gray-300 my-1"></span>
+        )}
       </React.Fragment>
     );
   };

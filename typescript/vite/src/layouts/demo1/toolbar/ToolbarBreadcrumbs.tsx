@@ -7,8 +7,8 @@ import { useMenu } from '@/providers';
 import { useLocation } from 'react-router';
 
 const ToolbarBreadcrumbs = () => {
-  const {getMenuConfig} = useMenu();
-  const {pathname} = useLocation();
+  const { getMenuConfig } = useMenu();
+  const { pathname } = useLocation();
   const items = useMenuBreadcrumbs(pathname, getMenuConfig('primary'));
 
   return (
@@ -17,7 +17,10 @@ const ToolbarBreadcrumbs = () => {
         {items.map((item, index) => (
           <Fragment key={index}>
             {item.path ? (
-              <Link to={item.path} className="flex items-center gap-1 text-gray-600 hover:text-primary">
+              <Link
+                to={item.path}
+                className="flex items-center gap-1 text-gray-600 hover:text-primary"
+              >
                 {item.title}
               </Link>
             ) : (

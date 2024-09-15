@@ -15,7 +15,7 @@ const DropdownCard1 = () => {
       <MenuItem path="/account/activity">
         <MenuLink>
           <MenuIcon>
-            <KeenIcon icon="cloud-change"/>
+            <KeenIcon icon="cloud-change" />
           </MenuIcon>
           <MenuTitle>Activity</MenuTitle>
         </MenuLink>
@@ -23,7 +23,7 @@ const DropdownCard1 = () => {
       <MenuItem path="#">
         <MenuLink>
           <MenuIcon>
-            <KeenIcon icon="share"/>
+            <KeenIcon icon="share" />
           </MenuIcon>
           <MenuTitle>Share</MenuTitle>
         </MenuLink>
@@ -32,12 +32,12 @@ const DropdownCard1 = () => {
         toggle="dropdown"
         trigger="hover"
         dropdownProps={{
-          placement: "right-start",
+          placement: 'right-start',
           modifiers: [
             {
               name: 'offset',
               options: {
-                offset: [-15,   0] // [skid, distance]
+                offset: [-15, 0] // [skid, distance]
               }
             }
           ]
@@ -45,7 +45,7 @@ const DropdownCard1 = () => {
       >
         <MenuLink>
           <MenuIcon>
-            <KeenIcon icon="notification-status"/>
+            <KeenIcon icon="notification-status" />
           </MenuIcon>
           <MenuTitle>Notifications</MenuTitle>
           <MenuArrow>
@@ -87,11 +87,11 @@ const DropdownCard1 = () => {
           <MenuTitle>Report</MenuTitle>
         </MenuLink>
       </MenuItem>
-      <MenuSeparator/>
+      <MenuSeparator />
       <MenuItem path="/account/home/settings-enterprise">
         <MenuLink>
           <MenuIcon>
-            <KeenIcon icon="setting-3"/>
+            <KeenIcon icon="setting-3" />
           </MenuIcon>
           <MenuTitle>Settings</MenuTitle>
         </MenuLink>

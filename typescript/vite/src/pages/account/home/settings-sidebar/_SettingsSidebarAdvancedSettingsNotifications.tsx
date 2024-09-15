@@ -56,11 +56,7 @@ const SettingsSidebarAdvancedSettingsNotifications = () => {
                 {item.icon ? (
                   <KeenIcon icon="message-text-2" className="text-[1.35rem] ps-px text-gray-500" />
                 ) : (
-                  <img
-                    src={toAbsoluteUrl('/media/brand-logos/slack.svg')}
-                    className="h-5"
-                    alt=""
-                  />
+                  <img src={toAbsoluteUrl('/media/brand-logos/slack.svg')} className="h-5" alt="" />
                 )}
               </div>
             </div>
@@ -108,7 +104,14 @@ const SettingsSidebarAdvancedSettingsNotifications = () => {
             <span className="switch-label text-2sm">All new messages (Recommended)</span>
           </label>
           <label className="flex items-center gap-1.5">
-            <input type="radio" className="radio radio-sm" name="radio" defaultChecked value="1" readOnly />
+            <input
+              type="radio"
+              className="radio radio-sm"
+              name="radio"
+              defaultChecked
+              value="1"
+              readOnly
+            />
             <span className="switch-label text-2sm">Disabled</span>
           </label>
         </div>
@@ -143,7 +146,13 @@ const SettingsSidebarAdvancedSettingsNotifications = () => {
           <span className="text-md font-semibold text-gray-900 pb-0.5">Subscriptions</span>
 
           <label className="flex items-center gap-1.5">
-            <input type="checkbox" className="checkbox checkbox-sm" defaultChecked value="3" readOnly />
+            <input
+              type="checkbox"
+              className="checkbox checkbox-sm"
+              defaultChecked
+              value="3"
+              readOnly
+            />
             <span className="switch-label text-2sm">
               Automatically subscribe to tasks you create
             </span>

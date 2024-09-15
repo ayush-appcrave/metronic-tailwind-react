@@ -31,9 +31,7 @@ const CompanyProfileBranding = () => {
         <div className="card-body lg:py-7.5 py-5">
           <div className="flex flex-wrap md:flex-nowrap gap-5 lg:gap-14">
             <div className="flex flex-col max-w-72 w-full">
-              <div className="text-gray-900 text-sm font-semibold">
-                Company Logo
-              </div>
+              <div className="text-gray-900 text-sm font-semibold">Company Logo</div>
               <span className="text-gray-600 text-2sm font-medium">
                 Emblematic Corporate Identity Symbol
               </span>
@@ -105,7 +103,7 @@ const CompanyProfileBranding = () => {
 
             <label className="input">
               <KeenIcon icon="mouse-square" className="text-success solid" />
-              <input type="text" value="#BA35A0" readOnly /> 
+              <input type="text" value="#BA35A0" readOnly />
             </label>
           </div>
 
@@ -129,14 +127,26 @@ const CompanyProfileBranding = () => {
               </div>
               <div className="flex flex-col gap-2.5">
                 <label className="checkbox-group">
-                  <input type="checkbox" className="checkbox checkbox-sm" checked value="1" readOnly />
+                  <input
+                    type="checkbox"
+                    className="checkbox checkbox-sm"
+                    checked
+                    value="1"
+                    readOnly
+                  />
                   <span className="checkbox-label">Emails</span>
                 </label>
                 <div className="form-hint">Electronic Message Communication</div>
               </div>
               <div className="flex flex-col gap-2.5">
                 <label className="checkbox-group">
-                  <input type="checkbox" className="checkbox checkbox-sm" checked value="1" readOnly />
+                  <input
+                    type="checkbox"
+                    className="checkbox checkbox-sm"
+                    checked
+                    value="1"
+                    readOnly
+                  />
                   <span className="checkbox-label">Vendor Reports</span>
                 </label>
                 <div className="form-hint">Supplier Performance & Reliability Evaluations</div>

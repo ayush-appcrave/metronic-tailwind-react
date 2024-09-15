@@ -61,7 +61,9 @@ const UserProfilePersonalInfo = () => {
               <td className="py-3">Address</td>
               <td className="py-3 text-gray-600 text-2sm">You have no an address yet</td>
               <td className="py-3 text-center">
-                <a href="#" className="btn btn-link btn-sm">Add</a>
+                <a href="#" className="btn btn-link btn-sm">
+                  Add
+                </a>
               </td>
             </tr>
           </tbody>

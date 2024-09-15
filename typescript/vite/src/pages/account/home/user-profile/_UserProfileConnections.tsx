@@ -87,21 +87,17 @@ const UserProfileConnections = ({ url }: IUserProfileConnectionsProps) => {
           <button
             className={`btn btn-xs btn-icon btn-primary btn-outline rounded-full ${table.connected ? 'active' : ''}`}
           >
-            {table.connected ? (
-              <KeenIcon icon="check" />
-            ) : (
-              <KeenIcon icon="plus" />
-            )}
+            {table.connected ? <KeenIcon icon="check" /> : <KeenIcon icon="plus" />}
           </button>
         </td>
 
         <td className="text-right">
           <Menu className="items-stretch">
-            <MenuItem 
+            <MenuItem
               toggle="dropdown"
               trigger="click"
               dropdownProps={{
-                placement: "bottom-end",
+                placement: 'bottom-end',
                 modifiers: [
                   {
                     name: 'offset',
@@ -113,7 +109,7 @@ const UserProfileConnections = ({ url }: IUserProfileConnectionsProps) => {
               }}
             >
               <MenuToggle className="btn btn-sm btn-icon btn-light btn-clear mb-2.5-">
-                <KeenIcon icon="dots-vertical"/>
+                <KeenIcon icon="dots-vertical" />
               </MenuToggle>
               {DropdownCrudItem1()}
             </MenuItem>
@@ -129,11 +125,11 @@ const UserProfileConnections = ({ url }: IUserProfileConnectionsProps) => {
         <h3 className="card-title">Connections</h3>
 
         <Menu className="items-stretch">
-          <MenuItem 
+          <MenuItem
             toggle="dropdown"
             trigger="click"
             dropdownProps={{
-              placement: "bottom-end",
+              placement: 'bottom-end',
               modifiers: [
                 {
                   name: 'offset',
@@ -145,7 +141,7 @@ const UserProfileConnections = ({ url }: IUserProfileConnectionsProps) => {
             }}
           >
             <MenuToggle className="btn btn-sm btn-icon btn-light btn-clear mb-2.5-">
-              <KeenIcon icon="dots-vertical"/>
+              <KeenIcon icon="dots-vertical" />
             </MenuToggle>
             {DropdownCrud1()}
           </MenuItem>

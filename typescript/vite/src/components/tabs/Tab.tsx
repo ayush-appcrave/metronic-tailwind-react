@@ -6,13 +6,12 @@ import clsx from 'clsx';
 const Tab = forwardRef<HTMLButtonElement, MuiTabProps>((props, ref) => {
   return (
     <MuiTab
-			slotProps={{
-				root: ({ selected, disabled }) => ({
-					className: clsx('tab', selected && 'active', disabled && 'disabled'),
-          
-				}),
-			}}
-      {...props}			
+      slotProps={{
+        root: ({ selected, disabled }) => ({
+          className: clsx('tab', selected && 'active', disabled && 'disabled')
+        })
+      }}
+      {...props}
       ref={ref}
     />
   );

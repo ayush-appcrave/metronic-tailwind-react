@@ -4,15 +4,15 @@ const BasicPlan = () => {
   const statistics: IBasicPlanItems = [
     {
       total: '$769.00',
-      description: 'Annual Total',
+      description: 'Annual Total'
     },
     {
       total: '$69.00',
-      description: 'Next Bill Amount',
+      description: 'Next Bill Amount'
     },
     {
       total: '23 Aug, 24',
-      description: 'Next Billing Date',
+      description: 'Next Billing Date'
     }
   ];
 
@@ -35,9 +35,7 @@ const BasicPlan = () => {
           <div className="flex flex-wrap items-center gap-5 justify-between">
             <div className="flex flex-col gap-1">
               <div className="flex items-center gap-2.5">
-                <h2 className="text-2xl font-semibold text-gray-900">
-                  Basic Plan
-                </h2>
+                <h2 className="text-2xl font-semibold text-gray-900">Basic Plan</h2>
                 <span className="badge badge-sm badge-success badge-outline">Monthly</span>
               </div>
               <p className="text-2sm font-medium text-gray-600">
@@ -45,8 +43,12 @@ const BasicPlan = () => {
               </p>
             </div>
             <div className="flex gap-2.5">
-              <a href="#" className="btn btn-sm btn-light">Cancel Plan</a>
-              <a href="#" className="btn btn-sm btn-primary">Upgrade Plan</a>
+              <a href="#" className="btn btn-sm btn-light">
+                Cancel Plan
+              </a>
+              <a href="#" className="btn btn-sm btn-primary">
+                Upgrade Plan
+              </a>
             </div>
           </div>
 
@@ -57,9 +59,7 @@ const BasicPlan = () => {
           </div>
 
           <div className="flex flex-col gap-3.5">
-            <span className="text-2sm font-medium text-gray-600">
-              Usage (32 of 40 users)
-            </span>
+            <span className="text-2sm font-medium text-gray-600">Usage (32 of 40 users)</span>
             <div className="progress progress-primary">
               <div className="progress-bar" style={{ width: '80%' }}></div>
             </div>

@@ -29,7 +29,9 @@ const DefaultUnlockPartnerships = () => {
         </div>
 
         <div className="card-footer justify-center">
-          <Link to="/network/get-started" className="btn btn-link">Get Started</Link>
+          <Link to="/network/get-started" className="btn btn-link">
+            Get Started
+          </Link>
         </div>
       </div>
     </>

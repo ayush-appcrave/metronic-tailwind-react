@@ -1,9 +1,9 @@
 import { KeenIcon } from '@/components';
 
-import { 
-  IDefaultCommunityBadgesItem, 
-  IDefaultCommunityBadgesItems, 
-  IDefaultCommunityBadgesProps 
+import {
+  IDefaultCommunityBadgesItem,
+  IDefaultCommunityBadgesItems,
+  IDefaultCommunityBadgesProps
 } from './types';
 
 const DefaultCommunityBadges = ({ title }: IDefaultCommunityBadgesProps) => {

@@ -57,7 +57,7 @@ export interface IDefaultRecentUploadsProps {
 export interface IDefaultProjectsItem {
   name: string;
   team: {
-    group: Array<{ filename?: string, fallback?: string, variant?: string }>;
+    group: Array<{ filename?: string; fallback?: string; variant?: string }>;
     more?: {
       number: number;
       variant: string;

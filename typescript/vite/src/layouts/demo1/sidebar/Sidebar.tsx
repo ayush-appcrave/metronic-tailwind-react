@@ -14,7 +14,7 @@ const Sidebar = () => {
   const headerRef = useRef<HTMLDivElement>(null);
   const [contentHeight, setContentHeight] = useState<number>(0);
   const [viewportHeight] = useViewport();
-  const {pathname} = useLocation();
+  const { pathname } = useLocation();
 
   useEffect(() => {
     if (headerRef.current) {
@@ -29,7 +29,10 @@ const Sidebar = () => {
   const desktopMode = useResponsive('up', 'lg');
   const { mobileSidebarOpen, setMobileSidebarOpen } = useDemo1Layout();
   const { layout } = useDemo1Layout();
-  const themeClass:string = layout.options.sidebar.theme === 'dark' || pathname === '/dark-sidebar' ? 'dark [&.dark]:bg-coal-600' : 'dark:bg-coal-600';
+  const themeClass: string =
+    layout.options.sidebar.theme === 'dark' || pathname === '/dark-sidebar'
+      ? 'dark [&.dark]:bg-coal-600'
+      : 'dark:bg-coal-600';
 
   const handleMobileSidebarClose = () => {
     setMobileSidebarOpen(false);
@@ -37,9 +40,15 @@ const Sidebar = () => {
 
   const renderContent = () => {
     return (
-      <div ref={selfRef} className={clsx('sidebar lg:fixed lg:z-20 lg:top-0 lg:bottom-0 lg:left-0 lg:translate-x-0 lg:flex flex-col items-stretch shrink-0 bg-light lg:border lg:border-r-gray-200', themeClass)}>
+      <div
+        ref={selfRef}
+        className={clsx(
+          'sidebar lg:fixed lg:z-20 lg:top-0 lg:bottom-0 lg:left-0 lg:translate-x-0 lg:flex flex-col items-stretch shrink-0 bg-light lg:border lg:border-r-gray-200',
+          themeClass
+        )}
+      >
         {desktopMode && <SidebarHeader ref={headerRef} />}
-        <SidebarContent {...(desktopMode && { height: contentHeight})}/>
+        <SidebarContent {...(desktopMode && { height: contentHeight })} />
       </div>
     );
   };

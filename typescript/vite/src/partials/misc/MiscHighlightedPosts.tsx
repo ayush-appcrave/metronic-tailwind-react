@@ -12,15 +12,15 @@ const MiscHighlightedPosts = ({ posts }: IHighlightedPostsProps) => {
         <div className="flex flex-col items-start gap-2.5">
           <div className="mb-2.5">
             <CommonHexagonBadge
-              stroke='stroke-brand-clarity'
-              fill='fill-brand-light'
-              size='size-[50px]'
+              stroke="stroke-brand-clarity"
+              fill="fill-brand-light"
+              size="size-[50px]"
               badge={<KeenIcon icon={post.icon} className="text-1.5xl ps-px text-brand" />}
             />
           </div>
 
-          <Link 
-            to={`${post.path}`} 
+          <Link
+            to={`${post.path}`}
             className="text-base font-semibold text-gray-900 hover:text-primary"
           >
             {post.title}

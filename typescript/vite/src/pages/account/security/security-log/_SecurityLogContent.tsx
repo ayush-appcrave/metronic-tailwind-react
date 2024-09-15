@@ -1,4 +1,4 @@
-import { MiscHelp } from "@/partials/misc";
+import { MiscHelp } from '@/partials/misc';
 
 const SecurityLogContent = () => {
   return (

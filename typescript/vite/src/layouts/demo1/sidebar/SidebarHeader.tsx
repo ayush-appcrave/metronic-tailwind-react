@@ -2,7 +2,7 @@ import React, { forwardRef } from 'react';
 import { Link } from 'react-router-dom';
 import { useDemo1Layout } from '../';
 import { toAbsoluteUrl } from '@/utils';
-import { SidebarToggle } from './'; 
+import { SidebarToggle } from './';
 
 const SidebarHeader = forwardRef<HTMLDivElement>((props, ref) => {
   const { layout } = useDemo1Layout();
@@ -10,21 +10,21 @@ const SidebarHeader = forwardRef<HTMLDivElement>((props, ref) => {
   const lightLogo = () => (
     <>
       <Link to="/" className="dark:hidden">
-        <img 
-          src={toAbsoluteUrl('/media/app/default-logo.svg')}  
+        <img
+          src={toAbsoluteUrl('/media/app/default-logo.svg')}
           className="default-logo min-h-[22px] max-w-none"
         />
-        <img 
+        <img
           src={toAbsoluteUrl('/media/app/mini-logo.svg')}
           className="small-logo min-h-[22px] max-w-none"
         />
       </Link>
       <Link to="/" className="hidden dark:block">
-        <img 
-          src={toAbsoluteUrl('/media/app/default-logo-dark.svg')}  
+        <img
+          src={toAbsoluteUrl('/media/app/default-logo-dark.svg')}
           className="default-logo min-h-[22px] max-w-none"
         />
-        <img 
+        <img
           src={toAbsoluteUrl('/media/app/mini-logo.svg')}
           className="small-logo min-h-[22px] max-w-none"
         />
@@ -34,11 +34,11 @@ const SidebarHeader = forwardRef<HTMLDivElement>((props, ref) => {
 
   const darkLogo = () => (
     <Link to="/">
-      <img 
-        src={toAbsoluteUrl('/media/app/default-logo-dark.svg')}  
+      <img
+        src={toAbsoluteUrl('/media/app/default-logo-dark.svg')}
         className="default-logo min-h-[22px] max-w-none"
       />
-      <img 
+      <img
         src={toAbsoluteUrl('/media/app/mini-logo.svg')}
         className="small-logo min-h-[22px] max-w-none"
       />

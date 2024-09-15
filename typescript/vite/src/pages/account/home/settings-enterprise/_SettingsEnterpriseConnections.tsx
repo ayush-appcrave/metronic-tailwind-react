@@ -1,47 +1,44 @@
 import { KeenIcon, Menu, MenuItem, MenuToggle } from '@/components';
 import { toAbsoluteUrl } from '@/utils/Assets';
 
-import {
-  ISettingsEnterpriseConnection,
-  ISettingsEnterpriseConnections
-} from './types';
+import { ISettingsEnterpriseConnection, ISettingsEnterpriseConnections } from './types';
 import { DropdownCard2, DropdownCardItem1 } from '@/partials/dropdowns/general';
 
 const SettingsEnterpriseConnections = () => {
   const tables: ISettingsEnterpriseConnections = [
     {
-      avatar: '300-3.png', 
-      name: 'Tyler Hero', 
+      avatar: '300-3.png',
+      name: 'Tyler Hero',
       connections: 26,
       jointLinks: 6
     },
     {
-      avatar: '300-1.png', 
-      name: 'Esther Howard', 
+      avatar: '300-1.png',
+      name: 'Esther Howard',
       connections: 639,
       jointLinks: 'none'
     },
     {
-      avatar: '300-11.png', 
-      name: 'Jacob Jones',  
+      avatar: '300-11.png',
+      name: 'Jacob Jones',
       connections: 125,
       jointLinks: 19
     },
     {
-      avatar: '300-2.png', 
-      name: 'Cody Fisher', 
+      avatar: '300-2.png',
+      name: 'Cody Fisher',
       connections: 81,
       jointLinks: 'none'
     },
     {
-      avatar: '300-5.png', 
-      name: 'Leslie Alexander', 
+      avatar: '300-5.png',
+      name: 'Leslie Alexander',
       connections: 1203,
       jointLinks: 2
     },
     {
-      avatar: '300-9.png', 
-      name: 'Guy Hawkins', 
+      avatar: '300-9.png',
+      name: 'Guy Hawkins',
       connections: 2,
       jointLinks: 'none'
     }
@@ -57,14 +54,19 @@ const SettingsEnterpriseConnections = () => {
               className="rounded-full size-9 shrink-0"
               alt=""
             />
-    
+
             <div className="flex flex-col gap-0.5">
-              <a href="#" className="text-sm font-semibold text-gray-900 hover:text-primary-active mb-px">
+              <a
+                href="#"
+                className="text-sm font-semibold text-gray-900 hover:text-primary-active mb-px"
+              >
                 {table.name}
               </a>
-              <span className="text-xs font-normal text-gray-600">{table.connections} connections</span>
+              <span className="text-xs font-normal text-gray-600">
+                {table.connections} connections
+              </span>
             </div>
-          </div> 
+          </div>
         </td>
 
         <td className="py-2 text-right">{table.jointLinks}</td>
@@ -77,11 +79,11 @@ const SettingsEnterpriseConnections = () => {
 
         <td className="text-right">
           <Menu className="items-stretch">
-            <MenuItem 
+            <MenuItem
               toggle="dropdown"
               trigger="click"
               dropdownProps={{
-                placement: "bottom-end",
+                placement: 'bottom-end',
                 modifiers: [
                   {
                     name: 'offset',
@@ -93,7 +95,7 @@ const SettingsEnterpriseConnections = () => {
               }}
             >
               <MenuToggle className="btn btn-sm btn-icon btn-light btn-clear mb-2.5-">
-                <KeenIcon icon="dots-vertical"/>
+                <KeenIcon icon="dots-vertical" />
               </MenuToggle>
               {DropdownCardItem1()}
             </MenuItem>
@@ -109,11 +111,11 @@ const SettingsEnterpriseConnections = () => {
         <h3 className="card-title">Connections</h3>
 
         <Menu className="items-stretch">
-          <MenuItem 
+          <MenuItem
             toggle="dropdown"
             trigger="click"
             dropdownProps={{
-              placement: "bottom-end",
+              placement: 'bottom-end',
               modifiers: [
                 {
                   name: 'offset',
@@ -125,7 +127,7 @@ const SettingsEnterpriseConnections = () => {
             }}
           >
             <MenuToggle className="btn btn-sm btn-icon btn-light btn-clear mb-2.5-">
-              <KeenIcon icon="dots-vertical"/>
+              <KeenIcon icon="dots-vertical" />
             </MenuToggle>
             {DropdownCard2()}
           </MenuItem>
@@ -143,7 +145,7 @@ const SettingsEnterpriseConnections = () => {
                 <th className="min-w-16"></th>
               </tr>
             </thead>
-          
+
             <tbody>
               {tables.map((table, index) => {
                 return renderItem(table, index);
@@ -154,7 +156,9 @@ const SettingsEnterpriseConnections = () => {
       </div>
 
       <div className="card-footer justify-center">
-        <a href="#" className="btn btn-link">View 64 more</a>
+        <a href="#" className="btn btn-link">
+          View 64 more
+        </a>
       </div>
     </div>
   );

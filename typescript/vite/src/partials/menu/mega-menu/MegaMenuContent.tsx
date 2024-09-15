@@ -29,33 +29,30 @@ const MegaMenuContent = (items: MenuConfigType) => {
   const authItemGeneral = authItem.children ? authItem.children[0] : {};
   const authItemOthers = authItem.children ? authItem.children[1] : {};
 
-  const helpItem = items[5];  
+  const helpItem = items[5];
 
-  const linkClass = 'text-sm text-gray-800 menu-link-hover:text-primary menu-item-active:text-gray-900 menu-item-show:text-primary menu-item-here:text-gray-900 menu-item-active:font-medium menu-item-here:font-medium';
+  const linkClass =
+    'text-sm text-gray-800 menu-link-hover:text-primary menu-item-active:text-gray-900 menu-item-show:text-primary menu-item-here:text-gray-900 menu-item-active:font-medium menu-item-here:font-medium';
 
   const build = () => {
     return (
       <Fragment>
         <MenuItem key="home">
           <MenuLink path={homeItem.path} className={linkClass}>
-            <MenuTitle className="text-nowrap">
-              {homeItem.title}
-            </MenuTitle>
+            <MenuTitle className="text-nowrap">{homeItem.title}</MenuTitle>
           </MenuLink>
         </MenuItem>
-        
-        <MenuItem 
+
+        <MenuItem
           key="public-profiles"
           toggle="dropdown"
           trigger="hover"
           dropdownProps={{
-            placement: "bottom-start"
+            placement: 'bottom-start'
           }}
         >
           <MenuLink className={linkClass}>
-            <MenuTitle className="text-nowrap">
-              {publicProfilesItem.title}
-            </MenuTitle>
+            <MenuTitle className="text-nowrap">{publicProfilesItem.title}</MenuTitle>
             {buildArrow()}
           </MenuLink>
           <MenuSub className="w-full gap-0 lg:max-w-[875px]">
@@ -64,79 +61,33 @@ const MegaMenuContent = (items: MenuConfigType) => {
                 {publicProfilesItem.children?.map((item: IMenuItemConfig, index) => {
                   return (
                     <div key={`item-${index}`} className="menu menu-default menu-fit flex-col">
-                      <h3 className="text-sm text-gray-800 font-semibold leading-none pl-2.5 mb-2 lg:mb-5">{ item.title }</h3>
+                      <h3 className="text-sm text-gray-800 font-semibold leading-none pl-2.5 mb-2 lg:mb-5">
+                        {item.title}
+                      </h3>
                       <div className="grid lg:grid-cols-2 lg:gap-5">
                         {item.children?.map((item: IMenuItemConfig, index) => {
                           return (
                             <div key={`item-${index}`} className="flex flex-col gap-0.5">
                               {item.children && MegaMenuSubDefault(item.children)}
                             </div>
-                          )
+                          );
                         })}
-                      </div>							
+                      </div>
                     </div>
-                  ) 
-                })}  
+                  );
+                })}
               </div>
             </div>
             {buildFooter()}
           </MenuSub>
         </MenuItem>
-        
-        <MenuItem 
-          key="my-account" 
+
+        <MenuItem
+          key="my-account"
           toggle="dropdown"
           trigger="hover"
           dropdownProps={{
-            placement: "bottom-start",
-            modifiers: [
-              {
-                name: 'offset',
-                options: {
-                  offset: [-300, 0], // [skid, distance]
-                }
-              }
-            ]
-          }}
-        >
-          <MenuLink className={linkClass}>
-            <MenuTitle className="text-nowrap">
-              {myAccountItem.title}
-            </MenuTitle>
-            {buildArrow()}
-          </MenuLink>
-          <MenuSub className="flex-col lg:flex-row gap-0 w-full lg:max-w-[1240px]">
-            <div className="lg:w-[250px] mt-2 lg:mt-0 lg:border-r lg:border-r-gray-200 rounded-xl lg:rounded-l-xl lg:rounded-r-none shrink-0 px-3 py-4 lg:p-7.5 bg-light-active dark:bg-coal-500 dark:lg:border-r-coal-100">
-              <h3 className="text-sm text-gray-800 font-semibold leading-none pl-2.5 mb-2 lg:mb-5">
-                { myAccountItemGeneral.title }
-              </h3>
-              <div className="menu menu-default menu-fit flex-col gap-0.5">					
-                { myAccountItemGeneral.children && MegaMenuSubHighlighted(myAccountItemGeneral.children)}					 
-              </div>
-            </div>
-            <div className="pt-4 pb-2 lg:p-7.5 lg:pb-5 grow">
-					    <div className="grid lg:grid-cols-5 gap-5">
-                {myAccountItemOthers.children?.map((item: IMenuItemConfig, index) => {
-                  return (
-                    <div key={`item-${index}`} className="flex flex-col">
-                      <h3 className="text-sm text-gray-800 font-semibold leading-none pl-2.5 mb-2 lg:mb-5">{ item.title }</h3>
-                      <div className="menu menu-default menu-fit flex-col gap-0.5">
-                        {item.children && MegaMenuSubDefault(item.children)}
-                      </div>							
-                    </div>
-                  )
-                })}
-              </div>
-            </div>
-          </MenuSub>
-        </MenuItem>
-        
-        <MenuItem 
-          key="network" 
-          toggle="dropdown"
-          trigger="hover"
-          dropdownProps={{
-            placement: "bottom-start",
+            placement: 'bottom-start',
             modifiers: [
               {
                 name: 'offset',
@@ -148,19 +99,67 @@ const MegaMenuContent = (items: MenuConfigType) => {
           }}
         >
           <MenuLink className={linkClass}>
-            <MenuTitle className="text-nowrap">
-              {networkItem.title}
-            </MenuTitle>
+            <MenuTitle className="text-nowrap">{myAccountItem.title}</MenuTitle>
+            {buildArrow()}
+          </MenuLink>
+          <MenuSub className="flex-col lg:flex-row gap-0 w-full lg:max-w-[1240px]">
+            <div className="lg:w-[250px] mt-2 lg:mt-0 lg:border-r lg:border-r-gray-200 rounded-xl lg:rounded-l-xl lg:rounded-r-none shrink-0 px-3 py-4 lg:p-7.5 bg-light-active dark:bg-coal-500 dark:lg:border-r-coal-100">
+              <h3 className="text-sm text-gray-800 font-semibold leading-none pl-2.5 mb-2 lg:mb-5">
+                {myAccountItemGeneral.title}
+              </h3>
+              <div className="menu menu-default menu-fit flex-col gap-0.5">
+                {myAccountItemGeneral.children &&
+                  MegaMenuSubHighlighted(myAccountItemGeneral.children)}
+              </div>
+            </div>
+            <div className="pt-4 pb-2 lg:p-7.5 lg:pb-5 grow">
+              <div className="grid lg:grid-cols-5 gap-5">
+                {myAccountItemOthers.children?.map((item: IMenuItemConfig, index) => {
+                  return (
+                    <div key={`item-${index}`} className="flex flex-col">
+                      <h3 className="text-sm text-gray-800 font-semibold leading-none pl-2.5 mb-2 lg:mb-5">
+                        {item.title}
+                      </h3>
+                      <div className="menu menu-default menu-fit flex-col gap-0.5">
+                        {item.children && MegaMenuSubDefault(item.children)}
+                      </div>
+                    </div>
+                  );
+                })}
+              </div>
+            </div>
+          </MenuSub>
+        </MenuItem>
+
+        <MenuItem
+          key="network"
+          toggle="dropdown"
+          trigger="hover"
+          dropdownProps={{
+            placement: 'bottom-start',
+            modifiers: [
+              {
+                name: 'offset',
+                options: {
+                  offset: [-300, 0] // [skid, distance]
+                }
+              }
+            ]
+          }}
+        >
+          <MenuLink className={linkClass}>
+            <MenuTitle className="text-nowrap">{networkItem.title}</MenuTitle>
             {buildArrow()}
           </MenuLink>
           <MenuSub className="flex-col gap-0 w-full lg:max-w-[670px]">
             <div className="flex flex-col lg:flex-row">
               <div className="flex flex-col gap-5 lg:w-[250px] mt-2 lg:mt-0 lg:border-r lg:border-r-gray-200 rounded-xl lg:rounded-none lg:rounded-tl-xl shrink-0 px-3 py-4 lg:p-7.5 bg-light-active dark:bg-coal-500 dark:lg:border-r-coal-100">
                 <h3 className="text-sm text-gray-800 font-semibold leading-none pl-2.5 h-3.5">
-                  { networkItemGeneral.title }
+                  {networkItemGeneral.title}
                 </h3>
-                <div className="menu menu-default menu-fit flex-col gap-0.5">					
-                  { networkItemGeneral.children && MegaMenuSubHighlighted(networkItemGeneral.children)}					 
+                <div className="menu menu-default menu-fit flex-col gap-0.5">
+                  {networkItemGeneral.children &&
+                    MegaMenuSubHighlighted(networkItemGeneral.children)}
                 </div>
               </div>
               <div className="pt-4 pb-2 lg:p-7.5 lg:pb-5 grow">
@@ -169,14 +168,18 @@ const MegaMenuContent = (items: MenuConfigType) => {
                     return (
                       <div key={`item-${index}`} className="flex flex-col gap-5">
                         <h3 className="flex items-center gap-1.5 text-sm text-gray-800 font-semibold leading-none pl-2.5 h-3.5">
-                          { item.title }
-                          { item.badge && <span className="left-auto badge badge-xs badge-primary badge-outline">{ item.badge }</span> }
+                          {item.title}
+                          {item.badge && (
+                            <span className="left-auto badge badge-xs badge-primary badge-outline">
+                              {item.badge}
+                            </span>
+                          )}
                         </h3>
                         <div className="menu menu-default menu-fit flex-col gap-0.5">
                           {item.children && MegaMenuSubDefault(item.children)}
-                        </div>							
+                        </div>
                       </div>
-                    )
+                    );
                   })}
                 </div>
               </div>
@@ -184,67 +187,69 @@ const MegaMenuContent = (items: MenuConfigType) => {
             {buildFooter()}
           </MenuSub>
         </MenuItem>
-        
-        <MenuItem 
-          key="auth" 
+
+        <MenuItem
+          key="auth"
           toggle="dropdown"
           trigger="hover"
           dropdownProps={{
-            placement: "bottom-start",
+            placement: 'bottom-start',
             modifiers: [
               {
                 name: 'offset',
                 options: {
-                  offset: [-300, 0], // [skid, distance]
+                  offset: [-300, 0] // [skid, distance]
                 }
               }
             ]
           }}
         >
           <MenuLink className={linkClass}>
-            <MenuTitle className="text-nowrap">
-              {authItem.title}
-            </MenuTitle>
+            <MenuTitle className="text-nowrap">{authItem.title}</MenuTitle>
             {buildArrow()}
           </MenuLink>
           <MenuSub className="flex-col gap-0 w-full lg:max-w-[670px]">
-            <div className="flex flex-col lg:flex-row">              
+            <div className="flex flex-col lg:flex-row">
               <div className="pt-4 pb-2 lg:p-7.5 lg:pb-5 grow">
                 <div className="grid lg:grid-cols-2 gap-5">
                   {authItemGeneral.children?.map((item: IMenuItemConfig, index) => {
                     return (
                       <div key={`item-${index}`} className="flex flex-col gap-5">
                         <h3 className="flex items-center gap-1.5 text-sm text-gray-800 font-semibold leading-none pl-2.5 h-3.5">
-                          { item.title }
-                          { item.badge && <span className="left-auto badge badge-xs badge-primary badge-outline">{ item.badge }</span> }
+                          {item.title}
+                          {item.badge && (
+                            <span className="left-auto badge badge-xs badge-primary badge-outline">
+                              {item.badge}
+                            </span>
+                          )}
                         </h3>
                         <div className="menu menu-default menu-fit flex-col gap-0.5">
                           {item.children && MegaMenuSubDefault(item.children)}
-                        </div>							
+                        </div>
                       </div>
-                    )
+                    );
                   })}
                 </div>
               </div>
               <div className="lg:w-[250px] mb-4 lg:mb-0 lg:border-l lg:border-l-gray-200 rounded-xl lg:rounded-r-xl lg:rounded-l-none shrink-0 px-3 py-4 lg:p-7.5 bg-light-active dark:bg-coal-500 dark:lg:border-l-coal-100">
                 <h3 className="text-sm text-gray-800 font-semibold leading-none pl-2.5 mb-5">
-                  { authItemOthers.title }
+                  {authItemOthers.title}
                 </h3>
-                <div className="menu menu-default menu-fit flex-col gap-0.5">					
-                  { authItemOthers.children && MegaMenuSubHighlighted(authItemOthers.children)}					 
+                <div className="menu menu-default menu-fit flex-col gap-0.5">
+                  {authItemOthers.children && MegaMenuSubHighlighted(authItemOthers.children)}
                 </div>
               </div>
             </div>
             {buildFooter()}
           </MenuSub>
         </MenuItem>
-        
-        <MenuItem 
-          key="help" 
+
+        <MenuItem
+          key="help"
           toggle="dropdown"
           trigger="hover"
           dropdownProps={{
-            placement: "bottom-start",
+            placement: 'bottom-start',
             modifiers: [
               {
                 name: 'offset',
@@ -256,9 +261,7 @@ const MegaMenuContent = (items: MenuConfigType) => {
           }}
         >
           <MenuLink className="text-sm text-gray-800 menu-link-hover:text-primary menu-item-active:text-gray-900 menu-item-show:text-primary menu-item-here:text-gray-900 menu-item-active:font-medium menu-item-here:font-medium">
-            <MenuTitle className="text-nowrap">
-              {helpItem.title}
-            </MenuTitle>
+            <MenuTitle className="text-nowrap">{helpItem.title}</MenuTitle>
             {buildArrow()}
           </MenuLink>
           <MenuSub className="menu-default py-2.5 w-[220px]">
@@ -266,8 +269,8 @@ const MegaMenuContent = (items: MenuConfigType) => {
           </MenuSub>
         </MenuItem>
       </Fragment>
-    )
-  }
+    );
+  };
 
   const buildArrow = () => {
     return (
@@ -282,19 +285,21 @@ const MegaMenuContent = (items: MenuConfigType) => {
     return (
       <div className="flex flex-wrap items-center lg:justify-between rounded-xl lg:rounded-t-none bg-light-active dark:bg-coal-500 border border-gray-300 lg:border-0 lg:border-t lg:border-t-gray-300 dark:lg:border-t-gray-100 px-4 py-4 lg:px-7.5 lg:py-5 gap-2.5">
         <div className="flex flex-col gap-1.5">
-          <div className="text-md font-semibold text-gray-900 leading-none">Read to Get Started ?</div>
-          <div className="text-2sm fomt-medium text-gray-600">Take your docs to the next level of Metronic</div>
+          <div className="text-md font-semibold text-gray-900 leading-none">
+            Read to Get Started ?
+          </div>
+          <div className="text-2sm fomt-medium text-gray-600">
+            Take your docs to the next level of Metronic
+          </div>
         </div>
-        <a href="#" className="btn btn-sm btn-dark">Read Documentation</a>
+        <a href="#" className="btn btn-sm btn-dark">
+          Read Documentation
+        </a>
       </div>
     );
   };
 
-  return (
-    <div className="menu flex-col lg:flex-row gap-5 lg:gap-7.5">
-      {build()}
-    </div>
-  );
+  return <div className="menu flex-col lg:flex-row gap-5 lg:gap-7.5">{build()}</div>;
 };
 
 export { MegaMenuContent };

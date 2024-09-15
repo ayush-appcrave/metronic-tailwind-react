@@ -19,15 +19,17 @@ const PlansPage = () => {
 
       <Container>
         <Toolbar>
-          <ToolbarHeading title="Plans" description="Central Hub for Personal Customization"/>
+          <ToolbarHeading title="Plans" description="Central Hub for Personal Customization" />
           <ToolbarActions>
-            <Link to="#" className="btn btn-sm btn-light">View Billing</Link>
+            <Link to="#" className="btn btn-sm btn-light">
+              View Billing
+            </Link>
           </ToolbarActions>
         </Toolbar>
       </Container>
 
       <Container>
-        <PlansContent/>
+        <PlansContent />
       </Container>
     </Fragment>
   );

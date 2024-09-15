@@ -5,9 +5,8 @@ import { Container } from '@/components/container';
 import { MegaMenu } from '@/partials/menu/mega-menu';
 import { useResponsive } from '@/hooks';
 
-import { HeaderLogo, HeaderTopbar, } from './';
+import { HeaderLogo, HeaderTopbar } from './';
 import { Breadcrumbs, useDemo1Layout } from '../';
-
 
 const Header = () => {
   const { headerSticky } = useDemo1Layout();

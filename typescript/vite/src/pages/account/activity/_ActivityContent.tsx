@@ -1,6 +1,6 @@
-import { Activity } from "@/pages/public-profile/activity";
-import { MiscEngage } from "@/partials/misc";
-import { toAbsoluteUrl } from "@/utils";
+import { Activity } from '@/pages/public-profile/activity';
+import { MiscEngage } from '@/partials/misc';
+import { toAbsoluteUrl } from '@/utils';
 
 const ActivityContent = () => {
   return (
@@ -9,8 +9,8 @@ const ActivityContent = () => {
 
       <div className="grid lg:grid-cols-2 gap-5 lg:gap-7.5">
         <MiscEngage
-          title='Contact Support'
-          description='Need assistance? Contact our support team for prompt, personalized help your queries & concerns.'
+          title="Contact Support"
+          description="Need assistance? Contact our support team for prompt, personalized help your queries & concerns."
           image={
             <>
               <img
@@ -32,8 +32,8 @@ const ActivityContent = () => {
         />
 
         <MiscEngage
-          title='Questions'
-          description='Visit our Help Center for detailed assistance on billing, payments, and subscriptions.'
+          title="Questions"
+          description="Visit our Help Center for detailed assistance on billing, payments, and subscriptions."
           image={
             <>
               <img

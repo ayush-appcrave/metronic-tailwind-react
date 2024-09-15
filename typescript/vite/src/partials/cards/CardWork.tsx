@@ -13,13 +13,13 @@ const CardWork = ({ image, title, authorAvatar, authorName, likes, comments }: I
         alt=""
       />
 
-      <div className="card-border card-rounded-b flex flex-col gap-2 px-5 py-4.5">  
+      <div className="card-border card-rounded-b flex flex-col gap-2 px-5 py-4.5">
         <Link
           to="/public-profile/profiles/company"
           className="text-lg font-medium text-gray-900 hover:text-primary"
         >
           {title}
-        </Link>             
+        </Link>
 
         <div className="flex items-center justify-between grow">
           <div className="flex items-center grow">
@@ -48,7 +48,7 @@ const CardWork = ({ image, title, authorAvatar, authorName, likes, comments }: I
               <span className="text-2sm text-gray-800 py-2">{comments}</span>
             </div>
           </div>
-        </div>  
+        </div>
       </div>
     </div>
   );

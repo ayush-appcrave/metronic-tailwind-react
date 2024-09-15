@@ -5,7 +5,10 @@ import {
   IPrivacySettingsReportSettingsProps
 } from './types';
 
-const PrivacySettingsReportSettings = ({ limit, className }: IPrivacySettingsReportSettingsProps) => {
+const PrivacySettingsReportSettings = ({
+  limit,
+  className
+}: IPrivacySettingsReportSettingsProps) => {
   const items: IPrivacySettingsReportSettingsItems = [
     {
       title: 'Ony invited People',
@@ -37,7 +40,14 @@ const PrivacySettingsReportSettings = ({ limit, className }: IPrivacySettingsRep
           <span className="text-2sm text-gray-600">{item.description}</span>
         </div>
 
-        <input type="radio" className="radio" name="sharing-setting" value={index} defaultChecked={item.checked} readOnly />
+        <input
+          type="radio"
+          className="radio"
+          name="sharing-setting"
+          value={index}
+          defaultChecked={item.checked}
+          readOnly
+        />
       </label>
     );
   };

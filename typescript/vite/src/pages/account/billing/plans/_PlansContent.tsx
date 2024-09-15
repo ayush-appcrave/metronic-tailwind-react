@@ -1,5 +1,5 @@
-import { MiscFaq, MiscHelp } from "@/partials/misc";
-import { Plans } from ".";
+import { MiscFaq, MiscHelp } from '@/partials/misc';
+import { Plans } from '.';
 
 const PlansContent = () => {
   return (

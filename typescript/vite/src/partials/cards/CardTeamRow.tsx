@@ -47,7 +47,12 @@ const CardTeamRow = ({ icon, title, description, labels, rating, team, connected
 
           <div className="grid justify-end gap-3.5 lg:text-right lg:min-w-24 shrink-0 max-w-auto">
             <span className="text-2xs font-normal text-gray-500 uppercase">memebers</span>
-            <CommonAvatars group={team.group} more={team.more} className={team.className} size={team.size} />
+            <CommonAvatars
+              group={team.group}
+              more={team.more}
+              className={team.className}
+              size={team.size}
+            />
           </div>
 
           <div className="grid justify-end min-w-20">

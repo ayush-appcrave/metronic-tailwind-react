@@ -67,11 +67,11 @@ const ActivitiesNewTeam = () => {
               <div className="flex flex-col items-end gap-3 lg:min-w-24 shrink-0 max-w-auto">
                 <span className="text-2xs font-normal text-gray-500 uppercase">memebers</span>
                 <CommonAvatars
-                  size='size-7'
+                  size="size-7"
                   group={[
-                    {filename: '300-4.png'},
-                    {filename: '300-1.png'},
-                    {filename: '300-2.png'},
+                    { filename: '300-4.png' },
+                    { filename: '300-1.png' },
+                    { filename: '300-2.png' },
                     {
                       fallback: 'S',
                       variant: 'text-primary-inverse ring-primary-light bg-primary'

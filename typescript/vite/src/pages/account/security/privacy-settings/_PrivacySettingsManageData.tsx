@@ -5,17 +5,29 @@ const PrivacySettingsManageData = () => {
     {
       title: 'Ony invited People',
       description: 'Invite selected people via email.',
-      control: <a href="#" className="btn btn-sm btn-light btn-outline">Start</a>
+      control: (
+        <a href="#" className="btn btn-sm btn-light btn-outline">
+          Start
+        </a>
+      )
     },
     {
       title: 'People with the link',
       description: 'Create a pubic link for your report.',
-      control: <a href="#" className="btn btn-sm btn-light btn-outline">Delete</a>
+      control: (
+        <a href="#" className="btn btn-sm btn-light btn-outline">
+          Delete
+        </a>
+      )
     },
     {
       title: 'No one',
       description: 'Reports will be visible only for you.',
-      control: <div className="switch switch-sm"><input type="checkbox" name="param" value="1" readOnly /></div>
+      control: (
+        <div className="switch switch-sm">
+          <input type="checkbox" name="param" value="1" readOnly />
+        </div>
+      )
     }
   ];
 

@@ -4,7 +4,12 @@ import { IBloggingConferenceProps } from './types';
 import { Link } from 'react-router-dom';
 import { toAbsoluteUrl } from '@/utils';
 
-const ActivitiesBloggingConference = ({ heading, datetime, image, title }: IBloggingConferenceProps) => {
+const ActivitiesBloggingConference = ({
+  heading,
+  datetime,
+  image,
+  title
+}: IBloggingConferenceProps) => {
   return (
     <TimelinesWrapper icon="directbox-default" line={true}>
       <div className="flex flex-col pb-2.5">

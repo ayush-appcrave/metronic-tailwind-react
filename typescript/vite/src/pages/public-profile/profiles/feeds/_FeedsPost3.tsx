@@ -41,7 +41,10 @@ const FeedsPost3 = () => {
       </p>
 
       <div className="p-7.5 pb-5">
-        <iframe className="w-full aspect-video rounded-xl min-h-[400px]" src="https://www.youtube.com/embed/2uWJpnuCMKQ?si=6-ohuJieU2Fg3pDr"></iframe>
+        <iframe
+          className="w-full aspect-video rounded-xl min-h-[400px]"
+          src="https://www.youtube.com/embed/2uWJpnuCMKQ?si=6-ohuJieU2Fg3pDr"
+        ></iframe>
       </div>
 
       <div>

@@ -2,7 +2,15 @@ import { KeenIcon } from '@/components';
 
 import { ITabsProps } from './types';
 
-const Tabs = ({ postId, activeTab, setActiveTab, comments, likes, saves, className }: ITabsProps) => {
+const Tabs = ({
+  postId,
+  activeTab,
+  setActiveTab,
+  comments,
+  likes,
+  saves,
+  className
+}: ITabsProps) => {
   return (
     <div
       data-tabs="true"

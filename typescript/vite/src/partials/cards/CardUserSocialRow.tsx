@@ -18,7 +18,10 @@ const CardUserSocialRow = ({ avatar, name, description, verify }: IUserSocialPro
 
           <div className="flex flex-col gap-2">
             <div className="flex items-center gap-1.5 mb-px">
-              <a href="#" className="hover:text-primary-active text-base leading-5 font-medium text-gray-900">
+              <a
+                href="#"
+                className="hover:text-primary-active text-base leading-5 font-medium text-gray-900"
+              >
                 {name}
               </a>
 
@@ -38,7 +41,7 @@ const CardUserSocialRow = ({ avatar, name, description, verify }: IUserSocialPro
                 </svg>
               )}
             </div>
-        
+
             <div className="flex flex-wrap items-center gap-1.5">
               <KeenIcon icon="geolocation" className="text-gray-500 text-md" />
               <a href="#" className="text-sm text-gray-700">

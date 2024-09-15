@@ -56,16 +56,22 @@ const MenuItemComponent = forwardRef<IMenuItemRef | null, IMenuItemProps>(
       index = 0
     } = props;
 
-    const {...containerProps} = ContainerPropsProp;
+    const { ...containerProps } = ContainerPropsProp;
 
     const menuItemRef = useRef<HTMLDivElement | null>(null);
 
     const path = props.path || getLinkPath(children);
 
-    const {disabled: isMenuDisabled, highlight, multipleExpand, setOpenAccordion, isOpenAccordion } = useMenu();
-     
+    const {
+      disabled: isMenuDisabled,
+      highlight,
+      multipleExpand,
+      setOpenAccordion,
+      isOpenAccordion
+    } = useMenu();
+
     const menuContainerRef = useRef<HTMLDivElement | null>(null);
-    
+
     const { pathname } = useLocation();
 
     const { match } = useMatchPath(path);
@@ -76,7 +82,7 @@ const MenuItemComponent = forwardRef<IMenuItemRef | null, IMenuItemProps>(
 
     const propDropdownProps = useResponsiveProp(dropdownProps);
 
-    const active: boolean = highlight ? (path.length > 0 && match) : false;
+    const active: boolean = highlight ? path.length > 0 && match : false;
 
     const [here, setHere] = useState(false);
 
@@ -91,14 +97,14 @@ const MenuItemComponent = forwardRef<IMenuItemRef | null, IMenuItemProps>(
     const hasSub = Children.toArray(children).some(
       (child) => isValidElement(child) && child.type === MenuSub
     );
-    const handleHide = () => { 
+    const handleHide = () => {
       if (hasSub) {
         setShow(false);
       }
 
       if (hasSub && propToggle === 'accordion' && multipleExpand === false) {
         setOpenAccordion(level, -1);
-      } 
+      }
 
       if (handleParentHide) {
         handleParentHide();
@@ -110,10 +116,10 @@ const MenuItemComponent = forwardRef<IMenuItemRef | null, IMenuItemProps>(
         setShow(true);
       }
 
-      if (hasSub && propToggle === 'accordion' && multipleExpand === false) {    
-        setOpenAccordion(level, index);      
+      if (hasSub && propToggle === 'accordion' && multipleExpand === false) {
+        setOpenAccordion(level, index);
       }
-    }
+    };
 
     const handleMouseEnter = (e: MouseEvent<HTMLElement>) => {
       if (isMenuDisabled) return;
@@ -143,20 +149,19 @@ const MenuItemComponent = forwardRef<IMenuItemRef | null, IMenuItemProps>(
       if (isMenuDisabled) return;
 
       if (disabled) return;
-      
+
       if (show) {
         if (propToggle === 'accordion') {
           setAccordionEnter(true);
         }
 
         handleHide();
-        
       } else {
         if (propToggle === 'accordion') {
           setAccordionEnter(true);
         }
-        handleShow();        
-      }      
+        handleShow();
+      }
 
       if (onClick) {
         onClick(e, props);
@@ -217,31 +222,35 @@ const MenuItemComponent = forwardRef<IMenuItemRef | null, IMenuItemProps>(
     const renderSubDropdown = (child: ReactElement) => {
       // Add some props to each child
       const modifiedProps: IMenuSubProps = {
-        level: level+1,
+        level: level + 1,
         toggle: propToggle,
         handleParentHide: handleHide,
         tabIndex,
-        menuItemRef:ref
+        menuItemRef: ref
       };
 
       const modofiedChild = cloneElement(child, modifiedProps);
-      
+
       return (
         <Popper
-          style={{ 
+          style={{
             zIndex: dropdownZIndex,
-            pointerEvents: trigger === 'click' ? 'auto' : 'none',  
+            pointerEvents: trigger === 'click' ? 'auto' : 'none'
           }}
           {...propDropdownProps}
           anchorEl={show ? menuItemRef.current : null}
           open={show}
           autoFocus={false}
-          className={clsx(child.props.rootClassName && child.props.rootClassName)} 
+          className={clsx(child.props.rootClassName && child.props.rootClassName)}
         >
           <ClickAwayListener onClickAway={handleHide}>
-            <div 
-              className={clsx('menu-container', child.props.baseClassName && child.props.baseClassName)} 
-              ref={menuContainerRef} style={{ pointerEvents: 'auto' }}
+            <div
+              className={clsx(
+                'menu-container',
+                child.props.baseClassName && child.props.baseClassName
+              )}
+              ref={menuContainerRef}
+              style={{ pointerEvents: 'auto' }}
             >
               {modofiedChild}
             </div>
@@ -262,7 +271,7 @@ const MenuItemComponent = forwardRef<IMenuItemRef | null, IMenuItemProps>(
 
       // Add some props to each child
       const modifiedProps: IMenuSubProps = {
-        level: level+1,
+        level: level + 1,
         tabIndex,
         show,
         enter: accordionEnter,
@@ -299,18 +308,22 @@ const MenuItemComponent = forwardRef<IMenuItemRef | null, IMenuItemProps>(
       return modifiedChildren;
     };
 
-    useImperativeHandle(ref, () => ({      
-      current: menuItemRef.current,
-      show: () => {
-        handleShow();
-      },
-      hide: () => {
-        handleHide();
-      },
-      isOpen: () => {
-        return show;
-      }
-    }), [show]);
+    useImperativeHandle(
+      ref,
+      () => ({
+        current: menuItemRef.current,
+        show: () => {
+          handleShow();
+        },
+        hide: () => {
+          handleHide();
+        },
+        isOpen: () => {
+          return show;
+        }
+      }),
+      [show]
+    );
 
     useEffect(() => {
       if (show) {
@@ -327,27 +340,27 @@ const MenuItemComponent = forwardRef<IMenuItemRef | null, IMenuItemProps>(
     useEffect(() => {
       if (propToggle === 'accordion' && multipleExpand === false) {
         setShow(accordionShow);
-      } 
+      }
     }, [accordionShow]);
 
-    useEffect(() => {            
+    useEffect(() => {
       if (highlight) {
         if (hasActiveChild(pathname, children)) {
           if (propToggle === 'accordion') {
             setShow(true);
           }
-  
+
           setHere(true);
         } else {
           if (propToggle === 'accordion') {
             setShow(false);
           }
-  
+
           setHere(false);
         }
-      };     
+      }
 
-      if (hasSub && propToggle === 'dropdown' ) {
+      if (hasSub && propToggle === 'dropdown') {
         handleHide();
       }
     }, [pathname]);
@@ -377,7 +390,7 @@ const MenuItemComponent = forwardRef<IMenuItemRef | null, IMenuItemProps>(
   }
 );
 
-const getLinkPath = (children: ReactNode): string  => {
+const getLinkPath = (children: ReactNode): string => {
   let path = '';
 
   Children.forEach(children, (child) => {
@@ -393,17 +406,17 @@ const hasActiveChild = (path: string, children: ReactNode): boolean => {
   const childrenArray: ReactNode[] = Children.toArray(children);
 
   for (const child of childrenArray) {
-    if (isValidElement(child)) {      
+    if (isValidElement(child)) {
       if (child.type === MenuLink && child.props.path) {
         if (path === '/') {
           if (child.props.path === path) {
             return true;
-          }          
+          }
         } else {
           if (matchPath(child.props.path as string, path)) {
             return true;
-          }          
-        }        
+          }
+        }
       } else if (hasActiveChild(path, child.props.children as ReactNode)) {
         return true;
       }

@@ -66,7 +66,9 @@ const CompanyOpenJobs = () => {
       </div>
 
       <div className="card-footer justify-center">
-        <Link to="/public-profile/works" className="btn btn-link">View & Apply</Link>
+        <Link to="/public-profile/works" className="btn btn-link">
+          View & Apply
+        </Link>
       </div>
     </div>
   );

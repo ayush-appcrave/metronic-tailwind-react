@@ -1,12 +1,5 @@
 import { KeenIcon } from '@/components';
-import {
-  MenuItem,
-  MenuLink,
-  MenuTitle,
-  MenuIcon,
-  MenuBadge,
-  MenuSub
-} from '@/components/menu';
+import { MenuItem, MenuLink, MenuTitle, MenuIcon, MenuBadge, MenuSub } from '@/components/menu';
 import { toAbsoluteUrl } from '@/utils';
 import clsx from 'clsx';
 
@@ -54,20 +47,20 @@ const DropdownUserLanguages = () => {
           )}
         </MenuLink>
       </MenuItem>
-    ))
-  }
+    ));
+  };
 
   return (
     <MenuItem
       toggle="dropdown"
       trigger="hover"
       dropdownProps={{
-        placement: "left-start",
+        placement: 'left-start',
         modifiers: [
           {
             name: 'offset',
             options: {
-              offset: [-10, 0], // [skid, distance]
+              offset: [-10, 0] // [skid, distance]
             }
           }
         ]
@@ -75,17 +68,19 @@ const DropdownUserLanguages = () => {
     >
       <MenuLink>
         <MenuIcon>
-          <KeenIcon icon="icon"/>
+          <KeenIcon icon="icon" />
         </MenuIcon>
         <MenuTitle>Language</MenuTitle>
         <div className="flex items-center gap-1.5 rounded-md border border-gray-300 text-gray-600 p-1.5 text-2xs font-medium shrink-0">
           English
-          <img src={toAbsoluteUrl('/media/flags/united-states.svg')} className="inline-block size-3.5 rounded-full" alt=""/>
+          <img
+            src={toAbsoluteUrl('/media/flags/united-states.svg')}
+            className="inline-block size-3.5 rounded-full"
+            alt=""
+          />
         </div>
       </MenuLink>
-      <MenuSub className="menu-default light:border-gray-300 w-[170px]">
-        {buildItems()}
-      </MenuSub>
+      <MenuSub className="menu-default light:border-gray-300 w-[170px]">{buildItems()}</MenuSub>
     </MenuItem>
   );
 };

@@ -10,16 +10,16 @@ const TeamInfoConnectedProfiles = () => {
         name: 'Tyler Hero',
         tasks: 26,
         avatar: '300-3.png'
-      }, 
+      },
       socialLogo: 'x.svg',
-      socialLogoDark: 'x-dark.svg',
+      socialLogoDark: 'x-dark.svg'
     },
     {
       user: {
         name: 'Leslie Alexander',
         tasks: 26,
         avatar: '300-5.png'
-      }, 
+      },
       socialLogo: 'google.svg'
     }
   ];
@@ -35,10 +35,12 @@ const TeamInfoConnectedProfiles = () => {
           />
 
           <div className="flex flex-col gap-1">
-            <a href="#" className="text-sm font-medium text-gray-900 hover:text-primary-active">{item.user.name}</a>
+            <a href="#" className="text-sm font-medium text-gray-900 hover:text-primary-active">
+              {item.user.name}
+            </a>
             <span className="text-xs text-gray-700">{item.user.tasks} tasks</span>
           </div>
-        </div> 
+        </div>
 
         <div className="flex items-center gap-1.5">
           {item.socialLogoDark ? (
@@ -63,11 +65,11 @@ const TeamInfoConnectedProfiles = () => {
           )}
 
           <Menu className="items-stretch">
-            <MenuItem 
+            <MenuItem
               toggle="dropdown"
               trigger="click"
               dropdownProps={{
-                placement: "bottom-end",
+                placement: 'bottom-end',
                 modifiers: [
                   {
                     name: 'offset',
@@ -79,7 +81,7 @@ const TeamInfoConnectedProfiles = () => {
               }}
             >
               <MenuToggle className="btn btn-sm btn-icon btn-light btn-clear mb-2.5-">
-                <KeenIcon icon="dots-vertical"/>
+                <KeenIcon icon="dots-vertical" />
               </MenuToggle>
               {DropdownCardItem1()}
             </MenuItem>
@@ -98,7 +100,9 @@ const TeamInfoConnectedProfiles = () => {
         return renderItem(item, index);
       })}
       <div className="card-footer justify-center">
-        <a href="#" className="btn btn-sm btn-light btn-outline">Connect Profile</a>
+        <a href="#" className="btn btn-sm btn-light btn-outline">
+          Connect Profile
+        </a>
       </div>
     </div>
   );

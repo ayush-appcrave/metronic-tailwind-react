@@ -5,12 +5,12 @@ import { TabsList as MuiTabsList, TabsListProps as MuiTabProps } from '@mui/base
 const TabsList = forwardRef<HTMLDivElement, MuiTabProps>((props, ref) => {
   return (
     <MuiTabsList
-			slotProps={{
-				root: () => ({
-					className: "tabs"
-				}),
-			}}
-      {...props}			
+      slotProps={{
+        root: () => ({
+          className: 'tabs'
+        })
+      }}
+      {...props}
       ref={ref}
     />
   );

@@ -13,7 +13,7 @@ const AccordionComponent = ({ className, children, allowMultiple }: IAccordionPr
     if (isValidElement<IAccordionItemProps>(child)) {
       return cloneElement<IAccordionItemProps>(child, {
         isOpen: allowMultiple ? child.props.isOpen : openIndex === index,
-        onClick: () => handleItemClick(index),
+        onClick: () => handleItemClick(index)
       });
     }
     return child;

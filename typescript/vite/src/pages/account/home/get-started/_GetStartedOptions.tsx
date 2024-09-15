@@ -14,11 +14,11 @@ const GetStartedOptions = ({ items, dropdown }: IGetStartedOptionsProps) => {
 
             {dropdown && (
               <Menu className="items-stretch">
-                <MenuItem 
+                <MenuItem
                   toggle="dropdown"
                   trigger="click"
                   dropdownProps={{
-                    placement: "bottom-end",
+                    placement: 'bottom-end',
                     modifiers: [
                       {
                         name: 'offset',
@@ -30,7 +30,7 @@ const GetStartedOptions = ({ items, dropdown }: IGetStartedOptionsProps) => {
                   }}
                 >
                   <MenuToggle className="btn btn-sm btn-icon btn-light btn-clear mb-2.5-">
-                    <KeenIcon icon="dots-vertical"/>
+                    <KeenIcon icon="dots-vertical" />
                   </MenuToggle>
                   {DropdownCard2()}
                 </MenuItem>
@@ -39,8 +39,8 @@ const GetStartedOptions = ({ items, dropdown }: IGetStartedOptionsProps) => {
           </div>
 
           <div className="flex flex-col gap-3">
-            <Link 
-              to={`${item.path}`} 
+            <Link
+              to={`${item.path}`}
               className="text-base font-semibold leading-none text-gray-900 hover:text-primary-active"
             >
               {item.title}

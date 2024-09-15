@@ -55,7 +55,9 @@ const ForgotPassword = () => {
       >
         <div className="text-center">
           <h3 className="text-lg font-semibold text-gray-900">Your Email</h3>
-          <span className="text-2sm text-gray-600 font-medium">Enter your email to reset password</span>
+          <span className="text-2sm text-gray-600 font-medium">
+            Enter your email to reset password
+          </span>
         </div>
 
         {hasErrors === true && (
@@ -90,7 +92,9 @@ const ForgotPassword = () => {
             />
           </label>
           {formik.touched.email && formik.errors.email && (
-            <span role="alert" className="text-red-500 text-xs mt-1">{formik.errors.email}</span>
+            <span role="alert" className="text-red-500 text-xs mt-1">
+              {formik.errors.email}
+            </span>
           )}
         </div>
 

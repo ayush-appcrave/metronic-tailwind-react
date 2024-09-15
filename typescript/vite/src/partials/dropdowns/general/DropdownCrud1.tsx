@@ -14,7 +14,7 @@ const DropdownCrud1 = () => {
       <MenuItem path="/account/home/settings-plain">
         <MenuLink>
           <MenuIcon>
-            <KeenIcon icon="add-files"/>
+            <KeenIcon icon="add-files" />
           </MenuIcon>
           <MenuTitle>Add</MenuTitle>
         </MenuLink>
@@ -22,7 +22,7 @@ const DropdownCrud1 = () => {
       <MenuItem path="/account/members/import-members">
         <MenuLink>
           <MenuIcon>
-            <KeenIcon icon="file-down"/>
+            <KeenIcon icon="file-down" />
           </MenuIcon>
           <MenuTitle>Import</MenuTitle>
         </MenuLink>
@@ -31,12 +31,12 @@ const DropdownCrud1 = () => {
         toggle="dropdown"
         trigger="hover"
         dropdownProps={{
-          placement: "right-start",
+          placement: 'right-start',
           modifiers: [
             {
               name: 'offset',
               options: {
-                offset: [-15,   0] // [skid, distance]
+                offset: [-15, 0] // [skid, distance]
               }
             }
           ]
@@ -44,7 +44,7 @@ const DropdownCrud1 = () => {
       >
         <MenuLink>
           <MenuIcon>
-            <KeenIcon icon="file-up"/>
+            <KeenIcon icon="file-up" />
           </MenuIcon>
           <MenuTitle>Export</MenuTitle>
           <MenuArrow>

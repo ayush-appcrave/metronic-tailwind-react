@@ -31,13 +31,7 @@ const Activity = () => {
             <h3 className="card-title">Activity</h3>
             <div className="flex items-center gap-2">
               <label className="switch">
-                <input
-                  className="order-2"
-                  type="checkbox"
-                  value="1"
-                  name="check"
-                  defaultChecked
-                />
+                <input className="order-2" type="checkbox" value="1" name="check" defaultChecked />
                 <span className="switch-label">
                   Auto refresh:&nbsp;
                   <span className="switch-on:hidden">Off</span>
@@ -54,9 +48,7 @@ const Activity = () => {
             {(year === 2024 || year === 2019) && <ActivitiesProductWebinar />}
             <ActivitiesFollowersMilestone />
             {(year === 2024 || year === 2021) && <ActivitiesProjectStatus />}
-            {(year === 2024 || year === 2018) && (
-              <ActivitiesBloggingConference image="" />
-            )}
+            {(year === 2024 || year === 2018) && <ActivitiesBloggingConference image="" />}
             <ActivitiesDesignerWelcome />
             {(year === 2024 || year === 2017) && <ActivitiesNewTeam />}
             <ActivitiesVirtualTeam />
