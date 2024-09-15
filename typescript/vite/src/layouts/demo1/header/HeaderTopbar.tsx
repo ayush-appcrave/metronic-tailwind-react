@@ -1,10 +1,10 @@
-import { useCallback, useEffect, useRef, useState, type MouseEvent } from 'react';
+import { useRef, useState } from 'react';
 
 import { KeenIcon } from '@/components/keenicons';
 import { toAbsoluteUrl } from '@/utils';
 
 import { useDemo1Layout } from '../';
-import { IMenuItemProps, Menu, MenuItem, MenuLabel, MenuLink, MenuToggle } from '@/components';
+import { Menu, MenuItem, MenuToggle } from '@/components';
 import { DropdownUser } from '@/partials/dropdowns/user';
 import { DropdownNotifications } from '@/partials/dropdowns/notifications';
 import { DropdownApps } from '@/partials/dropdowns/apps';
@@ -113,15 +113,14 @@ const HeaderTopbar = () => {
               <KeenIcon icon="notification-on"/>
             </div>
           </MenuToggle>
-
-         {DropdownNotifications({menuTtemRef: itemNotificationsRef})}
+          {DropdownNotifications({menuTtemRef: itemNotificationsRef})}
         </MenuItem>
       </Menu>
 
-      <Menu className="items-stretch" highlight={false}>
+      <Menu className="items-stretch">
         <MenuItem 
           toggle="dropdown"
-          trigger="hover"
+          trigger="click"
           dropdownProps={{
             placement: "bottom-end",
             modifiers: [

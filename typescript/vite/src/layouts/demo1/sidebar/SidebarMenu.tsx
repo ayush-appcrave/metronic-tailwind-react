@@ -1,9 +1,7 @@
-/* eslint-disable react/jsx-key */
 import clsx from 'clsx';
 
 import { KeenIcon } from '@/components/keenicons';
 import {
-  IMenuHeadingProps,
   IMenuItemConfig,
   Menu,
   MenuArrow,
@@ -16,8 +14,7 @@ import {
   MenuLabel,
   MenuLink,
   MenuSub,
-  MenuTitle,
-  MenuToggle
+  MenuTitle
 } from '@/components/menu';
 import { useMenu } from '@/providers/MenuProvider';
 
@@ -25,7 +22,6 @@ const SidebarMenu = () => {
   const linkPl = 'pl-[10px]';
   const linkPr = 'pr-[10px]';
   const linkPy = 'py-[6px]';
-  const itemsGap = 'gap-0.5';
   const subLinkPy = 'py-[8px]';
   const rightOffset = 'mr-[-10px]';
   const iconWidth = 'w-[20px]';
@@ -44,7 +40,7 @@ const SidebarMenu = () => {
     return items.map((item, index) => {
       if (item.heading) {
         return buildMenuHeading(item, index);
-      } else if (item.soon) {
+      } else if (item.disabled) {
         return buildMenuItemRootDisabled(item, index);
       } else {
         return buildMenuItemRoot(item, index);
@@ -56,7 +52,7 @@ const SidebarMenu = () => {
     if (item.children) {
       return (
         <MenuItem
-          key={'item-' + index}
+          key={index}
           {...(item.toggle && { toggle: item.toggle })}
           {...(item.trigger && { trigger: item.trigger })}
         >
@@ -74,8 +70,7 @@ const SidebarMenu = () => {
           <MenuSub
             className={clsx(
               'relative before:absolute before:top-0 before:bottom-0 before:border-l before:border-gray-200',
-              '[&_.MuiCollapse-wrapperInner]:flex [&_.MuiCollapse-wrapperInner]:flex-col [&_.MuiCollapse-wrapperInner]:' + itemsGap,
-              itemsGap,
+              '[&_.MuiCollapse-wrapperInner]:flex [&_.MuiCollapse-wrapperInner]:flex-col [&_.MuiCollapse-wrapperInner]:gap-0.5',
               accordionBorderLeft[0],
               accordionPl[0]
             )}
@@ -86,8 +81,9 @@ const SidebarMenu = () => {
       );
     } else {
       return (
-        <MenuItem key={'item-' + index} path={item.path}>
+        <MenuItem key={index}>
           <MenuLink
+            path={item.path}
             className={clsx(
               'border border-transparent menu-item-active:bg-secondary-active dark:menu-item-active:bg-coal-300 dark:menu-item-active:border-gray-100 menu-item-active:rounded-lg hover:bg-secondary-active dark:hover:bg-coal-300 dark:hover:border-gray-100 hover:rounded-lg',
               accordionLinkGap[0],
@@ -115,7 +111,7 @@ const SidebarMenu = () => {
 
   const buildMenuItemRootDisabled = (item: IMenuItemConfig, index: number) => {
     return (
-      <MenuItem key={'item-' + index} path={item.path}>
+      <MenuItem key={index}>
         <MenuLabel
           className={clsx(
             'border border-transparent',
@@ -137,28 +133,27 @@ const SidebarMenu = () => {
             {item.title}
           </MenuTitle>
 
-          {item.soon && buildMenuSoon()}
+          {item.disabled && buildMenuSoon()}
         </MenuLabel>
       </MenuItem>
     );
   }
 
-  const buildMenuItemChildren = (items: MenuConfigType, index: number, level: number = 0, indent: boolean = true) => {
-    // eslint-disable-next-line no-unreachable-loop
+  const buildMenuItemChildren = (items: MenuConfigType, index: number, level: number = 0) => {
     return items.map((item, index) => {
-      if (item.soon) {
-        return buildMenuItemChildDisabled(item, index, level, indent)
+      if (item.disabled) {
+        return buildMenuItemChildDisabled(item, index, level)
       } else {
-        return buildMenuItemChild(item, index, level, indent)
+        return buildMenuItemChild(item, index, level)
       }
     });
   }
 
-  const buildMenuItemChild = (item: IMenuItemConfig, index: number, level: number = 0, indent: boolean = true) => {
+  const buildMenuItemChild = (item: IMenuItemConfig, index: number, level: number = 0) => {
     if (item.children) {
       return (
         <MenuItem
-          key={'item-' + index}
+          key={index}
           {...(item.toggle && { toggle: item.toggle })}
           {...(item.trigger && { trigger: item.trigger })}
           className={clsx(item.collapse && 'flex-col-reverse')}
@@ -186,20 +181,21 @@ const SidebarMenu = () => {
           <MenuSub
             className={clsx(
               !item.collapse && 'before:top-0 before:bottom-0 before:border-l before:border-gray-200',
-              itemsGap,
+              '[&_.MuiCollapse-wrapperInner]:flex [&_.MuiCollapse-wrapperInner]:flex-col [&_.MuiCollapse-wrapperInner]:gap-0.5',
               !item.collapse && accordionBorderLeft[level],
               !item.collapse && accordionPl[level],
               !item.collapse && 'relative before:absolute'
             )}
           >
-            {buildMenuItemChildren(item.children, index, item.collapse ? level : (level+1), !item.collapse)}
+            {buildMenuItemChildren(item.children, index, item.collapse ? level : (level+1))}
           </MenuSub>
         </MenuItem>
       );
     } else {
       return (
-        <MenuItem key={'item-' + index} path={item.path}>
+        <MenuItem key={index}>
           <MenuLink
+            path={item.path}
             className={clsx(
               'border border-transparent items-center grow menu-item-active:bg-secondary-active dark:menu-item-active:bg-coal-300 dark:menu-item-active:border-gray-100 menu-item-active:rounded-lg hover:bg-secondary-active dark:hover:bg-coal-300 dark:hover:border-gray-100 hover:rounded-lg',
               accordionLinkGap[level],
@@ -218,9 +214,9 @@ const SidebarMenu = () => {
     }
   }
 
-  const buildMenuItemChildDisabled = (item: IMenuItemConfig, index: number, level: number = 0, indent: boolean = true) => {
+  const buildMenuItemChildDisabled = (item: IMenuItemConfig, index: number, level: number = 0) => {
     return (
-      <MenuItem key={'item-' + index} path={item.path}>
+      <MenuItem key={index}>
         <MenuLabel
           className={clsx(
             'border border-transparent items-center grow',
@@ -242,7 +238,7 @@ const SidebarMenu = () => {
             {item.title}
           </MenuTitle>
 
-          {item.soon && buildMenuSoon()}
+          {item.disabled && buildMenuSoon()}
         </MenuLabel>
       </MenuItem>
     );
@@ -250,7 +246,7 @@ const SidebarMenu = () => {
 
   const buildMenuHeading = (item: IMenuItemConfig, index: number) => {
     return (
-      <MenuItem key={'item-' + index} className="pt-2.25 pb-px">
+      <MenuItem key={index} className="pt-2.25 pb-px">
         <MenuHeading
           className={clsx('uppercase text-2sm font-semibold text-gray-500', linkPl, linkPr)}
         >
@@ -287,7 +283,7 @@ const SidebarMenu = () => {
   const { getMenuConfig } = useMenu();
   const menuConfig = getMenuConfig('primary');
 
-  return <Menu className="flex flex-col grow gap-0.5">{menuConfig && buildMenu(menuConfig)}</Menu>;
+  return <Menu highlight={true} multipleExpand={false} className="flex flex-col grow gap-0.5">{menuConfig && buildMenu(menuConfig)}</Menu>;
 };
 
 export { SidebarMenu };

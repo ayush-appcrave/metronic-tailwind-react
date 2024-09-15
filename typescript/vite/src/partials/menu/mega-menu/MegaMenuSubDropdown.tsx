@@ -23,12 +23,12 @@ const MegaMenuSubDropdown = (items: MenuConfigType) => {
           <MenuItem 
             key={index}
             toggle="dropdown"
-            trigger="click"
+            trigger="hover"
             dropdownProps={{
               placement: "right-start"
             }}
           >
-            <MenuLink className={clsx('grow-0')}>
+            <MenuLink className="grow-0">
               {item.icon && <MenuIcon><KeenIcon icon={item.icon}/></MenuIcon>}
               <MenuTitle className={clsx('')}>
                 {item.title}
@@ -37,7 +37,6 @@ const MegaMenuSubDropdown = (items: MenuConfigType) => {
                 <KeenIcon icon="right" className="text-3xs"/>
               </MenuArrow>
             </MenuLink>
-
             <MenuSub className="menu-default w-[175px] lg:w-[220px]">
               {buildItems(item.children)}
             </MenuSub>
@@ -45,14 +44,14 @@ const MegaMenuSubDropdown = (items: MenuConfigType) => {
         )
       } else {
         return (
-          <MenuItem key={index} path={item.path}>
-            <MenuLink className={clsx('grow-0')}>
+          <MenuItem key={index}>
+            <MenuLink path={item.path} className={clsx('grow-0')}>
               {item.icon && <MenuIcon><KeenIcon icon={item.icon}/></MenuIcon>}
               <MenuTitle className={clsx('grow-0')}>
                 {item.title}
               </MenuTitle>            
               
-              {item.soon && <MenuBadge><span className="badge badge-xs">Soon</span></MenuBadge>}
+              {item.disabled && <MenuBadge><span className="badge badge-xs">Soon</span></MenuBadge>}
 
               {item.badge && <MenuBadge><span className="badge badge-primary badge-outline badge-xs">{item.badge}</span></MenuBadge>}
             </MenuLink>

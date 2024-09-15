@@ -1,4 +1,4 @@
-import { PopperProps } from '@mui/material';
+import { PopperProps } from '@mui/base';
 import { HTMLAttributes, MouseEvent, ReactNode, RefAttributes, RefObject } from 'react';
 
 export type MenuEventHandlerType = (e: MouseEvent<HTMLElement>) => void;
@@ -22,10 +22,19 @@ export type MenuTabIndexType = number;
 export interface IMenuProps {
   className?: string;
   children?: ReactNode;
+  disabled?: boolean;
   highlight?: boolean;
-  multipleAccordion?: boolean;
-  setOpenAccordion?: (id: number, level: number) => void;
-  isOpenAccordion?: (id: number, level: number) => boolean;
+  multipleExpand?: boolean;
+}
+
+export interface IMenuContextProps {
+  className?: string;
+  children?: ReactNode;
+  highlight?: boolean;
+  disabled?: boolean;
+  multipleExpand?: boolean;
+  setOpenAccordion: (id: number, level: number) => void;
+  isOpenAccordion: (id: number, level: number) => boolean;
 }
 
 export interface IMenuItemRef {
@@ -35,10 +44,9 @@ export interface IMenuItemRef {
 }
 
 export interface IMenuItemProps {
+  path?: string,
   level?: number,
   index?: number;
-  path?: string;
-  soon?: boolean;
   toggle?: MenuItemToggleType;
   trigger?: MenuItemTriggerType;
   disabled?: boolean;
@@ -140,7 +148,7 @@ export interface IMenuHeadingProps {
 
 export interface IMenuItemConfig {
   title?: string;
-  soon?: boolean;
+  disabled?: boolean;
   heading?: string;
   icon?: string;
   badge?: string;

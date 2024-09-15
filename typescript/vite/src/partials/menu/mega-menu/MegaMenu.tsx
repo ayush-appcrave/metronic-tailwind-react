@@ -3,19 +3,30 @@ import { useResponsive } from '@/hooks';
 import { MENU_MEGA } from '@/config/menu.config';
 import { MegaMenuContent } from './';
 import { Menu } from '@/components/menu';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 
 const MegaMenu = () => {
   const desktopMode = useResponsive('up', 'lg');
+  const [disabled, setDisabled] = useState(true); // Initially set disabled to true
   const [mobileMegaMenuOpen, setMobileMegaMenuOpen] = useState(false);
 
   const handleDrawerClose = () => {
     setMobileMegaMenuOpen(false);
   };
 
+  // Change disabled state to false after a certain time (e.g., 5 seconds)
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setDisabled(false);
+    }, 1000); // 500 milliseconds
+
+    // Cleanup the timer when the component unmounts
+    return () => clearTimeout(timer);
+  }, []);  
+
   const renderContent = () => {
     return (
-      <Menu className="flex-col lg:flex-row gap-5 lg:gap-7.5">
+      <Menu disabled={disabled} highlight={true} className="flex-col lg:flex-row gap-5 lg:gap-7.5">
         {MegaMenuContent(MENU_MEGA)}
       </Menu>
     );

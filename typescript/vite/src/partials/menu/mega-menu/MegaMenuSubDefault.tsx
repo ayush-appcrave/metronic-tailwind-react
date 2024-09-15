@@ -26,15 +26,15 @@ const MegaMenuSubDefault = (items: MenuConfigType) => {
         );
       } else {
         return (
-          <MenuItem key={index} path={item.path}>
-            <MenuLink>
+          <MenuItem key={index}>
+            <MenuLink path={item.path}>
               {item.icon && <MenuIcon><KeenIcon icon={item.icon}/></MenuIcon>}
 
               <MenuTitle className={clsx('grow-0')}>
                 {item.title}
               </MenuTitle>
 
-              {item.soon && <MenuBadge><span className="badge badge-xs">Soon</span></MenuBadge>}
+              {item.disabled && <MenuBadge><span className="badge badge-xs">Soon</span></MenuBadge>}
 
               {item.badge && <MenuBadge><span className="badge badge-primary badge-outline badge-xs">{item.badge}</span></MenuBadge>}
             </MenuLink>

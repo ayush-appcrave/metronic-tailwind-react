@@ -16,10 +16,8 @@ import React, {
   useState
 } from 'react';
 import { useLocation } from 'react-router';
-
 import useResponsiveProp from '@/hooks/useResponsiveProp';
 import { matchPath } from '@/utils';
-
 import { useMatchPath } from '../../hooks/useMatchPath';
 import {
   IMenuItemRef,
@@ -41,7 +39,6 @@ import {
 const MenuItemComponent = forwardRef<IMenuItemRef | null, IMenuItemProps>(
   function MenuItem(props, ref) {
     const {
-      path = '',
       toggle,
       trigger,
       dropdownProps,
@@ -59,11 +56,13 @@ const MenuItemComponent = forwardRef<IMenuItemRef | null, IMenuItemProps>(
       index = 0
     } = props;
 
-    const { ...containerProps } = ContainerPropsProp;
+    const {...containerProps} = ContainerPropsProp;
 
     const menuItemRef = useRef<HTMLDivElement | null>(null);
 
-    const {highlight, multipleAccordion, setOpenAccordion, isOpenAccordion } = useMenu();
+    const path = props.path || getLinkPath(children);
+
+    const {disabled: isMenuDisabled, highlight, multipleExpand, setOpenAccordion, isOpenAccordion } = useMenu();
      
     const menuContainerRef = useRef<HTMLDivElement | null>(null);
     
@@ -92,10 +91,35 @@ const MenuItemComponent = forwardRef<IMenuItemRef | null, IMenuItemProps>(
     const hasSub = Children.toArray(children).some(
       (child) => isValidElement(child) && child.type === MenuSub
     );
+    const handleHide = () => { 
+      if (hasSub) {
+        setShow(false);
+      }
+
+      if (hasSub && propToggle === 'accordion' && multipleExpand === false) {
+        setOpenAccordion(level, -1);
+      } 
+
+      if (handleParentHide) {
+        handleParentHide();
+      }
+    };
+
+    const handleShow = () => {
+      if (hasSub) {
+        setShow(true);
+      }
+
+      if (hasSub && propToggle === 'accordion' && multipleExpand === false) {    
+        setOpenAccordion(level, index);      
+      }
+    }
 
     const handleMouseEnter = (e: MouseEvent<HTMLElement>) => {
+      if (isMenuDisabled) return;
+
       if (propTrigger === 'hover') {
-        handleShow();
+        setShow(true);
 
         if (containerProps.onMouseEnter) {
           containerProps.onMouseEnter(e);
@@ -104,8 +128,10 @@ const MenuItemComponent = forwardRef<IMenuItemRef | null, IMenuItemProps>(
     };
 
     const handleMouseLeave = (e: MouseEvent<HTMLElement>) => {
+      if (isMenuDisabled) return;
+
       if (propTrigger === 'hover') {
-        handleHide();
+        setShow(false);
 
         if (containerProps.onMouseLeave) {
           containerProps.onMouseLeave(e);
@@ -114,9 +140,9 @@ const MenuItemComponent = forwardRef<IMenuItemRef | null, IMenuItemProps>(
     };
 
     const handleToggle = (e: MouseEvent<HTMLElement>) => {
-      if (disabled) {
-        return;
-      }     
+      if (isMenuDisabled) return;
+
+      if (disabled) return;
       
       if (show) {
         if (propToggle === 'accordion') {
@@ -141,7 +167,7 @@ const MenuItemComponent = forwardRef<IMenuItemRef | null, IMenuItemProps>(
       if (disabled) {
         return;
       }
-      
+
       handleHide();
 
       if (onClick) {
@@ -149,38 +175,9 @@ const MenuItemComponent = forwardRef<IMenuItemRef | null, IMenuItemProps>(
       }
     };
 
-    const handleHide = () => {   
-      if (!hasSub) return;
-
-      setShow(false);
-
-      if (propToggle === 'accordion') {
-        if (multipleAccordion === false) {
-          setOpenAccordion(level, -1);
-        } 
-      }
-
-      if (propToggle === 'dropdown' && handleParentHide) {
-        handleParentHide();
-      }
-    };
-
-    const handleShow = () => {
-      if (!hasSub) return;
-
-      setShow(true);
-
-      if (propToggle === 'accordion') {      
-        if (multipleAccordion === false) {
-          setOpenAccordion(level, index);    
-        }        
-      }
-    }
-
     const renderLink = (child: ReactElement) => {
       // Add some props to each child
       const modifiedProps: IMenuLinkProps = {
-        path,
         hasItemSub: hasSub,
         tabIndex,
         handleToggle,
@@ -196,8 +193,7 @@ const MenuItemComponent = forwardRef<IMenuItemRef | null, IMenuItemProps>(
       const modifiedProps: IMenuToggleProps = {
         hasItemSub: hasSub,
         tabIndex,
-        handleToggle,
-        handleClick
+        handleToggle
       };
 
       // Return the child with modified props
@@ -223,7 +219,6 @@ const MenuItemComponent = forwardRef<IMenuItemRef | null, IMenuItemProps>(
       const modifiedProps: IMenuSubProps = {
         level: level+1,
         toggle: propToggle,
-        handleClick,
         handleParentHide: handleHide,
         tabIndex,
         menuItemRef:ref
@@ -330,31 +325,29 @@ const MenuItemComponent = forwardRef<IMenuItemRef | null, IMenuItemProps>(
     }, [show]);
 
     useEffect(() => {
-      if (propToggle === 'accordion' && multipleAccordion === false) {
+      if (propToggle === 'accordion' && multipleExpand === false) {
         setShow(accordionShow);
       } 
     }, [accordionShow]);
 
-    useEffect(() => {
-      if (highlight === false) return;
-
-      if (hasActiveChild(pathname, children)) {
-        if (propToggle === 'accordion') {
-          console.log('wah!!!');
-          handleShow();
+    useEffect(() => {            
+      if (highlight) {
+        if (hasActiveChild(pathname, children)) {
+          if (propToggle === 'accordion') {
+            setShow(true);
+          }
+  
+          setHere(true);
+        } else {
+          if (propToggle === 'accordion') {
+            setShow(false);
+          }
+  
+          setHere(false);
         }
-
-        setHere(true);
-      } else {
-        if (propToggle === 'accordion') {
-          handleHide();
-        }
-
-        setHere(false);
-      }
+      };     
 
       if (hasSub && propToggle === 'dropdown' ) {
-        console.log('route change')
         handleHide();
       }
     }, [pathname]);
@@ -384,12 +377,24 @@ const MenuItemComponent = forwardRef<IMenuItemRef | null, IMenuItemProps>(
   }
 );
 
+const getLinkPath = (children: ReactNode): string  => {
+  let path = '';
+
+  Children.forEach(children, (child) => {
+    if (isValidElement(child) && child.type === MenuLink && child.props.path) {
+      path = child.props.path; // Assign the path when found
+    }
+  });
+
+  return path;
+};
+
 const hasActiveChild = (path: string, children: ReactNode): boolean => {
   const childrenArray: ReactNode[] = Children.toArray(children);
 
   for (const child of childrenArray) {
     if (isValidElement(child)) {      
-      if (child.type === MenuItem && child.props.path) {
+      if (child.type === MenuLink && child.props.path) {
         if (path === '/') {
           if (child.props.path === path) {
             return true;

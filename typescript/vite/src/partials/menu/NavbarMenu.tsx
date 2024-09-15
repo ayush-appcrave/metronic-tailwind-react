@@ -11,16 +11,19 @@ import {
 
 const NavbarMenu = ({ items }: { items: MenuConfigType }) => {
   const buildMenu = (items: MenuConfigType) => {
-    // eslint-disable-next-line no-unreachable-loop
     return items.map((item, index) => {
       if (item.children) {
         return (
           <MenuItem
-            key={'item-' + index}
+            key={index}
             toggle="dropdown"
             trigger="click"
-            {...(item.dropdownProps && { dropdownProps: item.dropdownProps })}
             className="text-sm border-b-2 border-b-transparent menu-item-active:border-b-primary menu-item-here:border-b-primary"
+            {...(
+              item.dropdownProps && { 
+                dropdownProps: item.dropdownProps 
+              }
+            )}
           >
             <MenuLink className="pb-4 px-2 gap-0.5 cursor-pointer">
               <MenuTitle className="font-medium text-gray-700 menu-item-active:text-primary menu-item-active:font-semibold menu-item-here:text-primary menu-item-here:font-semibold menu-item-show:text-primary menu-link-hover:text-primary">
@@ -36,11 +39,10 @@ const NavbarMenu = ({ items }: { items: MenuConfigType }) => {
       } else {
         return (
           <MenuItem
-            key={'item-' + index}
-            path={item.path}
+            key={index}
             className="text-sm border-b-2 border-b-transparent menu-item-active:border-b-primary menu-item-here:border-b-primary"
           >
-            <MenuLink className="pb-4 px-2">
+            <MenuLink path={item.path} className="pb-4 px-2">
               <MenuTitle className="font-medium text-gray-700 menu-item-active:text-primary menu-item-active:font-semibold menu-item-here:text-primary menu-item-here:font-semibold menu-item-show:text-primary menu-item-show:font-semibold menu-link-hover:text-primary">
                 {item.title}
               </MenuTitle>
@@ -52,16 +54,20 @@ const NavbarMenu = ({ items }: { items: MenuConfigType }) => {
   };
 
   const buildMenuSub = (items: MenuConfigType, level: number = 0) => {
-    // eslint-disable-next-line no-unreachable-loop
     return items.map((item, index) => {
       if (item.children) {
         return (
           <MenuItem
+            key={index}
             toggle="dropdown"
             trigger="hover"
-            {...(item.dropdownProps && { dropdownProps: item.dropdownProps })}
-            key={`item-${level}-${index}`}
             className="text-sm"
+            {...(
+              item.dropdownProps && 
+              { 
+                dropdownProps: item.dropdownProps 
+              }
+            )}
           >
             <MenuLink className="py-1.5 px-2 gap-0.5 cursor-pointer">
               <MenuTitle className="mr-1 font-normal text-gray-700 menu-item-active:text-primary menu-item-here:text-gray-900 menu-item-show:text-gray-900 menu-link-hover:!text-primary">
@@ -76,8 +82,8 @@ const NavbarMenu = ({ items }: { items: MenuConfigType }) => {
         );
       } else {
         return (
-          <MenuItem className="text-sm" key={'item-' + index} path={item.path}>
-            <MenuLink className="py-1.5 px-2 gap-0.5 rounded-lg menu-item-active:bg-secondary-active">
+          <MenuItem className="text-sm" key={index}>
+            <MenuLink path={item.path} className="py-1.5 px-2 gap-0.5 rounded-lg menu-item-active:bg-secondary-active">
               <MenuTitle className="font-normal text-gray-700 menu-item-active:text-primary menu-item-here:text-primary menu-item-show:text-primary menu-link-hover:!text-primary">
                 {item.title}
               </MenuTitle>
@@ -96,7 +102,7 @@ const NavbarMenu = ({ items }: { items: MenuConfigType }) => {
     );
   };
 
-  return <Menu className="menu gap-3 lg:-mb-px">{buildMenu(items)}</Menu>;
+  return <Menu highlight={true} className="menu gap-3 lg:-mb-px">{buildMenu(items)}</Menu>;
 };
 
 export { NavbarMenu };

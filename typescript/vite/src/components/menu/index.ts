@@ -11,7 +11,7 @@ export * from './MenuSub';
 export * from './MenuTitle';
 export * from './MenuLabel';
 export * from './MenuArrow';
-export * from './types';
 export * from './hooks/useMenuCurrentItem';
 export * from './hooks/useMenuBreadcrumbs';
 export * from './hooks/useMenuChildren';
+export * from './types';

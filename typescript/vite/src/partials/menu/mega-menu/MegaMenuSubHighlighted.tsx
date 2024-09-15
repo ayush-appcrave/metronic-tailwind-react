@@ -1,14 +1,9 @@
 import { KeenIcon } from '@/components';
 import {
-  Menu,
   MenuConfigType,
-  IMenuItemConfig,
   MenuItem,
   MenuLink,
-  MenuSub,
   MenuTitle,
-  MenuToggle,
-  MenuArrow,
   MenuIcon,
   MenuBadge
 } from '@/components/menu';
@@ -16,11 +11,11 @@ import clsx from 'clsx';
 import { ReactNode } from 'react';
 
 const MegaMenuSubHighlighted = (items: MenuConfigType) => {
-  const buildItems = (items: MenuConfigType, level: number = 1): ReactNode => {
+  const buildItems = (items: MenuConfigType): ReactNode => {
     return items.map((item, index) => {
       return (
-        <MenuItem key={`item-${level}-${index}`} path={item.path}>
-          <MenuLink className="
+        <MenuItem key={index} >
+          <MenuLink path={item.path} className="
             menu-link border border-transparent 
             menu-link-hover:!bg-light menu-link-hover:border-gray-200 
             menu-item-active:!bg-light menu-item-active:border-gray-200 
@@ -33,7 +28,7 @@ const MegaMenuSubHighlighted = (items: MenuConfigType) => {
               {item.title}
             </MenuTitle>
 
-            {item.soon && <MenuBadge><span className="badge badge-xs">Soon</span></MenuBadge>}
+            {item.disabled && <MenuBadge><span className="badge badge-xs">Soon</span></MenuBadge>}
 
             {item.badge && <MenuBadge><span className="badge badge-primary badge-outline badge-xs">{item.badge}</span></MenuBadge>}
           </MenuLink>

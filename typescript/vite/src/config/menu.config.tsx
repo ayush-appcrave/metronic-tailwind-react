@@ -12,7 +12,7 @@ const PATHS_AUTH: PathsType = {
 
 // General paths
 const PATHS_GENERAL: PathsType = {
-  comingSoon: '/coming-soon',
+  comingSoon: '/coming-disabled',
   maintenance: '/maintenance',
   pricing: '/pricing',
   payment: '/payment',
@@ -393,17 +393,17 @@ const MENU_SIDEBAR: MenuConfigType = [
       { 
         title: 'Cooperations', 
         path: '/network/cooperations',
-        soon: true,
+        disabled: true,
       },
       { 
         title: 'Leads', 
         path: '/network/leads',
-        soon: true,
+        disabled: true,
       },
       { 
         title: 'Donators', 
         path: '/network/donators',
-        soon: true,
+        disabled: true,
       },
     ]
   },
@@ -519,28 +519,28 @@ const MENU_SIDEBAR: MenuConfigType = [
   {
     title: 'User Management',
     icon: 'users',
-    soon: true,
+    disabled: true,
   },
   {
     title: 'Projects',
     icon: 'questionnaire-tablet',
-    soon: true,
+    disabled: true,
   },
   {
     title: 'eCommerce',
     icon: 'handcart',
-    soon: true,
+    disabled: true,
   },
   { heading: 'Miscellaneous' },
   {
     title: 'Modals',
     icon: 'some-files',
-    soon: true,
+    disabled: true,
   },
   {
     title: 'Wizards',
     icon: 'note-2',
-    soon: true,
+    disabled: true,
   },
 ];
 
@@ -615,25 +615,25 @@ const MENU_MEGA: MenuConfigType = [
                 title: 'Freelancer',
                 icon: 'financial-schedule',
                 path: '#',
-                soon: true
+                disabled: true
               },
               {
                 title: 'Developer',
                 icon: 'technology-4',
                 path: '#',
-                soon: true
+                disabled: true
               },
               {
                 title: 'Team',
                 icon: 'users',
                 path: '#',
-                soon: true
+                disabled: true
               },
               {
                 title: 'Events',
                 icon: 'calendar-tick',
                 path: '#',
-                soon: true
+                disabled: true
               }
             ]
           }
@@ -697,19 +697,19 @@ const MENU_MEGA: MenuConfigType = [
                 title: 'Documents',
                 icon: 'document',
                 path: '#',
-                soon: true
+                disabled: true
               },
               {
                 title: 'Badges',
                 icon: 'award',
                 path: '#',
-                soon: true
+                disabled: true
               },
               {
                 title: 'Awards',
                 icon: 'gift',
                 path: '#',
-                soon: true
+                disabled: true
               }
             ]
           }
@@ -729,8 +729,8 @@ const MENU_MEGA: MenuConfigType = [
           { title: "Appearance", icon: "eye", path: "/account/appearance" },
           { title: "Invite a Friend", icon: "user-tick", path: "/account/invite-a-friend" },
           { title: "Activity", icon: "support", path: "/account/activity" },
-          { title: "Brand", icon: "verify", soon: true },
-          { title: "Get Paid", icon: "euro", soon: true }
+          { title: "Brand", icon: "verify", disabled: true },
+          { title: "Get Paid", icon: "euro", disabled: true }
         ]
       },
       {
@@ -755,9 +755,9 @@ const MENU_MEGA: MenuConfigType = [
               { title: "Enterprise", path: "/account/billing/enterprise" },
               { title: "Plans", path: "/account/billing/plans" },
               { title: "Billing History", path: "/account/billing/history" },
-              { title: "Tax Info", soon: true },
-              { title: "Invoices", soon: true },
-              { title: "Gateaways", soon: true }
+              { title: "Tax Info", disabled: true },
+              { title: "Invoices", disabled: true },
+              { title: "Gateaways", disabled: true }
             ]
           },
           {
@@ -808,10 +808,10 @@ const MENU_MEGA: MenuConfigType = [
       {
         title: "General Pages",
         children: [
-          { title: "Get Started", icon: "flag", path: "#" },
-          { title: "Colleagues", icon: "users", path: "#", soon: true },
-          { title: "Donators", icon: "heart", path: "#", soon: true },
-          { title: "Leads", icon: "abstract-21", path: "#", soon: true }
+          { title: "Get Started", icon: "flag", path: "/network/get-started" },
+          { title: "Colleagues", icon: "users", path: "#", disabled: true },
+          { title: "Donators", icon: "heart", path: "#", disabled: true },
+          { title: "Leads", icon: "abstract-21", path: "#", disabled: true }
         ]
       },
       {
@@ -820,24 +820,24 @@ const MENU_MEGA: MenuConfigType = [
           {
             title: "User Cards",
             children: [
-              { title: "Mini Cards", path: "network/user-cards/mini-cards" },
-              { title: "Team Members", path: "network/user-cards/author" },
-              { title: "Authors", path: "network/user-cards/nft" },
-              { title: "NFT Users", path: "network/user-cards/social" },
+              { title: "Mini Cards", path: "/network/user-cards/mini-cards" },
+              { title: "Team Members", path: "/network/user-cards/author" },
+              { title: "Authors", path: "/network/user-cards/nft" },
+              { title: "NFT Users", path: "/network/user-cards/social" },
               { title: "Social Users", path: "#" },
-              { title: "Gamers", path: "#", soon: true }
+              { title: "Gamers", path: "#", disabled: true }
             ]
           },
           {
             title: "User Base",
             badge: "Datatables",
             children: [
-              { title: "Team Crew", path: "network/user-base/team-crew" },
-              { title: "App Roster", path: "network/user-base/app-roster" },
-              { title: "Market Authors", path: "network/user-base/market-authors" },
-              { title: "SaaS Users", path: "network/user-base/saas-users" },
-              { title: "Store Clients", path: "network/user-base/store-clients" },
-              { title: "Visitors", path: "network/user-base/visitors" }
+              { title: "Team Crew", path: "/network/user-base/team-crew" },
+              { title: "App Roster", path: "/network/user-base/app-roster" },
+              { title: "Market Authors", path: "/network/user-base/market-authors" },
+              { title: "SaaS Users", path: "/network/user-base/saas-users" },
+              { title: "Store Clients", path: "/network/user-base/store-clients" },
+              { title: "Visitors", path: "/network/user-base/visitors" }
             ]
           }
         ]

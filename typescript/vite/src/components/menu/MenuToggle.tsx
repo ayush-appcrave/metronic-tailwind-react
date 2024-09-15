@@ -10,7 +10,6 @@ const MenuToggleComponent = forwardRef<HTMLDivElement | null, IMenuToggleProps>(
       hasItemSub = false,
       menuItemRef,
       handleToggle,
-      handleClick,
       children
     } = props;
 

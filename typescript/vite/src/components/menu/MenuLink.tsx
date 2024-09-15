@@ -1,10 +1,8 @@
 import clsx from 'clsx';
 import { Link } from 'react-router-dom';
-
 import { IMenuLinkProps } from './';
 
 const MenuLink = ({path, newTab, hasItemSub = false, externalLink, className, handleToggle, handleClick, children}: IMenuLinkProps) => {
-
   if (!hasItemSub && path) {
     if (externalLink) {
       const target = newTab ? '_blank' : '_self';

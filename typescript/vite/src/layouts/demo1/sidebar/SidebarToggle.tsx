@@ -1,14 +1,11 @@
 import clsx from 'clsx';
-import { type MouseEvent } from 'react';
-
 import { KeenIcon } from '@/components';
-
 import { useDemo1Layout } from '../Demo1LayoutProvider';
 
 const SidebarToggle = () => {
   const { layout, setSidebarCollapse } = useDemo1Layout();
 
-  const handleClick = (event: MouseEvent<HTMLElement>) => {
+  const handleClick = () => {
     if (layout.options.sidebar.collapse) {
       setSidebarCollapse(false);
     } else {
@@ -16,7 +13,7 @@ const SidebarToggle = () => {
     }
   };
 
-  const lightButton = () => {
+  const lightToggle = () => {
     return (
       <button
         className={clsx(
@@ -34,7 +31,7 @@ const SidebarToggle = () => {
     );
   }
 
-  const darkButton = () => {
+  const darkToggle = () => {
     return (
       <div onClick={handleClick}>
 				<div className="hidden [html.dark_&]:block">
@@ -57,7 +54,7 @@ const SidebarToggle = () => {
     );
   }
 
-  return layout.options.sidebar.theme === 'light' ? lightButton() : darkButton();
+  return layout.options.sidebar.theme === 'light' ? lightToggle() : darkToggle();
 };
 
 export { SidebarToggle };

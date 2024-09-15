@@ -3,12 +3,10 @@ import {
   MenuItem,
   MenuLink,
   MenuTitle,
-  MenuArrow,
   MenuIcon,
   MenuBadge,
   MenuSub
 } from '@/components/menu';
-import { useState } from 'react';
 import { toAbsoluteUrl } from '@/utils';
 import clsx from 'clsx';
 

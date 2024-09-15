@@ -28,7 +28,6 @@ const Sidebar = () => {
 
   const desktopMode = useResponsive('up', 'lg');
   const { mobileSidebarOpen, setMobileSidebarOpen } = useDemo1Layout();
-  const [headerHeight, setHeaderHeight] = useState(0);
   const { layout } = useDemo1Layout();
   const themeClass:string = layout.options.sidebar.theme === 'dark' || pathname === '/dark-sidebar' ? 'dark [&.dark]:bg-coal-600' : 'dark:bg-coal-600';
 

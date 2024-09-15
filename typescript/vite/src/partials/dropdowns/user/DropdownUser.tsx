@@ -1,23 +1,21 @@
 import { KeenIcon } from '@/components';
 import {
-  Menu,
   MenuItem,
   MenuLink,
   MenuSub,
   MenuTitle,
   MenuSeparator,
-  MenuToggle,
   MenuArrow,
   MenuIcon
 } from '@/components/menu';
-import { ChangeEvent, useEffect, useState } from 'react';
+import { ChangeEvent, Fragment } from 'react';
 import { toAbsoluteUrl } from '@/utils';
 import { DropdownUserLanguages } from './DropdownUserLanguages';
 import { Link } from 'react-router-dom';
 import { useSettings } from '@/providers/SettingsProvider';
 
 const DropdownUser = () => {
-  const { settings, updateSettings, storeSettings, getMode } = useSettings();
+  const { settings, storeSettings } = useSettings();
 
   const handleThemeMode = (event: ChangeEvent<HTMLInputElement>) => {
     console.log('checked:' + event.target.checked);
@@ -49,19 +47,19 @@ const DropdownUser = () => {
 
   const buildMenu = () => {
     return (
-      <>
+      <Fragment>
         <MenuSeparator/>
         <div className="flex flex-col">
-          <MenuItem path="/public-profile/profiles/default">
-            <MenuLink>
+          <MenuItem>
+            <MenuLink path="/public-profile/profiles/default">
               <MenuIcon className="menu-icon">
                 <KeenIcon icon="badge" />
               </MenuIcon>
               <MenuTitle>Public Profile</MenuTitle>
             </MenuLink>
           </MenuItem>
-          <MenuItem path="/account/home/user-profile">
-            <MenuLink>
+          <MenuItem>
+            <MenuLink path="/account/home/user-profile">
               <MenuIcon>
                 <KeenIcon icon="profile-circle" />
               </MenuIcon>
@@ -93,48 +91,48 @@ const DropdownUser = () => {
               </MenuArrow>
             </MenuLink>
             <MenuSub className="menu-default light:border-gray-300 w-[200px]] md:w-[220px]">
-              <MenuItem path="/account/home/get-started">
-                <MenuLink>
+              <MenuItem>
+                <MenuLink path="/account/home/get-started">
                   <MenuIcon>
                     <KeenIcon icon="coffee" />
                   </MenuIcon>
                   <MenuTitle>Get Started</MenuTitle>
                 </MenuLink>
               </MenuItem>
-              <MenuItem path="/account/home/user-profile">
-                <MenuLink>
+              <MenuItem>
+                <MenuLink path="/account/home/user-profile">
                   <MenuIcon>
                     <KeenIcon icon="some-files" />
                   </MenuIcon>
                   <MenuTitle>My Profile</MenuTitle>
                 </MenuLink>
               </MenuItem>
-              <MenuItem path="/account/billing/basic">
-                <MenuLink>
+              <MenuItem>
+                <MenuLink path="/account/billing/basic">
                   <MenuIcon>
                     <KeenIcon icon="icon" />
                   </MenuIcon>
                   <MenuTitle>Billing</MenuTitle>
                 </MenuLink>
               </MenuItem>
-              <MenuItem path="/account/security/overview">
-                <MenuLink>
+              <MenuItem>
+                <MenuLink path="/account/security/overview">
                   <MenuIcon>
                     <KeenIcon icon="medal-star" />
                   </MenuIcon>
                   <MenuTitle>Security</MenuTitle>
                 </MenuLink>
               </MenuItem>
-              <MenuItem path="/account/members/teams">
-                <MenuLink>
+              <MenuItem>
+                <MenuLink path="/account/members/teams">
                   <MenuIcon>
                     <KeenIcon icon="setting" />
                   </MenuIcon>
                   <MenuTitle>Members & Roles</MenuTitle>
                 </MenuLink>
               </MenuItem>
-              <MenuItem path="/account/integrations">
-                <MenuLink>
+              <MenuItem>
+                <MenuLink path="/account/integrations">
                   <MenuIcon>
                     <KeenIcon icon="switch" />
                   </MenuIcon>
@@ -142,8 +140,8 @@ const DropdownUser = () => {
                 </MenuLink>
               </MenuItem>
               <MenuSeparator />
-              <MenuItem path="/account/security/overview">
-                <MenuLink>
+              <MenuItem>
+                <MenuLink path="/account/security/overview">
                   <MenuIcon>
                     <KeenIcon icon="shield-tick" />
                   </MenuIcon>
@@ -155,8 +153,8 @@ const DropdownUser = () => {
               </MenuItem>
             </MenuSub>
           </MenuItem>
-          <MenuItem path="https://devs.keenthemes.com">
-            <MenuLink>
+          <MenuItem>
+            <MenuLink path="https://devs.keenthemes.com">
               <MenuIcon>
                 <KeenIcon icon="message-programming"/>
               </MenuIcon>
@@ -166,7 +164,7 @@ const DropdownUser = () => {
           <DropdownUserLanguages/>
           <MenuSeparator/>
         </div>
-      </>      
+      </Fragment>
     )
   }
 

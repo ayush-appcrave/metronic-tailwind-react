@@ -4,11 +4,7 @@ import { useDemo1Layout } from '../';
 import { toAbsoluteUrl } from '@/utils';
 import { SidebarToggle } from './'; 
 
-interface SidebarHeaderProps {
-  // Define any props you might need here
-}
-
-const SidebarHeader = forwardRef<HTMLDivElement, SidebarHeaderProps>((props, ref) => {
+const SidebarHeader = forwardRef<HTMLDivElement>((props, ref) => {
   const { layout } = useDemo1Layout();
 
   const lightLogo = () => (

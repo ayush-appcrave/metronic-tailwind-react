@@ -6,7 +6,6 @@ import { useScrollPosition } from '@/hooks/useScrollPosition';
 import { useMenu } from '@/providers';
 import { ILayoutConfig, useLayout } from '@/providers/LayoutProvider';
 import { deepMerge } from '@/utils';
-
 import { demo1LayoutConfig } from './';
 
 export interface Demo1LayoutProviderProps {
@@ -22,9 +21,15 @@ const initalLayoutProps: Demo1LayoutProviderProps = {
   layout: demo1LayoutConfig,
   headerSticky: false,
   mobileSidebarOpen: false,
-  setMobileSidebarOpen: (_: boolean) => {},
-  setSidebarCollapse: (_: boolean) => {},
-  setSidebarTheme: (_: string) => {}
+  setMobileSidebarOpen: (open: boolean) => {
+    console.log(`${open}`);
+  },
+  setSidebarCollapse: (collapse: boolean) => {
+    console.log(`${collapse}`);
+  },
+  setSidebarTheme: (mode: string) => {
+    console.log(`${mode}`);
+  }
 };
 
 const Demo1LayoutContext = createContext<Demo1LayoutProviderProps>(initalLayoutProps);

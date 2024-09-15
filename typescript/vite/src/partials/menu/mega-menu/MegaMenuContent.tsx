@@ -1,6 +1,5 @@
 import { KeenIcon } from '@/components';
 import {
-  Menu,
   MenuConfigType,
   IMenuItemConfig,
   MenuItem,
@@ -12,6 +11,7 @@ import {
 import { MegaMenuSubDefault } from './MegaMenuSubDefault';
 import { MegaMenuSubHighlighted } from './MegaMenuSubHighlighted';
 import { MegaMenuSubDropdown } from './MegaMenuSubDropdown';
+import { Fragment } from 'react';
 
 const MegaMenuContent = (items: MenuConfigType) => {
   const homeItem = items[0];
@@ -31,11 +31,13 @@ const MegaMenuContent = (items: MenuConfigType) => {
 
   const helpItem = items[5];  
 
+  const linkClass = 'text-sm text-gray-800 menu-link-hover:text-primary menu-item-active:text-gray-900 menu-item-show:text-primary menu-item-here:text-gray-900 menu-item-active:font-medium menu-item-here:font-medium';
+
   const build = () => {
     return (
-      <>
-        <MenuItem key="home" path={homeItem.path}>
-          <MenuLink className="text-sm text-gray-800 menu-item-hover:text-primary menu-item-active:text-gray-900 menu-item-active:font-medium">
+      <Fragment>
+        <MenuItem key="home">
+          <MenuLink path={homeItem.path} className={linkClass}>
             <MenuTitle className="text-nowrap">
               {homeItem.title}
             </MenuTitle>
@@ -50,7 +52,7 @@ const MegaMenuContent = (items: MenuConfigType) => {
             placement: "bottom-start"
           }}
         >
-          <MenuLink className="text-sm text-gray-800 menu-link-hover:text-primary menu-item-active:text-gray-900 menu-item-show:text-primary menu-item-here:text-gray-900 menu-item-active:font-medium menu-item-here:font-medium">
+          <MenuLink className={linkClass}>
             <MenuTitle className="text-nowrap">
               {publicProfilesItem.title}
             </MenuTitle>
@@ -66,7 +68,7 @@ const MegaMenuContent = (items: MenuConfigType) => {
                       <div className="grid lg:grid-cols-2 lg:gap-5">
                         {item.children?.map((item: IMenuItemConfig, index) => {
                           return (
-                            <div key={`item-${index}`} className="flex flex-col">
+                            <div key={`item-${index}`} className="flex flex-col gap-0.5">
                               {item.children && MegaMenuSubDefault(item.children)}
                             </div>
                           )
@@ -97,7 +99,7 @@ const MegaMenuContent = (items: MenuConfigType) => {
             ]
           }}
         >
-          <MenuLink className="text-sm text-gray-800 menu-link-hover:text-primary menu-item-active:text-gray-900 menu-item-show:text-primary menu-item-here:text-gray-900 menu-item-active:font-medium menu-item-here:font-medium">
+          <MenuLink className={linkClass}>
             <MenuTitle className="text-nowrap">
               {myAccountItem.title}
             </MenuTitle>
@@ -108,7 +110,7 @@ const MegaMenuContent = (items: MenuConfigType) => {
               <h3 className="text-sm text-gray-800 font-semibold leading-none pl-2.5 mb-2 lg:mb-5">
                 { myAccountItemGeneral.title }
               </h3>
-              <div className="menu menu-default menu-fit flex-col">					
+              <div className="menu menu-default menu-fit flex-col gap-0.5">					
                 { myAccountItemGeneral.children && MegaMenuSubHighlighted(myAccountItemGeneral.children)}					 
               </div>
             </div>
@@ -118,7 +120,7 @@ const MegaMenuContent = (items: MenuConfigType) => {
                   return (
                     <div key={`item-${index}`} className="flex flex-col">
                       <h3 className="text-sm text-gray-800 font-semibold leading-none pl-2.5 mb-2 lg:mb-5">{ item.title }</h3>
-                      <div className="menu menu-default menu-fit flex-col">
+                      <div className="menu menu-default menu-fit flex-col gap-0.5">
                         {item.children && MegaMenuSubDefault(item.children)}
                       </div>							
                     </div>
@@ -139,13 +141,13 @@ const MegaMenuContent = (items: MenuConfigType) => {
               {
                 name: 'offset',
                 options: {
-                  offset: [-300, 0], // [skid, distance]
+                  offset: [-300, 0] // [skid, distance]
                 }
               }
             ]
           }}
         >
-          <MenuLink className="text-sm text-gray-800 menu-link-hover:text-primary menu-item-active:text-gray-900 menu-item-show:text-primary menu-item-here:text-gray-900 menu-item-active:font-medium menu-item-here:font-medium">
+          <MenuLink className={linkClass}>
             <MenuTitle className="text-nowrap">
               {networkItem.title}
             </MenuTitle>
@@ -157,7 +159,7 @@ const MegaMenuContent = (items: MenuConfigType) => {
                 <h3 className="text-sm text-gray-800 font-semibold leading-none pl-2.5 h-3.5">
                   { networkItemGeneral.title }
                 </h3>
-                <div className="menu menu-default menu-fit flex-col">					
+                <div className="menu menu-default menu-fit flex-col gap-0.5">					
                   { networkItemGeneral.children && MegaMenuSubHighlighted(networkItemGeneral.children)}					 
                 </div>
               </div>
@@ -170,7 +172,7 @@ const MegaMenuContent = (items: MenuConfigType) => {
                           { item.title }
                           { item.badge && <span className="left-auto badge badge-xs badge-primary badge-outline">{ item.badge }</span> }
                         </h3>
-                        <div className="menu menu-default menu-fit flex-col">
+                        <div className="menu menu-default menu-fit flex-col gap-0.5">
                           {item.children && MegaMenuSubDefault(item.children)}
                         </div>							
                       </div>
@@ -199,7 +201,7 @@ const MegaMenuContent = (items: MenuConfigType) => {
             ]
           }}
         >
-          <MenuLink className="text-sm text-gray-800 menu-link-hover:text-primary menu-item-active:text-gray-900 menu-item-show:text-primary menu-item-here:text-gray-900 menu-item-active:font-medium menu-item-here:font-medium">
+          <MenuLink className={linkClass}>
             <MenuTitle className="text-nowrap">
               {authItem.title}
             </MenuTitle>
@@ -216,7 +218,7 @@ const MegaMenuContent = (items: MenuConfigType) => {
                           { item.title }
                           { item.badge && <span className="left-auto badge badge-xs badge-primary badge-outline">{ item.badge }</span> }
                         </h3>
-                        <div className="menu menu-default menu-fit flex-col">
+                        <div className="menu menu-default menu-fit flex-col gap-0.5">
                           {item.children && MegaMenuSubDefault(item.children)}
                         </div>							
                       </div>
@@ -228,7 +230,7 @@ const MegaMenuContent = (items: MenuConfigType) => {
                 <h3 className="text-sm text-gray-800 font-semibold leading-none pl-2.5 mb-5">
                   { authItemOthers.title }
                 </h3>
-                <div className="menu menu-default menu-fit flex-col">					
+                <div className="menu menu-default menu-fit flex-col gap-0.5">					
                   { authItemOthers.children && MegaMenuSubHighlighted(authItemOthers.children)}					 
                 </div>
               </div>
@@ -263,7 +265,7 @@ const MegaMenuContent = (items: MenuConfigType) => {
             {helpItem.children && MegaMenuSubDropdown(helpItem.children)}
           </MenuSub>
         </MenuItem>
-      </>
+      </Fragment>
     )
   }
 
@@ -289,9 +291,9 @@ const MegaMenuContent = (items: MenuConfigType) => {
   };
 
   return (
-    <Menu className="menu flex-col lg:flex-row gap-5 lg:gap-7.5">
+    <div className="menu flex-col lg:flex-row gap-5 lg:gap-7.5">
       {build()}
-    </Menu>
+    </div>
   );
 };
 

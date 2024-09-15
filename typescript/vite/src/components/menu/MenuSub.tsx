@@ -10,21 +10,19 @@ const MenuSubComponent = forwardRef<HTMLDivElement | null, IMenuSubProps>(
       enter,
       toggle = 'accordion',
       className,
-      handleClick,
       handleParentHide,
       handleEntered,
       handleExited,
       children,
       level,
-    } = props;
+    } = props;   
 
     const modifiedChildren = Children.map(children, (child, index) => {
       if (isValidElement(child)) {    
-        if (child.type === MenuItem) {
+        if (child.type === MenuItem) {          
           // Add some props to each child
           const modifiedProps: IMenuItemProps = {
             handleParentHide,
-            handleClick,
             level,
             index     
           };
