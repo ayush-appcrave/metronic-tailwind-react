@@ -11,8 +11,14 @@ const App = () => {
   useEffect(() => {
     document.documentElement.classList.remove('dark');
     document.documentElement.classList.remove('light');
-    document.documentElement.classList.remove('page-loading');
     document.documentElement.classList.add(settings.mode);
+
+    const timer = setTimeout(() => {
+      document.documentElement.classList.remove('page-loading');
+    }, 1000); // 1000 milliseconds
+
+    // Cleanup the timer when the component unmounts
+    return () => clearTimeout(timer);
   }, [settings]);
 
   return (

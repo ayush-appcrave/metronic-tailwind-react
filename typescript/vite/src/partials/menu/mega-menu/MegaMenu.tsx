@@ -18,7 +18,7 @@ const MegaMenu = () => {
   useEffect(() => {
     const timer = setTimeout(() => {
       setDisabled(false);
-    }, 1000); // 500 milliseconds
+    }, 1000); // 1000 milliseconds
 
     // Cleanup the timer when the component unmounts
     return () => clearTimeout(timer);

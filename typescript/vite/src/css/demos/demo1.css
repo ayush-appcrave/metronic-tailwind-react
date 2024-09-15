@@ -124,3 +124,11 @@
 		overflow: hidden;
 	}
 }
+
+.page-loading .demo1 .wrapper {
+	transition: none !important;
+}
+
+.page-loading .demo1 .header {
+	transition: none !important;
+}
