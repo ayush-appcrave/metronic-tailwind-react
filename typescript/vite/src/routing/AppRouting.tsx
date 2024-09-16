@@ -108,7 +108,7 @@ const AppRouting = (): ReactElement => {
   };
 
   useEffect(() => {
-    init();
+    //init();
   }, [init, location]);
 
   useEffect(() => {

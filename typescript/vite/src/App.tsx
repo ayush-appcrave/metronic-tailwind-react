@@ -12,7 +12,8 @@ const App = () => {
     document.documentElement.classList.remove('dark');
     document.documentElement.classList.remove('light');
     document.documentElement.classList.add(settings.mode);
-
+    document.documentElement.classList.remove('page-loading');
+    
     const timer = setTimeout(() => {
       document.documentElement.classList.remove('page-loading');
     }, 1000); // 1000 milliseconds
