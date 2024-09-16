@@ -108,8 +108,8 @@ const AppRouting = (): ReactElement => {
   };
 
   useEffect(() => {
-    //init();
-  }, [init, location]);
+    init();
+  }, [location]);
 
   useEffect(() => {
     setProgressBarLoader(false);

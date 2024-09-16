@@ -1,6 +1,6 @@
 import React from 'react';
 import { Table } from '@tanstack/react-table';
-import { TablePagination } from '@/components/tanstack-table/TablePagination.tsx';
+import { TablePagination } from '@/components/table/TablePagination.tsx';
 
 type TableFooterProps = {
   table: Table<any>;

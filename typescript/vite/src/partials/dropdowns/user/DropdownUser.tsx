@@ -13,9 +13,11 @@ import { toAbsoluteUrl } from '@/utils';
 import { DropdownUserLanguages } from './DropdownUserLanguages';
 import { Link } from 'react-router-dom';
 import { useSettings } from '@/providers/SettingsProvider';
+import { useAuthContext } from '@/auth';
 
 const DropdownUser = () => {
   const { settings, storeSettings } = useSettings();
+  const { logout } = useAuthContext();
 
   const handleThemeMode = (event: ChangeEvent<HTMLInputElement>) => {
     console.log('checked:' + event.target.checked);
@@ -200,9 +202,9 @@ const DropdownUser = () => {
         </div>
 
         <div className="menu-item px-4 py-1.5">
-          <Link to="#" className="btn btn-sm btn-light justify-center">
-            Log out
-          </Link>
+          <a onClick={logout} className="btn btn-sm btn-light justify-center">
+            Logout
+          </a>
         </div>
       </div>
     );

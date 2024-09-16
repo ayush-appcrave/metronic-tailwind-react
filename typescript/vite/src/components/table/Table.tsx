@@ -10,8 +10,8 @@ import {
   useReactTable
 } from '@tanstack/react-table';
 import React from 'react';
-import { Filter } from '@/components/tanstack-table/ColumnFilter.tsx';
-import { TableFooter } from '@/components/tanstack-table/TableFooter.tsx';
+import { Filter } from '@/components/table/ColumnFilter.tsx';
+import { TableFooter } from '@/components/table/TableFooter.tsx';
 
 function Table({ data, columns }: { data: Person[]; columns: ColumnDef<Person>[] }) {
   const [pagination, setPagination] = React.useState<PaginationState>({

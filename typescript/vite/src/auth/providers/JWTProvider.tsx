@@ -103,7 +103,6 @@ const AuthProvider = ({ children }: PropsWithChildren) => {
     password_confirmation?: string
   ) => {
     try {
-      console.log(password_confirmation);
       const { data: auth } = await axios.post(REGISTER_URL, {
         email,
         first_name: 'DefaultName',

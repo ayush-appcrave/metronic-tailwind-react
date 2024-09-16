@@ -1,7 +1,7 @@
 import React from 'react';
 import { ColumnDef } from '@tanstack/react-table';
 import { makeData, Person } from './makeData';
-import Table from '@/components/tanstack-table/Table.tsx';
+import Table from '@/components/table/Table.tsx';
 
 const Example1 = () => {
   const columns = React.useMemo<ColumnDef<Person>[]>(
