@@ -16,12 +16,20 @@ const NavbarMenu = ({ items }: { items: MenuConfigType }) => {
         return (
           <MenuItem
             key={index}
+            className="text-sm border-b-2 border-b-transparent menu-item-active:border-b-primary menu-item-here:border-b-primary"
             toggle="dropdown"
             trigger="click"
-            className="text-sm border-b-2 border-b-transparent menu-item-active:border-b-primary menu-item-here:border-b-primary"
-            {...(item.dropdownProps && {
-              dropdownProps: item.dropdownProps
-            })}
+            dropdownProps={{
+              placement: 'bottom-start',
+              modifiers: [
+                {
+                  name: 'offset',
+                  options: {
+                    offset: [0, 0] // [skid, distance]
+                  }
+                }
+              ]
+            }}
           >
             <MenuLink className="pb-4 px-2 gap-0.5 cursor-pointer">
               <MenuTitle className="font-medium text-gray-700 menu-item-active:text-primary menu-item-active:font-semibold menu-item-here:text-primary menu-item-here:font-semibold menu-item-show:text-primary menu-link-hover:text-primary">
@@ -29,8 +37,8 @@ const NavbarMenu = ({ items }: { items: MenuConfigType }) => {
               </MenuTitle>
               {buildMenuToggle()}
             </MenuLink>
-            <MenuSub className="p-4 gap-0.5 lg:w-[175px] bg-light shadow-md rounded">
-              {buildMenuSub(item.children, 1)}
+            <MenuSub className="menu-default" rootClassName="w-full max-w-[175px]">
+              {buildMenuSub(item.children)}
             </MenuSub>
           </MenuItem>
         );
@@ -51,18 +59,26 @@ const NavbarMenu = ({ items }: { items: MenuConfigType }) => {
     });
   };
 
-  const buildMenuSub = (items: MenuConfigType, level: number = 0) => {
+  const buildMenuSub = (items: MenuConfigType) => {
     return items.map((item, index) => {
       if (item.children) {
         return (
           <MenuItem
             key={index}
+            className="text-sm"
             toggle="dropdown"
             trigger="hover"
-            className="text-sm"
-            {...(item.dropdownProps && {
-              dropdownProps: item.dropdownProps
-            })}
+            dropdownProps={{
+              placement: 'right-start',
+              modifiers: [
+                {
+                  name: 'offset',
+                  options: {
+                    offset: [0, 0] // [skid, distance]
+                  }
+                }
+              ]
+            }}
           >
             <MenuLink className="py-1.5 px-2 gap-0.5 cursor-pointer">
               <MenuTitle className="mr-1 font-normal text-gray-700 menu-item-active:text-primary menu-item-here:text-gray-900 menu-item-show:text-gray-900 menu-link-hover:!text-primary">
@@ -70,8 +86,8 @@ const NavbarMenu = ({ items }: { items: MenuConfigType }) => {
               </MenuTitle>
               {buildMenuToggle()}
             </MenuLink>
-            <MenuSub className="p-4 gap-0.5 w-[175px] bg-white shadow-md rounded">
-              {buildMenuSub(item.children, level + 1)}
+            <MenuSub className="menu-default" rootClassName="w-full max-w-[175px]">
+              {buildMenuSub(item.children)}
             </MenuSub>
           </MenuItem>
         );
@@ -94,8 +110,8 @@ const NavbarMenu = ({ items }: { items: MenuConfigType }) => {
 
   const buildMenuToggle = () => {
     return (
-      <MenuToggle className="justify-end mr-[-2px] w-[20px] text-gray-500 menu-item-active:text-primary menu-item-here:text-primary menu-item-show:text-primary menu-link-hover:text-primary">
-        <KeenIcon icon="down" className="text-sm [.menu-dropdown_&]:-rotate-90" />
+      <MenuToggle className="justify-end me-[-2px] w-[20px] text-gray-500 menu-item-active:text-primary menu-item-here:text-primary menu-item-show:text-primary menu-link-hover:text-primary">
+        <KeenIcon icon="down" className="text-xs [.menu-dropdown_&]:-rotate-90" />
       </MenuToggle>
     );
   };
