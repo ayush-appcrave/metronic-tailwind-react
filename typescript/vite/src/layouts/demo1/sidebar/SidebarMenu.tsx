@@ -19,21 +19,21 @@ import {
 import { useMenu } from '@/providers/MenuProvider';
 
 const SidebarMenu = () => {
-  const linkPl = 'pl-[10px]';
-  const linkPr = 'pr-[10px]';
+  const linkPl = 'ps-[10px]';
+  const linkPr = 'pe-[10px]';
   const linkPy = 'py-[6px]';
   const subLinkPy = 'py-[8px]';
-  const rightOffset = 'mr-[-10px]';
+  const rightOffset = 'me-[-10px]';
   const iconWidth = 'w-[20px]';
   const iconSize = 'text-lg';
-  const accordionLinkPl = 'pl-[10px]';
+  const accordionLinkPl = 'ps-[10px]';
   const accordionLinkGap = ['gap-[10px]', 'gap-[14px]', 'gap-[5px]', 'gap-[5px]', 'gap-[5px]'];
-  const accordionPl = ['pl-[10px]', 'pl-[22px]', 'pl-[22px]', 'pl-[22px]', 'pl-[22px]'];
+  const accordionPl = ['ps-[10px]', 'ps-[22px]', 'ps-[22px]', 'ps-[22px]', 'pls[22px]'];
   const accordionBorderLeft = [
-    'before:left-[20px]',
-    'before:left-[32px]',
-    'before:left-[32px]',
-    'before:left-[32px]'
+    'before:start-[20px]',
+    'before:start-[32px]',
+    'before:start-[32px]',
+    'before:start-[32px]'
   ];
 
   const buildMenu = (items: MenuConfigType) => {
@@ -224,11 +224,8 @@ const SidebarMenu = () => {
             subLinkPy
           )}
         >
-          <MenuIcon className={clsx('items-start text-gray-500 dark:text-gray-400', iconWidth)}>
-            {item.icon && <KeenIcon icon={item.icon} className={iconSize} />}
-          </MenuIcon>
+          {buildMenuBullet()}
           <MenuTitle className="text-2sm font-medium text-gray-700">{item.title}</MenuTitle>
-
           {item.disabled && buildMenuSoon()}
         </MenuLabel>
       </MenuItem>
@@ -249,7 +246,7 @@ const SidebarMenu = () => {
 
   const buildMenuArrow = () => {
     return (
-      <MenuArrow className={clsx('text-gray-400 w-[20px] shrink-0 justify-end ml-1', rightOffset)}>
+      <MenuArrow className={clsx('text-gray-400 w-[20px] shrink-0 justify-end ms-1', rightOffset)}>
         <KeenIcon icon="plus" className="text-2xs menu-item-show:hidden" />
         <KeenIcon icon="minus" className="text-2xs hidden menu-item-show:inline-flex" />
       </MenuArrow>

@@ -5,6 +5,7 @@ import { AuthProvider } from '@/auth/providers/JWTProvider';
 // import { AuthProvider } from '@/auth/providers/Auth0Provider';
 // import { AuthProvider } from '@/auth/providers/FirebaseProvider';
 import {
+  PathnameProvider,
   LayoutProvider,
   LoadersProvider,
   MenuProvider,
@@ -16,7 +17,7 @@ import {
 const queryClient = new QueryClient();
 
 const ProvidersWrapper = ({ children }: PropsWithChildren) => {
-  return (
+  return (    
     <QueryClientProvider client={queryClient}>
       <SnackbarProvider>
         <AuthProvider>

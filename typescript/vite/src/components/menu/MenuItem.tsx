@@ -35,6 +35,7 @@ import {
   MenuToggle,
   useMenu
 } from './';
+import { usePathname } from '@/providers';
 
 const MenuItemComponent = forwardRef<IMenuItemRef | null, IMenuItemProps>(
   function MenuItem(props, ref) {
@@ -72,7 +73,7 @@ const MenuItemComponent = forwardRef<IMenuItemRef | null, IMenuItemProps>(
 
     const menuContainerRef = useRef<HTMLDivElement | null>(null);
 
-    const { pathname } = useLocation();
+    const { pathname, prevPathname } = usePathname();
 
     const { match } = useMatchPath(path);
 
@@ -97,6 +98,7 @@ const MenuItemComponent = forwardRef<IMenuItemRef | null, IMenuItemProps>(
     const hasSub = Children.toArray(children).some(
       (child) => isValidElement(child) && child.type === MenuSub
     );
+
     const handleHide = () => {
       if (hasSub) {
         setShow(false);
@@ -360,7 +362,7 @@ const MenuItemComponent = forwardRef<IMenuItemRef | null, IMenuItemProps>(
         }
       }
 
-      if (hasSub && propToggle === 'dropdown') {
+      if (prevPathname !== pathname && hasSub && propToggle === 'dropdown') {
         handleHide();
       }
     }, [pathname]);

@@ -17,7 +17,7 @@ const SidebarToggle = () => {
     return (
       <button
         className={clsx(
-          'btn btn-icon btn-icon-md size-[30px] rounded-lg border border-gray-200 dark:border-gray-300 bg-light text-gray-500 hover:text-gray-700 group absolute left-full top-2/4 -translate-x-2/4 -translate-y-2/4',
+          'btn btn-icon btn-icon-md size-[30px] rounded-lg border border-gray-200 dark:border-gray-300 bg-light text-gray-500 hover:text-gray-700 group absolute start-full top-2/4 -translate-x-2/4 -translate-y-2/4',
           (layout.options.sidebar.collapse as boolean) && 'active'
         )}
         onClick={handleClick}
@@ -35,7 +35,7 @@ const SidebarToggle = () => {
     return (
       <div onClick={handleClick}>
         <div className="hidden [html.dark_&]:block">
-          <button className="btn btn-icon btn-icon-md size-[30px] rounded-lg border border-gray-300 bg-light text-gray-500 hover:text-gray-700 group absolute left-full top-2/4 -translate-x-2/4 -translate-y-2/4">
+          <button className="btn btn-icon btn-icon-md size-[30px] rounded-lg border border-gray-300 bg-light text-gray-500 hover:text-gray-700 group absolute start-full top-2/4 -translate-x-2/4 -translate-y-2/4">
             <KeenIcon
               icon="black-left-line"
               className="group-[.active]:rotate-180 transition-all duration-300"
@@ -43,7 +43,7 @@ const SidebarToggle = () => {
           </button>
         </div>
         <div className="[html.dark_&]:hidden light">
-          <button className="btn btn-icon btn-icon-md size-[30px] rounded-lg border border-gray-300 bg-light text-gray-500 hover:text-gray-700 group absolute left-full top-2/4 -translate-x-2/4 -translate-y-2/4">
+          <button className="btn btn-icon btn-icon-md size-[30px] rounded-lg border border-gray-300 bg-light text-gray-500 hover:text-gray-700 group absolute start-full top-2/4 -translate-x-2/4 -translate-y-2/4">
             <KeenIcon
               icon="black-left-line"
               className="group-[.active]:rotate-180 transition-all duration-300"

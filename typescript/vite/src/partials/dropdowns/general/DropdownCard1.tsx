@@ -12,16 +12,16 @@ import {
 const DropdownCard1 = () => {
   return (
     <MenuSub className="menu-default" rootClassName="w-full max-w-[200px]">
-      <MenuItem path="/account/activity">
-        <MenuLink>
+      <MenuItem>
+        <MenuLink path="/account/activity">
           <MenuIcon>
             <KeenIcon icon="cloud-change" />
           </MenuIcon>
           <MenuTitle>Activity</MenuTitle>
         </MenuLink>
       </MenuItem>
-      <MenuItem path="#">
-        <MenuLink>
+      <MenuItem>
+        <MenuLink path="#">
           <MenuIcon>
             <KeenIcon icon="share" />
           </MenuIcon>
@@ -45,42 +45,42 @@ const DropdownCard1 = () => {
       >
         <MenuLink>
           <MenuIcon>
-            <KeenIcon icon="notification-status" />
+            <KeenIcon icon="notification-status"/>
           </MenuIcon>
           <MenuTitle>Notifications</MenuTitle>
           <MenuArrow>
-            <KeenIcon icon="right" className="text-3xs" />
+            <KeenIcon icon="right" className="text-3xs"/>
           </MenuArrow>
         </MenuLink>
         <MenuSub className="menu-default" rootClassName="w-full max-w-[175px]">
-          <MenuItem path="/account/home/settings-sidebar">
-            <MenuLink>
+          <MenuItem>
+            <MenuLink path="/account/home/settings-sidebar">
               <MenuIcon>
-                <KeenIcon icon="sms" />
+                <KeenIcon icon="sms"/>
               </MenuIcon>
               <MenuTitle>Email</MenuTitle>
             </MenuLink>
           </MenuItem>
-          <MenuItem path="/account/home/settings-sidebar">
-            <MenuLink>
+          <MenuItem>
+            <MenuLink path="/account/home/settings-sidebar">
               <MenuIcon>
-                <KeenIcon icon="message-notify" />
+                <KeenIcon icon="message-notify"/>
               </MenuIcon>
               <MenuTitle>SMS</MenuTitle>
             </MenuLink>
           </MenuItem>
-          <MenuItem path="/account/home/settings-sidebar">
-            <MenuLink>
+          <MenuItem>
+            <MenuLink path="/account/home/settings-sidebar">
               <MenuIcon>
-                <KeenIcon icon="pencil" />
+                <KeenIcon icon="pencil"/>
               </MenuIcon>
               <MenuTitle>Push</MenuTitle>
             </MenuLink>
           </MenuItem>
         </MenuSub>
       </MenuItem>
-      <MenuItem path="#">
-        <MenuLink>
+      <MenuItem>
+        <MenuLink path="#">
           <MenuIcon>
             <KeenIcon icon="dislike" />
           </MenuIcon>
@@ -88,8 +88,8 @@ const DropdownCard1 = () => {
         </MenuLink>
       </MenuItem>
       <MenuSeparator />
-      <MenuItem path="/account/home/settings-enterprise">
-        <MenuLink>
+      <MenuItem>
+        <MenuLink path="/account/home/settings-enterprise">
           <MenuIcon>
             <KeenIcon icon="setting-3" />
           </MenuIcon>
