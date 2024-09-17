@@ -42,7 +42,7 @@ const NavbarDropdown = () => {
 						<MenuItem>
 							<MenuLabel>
 								<MenuIcon>
-									<KeenIcon icon="cloud-change"/>
+									<KeenIcon icon="coffee"/>
 								</MenuIcon>
 								<MenuTitle>Share Profile</MenuTitle>
 							</MenuLabel>
@@ -50,7 +50,7 @@ const NavbarDropdown = () => {
 						<MenuItem onClick={handleGiveAwardModalOpen}>
 							<MenuLabel>
 								<MenuIcon>
-									<KeenIcon icon="cloud-change"/>
+									<KeenIcon icon="award"/>
 								</MenuIcon>
 								<MenuTitle>Give Award</MenuTitle>
 							</MenuLabel>
@@ -58,17 +58,20 @@ const NavbarDropdown = () => {
 						<MenuItem>
 							<MenuLabel>
 								<MenuIcon>
-									<KeenIcon icon="cloud-change"/>
+									<KeenIcon icon="chart-line"/>
 								</MenuIcon>
-								<MenuTitle>Activity</MenuTitle>
+								<MenuTitle>Stay Updated</MenuTitle>
+								<label className="switch switch-sm">
+									<input type="checkbox" value="1" name="check" />
+								</label>
 							</MenuLabel>
 						</MenuItem>
 						<MenuItem>
 							<MenuLabel>
 								<MenuIcon>
-									<KeenIcon icon="cloud-change"/>
+									<KeenIcon icon="information-2"/>
 								</MenuIcon>
-								<MenuTitle>Activity</MenuTitle>
+								<MenuTitle>Report User</MenuTitle>
 							</MenuLabel>
 						</MenuItem>
 					</MenuSub> 
