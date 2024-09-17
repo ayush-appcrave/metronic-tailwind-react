@@ -4,13 +4,16 @@ import { KeenIcon, Menu, MenuItem, MenuToggle } from '@/components';
 import { Tab, TabPanel, Tabs, TabsList } from '@/components/tabs';
 import { DropdownCrud2 } from '@/partials/dropdowns/general';
 import { useViewport } from '@/hooks';
+import {
+  ModalSettings, 
+} from './';
 
-interface ModalGiveAwardProps {
+interface ModalShareProfileProps {
   open: boolean;
   onClose: () => void;
 }
 
-const ModalGiveAward = forwardRef<HTMLDivElement, ModalGiveAwardProps>(({ open, onClose }, ref) => {
+const ModalShareProfile = forwardRef<HTMLDivElement, ModalShareProfileProps>(({ open, onClose }, ref) => {
   const [scrollableHeight, setScrollableHeight] = useState<number>(0);
   const [viewportHeight] = useViewport();
   const offset = 300;
@@ -28,7 +31,7 @@ const ModalGiveAward = forwardRef<HTMLDivElement, ModalGiveAwardProps>(({ open, 
       <ModalContent className="max-w-[600px] top-[15%]">
         <ModalHeader className="py-4 px-5">
           <ModalTitle>
-            Give Award
+            Share Profile
           </ModalTitle>
           
           <button className="btn btn-sm btn-icon btn-light btn-clear shrink-0" onClick={onClose}>
@@ -36,11 +39,11 @@ const ModalGiveAward = forwardRef<HTMLDivElement, ModalGiveAwardProps>(({ open, 
           </button>
         </ModalHeader>
         <ModalBody className="p-0 pb-5">
-          Test
+          <ModalSettings/>
         </ModalBody>
       </ModalContent>
     </Modal>
   );
 });
 
-export { ModalGiveAward };
+export { ModalShareProfile };

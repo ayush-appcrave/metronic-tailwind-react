@@ -2,10 +2,20 @@ import { Menu, MenuIcon, MenuItem, MenuLabel, MenuLink, MenuSub, MenuTitle, Menu
 import { INavbarActionsProps } from './types';
 import { KeenIcon } from '@/components/keenicons';
 import { Fragment, useRef, useState } from 'react';
+import { ModalShareProfile } from '../modals/share-profile';
 import { ModalGiveAward } from '../modals/give-award';
 
 const NavbarDropdown = () => {
 	const itemRef = useRef<any>(null);
+
+	const [ShareProfileModalOpen, setShareProfileModalOpen] = useState(false);
+  const handleSettingsModalOpen = () => { 
+		setShareProfileModalOpen(true) 
+		itemRef.current?.hide();
+	};
+  const handleShareProfileModalClose = () => {
+    setShareProfileModalOpen(false);
+  };
 
   const [giveAwardModalOpen, setGiveAwardModalOpen] = useState(false);
   const handleGiveAwardModalOpen = () => { 
@@ -39,7 +49,7 @@ const NavbarDropdown = () => {
 						<KeenIcon icon="dots-vertical" />
 					</MenuToggle>
 					<MenuSub className="menu-default" rootClassName="w-full max-w-[220px]">
-						<MenuItem>
+						<MenuItem onClick={handleSettingsModalOpen}>
 							<MenuLabel>
 								<MenuIcon>
 									<KeenIcon icon="cloud-change"/>
@@ -74,13 +84,10 @@ const NavbarDropdown = () => {
 					</MenuSub> 
 				</MenuItem>
 			</Menu>
+			<ModalShareProfile open={ShareProfileModalOpen} onClose={handleShareProfileModalClose}/>
 			<ModalGiveAward open={giveAwardModalOpen} onClose={handleGiveAwardModalClose}/>
 		</Fragment>		
 	)
 };
 
 export { NavbarDropdown };
-
-
-
-
