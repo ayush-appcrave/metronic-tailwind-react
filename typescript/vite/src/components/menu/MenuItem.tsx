@@ -154,10 +154,10 @@ const MenuItemComponent = forwardRef<IMenuItemRef | null, IMenuItemProps>(
 
       if (show) {
         if (propToggle === 'accordion') {
-          setAccordionEnter(true);
-        }
+          setAccordionEnter(true);          
+        }        
 
-        //handleHide();
+        handleHide();
       } else {
         if (propToggle === 'accordion') {
           setAccordionEnter(true);
@@ -176,7 +176,7 @@ const MenuItemComponent = forwardRef<IMenuItemRef | null, IMenuItemProps>(
         return;
       }
 
-      //handleHide();
+      handleHide();
 
       if (onClick) {
         onClick(e, props);
