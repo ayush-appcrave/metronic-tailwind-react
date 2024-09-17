@@ -1,5 +1,6 @@
 export interface IModalShareProfileDocsItem {
-  image: string;
-  desc: string;
-  date: string;
+  avatar: string;
+  userName: string;
+  email: string;
+  role: string;
 }

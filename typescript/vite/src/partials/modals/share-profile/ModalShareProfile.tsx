@@ -5,7 +5,10 @@ import { Tab, TabPanel, Tabs, TabsList } from '@/components/tabs';
 import { DropdownCrud2 } from '@/partials/dropdowns/general';
 import { useViewport } from '@/hooks';
 import {
-  ModalSettings, 
+  ModalShareProfileViaLink, 
+  ModalShareProfileViaEmail, 
+  ModalShareProfileUsers, 
+  ModalShareProfileSettings, 
 } from './';
 
 interface ModalShareProfileProps {
@@ -29,17 +32,23 @@ const ModalShareProfile = forwardRef<HTMLDivElement, ModalShareProfileProps>(({ 
   return (
     <Modal open={open} onClose={onClose}>
       <ModalContent className="max-w-[600px] top-[15%]">
-        <ModalHeader className="py-4 px-5">
+        <ModalHeader className="">
           <ModalTitle>
             Share Profile
           </ModalTitle>
           
           <button className="btn btn-sm btn-icon btn-light btn-clear shrink-0" onClick={onClose}>
-            <KeenIcon icon="black-left" />
+            <KeenIcon icon="cross" />
           </button>
         </ModalHeader>
-        <ModalBody className="p-0 pb-5">
-          <ModalSettings/>
+        <ModalBody className="grid gap-5 px-0 py-5">
+          <ModalShareProfileViaLink/>
+          <div className="border-b border-b-gray-200"></div>
+          <ModalShareProfileViaEmail/>
+          <div className="border-b border-b-gray-200"></div>
+          <ModalShareProfileUsers/>
+          <div className="border-b border-b-gray-200"></div>
+          <ModalShareProfileSettings/>
         </ModalBody>
       </ModalContent>
     </Modal>
