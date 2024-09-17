@@ -35,11 +35,19 @@ const MenuLink = ({
       );
     }
   } else {
-    return (
-      <div className={clsx('menu-link', className && className)} onClick={handleToggle}>
-        {children}
-      </div>
-    );
+    if (hasItemSub) {
+      return (
+        <div className={clsx('menu-link', className && className)} onClick={handleToggle}>
+          {children}
+        </div>
+      );
+    } else {
+      return (
+        <div className={clsx('menu-link', className && className)} onClick={handleClick}>
+          {children}
+        </div>
+      );
+    }    
   }
 };
 

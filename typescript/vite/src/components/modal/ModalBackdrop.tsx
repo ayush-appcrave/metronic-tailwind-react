@@ -8,7 +8,7 @@ interface ModalBackdropProps {
 
 // Forwarding ref to ensure this component can hold a ref
 const ModalBackdrop = forwardRef<HTMLDivElement, ModalBackdropProps>(
-  ({ className, ...props }, ref) => {
+  ({ className, ownerState, ...props }, ref) => {
     const { ...other } = props;
 
     return (

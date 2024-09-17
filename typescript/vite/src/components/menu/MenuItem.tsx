@@ -157,11 +157,12 @@ const MenuItemComponent = forwardRef<IMenuItemRef | null, IMenuItemProps>(
           setAccordionEnter(true);
         }
 
-        handleHide();
+        //handleHide();
       } else {
         if (propToggle === 'accordion') {
           setAccordionEnter(true);
         }
+
         handleShow();
       }
 
@@ -175,7 +176,7 @@ const MenuItemComponent = forwardRef<IMenuItemRef | null, IMenuItemProps>(
         return;
       }
 
-      handleHide();
+      //handleHide();
 
       if (onClick) {
         onClick(e, props);
@@ -210,7 +211,10 @@ const MenuItemComponent = forwardRef<IMenuItemRef | null, IMenuItemProps>(
     const renderLabel = (child: ReactElement) => {
       // Add some props to each child
       const modifiedProps: IMenuLabelProps = {
-        tabIndex
+        hasItemSub: hasSub,
+        tabIndex,
+        handleToggle,
+        handleClick
       };
 
       // Return the child with modified props

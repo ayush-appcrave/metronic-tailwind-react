@@ -74,16 +74,17 @@ export interface IMenuLinkProps {
   hasItemSub?: boolean;
   className?: string;
   tabIndex?: MenuTabIndexType;
-  menuItemRef?: unknown;
   handleToggle?: MenuEventHandlerType;
   handleClick?: MenuEventHandlerType;
-  onClick?: MenuClickEventType;
   children?: ReactNode;
 }
 
 export interface IMenuLabelProps {
+  hasItemSub?: boolean;
   className?: string;
   tabIndex?: MenuTabIndexType;
+  handleToggle?: MenuEventHandlerType;
+  handleClick?: MenuEventHandlerType;
   children?: ReactNode;
 }
 
