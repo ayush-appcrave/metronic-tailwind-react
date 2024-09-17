@@ -1,4 +1,4 @@
-import { IAvatarsItems } from '@/partials/common/interfaces';
+import { IAvatarsItems } from '@/partials/common/types';
 
 export interface IModalSearchDocsItem {
   image: string;
