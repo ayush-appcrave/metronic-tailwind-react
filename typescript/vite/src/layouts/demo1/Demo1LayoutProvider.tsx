@@ -10,19 +10,31 @@ import { demo1LayoutConfig } from './';
 
 export interface Demo1LayoutProviderProps {
   layout: ILayoutConfig;
+  megaMenuEnabled: boolean;
   headerSticky: boolean;
   mobileSidebarOpen: boolean;
+  mobileMegaMenuOpen: boolean;
   setMobileSidebarOpen: (open: boolean) => void;
+  setMobileMegaMenuOpen: (open: boolean) => void;
+  setMegaMenuEnabled: (enabled: boolean) => void;
   setSidebarCollapse: (collapse: boolean) => void;
   setSidebarTheme: (mode: string) => void;
 }
 
 const initalLayoutProps: Demo1LayoutProviderProps = {
   layout: demo1LayoutConfig,
+  megaMenuEnabled: false,
   headerSticky: false,
   mobileSidebarOpen: false,
+  mobileMegaMenuOpen: false,
+  setMobileMegaMenuOpen: (open: boolean) => {
+    console.log(`${open}`);
+  },
   setMobileSidebarOpen: (open: boolean) => {
     console.log(`${open}`);
+  },
+  setMegaMenuEnabled: (enabled: boolean) => {
+    console.log(`${enabled}`);
   },
   setSidebarCollapse: (collapse: boolean) => {
     console.log(`${collapse}`);
@@ -52,7 +64,11 @@ const Demo1LayoutProvider = ({ children }: PropsWithChildren) => {
 
   const [layout, setLayout] = useState(getLayoutConfig);
 
+  const [megaMenuEnabled, setMegaMenuEnabled] = useState(false);
+
   const [mobileSidebarOpen, setMobileSidebarOpen] = useState(false);
+
+  const [mobileMegaMenuOpen, setMobileMegaMenuOpen] = useState(false);
 
   const scrollPosition = useScrollPosition();
 
@@ -89,7 +105,11 @@ const Demo1LayoutProvider = ({ children }: PropsWithChildren) => {
         layout,
         headerSticky,
         mobileSidebarOpen,
+        mobileMegaMenuOpen,
+        megaMenuEnabled,
         setMobileSidebarOpen,
+        setMegaMenuEnabled,
+        setMobileMegaMenuOpen,
         setSidebarCollapse,
         setSidebarTheme
       }}

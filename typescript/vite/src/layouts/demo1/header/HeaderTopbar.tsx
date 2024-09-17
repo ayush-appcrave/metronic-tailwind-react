@@ -28,7 +28,7 @@ const HeaderTopbar = () => {
   };
 
   return (
-    <div className="flex items-stretch gap-2 lg:gap-3.5">
+    <div className="flex items-stretch gap-1 lg:gap-3.5">
       <div className="flex items-center">
         <button
           onClick={handleOpen}
@@ -120,7 +120,7 @@ const HeaderTopbar = () => {
         </MenuItem>
       </Menu>
 
-      <Menu className="items-stretch">
+      <Menu className="items-stretch -me-2">
         <MenuItem
           toggle="dropdown"
           trigger="click"

@@ -12,8 +12,11 @@ import { MegaMenuSubDefault } from './MegaMenuSubDefault';
 import { MegaMenuSubHighlighted } from './MegaMenuSubHighlighted';
 import { MegaMenuSubDropdown } from './MegaMenuSubDropdown';
 import { Fragment } from 'react';
+import { useResponsive } from '@/hooks';
 
 const MegaMenuContent = (items: MenuConfigType) => {
+  const desktopMode = useResponsive('up', 'lg');
+  
   const homeItem = items[0];
   const publicProfilesItem = items[1];
 
@@ -45,8 +48,8 @@ const MegaMenuContent = (items: MenuConfigType) => {
 
         <MenuItem
           key="public-profiles"
-          toggle="dropdown"
-          trigger="hover"
+          toggle={desktopMode ? 'dropdown' : 'accordion'}
+          trigger={desktopMode ? 'hover' : 'click'}
           dropdownProps={{
             placement: 'bottom-start'
           }}
@@ -84,8 +87,8 @@ const MegaMenuContent = (items: MenuConfigType) => {
 
         <MenuItem
           key="my-account"
-          toggle="dropdown"
-          trigger="hover"
+          toggle={desktopMode ? 'dropdown' : 'accordion'}
+          trigger={desktopMode ? 'hover' : 'click'}
           dropdownProps={{
             placement: 'bottom-start',
             modifiers: [
@@ -133,8 +136,8 @@ const MegaMenuContent = (items: MenuConfigType) => {
 
         <MenuItem
           key="network"
-          toggle="dropdown"
-          trigger="hover"
+          toggle={desktopMode ? 'dropdown' : 'accordion'}
+          trigger={desktopMode ? 'hover' : 'click'}
           dropdownProps={{
             placement: 'bottom-start',
             modifiers: [
@@ -190,8 +193,8 @@ const MegaMenuContent = (items: MenuConfigType) => {
 
         <MenuItem
           key="auth"
-          toggle="dropdown"
-          trigger="hover"
+          toggle={desktopMode ? 'dropdown' : 'accordion'}
+          trigger={desktopMode ? 'hover' : 'click'}
           dropdownProps={{
             placement: 'bottom-start',
             modifiers: [
@@ -246,8 +249,8 @@ const MegaMenuContent = (items: MenuConfigType) => {
 
         <MenuItem
           key="help"
-          toggle="dropdown"
-          trigger="hover"
+          toggle={desktopMode ? 'dropdown' : 'accordion'}
+          trigger={desktopMode ? 'hover' : 'click'}
           dropdownProps={{
             placement: 'bottom-start',
             modifiers: [
@@ -264,7 +267,7 @@ const MegaMenuContent = (items: MenuConfigType) => {
             <MenuTitle className="text-nowrap">{helpItem.title}</MenuTitle>
             {buildArrow()}
           </MenuLink>
-          <MenuSub className="menu-default py-2.5 w-[220px]">
+          <MenuSub className="menu-default lg:py-2.5 lg:w-[220px]">
             {helpItem.children && MegaMenuSubDropdown(helpItem.children)}
           </MenuSub>
         </MenuItem>
@@ -274,7 +277,7 @@ const MegaMenuContent = (items: MenuConfigType) => {
 
   const buildArrow = () => {
     return (
-      <MenuArrow className="flex lg:hidden">
+      <MenuArrow className="flex lg:hidden text-gray-400">
         <KeenIcon icon="plus" className="text-2xs menu-item-show:hidden" />
         <KeenIcon icon="minus" className="text-2xs hidden menu-item-show:inline-flex" />
       </MenuArrow>

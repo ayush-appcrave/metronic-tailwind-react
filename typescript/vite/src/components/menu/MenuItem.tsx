@@ -271,7 +271,7 @@ const MenuItemComponent = forwardRef<IMenuItemRef | null, IMenuItemProps>(
       };
 
       const handleExited = () => {
-        setTransitioning(true);
+        setTransitioning(false);
         setAccordionEnter(true);
       };
 

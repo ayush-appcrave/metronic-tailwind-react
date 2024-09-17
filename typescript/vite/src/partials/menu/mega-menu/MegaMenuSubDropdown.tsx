@@ -10,10 +10,13 @@ import {
   MenuBadge,
   MenuSeparator
 } from '@/components/menu';
+import { useResponsive } from '@/hooks';
 import clsx from 'clsx';
 import { ReactNode } from 'react';
 
 const MegaMenuSubDropdown = (items: MenuConfigType) => {
+  const desktopMode = useResponsive('up', 'lg');
+  
   const buildItems = (items: MenuConfigType): ReactNode => {
     return items.map((item, index) => {
       if (item.separator) {
@@ -22,8 +25,8 @@ const MegaMenuSubDropdown = (items: MenuConfigType) => {
         return (
           <MenuItem
             key={index}
-            toggle="dropdown"
-            trigger="hover"
+            toggle={desktopMode ? 'dropdown' : 'accordion'}
+            trigger={desktopMode ? 'hover' : 'click'}
             dropdownProps={{
               placement: 'right-start'
             }}
@@ -39,7 +42,7 @@ const MegaMenuSubDropdown = (items: MenuConfigType) => {
                 <KeenIcon icon="right" className="text-3xs" />
               </MenuArrow>
             </MenuLink>
-            <MenuSub className="menu-default w-[175px] lg:w-[220px]">
+            <MenuSub className="menu-default lg:w-[220px]">
               {buildItems(item.children)}
             </MenuSub>
           </MenuItem>

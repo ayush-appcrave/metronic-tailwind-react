@@ -2,7 +2,7 @@ import clsx from 'clsx';
 import { useEffect } from 'react';
 
 import { Container } from '@/components/container';
-import { MegaMenu } from '@/partials/menu/mega-menu';
+import { MegaMenu } from '../mega-menu';
 import { useResponsive } from '@/hooks';
 
 import { HeaderLogo, HeaderTopbar } from './';
@@ -29,7 +29,7 @@ const Header = () => {
     >
       <Container className="flex justify-between items-stretch lg:gap-4">
         <HeaderLogo />
-        {desktopMode && <MegaMenu />}
+        <MegaMenu />
         <HeaderTopbar />
       </Container>
     </header>

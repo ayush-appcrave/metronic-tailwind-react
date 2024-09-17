@@ -6,22 +6,33 @@ import { toAbsoluteUrl } from '@/utils';
 import { useDemo1Layout } from '../';
 
 const HeaderLogo = () => {
-  const { setMobileSidebarOpen } = useDemo1Layout();
+  const { setMobileSidebarOpen, setMobileMegaMenuOpen, megaMenuEnabled } = useDemo1Layout();
 
   const handleSidebarOpen = (event: MouseEvent<HTMLElement>) => {
     setMobileSidebarOpen(true);
   };
 
+  const handleMegaMenuOpen = (event: MouseEvent<HTMLElement>) => {
+    setMobileMegaMenuOpen(true);
+  };
+
   return (
     <div className="flex gap-1 lg:hidden items-center">
-      <button className="btn btn-icon btn-light btn-clear btn-sm -ms-2" onClick={handleSidebarOpen}>
-        <KeenIcon icon="abstract-14" className="text-2xl" />
-      </button>
-
-      <Link to="/">
-        <img src={toAbsoluteUrl('/media/app/mini-logo.svg')} className="h-6 dark:hidden" />
-        <img src={toAbsoluteUrl('/media/app/mini-logo-dark.svg')} className="h-6 light:hidden" />
+      <Link to="/" className='shrink-0'>
+        <img src={toAbsoluteUrl('/media/app/mini-logo.svg')} className="h-[25px]"/>
       </Link>
+
+      <div className="flex items-center">
+        <button type="button" className="btn btn-icon btn-light btn-clear btn-sm" onClick={handleSidebarOpen}>
+          <KeenIcon icon="menu"/>
+        </button>
+
+        {megaMenuEnabled &&         
+          <button type="button" className="btn btn-icon btn-light btn-clear btn-sm" onClick={handleMegaMenuOpen}>
+            <KeenIcon icon="burger-menu-2"/>
+          </button>
+        }        
+      </div>
     </div>
   );
 };

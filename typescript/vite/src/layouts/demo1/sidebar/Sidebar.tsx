@@ -1,20 +1,19 @@
-import { Drawer } from '@mui/material';
+import { Drawer } from '@/components';
 import { useEffect, useRef, useState } from 'react';
-
 import { useResponsive, useViewport } from '@/hooks';
-
 import { useDemo1Layout } from '../';
 import { SidebarContent, SidebarHeader } from './';
 import clsx from 'clsx';
 import { getHeight } from '@/utils';
 import { useLocation } from 'react-router';
+import { usePathname } from '@/providers';
 
 const Sidebar = () => {
   const selfRef = useRef<HTMLDivElement>(null);
   const headerRef = useRef<HTMLDivElement>(null);
   const [contentHeight, setContentHeight] = useState<number>(0);
   const [viewportHeight] = useViewport();
-  const { pathname } = useLocation();
+  const { pathname, prevPathname } = usePathname();
 
   useEffect(() => {
     if (headerRef.current) {
@@ -43,7 +42,7 @@ const Sidebar = () => {
       <div
         ref={selfRef}
         className={clsx(
-          'sidebar lg:fixed lg:z-20 lg:top-0 lg:bottom-0 lg:start-0 lg:translate-x-0 lg:flex flex-col items-stretch shrink-0 bg-light lg:border lg:border-r-gray-200',
+          'sidebar lg:fixed lg:z-20 lg:top-0 lg:bottom-0 lg:start-0 lg:translate-x-0 flex flex-col items-stretch shrink-0 bg-light lg:border lg:border-r-gray-200',
           themeClass
         )}
       >
@@ -53,6 +52,12 @@ const Sidebar = () => {
     );
   };
 
+  useEffect(() => {
+    if (desktopMode === false && prevPathname !== pathname) {
+      handleMobileSidebarClose();
+    }
+  }, [pathname]);
+
   if (desktopMode) {
     return renderContent();
   } else {
@@ -60,17 +65,9 @@ const Sidebar = () => {
       <Drawer
         open={mobileSidebarOpen}
         onClose={handleMobileSidebarClose}
-        PaperProps={{
-          sx: {
-            borderRightWidth: '0px',
-            overflow: 'visible',
-            backgroundColor: 'var(--tw-drawer-background-color)',
-            boxShadow: 'var(--tw-drawer-box-shadow)'
-          }
-        }}
         ModalProps={{
           keepMounted: true
-        }}
+        }}  
       >
         {renderContent()}
       </Drawer>
