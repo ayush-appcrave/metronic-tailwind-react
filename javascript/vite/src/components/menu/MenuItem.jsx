@@ -1,149 +1,154 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import { ClickAwayListener, Popper } from '@mui/base';
 import clsx from 'clsx';
 import React, { Children, cloneElement, forwardRef, isValidElement, memo, useEffect, useImperativeHandle, useRef, useState } from 'react';
-import { useLocation } from 'react-router';
 import useResponsiveProp from '@/hooks/useResponsiveProp';
 import { matchPath } from '@/utils';
 import { useMatchPath } from '../../hooks/useMatchPath';
-import { MenuHeading, MenuLink, MenuSub } from './';
+import { MenuHeading, MenuLabel, MenuLink, MenuSub, MenuToggle, useMenu } from './';
+import { usePathname } from '@/providers';
 const MenuItemComponent = forwardRef(function MenuItem(props, ref) {
   const {
-    path = '',
-    toggle = 'accordion',
-    trigger = 'click',
+    toggle,
+    trigger,
     dropdownProps,
+    dropdownZIndex = 100,
     disabled,
     tabIndex,
     className,
-    onLinkClick,
-    onLinksClick,
-    handleParentClose,
+    handleParentHide,
+    onShow,
+    onHide,
+    onClick,
     containerProps: ContainerPropsProp = {},
-    itemRef,
-    children
+    children,
+    level = 0,
+    index = 0
   } = props;
   const {
-    ref: containerRefProp,
     ...containerProps
   } = ContainerPropsProp;
-  const [anchorEl, setAnchorEl] = useState(null);
   const menuItemRef = useRef(null);
-
-  // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
-  useImperativeHandle(ref, () => itemRef.current);
-  useImperativeHandle(containerRefProp, () => containerRef.current);
-  const containerRef = useRef(null);
-
-  // eslint-disable-next-line @typescript-eslint/no-unsafe-argument
-  useImperativeHandle(itemRef, () => {
-    return {
-      closeMenu: () => {
-        setSubOpen(false);
-      }
-    };
-  });
-
-  // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
-  useImperativeHandle(containerRef, () => menuItemRef.current);
-  const menuContainerRef = useRef(null);
-  const [isSubMenuOpen, setIsSubMenuOpen] = useState(false);
-  const hasSub = Children.toArray(children).some(child => isValidElement(child) && child.type === MenuSub);
+  const path = props.path || getLinkPath(children);
   const {
-    pathname
-  } = useLocation();
-  useEffect(() => {
-    if (hasActiveChild(pathname, children)) {
-      if (propToggle === 'accordion') {
-        setShow(true);
-      }
-      setHere(true);
-    }
-  }, [pathname]);
+    disabled: isMenuDisabled,
+    highlight,
+    multipleExpand,
+    setOpenAccordion,
+    isOpenAccordion
+  } = useMenu();
+  const menuContainerRef = useRef(null);
+  const {
+    pathname,
+    prevPathname
+  } = usePathname();
   const {
     match
   } = useMatchPath(path);
   const propToggle = useResponsiveProp(toggle, 'accordion');
   const propTrigger = useResponsiveProp(trigger, 'click');
   const propDropdownProps = useResponsiveProp(dropdownProps);
-  const active = match;
+  const active = highlight ? path.length > 0 && match : false;
   const [here, setHere] = useState(false);
   const [show, setShow] = useState(false);
+  const accordionShow = isOpenAccordion(level, index);
   const [transitioning, setTransitioning] = useState(false);
-  const [enter, setEnter] = useState(false);
+  const [accordionEnter, setAccordionEnter] = useState(false);
+  const hasSub = Children.toArray(children).some(child => isValidElement(child) && child.type === MenuSub);
+  const handleHide = () => {
+    if (hasSub) {
+      setShow(false);
+    }
+    if (hasSub && propToggle === 'accordion' && multipleExpand === false) {
+      setOpenAccordion(level, -1);
+    }
+    if (handleParentHide) {
+      handleParentHide();
+    }
+  };
+  const handleShow = () => {
+    if (hasSub) {
+      setShow(true);
+    }
+    if (hasSub && propToggle === 'accordion' && multipleExpand === false) {
+      setOpenAccordion(level, index);
+    }
+  };
   const handleMouseEnter = e => {
+    if (isMenuDisabled) return;
     if (propTrigger === 'hover') {
-      setSubOpen(true);
+      setShow(true);
       if (containerProps.onMouseEnter) {
         containerProps.onMouseEnter(e);
       }
     }
   };
   const handleMouseLeave = e => {
+    if (isMenuDisabled) return;
     if (propTrigger === 'hover') {
-      setSubOpen(false);
+      setShow(false);
       if (containerProps.onMouseLeave) {
         containerProps.onMouseLeave(e);
       }
     }
   };
   const handleToggle = e => {
-    if (disabled) {
-      return;
-    }
-    if (propTrigger === 'click') {
+    if (isMenuDisabled) return;
+    if (disabled) return;
+    if (show) {
       if (propToggle === 'accordion') {
-        setEnter(true);
+        setAccordionEnter(true);
       }
-      setSubOpen(!show);
+      handleHide();
+    } else {
+      if (propToggle === 'accordion') {
+        setAccordionEnter(true);
+      }
+      handleShow();
+    }
+    if (onClick) {
+      onClick(e, props);
     }
   };
   const handleClick = e => {
     if (disabled) {
       return;
     }
-    handleMenuClose(e);
-    if (onLinksClick) {
-      onLinksClick(e, props);
-    }
-    if (onLinkClick) {
-      onLinkClick(e, props);
-    }
-    console.log('clicked!!!');
-  };
-  const handleMenuClose = e => {
-    if (propToggle === 'dropdown') {
-      setSubOpen(false);
-    }
-    if (handleParentClose) {
-      handleParentClose(e);
-    }
-  };
-  const setSubOpen = state => {
-    setShow(state);
-    if (propToggle === 'dropdown') {
-      console.log('state:2' + state);
-      if (state) {
-        setAnchorEl(menuItemRef.current);
-        setIsSubMenuOpen(true);
-      } else {
-        setAnchorEl(null);
-        setIsSubMenuOpen(false);
-      }
-    } else {
-      setTransitioning(true);
+    handleHide();
+    if (onClick) {
+      onClick(e, props);
     }
   };
   const renderLink = child => {
     // Add some props to each child
     const modifiedProps = {
-      path,
       hasItemSub: hasSub,
       tabIndex,
-      onLinkClick,
-      onLinksClick,
       handleToggle,
-      handleClick,
-      menuItemRef
+      handleClick
+    };
+
+    // Return the child with modified props
+    return cloneElement(child, modifiedProps);
+  };
+  const renderToggle = child => {
+    // Add some props to each child
+    const modifiedProps = {
+      hasItemSub: hasSub,
+      tabIndex,
+      handleToggle
+    };
+
+    // Return the child with modified props
+    return cloneElement(child, modifiedProps);
+  };
+  const renderLabel = child => {
+    // Add some props to each child
+    const modifiedProps = {
+      hasItemSub: hasSub,
+      tabIndex,
+      handleToggle,
+      handleClick
     };
 
     // Return the child with modified props
@@ -155,46 +160,57 @@ const MenuItemComponent = forwardRef(function MenuItem(props, ref) {
   const renderSubDropdown = child => {
     // Add some props to each child
     const modifiedProps = {
+      level: level + 1,
       toggle: propToggle,
-      handleClick,
-      tabIndex
+      handleParentHide: handleHide,
+      tabIndex,
+      menuItemRef: ref
     };
     const modofiedChild = cloneElement(child, modifiedProps);
-    const handleClose = () => {
-      setSubOpen(false);
-    };
     return <Popper style={{
+      zIndex: dropdownZIndex,
       pointerEvents: trigger === 'click' ? 'auto' : 'none'
-    }} {...propDropdownProps} anchorEl={anchorEl} open={isSubMenuOpen} autoFocus={false}>
-          <div className="menu-container" ref={menuContainerRef} style={{
-        pointerEvents: 'auto'
-      }}>
-            <ClickAwayListener onClickAway={handleClose}>{modofiedChild}</ClickAwayListener>
-          </div>
+    }} {...propDropdownProps} anchorEl={show ? menuItemRef.current : null} open={show} autoFocus={false} className={clsx(child.props.rootClassName && child.props.rootClassName)}>
+          <ClickAwayListener onClickAway={handleHide}>
+            <div className={clsx('menu-container', child.props.baseClassName && child.props.baseClassName)} ref={menuContainerRef} style={{
+          pointerEvents: 'auto'
+        }}>
+              {modofiedChild}
+            </div>
+          </ClickAwayListener>
         </Popper>;
   };
   const renderSubAccordion = child => {
-    const handleEnd = () => {
+    const handleEntered = () => {
+      setTransitioning(true);
+    };
+    const handleExited = () => {
       setTransitioning(false);
-      setEnter(false);
+      setAccordionEnter(true);
     };
 
     // Add some props to each child
     const modifiedProps = {
+      level: level + 1,
       tabIndex,
       show,
-      enter,
+      enter: accordionEnter,
       toggle: propToggle,
       handleClick,
-      handleEnd
+      handleEntered,
+      handleExited
     };
     return cloneElement(child, modifiedProps);
   };
   const renderChildren = () => {
-    const modifiedChildren = Children.map(children, (child, index) => {
+    const modifiedChildren = Children.map(children, child => {
       if (isValidElement(child)) {
         if (child.type === MenuLink) {
           return renderLink(child);
+        } else if (child.type === MenuToggle) {
+          return renderToggle(child);
+        } else if (child.type === MenuLabel) {
+          return renderLabel(child);
         } else if (child.type === MenuHeading) {
           return renderHeading(child);
         } else if (child.type === MenuSub && propToggle === 'dropdown') {
@@ -207,19 +223,82 @@ const MenuItemComponent = forwardRef(function MenuItem(props, ref) {
     });
     return modifiedChildren;
   };
-  return <div {...containerProps} ref={containerRef} tabIndex={tabIndex} {...propToggle === 'dropdown' && {
+  useImperativeHandle(ref, () => ({
+    current: menuItemRef.current,
+    show: () => {
+      handleShow();
+    },
+    hide: () => {
+      handleHide();
+    },
+    isOpen: () => {
+      return show;
+    }
+  }), [show]);
+  useEffect(() => {
+    if (show) {
+      if (onShow) {
+        onShow();
+      }
+    } else {
+      if (onHide) {
+        onHide();
+      }
+    }
+  }, [show]);
+  useEffect(() => {
+    if (propToggle === 'accordion' && multipleExpand === false) {
+      setShow(accordionShow);
+    }
+  }, [accordionShow]);
+  useEffect(() => {
+    if (highlight) {
+      if (hasActiveChild(pathname, children)) {
+        if (propToggle === 'accordion') {
+          setShow(true);
+        }
+        setHere(true);
+      } else {
+        if (propToggle === 'accordion') {
+          setShow(false);
+        }
+        setHere(false);
+      }
+    }
+    if (prevPathname !== pathname && hasSub && propToggle === 'dropdown') {
+      handleHide();
+    }
+  }, [pathname]);
+  return <div {...containerProps} ref={menuItemRef} tabIndex={tabIndex} {...propToggle === 'dropdown' && {
     onMouseEnter: handleMouseEnter,
     onMouseLeave: handleMouseLeave
   }} className={clsx('menu-item', propToggle === 'dropdown' && 'menu-item-dropdown', className && className, active && 'active', show && 'show', here && 'here', transitioning && 'transitioning')}>
         {renderChildren()}
       </div>;
 });
+const getLinkPath = children => {
+  let path = '';
+  Children.forEach(children, child => {
+    if (isValidElement(child) && child.type === MenuLink && child.props.path) {
+      path = child.props.path; // Assign the path when found
+    }
+  });
+  return path;
+};
 const hasActiveChild = (path, children) => {
   const childrenArray = Children.toArray(children);
   for (const child of childrenArray) {
     if (isValidElement(child)) {
-      if (child.type === MenuItem && child.props.path && matchPath(child.props.path, path)) {
-        return true;
+      if (child.type === MenuLink && child.props.path) {
+        if (path === '/') {
+          if (child.props.path === path) {
+            return true;
+          }
+        } else {
+          if (matchPath(child.props.path, path)) {
+            return true;
+          }
+        }
       } else if (hasActiveChild(path, child.props.children)) {
         return true;
       }

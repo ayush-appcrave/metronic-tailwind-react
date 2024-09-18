@@ -23,17 +23,15 @@ const CRMGeneralInfo = () => {
     label: 'Signed Up:',
     info: '2 months ago'
   }];
-  const renderItems = item => {
-    return <>
-        <tr>
-          <td className="text-sm font-medium text-gray-500 pb-3 pe-4 lg:pe-8">{item.label}</td>
-          <td className="text-sm font-medium text-gray-800 pb-3">
-            {item.type === 1 ? <span>{item.info}</span> : item.type === 2 ? <span>{item.info}</span> : <span dangerouslySetInnerHTML={{
-            __html: item.info
-          }}></span>}
-          </td>
-        </tr>
-      </>;
+  const renderItems = (item, index) => {
+    return <tr key={index}>
+        <td className="text-sm font-medium text-gray-500 pb-3 pe-4 lg:pe-8">{item.label}</td>
+        <td className="text-sm font-medium text-gray-800 pb-3">
+          {item.type === 1 ? <span>{item.info}</span> : item.type === 2 ? <span>{item.info}</span> : <span dangerouslySetInnerHTML={{
+          __html: item.info
+        }}></span>}
+        </td>
+      </tr>;
   };
   return <div className="card">
       <div className="card-header">
@@ -44,7 +42,7 @@ const CRMGeneralInfo = () => {
         <table className="table-auto">
           <tbody>
             {items.map((item, index) => {
-            return renderItems(item);
+            return renderItems(item, index);
           })}
           </tbody>
         </table>

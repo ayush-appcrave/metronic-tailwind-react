@@ -5,8 +5,8 @@ const CRMContent = () => {
       <div className="col-span-1">
         <div className="grid gap-5 lg:gap-7.5">
           <CRMGeneralInfo />
-          <CRMAttributes url="#" />
-          <CRMApiCredentials url="#" />
+          <CRMAttributes />
+          <CRMApiCredentials />
           <DefaultTags title="Skills" />
         </div>
       </div>
@@ -14,9 +14,9 @@ const CRMContent = () => {
         <div className="flex flex-col gap-5 lg:gap-7.5">
           <div className="flex flex-col gap-5 lg:gap-7.5">
             <CRMDeals />
-            <CRMActivity url="#" />
+            <CRMActivity />
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-5 lg:gap-7.5">
-              <DefaultConnections title="Connections" url="#" />
+              <DefaultConnections title="Connections" />
               <CRMRecentInvoices />
             </div>
           </div>

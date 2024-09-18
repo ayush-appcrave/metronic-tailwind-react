@@ -1,6 +1,5 @@
-const CRMAttributes = ({
-  url
-}) => {
+import { Link } from 'react-router-dom';
+const CRMAttributes = () => {
   const items = [{
     label: 'customer_id:',
     info: 'CUST567'
@@ -20,13 +19,11 @@ const CRMAttributes = ({
     label: 'orders_io:',
     info: 'JENNYTIME '
   }];
-  const renderItem = item => {
-    return <>
-        <tr>
-          <td className="text-sm font-medium text-gray-500 pb-3.5 pe-4 lg:pe-6">{item.label}</td>
-          <td className="text-sm font-medium text-gray-800 pb-3">{item.info}</td>
-        </tr>
-      </>;
+  const renderItem = (item, index) => {
+    return <tr key={index}>
+        <td className="text-sm font-medium text-gray-500 pb-3.5 pe-4 lg:pe-6">{item.label}</td>
+        <td className="text-sm font-medium text-gray-800 pb-3">{item.info}</td>
+      </tr>;
   };
   return <div className="card">
       <div className="card-header">
@@ -37,16 +34,16 @@ const CRMAttributes = ({
         <table className="table-auto">
           <tbody>
             {items.map((item, index) => {
-            return renderItem(item);
+            return renderItem(item, index);
           })}
           </tbody>
         </table>
       </div>
 
       <div className="card-footer justify-center">
-        <a href={url} className="btn btn-link">
+        <Link to="/network/user-table/store-clients" className="btn btn-link">
           All Attributes
-        </a>
+        </Link>
       </div>
     </div>;
 };

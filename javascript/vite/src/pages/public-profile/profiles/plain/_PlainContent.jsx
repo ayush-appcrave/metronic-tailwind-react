@@ -48,7 +48,7 @@ const PlainContent = () => {
         <PlainAboutMe className="grow" />
       </div>
       <div className="col-span-1 flex">
-        <PlainOpenToWork className="grow" title="Open to work" url="#" />
+        <PlainOpenToWork className="grow" title="Open to work" />
       </div>
       <div className="col-span-1 flex">
         <DefaultTags title="Skills" className="grow" />

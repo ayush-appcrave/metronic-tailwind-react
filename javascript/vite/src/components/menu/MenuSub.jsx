@@ -1,29 +1,34 @@
 import { Collapse } from '@mui/material';
 import clsx from 'clsx';
 import { Children, cloneElement, forwardRef, isValidElement, memo } from 'react';
+import { MenuItem } from './';
 const MenuSubComponent = forwardRef(function MenuSub(props, ref) {
   const {
     show,
     enter,
     toggle = 'accordion',
     className,
-    onLinksClick,
-    handleParentClose,
-    handleClick,
-    handleEnd,
-    children
+    handleParentHide,
+    handleEntered,
+    handleExited,
+    children,
+    level
   } = props;
   const modifiedChildren = Children.map(children, (child, index) => {
     if (isValidElement(child)) {
-      // Add some props to each child
-      const modifiedProps = {
-        handleParentClose,
-        handleClick,
-        onLinksClick
-      };
+      if (child.type === MenuItem) {
+        // Add some props to each child
+        const modifiedProps = {
+          handleParentHide,
+          level,
+          index
+        };
 
-      // Return the child with modified props
-      return cloneElement(child, modifiedProps);
+        // Return the child with modified props
+        return cloneElement(child, modifiedProps);
+      } else {
+        return cloneElement(child);
+      }
     }
 
     // Return the child as is if it's not a valid React element
@@ -31,7 +36,7 @@ const MenuSubComponent = forwardRef(function MenuSub(props, ref) {
   });
   const renderContent = () => {
     if (toggle === 'accordion') {
-      return <Collapse in={show} onExited={handleEnd} onEntered={handleEnd} timeout="auto" enter={enter}>
+      return <Collapse in={show} onEntered={handleEntered} onExited={handleExited} timeout="auto" enter={enter}>
             {modifiedChildren}
           </Collapse>;
     } else {

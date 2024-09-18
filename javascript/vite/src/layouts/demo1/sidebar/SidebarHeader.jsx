@@ -1,22 +1,29 @@
-import React, { useEffect, useRef } from 'react';
-import { getTotalHeight, toAbsoluteUrl } from '@/utils';
+import React, { forwardRef } from 'react';
+import { Link } from 'react-router-dom';
+import { useDemo1Layout } from '../';
+import { toAbsoluteUrl } from '@/utils';
 import { SidebarToggle } from './';
-const SidebarHeader = ({
-  setHeaderHeight
-}) => {
-  const elementRef = useRef(null);
-  useEffect(() => {
-    if (elementRef.current) {
-      setHeaderHeight(getTotalHeight(elementRef.current));
-    }
-  }, []);
-  return <div ref={elementRef} className="sidebar-header hidden lg:flex items-center relative justify-between px-6 shrink-0">
-      <a href="#">
-        <img src={toAbsoluteUrl('/images/brand/default-logo.svg')} className="default-logo h-[22px] max-w-none" />
-        <img src={toAbsoluteUrl('/images/brand/small-logo.svg')} className="small-logo h-[22px] max-w-none" />
-      </a>
-
+const SidebarHeader = forwardRef((props, ref) => {
+  const {
+    layout
+  } = useDemo1Layout();
+  const lightLogo = () => <>
+      <Link to="/" className="dark:hidden">
+        <img src={toAbsoluteUrl('/media/app/default-logo.svg')} className="default-logo min-h-[22px] max-w-none" />
+        <img src={toAbsoluteUrl('/media/app/mini-logo.svg')} className="small-logo min-h-[22px] max-w-none" />
+      </Link>
+      <Link to="/" className="hidden dark:block">
+        <img src={toAbsoluteUrl('/media/app/default-logo-dark.svg')} className="default-logo min-h-[22px] max-w-none" />
+        <img src={toAbsoluteUrl('/media/app/mini-logo.svg')} className="small-logo min-h-[22px] max-w-none" />
+      </Link>
+    </>;
+  const darkLogo = () => <Link to="/">
+      <img src={toAbsoluteUrl('/media/app/default-logo-dark.svg')} className="default-logo min-h-[22px] max-w-none" />
+      <img src={toAbsoluteUrl('/media/app/mini-logo.svg')} className="small-logo min-h-[22px] max-w-none" />
+    </Link>;
+  return <div ref={ref} className="sidebar-header hidden lg:flex items-center relative justify-between px-6 shrink-0">
+      {layout.options.sidebar.theme === 'light' ? lightLogo() : darkLogo()}
       <SidebarToggle />
     </div>;
-};
+});
 export { SidebarHeader };

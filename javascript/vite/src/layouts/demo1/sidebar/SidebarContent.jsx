@@ -1,14 +1,12 @@
-import { useViewport } from '@/hooks';
 import { SidebarMenu } from './';
 const SidebarContent = ({
-  headerHeight = 0,
-  footerHeight = 0
+  height = 0
 }) => {
-  const [viewportHeight] = useViewport();
-  const scrollableHeight = viewportHeight - headerHeight - footerHeight;
-  return <div className="sidebar-content flex grow shrink-0 pt-5 lg:pt-0 pr-2">
-      <div className="grow shrink-0 flex pl-5 pr-3 scrollable-hover-y" style={{
-      height: scrollableHeight
+  return <div className="sidebar-content flex grow shrink-0 pt-5 lg:pt-0 pe-2">
+      <div className="grow shrink-0 flex ps-5 pe-3 scrollable-y-hover" style={{
+      ...(height > 0 && {
+        height: `${height}px`
+      })
     }}>
         <SidebarMenu />
       </div>

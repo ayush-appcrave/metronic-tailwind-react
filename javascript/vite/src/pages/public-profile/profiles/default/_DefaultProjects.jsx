@@ -1,15 +1,17 @@
-import { KeenIcon } from '@/components';
-import { Avatars } from '@/partials/common';
+import { KeenIcon, Menu, MenuItem, MenuToggle } from '@/components';
+import { CommonAvatars } from '@/partials/common';
+import { Link } from 'react-router-dom';
+import { DropdownCrud1, DropdownCrudItem1 } from '@/partials/dropdowns/general';
 const DefaultProjects = () => {
   const items = [{
     name: 'Acme software development',
     team: {
       group: [{
-        filename: '300-9.jpg'
+        filename: '300-4.png'
       }, {
-        filename: '300-2.jpg'
+        filename: '300-1.png'
       }, {
-        filename: '300-3.jpg'
+        filename: '300-2.png'
       }],
       more: {
         number: 3,
@@ -19,89 +21,84 @@ const DefaultProjects = () => {
     dueDate: '24 Aug, 2024',
     progress: {
       variant: 'progress-primary',
-      value: '60'
+      value: 60
     }
   }, {
     name: 'Strategic Partnership Deal',
     team: {
       group: [{
-        filename: '300-11.jpg'
+        filename: '300-1.png'
       }, {
-        filename: '300-13.jpg'
+        filename: '300-2.png'
       }, {
-        filename: '300-21.jpg'
-      }, {
-        filename: '300-1.jpg'
+        fallback: 'M',
+        variant: 'text-danger-inverse ring-danger-light bg-danger'
       }]
     },
     dueDate: '10 Sep, 2024',
     progress: {
       variant: '',
-      value: '100'
+      value: 100
     }
   }, {
     name: 'Client Onboarding',
     team: {
       group: [{
-        filename: '300-2.jpg'
+        filename: '300-20.png'
       }, {
-        filename: '300-7.jpg'
-      }, {
-        filename: '300-9.jpg'
-      }],
-      more: {
-        number: 1,
-        variant: 'text-success-inverse ring-success-light bg-success'
-      }
+        filename: '300-7.png'
+      }]
     },
     dueDate: '19 Sep, 2024',
     progress: {
       variant: 'progress-primary',
-      value: '20'
+      value: 20
     }
   }, {
     name: 'Widget Supply Agreement',
     team: {
       group: [{
-        filename: '300-15.jpg'
+        filename: '300-6.png'
       }, {
-        filename: '300-10.jpg'
+        filename: '300-23.png'
       }, {
-        filename: '300-30.jpg'
+        filename: '300-12.png'
       }],
       more: {
-        number: 4,
-        variant: 'text-success-inverse ring-success-light bg-success'
+        number: 1,
+        variant: 'text-primary-inverse ring-primary-light bg-primary'
       }
     },
     dueDate: '5 May, 2024',
     progress: {
       variant: 'progress-success',
-      value: '100'
+      value: 100
     }
   }, {
     name: 'Project X Redesign',
     team: {
       group: [{
-        filename: '300-1.jpg'
+        filename: '300-2.png'
       }, {
-        filename: '300-4.jpg'
+        filename: '300-15.png'
       }, {
-        filename: '300-3.jpg'
-      }, {
-        filename: '300-14.jpg'
-      }]
+        filename: '300-18.png'
+      }],
+      more: {
+        number: 2,
+        variant: 'text-success-inverse ring-success-light bg-success'
+      }
     },
     dueDate: '1 Feb, 2025',
     progress: {
       variant: 'progress-primary',
-      value: '80'
+      value: 80
     }
   }];
-  const renderItem = item => {
-    return <tr>
+  const renderItem = (item, index) => {
+    return <tr key={index}>
         <td className="text-left">
-          <a href="#" className="text-sm font-semibold text-gray-800 hover:text-primary">
+          <a href="#" className="text-sm font-semibold text-gray-900 hover:text-primary">
             {item.name}
           </a>
         </td>
@@ -114,24 +111,31 @@ const DefaultProjects = () => {
           </div>
         </td>
 
-        <td className="float-right">
-          <Avatars group={item.team.group} more={item.team.more} />
+        <td>
+          <div className="flex justify-end shrink-0">
+            <CommonAvatars group={item.team.group} more={item.team.more} />
+          </div>
         </td>
 
-        <td className="text-sm font-normal text-gray-700">{item.dueDate}</td>
+        <td className="text-sm font-medium text-gray-700">{item.dueDate}</td>
 
-        <td>
-          <div className="menu" data-menu="true">
-            <div className="menu-item" data-menu-item-trigger="click" data-menu-item-toggle="dropdown" data-menu-item-placement="bottom-end">
-              <button className="btn btn-icon btn-light btn-clear btn-xs menu-toggle">
-                <KeenIcon icon="dots-vertical" className="!text-xl" />
-              </button>
-
-              <div className="menu-dropdown w-[175px] text-gray-700 px-3 py-3 text-2xs">
-                Menu content
-              </div>
-            </div>
-          </div>
+        <td className="text-left">
+          <Menu className="items-stretch">
+            <MenuItem toggle="dropdown" trigger="click" dropdownProps={{
+            placement: 'bottom-end',
+            modifiers: [{
+              name: 'offset',
+              options: {
+                offset: [0, 10] // [skid, distance]
+              }
+            }]
+          }}>
+              <MenuToggle className="btn btn-sm btn-icon btn-light btn-clear mb-2.5-">
+                <KeenIcon icon="dots-vertical" />
+              </MenuToggle>
+              {DropdownCrudItem1()}
+            </MenuItem>
+          </Menu>
         </td>
       </tr>;
   };
@@ -139,40 +143,48 @@ const DefaultProjects = () => {
       <div className="card-header">
         <h3 className="card-title">Projects</h3>
 
-        <div className="menu" data-menu="true">
-          <div className="menu-item" data-menu-item-trigger="click" data-menu-item-toggle="dropdown" data-menu-item-placement="bottom-end">
-            <button className="btn btn-icon btn-light btn-clear btn-xs menu-toggle">
-              <KeenIcon icon="dots-vertical" className="!text-xl" />
-            </button>
-
-            <div className="menu-dropdown w-[175px] text-gray-700 px-3 py-3 text-2xs">
-              Menu content
-            </div>
-          </div>
-        </div>
+        <Menu className="items-stretch">
+          <MenuItem toggle="dropdown" trigger="click" dropdownProps={{
+          placement: 'bottom-end',
+          modifiers: [{
+            name: 'offset',
+            options: {
+              offset: [0, 10] // [skid, distance]
+            }
+          }]
+        }}>
+            <MenuToggle className="btn btn-sm btn-icon btn-light btn-clear mb-2.5-">
+              <KeenIcon icon="dots-vertical" />
+            </MenuToggle>
+            {DropdownCrud1()}
+          </MenuItem>
+        </Menu>
       </div>
+
       <div className="card-table scrollable-x-auto">
-        <table className="table table-auto text-right">
+        <table className="table text-right">
           <thead>
             <tr>
-              <th className="text-left min-w-[150px]">Project Name</th>
-              <th className="min-w-[100px]">Progress</th>
-              <th className="min-w-[100px]">People</th>
-              <th className="min-w-[110px]">Due Date</th>
+              <th className="text-left min-w-52">Project Name</th>
+              <th className="min-w-40">Progress</th>
+              <th className="min-w-32">People</th>
+              <th className="min-w-32">Due Date</th>
               <th className="w-[30px]"></th>
             </tr>
           </thead>
+
           <tbody>
             {items.map((item, index) => {
-            return renderItem(item);
+            return renderItem(item, index);
           })}
           </tbody>
         </table>
       </div>
+
       <div className="card-footer justify-center">
-        <a href="#" className="btn btn-link">
+        <Link to="/public-profile/projects/3-columns" className="btn btn-link">
           All Projects
-        </a>
+        </Link>
       </div>
     </div>;
 };

@@ -7,4 +7,3 @@ export * from './footer/Footer';
 export * from './header';
 export * from './main/Main';
 export * from './sidebar';
-export * from './topbar/Topbar';

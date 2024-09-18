@@ -1,8 +1,10 @@
 import clsx from 'clsx';
 import { useEffect } from 'react';
 import { Container } from '@/components/container';
+import { MegaMenu } from '../mega-menu';
 import { useResponsive } from '@/hooks';
-import { Breadcrumbs, MobileLogo, Topbar, useDemo1Layout } from '../';
+import { HeaderLogo, HeaderTopbar } from './';
+import { useDemo1Layout } from '../';
 const Header = () => {
   const {
     headerSticky
@@ -15,11 +17,11 @@ const Header = () => {
       document.body.removeAttribute('data-sticky-header');
     }
   }, [headerSticky]);
-  return <header className={clsx('header fixed top-0 z-10 left-0 right-0 flex items-stretch shrink-0 bg-white', headerSticky && 'shadow-sm')}>
-      <Container className="flex justify-between items-center">
-        <MobileLogo />
-        {desktopMode && <Breadcrumbs />}
-        <Topbar />
+  return <header className={clsx('header fixed top-0 z-10 start-0 end-0 flex items-stretch shrink-0 bg-[--tw-page-bg] dark:bg-[--tw-page-bg-dark]', headerSticky && 'shadow-sm')}>
+      <Container className="flex justify-between items-stretch lg:gap-4">
+        <HeaderLogo />
+        <MegaMenu />
+        <HeaderTopbar />
       </Container>
     </header>;
 };

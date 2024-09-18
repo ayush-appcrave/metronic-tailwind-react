@@ -1,5 +1,5 @@
 import { DefaultConnections, DefaultContributions, DefaultProjects, DefaultTags } from '../default';
-import { CompanyHighlights, CompanyLocations, CompanyNetwork, CompanyOpenJobs, CompanyProfle, CompanyStatistics } from '.';
+import { CompanyHighlights, CompanyLocations, CompanyNetwork, CompanyOpenJobs, CompanyStatistics } from '.';
 const CompanyContent = () => {
   const items = [{
     number: '624',
@@ -37,18 +37,17 @@ const CompanyContent = () => {
       <div className="col-span-1">
         <div className="flex flex-col gap-5 lg:gap-7.5">
           <CompanyHighlights />
-          <CompanyOpenJobs url="#" />
+          <CompanyOpenJobs />
           <CompanyNetwork title="Network" data={data} />
           <DefaultTags title="Tags" />
         </div>
       </div>
       <div className="col-span-1 lg:col-span-2">
         <div className="flex flex-col gap-5 lg:gap-7.5">
-          <CompanyProfle />
           <CompanyLocations />
           <DefaultProjects />
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-5 lg:gap-7.5">
-            <DefaultConnections title="Members" url="#" />
+            <DefaultConnections title="Members" />
             <DefaultContributions title="Investments" />
           </div>
         </div>

@@ -1,7 +1,6 @@
 import { KeenIcon } from '@/components';
-const CRMApiCredentials = ({
-  url
-}) => {
+import { Link } from 'react-router-dom';
+const CRMApiCredentials = () => {
   return <div className="card">
       <div className="card-header">
         <h3 className="card-title">API Credentials</h3>
@@ -17,7 +16,7 @@ const CRMApiCredentials = ({
 
         <div className="flex flex-col flex-wrap gap-4">
           <div className="relative grow">
-            <input type="text" className="input w-full input-sm" placeholder="hwewe4654fdd5sdfh" value="" />
+            <input type="text" className="input w-full input-sm" placeholder="hwewe4654fdd5sdfh" value="" readOnly />
             <button className="btn btn-clear btn-icon btn-sm text-gray-600 absolute right-0 top-2/4 -translate-y-2/4 me-1.5">
               <KeenIcon icon="copy" />
             </button>
@@ -32,9 +31,9 @@ const CRMApiCredentials = ({
       </div>
 
       <div className="card-footer justify-center">
-        <a href={url} className="btn btn-link">
+        <Link to="/account/api-keys" className="btn btn-link">
           Check API’s
-        </a>
+        </Link>
       </div>
     </div>;
 };

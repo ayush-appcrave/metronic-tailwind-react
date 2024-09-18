@@ -1,3 +1,4 @@
-export * from './Avatar';
-export * from './Avatars';
-export * from './Rating';
+export * from './CommonAvatar';
+export * from './CommonAvatars';
+export * from './CommonRating';
+export * from './CommonHexagonBadge';

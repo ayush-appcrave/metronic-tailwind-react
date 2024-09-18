@@ -24,15 +24,13 @@ const CreatorSummary = ({
     icon: 'youtube',
     info: 'keenthemes'
   }];
-  const renderItem = item => {
-    return <>
-        <div className="flex items-center gap-2.5">
-          <KeenIcon icon={item.icon} className="text-base text-gray-500" />
-          <a href="#" className="text-sm font-medium leading-none text-gray-800 hover:text-primary-active">
-            {item.info}
-          </a>
-        </div>
-      </>;
+  const renderItem = (item, index) => {
+    return <div key={index} className="flex items-center gap-2.5">
+        <KeenIcon icon={item.icon} className="text-base text-gray-500" />
+        <a href="#" className="text-sm font-medium leading-none text-gray-800 hover:text-primary-active">
+          {item.info}
+        </a>
+      </div>;
   };
   return <div className="card">
       <div className="card-header">
@@ -47,7 +45,7 @@ const CreatorSummary = ({
 
         <div className="grid gap-y-3.5">
           {items.map((item, index) => {
-          return renderItem(item);
+          return renderItem(item, index);
         })}
         </div>
       </div>

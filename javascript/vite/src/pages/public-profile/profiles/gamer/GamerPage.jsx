@@ -6,7 +6,7 @@ import { Navbar, NavbarActions } from '@/partials/navbar';
 import { toAbsoluteUrl } from '@/utils/Assets';
 import { GamerContent } from './_GamerContent';
 const GamerPage = () => {
-  const image = <img src={toAbsoluteUrl('/images/content/avatars/300-11.jpg')} className="rounded-full border-3 border-success max-h-[100px] max-w-full" />;
+  const image = <img src={toAbsoluteUrl('/media/avatars/300-27.png')} className="rounded-full border-3 border-success max-h-[100px] max-w-full" />;
   return <>
       <UserProfileHero name="Floyd Miles" image={image} info={[{
       label: 'SF, Bay Area',

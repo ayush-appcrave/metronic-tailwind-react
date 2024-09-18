@@ -1,19 +1,18 @@
-import { Post } from '@/partials/cards';
-const BloggerPosts = ({
-  url
-}) => {
+import { CardPost } from '@/partials/cards';
+import { Link } from 'react-router-dom';
+const BloggerPosts = () => {
   const items = [{
-    image: '11.jpg',
+    image: '14.jpg',
     label: 'Software',
     description: 'Maximizing Efficiency with Modern Software',
     time: '4 hours ago'
   }, {
-    image: '12.jpg',
+    image: '15.jpg',
     label: 'Work-Life',
     description: 'Balancing Work and Life: Strategies for Success',
     time: '2 days ago'
   }, {
-    image: '13.jpg',
+    image: '16.jpg',
     label: 'Technology',
     description: 'Exploring the Latest Technological',
     time: 'A week ago'
@@ -28,25 +27,23 @@ const BloggerPosts = ({
     description: '',
     time: ''
   }];
-  const renderItems = item => {
-    return <>
-        <Post image={item.image} label={item.label} description={item.description} time={item.time} />
-      </>;
+  const renderItems = (item, index) => {
+    return <CardPost key={index} image={item.image} label={item.label} description={item.description} time={item.time} />;
   };
   return <div className="card">
       <div className="card-header">
         <h3 className="card-title">Jenny’s Posts</h3>
 
         <div className="justify-center">
-          <a href={url} className="btn btn-link">
-            View details
-          </a>
+          <Link to="/public-profile/profiles/feeds" className="btn btn-link">
+            View All
+          </Link>
         </div>
       </div>
-      <div className="card-body">
+      <div className="card-body p-5 lg:p-7.5 lg:pb-7">
         <div className="flex flex-no-wrap scrollable-x gap-5">
           {items.map((item, index) => {
-          return renderItems(item);
+          return renderItems(item, index);
         })}
         </div>
       </div>

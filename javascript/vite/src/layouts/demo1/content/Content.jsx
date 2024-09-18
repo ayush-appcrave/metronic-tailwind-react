@@ -6,7 +6,7 @@ const Content = ({
   children
 }) => {
   const mobileMode = useResponsive('down', 'lg');
-  return <div className="grow content" role="content">
+  return <div className="grow content pt-5" role="content">
       {mobileMode && <Container>
           <Breadcrumbs />
         </Container>}

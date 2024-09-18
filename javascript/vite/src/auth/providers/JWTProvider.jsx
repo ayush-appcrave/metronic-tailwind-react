@@ -10,7 +10,7 @@ const AuthContext = createContext(null);
 const AuthProvider = ({
   children
 }) => {
-  const [loading, setLoading] = useState(false);
+  const [loading, setLoading] = useState(true);
   const [auth, setAuth] = useState(authHelper.getAuth());
   const [currentUser, setCurrentUser] = useState();
 
@@ -29,11 +29,10 @@ const AuthProvider = ({
     }
   };
   useEffect(() => {
-    (async () => {
-      setLoading(true);
-      await verify();
+    verify().finally(() => {
+      // delay for layout initialization
       setLoading(false);
-    })();
+    });
   }, []);
 
   // Set auth object and save it to local storage
@@ -73,8 +72,8 @@ const AuthProvider = ({
         data: auth
       } = await axios.post(REGISTER_URL, {
         email,
-        first_name: firstname,
-        last_name: lastname,
+        first_name: 'DefaultName',
+        last_name: 'DefaultSurname',
         password,
         password_confirmation
       });

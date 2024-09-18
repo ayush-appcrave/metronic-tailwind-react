@@ -14,15 +14,15 @@ const BloggerContent = () => {
         <div className="grid gap-5 lg:gap-7.5">
           <CreatorStatistics data={data} />
           <CreatorSummary title="Profile" />
-          <DefaultCommunityBadges />
-          <BloggerCollaborate title="Collaborate" url="#" />
+          <DefaultCommunityBadges title="Community Badges" />
+          <BloggerCollaborate title="Collaborate" />
           <DefaultTags title="Skills" />
         </div>
       </div>
       <div className="col-span-1 lg:col-span-2">
         <div className="flex flex-col gap-5 lg:gap-7.5">
-          <DefaultUnlockPartnerships url="#" />
-          <BloggerPosts url="#" />
+          <DefaultUnlockPartnerships />
+          <BloggerPosts />
           <BloggerReplies />
           <BloggerActivities />
         </div>

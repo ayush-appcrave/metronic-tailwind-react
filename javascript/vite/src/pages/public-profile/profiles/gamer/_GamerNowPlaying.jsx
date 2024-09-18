@@ -1,10 +1,9 @@
-import { NowPlaying } from '@/partials/cards';
-const GamerNowPlaying = ({
-  url
-}) => {
+import { CardNowPlaying } from '@/partials/cards';
+import React from 'react';
+const GamerNowPlaying = () => {
   const items = [{
-    image: '11.jpg',
-    logo: 'gamer-online-game.png',
+    image: '10.jpg',
+    logo: '13.jpg',
     title: 'Call of Duty',
     date: 'Playing since 6 Aug, 2018',
     statistics: [{
@@ -20,11 +19,11 @@ const GamerNowPlaying = ({
     label: 268,
     team: {
       group: [{
-        filename: '300-9.jpg'
+        filename: '300-4.png'
       }, {
-        filename: '300-2.jpg'
+        filename: '300-1.png'
       }, {
-        filename: '300-1.jpg'
+        filename: '300-2.png'
       }],
       more: {
         number: 7,
@@ -33,7 +32,7 @@ const GamerNowPlaying = ({
     }
   }, {
     image: '11.jpg',
-    logo: 'gamer-online-game.png',
+    logo: '14.jpg',
     title: 'Rocket League',
     date: 'Playing since 18 May, 2015',
     statistics: [{
@@ -49,18 +48,18 @@ const GamerNowPlaying = ({
     label: 5,
     team: {
       group: [{
-        filename: '300-7.jpg'
+        filename: '300-8.png'
       }, {
-        filename: '300-13.jpg'
+        filename: '300-11.png'
       }, {
-        filename: '300-17.jpg'
+        filename: '300-20.png'
       }, {
-        filename: '300-12.jpg'
+        filename: '300-13.png'
       }]
     }
   }, {
-    image: '11.jpg',
-    logo: 'gamer-online-game.png',
+    image: '12.jpg',
+    logo: '15.jpg',
     title: 'GTA 5',
     date: 'Playing since 24 Dec, 2018',
     statistics: [{
@@ -76,11 +75,11 @@ const GamerNowPlaying = ({
     label: 12,
     team: {
       group: [{
-        filename: '300-2.jpg'
+        filename: '300-18.png'
       }, {
-        filename: '300-4.jpg'
+        filename: '300-23.png'
       }, {
-        filename: '300-15.jpg'
+        filename: '300-6.png'
       }],
       more: {
         number: 16,
@@ -88,8 +87,8 @@ const GamerNowPlaying = ({
       }
     }
   }, {
-    image: '11.jpg',
-    logo: 'gamer-online-game.png',
+    image: '14.jpg',
+    logo: '16.jpg',
     title: 'CyberStorm Cup',
     date: 'Playing since 12 Sep, 2019',
     statistics: [{
@@ -105,11 +104,11 @@ const GamerNowPlaying = ({
     label: 45,
     team: {
       group: [{
-        filename: '300-22.jpg'
+        filename: '300-22.png'
       }, {
-        filename: '300-17.jpg'
+        filename: '300-17.png'
       }, {
-        filename: '300-18.jpg'
+        filename: '300-18.png'
       }],
       more: {
         number: 14,
@@ -117,8 +116,8 @@ const GamerNowPlaying = ({
       }
     }
   }, {
-    image: '11.jpg',
-    logo: 'gamer-online-game.png',
+    image: '15.jpg',
+    logo: '17.jpg',
     title: 'Call of Duty',
     date: 'Playing since 23 Nov, 2021',
     statistics: [{
@@ -134,11 +133,11 @@ const GamerNowPlaying = ({
     label: 374,
     team: {
       group: [{
-        filename: '300-12.jpg'
+        filename: '300-12.png'
       }, {
-        filename: '300-25.jpg'
+        filename: '300-25.png'
       }, {
-        filename: '300-26.jpg'
+        filename: '300-26.png'
       }],
       more: {
         number: 32,
@@ -146,25 +145,25 @@ const GamerNowPlaying = ({
       }
     }
   }];
-  const renderItem = item => {
-    return <>
-        <NowPlaying image={item.image} logo={item.logo} date={item.date} statistics={item.statistics} team={item.team} label={item.label} title={item.title} />
-      </>;
+  const renderItem = (item, index) => {
+    return <React.Fragment key={index}>
+        <CardNowPlaying image={item.image} logo={item.logo} date={item.date} statistics={item.statistics} team={item.team} label={item.label} title={item.title} />
+      </React.Fragment>;
   };
   return <div className="card">
       <div className="card-header">
         <h3 className="card-title">Now Playing</h3>
 
         <div className="justify-center">
-          <a href={url} className="btn btn-link">
+          <a href="#" className="btn btn-link">
             View All
           </a>
         </div>
       </div>
-      <div className="card-body">
+      <div className="card-body p-5 lg:p-7.5 lg:pb-7">
         <div className="flex flex-no-wrap scrollable-x gap-5">
           {items.map((item, index) => {
-          return renderItem(item);
+          return renderItem(item, index);
         })}
         </div>
       </div>

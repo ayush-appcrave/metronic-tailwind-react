@@ -1,5 +1,7 @@
 import { KeenIcon } from '@/components';
-const DefaultCommunityBadges = () => {
+const DefaultCommunityBadges = ({
+  title
+}) => {
   const items = [{
     stroke: 'stroke-primary-clarity',
     fill: 'fill-primary-light',
@@ -21,8 +23,8 @@ const DefaultCommunityBadges = () => {
     icon: 'delivery-24',
     iconColor: 'text-info'
   }];
-  const renderItem = item => {
-    return <div className="relative size-[50px] shrink-0">
+  const renderItem = (item, index) => {
+    return <div key={index} className="relative size-[50px] shrink-0">
         <svg className={`w-full h-full ${item.stroke} ${item.fill}`} width="44" height="48" viewBox="0 0 44 48" fill="none" xmlns="http://www.w3.org/2000/svg">
           <path d="M16 2.4641C19.7128 0.320509 24.2872 0.320508 28 2.4641L37.6506 8.0359C41.3634 10.1795 43.6506 14.141 43.6506 
 						18.4282V29.5718C43.6506 33.859 41.3634 37.8205 37.6506 39.9641L28 45.5359C24.2872 47.6795 19.7128 47.6795 16 45.5359L6.34937 
@@ -39,12 +41,13 @@ const DefaultCommunityBadges = () => {
   };
   return <div className="card">
       <div className="card-header">
-        <h3 className="card-title">Community Badges</h3>
+        <h3 className="card-title">{title}</h3>
       </div>
+
       <div className="card-body pb-7.5">
         <div className="flex items-center flex-wrap gap-3 lg:gap-4">
           {items.map((item, index) => {
-          return renderItem(item);
+          return renderItem(item, index);
         })}
         </div>
       </div>

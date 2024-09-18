@@ -11,17 +11,15 @@ const GamerAbout = () => {
     label: 'Level:',
     info: '<span class="badge badge-sm badge-success badge-outline">Pro</span>'
   }];
-  const renderItem = item => {
-    return <>
-        <tr>
-          <td className="text-sm font-medium text-gray-500 pb-3 pe-4 lg:pe-12">{item.label}</td>
-          <td className="text-sm font-medium text-gray-800 pb-3">
-            {item.type === 1 ? <span>{item.info}</span> : item.type === 2 ? <span>{item.info}</span> : <span dangerouslySetInnerHTML={{
-            __html: item.info
-          }}></span>}
-          </td>
-        </tr>
-      </>;
+  const renderItem = (item, index) => {
+    return <tr key={index}>
+        <td className="text-sm font-medium text-gray-500 pb-3 pe-4 lg:pe-12">{item.label}</td>
+        <td className="text-sm font-medium text-gray-800 pb-3">
+          {item.type === 1 ? <span>{item.info}</span> : item.type === 2 ? <span>{item.info}</span> : <span dangerouslySetInnerHTML={{
+          __html: item.info
+        }}></span>}
+        </td>
+      </tr>;
   };
   return <div className="card">
       <div className="card-header">
@@ -32,7 +30,7 @@ const GamerAbout = () => {
         <table className="table-auto mb-1.5">
           <tbody>
             {items.map((item, index) => {
-            return renderItem(item);
+            return renderItem(item, index);
           })}
           </tbody>
         </table>

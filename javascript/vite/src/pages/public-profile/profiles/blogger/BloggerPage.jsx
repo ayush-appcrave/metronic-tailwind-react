@@ -1,4 +1,5 @@
 import { Container } from '@/components/container';
+import { MENU_SIDEBAR } from '@/config/menu.config';
 import { UserProfileHero } from '@/partials/heros';
 import { NavbarMenu } from '@/partials/menu/NavbarMenu';
 import { Navbar, NavbarActions } from '@/partials/navbar';
@@ -10,9 +11,9 @@ const BloggerPage = () => {
     getMenuConfig
   } = useMenu();
   const secondaryMenu = getMenuConfig('secondary');
-  const image = <img src={toAbsoluteUrl('/images/content/avatars/300-2.jpg')} className="rounded-full border-3 border-success max-h-[100px] max-w-full" />;
+  const image = <img src={toAbsoluteUrl('/media/avatars/300-1.png')} className="rounded-full border-3 border-success max-h-[100px] max-w-full" />;
   return <>
-      <UserProfileHero name="Inferno" image={image} info={[{
+      <UserProfileHero name="Jenny Klabber" image={image} info={[{
       label: 'KeenThemes',
       icon: 'dribbble'
     }, {
@@ -25,7 +26,7 @@ const BloggerPage = () => {
 
       <Container>
         <Navbar>
-          {secondaryMenu && <NavbarMenu items={secondaryMenu} />}
+          {MENU_SIDEBAR[2]?.children && <NavbarMenu items={MENU_SIDEBAR[2].children} />}
           <NavbarActions>Buttons</NavbarActions>
         </Navbar>
       </Container>

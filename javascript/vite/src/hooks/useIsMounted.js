@@ -10,4 +10,4 @@ const useIsMounted = () => {
   }, []);
   return useCallback(() => isMounted.current, []);
 };
-export default useIsMounted;
+export { useIsMounted };

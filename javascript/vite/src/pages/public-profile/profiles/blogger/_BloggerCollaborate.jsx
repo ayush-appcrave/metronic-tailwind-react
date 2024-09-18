@@ -1,6 +1,6 @@
+import { Link } from 'react-router-dom';
 const BloggerCollaborate = ({
-  title,
-  url
+  title
 }) => {
   return <div className="card">
       <div className="card-header">
@@ -13,9 +13,9 @@ const BloggerCollaborate = ({
       </div>
 
       <div className="card-footer justify-center">
-        <a href={url} className="btn btn-link">
+        <Link to="/public-profile/works" className="btn btn-link">
           View details
-        </a>
+        </Link>
       </div>
     </div>;
 };

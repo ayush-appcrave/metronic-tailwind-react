@@ -4,8 +4,9 @@ import { UserProfileHero } from '@/partials/heros';
 import { NavbarMenu } from '@/partials/menu/NavbarMenu';
 import { Navbar, NavbarActions } from '@/partials/navbar';
 import { toAbsoluteUrl } from '@/utils/Assets';
+import { Empty } from '.';
 const EmptyPage = () => {
-  const image = <img src={toAbsoluteUrl('/images/content/avatars/300-2.jpg')} className="rounded-full border-3 border-success max-h-[100px] max-w-full" />;
+  const image = <img src={toAbsoluteUrl('/media/avatars/300-1.png')} className="rounded-full border-3 border-success max-h-[100px] max-w-full" />;
   return <>
       <UserProfileHero name="Jenny Klabber" image={image} info={[{
       label: 'KeenThemes',
@@ -25,7 +26,9 @@ const EmptyPage = () => {
         </Navbar>
       </Container>
 
-      <Container>Example content</Container>
+      <Container>
+        <Empty />
+      </Container>
     </>;
 };
 export { EmptyPage };

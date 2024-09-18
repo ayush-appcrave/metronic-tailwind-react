@@ -6,7 +6,9 @@ import { Navbar, NavbarActions } from '@/partials/navbar';
 import { toAbsoluteUrl } from '@/utils/Assets';
 import { CompanyContent } from '.';
 const CompanyPage = () => {
-  const image = <img src={toAbsoluteUrl('/images/content/logos/duolingo.png')} className="size-[100px]" />;
+  const image = <div className="flex items-center justify-center rounded-full border-2 border-success-clarity h-[100px] w-[100px]">
+      <img src={toAbsoluteUrl('/media/brand-logos/duolingo.svg')} className="size-[50px]" />
+    </div>;
   return <>
       <UserProfileHero name="Duolingo" image={image} info={[{
       label: 'Public Company',

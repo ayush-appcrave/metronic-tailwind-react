@@ -1,6 +1,6 @@
 const defaultSettings = {
   mode: 'light',
-  keenIconsStyle: 'outline',
+  keenIconsStyle: 'filled',
   container: 'fixed'
 };
 export { defaultSettings };

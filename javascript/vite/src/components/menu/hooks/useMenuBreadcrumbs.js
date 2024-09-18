@@ -1,6 +1,8 @@
 import { matchPath } from 'react-router';
 const useMenuBreadcrumbs = (pathname, items) => {
+  pathname = pathname.trim();
   const findParents = (items, parent) => {
+    if (!items) return [];
     for (let i = 0; i < items.length; i++) {
       const item = items[i];
       if (item.path && matchPath(pathname, item.path)) {

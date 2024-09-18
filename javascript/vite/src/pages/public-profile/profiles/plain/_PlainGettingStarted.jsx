@@ -1,9 +1,10 @@
 import { toAbsoluteUrl } from '@/utils/Assets';
+import { Link } from 'react-router-dom';
 const PlainGettingStarted = () => {
   return <div className="card">
       <div className="card-body lg:py-9">
         <div className="flex justify-center">
-          <img src={toAbsoluteUrl('/images/content/illustrations/account-deactivated.jpg')} className="max-h-[200px]" alt="" />
+          <img src={toAbsoluteUrl('/media/illustrations/11.svg')} className="max-h-[200px]" alt="" />
         </div>
 
         <div className="text-lg font-semibold text-gray-800 text-center">
@@ -13,9 +14,9 @@ const PlainGettingStarted = () => {
           <span className="text-sm font-medium text-gray-600">
             Begin by crafting your inaugural list in minutes.
           </span>
-          <a href="#" className="text-sm font-semibold text-primary hover:text-primary-active">
+          <Link to="/account/billing/plans" className="text-sm font-medium link">
             Get Started!
-          </a>
+          </Link>
         </div>
       </div>
     </div>;

@@ -1,5 +1,3 @@
-/* eslint-disable prettier/prettier */
-
 import { QueryClient, QueryClientProvider } from 'react-query';
 import { AuthProvider } from '@/auth/providers/JWTProvider';
 // import { AuthProvider } from '@/auth/providers/Auth0Provider';
@@ -16,9 +14,7 @@ const ProvidersWrapper = ({
             <TranslationProvider>
               <LayoutProvider>
                 <LoadersProvider>
-                  <MenuProvider>
-                  {children}
-                  </MenuProvider>
+                  <MenuProvider>{children}</MenuProvider>
                 </LoadersProvider>
               </LayoutProvider>
             </TranslationProvider>

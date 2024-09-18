@@ -1,8 +1,8 @@
 import clsx from 'clsx';
+import { Link } from 'react-router-dom';
 const PlainOpenToWork = ({
   className,
-  title,
-  url
+  title
 }) => {
   return <div className={clsx(`card ${className && className}`)}>
       <div className="card-header">
@@ -16,9 +16,9 @@ const PlainOpenToWork = ({
       </div>
 
       <div className="card-footer justify-center lg:pb-9">
-        <a href={url} className="btn btn-link">
+        <Link to="/public-profile/works" className="btn btn-link">
           View details
-        </a>
+        </Link>
       </div>
     </div>;
 };

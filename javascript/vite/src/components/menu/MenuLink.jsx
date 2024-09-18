@@ -1,34 +1,36 @@
 import clsx from 'clsx';
-import { forwardRef, memo } from 'react';
-import { Link as RouterLink } from 'react-router-dom';
-const MenuLinkComponent = forwardRef(function MenuLinkComponent(props, ref) {
-  const {
-    path,
-    newTab,
-    hasItemSub = false,
-    externalLink,
-    className,
-    menuItemRef,
-    handleToggle,
-    handleClick,
-    children
-  } = props;
+import { Link } from 'react-router-dom';
+const MenuLink = ({
+  path,
+  newTab,
+  hasItemSub = false,
+  externalLink,
+  className,
+  handleToggle,
+  handleClick,
+  children
+}) => {
   if (!hasItemSub && path) {
     if (externalLink) {
       const target = newTab ? '_blank' : '_self';
       return <a href={path} target={target} rel="noopener" onClick={handleClick} className={clsx('menu-link', className && className)}>
-            {children}
-          </a>;
+          {children}
+        </a>;
     } else {
-      return <RouterLink to={path} onClick={handleClick} className={clsx('menu-link', className && className)}>
-            {children}
-          </RouterLink>;
+      return <Link to={path} onClick={handleClick} className={clsx('menu-link', className && className)}>
+          {children}
+        </Link>;
     }
   } else {
-    return <div className={clsx('menu-link', className && className)} ref={menuItemRef} onClick={handleToggle}>
+    if (hasItemSub) {
+      return <div className={clsx('menu-link', className && className)} onClick={handleToggle}>
           {children}
         </div>;
+    } else {
+      return <div className={clsx('menu-link', className && className)} onClick={handleClick}>
+          {children}
+        </div>;
+    }
   }
-});
-const MenuLink = memo(MenuLinkComponent);
+};
 export { MenuLink };

@@ -1,6 +1,7 @@
 import { BloggerCollaborate } from '../blogger';
 import { CreatorStatistics, CreatorSummary } from '../creator';
 import { DefaultTags } from '../default';
+import { FeedsPost1, FeedsPost2, FeedsPost3, FeedsPost4 } from '.';
 const FeedsContent = () => {
   const data = [{
     title: 'Connections',
@@ -14,12 +15,17 @@ const FeedsContent = () => {
         <div className="grid gap-5 lg:gap-7.5">
           <CreatorStatistics data={data} />
           <CreatorSummary title="Profile" />
-          <BloggerCollaborate title="Open to work" url="#" />
+          <BloggerCollaborate title="Open to work" />
           <DefaultTags title="Skills" />
         </div>
       </div>
       <div className="col-span-2">
-        <div className="flex flex-col gap-5 lg:gap-7.5"></div>
+        <div className="flex flex-col gap-5 lg:gap-7.5">
+          <FeedsPost1 />
+          <FeedsPost2 />
+          <FeedsPost3 />
+          <FeedsPost4 />
+        </div>
       </div>
     </div>;
 };

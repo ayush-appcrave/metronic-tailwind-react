@@ -1,26 +1,24 @@
 import { toAbsoluteUrl } from '@/utils/Assets';
 const GamerFavoriteGames = () => {
   const items = [{
-    image: '300-310.png'
+    image: '13.jpg'
   }, {
-    image: '300-310.png'
+    image: '14.jpg'
   }, {
-    image: '300-310.png'
+    image: '15.jpg'
   }, {
-    image: '300-310.png'
+    image: '16.jpg'
   }, {
-    image: '300-310.png'
+    image: '17.jpg'
   }, {
-    image: '300-310.png'
+    image: '18.jpg'
   }, {
-    image: '300-310.png'
+    image: '19.jpg'
   }, {
-    image: '300-310.png'
+    image: '20.jpg'
   }];
-  const renderItem = item => {
-    return <>
-        <img src={toAbsoluteUrl(`/images/content/logos/${item.image}`)} className="rounded-xl w-11 h-11" alt="" />
-      </>;
+  const renderItem = (item, index) => {
+    return <img src={toAbsoluteUrl(`/media/images/600x600/${item.image}`)} className="rounded-xl w-11 h-11" alt="" key={index} />;
   };
   return <div className="card">
       <div className="card-header">
@@ -30,7 +28,7 @@ const GamerFavoriteGames = () => {
       <div className="card-body">
         <div className="flex flex-wrap gap-2.5 xl:mr-14 mb-1.5">
           {items.map((item, index) => {
-          return renderItem(item);
+          return renderItem(item, index);
         })}
         </div>
       </div>

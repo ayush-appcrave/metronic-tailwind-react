@@ -14,7 +14,6 @@ const QueryResponseProvider = ({
   const updatedQuery = useMemo(() => stringifyRequestQuery(state), [state]);
   useEffect(() => {
     if (query !== updatedQuery) {
-      console.log('query was really updated');
       setQuery(updatedQuery);
     }
   }, [updatedQuery]);
@@ -25,7 +24,6 @@ const QueryResponseProvider = ({
   } = useQuery({
     queryKey: `${QUERIES.USERS_LIST}-${query}`,
     queryFn: async () => {
-      console.log('Request users');
       return await getUsers(query);
     },
     keepPreviousData: true,

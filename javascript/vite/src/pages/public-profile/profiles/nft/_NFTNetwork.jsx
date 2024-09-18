@@ -13,15 +13,13 @@ const NFTNetwork = () => {
     logo: 'sms',
     info: 'jennyklabber'
   }];
-  const renderItems = item => {
-    return <>
-        <div className="flex items-center gap-2.5">
-          <KeenIcon icon={item.logo} className="text-base text-gray-500" />
-          <a href="#" className="text-sm font-medium leading-none text-gray-800  hover:text-primary-active">
-            {item.info}
-          </a>
-        </div>
-      </>;
+  const renderItems = (item, index) => {
+    return <div key={index} className="flex items-center gap-2.5">
+        <KeenIcon icon={item.logo} className="text-base text-gray-500" />
+        <a href="#" className="text-sm font-medium leading-none text-gray-800 hover:text-primary-active">
+          {item.info}
+        </a>
+      </div>;
   };
   return <div className="card">
       <div className="card-header">
@@ -31,7 +29,7 @@ const NFTNetwork = () => {
       <div className="card-body">
         <div className="grid gap-y-3.5">
           {items.map((item, index) => {
-          return renderItems(item);
+          return renderItems(item, index);
         })}
         </div>
       </div>
