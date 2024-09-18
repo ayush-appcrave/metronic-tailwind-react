@@ -1,13 +1,15 @@
-import { DefaultTags } from '@/pages/public-profile/profiles/default/_DefaultTags'
-import { DefaultCommunityBadges } from '@/pages/public-profile/profiles/default/_DefaultCommunityBadges'
-import {CreatorActivities} from '@/pages/public-profile/profiles/creator/_CreatorActivities';
-import {CreatorFeaturesHighlight} from '@/pages/public-profile/profiles/creator/_CreatorFeaturesHighlight';
-import {CreatorStatistics} from '@/pages/public-profile/profiles/creator/_CreatorStatistics';
-import {CreatorSummary} from '@/pages/public-profile/profiles/creator/_CreatorSummary';
-import {CreatorUpcomingEvents} from '@/pages/public-profile/profiles/creator/_CreatorUpcomingEvents';
-import {CreatorUsers} from '@/pages/public-profile/profiles/creator/_CreatorUsers';
-import {CreatorWorks} from '@/pages/public-profile/profiles/creator/_CreatorWorks';
-import { ICreatorStatisticsItems, ICreatorUsersItems } from './interfaces';
+import { DefaultCommunityBadges, DefaultTags } from '../default';
+import {
+  CreatorActivities,
+  CreatorFeaturesHighlight,
+  CreatorStatistics,
+  CreatorSummary,
+  CreatorUpcomingEvents,
+  CreatorUsers,
+  CreatorWorks
+} from '.';
+import { ICreatorStatisticsItems, ICreatorUsersItems } from './types';
+import { toAbsoluteUrl } from '@/utils';
 
 const CreatorContent = () => {
   const data: ICreatorStatisticsItems = [
@@ -16,14 +18,14 @@ const CreatorContent = () => {
   ];
 
   const items: ICreatorUsersItems = [
-    { image: '300-2.jpg' },
-    { image: '300-1.jpg' },
-    { image: '300-3.jpg' },
-    { image: '300-4.jpg' },
-    { image: '300-5.jpg' },
-    { image: '300-6.jpg' },
-    { image: '300-7.jpg' },
-    { image: '300-8.jpg' }
+    { image: '300-1.png' },
+    { image: '300-2.png' },
+    { image: '300-3.png' },
+    { image: '300-5.png' },
+    { image: '300-6.png' },
+    { image: '300-11.png' },
+    { image: '300-7.png' },
+    { image: '300-12.png' }
   ];
 
   return (
@@ -31,28 +33,45 @@ const CreatorContent = () => {
       <div className="col-span-1">
         <div className="grid gap-5 lg:gap-7.5">
           <CreatorStatistics data={data} />
-          <CreatorUsers title="Members" url="#" items={items} />
+          <CreatorUsers title="Members" items={items} />
           <CreatorSummary title="About" />
-          <DefaultCommunityBadges />
+          <DefaultCommunityBadges title="Community Badges" />
           <DefaultTags title="Skills" />
         </div>
       </div>
+
       <div className="col-span-2">
         <div className="flex flex-col gap-5 lg:gap-7.5">
           <CreatorFeaturesHighlight
-            image="/images/content/illustrations/restile.png"
+            image={
+              <>
+                <img
+                  src={toAbsoluteUrl('/media/illustrations/18.svg')}
+                  className="dark:hidden max-h-[200px]"
+                  alt=""
+                />
+                <img
+                  src={toAbsoluteUrl('/media/illustrations/18-dark.svg')}
+                  className="light:hidden max-h-[200px]"
+                  alt=""
+                />
+              </>
+            }
             title="Restyle Your Space:<br>Soft Goods Makeover Ideas"
             description="Transform your living space beautifully with our Restyle Your Space: Soft Goods Makeover Ideas tutorial"
-            more={{ title: 'Get Started', url: '#' }}
-            features={['Time-Saving', 'Easy Revamp', 'Budget-Friendly', 'Fresh Look']}
+            more={{ title: 'Get Started', url: '/network/get-started' }}
+            features={[
+              ['Time-Saving', 'Easy Revamp'],
+              ['Budget-Friendly', 'Fresh Look']
+            ]}
           />
           <CreatorWorks />
           <CreatorUpcomingEvents />
-          <CreatorActivities url="#" />
+          <CreatorActivities />
         </div>
       </div>
     </div>
   );
 };
 
-export { CreatorContent };
+export default  CreatorContent ;

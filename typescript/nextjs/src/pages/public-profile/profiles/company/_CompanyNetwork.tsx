@@ -2,21 +2,19 @@ import clsx from 'clsx';
 
 import { KeenIcon } from '@/components';
 
-import { ICompanyNetworkItem, ICompanyNetworkProps } from './interfaces';
+import { ICompanyNetworkItem, ICompanyNetworkProps } from './types';
 
 const CompanyNetwork = ({ data, className, title }: ICompanyNetworkProps) => {
-  const renderItems = (item: ICompanyNetworkItem) => {
+  const renderItems = (item: ICompanyNetworkItem, index: number) => {
     return (
-      <>
-        <div className="flex items-center gap-2.5">
-          <span className="">
-            <KeenIcon icon={item.icon} className="text-lg text-gray-500" />
-          </span>
-          <a href="#" className="text-gray-800 hover:text-primary-active text-sm font-medium">
-            {item.link}
-          </a>
-        </div>
-      </>
+      <div key={index} className="flex items-center gap-2.5">
+        <span>
+          <KeenIcon icon={item.icon} className="text-lg text-gray-500" />
+        </span>
+        <a href="#" className="text-gray-800 hover:text-primary-active text-sm font-medium">
+          {item.link}
+        </a>
+      </div>
     );
   };
 
@@ -28,7 +26,7 @@ const CompanyNetwork = ({ data, className, title }: ICompanyNetworkProps) => {
       <div className="card-body pt-4">
         <div className="grid gap-2.5 mb-1">
           {data.map((item, index) => {
-            return renderItems(item);
+            return renderItems(item, index);
           })}
         </div>
       </div>
@@ -36,4 +34,4 @@ const CompanyNetwork = ({ data, className, title }: ICompanyNetworkProps) => {
   );
 };
 
-export { CompanyNetwork };
+export default  CompanyNetwork ;

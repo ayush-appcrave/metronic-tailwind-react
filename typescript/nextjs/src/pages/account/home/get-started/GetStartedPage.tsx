@@ -2,15 +2,10 @@ import { Container } from '@/components/container';
 import { MENU_SIDEBAR } from '@/config/menu.config';
 import { NavbarMenu } from '@/partials/menu/NavbarMenu';
 import { Navbar } from '@/partials/navbar';
-import {
-  Toolbar,
-  ToolbarActions,
-  ToolbarDescription,
-  ToolbarHeading,
-  ToolbarPageTitle
-} from '@/partials/toolbar';
-import {ReactElement} from "react";
-import {Demo1Layout} from "@/layouts/demo1";
+import { Toolbar, ToolbarDescription, ToolbarHeading, ToolbarPageTitle } from '@/partials/toolbar';
+
+import { GetStartedContent } from '.';
+import Link from 'next/link';
 
 const GetStartedPage = () => {
   return (
@@ -26,25 +21,24 @@ const GetStartedPage = () => {
           <ToolbarHeading>
             <ToolbarPageTitle />
             <ToolbarDescription>
-              <span className="text-gray-700">Jayson Tatum</span>
+              <span className="text-gray-700 font-semibold">Jayson Tatum</span>
               <a href="mailto:jaytatum@ktstudio.com" className="text-gray-600 hover:text-primary">
                 jaytatum@ktstudio.com
               </a>
               <span className="size-0.75 bg-gray-600 rounded-full"></span>
-              <a href="#" className="font-semibold text-primary hover:text-primary-active">
+              <Link to="/account/members/team-info" className="font-semibold btn btn-link link">
                 Personal Info
-              </a>
+              </Link>
             </ToolbarDescription>
           </ToolbarHeading>
-          <ToolbarActions>Buttons</ToolbarActions>
         </Toolbar>
       </Container>
 
-      <Container>Page content</Container>
+      <Container>
+        <GetStartedContent />
+      </Container>
     </>
   );
 };
-
-GetStartedPage.getLayout = (page: ReactElement) => <Demo1Layout>{page}</Demo1Layout>;
 
 export default  GetStartedPage ;

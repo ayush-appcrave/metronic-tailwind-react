@@ -1,47 +1,40 @@
 import { toAbsoluteUrl } from '@/utils/Assets';
 
-import {
-  IDefaultWorkExperienceItem,
-  IDefaultWorkExperienceItems,
-  IDefaultWorkExperienceProps
-} from './interfaces';
+import { IDefaultWorkExperienceItem, IDefaultWorkExperienceItems } from './types';
+import Link from 'next/link';
 
-const DefaultWorkExperience = ({ url }: IDefaultWorkExperienceProps) => {
+const DefaultWorkExperience = () => {
   const items: IDefaultWorkExperienceItems = [
     {
-      image: 'jira.png',
+      image: 'jira.svg',
       title: 'Esprito Studios',
       desc: 'Senior Project Manager',
       date: '2019 - Present'
     },
     { heading: 'Previous Jobs' },
     {
-      image: 'paccion.png',
+      image: 'paccion.svg',
       title: 'Pesto Plus',
       desc: 'CRM Product Lead ',
       date: '2012 - 2019'
     },
     {
-      image: 'perrier.png',
+      image: 'perrier.svg',
       title: 'Perrier Technologies',
       desc: 'UX Research',
       date: '2010 - 2012'
     }
   ];
 
-  const renderItem = (item: IDefaultWorkExperienceItem) => {
+  const renderItem = (item: IDefaultWorkExperienceItem, index: number) => {
     return (
-      <>
+      <div key={index}>
         {item.heading ? (
           <div className="text-gray-600 font-semibold text-sm leading-none">{item.heading}</div>
         ) : (
           <div className="flex align-start gap-3.5">
             {item.image && (
-              <img
-                src={toAbsoluteUrl(`/images/content/logos/${item.image}`)}
-                className="h-9"
-                alt=""
-              />
+              <img src={toAbsoluteUrl(`/media/brand-logos/${item.image}`)} className="h-9" alt="" />
             )}
 
             <div className="flex flex-col gap-1">
@@ -53,14 +46,14 @@ const DefaultWorkExperience = ({ url }: IDefaultWorkExperienceProps) => {
                   {item.title}
                 </a>
               )}
-              {item.desc && <span className="text-sm font-normal text-gray-700">{item.desc}</span>}
+              {item.desc && <span className="text-sm font-medium text-gray-800">{item.desc}</span>}
               {item.date && (
                 <span className="text-xs font-normal text-gray-500 leading-none">{item.date}</span>
               )}
             </div>
           </div>
         )}
-      </>
+      </div>
     );
   };
 
@@ -69,21 +62,22 @@ const DefaultWorkExperience = ({ url }: IDefaultWorkExperienceProps) => {
       <div className="card-header">
         <h3 className="card-title">Work Experience</h3>
       </div>
+
       <div className="card-body">
         <div className="grid gap-y-5">
           {items.map((item, index) => {
-            return renderItem(item);
+            return renderItem(item, index);
           })}
         </div>
       </div>
 
       <div className="card-footer justify-center">
-        <a href={url} className="btn btn-link">
+        <Link to="/public-profile/works" className="btn btn-link">
           Open to Work
-        </a>
+        </Link>
       </div>
     </div>
   );
 };
 
-export { DefaultWorkExperience }
+export default  DefaultWorkExperience ;

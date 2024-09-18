@@ -1,16 +1,17 @@
 import { toAbsoluteUrl } from '@/utils/Assets';
 
-import { ICreatorUsersItem, ICreatorUsersProps } from './interfaces';
+import { ICreatorUsersItem, ICreatorUsersProps } from './types';
+import Link from 'next/link';
 
-const CreatorUsers = ({ title, items, url }: ICreatorUsersProps) => {
-  const renderItem = (item: ICreatorUsersItem) => {
+const CreatorUsers = ({ title, items }: ICreatorUsersProps) => {
+  const renderItem = (item: ICreatorUsersItem, index: number) => {
     return (
-      <>
-        <img
-          src={toAbsoluteUrl(`/images/content/avatars/${item.image}`)}
-          className="rounded-full h-[36px]"
-        />
-      </>
+      <img
+        src={toAbsoluteUrl(`/media/avatars/${item.image}`)}
+        className="rounded-full h-[36px]"
+        alt=""
+        key={index}
+      />
     );
   };
 
@@ -23,18 +24,18 @@ const CreatorUsers = ({ title, items, url }: ICreatorUsersProps) => {
       <div className="card-body">
         <div className="flex flex-wrap gap-2.5 xl:mr-16">
           {items.map((item, index) => {
-            return renderItem(item);
+            return renderItem(item, index);
           })}
         </div>
       </div>
 
       <div className="card-footer justify-center">
-        <a href={url} className="btn btn-link">
+        <Link to="/account/members/teams" className="btn btn-link">
           Join Our Team
-        </a>
+        </Link>
       </div>
     </div>
   );
 };
 
-export { CreatorUsers };
+export default  CreatorUsers ;

@@ -4,13 +4,13 @@ import { UserProfileHero } from '@/partials/heros';
 import { NavbarMenu } from '@/partials/menu/NavbarMenu';
 import { Navbar, NavbarActions } from '@/partials/navbar';
 import { toAbsoluteUrl } from '@/utils/Assets';
-import {Demo1Layout} from "@/layouts/demo1";
-import CampaignsCardPage from "@/pages/public-profile/campaigns/card/CampaignsCardPage";
+
+import { CampaignsContent } from '../card';
 
 const CampaignsListPage = () => {
   const image = (
     <img
-      src={toAbsoluteUrl('/images/content/avatars/300-2.jpg')}
+      src={toAbsoluteUrl('/media/avatars/300-1.png')}
       className="rounded-full border-3 border-success max-h-[100px] max-w-full"
     />
   );
@@ -34,11 +34,11 @@ const CampaignsListPage = () => {
         </Navbar>
       </Container>
 
-      <Container>Example content</Container>
+      <Container>
+        <CampaignsContent mode="list" />
+      </Container>
     </>
   );
 };
-
-CampaignsListPage.getLayout = (page: React.ReactElement) => <Demo1Layout>{page}</Demo1Layout>;
 
 export default  CampaignsListPage ;

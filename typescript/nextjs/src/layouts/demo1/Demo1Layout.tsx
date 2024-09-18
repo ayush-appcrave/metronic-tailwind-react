@@ -1,10 +1,14 @@
+import useBodyClasses from '@/hooks/useBodyClasses';
 import { Demo1LayoutProvider, Main } from './';
-import {PropsWithChildren} from "react";
 
-const Demo1Layout = ({ children }: PropsWithChildren) => {
+const Demo1Layout = () => {
+  useBodyClasses(
+    '[--tw-page-bg:#fefefe] [--tw-page-bg-dark:var(--tw-coal-500)] bg-[--tw-page-bg] dark:bg-[--tw-page-bg-dark]'
+  );
+
   return (
     <Demo1LayoutProvider>
-        <Main>{children}</Main>
+      <Main />
     </Demo1LayoutProvider>
   );
 };

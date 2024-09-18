@@ -1,8 +1,9 @@
 import clsx from 'clsx';
 
-import { IPlainOpenToWorkProps } from './interfaces';
+import { IPlainOpenToWorkProps } from './types';
+import Link from 'next/link';
 
-const PlainOpenToWork = ({ className, title, url }: IPlainOpenToWorkProps) => {
+const PlainOpenToWork = ({ className, title }: IPlainOpenToWorkProps) => {
   return (
     <div className={clsx(`card ${className && className}`)}>
       <div className="card-header">
@@ -16,12 +17,12 @@ const PlainOpenToWork = ({ className, title, url }: IPlainOpenToWorkProps) => {
       </div>
 
       <div className="card-footer justify-center lg:pb-9">
-        <a href={url} className="btn btn-link">
+        <Link to="/public-profile/works" className="btn btn-link">
           View details
-        </a>
+        </Link>
       </div>
     </div>
   );
 };
 
-export { PlainOpenToWork };
+export default  PlainOpenToWork ;

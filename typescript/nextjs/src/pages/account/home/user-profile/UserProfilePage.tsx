@@ -1,10 +1,16 @@
 import { Container } from '@/components/container';
 import { MENU_SIDEBAR } from '@/config/menu.config';
-import { NavbarMenu } from '@/partials/menu/NavbarMenu';
+import { NavbarMenu } from '@/partials/menu';
 import { Navbar } from '@/partials/navbar';
-import {ReactElement} from "react";
-import {Demo1Layout} from "@/layouts/demo1";
-import SettingsSidebarPage from "@/pages/account/home/settings-sidebar/SettingsSidebarPage";
+import {
+  Toolbar,
+  ToolbarActions,
+  ToolbarDescription,
+  ToolbarHeading,
+  ToolbarPageTitle
+} from '@/partials/toolbar';
+
+import { UserProfileContent } from '.';
 
 const UserProfilePage = () => {
   return (
@@ -15,11 +21,25 @@ const UserProfilePage = () => {
         </Navbar>
       </Container>
 
-      <Container>Page content</Container>
+      <Container>
+        <Toolbar>
+          <ToolbarHeading>
+            <ToolbarPageTitle />
+            <ToolbarDescription>
+              <span className="flex items-center gap-2 text-sm font-medium text-gray-600">
+                Central Hub for Personal Customization
+              </span>
+            </ToolbarDescription>
+          </ToolbarHeading>
+          <ToolbarActions>Buttons</ToolbarActions>
+        </Toolbar>
+      </Container>
+
+      <Container>
+        <UserProfileContent />
+      </Container>
     </>
   );
 };
-
-UserProfilePage.getLayout = (page: ReactElement) => <Demo1Layout>{page}</Demo1Layout>;
 
 export default  UserProfilePage ;

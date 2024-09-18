@@ -1,4 +1,4 @@
-export * from './activity/ActivityPage';
+export * from './activity/PublicProfileActivityPage';
 export * from './campaigns';
 export * from './empty/EmptyPage';
 export * from './network/NetworkPage';

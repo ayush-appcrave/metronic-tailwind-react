@@ -4,10 +4,9 @@ import {
   CompanyLocations,
   CompanyNetwork,
   CompanyOpenJobs,
-  CompanyProfle,
   CompanyStatistics
 } from '.';
-import { ICompanyNetworkItems, ICompanyStatisticsItems } from './interfaces';
+import { ICompanyNetworkItems, ICompanyStatisticsItems } from './types';
 
 const CompanyContent = () => {
   const items: ICompanyStatisticsItems = [
@@ -33,18 +32,17 @@ const CompanyContent = () => {
       <div className="col-span-1">
         <div className="flex flex-col gap-5 lg:gap-7.5">
           <CompanyHighlights />
-          <CompanyOpenJobs url="#" />
+          <CompanyOpenJobs />
           <CompanyNetwork title="Network" data={data} />
           <DefaultTags title="Tags" />
         </div>
       </div>
       <div className="col-span-1 lg:col-span-2">
         <div className="flex flex-col gap-5 lg:gap-7.5">
-          <CompanyProfle />
           <CompanyLocations />
           <DefaultProjects />
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-5 lg:gap-7.5">
-            <DefaultConnections title="Members" url="#" />
+            <DefaultConnections title="Members" />
             <DefaultContributions title="Investments" />
           </div>
         </div>
@@ -53,4 +51,4 @@ const CompanyContent = () => {
   );
 };
 
-export { CompanyContent };
+export default  CompanyContent ;

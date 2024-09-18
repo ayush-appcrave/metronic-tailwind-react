@@ -19,6 +19,6 @@ const generateUniqueToken = (): string => {
   const randomString: string = Math.random().toString(36).substring(2, 8); // Random string of length 6
 
   return `${timestamp}-${randomString}`;
-}
+};
 
 export { deepMerge, generateUniqueToken };

@@ -1,47 +1,113 @@
-import dynamic from "next/dynamic";
-const ApexChart = dynamic(() => import("react-apexcharts"), { ssr: false });
+import ApexChart from 'react-apexcharts';
+import { ApexOptions } from 'apexcharts';
 
-import { KeenIcon } from '@/components';
+import { KeenIcon, Menu, MenuItem, MenuToggle } from '@/components';
 
-import { IApexContributionsOptions, IDefaultContributionsProps } from './interfaces';
+import { IApexContributionsOptions, IDefaultContributionsProps } from './types';
+import { DropdownCard2 } from '@/partials/dropdowns/general';
 
 const DefaultContributions = ({ title }: IDefaultContributionsProps) => {
+  const data: number[] = [44, 55, 41, 17, 15];
+  const labels: string[] = ['ERP', 'HRM', 'DMS', 'CRM', 'DAM'];
+  const colors: string[] = [
+    'var(--tw-primary)',
+    'var(--tw-brand)',
+    'var(--tw-success)',
+    'var(--tw-info)',
+    'var(--tw-warning)'
+  ];
+
   const options: IApexContributionsOptions = {
-    labels: ['ERP', 'HRM', 'DMS', 'CRM', 'DAM'],
-    series: [44, 55, 41, 17, 15],
-    colors: ['#1B84FF', '#F8285A', '#17C653', '#7239EA', '#F6C000'],
+    series: data,
+    labels: labels,
+    colors: colors,
+    fill: {
+      colors: colors
+    },
+    chart: {
+      type: 'donut'
+    },
+    stroke: {
+      show: true,
+      width: 2,
+      colors: 'var(--tw-light)'
+    },
     dataLabels: {
       enabled: false
-    }
+    },
+    plotOptions: {
+      pie: {
+        expandOnClick: false
+      }
+    },
+    legend: {
+      offsetY: -10,
+      offsetX: -10,
+      fontSize: '13px',
+      fontWeight: '500',
+      itemMargin: {
+        vertical: 1
+      },
+      labels: {
+        colors: 'var(--tw-gray-700)',
+        useSeriesColors: false
+      },
+      markers: {
+        width: 8,
+        height: 8
+      }
+    },
+    responsive: [
+      {
+        breakpoint: 480,
+        options: {
+          chart: {
+            width: 200
+          },
+          legend: {
+            position: 'bottom'
+          }
+        }
+      }
+    ]
   };
 
   return (
     <div className="card">
       <div className="card-header">
         <h3 className="card-title">{title}</h3>
-        <div className="menu" data-menu="true">
-          <div
-            className="menu-item"
-            data-menu-item-trigger="click"
-            data-menu-item-toggle="dropdown"
-            data-menu-item-placement="bottom-end"
+
+        <Menu className="items-stretch">
+          <MenuItem
+            toggle="dropdown"
+            trigger="click"
+            dropdownProps={{
+              placement: 'bottom-end',
+              modifiers: [
+                {
+                  name: 'offset',
+                  options: {
+                    offset: [0, 10] // [skid, distance]
+                  }
+                }
+              ]
+            }}
           >
-            <button className="btn btn-icon btn-light btn-clear btn-xs menu-toggle">
-              <KeenIcon icon="dots-vertical" className="!text-xl" />
-            </button>
-            <div className="menu-dropdown w-[175px] text-gray-700 px-3 py-3 text-2xs">
-              Menu content
-            </div>
-          </div>
-        </div>
+            <MenuToggle className="btn btn-sm btn-icon btn-light btn-clear mb-2.5-">
+              <KeenIcon icon="dots-vertical" />
+            </MenuToggle>
+            {DropdownCard2()}
+          </MenuItem>
+        </Menu>
       </div>
-      <div className="flex flex-col justify-center items-center grow px-3 py-1">
+
+      <div className="card-body flex justify-center items-center px-3 py-1">
         <ApexChart
           id="contributions_chart"
-          options={options}
+          options={options as ApexOptions}
           series={options.series}
           type="donut"
-          width="300"
+          width="100%"
           height="178.7"
         />
       </div>
@@ -49,4 +115,4 @@ const DefaultContributions = ({ title }: IDefaultContributionsProps) => {
   );
 };
 
-export { DefaultContributions }
+export default  DefaultContributions ;

@@ -1,88 +1,80 @@
-import { Work } from '@/partials/cards';
+import { CardWork } from '@/partials/cards';
 
-import { ICreatorWorksItem, ICreatorWorksItems } from './interfaces';
+import { ICreatorWorksItem, ICreatorWorksItems } from './types';
 
 const CreatorWorks = () => {
   const items: ICreatorWorksItems = [
     {
-      url: '#',
       title: 'Urban Dreams',
-      image: '/images/content/stock/1.jpg',
+      image: '1.jpg',
       authorName: 'Cody Fisher',
-      authorAvatar: '/images/content/avatars/300-3.jpg',
+      authorAvatar: '300-6.png',
       likes: 24,
       comments: 5
     },
     {
-      url: '#',
       title: 'Timeless Elegance',
-      image: '/images/content/stock/2.jpg',
+      image: '2.jpg',
       authorName: 'Jenny Wilson',
-      authorAvatar: '/images/content/avatars/300-20.jpg',
+      authorAvatar: '300-5.png',
       likes: 6,
       comments: 1
     },
     {
-      url: '#',
       title: 'Whispered Emotions',
-      image: '/images/content/stock/7.jpg',
+      image: '3.jpg',
       authorName: 'Wade Warren',
-      authorAvatar: '/images/content/avatars/300-9.jpg',
+      authorAvatar: '300-14.png',
       likes: 187,
       comments: 49
     },
     {
-      url: '#',
       title: 'Golden Serenity',
-      image: '/images/content/stock/9.jpg',
+      image: '4.jpg',
       authorName: 'Albert Flores',
-      authorAvatar: '/images/content/avatars/300-15.jpg',
+      authorAvatar: '300-11.png',
       likes: 60,
       comments: 13
     },
     {
-      url: '#',
       title: 'Wild Beauty',
-      image: '/images/content/stock/10.jpg',
+      image: '5.jpg',
       authorName: 'Devon Lane',
-      authorAvatar: '/images/content/avatars/300-18.jpg',
+      authorAvatar: '300-16.png',
       likes: 625,
       comments: 109
     },
     {
-      url: '#',
       title: 'Mystic Shadows',
-      image: '/images/content/stock/1.jpg',
+      image: '6.jpg',
       authorName: 'Kathryn Murphy',
-      authorAvatar: '/images/content/avatars/300-3.jpg',
+      authorAvatar: '300-1.png',
       likes: 37,
       comments: 16
     }
   ];
 
-  const renderItem = (item: ICreatorWorksItem) => {
+  const renderItem = (item: ICreatorWorksItem, index: number) => {
     return (
-      <>
-        <Work
-          url={item.url}
-          title={item.title}
-          image={item.image}
-          authorName={item.authorName}
-          authorAvatar={item.authorAvatar}
-          likes={item.likes}
-          comments={item.comments}
-        />
-      </>
+      <CardWork
+        title={item.title}
+        image={item.image}
+        authorName={item.authorName}
+        authorAvatar={item.authorAvatar}
+        likes={item.likes}
+        comments={item.comments}
+        key={index}
+      />
     );
   };
 
   return (
     <div className="grid grid-cols-1 md:grid-cols-2 gap-5 lg:gap-7.5">
       {items.map((item, index) => {
-        return renderItem(item);
+        return renderItem(item, index);
       })}
     </div>
   );
 };
 
-export { CreatorWorks };
+export default  CreatorWorks ;

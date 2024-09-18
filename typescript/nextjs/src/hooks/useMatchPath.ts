@@ -6,21 +6,21 @@ interface ReturnType {
 }
 
 export const removeTrailingSlash = (val: string) =>
-    val.endsWith('/') ? val.substring(0, val.length - 1) : val;
+  val.endsWith('/') ? val.substring(0, val.length - 1) : val;
 
 export const matchesPathname = (asPath: string, pathname: string) => {
   if (asPath === pathname) {
     return true;
   }
-  const baseAsPath = removeTrailingSlash(asPath.split('?')[0]);
-  const basePathname = removeTrailingSlash(pathname.split('?')[0]);
+  const baseAsPath = removeTrailingSlash(asPath.split('?')[0] as string);
+  const basePathname = removeTrailingSlash(pathname.split('?')[0] as string);
   if (baseAsPath === basePathname) {
     return true;
   }
   const basePathRegex = new RegExp(
-      `^${basePathname.replace(/(\[[a-zA-Z0-9-]+\])+/g, '[a-zA-Z0-9-]+')}$`
-          .replace(/\[\[\.\.\.[a-zA-Z0-9-]+\]\]/g, '?.*')
-          .replace(/\[\.\.\.[a-zA-Z0-9-]+\]/g, '.*')
+    `^${basePathname.replace(/(\[[a-zA-Z0-9-]+\])+/g, '[a-zA-Z0-9-]+')}$`
+      .replace(/\[\[\.\.\.[a-zA-Z0-9-]+\]\]/g, '?.*')
+      .replace(/\[\.\.\.[a-zA-Z0-9-]+\]/g, '.*'),
   );
   if (basePathRegex.test(baseAsPath)) {
     return true;
@@ -29,8 +29,7 @@ export const matchesPathname = (asPath: string, pathname: string) => {
 };
 
 const useMatchPath = (path: string, mode = 'default'): ReturnType => {
-  const router = useRouter();
-  const { pathname } = router;
+  const { pathname } = useRouter();
   let match: boolean = false;
 
   if (mode === 'default' && matchesPathname(pathname, path)) {

@@ -1,16 +1,13 @@
-import { Tournament } from '@/partials/cards';
+import { CardTournament } from '@/partials/cards';
 
-import {
-  IGamerTournamentsItem,
-  IGamerTournamentsItems,
-  IGamerTournamentsProps
-} from './interfaces';
+import { IGamerTournamentsItem, IGamerTournamentsItems } from './types';
+import React from 'react';
 
-const GamerTournaments = ({ url }: IGamerTournamentsProps) => {
+const GamerTournaments = () => {
   const items: IGamerTournamentsItems = [
     {
-      image: '11.jpg',
-      logo: 'gamer-online-game.png',
+      image: '9.jpg',
+      logo: 'clusterhq.svg',
       title: 'CyberStorm Cup',
       time: 'WED, FEB 16, 12:30 CET',
       labels: ['CS 2', 'PUBG', 'RAID', 'COD', 'Fortnite'],
@@ -22,8 +19,8 @@ const GamerTournaments = ({ url }: IGamerTournamentsProps) => {
       }
     },
     {
-      image: '11.jpg',
-      logo: 'gamer-online-game.png',
+      image: '33.jpg',
+      logo: 'jira.svg',
       title: 'PixelPulse Showdown',
       time: 'MON, MAR 2, 16:00 CET',
       labels: ['TERA', 'MK11', 'PUBG', 'HOTS', 'R6'],
@@ -35,8 +32,8 @@ const GamerTournaments = ({ url }: IGamerTournamentsProps) => {
       }
     },
     {
-      image: '11.jpg',
-      logo: 'gamer-online-game.png',
+      image: '34.jpg',
+      logo: 'xostme-ltd.svg',
       title: 'NexusRift Masters',
       time: 'SUN, APR 29, 11:00 CET',
       labels: ['HS', 'Valorant', 'Dota 2', 'PUBG', 'COD'],
@@ -49,7 +46,7 @@ const GamerTournaments = ({ url }: IGamerTournamentsProps) => {
     },
     {
       image: '11.jpg',
-      logo: 'gamer-online-game.png',
+      logo: 'tezos.svg',
       title: 'CyberStorm Cup',
       time: 'WED, FEB 16, 12:30 CET',
       labels: ['CS 2', 'PUBG', 'RAID', 'COD', 'Fortnite'],
@@ -61,8 +58,8 @@ const GamerTournaments = ({ url }: IGamerTournamentsProps) => {
       }
     },
     {
-      image: '11.jpg',
-      logo: 'gamer-online-game.png',
+      image: '12.jpg',
+      logo: 'paccion.svg',
       title: 'PixelPulse Showdown',
       time: 'MON, MAR 2, 16:00 CET',
       labels: ['TERA', 'MK11', 'PUBG', 'HOTS', 'R6'],
@@ -75,10 +72,10 @@ const GamerTournaments = ({ url }: IGamerTournamentsProps) => {
     }
   ];
 
-  const renderItem = (item: IGamerTournamentsItem) => {
+  const renderItem = (item: IGamerTournamentsItem, index: number) => {
     return (
-      <>
-        <Tournament
+      <React.Fragment key={index}>
+        <CardTournament
           image={item.image}
           logo={item.logo}
           title={item.title}
@@ -86,7 +83,7 @@ const GamerTournaments = ({ url }: IGamerTournamentsProps) => {
           labels={item.labels}
           progress={item.progress}
         />
-      </>
+      </React.Fragment>
     );
   };
 
@@ -96,15 +93,15 @@ const GamerTournaments = ({ url }: IGamerTournamentsProps) => {
         <h3 className="card-title">Floyd’s Tournaments</h3>
 
         <div className="justify-center">
-          <a href={url} className="btn btn-link">
+          <a href="#" className="btn btn-link">
             View All
           </a>
         </div>
       </div>
-      <div className="card-body">
+      <div className="card-body p-5 lg:p-7.5 lg:pb-7">
         <div className="flex flex-no-wrap scrollable-x gap-5">
           {items.map((item, index) => {
-            return renderItem(item);
+            return renderItem(item, index);
           })}
         </div>
       </div>
@@ -112,4 +109,4 @@ const GamerTournaments = ({ url }: IGamerTournamentsProps) => {
   );
 };
 
-export { GamerTournaments };
+export default  GamerTournaments ;

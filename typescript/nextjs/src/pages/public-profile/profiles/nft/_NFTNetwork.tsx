@@ -1,6 +1,6 @@
 import { KeenIcon } from '@/components';
 
-import { INFTNetworkItem, INFTNetworkItems } from './interfaces';
+import { INFTNetworkItem, INFTNetworkItems } from './types';
 
 const NFTNetwork = () => {
   const items: INFTNetworkItems = [
@@ -10,19 +10,17 @@ const NFTNetwork = () => {
     { logo: 'sms', info: 'jennyklabber' }
   ];
 
-  const renderItems = (item: INFTNetworkItem) => {
+  const renderItems = (item: INFTNetworkItem, index: number) => {
     return (
-      <>
-        <div className="flex items-center gap-2.5">
-          <KeenIcon icon={item.logo} className="text-base text-gray-500" />
-          <a
-            href="#"
-            className="text-sm font-medium leading-none text-gray-800  hover:text-primary-active"
-          >
-            {item.info}
-          </a>
-        </div>
-      </>
+      <div key={index} className="flex items-center gap-2.5">
+        <KeenIcon icon={item.logo} className="text-base text-gray-500" />
+        <a
+          href="#"
+          className="text-sm font-medium leading-none text-gray-800 hover:text-primary-active"
+        >
+          {item.info}
+        </a>
+      </div>
     );
   };
 
@@ -35,7 +33,7 @@ const NFTNetwork = () => {
       <div className="card-body">
         <div className="grid gap-y-3.5">
           {items.map((item, index) => {
-            return renderItems(item);
+            return renderItems(item, index);
           })}
         </div>
       </div>
@@ -43,4 +41,4 @@ const NFTNetwork = () => {
   );
 };
 
-export { NFTNetwork };
+export default  NFTNetwork ;

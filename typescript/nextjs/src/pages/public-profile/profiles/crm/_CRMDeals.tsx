@@ -1,6 +1,8 @@
-import { KeenIcon } from '@/components';
+import { KeenIcon, Menu, MenuItem, MenuToggle } from '@/components';
 
-import { ICRMDealsItem, ICRMDealsItems } from './interfaces';
+import { ICRMDealsItem, ICRMDealsItems } from './types';
+import Link from 'next/link';
+import { DropdownCrud1, DropdownCrudItem1 } from '@/partials/dropdowns/general';
 
 const CRMDeals = () => {
   const items: ICRMDealsItems = [
@@ -41,44 +43,48 @@ const CRMDeals = () => {
     }
   ];
 
-  const renderItem = (item: ICRMDealsItem) => {
+  const renderItem = (item: ICRMDealsItem, index: number) => {
     return (
-      <>
-        <tr>
-          <td className="text-left">
-            <a href="#" className="text-sm font-semibold text-gray-800 hover:text-primary">
-              {item.name}
-            </a>
-          </td>
+      <tr key={index}>
+        <td className="text-left">
+          <a href="#" className="text-sm font-semibold text-gray-900 hover:text-primary">
+            {item.name}
+          </a>
+        </td>
 
-          <td className="text-sm text-gray-700 font-medium">${item.ammount}</td>
+        <td className="text-sm text-gray-700 font-medium">${item.ammount}</td>
 
-          <td>
-            <div className={`badge badge-sm ${item.color} badge-light`}>{item.label}</div>
-          </td>
+        <td>
+          <div className={`badge badge-sm ${item.color} badge-outline`}>{item.label}</div>
+        </td>
 
-          <td className="text-sm font-medium text-gray-700">{item.date} days</td>
+        <td className="text-sm font-medium text-gray-700">{item.date} days</td>
 
-          <td>
-            <div className="menu" data-menu="true">
-              <div
-                className="menu-item"
-                data-menu-item-trigger="click"
-                data-menu-item-toggle="dropdown"
-                data-menu-item-placement="bottom-end"
-              >
-                <button className="btn btn-icon btn-light btn-clear btn-xs menu-toggle">
-                  <KeenIcon icon="dots-vertical" className="!text-xl" />
-                </button>
-
-                <div className="menu-dropdown w-[175px] text-gray-700 px-3 py-3 text-2xs">
-                  Menu content
-                </div>
-              </div>
-            </div>
-          </td>
-        </tr>
-      </>
+        <td className="text-left">
+          <Menu className="items-stretch">
+            <MenuItem
+              toggle="dropdown"
+              trigger="click"
+              dropdownProps={{
+                placement: 'bottom-end',
+                modifiers: [
+                  {
+                    name: 'offset',
+                    options: {
+                      offset: [0, 10] // [skid, distance]
+                    }
+                  }
+                ]
+              }}
+            >
+              <MenuToggle className="btn btn-sm btn-icon btn-light btn-clear mb-2.5-">
+                <KeenIcon icon="dots-vertical" />
+              </MenuToggle>
+              {DropdownCrudItem1()}
+            </MenuItem>
+          </Menu>
+        </td>
+      </tr>
     );
   };
 
@@ -87,22 +93,28 @@ const CRMDeals = () => {
       <div className="card-header">
         <h3 className="card-title">Deals</h3>
 
-        <div className="menu" data-menu="true">
-          <div
-            className="menu-item"
-            data-menu-item-trigger="click"
-            data-menu-item-toggle="dropdown"
-            data-menu-item-placement="bottom-end"
+        <Menu className="items-stretch">
+          <MenuItem
+            toggle="dropdown"
+            trigger="click"
+            dropdownProps={{
+              placement: 'bottom-end',
+              modifiers: [
+                {
+                  name: 'offset',
+                  options: {
+                    offset: [0, 10] // [skid, distance]
+                  }
+                }
+              ]
+            }}
           >
-            <button className="btn btn-icon btn-light btn-clear btn-xs menu-toggle">
-              <KeenIcon icon="dots-vertical" className="!text-xl" />
-            </button>
-
-            <div className="menu-dropdown w-[175px] text-gray-700 px-3 py-3 text-2xs">
-              Menu content
-            </div>
-          </div>
-        </div>
+            <MenuToggle className="btn btn-sm btn-icon btn-light btn-clear mb-2.5-">
+              <KeenIcon icon="dots-vertical" />
+            </MenuToggle>
+            {DropdownCrud1()}
+          </MenuItem>
+        </Menu>
       </div>
       <div className="card-table scrollable-x-auto">
         <table className="table text-right">
@@ -117,18 +129,18 @@ const CRMDeals = () => {
           </thead>
           <tbody>
             {items.map((item, index) => {
-              return renderItem(item);
+              return renderItem(item, index);
             })}
           </tbody>
         </table>
       </div>
       <div className="card-footer justify-center">
-        <a href="#" className="btn btn-link">
+        <Link to="/account/billing/history" className="btn btn-link">
           All Deals
-        </a>
+        </Link>
       </div>
     </div>
   );
 };
 
-export { CRMDeals };
+export default  CRMDeals ;

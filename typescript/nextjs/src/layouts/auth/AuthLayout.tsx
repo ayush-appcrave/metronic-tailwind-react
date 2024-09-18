@@ -1,24 +1,27 @@
 import { Link, Outlet } from 'react-router-dom';
 
 import { AuthLayoutProvider } from './AuthLayoutProvider';
+import { toAbsoluteUrl } from '@/utils';
+import useBodyClasses from '@/hooks/useBodyClasses';
 
 const Layout = () => {
+  useBodyClasses('dark:bg-coal-500');
+
   return (
     <>
-      <h1>Auth layout</h1>
-      <ul>
-        <li>
-          <Link href="/auth/login">Sign in</Link>
-        </li>
-        <li>
-          <Link href="/auth/registration">Registration</Link>
-        </li>
-        <li>
-          <Link href="/auth/forgot-password">Forgot password</Link>
-        </li>
-      </ul>
-      <h5>Auth content</h5>
-      <Outlet />
+      <style>
+        {`
+          .page-bg {
+            background-image: url('${toAbsoluteUrl('/media/images/2600x1200/bg-10.png')}');
+          }
+          .dark .page-bg {
+            background-image: url('${toAbsoluteUrl('/media/images/2600x1200/bg-10-dark.png')}');
+          }
+        `}
+      </style>
+      <div className="flex items-center justify-center grow bg-center bg-no-repeat page-bg">
+        <Outlet />
+      </div>
     </>
   );
 };

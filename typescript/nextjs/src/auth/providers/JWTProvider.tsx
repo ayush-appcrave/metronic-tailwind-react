@@ -44,7 +44,7 @@ interface AuthContextProps {
 const AuthContext = createContext<AuthContextProps | null>(null);
 
 const AuthProvider = ({ children }: PropsWithChildren) => {
-  const [loading, setLoading] = useState(false);
+  const [loading, setLoading] = useState(true);
   const [auth, setAuth] = useState<AuthModel | undefined>(authHelper.getAuth());
   const [currentUser, setCurrentUser] = useState<UserModel | undefined>();
 
@@ -62,11 +62,10 @@ const AuthProvider = ({ children }: PropsWithChildren) => {
   };
 
   useEffect(() => {
-    (async () => {
-      setLoading(true);
-      await verify();
+    verify().finally(() => {
+      // delay for layout initialization
       setLoading(false);
-    })();
+    });
   }, []);
 
   // Set auth object and save it to local storage
@@ -106,8 +105,8 @@ const AuthProvider = ({ children }: PropsWithChildren) => {
     try {
       const { data: auth } = await axios.post(REGISTER_URL, {
         email,
-        first_name: firstname,
-        last_name: lastname,
+        first_name: 'DefaultName',
+        last_name: 'DefaultSurname',
         password,
         password_confirmation
       });

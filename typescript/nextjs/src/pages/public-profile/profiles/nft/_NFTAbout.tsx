@@ -1,4 +1,4 @@
-import { INFTAboutItem, INFTAboutItems } from './interfaces';
+import { INFTAboutItem, INFTAboutItems } from './types';
 
 const NFTAbout = () => {
   const items: INFTAboutItems = [
@@ -10,18 +10,16 @@ const NFTAbout = () => {
     }
   ];
 
-  const renderItems = (item: INFTAboutItem) => {
+  const renderItems = (item: INFTAboutItem, index: number) => {
     return (
-      <>
-        <div className="flex items-center gap-2.5">
-          <span className="text-sm font-medium text-gray-500 min-w-14 xl:min-w-24 shrink-0">
-            {item.label}
-          </span>
-          <div className="text-sm font-medium text-gray-800">
-            <span dangerouslySetInnerHTML={{ __html: item.info }}></span>
-          </div>
+      <div key={index} className="flex items-center gap-2.5">
+        <span className="text-sm font-medium text-gray-500 min-w-14 xl:min-w-24 shrink-0">
+          {item.label}
+        </span>
+        <div className="text-sm font-medium text-gray-800">
+          <span dangerouslySetInnerHTML={{ __html: item.info }}></span>
         </div>
-      </>
+      </div>
     );
   };
 
@@ -33,7 +31,7 @@ const NFTAbout = () => {
       <div className="card-body">
         <div className="flex flex-col gap-3.5 mb-3.5">
           {items.map((item, index) => {
-            return renderItems(item);
+            return renderItems(item, index);
           })}
         </div>
 
@@ -46,4 +44,4 @@ const NFTAbout = () => {
   );
 };
 
-export { NFTAbout };
+export default  NFTAbout ;

@@ -1,12 +1,12 @@
 import { Container } from '@/components/container';
+import { MENU_SIDEBAR } from '@/config/menu.config';
 import { UserProfileHero } from '@/partials/heros';
 import { NavbarMenu } from '@/partials/menu/NavbarMenu';
 import { Navbar, NavbarActions } from '@/partials/navbar';
 import { useMenu } from '@/providers';
 import { toAbsoluteUrl } from '@/utils/Assets';
 
-import { BloggerContent } from '@/pages/public-profile/profiles/blogger/index';
-import {Demo1Layout} from "@/layouts/demo1";
+import { BloggerContent } from '.';
 
 const BloggerPage = () => {
   const { getMenuConfig } = useMenu();
@@ -14,7 +14,7 @@ const BloggerPage = () => {
 
   const image = (
     <img
-      src={toAbsoluteUrl('/images/content/avatars/300-2.jpg')}
+      src={toAbsoluteUrl('/media/avatars/300-1.png')}
       className="rounded-full border-3 border-success max-h-[100px] max-w-full"
     />
   );
@@ -22,7 +22,7 @@ const BloggerPage = () => {
   return (
     <>
       <UserProfileHero
-        name="Inferno"
+        name="Jenny Klabber"
         image={image}
         info={[
           { label: 'KeenThemes', icon: 'dribbble' },
@@ -33,7 +33,7 @@ const BloggerPage = () => {
 
       <Container>
         <Navbar>
-          {secondaryMenu && <NavbarMenu items={secondaryMenu} />}
+          {MENU_SIDEBAR[2]?.children && <NavbarMenu items={MENU_SIDEBAR[2].children} />}
           <NavbarActions>Buttons</NavbarActions>
         </Navbar>
       </Container>
@@ -44,7 +44,5 @@ const BloggerPage = () => {
     </>
   );
 };
-
-BloggerPage.getLayout = (page: React.ReactElement) => <Demo1Layout>{page}</Demo1Layout>;
 
 export default  BloggerPage ;

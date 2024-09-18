@@ -1,8 +1,7 @@
 import { KeenIcon } from '@/components';
+import Link from 'next/link';
 
-import { ICRMApiCredentialsProps } from './interfaces';
-
-const CRMApiCredentials = ({ url }: ICRMApiCredentialsProps) => {
+const CRMApiCredentials = () => {
   return (
     <div className="card">
       <div className="card-header">
@@ -24,6 +23,7 @@ const CRMApiCredentials = ({ url }: ICRMApiCredentialsProps) => {
               className="input w-full input-sm"
               placeholder="hwewe4654fdd5sdfh"
               value=""
+              readOnly
             />
             <button className="btn btn-clear btn-icon btn-sm text-gray-600 absolute right-0 top-2/4 -translate-y-2/4 me-1.5">
               <KeenIcon icon="copy" />
@@ -39,12 +39,12 @@ const CRMApiCredentials = ({ url }: ICRMApiCredentialsProps) => {
       </div>
 
       <div className="card-footer justify-center">
-        <a href={url} className="btn btn-link">
+        <Link to="/account/api-keys" className="btn btn-link">
           Check API’s
-        </a>
+        </Link>
       </div>
     </div>
   );
 };
 
-export { CRMApiCredentials };
+export default  CRMApiCredentials ;

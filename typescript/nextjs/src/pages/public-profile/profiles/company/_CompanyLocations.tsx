@@ -1,22 +1,22 @@
 import { KeenIcon } from '@/components';
-import { Location } from '@/partials/cards';
+import { CardLocation } from '@/partials/cards';
 
-import { ICompanyLocationsItem, ICompanyLocationsItems } from './interfaces';
+import { ICompanyLocationsItem, ICompanyLocationsItems } from './types';
 
 const CompanyLocations = () => {
   const items: ICompanyLocationsItems = [
     {
-      image: '4.jpg',
+      image: '10.jpg',
       title: 'Duolingo Tech Hub',
       description: '456 Innovation Street, Floor 6, Techland, New York 54321'
     },
     {
-      image: '5.jpg',
+      image: '11.jpg',
       title: 'Duolingo Language Lab',
       description: '789 Learning Lane, 3rd Floor, Lingoville, Texas 98765'
     },
     {
-      image: '6.jpg',
+      image: '12.jpg',
       title: 'Duolingo Research Institute',
       description: '246 Innovation Road, Research Wing, Innovacity, Arizona 13579'
     },
@@ -32,11 +32,14 @@ const CompanyLocations = () => {
     }
   ];
 
-  const renderItem = (item: ICompanyLocationsItem) => {
+  const renderItem = (item: ICompanyLocationsItem, index: number) => {
     return (
-      <>
-        <Location image={item.image} title={item.title} description={item.description} />
-      </>
+      <CardLocation
+        key={index}
+        image={item.image}
+        title={item.title}
+        description={item.description}
+      />
     );
   };
 
@@ -50,10 +53,10 @@ const CompanyLocations = () => {
           Offer Location
         </button>
       </div>
-      <div className="card-body">
+      <div className="card-body p-5 lg:p-7.5 lg:pb-7">
         <div className="flex gap-5 scrollable-x">
           {items.map((item, index) => {
-            return renderItem(item);
+            return renderItem(item, index);
           })}
         </div>
       </div>
@@ -61,4 +64,4 @@ const CompanyLocations = () => {
   );
 };
 
-export { CompanyLocations };
+export default  CompanyLocations ;

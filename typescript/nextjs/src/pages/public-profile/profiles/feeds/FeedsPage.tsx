@@ -6,13 +6,11 @@ import { Navbar, NavbarActions } from '@/partials/navbar';
 import { toAbsoluteUrl } from '@/utils/Assets';
 
 import { FeedsContent } from '.';
-import {Demo1Layout} from "@/layouts/demo1";
-import DefaultPage from "@/pages/public-profile/profiles/default/DefaultPage";
 
 const FeedsPage = () => {
   const image = (
     <img
-      src={toAbsoluteUrl('/images/content/avatars/300-2.jpg')}
+      src={toAbsoluteUrl('/media/avatars/300-1.png')}
       className="rounded-full border-3 border-success max-h-[100px] max-w-full"
     />
   );
@@ -42,7 +40,5 @@ const FeedsPage = () => {
     </>
   );
 };
-
-FeedsPage.getLayout = (page: React.ReactElement) => <Demo1Layout>{page}</Demo1Layout>;
 
 export default  FeedsPage ;

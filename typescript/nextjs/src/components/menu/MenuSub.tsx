@@ -1,8 +1,7 @@
 import { Collapse } from '@mui/material';
 import clsx from 'clsx';
 import { Children, cloneElement, forwardRef, isValidElement, memo } from 'react';
-
-import { IMenuItemProps, IMenuSubProps } from './';
+import { IMenuItemProps, IMenuSubProps, MenuItem } from './';
 
 const MenuSubComponent = forwardRef<HTMLDivElement | null, IMenuSubProps>(
   function MenuSub(props, ref) {
@@ -11,24 +10,28 @@ const MenuSubComponent = forwardRef<HTMLDivElement | null, IMenuSubProps>(
       enter,
       toggle = 'accordion',
       className,
-      onLinksClick,
-      handleParentClose,
-      handleClick,
-      handleEnd,
-      children
+      handleParentHide,
+      handleEntered,
+      handleExited,
+      children,
+      level
     } = props;
 
     const modifiedChildren = Children.map(children, (child, index) => {
       if (isValidElement(child)) {
-        // Add some props to each child
-        const modifiedProps: IMenuItemProps = {
-          handleParentClose,
-          handleClick,
-          onLinksClick
-        };
+        if (child.type === MenuItem) {
+          // Add some props to each child
+          const modifiedProps: IMenuItemProps = {
+            handleParentHide,
+            level,
+            index
+          };
 
-        // Return the child with modified props
-        return cloneElement(child, modifiedProps);
+          // Return the child with modified props
+          return cloneElement(child, modifiedProps);
+        } else {
+          return cloneElement(child);
+        }
       }
 
       // Return the child as is if it's not a valid React element
@@ -40,8 +43,8 @@ const MenuSubComponent = forwardRef<HTMLDivElement | null, IMenuSubProps>(
         return (
           <Collapse
             in={show}
-            onExited={handleEnd}
-            onEntered={handleEnd}
+            onEntered={handleEntered}
+            onExited={handleExited}
             timeout="auto"
             enter={enter}
           >

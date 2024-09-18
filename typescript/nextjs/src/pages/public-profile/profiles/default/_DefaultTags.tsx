@@ -1,6 +1,6 @@
 import clsx from 'clsx';
 
-import { IDefaultTagsItem, IDefaultTagsItems, IDefaultTagsProps } from './interfaces';
+import { IDefaultTagsItem, IDefaultTagsItems, IDefaultTagsProps } from './types';
 
 const DefaultTags = ({ title, className }: IDefaultTagsProps) => {
   const items: IDefaultTagsItems = [
@@ -14,8 +14,12 @@ const DefaultTags = ({ title, className }: IDefaultTagsProps) => {
     { label: 'Management' }
   ];
 
-  const renderItem = (item: IDefaultTagsItem) => {
-    return <span className="badge badge-sm badge-gray-200">{item.label}</span>;
+  const renderItem = (item: IDefaultTagsItem, index: number) => {
+    return (
+      <span key={index} className="badge badge-sm badge-gray-200">
+        {item.label}
+      </span>
+    );
   };
 
   return (
@@ -23,10 +27,11 @@ const DefaultTags = ({ title, className }: IDefaultTagsProps) => {
       <div className="card-header">
         <h3 className="card-title">{title}</h3>
       </div>
+
       <div className="card-body">
         <div className="flex flex-wrap gap-2.5 mb-2">
           {items.map((item, index) => {
-            return renderItem(item);
+            return renderItem(item, index);
           })}
         </div>
       </div>
@@ -34,4 +39,4 @@ const DefaultTags = ({ title, className }: IDefaultTagsProps) => {
   );
 };
 
-export { DefaultTags }
+export default  DefaultTags ;

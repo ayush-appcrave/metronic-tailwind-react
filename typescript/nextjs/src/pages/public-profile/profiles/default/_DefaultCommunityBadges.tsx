@@ -1,8 +1,12 @@
 import { KeenIcon } from '@/components';
 
-import { IDefaultCommunityBadgesItem, IDefaultCommunityBadgesItems } from './interfaces';
+import {
+  IDefaultCommunityBadgesItem,
+  IDefaultCommunityBadgesItems,
+  IDefaultCommunityBadgesProps
+} from './types';
 
-const DefaultCommunityBadges = () => {
+const DefaultCommunityBadges = ({ title }: IDefaultCommunityBadgesProps) => {
   const items: IDefaultCommunityBadgesItems = [
     {
       stroke: 'stroke-primary-clarity',
@@ -30,9 +34,9 @@ const DefaultCommunityBadges = () => {
     }
   ];
 
-  const renderItem = (item: IDefaultCommunityBadgesItem) => {
+  const renderItem = (item: IDefaultCommunityBadgesItem, index: number) => {
     return (
-      <div className="relative size-[50px] shrink-0">
+      <div key={index} className="relative size-[50px] shrink-0">
         <svg
           className={`w-full h-full ${item.stroke} ${item.fill}`}
           width="44"
@@ -66,12 +70,13 @@ const DefaultCommunityBadges = () => {
   return (
     <div className="card">
       <div className="card-header">
-        <h3 className="card-title">Community Badges</h3>
+        <h3 className="card-title">{title}</h3>
       </div>
+
       <div className="card-body pb-7.5">
         <div className="flex items-center flex-wrap gap-3 lg:gap-4">
           {items.map((item, index) => {
-            return renderItem(item);
+            return renderItem(item, index);
           })}
         </div>
       </div>
@@ -79,4 +84,4 @@ const DefaultCommunityBadges = () => {
   );
 };
 
-export { DefaultCommunityBadges }
+export default  DefaultCommunityBadges ;

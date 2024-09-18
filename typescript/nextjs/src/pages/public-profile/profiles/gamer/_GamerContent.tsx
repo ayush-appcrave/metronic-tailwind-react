@@ -1,7 +1,5 @@
-import { CompanyNetwork } from '../company';
-import { ICompanyNetworkItems } from '../company/interfaces';
-import { CreatorUsers } from '../creator';
-import { ICreatorUsersItems } from '../creator/interfaces';
+import { CompanyNetwork, ICompanyNetworkItems } from '../company';
+import { CreatorUsers, ICreatorUsersItems } from '../creator';
 import { DefaultCommunityBadges } from '../default';
 import {
   GamerAbout,
@@ -11,26 +9,26 @@ import {
   GamerStatistics,
   GamerTournaments
 } from '.';
-import { IGamerStatisticsItems } from './interfaces';
+import { IGamerStatisticsItems } from './types';
 
 const GamerContent = () => {
   const details: IGamerStatisticsItems = [
-    { image: 'gamer-online-game.png', number: '164', label: 'Tournaments' },
-    { image: 'gamer-online-game.png', number: '73.2%', label: 'Game Win-rate' },
-    { image: 'gamer-online-game.png', number: '257', label: 'Duels Played' },
-    { image: 'gamer-online-game.png', number: '19', label: 'Trophies' }
+    { image: 'online-game.svg', number: '164', label: 'Tournaments' },
+    { image: 'gamer-coin.svg', number: '73.2%', label: 'Game Win-rate' },
+    { image: 'gamer-diamond.svg', number: '257', label: 'Duels Played' },
+    { image: 'gamer-trophy.svg', number: '19', label: 'Trophies' }
   ];
 
   const items: ICreatorUsersItems = [
-    { image: '300-11.jpg' },
-    { image: '300-2.jpg' },
-    { image: '300-1.jpg' },
-    { image: '300-3.jpg' },
-    { image: '300-20.jpg' },
-    { image: '300-4.jpg' },
-    { image: '300-15.jpg' },
-    { image: '300-13.jpg' },
-    { image: '300-10.jpg' }
+    { image: '300-27.png' },
+    { image: '300-1.png' },
+    { image: '300-2.png' },
+    { image: '300-3.png' },
+    { image: '300-5.png' },
+    { image: '300-23.png' },
+    { image: '300-6.png' },
+    { image: '300-11.png' },
+    { image: '300-12.png' }
   ];
 
   const data: ICompanyNetworkItems = [
@@ -50,17 +48,17 @@ const GamerContent = () => {
         <div className="grid gap-5 lg:gap-7.5">
           <GamerFavoriteGames />
           <GamerAbout />
-          <DefaultCommunityBadges />
-          <CreatorUsers title="Floyd’s Team" url="#" items={items} />
+          <DefaultCommunityBadges title="Badges" />
+          <CreatorUsers title="Floyd’s Team" items={items} />
           <CompanyNetwork title="Network" data={data} />
         </div>
       </div>
       <div className="col-span-2">
         <div className="flex flex-col gap-5 lg:gap-7.5">
           <div className="flex flex-col gap-5 lg:gap-7.5">
-            <GamerTournaments url="#" />
-            <GamerNowPlaying url="#" />
-            <GamerActivity url="#" />
+            <GamerTournaments />
+            <GamerNowPlaying />
+            <GamerActivity />
           </div>
         </div>
       </div>
@@ -68,4 +66,4 @@ const GamerContent = () => {
   );
 };
 
-export { GamerContent };
+export default  GamerContent ;

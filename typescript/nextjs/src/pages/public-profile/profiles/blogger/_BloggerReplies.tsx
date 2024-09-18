@@ -1,13 +1,14 @@
 import { KeenIcon } from '@/components';
 
-import { IBloggerRepliesItem, IBloggerRepliesItems } from './interfaces';
+import { IBloggerRepliesItem, IBloggerRepliesItems } from './types';
+import Link from 'next/link';
 
 const BloggerReplies = () => {
   const items: IBloggerRepliesItems = [
     {
       borderColor: 'border-brand',
       date: '10 Jan',
-      comments: 5,
+      comments: 24,
       text: 'Experienced UI/UX designer seeking new opportunities.'
     },
     {
@@ -36,24 +37,22 @@ const BloggerReplies = () => {
     }
   ];
 
-  const renderItem = (item: IBloggerRepliesItem) => {
+  const renderItem = (item: IBloggerRepliesItem, index: number) => {
     return (
-      <>
-        <div className={`border-l-2 ${item.borderColor}`}>
-          <div className="flex gap-3 items-center ps-3 mb-0.5">
-            <span className="text-2xs font-medium text-gray-500">{item.date}, 24</span>
+      <div key={index} className={`border-l-2 ${item.borderColor}`}>
+        <div className="flex gap-3 items-center ps-3 mb-0.5">
+          <span className="text-2xs text-gray-600">{item.date}, 24</span>
 
-            <div className="rounded-full w-1.5 h-1.5 bg-gray-300 gap-1.5"></div>
+          <div className="rounded-full w-1.5 h-1.5 bg-gray-300 gap-1.5"></div>
 
-            <div className="flex gap-1 items-center">
-              <KeenIcon icon="heart" className="text-base text-gray-500" />
-              <span className="text-sm font-medium text-gray-700">{item.comments}</span>
-            </div>
+          <div className="flex gap-1 items-center">
+            <KeenIcon icon="heart" className="text-base text-gray-500" />
+            <span className="text-2sm text-gray-600">{item.comments}</span>
           </div>
-
-          <p className="text-sm text-gray-700 font-medium leading-5.5 ps-3">{item.text}</p>
         </div>
-      </>
+
+        <p className="text-sm text-gray-800 leading-5.5 ps-3">{item.text}</p>
+      </div>
     );
   };
 
@@ -61,11 +60,15 @@ const BloggerReplies = () => {
     <div className="card">
       <div className="card-header">
         <h3 className="card-title">Jenny’s Replies</h3>
+
+        <Link to="/public-profile/profiles/feeds" className="btn btn-link">
+          View All
+        </Link>
       </div>
       <div className="card-body pb-7">
-        <div className="flex flex-col gap-4">
+        <div className="flex flex-col gap-5">
           {items.map((item, index) => {
-            return renderItem(item);
+            return renderItem(item, index);
           })}
         </div>
       </div>
@@ -73,4 +76,4 @@ const BloggerReplies = () => {
   );
 };
 
-export { BloggerReplies } ;
+export default  BloggerReplies ;

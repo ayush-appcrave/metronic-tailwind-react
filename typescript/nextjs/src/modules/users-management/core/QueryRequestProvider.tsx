@@ -1,5 +1,5 @@
 import qs from 'qs';
-import { createContext, type FC, type ReactNode, useContext, useEffect, useState } from 'react';
+import { createContext, type FC, type ReactNode, useContext, useState } from 'react';
 import { useRouter } from 'next/router';
 
 import {
@@ -19,7 +19,6 @@ const QueryRequestProvider: FC<WithChildren> = ({ children }) => {
   const [searchParams, setSearchParams] = useRouter().query;
   const [state, setState] = useState<UserQueryState>({
     ...initialQueryRequest.state,
-    // initialze state with valus from query
     ...(qs.parse(searchParams.toString()) as Partial<UserQueryState>)
   });
 

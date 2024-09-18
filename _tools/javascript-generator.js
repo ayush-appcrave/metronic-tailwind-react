@@ -21,6 +21,7 @@ const filesToCopy = [
   "src/modules",
   "src/pages",
   "src/providers",
+  "src/plugins",
   "src/routing",
   "src/utils",
   "src/partials",

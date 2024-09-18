@@ -1,4 +1,5 @@
 import { toAbsoluteUrl } from '@/utils/Assets';
+import Link from 'next/link';
 
 const PlainGettingStarted = () => {
   return (
@@ -6,7 +7,7 @@ const PlainGettingStarted = () => {
       <div className="card-body lg:py-9">
         <div className="flex justify-center">
           <img
-            src={toAbsoluteUrl('/images/content/illustrations/account-deactivated.jpg')}
+            src={toAbsoluteUrl('/media/illustrations/11.svg')}
             className="max-h-[200px]"
             alt=""
           />
@@ -19,13 +20,13 @@ const PlainGettingStarted = () => {
           <span className="text-sm font-medium text-gray-600">
             Begin by crafting your inaugural list in minutes.
           </span>
-          <a href="#" className="text-sm font-semibold text-primary hover:text-primary-active">
+          <Link to="/account/billing/plans" className="text-sm font-medium link">
             Get Started!
-          </a>
+          </Link>
         </div>
       </div>
     </div>
   );
 };
 
-export { PlainGettingStarted };
+export default  PlainGettingStarted ;

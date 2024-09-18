@@ -1,6 +1,6 @@
 import clsx from 'clsx';
 
-import { IPlainAboutMeProps } from './interfaces';
+import { IPlainAboutMeProps } from './types';
 
 const PlainAboutMe = ({ className }: IPlainAboutMeProps) => {
   return (
@@ -27,4 +27,4 @@ const PlainAboutMe = ({ className }: IPlainAboutMeProps) => {
   );
 };
 
-export { PlainAboutMe };
+export default  PlainAboutMe ;

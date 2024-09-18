@@ -1,6 +1,7 @@
-import { KeenIcon } from '@/components';
+import { KeenIcon, Menu, MenuItem, MenuToggle } from '@/components';
 
-import { ICRMRecentInvoicesItem, ICRMRecentInvoicesItems } from './interfaces';
+import { ICRMRecentInvoicesItem, ICRMRecentInvoicesItems } from './types';
+import { DropdownCard2, DropdownCardItem2 } from '@/partials/dropdowns/general';
 
 const CRMRecentInvoices = () => {
   const items: ICRMRecentInvoicesItems = [
@@ -36,34 +37,49 @@ const CRMRecentInvoices = () => {
     }
   ];
 
-  const renderItem = (item: ICRMRecentInvoicesItem) => {
+  const renderItem = (item: ICRMRecentInvoicesItem, index: number) => {
     return (
-      <>
-        <div className="flex justify-between gap-3">
-          <div className="flex items-center gap-2.5">
-            <div className="flex items-center justify-center size-7.5 shrink-0 bg-gray-100 rounded-lg border border-gray-300">
-              <KeenIcon icon={item.icon} className="text-base text-gray-600" />
-            </div>
-
-            <div className="flex flex-col gap-0.5">
-              <span className="text-2sm font-semibold text-gray-800 cursor-pointer hover:text-primary mb-px">
-                {item.number}
-              </span>
-              <span className="text-2xs font-medium text-gray-500">{item.date}</span>
-            </div>
+      <div key={index} className="flex justify-between gap-3">
+        <div className="flex items-center gap-2.5">
+          <div className="flex items-center justify-center size-7.5 shrink-0 bg-gray-100 rounded-lg border border-gray-300">
+            <KeenIcon icon={item.icon} className="text-base text-gray-600" />
           </div>
-          <div className="flex items-center gap-2.5 -mr-1">
-            <span className="text-sm font-medium text-gray-700">${item.ammount}</span>
 
-            <a
-              href="#"
-              className="btn btn-sm btn-icon btn-icon-md text-primary hover:text-primary-active"
-            >
-              <KeenIcon icon="exit-down" />
-            </a>
+          <div className="flex flex-col gap-0.5">
+            <span className="text-2sm font-semibold text-gray-900 cursor-pointer hover:text-primary mb-px">
+              {item.number}
+            </span>
+            <span className="text-2xs font-medium text-gray-600">{item.date}</span>
           </div>
         </div>
-      </>
+
+        <div className="flex items-center gap-2.5">
+          <span className="text-sm font-medium text-gray-700">${item.ammount}</span>
+
+          <Menu className="items-stretch">
+            <MenuItem
+              toggle="dropdown"
+              trigger="click"
+              dropdownProps={{
+                placement: 'bottom-end',
+                modifiers: [
+                  {
+                    name: 'offset',
+                    options: {
+                      offset: [0, 10] // [skid, distance]
+                    }
+                  }
+                ]
+              }}
+            >
+              <MenuToggle className="btn btn-sm btn-icon btn-light btn-clear mb-2.5-">
+                <KeenIcon icon="dots-vertical" />
+              </MenuToggle>
+              {DropdownCardItem2()}
+            </MenuItem>
+          </Menu>
+        </div>
+      </div>
     );
   };
 
@@ -72,27 +88,33 @@ const CRMRecentInvoices = () => {
       <div className="card-header">
         <h3 className="card-title">Recent Invoices</h3>
 
-        <div className="menu" data-menu="true">
-          <div
-            className="menu-item"
-            data-menu-item-trigger="click"
-            data-menu-item-toggle="dropdown"
-            data-menu-item-placement="bottom-end"
+        <Menu className="items-stretch">
+          <MenuItem
+            toggle="dropdown"
+            trigger="click"
+            dropdownProps={{
+              placement: 'bottom-end',
+              modifiers: [
+                {
+                  name: 'offset',
+                  options: {
+                    offset: [0, 10] // [skid, distance]
+                  }
+                }
+              ]
+            }}
           >
-            <button className="btn btn-icon btn-light btn-clear btn-xs menu-toggle">
-              <KeenIcon icon="dots-vertical" className="!text-xl" />
-            </button>
-
-            <div className="menu-dropdown w-[175px] text-gray-700 px-3 py-3 text-2xs">
-              Menu content
-            </div>
-          </div>
-        </div>
+            <MenuToggle className="btn btn-sm btn-icon btn-light btn-clear mb-2.5-">
+              <KeenIcon icon="dots-vertical" />
+            </MenuToggle>
+            {DropdownCard2()}
+          </MenuItem>
+        </Menu>
       </div>
       <div className="card-body">
         <div className="grid gap-5">
           {items.map((item, index) => {
-            return renderItem(item);
+            return renderItem(item, index);
           })}
         </div>
       </div>
@@ -100,4 +122,4 @@ const CRMRecentInvoices = () => {
   );
 };
 
-export { CRMRecentInvoices };
+export default  CRMRecentInvoices ;

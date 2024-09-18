@@ -10,9 +10,7 @@ import {
   ToolbarPageTitle
 } from '@/partials/toolbar';
 
-import { AdvancedSettingsAddress, SidebarScrollspyMenu  } from './';
-import {ReactElement} from "react";
-import {Demo1Layout} from "@/layouts/demo1";
+import { SettingsSidebarContent } from './';
 
 const SettingsSidebarPage = () => {
   return (
@@ -28,14 +26,9 @@ const SettingsSidebarPage = () => {
           <ToolbarHeading>
             <ToolbarPageTitle />
             <ToolbarDescription>
-              <span className="text-gray-700">Jayson Tatum</span>
-              <a href="mailto:jaytatum@ktstudio.com" className="text-gray-600 hover:text-primary">
-                jaytatum@ktstudio.com
-              </a>
-              <span className="size-0.75 bg-gray-600 rounded-full"></span>
-              <a href="#" className="font-semibold text-primary hover:text-primary-active">
-                Personal Info
-              </a>
+              <span className="flex items-center gap-2 text-sm font-medium text-gray-600">
+                Intuitive Access to In-Depth Customization
+              </span>
             </ToolbarDescription>
           </ToolbarHeading>
           <ToolbarActions>Buttons</ToolbarActions>
@@ -43,18 +36,10 @@ const SettingsSidebarPage = () => {
       </Container>
 
       <Container>
-        <div className="flex grow gap-5 lg:gap-7.5">
-          <SidebarScrollspyMenu />
-
-          <div className="flex flex-col items-stretch grow gap-5 lg:gap-7.5">
-            <AdvancedSettingsAddress />
-          </div>
-        </div>
+        <SettingsSidebarContent />
       </Container>
     </>
   );
 };
-
-SettingsSidebarPage.getLayout = (page: ReactElement) => <Demo1Layout>{page}</Demo1Layout>;
 
 export default  SettingsSidebarPage ;

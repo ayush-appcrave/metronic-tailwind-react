@@ -1,4 +1,4 @@
-import { IDefaultAboutTable, IDefaultAboutTables } from './interfaces';
+import { IDefaultAboutTable, IDefaultAboutTables } from './types';
 
 const DefaultAbout = () => {
   const tables: IDefaultAboutTables = [
@@ -8,18 +8,20 @@ const DefaultAbout = () => {
     { status: 'Country:', info: 'Netherlands' },
     { status: 'Postcode:', info: '1092 NL' },
     { status: 'Phone:', info: '+31 6 1234 56 78' },
-    { status: 'Email:', info: 'jenny@ktstudio.com' }
+    {
+      status: 'Email:',
+      info: '<a href="#" class="text-gray-800 hover:text-primary-active">jenny@ktstudio.com</a>'
+    }
   ];
 
-  const renderTable = (table: IDefaultAboutTable) => {
+  const renderTable = (table: IDefaultAboutTable, index: number) => {
     return (
-      <tr>
+      <tr key={index}>
         <td className="text-sm font-medium text-gray-500 pb-3.5 pe-3">{table.status}</td>
-        <td className="text-sm font-medium text-gray-800 pb-3.5">
-          <a href="#" className="text-gray-800 hover:text-primary-active">
-            {table.info}
-          </a>
-        </td>
+        <td
+          className="text-sm font-medium text-gray-800 pb-3.5"
+          dangerouslySetInnerHTML={{ __html: table.info }}
+        />
       </tr>
     );
   };
@@ -29,11 +31,12 @@ const DefaultAbout = () => {
       <div className="card-header">
         <h3 className="card-title">About</h3>
       </div>
+
       <div className="card-body pt-4 pb-3">
         <table className="table-auto">
           <tbody>
             {tables.map((table, index) => {
-              return renderTable(table);
+              return renderTable(table, index);
             })}
           </tbody>
         </table>
@@ -42,4 +45,4 @@ const DefaultAbout = () => {
   );
 };
 
-export { DefaultAbout }
+export default  DefaultAbout ;

@@ -1,16 +1,16 @@
-import {PropsWithChildren, useEffect} from 'react';
+import { useEffect } from 'react';
 import { Helmet } from 'react-helmet';
 import { useRouter } from 'next/router';
 
-import { useActiveMenuItem } from '@/components/menu';
+import { useMenuCurrentItem } from '@/components/menu';
 import { MENU_SIDEBAR } from '@/config/menu.config';
 
 import { Content, Footer, Header, Sidebar, useDemo1Layout } from '../';
 
-const Main = ({ children }: PropsWithChildren) => {
+const Main = () => {
   const { layout } = useDemo1Layout();
   const pathname = useRouter().asPath;
-  const menuItem = useActiveMenuItem(pathname, MENU_SIDEBAR);
+  const menuItem = useMenuCurrentItem(pathname, MENU_SIDEBAR);
 
   useEffect(() => {
     const bodyClass = document.body.classList;
@@ -43,7 +43,7 @@ const Main = ({ children }: PropsWithChildren) => {
         <div className="wrapper flex grow flex-col">
           <Header />
 
-          <Content>{children}</Content>
+          <Content />
 
           <Footer />
         </div>

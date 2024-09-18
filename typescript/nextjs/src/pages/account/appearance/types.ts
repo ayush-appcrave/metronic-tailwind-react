@@ -1,0 +1,15 @@
+export interface IAccessibilityItem {
+  icon: string;
+  title: string;
+  description: string;
+  actions: React.ReactNode;
+}
+export interface IAccessibilityItems extends Array<IAccessibilityItem> {}
+
+export interface IApiIntegrationsItem {
+  integration: string;
+  apiKey: string;
+  dailyCalls: string;
+  actions: React.ReactNode;
+}
+export interface IApiIntegrationsItems extends Array<IApiIntegrationsItem> {}

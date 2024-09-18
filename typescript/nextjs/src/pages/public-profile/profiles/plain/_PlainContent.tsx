@@ -1,5 +1,9 @@
-import { CompanyNetwork, CompanyStatistics } from '../company';
-import { ICompanyNetworkItems, ICompanyStatisticsItems } from '../company/interfaces';
+import {
+  CompanyNetwork,
+  CompanyStatistics,
+  ICompanyNetworkItems,
+  ICompanyStatisticsItems
+} from '../company';
 import { DefaultTags } from '../default';
 import { PlainAboutMe, PlainGettingStarted, PlainOpenToWork } from '.';
 
@@ -35,7 +39,7 @@ const PlainContent = () => {
         <PlainAboutMe className="grow" />
       </div>
       <div className="col-span-1 flex">
-        <PlainOpenToWork className="grow" title="Open to work" url="#" />
+        <PlainOpenToWork className="grow" title="Open to work" />
       </div>
       <div className="col-span-1 flex">
         <DefaultTags title="Skills" className="grow" />
@@ -44,4 +48,4 @@ const PlainContent = () => {
   );
 };
 
-export { PlainContent };
+export default  PlainContent ;

@@ -6,12 +6,11 @@ import { Navbar, NavbarActions } from '@/partials/navbar';
 import { toAbsoluteUrl } from '@/utils/Assets';
 
 import { PlainContent } from '.';
-import {Demo1Layout} from "@/layouts/demo1";
 
 const PlainPage = () => {
   const image = (
     <img
-      src={toAbsoluteUrl('/images/content/avatars/300-2.jpg')}
+      src={toAbsoluteUrl('/media/avatars/300-1.png')}
       className="rounded-full border-3 border-success max-h-[100px] max-w-full"
     />
   );
@@ -41,7 +40,5 @@ const PlainPage = () => {
     </>
   );
 };
-
-PlainPage.getLayout = (page: React.ReactElement) => <Demo1Layout>{page}</Demo1Layout>;
 
 export default  PlainPage ;

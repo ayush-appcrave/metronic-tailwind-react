@@ -1,4 +1,4 @@
-import { useRouter } from 'next/router';
+import { matchPath } from 'react-router';
 
 import { MenuConfigType } from '../types';
 
@@ -11,7 +11,7 @@ const useMenuChildren = (
     for (let i = 0; i < items.length; i++) {
       const item = items[i];
 
-      if (item.path && pathname === item.path) {
+      if (item.path && matchPath(pathname, item.path)) {
         return true;
       } else if (item.children) {
         if (hasActiveChild(item.children as MenuConfigType)) {
@@ -24,9 +24,9 @@ const useMenuChildren = (
   };
 
   const getChildren = (
-      items: MenuConfigType,
-      level: number = 0,
-      currentLevel: number = 0
+    items: MenuConfigType,
+    level: number = 0,
+    currentLevel: number = 0
   ): MenuConfigType | null => {
     for (let i = 0; i < items.length; i++) {
       const item = items[i];
@@ -37,7 +37,7 @@ const useMenuChildren = (
         } else {
           return getChildren(item.children, level, currentLevel++);
         }
-      } else if (level === currentLevel && item.path && pathname === item.path) {
+      } else if (level === currentLevel && item.path && matchPath(pathname, item.path)) {
         return items;
       }
     }

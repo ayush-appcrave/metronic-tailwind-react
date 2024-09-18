@@ -1,23 +1,24 @@
-import { Post } from '@/partials/cards';
+import { CardPost } from '@/partials/cards';
 
-import { IBloggerPostsItem, IBloggerPostsItems, IBloggerPostsProps } from './interfaces';
+import { IBloggerPostsItem, IBloggerPostsItems } from './types';
+import Link from 'next/link';
 
-const BloggerPosts = ({ url }: IBloggerPostsProps) => {
+const BloggerPosts = () => {
   const items: IBloggerPostsItems = [
     {
-      image: '11.jpg',
+      image: '14.jpg',
       label: 'Software',
       description: 'Maximizing Efficiency with Modern Software',
       time: '4 hours ago'
     },
     {
-      image: '12.jpg',
+      image: '15.jpg',
       label: 'Work-Life',
       description: 'Balancing Work and Life: Strategies for Success',
       time: '2 days ago'
     },
     {
-      image: '13.jpg',
+      image: '16.jpg',
       label: 'Technology',
       description: 'Exploring the Latest Technological',
       time: 'A week ago'
@@ -36,16 +37,15 @@ const BloggerPosts = ({ url }: IBloggerPostsProps) => {
     }
   ];
 
-  const renderItems = (item: IBloggerPostsItem) => {
+  const renderItems = (item: IBloggerPostsItem, index: number) => {
     return (
-      <>
-        <Post
-          image={item.image}
-          label={item.label}
-          description={item.description}
-          time={item.time}
-        />
-      </>
+      <CardPost
+        key={index}
+        image={item.image}
+        label={item.label}
+        description={item.description}
+        time={item.time}
+      />
     );
   };
 
@@ -55,15 +55,15 @@ const BloggerPosts = ({ url }: IBloggerPostsProps) => {
         <h3 className="card-title">Jenny’s Posts</h3>
 
         <div className="justify-center">
-          <a href={url} className="btn btn-link">
-            View details
-          </a>
+          <Link to="/public-profile/profiles/feeds" className="btn btn-link">
+            View All
+          </Link>
         </div>
       </div>
-      <div className="card-body">
+      <div className="card-body p-5 lg:p-7.5 lg:pb-7">
         <div className="flex flex-no-wrap scrollable-x gap-5">
           {items.map((item, index) => {
-            return renderItems(item);
+            return renderItems(item, index);
           })}
         </div>
       </div>
@@ -71,4 +71,4 @@ const BloggerPosts = ({ url }: IBloggerPostsProps) => {
   );
 };
 
-export { BloggerPosts };
+export default  BloggerPosts ;

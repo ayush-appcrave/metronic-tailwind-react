@@ -1,28 +1,27 @@
 import { toAbsoluteUrl } from '@/utils/Assets';
 
-import { IGamerFavoriteGamesItem, IGamerFavoriteGamesItems } from './interfaces';
+import { IGamerFavoriteGamesItem, IGamerFavoriteGamesItems } from './types';
 
 const GamerFavoriteGames = () => {
   const items: IGamerFavoriteGamesItems = [
-    { image: '300-310.png' },
-    { image: '300-310.png' },
-    { image: '300-310.png' },
-    { image: '300-310.png' },
-    { image: '300-310.png' },
-    { image: '300-310.png' },
-    { image: '300-310.png' },
-    { image: '300-310.png' }
+    { image: '13.jpg' },
+    { image: '14.jpg' },
+    { image: '15.jpg' },
+    { image: '16.jpg' },
+    { image: '17.jpg' },
+    { image: '18.jpg' },
+    { image: '19.jpg' },
+    { image: '20.jpg' }
   ];
 
-  const renderItem = (item: IGamerFavoriteGamesItem) => {
+  const renderItem = (item: IGamerFavoriteGamesItem, index: number) => {
     return (
-      <>
-        <img
-          src={toAbsoluteUrl(`/images/content/logos/${item.image}`)}
-          className="rounded-xl w-11 h-11"
-          alt=""
-        />
-      </>
+      <img
+        src={toAbsoluteUrl(`/media/images/600x600/${item.image}`)}
+        className="rounded-xl w-11 h-11"
+        alt=""
+        key={index}
+      />
     );
   };
 
@@ -35,7 +34,7 @@ const GamerFavoriteGames = () => {
       <div className="card-body">
         <div className="flex flex-wrap gap-2.5 xl:mr-14 mb-1.5">
           {items.map((item, index) => {
-            return renderItem(item);
+            return renderItem(item, index);
           })}
         </div>
       </div>
@@ -43,4 +42,4 @@ const GamerFavoriteGames = () => {
   );
 };
 
-export { GamerFavoriteGames };
+export default  GamerFavoriteGames ;
