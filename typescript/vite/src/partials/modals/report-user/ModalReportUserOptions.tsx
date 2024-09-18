@@ -19,7 +19,7 @@ const ModalReportUserOptions = () => {
   ];
 
   return (
-    <div className="flex flex-col gap-5 p-5">
+    <div className="flex flex-col gap-5 px-5">
       <div className="text-2sm text-gray-900 font-semibold">Let us know why you’re reporing this person</div>
       <div className="flex flex-col gap-3.5">
         {items.map((item, index) => (
