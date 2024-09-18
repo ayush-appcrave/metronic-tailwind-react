@@ -3,19 +3,10 @@ import React from 'react';
 
 const ModalReportUserFooter = () => {
   return (
-    <div className="flex flex-col px-5 gap-2.5">
-      <div className="flex flex-center gap-1">
-        <label className="text-gray-900 font-semibold text-2sm">Share read-only link</label>
-        <KeenIcon icon="information-2" className="text-gray-500 text-2sm" />  
-      </div>
-
-      <label className="input"> 
-        <input type="text" value="https://metronic.com/profiles/x7g2vA3kZ5"/>
-        <button className="btn btn-icon">
-          <KeenIcon icon="copy" /> 
-        </button>
-      </label> 
-    </div> 
+    <div className="text-2sm font-medium text-center text-gray-800 p-5">
+       Don't worry, your report is completely anonymous; the person you're <br/>
+      reporting will not be informed that you've submitted it
+    </div>
   );
 };
 

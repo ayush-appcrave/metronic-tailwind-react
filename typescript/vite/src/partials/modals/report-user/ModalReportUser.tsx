@@ -5,8 +5,8 @@ import { Tab, TabPanel, Tabs, TabsList } from '@/components/tabs';
 import { DropdownCrud2 } from '@/partials/dropdowns/general';
 import { useViewport } from '@/hooks';
 import {
-  ModalReportUserOptions, 
   ModalReportUserNotice,
+  ModalReportUserOptions, 
   ModalReportUserFooter,
 } from './';
 
@@ -41,9 +41,9 @@ const ModalReportUser = forwardRef<HTMLDivElement, ModalReportUserProps>(({ open
           </button>
         </ModalHeader>
         <ModalBody className="grid gap-5 px-0 py-5">
-          <ModalReportUserOptions/>
-          <div className="border-b border-b-gray-200"></div>
           <ModalReportUserNotice/>
+          <div className="border-b border-b-gray-200"></div>
+          <ModalReportUserOptions/>
           <div className="border-b border-b-gray-200"></div>
           <ModalReportUserFooter/>
         </ModalBody>

@@ -26,8 +26,8 @@ const ModalReportUserOptions = () => {
           <label className="form-label flex items-center gap-2.5">
             <input className="radio radio-sm" name="report-option" type="radio" value="{{ loop.index }}" checked/>
             <div className="flex flex-col gap-0.5">
-              <div className="text-sm font-semibold text-gray-900">${item.name }</div>
-              <div className="text-2sm font-medium text-gray-600">${item.description }</div>
+              <div className="text-sm font-semibold text-gray-900">{item.name }</div>
+              <div className="text-2sm font-medium text-gray-600">{item.description }</div>
             </div>
           </label>	
         ))}
