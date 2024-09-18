@@ -9,7 +9,7 @@ const Integrations = () => {
       name: 'Jira',
       description: 'Project management for agile teams, tracking issues and tasks.',
       actions: (
-        <div className="switch">
+        <div className="switch switch-sm">
           <input type="checkbox" name="param" defaultChecked value="1" readOnly />
         </div>
       )
