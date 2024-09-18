@@ -4,6 +4,12 @@ import { KeenIcon, Menu, MenuItem, MenuToggle } from '@/components';
 import { Tab, TabPanel, Tabs, TabsList } from '@/components/tabs';
 import { DropdownCrud2 } from '@/partials/dropdowns/general';
 import { useViewport } from '@/hooks';
+import {
+  ModalShareProfileViaLink, 
+  ModalShareProfileViaEmail, 
+  ModalShareProfileUsers, 
+  ModalShareProfileSettings, 
+} from '@/partials/modals/share-profile';
 
 interface ModalGiveAwardProps {
   open: boolean;
@@ -35,8 +41,14 @@ const ModalGiveAward = forwardRef<HTMLDivElement, ModalGiveAwardProps>(({ open, 
             <KeenIcon icon="black-left" />
           </button>
         </ModalHeader>
-        <ModalBody className="p-0 pb-5">
-          Test
+        <ModalBody className="grid gap-5 px-0 py-5">
+          <ModalShareProfileViaLink/>
+          <div className="border-b border-b-gray-200"></div>
+          <ModalShareProfileViaEmail/>
+          <div className="border-b border-b-gray-200"></div>
+          <ModalShareProfileUsers/>
+          <div className="border-b border-b-gray-200"></div>
+          <ModalShareProfileSettings/>
         </ModalBody>
       </ModalContent>
     </Modal>
