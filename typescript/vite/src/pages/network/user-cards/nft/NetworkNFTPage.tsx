@@ -22,7 +22,10 @@ const NetworkNFTPage = () => {
               </span>
             </ToolbarDescription>
           </ToolbarHeading>
-          <ToolbarActions>Buttons</ToolbarActions>
+          <ToolbarActions>
+            <a href="#" className="btn btn-sm btn-light">Upload CSV</a>
+            <a href="#" className="btn btn-sm btn-primary">Add User</a>
+          </ToolbarActions>
         </Toolbar>
       </Container>
 

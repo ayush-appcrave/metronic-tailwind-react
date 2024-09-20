@@ -15,11 +15,11 @@ import { AppearanceContent } from '.';
 const AppearancePage = () => {
   return (
     <>
-      <Container>
-        <Navbar>
+      <Navbar>
+        <Container>
           {MENU_SIDEBAR[3]?.children && <NavbarMenu items={MENU_SIDEBAR[3].children} />}
-        </Navbar>
-      </Container>
+        </Container>
+      </Navbar>
 
       <Container>
         <Toolbar>
@@ -31,7 +31,9 @@ const AppearancePage = () => {
               </span>
             </ToolbarDescription>
           </ToolbarHeading>
-          <ToolbarActions>Buttons</ToolbarActions>
+          <ToolbarActions>
+            <a href="#" className="btn btn-sm btn-light">Privacy Settings</a>
+          </ToolbarActions>
         </Toolbar>
       </Container>
 

@@ -15,11 +15,11 @@ import { IntegrationsContent } from '.';
 const IntegrationsPage = () => {
   return (
     <>
-      <Container>
-        <Navbar>
+      <Navbar>
+        <Container>
           {MENU_SIDEBAR[3]?.children && <NavbarMenu items={MENU_SIDEBAR[3].children} />}
-        </Navbar>
-      </Container>
+        </Container>
+      </Navbar>
 
       <Container>
         <Toolbar>
@@ -31,7 +31,9 @@ const IntegrationsPage = () => {
               </span>
             </ToolbarDescription>
           </ToolbarHeading>
-          <ToolbarActions>Buttons</ToolbarActions>
+          <ToolbarActions>
+            <a href="#" className="btn btn-sm btn-light">Add New Integration</a>
+          </ToolbarActions>
         </Toolbar>
       </Container>
 

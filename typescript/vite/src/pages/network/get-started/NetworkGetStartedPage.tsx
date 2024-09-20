@@ -1,5 +1,10 @@
 import { Container } from '@/components/container';
-import { Toolbar, ToolbarDescription, ToolbarHeading, ToolbarPageTitle } from '@/partials/toolbar';
+import {
+  Toolbar,
+  ToolbarDescription,
+  ToolbarHeading,
+  ToolbarPageTitle
+} from '@/partials/toolbar';
 
 import { NetworkGetStartedContent } from '.';
 import { Link } from 'react-router-dom';

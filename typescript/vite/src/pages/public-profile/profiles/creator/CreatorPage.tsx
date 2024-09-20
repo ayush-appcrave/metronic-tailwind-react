@@ -2,11 +2,12 @@ import { Container } from '@/components/container';
 import { MENU_SIDEBAR } from '@/config/menu.config';
 import { UserProfileHero } from '@/partials/heros';
 import { NavbarMenu } from '@/partials/menu/NavbarMenu';
-import { Navbar, NavbarActions } from '@/partials/navbar';
+import { Navbar, NavbarActions, NavbarDropdown } from '@/partials/navbar';
 import { useMenu } from '@/providers';
 import { toAbsoluteUrl } from '@/utils/Assets';
 
 import { CreatorContent } from '.';
+import { KeenIcon } from '@/components';
 
 const CreatorPage = () => {
   const { getMenuConfig } = useMenu();
@@ -36,7 +37,18 @@ const CreatorPage = () => {
       <Container>
         <Navbar>
           {MENU_SIDEBAR[2]?.children && <NavbarMenu items={MENU_SIDEBAR[2].children} />}
-          <NavbarActions>Buttons</NavbarActions>
+          <NavbarActions>
+            <a href="#" className="btn btn-sm btn-primary">
+              <KeenIcon icon="mouse-square" /> Hire Us
+            </a>
+            <button type="button" className="btn btn-sm btn-light">
+              <KeenIcon icon="users" /> Follow
+            </button>
+            <button className="btn btn-sm btn-icon btn-light">
+              <KeenIcon icon="messages" />
+            </button>
+            <NavbarDropdown />
+          </NavbarActions>
         </Navbar>
       </Container>
 

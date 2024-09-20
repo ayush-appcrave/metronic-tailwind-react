@@ -91,7 +91,7 @@ const EnterpriseCompanyProfile = () => {
             <div className="flex flex-wrap gap-6 lg:gap-12">
               <div className="flex flex-col gap-3.5 grow">
                 <div className="text-2sm font-medium text-gray-600">
-                  UQuery runs:
+                  UQuery runs:&nbsp;
                   <span className="text-2sm font-semibold text-gray-900">2239 of 10,000 used</span>
                 </div>
                 <div className="progress progress-primary max-w-2xl w-full">
@@ -100,7 +100,7 @@ const EnterpriseCompanyProfile = () => {
               </div>
               <div className="flex flex-col gap-2.5 lg:min-w-24 shrink-0 -mt-3 max-w-auto">
                 <div className="text-2sm font-medium text-gray-600">
-                  Seats:
+                  Seats:&nbsp;
                   <span className="text-2sm font-semibold text-gray-800">29 of 120 used</span>
                 </div>
                 <CommonAvatars group={group} />

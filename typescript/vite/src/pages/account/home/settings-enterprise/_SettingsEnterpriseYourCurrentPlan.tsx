@@ -36,7 +36,7 @@ const SettingsEnterpriseYourCurrentPlan = () => {
           {item.title}
         </a>
 
-        <p className="text-2sm font-medium text-gray-600">{item.summary}</p>
+        <p className="text-2sm text-gray-700">{item.summary}</p>
 
         <a href={item.path} className="btn btn-link flex-none">
           {item.link}

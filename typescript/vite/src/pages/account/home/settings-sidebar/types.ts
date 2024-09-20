@@ -9,6 +9,7 @@ export interface ISettingsSidebarAuthSocialSignInItems
 
 export interface ISettingsSidebarAuthSocialSignInBlock {
   logo: string;
+  logoDark?: string;
   title: string;
 }
 export interface ISettingsSidebarAuthSocialSignInBlocks
@@ -18,6 +19,7 @@ export interface ISettingsSidebarAuthSingleSingOnItem {
   logo: string;
   title: string;
   size: string;
+  checked?: boolean;
 }
 export interface ISettingsSidebarAuthSingleSingOnItems
   extends Array<ISettingsSidebarAuthSingleSingOnItem> {}
@@ -47,7 +49,7 @@ export interface ISettingsSidebarAdvancedSettingsAppearanceProps {
 export interface ISettingsSidebarAdvancedSettingsNotificationsItem {
   title: string;
   description: string;
-  icon: boolean;
+  badge: React.ReactNode;
 }
 export interface ISettingsSidebarAdvancedSettingsNotificationsItems
   extends Array<ISettingsSidebarAdvancedSettingsNotificationsItem> {}

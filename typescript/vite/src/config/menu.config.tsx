@@ -246,7 +246,7 @@ const MENU_SIDEBAR: MenuConfigType = [
           },
           {
             title: 'Security Log',
-            path: '/account/security/log'
+            path: '/account/security/security-log'
           }
         ]
       },

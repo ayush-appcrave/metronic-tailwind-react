@@ -2,7 +2,7 @@ import { TimelinesWrapper } from '@/partials/timelines/default/item';
 
 const ActivitiesDesignerWelcome = () => {
   return (
-    <TimelinesWrapper icon="design" line={true}>
+    <TimelinesWrapper icon="design-1" line={true}>
       <div className="flex flex-col">
         <div className="text-sm font-medium text-gray-800">
           Onboarded a talented designer to our creative team, adding valuable expertise to upcoming

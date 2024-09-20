@@ -15,11 +15,11 @@ import { SettingsSidebarContent } from './';
 const SettingsSidebarPage = () => {
   return (
     <>
-      <Container>
-        <Navbar>
+      <Navbar>
+        <Container>
           {MENU_SIDEBAR[3]?.children && <NavbarMenu items={MENU_SIDEBAR[3].children} />}
-        </Navbar>
-      </Container>
+        </Container>
+      </Navbar>
 
       <Container>
         <Toolbar>
@@ -31,7 +31,10 @@ const SettingsSidebarPage = () => {
               </span>
             </ToolbarDescription>
           </ToolbarHeading>
-          <ToolbarActions>Buttons</ToolbarActions>
+          <ToolbarActions>
+            <a href="#" className="btn btn-sm btn-light">Public Profile</a>
+            <a href="#" className="btn btn-sm btn-primary">Get Started</a>
+          </ToolbarActions>
         </Toolbar>
       </Container>
 
