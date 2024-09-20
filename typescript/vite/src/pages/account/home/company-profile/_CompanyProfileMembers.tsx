@@ -89,7 +89,7 @@ const CompanyProfileMembers = ({ url }: ICompanyProfileMembersProps) => {
           </span>
         </td>
 
-        <td className="text-right">{table.label}</td>
+        <td className="text-right text-gray-700 text-sm">{table.joined}</td>
 
         <td>
           <Menu className="items-stretch">

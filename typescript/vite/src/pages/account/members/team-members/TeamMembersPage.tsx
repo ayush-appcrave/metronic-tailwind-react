@@ -2,18 +2,24 @@ import { Container } from '@/components/container';
 import { MENU_SIDEBAR } from '@/config/menu.config';
 import { NavbarMenu } from '@/partials/menu/NavbarMenu';
 import { Navbar } from '@/partials/navbar';
-import { Toolbar, ToolbarDescription, ToolbarHeading, ToolbarPageTitle } from '@/partials/toolbar';
+import {
+  Toolbar,
+  ToolbarActions,
+  ToolbarDescription,
+  ToolbarHeading,
+  ToolbarPageTitle
+} from '@/partials/toolbar';
 
 import { TeamMembersContent } from '.';
 
 const TeamMembersPage = () => {
   return (
     <>
-      <Container>
-        <Navbar>
+      <Navbar>
+        <Container>
           {MENU_SIDEBAR[3]?.children && <NavbarMenu items={MENU_SIDEBAR[3].children} />}
-        </Navbar>
-      </Container>
+        </Container>
+      </Navbar>
 
       <Container>
         <Toolbar>
@@ -25,6 +31,10 @@ const TeamMembersPage = () => {
               </span>
             </ToolbarDescription>
           </ToolbarHeading>
+          <ToolbarActions>
+            <a href="#" className="btn btn-sm btn-light">Import Members</a>
+					  <a href="#" className="btn btn-sm btn-primary">Add Member</a>
+          </ToolbarActions>
         </Toolbar>
       </Container>
 

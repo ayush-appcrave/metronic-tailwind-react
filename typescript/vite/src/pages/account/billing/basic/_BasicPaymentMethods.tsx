@@ -74,7 +74,7 @@ const BasicPaymentMethods = ({ icon }: IBasicPaymentMethodsProps) => {
         <h3 className="card-title">Payment Methods</h3>
 
         <button className="btn btn-light btn-sm">
-          <KeenIcon icon={`${icon} ? plus-squared`} />
+          <KeenIcon icon="plus-squared" />
           Add New
         </button>
       </div>

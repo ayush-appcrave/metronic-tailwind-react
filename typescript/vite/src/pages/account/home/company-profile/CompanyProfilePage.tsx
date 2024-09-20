@@ -15,11 +15,11 @@ import { CompanyProfileContent } from '.';
 const CompanyProfilePage = () => {
   return (
     <>
-      <Container>
-        <Navbar>
+      <Navbar>
+        <Container>
           {MENU_SIDEBAR[3]?.children && <NavbarMenu items={MENU_SIDEBAR[3].children} />}
-        </Navbar>
-      </Container>
+        </Container>
+      </Navbar>
 
       <Container>
         <Toolbar>
@@ -31,7 +31,10 @@ const CompanyProfilePage = () => {
               </span>
             </ToolbarDescription>
           </ToolbarHeading>
-          <ToolbarActions>Buttons</ToolbarActions>
+          <ToolbarActions>
+            <a href="#" className="btn btn-sm btn-light">Public Profile</a>
+            <a href="#" className="btn btn-sm btn-primary">Billing</a>
+          </ToolbarActions>
         </Toolbar>
       </Container>
 

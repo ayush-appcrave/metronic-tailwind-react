@@ -10,41 +10,43 @@ const SettingsSidebarAuthSingleSingOn = () => {
     {
       logo: 'azure.svg',
       title: 'Microsoft Azure',
-      size: 'w-10'
+      size: 'w-5',
+      checked: false
     },
     {
       logo: 'google.svg',
       title: 'Google',
-      size: 'w-10'
+      size: 'w-8',
+      checked: true
     },
     {
       logo: 'openid.svg',
       title: 'OpenID Connect',
-      size: 'w-24'
+      size: 'w-24',
+      checked: false
     }
   ];
 
   const renderItem = (item: ISettingsSidebarAuthSingleSingOnItem, index: number) => {
     return (
       <label
-        className="flex align-stretch cursor-pointer bg-center h-44 bg-no-repeat border border-gray-300 rounded-xl border-dashed has-[:checked]:border-primary bg-[length:500px]"
-        style={{ backgroundImage: toAbsoluteUrl('/media/images/2600x1200/bg-5.png') }}
         key={index}
+        className="flex align-stretch cursor-pointer bg-center h-44 bg-no-repeat border border-gray-300 rounded-xl border-dashed has-[:checked]:border-primary bg-[length:500px] sso-active singl-sign-on-bg"
       >
-        <div className="flex flex-col place-items-center place-content-center rounded-xl grow has-[:checked]:bg-[rgba(239,246,255,1)]">
-          <img
-            src={toAbsoluteUrl(`/media/brand-logos/${item.logo}`)}
-            className={item.size}
-            alt=""
-          />
-
-          <span className="text-md font-semibold text-gray-800">{item.title}</span>
-
+        <div className="flex flex-col place-items-center place-content-center rounded-xl grow">
+          <div className="flex items-center h-11">
+            <img
+              src={toAbsoluteUrl(`/media/brand-logos/${item.logo}`)}
+              className={item.size}
+              alt=""
+            />
+          </div>	
+          <span className="text-md font-medium text-gray-900">{item.title}</span>
           <input
             className="appearance-none"
             type="radio"
             name="sso_option"
-            defaultChecked={index === 2}
+            defaultChecked={index === 1}
             value="1"
             readOnly
           />
@@ -54,98 +56,105 @@ const SettingsSidebarAuthSingleSingOn = () => {
   };
 
   return (
-    <div className="card">
-      <div className="card-header" id="auth_social_sign_in_sso">
-        <h3 className="card-title">Single Sign On(SSO)</h3>
-      </div>
-      <div className="card-body lg:pb-7.5">
-        <div className="grid gap-5 lg:gap-7">
-          <span className="text-md font-semibold text-gray-900">
-            1. Select SSO integration Type
-          </span>
+    <>
+      <style>
+        {`
+          .singl-sign-on-bg {
+            background-image: url('${toAbsoluteUrl('/media/images/2600x1600/bg-2.png')}');
+          }
+          .dark .singl-sign-on-bg {
+            background-image: url('${toAbsoluteUrl('/media/images/2600x1600/bg-2-dark.png')}');
+          }
+        `}
+      </style>
 
-          <div className="grid grid-cols-1 lg:grid-cols-3 gap-5 lg:gap-7.5">
-            {items.map((item, index) => {
-              return renderItem(item, index);
-            })}
-          </div>
+      <div className="card">
+        <div className="card-header" id="auth_social_sign_in_sso">
+          <h3 className="card-title">Single Sign On(SSO)</h3>
         </div>
-
-        <div className="border-t border-gray-200 mt-7.5 mb-7"></div>
-
-        <div className="grid gap-5 lg:gap-7.5">
-          <span className="text-md font-semibold text-gray-900">
-            2. Configure Google authentication
-          </span>
-
-          <div className="flex items-center flex-wrap lg:flex-nowrap gap-2.5">
-            <span className="text-2sm font-medium text-gray-700 max-w-56 w-full">Client ID</span>
-            <div className="grow">
-              <input
-                type="text"
-                className="input w-full placeholder:text-gray-500"
-                placeholder="02874374-367145773"
-                value=""
-                readOnly
-              />
+        <div className="card-body flex flex-col gap-7.5 divide-y divide-gray-200">  
+          <div className="grid gap-7 pt-7.5">
+            <div className="text-md font-semibold text-gray-900">
+              1. Select SSO integration Type
             </div>
-          </div>
+            <div className="grid grid-cols-1 lg:grid-cols-3 gap-5 lg:gap-7.5">
+              {items.map((item, index) => {
+                return renderItem(item, index);
+              })}
+            </div> 
 
-          <div className="flex items-center flex-wrap lg:flex-nowrap gap-2.5">
-            <span className="text-2sm font-medium text-gray-700 max-w-56 w-full">
-              Client Secret
-            </span>
-            <div className="grow">
-              <input
-                type="text"
-                className="input w-full placeholder:text-gray-500"
-                placeholder="23djfn784957f8022we2232307822-cey2442"
-                value=""
-                readOnly
-              />
+            <style>
+              {`
+                .sso-active:has(:checked) {
+                  background-image: url('${toAbsoluteUrl('/media/images/2600x1600/bg-1.png')}');
+                }
+                .dark .sso-active:has(:checked) {
+                  background-image: url('${toAbsoluteUrl('/media/images/2600x1600/bg-1-dark.png')}');
+                }
+              `}
+            </style>
+          </div>  
+
+          <div className="grid gap-7 pt-7.5">
+            <div className="text-md font-semibold text-gray-900">
+              2. Configure Google authentication
             </div>
-          </div>
 
-          <div className="flex justify-end">
-            <button className="btn btn-primary">Save Changes</button>
-          </div>
-        </div>
+            <div className="w-full">
+              <div className="flex items-baseline flex-wrap lg:flex-nowrap gap-2.5">
+                <label className="form-label max-w-56">Client ID</label>
+                <input className="input" type="text" value="02874374-367145773" readOnly />
+              </div>
+            </div>
 
-        <div className="border-t border-gray-200 mt-10 mb-6"></div>
-
-        <div className="grid gap-5 lg:gap-7.5">
-          <span className="text-md font-semibold text-gray-900">
-            3. Note down custom URL for Google SSO authentication
-          </span>
-
-          <div className="flex items-center flex-wrap lg:flex-nowrap gap-2.5">
-            <span className="text-2sm font-medium text-gray-700 max-w-56 w-full">
-              Custom Login UTL
-            </span>
-            <div className="grow">
-              <div className="input-group">
+            <div className="w-full">
+              <div className="flex items-baseline flex-wrap lg:flex-nowrap gap-2.5">
+                <label className="form-label max-w-56">Client Secret</label>
                 <input
+                  className="input"
                   type="text"
-                  className="input w-full "
-                  placeholder="https://devs.keenthemes.com/rl/AirMikeStudios"
-                  value=""
+                  value="23djfn784957f8022we2232307822-cey2442"
                   readOnly
                 />
-                <button className="btn btn-primary">Copy</button>
+              </div>
+            </div>
+
+            <div className="flex justify-end">
+              <button className="btn btn-primary">Save Changes</button>
+            </div>
+          </div>
+
+          <div className="grid gap-7 pt-7.5">
+            <div className="text-md font-semibold text-gray-900">
+              3. Note down custom URL for Google SSO authentication
+            </div>
+
+            <div className="w-full">
+              <div className="flex items-baseline flex-wrap lg:flex-nowrap gap-2.5">
+                <label className="form-label max-w-56">Custom Login UTL</label>
+                <div className="grow">
+                  <div className="input-group">
+                    <input
+                      className="input"
+                      type="text"
+                      value="https://devs.keenthemes.com/rl/AirMikeStudios"
+                      readOnly
+                    />
+                    <span className="btn btn-primary">Copy</span>
+                  </div>
+                </div>
               </div>
             </div>
           </div>
+
+          <div className="form-info pt-7.5 pb-5 text-gray-800 font-normal">
+            Single Sign-On (SSO) authentication streamlines access across 
+            multiple platforms. Users log in once, gaining seamless entry <br/>
+            to various systems without repetitive credentials. 
+          </div>
         </div>
-
-        <div className="border-t border-gray-200 mt-10 mb-8"></div>
-
-        <p className="text-2sm font-medium text-gray-700">
-          Single Sign-On (SSO) authentication streamlines access across multiple platforms. Users
-          log in once, gaining seamless entry <br />
-          to various systems without repetitive credentials.
-        </p>
       </div>
-    </div>
+    </>
   );
 };
 

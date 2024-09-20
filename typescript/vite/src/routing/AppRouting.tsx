@@ -162,7 +162,7 @@ const AppRouting = (): ReactElement => {
           <Route path="/account/security/device-management" element={<DeviceManagementPage />} />
           <Route path="/account/security/backup-and-recovery" element={<BackupAndRecoveryPage />} />
           <Route path="/account/security/current-sessions" element={<CurrentSessionsPage />} />
-          <Route path="/account/security/log" element={<SecurityLogPage />} />
+          <Route path="/account/security/security-log" element={<SecurityLogPage />} />
           <Route path="/account/members/team-starter" element={<TeamsStarterPage />} />
           <Route path="/account/members/teams" element={<MembersTeamPage />} />
           <Route path="/account/members/team-info" element={<TeamInfoPage />} />

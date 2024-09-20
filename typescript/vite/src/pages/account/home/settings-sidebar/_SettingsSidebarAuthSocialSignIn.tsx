@@ -27,6 +27,7 @@ const SettingsSidebarAuthSocialSignIn = () => {
   const blocks: ISettingsSidebarAuthSocialSignInBlocks = [
     {
       logo: 'apple-black.svg',
+      logoDark: 'apple-white.svg',
       title: 'Sign in with Apple'
     },
     {
@@ -52,28 +53,27 @@ const SettingsSidebarAuthSocialSignIn = () => {
             alt=""
           />
 
-          <div className="flex flex-col">
-            <a
-              href="#"
-              className="text-sm font-semibold text-gray-800 hover:text-primary-active mb-px"
-            >
+          <div className="flex flex-col gap-0.5">
+            <a href="#" className="text-sm font-medium text-gray-900 hover:text-primary-active">
               {item.title}
             </a>
-            <a href="#" className="text-2sm font-medium text-gray-500 hover:text-primary-active">
+            <a href="#" className="text-2sm text-gray-700 hover:text-primary-active">
               {item.email}
             </a>
-          </div>
-        </div>
+          </div> 
+        </div>  
 
-        <div className="flex items-center gap-2 lg:gap-6">
-          <input
-            type="checkbox"
-            defaultChecked={item.checkbox}
-            value={item.checkbox ? '1' : '2'}
-            readOnly
-          />
+        <div className="flex items-center gap-5">
+          <label className="switch switch-sm"> 
+            <input
+              type="checkbox"
+              defaultChecked={item.checkbox}
+              value={item.checkbox ? '1' : '2'}
+              readOnly
+            />
+          </label>	
 
-          <div className="btn btn-sm btn-icon btn-icon-lg text-gray-500 hover:text-primary-active">
+          <div className="btn btn-sm btn-icon btn-light btn-clear">
             <KeenIcon icon="trash" />
           </div>
         </div>
@@ -83,19 +83,29 @@ const SettingsSidebarAuthSocialSignIn = () => {
 
   const renderBlock = (block: ISettingsSidebarAuthSocialSignInBlock, index: number) => {
     return (
-      <div
-        key={index}
-        className="flex items-center group border border-gray-200 cursor-pointer rounded-md gap-2.5 px-3.5 py-2.5"
-      >
-        <a href="#" className="btn btn-light">
+      <a key={index} href="#" className="btn btn-light">
+        {block.logoDark ? (
+          <>
+            <img
+              src={toAbsoluteUrl(`/media/brand-logos/${block.logo}`)}
+              className="dark:hidden size-5"
+              alt=""
+            />
+            <img
+              src={toAbsoluteUrl(`/media/brand-logos/${block.logoDark}`)}
+              className="light:hidden size-5"
+              alt=""
+            />
+          </>
+        ) : (
           <img
             src={toAbsoluteUrl(`/media/brand-logos/${block.logo}`)}
-            className="size-5 shrink-0"
+            className="size-5"
             alt=""
           />
-          {block.title}
-        </a>
-      </div>
+        )}
+        {block.title}
+      </a>
     );
   };
 
@@ -105,20 +115,22 @@ const SettingsSidebarAuthSocialSignIn = () => {
         <h3 className="card-title">Social Sign in</h3>
       </div>
       <div className="card-body">
-        <div className="grid gap-5 mb-5 lg:mb-7">
+        <div className="grid gap-5 mb-7">
           {items.map((item, index) => {
             return renderItem(item, index);
           })}
         </div>
 
         <div className="flex flex-col gap-0.5 mb-5">
-          <span className="text-md font-semibold text-gray-900">More Social Sign in options</span>
-          <p className="text-2sm font-medium text-gray-700">
+          <div className="text-md font-medium text-gray-900">
+            More Social Sign in options
+          </div>
+          <div className="text-2sm text-gray-800">
             Effortless access awaits! Connect seamlessly with your preferred social account.
-          </p>
+          </div>
         </div>
 
-        <div className="flex items-center flex-wrap gap-2.5 mb-5 lg:mb-7.5">
+        <div className="flex items-center flex-wrap gap-2.5 mb-7.5">
           {blocks.map((block, index) => {
             return renderBlock(block, index);
           })}

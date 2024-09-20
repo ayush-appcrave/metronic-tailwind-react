@@ -5,8 +5,9 @@ import { NavbarMenu } from '@/partials/menu/NavbarMenu';
 import { Navbar, NavbarActions, NavbarDropdown } from '@/partials/navbar';
 import { useMenu } from '@/providers';
 import { toAbsoluteUrl } from '@/utils/Assets';
+import { KeenIcon } from '@/components';
+
 import { DefaultContent } from '.';
-import { KeenIcon, Menu, MenuItem, MenuSub, MenuToggle } from '@/components';
 
 const DefaultPage = () => {
   const { getMenuConfig } = useMenu();

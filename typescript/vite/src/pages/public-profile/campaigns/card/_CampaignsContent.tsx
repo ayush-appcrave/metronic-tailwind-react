@@ -219,7 +219,7 @@ const CampaignsContent = ({ mode }: ICampaignsContentProps) => {
           <div className="btn-tabs" data-tabs="true">
             <a
               href="#"
-              className={`btn btn-icon btn-sm ${currentMode === 'card' ? 'active' : ''}`}
+              className={`btn btn-icon ${currentMode === 'card' ? 'active' : ''}`}
               data-tab-toggle="#campaigns_cards"
               onClick={() => {
                 setCurrentMode('cards');
@@ -229,7 +229,7 @@ const CampaignsContent = ({ mode }: ICampaignsContentProps) => {
             </a>
             <a
               href="#"
-              className={`btn btn-icon btn-sm ${currentMode === 'list' ? 'active' : ''}`}
+              className={`btn btn-icon ${currentMode === 'list' ? 'active' : ''}`}
               data-tab-toggle="#campaigns_list"
               onClick={() => {
                 setCurrentMode('list');
@@ -238,6 +238,9 @@ const CampaignsContent = ({ mode }: ICampaignsContentProps) => {
               <KeenIcon icon="row-horizontal" />
             </a>
           </div>
+          <button className="btn btn-success">
+              <KeenIcon icon="plus-squared" /> New Campaign
+            </button>
         </div>
       </div>
 

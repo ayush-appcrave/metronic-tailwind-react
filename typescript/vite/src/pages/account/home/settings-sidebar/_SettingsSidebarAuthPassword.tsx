@@ -6,51 +6,29 @@ const SettingsSidebarAuthPassword = () => {
       </div>
 
       <div className="card-body grid gap-5">
-        <div className="flex items-center flex-wrap lg:flex-nowrap gap-2.5">
-          <span className="text-2sm font-medium text-gray-700 max-w-56 w-full">
-            Current Password
-          </span>
-          <div className="grow min-w-48">
-            <input
-              type="text"
-              className="input w-full placeholder:text-gray-500"
-              placeholder="Your current password"
-              value=""
-              readOnly
-            />
+        <div className="w-full">
+          <div className="flex items-baseline flex-wrap lg:flex-nowrap gap-2.5">
+            <label className="form-label max-w-56">Current Password</label>
+            <input className="input" type="text" placeholder="Your current password" value="" readOnly />
           </div>
-        </div>
+        </div>  
 
-        <div className="flex items-center flex-wrap lg:flex-nowrap gap-2.5">
-          <span className="text-2sm font-medium text-gray-700 max-w-56 w-full">New Password</span>
-          <div className="grow min-w-48">
-            <input
-              type="text"
-              className="input w-full placeholder:text-gray-500"
-              placeholder="New password"
-              value=""
-              readOnly
-            />
+        <div className="w-full">
+          <div className="flex items-baseline flex-wrap lg:flex-nowrap gap-2.5">
+            <label className="form-label max-w-56">New Password</label>
+            <input className="input" type="text" placeholder="New password" value="" readOnly />
           </div>
-        </div>
+        </div>  
 
-        <div className="flex items-center flex-wrap lg:flex-nowrap gap-2.5 mb-2.5">
-          <span className="text-2sm font-medium text-gray-700 max-w-56 w-full">
-            Confirm New Password
-          </span>
-          <div className="grow min-w-48">
-            <input
-              type="text"
-              className="input w-full placeholder:text-gray-500"
-              placeholder="Confirm new password"
-              value=""
-              readOnly
-            />
+        <div className="w-full">
+          <div className="flex items-baseline flex-wrap lg:flex-nowrap gap-2.5">
+            <label className="form-label max-w-56">Confirm New Password</label>
+            <input className="input" type="text" placeholder="Confirm new password" value="" readOnly />
           </div>
-        </div>
+        </div>   
 
-        <div className="flex justify-end">
-          <button className="btn btn-primary">Save Changes</button>
+        <div className="flex justify-end pt-2.5">
+          <button className="btn btn-primary">Reset Password</button>
         </div>
       </div>
     </div>

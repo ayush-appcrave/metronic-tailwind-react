@@ -15,11 +15,11 @@ import { UserProfileContent } from '.';
 const UserProfilePage = () => {
   return (
     <>
-      <Container>
-        <Navbar>
+      <Navbar>
+        <Container>
           {MENU_SIDEBAR[3]?.children && <NavbarMenu items={MENU_SIDEBAR[3].children} />}
-        </Navbar>
-      </Container>
+        </Container>
+      </Navbar>
 
       <Container>
         <Toolbar>
@@ -31,7 +31,10 @@ const UserProfilePage = () => {
               </span>
             </ToolbarDescription>
           </ToolbarHeading>
-          <ToolbarActions>Buttons</ToolbarActions>
+          <ToolbarActions>
+            <a href="#" className="btn btn-sm btn-light">Public Profile</a>
+            <a href="#" className="btn btn-sm btn-primary">Account Settings</a>
+          </ToolbarActions>
         </Toolbar>
       </Container>
 

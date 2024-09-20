@@ -15,11 +15,12 @@ import { ActivityContent } from '.';
 const AccountActivityPages = () => {
   return (
     <>
-      <Container>
-        <Navbar>
+      <Navbar>
+        <Container>
           {MENU_SIDEBAR[3]?.children && <NavbarMenu items={MENU_SIDEBAR[3].children} />}
-        </Navbar>
-      </Container>
+        </Container>
+      </Navbar>
+      
 
       <Container>
         <Toolbar>
@@ -31,7 +32,9 @@ const AccountActivityPages = () => {
               </span>
             </ToolbarDescription>
           </ToolbarHeading>
-          <ToolbarActions>Buttons</ToolbarActions>
+          <ToolbarActions>
+            <a href="#" className="btn btn-sm btn-light">Privacy Settings</a>
+          </ToolbarActions>
         </Toolbar>
       </Container>
 

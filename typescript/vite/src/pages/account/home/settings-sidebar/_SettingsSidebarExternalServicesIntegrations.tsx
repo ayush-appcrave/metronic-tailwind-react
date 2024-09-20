@@ -60,16 +60,16 @@ const SettingsSidebarExternalServicesIntegrations = () => {
 
           <div className="flex flex-col">
             <div className="flex items-center gap-1.5">
-              <a href="#" className="text-sm font-semibold text-gray-800 hover:text-primary-active">
+              <a href="#" className="text-sm font-medium text-gray-900 hover:text-primary-active">
                 {item.title}
               </a>
-              <a href="#" className="text-2sm font-medium text-gray-600 hover:text-primary-active">
+              <a href="#" className="text-2sm text-gray-700 hover:text-primary-active">
                 {item.email}
               </a>
-            </div>
-            <span className="text-2sm font-medium text-gray-600">{item.description}</span>
-          </div>
-        </div>
+            </div> 
+            <span className="text-2sm text-gray-700">{item.description}</span>
+          </div> 
+        </div>  
 
         <div className="flex items-center gap-2 lg:gap-5">
           {item.checkbox ? (
@@ -82,8 +82,8 @@ const SettingsSidebarExternalServicesIntegrations = () => {
             </label>
           )}
 
-          <div className="btn btn-sm btn-icon btn-icon-lg text-gray-500 hover:text-primary-active">
-            <KeenIcon icon="gear" />
+          <div className="btn btn-sm btn-icon btn-clear btn-light">
+            <KeenIcon icon="setting-2" />
           </div>
         </div>
       </div>

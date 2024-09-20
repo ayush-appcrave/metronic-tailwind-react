@@ -98,7 +98,7 @@ const PermissionsToggle = () => {
         <h3 className="card-title">
           Role Permissions for
           <a href="#" className="link">
-            Project Manager
+            &nbsp;Project Manager
           </a>
         </h3>
       </div>

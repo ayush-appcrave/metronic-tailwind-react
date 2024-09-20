@@ -5,64 +5,38 @@ const SettingsSidebarAdvancedSettingsAddress = () => {
         <h3 className="card-title">Address</h3>
       </div>
       <div className="card-body grid gap-5 lg:py-7.5">
-        <div className="flex items-center flex-wrap lg:flex-nowrap gap-2.5">
-          <span className="text-2sm font-medium text-gray-700 max-w-56 w-full">Address</span>
-          <div className="grow min-w-48">
-            <input
-              type="text"
-              className="input w-full"
-              placeholder="Avinguda Imaginària, 789"
-              value=""
-              readOnly
-            />
-          </div>
+        <div className="flex items-baseline flex-wrap lg:flex-nowrap gap-2.5">
+          <label className="form-label flex items-center gap-1 max-w-56">Address</label>
+          <input className="input" type="text" value="Avinguda Imaginària, 789" readOnly />
         </div>
 
-        <div className="flex items-center flex-wrap lg:flex-nowrap gap-2.5">
-          <span className="text-2sm font-medium text-gray-700 max-w-56 w-full">Country</span>
-          <div className="grow min-w-48">
-            <select className="select w-full">
-              <option>Spain</option>
-              <option>Option 2</option>
-              <option>Option 3</option>
+        <div className="flex items-baseline flex-wrap lg:flex-nowrap gap-2.5">
+          <label className="form-label max-w-56">Country</label>
+          <div className="grow">
+            <select className="select" name="select">
+              <option value="1">Spain</option>
+              <option value="2">Option 2</option>
+              <option value="3">Option 3</option>
             </select>
           </div>
         </div>
 
-        <div className="flex items-center flex-wrap lg:flex-nowrap gap-2.5">
-          <span className="text-2sm font-medium text-gray-700 max-w-56 w-full">State</span>
-          <div className="grow min-w-48">
-            <input type="text" className="input w-full" placeholder="State" value="" readOnly />
-          </div>
+        <div className="flex items-baseline flex-wrap lg:flex-nowrap gap-2.5">
+          <label className="form-label max-w-56">State</label>
+          <input className="input" type="text" placeholder="State" value="" readOnly />
         </div>
 
-        <div className="flex items-center flex-wrap lg:flex-nowrap gap-2.5">
-          <span className="text-2sm font-medium text-gray-700 max-w-56 w-full">City</span>
-          <div className="grow min-w-48">
-            <input
-              type="text"
-              className="input w-full placeholder:text-gray-500"
-              placeholder="Barcelona"
-              value=""
-              readOnly
-            />
-          </div>
+        <div className="flex items-baseline flex-wrap lg:flex-nowrap gap-2.5">
+          <label className="form-label max-w-56">City</label>
+          <input className="input" type="text" value="Barcelona" readOnly />
         </div>
 
-        <div className="flex items-center flex-wrap lg:flex-nowrap gap-2.5">
-          <span className="text-2sm font-medium text-gray-700 max-w-56 w-full">Postcode</span>
-          <div className="grow min-w-48">
-            <input
-              type="text"
-              className="input w-full placeholder:text-gray-500"
-              placeholder="08012"
-              value=""
-              readOnly
-            />
-          </div>
+        <div className="flex items-baseline flex-wrap lg:flex-nowrap gap-2.5">
+          <label className="form-label max-w-56">Postcode</label>
+          <input className="input" type="text" value="08012" readOnly />
         </div>
 
-        <div className="flex justify-end">
+        <div className="flex justify-end pt-2.5">
           <button className="btn btn-primary">Save Changes</button>
         </div>
       </div>
