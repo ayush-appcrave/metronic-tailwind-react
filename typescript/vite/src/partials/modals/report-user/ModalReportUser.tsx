@@ -94,6 +94,15 @@ const ModalReportUser = forwardRef<HTMLDivElement, ModalReportUserProps>(({ open
     )
   }
 
+  const buildButton = () => {
+    return (
+      <div className="flex items-center gap-2.5 justify-end px-5">
+        <button className="btn btn-sm btn-primary">Report this person</button>
+        <button className="btn btn-sm btn-light" data-modal-dismiss="true">Cancel</button>
+      </div>
+    )
+  }
+
   return (
     <Modal open={open} onClose={onClose} ref={ref}>
       <ModalContent className="max-w-[600px] top-[15%]">
@@ -110,6 +119,8 @@ const ModalReportUser = forwardRef<HTMLDivElement, ModalReportUserProps>(({ open
           {buildOptions()}
           <div className="border-b border-b-gray-200"></div>
           {buildFooter()}
+          <div className="border-b border-b-gray-200"></div>
+          {buildButton()}
         </ModalBody>
       </ModalContent>
     </Modal>
