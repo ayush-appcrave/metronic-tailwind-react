@@ -1,12 +1,11 @@
 import React from 'react';
 import { Table } from '@tanstack/react-table';
-import { TablePagination } from '@/components/table/TablePagination.tsx';
-
+import { DataGridPagination } from './';
 type TableFooterProps = {
   table: Table<any>;
 };
 
-const TableFooter = ({ table }: TableFooterProps) => {
+const DataGridToolbar = ({ table }: TableFooterProps) => {
   return (
     <div className="card-footer justify-center md:justify-between flex-col md:flex-row gap-3 text-gray-600 text-2sm font-medium">
       <div className="flex items-center gap-2">
@@ -26,9 +25,9 @@ const TableFooter = ({ table }: TableFooterProps) => {
         </select>{' '}
         per page
       </div>
-      <TablePagination table={table} />
+      <DataGridPagination table={table} />
     </div>
   );
 };
 
-export { TableFooter };
+export { DataGridToolbar };

@@ -78,7 +78,6 @@ import { RequireAuth } from '../auth/RequireAuth';
 import { Demo1Layout } from '../layouts/demo1';
 import { ErrorsPage } from '../modules/errors';
 import { useLoaders } from '../providers/LoadersProvider';
-import { Example1 } from '@/pages/crud/Example1.tsx';
 import { ScrollSpyExample } from '@/pages/scroll-spy/ScrollSpyExample.tsx';
 
 const AppRouting = (): ReactElement => {
@@ -178,7 +177,6 @@ const AppRouting = (): ReactElement => {
           <Route path="/account/members/appearance" element={<AppearancePage />} />
           <Route path="/account/members/invite-a-friend" element={<InviteAFriendPage />} />
           <Route path="/account/activity" element={<AccountActivityPages />} />
-          <Route path="/crud/example-1" element={<Example1 />} />
           <Route path="/scroll-spy/example-1" element={<ScrollSpyExample />} />
           <Route path="/network/get-started" element={<NetworkGetStartedPage />} />
           <Route path="/network/user-cards/mini-cards" element={<NetworkMiniCardsPage />} />

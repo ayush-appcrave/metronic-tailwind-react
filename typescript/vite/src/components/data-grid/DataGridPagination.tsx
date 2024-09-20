@@ -1,11 +1,12 @@
 import React from 'react';
 import { Table } from '@tanstack/react-table';
+import { KeenIcon } from '../KeenIcons';
 
-type TablePaginationProps = {
+type IDataGridPaginationProps = {
   table: Table<any>;
 };
 
-const TablePagination = ({ table }: TablePaginationProps) => {
+const DataGridPagination = ({ table }: IDataGridPaginationProps) => {
   return (
     <div className="flex items-center gap-4">
       <div className="flex">
@@ -21,14 +22,14 @@ const TablePagination = ({ table }: TablePaginationProps) => {
         onClick={() => table.firstPage()}
         disabled={!table.getCanPreviousPage()}
       >
-        <i className="ki-filled ki-double-left"></i>
+        <KeenIcon icon="double-left" />
       </button>
       <button
         className="border rounded p-1"
         onClick={() => table.previousPage()}
         disabled={!table.getCanPreviousPage()}
       >
-        <i className="ki-filled ki-left"></i>
+        <KeenIcon icon="left" />
       </button>
       <input
         type="number"
@@ -46,17 +47,17 @@ const TablePagination = ({ table }: TablePaginationProps) => {
         onClick={() => table.nextPage()}
         disabled={!table.getCanNextPage()}
       >
-        <i className="ki-filled ki-right"></i>
+        <KeenIcon icon="right" />
       </button>
       <button
         className="border rounded p-1"
         onClick={() => table.lastPage()}
         disabled={!table.getCanNextPage()}
       >
-        <i className="ki-filled ki-double-right"></i>
+        <KeenIcon icon="right" />
       </button>
     </div>
   );
 };
 
-export { TablePagination };
+export { DataGridPagination };

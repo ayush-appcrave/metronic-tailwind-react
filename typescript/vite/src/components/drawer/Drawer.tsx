@@ -6,7 +6,7 @@ type DrawerProps = MuiDrawerProps & {
   // Add any additional props if needed
 };
 
-const StyledDrawer = styled(MuiDrawer)(({ theme }) => ({
+const StyledDrawer = styled(MuiDrawer)(() => ({
   '& .MuiDrawer-paper': {
     backgroundColor: 'var(--tw-drawer-background-color)',
     boxShadow: 'var(--tw-drawer-box-shadow)'

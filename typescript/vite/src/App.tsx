@@ -27,7 +27,7 @@ const App = () => {
     <BrowserRouter basename={BASE_URL}>
       <PathnameProvider>
         <AppRouting />
-      </PathnameProvider>      
+      </PathnameProvider>
     </BrowserRouter>
   );
 };

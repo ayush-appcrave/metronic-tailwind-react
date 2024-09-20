@@ -13,7 +13,7 @@ import React from 'react';
 import { Filter } from '@/components/table/ColumnFilter.tsx';
 import { TableFooter } from '@/components/table/TableFooter.tsx';
 
-function Table({ data, columns }: { data: Person[]; columns: ColumnDef<Person>[] }) {
+const Datatable = ({ data, columns }: { data: Person[]; columns: ColumnDef<Person>[] }) {
   const [pagination, setPagination] = React.useState<PaginationState>({
     pageIndex: 0,
     pageSize: 10
@@ -87,7 +87,7 @@ function Table({ data, columns }: { data: Person[]; columns: ColumnDef<Person>[]
                 })}
               </tbody>
             </table>
-            <div className="h-2" />
+              <div className="h-2" />
             <TableFooter table={table} />
           </div>
         </div>
@@ -96,4 +96,4 @@ function Table({ data, columns }: { data: Person[]; columns: ColumnDef<Person>[]
   );
 }
 
-export default Table;
+export default Datatable;

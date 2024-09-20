@@ -1,15 +1,10 @@
-import { Helmet } from 'react-helmet';
-import { Fragment } from 'react';
-import { Container } from '@/components/container';
-import { useMenu } from '@/providers';
-import { Toolbar, ToolbarActions, ToolbarHeading } from '@/layouts/demo1/toolbar';
-import { Link } from 'react-router-dom';
 import {
   ChannelStatsBlock,
   EarningsChartBlock,
   EntryCalloutBlock,
   HighlightsBlock,
-  TeamMeetingBlock
+  TeamMeetingBlock,
+  TeamsBlock
 } from './';
 
 const LightSidebarContent = () => {
@@ -42,7 +37,9 @@ const LightSidebarContent = () => {
           <TeamMeetingBlock />
         </div>
 
-        <div className="lg:col-span-2">{/* {{ theme.page('_teams') }} */}</div>
+        <div className="lg:col-span-2">
+          <TeamsBlock />
+        </div>
       </div>
     </div>
   );
