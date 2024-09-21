@@ -24,7 +24,7 @@ jobs:
           yarn install
           CI=false yarn build
           ls
-        working-directory: typescript/cra
+        working-directory: typescript/vite
 
       - name: 3. Publish hero
         uses: appleboy/scp-action@master
@@ -33,7 +33,7 @@ jobs:
           username: ${{ secrets.SSH_PROD_USER }}
           password: ${{ secrets.SSH_PROD_PSW }}
           port: 22
-          source: './typescript/cra/build/*'
+          source: './typescript/vite/build/*'
           target: '/var/www/preview.keenthemes.com/public/hero'
           strip_components: 2
 
