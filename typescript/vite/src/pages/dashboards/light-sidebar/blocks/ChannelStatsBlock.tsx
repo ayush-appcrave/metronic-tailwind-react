@@ -1,5 +1,14 @@
 import { toAbsoluteUrl } from '@/utils/Assets';
-import { IChannelStatsItem, IChannelStatsItems } from './types';
+
+interface IChannelStatsItem {
+  logo: string;
+  logoDark?: string;
+  info: string;
+  desc: string;
+  path: string;
+}
+
+interface IChannelStatsItems extends Array<IChannelStatsItem> {}
 
 const ChannelStatsBlock = () => {
   const items: IChannelStatsItems = [

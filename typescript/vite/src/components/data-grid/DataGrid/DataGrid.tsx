@@ -7,14 +7,14 @@ import {
   useReactTable
 } from '@tanstack/react-table';
 import { DataGridInner, DataGridProvider } from './';
-import { useState } from 'react';
+import { ReactNode, useState } from 'react';
 
 export interface TDataGridProps<TData extends object> {
   columns: any[]; // Define columns and data props
   data: TData[];
   loadingText?: string;
   rowSelect?: boolean;
-  emptyText?: string;
+  emptyState?: ReactNode;
   paginationInfo?: string;
   paginationSizes?: number[];
   paginationSizesLabel?: string;
@@ -29,7 +29,7 @@ const DataGrid = <TData extends object>(props: TDataGridProps<TData>) => {
   const defaultValues: Partial<TDataGridProps<TData>> = {
     loadingText: 'Loading...', // Default value for loadingText
     rowSelect: false, // Default value for rowSelect
-    emptyText: 'No data available', // Default value for emptyInfo
+    emptyState: 'No data available', // Default value for emptyInfo
     paginationInfo: '{from} - {to} of {count}', // Default value for paginationInfo
     paginationSizes: [5, 10, 25, 50, 100], // Default pagination sizes
     paginationSizesLabel: 'Show',

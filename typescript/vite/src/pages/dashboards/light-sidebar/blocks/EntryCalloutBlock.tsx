@@ -1,7 +1,10 @@
 import { toAbsoluteUrl } from '@/utils/Assets';
 import { Link } from 'react-router-dom';
 import { CommonAvatars } from '@/partials/common';
-import { IEntryCalloutProps } from './types';
+
+interface IEntryCalloutProps {
+  className: string;
+}
 
 const EntryCalloutBlock = ({ className }: IEntryCalloutProps) => {
   return (

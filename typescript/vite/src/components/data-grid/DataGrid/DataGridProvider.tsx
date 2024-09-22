@@ -3,8 +3,8 @@ import { TDataGridProps } from './DataGrid';
 import { Table } from '@tanstack/react-table';
 
 export interface IDataGridContextProps<TData extends object> {
-  props: TDataGridProps<TData>; // Nesting TDataGridProps inside props
-  table: Table<TData>; // Required table
+  props: TDataGridProps<TData>;
+  table: Table<TData>;
   loading: boolean;
   setLoading: (state: boolean) => void;
   selectedRowIds: Set<string>;
@@ -30,7 +30,7 @@ const useDataGrid = () => {
 const DataGridProvider = <TData extends object>({
   table,
   props,
-  children
+  children,
 }: {
   table: Table<TData>;
   props: TDataGridProps<TData>;
@@ -41,15 +41,38 @@ const DataGridProvider = <TData extends object>({
   const [isSelectAllChecked, setIsSelectAllChecked] = useState<boolean>(false);
   const [isSelectAllIndeterminate, setIsSelectAllIndeterminate] = useState<boolean>(false);
 
-  // Log table row model for debugging
-  useEffect(() => {
-    if (table) {
-      console.log('Table Row Model:', table.getRowModel());
-    }
-  }, [table]);
-
   // Get the IDs of the current rows being displayed
   const currentRows = table.getRowModel().rows.map((row) => row.id);
+
+  // Handle sorting, pagination, and search loading
+  const handleStateChange = () => {
+    setLoading(true);
+    const timer = setTimeout(() => {
+      setLoading(false); // Stop loading after action completes
+    }, 300); // Delay for smooth experience
+    return () => clearTimeout(timer);
+  };
+
+  // Listen for sorting changes
+  useEffect(() => {
+    if (table.getState().sorting.length > 0) {
+      handleStateChange();
+    }
+  }, [table.getState().sorting]);
+
+  // Listen for pagination changes
+  useEffect(() => {
+    handleStateChange();
+  }, [table.getState().pagination]);
+
+  // Handle data loading (trigger loading when data is being fetched)
+  useEffect(() => {
+    if (props.data.length === 0) {
+      setLoading(true);
+    } else {
+      setLoading(false); // Data loaded
+    }
+  }, [props.data]);
 
   // Toggle individual row selection
   const toggleRowSelection = (id: string) => {
@@ -67,10 +90,8 @@ const DataGridProvider = <TData extends object>({
   // Toggle all rows selection
   const toggleAllRowsSelection = (checked: boolean) => {
     if (checked) {
-      console.log('Selecting all rows:', currentRows);
       setSelectedRowIds(new Set(currentRows)); // Select all rows
     } else {
-      console.log('Deselecting all rows');
       setSelectedRowIds(new Set()); // Deselect all rows
     }
   };
@@ -83,8 +104,7 @@ const DataGridProvider = <TData extends object>({
       return;
     }
 
-    const isAllSelected =
-      currentRows.length > 0 && currentRows.every((id) => selectedRowIds.has(id));
+    const isAllSelected = currentRows.every((id) => selectedRowIds.has(id));
     const isSomeSelected = currentRows.some((id) => selectedRowIds.has(id));
 
     setIsSelectAllChecked(isAllSelected);
@@ -108,7 +128,7 @@ const DataGridProvider = <TData extends object>({
         toggleAllRowsSelection,
         getSelectedRowIds,
         isSelectAllChecked,
-        isSelectAllIndeterminate
+        isSelectAllIndeterminate,
       }}
     >
       {children}

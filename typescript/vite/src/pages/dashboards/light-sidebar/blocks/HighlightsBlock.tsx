@@ -1,12 +1,26 @@
-import {
-  IHighlightsItem,
-  IHighlightsItems,
-  IHighlightsProps,
-  IHighlightsRow,
-  IHighlightsRows
-} from './types';
 import { KeenIcon, Menu, MenuItem, MenuToggle } from '@/components';
 import { DropdownCard1 } from '@/partials/dropdowns/general';
+
+export interface IHighlightsRow {
+  icon: string;
+  text: string;
+  total: number;
+  stats: number;
+  increase: boolean;
+}
+
+export interface IHighlightsRows extends Array<IHighlightsRow> {}
+
+export interface IHighlightsItem {
+  badgeColor: string;
+  lebel: string;
+}
+
+export interface IHighlightsItems extends Array<IHighlightsItem> {}
+
+export interface IHighlightsProps {
+  limit?: number;
+}
 
 const HighlightsBlock = ({ limit }: IHighlightsProps) => {
   const rows: IHighlightsRows = [

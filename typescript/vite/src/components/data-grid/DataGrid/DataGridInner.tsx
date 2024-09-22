@@ -11,9 +11,10 @@ import {
   DataGridToolbar
 } from '..';
 import { flexRender } from '@tanstack/react-table';
+import { DataGridTableEmpty } from '../';
 
 const DataGridInner = () => {
-  const { loading, table } = useDataGrid();
+  const { loading, table } = useDataGrid(); // Destructure props to get emptyText
 
   return (
     <Fragment>
@@ -22,31 +23,31 @@ const DataGridInner = () => {
           <DataGridTable>
             <DataGridTableHead>
               {table.getHeaderGroups().map((headerGroup) => {
-                return headerGroup.headers.map((header, index) => {
-                  return <DataGridTableHeadCell key={index} header={header} />;
-                });
+                return headerGroup.headers.map((header, index) => (
+                  <DataGridTableHeadCell key={index} header={header} />
+                ));
               })}
             </DataGridTableHead>
             <DataGridTableBody>
-              {table.getRowModel().rows.map((row, index) => {
-                return (
+              {table.getRowModel().rows.length > 0 ? (
+                table.getRowModel().rows.map((row, index) => (
                   <DataGridTableBodyRow key={index} id={row.id}>
-                    {row.getVisibleCells().map((cell, index) => {
-                      return (
-                        <DataGridTableBodyCell key={index} id={cell.id}>
-                          {flexRender(cell.column.columnDef.cell, cell.getContext())}
-                        </DataGridTableBodyCell>
-                      );
-                    })}
+                    {row.getVisibleCells().map((cell, index) => (
+                      <DataGridTableBodyCell key={index} id={cell.id}>
+                        {flexRender(cell.column.columnDef.cell, cell.getContext())}
+                      </DataGridTableBodyCell>
+                    ))}
                   </DataGridTableBodyRow>
-                );
-              })}
+                ))
+              ) : (
+                <DataGridTableEmpty />
+              )}
             </DataGridTableBody>
           </DataGridTable>
-          <DataGridToolbar />
+          {loading && <DataGridLoader />}
         </div>
+        <DataGridToolbar />
       </div>
-      {loading && <DataGridLoader />}
     </Fragment>
   );
 };

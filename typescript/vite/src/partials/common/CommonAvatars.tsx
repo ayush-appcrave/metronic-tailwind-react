@@ -44,7 +44,7 @@ const CommonAvatars = ({ size, group, more, className }: IAvatarsProps) => {
               more.variant
             )}
           >
-            +{more.number}
+            +{more.number || more.label}
           </span>
         </div>
       )}
