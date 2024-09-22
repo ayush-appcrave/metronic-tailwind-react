@@ -7,12 +7,14 @@ import {
   useReactTable
 } from '@tanstack/react-table';
 import { DataGridInner, DataGridProvider } from './';
-import { ReactNode, useState } from 'react';
+import { ReactNode, useEffect, useState } from 'react';
 
 export interface TDataGridProps<TData extends object> {
   columns: any[]; // Define columns and data props
   data: TData[];
   loadingText?: string;
+  saveState?: boolean;
+  saveStateId?: string;
   rowSelect?: boolean;
   emptyState?: ReactNode;
   paginationInfo?: string;
@@ -22,11 +24,14 @@ export interface TDataGridProps<TData extends object> {
   paginationSize?: number;
   paginationMore?: boolean;
   paginationMoreLimit?: number;
+  initialSorting?: { id: string; desc?: boolean }[]; // New prop to set initial sorting
 }
 
 const DataGrid = <TData extends object>(props: TDataGridProps<TData>) => {
   // Set default values for the required props
   const defaultValues: Partial<TDataGridProps<TData>> = {
+    saveState: false,
+    saveStateId: '',
     loadingText: 'Loading...', // Default value for loadingText
     rowSelect: false, // Default value for rowSelect
     emptyState: 'No data available', // Default value for emptyInfo
@@ -36,17 +41,57 @@ const DataGrid = <TData extends object>(props: TDataGridProps<TData>) => {
     paginationSizesDesc: 'per page',
     paginationSize: 5, // Default pagination size
     paginationMoreLimit: 5, // Default limit for "load more"
-    paginationMore: false // Default for paginationMore
+    paginationMore: false, // Default for paginationMore
+    initialSorting: [] // Default for initial sorting
   };
 
   // Merge default values with props
   const mergedProps = { ...defaultValues, ...props };
 
-  // Initialize pagination state
-  const [pagination, setPagination] = useState<PaginationState>({
-    pageIndex: 0,
-    pageSize: mergedProps.paginationSize || defaultValues.paginationSize!
-  });
+  /// Load saved pagination, sorting state from localStorage
+  const loadSavedState = (): { pagination: PaginationState; sorting: any[] } => {
+    if (props.saveState && props.saveStateId) {
+      const savedState = localStorage.getItem(props.saveStateId);
+      if (savedState) {
+        const parsedState = JSON.parse(savedState);
+        return {
+          pagination: {
+            pageIndex: parsedState.pageIndex || 0,
+            pageSize: parsedState.pageSize || mergedProps.paginationSize || 5
+          },
+          sorting: parsedState.sorting || mergedProps.initialSorting || []
+        };
+      }
+    }
+    return {
+      pagination: {
+        pageIndex: 0,
+        pageSize: mergedProps.paginationSize || 5
+      },
+      sorting: mergedProps.initialSorting || []
+    };
+  };
+
+  const saveState = (newState: any) => {
+    if (props.saveState && props.saveStateId) {
+      const existingState = localStorage.getItem(props.saveStateId);
+      let mergedState = newState;
+
+      if (existingState) {
+        const parsedState = JSON.parse(existingState);
+        mergedState = { ...parsedState, ...newState };
+      }
+
+      localStorage.setItem(props.saveStateId, JSON.stringify(mergedState));
+    }
+  };
+
+  // Load initial saved state (pagination, sorting)
+  const { pagination: initialPagination, sorting: initialSorting } = loadSavedState();
+
+  // Initialize pagination and sorting states
+  const [pagination, setPagination] = useState<PaginationState>(initialPagination);
+  const [sorting, setSorting] = useState<any[]>(initialSorting);
 
   // Initialize the table using useReactTable and pass props.columns and props.data
   const table = useReactTable({
@@ -58,10 +103,21 @@ const DataGrid = <TData extends object>(props: TDataGridProps<TData>) => {
     getFilteredRowModel: getFilteredRowModel(),
     getPaginationRowModel: getPaginationRowModel(),
     onPaginationChange: setPagination,
+    onSortingChange: setSorting,
     state: {
-      pagination
+      pagination,
+      sorting
     }
   });
+
+  // Save pagination, sorting state when they change
+  useEffect(() => {
+    saveState({
+      pageIndex: table.getState().pagination.pageIndex,
+      pageSize: table.getState().pagination.pageSize,
+      sorting: table.getState().sorting
+    });
+  }, [table.getState().pagination.pageIndex, table.getState().pagination.pageSize, table.getState().sorting]);
 
   return (
     <DataGridProvider table={table} props={mergedProps}>

@@ -1,5 +1,5 @@
 /* eslint-disable prettier/prettier */
-import React, { useMemo, useState } from 'react';
+import React, { useEffect, useMemo, useState } from 'react';
 import { DataGrid } from '@/components';
 import { KeenIcon } from '@/components';
 import { ColumnDef } from '@tanstack/react-table';
@@ -22,6 +22,8 @@ interface Team {
 }
 
 const TeamsBlock = () => {
+  const storageFilterId = 'teams-filter';
+
   const columns = useMemo<ColumnDef<ITeamData>[]>(
     () => [
       {
@@ -96,10 +98,17 @@ const TeamsBlock = () => {
   // Memoize the team data
   const data: Team[] = useMemo(() => TeamsData, []);
 
-  // Search term and filtered data
-  const [searchTerm, setSearchTerm] = useState<string>('');
+  // Initialize search term from localStorage if available
+  const [searchTerm, setSearchTerm] = useState(() => {
+    return localStorage.getItem(storageFilterId) || '';
+  });
 
-  // Filter team data based on the search term
+  // Update localStorage whenever the search term changes
+  useEffect(() => {
+    localStorage.setItem(storageFilterId, searchTerm);
+  }, [searchTerm]);
+
+  // Filtered data based on search term
   const filteredData = useMemo(() => {
     if (!searchTerm) return data; // If no search term, return full data
 
@@ -126,8 +135,14 @@ const TeamsBlock = () => {
       </div>
 
       <div className="card-body">
-        {/* Pass filtered data to the DataGrid */}
-        <DataGrid columns={columns} data={filteredData} rowSelect={true} />
+        <DataGrid 
+          columns={columns} 
+          data={filteredData} 
+          rowSelect={true} 
+          initialSorting={[{ id: 'team', desc: false }]} 
+          saveState={true} 
+          saveStateId='temas-grid'
+        />
       </div>
     </div>
   );
