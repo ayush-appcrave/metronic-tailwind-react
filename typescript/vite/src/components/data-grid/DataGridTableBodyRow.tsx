@@ -1,5 +1,5 @@
 import React, { ReactNode } from 'react';
-import { useDataGrid } from './';
+import { DataGridTableBodyRowSelect, useDataGrid } from './';
 
 export interface TDataGridTableBodyRowProps {
   children: ReactNode;
@@ -10,17 +10,9 @@ export interface TDataGridTableBodyRowProps {
 const DataGridTableBodyRow = ({ id, children, className }: TDataGridTableBodyRowProps) => {
   const { props } = useDataGrid();
 
-  const buildRowSelectCell = () => {
-    return (
-      <td>
-        <input className="checkbox checkbox-sm" type="checkbox" />
-      </td>
-    );
-  };
-
   return (
-    <tr key={id} className={className && className}>
-      {props.rowSelect && buildRowSelectCell()}
+    <tr className={className && className}>
+      {props.rowSelect && <DataGridTableBodyRowSelect id={id} />}
       {children}
     </tr>
   );

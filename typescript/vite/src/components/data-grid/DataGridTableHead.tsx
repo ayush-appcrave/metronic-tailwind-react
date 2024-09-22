@@ -1,6 +1,7 @@
 import clsx from 'clsx';
 import React, { ReactNode } from 'react';
 import { useDataGrid } from '@/components/data-grid';
+import { DataGridTableHeadRowsSelect } from './DataGridTableHeadRowsSelect';
 
 export interface TDataGridTableHeadProps {
   className?: string;
@@ -10,18 +11,10 @@ export interface TDataGridTableHeadProps {
 const DataGridTableHead = ({ children, className }: TDataGridTableHeadProps) => {
   const { props } = useDataGrid();
 
-  const buildRowsSelectCell = () => {
-    return (
-      <td className="w-[60px]">
-        <input className="checkbox checkbox-sm" type="checkbox" />
-      </td>
-    );
-  };
-
   return (
     <thead className={clsx(className && className)}>
-      <tr>
-        {props.rowSelect && buildRowsSelectCell()}
+      <tr key={0}>
+        {props.rowSelect && <DataGridTableHeadRowsSelect />}
         {children}
       </tr>
     </thead>

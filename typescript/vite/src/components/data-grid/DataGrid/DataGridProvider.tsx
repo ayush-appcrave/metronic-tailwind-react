@@ -1,78 +1,95 @@
 import { createContext, useContext, useState, useEffect } from 'react';
 import { TDataGridProps } from './DataGrid';
+import { Table } from '@tanstack/react-table';
 
-export interface IDataGridContextProps {
-  props: TDataGridProps;
+export interface IDataGridContextProps<TData extends object> {
+  props: TDataGridProps<TData>; // Nesting TDataGridProps inside props
+  table: Table<TData>; // Required table
   loading: boolean;
   setLoading: (state: boolean) => void;
-  selectedRowIds: Set<number>;
-  toggleRowSelection: (id: number) => void;
+  selectedRowIds: Set<string>;
+  toggleRowSelection: (id: string) => void;
   toggleAllRowsSelection: (checked: boolean) => void;
-  getSelectedRowIds: () => number[];
+  getSelectedRowIds: () => string[];
   isSelectAllChecked: boolean;
   isSelectAllIndeterminate: boolean;
 }
 
-const initialProps: IDataGridContextProps = {
-  props: {
-    children: undefined
-  },
-  loading: false,
-  setLoading: (state: boolean) => {
-    console.log(`${state}`);
-  },
-  selectedRowIds: new Set(),
-  toggleRowSelection: () => {},
-  toggleAllRowsSelection: () => {},
-  getSelectedRowIds: () => [],
-  isSelectAllChecked: false,
-  isSelectAllIndeterminate: false
+// Create the context
+const DataGridContext = createContext<IDataGridContextProps<any> | undefined>(undefined);
+
+// Custom hook to use the DataGrid context
+const useDataGrid = () => {
+  const context = useContext(DataGridContext);
+  if (!context) {
+    throw new Error('useDataGrid must be used within a DataGridProvider');
+  }
+  return context;
 };
 
-// Create a DataGrid Context
-const DataGridContext = createContext<IDataGridContextProps>(initialProps);
-
-// Custom hook to use the DataGrid Context
-// eslint-disable-next-line react-refresh/only-export-components
-const useDataGrid = () => useContext(DataGridContext);
-
-const DataGridProvider = (props: TDataGridProps) => {
+const DataGridProvider = <TData extends object>({
+  table,
+  props,
+  children
+}: {
+  table: Table<TData>;
+  props: TDataGridProps<TData>;
+  children: React.ReactNode;
+}) => {
   const [loading, setLoading] = useState<boolean>(false);
-  const [selectedRowIds, setSelectedRowIds] = useState<Set<number>>(new Set());
+  const [selectedRowIds, setSelectedRowIds] = useState<Set<string>>(new Set());
   const [isSelectAllChecked, setIsSelectAllChecked] = useState<boolean>(false);
   const [isSelectAllIndeterminate, setIsSelectAllIndeterminate] = useState<boolean>(false);
-  const rowIds = Array.from({ length: 100 }, (_, i) => i + 1); // Replace with actual row IDs
+
+  // Log table row model for debugging
+  useEffect(() => {
+    if (table) {
+      console.log('Table Row Model:', table.getRowModel());
+    }
+  }, [table]);
+
+  // Get the IDs of the current rows being displayed
+  const currentRows = table.getRowModel().rows.map((row) => row.id);
 
   // Toggle individual row selection
-  const toggleRowSelection = (id: number) => {
+  const toggleRowSelection = (id: string) => {
     setSelectedRowIds((prevSelected) => {
       const newSelected = new Set(prevSelected);
       if (newSelected.has(id)) {
-        newSelected.delete(id);
+        newSelected.delete(id); // Uncheck the row if already selected
       } else {
-        newSelected.add(id);
+        newSelected.add(id); // Select the row if not selected
       }
       return newSelected;
     });
   };
 
-  // Select or deselect all rows
+  // Toggle all rows selection
   const toggleAllRowsSelection = (checked: boolean) => {
     if (checked) {
-      setSelectedRowIds(new Set(rowIds));
+      console.log('Selecting all rows:', currentRows);
+      setSelectedRowIds(new Set(currentRows)); // Select all rows
     } else {
-      setSelectedRowIds(new Set());
+      console.log('Deselecting all rows');
+      setSelectedRowIds(new Set()); // Deselect all rows
     }
   };
 
-  // Update select all and indeterminate states
+  // Update the "Select All" and indeterminate states
   useEffect(() => {
-    const isAllSelected = selectedRowIds.size === rowIds.length;
-    const isNoneSelected = selectedRowIds.size === 0;
+    if (currentRows.length === 0) {
+      setIsSelectAllChecked(false);
+      setIsSelectAllIndeterminate(false);
+      return;
+    }
+
+    const isAllSelected =
+      currentRows.length > 0 && currentRows.every((id) => selectedRowIds.has(id));
+    const isSomeSelected = currentRows.some((id) => selectedRowIds.has(id));
 
     setIsSelectAllChecked(isAllSelected);
-    setIsSelectAllIndeterminate(!isAllSelected && !isNoneSelected);
-  }, [selectedRowIds, rowIds]);
+    setIsSelectAllIndeterminate(!isAllSelected && isSomeSelected);
+  }, [selectedRowIds, currentRows]);
 
   // Get all selected row IDs
   const getSelectedRowIds = () => {
@@ -83,6 +100,7 @@ const DataGridProvider = (props: TDataGridProps) => {
     <DataGridContext.Provider
       value={{
         props,
+        table,
         loading,
         setLoading,
         selectedRowIds,
@@ -93,10 +111,9 @@ const DataGridProvider = (props: TDataGridProps) => {
         isSelectAllIndeterminate
       }}
     >
-      {props.children}
+      {children}
     </DataGridContext.Provider>
   );
 };
 
-// eslint-disable-next-line react-refresh/only-export-components
 export { DataGridProvider, useDataGrid };

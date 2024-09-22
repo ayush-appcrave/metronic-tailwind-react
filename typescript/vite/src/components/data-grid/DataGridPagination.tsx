@@ -1,61 +1,105 @@
-import React from 'react';
-import { Table } from '@tanstack/react-table';
-import { KeenIcon } from '../KeenIcons';
+import React, { Fragment } from 'react';
+import { KeenIcon } from '@/components';
+import { useDataGrid } from '.';
 
-type IDataGridPaginationProps = {
-  table: Table<any>;
-};
+const DataGridPagination = () => {
+  const { table, props } = useDataGrid();
 
-const DataGridPagination = ({ table }: IDataGridPaginationProps) => {
+  // Calculate pagination values
+  const pageIndex = table.getState().pagination.pageIndex;
+  const pageSize = table.getState().pagination.pageSize;
+  const rowCount = table.getFilteredRowModel().rows.length;
+
+  // Calculate from, to, and total count values for pagination info
+  const from = pageIndex * pageSize + 1;
+  const to = Math.min((pageIndex + 1) * pageSize, rowCount);
+  const count = rowCount;
+
+  // Replace placeholders in paginationInfo
+  const paginationInfo = props.paginationInfo
+    ? props.paginationInfo
+        .replace('{from}', from.toString())
+        .replace('{to}', to.toString())
+        .replace('{count}', count.toString())
+    : `${from} - ${to} of ${count}`; // Default fallback format
+
+  // Pagination limit logic
+  const pageCount = table.getPageCount();
+  const paginationMoreLimit = props.paginationMoreLimit || 5;
+
+  // Determine the start and end of the pagination group
+  const currentGroupStart = Math.floor(pageIndex / paginationMoreLimit) * paginationMoreLimit;
+  const currentGroupEnd = Math.min(currentGroupStart + paginationMoreLimit, pageCount);
+
+  // Render page buttons based on the current group
+  const renderPageButtons = () => {
+    const buttons = [];
+    for (let i = currentGroupStart; i < currentGroupEnd; i++) {
+      buttons.push(
+        <button
+          key={i}
+          className={`btn ${pageIndex === i ? 'active' : ''}`}
+          onClick={() => table.setPageIndex(i)}
+        >
+          {i + 1}
+        </button>
+      );
+    }
+    return buttons;
+  };
+
+  // Render a "previous" ellipsis button if there are previous pages to show
+  const renderEllipsisPrevButton = () => {
+    if (currentGroupStart > 0) {
+      return (
+        <button
+          className="btn"
+          onClick={() => table.setPageIndex(currentGroupStart - 1)}
+        >
+          ...
+        </button>
+      );
+    }
+    return null; // No ellipsis needed if we're in the first group
+  };
+
+  // Render a "next" ellipsis button if there are more pages to show after the current group
+  const renderEllipsisNextButton = () => {
+    if (currentGroupEnd < pageCount) {
+      return (
+        <button
+          className="btn"
+          onClick={() => table.setPageIndex(currentGroupEnd)}
+        >
+          ...
+        </button>
+      );
+    }
+    return null; // No ellipsis needed if we're in the last group
+  };
+
   return (
-    <div className="flex items-center gap-4">
-      <div className="flex">
-        <div>
-          Page{' '}
-          <strong>
-            {table.getState().pagination.pageIndex + 1} of {table.getPageCount().toLocaleString()}
-          </strong>
-        </div>
+    <div className="flex items-center gap-4 order-1 md:order-2">
+      <span>{paginationInfo}</span>
+      <div className="pagination">
+        <button
+          className="btn"
+          onClick={() => table.previousPage()}
+          disabled={!table.getCanPreviousPage()}
+        >
+          <KeenIcon icon="black-left" />
+        </button>
+
+        {renderEllipsisPrevButton()}
+
+        <Fragment>{renderPageButtons()}</Fragment>
+
+        {renderEllipsisNextButton()}
+
+        <button className="btn" onClick={() => table.nextPage()} disabled={!table.getCanNextPage()}>
+          <KeenIcon icon="black-right" />
+        </button>
       </div>
-      <button
-        className="border rounded p-1"
-        onClick={() => table.firstPage()}
-        disabled={!table.getCanPreviousPage()}
-      >
-        <KeenIcon icon="double-left" />
-      </button>
-      <button
-        className="border rounded p-1"
-        onClick={() => table.previousPage()}
-        disabled={!table.getCanPreviousPage()}
-      >
-        <KeenIcon icon="left" />
-      </button>
-      <input
-        type="number"
-        min="1"
-        max={table.getPageCount()}
-        defaultValue={table.getState().pagination.pageIndex + 1}
-        onChange={(e) => {
-          const page = e.target.value ? Number(e.target.value) - 1 : 0;
-          table.setPageIndex(page);
-        }}
-        className="input"
-      />
-      <button
-        className="border rounded p-1"
-        onClick={() => table.nextPage()}
-        disabled={!table.getCanNextPage()}
-      >
-        <KeenIcon icon="right" />
-      </button>
-      <button
-        className="border rounded p-1"
-        onClick={() => table.lastPage()}
-        disabled={!table.getCanNextPage()}
-      >
-        <KeenIcon icon="right" />
-      </button>
     </div>
   );
 };
