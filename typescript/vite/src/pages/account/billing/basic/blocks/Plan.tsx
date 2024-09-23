@@ -1,10 +1,10 @@
-interface IAccountBillingBasicPlanItem {
+interface IPlanItem {
   total: string;
   description: string;
 }
 
-const AccountBillingBasicPlanBlock = () => {
-  const statistics: IAccountBillingBasicPlanItems = [
+const Plan = () => {
+  const statistics: IPlanItems = [
     {
       total: '$769.00',
       description: 'Annual Total'
@@ -19,7 +19,7 @@ const AccountBillingBasicPlanBlock = () => {
     }
   ];
 
-  const renderItem = (statistic: IAccountBillingBasicPlanItem, index: number) => {
+  const renderItem = (statistic: IPlanItem, index: number) => {
     return (
       <div
         key={index}
@@ -73,4 +73,4 @@ const AccountBillingBasicPlanBlock = () => {
   );
 };
 
-export { AccountBillingBasicPlanBlock, type IAccountBillingBasicPlanItems }; 
+export { Plan, type IPlanItems }; 

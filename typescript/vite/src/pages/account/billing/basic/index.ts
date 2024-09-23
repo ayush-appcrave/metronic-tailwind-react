@@ -1,3 +1,3 @@
-export * from './AccountBillingBasicContent';
-export * from './AccountBillingBasicPage';
+export * from './BasicContent';
+export * from './BasicPage';
 export * from './blocks'; 

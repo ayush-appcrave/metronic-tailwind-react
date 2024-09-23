@@ -1,16 +1,16 @@
 import { MiscHighlightedPosts } from '@/partials/misc';
-import { AccountBillingBasicDetailsBlock, AccountBillingBasicInvoicingBlock, AccountBillingBasicPaymentMethodsBlock, AccountBillingBasicPlanBlock } from './blocks'; 
+import { Details, Invoicing, PaymentMethods, Plan } from './blocks'; 
 
-interface IAccountBillingBasicContentItems {
+interface IBasicContentItems {
   icon: string;
   title: string;
   summary: string;
   path: string;
 }
-interface IAccountBillingBasicContentItems extends Array<IAccountBillingBasicContentItem> {}
+interface IBasicContentItems extends Array<IBasicContentItem> {}
 
 const AccountBillingBasicContent = () => {
-  const posts: IAccountBillingBasicContentItems = [
+  const posts: IBasicContentItems = [
     {
       icon: 'discount',
       title: 'Tailor-Made Plans Selection and Efficient Billing Systems',
@@ -38,10 +38,10 @@ const AccountBillingBasicContent = () => {
     <div className="grid grid-cols-1 xl:grid-cols-3 gap-5 lg:gap-7.5">
       <div className="col-span-2">
         <div className="flex flex-col gap-5 lg:gap-7.5">
-          <AccountBillingBasicPlanBlock />
-          <AccountBillingBasicPaymentMethodsBlock />
-          <AccountBillingBasicDetailsBlock />
-          <AccountBillingBasicInvoicingBlock />
+          <Plan />
+          <PaymentMethods />
+          <Details />
+          <Invoicing />
         </div>
       </div>
       <div className="col-span-1">
@@ -53,4 +53,4 @@ const AccountBillingBasicContent = () => {
   );
 };
 
-export { AccountBillingBasicContent, type IAccountBillingBasicContentItems }; 
+export { BasicContent, type IBasicContentItems }; 
