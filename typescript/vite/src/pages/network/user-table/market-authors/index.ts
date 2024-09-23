@@ -1,1 +1,1 @@
-export * from './_MarketAuthorsContent.tsx';
+export * from './MarketAuthorsContent.tsx';

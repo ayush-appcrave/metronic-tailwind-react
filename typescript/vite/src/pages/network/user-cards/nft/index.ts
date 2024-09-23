@@ -1,2 +1,2 @@
-export * from './_NetworkNFTContent';
-export * from './types';
+export * from './NFTContent';
+export * from './NFTPage';

@@ -1,1 +1,1 @@
-export * from './_VisitorsContent.tsx';
+export * from './VisitorsContent.tsx';

@@ -1,10 +1,25 @@
 import { KeenIcon } from '@/components';
-import { INetworkMiniCardsContentItem, INetworkMiniCardsContentItems } from './types';
 import { Link } from 'react-router-dom';
 import { CardUserMini } from '@/partials/cards';
 
-const NetworkMiniCardsContent = () => {
-  const items: INetworkMiniCardsContentItems = [
+interface IAvatar {
+  className: string;
+  image?: string;
+  imageClass?: string;
+  fallback?: string;
+  badgeClass: string;
+}
+
+export interface IMiniCardsContentItem {
+  avatar: IAvatar;
+  name: string;
+  email: string;
+  verify: boolean;
+}
+export interface IMiniCardsContentItems extends Array<IMiniCardsContentItem> {}
+
+const MiniCardsContent = () => {
+  const items: IMiniCardsContentItems = [
     {
       avatar: {
         className: 'size-20 relative',
@@ -187,7 +202,7 @@ const NetworkMiniCardsContent = () => {
     }
   ];
 
-  const renderItem = (item: INetworkMiniCardsContentItem, index: number) => (
+  const renderItem = (item: IMiniCardsContentItem, index: number) => (
     <CardUserMini
       avatar={item.avatar}
       name={item.name}
@@ -243,4 +258,4 @@ const NetworkMiniCardsContent = () => {
   );
 };
 
-export { NetworkMiniCardsContent };
+export { MiniCardsContent };

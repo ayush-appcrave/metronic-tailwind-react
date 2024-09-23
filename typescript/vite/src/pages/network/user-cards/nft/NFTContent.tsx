@@ -1,17 +1,39 @@
 import { KeenIcon } from '@/components';
-import { INetworkNFTContentItem, INetworkNFTContentItems } from './types';
 import { Link } from 'react-router-dom';
 import { CardNFT2, CardNFT2Row } from '@/partials/cards';
 import { useState } from 'react';
 
-const NetworkNFTContent = () => {
+interface IAvatar {
+  className: string;
+  image?: string;
+  imageClass?: string;
+  fallback?: string;
+  badgeClass: string;
+}
+
+interface IStatistic {
+  total: string;
+  description: string;
+}
+
+export interface INFTContentItem {
+  name: string;
+  info: string;
+  avatar: IAvatar;
+  email: string;
+  statistics: IStatistic[];
+  bgImage: string;
+}
+export interface INFTContentItems extends Array<INFTContentItem> {}
+
+const NFTContent = () => {
   const [activeTab, setActiveTab] = useState<'cards' | 'list'>('cards');
 
   const handleTabClick = (tab: 'cards' | 'list') => {
     setActiveTab(tab);
   };
 
-  const items: INetworkNFTContentItems = [
+  const items: INFTContentItems = [
     {
       bgImage: 'bg-11.png',
       avatar: {
@@ -257,7 +279,7 @@ const NetworkNFTContent = () => {
     }
   ];
 
-  const renderItem = (item: INetworkNFTContentItem, index: number) => (
+  const renderItem = (item: INFTContentItem, index: number) => (
     <CardNFT2
       bgImage={item.bgImage}
       avatar={item.avatar}
@@ -269,7 +291,7 @@ const NetworkNFTContent = () => {
     />
   );
 
-  const renderRowItem = (item: INetworkNFTContentItem, index: number) => (
+  const renderRowItem = (item: INFTContentItem, index: number) => (
     <CardNFT2Row
       bgImage={item.bgImage}
       avatar={item.avatar}
@@ -366,4 +388,4 @@ const NetworkNFTContent = () => {
   );
 };
 
-export { NetworkNFTContent };
+export { NFTContent };

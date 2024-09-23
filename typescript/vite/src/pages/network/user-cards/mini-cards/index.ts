@@ -1,2 +1,2 @@
-export * from './_NetworkMiniCardsContent';
-export * from './types';
+export * from './MiniCardsContent';
+export * from './MiniCardsPage';
