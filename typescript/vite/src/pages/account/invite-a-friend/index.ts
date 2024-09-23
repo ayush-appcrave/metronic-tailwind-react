@@ -1,4 +1,3 @@
-export * from './_InviteAFriendContent';
-export * from './_InvitePeople';
-export * from './_Invites';
-export * from './types';
+export * from './blocks';
+export * from './InviteAFriendContent';
+export * from './InviteAFriendPage';

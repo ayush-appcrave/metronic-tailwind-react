@@ -1,7 +1,7 @@
 import { MiscEngage, MiscHighlightedPosts } from '@/partials/misc';
 import { IHighlightedPostsItems } from '@/partials/misc/types';
 import { toAbsoluteUrl } from '@/utils';
-import { TeamMembersInviteWithLink } from '../members/team-members';
+import { InviteWithLink } from '../members/team-members/blocks';
 import { InvitePeople, Invites } from '.';
 
 const InviteAFriendContent = () => {
@@ -37,7 +37,7 @@ const InviteAFriendContent = () => {
 
           <Invites />
 
-          <TeamMembersInviteWithLink />
+          <InviteWithLink />
 
           <MiscEngage
             title="Contact Support"

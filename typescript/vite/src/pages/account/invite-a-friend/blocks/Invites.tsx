@@ -1,10 +1,38 @@
-import { IInvitesItem, IInvitesItems, IInvitesProps } from './types';
 import { DropdownCrudItem1 } from '@/partials/dropdowns/general';
 import { CrudDatatableToolbar } from '@/partials/crud';
 import { KeenIcon } from '@/components';
 import { Link } from 'react-router-dom';
 import { toAbsoluteUrl } from '@/utils';
 import { CommonAvatar } from '@/partials/common';
+
+interface IInvitesMember {
+  avatar: string;
+  name: string;
+  tasks: string;
+}
+
+interface IInvitesLocation {
+  name: string;
+  flag: string;
+}
+
+interface IInvitesStatus {
+  label: string;
+  variant: string;
+}
+
+export interface IInvitesItem {
+  member: IInvitesMember;
+  location: IInvitesLocation;
+  status: IInvitesStatus;
+  recentlyActivity: string;
+}
+
+export interface IInvitesItems extends Array<IInvitesItem> {}
+
+export interface IInvitesProps {
+  title?: string;
+}
 
 const Invites = ({ title = 'Invites' }: IInvitesProps) => {
   const data: IInvitesItems = [
