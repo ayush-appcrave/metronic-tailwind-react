@@ -1,3 +1,3 @@
-export * from './_GetStartedContent';
-export * from './_GetStartedOptions';
-export * from './types';
+export * from './blocks';
+export * from './GetStartedContent';
+export * from './GetStartedPage';

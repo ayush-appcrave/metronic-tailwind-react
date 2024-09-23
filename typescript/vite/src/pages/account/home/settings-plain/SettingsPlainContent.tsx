@@ -1,11 +1,11 @@
 import { SettingsSidebarDeleteAccount } from '../settings-sidebar';
-import { SettingsPlainGeneralSettings, SettingsPlainPassword } from '.';
+import { GeneralSettings, PlainPassword } from './blocks';
 
 const SettingsPlainContent = () => {
   return (
     <div className="grid gap-5 lg:gap-7.5 xl:w-[38.75rem] mx-auto">
-      <SettingsPlainGeneralSettings title="General Settings" />
-      <SettingsPlainPassword />
+      <GeneralSettings title="General Settings" />
+      <PlainPassword />
       <SettingsSidebarDeleteAccount />
     </div>
   );

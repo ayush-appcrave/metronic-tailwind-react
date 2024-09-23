@@ -1,4 +1,4 @@
-const SettingsPlainPassword = () => {
+const PlainPassword = () => {
   return (
     <div className="card pb-2.5">
       <div className="card-header" id="password_settings">
@@ -43,4 +43,4 @@ const SettingsPlainPassword = () => {
   );
 };
 
-export { SettingsPlainPassword };
+export { PlainPassword };

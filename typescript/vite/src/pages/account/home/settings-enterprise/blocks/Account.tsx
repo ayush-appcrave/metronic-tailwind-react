@@ -1,10 +1,13 @@
 import { KeenIcon } from '@/components';
 import { toAbsoluteUrl } from '@/utils/Assets';
 
-import { ISettingsEnterpriseAccountProps } from './types';
 import { CrudAvatarUpload } from '@/partials/crud';
 
-const SettingsEnterpriseAccount = ({ title }: ISettingsEnterpriseAccountProps) => {
+export interface IAccountProps {
+  title: string;
+}
+
+const Account = ({ title }: IAccountProps) => {
   return (
     <div className="card min-w-full">
       <div className="card-header">
@@ -225,4 +228,4 @@ const SettingsEnterpriseAccount = ({ title }: ISettingsEnterpriseAccountProps) =
   );
 };
 
-export { SettingsEnterpriseAccount };
+export { Account };

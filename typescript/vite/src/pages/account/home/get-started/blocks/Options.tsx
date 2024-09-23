@@ -1,11 +1,22 @@
 import { KeenIcon, Menu, MenuItem, MenuToggle } from '@/components';
-
-import { IGetStartedContentItem, IGetStartedOptionsProps } from './types';
 import { DropdownCard2 } from '@/partials/dropdowns/general';
 import { Link } from 'react-router-dom';
 
-const GetStartedOptions = ({ items, dropdown }: IGetStartedOptionsProps) => {
-  const renderProject = (item: IGetStartedContentItem, index: number) => {
+export interface IOptionsItem {
+  icon: string;
+  title: string;
+  desc: string;
+  path: string;
+}
+export interface IOptionsItems extends Array<IOptionsItem> {}
+
+export interface IOptionsProps {
+  items: IOptionsItems;
+  dropdown: boolean;
+}
+
+const Options = ({ items, dropdown }: IOptionsProps) => {
+  const renderProject = (item: IOptionsItem, index: number) => {
     return (
       <div key={index} className="card p-5 lg:p-7.5 lg:pt-7">
         <div className="flex flex-col gap-4">
@@ -61,4 +72,4 @@ const GetStartedOptions = ({ items, dropdown }: IGetStartedOptionsProps) => {
   );
 };
 
-export { GetStartedOptions };
+export { Options };

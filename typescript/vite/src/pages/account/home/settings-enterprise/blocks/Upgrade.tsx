@@ -2,7 +2,7 @@ import { KeenIcon } from '@/components';
 import { CommonHexagonBadge } from '@/partials/common';
 import { toAbsoluteUrl } from '@/utils/Assets';
 
-const SettingsEnterpriseUpgrade = () => {
+const Upgrade = () => {
   return (
     <>
       <style>
@@ -60,4 +60,4 @@ const SettingsEnterpriseUpgrade = () => {
   );
 };
 
-export { SettingsEnterpriseUpgrade };
+export { Upgrade };

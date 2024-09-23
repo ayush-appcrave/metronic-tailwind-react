@@ -1,7 +1,7 @@
 import { KeenIcon, Menu, MenuItem, MenuToggle } from '@/components';
 import { DropdownCard2 } from '@/partials/dropdowns/general';
 
-const SettingsEnterpriseSetGoal = () => {
+const SetGoal = () => {
   return (
     <div className="card">
       <div className="card-header gap-2" id="settings_set_goal">
@@ -64,4 +64,4 @@ const SettingsEnterpriseSetGoal = () => {
   );
 };
 
-export { SettingsEnterpriseSetGoal };
+export { SetGoal };

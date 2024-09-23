@@ -1,4 +1,4 @@
-const SettingsSidebarAdvancedSettingsAddress = () => {
+const AdvancedSettingsAddress = () => {
   return (
     <div className="card">
       <div className="card-header" id="advanced_settings_address">
@@ -44,4 +44,4 @@ const SettingsSidebarAdvancedSettingsAddress = () => {
   );
 };
 
-export { SettingsSidebarAdvancedSettingsAddress };
+export { AdvancedSettingsAddress };

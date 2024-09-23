@@ -1,4 +1,3 @@
-export * from './_SettingsPlainContent';
-export * from './_SettingsPlainGeneralSettings';
-export * from './_SettingsPlainPassword';
-export * from './types';
+export * from './blocks';
+export * from './SettingsPlainContent';
+export * from './SettingsPlainPage';

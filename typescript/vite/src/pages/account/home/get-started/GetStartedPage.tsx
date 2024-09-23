@@ -4,7 +4,7 @@ import { NavbarMenu } from '@/partials/menu/NavbarMenu';
 import { Navbar } from '@/partials/navbar';
 import { Toolbar, ToolbarDescription, ToolbarHeading, ToolbarPageTitle } from '@/partials/toolbar';
 
-import { GetStartedContent } from '.';
+import { GetStartedContent } from './';
 import { Link } from 'react-router-dom';
 
 const GetStartedPage = () => {

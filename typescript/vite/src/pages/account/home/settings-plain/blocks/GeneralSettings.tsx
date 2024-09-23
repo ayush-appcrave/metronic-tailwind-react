@@ -1,7 +1,10 @@
-import { ISettingsPlainGeneralSettingsProps } from './types';
 import { CrudAvatarUpload } from '@/partials/crud';
 
-const SettingsPlainGeneralSettings = ({ title }: ISettingsPlainGeneralSettingsProps) => {
+export interface IGeneralSettingsProps {
+  title: string;
+}
+
+const GeneralSettings = ({ title }: IGeneralSettingsProps) => {
   return (
     <div className="card pb-2.5">
       <div className="card-header" id="general_settings">
@@ -88,4 +91,4 @@ const SettingsPlainGeneralSettings = ({ title }: ISettingsPlainGeneralSettingsPr
   );
 };
 
-export { SettingsPlainGeneralSettings };
+export { GeneralSettings };

@@ -1,15 +1,24 @@
 import { KeenIcon, Menu, MenuItem, MenuToggle } from '@/components';
 import { toAbsoluteUrl } from '@/utils/Assets';
-
-import {
-  ICompanyProfileMembersItem,
-  ICompanyProfileMembersItems,
-  ICompanyProfileMembersProps
-} from './types';
 import { DropdownCrud1, DropdownCrudItem1 } from '@/partials/dropdowns/general';
 
-const CompanyProfileMembers = ({ url }: ICompanyProfileMembersProps) => {
-  const tables: ICompanyProfileMembersItems = [
+export interface IMembersProps {
+  url: string;
+}
+
+export interface IMembersItem {
+  avatar: string;
+  name: string;
+  connections: number;
+  label: string;
+  joined: string;
+  disabled: boolean;
+}
+export interface IMembersItems extends Array<IMembersItem> {}
+
+
+const Members = ({ url }: IMembersProps) => {
+  const tables: IMembersItems = [
     {
       avatar: '300-3.png',
       name: 'Tyler Hero',
@@ -52,7 +61,7 @@ const CompanyProfileMembers = ({ url }: ICompanyProfileMembersProps) => {
     }
   ];
 
-  const renderItem = (table: ICompanyProfileMembersItem, index: number) => {
+  const renderItem = (table: IMembersItem, index: number) => {
     return (
       <tr key={index}>
         <td>
@@ -186,4 +195,4 @@ const CompanyProfileMembers = ({ url }: ICompanyProfileMembersProps) => {
   );
 };
 
-export { CompanyProfileMembers };
+export { Members };

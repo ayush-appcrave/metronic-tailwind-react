@@ -1,11 +1,17 @@
 import { KeenIcon, Menu, MenuItem, MenuToggle } from '@/components';
 import { toAbsoluteUrl } from '@/utils/Assets';
-
-import { ISettingsEnterpriseConnection, ISettingsEnterpriseConnections } from './types';
 import { DropdownCard2, DropdownCardItem1 } from '@/partials/dropdowns/general';
 
-const SettingsEnterpriseConnections = () => {
-  const tables: ISettingsEnterpriseConnections = [
+export interface IConnection {
+  avatar: string;
+  name: string;
+  connections: number | 'none';
+  jointLinks: number | 'none';
+}
+export interface IConnections extends Array<IConnection> {}
+
+const Connections = () => {
+  const tables: IConnections = [
     {
       avatar: '300-3.png',
       name: 'Tyler Hero',
@@ -44,7 +50,7 @@ const SettingsEnterpriseConnections = () => {
     }
   ];
 
-  const renderItem = (table: ISettingsEnterpriseConnection, index: number) => {
+  const renderItem = (table: IConnection, index: number) => {
     return (
       <tr key={index}>
         <td className="py-3.5">
@@ -164,4 +170,4 @@ const SettingsEnterpriseConnections = () => {
   );
 };
 
-export { SettingsEnterpriseConnections };
+export { Connections };

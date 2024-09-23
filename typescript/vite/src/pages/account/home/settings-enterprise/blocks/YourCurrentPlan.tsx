@@ -1,14 +1,17 @@
 import { KeenIcon, Menu, MenuItem, MenuToggle } from '@/components';
 import { toAbsoluteUrl } from '@/utils/Assets';
-
-import {
-  ISettingsEnterpriseYourCurrentPlanItem,
-  ISettingsEnterpriseYourCurrentPlanItems
-} from './types';
 import { DropdownCard1 } from '@/partials/dropdowns/general';
 
-const SettingsEnterpriseYourCurrentPlan = () => {
-  const items: ISettingsEnterpriseYourCurrentPlanItems = [
+export interface IYourCurrentPlanItem {
+  title: string;
+  summary: string;
+  link: string;
+  path: string;
+}
+export interface IYourCurrentPlanItems extends Array<IYourCurrentPlanItem> {}
+
+const YourCurrentPlan = () => {
+  const items: IYourCurrentPlanItems = [
     {
       title: 'DevOps Integration',
       summary: 'Achieve faster releases, continuous integration & deployment',
@@ -29,7 +32,7 @@ const SettingsEnterpriseYourCurrentPlan = () => {
     }
   ];
 
-  const renderItem = (item: ISettingsEnterpriseYourCurrentPlanItem, index: number) => {
+  const renderItem = (item: IYourCurrentPlanItem, index: number) => {
     return (
       <div key={index} className="flex flex-col items-start gap-2.5">
         <a href={item.path} className="text-md text-gray-900 font-semibold hover:text-primary">
@@ -115,4 +118,4 @@ const SettingsEnterpriseYourCurrentPlan = () => {
   );
 };
 
-export { SettingsEnterpriseYourCurrentPlan };
+export { YourCurrentPlan };

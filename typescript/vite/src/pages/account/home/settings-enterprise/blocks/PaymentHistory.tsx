@@ -1,13 +1,15 @@
 import { KeenIcon, Menu, MenuItem, MenuToggle } from '@/components';
-
-import {
-  ISettingsEnterprisePaymentHistoryItem,
-  ISettingsEnterprisePaymentHistoryItems
-} from './types';
 import { DropdownCrud2, DropdownCrudItem1 } from '@/partials/dropdowns/general';
 
-const SettingsEnterprisePaymentHistory = () => {
-  const tables: ISettingsEnterprisePaymentHistoryItems = [
+export interface IPaymentHistoryItem {
+  date: string;
+  type: string;
+  amount: string;
+}
+export interface IPaymentHistoryItems extends Array<IPaymentHistoryItem> {}
+
+const PaymentHistory = () => {
+  const tables: IPaymentHistoryItems = [
     {
       date: '24 Aug, 2024',
       type: 'Subscription Fee',
@@ -30,7 +32,7 @@ const SettingsEnterprisePaymentHistory = () => {
     }
   ];
 
-  const renderItem = (table: ISettingsEnterprisePaymentHistoryItem, index: number) => {
+  const renderItem = (table: IPaymentHistoryItem, index: number) => {
     return (
       <tr key={index}>
         <td className="text-sm font-medium text-gray-700">{table.date}</td>
@@ -121,4 +123,4 @@ const SettingsEnterprisePaymentHistory = () => {
   );
 };
 
-export { SettingsEnterprisePaymentHistory };
+export { PaymentHistory };

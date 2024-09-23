@@ -42,7 +42,6 @@ export interface IPlansItems {
   features: IFeature[];
 }
 
-
 const Plans = () => {
   const [isAnnual, setIsAnnual] = useState(true);
 
