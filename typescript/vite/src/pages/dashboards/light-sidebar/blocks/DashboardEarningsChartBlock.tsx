@@ -121,7 +121,7 @@ export interface IApexEarningsChartOptions {
   };
 }
 
-const EarningsChartBlock = () => {
+const DashboardEarningsChartBlock = () => {
   const data: number[] = [75, 25, 45, 15, 85, 35, 70, 25, 35, 15, 45, 30];
   const categories: string[] = [
     'Jan',
@@ -316,4 +316,4 @@ const EarningsChartBlock = () => {
   );
 };
 
-export { EarningsChartBlock };
+export { DashboardEarningsChartBlock };

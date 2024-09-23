@@ -1,4 +1,4 @@
-const Webhooks = () => {
+const AccountApiKeysWebhooksBlock = () => {
   return (
     <div className="card pb-2.5">
       <div className="card-header" id="webhooks">
@@ -55,4 +55,4 @@ const Webhooks = () => {
   );
 };
 
-export { Webhooks };
+export { AccountApiKeysWebhooksBlock };

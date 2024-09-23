@@ -22,7 +22,7 @@ export interface IHighlightsProps {
   limit?: number;
 }
 
-const HighlightsBlock = ({ limit }: IHighlightsProps) => {
+const DashboardHighlightsBlock = ({ limit }: IHighlightsProps) => {
   const rows: IHighlightsRows = [
     { icon: 'shop', text: 'Online Store', total: 172, stats: 3.9, increase: true },
     { icon: 'facebook', text: 'Facebook', total: 85, stats: 0.7, increase: false },
@@ -128,4 +128,4 @@ const HighlightsBlock = ({ limit }: IHighlightsProps) => {
   );
 };
 
-export { HighlightsBlock };
+export { DashboardHighlightsBlock };

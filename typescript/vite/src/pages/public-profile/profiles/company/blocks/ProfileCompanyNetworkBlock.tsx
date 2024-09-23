@@ -1,11 +1,21 @@
 import clsx from 'clsx';
-
 import { KeenIcon } from '@/components';
 
-import { ICompanyNetworkItem, ICompanyNetworkProps } from './types';
+interface IProfileCompanyNetworkItem {
+  icon: string;
+  link: string;
+}
 
-const CompanyNetwork = ({ data, className, title }: ICompanyNetworkProps) => {
-  const renderItems = (item: ICompanyNetworkItem, index: number) => {
+interface IProfileCompanyNetworkItems extends Array<IProfileCompanyNetworkItem> {}
+
+interface IProfileCompanyNetworkProps {
+  data: IProfileCompanyNetworkItem[];
+  title: string;
+  className?: string;
+}
+
+const ProfileCompanyNetworkBlock = ({ data, className, title }: IProfileCompanyNetworkProps) => {
+  const renderItems = (item: IProfileCompanyNetworkItem, index: number) => {
     return (
       <div key={index} className="flex items-center gap-2.5">
         <span>
@@ -34,4 +44,4 @@ const CompanyNetwork = ({ data, className, title }: ICompanyNetworkProps) => {
   );
 };
 
-export { CompanyNetwork };
+export { ProfileCompanyNetworkBlock, type IProfileCompanyNetworkItems };

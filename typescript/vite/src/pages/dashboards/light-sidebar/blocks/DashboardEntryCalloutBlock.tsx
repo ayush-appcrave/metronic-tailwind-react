@@ -6,7 +6,7 @@ interface IEntryCalloutProps {
   className: string;
 }
 
-const EntryCalloutBlock = ({ className }: IEntryCalloutProps) => {
+const DashboardEntryCalloutBlock = ({ className }: IEntryCalloutProps) => {
   return (
     <>
       <style>
@@ -62,4 +62,4 @@ const EntryCalloutBlock = ({ className }: IEntryCalloutProps) => {
   );
 };
 
-export { EntryCalloutBlock };
+export { DashboardEntryCalloutBlock };

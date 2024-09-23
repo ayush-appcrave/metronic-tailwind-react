@@ -1,23 +1,24 @@
 import { DefaultConnections, DefaultContributions, DefaultProjects, DefaultTags } from '../default';
 import {
-  CompanyHighlights,
-  CompanyLocations,
-  CompanyNetwork,
-  CompanyOpenJobs,
-  CompanyProfile,
-  CompanyStatistics
-} from '.';
-import { ICompanyNetworkItems, ICompanyStatisticsItems } from './types';
+  ProfileCompanyHighlightsBlock,
+  ProfileCompanyLocationsBlock,
+  ProfileCompanyNetworkBlock,
+  IProfileCompanyNetworkItems,
+  ProfileCompanyOpenJobsBlock,
+  ProfileCompanyProfileBlock,
+  ProfileCompanyStatisticsBlock,
+  IProfileCompanyStatisticsItems
+} from './blocks';
 
-const CompanyContent = () => {
-  const items: ICompanyStatisticsItems = [
+const ProfileCompanyContent = () => {
+  const items: IProfileCompanyStatisticsItems = [
     { number: '624', label: 'Employees' },
     { number: '60.7M', label: 'Users' },
     { number: '369M', label: 'Revenue' },
-    { number: '27', label: 'Company Rank' }
+    { number: '27', label: 'ProfileCompany Rank' }
   ];
 
-  const data: ICompanyNetworkItems = [
+  const data: IProfileCompanyNetworkItems = [
     { icon: 'dribbble', link: 'https://duolingo.com' },
     { icon: 'sms', link: 'info@duolingo.com' },
     { icon: 'facebook', link: 'duolingo' },
@@ -28,20 +29,20 @@ const CompanyContent = () => {
   return (
     <div className="grid grid-cols-1 lg:grid-cols-3 gap-5 lg:gap-7.5">
       <div className="col-span-1 lg:col-span-3">
-        <CompanyStatistics items={items} />
+        <ProfileCompanyStatisticsBlock items={items} />
       </div>
       <div className="col-span-1">
         <div className="flex flex-col gap-5 lg:gap-7.5">
-          <CompanyHighlights />
-          <CompanyOpenJobs />
-          <CompanyNetwork title="Network" data={data} />
+          <ProfileCompanyHighlightsBlock />
+          <ProfileCompanyOpenJobsBlock />
+          <ProfileCompanyNetworkBlock title="Network" data={data} />
           <DefaultTags title="Tags" />
         </div>
       </div>
       <div className="col-span-1 lg:col-span-2">
         <div className="flex flex-col gap-5 lg:gap-7.5">
-          <CompanyProfile />
-          <CompanyLocations />
+          <ProfileCompanyProfileBlock />
+          <ProfileCompanyLocationsBlock />
           <DefaultProjects />
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-5 lg:gap-7.5">
             <DefaultConnections title="Members" />
@@ -53,4 +54,4 @@ const CompanyContent = () => {
   );
 };
 
-export { CompanyContent };
+export { ProfileCompanyContent };

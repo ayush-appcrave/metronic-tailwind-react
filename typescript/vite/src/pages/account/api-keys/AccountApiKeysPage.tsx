@@ -10,9 +10,9 @@ import {
   ToolbarPageTitle
 } from '@/partials/toolbar';
 
-import { ActivityContent } from '.';
+import { AccountApiKeysContent } from './';
 
-const AccountActivityPages = () => {
+const AccountApiKeysPage = () => {
   return (
     <>
       <Navbar>
@@ -20,7 +20,6 @@ const AccountActivityPages = () => {
           {MENU_SIDEBAR[3]?.children && <NavbarMenu items={MENU_SIDEBAR[3].children} />}
         </Container>
       </Navbar>
-      
 
       <Container>
         <Toolbar>
@@ -33,16 +32,18 @@ const AccountActivityPages = () => {
             </ToolbarDescription>
           </ToolbarHeading>
           <ToolbarActions>
-            <a href="#" className="btn btn-sm btn-light">Privacy Settings</a>
+            <a href="#" className="btn btn-sm btn-light">
+              Privacy Settings
+            </a>
           </ToolbarActions>
         </Toolbar>
       </Container>
 
       <Container>
-        <ActivityContent />
+        <AccountApiKeysContent />
       </Container>
     </>
   );
 };
 
-export { AccountActivityPages };
+export { AccountApiKeysPage };

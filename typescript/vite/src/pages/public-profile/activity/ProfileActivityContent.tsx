@@ -15,7 +15,7 @@ import {
   ActivitiesVirtualTeam
 } from '@/partials/activities/items';
 
-const Activity = () => {
+const ProfileActivityContent = () => {
   const [currentYear, setCurrentYear] = useState(2024);
   const years = Array.from({ length: 8 }, (_, i) => 2024 - i);
 
@@ -83,4 +83,4 @@ const Activity = () => {
   );
 };
 
-export { Activity };
+export { ProfileActivityContent };

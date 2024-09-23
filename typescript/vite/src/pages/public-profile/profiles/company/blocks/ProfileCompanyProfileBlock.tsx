@@ -4,15 +4,22 @@ import 'leaflet/dist/leaflet.css';
 
 import { KeenIcon } from '@/components';
 
-import {
-  ICompanyProfileProduct,
-  ICompanyProfileProducts,
-  ICompanyProfileRow,
-  ICompanyProfileRows
-} from './types';
+interface IProfileCompanyProfileRow {
+  icon: string;
+  text: string;
+  info: boolean;
+}
 
-const CompanyProfile = () => {
-  const rows: ICompanyProfileRows = [
+interface IProfileCompanyProfileRows extends Array<IProfileCompanyProfileRow> {}
+
+interface IProfileCompanyProfileProduct {
+  label: string;
+}
+
+interface IProfileCompanyProfileProducts extends Array<IProfileCompanyProfileProduct> {}
+
+const ProfileCompanyProfileBlock = () => {
+  const rows: IProfileCompanyProfileRows = [
     {
       icon: 'dribbble',
       text: 'https://duolingo.com',
@@ -40,7 +47,7 @@ const CompanyProfile = () => {
     }
   ];
 
-  const products: ICompanyProfileProducts = [
+  const products: IProfileCompanyProfileProducts = [
     { label: 'Lingo Kids' },
     { label: 'Lingo Express' },
     { label: 'Fun Learning' },
@@ -56,7 +63,7 @@ const CompanyProfile = () => {
     { label: 'Lingo Plus' }
   ];
 
-  const renderRows = (row: ICompanyProfileRow, index: number) => {
+  const renderRows = (row: IProfileCompanyProfileRow, index: number) => {
     return (
       <div key={index} className="flex items-center gap-2.5">
         <span>
@@ -73,7 +80,7 @@ const CompanyProfile = () => {
     );
   };
 
-  const renderProducts = (product: ICompanyProfileProduct, index: number) => {
+  const renderProducts = (product: IProfileCompanyProfileProduct, index: number) => {
     return (
       <span key={index} className="badge badge-outline">
         {product.label}
@@ -92,7 +99,7 @@ const CompanyProfile = () => {
   return (
     <div className="card">
       <div className="card-header">
-        <h3 className="card-title">Company Profile</h3>
+        <h3 className="card-title">ProfileCompany Profile</h3>
       </div>
       <div className="card-body">
         <h3 className="text-base font-semibold text-gray-900 leading-none mb-5">Headquarter</h3>
@@ -142,4 +149,4 @@ const CompanyProfile = () => {
   );
 };
 
-export { CompanyProfile };
+export { ProfileCompanyProfileBlock };

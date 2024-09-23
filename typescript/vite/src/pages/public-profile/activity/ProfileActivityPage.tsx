@@ -4,11 +4,10 @@ import { UserProfileHero } from '@/partials/heros';
 import { NavbarMenu } from '@/partials/menu/NavbarMenu';
 import { Navbar, NavbarActions, NavbarDropdown } from '@/partials/navbar';
 import { toAbsoluteUrl } from '@/utils/Assets';
-
-import { Activity } from '.';
 import { KeenIcon } from '@/components';
+import { ProfileActivityContent } from '.';
 
-const PublicProfileActivityPage = () => {
+const ProfileActivityPage = () => {
   const image = (
     <img
       src={toAbsoluteUrl('/media/avatars/300-1.png')}
@@ -44,10 +43,10 @@ const PublicProfileActivityPage = () => {
       </Container>
 
       <Container>
-        <Activity />
+        <ProfileActivityContent />
       </Container>
     </>
   );
 };
 
-export { PublicProfileActivityPage };
+export { ProfileActivityPage };

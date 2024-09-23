@@ -1,1 +1,2 @@
-export * from './_Activity';
+export * from './ProfileActivityContent';
+export * from './ProfileActivityPage';

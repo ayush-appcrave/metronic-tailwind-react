@@ -1,30 +1,15 @@
 /* eslint-disable prettier/prettier */
 import React, { useEffect, useMemo, useState } from 'react';
-import { DataGrid } from '@/components';
-import { KeenIcon } from '@/components';
-import { ColumnDef } from '@tanstack/react-table';
-import { CommonAvatars, CommonRating, IAvatarsProps } from '@/partials/common'; // Import avatar-related types and components
 import { Link } from 'react-router-dom';
-import { TeamsData, ITeamData } from '../data/TeamsData';
+import { DataGrid, KeenIcon } from '@/components';
+import { ColumnDef } from '@tanstack/react-table';
+import { CommonAvatars, CommonRating } from '@/partials/common'; // Import avatar-related types and components
+import { DashboardTeamsData, IDashboardTeamData } from './';
 
-// Define the Team data structure and integrate IAvatarsProps for members
-interface Team {
-  team: {
-    name: string;
-    description: string;
-  };
-  rating: {
-    value: number;
-    round: number;
-  };
-  lastModified: string;
-  members: IAvatarsProps; // Use IAvatarsProps for the members property
-}
-
-const TeamsBlock = () => {
+const DashboardTeamsBlock = () => {
   const storageFilterId = 'teams-filter';
 
-  const columns = useMemo<ColumnDef<ITeamData>[]>(
+  const columns = useMemo<ColumnDef<IDashboardTeamData>[]>(
     () => [
       {
         accessorFn: (row) => row.team.name,
@@ -96,7 +81,7 @@ const TeamsBlock = () => {
   );
 
   // Memoize the team data
-  const data: Team[] = useMemo(() => TeamsData, []);
+  const data: IDashboardTeamData[] = useMemo(() => DashboardTeamsData, []);
 
   // Initialize search term from localStorage if available
   const [searchTerm, setSearchTerm] = useState(() => {
@@ -141,11 +126,11 @@ const TeamsBlock = () => {
           rowSelect={true} 
           initialSorting={[{ id: 'team', desc: false }]} 
           saveState={true} 
-          saveStateId='temas-grid'
+          saveStateId='teams-grid'
         />
       </div>
     </div>
   );
 };
 
-export { TeamsBlock };
+export { DashboardTeamsBlock };

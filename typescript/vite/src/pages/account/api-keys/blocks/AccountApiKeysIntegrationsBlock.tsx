@@ -1,9 +1,17 @@
 import { CrudDatatableToolbar } from '@/partials/crud';
-import { IApiIntegrationsItem, IApiIntegrationsItems } from './types';
 import { KeenIcon } from '@/components';
 
-const ApiIntegrations = () => {
-  const data: IApiIntegrationsItems = [
+interface IAccountApiIntegrationsItem {
+  integration: string;
+  apiKey: string;
+  dailyCalls: string;
+  actions: React.ReactNode;
+}
+
+interface IAccountApiIntegrationsItems extends Array<IAccountApiIntegrationsItem> {}
+
+const AccountApiKeysIntegrationsBlock = () => {
+  const data: IAccountApiIntegrationsItems = [
     {
       integration: 'Quick Pay Service',
       apiKey: 'a1b2Xc3dY4ZxQvPlQp',
@@ -316,7 +324,7 @@ const ApiIntegrations = () => {
     }
   ];
 
-  const renderItem = (each: IApiIntegrationsItem, index: number) => {
+  const renderItem = (each: IAccountApiIntegrationsItem, index: number) => {
     return (
       <tr key={index}>
         <td>
@@ -427,4 +435,4 @@ const ApiIntegrations = () => {
   );
 };
 
-export { ApiIntegrations };
+export { AccountApiKeysIntegrationsBlock, type IAccountApiIntegrationsItems };

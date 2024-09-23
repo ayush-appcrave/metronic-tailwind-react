@@ -1,7 +1,20 @@
-import { ICompanyHighlightsItem, ICompanyHighlightsItems } from './types';
+interface IProfileCompanyHighlightsItem {
+  label: string;
+  info: string;
+  type?: number;
+}
 
-const CompanyHighlights = () => {
-  const items: ICompanyHighlightsItems = [
+interface IProfileCompanyHighlightsItems extends Array<IProfileCompanyHighlightsItem> {}
+
+interface IProfileCompanyOpenJobsItem {
+  icon: string;
+  link: string;
+  desc: string;
+  price: string;
+}
+
+const ProfileCompanyHighlightsBlock = () => {
+  const items: IProfileCompanyHighlightsItems = [
     { label: 'Locations:', info: '79', type: 1 },
     { label: 'Founded:', info: '2011', type: 2 },
     {
@@ -16,7 +29,7 @@ const CompanyHighlights = () => {
     { label: 'Sector:', info: 'Online Education' }
   ];
 
-  const renderItems = (item: ICompanyHighlightsItem, index: number) => {
+  const renderItems = (item: IProfileCompanyHighlightsItem, index: number) => {
     return (
       <tr key={index}>
         <td className="text-sm font-medium text-gray-500 pb-3 pe-4 lg:pe-10">{item.label}</td>
@@ -52,4 +65,4 @@ const CompanyHighlights = () => {
   );
 };
 
-export { CompanyHighlights };
+export { ProfileCompanyHighlightsBlock, type IProfileCompanyOpenJobsItem };

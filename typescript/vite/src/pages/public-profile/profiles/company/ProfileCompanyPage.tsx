@@ -4,9 +4,8 @@ import { UserProfileHero } from '@/partials/heros';
 import { NavbarMenu } from '@/partials/menu/NavbarMenu';
 import { Navbar, NavbarActions, NavbarDropdown } from '@/partials/navbar';
 import { toAbsoluteUrl } from '@/utils/Assets';
-
-import { CompanyContent } from '.';
 import { KeenIcon } from '@/components';
+import { ProfileCompanyContent } from './';
 
 const CompanyPage = () => {
   const image = (
@@ -43,7 +42,7 @@ const CompanyPage = () => {
       </Container>
 
       <Container>
-        <CompanyContent />
+        <ProfileCompanyContent />
       </Container>
     </>
   );

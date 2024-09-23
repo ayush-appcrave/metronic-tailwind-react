@@ -1,10 +1,16 @@
 import { KeenIcon } from '@/components';
 import { CardLocation } from '@/partials/cards';
 
-import { ICompanyLocationsItem, ICompanyLocationsItems } from './types';
+interface IProfileCompanyLocationsItem {
+  image: string;
+  title: string;
+  description: string;
+}
 
-const CompanyLocations = () => {
-  const items: ICompanyLocationsItems = [
+interface IProfileCompanyLocationsItems extends Array<IProfileCompanyLocationsItem> {}
+
+const ProfileCompanyLocationsBlock = () => {
+  const items: IProfileCompanyLocationsItems = [
     {
       image: '10.jpg',
       title: 'Duolingo Tech Hub',
@@ -32,7 +38,7 @@ const CompanyLocations = () => {
     }
   ];
 
-  const renderItem = (item: ICompanyLocationsItem, index: number) => {
+  const renderItem = (item: IProfileCompanyLocationsItem, index: number) => {
     return (
       <CardLocation
         key={index}
@@ -64,4 +70,4 @@ const CompanyLocations = () => {
   );
 };
 
-export { CompanyLocations };
+export { ProfileCompanyLocationsBlock, type IProfileCompanyLocationsItems };

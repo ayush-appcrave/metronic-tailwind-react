@@ -1,8 +1,18 @@
 import React from 'react';
-import { ICompanyStatisticsItem, ICompanyStatisticsProps } from './types';
 
-const CompanyStatistics = ({ items }: ICompanyStatisticsProps) => {
-  const renderItems = (item: ICompanyStatisticsItem, index: number) => {
+interface IProfileCompanyStatisticsItem {
+  number: string;
+  label: string;
+}
+
+interface IProfileCompanyStatisticsItems extends Array<IProfileCompanyStatisticsItem> {}
+
+interface IProfileCompanyStatisticsProps {
+  items: IProfileCompanyStatisticsItem[];
+}
+
+const ProfileCompanyStatisticsBlock = ({ items }: IProfileCompanyStatisticsProps) => {
+  const renderItems = (item: IProfileCompanyStatisticsItem, index: number) => {
     return (
       <React.Fragment key={index}>
         <div className="grid grid-cols-1 place-content-center flex-1 gap-1 text-center">
@@ -32,4 +42,4 @@ const CompanyStatistics = ({ items }: ICompanyStatisticsProps) => {
   );
 };
 
-export { CompanyStatistics };
+export { ProfileCompanyStatisticsBlock, type IProfileCompanyStatisticsItems };
