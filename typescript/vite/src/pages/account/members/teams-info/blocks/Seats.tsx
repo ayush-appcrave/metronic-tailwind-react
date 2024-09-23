@@ -1,4 +1,4 @@
-const TeamInfoSeats = () => {
+const Seats = () => {
   return (
     <div className="card">
       <div className="card-header">
@@ -25,4 +25,4 @@ const TeamInfoSeats = () => {
   );
 };
 
-export { TeamInfoSeats };
+export { Seats };

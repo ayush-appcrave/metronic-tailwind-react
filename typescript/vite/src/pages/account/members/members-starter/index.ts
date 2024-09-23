@@ -1,1 +1,2 @@
-export * from './_MembersStarterContent';
+export * from './MembersStarterContent';
+export * from './MembersStarterPage';

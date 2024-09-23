@@ -1,6 +1,6 @@
 import { KeenIcon } from '@/components';
 
-const TeamMembersInvitePeople = () => {
+const InvitePeople = () => {
   return (
     <form className="card">
       <div className="card-header">
@@ -45,4 +45,4 @@ const TeamMembersInvitePeople = () => {
   );
 };
 
-export { TeamMembersInvitePeople };
+export { InvitePeople };

@@ -1,10 +1,20 @@
 import { KeenIcon, Menu, MenuItem, MenuToggle } from '@/components';
-import { ITeamInfoConnectedProfilesItem, ITeamInfoConnectedProfilesItems } from './types';
 import { DropdownCardItem1 } from '@/partials/dropdowns/general';
 import { toAbsoluteUrl } from '@/utils';
 
-const TeamInfoConnectedProfiles = () => {
-  const items: ITeamInfoConnectedProfilesItems = [
+export interface IConnectedProfilesItem {
+  user: {
+    name: string;
+    tasks: number;
+    avatar: string;
+  };
+  socialLogo: string;
+  socialLogoDark?: string;
+}
+export interface IConnectedProfilesItems extends Array<IConnectedProfilesItem> {}
+
+const ConnectedProfiles = () => {
+  const items: IConnectedProfilesItems = [
     {
       user: {
         name: 'Tyler Hero',
@@ -24,7 +34,7 @@ const TeamInfoConnectedProfiles = () => {
     }
   ];
 
-  const renderItem = (item: ITeamInfoConnectedProfilesItem, index: number) => {
+  const renderItem = (item: IConnectedProfilesItem, index: number) => {
     return (
       <div key={index} className="card-group flex justify-between items-center py-4">
         <div className="flex items-center grow gap-2.5">
@@ -108,4 +118,4 @@ const TeamInfoConnectedProfiles = () => {
   );
 };
 
-export { TeamInfoConnectedProfiles };
+export { ConnectedProfiles };

@@ -1,5 +1,5 @@
 import { MiscEngage, MiscFaq, MiscHighlightedPosts, IHighlightedPostsItems } from '@/partials/misc';
-import { TeamInfo, TeamInfoConnectedProfiles, TeamInfoSeats } from '.';
+import { TeamInfo, ConnectedProfiles, Seats } from './blocks';
 import { toAbsoluteUrl } from '@/utils';
 
 const TeamInfoContent = () => {
@@ -63,9 +63,9 @@ const TeamInfoContent = () => {
       </div>
       <div className="col-span-1">
         <div className="flex flex-col gap-5 lg:gap-7.5">
-          <TeamInfoSeats />
+          <Seats />
 
-          <TeamInfoConnectedProfiles />
+          <ConnectedProfiles />
 
           <MiscHighlightedPosts posts={posts} />
         </div>

@@ -1,6 +1,13 @@
 import { CommonHexagonBadge } from '@/partials/common';
-import { IPermissionsToggleItem, IPermissionsToggleItems } from './types';
 import { KeenIcon } from '@/components';
+
+export interface IPermissionsToggleItem {
+  icon: string;
+  title: string;
+  description: string;
+  checked: boolean;
+}
+export interface IPermissionsToggleItems extends Array<IPermissionsToggleItem> {}
 
 const PermissionsToggle = () => {
   const items: IPermissionsToggleItems = [

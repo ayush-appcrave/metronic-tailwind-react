@@ -1,6 +1,20 @@
 import { KeenIcon } from '@/components';
-import { IRolesItem, IRolesItems } from './types';
 import { CardAddNew, CardRole } from '@/partials/cards';
+
+export interface IRolesItem {
+  badge: {
+    size: string;
+    badge: React.ReactNode;
+    fill: string;
+    stroke: string;
+  };
+  title: string;
+  subTitle: string;
+  description: string;
+  team: string;
+  path: string;
+}
+export interface IRolesItems extends Array<IRolesItem> {}
 
 const Roles = () => {
   const items: IRolesItems = [

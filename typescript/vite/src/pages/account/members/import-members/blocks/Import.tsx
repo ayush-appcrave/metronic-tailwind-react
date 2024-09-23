@@ -1,4 +1,9 @@
-import { IImportItem, IImportItems } from './types';
+export interface IImportItem {
+  label: string;
+  description: string;
+  checked: boolean;
+}
+export interface IImportItems extends Array<IImportItem> {}
 
 const Import = () => {
   const options: IImportItems = [

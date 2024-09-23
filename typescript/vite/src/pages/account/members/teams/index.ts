@@ -1,1 +1,2 @@
-export * from './_TeamContent';
+export * from './TeamsContent';
+export * from './TeamsPage';

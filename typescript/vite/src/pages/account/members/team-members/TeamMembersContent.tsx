@@ -1,5 +1,5 @@
 import { MiscFaq, MiscHelp2 } from '@/partials/misc';
-import { TeamMembersInvitePeople, TeamMembersInviteWithLink } from '.';
+import { InvitePeople, InviteWithLink } from './blocks';
 
 const TeamMembersContent = () => {
   return (
@@ -7,9 +7,9 @@ const TeamMembersContent = () => {
       {/* {{ theme.page('_members') }} */}
 
       <div className="grid lg:grid-cols-2 gap-5 lg:gap-7.5">
-        <TeamMembersInvitePeople />
+        <InvitePeople />
 
-        <TeamMembersInviteWithLink />
+        <InviteWithLink />
       </div>
 
       <MiscFaq />

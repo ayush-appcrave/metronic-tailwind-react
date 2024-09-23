@@ -1,4 +1,4 @@
-import { Roles } from '.';
+import { Roles } from './blocks';
 
 const RolesContent = () => {
   return <Roles />;

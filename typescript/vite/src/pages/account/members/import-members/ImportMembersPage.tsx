@@ -11,6 +11,7 @@ import {
 } from '@/partials/toolbar';
 
 import { ImportMembersContent } from '.';
+import { Link } from 'react-router-dom';
 
 const ImportMembersPage = () => {
   return (
@@ -32,7 +33,9 @@ const ImportMembersPage = () => {
             </ToolbarDescription>
           </ToolbarHeading>
           <ToolbarActions>
-            <a href="#" className="btn btn-sm btn-light">Go to Teams</a>
+            <Link to="#" className="btn btn-sm btn-light">
+              Go to Teams
+            </Link>
           </ToolbarActions>
         </Toolbar>
       </Container>

@@ -1,3 +1,2 @@
-export * from './_RolesContent';
-export * from './_Roles';
-export * from './types';
+export * from './RolesContent';
+export * from './RolesPage';

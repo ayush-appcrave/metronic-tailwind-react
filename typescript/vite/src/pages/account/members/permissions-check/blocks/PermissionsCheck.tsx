@@ -1,4 +1,11 @@
-import { IPermissionsCheckItem, IPermissionsCheckItems } from './types';
+export interface IPermissionsCheckItem {
+  module: string;
+  view: boolean;
+  modify: boolean;
+  publish: boolean;
+  configure: boolean;
+}
+export interface IPermissionsCheckItems extends Array<IPermissionsCheckItem> {}
 
 const PermissionsCheck = () => {
   const data: IPermissionsCheckItems = [

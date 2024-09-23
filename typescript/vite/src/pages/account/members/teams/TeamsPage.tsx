@@ -10,9 +10,9 @@ import {
   ToolbarPageTitle
 } from '@/partials/toolbar';
 
-import { TeamContent } from '.';
+import { TeamsContent } from './';
 
-const MembersTeamPage = () => {
+const TeamsPage = () => {
   return (
     <>
       <Navbar>
@@ -32,16 +32,18 @@ const MembersTeamPage = () => {
             </ToolbarDescription>
           </ToolbarHeading>
           <ToolbarActions>
-            <a href="#" className="btn btn-sm btn-light">Add New Team</a>
+            <a href="#" className="btn btn-sm btn-light">
+              Add New Team
+            </a>
           </ToolbarActions>
         </Toolbar>
       </Container>
 
       <Container>
-        <TeamContent />
+        <TeamsContent />
       </Container>
     </>
   );
 };
 
-export { MembersTeamPage };
+export { TeamsPage };

@@ -1,3 +1,3 @@
-export * from './_PermissionsCheckContent';
-export * from './_PermissionsCheck';
-export * from './types';
+export * from './blocks';
+export * from './PermissionsCheckContent';
+export * from './PermissionsCheckPage';
