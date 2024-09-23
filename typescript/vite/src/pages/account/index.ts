@@ -6,6 +6,6 @@ export * from './integrations/IntegrationsPage';
 export * from './notifications/NotificationsPage';
 export * from './api-keys/AccountApiKeysPage';
 export * from './appearance/AccountAppearancePage';
-export * from './billing/basic/AccountbillingbasicPage';
+export * from './billing/basic/AccountBillingBasicPage';
 export * from './invite-a-friend/InviteAFriendPage';
 export * from './activity/AccountActivityPage';
