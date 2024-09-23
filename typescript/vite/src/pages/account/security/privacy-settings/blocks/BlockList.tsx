@@ -1,15 +1,23 @@
 import { KeenIcon } from '@/components';
-import {
-  IPrivacySettingsBlockListItem,
-  IPrivacySettingsBlockListItems,
-  IPrivacySettingsBlockListProps
-} from './types';
 import { Link } from 'react-router-dom';
 import { CommonAvatar } from '@/partials/common';
 import clsx from 'clsx';
 
-const PrivacySettingsBlockList = ({ text, limit, className }: IPrivacySettingsBlockListProps) => {
-  const items: IPrivacySettingsBlockListItems = [
+export interface IBlockListItem {
+  avatar: string;
+  name: string;
+  commits: number;
+}
+export interface IBlockListItems extends Array<IBlockListItem> {}
+
+export interface IBlockListProps {
+  text: string;
+  limit?: number;
+  className?: string;
+}
+
+const BlockList = ({ text, limit, className }: IBlockListProps) => {
+  const items: IBlockListItems = [
     {
       avatar: 'gray/1.png',
       name: 'Esther Howard',
@@ -32,7 +40,7 @@ const PrivacySettingsBlockList = ({ text, limit, className }: IPrivacySettingsBl
     }
   ];
 
-  const renderItem = (item: IPrivacySettingsBlockListItem, index: number) => {
+  const renderItem = (item: IBlockListItem, index: number) => {
     return (
       <div key={index} className="flex items-center justify-between gap-2.5">
         <div className="flex items-center gap-2.5">
@@ -86,4 +94,4 @@ const PrivacySettingsBlockList = ({ text, limit, className }: IPrivacySettingsBl
   );
 };
 
-export { PrivacySettingsBlockList };
+export { BlockList };

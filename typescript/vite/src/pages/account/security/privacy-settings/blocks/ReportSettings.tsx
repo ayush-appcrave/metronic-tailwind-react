@@ -1,15 +1,19 @@
 import clsx from 'clsx';
-import {
-  IPrivacySettingsReportSettingsItem,
-  IPrivacySettingsReportSettingsItems,
-  IPrivacySettingsReportSettingsProps
-} from './types';
 
-const PrivacySettingsReportSettings = ({
-  limit,
-  className
-}: IPrivacySettingsReportSettingsProps) => {
-  const items: IPrivacySettingsReportSettingsItems = [
+export interface IReportSettingsItem {
+  title: string;
+  description: string;
+  checked: boolean;
+}
+export interface IReportSettingsItems extends Array<IReportSettingsItem> {}
+
+export interface IReportSettingsProps {
+  limit?: number;
+  className?: string;
+}
+
+const ReportSettings = ({ limit, className }: IReportSettingsProps) => {
+  const items: IReportSettingsItems = [
     {
       title: 'Ony invited People',
       description: 'Invite selected people via email.',
@@ -32,7 +36,7 @@ const PrivacySettingsReportSettings = ({
     }
   ];
 
-  const renderItem = (item: IPrivacySettingsReportSettingsItem, index: number) => {
+  const renderItem = (item: IReportSettingsItem, index: number) => {
     return (
       <label key={index} className="card-group flex items-center justify-between py-4 gap-2.5">
         <div className="flex flex-col justify-center gap-1.5">
@@ -67,4 +71,4 @@ const PrivacySettingsReportSettings = ({
   );
 };
 
-export { PrivacySettingsReportSettings };
+export { ReportSettings };

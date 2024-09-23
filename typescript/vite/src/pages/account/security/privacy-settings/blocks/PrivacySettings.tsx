@@ -1,9 +1,16 @@
 import { CommonHexagonBadge } from '@/partials/common';
-import { IPrivacySettingsPrivacySettingsItem, IPrivacySettingsPrivacySettingsItems } from './types';
 import { KeenIcon } from '@/components';
 
-const PrivacySettingsPrivacySettings = () => {
-  const items: IPrivacySettingsPrivacySettingsItems = [
+export interface IPrivacySettingsItem {
+  icon: string;
+  title: React.ReactNode;
+  description: string;
+  actions: React.ReactNode;
+}
+export interface IPrivacySettingsItems extends Array<IPrivacySettingsItem> {}
+
+const PrivacySettings = () => {
+  const items: IPrivacySettingsItems = [
     {
       icon: 'search-list',
       title: (
@@ -101,7 +108,7 @@ const PrivacySettingsPrivacySettings = () => {
     }
   ];
 
-  const renderItem = (item: IPrivacySettingsPrivacySettingsItem, index: number) => {
+  const renderItem = (item: IPrivacySettingsItem, index: number) => {
     return (
       <div key={index} className="card-group flex items-center justify-between py-4 gap-2.5">
         <div className="flex items-center gap-3.5">
@@ -134,4 +141,4 @@ const PrivacySettingsPrivacySettings = () => {
   );
 };
 
-export { PrivacySettingsPrivacySettings };
+export { PrivacySettings };

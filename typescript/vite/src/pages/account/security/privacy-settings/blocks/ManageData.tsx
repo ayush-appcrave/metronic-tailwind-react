@@ -1,7 +1,12 @@
-import { IPrivacySettingsManageDataItem, IPrivacySettingsManageDataItems } from './types';
+export interface IManageDataItem {
+  title: string;
+  description: string;
+  control: React.ReactNode;
+}
+export interface IManageDataItems extends Array<IManageDataItem> {}
 
-const PrivacySettingsManageData = () => {
-  const items: IPrivacySettingsManageDataItems = [
+const ManageData = () => {
+  const items: IManageDataItems = [
     {
       title: 'Ony invited People',
       description: 'Invite selected people via email.',
@@ -31,7 +36,7 @@ const PrivacySettingsManageData = () => {
     }
   ];
 
-  const renderItem = (item: IPrivacySettingsManageDataItem, index: number) => {
+  const renderItem = (item: IManageDataItem, index: number) => {
     return (
       <div key={index} className="card-group flex items-center justify-between py-4 gap-2.5">
         <div className="flex flex-col justify-center gap-1.5">
@@ -56,4 +61,4 @@ const PrivacySettingsManageData = () => {
   );
 };
 
-export { PrivacySettingsManageData };
+export { ManageData };

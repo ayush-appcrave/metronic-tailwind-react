@@ -1,1 +1,2 @@
-export * from './_SecurityLogContent';
+export * from './SecurityLogContent';
+export * from './SecurityLogPage';

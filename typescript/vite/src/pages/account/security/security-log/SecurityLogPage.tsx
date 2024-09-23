@@ -10,7 +10,7 @@ import {
   ToolbarPageTitle
 } from '@/partials/toolbar';
 
-import { SecurityLogContent } from '.';
+import { SecurityLogContent } from './';
 import { Link } from 'react-router-dom';
 
 const SecurityLogPage = () => {
