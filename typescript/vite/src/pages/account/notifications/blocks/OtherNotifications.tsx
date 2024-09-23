@@ -1,5 +1,5 @@
 import { CardNotification } from '@/partials/cards';
-import { IChannelsItem, IChannelsItems } from './types';
+import { IChannelsItem, IChannelsItems } from './';
 
 const OtherNotifications = () => {
   const items: IChannelsItems = [

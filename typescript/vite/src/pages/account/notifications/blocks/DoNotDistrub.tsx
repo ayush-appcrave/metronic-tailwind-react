@@ -1,5 +1,10 @@
 import { KeenIcon } from '@/components';
-import { IDoNotDistrubProps } from './types';
+
+export interface IDoNotDistrubProps {
+  title?: string;
+  icon?: React.ReactNode;
+  text?: string;
+}
 
 const DoNotDistrub = ({ title, icon, text }: IDoNotDistrubProps) => {
   return (

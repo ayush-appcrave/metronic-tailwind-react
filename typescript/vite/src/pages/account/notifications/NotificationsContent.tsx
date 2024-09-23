@@ -1,6 +1,6 @@
 import { MiscEngage, MiscFaq, MiscHighlightedPosts, IHighlightedPostsItems } from '@/partials/misc';
 import { toAbsoluteUrl } from '@/utils';
-import { Channels, DoNotDistrub, OtherNotifications } from '.';
+import { Channels, DoNotDistrub, OtherNotifications } from './blocks';
 
 const NotificationsContent = () => {
   const posts: IHighlightedPostsItems = [
@@ -62,7 +62,6 @@ const NotificationsContent = () => {
       <div className="col-span-1">
         <div className="flex flex-col gap-5 lg:gap-7.5">
           <DoNotDistrub />
-
           <MiscHighlightedPosts posts={posts} />
         </div>
       </div>

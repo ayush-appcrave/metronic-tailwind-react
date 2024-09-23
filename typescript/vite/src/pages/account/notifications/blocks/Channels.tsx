@@ -1,5 +1,13 @@
 import { CardNotification } from '@/partials/cards';
-import { IChannelsItem, IChannelsItems } from './types';
+
+export interface IChannelsItem {
+  icon: string;
+  title: string;
+  description: string;
+  button?: boolean;
+  actions: React.ReactNode;
+}
+export interface IChannelsItems extends Array<IChannelsItem> {}
 
 const Channels = () => {
   const items: IChannelsItems = [
