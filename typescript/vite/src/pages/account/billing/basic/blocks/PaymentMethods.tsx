@@ -1,21 +1,21 @@
 import { KeenIcon } from '@/components'; 
 import { toAbsoluteUrl } from '@/utils';
 
-interface IAccountBillingBasicPaymentMethods {
+interface IPaymentMethods {
   logo: string;
   title: string;
   email: string;
   label: boolean;
 }
 
-interface IAccountBillingBasicPaymentMethodsProps {
+interface IPaymentMethodsProps {
   icon?: string;
 }
 
-interface IAccountBillingBasicPaymentMethodsItems extends Array<IAccountBillingBasicPaymentMethodsItem> {} 
+interface IPaymentMethodsItems extends Array<IPaymentMethodsItem> {} 
 
-const AccountBillingBasicPaymentMethodsBlock = ({ icon }: IAccountBillingBasicPaymentMethodsProps) => {
-  const items: IAccountBillingBasicPaymentMethodsItems = [
+const AccountBillingBasicPaymentMethodsBlock = ({ icon }: IPaymentMethodsProps) => {
+  const items: IPaymentMethodsItems = [
     {
       logo: 'visa.svg',
       title: 'Jason Tatum',
@@ -36,7 +36,7 @@ const AccountBillingBasicPaymentMethodsBlock = ({ icon }: IAccountBillingBasicPa
     }
   ];
 
-  const renderItem = (item: IAccountBillingBasicPaymentMethodsItem, index: number) => {
+  const renderItem = (item: IPaymentMethodsItem, index: number) => {
     return (
       <div
         key={index}
@@ -98,4 +98,4 @@ const AccountBillingBasicPaymentMethodsBlock = ({ icon }: IAccountBillingBasicPa
   );
 };
 
-export { AccountBillingBasicPaymentMethodsBlock, type IAccountBillingBasicPaymentMethodsItems };  
+export { PaymentMethods, type IPaymentMethodsItems };  
