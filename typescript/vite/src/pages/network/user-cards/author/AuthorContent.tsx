@@ -1,16 +1,38 @@
 import { KeenIcon } from '@/components';
 import { CardAuthor, CardAuthorRow } from '@/partials/cards';
-import { INetworkAuthorContentItem, INetworkAuthorContentItems } from './types';
 import { useState } from 'react';
 
-const NetworkAuthorContent = () => {
+interface IAuthorContentAvatar {
+  className: string;
+  image: string;
+  imageClass: string;
+  badgeClass: string;
+}
+
+interface IAuthorContentWork {
+  image: string;
+  title: string;
+  id: number;
+}
+
+export interface IAuthorContentItem {
+  avatar: IAuthorContentAvatar;
+  bgImage: string;
+  name: string;
+  location: string;
+  url?: string;
+  works:IAuthorContentWork[];
+}
+export interface IAuthorContentItems extends Array<IAuthorContentItem> {}
+
+const AuthorContent = () => {
   const [activeTab, setActiveTab] = useState<'cards' | 'list'>('cards');
 
   const handleTabClick = (tab: 'cards' | 'list') => {
     setActiveTab(tab);
   };
 
-  const items: INetworkAuthorContentItems = [
+  const items: IAuthorContentItems = [
     {
       avatar: {
         className: 'size-[120px] [.authors-row_&]:size-[80px] shrink-0 relative',
@@ -153,7 +175,7 @@ const NetworkAuthorContent = () => {
     }
   ];
 
-  const renderCard = (item: INetworkAuthorContentItem, index: number) => (
+  const renderCard = (item: IAuthorContentItem, index: number) => (
     <CardAuthor
       avatar={item.avatar}
       bgImage={item.bgImage}
@@ -164,7 +186,7 @@ const NetworkAuthorContent = () => {
     />
   );
 
-  const renderListItem = (item: INetworkAuthorContentItem, index: number) => (
+  const renderListItem = (item: IAuthorContentItem, index: number) => (
     <CardAuthorRow
       avatar={item.avatar}
       bgImage={item.bgImage}
@@ -230,7 +252,7 @@ const NetworkAuthorContent = () => {
       {activeTab === 'cards' ? (
         <div id="author_cards" className="flex flex-col gap-5 lg:gap-7.5">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-5 lg:gap-7.5">
-            {items.map((item, index) => {
+            {items.map((item: any, index: number) => {
               return renderCard(item, index);
             })}
           </div>
@@ -244,7 +266,7 @@ const NetworkAuthorContent = () => {
       ) : (
         <div className="authors-row" id="author_list">
           <div className="grid grid-cols-1 gap-5 lg:gap-7.5">
-            {items.map((item, index) => {
+            {items.map((item: any, index: number) => {
               return renderListItem(item, index);
             })}
           </div>
@@ -260,4 +282,4 @@ const NetworkAuthorContent = () => {
   );
 };
 
-export { NetworkAuthorContent };
+export { AuthorContent };
