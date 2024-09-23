@@ -10,9 +10,9 @@ import {
   ToolbarPageTitle
 } from '@/partials/toolbar';
 
-import { AppearanceContent } from '.';
+import { AccountAppearanceContent } from '.';
 
-const AppearancePage = () => {
+const AccountAppearancePage = () => {
   return (
     <>
       <Navbar>
@@ -38,10 +38,10 @@ const AppearancePage = () => {
       </Container>
 
       <Container>
-        <AppearanceContent />
+        <AccountAppearanceContent />
       </Container>
     </>
   );
 };
 
-export { AppearancePage };
+export { AccountAppearancePage };

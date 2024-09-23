@@ -10,9 +10,9 @@ import {
   ToolbarPageTitle
 } from '@/partials/toolbar';
 
-import { BasicContent } from '.';
+import { AccountBillingBasicContent } from '.';
 
-const BasicPage = () => {
+const AccountBasicPage = () => {
   return (
     <>
       <Navbar>
@@ -38,10 +38,10 @@ const BasicPage = () => {
       </Container>
 
       <Container>
-        <BasicContent />
+        <AccountBillingBasicContent />
       </Container>
     </>
   );
 };
 
-export { BasicPage };
+export { AccountBasicPage };

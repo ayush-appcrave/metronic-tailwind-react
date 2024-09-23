@@ -1,8 +1,15 @@
 import { KeenIcon } from '@/components';
-import { IBasicBillingInvoicingItem, IBasicBillingInvoicingItems } from './types';
+export interface IAccountBillingBasicInvoicingItems {
+  number: string;
+  date: string;
+  ammount: string;
+  label: string;
+  color: string;
+}
+interface IAccountBillingBasicInvoicingItems extends Array<IAccountBillingBasicInvoicingItem> {}
 
-const BasicBillingInvoicing = () => {
-  const tables: IBasicBillingInvoicingItems = [
+const AccountBillingBasicInvoicing = () => {
+  const tables: IAccountBillingBasicInvoicingItems = [
     {
       number: 'Invoice-2024-xd912c',
       date: '6 Aug, 2024',
@@ -40,7 +47,7 @@ const BasicBillingInvoicing = () => {
     }
   ];
 
-  const renderItem = (table: IBasicBillingInvoicingItem, index: number) => {
+  const renderItem = (table: IAccountBillingBasicInvoicingItem, index: number) => {
     return (
       <tr key={index}>
         <td className="text-sm font-medium text-gray-700">{table.number}</td>
@@ -95,4 +102,4 @@ const BasicBillingInvoicing = () => {
   );
 };
 
-export { BasicBillingInvoicing };
+export { AccountBillingBasicInvoicingBlock, type IAccountBillingBasicInvoicingItems }; 

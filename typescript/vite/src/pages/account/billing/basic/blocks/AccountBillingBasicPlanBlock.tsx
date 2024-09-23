@@ -1,7 +1,10 @@
-import { IBasicPlanItem, IBasicPlanItems } from './types';
+interface IAccountBillingBasicPlanItem {
+  total: string;
+  description: string;
+}
 
-const BasicPlan = () => {
-  const statistics: IBasicPlanItems = [
+const AccountBillingBasicPlanBlock = () => {
+  const statistics: IAccountBillingBasicPlanItems = [
     {
       total: '$769.00',
       description: 'Annual Total'
@@ -16,7 +19,7 @@ const BasicPlan = () => {
     }
   ];
 
-  const renderItem = (statistic: IBasicPlanItem, index: number) => {
+  const renderItem = (statistic: IAccountBillingBasicPlanItem, index: number) => {
     return (
       <div
         key={index}
@@ -70,4 +73,4 @@ const BasicPlan = () => {
   );
 };
 
-export { BasicPlan };
+export { AccountBillingBasicPlanBlock, type IAccountBillingBasicPlanItems }; 
