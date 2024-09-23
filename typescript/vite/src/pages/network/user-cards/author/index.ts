@@ -1,2 +1,2 @@
-export * from './_NetworkGetStartedContent';
-export * from './types';
+export * from './AuthorContent';
+export * from './AuthorPage';
