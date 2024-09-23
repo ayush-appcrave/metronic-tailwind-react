@@ -1,10 +1,10 @@
 import { MiscEngage, MiscFaq, MiscHighlightedPosts, IHighlightedPostsItems } from '@/partials/misc';
 import { toAbsoluteUrl } from '@/utils';
 import { CompanyProfileBranding } from '../home/company-profile';
-import { SettingsSidebarAdvancedSettingsAppearance } from '../home/settings-sidebar';
-import { Accessibility, DisableDefaultBrand } from '.';
+import { SettingsSidebarAdvancedSettingsAppearance } from '../home/settings-sidebar'; 
+import { AccountAppearanceAccessibilityBlock, AccountAppearanceDisableDefaultBrandBlock } from './blocks';
 
-const AppearanceContent = () => {
+const AccountAppearanceContent = () => {
   const posts: IHighlightedPostsItems = [
     {
       icon: 'emoji-happy',
@@ -42,7 +42,7 @@ const AppearanceContent = () => {
         <div className="flex flex-col gap-5 lg:gap-7.5">
           <SettingsSidebarAdvancedSettingsAppearance title="Theme" />
           <CompanyProfileBranding />
-          <Accessibility />
+          <AccountAppearanceAccessibilityBlock />
           <MiscFaq />
 
           <MiscEngage
@@ -71,7 +71,7 @@ const AppearanceContent = () => {
       </div>
       <div className="col-span-1">
         <div className="flex flex-col gap-5 lg:gap-7.5">
-          <DisableDefaultBrand />
+          <AccountAppearanceDisableDefaultBrandBlock />
 
           <MiscHighlightedPosts posts={posts} />
         </div>
@@ -80,4 +80,4 @@ const AppearanceContent = () => {
   );
 };
 
-export { AppearanceContent };
+export { AccountAppearanceContent };

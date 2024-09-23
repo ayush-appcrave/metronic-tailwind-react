@@ -1,8 +1,14 @@
-import { CardNotification } from '@/partials/cards';
-import { IAccessibilityItem, IAccessibilityItems } from './types';
+import { CardNotification } from '@/partials/cards'; 
+interface IAccountAppearanceAccessibilityItem {
+  icon: string;
+  title: string;
+  description: string;
+  actions: React.ReactNode;
+}
+interface IAccountAppearanceAccessibilityItems extends Array<IAccountAppearanceAccessibilityItem> {}
 
-const Accessibility = () => {
-  const items: IAccessibilityItems = [
+const AccountAppearanceAccessibilityBlock = () => {
+  const items: IAccountAppearanceAccessibilityItems = [
     {
       icon: 'exit-right-corner',
       title: 'Shortcuts require modifier',
@@ -49,7 +55,7 @@ const Accessibility = () => {
     }
   ];
 
-  const renderItem = (item: IAccessibilityItem, index: number) => {
+  const renderItem = (item: IAccountAppearanceAccessibilityItem, index: number) => {
     return (
       <CardNotification
         icon={item.icon}
@@ -76,4 +82,4 @@ const Accessibility = () => {
   );
 };
 
-export { Accessibility };
+export { AccountAppearanceAccessibilityBlock, type IAccountAppearanceAccessibilityItems }; 

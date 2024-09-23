@@ -1,15 +1,20 @@
-import { KeenIcon } from '@/components';
-import { IBasicBillingDetailsItem, IBasicBillingDetailsItems } from './types';
+import { KeenIcon } from '@/components'; 
+interface IAccountBillingBasicDetailsItem {
+  status: string;
+  info: string;
+}
 
-const BasicBillingDetails = () => {
-  const tables: IBasicBillingDetailsItems = [
+interface IAccountBillingBasicDetailsItems extends Array<IAccountBillingBasicDetailsItem> {} 
+
+const AccountBillingBasicDetails = () => {
+  const tables: IAccountBillingBasicDetailsItems = [
     { status: 'Company Name', info: 'KeenThemes' },
     { status: 'Address', info: 'Keizersgracht 136, 1015 CW Amsterdam, Netherlands' },
     { status: 'Contact', info: 'Jason Tatum' },
     { status: 'VAT ID', info: 'NL123456789B01' }
   ];
 
-  const renderItem = (table: IBasicBillingDetailsItem, index: number) => {
+  const renderItem = (table: IAccountBillingBasicDetailsItem, index: number) => {
     return (
       <tr key={index}>
         <td className="text-sm font-medium text-gray-500 min-w-36 pb-5 pe-6">{table.status}</td>
@@ -42,4 +47,4 @@ const BasicBillingDetails = () => {
   );
 };
 
-export { BasicBillingDetails };
+export { AccountBillingBasicDetailsBlock, type IAccountBillingBasicDetailsItems }; 

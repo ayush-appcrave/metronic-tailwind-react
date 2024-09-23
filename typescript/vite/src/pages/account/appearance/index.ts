@@ -1,4 +1,3 @@
-export * from './_AppearanceContent';
-export * from './_Accessibility';
-export * from './_DisableDefaultBrand';
-export * from './types';
+export * from './AccountAppearancePage';
+export * from './AccountAppearanceContent';
+export * from './blocks';
