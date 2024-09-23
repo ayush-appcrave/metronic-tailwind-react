@@ -1,10 +1,18 @@
 import { KeenIcon, Menu, MenuItem, MenuToggle } from '@/components';
-import { IOverviewLoginSessionsItem, IOverviewLoginSessionsItems } from './types';
 import { DropdownCardItem1, DropdownCrud1 } from '@/partials/dropdowns/general';
 import { CommonAvatar } from '@/partials/common';
 
-const OverviewLoginSessions = () => {
-  const rows: IOverviewLoginSessionsItems = [
+export interface ILoginSessionsItem {
+  avatar: string;
+  name: string;
+  connections: number;
+  location: string;
+  recent: string;
+}
+export interface ILoginSessionsItems extends Array<ILoginSessionsItem> {}
+
+const LoginSessions = () => {
+  const rows: ILoginSessionsItems = [
     {
       avatar: '300-3.png',
       name: 'Tyler Hero',
@@ -42,7 +50,7 @@ const OverviewLoginSessions = () => {
     }
   ];
 
-  const renderItem = (row: IOverviewLoginSessionsItem, index: number) => {
+  const renderItem = (row: ILoginSessionsItem, index: number) => {
     return (
       <tr key={index}>
         <td>
@@ -150,4 +158,4 @@ const OverviewLoginSessions = () => {
   );
 };
 
-export { OverviewLoginSessions };
+export { LoginSessions };

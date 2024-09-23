@@ -10,7 +10,7 @@ import {
   ToolbarPageTitle
 } from '@/partials/toolbar';
 
-import { DeviceManagementContent } from '.';
+import { DeviceManagementContent } from './';
 
 const DeviceManagementPage = () => {
   return (

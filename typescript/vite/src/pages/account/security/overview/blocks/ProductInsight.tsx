@@ -1,12 +1,13 @@
-import { IOverviewProductInsightProps } from './types';
 import { CommonHexagonBadge } from '@/partials/common';
 
-const OverviewProductInsight = ({
-  image,
-  title,
-  description,
-  number
-}: IOverviewProductInsightProps) => {
+export interface IProductInsightProps {
+  image: React.ReactNode;
+  title: string;
+  description: string;
+  number: number;
+}
+
+const ProductInsight = ({ image, title, description, number }: IProductInsightProps) => {
   return (
     <div className="card p-5">
       <div className="flex flex-wrap items-center justify-between gap-5">
@@ -29,4 +30,4 @@ const OverviewProductInsight = ({
   );
 };
 
-export { OverviewProductInsight };
+export { ProductInsight };

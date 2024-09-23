@@ -2,17 +2,12 @@ import { Container } from '@/components/container';
 import { MENU_SIDEBAR } from '@/config/menu.config';
 import { NavbarMenu } from '@/partials/menu/NavbarMenu';
 import { Navbar } from '@/partials/navbar';
-import {
-  Toolbar,
-  ToolbarDescription,
-  ToolbarHeading,
-  ToolbarPageTitle
-} from '@/partials/toolbar';
+import { Toolbar, ToolbarDescription, ToolbarHeading, ToolbarPageTitle } from '@/partials/toolbar';
 
-import { SecurityGetStartedContent } from '.';
+import { GetStartedContent } from './';
 import { Link } from 'react-router-dom';
 
-const SecurityGetStartedPage = () => {
+const GetStartedPage = () => {
   return (
     <>
       <Navbar>
@@ -39,10 +34,10 @@ const SecurityGetStartedPage = () => {
       </Container>
 
       <Container>
-        <SecurityGetStartedContent />
+        <GetStartedContent />
       </Container>
     </>
   );
 };
 
-export { SecurityGetStartedPage };
+export { GetStartedPage };

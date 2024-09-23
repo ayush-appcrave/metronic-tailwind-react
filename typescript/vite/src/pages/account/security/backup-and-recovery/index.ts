@@ -1,3 +1,3 @@
-export * from './_BackupAndRecoveryBackupSettings';
-export * from './_BackupAndRecoveryContent';
-export * from './types';
+export * from './blocks';
+export * from './BackupAndRecoveryContent';
+export * from './BackupAndRecoveryPage';

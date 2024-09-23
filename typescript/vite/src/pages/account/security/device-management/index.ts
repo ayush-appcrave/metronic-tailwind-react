@@ -1,1 +1,2 @@
-export * from './_DeviceManagementContent';
+export * from './DeviceManagementContent';
+export * from './DeviceManagementPage';

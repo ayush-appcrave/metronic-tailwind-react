@@ -1,9 +1,16 @@
 import { KeenIcon } from '@/components';
-import { IOverviewQuickSettingsItem, IOverviewQuickSettingsItems } from './types';
 import { CommonHexagonBadge } from '@/partials/common';
 
-const OverviewQuickSettings = () => {
-  const items: IOverviewQuickSettingsItems = [
+export interface IQuickSettingsItem {
+  icon: string;
+  title: string;
+  description: string;
+  actions: React.ReactNode;
+}
+export interface IQuickSettingsItems extends Array<IQuickSettingsItem> {}
+
+const QuickSettings = () => {
+  const items: IQuickSettingsItems = [
     {
       icon: 'shield-tick',
       title: 'Enforce two-step verification',
@@ -26,7 +33,7 @@ const OverviewQuickSettings = () => {
     }
   ];
 
-  const renderItem = (item: IOverviewQuickSettingsItem, index: number) => {
+  const renderItem = (item: IQuickSettingsItem, index: number) => {
     return (
       <div key={index} className="card-group flex items-center justify-between py-4 gap-2.5">
         <div className="flex items-center gap-3.5">
@@ -59,4 +66,4 @@ const OverviewQuickSettings = () => {
   );
 };
 
-export { OverviewQuickSettings };
+export { QuickSettings };

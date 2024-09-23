@@ -1,10 +1,12 @@
-import {
-  IBackupAndRecoveryBackupSettingsItem,
-  IBackupAndRecoveryBackupSettingsItems
-} from './types';
+export interface IBackupSettingsItem {
+  title: string;
+  description: string;
+  control: React.ReactNode;
+}
+export interface IBackupSettingsItems extends Array<IBackupSettingsItem> {}
 
-const BackupAndRecoveryBackupSettings = () => {
-  const items: IBackupAndRecoveryBackupSettingsItems = [
+const BackupSettings = () => {
+  const items: IBackupSettingsItems = [
     {
       title: 'Automatic Backup',
       description: 'Scheduled Data Protection',
@@ -48,7 +50,7 @@ const BackupAndRecoveryBackupSettings = () => {
     }
   ];
 
-  const renderItem = (item: IBackupAndRecoveryBackupSettingsItem, index: number) => {
+  const renderItem = (item: IBackupSettingsItem, index: number) => {
     return (
       <div key={index} className="card-group flex items-center justify-between py-4 gap-2.5">
         <div className="flex flex-col justify-center gap-1.5">
@@ -73,4 +75,4 @@ const BackupAndRecoveryBackupSettings = () => {
   );
 };
 
-export { BackupAndRecoveryBackupSettings };
+export { BackupSettings };

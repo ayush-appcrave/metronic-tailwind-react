@@ -1,10 +1,19 @@
 import { KeenIcon, Menu, MenuItem, MenuToggle } from '@/components';
-import { IOverviewTrustedDevicesItem, IOverviewTrustedDevicesItems } from './types';
 import { DropdownCard2 } from '@/partials/dropdowns/general';
 import { toAbsoluteUrl } from '@/utils';
 
-const OverviewTrustedDevices = () => {
-  const items: IOverviewTrustedDevicesItems = [
+export interface ITrustedDevicesItem {
+  logo: string;
+  browser: string;
+  location: string;
+  flag: string;
+  device: string;
+  datetime: string;
+}
+export interface ITrustedDevicesItems extends Array<ITrustedDevicesItem> {}
+
+const TrustedDevices = () => {
+  const items: ITrustedDevicesItems = [
     {
       logo: 'chrome.svg',
       browser: 'Chrome',
@@ -23,7 +32,7 @@ const OverviewTrustedDevices = () => {
     }
   ];
 
-  const renderItem = (item: IOverviewTrustedDevicesItem, index: number) => {
+  const renderItem = (item: ITrustedDevicesItem, index: number) => {
     return (
       <tr key={index}>
         <td className="min-w-48 w-48">
@@ -115,4 +124,4 @@ const OverviewTrustedDevices = () => {
   );
 };
 
-export { OverviewTrustedDevices };
+export { TrustedDevices };

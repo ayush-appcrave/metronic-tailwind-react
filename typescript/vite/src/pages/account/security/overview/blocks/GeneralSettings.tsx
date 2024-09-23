@@ -1,9 +1,16 @@
 import { KeenIcon } from '@/components';
-import { IOverviewGeneralSettingsItem, IOverviewGeneralSettingsItems } from './types';
 import { CommonHexagonBadge } from '@/partials/common';
 
-const OverviewGeneralSettings = () => {
-  const items: IOverviewGeneralSettingsItems = [
+export interface IGeneralSettingsItem {
+  icon: string;
+  title: React.ReactNode;
+  description: string;
+  actions: React.ReactNode;
+}
+export interface IGeneralSettingsItems extends Array<IGeneralSettingsItem> {}
+
+const GeneralSettings = () => {
+  const items: IGeneralSettingsItems = [
     {
       icon: 'people',
       title: (
@@ -101,7 +108,7 @@ const OverviewGeneralSettings = () => {
     }
   ];
 
-  const renderItem = (item: IOverviewGeneralSettingsItem, index: number) => {
+  const renderItem = (item: IGeneralSettingsItem, index: number) => {
     return (
       <div key={index} className="card-group flex items-center justify-between py-4 gap-2.5">
         <div className="flex items-center gap-3.5">
@@ -134,4 +141,4 @@ const OverviewGeneralSettings = () => {
   );
 };
 
-export { OverviewGeneralSettings };
+export { GeneralSettings };

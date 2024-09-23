@@ -1,1 +1,1 @@
-export * from './_CurrentSessionsContent';
+export * from './CurrentSessionsContent';
