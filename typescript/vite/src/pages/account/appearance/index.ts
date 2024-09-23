@@ -1,3 +1,3 @@
-export * from './AccountAppearancePage';
-export * from './AccountAppearanceContent';
 export * from './blocks';
+export * from './AppearanceContent';
+export * from './AppearancePage';

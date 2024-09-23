@@ -1,3 +1,3 @@
-export * from './AccountAppearanceApiIntegrationsBlock';
-export * from './AccountAppearanceAccessibilityBlock';
-export * from './AccountAppearanceDisableDefaultBrandBlock';
+export * from './ApiIntegrationsBlock';
+export * from './AccessibilityBlock';
+export * from './DisableDefaultBrandBlock';

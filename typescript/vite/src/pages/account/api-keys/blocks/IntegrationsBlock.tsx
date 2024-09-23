@@ -10,7 +10,7 @@ interface IAccountApiIntegrationsItem {
 
 interface IAccountApiIntegrationsItems extends Array<IAccountApiIntegrationsItem> {}
 
-const AccountApiKeysIntegrationsBlock = () => {
+const IntegrationsBlock = () => {
   const data: IAccountApiIntegrationsItems = [
     {
       integration: 'Quick Pay Service',
@@ -435,4 +435,4 @@ const AccountApiKeysIntegrationsBlock = () => {
   );
 };
 
-export { AccountApiKeysIntegrationsBlock, type IAccountApiIntegrationsItems };
+export { IntegrationsBlock, type IAccountApiIntegrationsItems };

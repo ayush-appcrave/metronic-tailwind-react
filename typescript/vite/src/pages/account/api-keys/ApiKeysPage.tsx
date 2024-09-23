@@ -10,9 +10,9 @@ import {
   ToolbarPageTitle
 } from '@/partials/toolbar';
 
-import { AccountApiKeysContent } from './';
+import { ApiKeysContent } from './';
 
-const AccountApiKeysPage = () => {
+const ApiKeysPage = () => {
   return (
     <>
       <Navbar>
@@ -40,10 +40,10 @@ const AccountApiKeysPage = () => {
       </Container>
 
       <Container>
-        <AccountApiKeysContent />
+        <ApiKeysContent />
       </Container>
     </>
   );
 };
 
-export { AccountApiKeysPage };
+export { ApiKeysPage };

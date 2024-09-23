@@ -1,3 +1,3 @@
-export * from './AccountApiKeysContent';
-export * from './AccountApiKeysPage';
+export * from './ApiKeysContent';
+export * from './ApiKeysPage';
 export * from './blocks';

@@ -3,9 +3,9 @@ import { toAbsoluteUrl } from '@/utils';
 import { KeenIcon } from '@/components';
 import { DoNotDistrub } from '../notifications';
 import { SettingsSidebarExternalServicesManageApi } from '../home/settings-sidebar';
-import { AccountApiKeysIntegrationsBlock, AccountApiKeysWebhooksBlock } from '.';
+import { IntegrationsBlock, WebhooksBlock } from '.';
 
-const AccountApiKeysContent = () => {
+const ApiKeysContent = () => {
   const posts: IHighlightedPostsItems = [
     {
       icon: 'cloud-add',
@@ -36,9 +36,9 @@ const AccountApiKeysContent = () => {
         <div className="flex flex-col gap-5 lg:gap-7.5">
           <SettingsSidebarExternalServicesManageApi title="Public API Key" switch={true} />
 
-          <AccountApiKeysIntegrationsBlock />
+          <IntegrationsBlock />
 
-          <AccountApiKeysWebhooksBlock />
+          <WebhooksBlock />
 
           <MiscFaq />
 
@@ -81,4 +81,4 @@ const AccountApiKeysContent = () => {
   );
 };
 
-export { AccountApiKeysContent };
+export { ApiKeysContent };

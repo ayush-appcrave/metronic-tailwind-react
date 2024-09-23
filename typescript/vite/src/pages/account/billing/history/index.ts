@@ -1,1 +1,2 @@
-export * from './_HistoryContent';
+export * from './HistoryContent';
+export * from './HistoryPage';

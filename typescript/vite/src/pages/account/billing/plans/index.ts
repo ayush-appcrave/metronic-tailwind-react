@@ -1,3 +1,3 @@
-export * from './_Plans';
-export * from './_PlansContent';
-export * from './types';
+export * from './blocks';
+export * from './PlansContent';
+export * from './PlansPage';

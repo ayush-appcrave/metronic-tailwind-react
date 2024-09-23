@@ -1,16 +1,8 @@
-import { MiscHighlightedPosts } from '@/partials/misc';
-import { Details, Invoicing, PaymentMethods, Plan } from './blocks'; 
+import { IHighlightedPostsItems, MiscHighlightedPosts } from '@/partials/misc';
+import { Details, Invoicing, PaymentMethods, Plan } from './blocks';
 
-interface IBasicContentItems {
-  icon: string;
-  title: string;
-  summary: string;
-  path: string;
-}
-interface IBasicContentItems extends Array<IBasicContentItem> {}
-
-const AccountBillingBasicContent = () => {
-  const posts: IBasicContentItems = [
+const BasicContent = () => {
+  const posts: IHighlightedPostsItems = [
     {
       icon: 'discount',
       title: 'Tailor-Made Plans Selection and Efficient Billing Systems',
@@ -53,4 +45,4 @@ const AccountBillingBasicContent = () => {
   );
 };
 
-export { BasicContent, type IBasicContentItems }; 
+export { BasicContent };

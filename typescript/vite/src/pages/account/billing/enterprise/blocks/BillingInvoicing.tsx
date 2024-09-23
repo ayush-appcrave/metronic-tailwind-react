@@ -1,9 +1,17 @@
 import { KeenIcon, Menu, MenuItem, MenuToggle } from '@/components';
-import { IEnterpriseBillingInvoicingItem, IEnterpriseBillingInvoicingItems } from './types';
 import { DropdownCardItem2 } from '@/partials/dropdowns/general';
 
-const EnterpriseBillingInvoicing = () => {
-  const tables: IEnterpriseBillingInvoicingItems = [
+export interface IBillingInvoicingItem {
+  number: string;
+  date: string;
+  ammount: string;
+  label: string;
+  color: string;
+}
+export interface IBillingInvoicingItems extends Array<IBillingInvoicingItem> {}
+
+const BillingInvoicing = () => {
+  const tables: IBillingInvoicingItems = [
     {
       number: 'Invoice-2024-xd912c',
       date: '6 Aug, 2024',
@@ -34,7 +42,7 @@ const EnterpriseBillingInvoicing = () => {
     }
   ];
 
-  const renderItem = (table: IEnterpriseBillingInvoicingItem, index: number) => {
+  const renderItem = (table: IBillingInvoicingItem, index: number) => {
     return (
       <tr key={index}>
         <td className="text-sm font-medium text-gray-700">{table.number}</td>
@@ -109,4 +117,4 @@ const EnterpriseBillingInvoicing = () => {
   );
 };
 
-export { EnterpriseBillingInvoicing };
+export { BillingInvoicing };

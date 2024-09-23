@@ -1,9 +1,19 @@
 import { KeenIcon } from '@/components';
-
-import { IHighlightedPostsItem, IHighlightedPostsProps } from './types';
 import { Link } from 'react-router-dom';
 import { CommonHexagonBadge } from '../common';
 import React from 'react';
+
+export interface IHighlightedPostsItem {
+  icon: string;
+  title: string;
+  summary: string;
+  path: string;
+}
+export interface IHighlightedPostsItems extends Array<IHighlightedPostsItem> {}
+
+export interface IHighlightedPostsProps {
+  posts: IHighlightedPostsItem[];
+}
 
 const MiscHighlightedPosts = ({ posts }: IHighlightedPostsProps) => {
   const renderItem = (post: IHighlightedPostsItem, index: number) => {

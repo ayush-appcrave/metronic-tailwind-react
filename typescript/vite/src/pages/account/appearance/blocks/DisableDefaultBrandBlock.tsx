@@ -1,4 +1,4 @@
-const AccountAppearanceDisableDefaultBrandBlock = () => {
+const DisableDefaultBrandBlock = () => {
   return (
     <div className="card">
       <div className="card-header">
@@ -29,4 +29,4 @@ const AccountAppearanceDisableDefaultBrandBlock = () => {
   );
 };
 
-export {AccountAppearanceDisableDefaultBrandBlock };
+export {DisableDefaultBrandBlock };

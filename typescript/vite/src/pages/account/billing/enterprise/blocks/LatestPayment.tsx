@@ -1,16 +1,22 @@
 import { KeenIcon } from '@/components';
-import { IEnterpriseLatestPaymentItem, IEnterpriseLatestPaymentItems } from './types';
 import { toAbsoluteUrl } from '@/utils';
 
-const EnterpriseLatestPayment = () => {
-  const tables: IEnterpriseLatestPaymentItems = [
-    { status: 'Typ of Plan', info: 'Cloud One Enterprise' },
+export interface ILatestPaymentItem {
+  status: string;
+  logo?: boolean;
+  info: string;
+}
+export interface ILatestPaymentItems extends Array<ILatestPaymentItem> {}
+
+const LatestPayment = () => {
+  const tables: ILatestPaymentItems = [
+    { status: 'Typ of Plan', info: 'Cloud One ' },
     { status: 'Payment Date', info: '6 Aug, 2024' },
     { status: 'Card used to pay:', logo: true, info: 'Ending 3604' },
     { status: 'Total Payment:', info: '$24.00' }
   ];
 
-  const renderItem = (table: IEnterpriseLatestPaymentItem, index: number) => {
+  const renderItem = (table: ILatestPaymentItem, index: number) => {
     return (
       <tr key={index}>
         <td className="text-sm text-gray-600 min-w-36 pb-5 pe-6">{table.status}</td>
@@ -53,4 +59,4 @@ const EnterpriseLatestPayment = () => {
   );
 };
 
-export { EnterpriseLatestPayment };
+export { LatestPayment };

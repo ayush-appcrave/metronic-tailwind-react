@@ -1,9 +1,14 @@
 import { CommonAvatars, IAvatarsItems } from '@/partials/common';
-import { IEnterpriseCompanyProfileItem, IEnterpriseCompanyProfileItems } from './types';
 import { toAbsoluteUrl } from '@/utils';
 
-const EnterpriseCompanyProfile = () => {
-  const statistics: IEnterpriseCompanyProfileItems = [
+export interface ICompanyProfileItem {
+  total: string;
+  description: string;
+}
+export interface ICompanyProfileItems extends Array<ICompanyProfileItem> {}
+
+const CompanyProfile = () => {
+  const statistics: ICompanyProfileItems = [
     {
       total: 'Trial',
       description: 'Status'
@@ -36,7 +41,7 @@ const EnterpriseCompanyProfile = () => {
     }
   ];
 
-  const renderItem = (statistic: IEnterpriseCompanyProfileItem, index: number) => {
+  const renderItem = (statistic: ICompanyProfileItem, index: number) => {
     return (
       <div
         key={index}
@@ -64,7 +69,7 @@ const EnterpriseCompanyProfile = () => {
             <div className="flex flex-wrap items-center justify-between gap-2">
               <div className="flex flex-col gap-1">
                 <div className="flex items-center gap-2.5">
-                  <h2 className="text-2xl font-semibold text-gray-900">Cloud One Enterprise</h2>
+                  <h2 className="text-2xl font-semibold text-gray-900">Cloud One </h2>
                   <span className="badge badge-sm badge-success badge-outline">Monthly Plan</span>
                 </div>
                 <p className="text-2sm font-medium text-gray-600">
@@ -113,4 +118,4 @@ const EnterpriseCompanyProfile = () => {
   );
 };
 
-export { EnterpriseCompanyProfile };
+export { CompanyProfile };

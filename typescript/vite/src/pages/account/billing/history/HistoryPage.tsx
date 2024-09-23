@@ -10,7 +10,7 @@ import {
   ToolbarPageTitle
 } from '@/partials/toolbar';
 
-import { HistoryContent } from '.';
+import { HistoryContent } from './';
 
 const HistoryPage = () => {
   return (
@@ -32,7 +32,9 @@ const HistoryPage = () => {
             </ToolbarDescription>
           </ToolbarHeading>
           <ToolbarActions>
-            <a href="#" className="btn btn-sm btn-light">Billing</a>
+            <a href="#" className="btn btn-sm btn-light">
+              Billing
+            </a>
           </ToolbarActions>
         </Toolbar>
       </Container>

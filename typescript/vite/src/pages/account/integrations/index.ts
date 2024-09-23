@@ -1,3 +1,3 @@
-export * from './_Integrations';
-export * from './_IntegrationsContent';
-export * from './types';
+export * from './blocks';
+export * from './IntegrationsContent';
+export * from './IntegrationsPage';

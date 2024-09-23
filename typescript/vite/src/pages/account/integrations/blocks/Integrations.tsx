@@ -1,5 +1,13 @@
 import { CardIntegration } from '@/partials/cards';
-import { IIntegrationsItem, IIntegrationsItems } from './types';
+
+export interface IIntegrationsItem {
+  logo: string;
+  path: string;
+  name: string;
+  description: string;
+  actions: React.ReactNode;
+}
+export interface IIntegrationsItems extends Array<IIntegrationsItem> {}
 
 const Integrations = () => {
   const items: IIntegrationsItems = [
