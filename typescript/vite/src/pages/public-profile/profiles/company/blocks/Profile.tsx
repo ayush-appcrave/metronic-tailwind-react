@@ -4,22 +4,20 @@ import 'leaflet/dist/leaflet.css';
 
 import { KeenIcon } from '@/components';
 
-interface IProfileCompanyProfileRow {
+interface IProfileRow {
   icon: string;
   text: string;
   info: boolean;
 }
+interface IProfileRows extends Array<IProfileRow> {}
 
-interface IProfileCompanyProfileRows extends Array<IProfileCompanyProfileRow> {}
-
-interface IProfileCompanyProfileProduct {
+interface IProfileProduct {
   label: string;
 }
+interface IProfileProducts extends Array<IProfileProduct> {}
 
-interface IProfileCompanyProfileProducts extends Array<IProfileCompanyProfileProduct> {}
-
-const ProfileCompanyProfileBlock = () => {
-  const rows: IProfileCompanyProfileRows = [
+const Profile = () => {
+  const rows: IProfileRows = [
     {
       icon: 'dribbble',
       text: 'https://duolingo.com',
@@ -47,7 +45,7 @@ const ProfileCompanyProfileBlock = () => {
     }
   ];
 
-  const products: IProfileCompanyProfileProducts = [
+  const products: IProfileProducts = [
     { label: 'Lingo Kids' },
     { label: 'Lingo Express' },
     { label: 'Fun Learning' },
@@ -63,7 +61,7 @@ const ProfileCompanyProfileBlock = () => {
     { label: 'Lingo Plus' }
   ];
 
-  const renderRows = (row: IProfileCompanyProfileRow, index: number) => {
+  const renderRows = (row: IProfileRow, index: number) => {
     return (
       <div key={index} className="flex items-center gap-2.5">
         <span>
@@ -80,7 +78,7 @@ const ProfileCompanyProfileBlock = () => {
     );
   };
 
-  const renderProducts = (product: IProfileCompanyProfileProduct, index: number) => {
+  const renderProducts = (product: IProfileProduct, index: number) => {
     return (
       <span key={index} className="badge badge-outline">
         {product.label}
@@ -149,4 +147,10 @@ const ProfileCompanyProfileBlock = () => {
   );
 };
 
-export { ProfileCompanyProfileBlock };
+export {
+  Profile,
+  type IProfileRow,
+  type IProfileRows,
+  type IProfileProduct,
+  type IProfileProducts
+};

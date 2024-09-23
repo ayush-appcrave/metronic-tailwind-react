@@ -1,17 +1,16 @@
 import { KeenIcon } from '@/components';
 import { Link } from 'react-router-dom';
 
-interface IProfileCompanyOpenJobsItem {
+interface IOpenJobsItem {
   icon: string;
   link: string;
   desc: string;
   price: string;
 }
+interface IOpenJobsItems extends Array<IOpenJobsItem> {}
 
-interface IProfileCompanyOpenJobsItems extends Array<IProfileCompanyOpenJobsItem> {}
-
-const ProfileCompanyOpenJobsBlock = () => {
-  const items: IProfileCompanyOpenJobsItems = [
+const OpenJobs = () => {
+  const items: IOpenJobsItems = [
     {
       icon: 'chart-line-star',
       link: 'Data Science',
@@ -38,7 +37,7 @@ const ProfileCompanyOpenJobsBlock = () => {
     }
   ];
 
-  const renderItems = (item: IProfileCompanyOpenJobsItem, index: number) => {
+  const renderItems = (item: IOpenJobsItem, index: number) => {
     return (
       <div key={index} className="flex align-start gap-3.5">
         <div className="flex items-center justify-center w-[1.875rem] h-[1.875rem] bg-gray-100 rounded-lg border border-gray-300">
@@ -81,4 +80,8 @@ const ProfileCompanyOpenJobsBlock = () => {
   );
 };
 
-export { ProfileCompanyOpenJobsBlock };
+export {
+  OpenJobs,
+  type IOpenJobsItem,
+  type IOpenJobsItems
+};

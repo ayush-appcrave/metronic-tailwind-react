@@ -1,20 +1,12 @@
-interface IProfileCompanyHighlightsItem {
+interface IHighlightsItem {
   label: string;
   info: string;
   type?: number;
 }
+interface IHighlightsItems extends Array<IHighlightsItem> {}
 
-interface IProfileCompanyHighlightsItems extends Array<IProfileCompanyHighlightsItem> {}
-
-interface IProfileCompanyOpenJobsItem {
-  icon: string;
-  link: string;
-  desc: string;
-  price: string;
-}
-
-const ProfileCompanyHighlightsBlock = () => {
-  const items: IProfileCompanyHighlightsItems = [
+const Highlights = () => {
+  const items: IHighlightsItems = [
     { label: 'Locations:', info: '79', type: 1 },
     { label: 'Founded:', info: '2011', type: 2 },
     {
@@ -29,10 +21,12 @@ const ProfileCompanyHighlightsBlock = () => {
     { label: 'Sector:', info: 'Online Education' }
   ];
 
-  const renderItems = (item: IProfileCompanyHighlightsItem, index: number) => {
+  const renderItems = (item: IHighlightsItem, index: number) => {
     return (
       <tr key={index}>
-        <td className="text-sm font-medium text-gray-500 pb-3 pe-4 lg:pe-10">{item.label}</td>
+        <td className="text-sm font-medium text-gray-500 pb-3 pe-4 lg:pe-10">
+          {item.label}
+        </td>
         <td className="text-sm font-medium text-gray-800 pb-3">
           {item.type === 1 ? (
             <span>{item.info}</span>
@@ -65,4 +59,4 @@ const ProfileCompanyHighlightsBlock = () => {
   );
 };
 
-export { ProfileCompanyHighlightsBlock, type IProfileCompanyOpenJobsItem };
+export { Highlights, type IHighlightsItem, type IHighlightsItems };

@@ -5,9 +5,10 @@ import { NavbarMenu } from '@/partials/menu/NavbarMenu';
 import { Navbar, NavbarActions, NavbarDropdown } from '@/partials/navbar';
 import { toAbsoluteUrl } from '@/utils/Assets';
 import { KeenIcon } from '@/components';
+
 import { ProfileCompanyContent } from './';
 
-const CompanyPage = () => {
+const ProfileCompanyPage = () => {
   const image = (
     <div className="flex items-center justify-center rounded-full border-2 border-success-clarity h-[100px] w-[100px]">
       <img src={toAbsoluteUrl('/media/brand-logos/duolingo.svg')} className="size-[50px]" />
@@ -48,4 +49,4 @@ const CompanyPage = () => {
   );
 };
 
-export { CompanyPage };
+export { ProfileCompanyPage };
