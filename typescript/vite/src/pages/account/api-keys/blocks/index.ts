@@ -1,2 +1,2 @@
-export * from './AccountApiKeysIntegrationsBlock';
-export * from './AccountApiKeysWebhooksBlock';
+export * from './Integrations';
+export * from './Webhooks';

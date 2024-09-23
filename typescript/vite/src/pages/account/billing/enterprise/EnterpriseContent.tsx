@@ -1,35 +1,36 @@
-import { MiscHelp } from '@/partials/misc';
+import { MiscHelp } from '@/partials/misc'; 
 import {
-  EnterpriseBillingInvoicing,
-  EnterpriseCompanyProfile,
-  EnterpriseLatestPayment,
-  EnterpriseNextPayment,
-  EnterpriseUpgrade
-} from '.';
-import { BasicPaymentMethods } from '../basic';
+  BillingInvoicing,
+  CompanyProfile,
+  LatestPayment,
+  NextPayment,
+  Upgrade
+} from './blocks'; 
+
+import { PaymentMethods } from '../basic';
 
 const EnterpriseContent = () => {
   return (
     <div className="grid grid-cols-1 lg:grid-cols-2 gap-5 lg:gap-7.5">
       <div className="col-span-2">
-        <EnterpriseUpgrade />
+        <Upgrade />
       </div>
       <div className="col-span-2">
-        <EnterpriseCompanyProfile />
+        <CompanyProfile />
       </div>
 
       <div className="col-span-2 lg:col-span-1 flex">
-        <EnterpriseLatestPayment />
+        <LatestPayment />
       </div>
       <div className="col-span-2 lg:col-span-1 flex">
-        <EnterpriseNextPayment />
+        <NextPayment />
       </div>
 
       <div className="col-span-2 lg:col-span-1 flex">
-        <BasicPaymentMethods icon="credit-cart" />
+        <PaymentMethods icon="credit-cart" />
       </div>
       <div className="col-span-2 lg:col-span-1">
-        <EnterpriseBillingInvoicing />
+        <BillingInvoicing />
       </div>
 
       <div className="col-span-2">

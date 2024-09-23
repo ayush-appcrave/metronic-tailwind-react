@@ -10,9 +10,9 @@ import {
   ToolbarPageTitle
 } from '@/partials/toolbar';
 
-import { AccountApiKeysContent } from './';
+import { AppearanceContent } from '.';
 
-const AccountApiKeysPage = () => {
+const AppearancePage = () => {
   return (
     <>
       <Navbar>
@@ -32,18 +32,16 @@ const AccountApiKeysPage = () => {
             </ToolbarDescription>
           </ToolbarHeading>
           <ToolbarActions>
-            <a href="#" className="btn btn-sm btn-light">
-              Privacy Settings
-            </a>
+            <a href="#" className="btn btn-sm btn-light">Privacy Settings</a>
           </ToolbarActions>
         </Toolbar>
       </Container>
 
       <Container>
-        <AccountApiKeysContent />
+        <AppearanceContent />
       </Container>
     </>
   );
 };
 
-export { AccountApiKeysPage };
+export { AppearancePage };

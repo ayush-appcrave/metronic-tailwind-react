@@ -1,17 +1,17 @@
 import { CrudCardFooter } from '@/partials/crud';
 import { KeenIcon } from '@/components';
 
-interface IAccountAppearanceApiIntegrationsItem {
+interface IApiIntegrationsItem {
   integration: string;
   apiKey: string;
   dailyCalls: string;
   actions: React.ReactNode;
 }
 
-interface IAccountAppearanceApiIntegrationsItems extends Array<IAccountAppearanceApiIntegrationsItem> {} 
+interface IApiIntegrationsItems extends Array<IApiIntegrationsItem> {} 
 
-const IAccountAppearanceApiIntegrationsBlock = () => {
-  const data: IAccountAppearanceApiIntegrationsItems = [
+const IApiIntegrations = () => {
+  const data: IApiIntegrationsItems = [
     {
       integration: 'Quick Pay Service',
       apiKey: 'a1b2Xc3dY4ZxQvPlQp',
@@ -110,7 +110,7 @@ const IAccountAppearanceApiIntegrationsBlock = () => {
     }
   ];
 
-  const renderItem = (each: IAccountAppearanceApiIntegrationsItem, index: number) => {
+  const renderItem = (each: IApiIntegrationsItem, index: number) => {
     return (
       <tr key={index}>
         <td>
@@ -207,4 +207,4 @@ const IAccountAppearanceApiIntegrationsBlock = () => {
   );
 };
 
-export { IAccountAppearanceApiIntegrationsBlock, type IAccountAppearanceApiIntegrationsItems };
+export { IApiIntegrations, type IApiIntegrationsItems };

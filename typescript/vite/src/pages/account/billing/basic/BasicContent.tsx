@@ -1,7 +1,7 @@
 import { MiscHighlightedPosts } from '@/partials/misc';
 import { Details, Invoicing, PaymentMethods, Plan } from './blocks'; 
 
-interface IBasicContentItems {
+interface IBasicContentItem {
   icon: string;
   title: string;
   summary: string;
@@ -9,7 +9,7 @@ interface IBasicContentItems {
 }
 interface IBasicContentItems extends Array<IBasicContentItem> {}
 
-const AccountBillingBasicContent = () => {
+const BasicContent = () => {
   const posts: IBasicContentItems = [
     {
       icon: 'discount',

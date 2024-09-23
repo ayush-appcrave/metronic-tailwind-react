@@ -2,7 +2,7 @@ import { KeenIcon } from '@/components';
 
 import { CommonHexagonBadge } from '@/partials/common';
 
-const EnterpriseNextPayment = () => {
+const NextPayment = () => {
   return (
     <div className="card grow">
       <div className="card-header">
@@ -43,4 +43,4 @@ const EnterpriseNextPayment = () => {
   );
 };
 
-export { EnterpriseNextPayment };
+export { NextPayment };

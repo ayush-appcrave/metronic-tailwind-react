@@ -1,9 +1,14 @@
 import { CommonAvatars, IAvatarsItems } from '@/partials/common';
-import { IEnterpriseCompanyProfileItem, IEnterpriseCompanyProfileItems } from './types';
 import { toAbsoluteUrl } from '@/utils';
 
-const EnterpriseCompanyProfile = () => {
-  const statistics: IEnterpriseCompanyProfileItems = [
+interface ICompanyProfileItem {
+  total: string;
+  description: string;
+}
+interface ICompanyProfileItems extends Array<ICompanyProfileItem> {}
+
+const CompanyProfile = () => {
+  const statistics: ICompanyProfileItems = [
     {
       total: 'Trial',
       description: 'Status'
@@ -36,7 +41,7 @@ const EnterpriseCompanyProfile = () => {
     }
   ];
 
-  const renderItem = (statistic: IEnterpriseCompanyProfileItem, index: number) => {
+  const renderItem = (statistic: ICompanyProfileItem, index: number) => {
     return (
       <div
         key={index}
@@ -113,4 +118,4 @@ const EnterpriseCompanyProfile = () => {
   );
 };
 
-export { EnterpriseCompanyProfile };
+export { CompanyProfile };

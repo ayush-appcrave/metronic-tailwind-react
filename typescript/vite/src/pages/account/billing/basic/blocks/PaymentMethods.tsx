@@ -1,7 +1,7 @@
 import { KeenIcon } from '@/components'; 
 import { toAbsoluteUrl } from '@/utils';
 
-interface IPaymentMethods {
+interface IPaymentMethodsItem {
   logo: string;
   title: string;
   email: string;
@@ -14,7 +14,7 @@ interface IPaymentMethodsProps {
 
 interface IPaymentMethodsItems extends Array<IPaymentMethodsItem> {} 
 
-const AccountBillingBasicPaymentMethodsBlock = ({ icon }: IPaymentMethodsProps) => {
+const PaymentMethods = ({ icon }: IPaymentMethodsProps) => {
   const items: IPaymentMethodsItems = [
     {
       logo: 'visa.svg',
