@@ -1,8 +1,15 @@
 import clsx from 'clsx';
-import { memo } from 'react';
+import { memo, ReactNode } from 'react';
 import { Collapse } from '@mui/material';
-import { IAccordionItemProps } from './types';
 import { KeenIcon } from '../keenicons';
+
+interface IAccordionItemProps {
+  title: string; // Title of the accordion item
+  indicator?: ReactNode; // Optional indicator, like an icon
+  children: ReactNode; // Content of the accordion item
+  isOpen?: boolean; // To control open/close state of the item
+  onClick?: () => void; // Function to handle click event on the item
+}
 
 const AccordionItemComponent = ({
   title,
@@ -46,4 +53,4 @@ const AccordionItemComponent = ({
 };
 
 const AccordionItem = memo(AccordionItemComponent);
-export { AccordionItem };
+export { AccordionItem, type IAccordionItemProps };

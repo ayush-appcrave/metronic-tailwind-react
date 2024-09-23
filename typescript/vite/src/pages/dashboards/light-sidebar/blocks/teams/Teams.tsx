@@ -4,12 +4,12 @@ import { Link } from 'react-router-dom';
 import { DataGrid, KeenIcon } from '@/components';
 import { ColumnDef } from '@tanstack/react-table';
 import { CommonAvatars, CommonRating } from '@/partials/common'; // Import avatar-related types and components
-import { DashboardTeamsData, IDashboardTeamData } from './';
+import { TeamsData, ITeamData } from './';
 
-const DashboardTeamsBlock = () => {
+const Teams = () => {
   const storageFilterId = 'teams-filter';
 
-  const columns = useMemo<ColumnDef<IDashboardTeamData>[]>(
+  const columns = useMemo<ColumnDef<ITeamData>[]>(
     () => [
       {
         accessorFn: (row) => row.team.name,
@@ -81,7 +81,7 @@ const DashboardTeamsBlock = () => {
   );
 
   // Memoize the team data
-  const data: IDashboardTeamData[] = useMemo(() => DashboardTeamsData, []);
+  const data: ITeamData[] = useMemo(() => TeamsData, []);
 
   // Initialize search term from localStorage if available
   const [searchTerm, setSearchTerm] = useState(() => {
@@ -133,4 +133,4 @@ const DashboardTeamsBlock = () => {
   );
 };
 
-export { DashboardTeamsBlock };
+export { Teams };

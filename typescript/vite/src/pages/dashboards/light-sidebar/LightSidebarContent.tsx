@@ -1,10 +1,10 @@
 import {
-  DashboardChannelStatsBlock,
-  DashboardEarningsChartBlock,
-  DashboardEntryCalloutBlock,
-  DashboardHighlightsBlock,
-  DashboardTeamMeetingBlock,
-  DashboardTeamsBlock
+  ChannelStats,
+  EarningsChart,
+  EntryCallout,
+  Highlights,
+  TeamMeeting,
+  Teams
 } from './blocks';
 
 const LightSidebarContent = () => {
@@ -13,32 +13,32 @@ const LightSidebarContent = () => {
       <div className="grid lg:grid-cols-3 gap-y-5 lg:gap-7.5 items-stretch">
         <div className="lg:col-span-1">
           <div className="grid grid-cols-2 gap-5 lg:gap-7.5 h-full items-stretch">
-            <DashboardChannelStatsBlock />
+            <ChannelStats />
           </div>
         </div>
 
         <div className="lg:col-span-2">
-          <DashboardEntryCalloutBlock className="h-full" />
+          <EntryCallout className="h-full" />
         </div>
       </div>
 
       <div className="grid lg:grid-cols-3 gap-5 lg:gap-7.5 items-stretch">
         <div className="lg:col-span-1">
-          <DashboardHighlightsBlock limit={3} />
+          <Highlights limit={3} />
         </div>
 
         <div className="lg:col-span-2">
-          <DashboardEarningsChartBlock />
+          <EarningsChart />
         </div>
       </div>
 
       <div className="grid lg:grid-cols-3 gap-5 lg:gap-7.5 items-stretch">
         <div className="lg:col-span-1">
-          <DashboardTeamMeetingBlock />
+          <TeamMeeting />
         </div>
 
         <div className="lg:col-span-2">
-          <DashboardTeamsBlock />
+          <Teams />
         </div>
       </div>
     </div>

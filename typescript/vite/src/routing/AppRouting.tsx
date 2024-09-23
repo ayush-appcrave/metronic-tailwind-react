@@ -76,7 +76,7 @@ import {
 import { AuthPage, useAuthContext } from '../auth';
 import { RequireAuth } from '../auth/RequireAuth';
 import { Demo1Layout } from '../layouts/demo1';
-import { ErrorsPage } from '../modules/errors';
+import { ErrorsRouting } from '../errors';
 import { useLoaders } from '../providers/LoadersProvider';
 import { ScrollSpyExample } from '@/pages/scroll-spy/ScrollSpyExample.tsx';
 
@@ -192,7 +192,7 @@ const AppRouting = (): ReactElement => {
           <Route path="/network/user-table/visitors" element={<VisitorsPage />} />
         </Route>
       </Route>
-      <Route path="error/*" element={<ErrorsPage />} />
+      <Route path="error/*" element={<ErrorsRouting />} />
       <Route path="auth/*" element={<AuthPage />} />
       <Route path="*" element={<Navigate to="/error/404" />} />
     </Routes>

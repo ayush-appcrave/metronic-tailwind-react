@@ -2,7 +2,7 @@ import { KeenIcon } from '@/components';
 import { CommonAvatars } from '@/partials/common';
 import { toAbsoluteUrl } from '@/utils';
 
-const DashboardTeamMeetingBlock = () => {
+const TeamMeeting = () => {
   return (
     <div className="card h-full">
       <div className="card-body lg:p-7.5 lg:pt-6 p-5">
@@ -61,4 +61,4 @@ const DashboardTeamMeetingBlock = () => {
   );
 };
 
-export { DashboardTeamMeetingBlock };
+export { TeamMeeting };

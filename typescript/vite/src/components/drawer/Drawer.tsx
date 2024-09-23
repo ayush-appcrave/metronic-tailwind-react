@@ -16,7 +16,7 @@ const StyledDrawer = styled(MuiDrawer)(() => ({
   }
 }));
 
-const Drawer: React.FC<DrawerProps> = (props) => {
+const Drawer = (props: DrawerProps) => {
   return <StyledDrawer {...props}>{props.children}</StyledDrawer>;
 };
 

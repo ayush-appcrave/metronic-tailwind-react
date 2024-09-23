@@ -1,7 +1,24 @@
 import { KeenIcon } from '@/components';
-import { IOptionsItem, IOptionsProps } from './types';
 import { Link } from 'react-router-dom';
 import React from 'react';
+
+export interface IOptionsSubItem {
+  path: string;
+  title: string;
+}
+
+export interface IOptionsItem {
+  icon: string;
+  title: string;
+  description: string;
+  sub: IOptionsSubItem[];
+}
+
+export interface IOptionsItems extends Array<IOptionsItem> {}
+
+export interface IOptionsProps {
+  items: IOptionsItem[];
+}
 
 const Options = ({ items }: IOptionsProps) => {
   const renderItem = (item: IOptionsItem, index: number) => {

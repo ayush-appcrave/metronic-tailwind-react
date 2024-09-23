@@ -10,7 +10,7 @@ interface IChannelStatsItem {
 
 interface IChannelStatsItems extends Array<IChannelStatsItem> {}
 
-const DashboardChannelStatsBlock = () => {
+const ChannelStats = () => {
   const items: IChannelStatsItems = [
     { logo: 'linkedin-2.svg', info: '9.3k', desc: 'Amazing mates', path: '' },
     { logo: 'youtube-2.svg', info: '24k', desc: 'Lessons Views', path: '' },
@@ -79,4 +79,4 @@ const DashboardChannelStatsBlock = () => {
   );
 };
 
-export { DashboardChannelStatsBlock };
+export { ChannelStats, type IChannelStatsItems, type IChannelStatsItem };

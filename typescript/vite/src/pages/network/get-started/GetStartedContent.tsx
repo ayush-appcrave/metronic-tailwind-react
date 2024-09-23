@@ -1,7 +1,6 @@
-import { Options } from '.';
-import { IOptionsItems } from './types';
+import { Options, IOptionsItems } from './blocks';
 
-const NetworkGetStartedContent = () => {
+const GetStartedContent = () => {
   const items: IOptionsItems = [
     {
       icon: 'user-square',
@@ -163,4 +162,4 @@ const NetworkGetStartedContent = () => {
   );
 };
 
-export { NetworkGetStartedContent };
+export { GetStartedContent };

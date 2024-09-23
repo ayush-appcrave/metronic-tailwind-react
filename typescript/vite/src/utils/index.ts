@@ -4,3 +4,4 @@ export * from './Devices';
 export * from './Dom';
 export * from './LocalStorage';
 export * from './Router';
+export * from './Common';

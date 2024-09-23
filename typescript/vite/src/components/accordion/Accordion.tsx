@@ -1,6 +1,12 @@
 import clsx from 'clsx';
-import { Children, cloneElement, isValidElement, memo, useState } from 'react';
-import { IAccordionProps, IAccordionItemProps } from './types';
+import { Children, cloneElement, isValidElement, memo, ReactNode, useState } from 'react';
+import { IAccordionItemProps } from './';
+
+interface IAccordionProps {
+  className?: string; // Optional className for custom styling
+  children: ReactNode;
+  allowMultiple?: boolean; // Allow multiple items to be open at the same time
+}
 
 const AccordionComponent = ({ className, children, allowMultiple }: IAccordionProps) => {
   const [openIndex, setOpenIndex] = useState<number | null>(null);
@@ -23,4 +29,4 @@ const AccordionComponent = ({ className, children, allowMultiple }: IAccordionPr
 };
 
 const Accordion = memo(AccordionComponent);
-export { Accordion };
+export { Accordion, type IAccordionProps };

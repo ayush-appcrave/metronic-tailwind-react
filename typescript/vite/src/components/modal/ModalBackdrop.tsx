@@ -1,13 +1,15 @@
 import clsx from 'clsx';
 import { forwardRef } from 'react';
 
-interface ModalBackdropProps {
+interface IModalBackdropProps {
   className?: string;
   open: boolean;
+  ownerState?: any;
 }
 
 // Forwarding ref to ensure this component can hold a ref
-const ModalBackdrop = forwardRef<HTMLDivElement, ModalBackdropProps>(
+const ModalBackdrop = forwardRef<HTMLDivElement, IModalBackdropProps>(
+  // eslint-disable-next-line @typescript-eslint/no-unused-vars
   ({ className, ownerState, ...props }, ref) => {
     const { ...other } = props;
 
@@ -15,11 +17,11 @@ const ModalBackdrop = forwardRef<HTMLDivElement, ModalBackdropProps>(
       <div
         ref={ref}
         className={clsx('modal-backdrop transition-all duration-300 -z-1', className && className)}
-        {...other}
         aria-hidden="true"
+        {...other}
       />
     );
   }
 );
 
-export { ModalBackdrop };
+export { ModalBackdrop, type IModalBackdropProps };

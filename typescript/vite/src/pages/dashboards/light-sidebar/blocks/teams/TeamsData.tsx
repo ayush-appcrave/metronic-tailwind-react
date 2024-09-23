@@ -1,6 +1,6 @@
 import { IAvatarsProps } from '@/partials/common';
 
-interface IDashboardTeamData {
+interface ITeamData {
   team: {
     name: string;
     description: string;
@@ -13,7 +13,7 @@ interface IDashboardTeamData {
   members: IAvatarsProps; // Use IAvatarsProps for the members property
 }
 
-const DashboardTeamsData: IDashboardTeamData[] = [
+const TeamsData: ITeamData[] = [
   {
     team: {
       name: 'Product Management',
@@ -209,4 +209,4 @@ const DashboardTeamsData: IDashboardTeamData[] = [
 ];
 
 // eslint-disable-next-line react-refresh/only-export-components
-export { DashboardTeamsData, type IDashboardTeamData };
+export { TeamsData, type ITeamData };

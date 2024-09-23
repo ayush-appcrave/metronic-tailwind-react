@@ -1,2 +1,2 @@
-export * from './NetworkGetStartedOptionsBlock';
+export * from './Options';
 

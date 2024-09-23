@@ -1,16 +1,47 @@
 import { ChangeEvent, DragEvent, FC, useCallback, useRef, useState } from 'react';
+import { getAcceptTypeString, getListFiles, openFileDialog } from './utils';
 
-import { ImageInputPropsType, ImageListType } from '@/components/image-input/types.ts';
-import {
-  getAcceptTypeString,
-  getListFiles,
-  openFileDialog
-} from '@/components/image-input/utils.ts';
+import React from 'react';
+
+interface IImageInputFile {
+  dataURL?: string;
+  file?: File;
+  [key: string]: any;
+}
+
+type ImageInputFilesType = IImageInputFile[];
+
+interface IImageInputProps {
+  value: ImageInputFilesType;
+  onChange: (value: ImageInputFilesType, addUpdatedIndex?: number[]) => void;
+  children?: (props: IImageInputExport) => React.ReactNode;
+  multiple?: boolean;
+  maxNumber?: number;
+  acceptType?: string[];
+  dataURLKey?: string;
+  inputProps?: React.HTMLProps<HTMLInputElement>;
+}
+
+interface IImageInputExport {
+  fileList: ImageInputFilesType;
+  onImageUpload: () => void;
+  onImageRemoveAll: () => void;
+  onImageUpdate: (index: number) => void;
+  onImageRemove: (index: number) => void;
+  isDragging: boolean;
+  dragProps: {  
+    onDrop: (e: any) => void;
+    onDragEnter: (e: any) => void;
+    onDragLeave: (e: any) => void;
+    onDragOver: (e: any) => void;
+    onDragStart: (e: any) => void;
+  };
+}
 
 export const DEFAULT_NULL_INDEX = -1;
 export const DEFAULT_DATA_URL_KEY = 'dataURL';
 
-const ImageInput: FC<ImageInputPropsType> = ({
+const ImageInput: FC<IImageInputProps> = ({
   value,
   acceptType,
   inputProps,
@@ -45,7 +76,7 @@ const ImageInput: FC<ImageInputPropsType> = ({
     if (!files) return;
     const fileList = await getListFiles(files, DEFAULT_DATA_URL_KEY);
     if (!fileList.length) return;
-    let updatedFileList: ImageListType;
+    let updatedFileList: ImageInputFilesType;
     const updatedIndexes: number[] = [];
     if (keyUpdate > DEFAULT_NULL_INDEX) {
       const [firstFile] = fileList;
@@ -129,7 +160,7 @@ const ImageInput: FC<ImageInputPropsType> = ({
         {...inputProps}
       />
       {children?.({
-        imageList: inValue,
+        fileList: inValue,
         onImageUpload,
         onImageRemove,
         onImageUpdate,
@@ -147,4 +178,4 @@ const ImageInput: FC<ImageInputPropsType> = ({
   );
 };
 
-export { ImageInput };
+export { ImageInput, type IImageInputProps, type ImageInputFilesType };

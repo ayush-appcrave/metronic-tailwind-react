@@ -9,15 +9,12 @@ import React, {
   memo,
   MouseEvent,
   ReactElement,
-  ReactNode,
   useEffect,
   useImperativeHandle,
   useRef,
   useState
 } from 'react';
-import { useLocation } from 'react-router';
 import useResponsiveProp from '@/hooks/useResponsiveProp';
-import { matchPath } from '@/utils';
 import { useMatchPath } from '../../hooks/useMatchPath';
 import {
   IMenuItemRef,
@@ -36,6 +33,7 @@ import {
   useMenu
 } from './';
 import { usePathname } from '@/providers';
+import { getMenuLinkPath, hasMenuActiveChild } from './utils';
 
 const MenuItemComponent = forwardRef<IMenuItemRef | null, IMenuItemProps>(
   function MenuItem(props, ref) {
@@ -61,7 +59,7 @@ const MenuItemComponent = forwardRef<IMenuItemRef | null, IMenuItemProps>(
 
     const menuItemRef = useRef<HTMLDivElement | null>(null);
 
-    const path = props.path || getLinkPath(children);
+    const path = props.path || getMenuLinkPath(children);
 
     const {
       disabled: isMenuDisabled,
@@ -154,8 +152,8 @@ const MenuItemComponent = forwardRef<IMenuItemRef | null, IMenuItemProps>(
 
       if (show) {
         if (propToggle === 'accordion') {
-          setAccordionEnter(true);          
-        }        
+          setAccordionEnter(true);
+        }
 
         handleHide();
       } else {
@@ -351,7 +349,7 @@ const MenuItemComponent = forwardRef<IMenuItemRef | null, IMenuItemProps>(
 
     useEffect(() => {
       if (highlight) {
-        if (hasActiveChild(pathname, children)) {
+        if (hasMenuActiveChild(pathname, children)) {
           if (propToggle === 'accordion') {
             setShow(true);
           }
@@ -395,42 +393,6 @@ const MenuItemComponent = forwardRef<IMenuItemRef | null, IMenuItemProps>(
     );
   }
 );
-
-const getLinkPath = (children: ReactNode): string => {
-  let path = '';
-
-  Children.forEach(children, (child) => {
-    if (isValidElement(child) && child.type === MenuLink && child.props.path) {
-      path = child.props.path; // Assign the path when found
-    }
-  });
-
-  return path;
-};
-
-const hasActiveChild = (path: string, children: ReactNode): boolean => {
-  const childrenArray: ReactNode[] = Children.toArray(children);
-
-  for (const child of childrenArray) {
-    if (isValidElement(child)) {
-      if (child.type === MenuLink && child.props.path) {
-        if (path === '/') {
-          if (child.props.path === path) {
-            return true;
-          }
-        } else {
-          if (matchPath(child.props.path as string, path)) {
-            return true;
-          }
-        }
-      } else if (hasActiveChild(path, child.props.children as ReactNode)) {
-        return true;
-      }
-    }
-  }
-
-  return false;
-};
 
 const MenuItem = memo(MenuItemComponent);
 export { MenuItem };

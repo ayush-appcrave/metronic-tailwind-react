@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { MutableRefObject, ReactNode, useEffect, useRef, useState } from 'react';
-import { throttle } from './utils/throttle';
+import { throttle } from '@/utils';
 
 interface ScrollSpyProps {
   children: ReactNode;
@@ -20,14 +20,14 @@ interface ScrollSpyProps {
   offsetBottom?: number;
 
   // customize attributes
-  useDataAttribute?: string;
+  dataAttribute?: string;
   activeClass?: string;
 
   useBoxMethod?: boolean;
   updateHistoryStack?: boolean;
 }
 
-const ScrollSpy = ({
+const Scrollspy = ({
   children,
 
   // refs
@@ -45,8 +45,8 @@ const ScrollSpy = ({
   offsetBottom = 0,
 
   // customize attributes
-  useDataAttribute = 'to-scrollspy-id',
-  activeClass = 'active-scroll-spy',
+  dataAttribute = 'to-scrollspy-id',
+  activeClass = 'active',
 
   useBoxMethod = true,
   updateHistoryStack = true
@@ -58,10 +58,8 @@ const ScrollSpy = ({
 
   useEffect(() => {
     navContainerRef
-      ? setNavContainerItems(
-          navContainerRef.current!.querySelectorAll(`[data-${useDataAttribute}]`)
-        )
-      : setNavContainerItems(document.querySelectorAll(`[data-${useDataAttribute}]`));
+      ? setNavContainerItems(navContainerRef.current!.querySelectorAll(`[data-${dataAttribute}]`))
+      : setNavContainerItems(document.querySelectorAll(`[data-${dataAttribute}]`));
 
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [navContainerRef]);
@@ -115,7 +113,7 @@ const ScrollSpy = ({
         const changeHighlightedItemId = useChild.id;
         if (prevIdTracker.current === changeHighlightedItemId) return;
         navContainerItems.forEach((el) => {
-          const attrId = el.getAttribute(`data-${useDataAttribute}`);
+          const attrId = el.getAttribute(`data-${dataAttribute}`);
           if (el.classList.contains(activeClass ?? 'active')) {
             el.classList.remove(activeClass ?? 'active');
           }
@@ -150,4 +148,4 @@ const ScrollSpy = ({
   return <div ref={scrollContainerRef}>{children}</div>;
 };
 
-export default ScrollSpy;
+export default Scrollspy;
