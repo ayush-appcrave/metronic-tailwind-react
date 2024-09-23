@@ -47,4 +47,4 @@ const Details = () => {
   );
 };
 
-export { Details, type IDetailsItems }; 
+export { Details, type IDetailsItems };

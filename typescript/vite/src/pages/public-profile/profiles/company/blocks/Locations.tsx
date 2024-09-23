@@ -6,6 +6,7 @@ interface ILocationsItem {
   title: string;
   description: string;
 }
+
 interface ILocationsItems extends Array<ILocationsItem> {}
 
 const Locations = () => {
