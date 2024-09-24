@@ -1,1 +1,2 @@
-export * from './AppRosterContent.tsx';
+export * from './AppRosterContent';
+export * from './AppRosterPage';

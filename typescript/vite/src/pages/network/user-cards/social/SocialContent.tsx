@@ -1,16 +1,24 @@
-import { KeenIcon } from '@/components';
-import { INetworkSocialContentItem, INetworkSocialContentItems } from './types';
-import { CardUserSocial, CardUserSocialRow } from '@/partials/cards';
 import { useState } from 'react';
+import { KeenIcon } from '@/components';
+import { CardUserSocial, CardUserSocialRow } from '@/partials/cards';
+import { IAvatarProps } from '@/partials/common';
 
-const NetworkSocialContent = () => {
+export interface ISocialContentItem {
+  avatar: IAvatarProps;
+  name: string;
+  description: string;
+  verify: boolean;
+}
+export interface ISocialContentItems extends Array<ISocialContentItem> {}
+
+const SocialContent = () => {
   const [activeTab, setActiveTab] = useState<'cards' | 'list'>('cards');
 
   const handleTabClick = (tab: 'cards' | 'list') => {
     setActiveTab(tab);
   };
 
-  const items: INetworkSocialContentItems = [
+  const items: ISocialContentItems = [
     {
       avatar: {
         className: 'size-20 relative',
@@ -121,7 +129,7 @@ const NetworkSocialContent = () => {
     }
   ];
 
-  const renderItem = (item: INetworkSocialContentItem, index: number) => (
+  const renderItem = (item: ISocialContentItem, index: number) => (
     <CardUserSocial
       avatar={item.avatar}
       name={item.name}
@@ -131,7 +139,7 @@ const NetworkSocialContent = () => {
     />
   );
 
-  const renderRowItem = (item: INetworkSocialContentItem, index: number) => (
+  const renderRowItem = (item: ISocialContentItem, index: number) => (
     <CardUserSocialRow
       avatar={item.avatar}
       name={item.name}
@@ -226,4 +234,4 @@ const NetworkSocialContent = () => {
   );
 };
 
-export { NetworkSocialContent };
+export { SocialContent };

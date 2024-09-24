@@ -21,7 +21,7 @@ export interface IAuthorContentItem {
   name: string;
   location: string;
   url?: string;
-  works:IAuthorContentWork[];
+  works: IAuthorContentWork[];
 }
 export interface IAuthorContentItems extends Array<IAuthorContentItem> {}
 

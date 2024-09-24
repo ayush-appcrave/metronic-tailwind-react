@@ -1,1 +1,2 @@
-export * from './StoreClientsContent.tsx';
+export * from './StoreClientsContent';
+export * from './StoreClientsPage';

@@ -1,2 +1,2 @@
-export * from './_NetworkSocialContent';
-export * from './types';
+export * from './SocialContent';
+export * from './SocialPage';

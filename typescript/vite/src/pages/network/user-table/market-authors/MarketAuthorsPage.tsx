@@ -23,8 +23,12 @@ const MarketAuthorsPage = () => {
             </ToolbarDescription>
           </ToolbarHeading>
           <ToolbarActions>
-            <a href="#" className="btn btn-sm btn-light">Import CSV</a>
-            <a href="#" className="btn btn-sm btn-primary">Add Member</a>
+            <a href="#" className="btn btn-sm btn-light">
+              Import CSV
+            </a>
+            <a href="#" className="btn btn-sm btn-primary">
+              Add Member
+            </a>
           </ToolbarActions>
         </Toolbar>
       </Container>

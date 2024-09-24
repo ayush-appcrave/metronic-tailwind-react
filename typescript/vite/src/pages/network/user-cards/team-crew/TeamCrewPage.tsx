@@ -7,9 +7,9 @@ import {
   ToolbarPageTitle
 } from '@/partials/toolbar';
 
-import { NetworkTeamCrewContent } from '.';
+import { TeamCrewContent } from '.';
 
-const NetworkTeamCrewPage = () => {
+const TeamCrewPage = () => {
   return (
     <>
       <Container>
@@ -23,17 +23,21 @@ const NetworkTeamCrewPage = () => {
             </ToolbarDescription>
           </ToolbarHeading>
           <ToolbarActions>
-            <a href="#" className="btn btn-sm btn-light">Upload CSV</a>
-            <a href="#" className="btn btn-sm btn-primary">Add User</a>
+            <a href="#" className="btn btn-sm btn-light">
+              Upload CSV
+            </a>
+            <a href="#" className="btn btn-sm btn-primary">
+              Add User
+            </a>
           </ToolbarActions>
         </Toolbar>
       </Container>
 
       <Container>
-        <NetworkTeamCrewContent />
+        <TeamCrewContent />
       </Container>
     </>
   );
 };
 
-export { NetworkTeamCrewPage };
+export { TeamCrewPage };

@@ -1,1 +1,2 @@
-export * from './VisitorsContent.tsx';
+export * from './VisitorsContent';
+export * from './VisitorsPage';

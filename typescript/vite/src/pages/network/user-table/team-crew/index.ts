@@ -1,1 +1,2 @@
-export * from './TeamCrewContent.tsx';
+export * from './TeamCrewContent';
+export * from './TeamCrewPage';

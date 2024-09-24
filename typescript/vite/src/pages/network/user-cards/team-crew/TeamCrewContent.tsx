@@ -1,17 +1,54 @@
+import { useState } from 'react';
 import { KeenIcon } from '@/components';
-import { INetworkTeamCrewContentItem, INetworkTeamCrewContentItems } from './types';
 import { Link } from 'react-router-dom';
 import { CardConnection, CardConnectionRow } from '@/partials/cards';
-import { useState } from 'react';
 
-const NetworkTeamCrewContent = () => {
+interface ITeamCrewAvatar {
+  className: string;
+  image?: string;
+  imageClass?: string;
+  fallback?: string;
+  badgeClass: string;
+}
+
+interface ITeamCrewGroup {
+  filename: string;
+}
+
+interface ITeamCrewTeam {
+  size: string;
+  group: ITeamCrewGroup[];
+  more?: {
+    number: number;
+    variant: string;
+  };
+}
+
+interface ITeamCrewStatistic {
+  total: string;
+  description: string;
+}
+
+export interface ITeamCrewContentItem {
+  name: string;
+  info: string;
+  avatar: ITeamCrewAvatar;
+  email: string;
+  team: ITeamCrewTeam;
+  statistics: ITeamCrewStatistic[];
+  connected: boolean;
+}
+
+export interface ITeamCrewContentItems extends Array<ITeamCrewContentItem> {}
+
+const TeamCrewContent = () => {
   const [activeTab, setActiveTab] = useState<'cards' | 'list'>('cards');
 
   const handleTabClick = (tab: 'cards' | 'list') => {
     setActiveTab(tab);
   };
 
-  const items: INetworkTeamCrewContentItems = [
+  const items: ITeamCrewContentItems = [
     {
       name: 'Jenny Klabber',
       info: 'Pinnacle Innovate',
@@ -228,7 +265,7 @@ const NetworkTeamCrewContent = () => {
     }
   ];
 
-  const renderItem = (item: INetworkTeamCrewContentItem, index: number) => (
+  const renderItem = (item: ITeamCrewContentItem, index: number) => (
     <CardConnection
       name={item.name}
       info={item.info}
@@ -241,7 +278,7 @@ const NetworkTeamCrewContent = () => {
     />
   );
 
-  const renderRowItem = (item: INetworkTeamCrewContentItem, index: number) => (
+  const renderRowItem = (item: ITeamCrewContentItem, index: number) => (
     <CardConnectionRow
       name={item.name}
       info={item.info}
@@ -339,4 +376,4 @@ const NetworkTeamCrewContent = () => {
   );
 };
 
-export { NetworkTeamCrewContent };
+export { TeamCrewContent };

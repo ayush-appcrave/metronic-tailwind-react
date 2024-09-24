@@ -1,1 +1,2 @@
-export * from './SaasUsersContent.tsx';
+export * from './SaasUsersContent';
+export * from './SaasUsersPage';

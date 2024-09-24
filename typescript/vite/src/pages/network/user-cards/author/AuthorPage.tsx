@@ -1,3 +1,4 @@
+import { Fragment } from 'react';
 import { Container } from '@/components/container';
 import {
   Toolbar,
@@ -7,11 +8,11 @@ import {
   ToolbarPageTitle
 } from '@/partials/toolbar';
 
-import { NetworkAuthorContent } from '.';
+import { AuthorContent } from './';
 
 const NetworkAuthorPage = () => {
   return (
-    <>
+    <Fragment>
       <Container>
         <Toolbar>
           <ToolbarHeading>
@@ -23,16 +24,20 @@ const NetworkAuthorPage = () => {
             </ToolbarDescription>
           </ToolbarHeading>
           <ToolbarActions>
-            <a href="#" className="btn btn-sm btn-light">Upload CSV</a>
-            <a href="#" className="btn btn-sm btn-primary">Add User</a>
+            <a href="#" className="btn btn-sm btn-light">
+              Upload CSV
+            </a>
+            <a href="#" className="btn btn-sm btn-primary">
+              Add User
+            </a>
           </ToolbarActions>
         </Toolbar>
       </Container>
 
       <Container>
-        <NetworkAuthorContent />
+        <AuthorContent />
       </Container>
-    </>
+    </Fragment>
   );
 };
 

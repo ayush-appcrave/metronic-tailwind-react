@@ -1,1 +1,2 @@
-export * from './MarketAuthorsContent.tsx';
+export * from './MarketAuthorsContent';
+export * from './MarketAuthorsPage';

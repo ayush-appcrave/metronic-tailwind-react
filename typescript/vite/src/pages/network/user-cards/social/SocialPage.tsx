@@ -1,3 +1,4 @@
+import { Fragment } from 'react';
 import { Container } from '@/components/container';
 import {
   Toolbar,
@@ -7,11 +8,11 @@ import {
   ToolbarPageTitle
 } from '@/partials/toolbar';
 
-import { NetworkSocialContent } from '.';
+import { SocialContent } from './';
 
-const NetworkSocialPage = () => {
+const SocialPage = () => {
   return (
-    <>
+    <Fragment>
       <Container>
         <Toolbar>
           <ToolbarHeading>
@@ -23,17 +24,21 @@ const NetworkSocialPage = () => {
             </ToolbarDescription>
           </ToolbarHeading>
           <ToolbarActions>
-            <a href="#" className="btn btn-sm btn-light">Upload CSV</a>
-            <a href="#" className="btn btn-sm btn-primary">Add User</a>
+            <a href="#" className="btn btn-sm btn-light">
+              Upload CSV
+            </a>
+            <a href="#" className="btn btn-sm btn-primary">
+              Add User
+            </a>
           </ToolbarActions>
         </Toolbar>
       </Container>
 
       <Container>
-        <NetworkSocialContent />
+        <SocialContent />
       </Container>
-    </>
+    </Fragment>
   );
 };
 
-export { NetworkSocialPage };
+export { SocialPage };

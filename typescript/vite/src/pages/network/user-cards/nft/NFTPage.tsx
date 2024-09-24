@@ -7,7 +7,7 @@ import {
   ToolbarPageTitle
 } from '@/partials/toolbar';
 
-import { NetworkNFTContent } from '.';
+import { NFTContent } from '.';
 
 const NetworkNFTPage = () => {
   return (
@@ -24,13 +24,15 @@ const NetworkNFTPage = () => {
           </ToolbarHeading>
           <ToolbarActions>
             <a href="#" className="btn btn-sm btn-light">Upload CSV</a>
-            <a href="#" className="btn btn-sm btn-primary">Add User</a>
+            <a href="#" className="btn btn-sm btn-primary">
+              Add User
+            </a>
           </ToolbarActions>
         </Toolbar>
       </Container>
 
       <Container>
-        <NetworkNFTContent />
+        <NFTContent />
       </Container>
     </>
   );
