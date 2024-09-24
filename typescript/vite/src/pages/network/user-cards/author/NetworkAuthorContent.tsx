@@ -15,7 +15,7 @@ interface IAuthorContentWork {
   id: number;
 }
 
-export interface IAuthorContentItem {
+interface IAuthorContentItem {
   avatar: IAuthorContentAvatar;
   bgImage: string;
   name: string;
@@ -23,9 +23,9 @@ export interface IAuthorContentItem {
   url?: string;
   works: IAuthorContentWork[];
 }
-export interface IAuthorContentItems extends Array<IAuthorContentItem> {}
+interface IAuthorContentItems extends Array<IAuthorContentItem> {}
 
-const AuthorContent = () => {
+const NetworkAuthorContent = () => {
   const [activeTab, setActiveTab] = useState<'cards' | 'list'>('cards');
 
   const handleTabClick = (tab: 'cards' | 'list') => {
@@ -282,4 +282,4 @@ const AuthorContent = () => {
   );
 };
 
-export { AuthorContent };
+export { NetworkAuthorContent, type IAuthorContentItem, type IAuthorContentItems };

@@ -8,9 +8,9 @@ import {
   ToolbarPageTitle
 } from '@/partials/toolbar';
 
-import { SocialContent } from './';
+import { NetworkAuthorContent } from '.';
 
-const SocialPage = () => {
+const NetworkAuthorPage = () => {
   return (
     <Fragment>
       <Container>
@@ -35,10 +35,10 @@ const SocialPage = () => {
       </Container>
 
       <Container>
-        <SocialContent />
+        <NetworkAuthorContent />
       </Container>
     </Fragment>
   );
 };
 
-export { SocialPage };
+export { NetworkAuthorPage };

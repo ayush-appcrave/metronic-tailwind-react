@@ -1,7 +1,7 @@
 import { Container } from '@/components/container';
 import { Toolbar, ToolbarDescription, ToolbarHeading, ToolbarPageTitle } from '@/partials/toolbar';
 
-import { GetStartedContent } from '.';
+import { NetworkGetStartedContent } from '.';
 import { Link } from 'react-router-dom';
 
 const NetworkGetStartedPage = () => {
@@ -23,7 +23,7 @@ const NetworkGetStartedPage = () => {
       </Container>
 
       <Container>
-        <GetStartedContent />
+        <NetworkGetStartedContent />
       </Container>
     </>
   );

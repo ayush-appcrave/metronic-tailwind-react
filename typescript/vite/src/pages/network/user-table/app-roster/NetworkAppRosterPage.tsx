@@ -7,9 +7,9 @@ import {
   ToolbarPageTitle
 } from '@/partials/toolbar';
 
-import { MarketAuthorsContent } from '.';
+import { NetworkAppRosterContent } from '.';
 
-const MarketAuthorsPage = () => {
+const NetworkAppRosterPage = () => {
   return (
     <>
       <Container>
@@ -34,10 +34,10 @@ const MarketAuthorsPage = () => {
       </Container>
 
       <Container>
-        <MarketAuthorsContent />
+        <NetworkAppRosterContent />
       </Container>
     </>
   );
 };
 
-export { MarketAuthorsPage };
+export { NetworkAppRosterPage };

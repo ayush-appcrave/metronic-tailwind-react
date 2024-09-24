@@ -79,4 +79,4 @@ const ChannelStats = () => {
   );
 };
 
-export { ChannelStats, type IChannelStatsItems, type IChannelStatsItem };
+export { ChannelStats, type IChannelStatsItem, type IChannelStatsItems };

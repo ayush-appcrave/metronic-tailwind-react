@@ -7,9 +7,9 @@ import {
   ToolbarPageTitle
 } from '@/partials/toolbar';
 
-import { StoreClientsContent } from '.';
+import { NetworkSaasUsersContent } from '.';
 
-const StoreClientsPage = () => {
+const NetworkSaasUsersPage = () => {
   return (
     <>
       <Container>
@@ -19,9 +19,9 @@ const StoreClientsPage = () => {
             <ToolbarDescription>
               <div className="flex items-center flex-wrap gap-1.5 font-medium">
                 <span className="text-md text-gray-600">All Members:</span>
-                <span className="text-md text-ray-800 font-semibold me-2">49,053</span>
+                <span className="text-md text-gray-800 font-semibold me-2">49,053</span>
                 <span className="text-md text-gray-600">Pro Licenses</span>
-                <span className="text-md text-gray-800 font-semibold">724</span>
+                <span className="text-md text-gray-800 font-semibold">1724</span>
               </div>
             </ToolbarDescription>
           </ToolbarHeading>
@@ -37,10 +37,10 @@ const StoreClientsPage = () => {
       </Container>
 
       <Container>
-        <StoreClientsContent />
+        <NetworkSaasUsersContent />
       </Container>
     </>
   );
 };
 
-export { StoreClientsPage };
+export { NetworkSaasUsersPage };

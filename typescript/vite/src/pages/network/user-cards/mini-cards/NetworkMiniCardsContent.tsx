@@ -10,15 +10,15 @@ interface IAvatar {
   badgeClass: string;
 }
 
-export interface IMiniCardsContentItem {
+interface IMiniCardsContentItem {
   avatar: IAvatar;
   name: string;
   email: string;
   verify: boolean;
 }
-export interface IMiniCardsContentItems extends Array<IMiniCardsContentItem> {}
+interface IMiniCardsContentItems extends Array<IMiniCardsContentItem> {}
 
-const MiniCardsContent = () => {
+const NetworkMiniCardsContent = () => {
   const items: IMiniCardsContentItems = [
     {
       avatar: {
@@ -258,4 +258,4 @@ const MiniCardsContent = () => {
   );
 };
 
-export { MiniCardsContent };
+export { NetworkMiniCardsContent, type IMiniCardsContentItem, type IMiniCardsContentItems };

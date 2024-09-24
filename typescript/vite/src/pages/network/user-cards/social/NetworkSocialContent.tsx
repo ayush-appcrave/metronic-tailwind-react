@@ -3,15 +3,15 @@ import { KeenIcon } from '@/components';
 import { CardUserSocial, CardUserSocialRow } from '@/partials/cards';
 import { IAvatarProps } from '@/partials/common';
 
-export interface ISocialContentItem {
+interface ISocialContentItem {
   avatar: IAvatarProps;
   name: string;
   description: string;
   verify: boolean;
 }
-export interface ISocialContentItems extends Array<ISocialContentItem> {}
+interface ISocialContentItems extends Array<ISocialContentItem> {}
 
-const SocialContent = () => {
+const NetworkSocialContent = () => {
   const [activeTab, setActiveTab] = useState<'cards' | 'list'>('cards');
 
   const handleTabClick = (tab: 'cards' | 'list') => {
@@ -234,4 +234,4 @@ const SocialContent = () => {
   );
 };
 
-export { SocialContent };
+export { NetworkSocialContent, type ISocialContentItem, type ISocialContentItems };

@@ -16,7 +16,7 @@ interface IStatistic {
   description: string;
 }
 
-export interface INFTContentItem {
+interface INFTContentItem {
   name: string;
   info: string;
   avatar: IAvatar;
@@ -24,9 +24,9 @@ export interface INFTContentItem {
   statistics: IStatistic[];
   bgImage: string;
 }
-export interface INFTContentItems extends Array<INFTContentItem> {}
+interface INFTContentItems extends Array<INFTContentItem> {}
 
-const NFTContent = () => {
+const NetworkNFTContent = () => {
   const [activeTab, setActiveTab] = useState<'cards' | 'list'>('cards');
 
   const handleTabClick = (tab: 'cards' | 'list') => {
@@ -388,4 +388,4 @@ const NFTContent = () => {
   );
 };
 
-export { NFTContent };
+export { NetworkNFTContent, type INFTContentItem, type INFTContentItems };

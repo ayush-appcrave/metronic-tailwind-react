@@ -1,2 +1,2 @@
-export * from './VisitorsContent';
-export * from './VisitorsPage';
+export * from './NetworkVisitorsContent';
+export * from './NetworkVisitorsPage';

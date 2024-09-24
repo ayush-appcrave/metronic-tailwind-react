@@ -1,2 +1,2 @@
-export * from './AppRosterContent';
-export * from './AppRosterPage';
+export * from './NetworkAppRosterContent';
+export * from './NetworkAppRosterPage';

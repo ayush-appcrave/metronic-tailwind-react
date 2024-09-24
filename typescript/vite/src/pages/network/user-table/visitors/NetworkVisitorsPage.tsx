@@ -1,15 +1,10 @@
 import { Container } from '@/components/container';
-import {
-  Toolbar,
-  ToolbarActions,
-  ToolbarDescription,
-  ToolbarHeading,
-  ToolbarPageTitle
-} from '@/partials/toolbar';
+import { NavbarActions } from '@/partials/navbar';
+import { Toolbar, ToolbarDescription, ToolbarHeading, ToolbarPageTitle } from '@/partials/toolbar';
 
-import { SaasUsersContent } from '.';
+import { NetworkVisitorsContent } from '.';
 
-const SaasUsersPage = () => {
+const NetworkVisitorsPage = () => {
   return (
     <>
       <Container>
@@ -19,28 +14,28 @@ const SaasUsersPage = () => {
             <ToolbarDescription>
               <div className="flex items-center flex-wrap gap-1.5 font-medium">
                 <span className="text-md text-gray-600">All Members:</span>
-                <span className="text-md text-gray-800 font-semibold me-2">49,053</span>
+                <span className="text-md gray-800 font-semibold me-2">49,053</span>
                 <span className="text-md text-gray-600">Pro Licenses</span>
-                <span className="text-md text-gray-800 font-semibold">1724</span>
+                <span className="text-md gray-800 font-semibold">1724</span>
               </div>
             </ToolbarDescription>
           </ToolbarHeading>
-          <ToolbarActions>
+          <NavbarActions>
             <a href="#" className="btn btn-sm btn-light">
               Import CSV
             </a>
             <a href="#" className="btn btn-sm btn-primary">
               Add Member
             </a>
-          </ToolbarActions>
+          </NavbarActions>
         </Toolbar>
       </Container>
 
       <Container>
-        <SaasUsersContent />
+        <NetworkVisitorsContent />
       </Container>
     </>
   );
 };
 
-export { SaasUsersPage };
+export { NetworkVisitorsPage };

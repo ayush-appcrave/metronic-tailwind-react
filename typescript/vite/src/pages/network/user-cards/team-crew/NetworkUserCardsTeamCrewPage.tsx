@@ -7,9 +7,9 @@ import {
   ToolbarPageTitle
 } from '@/partials/toolbar';
 
-import { NFTContent } from '.';
+import { NetworkUserCardsTeamCrewContent } from '.';
 
-const NFTPage = () => {
+const NetworkUserCardsTeamCrewPage = () => {
   return (
     <>
       <Container>
@@ -23,7 +23,9 @@ const NFTPage = () => {
             </ToolbarDescription>
           </ToolbarHeading>
           <ToolbarActions>
-            <a href="#" className="btn btn-sm btn-light">Upload CSV</a>
+            <a href="#" className="btn btn-sm btn-light">
+              Upload CSV
+            </a>
             <a href="#" className="btn btn-sm btn-primary">
               Add User
             </a>
@@ -32,10 +34,10 @@ const NFTPage = () => {
       </Container>
 
       <Container>
-        <NFTContent />
+        <NetworkUserCardsTeamCrewContent />
       </Container>
     </>
   );
 };
 
-export { NFTPage };
+export { NetworkUserCardsTeamCrewPage };

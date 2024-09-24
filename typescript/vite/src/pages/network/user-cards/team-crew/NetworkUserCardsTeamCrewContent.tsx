@@ -29,7 +29,7 @@ interface ITeamCrewStatistic {
   description: string;
 }
 
-export interface ITeamCrewContentItem {
+interface ITeamCrewContentItem {
   name: string;
   info: string;
   avatar: ITeamCrewAvatar;
@@ -38,10 +38,9 @@ export interface ITeamCrewContentItem {
   statistics: ITeamCrewStatistic[];
   connected: boolean;
 }
+interface ITeamCrewContentItems extends Array<ITeamCrewContentItem> {}
 
-export interface ITeamCrewContentItems extends Array<ITeamCrewContentItem> {}
-
-const TeamCrewContent = () => {
+const NetworkUserCardsTeamCrewContent = () => {
   const [activeTab, setActiveTab] = useState<'cards' | 'list'>('cards');
 
   const handleTabClick = (tab: 'cards' | 'list') => {
@@ -376,4 +375,4 @@ const TeamCrewContent = () => {
   );
 };
 
-export { TeamCrewContent };
+export { NetworkUserCardsTeamCrewContent, type ITeamCrewContentItem, type ITeamCrewContentItems };

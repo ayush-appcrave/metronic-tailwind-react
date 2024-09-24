@@ -7,9 +7,9 @@ import {
   ToolbarPageTitle
 } from '@/partials/toolbar';
 
-import { TeamCrewContent } from '.';
+import { NetworkNFTContent } from '.';
 
-const TeamCrewPage = () => {
+const NetworkNFTPage = () => {
   return (
     <>
       <Container>
@@ -34,10 +34,10 @@ const TeamCrewPage = () => {
       </Container>
 
       <Container>
-        <TeamCrewContent />
+        <NetworkNFTContent />
       </Container>
     </>
   );
 };
 
-export { TeamCrewPage };
+export { NetworkNFTPage };

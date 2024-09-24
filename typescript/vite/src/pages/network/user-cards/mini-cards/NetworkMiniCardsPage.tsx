@@ -7,9 +7,9 @@ import {
   ToolbarPageTitle
 } from '@/partials/toolbar';
 
-import { MiniCardsContent } from '.';
+import { NetworkMiniCardsContent } from '.';
 
-const MiniCardsPage = () => {
+const NetworkMiniCardsPage = () => {
   return (
     <>
       <Container>
@@ -23,7 +23,9 @@ const MiniCardsPage = () => {
             </ToolbarDescription>
           </ToolbarHeading>
           <ToolbarActions>
-            <a href="#" className="btn btn-sm btn-light">Upload CSV</a>
+            <a href="#" className="btn btn-sm btn-light">
+              Upload CSV
+            </a>
             <a href="#" className="btn btn-sm btn-primary">
               Add User
             </a>
@@ -32,10 +34,10 @@ const MiniCardsPage = () => {
       </Container>
 
       <Container>
-        <MiniCardsContent />
+        <NetworkMiniCardsContent />
       </Container>
     </>
   );
 };
 
-export { MiniCardsPage };
+export { NetworkMiniCardsPage };

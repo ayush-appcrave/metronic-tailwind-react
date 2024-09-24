@@ -7,9 +7,9 @@ import {
   ToolbarPageTitle
 } from '@/partials/toolbar';
 
-import { UserTableTeamCrewContent } from './';
+import { NetworkUserTableTeamCrewContent } from '.';
 
-const UserTableTeamCrewPage = () => {
+const NetworkUserTableTeamCrewPage = () => {
   return (
     <>
       <Container>
@@ -37,10 +37,10 @@ const UserTableTeamCrewPage = () => {
       </Container>
 
       <Container>
-        <UserTableTeamCrewContent />
+        <NetworkUserTableTeamCrewContent />
       </Container>
     </>
   );
 };
 
-export { UserTableTeamCrewPage };
+export { NetworkUserTableTeamCrewPage };

@@ -1,3 +1,4 @@
+import { Fragment } from 'react';
 import { Container } from '@/components/container';
 import {
   Toolbar,
@@ -7,11 +8,11 @@ import {
   ToolbarPageTitle
 } from '@/partials/toolbar';
 
-import { AppRosterContent } from '.';
+import { NetworkSocialContent } from '.';
 
-const AppRosterPage = () => {
+const NetworkSocialPage = () => {
   return (
-    <>
+    <Fragment>
       <Container>
         <Toolbar>
           <ToolbarHeading>
@@ -23,17 +24,21 @@ const AppRosterPage = () => {
             </ToolbarDescription>
           </ToolbarHeading>
           <ToolbarActions>
-            <a href="#" className="btn btn-sm btn-light">Import CSV</a>
-            <a href="#" className="btn btn-sm btn-primary">Add Member</a>
+            <a href="#" className="btn btn-sm btn-light">
+              Upload CSV
+            </a>
+            <a href="#" className="btn btn-sm btn-primary">
+              Add User
+            </a>
           </ToolbarActions>
         </Toolbar>
       </Container>
 
       <Container>
-        <AppRosterContent />
+        <NetworkSocialContent />
       </Container>
-    </>
+    </Fragment>
   );
 };
 
-export { AppRosterPage };
+export { NetworkSocialPage };
