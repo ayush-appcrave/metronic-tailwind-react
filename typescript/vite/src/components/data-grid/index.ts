@@ -14,4 +14,3 @@ export * from './DataGridTableEmpty';
 export * from './DataGridPagination';
 export * from './DataGridToolbar';
 export * from './DataGridColumnFilter';
-export * from './types';
