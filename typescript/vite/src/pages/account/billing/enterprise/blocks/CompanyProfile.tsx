@@ -118,4 +118,4 @@ const CompanyProfile = () => {
   );
 };
 
-export { CompanyProfile };
+export { CompanyProfile, type ICompanyProfileItem, type ICompanyProfileItems };

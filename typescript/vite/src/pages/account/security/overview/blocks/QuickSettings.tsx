@@ -1,13 +1,13 @@
 import { KeenIcon } from '@/components';
 import { CommonHexagonBadge } from '@/partials/common';
 
-export interface IQuickSettingsItem {
+interface IQuickSettingsItem {
   icon: string;
   title: string;
   description: string;
   actions: React.ReactNode;
 }
-export interface IQuickSettingsItems extends Array<IQuickSettingsItem> {}
+interface IQuickSettingsItems extends Array<IQuickSettingsItem> {}
 
 const QuickSettings = () => {
   const items: IQuickSettingsItems = [
@@ -66,4 +66,4 @@ const QuickSettings = () => {
   );
 };
 
-export { QuickSettings };
+export { QuickSettings, type IQuickSettingsItem, type IQuickSettingsItems };

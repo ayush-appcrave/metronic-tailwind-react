@@ -1,7 +1,8 @@
 import { KeenIcon } from '@/components';
 import { CommonHexagonBadge } from '@/partials/common';
 import { toAbsoluteUrl } from '@/utils/Assets';
-export interface IExternalServicesManageApiProps {
+
+interface IExternalServicesManageApiProps {
   title: string;
   switch: boolean;
 }
@@ -103,4 +104,4 @@ const ExternalServicesManageApi = ({
   );
 };
 
-export { ExternalServicesManageApi };
+export { ExternalServicesManageApi, type IExternalServicesManageApiProps };

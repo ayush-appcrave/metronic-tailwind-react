@@ -1,10 +1,9 @@
-import { KeenIcon } from '@/components'; 
+import { KeenIcon } from '@/components';
 interface IDetailsItem {
   status: string;
   info: string;
 }
-
-interface IDetailsItems extends Array<IDetailsItem> {} 
+interface IDetailsItems extends Array<IDetailsItem> {}
 
 const Details = () => {
   const tables: IDetailsItems = [
@@ -47,4 +46,4 @@ const Details = () => {
   );
 };
 
-export { Details, type IDetailsItems };
+export { Details, type IDetailsItem, type IDetailsItems };

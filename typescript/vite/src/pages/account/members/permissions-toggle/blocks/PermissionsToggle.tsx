@@ -1,13 +1,13 @@
 import { CommonHexagonBadge } from '@/partials/common';
 import { KeenIcon } from '@/components';
 
-export interface IPermissionsToggleItem {
+interface IPermissionsToggleItem {
   icon: string;
   title: string;
   description: string;
   checked: boolean;
 }
-export interface IPermissionsToggleItems extends Array<IPermissionsToggleItem> {}
+interface IPermissionsToggleItems extends Array<IPermissionsToggleItem> {}
 
 const PermissionsToggle = () => {
   const items: IPermissionsToggleItems = [
@@ -123,4 +123,4 @@ const PermissionsToggle = () => {
   );
 };
 
-export { PermissionsToggle };
+export { PermissionsToggle, type IPermissionsToggleItem, type IPermissionsToggleItems };

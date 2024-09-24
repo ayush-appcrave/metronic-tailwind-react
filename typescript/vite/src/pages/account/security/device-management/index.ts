@@ -1,2 +1,2 @@
-export * from './DeviceManagementContent';
-export * from './DeviceManagementPage';
+export * from './AccountDeviceManagementContent';
+export * from './AccountDeviceManagementPage';

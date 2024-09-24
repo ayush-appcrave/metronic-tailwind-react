@@ -1,2 +1,2 @@
-export * from './SecurityLogContent';
-export * from './SecurityLogPage';
+export * from './AccountSecurityLogContent';
+export * from './AccountSecurityLogPage';

@@ -2,7 +2,7 @@ import { KeenIcon } from '@/components';
 import { toAbsoluteUrl } from '@/utils/Assets';
 import { Link } from 'react-router-dom';
 
-const CompanyProfileBranding = () => {
+const Branding = () => {
   return (
     <>
       <style>
@@ -165,4 +165,4 @@ const CompanyProfileBranding = () => {
   );
 };
 
-export { CompanyProfileBranding };
+export { Branding };

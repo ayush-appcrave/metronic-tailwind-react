@@ -1,13 +1,12 @@
 import { KeenIcon } from '@/components';
 import { toAbsoluteUrl } from '@/utils/Assets';
 
-export interface ICalendarAccountsItem {
+interface ICalendarAccountsItem {
   logo: string;
   title: string;
   email: string;
 }
-export interface ICalendarAccountsItems
-  extends Array<ICalendarAccountsItem> {}
+interface ICalendarAccountsItems extends Array<ICalendarAccountsItem> {}
 
 const CalendarAccounts = () => {
   const items: ICalendarAccountsItems = [
@@ -80,4 +79,4 @@ const CalendarAccounts = () => {
   );
 };
 
-export { CalendarAccounts };
+export { CalendarAccounts, type ICalendarAccountsItem, type ICalendarAccountsItems };

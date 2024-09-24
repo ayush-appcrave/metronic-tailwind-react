@@ -1,14 +1,14 @@
 import { KeenIcon } from '@/components';
 import { CommonHexagonBadge } from '@/partials/common';
 
-export interface ICommunityBadgesItem {
+interface ICommunityBadgesItem {
   title: string;
   stroke: string;
   fill: string;
   icon: string;
   iconColor: string;
 }
-export interface ICommunityBadgesItems extends Array<ICommunityBadgesItem> {}
+interface ICommunityBadgesItems extends Array<ICommunityBadgesItem> {}
 
 const CommunityBadges = () => {
   const items: ICommunityBadgesItems = [
@@ -95,4 +95,4 @@ const CommunityBadges = () => {
   );
 };
 
-export { CommunityBadges };
+export { CommunityBadges, type ICommunityBadgesItem, type ICommunityBadgesItems };

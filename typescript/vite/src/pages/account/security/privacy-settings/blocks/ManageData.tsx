@@ -1,9 +1,9 @@
-export interface IManageDataItem {
+interface IManageDataItem {
   title: string;
   description: string;
   control: React.ReactNode;
 }
-export interface IManageDataItems extends Array<IManageDataItem> {}
+interface IManageDataItems extends Array<IManageDataItem> {}
 
 const ManageData = () => {
   const items: IManageDataItems = [
@@ -61,4 +61,4 @@ const ManageData = () => {
   );
 };
 
-export { ManageData };
+export { ManageData, type IManageDataItem, type IManageDataItems };

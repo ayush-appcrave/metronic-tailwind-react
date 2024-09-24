@@ -1,1 +1,2 @@
-export * from './CurrentSessionsContent';
+export * from './AccountCurrentSessionsContent';
+export * from './AccountCurrentSessionsPage';

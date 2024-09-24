@@ -1,20 +1,20 @@
 import { KeenIcon } from '@/components';
 import { toAbsoluteUrl } from '@/utils/Assets';
 
-export interface IAuthSocialSignInItem {
+interface IAuthSocialSignInItem {
   logo: string;
   title: string;
   email: string;
   checkbox: boolean;
 }
-export interface IAuthSocialSignInItems extends Array<IAuthSocialSignInItem> {}
+interface IAuthSocialSignInItems extends Array<IAuthSocialSignInItem> {}
 
-export interface IAuthSocialSignInBlock {
+interface IAuthSocialSignInBlock {
   logo: string;
   logoDark?: string;
   title: string;
 }
-export interface IAuthSocialSignInBlocks extends Array<IAuthSocialSignInBlock> {}
+interface IAuthSocialSignInBlocks extends Array<IAuthSocialSignInBlock> {}
 
 const AuthSocialSignIn = () => {
   const items: IAuthSocialSignInItems = [
@@ -146,4 +146,10 @@ const AuthSocialSignIn = () => {
   );
 };
 
-export { AuthSocialSignIn };
+export {
+  AuthSocialSignIn,
+  type IAuthSocialSignInItem,
+  type IAuthSocialSignInItems,
+  type IAuthSocialSignInBlock,
+  type IAuthSocialSignInBlocks
+};

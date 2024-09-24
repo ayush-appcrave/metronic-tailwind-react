@@ -1,12 +1,12 @@
 import { KeenIcon, Menu, MenuItem, MenuToggle } from '@/components';
 import { DropdownCrud2, DropdownCrudItem1 } from '@/partials/dropdowns/general';
 
-export interface IPaymentHistoryItem {
+interface IPaymentHistoryItem {
   date: string;
   type: string;
   amount: string;
 }
-export interface IPaymentHistoryItems extends Array<IPaymentHistoryItem> {}
+interface IPaymentHistoryItems extends Array<IPaymentHistoryItem> {}
 
 const PaymentHistory = () => {
   const tables: IPaymentHistoryItems = [
@@ -123,4 +123,4 @@ const PaymentHistory = () => {
   );
 };
 
-export { PaymentHistory };
+export { PaymentHistory, type IPaymentHistoryItem, type IPaymentHistoryItems };

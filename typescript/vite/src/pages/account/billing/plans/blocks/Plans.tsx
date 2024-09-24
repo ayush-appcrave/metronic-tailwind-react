@@ -1,12 +1,12 @@
 import { KeenIcon } from '@/components';
-import { useState } from 'react';
+import { Fragment, useState } from 'react';
 
 interface IPlanPrice {
   regular: string;
   annual?: string;
 }
 
-export interface IPlanInfo {
+interface IPlanInfo {
   title: string;
   description: string;
   free?: boolean;
@@ -25,19 +25,19 @@ interface IFeature {
   plans: IFeaturePlans;
 }
 
-export interface IPlansInfo {
+interface IPlansInfo {
   basic: IPlanInfo;
   pro: IPlanInfo;
   premium: IPlanInfo;
   enterprise: IPlanInfo;
 }
 
-export interface IPlansItem {
+interface IPlansItem {
   title: string;
   plans: IFeaturePlans;
 }
 
-export interface IPlansItems {
+interface IPlansItems {
   info: IPlansInfo;
   features: IFeature[];
 }
@@ -185,7 +185,7 @@ const Plans = () => {
   };
 
   const renderPlanInfo = (type: string, info: IPlanInfo) => (
-    <>
+    <Fragment>
       <h3 className="text-lg text-gray-900 font-medium pb-2">{info.title}</h3>
       <div className="text-gray-700 text-2sm">{info.description}</div>
       <div className="py-4">
@@ -215,7 +215,7 @@ const Plans = () => {
           {info.free ? 'Switch to Team' : 'Upgrade'}
         </button>
       </div>
-    </>
+    </Fragment>
   );
 
   const renderFeatureDetail = (detail: string | boolean) => {
@@ -283,4 +283,4 @@ const Plans = () => {
   );
 };
 
-export { Plans };
+export { Plans, type IPlansItem, type IPlansItems };

@@ -21,16 +21,15 @@ interface IInvitesStatus {
   variant: string;
 }
 
-export interface IInvitesItem {
+interface IInvitesItem {
   member: IInvitesMember;
   location: IInvitesLocation;
   status: IInvitesStatus;
   recentlyActivity: string;
 }
+interface IInvitesItems extends Array<IInvitesItem> {}
 
-export interface IInvitesItems extends Array<IInvitesItem> {}
-
-export interface IInvitesProps {
+interface IInvitesProps {
   title?: string;
 }
 
@@ -717,4 +716,4 @@ const Invites = ({ title = 'Invites' }: IInvitesProps) => {
   );
 };
 
-export { Invites };
+export { Invites, type IInvitesItem, type IInvitesItems, type IInvitesProps };

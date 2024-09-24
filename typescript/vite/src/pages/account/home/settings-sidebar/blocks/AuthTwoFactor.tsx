@@ -1,13 +1,14 @@
 import { KeenIcon, Menu, MenuItem, MenuToggle } from '@/components';
 import { DropdownCard2 } from '@/partials/dropdowns/general';
 import { CommonHexagonBadge } from '@/partials/common';
-export interface IAuthTwoFactorItem {
+
+interface IAuthTwoFactorItem {
   icon: string;
   title: string;
   description: string;
   checkbox: boolean;
 }
-export interface IAuthTwoFactorItems extends Array<IAuthTwoFactorItem> {}
+interface IAuthTwoFactorItems extends Array<IAuthTwoFactorItem> {}
 
 const AuthTwoFactor = () => {
   const items: IAuthTwoFactorItems = [
@@ -39,25 +40,25 @@ const AuthTwoFactor = () => {
               size="size-[50px]"
               badge={<KeenIcon icon={item.icon} className="text-xl text-gray-500" />}
             />
-          </div> 
+          </div>
 
           <div className="flex flex-col gap-px">
             <a href="#" className="text-sm font-medium text-gray-900 hover:text-primary-active">
               {item.title}
             </a>
             <span className="text-2sm font-medium text-gray-700">{item.description}</span>
-          </div> 
-        </div>  
+          </div>
+        </div>
 
         <div className="flex items-center gap-2 lg:gap-6">
-          <label className="switch switch-sm"> 
+          <label className="switch switch-sm">
             <input
               type="checkbox"
               defaultChecked={item.checkbox}
               value={item.checkbox ? '1' : '2'}
               readOnly
             />
-          </label> 
+          </label>
         </div>
       </div>
     );
@@ -92,25 +93,25 @@ const AuthTwoFactor = () => {
         </Menu>
       </div>
 
-      <div className="card-body"> 
+      <div className="card-body">
         <div className="grid gap-5 mb-7">
           {items.map((item, index) => {
             return renderItem(item, index);
           })}
-        </div>   
+        </div>
 
         <div className="w-full">
           <div className="flex items-baseline flex-wrap lg:flex-nowrap gap-2.5 mb-7">
             <label className="form-label max-w-56">Password</label>
 
             <div className="flex flex-col tems-start grow gap-3 w-full">
-              <input className="input" type="text" placeholder="Enter password" readOnly />  
+              <input className="input" type="text" placeholder="Enter password" readOnly />
               <span className="form-info gray-800 font-normal">
                 Enter your password to setup Two-Factor authentication
               </span>
             </div>
           </div>
-        </div>  
+        </div>
 
         <div className="flex justify-end pt-2.5">
           <button className="btn btn-primary">Setup</button>
@@ -120,4 +121,4 @@ const AuthTwoFactor = () => {
   );
 };
 
-export { AuthTwoFactor };
+export { AuthTwoFactor, type IAuthTwoFactorItem, type IAuthTwoFactorItems };

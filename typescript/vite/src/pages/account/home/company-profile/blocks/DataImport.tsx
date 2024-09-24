@@ -1,7 +1,7 @@
 import { KeenIcon } from '@/components';
 import { toAbsoluteUrl } from '@/utils/Assets';
 
-const CompanyProfileDataImport = () => {
+const DataImport = () => {
   return (
     <div className="card">
       <div className="card-header gap-2" id="auth_social_sign_in">
@@ -29,4 +29,4 @@ const CompanyProfileDataImport = () => {
   );
 };
 
-export { CompanyProfileDataImport };
+export { DataImport };

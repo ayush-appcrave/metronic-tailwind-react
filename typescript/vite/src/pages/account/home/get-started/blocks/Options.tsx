@@ -2,15 +2,15 @@ import { KeenIcon, Menu, MenuItem, MenuToggle } from '@/components';
 import { DropdownCard2 } from '@/partials/dropdowns/general';
 import { Link } from 'react-router-dom';
 
-export interface IOptionsItem {
+interface IOptionsItem {
   icon: string;
   title: string;
   desc: string;
   path: string;
 }
-export interface IOptionsItems extends Array<IOptionsItem> {}
+interface IOptionsItems extends Array<IOptionsItem> {}
 
-export interface IOptionsProps {
+interface IOptionsProps {
   items: IOptionsItems;
   dropdown: boolean;
 }
@@ -72,4 +72,4 @@ const Options = ({ items, dropdown }: IOptionsProps) => {
   );
 };
 
-export { Options };
+export { Options, type IOptionsItem, type IOptionsItems, type IOptionsProps };

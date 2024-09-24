@@ -62,4 +62,4 @@ const EntryCallout = ({ className }: IEntryCalloutProps) => {
   );
 };
 
-export { EntryCallout };
+export { EntryCallout, type IEntryCalloutProps };

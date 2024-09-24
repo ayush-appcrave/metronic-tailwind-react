@@ -1,4 +1,4 @@
-import { KeenIcon } from '@/components'; 
+import { KeenIcon } from '@/components';
 import { toAbsoluteUrl } from '@/utils';
 
 interface IPaymentMethodsItem {
@@ -7,8 +7,7 @@ interface IPaymentMethodsItem {
   email: string;
   label: boolean;
 }
-
-interface IPaymentMethodsItems extends Array<IPaymentMethodsItem> {} 
+interface IPaymentMethodsItems extends Array<IPaymentMethodsItem> {}
 
 const PaymentMethods = ({ icon }: IPaymentMethodsItems) => {
   const items: IPaymentMethodsItems = [
@@ -94,4 +93,4 @@ const PaymentMethods = ({ icon }: IPaymentMethodsItems) => {
   );
 };
 
-export { PaymentMethods, type IPaymentMethodsItems };
+export { PaymentMethods, type IPaymentMethodsItem, type IPaymentMethodsItems };

@@ -1,3 +1,3 @@
+export * from './AccountTeamInfoContent';
+export * from './AccountTeamInfoPage';
 export * from './blocks';
-export * from './TeamInfoContent';
-export * from './TeamInfoPage';

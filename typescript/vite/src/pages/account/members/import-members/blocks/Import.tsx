@@ -1,9 +1,9 @@
-export interface IImportItem {
+interface IImportItem {
   label: string;
   description: string;
   checked: boolean;
 }
-export interface IImportItems extends Array<IImportItem> {}
+interface IImportItems extends Array<IImportItem> {}
 
 const Import = () => {
   const options: IImportItems = [
@@ -107,4 +107,4 @@ const Import = () => {
   );
 };
 
-export { Import };
+export { Import, type IImportItem, type IImportItems };

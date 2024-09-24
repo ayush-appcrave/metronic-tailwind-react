@@ -117,4 +117,4 @@ const BillingInvoicing = () => {
   );
 };
 
-export { BillingInvoicing };
+export { BillingInvoicing, type IBillingInvoicingItem, type IBillingInvoicingItems };

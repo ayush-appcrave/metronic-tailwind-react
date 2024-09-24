@@ -1,4 +1,5 @@
-import { CardNotification } from '@/partials/cards'; 
+import { CardNotification } from '@/partials/cards';
+
 interface IAccessibilityItem {
   icon: string;
   title: string;

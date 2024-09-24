@@ -1,13 +1,13 @@
 import { CardNotification } from '@/partials/cards';
 
-export interface IChannelsItem {
+interface IChannelsItem {
   icon: string;
   title: string;
   description: string;
   button?: boolean;
   actions: React.ReactNode;
 }
-export interface IChannelsItems extends Array<IChannelsItem> {}
+interface IChannelsItems extends Array<IChannelsItem> {}
 
 const Channels = () => {
   const items: IChannelsItems = [
@@ -90,4 +90,4 @@ const Channels = () => {
   );
 };
 
-export { Channels };
+export { Channels, type IChannelsItem, type IChannelsItems };

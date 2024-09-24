@@ -2,6 +2,7 @@ interface IPlanItem {
   total: string;
   description: string;
 }
+interface IPlanItems extends Array<IPlanItem> {}
 
 const Plan = () => {
   const statistics: IPlanItems = [
@@ -73,4 +74,4 @@ const Plan = () => {
   );
 };
 
-export { Plan, type IPlanItems }; 
+export { Plan, type IPlanItem, type IPlanItems };

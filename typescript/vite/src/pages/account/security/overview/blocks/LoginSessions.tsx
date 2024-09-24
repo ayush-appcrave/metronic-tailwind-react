@@ -2,14 +2,14 @@ import { KeenIcon, Menu, MenuItem, MenuToggle } from '@/components';
 import { DropdownCardItem1, DropdownCrud1 } from '@/partials/dropdowns/general';
 import { CommonAvatar } from '@/partials/common';
 
-export interface ILoginSessionsItem {
+interface ILoginSessionsItem {
   avatar: string;
   name: string;
   connections: number;
   location: string;
   recent: string;
 }
-export interface ILoginSessionsItems extends Array<ILoginSessionsItem> {}
+interface ILoginSessionsItems extends Array<ILoginSessionsItem> {}
 
 const LoginSessions = () => {
   const rows: ILoginSessionsItems = [
@@ -158,4 +158,4 @@ const LoginSessions = () => {
   );
 };
 
-export { LoginSessions };
+export { LoginSessions, type ILoginSessionsItem, type ILoginSessionsItems };

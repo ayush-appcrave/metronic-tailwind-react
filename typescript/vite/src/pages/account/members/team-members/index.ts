@@ -1,3 +1,3 @@
-export * from './_TeamMembersContent';
-export * from './_TeamMembersInvitePeople';
-export * from './_TeamMembersInviteWithLink';
+export * from './AccountTeamMembersContent';
+export * from './AccountTeamMembersPage';
+export * from './blocks';

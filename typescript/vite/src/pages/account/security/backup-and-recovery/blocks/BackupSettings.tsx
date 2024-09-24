@@ -1,9 +1,9 @@
-export interface IBackupSettingsItem {
+interface IBackupSettingsItem {
   title: string;
   description: string;
   control: React.ReactNode;
 }
-export interface IBackupSettingsItems extends Array<IBackupSettingsItem> {}
+interface IBackupSettingsItems extends Array<IBackupSettingsItem> {}
 
 const BackupSettings = () => {
   const items: IBackupSettingsItems = [
@@ -75,4 +75,4 @@ const BackupSettings = () => {
   );
 };
 
-export { BackupSettings };
+export { BackupSettings, type IBackupSettingsItem, type IBackupSettingsItems };

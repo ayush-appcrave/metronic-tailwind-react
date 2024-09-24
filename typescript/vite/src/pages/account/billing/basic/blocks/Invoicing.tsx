@@ -1,5 +1,6 @@
 import { KeenIcon } from '@/components';
-export interface IInvoicingItems {
+
+interface IInvoicingItem {
   number: string;
   date: string;
   ammount: string;
@@ -8,7 +9,7 @@ export interface IInvoicingItems {
 }
 interface IInvoicingItems extends Array<IInvoicingItem> {}
 
-const AccountBillingBasicInvoicing = () => {
+const Invoicing = () => {
   const tables: IInvoicingItems = [
     {
       number: 'Invoice-2024-xd912c',
@@ -102,4 +103,4 @@ const AccountBillingBasicInvoicing = () => {
   );
 };
 
-export { Invoicing, type IInvoicingItems }; 
+export { Invoicing, type IInvoicingItem, type IInvoicingItems };

@@ -1,2 +1,2 @@
-export * from './StoreClientsContent';
-export * from './StoreClientsPage';
+export * from './NetworkStoreClientsContent';
+export * from './NetworkStoreClientsPage';

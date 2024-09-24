@@ -1,6 +1,6 @@
 import { CommonHexagonBadge } from '@/partials/common';
 
-export interface IProductInsightProps {
+interface IProductInsightProps {
   image: React.ReactNode;
   title: string;
   description: string;
@@ -30,4 +30,4 @@ const ProductInsight = ({ image, title, description, number }: IProductInsightPr
   );
 };
 
-export { ProductInsight };
+export { ProductInsight, type IProductInsightProps };

@@ -1,13 +1,13 @@
 import clsx from 'clsx';
 
-export interface IReportSettingsItem {
+interface IReportSettingsItem {
   title: string;
   description: string;
   checked: boolean;
 }
-export interface IReportSettingsItems extends Array<IReportSettingsItem> {}
+interface IReportSettingsItems extends Array<IReportSettingsItem> {}
 
-export interface IReportSettingsProps {
+interface IReportSettingsProps {
   limit?: number;
   className?: string;
 }
@@ -71,4 +71,9 @@ const ReportSettings = ({ limit, className }: IReportSettingsProps) => {
   );
 };
 
-export { ReportSettings };
+export {
+  ReportSettings,
+  type IReportSettingsItem,
+  type IReportSettingsItems,
+  type IReportSettingsProps
+};

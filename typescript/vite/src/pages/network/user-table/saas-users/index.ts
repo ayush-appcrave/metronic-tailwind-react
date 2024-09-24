@@ -1,2 +1,2 @@
-export * from './SaasUsersContent';
-export * from './SaasUsersPage';
+export * from './NetworkSaasUsersContent';
+export * from './NetworkSaasUsersPage';

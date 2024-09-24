@@ -1,7 +1,7 @@
 import { KeenIcon } from '@/components';
 import { CardAddNew, CardRole } from '@/partials/cards';
 
-export interface IRolesItem {
+interface IRolesItem {
   badge: {
     size: string;
     badge: React.ReactNode;
@@ -14,7 +14,7 @@ export interface IRolesItem {
   team: string;
   path: string;
 }
-export interface IRolesItems extends Array<IRolesItem> {}
+interface IRolesItems extends Array<IRolesItem> {}
 
 const Roles = () => {
   const items: IRolesItems = [
@@ -142,4 +142,4 @@ const Roles = () => {
   );
 };
 
-export { Roles };
+export { Roles, type IRolesItem, type IRolesItems };

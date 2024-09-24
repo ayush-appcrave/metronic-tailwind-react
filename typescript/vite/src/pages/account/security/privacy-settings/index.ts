@@ -1,2 +1,3 @@
-export * from './PrivacySettingsContent';
-export * from './PrivacySettingsPage';
+export * from './AccountPrivacySettingsContent';
+export * from './AccountPrivacySettingsPage';
+export * from './blocks';

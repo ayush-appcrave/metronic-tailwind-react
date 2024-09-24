@@ -3,14 +3,14 @@ import { Link } from 'react-router-dom';
 import { CommonAvatar } from '@/partials/common';
 import clsx from 'clsx';
 
-export interface IBlockListItem {
+interface IBlockListItem {
   avatar: string;
   name: string;
   commits: number;
 }
-export interface IBlockListItems extends Array<IBlockListItem> {}
+interface IBlockListItems extends Array<IBlockListItem> {}
 
-export interface IBlockListProps {
+interface IBlockListProps {
   text: string;
   limit?: number;
   className?: string;
@@ -94,4 +94,4 @@ const BlockList = ({ text, limit, className }: IBlockListProps) => {
   );
 };
 
-export { BlockList };
+export { BlockList, type IBlockListItem, type IBlockListItems, type IBlockListProps };

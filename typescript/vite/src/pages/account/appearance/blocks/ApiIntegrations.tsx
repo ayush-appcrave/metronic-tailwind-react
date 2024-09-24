@@ -8,9 +8,9 @@ interface IApiIntegrationsItem {
   actions: React.ReactNode;
 }
 
-interface IApiIntegrationsItems extends Array<IApiIntegrationsItem> {} 
+interface IApiIntegrationsItems extends Array<IApiIntegrationsItem> {}
 
-const IApiIntegrations = () => {
+const ApiIntegrations = () => {
   const data: IApiIntegrationsItems = [
     {
       integration: 'Quick Pay Service',
@@ -207,4 +207,4 @@ const IApiIntegrations = () => {
   );
 };
 
-export { IApiIntegrations, type IApiIntegrationsItems };
+export { ApiIntegrations, type IApiIntegrationsItem, type IApiIntegrationsItems };

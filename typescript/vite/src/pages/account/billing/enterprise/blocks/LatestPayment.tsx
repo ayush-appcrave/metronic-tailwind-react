@@ -6,7 +6,6 @@ interface ILatestPaymentItem {
   logo?: boolean;
   info: string;
 }
-
 interface ILatestPaymentItems extends Array<ILatestPaymentItem> {}
 
 const LatestPayment = () => {
@@ -60,4 +59,4 @@ const LatestPayment = () => {
   );
 };
 
-export { LatestPayment };
+export { LatestPayment, type ILatestPaymentItem, type ILatestPaymentItems };
