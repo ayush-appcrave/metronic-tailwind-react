@@ -32,8 +32,12 @@ const UserProfilePage = () => {
             </ToolbarDescription>
           </ToolbarHeading>
           <ToolbarActions>
-            <a href="#" className="btn btn-sm btn-light">Public Profile</a>
-            <a href="#" className="btn btn-sm btn-primary">Account Settings</a>
+            <a href="#" className="btn btn-sm btn-light">
+              Public Profile
+            </a>
+            <a href="#" className="btn btn-sm btn-primary">
+              Account Settings
+            </a>
           </ToolbarActions>
         </Toolbar>
       </Container>

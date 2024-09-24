@@ -1,11 +1,16 @@
 import { KeenIcon, Menu, MenuItem, MenuToggle } from '@/components';
-
-import { ISettingsSidebarAuthTwoFactorItem, ISettingsSidebarAuthTwoFactorItems } from './types';
 import { DropdownCard2 } from '@/partials/dropdowns/general';
 import { CommonHexagonBadge } from '@/partials/common';
+export interface IAuthTwoFactorItem {
+  icon: string;
+  title: string;
+  description: string;
+  checkbox: boolean;
+}
+export interface IAuthTwoFactorItems extends Array<IAuthTwoFactorItem> {}
 
-const SettingsSidebarAuthTwoFactor = () => {
-  const items: ISettingsSidebarAuthTwoFactorItems = [
+const AuthTwoFactor = () => {
+  const items: IAuthTwoFactorItems = [
     {
       icon: 'message-text-2',
       title: 'Text Message (SMS)',
@@ -20,7 +25,7 @@ const SettingsSidebarAuthTwoFactor = () => {
     }
   ];
 
-  const renderItem = (item: ISettingsSidebarAuthTwoFactorItem, index: number) => {
+  const renderItem = (item: IAuthTwoFactorItem, index: number) => {
     return (
       <div
         key={index}
@@ -115,4 +120,4 @@ const SettingsSidebarAuthTwoFactor = () => {
   );
 };
 
-export { SettingsSidebarAuthTwoFactor };
+export { AuthTwoFactor };

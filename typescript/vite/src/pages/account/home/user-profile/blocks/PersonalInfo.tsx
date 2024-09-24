@@ -1,7 +1,7 @@
 import { KeenIcon } from '@/components';
 import { CrudAvatarUpload } from '@/partials/crud';
 
-const UserProfilePersonalInfo = () => {
+const PersonalInfo = () => {
   return (
     <div className="card min-w-full">
       <div className="card-header">
@@ -73,4 +73,4 @@ const UserProfilePersonalInfo = () => {
   );
 };
 
-export { UserProfilePersonalInfo };
+export { PersonalInfo };

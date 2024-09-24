@@ -1,16 +1,23 @@
 import { KeenIcon, Menu, MenuItem, MenuToggle } from '@/components';
-import { toAbsoluteUrl } from '@/utils/Assets';
-
-import {
-  IUserProfileConnectionsItem,
-  IUserProfileConnectionsItems,
-  IUserProfileConnectionsProps
-} from './types';
 import { DropdownCrud1, DropdownCrudItem1 } from '@/partials/dropdowns/general';
+import { toAbsoluteUrl } from '@/utils/Assets';
 import { Link } from 'react-router-dom';
 
-const UserProfileConnections = ({ url }: IUserProfileConnectionsProps) => {
-  const tables: IUserProfileConnectionsItems = [
+export interface IConnectionsItem {
+  avatar: string;
+  name: string;
+  connections: number;
+  jointLinks: number | string;
+  connected: boolean;
+}
+export interface IConnectionsItems extends Array<IConnectionsItem> {}
+
+export interface IConnectionsProps {
+  url: string;
+}
+
+const Connections = ({ url }: IConnectionsProps) => {
+  const tables: IConnectionsItems = [
     {
       avatar: '300-3.png',
       name: 'Tyler Hero',
@@ -55,7 +62,7 @@ const UserProfileConnections = ({ url }: IUserProfileConnectionsProps) => {
     }
   ];
 
-  const renderItem = (table: IUserProfileConnectionsItem, index: number) => {
+  const renderItem = (table: IConnectionsItem, index: number) => {
     return (
       <tr key={index}>
         <td className="py-3.5">
@@ -176,4 +183,4 @@ const UserProfileConnections = ({ url }: IUserProfileConnectionsProps) => {
   );
 };
 
-export { UserProfileConnections };
+export { Connections };

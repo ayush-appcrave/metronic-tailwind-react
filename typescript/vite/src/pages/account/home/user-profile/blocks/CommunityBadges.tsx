@@ -1,10 +1,17 @@
 import { KeenIcon } from '@/components';
-
-import { IUserProfileCommunityBadgesItem, IUserProfileCommunityBadgesItems } from './types';
 import { CommonHexagonBadge } from '@/partials/common';
 
-const UserProfileCommunityBadges = () => {
-  const items: IUserProfileCommunityBadgesItems = [
+export interface ICommunityBadgesItem {
+  title: string;
+  stroke: string;
+  fill: string;
+  icon: string;
+  iconColor: string;
+}
+export interface ICommunityBadgesItems extends Array<ICommunityBadgesItem> {}
+
+const CommunityBadges = () => {
+  const items: ICommunityBadgesItems = [
     {
       title: 'Expert Contributor Badge',
       stroke: 'stroke-primary-clarity',
@@ -35,7 +42,7 @@ const UserProfileCommunityBadges = () => {
     }
   ];
 
-  const renderItem = (item: IUserProfileCommunityBadgesItem, index: number) => {
+  const renderItem = (item: ICommunityBadgesItem, index: number) => {
     return (
       <div
         key={index}
@@ -88,4 +95,4 @@ const UserProfileCommunityBadges = () => {
   );
 };
 
-export { UserProfileCommunityBadges };
+export { CommunityBadges };

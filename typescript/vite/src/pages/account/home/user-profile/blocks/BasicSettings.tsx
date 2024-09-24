@@ -1,9 +1,11 @@
 import { KeenIcon } from '@/components';
 import { toAbsoluteUrl } from '@/utils/Assets';
 
-import { IUserProfileBasicSettingsProps } from './types';
+export interface IBasicSettingsProps {
+  title: string;
+}
 
-const UserProfileBasicSettings = ({ title }: IUserProfileBasicSettingsProps) => {
+const BasicSettings = ({ title }: IBasicSettingsProps) => {
   return (
     <div className="card min-w-full">
       <div className="card-header">
@@ -199,4 +201,4 @@ const UserProfileBasicSettings = ({ title }: IUserProfileBasicSettingsProps) => 
   );
 };
 
-export { UserProfileBasicSettings };
+export { BasicSettings };

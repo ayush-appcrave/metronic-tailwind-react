@@ -1,13 +1,18 @@
 import { KeenIcon } from '@/components';
 import { toAbsoluteUrl } from '@/utils/Assets';
 
-import {
-  ISettingsSidebarExternalServicesIntegrationsItem,
-  ISettingsSidebarExternalServicesIntegrationsItems
-} from './types';
+export interface IExternalServicesIntegrationsItem {
+  logo: string;
+  title: string;
+  email: string;
+  description: string;
+  checkbox: boolean;
+}
+export interface IExternalServicesIntegrationsItems
+  extends Array<IExternalServicesIntegrationsItem> {}
 
-const SettingsSidebarExternalServicesIntegrations = () => {
-  const items: ISettingsSidebarExternalServicesIntegrationsItems = [
+const ExternalServicesIntegrations = () => {
+  const items: IExternalServicesIntegrationsItems = [
     {
       logo: 'google-webdev.svg',
       title: 'Google web.dev',
@@ -45,7 +50,7 @@ const SettingsSidebarExternalServicesIntegrations = () => {
     }
   ];
 
-  const renderItem = (item: ISettingsSidebarExternalServicesIntegrationsItem, index: number) => {
+  const renderItem = (item: IExternalServicesIntegrationsItem, index: number) => {
     return (
       <div
         key={index}
@@ -110,4 +115,4 @@ const SettingsSidebarExternalServicesIntegrations = () => {
   );
 };
 
-export { SettingsSidebarExternalServicesIntegrations };
+export { ExternalServicesIntegrations };

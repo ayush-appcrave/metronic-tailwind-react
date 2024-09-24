@@ -1,14 +1,17 @@
 import { KeenIcon } from '@/components';
 import { toAbsoluteUrl } from '@/utils/Assets';
-
-import {
-  ISettingsSidebarAdvancedSettingsNotificationsItem,
-  ISettingsSidebarAdvancedSettingsNotificationsItems
-} from './types';
 import { CommonHexagonBadge } from '@/partials/common';
 
-const SettingsSidebarAdvancedSettingsNotifications = () => {
-  const items: ISettingsSidebarAdvancedSettingsNotificationsItems = [
+export interface IAdvancedSettingsNotificationsItem {
+  title: string;
+  description: string;
+  badge: React.ReactNode;
+}
+export interface IAdvancedSettingsNotificationsItems
+  extends Array<IAdvancedSettingsNotificationsItem> {}
+
+const AdvancedSettingsNotifications = () => {
+  const items: IAdvancedSettingsNotificationsItems = [
     {
       title: 'Email',
       description: 'Tailor Your Email Preferences.',
@@ -21,7 +24,7 @@ const SettingsSidebarAdvancedSettingsNotifications = () => {
     }
   ];
 
-  const renderItem = (item: ISettingsSidebarAdvancedSettingsNotificationsItem, index: number) => {
+  const renderItem = (item: IAdvancedSettingsNotificationsItem, index: number) => {
     return (
       <div
         key={index}
@@ -70,15 +73,33 @@ const SettingsSidebarAdvancedSettingsNotifications = () => {
 
           <div className="flex flex-col items-start gap-4">
             <label className="radio-group">
-              <input className="radio" name="desktop_notification" type="radio" value="1" readOnly />
+              <input
+                className="radio"
+                name="desktop_notification"
+                type="radio"
+                value="1"
+                readOnly
+              />
               <span className="radio-label radio-label-sm">All new messages (Recommended)</span>  
             </label>
             <label className="radio-group">
-              <input className="radio" name="desktop_notification" type="radio" value="2" readOnly />
+              <input
+                className="radio"
+                name="desktop_notification"
+                type="radio"
+                value="2"
+                readOnly
+              />
               <span className="radio-label radio-label-sm">Direct @mentions</span>
             </label>
             <label className="radio-group">
-              <input className="radio" name="desktop_notification" type="radio" value="3" readOnly />
+              <input
+                className="radio"
+                name="desktop_notification"
+                type="radio"
+                value="3"
+                readOnly
+              />
               <span className="radio-label radio-label-sm">Disabled</span>
             </label>
           </div>
@@ -124,4 +145,4 @@ const SettingsSidebarAdvancedSettingsNotifications = () => {
   );
 };
 
-export { SettingsSidebarAdvancedSettingsNotifications };
+export { AdvancedSettingsNotifications };

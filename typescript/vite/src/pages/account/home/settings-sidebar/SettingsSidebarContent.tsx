@@ -1,4 +1,4 @@
-import {  SettingsSidebar } from '.';
+import {  SettingsSidebar } from './';
 
 import {
   AdvancedSettingsAddress,
@@ -28,7 +28,7 @@ const SettingsSidebarContent = () => {
           data-sticky-offset="200"
           data-sticky-class="fixed top-[calc(var(--tw-header-height)+1.875rem)] z-10 left-auto"
         >
-          < />
+          Test
         </div>
       </div>
 
@@ -55,4 +55,4 @@ const SettingsSidebarContent = () => {
   );
 };
 
-export { Content };
+export { SettingsSidebarContent };

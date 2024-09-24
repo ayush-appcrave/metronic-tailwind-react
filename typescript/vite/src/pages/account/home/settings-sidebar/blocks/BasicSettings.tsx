@@ -1,6 +1,6 @@
 import { CrudAvatarUpload } from '@/partials/crud';
 
-const SettingsSidebarBasicSettings = () => {
+const BasicSettings = () => {
   return (
     <div className="card pb-2.5">
       <div className="card-header" id="basic_settings">
@@ -20,21 +20,21 @@ const SettingsSidebarBasicSettings = () => {
             <label className="form-label flex items-center gap-1 max-w-56">Name</label>
             <input className="input" type="text" value="Jason Tatum" readOnly />
           </div>
-        </div> 
+        </div>
 
         <div className="w-full">
           <div className="flex items-baseline flex-wrap lg:flex-nowrap gap-2.5">
             <label className="form-label flex items-center gap-1 max-w-56">Company</label>
             <input className="input" type="text" value="KeenThemes" readOnly />
           </div>
-        </div>  
+        </div>
 
         <div className="w-full">
           <div className="flex items-baseline flex-wrap lg:flex-nowrap gap-2.5">
             <label className="form-label flex items-center gap-1 max-w-56">Phone number</label>
             <input className="input" type="text" placeholder="Enter phone" readOnly />
           </div>
-        </div>  
+        </div>
 
         <div className="flex items-center flex-wrap gap-2.5">
           <label className="form-label max-w-56">Visibility</label>
@@ -53,18 +53,16 @@ const SettingsSidebarBasicSettings = () => {
             <label className="switch">
               <span className="switch-label">Available to hire</span>
               <input type="checkbox" defaultChecked value="1" readOnly />
-            </label> 
+            </label>
           </div>
         </div>
 
         <div className="flex justify-end pt-2.5">
-          <button className="btn btn-primary">
-            Save Changes
-          </button>
+          <button className="btn btn-primary">Save Changes</button>
         </div>
       </div>
     </div>
   );
 };
 
-export { SettingsSidebarBasicSettings };
+export { BasicSettings };

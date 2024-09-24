@@ -1,15 +1,23 @@
 import { KeenIcon } from '@/components';
 import { toAbsoluteUrl } from '@/utils/Assets';
 
-import {
-  ISettingsSidebarAuthSocialSignInBlock,
-  ISettingsSidebarAuthSocialSignInBlocks,
-  ISettingsSidebarAuthSocialSignInItem,
-  ISettingsSidebarAuthSocialSignInItems
-} from './types';
+export interface IAuthSocialSignInItem {
+  logo: string;
+  title: string;
+  email: string;
+  checkbox: boolean;
+}
+export interface IAuthSocialSignInItems extends Array<IAuthSocialSignInItem> {}
 
-const SettingsSidebarAuthSocialSignIn = () => {
-  const items: ISettingsSidebarAuthSocialSignInItems = [
+export interface IAuthSocialSignInBlock {
+  logo: string;
+  logoDark?: string;
+  title: string;
+}
+export interface IAuthSocialSignInBlocks extends Array<IAuthSocialSignInBlock> {}
+
+const AuthSocialSignIn = () => {
+  const items: IAuthSocialSignInItems = [
     {
       logo: 'google.svg',
       title: 'Google',
@@ -24,7 +32,7 @@ const SettingsSidebarAuthSocialSignIn = () => {
     }
   ];
 
-  const blocks: ISettingsSidebarAuthSocialSignInBlocks = [
+  const blocks: IAuthSocialSignInBlocks = [
     {
       logo: 'apple-black.svg',
       logoDark: 'apple-white.svg',
@@ -40,7 +48,7 @@ const SettingsSidebarAuthSocialSignIn = () => {
     }
   ];
 
-  const renderItem = (item: ISettingsSidebarAuthSocialSignInItem, index: number) => {
+  const renderItem = (item: IAuthSocialSignInItem, index: number) => {
     return (
       <div
         key={index}
@@ -60,18 +68,18 @@ const SettingsSidebarAuthSocialSignIn = () => {
             <a href="#" className="text-2sm text-gray-700 hover:text-primary-active">
               {item.email}
             </a>
-          </div> 
-        </div>  
+          </div>
+        </div>
 
         <div className="flex items-center gap-5">
-          <label className="switch switch-sm"> 
+          <label className="switch switch-sm">
             <input
               type="checkbox"
               defaultChecked={item.checkbox}
               value={item.checkbox ? '1' : '2'}
               readOnly
             />
-          </label>	
+          </label>
 
           <div className="btn btn-sm btn-icon btn-light btn-clear">
             <KeenIcon icon="trash" />
@@ -81,7 +89,7 @@ const SettingsSidebarAuthSocialSignIn = () => {
     );
   };
 
-  const renderBlock = (block: ISettingsSidebarAuthSocialSignInBlock, index: number) => {
+  const renderBlock = (block: IAuthSocialSignInBlock, index: number) => {
     return (
       <a key={index} href="#" className="btn btn-light">
         {block.logoDark ? (
@@ -98,11 +106,7 @@ const SettingsSidebarAuthSocialSignIn = () => {
             />
           </>
         ) : (
-          <img
-            src={toAbsoluteUrl(`/media/brand-logos/${block.logo}`)}
-            className="size-5"
-            alt=""
-          />
+          <img src={toAbsoluteUrl(`/media/brand-logos/${block.logo}`)} className="size-5" alt="" />
         )}
         {block.title}
       </a>
@@ -122,9 +126,7 @@ const SettingsSidebarAuthSocialSignIn = () => {
         </div>
 
         <div className="flex flex-col gap-0.5 mb-5">
-          <div className="text-md font-medium text-gray-900">
-            More Social Sign in options
-          </div>
+          <div className="text-md font-medium text-gray-900">More Social Sign in options</div>
           <div className="text-2sm text-gray-800">
             Effortless access awaits! Connect seamlessly with your preferred social account.
           </div>
@@ -144,4 +146,4 @@ const SettingsSidebarAuthSocialSignIn = () => {
   );
 };
 
-export { SettingsSidebarAuthSocialSignIn };
+export { AuthSocialSignIn };

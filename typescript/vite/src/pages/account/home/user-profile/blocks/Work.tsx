@@ -1,6 +1,6 @@
 import { KeenIcon } from '@/components';
 
-const UserProfileWork = () => {
+const Work = () => {
   return (
     <div className="card min-w-full">
       <div className="card-header">
@@ -88,4 +88,4 @@ const UserProfileWork = () => {
   );
 };
 
-export { UserProfileWork };
+export { Work };

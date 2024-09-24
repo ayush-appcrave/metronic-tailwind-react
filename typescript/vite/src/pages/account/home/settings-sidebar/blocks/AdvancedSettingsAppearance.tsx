@@ -1,16 +1,20 @@
 import { KeenIcon } from '@/components';
 import { toAbsoluteUrl } from '@/utils/Assets';
 
-import {
-  ISettingsSidebarAdvancedSettingsAppearanceItem,
-  ISettingsSidebarAdvancedSettingsAppearanceItems,
-  ISettingsSidebarAdvancedSettingsAppearanceProps
-} from './types';
+export interface IAdvancedSettingsAppearanceItem {
+  image: string;
+  logo?: string;
+  label: string;
+  checked: boolean;
+}
+export interface IAdvancedSettingsAppearanceItems extends Array<IAdvancedSettingsAppearanceItem> {}
 
-const SettingsSidebarAdvancedSettingsAppearance = ({
-  title = 'Appearance'
-}: ISettingsSidebarAdvancedSettingsAppearanceProps) => {
-  const items: ISettingsSidebarAdvancedSettingsAppearanceItems = [
+export interface IAdvancedSettingsAppearanceProps {
+  title: string;
+}
+
+const AdvancedSettingsAppearance = ({ title = 'Appearance' }: IAdvancedSettingsAppearanceProps) => {
+  const items: IAdvancedSettingsAppearanceItems = [
     {
       image: '28.jpg',
       logo: 'azure.svg',
@@ -31,12 +35,14 @@ const SettingsSidebarAdvancedSettingsAppearance = ({
     }
   ];
 
-  const renderItem = (item: ISettingsSidebarAdvancedSettingsAppearanceItem, index: number) => {
+  const renderItem = (item: IAdvancedSettingsAppearanceItem, index: number) => {
     return (
       <div key={index}>
         <label
           className="flex items-end border bg-no-repeat bg-cover border-gray-300 rounded-xl has-[:checked]:border-success has-[:checked]:border-3 [&_.checked]:has-[:checked]:flex h-[170px] mb-0.5"
-          style={{ backgroundImage: `url(${toAbsoluteUrl(`/media/images/600x400/${item.image}`)})` }}
+          style={{
+            backgroundImage: `url(${toAbsoluteUrl(`/media/images/600x400/${item.image}`)})`
+          }}
         >
           <input
             className="appearance-none"
@@ -101,4 +107,4 @@ const SettingsSidebarAdvancedSettingsAppearance = ({
   );
 };
 
-export { SettingsSidebarAdvancedSettingsAppearance };
+export { AdvancedSettingsAppearance };

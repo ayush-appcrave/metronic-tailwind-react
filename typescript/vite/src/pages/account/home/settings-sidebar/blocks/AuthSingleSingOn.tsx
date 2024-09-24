@@ -1,12 +1,14 @@
 import { toAbsoluteUrl } from '@/utils/Assets';
+export interface IAuthSingleSingOnItem {
+  logo: string;
+  title: string;
+  size: string;
+  checked?: boolean;
+}
+export interface IAuthSingleSingOnItems extends Array<IAuthSingleSingOnItem> {}
 
-import {
-  ISettingsSidebarAuthSingleSingOnItem,
-  ISettingsSidebarAuthSingleSingOnItems
-} from './types';
-
-const SettingsSidebarAuthSingleSingOn = () => {
-  const items: ISettingsSidebarAuthSingleSingOnItems = [
+const AuthSingleSingOn = () => {
+  const items: IAuthSingleSingOnItems = [
     {
       logo: 'azure.svg',
       title: 'Microsoft Azure',
@@ -27,7 +29,7 @@ const SettingsSidebarAuthSingleSingOn = () => {
     }
   ];
 
-  const renderItem = (item: ISettingsSidebarAuthSingleSingOnItem, index: number) => {
+  const renderItem = (item: IAuthSingleSingOnItem, index: number) => {
     return (
       <label
         key={index}
@@ -40,7 +42,7 @@ const SettingsSidebarAuthSingleSingOn = () => {
               className={item.size}
               alt=""
             />
-          </div>	
+          </div>
           <span className="text-md font-medium text-gray-900">{item.title}</span>
           <input
             className="appearance-none"
@@ -72,7 +74,7 @@ const SettingsSidebarAuthSingleSingOn = () => {
         <div className="card-header" id="auth_social_sign_in_sso">
           <h3 className="card-title">Single Sign On(SSO)</h3>
         </div>
-        <div className="card-body flex flex-col gap-7.5 divide-y divide-gray-200">  
+        <div className="card-body flex flex-col gap-7.5 divide-y divide-gray-200">
           <div className="grid gap-7 pt-7.5">
             <div className="text-md font-semibold text-gray-900">
               1. Select SSO integration Type
@@ -81,7 +83,7 @@ const SettingsSidebarAuthSingleSingOn = () => {
               {items.map((item, index) => {
                 return renderItem(item, index);
               })}
-            </div> 
+            </div>
 
             <style>
               {`
@@ -93,7 +95,7 @@ const SettingsSidebarAuthSingleSingOn = () => {
                 }
               `}
             </style>
-          </div>  
+          </div>
 
           <div className="grid gap-7 pt-7.5">
             <div className="text-md font-semibold text-gray-900">
@@ -148,9 +150,9 @@ const SettingsSidebarAuthSingleSingOn = () => {
           </div>
 
           <div className="form-info pt-7.5 pb-5 text-gray-800 font-normal">
-            Single Sign-On (SSO) authentication streamlines access across 
-            multiple platforms. Users log in once, gaining seamless entry <br/>
-            to various systems without repetitive credentials. 
+            Single Sign-On (SSO) authentication streamlines access across multiple platforms. Users
+            log in once, gaining seamless entry <br />
+            to various systems without repetitive credentials.
           </div>
         </div>
       </div>
@@ -158,4 +160,4 @@ const SettingsSidebarAuthSingleSingOn = () => {
   );
 };
 
-export { SettingsSidebarAuthSingleSingOn };
+export { AuthSingleSingOn };

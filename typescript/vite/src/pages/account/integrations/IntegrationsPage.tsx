@@ -32,7 +32,9 @@ const IntegrationsPage = () => {
             </ToolbarDescription>
           </ToolbarHeading>
           <ToolbarActions>
-            <a href="#" className="btn btn-sm btn-light">Add New Integration</a>
+            <a href="#" className="btn btn-sm btn-light">
+              Add New Integration
+            </a>
           </ToolbarActions>
         </Toolbar>
       </Container>

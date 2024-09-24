@@ -1,12 +1,15 @@
 import { KeenIcon } from '@/components';
 import { CommonHexagonBadge } from '@/partials/common';
 import { toAbsoluteUrl } from '@/utils/Assets';
-import { ISettingsSidebarExternalServicesManageApiProps } from './types';
+export interface IExternalServicesManageApiProps {
+  title: string;
+  switch: boolean;
+}
 
-const SettingsSidebarExternalServicesManageApi = ({
+const ExternalServicesManageApi = ({
   title,
   switch: showSwitch
-}: ISettingsSidebarExternalServicesManageApiProps) => {
+}: IExternalServicesManageApiProps) => {
   return (
     <>
       <style>
@@ -100,4 +103,4 @@ const SettingsSidebarExternalServicesManageApi = ({
   );
 };
 
-export { SettingsSidebarExternalServicesManageApi };
+export { ExternalServicesManageApi };

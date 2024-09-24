@@ -1,7 +1,7 @@
 import { toAbsoluteUrl } from '@/utils/Assets';
 import { Link } from 'react-router-dom';
 
-const UserProfileStartNow = () => {
+const StartNow = () => {
   return (
     <>
       <style>
@@ -49,4 +49,4 @@ const UserProfileStartNow = () => {
   );
 };
 
-export { UserProfileStartNow };
+export { StartNow };

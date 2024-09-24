@@ -1,10 +1,16 @@
 import { KeenIcon } from '@/components';
 import { toAbsoluteUrl } from '@/utils/Assets';
 
-import { IUserProfileCalendarAccountsItem, IUserProfileCalendarAccountsItems } from './types';
+export interface ICalendarAccountsItem {
+  logo: string;
+  title: string;
+  email: string;
+}
+export interface ICalendarAccountsItems
+  extends Array<ICalendarAccountsItem> {}
 
-const UserProfileCalendarAccounts = () => {
-  const items: IUserProfileCalendarAccountsItems = [
+const CalendarAccounts = () => {
+  const items: ICalendarAccountsItems = [
     {
       logo: 'google-calendar.svg',
       title: 'Google',
@@ -17,7 +23,7 @@ const UserProfileCalendarAccounts = () => {
     }
   ];
 
-  const renderItem = (item: IUserProfileCalendarAccountsItem, index: number) => {
+  const renderItem = (item: ICalendarAccountsItem, index: number) => {
     return (
       <div
         key={index}
@@ -74,4 +80,4 @@ const UserProfileCalendarAccounts = () => {
   );
 };
 
-export { UserProfileCalendarAccounts };
+export { CalendarAccounts };
