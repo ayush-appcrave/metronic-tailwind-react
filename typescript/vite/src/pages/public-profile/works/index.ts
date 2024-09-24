@@ -1,2 +1,3 @@
-export * from './_Works';
-export * from './types';
+export * from './ProfileWorksPage';
+export * from './blocks';
+export * from './cards';

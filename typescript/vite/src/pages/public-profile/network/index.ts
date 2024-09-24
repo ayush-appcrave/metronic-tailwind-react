@@ -1,2 +1,2 @@
-export * from './_Network';
-export * from './types';
+export * from './ProfileNetworkPage';
+export * from './blocks';

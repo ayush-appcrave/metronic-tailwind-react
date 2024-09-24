@@ -41,9 +41,4 @@ const Statistics = ({ items }: IStatisticsProps) => {
   );
 };
 
-export {
-  Statistics,
-  type IStatisticsItem,
-  type IStatisticsItems,
-  type IStatisticsProps
-};
+export { Statistics, type IStatisticsItem, type IStatisticsItems, type IStatisticsProps };
