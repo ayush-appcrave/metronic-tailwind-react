@@ -9,7 +9,7 @@ import {
 
 import { MiniCardsContent } from '.';
 
-const NetworkMiniCardsPage = () => {
+const MiniCardsPage = () => {
   return (
     <>
       <Container>
@@ -38,4 +38,4 @@ const NetworkMiniCardsPage = () => {
   );
 };
 
-export { NetworkMiniCardsPage };
+export { MiniCardsPage };

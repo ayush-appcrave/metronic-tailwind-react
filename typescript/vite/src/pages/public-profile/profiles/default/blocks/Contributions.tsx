@@ -2,6 +2,7 @@ import ApexChart from 'react-apexcharts';
 import { ApexOptions } from 'apexcharts';
 import { KeenIcon, Menu, MenuItem, MenuToggle } from '@/components';
 import { DropdownCard2 } from '@/partials/dropdowns/general';
+import { IApexChartOptions } from '@/types/apexcharts';
 
 interface IApexContributionsOptions {
   series: any[];
@@ -71,7 +72,7 @@ const Contributions = ({ title }: IContributionsProps) => {
     'var(--tw-warning)'
   ];
 
-  const options: IApexContributionsOptions = {
+  const options: IApexChartOptions = {
     series: data,
     labels: labels,
     colors: colors,

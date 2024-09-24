@@ -1,15 +1,7 @@
-import { GetStartedOptions } from '../../home/get-started';
+import { Options, IOptionsItems  } from '../../home/get-started';
 
-export interface IGetStartedContentItem {
-  icon: string;
-  title: string;
-  desc: string;
-  path: string;
-}
-export interface IGetStartedContentItems extends Array<IGetStartedContentItem> {}
-
-const GetStartedContent = () => {
-  const items: IGetStartedContentItems = [
+const SecurityGetStartedContent = () => {
+  const items: IOptionsItems = [
     {
       icon: 'subtitle',
       title: 'Overview',
@@ -54,7 +46,7 @@ const GetStartedContent = () => {
     }
   ];
 
-  return <GetStartedOptions items={items} dropdown={true} />;
+  return <Options items={items} dropdown={true} />;
 };
 
-export { GetStartedContent };
+export { SecurityGetStartedContent };

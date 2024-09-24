@@ -1,121 +1,8 @@
 import ApexChart from 'react-apexcharts';
 import { ApexOptions } from 'apexcharts';
+import { IApexChartOptions } from '@/types/apexcharts';
 import { KeenIcon, Menu, MenuItem, MenuToggle } from '@/components';
 import { DropdownCard2 } from '@/partials/dropdowns/general';
-
-interface IApexMediaUploadsOptions {
-  series: {
-    name: string;
-    data: number[];
-  }[];
-  chart: {
-    height: number;
-    type: 'area';
-    toolbar: {
-      show: boolean;
-    };
-  };
-  dataLabels: {
-    enabled: boolean;
-  };
-  legend: {
-    show: boolean;
-  };
-  stroke: {
-    curve: 'smooth';
-    show: boolean;
-    width: number;
-    colors: string[];
-  };
-  xaxis: {
-    categories: string[];
-    axisBorder: {
-      show: boolean;
-    };
-    axisTicks: {
-      show: boolean;
-    };
-    labels: {
-      style: {
-        colors: string;
-        fontSize: string;
-      };
-    };
-    crosshairs: {
-      position: string;
-      stroke: {
-        color: string;
-        width: number;
-        dashArray: number;
-      };
-    };
-    tooltip: {
-      enabled: boolean;
-      formatter?: undefined;
-      offsetY: number;
-      style: {
-        fontSize: string;
-      };
-    };
-  };
-  yaxis: {
-    min: number;
-    max: number;
-    tickAmount: number;
-    axisTicks: {
-      show: boolean;
-    };
-    labels: {
-      style: {
-        colors: string;
-        fontSize: string;
-      };
-      formatter: (defaultValue: number) => string;
-    };
-  };
-  tooltip: {
-    enabled: boolean;
-    custom: ({ series, seriesIndex, dataPointIndex, w }: any) => string;
-  };
-  markers: {
-    size: number;
-    colors: string;
-    strokeColors: string;
-    strokeWidth: number;
-    strokeOpacity: number;
-    strokeDashArray: number;
-    fillOpacity: number;
-    shape: ApexMarkerShape;
-    radius: number;
-    showNullDataPoints: boolean;
-    hover: {
-      size: number;
-      sizeOffset: number;
-    };
-  };
-  fill: {
-    gradient: {
-      enabled: boolean;
-      opacityFrom: number;
-      opacityTo: number;
-    };
-  };
-  grid: {
-    borderColor: string;
-    strokeDashArray: number;
-    clipMarkers: boolean;
-    yaxis: {
-      lines: {
-        show: boolean;
-      };
-    };
-    xaxis: {
-      lines: {
-        show: boolean;
-      };
-    };
-  };
-}
 
 const MediaUploads = () => {
   const data: number[] = [85, 65, 50, 70, 40, 45, 100, 55, 85, 60, 70, 90];
@@ -134,7 +21,7 @@ const MediaUploads = () => {
     'Dec'
   ];
 
-  const options: IApexMediaUploadsOptions = {
+  const options: IApexChartOptions = {
     series: [
       {
         name: 'series1',
@@ -245,7 +132,10 @@ const MediaUploads = () => {
       hover: {
         size: 8,
         sizeOffset: 0
-      }
+      },
+      discrete: [],
+      offsetX: 0,
+      offsetY: 0
     },
     fill: {
       gradient: {
@@ -315,4 +205,4 @@ const MediaUploads = () => {
   );
 };
 
-export { MediaUploads, type IApexMediaUploadsOptions };
+export { MediaUploads };

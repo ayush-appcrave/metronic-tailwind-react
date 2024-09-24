@@ -4,10 +4,10 @@ import { NavbarMenu } from '@/partials/menu/NavbarMenu';
 import { Navbar } from '@/partials/navbar';
 import { Toolbar, ToolbarDescription, ToolbarHeading, ToolbarPageTitle } from '@/partials/toolbar';
 
-import { GetStartedContent } from './';
+import { SecurityGetStartedContent } from './';
 import { Link } from 'react-router-dom';
 
-const GetStartedPage = () => {
+const SecurityGetStartedPage = () => {
   return (
     <>
       <Navbar>
@@ -34,10 +34,10 @@ const GetStartedPage = () => {
       </Container>
 
       <Container>
-        <GetStartedContent />
+        <SecurityGetStartedContent />
       </Container>
     </>
   );
 };
 
-export { GetStartedPage };
+export { SecurityGetStartedPage };

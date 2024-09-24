@@ -9,7 +9,7 @@ import {
 
 import { NFTContent } from '.';
 
-const NetworkNFTPage = () => {
+const NFTPage = () => {
   return (
     <>
       <Container>
@@ -38,4 +38,4 @@ const NetworkNFTPage = () => {
   );
 };
 
-export { NetworkNFTPage };
+export { NFTPage };

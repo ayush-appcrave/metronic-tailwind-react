@@ -1,6 +1,6 @@
 import { MiscFaq, MiscHelp2 } from '@/partials/misc';
 
-const TeamCrewContent = () => {
+const UserTableTeamCrewContent = () => {
   return (
     <div className="grid gap-5 lg:gap-7.5">
       {/* {{ theme.page('_users') }} */}
@@ -11,4 +11,4 @@ const TeamCrewContent = () => {
   );
 };
 
-export { TeamCrewContent };
+export { UserTableTeamCrewContent };

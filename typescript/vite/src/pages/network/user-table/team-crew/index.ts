@@ -1,2 +1,2 @@
-export * from './TeamCrewContent';
-export * from './TeamCrewPage';
+export * from './UserTableTeamCrewContent';
+export * from './UserTableTeamCrewPage';

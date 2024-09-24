@@ -23,9 +23,9 @@ import {
   ProfileWorksPage
 } from '@/pages/public-profile';
 import {
-  AccountActivityPages,
+  AccountActivityPage,
   AllowedIPAddressesPage,
-  APIKeysPage,
+  ApiKeysPage,
   AppearancePage,
   BackupAndRecoveryPage,
   BasicPage,
@@ -54,22 +54,22 @@ import {
   SettingsSidebarPage,
   TeamInfoPage,
   TeamMembersPage,
-  MembersTeamPage,
+  TeamsPage,
   TeamsStarterPage,
   UserProfilePage
 } from '@/pages/account';
 import {
   AppRosterPage,
   MarketAuthorsPage,
-  NetworkAuthorPage,
+  AuthorPage,
   NetworkGetStartedPage,
-  NetworkMiniCardsPage,
-  NetworkNFTPage,
-  NetworkSocialPage,
-  NetworkTeamCrewPage,
+  MiniCardsPage,
+  NFTPage,
+  SocialPage,
+  TeamCrewPage,
   SaasUsersPage,
   StoreClientsPage,
-  TeamCrewPage,
+  UserTableTeamCrewPage,
   VisitorsPage
 } from '@/pages/network';
 
@@ -163,7 +163,7 @@ const AppRouting = (): ReactElement => {
           <Route path="/account/security/current-sessions" element={<CurrentSessionsPage />} />
           <Route path="/account/security/security-log" element={<SecurityLogPage />} />
           <Route path="/account/members/team-starter" element={<TeamsStarterPage />} />
-          <Route path="/account/members/teams" element={<MembersTeamPage />} />
+          <Route path="/account/members/teams" element={<TeamsPage />} />
           <Route path="/account/members/team-info" element={<TeamInfoPage />} />
           <Route path="/account/members/members-starter" element={<MembersStarterPage />} />
           <Route path="/account/members/team-members" element={<TeamMembersPage />} />
@@ -173,18 +173,18 @@ const AppRouting = (): ReactElement => {
           <Route path="/account/members/permissions-check" element={<PermissionsCheckPage />} />
           <Route path="/account/integrations" element={<IntegrationsPage />} />
           <Route path="/account/notifications" element={<NotificationsPage />} />
-          <Route path="/account/api-keys" element={<APIKeysPage />} />
+          <Route path="/account/api-keys" element={<ApiKeysPage />} />
           <Route path="/account/members/appearance" element={<AppearancePage />} />
           <Route path="/account/members/invite-a-friend" element={<InviteAFriendPage />} />
-          <Route path="/account/activity" element={<AccountActivityPages />} />
+          <Route path="/account/activity" element={<AccountActivityPage />} />
           <Route path="/scroll-spy/example-1" element={<ScrollSpyExample />} />
           <Route path="/network/get-started" element={<NetworkGetStartedPage />} />
-          <Route path="/network/user-cards/mini-cards" element={<NetworkMiniCardsPage />} />
-          <Route path="/network/user-cards/team-crew" element={<NetworkTeamCrewPage />} />
-          <Route path="/network/user-cards/author" element={<NetworkAuthorPage />} />
-          <Route path="/network/user-cards/nft" element={<NetworkNFTPage />} />
-          <Route path="/network/user-cards/social" element={<NetworkSocialPage />} />
-          <Route path="/network/user-table/team-crew" element={<TeamCrewPage />} />
+          <Route path="/network/user-cards/mini-cards" element={<MiniCardsPage />} />
+          <Route path="/network/user-cards/team-crew" element={<TeamCrewPage />} />
+          <Route path="/network/user-cards/author" element={<AuthorPage />} />
+          <Route path="/network/user-cards/nft" element={<NFTPage />} />
+          <Route path="/network/user-cards/social" element={<SocialPage />} />
+          <Route path="/network/user-table/team-crew" element={<UserTableTeamCrewPage />} />
           <Route path="/network/user-table/app-roster" element={<AppRosterPage />} />
           <Route path="/network/user-table/market-authors" element={<MarketAuthorsPage />} />
           <Route path="/network/user-table/saas-users" element={<SaasUsersPage />} />

@@ -1,10 +1,5 @@
 import { MiscFaq, MiscHighlightedPosts, IHighlightedPostsItems } from '@/partials/misc';
-import {
-  PrivacySettingsBlockList,
-  PrivacySettingsManageData,
-  PrivacySettingsPrivacySettings,
-  PrivacySettingsReportSettings
-} from '.';
+import { BlockList, ManageData, PrivacySettings, ReportSettings } from './blocks';
 
 const PrivacySettingsContent = () => {
   const posts: IHighlightedPostsItems = [
@@ -28,12 +23,12 @@ const PrivacySettingsContent = () => {
     <div className="grid grid-cols-1 xl:grid-cols-3 gap-5 lg:gap-7.5">
       <div className="col-span-2">
         <div className="flex flex-col gap-5 lg:gap-7.5">
-          <PrivacySettingsPrivacySettings />
+          <PrivacySettings />
 
           <div className="grid lg:grid-cols-2 gap-5 lg:gap-7.5">
-            <PrivacySettingsReportSettings limit={3} />
+            <ReportSettings limit={3} />
 
-            <PrivacySettingsManageData />
+            <ManageData />
           </div>
 
           <MiscFaq />
@@ -41,7 +36,7 @@ const PrivacySettingsContent = () => {
       </div>
       <div className="col-span-1">
         <div className="flex flex-col gap-5 lg:gap-7.5">
-          <PrivacySettingsBlockList text="Users on the block list are unable to send chat requests or messages to you." />
+          <BlockList text="Users on the block list are unable to send chat requests or messages to you." />
           <MiscHighlightedPosts posts={posts} />
         </div>
       </div>

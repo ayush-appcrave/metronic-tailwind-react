@@ -1,5 +1,5 @@
 export * from './teams-starter/TeamsStarterPage';
-export * from './teams/MembersTeamPage';
+export * from './teams/TeamsPage';
 export * from './teams-info/TeamInfoPage';
 export * from './members-starter/MembersStarterPage';
 export * from './team-members/TeamMembersPage';

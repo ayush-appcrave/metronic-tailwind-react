@@ -10,7 +10,7 @@ import {
 
 import { AuthorContent } from './';
 
-const NetworkAuthorPage = () => {
+const AuthorPage = () => {
   return (
     <Fragment>
       <Container>
@@ -41,4 +41,4 @@ const NetworkAuthorPage = () => {
   );
 };
 
-export { NetworkAuthorPage };
+export { AuthorPage };
