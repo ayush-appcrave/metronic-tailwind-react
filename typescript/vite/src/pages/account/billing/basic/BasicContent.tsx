@@ -1,8 +1,16 @@
 import { IHighlightedPostsItems, MiscHighlightedPosts } from '@/partials/misc';
 import { Details, Invoicing, PaymentMethods, Plan } from './blocks';
 
+interface IBasicContentItem {
+  icon: string;
+  title: string;
+  summary: string;
+  path: string;
+}
+interface IBasicContentItems extends Array<IBasicContentItem> {}
+
 const BasicContent = () => {
-  const posts: IHighlightedPostsItems = [
+  const posts: IBasicContentItems = [
     {
       icon: 'discount',
       title: 'Tailor-Made Plans Selection and Efficient Billing Systems',

@@ -9,6 +9,7 @@ interface IIntegrationsItem {
 }
 
 interface IIntegrationsItems extends Array<IIntegrationsItem> {}
+
 const Integrations = () => {
   const data: IIntegrationsItems = [
     {

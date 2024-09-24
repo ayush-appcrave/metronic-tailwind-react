@@ -10,7 +10,7 @@ import {
   ToolbarPageTitle
 } from '@/partials/toolbar';
 
-import { AppearanceContent } from './';
+import { AppearanceContent } from '.';
 
 const AppearancePage = () => {
   return (

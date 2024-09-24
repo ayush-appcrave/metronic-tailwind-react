@@ -10,7 +10,7 @@ import {
   ToolbarPageTitle
 } from '@/partials/toolbar';
 
-import { ApiKeysContent } from './';
+import { ApiKeysContent } from '.';
 
 const ApiKeysPage = () => {
   return (

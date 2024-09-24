@@ -1,16 +1,17 @@
 import { KeenIcon } from '@/components';
 import { toAbsoluteUrl } from '@/utils';
 
-export interface ILatestPaymentItem {
+interface ILatestPaymentItem {
   status: string;
   logo?: boolean;
   info: string;
 }
-export interface ILatestPaymentItems extends Array<ILatestPaymentItem> {}
+
+interface ILatestPaymentItems extends Array<ILatestPaymentItem> {}
 
 const LatestPayment = () => {
   const tables: ILatestPaymentItems = [
-    { status: 'Typ of Plan', info: 'Cloud One ' },
+    { status: 'Typ of Plan', info: 'Cloud One Enterprise' },
     { status: 'Payment Date', info: '6 Aug, 2024' },
     { status: 'Card used to pay:', logo: true, info: 'Ending 3604' },
     { status: 'Total Payment:', info: '$24.00' }

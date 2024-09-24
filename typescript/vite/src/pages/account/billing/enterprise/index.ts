@@ -1,3 +1,3 @@
-export * from './blocks';
 export * from './EnterpriseContent';
-export * from './EnterprisePage';
+export * from './EnterprisePage'; 
+export * from './blocks'; 

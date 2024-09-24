@@ -5,44 +5,49 @@ const Webhooks = () => {
         <h3 className="card-title">Webhooks</h3>
       </div>
       <div className="card-body grid gap-5">
-        <p className="text-2sm text-gray-800">
+        <p className="text-2sm font-medium text-gray-700">
           Set up Webhooks to trigger actions on external services in real-time. Stay informed on
           updates and changes to <br />
           ensure seamless integration.
         </p>
 
         <div className="flex items-center flex-wrap lg:flex-nowrap gap-2.5">
-          <label className="form-label max-w-56">Webhook URL</label>
-          <div className="grow">
-            <input type="text" className="input" placeholder="Enter URL" value="" readOnly />
+          <span className="text-2sm font-medium text-gray-700 max-w-56 w-full">Webhook URL</span>
+          <div className="grow min-w-48">
+            <input type="text" className="input w-full" placeholder="Enter URL" value="" readOnly />
           </div>
         </div>
 
         <div className="flex items-center flex-wrap lg:flex-nowrap gap-2.5">
-          <label className="form-label max-w-56">Webhook Name</label>
-          <div className="grow">
-            <input type="text" className="input" placeholder="" value="CostaRicaHook" readOnly />
+          <span className="text-2sm font-medium text-gray-700 max-w-56 w-full">Webhook Name</span>
+          <div className="grow min-w-48">
+            <input
+              type="text"
+              className="input w-full placeholder:text-gray-700"
+              placeholder="CostaRicaHook"
+              value=""
+              readOnly
+            />
           </div>
         </div>
 
         <div className="flex items-center flex-wrap lg:flex-nowrap gap-2.5">
-          <label className="form-label max-w-56">Event Type</label>
-          <div className="grow">
-            <select className="select">
+          <span className="text-2sm font-medium text-gray-700 max-w-56 w-full">Event Type</span>
+          <div className="grow min-w-48">
+            <select className="select w-full">
               <option>All Events</option>
-              <option>Push Webhooks</option>
-              <option>Pipe Webhook</option>
-              <option>Plugin Webhooks</option>
+              <option>Option 2</option>
+              <option>Option 3</option>
             </select>
           </div>
         </div>
 
         <div className="flex items-center flex-wrap lg:flex-nowrap gap-2.5 mb-2.5">
-          <label className="form-label max-w-56">Custom Headers</label>
-          <div className="grow">
+          <span className="text-2sm font-medium text-gray-700 max-w-56 w-full">Custom Headers</span>
+          <div className="grow min-w-48">
             <label className="switch">
               <span className="switch-label">Use Custom Header</span>
-              <input type="checkbox" defaultChecked value="1" />
+              <input type="checkbox" defaultChecked value="1" readOnly />
             </label>
           </div>
         </div>

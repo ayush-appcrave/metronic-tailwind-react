@@ -7,5 +7,6 @@ export * from './notifications/NotificationsPage';
 export * from './api-keys/ApiKeysPage';
 export * from './appearance/AppearancePage';
 export * from './billing/basic/BasicPage';
+export * from './billing/enterprise/EnterprisePage';
 export * from './invite-a-friend/InviteAFriendPage';
-export * from './activity/AccountActivityPage';
+export * from './activity/ActivityPage';

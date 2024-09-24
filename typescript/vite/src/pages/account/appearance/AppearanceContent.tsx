@@ -1,8 +1,8 @@
 import { MiscEngage, MiscFaq, MiscHighlightedPosts, IHighlightedPostsItems } from '@/partials/misc';
 import { toAbsoluteUrl } from '@/utils';
 import { CompanyProfileBranding } from '../home/company-profile';
-import { SettingsSidebarAdvancedSettingsAppearance } from '../home/settings-sidebar'; 
-import { AccessibilityBlock, DisableDefaultBrandBlock } from './blocks';
+import { SettingsSidebar } from '../home/settings-sidebar'; 
+import { Accessibility, DisableDefaultBrand} from './blocks';
 
 const AppearanceContent = () => {
   const posts: IHighlightedPostsItems = [
@@ -40,9 +40,9 @@ const AppearanceContent = () => {
     <div className="grid grid-cols-1 xl:grid-cols-3 gap-5 lg:gap-7.5">
       <div className="col-span-2">
         <div className="flex flex-col gap-5 lg:gap-7.5">
-          <SettingsSidebarAdvancedSettingsAppearance title="Theme" />
+          <SettingsSidebar title="Theme" />
           <CompanyProfileBranding />
-          <AccessibilityBlock />
+          <Accessibility />
           <MiscFaq />
 
           <MiscEngage
@@ -71,7 +71,7 @@ const AppearanceContent = () => {
       </div>
       <div className="col-span-1">
         <div className="flex flex-col gap-5 lg:gap-7.5">
-          <DisableDefaultBrandBlock />
+          <DisableDefaultBrand />
 
           <MiscHighlightedPosts posts={posts} />
         </div>

@@ -2,8 +2,8 @@ import { MiscEngage, MiscFaq, MiscHighlightedPosts, IHighlightedPostsItems } fro
 import { toAbsoluteUrl } from '@/utils';
 import { KeenIcon } from '@/components';
 import { DoNotDistrub } from '../notifications';
-import { SettingsSidebarExternalServicesManageApi } from '../home/settings-sidebar';
-import { IntegrationsBlock, WebhooksBlock } from '.';
+import { SettingsSidebar } from '../home/settings-sidebar';
+import { Integrations, Webhooks } from './blocks'; 
 
 const ApiKeysContent = () => {
   const posts: IHighlightedPostsItems = [
@@ -34,11 +34,11 @@ const ApiKeysContent = () => {
     <div className="grid grid-cols-1 xl:grid-cols-3 gap-5 lg:gap-7.5">
       <div className="col-span-2">
         <div className="flex flex-col gap-5 lg:gap-7.5">
-          <SettingsSidebarExternalServicesManageApi title="Public API Key" switch={true} />
+          <SettingsSidebar title="Public API Key" switch={true} />
 
-          <IntegrationsBlock />
+          <Integrations />
 
-          <WebhooksBlock />
+          <Webhooks />
 
           <MiscFaq />
 

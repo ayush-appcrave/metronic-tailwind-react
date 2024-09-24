@@ -82,4 +82,4 @@ const Accessibility = () => {
   );
 };
 
-export { Accessibility, type IAccessibilityItems }; 
+export { Accessibility, type IAccessibilityItems };

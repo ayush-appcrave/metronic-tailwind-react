@@ -1,6 +1,13 @@
-import { MiscHelp } from '@/partials/misc';
-import { BillingInvoicing, CompanyProfile, LatestPayment, NextPayment, Upgrade } from './blocks';
-import { PaymentMethods } from '../basic/blocks';
+import { MiscHelp } from '@/partials/misc'; 
+import {
+  BillingInvoicing,
+  CompanyProfile,
+  LatestPayment,
+  NextPayment,
+  Upgrade
+} from './blocks'; 
+
+import { PaymentMethods } from '../basic';
 
 const EnterpriseContent = () => {
   return (
@@ -20,7 +27,7 @@ const EnterpriseContent = () => {
       </div>
 
       <div className="col-span-2 lg:col-span-1 flex">
-        <PaymentMethods />
+        <PaymentMethods icon="credit-cart" />
       </div>
       <div className="col-span-2 lg:col-span-1">
         <BillingInvoicing />

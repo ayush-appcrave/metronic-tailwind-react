@@ -10,7 +10,7 @@ interface IPaymentMethodsItem {
 
 interface IPaymentMethodsItems extends Array<IPaymentMethodsItem> {} 
 
-const PaymentMethods = () => {
+const PaymentMethods = ({ icon }: IPaymentMethodsItems) => {
   const items: IPaymentMethodsItems = [
     {
       logo: 'visa.svg',
