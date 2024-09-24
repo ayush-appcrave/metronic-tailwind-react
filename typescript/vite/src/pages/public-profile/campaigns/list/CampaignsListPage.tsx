@@ -38,7 +38,7 @@ const CampaignsListPage = () => {
             <button className="btn btn-sm btn-icon btn-light">
               <KeenIcon icon="messages" />
             </button>
-            <NavbarDropdown/>
+            <NavbarDropdown />
           </NavbarActions>
         </Navbar>
       </Container>

@@ -43,9 +43,4 @@ const Network = ({ data, className, title }: INetworkProps) => {
   );
 };
 
-export {
-  Network,
-  type INetworkItem,
-  type INetworkItems,
-  type INetworkProps
-};
+export { Network, type INetworkItem, type INetworkItems, type INetworkProps };

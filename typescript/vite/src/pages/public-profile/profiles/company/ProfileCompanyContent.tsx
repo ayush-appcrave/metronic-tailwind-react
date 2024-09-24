@@ -1,9 +1,4 @@
-import {
-  DefaultConnections,
-  DefaultContributions,
-  DefaultProjects,
-  DefaultTags
-} from '../default';
+import { Connections, Contributions, Projects, Tags } from '../default';
 import {
   Statistics,
   Highlights,
@@ -44,7 +39,7 @@ const ProfileCompanyContent = () => {
 
           <Network title="Network" data={data} />
 
-          <DefaultTags title="Tags" />
+          <Tags title="Tags" />
         </div>
       </div>
       <div className="col-span-1 lg:col-span-2">
@@ -53,12 +48,12 @@ const ProfileCompanyContent = () => {
 
           <Locations />
 
-          <DefaultProjects />
+          <Projects />
 
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-5 lg:gap-7.5">
-            <DefaultConnections title="Members" />
+            <Connections title="Members" />
 
-            <DefaultContributions title="Investments" />
+            <Contributions title="Investments" />
           </div>
         </div>
       </div>

@@ -80,8 +80,4 @@ const OpenJobs = () => {
   );
 };
 
-export {
-  OpenJobs,
-  type IOpenJobsItem,
-  type IOpenJobsItems
-};
+export { OpenJobs, type IOpenJobsItem, type IOpenJobsItems };

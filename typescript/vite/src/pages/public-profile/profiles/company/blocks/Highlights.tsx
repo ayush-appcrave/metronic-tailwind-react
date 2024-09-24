@@ -24,9 +24,7 @@ const Highlights = () => {
   const renderItems = (item: IHighlightsItem, index: number) => {
     return (
       <tr key={index}>
-        <td className="text-sm font-medium text-gray-500 pb-3 pe-4 lg:pe-10">
-          {item.label}
-        </td>
+        <td className="text-sm font-medium text-gray-500 pb-3 pe-4 lg:pe-10">{item.label}</td>
         <td className="text-sm font-medium text-gray-800 pb-3">
           {item.type === 1 ? (
             <span>{item.info}</span>

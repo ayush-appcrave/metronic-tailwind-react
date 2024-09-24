@@ -1,2 +1,2 @@
-export * from './_Columns3Projects';
-export * from './types';
+export * from './ProjectColumn3Page';
+export * from './blocks';
