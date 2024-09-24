@@ -45,18 +45,18 @@ const DropdownCard1 = () => {
       >
         <MenuLink>
           <MenuIcon>
-            <KeenIcon icon="notification-status"/>
+            <KeenIcon icon="notification-status" />
           </MenuIcon>
           <MenuTitle>Notifications</MenuTitle>
           <MenuArrow>
-            <KeenIcon icon="right" className="text-3xs"/>
+            <KeenIcon icon="right" className="text-3xs" />
           </MenuArrow>
         </MenuLink>
         <MenuSub className="menu-default" rootClassName="w-full max-w-[175px]">
           <MenuItem>
             <MenuLink path="/account/home/settings-sidebar">
               <MenuIcon>
-                <KeenIcon icon="sms"/>
+                <KeenIcon icon="sms" />
               </MenuIcon>
               <MenuTitle>Email</MenuTitle>
             </MenuLink>
@@ -64,7 +64,7 @@ const DropdownCard1 = () => {
           <MenuItem>
             <MenuLink path="/account/home/settings-sidebar">
               <MenuIcon>
-                <KeenIcon icon="message-notify"/>
+                <KeenIcon icon="message-notify" />
               </MenuIcon>
               <MenuTitle>SMS</MenuTitle>
             </MenuLink>
@@ -72,7 +72,7 @@ const DropdownCard1 = () => {
           <MenuItem>
             <MenuLink path="/account/home/settings-sidebar">
               <MenuIcon>
-                <KeenIcon icon="pencil"/>
+                <KeenIcon icon="pencil" />
               </MenuIcon>
               <MenuTitle>Push</MenuTitle>
             </MenuLink>

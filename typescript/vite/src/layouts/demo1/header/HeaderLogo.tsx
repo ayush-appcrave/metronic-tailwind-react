@@ -18,20 +18,28 @@ const HeaderLogo = () => {
 
   return (
     <div className="flex gap-1 lg:hidden items-center">
-      <Link to="/" className='shrink-0'>
-        <img src={toAbsoluteUrl('/media/app/mini-logo.svg')} className="h-[25px]"/>
+      <Link to="/" className="shrink-0">
+        <img src={toAbsoluteUrl('/media/app/mini-logo.svg')} className="h-[25px]" />
       </Link>
 
       <div className="flex items-center">
-        <button type="button" className="btn btn-icon btn-light btn-clear btn-sm" onClick={handleSidebarOpen}>
-          <KeenIcon icon="menu"/>
+        <button
+          type="button"
+          className="btn btn-icon btn-light btn-clear btn-sm"
+          onClick={handleSidebarOpen}
+        >
+          <KeenIcon icon="menu" />
         </button>
 
-        {megaMenuEnabled &&         
-          <button type="button" className="btn btn-icon btn-light btn-clear btn-sm" onClick={handleMegaMenuOpen}>
-            <KeenIcon icon="burger-menu-2"/>
+        {megaMenuEnabled && (
+          <button
+            type="button"
+            className="btn btn-icon btn-light btn-clear btn-sm"
+            onClick={handleMegaMenuOpen}
+          >
+            <KeenIcon icon="burger-menu-2" />
           </button>
-        }        
+        )}
       </div>
     </div>
   );

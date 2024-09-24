@@ -70,8 +70,8 @@ const UserProfileHero = ({ image, name, info }: IUserProfileHeroProps) => {
               </div>
             </div>
           </Container>
-        </div>   
-      </Fragment>   
+        </div>
+      </Fragment>
     );
   };
 

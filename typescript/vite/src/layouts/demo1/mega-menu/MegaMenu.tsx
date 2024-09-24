@@ -11,7 +11,7 @@ const MegaMenu = () => {
   const desktopMode = useResponsive('up', 'lg');
   const { pathname, prevPathname } = usePathname();
   const [disabled, setDisabled] = useState(true); // Initially set disabled to true
-  const {mobileMegaMenuOpen, setMobileMegaMenuOpen, setMegaMenuEnabled} = useDemo1Layout();
+  const { mobileMegaMenuOpen, setMobileMegaMenuOpen, setMegaMenuEnabled } = useDemo1Layout();
 
   const handleDrawerClose = () => {
     setMobileMegaMenuOpen(false);
@@ -37,7 +37,12 @@ const MegaMenu = () => {
 
   const renderContent = () => {
     return (
-      <Menu multipleExpand={true} disabled={disabled} highlight={true} className="flex-col lg:flex-row gap-5 lg:gap-7.5 p-4 lg:p-0">
+      <Menu
+        multipleExpand={true}
+        disabled={disabled}
+        highlight={true}
+        className="flex-col lg:flex-row gap-5 lg:gap-7.5 p-4 lg:p-0"
+      >
         {MegaMenuContent(MENU_MEGA)}
       </Menu>
     );
@@ -56,8 +61,8 @@ const MegaMenu = () => {
         PaperProps={{
           sx: {
             width: '250px',
-            maxWidth: '90%', // Set the maximum width to 90%
-          },
+            maxWidth: '90%' // Set the maximum width to 90%
+          }
         }}
       >
         {renderContent()}

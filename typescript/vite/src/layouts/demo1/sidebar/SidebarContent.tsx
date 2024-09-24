@@ -10,7 +10,7 @@ const SidebarContent = ({ height = 0 }: Props) => {
       <div
         className="grow shrink-0 flex ps-5 pe-3 scrollable-y-hover"
         style={{
-          ...(height > 0 && { height: `${height}px` }),
+          ...(height > 0 && { height: `${height}px` })
         }}
       >
         <SidebarMenu />

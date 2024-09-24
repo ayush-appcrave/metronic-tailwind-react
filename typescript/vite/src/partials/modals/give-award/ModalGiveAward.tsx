@@ -5,10 +5,10 @@ import { Tab, TabPanel, Tabs, TabsList } from '@/components/tabs';
 import { DropdownCrud2 } from '@/partials/dropdowns/general';
 import { useViewport } from '@/hooks';
 import {
-  ModalShareProfileViaLink, 
-  ModalShareProfileViaEmail, 
-  ModalShareProfileUsers, 
-  ModalShareProfileSettings, 
+  ModalShareProfileViaLink,
+  ModalShareProfileViaEmail,
+  ModalShareProfileUsers,
+  ModalShareProfileSettings
 } from '@/partials/modals/share-profile';
 
 interface ModalGiveAwardProps {
@@ -33,22 +33,20 @@ const ModalGiveAward = forwardRef<HTMLDivElement, ModalGiveAwardProps>(({ open, 
     <Modal open={open} onClose={onClose}>
       <ModalContent className="max-w-[600px] top-[15%]">
         <ModalHeader className="py-4 px-5">
-          <ModalTitle>
-            Give Award
-          </ModalTitle>
-          
+          <ModalTitle>Give Award</ModalTitle>
+
           <button className="btn btn-sm btn-icon btn-light btn-clear shrink-0" onClick={onClose}>
             <KeenIcon icon="black-left" />
           </button>
         </ModalHeader>
         <ModalBody className="grid gap-5 px-0 py-5">
-          <ModalShareProfileViaLink/>
+          <ModalShareProfileViaLink />
           <div className="border-b border-b-gray-200"></div>
-          <ModalShareProfileViaEmail/>
+          <ModalShareProfileViaEmail />
           <div className="border-b border-b-gray-200"></div>
-          <ModalShareProfileUsers/>
+          <ModalShareProfileUsers />
           <div className="border-b border-b-gray-200"></div>
-          <ModalShareProfileSettings/>
+          <ModalShareProfileSettings />
         </ModalBody>
       </ModalContent>
     </Modal>

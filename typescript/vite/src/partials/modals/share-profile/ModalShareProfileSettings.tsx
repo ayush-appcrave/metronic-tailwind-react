@@ -1,6 +1,6 @@
-import { KeenIcon } from '@/components'; 
-import React from 'react'; 
-import { Link } from 'react-router-dom'; 
+import { KeenIcon } from '@/components';
+import React from 'react';
+import { Link } from 'react-router-dom';
 
 const ModalShareProfileSettings = () => {
   return (
@@ -9,10 +9,10 @@ const ModalShareProfileSettings = () => {
 
       <div className="flex flex-center justify-between flex-wrap gap-2">
         <div className="flex flex-center gap-1.5">
-          <KeenIcon icon="user" className="text-gray-500" /> 
+          <KeenIcon icon="user" className="text-gray-500" />
 
           <div className="flex flex-center text-gray-700 font-medium text-xs">
-            Anyone at 
+            Anyone at
             <Link to="#" className="text-xs font-medium link mx-1">
               KeenThemes
             </Link>
@@ -24,8 +24,8 @@ const ModalShareProfileSettings = () => {
       </div>
 
       <div className="flex flex-center justify-between flex-wrap gap-2 mb-1">
-        <div className="flex flex-center gap-1.5"> 
-          <KeenIcon icon="icon" className="text-gray-500" /> 
+        <div className="flex flex-center gap-1.5">
+          <KeenIcon icon="icon" className="text-gray-500" />
 
           <div className="flex flex-center text-gray-700 font-medium text-xs">
             Anyone with link can edit
@@ -35,8 +35,8 @@ const ModalShareProfileSettings = () => {
         <button className="btn btn-sm btn-link">Set Password</button>
       </div>
 
-      <button className="btn btn-primary justify-center">Done</button> 
-    </div> 
+      <button className="btn btn-primary justify-center">Done</button>
+    </div>
   );
 };
 

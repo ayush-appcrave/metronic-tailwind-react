@@ -21,7 +21,7 @@ const MenuLabel = ({
         {children}
       </div>
     );
-  }   
+  }
 };
 
 export { MenuLabel };

@@ -17,7 +17,7 @@ import {
 const queryClient = new QueryClient();
 
 const ProvidersWrapper = ({ children }: PropsWithChildren) => {
-  return (    
+  return (
     <QueryClientProvider client={queryClient}>
       <SnackbarProvider>
         <AuthProvider>

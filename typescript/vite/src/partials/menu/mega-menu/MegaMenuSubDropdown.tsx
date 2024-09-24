@@ -16,7 +16,7 @@ import { ReactNode } from 'react';
 
 const MegaMenuSubDropdown = (items: MenuConfigType) => {
   const desktopMode = useResponsive('up', 'lg');
-  
+
   const buildItems = (items: MenuConfigType): ReactNode => {
     return items.map((item, index) => {
       if (item.separator) {
@@ -42,9 +42,7 @@ const MegaMenuSubDropdown = (items: MenuConfigType) => {
                 <KeenIcon icon="right" className="text-3xs" />
               </MenuArrow>
             </MenuLink>
-            <MenuSub className="menu-default lg:w-[220px]">
-              {buildItems(item.children)}
-            </MenuSub>
+            <MenuSub className="menu-default lg:w-[220px]">{buildItems(item.children)}</MenuSub>
           </MenuItem>
         );
       } else {

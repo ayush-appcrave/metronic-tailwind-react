@@ -67,7 +67,7 @@ const Sidebar = () => {
         onClose={handleMobileSidebarClose}
         ModalProps={{
           keepMounted: true
-        }}  
+        }}
       >
         {renderContent()}
       </Drawer>
