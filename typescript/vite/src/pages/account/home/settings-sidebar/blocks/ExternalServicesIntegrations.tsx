@@ -1,15 +1,14 @@
 import { KeenIcon } from '@/components';
 import { toAbsoluteUrl } from '@/utils/Assets';
 
-export interface IExternalServicesIntegrationsItem {
+interface IExternalServicesIntegrationsItem {
   logo: string;
   title: string;
   email: string;
   description: string;
   checkbox: boolean;
 }
-export interface IExternalServicesIntegrationsItems
-  extends Array<IExternalServicesIntegrationsItem> {}
+interface IExternalServicesIntegrationsItems extends Array<IExternalServicesIntegrationsItem> {}
 
 const ExternalServicesIntegrations = () => {
   const items: IExternalServicesIntegrationsItems = [
@@ -71,10 +70,10 @@ const ExternalServicesIntegrations = () => {
               <a href="#" className="text-2sm text-gray-700 hover:text-primary-active">
                 {item.email}
               </a>
-            </div> 
+            </div>
             <span className="text-2sm text-gray-700">{item.description}</span>
-          </div> 
-        </div>  
+          </div>
+        </div>
 
         <div className="flex items-center gap-2 lg:gap-5">
           {item.checkbox ? (
@@ -115,4 +114,8 @@ const ExternalServicesIntegrations = () => {
   );
 };
 
-export { ExternalServicesIntegrations };
+export {
+  ExternalServicesIntegrations,
+  type IExternalServicesIntegrationsItem,
+  type IExternalServicesIntegrationsItems
+};

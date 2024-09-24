@@ -1,2 +1,2 @@
-export * from './HistoryContent';
-export * from './HistoryPage';
+export * from './AccountHistoryContent';
+export * from './AccountHistoryPage';

@@ -1,14 +1,14 @@
 import { KeenIcon, Menu, MenuItem, MenuToggle } from '@/components';
 import { DropdownCardItem2 } from '@/partials/dropdowns/general';
 
-export interface IBillingInvoicingItem {
+interface IBillingInvoicingItem {
   number: string;
   date: string;
   ammount: string;
   label: string;
   color: string;
 }
-export interface IBillingInvoicingItems extends Array<IBillingInvoicingItem> {}
+interface IBillingInvoicingItems extends Array<IBillingInvoicingItem> {}
 
 const BillingInvoicing = () => {
   const tables: IBillingInvoicingItems = [
@@ -117,4 +117,4 @@ const BillingInvoicing = () => {
   );
 };
 
-export { BillingInvoicing };
+export { BillingInvoicing, type IBillingInvoicingItem, type IBillingInvoicingItems };

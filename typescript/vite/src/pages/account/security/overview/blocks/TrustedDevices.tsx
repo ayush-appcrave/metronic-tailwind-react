@@ -2,7 +2,7 @@ import { KeenIcon, Menu, MenuItem, MenuToggle } from '@/components';
 import { DropdownCard2 } from '@/partials/dropdowns/general';
 import { toAbsoluteUrl } from '@/utils';
 
-export interface ITrustedDevicesItem {
+interface ITrustedDevicesItem {
   logo: string;
   browser: string;
   location: string;
@@ -10,7 +10,7 @@ export interface ITrustedDevicesItem {
   device: string;
   datetime: string;
 }
-export interface ITrustedDevicesItems extends Array<ITrustedDevicesItem> {}
+interface ITrustedDevicesItems extends Array<ITrustedDevicesItem> {}
 
 const TrustedDevices = () => {
   const items: ITrustedDevicesItems = [
@@ -124,4 +124,4 @@ const TrustedDevices = () => {
   );
 };
 
-export { TrustedDevices };
+export { TrustedDevices, type ITrustedDevicesItem, type ITrustedDevicesItems };

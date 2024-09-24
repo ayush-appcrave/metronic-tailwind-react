@@ -1,12 +1,12 @@
 import { KeenIcon } from '@/components';
 import { toAbsoluteUrl } from '@/utils';
 
-export interface ILatestPaymentItem {
+interface ILatestPaymentItem {
   status: string;
   logo?: boolean;
   info: string;
 }
-export interface ILatestPaymentItems extends Array<ILatestPaymentItem> {}
+interface ILatestPaymentItems extends Array<ILatestPaymentItem> {}
 
 const LatestPayment = () => {
   const tables: ILatestPaymentItems = [
@@ -59,4 +59,4 @@ const LatestPayment = () => {
   );
 };
 
-export { LatestPayment };
+export { LatestPayment, type ILatestPaymentItem, type ILatestPaymentItems };

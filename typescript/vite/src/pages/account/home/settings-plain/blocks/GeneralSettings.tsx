@@ -1,6 +1,6 @@
 import { CrudAvatarUpload } from '@/partials/crud';
 
-export interface IGeneralSettingsProps {
+interface IGeneralSettingsProps {
   title: string;
 }
 
@@ -91,4 +91,4 @@ const GeneralSettings = ({ title }: IGeneralSettingsProps) => {
   );
 };
 
-export { GeneralSettings };
+export { GeneralSettings, type IGeneralSettingsProps };

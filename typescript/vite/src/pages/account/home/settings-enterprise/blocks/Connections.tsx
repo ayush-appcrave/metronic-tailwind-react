@@ -2,13 +2,13 @@ import { KeenIcon, Menu, MenuItem, MenuToggle } from '@/components';
 import { toAbsoluteUrl } from '@/utils/Assets';
 import { DropdownCard2, DropdownCardItem1 } from '@/partials/dropdowns/general';
 
-export interface IConnection {
+interface IConnection {
   avatar: string;
   name: string;
   connections: number | 'none';
   jointLinks: number | 'none';
 }
-export interface IConnections extends Array<IConnection> {}
+interface IConnections extends Array<IConnection> {}
 
 const Connections = () => {
   const tables: IConnections = [
@@ -170,4 +170,4 @@ const Connections = () => {
   );
 };
 
-export { Connections };
+export { Connections, type IConnection, type IConnections };

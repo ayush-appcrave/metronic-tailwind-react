@@ -1,7 +1,7 @@
 import { KeenIcon } from '@/components';
 import { toAbsoluteUrl } from '@/utils/Assets';
 
-export interface IBasicSettingsProps {
+interface IBasicSettingsProps {
   title: string;
 }
 
@@ -201,4 +201,4 @@ const BasicSettings = ({ title }: IBasicSettingsProps) => {
   );
 };
 
-export { BasicSettings };
+export { BasicSettings, type IBasicSettingsProps };

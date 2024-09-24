@@ -1,2 +1,2 @@
-export * from './AllowedIPAddressesContent';
-export * from './AllowedIPAddressesPage';
+export * from './AccountAllowedIPAddressesContent';
+export * from './AccountAllowedIPAddressesPage';

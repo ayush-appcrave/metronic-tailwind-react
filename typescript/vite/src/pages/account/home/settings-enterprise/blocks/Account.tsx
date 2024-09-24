@@ -3,7 +3,7 @@ import { toAbsoluteUrl } from '@/utils/Assets';
 
 import { CrudAvatarUpload } from '@/partials/crud';
 
-export interface IAccountProps {
+interface IAccountProps {
   title: string;
 }
 
@@ -228,4 +228,4 @@ const Account = ({ title }: IAccountProps) => {
   );
 };
 
-export { Account };
+export { Account, type IAccountProps };

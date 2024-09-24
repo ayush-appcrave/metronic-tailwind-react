@@ -1,11 +1,11 @@
 import { CommonAvatars, IAvatarsItems } from '@/partials/common';
 import { toAbsoluteUrl } from '@/utils';
 
-export interface ICompanyProfileItem {
+interface ICompanyProfileItem {
   total: string;
   description: string;
 }
-export interface ICompanyProfileItems extends Array<ICompanyProfileItem> {}
+interface ICompanyProfileItems extends Array<ICompanyProfileItem> {}
 
 const CompanyProfile = () => {
   const statistics: ICompanyProfileItems = [
@@ -118,4 +118,4 @@ const CompanyProfile = () => {
   );
 };
 
-export { CompanyProfile };
+export { CompanyProfile, type ICompanyProfileItem, type ICompanyProfileItems };

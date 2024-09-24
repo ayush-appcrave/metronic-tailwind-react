@@ -1,13 +1,13 @@
 import { CardIntegration } from '@/partials/cards';
 
-export interface IIntegrationsItem {
+interface IIntegrationsItem {
   logo: string;
   path: string;
   name: string;
   description: string;
   actions: React.ReactNode;
 }
-export interface IIntegrationsItems extends Array<IIntegrationsItem> {}
+interface IIntegrationsItems extends Array<IIntegrationsItem> {}
 
 const Integrations = () => {
   const items: IIntegrationsItems = [
@@ -125,4 +125,4 @@ const Integrations = () => {
   );
 };
 
-export { Integrations };
+export { Integrations, type IIntegrationsItem, type IIntegrationsItems };

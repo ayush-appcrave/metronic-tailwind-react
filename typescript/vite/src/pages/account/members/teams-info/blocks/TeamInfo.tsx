@@ -1,11 +1,10 @@
 import { KeenIcon } from '@/components';
 import { CrudAvatarUpload } from '@/partials/crud';
 
-export interface ITeamInfoItem {
+interface ITeamInfoItem {
   label: string;
 }
-
-export interface ITeamInfoItems extends Array<ITeamInfoItem> {}
+interface ITeamInfoItems extends Array<ITeamInfoItem> {}
 
 const TeamInfo = () => {
   const skills: ITeamInfoItems = [
@@ -103,4 +102,4 @@ const TeamInfo = () => {
   );
 };
 
-export { TeamInfo };
+export { TeamInfo, type ITeamInfoItem, type ITeamInfoItems };

@@ -2,13 +2,13 @@ import { KeenIcon, Menu, MenuItem, MenuToggle } from '@/components';
 import { DropdownCard2 } from '@/partials/dropdowns/general';
 import { CommonHexagonBadge } from '@/partials/common';
 
-export interface IAuthTwoFactorItem {
+interface IAuthTwoFactorItem {
   icon: string;
   title: string;
   description: string;
   checkbox: boolean;
 }
-export interface IAuthTwoFactorItems extends Array<IAuthTwoFactorItem> {}
+interface IAuthTwoFactorItems extends Array<IAuthTwoFactorItem> {}
 
 const AuthTwoFactor = () => {
   const items: IAuthTwoFactorItems = [
@@ -97,4 +97,4 @@ const AuthTwoFactor = () => {
   );
 };
 
-export { AuthTwoFactor };
+export { AuthTwoFactor, type IAuthTwoFactorItem, type IAuthTwoFactorItems };

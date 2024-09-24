@@ -2,13 +2,12 @@ import { KeenIcon } from '@/components';
 import { toAbsoluteUrl } from '@/utils/Assets';
 import { CommonHexagonBadge } from '@/partials/common';
 
-export interface IAdvancedSettingsNotificationsItem {
+interface IAdvancedSettingsNotificationsItem {
   title: string;
   description: string;
   badge: React.ReactNode;
 }
-export interface IAdvancedSettingsNotificationsItems
-  extends Array<IAdvancedSettingsNotificationsItem> {}
+interface IAdvancedSettingsNotificationsItems extends Array<IAdvancedSettingsNotificationsItem> {}
 
 const AdvancedSettingsNotifications = () => {
   const items: IAdvancedSettingsNotificationsItems = [
@@ -46,8 +45,8 @@ const AdvancedSettingsNotifications = () => {
               {item.title}
             </a>
             <span className="text-2sm text-gray-700">{item.description}</span>
-          </div> 
-        </div>  
+          </div>
+        </div>
 
         <label className="switch switch-sm">
           <input type="checkbox" defaultChecked value="1" readOnly />
@@ -66,7 +65,7 @@ const AdvancedSettingsNotifications = () => {
           {items.map((item, index) => {
             return renderItem(item, index);
           })}
-        </div>   
+        </div>
 
         <div className="flex flex-col gap-3.5 mb-7">
           <span className="text-md font-medium text-gray-900 pb-0.5">Desktop notifications</span>
@@ -80,7 +79,7 @@ const AdvancedSettingsNotifications = () => {
                 value="1"
                 readOnly
               />
-              <span className="radio-label radio-label-sm">All new messages (Recommended)</span>  
+              <span className="radio-label radio-label-sm">All new messages (Recommended)</span>
             </label>
             <label className="radio-group">
               <input
@@ -114,13 +113,13 @@ const AdvancedSettingsNotifications = () => {
               <span className="radio-label radio-label-sm">All new messages and statuses</span>
             </label>
             <label className="radio-group">
-              <input className="radio" name="email_notification" type="radio" value="2" readOnly/>
+              <input className="radio" name="email_notification" type="radio" value="2" readOnly />
               <span className="radio-label radio-label-sm text-gray-800 font-medium">
                 AUnread messages and statuses
               </span>
             </label>
             <label className="radio-group">
-              <input className="radio" name="email_notification" type="radio" value="3" readOnly/>
+              <input className="radio" name="email_notification" type="radio" value="3" readOnly />
               <span className="radio-label radio-label-sm">Disabled</span>
             </label>
           </div>
@@ -145,4 +144,8 @@ const AdvancedSettingsNotifications = () => {
   );
 };
 
-export { AdvancedSettingsNotifications };
+export {
+  AdvancedSettingsNotifications,
+  type IAdvancedSettingsNotificationsItem,
+  type IAdvancedSettingsNotificationsItems
+};

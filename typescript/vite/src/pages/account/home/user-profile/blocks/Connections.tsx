@@ -3,16 +3,16 @@ import { DropdownCrud1, DropdownCrudItem1 } from '@/partials/dropdowns/general';
 import { toAbsoluteUrl } from '@/utils/Assets';
 import { Link } from 'react-router-dom';
 
-export interface IConnectionsItem {
+interface IConnectionsItem {
   avatar: string;
   name: string;
   connections: number;
   jointLinks: number | string;
   connected: boolean;
 }
-export interface IConnectionsItems extends Array<IConnectionsItem> {}
+interface IConnectionsItems extends Array<IConnectionsItem> {}
 
-export interface IConnectionsProps {
+interface IConnectionsProps {
   url: string;
 }
 
@@ -183,4 +183,4 @@ const Connections = ({ url }: IConnectionsProps) => {
   );
 };
 
-export { Connections };
+export { Connections, type IConnectionsItem, type IConnectionsItems, type IConnectionsProps };

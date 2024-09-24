@@ -1,15 +1,15 @@
 import { KeenIcon } from '@/components';
 import { toAbsoluteUrl } from '@/utils/Assets';
 
-export interface IAdvancedSettingsAppearanceItem {
+interface IAdvancedSettingsAppearanceItem {
   image: string;
   logo?: string;
   label: string;
   checked: boolean;
 }
-export interface IAdvancedSettingsAppearanceItems extends Array<IAdvancedSettingsAppearanceItem> {}
+interface IAdvancedSettingsAppearanceItems extends Array<IAdvancedSettingsAppearanceItem> {}
 
-export interface IAdvancedSettingsAppearanceProps {
+interface IAdvancedSettingsAppearanceProps {
   title: string;
 }
 
@@ -107,4 +107,9 @@ const AdvancedSettingsAppearance = ({ title = 'Appearance' }: IAdvancedSettingsA
   );
 };
 
-export { AdvancedSettingsAppearance };
+export {
+  AdvancedSettingsAppearance,
+  type IAdvancedSettingsAppearanceItem,
+  type IAdvancedSettingsAppearanceItems,
+  type IAdvancedSettingsAppearanceProps
+};

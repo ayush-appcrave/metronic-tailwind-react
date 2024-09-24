@@ -1,3 +1,3 @@
+export * from './AccountCompanyProfileContent';
+export * from './AccountCompanyProfilePage';
 export * from './blocks';
-export * from './CompanyProfileContent';
-export * from './CompanyProfilePage';

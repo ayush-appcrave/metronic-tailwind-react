@@ -1,7 +1,7 @@
 import { KeenIcon } from '@/components';
 import { toAbsoluteUrl } from '@/utils/Assets';
 
-const OverviewAuthentification = () => {
+const Authentification = () => {
   return (
     <div className="card min-w-full">
       <div className="card-header">
@@ -84,4 +84,4 @@ const OverviewAuthentification = () => {
   );
 };
 
-export { OverviewAuthentification };
+export { Authentification };

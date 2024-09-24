@@ -2,13 +2,13 @@ import { KeenIcon, Menu, MenuItem, MenuToggle } from '@/components';
 import { toAbsoluteUrl } from '@/utils/Assets';
 import { DropdownCard1 } from '@/partials/dropdowns/general';
 
-export interface IYourCurrentPlanItem {
+interface IYourCurrentPlanItem {
   title: string;
   summary: string;
   link: string;
   path: string;
 }
-export interface IYourCurrentPlanItems extends Array<IYourCurrentPlanItem> {}
+interface IYourCurrentPlanItems extends Array<IYourCurrentPlanItem> {}
 
 const YourCurrentPlan = () => {
   const items: IYourCurrentPlanItems = [
@@ -118,4 +118,4 @@ const YourCurrentPlan = () => {
   );
 };
 
-export { YourCurrentPlan };
+export { YourCurrentPlan, type IYourCurrentPlanItem, type IYourCurrentPlanItems };

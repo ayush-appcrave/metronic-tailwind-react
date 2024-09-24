@@ -1,13 +1,13 @@
 import { CommonHexagonBadge } from '@/partials/common';
 import { KeenIcon } from '@/components';
 
-export interface IPrivacySettingsItem {
+interface IPrivacySettingsItem {
   icon: string;
   title: React.ReactNode;
   description: string;
   actions: React.ReactNode;
 }
-export interface IPrivacySettingsItems extends Array<IPrivacySettingsItem> {}
+interface IPrivacySettingsItems extends Array<IPrivacySettingsItem> {}
 
 const PrivacySettings = () => {
   const items: IPrivacySettingsItems = [
@@ -141,4 +141,4 @@ const PrivacySettings = () => {
   );
 };
 
-export { PrivacySettings };
+export { PrivacySettings, type IPrivacySettingsItem, type IPrivacySettingsItems };

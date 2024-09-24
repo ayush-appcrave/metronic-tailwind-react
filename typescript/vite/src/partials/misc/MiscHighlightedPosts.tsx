@@ -3,15 +3,15 @@ import { Link } from 'react-router-dom';
 import { CommonHexagonBadge } from '../common';
 import React from 'react';
 
-export interface IHighlightedPostsItem {
+interface IHighlightedPostsItem {
   icon: string;
   title: string;
   summary: string;
   path: string;
 }
-export interface IHighlightedPostsItems extends Array<IHighlightedPostsItem> {}
+interface IHighlightedPostsItems extends Array<IHighlightedPostsItem> {}
 
-export interface IHighlightedPostsProps {
+interface IHighlightedPostsProps {
   posts: IHighlightedPostsItem[];
 }
 
@@ -59,4 +59,9 @@ const MiscHighlightedPosts = ({ posts }: IHighlightedPostsProps) => {
   );
 };
 
-export { MiscHighlightedPosts };
+export {
+  MiscHighlightedPosts,
+  type IHighlightedPostsItem,
+  type IHighlightedPostsItems,
+  type IHighlightedPostsProps
+};

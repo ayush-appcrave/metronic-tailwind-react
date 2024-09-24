@@ -1,13 +1,13 @@
 import { KeenIcon } from '@/components';
 import { CommonHexagonBadge } from '@/partials/common';
 
-export interface IGeneralSettingsItem {
+interface IGeneralSettingsItem {
   icon: string;
   title: React.ReactNode;
   description: string;
   actions: React.ReactNode;
 }
-export interface IGeneralSettingsItems extends Array<IGeneralSettingsItem> {}
+interface IGeneralSettingsItems extends Array<IGeneralSettingsItem> {}
 
 const GeneralSettings = () => {
   const items: IGeneralSettingsItems = [
@@ -141,4 +141,4 @@ const GeneralSettings = () => {
   );
 };
 
-export { GeneralSettings };
+export { GeneralSettings, type IGeneralSettingsItem, type IGeneralSettingsItems };

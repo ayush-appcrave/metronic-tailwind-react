@@ -1,3 +1,4 @@
-export * from './ApiIntegrationsBlock';
-export * from './AccessibilityBlock';
-export * from './DisableDefaultBrandBlock';
+export * from './ApiIntegrations';
+export * from './Accessibility';
+export * from './DisableDefaultBrand';
+export * from './Webhooks';

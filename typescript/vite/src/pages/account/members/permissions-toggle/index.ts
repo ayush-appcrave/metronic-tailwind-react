@@ -1,3 +1,3 @@
-export * from './_PermissionsToggleContent';
-export * from './_PermissionsToggle';
-export * from './types';
+export * from './AccountPermissionsToggleContent';
+export * from './AccountPermissionsTogglePage';
+export * from './blocks';

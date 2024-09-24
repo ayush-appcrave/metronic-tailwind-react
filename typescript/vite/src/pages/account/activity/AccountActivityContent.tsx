@@ -1,11 +1,12 @@
-import { Activity } from '@/pages/public-profile/activity';
-import { MiscEngage } from '@/partials/misc';
 import { toAbsoluteUrl } from '@/utils';
+import { MiscEngage } from '@/partials/misc';
+
+import { ProfileActivityContent } from '@/pages/public-profile/activity';
 
 const ActivityContent = () => {
   return (
     <div className="grid gap-5 lg:gap-7.5">
-      <Activity />
+      <ProfileActivityContent />
 
       <div className="grid lg:grid-cols-2 gap-5 lg:gap-7.5">
         <MiscEngage

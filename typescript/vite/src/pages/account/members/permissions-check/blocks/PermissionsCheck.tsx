@@ -1,11 +1,11 @@
-export interface IPermissionsCheckItem {
+interface IPermissionsCheckItem {
   module: string;
   view: boolean;
   modify: boolean;
   publish: boolean;
   configure: boolean;
 }
-export interface IPermissionsCheckItems extends Array<IPermissionsCheckItem> {}
+interface IPermissionsCheckItems extends Array<IPermissionsCheckItem> {}
 
 const PermissionsCheck = () => {
   const data: IPermissionsCheckItems = [
@@ -164,4 +164,4 @@ const PermissionsCheck = () => {
   );
 };
 
-export { PermissionsCheck };
+export { PermissionsCheck, type IPermissionsCheckItem, type IPermissionsCheckItems };

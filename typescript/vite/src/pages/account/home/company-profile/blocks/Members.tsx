@@ -2,11 +2,7 @@ import { KeenIcon, Menu, MenuItem, MenuToggle } from '@/components';
 import { toAbsoluteUrl } from '@/utils/Assets';
 import { DropdownCrud1, DropdownCrudItem1 } from '@/partials/dropdowns/general';
 
-export interface IMembersProps {
-  url: string;
-}
-
-export interface IMembersItem {
+interface IMembersItem {
   avatar: string;
   name: string;
   connections: number;
@@ -14,8 +10,11 @@ export interface IMembersItem {
   joined: string;
   disabled: boolean;
 }
-export interface IMembersItems extends Array<IMembersItem> {}
+interface IMembersItems extends Array<IMembersItem> {}
 
+interface IMembersProps {
+  url: string;
+}
 
 const Members = ({ url }: IMembersProps) => {
   const tables: IMembersItems = [
@@ -195,4 +194,4 @@ const Members = ({ url }: IMembersProps) => {
   );
 };
 
-export { Members };
+export { Members, type IMembersItem, type IMembersItems, type IMembersProps };

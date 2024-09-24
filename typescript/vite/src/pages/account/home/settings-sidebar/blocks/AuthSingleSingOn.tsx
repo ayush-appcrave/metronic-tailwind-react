@@ -1,11 +1,12 @@
 import { toAbsoluteUrl } from '@/utils/Assets';
-export interface IAuthSingleSingOnItem {
+
+interface IAuthSingleSingOnItem {
   logo: string;
   title: string;
   size: string;
   checked?: boolean;
 }
-export interface IAuthSingleSingOnItems extends Array<IAuthSingleSingOnItem> {}
+interface IAuthSingleSingOnItems extends Array<IAuthSingleSingOnItem> {}
 
 const AuthSingleSingOn = () => {
   const items: IAuthSingleSingOnItems = [
@@ -160,4 +161,4 @@ const AuthSingleSingOn = () => {
   );
 };
 
-export { AuthSingleSingOn };
+export { AuthSingleSingOn, type IAuthSingleSingOnItem, type IAuthSingleSingOnItems };

@@ -1,3 +1,3 @@
+export * from './AccountPlansContent';
+export * from './AccountPlansPage';
 export * from './blocks';
-export * from './PlansContent';
-export * from './PlansPage';

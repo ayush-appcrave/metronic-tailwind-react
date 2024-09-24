@@ -1,7 +1,7 @@
 import { KeenIcon } from '@/components';
 import { toAbsoluteUrl } from '@/utils/Assets';
 
-const CompanyProfileAccountSettings = () => {
+const AccountSettings = () => {
   return (
     <div className="card min-w-full">
       <div className="card-header">
@@ -181,4 +181,4 @@ const CompanyProfileAccountSettings = () => {
   );
 };
 
-export { CompanyProfileAccountSettings };
+export { AccountSettings };

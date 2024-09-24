@@ -1,2 +1,2 @@
-export * from './IntegrationsBlock';
-export * from './WebhooksBlock';
+export * from './ApiIntegrations';
+export * from './Webhooks';
