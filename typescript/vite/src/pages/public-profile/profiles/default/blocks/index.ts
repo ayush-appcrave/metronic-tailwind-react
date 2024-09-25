@@ -6,6 +6,7 @@ export * from './Contributors';
 export * from './MediaUploads';
 export * from './Projects';
 export * from './RecentUploads';
+export * from './SalesOverview';
 export * from './Tags';
 export * from './UnlockPartnerships';
 export * from './WorkExperience';

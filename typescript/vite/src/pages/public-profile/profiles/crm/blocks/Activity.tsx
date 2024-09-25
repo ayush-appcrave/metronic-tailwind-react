@@ -17,12 +17,11 @@ const Activity = () => {
         <div className="flex items-center gap-2">
           <label className="switch">
             <span className="switch-label">
-              Auto refresh:&nbsp;
+              Auto refresh:
               <span className="switch-on:hidden">Off</span>
               <span className="hidden switch-on:inline">On</span>
             </span>
-
-            <input className="order-2" type="checkbox" value="1" name="check" defaultChecked />
+            <input type="checkbox" value="1" name="check" defaultChecked readOnly />
           </label>
         </div>
       </div>

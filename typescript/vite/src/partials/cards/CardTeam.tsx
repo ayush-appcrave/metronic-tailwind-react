@@ -23,17 +23,17 @@ const CardTeam = ({ icon, title, description, labels, rating, team, connected }:
           <div className="grid place-items-center">
             <a
               href="#"
-              className="text-base font-semibold text-gray-900 hover:text-primary-active mb-px"
+              className="text-base font-medium text-gray-900 hover:text-primary-active mb-px"
             >
               {title}
             </a>
-            <span className="text-2sm font-medium text-gray-600">{description}</span>
+            <span className="text-2sm text-gray-700 text-center">{description}</span>
           </div>
         </div>
 
         <div className="grid">
           <div className="flex items-center justify-between flex-wrap mb-3.5 gap-2">
-            <span className="text-2xs font-medium text-gray-500 uppercase">skills</span>
+            <span className="text-2xs text-gray-600 uppercase">skills</span>
 
             <div className="flex flex-wrap gap-1.5">
               {labels.map((label, index) => {
@@ -45,7 +45,7 @@ const CardTeam = ({ icon, title, description, labels, rating, team, connected }:
           <div className="border-t border-gray-300 border-dashed"></div>
 
           <div className="flex items-center justify-between flex-wrap my-2.5 gap-2">
-            <span className="text-2xs font-medium text-gray-500 uppercase">rating</span>
+            <span className="text-2xs text-gray-600 uppercase">rating</span>
 
             <CommonRating rating={rating.value} round={rating.round} />
           </div>
@@ -53,7 +53,7 @@ const CardTeam = ({ icon, title, description, labels, rating, team, connected }:
           <div className="border-t border-gray-300 border-dashed mb-3.5"></div>
 
           <div className="flex items-center justify-between flex-wrap gap-2">
-            <span className="text-2xs font-medium text-gray-500 uppercase">memebers</span>
+            <span className="text-2xs text-gray-600 uppercase">memebers</span>
 
             <CommonAvatars
               group={team.group}

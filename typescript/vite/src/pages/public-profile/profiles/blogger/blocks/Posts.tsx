@@ -60,11 +60,9 @@ const Posts = () => {
       <div className="card-header">
         <h3 className="card-title">Jenny’s Posts</h3>
 
-        <div className="justify-center">
-          <Link to="/public-profile/profiles/feeds" className="btn btn-link">
-            View All
-          </Link>
-        </div>
+        <Link to="/public-profile/profiles/feeds" className="btn btn-link">
+          View All
+        </Link>
       </div>
       <div className="card-body p-5 lg:p-7.5 lg:pb-7">
         <div className="flex flex-no-wrap scrollable-x gap-5">

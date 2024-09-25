@@ -48,15 +48,13 @@ const WorkExperience = () => {
               {item.title && (
                 <a
                   href="#"
-                  className="text-sm font-semibold text-primary leading-none hover:text-primary-active"
+                  className="text-sm font-medium text-primary leading-none hover:text-primary-active"
                 >
                   {item.title}
                 </a>
               )}
-              {item.desc && <span className="text-sm font-medium text-gray-800">{item.desc}</span>}
-              {item.date && (
-                <span className="text-xs font-normal text-gray-500 leading-none">{item.date}</span>
-              )}
+              {item.desc && <span className="text-sm font-medium text-gray-900">{item.desc}</span>}
+              {item.date && <span className="text-xs text-gray-700 leading-none">{item.date}</span>}
             </div>
           </div>
         )}

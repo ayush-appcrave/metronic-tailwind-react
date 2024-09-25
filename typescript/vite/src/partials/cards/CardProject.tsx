@@ -23,20 +23,23 @@ const CardProject = ({
       </div>
 
       <div className="flex flex-col mb-3 lg:mb-6">
-        <a href="#" className="text-lg font-semibold text-gray-900 hover:text-primary-active mb-px">
+        <a
+          href="#"
+          className="text-lg font-media/brand text-gray-900 hover:text-primary-active mb-px"
+        >
           {name}
         </a>
-        <span className="text-sm font-medium text-gray-600">{description}</span>
+        <span className="text-sm text-gray-700">{description}</span>
       </div>
 
       <div className="flex items-center gap-5 mb-3.5 lg:mb-7">
-        <span className="text-sm font-normal text-gray-500">
+        <span className="text-sm text-gray-600">
           Start:&nbsp;
-          <span className="text-sm font-semibold text-gray-700">{startDate}</span>
+          <span className="text-sm font-medium text-gray-800">{startDate}</span>
         </span>
-        <span className="text-sm font-normal text-gray-500">
+        <span className="text-sm text-gray-600">
           End:&nbsp;
-          <span className="text-sm font-semibold text-gray-700">{endDate}</span>
+          <span className="text-sm font-medium text-gray-800">{endDate}</span>
         </span>
       </div>
 

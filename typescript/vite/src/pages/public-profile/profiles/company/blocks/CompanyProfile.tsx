@@ -16,7 +16,7 @@ interface IProfileProduct {
 }
 interface IProfileProducts extends Array<IProfileProduct> {}
 
-const Profile = () => {
+const CompanyProfile = () => {
   const rows: IProfileRows = [
     {
       icon: 'dribbble',
@@ -72,7 +72,7 @@ const Profile = () => {
             {row.text}
           </a>
         ) : (
-          <span className="text-sm font-medium text-gray-800">{row.text}</span>
+          <span className="text-sm text-gray-900">{row.text}</span>
         )}
       </div>
     );
@@ -148,7 +148,7 @@ const Profile = () => {
 };
 
 export {
-  Profile,
+  CompanyProfile,
   type IProfileRow,
   type IProfileRows,
   type IProfileProduct,

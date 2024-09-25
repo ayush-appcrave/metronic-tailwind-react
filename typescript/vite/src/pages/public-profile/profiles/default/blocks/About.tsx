@@ -21,9 +21,9 @@ const About = () => {
   const renderTable = (table: IAboutTable, index: number) => {
     return (
       <tr key={index}>
-        <td className="text-sm font-medium text-gray-500 pb-3.5 pe-3">{table.status}</td>
+        <td className="text-sm text-gray-600 pb-3.5 pe-3">{table.status}</td>
         <td
-          className="text-sm font-medium text-gray-800 pb-3.5"
+          className="text-sm text-gray-900 pb-3.5"
           dangerouslySetInnerHTML={{ __html: table.info }}
         />
       </tr>

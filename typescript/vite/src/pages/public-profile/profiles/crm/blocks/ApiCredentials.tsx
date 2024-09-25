@@ -8,28 +8,22 @@ const ApiCredentials = () => {
         <h3 className="card-title">API Credentials</h3>
       </div>
       <div className="card-body">
-        <div className="text-sm font-medium text-gray-700 leading-5.5 pb-5">
+        <div className="text-sm text-gray-800 leading-5.5 pb-5">
           The granted credentials serve a twofold function, enabling
-          <a href="#" className="text-primary hover:text-primary-active">
+          <a href="#" className="link">
             API authentication&nbsp;
           </a>
           and governing JavaScript customization
         </div>
 
         <div className="flex flex-col flex-wrap gap-4">
-          <div className="relative grow">
-            <input
-              type="text"
-              className="input w-full input-sm"
-              placeholder="hwewe4654fdd5sdfh"
-              value=""
-              readOnly
-            />
-            <button className="btn btn-clear btn-icon btn-sm text-gray-600 absolute right-0 top-2/4 -translate-y-2/4 me-1.5">
+          <div className="input input-sm">
+            <input type="text" value="hwewe4654fdd5sdfh" readOnly />
+            <button className="btn btn-icon btn-sm">
               <KeenIcon icon="copy" />
             </button>
           </div>
-          <div className="">
+          <div>
             <button className="btn btn-primary btn-sm">
               <KeenIcon icon="key" />
               Access Tokens

@@ -11,7 +11,7 @@ const Collaborate = ({ title }: ICollaborateProps) => {
         <h3 className="card-title">{title}</h3>
       </div>
       <div className="card-body">
-        <p className="text-sm font-medium text-gray-700 leading-5.5">
+        <p className="text-sm text-gray-800 leading-5.5">
           Experienced UI/UX designer seeking new opportunities.
         </p>
       </div>

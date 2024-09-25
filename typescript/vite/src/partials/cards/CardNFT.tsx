@@ -21,7 +21,7 @@ const CardNFT = ({ image, id, title, info, date }: INFTProps) => {
           </a>
           <div className="text-2sm text-gray-700">
             Token ID:
-            <span className="text-2sm font-medium text-gray-800">{id}</span>
+            <span className="text-2sm font-medium text-gray-800"> {id}</span>
           </div>
         </div>
         <div className="grid grid-cols-2 items-center">

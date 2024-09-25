@@ -9,7 +9,7 @@ import {
   ActivitiesUpcomingContent
 } from '@/partials/activities/items';
 
-const Activities = () => {
+const Activity = () => {
   return (
     <div className="card">
       <div className="card-header">
@@ -17,12 +17,12 @@ const Activities = () => {
 
         <div className="flex items-center gap-2">
           <label className="switch">
-            <input className="order-2" type="checkbox" value="1" name="check" defaultChecked />
-            <span className="switch-label order-1">
+            <span className="switch-label">
               Auto refresh:&nbsp;
               <span className="switch-on:hidden">Off</span>
               <span className="hidden switch-on:inline">On</span>
             </span>
+            <input type="checkbox" value="1" name="check" defaultChecked readOnly />
           </label>
         </div>
       </div>
@@ -49,4 +49,4 @@ const Activities = () => {
   );
 };
 
-export { Activities };
+export { Activity };

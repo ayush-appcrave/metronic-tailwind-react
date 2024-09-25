@@ -46,10 +46,10 @@ const RecentUploads = ({ title }: IRecentUploadsProps) => {
           <img src={toAbsoluteUrl(`/media/file-types/${item.image}`)} alt="" />
 
           <div className="flex flex-col">
-            <span className="text-sm font-semibold text-gray-900 cursor-pointer hover:text-primary mb-px">
+            <span className="text-sm font-medium text-gray-900 cursor-pointer hover:text-primary mb-px">
               {item.desc}
             </span>
-            <span className="text-xs font-normal text-gray-600">{item.date}</span>
+            <span className="text-xs text-gray-700">{item.date}</span>
           </div>
         </div>
 

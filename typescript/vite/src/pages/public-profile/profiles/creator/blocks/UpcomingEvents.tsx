@@ -50,7 +50,7 @@ const UpcomingEvents = () => {
                 <span className="text-2sm text-brand fw-medium p-2">{item.month}</span>
               </div>
               <div className="flex items-center justify-center size-12">
-                <span className="fw-semibold text-gray-800 text-1.5xl tracking-tight">
+                <span className="font-medium text-gray-800 text-1.5xl tracking-tight">
                   {item.date}
                 </span>
               </div>
@@ -72,11 +72,11 @@ const UpcomingEvents = () => {
             </a>
             <a
               href="#"
-              className="text-base font-semibold hover:text-primary text-gray-900 leading-4"
+              className="text-base font-medium hover:text-primary text-gray-900 leading-4"
             >
               {item.title}
             </a>
-            <p className="text-sm font-medium text-gray-700 leading-[22px]">{item.desc}</p>
+            <p className="text-sm text-gray-800 leading-[22px]">{item.desc}</p>
           </div>
         </div>
 

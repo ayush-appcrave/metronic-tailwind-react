@@ -22,11 +22,11 @@ const CardTeamRow = ({ icon, title, description, labels, rating, team, connected
           <div className="grid grid-col gap-1">
             <a
               href="#"
-              className="text-base font-semibold text-gray-900 hover:text-primary-active mb-px"
+              className="text-base font-medium text-gray-900 hover:text-primary-active mb-px"
             >
               {title}
             </a>
-            <span className="text-2sm font-normal text-gray-600">{description}</span>
+            <span className="text-2sm text-gray-700">{description}</span>
           </div>
         </div>
 
@@ -41,12 +41,12 @@ const CardTeamRow = ({ icon, title, description, labels, rating, team, connected
           </div>
 
           <div className="grid justify-end gap-6 lg:text-right">
-            <div className="text-2xs font-normal text-gray-500 uppercase">rating</div>
+            <div className="text-2xs text-gray-600 uppercase">rating</div>
             <CommonRating rating={rating.value} round={rating.round} />
           </div>
 
           <div className="grid justify-end gap-3.5 lg:text-right lg:min-w-24 shrink-0 max-w-auto">
-            <span className="text-2xs font-normal text-gray-500 uppercase">memebers</span>
+            <span className="text-2xs text-gray-600 uppercase">memebers</span>
             <CommonAvatars
               group={team.group}
               more={team.more}

@@ -22,8 +22,8 @@ const GeneralInfo = () => {
   const renderItems = (item: IGeneralInfoItem, index: number) => {
     return (
       <tr key={index}>
-        <td className="text-sm font-medium text-gray-500 pb-3 pe-4 lg:pe-8">{item.label}</td>
-        <td className="text-sm font-medium text-gray-800 pb-3">
+        <td className="text-sm text-gray-600 pb-3 pe-4 lg:pe-8">{item.label}</td>
+        <td className="text-sm text-gray-900 pb-3">
           {item.type === 1 ? (
             <span>{item.info}</span>
           ) : item.type === 2 ? (

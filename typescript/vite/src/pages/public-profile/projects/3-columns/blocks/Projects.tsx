@@ -103,7 +103,7 @@ const Projects = () => {
     {
       logo: 'quickbooks.svg',
       name: 'Horizon Quest',
-      description: 'collaboration',
+      description: 'Team communication and collaboration',
       startDate: 'Mar 03',
       endDate: 'Dec 11',
       status: {
