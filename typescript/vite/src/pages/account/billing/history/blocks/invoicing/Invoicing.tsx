@@ -28,7 +28,6 @@ const Invoicing = () => {
         cell: (info) => {                    
           return (
             <div className={`badge badge-sm badge-outline ${info.row.original.color}`}>
-              {info.row.original.label}
             </div>
           );
         },
