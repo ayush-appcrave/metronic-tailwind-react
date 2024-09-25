@@ -11,11 +11,7 @@ interface IContributorsItem {
 }
 interface IContributorsItems extends Array<IContributorsItem> {}
 
-interface IContributorsProps {
-  title: string;
-}
-
-const Contributors = ({ title }: IContributorsProps) => {
+const Contributors = () => {
   const items: IContributorsItems = [
     {
       avatar: '300-3.png',
@@ -60,7 +56,7 @@ const Contributors = ({ title }: IContributorsProps) => {
             >
               {item.name}
             </a>
-            <span className="text-xs font-medium text-gray-600">
+            <span className="text-xs font-semibold text-gray-600">
               {item.connections} contributors
             </span>
           </div>
@@ -95,7 +91,7 @@ const Contributors = ({ title }: IContributorsProps) => {
   return (
     <div className="card">
       <div className="card-header gap-2">
-        <h3 className="card-title">{title}</h3>
+        <h3 className="card-title">Contributors</h3>
 
         <Menu className="items-stretch">
           <MenuItem
@@ -138,4 +134,4 @@ const Contributors = ({ title }: IContributorsProps) => {
   );
 };
 
-export { Contributors, type IContributorsItem, type IContributorsItems, type IContributorsProps };
+export { Contributors, type IContributorsItem, type IContributorsItems };

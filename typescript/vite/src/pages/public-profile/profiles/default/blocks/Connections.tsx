@@ -56,13 +56,11 @@ const Connections = ({ title }: IConnectionsProps) => {
           <div className="flex flex-col">
             <a
               href="#"
-              className="text-sm font-semibold text-gray-900 hover:text-primary-active mb-px"
+              className="text-sm font-medium text-gray-900 hover:text-primary-active mb-px"
             >
               {item.name}
             </a>
-            <span className="text-xs font-medium text-gray-600">
-              {item.connections} connections
-            </span>
+            <span className="text-xs text-gray-700">{item.connections} connections</span>
           </div>
         </div>
 

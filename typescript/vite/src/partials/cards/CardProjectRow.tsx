@@ -17,11 +17,11 @@ const CardProjectRow = ({ logo, name, description, status, progress, team }: IPr
           <div className="flex flex-col">
             <a
               href="#"
-              className="text-lg font-semibold text-gray-800 hover:text-primary-active mb-px"
+              className="text-lg font-media/brand text-gray-900 hover:text-primary-active mb-px"
             >
               {name}
             </a>
-            <span className="text-sm font-normal text-gray-600">{description}</span>
+            <span className="text-sm text-gray-700">{description}</span>
           </div>
         </div>
 
@@ -35,7 +35,9 @@ const CardProjectRow = ({ logo, name, description, status, progress, team }: IPr
           </div>
 
           <div className="flex items-center gap-5 lg:gap-14">
-            <CommonAvatars group={team.group} size={team.size} more={team.more} />
+            <div className="flex justify-end w-24">
+              <CommonAvatars group={team.group} size={team.size} more={team.more} />
+            </div>
 
             <Menu className="items-stretch">
               <MenuItem

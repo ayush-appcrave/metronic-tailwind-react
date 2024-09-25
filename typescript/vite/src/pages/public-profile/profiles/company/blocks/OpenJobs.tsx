@@ -44,14 +44,11 @@ const OpenJobs = () => {
           <KeenIcon icon={item.icon} className="text-base text-gray-600" />
         </div>
         <div className="flex flex-col">
-          <a
-            href="#"
-            className="text-sm font-semibold leading-none text-primary hover:text-primary-active mb-1"
-          >
+          <a href="#" className="text-sm font-semibold leading-none link mb-1">
             {item.link}
           </a>
-          <span className="text-sm font-medium text-gray-700">{item.desc}</span>
-          <span className="text-xs font-medium text-gray-500">{item.price}</span>
+          <span className="text-sm font-medium text-gray-900">{item.desc}</span>
+          <span className="text-xs text-gray-700">{item.price}</span>
         </div>
       </div>
     );

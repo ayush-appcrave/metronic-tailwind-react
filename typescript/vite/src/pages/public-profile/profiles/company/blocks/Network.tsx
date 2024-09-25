@@ -20,7 +20,7 @@ const Network = ({ data, className, title }: INetworkProps) => {
         <span>
           <KeenIcon icon={item.icon} className="text-lg text-gray-500" />
         </span>
-        <a href="#" className="text-gray-800 hover:text-primary-active text-sm font-medium">
+        <a href="#" className="text-gray-900 hover:text-primary-active text-sm">
           {item.link}
         </a>
       </div>

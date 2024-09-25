@@ -21,8 +21,8 @@ const CardCampaign = ({
         key={index}
         className="flex flex-col gap-1.5 border border-dashed border-gray-300 rounded-md px-2.5 py-2"
       >
-        <span className="text-gray-900 text-sm leading-none font-semibold">{statistic.total}</span>
-        <span className="text-gray-600 text-xs font-medium">{statistic.description}</span>
+        <span className="text-gray-900 text-sm leading-none font-medium">{statistic.total}</span>
+        <span className="text-gray-700 text-xs">{statistic.description}</span>
       </div>
     );
   };
@@ -81,11 +81,11 @@ const CardCampaign = ({
         </div>
 
         <div className="text-center mb-7">
-          <a href={url} className="text-lg font-semibold text-gray-900 hover:text-primary">
+          <a href={url} className="text-lg font-medium text-gray-900 hover:text-primary">
             {title}
           </a>
 
-          <div className="text-sm font-medium text-gray-600">{description}</div>
+          <div className="text-sm text-gray-700">{description}</div>
         </div>
 
         <div className="flex items-center justify-center flex-wrap gap-2 lg:gap-5">

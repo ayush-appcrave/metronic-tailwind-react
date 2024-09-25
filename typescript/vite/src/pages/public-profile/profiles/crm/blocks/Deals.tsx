@@ -54,18 +54,18 @@ const Deals = () => {
     return (
       <tr key={index}>
         <td className="text-left">
-          <a href="#" className="text-sm font-semibold text-gray-900 hover:text-primary">
+          <a href="#" className="text-sm font-medium text-gray-900 hover:text-primary">
             {item.name}
           </a>
         </td>
 
-        <td className="text-sm text-gray-700 font-medium">${item.ammount}</td>
+        <td className="text-sm text-gray-800">${item.ammount}</td>
 
         <td>
           <div className={`badge badge-sm ${item.color} badge-outline`}>{item.label}</div>
         </td>
 
-        <td className="text-sm font-medium text-gray-700">{item.date} days</td>
+        <td className="text-sm text-gray-800">{item.date} days</td>
 
         <td className="text-left">
           <Menu className="items-stretch">
@@ -127,10 +127,10 @@ const Deals = () => {
         <table className="table text-right">
           <thead>
             <tr>
-              <th className="text-left min-w-[150px]">Deal Name</th>
-              <th className="min-w-[100px]">Amount</th>
+              <th className="text-left min-w-[150px] !text-gray-700">Deal Name</th>
+              <th className="min-w-[100px] !text-gray-700">Amount</th>
               <th className="min-w-[100px]">Status</th>
-              <th className="min-w-[110px]">Duration</th>
+              <th className="min-w-[110px] !text-gray-700">Duration</th>
               <th className="w-[30px]"></th>
             </tr>
           </thead>

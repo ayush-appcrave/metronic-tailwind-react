@@ -177,8 +177,8 @@ const CampaignsContent = ({ mode }: ICampaignsContentProps) => {
       title: 'Career Boost',
       description: 'Pro Connections Empowered Globally',
       status: {
-        variant: 'badge-success',
-        label: 'Completed'
+        variant: 'badge-primary',
+        label: 'Running'
       },
       statistics: [
         {
@@ -205,6 +205,7 @@ const CampaignsContent = ({ mode }: ICampaignsContentProps) => {
     return (
       <CardCampaign
         logo={item.logo}
+        logoSize={item.logoSize}
         title={item.title}
         description={item.description}
         status={item.status}
@@ -220,6 +221,7 @@ const CampaignsContent = ({ mode }: ICampaignsContentProps) => {
     return (
       <CardCampaignRow
         logo={data.logo}
+        logoSize={data.logoSize}
         title={data.title}
         description={data.description}
         status={data.status}

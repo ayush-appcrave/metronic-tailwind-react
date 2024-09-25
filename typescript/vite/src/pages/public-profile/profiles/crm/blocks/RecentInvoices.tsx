@@ -52,15 +52,15 @@ const RecentInvoices = () => {
           </div>
 
           <div className="flex flex-col gap-0.5">
-            <span className="text-2sm font-semibold text-gray-900 cursor-pointer hover:text-primary mb-px">
+            <span className="text-2sm font-medium text-gray-900 cursor-pointer hover:text-primary mb-px">
               {item.number}
             </span>
-            <span className="text-2xs font-medium text-gray-600">{item.date}</span>
+            <span className="text-2xs text-gray-700">{item.date}</span>
           </div>
         </div>
 
         <div className="flex items-center gap-2.5">
-          <span className="text-sm font-medium text-gray-700">${item.ammount}</span>
+          <span className="text-sm text-gray-800">${item.ammount}</span>
 
           <Menu className="items-stretch">
             <MenuItem

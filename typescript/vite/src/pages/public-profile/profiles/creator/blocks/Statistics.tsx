@@ -16,7 +16,7 @@ const Statistics = ({ data }: IStatisticsProps) => {
       <React.Fragment key={index}>
         <div className="flex flex-col items-center gap-1.5">
           <span className="text-gray-900 text-2xl lg:text-2.5xl font-semibold">{item.value}</span>
-          <span className="text-gray-600 text-sm font-medium">{item.title}</span>
+          <span className="text-gray-700 text-sm font-normal">{item.title}</span>
         </div>
 
         {index === 0 && <span className="sm:ml-8 sm:pl-8 border-l border-l-gray-200"></span>}

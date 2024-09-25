@@ -4,7 +4,7 @@ import {
   Highlights,
   OpenJobs,
   Network,
-  Profile,
+  CompanyProfile,
   Locations,
   IStatisticsItems,
   INetworkItems
@@ -44,7 +44,7 @@ const ProfileCompanyContent = () => {
       </div>
       <div className="col-span-1 lg:col-span-2">
         <div className="flex flex-col gap-5 lg:gap-7.5">
-          <Profile />
+          <CompanyProfile />
 
           <Locations />
 

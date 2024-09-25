@@ -25,10 +25,7 @@ const Summary = ({ title }: ISummaryProps) => {
     return (
       <div key={index} className="flex items-center gap-2.5">
         <KeenIcon icon={item.icon} className="text-base text-gray-500" />
-        <a
-          href="#"
-          className="text-sm font-medium leading-none text-gray-800 hover:text-primary-active"
-        >
+        <a href="#" className="text-sm leading-none text-gray-900 hover:text-primary-active">
           {item.info}
         </a>
       </div>
@@ -42,7 +39,7 @@ const Summary = ({ title }: ISummaryProps) => {
       </div>
 
       <div className="card-body">
-        <p className="text-sm font-medium text-gray-700 leading-5.5 mb-4">
+        <p className="text-sm text-gray-800 leading-5.5 mb-4">
           Experienced and creative professional with a passion great as for problem-solving and a
           commitment to excellence.
         </p>

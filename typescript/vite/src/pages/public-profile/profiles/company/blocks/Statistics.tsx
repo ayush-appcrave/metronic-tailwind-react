@@ -18,7 +18,7 @@ const Statistics = ({ items }: IStatisticsProps) => {
           <span className="text-gray-900 text-2xl lg:text-2.5xl leading-none font-semibold">
             {item.number}
           </span>
-          <span className="text-gray-600 text-sm font-medium">{item.label}</span>
+          <span className="text-gray-700 text-sm">{item.label}</span>
         </div>
 
         {index !== items.length - 1 && (

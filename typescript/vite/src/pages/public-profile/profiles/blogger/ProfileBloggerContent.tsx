@@ -1,6 +1,6 @@
 import { IStatisticsItems, Statistics, Summary } from '../creator';
 import { CommunityBadges, Tags, UnlockPartnerships } from '../default';
-import { Activities, Collaborate, Posts, Replies } from './blocks';
+import { Activity, Collaborate, Posts, Replies } from './blocks';
 
 const ProfileBloggerContent = () => {
   const data: IStatisticsItems = [
@@ -24,7 +24,7 @@ const ProfileBloggerContent = () => {
           <UnlockPartnerships />
           <Posts />
           <Replies />
-          <Activities />
+          <Activity />
         </div>
       </div>
     </div>

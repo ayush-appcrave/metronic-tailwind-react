@@ -19,8 +19,8 @@ const Attributes = () => {
   const renderItem = (item: IAttributesItem, index: number) => {
     return (
       <tr key={index}>
-        <td className="text-sm font-medium text-gray-500 pb-3.5 pe-4 lg:pe-6">{item.label}</td>
-        <td className="text-sm font-medium text-gray-800 pb-3">{item.info}</td>
+        <td className="text-sm text-gray-600 pb-3.5 pe-4 lg:pe-6">{item.label}</td>
+        <td className="text-sm text-gray-900 pb-3">{item.info}</td>
       </tr>
     );
   };

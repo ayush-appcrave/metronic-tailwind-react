@@ -39,11 +39,11 @@ const CardProjectExtendedRow = ({
           </div>
 
           <div className="flex flex-col">
-            <a href={url} className="text-lg font-semibold text-gray-900 hover:text-primary">
+            <a href={url} className="text-lg font-medium text-gray-900 hover:text-primary">
               {title}
             </a>
 
-            <div className="text-sm font-medium text-gray-600">{description}</div>
+            <div className="text-sm text-gray-700">{description}</div>
           </div>
         </div>
 

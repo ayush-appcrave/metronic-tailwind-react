@@ -18,8 +18,8 @@ const CardConnection = ({
         key={index}
         className="grid grid-cols-1 gap-1.5 border-[0.5px] border-dashed border-gray-400 rounded-md px-2.5 py-2 shrink-0  min-w-24 max-w-auto"
       >
-        <span className="text-gray-900 text-2sm leading-none font-semibold">{statistic.total}</span>
-        <span className="text-gray-600 text-xs font-medium">{statistic.description}</span>
+        <span className="text-gray-900 text-2sm leading-none font-medium">{statistic.total}</span>
+        <span className="text-gray-700 text-xs">{statistic.description}</span>
       </div>
     );
   };
@@ -42,7 +42,7 @@ const CardConnection = ({
         <div className="flex items-center justify-center gap-1.5 mb-2.5">
           <a
             href="#"
-            className="hover:text-primary-active text-base leading-5 font-semibold text-gray-900"
+            className="hover:text-primary-active text-base leading-5 font-medium text-gray-900"
           >
             {name}
           </a>
@@ -63,21 +63,21 @@ const CardConnection = ({
         </div>
 
         <div className="flex flex-wrap justify-center items-center gap-4 mb-7">
-          <div className="flex items-center text-sm font-medium text-gray-600">
+          <div className="flex items-center text-sm text-gray-700">
             <KeenIcon icon="abstract-41" className="me-1 text-gray-500" />
             {info}
           </div>
 
-          <div className="flex items-center text-sm font-medium text-gray-600">
+          <div className="flex items-center text-sm">
             <KeenIcon icon="sms" className="me-1 text-gray-500" />
-            <a href="#" className="text-gray-600 hover:text-primary-active">
+            <a href="#" className="text-gray-700 hover:text-primary-active">
               {email}
             </a>
           </div>
         </div>
 
         <div className="grid justify-center gap-1.5 mb-7.5">
-          <span className="text-2xs font-medium uppercase text-gray-500 text-center">team</span>
+          <span className="text-2xs uppercase text-gray-600 text-center">team</span>
           <CommonAvatars group={team.group} more={team.more} size={team.size} />
         </div>
 

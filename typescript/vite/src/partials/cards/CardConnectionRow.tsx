@@ -18,8 +18,8 @@ const CardConnectionRow = ({
         key={index}
         className="grid grid-cols-1 gap-1.5 border-[0.5px] border-dashed border-gray-400 shrink-0 rounded-md px-2.5 py-2"
       >
-        <span className="text-gray-900 text-sm leading-none font-semibold">{statistic.total}</span>
-        <span className="text-gray-600 text-xs font-medium">{statistic.description}</span>
+        <span className="text-gray-900 text-sm leading-none font-medium">{statistic.total}</span>
+        <span className="text-gray-700 text-xs">{statistic.description}</span>
       </div>
     );
   };
@@ -44,7 +44,7 @@ const CardConnectionRow = ({
             <div className="flex items-center gap-1.5 mb-2.5">
               <a
                 href="#"
-                className="text-base leading-5 font-semibold hover:text-primary-active text-gray-900"
+                className="text-base leading-5 font-medium hover:text-primary-active text-gray-900"
               >
                 {name}
               </a>
@@ -65,14 +65,14 @@ const CardConnectionRow = ({
             </div>
 
             <div className="flex items-center flex-wrap gap-x-4">
-              <div className="flex items-center text-sm font-medium text-gray-600">
+              <div className="flex items-center text-sm text-gray-700">
                 <KeenIcon icon="abstract-41" className="me-1 text-gray-500" />
                 {info}
               </div>
 
-              <div className="flex items-center text-sm font-medium text-gray-600">
+              <div className="flex items-center text-sm">
                 <KeenIcon icon="sms" className="me-1 text-gray-500" />
-                <a href="#" className="text-gray-600 hover:text-primary-active">
+                <a href="#" className="text-gray-700 hover:text-primary-active">
                   {email}
                 </a>
               </div>
