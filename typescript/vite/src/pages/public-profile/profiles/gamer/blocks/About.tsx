@@ -15,8 +15,8 @@ const About = () => {
   const renderItem = (item: IAboutItem, index: number) => {
     return (
       <tr key={index}>
-        <td className="text-sm font-medium text-gray-500 pb-3 pe-4 lg:pe-12">{item.label}</td>
-        <td className="text-sm font-medium text-gray-800 pb-3">
+        <td className="text-sm text-gray-600 pb-3 pe-4 lg:pe-12">{item.label}</td>
+        <td className="text-sm text-gray-900 pb-3">
           {item.type === 1 ? (
             <span>{item.info}</span>
           ) : item.type === 2 ? (
@@ -44,7 +44,7 @@ const About = () => {
           </tbody>
         </table>
 
-        <p className="text-sm text-gray-700 font-medium leading-5.5">
+        <p className="text-sm text-gray-800 leading-5.5">
           Experienced and creative professional with a passion great as a commitment to best
           excellence.
         </p>

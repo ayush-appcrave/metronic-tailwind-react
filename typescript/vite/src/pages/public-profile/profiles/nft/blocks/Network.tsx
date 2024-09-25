@@ -18,10 +18,7 @@ const Network = () => {
     return (
       <div key={index} className="flex items-center gap-2.5">
         <KeenIcon icon={item.logo} className="text-base text-gray-500" />
-        <a
-          href="#"
-          className="text-sm font-medium leading-none text-gray-800 hover:text-primary-active"
-        >
+        <a href="#" className="text-sm leading-none text-gray-900 hover:text-primary-active">
           {item.info}
         </a>
       </div>
