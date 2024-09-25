@@ -97,7 +97,7 @@ const DataGrid = <TData extends object>(props: TDataGridProps<TData>) => {
   const table = useReactTable({
     columns: mergedProps.columns, // Access columns from mergedProps
     data: mergedProps.data, // Access data from mergedProps
-    debugTable: true,
+    debugTable: false,
     getCoreRowModel: getCoreRowModel(),
     getSortedRowModel: getSortedRowModel(),
     getFilteredRowModel: getFilteredRowModel(),
@@ -117,7 +117,7 @@ const DataGrid = <TData extends object>(props: TDataGridProps<TData>) => {
       pageSize: table.getState().pagination.pageSize,
       sorting: table.getState().sorting
     });
-  }, [table.getState().pagination.pageIndex, table.getState().pagination.pageSize, table.getState().sorting]);
+  }, [saveState, table]);
 
   return (
     <DataGridProvider table={table} props={mergedProps}>

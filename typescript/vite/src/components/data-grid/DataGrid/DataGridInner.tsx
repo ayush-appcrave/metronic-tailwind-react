@@ -33,7 +33,11 @@ const DataGridInner = () => {
                 table.getRowModel().rows.map((row, index) => (
                   <DataGridTableBodyRow key={index} id={row.id}>
                     {row.getVisibleCells().map((cell, index) => (
-                      <DataGridTableBodyCell key={index} id={cell.id}>
+                      <DataGridTableBodyCell
+                        key={index}
+                        id={cell.id}
+                        className={cell.column.columnDef.meta?.cellClassName || ''}
+                      >
                         {flexRender(cell.column.columnDef.cell, cell.getContext())}
                       </DataGridTableBodyCell>
                     ))}

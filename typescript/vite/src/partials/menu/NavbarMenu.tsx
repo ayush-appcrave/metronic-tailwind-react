@@ -117,9 +117,13 @@ const NavbarMenu = ({ items }: { items: MenuConfigType }) => {
   };
 
   return (
-    <Menu highlight={true} className="menu gap-3 lg:-mb-px">
-      {buildMenu(items)}
-    </Menu>
+    <div className="grid">
+      <div className="scrollable-x-auto">
+        <Menu highlight={true} className="menu gap-3">
+          {buildMenu(items)}
+        </Menu>
+      </div>
+    </div>
   );
 };
 

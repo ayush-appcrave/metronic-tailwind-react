@@ -6,10 +6,11 @@ import { Toolbar, ToolbarDescription, ToolbarHeading, ToolbarPageTitle } from '@
 
 import { AccountGetStartedContent } from '.';
 import { Link } from 'react-router-dom';
+import { Fragment } from 'react';
 
 const AccountGetStartedPage = () => {
   return (
-    <>
+    <Fragment>
       <Navbar>
         <Container>
           {MENU_SIDEBAR[3]?.children && <NavbarMenu items={MENU_SIDEBAR[3].children} />}
@@ -37,7 +38,7 @@ const AccountGetStartedPage = () => {
       <Container>
         <AccountGetStartedContent />
       </Container>
-    </>
+    </Fragment>
   );
 };
 
