@@ -1,10 +1,10 @@
 import { MiscFaq, MiscHelp } from '@/partials/misc';
-import { IpAddresses } from './blocks/invoicing';
+import { IPAddresses } from './blocks/ip-addresses';
 
 const AccountAllowedIPAddressesContent = () => {
   return (
     <div className="grid gap-5 lg:gap-7.5">
-      <IpAddresses />
+      <IPAddresses />
 
       <MiscFaq />
 
