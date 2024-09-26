@@ -76,12 +76,12 @@ const Connections = ({ url }: IConnectionsProps) => {
             <div className="flex flex-col gap-1">
               <Link
                 to="/public-profile/profiles/creator"
-                className="text-sm font-semibold text-gray-900 hover:text-primary-active mb-px"
+                className="text-sm font-medium text-gray-900 hover:text-primary-active mb-px"
               >
                 {table.name}
               </Link>
 
-              <span className="text-xs font-normal text-gray-600 leading-3">
+              <span className="text-xs font-normal text-gray-700 leading-3">
                 {table.connections} connections
               </span>
             </div>
@@ -160,7 +160,7 @@ const Connections = ({ url }: IConnectionsProps) => {
           <table className="table align-middle text-2sm text-gray-600">
             <tbody>
               <tr className="bg-gray-100">
-                <th className="text-start font-medium min-w-48 py-2.5">Name</th>
+                <th className="text-start font-normal min-w-48 py-2.5">Name</th>
                 <th className="text-right font-medium min-w-20 py-2.5">Joint Links</th>
                 <th className="text-right font-medium min-w-20 py-2.5">Status</th>
                 <th className="min-w-16"></th>

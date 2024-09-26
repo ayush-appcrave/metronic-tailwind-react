@@ -27,7 +27,11 @@ const OtherNotifications = () => {
       icon: 'cheque',
       title: 'Invoice Alert',
       description: 'Alert for new and unpaid invoices.',
-      actions: '<a href="#" class="btn btn-sm btn-light btn-outline">View Invoices</a>'
+      actions: (
+        <a href="#" className="btn btn-sm btn-light btn-outline">
+          View Invoices
+        </a>
+      )
     },
     {
       icon: 'message-text',

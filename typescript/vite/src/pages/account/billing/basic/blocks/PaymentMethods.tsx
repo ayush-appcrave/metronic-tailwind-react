@@ -9,7 +9,7 @@ interface IPaymentMethodsItem {
 }
 interface IPaymentMethodsItems extends Array<IPaymentMethodsItem> {}
 
-const PaymentMethods = ({ icon }: IPaymentMethodsItems) => {
+const PaymentMethods = () => {
   const items: IPaymentMethodsItems = [
     {
       logo: 'visa.svg',
@@ -47,11 +47,11 @@ const PaymentMethods = ({ icon }: IPaymentMethodsItems) => {
           <div className="flex flex-col">
             <a
               href="#"
-              className="text-sm font-semibold text-gray-900 hover:text-primary-active mb-px"
+              className="text-sm font-medium text-gray-900 hover:text-primary-active mb-px"
             >
               {item.title}
             </a>
-            <span className="text-2sm font-medium text-gray-600">{item.email}</span>
+            <span className="text-2sm text-gray-700">{item.email}</span>
           </div>
         </div>
         <div className="flex items-center gap-5">

@@ -43,11 +43,11 @@ const AuthTwoFactor = () => {
           <div className="flex flex-col">
             <a
               href="#"
-              className="text-sm font-semibold text-gray-900 hover:text-primary-active mb-px"
+              className="text-sm font-medium text-gray-900 hover:text-primary-active mb-px"
             >
               {item.title}
             </a>
-            <span className="text-2sm font-medium text-gray-600">{item.description}</span>
+            <span className="text-2sm text-gray-700">{item.description}</span>
           </div>
         </div>
 

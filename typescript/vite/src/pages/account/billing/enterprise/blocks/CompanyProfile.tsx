@@ -47,8 +47,8 @@ const CompanyProfile = () => {
         key={index}
         className="flex flex-col gap-1.5 px-2.75 py-2.25 border border-dashed border-gray-400 rounded-md"
       >
-        <span className="text-gray-800 text-sm leading-none font-semibold">{statistic.total}</span>
-        <span className="text-gray-600 text-xs font-medium">{statistic.description}</span>
+        <span className="text-gray-900 text-sm leading-none font-medium">{statistic.total}</span>
+        <span className="text-gray-700 text-xs">{statistic.description}</span>
       </div>
     );
   };
@@ -72,7 +72,7 @@ const CompanyProfile = () => {
                   <h2 className="text-2xl font-semibold text-gray-900">Cloud One </h2>
                   <span className="badge badge-sm badge-success badge-outline">Monthly Plan</span>
                 </div>
-                <p className="text-2sm font-medium text-gray-600">
+                <p className="text-2sm text-gray-700">
                   Essential Features for Startups and Individuals
                 </p>
               </div>
@@ -95,9 +95,9 @@ const CompanyProfile = () => {
 
             <div className="flex flex-wrap gap-6 lg:gap-12">
               <div className="flex flex-col gap-3.5 grow">
-                <div className="text-2sm font-medium text-gray-600">
+                <div className="text-2sm text-gray-600">
                   UQuery runs:&nbsp;
-                  <span className="text-2sm font-semibold text-gray-900">2239 of 10,000 used</span>
+                  <span className="text-2sm font-medium text-gray-900">2239 of 10,000 used</span>
                 </div>
                 <div className="progress progress-primary max-w-2xl w-full">
                   <div className="progress-bar" style={{ width: '47%' }}></div>

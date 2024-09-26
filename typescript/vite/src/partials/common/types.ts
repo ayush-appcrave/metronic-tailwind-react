@@ -9,7 +9,7 @@ export interface IAvatarsItems extends Array<IAvatarsItem> {}
 export interface IAvatarsProps {
   size?: string;
   group: IAvatarsItem[];
-  more?: { variant?: string; number?: number; label?: string };
+  more?: { variant?: string; number?: number | string; label?: string };
   className?: string;
 }
 

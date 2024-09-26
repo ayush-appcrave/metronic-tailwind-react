@@ -1,2 +1,2 @@
-export * from './GeneralSettings';
-export * from './PlainPassword';
+export * from './BasicSettings';
+export * from './Password';

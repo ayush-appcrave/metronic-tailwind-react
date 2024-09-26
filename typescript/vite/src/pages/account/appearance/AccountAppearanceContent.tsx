@@ -2,6 +2,7 @@ import { MiscEngage, MiscFaq, MiscHighlightedPosts, IHighlightedPostsItems } fro
 import { toAbsoluteUrl } from '@/utils';
 import { Branding } from '../home/company-profile';
 import { AdvancedSettingsAppearance } from '../home/settings-sidebar';
+
 import { Accessibility, DisableDefaultBrand } from './blocks';
 
 const AccountAppearanceContent = () => {

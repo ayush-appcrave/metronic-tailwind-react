@@ -35,11 +35,11 @@ const PaymentHistory = () => {
   const renderItem = (table: IPaymentHistoryItem, index: number) => {
     return (
       <tr key={index}>
-        <td className="text-sm font-medium text-gray-700">{table.date}</td>
+        <td className="text-sm font-normal text-gray-800">{table.date}</td>
 
-        <td className="text-sm font-medium text-gray-700 lg:text-right">{table.type}</td>
+        <td className="text-sm font-normal text-gray-800 lg:text-right">{table.type}</td>
 
-        <td className="text-sm font-medium text-gray-700 lg:text-right">{table.amount}</td>
+        <td className="text-sm font-normal text-gray-800 lg:text-right">{table.amount}</td>
 
         <td>
           <Menu className="items-stretch">

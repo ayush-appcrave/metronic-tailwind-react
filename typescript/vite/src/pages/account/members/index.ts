@@ -5,5 +5,5 @@ export * from './permissions-toggle/AccountPermissionsTogglePage';
 export * from './roles/AccountRolesPage';
 export * from './team-members/AccountTeamMembersPage';
 export * from './teams/AccountTeamsPage';
-export * from './teams-info/AccountTeamInfoPage';
-export * from './teams-starter/AccountTeamsStarterPage';
+export * from './team-info/AccountTeamInfoPage';
+export * from './team-starter/AccountTeamsStarterPage';

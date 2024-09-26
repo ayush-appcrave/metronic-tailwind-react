@@ -1,9 +1,11 @@
 import { MiscFaq, MiscHelp2 } from '@/partials/misc';
 
+import { Teams } from './blocks';
+
 const AccountTeamsContent = () => {
   return (
     <div className="grid gap-5 lg:gap-7.5">
-      {/* {{ theme.page('_teams') }} */}
+      <Teams />
 
       <MiscFaq />
 

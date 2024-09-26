@@ -9,7 +9,6 @@ const SetGoal = () => {
     setValue(event.target.value);
   };
 
-  
   return (
     <div className="card">
       <div className="card-header gap-2" id="settings_set_goal">
@@ -39,7 +38,7 @@ const SetGoal = () => {
         </Menu>
       </div>
       <div className="card-body lg:p-7.5 p-5">
-        <p className="text-2sm font-medium text-gray-700 leading-5 mb-3.5">
+        <p className="text-2sm text-gray-800 leading-5 mb-3.5">
           Define aspirations, outline the path. Set a goal to transform dreams into <br />
           measurable achievements.
         </p>
@@ -47,7 +46,7 @@ const SetGoal = () => {
           <div className="flex justify-between items-center flex-wrap gap-2 mb-7">
             <div className="flex items-center gap-3.5 pt-1">
               <span className="text-2.5xl font-semibold text-gray-800">$0</span>
-              <span className="text-2sm font-medium text-gray-600">
+              <span className="text-2sm text-gray-700">
                 Pursuing opportunities, earning zero. Growth <br /> beyond monetary measures.
               </span>
             </div>

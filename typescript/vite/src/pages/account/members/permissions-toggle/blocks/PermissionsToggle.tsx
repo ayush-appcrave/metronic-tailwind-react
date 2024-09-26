@@ -93,7 +93,13 @@ const PermissionsToggle = () => {
         </div>
 
         <div className="switch switch-sm">
-          <input defaultChecked={item.checked} name="param" type="checkbox" value={index} />
+          <input
+            defaultChecked={item.checked}
+            name="param"
+            type="checkbox"
+            value={index}
+            readOnly
+          />
         </div>
       </div>
     );

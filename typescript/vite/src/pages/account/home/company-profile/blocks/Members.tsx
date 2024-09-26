@@ -136,7 +136,7 @@ const Members = ({ url }: IMembersProps) => {
           <div className="flex items-center gap-2">
             <label className="switch switch-sm">
               <span className="switch-label">Enforce 2FA</span>
-              <input type="checkbox" value="1" name="check" />
+              <input type="checkbox" value="1" name="check" readOnly />
             </label>
           </div>
 

@@ -28,6 +28,7 @@ const Invoicing = () => {
         cell: (info) => {                    
           return (
             <div className={`badge badge-sm badge-outline ${info.row.original.color}`}>
+              {info.row.original.label}
             </div>
           );
         },
@@ -109,8 +110,8 @@ const Invoicing = () => {
           columns={columns} 
           data={data} 
           rowSelect={true} 
-          paginationSize={10}
-          initialSorting={[{ id: 'team', desc: false }]} 
+          paginationSize={5}
+          initialSorting={[{ id: 'invoicing', desc: false }]} 
           saveState={true} 
           saveStateId='invoicing-grid'
         />

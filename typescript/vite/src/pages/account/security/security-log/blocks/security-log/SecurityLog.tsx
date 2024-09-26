@@ -1,7 +1,6 @@
 /* eslint-disable prettier/prettier */
 import { useMemo } from 'react';
 import { DataGrid, KeenIcon } from '@/components';
-// import { toAbsoluteUrl } from '@/utils';
 import { ColumnDef } from '@tanstack/react-table';
 
 import { SecurityLogData, ISecurityLogData } from '.';
@@ -10,81 +9,96 @@ const SecurityLog = () => {
   const columns = useMemo<ColumnDef<ISecurityLogData>[]>(
     () => [
       {
-        accessorFn: (row) => row.user,
-        id: 'user',
+        accessorFn: (row) => row.timestamp,
+        id: 'timestamp',
         header: () => 'Timestamp',
         enableSorting: true,
-        cell: (info) => (
-          <div className="flex items-center gap-2.5">
-            <div className="shrink-0">
-              {/* <img
-                src={toAbsoluteUrl({`/media/avatars/${info.row.original.user.avatar}`})}
-                className="h-9 rounded-full"
-                alt=""
-              /> */}
-            </div>
-            <a className="leading-none font-semibold text-gray-900 hover:text-primary" href="#">
-              {info.row.original.user.name}
-            </a>
-          </div>
-        ),
+        cell: (info) => {
+          return info.row.original.timestamp;
+        },
         meta: {
           className: 'min-w-[200px]'
         },
       },
       {
-        accessorFn: (row) => row.browser,
-        id: 'browser',
-        header: () => 'Browser',
-        enableSorting: true,
-        cell: (info) => (
-          <div className="flex items-center gap-2">
-            <KeenIcon icon={info.row.original.browser.icon} className='text-gray-700 text-lg' />
-            <span className="text-gray-700">{info.row.original.browser.name}</span>
-          </div>
-        ),
-        meta: {
-          className: 'min-w-[240px]',
-        },
-      },
-      {
-        accessorFn: (row) => row.ipAddress,
-        id: 'ipAddress',
-        header: () => 'IP Address',
-        enableSorting: true,
-        meta: {
-          className: 'w-[240px]',
-        },
-      },
-      {
-        accessorFn: (row) => row.location,
-        id: 'location',
-        header: () => 'Location',
+        accessorFn: (row) => row.eventType,
+        id: 'eventType',
+        header: () => 'Event Type',
         enableSorting: true,
         cell: (info) => (
           <div className="flex items-center gap-1.5">
-            {/* <img
-              src={toAbsoluteUrl({`/media/flags/${info.row.original.location.flag}`})}
-              className="h-4 rounded-full"
-              alt=""
-            /> */}
-            <span className="leading-none text-gray-700">{info.row.original.location.name}</span>
+            <KeenIcon
+              icon={info.row.original.eventType.icon.name}
+              className={`text-lg ${info.row.original.eventType.icon.variant}`}
+            />
+            <span className="leading-none font-semibold text-gray-700">
+              {info.row.original.eventType.label}
+            </span>
           </div>
         ),
         meta: {
-          className: 'w-[200px]',
+          className: 'min-w-[200px]',
+        },
+      },
+      {
+        accessorFn: (row) => row.actionTaken,
+        id: 'actionTaken',
+        header: () => 'Action Taken',
+        enableSorting: true,
+        cell: (info) => {
+          return info.row.original.actionTaken;
+        },
+        meta: {
+          className: 'min-w-[200px]',
+        },
+      },
+      {
+        accessorFn: (row) => row.sourceIp,
+        id: 'sourceIp',
+        header: () => 'Source IP',
+        enableSorting: true,
+        cell: (info) => {
+          return info.row.original.sourceIp;
+        },
+        meta: {
+          className: 'min-w-[130px]',
+        },
+      },
+      {
+        accessorFn: (row) => row.destinationIp,
+        id: 'destinationIp',
+        header: () => 'Destination IP',
+        enableSorting: true,
+        cell: (info) => {
+          return info.row.original.destinationIp;
+        },
+        meta: {
+          className: 'min-w-[130px]',
+        },
+      },
+      {
+        accessorFn: (row) => row.severity,
+        id: 'severity',
+        header: () => 'Severity',
+        enableSorting: true,
+        cell: (info) => (
+          <span className={`badge badge-sm badge-outline ${info.row.original.severity.variant}`}>
+            {info.row.original.severity.label}
+          </span>
+        ),
+        meta: {
+          className: 'min-w-[110px]',
         },
       },
       {
         id: 'click',
         header: () => '',
         enableSorting: false,
-        cell: ({ row }) => (
+        cell: ({ }) => (
           <button 
             className="btn btn-icon btn-light btn-clear btn-sm" 
-            onClick={() => alert(`Clicked on action button for row ${row.original.user.name}`)}
           >
-            <KeenIcon icon="dots-vertical" />
+            <KeenIcon icon="notepad" />
           </button>
         ),
         meta: {

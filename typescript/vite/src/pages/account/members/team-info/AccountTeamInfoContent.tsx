@@ -1,6 +1,6 @@
 import { toAbsoluteUrl } from '@/utils';
 import { MiscEngage, MiscFaq, MiscHighlightedPosts, IHighlightedPostsItems } from '@/partials/misc';
-import { TeamInfo, ConnectedProfiles, Seats } from './blocks';
+import { TeamInfo, ConnectedProfiles, Seats, Members } from './blocks';
 
 const AccountTeamInfoContent = () => {
   const posts: IHighlightedPostsItems = [
@@ -33,7 +33,7 @@ const AccountTeamInfoContent = () => {
         <div className="flex flex-col gap-5 lg:gap-7.5">
           <TeamInfo />
 
-          {/* {{ theme.page('_members') }} */}
+          <Members />
 
           <MiscFaq />
 

@@ -64,21 +64,21 @@ const Connections = () => {
             <div className="flex flex-col gap-0.5">
               <a
                 href="#"
-                className="text-sm font-semibold text-gray-900 hover:text-primary-active mb-px"
+                className="text-sm font-smedium text-gray-900 hover:text-primary-active mb-px"
               >
                 {table.name}
               </a>
-              <span className="text-xs font-normal text-gray-600">
+              <span className="text-xs font-normal text-gray-700">
                 {table.connections} connections
               </span>
             </div>
           </div>
         </td>
 
-        <td className="py-2 text-right">{table.jointLinks}</td>
+        <td className="py-2 text-right text-gray-600 font-nmedium">{table.jointLinks}</td>
 
         <td className="py-2 text-right">
-          <button className="btn btn-xs btn-icon btn-primary rounded-full {{'active' if table.connected else ''}}">
+          <button className="btn btn-xs btn-icon btn-primary rounded-full">
             <KeenIcon icon="check" />
           </button>
         </td>

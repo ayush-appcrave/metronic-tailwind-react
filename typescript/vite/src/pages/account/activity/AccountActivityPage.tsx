@@ -11,7 +11,7 @@ import {
   ToolbarPageTitle
 } from '@/partials/toolbar';
 
-import { ActivityContent } from '.';
+import { AccountActivityContent } from '.';
 
 const AccountActivityPage = () => {
   return (
@@ -41,7 +41,7 @@ const AccountActivityPage = () => {
       </Container>
 
       <Container>
-        <ActivityContent />
+        <AccountActivityContent />
       </Container>
     </Fragment>
   );

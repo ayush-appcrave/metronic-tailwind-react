@@ -35,7 +35,7 @@ const YourCurrentPlan = () => {
   const renderItem = (item: IYourCurrentPlanItem, index: number) => {
     return (
       <div key={index} className="flex flex-col items-start gap-2.5">
-        <a href={item.path} className="text-md text-gray-900 font-semibold hover:text-primary">
+        <a href={item.path} className="text-md text-gray-900 font-medium hover:text-primary">
           {item.title}
         </a>
 
@@ -85,11 +85,11 @@ const YourCurrentPlan = () => {
             ></div>
 
             <div className="flex flex-col gap-2 p-5 pt-4">
-              <a href="#" className="text-base text-gray-900 font-semibold hover:text-primary">
+              <a href="#" className="text-base text-gray-900 font-medium hover:text-primary">
                 Premium Plan
               </a>
 
-              <p className="text-2sm font-medium text-gray-600 mb-2">
+              <p className="text-2sm text-gray-700 mb-2">
                 Access premium perks through our exclusive Premium Plan
               </p>
 

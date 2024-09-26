@@ -11,9 +11,9 @@ const AccountSettings = () => {
         <table className="table align-middle text-sm text-gray-500">
           <tbody>
             <tr>
-              <td className="min-w-56">Email</td>
+              <td className="min-w-56 text-gray-600 font-normal">Email</td>
               <td className="min-w-60 w-full">
-                <a href="#" className="text-gray-700 text-sm hover:text-primary-active">
+                <a href="#" className="text-gray-800 text-sm font-normal hover:text-primary-active">
                   john.doe@hexlad.io
                 </a>
               </td>
@@ -25,8 +25,10 @@ const AccountSettings = () => {
             </tr>
 
             <tr>
-              <td>Password</td>
-              <td className="text-gray-600 text-2sm">Password last changed 2 months ago</td>
+              <td className="text-gray-600 font-normal">Password</td>
+              <td className="text-gray-700  font-normal text-2sm">
+                Password last changed 2 months ago
+              </td>
               <td className="text-center">
                 <a href="#" className="btn btn-sm btn-icon btn-clear btn-primary">
                   <KeenIcon icon="notepad-edit" />
@@ -35,7 +37,7 @@ const AccountSettings = () => {
             </tr>
 
             <tr>
-              <td>Sign-in with</td>
+              <td className="text-gray-600 font-normal">Sign-in with</td>
               <td>
                 <div className="flex items-center gap-2.5">
                   <a
@@ -85,8 +87,8 @@ const AccountSettings = () => {
             </tr>
 
             <tr>
-              <td>Team Account</td>
-              <td className="text-gray-600 text-2sm">To be set</td>
+              <td className="text-gray-600 font-normal">Team Account</td>
+              <td className="text-gray-700 text-2sm font-normal">To be set</td>
               <td className="text-center">
                 <a href="#" className="btn btn-sm btn-icon btn-clear btn-primary">
                   <KeenIcon icon="notepad-edit" />
@@ -95,7 +97,7 @@ const AccountSettings = () => {
             </tr>
 
             <tr>
-              <td>Social Profiles</td>
+              <td className="text-gray-600 font-normal">Social Profiles</td>
               <td>
                 <div className="flex items-center gap-2.5">
                   <a
@@ -156,8 +158,8 @@ const AccountSettings = () => {
             </tr>
 
             <tr>
-              <td>Referral Link</td>
-              <td className="text-gray-600 text-2sm">
+              <td className="text-gray-600 font-normal">Referral Link</td>
+              <td className="text-gray-800 text-2sm font-normal">
                 <div className="flex items-center gap-0.5">
                   <a href="#" className="text-gray-700 text-sm hover:text-primary-active">
                     https://studio.co/W3gvQOI35dt

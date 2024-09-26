@@ -86,7 +86,13 @@ const Import = () => {
             Your welcome message here
           </textarea>
           <label className="flex items-center gap-1.5">
-            <input type="checkbox" className="checkbox checkbox-sm" name="send" value="1" />
+            <input
+              type="checkbox"
+              className="checkbox checkbox-sm"
+              name="send"
+              value="1"
+              readOnly
+            />
             <span className="text-gray-800 text-2sm font-medium">
               Send welcome email to new users
             </span>

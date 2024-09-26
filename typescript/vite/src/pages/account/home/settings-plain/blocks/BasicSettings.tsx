@@ -4,7 +4,7 @@ interface IGeneralSettingsProps {
   title: string;
 }
 
-const GeneralSettings = ({ title }: IGeneralSettingsProps) => {
+const BasicSettings = ({ title }: IGeneralSettingsProps) => {
   return (
     <div className="card pb-2.5">
       <div className="card-header" id="general_settings">
@@ -18,7 +18,7 @@ const GeneralSettings = ({ title }: IGeneralSettingsProps) => {
       </div>
       <div className="card-body grid gap-5">
         <div className="flex items-center flex-wrap lg:flex-nowrap gap-2.5">
-          <label className="text-2sm font-medium text-gray-700 max-w-56 w-full">Photo</label>
+          <label className="form-label max-w-56">Photo</label>
           <div className="flex items-center justify-between flex-wrap grow gap-2.5">
             <span className="text-2sm font-medium text-gray-600">150x150px JPEG, PNG Image</span>
             <CrudAvatarUpload />
@@ -91,4 +91,4 @@ const GeneralSettings = ({ title }: IGeneralSettingsProps) => {
   );
 };
 
-export { GeneralSettings, type IGeneralSettingsProps };
+export { BasicSettings, type IGeneralSettingsProps };

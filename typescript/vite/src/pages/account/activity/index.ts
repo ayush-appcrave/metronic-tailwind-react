@@ -1,2 +1,2 @@
-export * from './ActivityContent';
-export * from './ActivityPage';
+export * from './AccountActivityContent';
+export * from './AccountActivityPage';

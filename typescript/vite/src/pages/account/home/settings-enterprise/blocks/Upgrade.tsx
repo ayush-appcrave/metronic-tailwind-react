@@ -30,14 +30,14 @@ const Upgrade = () => {
               <div className="flex items-center gap-2.5">
                 <a
                   href="#"
-                  className="text-base font-semibold text-gray-900 hover:text-primary-active"
+                  className="text-base font-medium text-gray-900 hover:text-primary-active"
                 >
                   Upgrade your business info
                 </a>
                 <span className="badge badge-sm badge-outline">16 days left</span>
               </div>
 
-              <div className="text-2sm font-medium text-gray-700">
+              <div className="text-2sm text-gray-800">
                 Elevate business information for a standout profile. Utilize premium features,
                 ensuring success with enhanced details.
                 <br />

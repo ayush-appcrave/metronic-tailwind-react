@@ -18,8 +18,8 @@ const GeneralInfo = () => {
         <table className="table align-middle text-sm text-gray-500" id="general_info_table">
           <tbody>
             <tr>
-              <td className="min-w-56">Company Name</td>
-              <td className="min-w-48 w-full text-gray-700">Hexlab</td>
+              <td className="min-w-56 text-gray-600 font-normal">Company Name</td>
+              <td className="min-w-48 w-full text-gray-800 font-normal">Hexlab</td>
               <td className="min-w-16 text-center">
                 <a href="#" className="btn btn-sm btn-icon btn-clear btn-primary">
                   <KeenIcon icon="notepad-edit" />
@@ -28,8 +28,8 @@ const GeneralInfo = () => {
             </tr>
 
             <tr>
-              <td>Phone number</td>
-              <td className="text-gray-700">+1 555-1234</td>
+              <td className="text-gray-600 font-normal">Phone number</td>
+              <td className="text-gray-800 font-normal">+1 555-1234</td>
               <td className="text-center">
                 <a href="#" className="btn btn-sm btn-icon btn-clear btn-primary">
                   <KeenIcon icon="notepad-edit" />
@@ -38,8 +38,8 @@ const GeneralInfo = () => {
             </tr>
 
             <tr>
-              <td>VAT number</td>
-              <td className="text-gray-700">
+              <td className="text-gray-600 font-normal">VAT number</td>
+              <td className="text-gray-800 font-normal">
                 <span className="badge badge-sm badge-outline badge-danger">Missing Details</span>
               </td>
               <td className="text-center">
@@ -50,8 +50,8 @@ const GeneralInfo = () => {
             </tr>
 
             <tr>
-              <td>Registration number</td>
-              <td className="text-gray-700">IYS2023A56789</td>
+              <td className="text-gray-600 font-normal">Registration number</td>
+              <td className="text-gray-800 font-normal">IYS2023A56789</td>
               <td className="text-center">
                 <a href="#" className="btn btn-sm btn-icon btn-clear btn-primary">
                   <KeenIcon icon="notepad-edit" />
@@ -60,8 +60,8 @@ const GeneralInfo = () => {
             </tr>
 
             <tr>
-              <td>Remote Company ID</td>
-              <td className="text-gray-700 text-2sm">
+              <td className="text-gray-600 font-normal">Remote Company ID</td>
+              <td className="text-gray-800 text-2sm font-normal">
                 <div className="flex items-center gap-0.5">
                   CID78901BXT2023
                   <button className="btn btn-xs btn-icon btn-clear btn-light">
