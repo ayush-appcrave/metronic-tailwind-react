@@ -1,11 +1,5 @@
-import { MiscHelp } from '@/partials/misc'; 
-import {
-  BillingInvoicing,
-  CompanyProfile,
-  LatestPayment,
-  NextPayment,
-  Upgrade
-} from './blocks'; 
+import { MiscHelp } from '@/partials/misc';
+import { BillingInvoicing, CompanyProfile, LatestPayment, NextPayment, Upgrade } from './blocks';
 
 import { PaymentMethods } from '../basic';
 

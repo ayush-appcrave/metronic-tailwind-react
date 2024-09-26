@@ -52,10 +52,7 @@ const DataGridPagination = () => {
   const renderEllipsisPrevButton = () => {
     if (currentGroupStart > 0) {
       return (
-        <button
-          className="btn"
-          onClick={() => table.setPageIndex(currentGroupStart - 1)}
-        >
+        <button className="btn" onClick={() => table.setPageIndex(currentGroupStart - 1)}>
           ...
         </button>
       );
@@ -67,10 +64,7 @@ const DataGridPagination = () => {
   const renderEllipsisNextButton = () => {
     if (currentGroupEnd < pageCount) {
       return (
-        <button
-          className="btn"
-          onClick={() => table.setPageIndex(currentGroupEnd)}
-        >
+        <button className="btn" onClick={() => table.setPageIndex(currentGroupEnd)}>
           ...
         </button>
       );

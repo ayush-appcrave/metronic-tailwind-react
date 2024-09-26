@@ -30,7 +30,7 @@ const useDataGrid = () => {
 const DataGridProvider = <TData extends object>({
   table,
   props,
-  children,
+  children
 }: {
   table: Table<TData>;
   props: TDataGridProps<TData>;
@@ -128,7 +128,7 @@ const DataGridProvider = <TData extends object>({
         toggleAllRowsSelection,
         getSelectedRowIds,
         isSelectAllChecked,
-        isSelectAllIndeterminate,
+        isSelectAllIndeterminate
       }}
     >
       {children}

@@ -5,7 +5,7 @@ import { useLocation, useNavigate } from 'react-router';
 import { Link } from 'react-router-dom';
 import * as Yup from 'yup';
 
-import { useAuthContext } from '../../../useAuthContext';
+import { useAuthContext } from '@/auth/useAuthContext';
 
 const loginSchema = Yup.object().shape({
   email: Yup.string()

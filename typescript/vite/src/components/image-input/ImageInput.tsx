@@ -29,7 +29,7 @@ interface IImageInputExport {
   onImageUpdate: (index: number) => void;
   onImageRemove: (index: number) => void;
   isDragging: boolean;
-  dragProps: {  
+  dragProps: {
     onDrop: (e: any) => void;
     onDragEnter: (e: any) => void;
     onDragLeave: (e: any) => void;

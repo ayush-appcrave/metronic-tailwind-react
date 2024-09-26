@@ -4,7 +4,7 @@ import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import * as Yup from 'yup';
 
-import { useAuthContext } from '../../useAuthContext';
+import { useAuthContext } from '@/auth/useAuthContext';
 import { KeenIcon } from '@/components';
 
 const initialValues = {
