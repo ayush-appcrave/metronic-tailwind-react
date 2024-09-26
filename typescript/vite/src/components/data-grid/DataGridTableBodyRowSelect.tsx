@@ -10,7 +10,7 @@ const DataGridTableBodyRowSelect = ({ id }: TDataGridTableBodyRowSelectProps) =>
   const isSelected = selectedRowIds.has(id);
 
   return (
-    <td className="w-[60px]">
+    <td>
       <input
         type="checkbox"
         className="checkbox checkbox-sm"

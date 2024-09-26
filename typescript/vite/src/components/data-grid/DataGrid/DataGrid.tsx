@@ -9,6 +9,8 @@ import {
 import { DataGridInner, DataGridProvider } from './';
 import { ReactNode, useEffect, useState } from 'react';
 
+export type TDataGridTableSpacingType = 'xs' | 'sm' | 'lg';
+
 export interface TDataGridProps<TData extends object> {
   columns: any[]; // Define columns and data props
   data: TData[];
@@ -17,6 +19,8 @@ export interface TDataGridProps<TData extends object> {
   saveStateId?: string;
   rowSelect?: boolean;
   emptyState?: ReactNode;
+  cellsBorder?: boolean;
+  tableSpacing?: TDataGridTableSpacingType;
   paginationInfo?: string;
   paginationSizes?: number[];
   paginationSizesLabel?: string;
@@ -32,6 +36,7 @@ const DataGrid = <TData extends object>(props: TDataGridProps<TData>) => {
   const defaultValues: Partial<TDataGridProps<TData>> = {
     saveState: false,
     saveStateId: '',
+    cellsBorder: true,
     loadingText: 'Loading...', // Default value for loadingText
     rowSelect: false, // Default value for rowSelect
     emptyState: 'No data available', // Default value for emptyInfo
@@ -72,6 +77,7 @@ const DataGrid = <TData extends object>(props: TDataGridProps<TData>) => {
     };
   };
 
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   const saveState = (newState: any) => {
     if (props.saveState && props.saveStateId) {
       const existingState = localStorage.getItem(props.saveStateId);

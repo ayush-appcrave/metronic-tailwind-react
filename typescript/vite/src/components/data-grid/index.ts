@@ -1,4 +1,4 @@
-export * from './DataGrid/index';
+export * from './DataGrid';
 export * from './DataGridLoader';
 export * from './DataGridTable';
 export * from './DataGridTableHead';

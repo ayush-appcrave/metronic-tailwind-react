@@ -5,7 +5,7 @@ const DataGridTableHeadRowsSelect = () => {
   const { isSelectAllChecked, isSelectAllIndeterminate, toggleAllRowsSelection } = useDataGrid();
 
   return (
-    <th className="w-[60px]">
+    <th>
       <input
         type="checkbox"
         className="checkbox checkbox-sm"

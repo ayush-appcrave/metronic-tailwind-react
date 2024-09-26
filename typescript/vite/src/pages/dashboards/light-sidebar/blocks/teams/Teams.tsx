@@ -121,6 +121,7 @@ const Teams = () => {
 
       <div className="card-body">
         <DataGrid 
+          cellsBorder={true}
           columns={columns} 
           data={filteredData} 
           rowSelect={true} 

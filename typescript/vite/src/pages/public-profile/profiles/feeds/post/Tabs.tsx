@@ -22,7 +22,7 @@ const Tabs = ({
   return (
     <div
       data-tabs="true"
-      className={`flex items-center flex-wrap gap-2.5 border-gray-300 border-t border-b border-dashed py-1.5 mb-4 ${className}`}
+      className={`flex flex-col sm:flex-row items-stretch sm:items-center flex-wrap gap-2.5 border-gray-300 border-t border-b border-dashed py-3 mb-4 ${className}`}
     >
       <button
         className={`${activeTab === 'comments' ? 'active' : ''} group btn px-3 text-gray-700 hover:text-primary tab-active:bg-primary-light tab-active:border-primary-clarity tab-active:text-primary`}
