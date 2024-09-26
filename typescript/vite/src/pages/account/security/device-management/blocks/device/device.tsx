@@ -61,14 +61,18 @@ const Device = () => {
       {
         accessorFn: (row) => row.added,
         id: 'added',
-        header: () => 'Added',
-        enableSorting: true,
-        cell: (info) => {                    
-          return info.row.original.added;
-        },
+        header: () => (
+          <>
+            <KeenIcon icon="information-2" className="text-lg leading-none " />
+            <span className="tooltip max-w-48">
+              Time is based on your local timezone.
+            </span>
+            Added
+          </>
+        ),
+        enableSorting: true, 
         meta: {
-          className: 'w-[170px]',
-          cellClassName: 'text-gray-800 font-normal',
+          className: 'w-[170px]' 
         }
       },    
       {
