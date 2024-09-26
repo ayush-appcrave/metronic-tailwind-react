@@ -2,6 +2,7 @@
 import { useMemo } from 'react';
 import { DataGrid, KeenIcon } from '@/components';
 import { ColumnDef } from '@tanstack/react-table';
+import { Link } from 'react-router-dom';
 import { BackupData, IBackupData } from '.';
 
 
@@ -67,9 +68,9 @@ const Backup= () => {
         enableSorting: false,
         cell: () => {                    
           return (
-            <button className="btn btn-sm btn-icon btn-clear btn-light">
-              <KeenIcon icon="notepad-edit" /> 
-            </button>
+            <Link to="#" className="btn btn-sm btn-clear btn-light">
+              Preview
+            </Link>
           );
         },
         meta: {
@@ -82,9 +83,9 @@ const Backup= () => {
         enableSorting: false,
         cell: () => {                    
           return (
-            <button className="btn btn-sm btn-icon btn-clear btn-light"> 
-              <KeenIcon icon="trash" />
-            </button>
+            <Link to="#" className="btn btn-sm btn-light btn-outline">
+							Restore
+						</Link>
           );
         },
         meta: {
@@ -102,9 +103,12 @@ const Backup= () => {
       <div className="card-header">
         <h3 className="card-title">Devices</h3>
 
-				<button className="btn btn-primary btn-sm"> 
-					Add Device
-				</button>
+        <label className="switch switch-sm">
+          <span className="switch-label">
+            Cloud Sync
+          </span>
+          <input type="checkbox" value="1" name="check" defaultChecked readOnly />
+        </label>
       </div>
 
       <div className="card-body">
