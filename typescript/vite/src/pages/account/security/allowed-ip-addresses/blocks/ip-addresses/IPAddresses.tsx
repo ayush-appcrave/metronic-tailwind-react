@@ -2,10 +2,10 @@
 import { useMemo } from 'react';
 import { DataGrid, KeenIcon } from '@/components';
 import { ColumnDef } from '@tanstack/react-table';
-import { IpAddressesData, IIpAddressesData } from '.';
+import { IPAddressesData, IIPAddressesData } from '.';
 
-const IpAddresses = () => {
-  const columns = useMemo<ColumnDef<IIpAddressesData>[]>(
+const IPAddresses = () => {
+  const columns = useMemo<ColumnDef<IIPAddressesData>[]>(
     () => [
       {
         accessorFn: (row) => row.status,
@@ -73,7 +73,7 @@ const IpAddresses = () => {
             className="btn btn-sm btn-icon btn-clear btn-light" 
             onClick={() => alert(`Clicked on edit for ${row.original.label}`)}
           >
-            <i className="ki-outline ki-notepad-edit"></i>
+            <KeenIcon icon="notepad-edit" />
           </button>
         ),
         meta: {
@@ -89,7 +89,7 @@ const IpAddresses = () => {
             className="btn btn-sm btn-icon btn-clear btn-light" 
             onClick={() => alert(`Clicked on delete for ${row.original.label}`)}
           >
-            <i className="ki-outline ki-trash"></i>
+            <KeenIcon icon="trash" />
           </button>
         ),
         meta: {
@@ -100,7 +100,7 @@ const IpAddresses = () => {
     []
   );
 
-  const data: IIpAddressesData[] = useMemo(() => IpAddressesData, []);
+  const data: IIPAddressesData[] = useMemo(() => IPAddressesData, []);
 
   return (
     <div className="card card-grid min-w-full">
@@ -133,4 +133,4 @@ const IpAddresses = () => {
   );
 };
 
-export { IpAddresses };
+export { IPAddresses };

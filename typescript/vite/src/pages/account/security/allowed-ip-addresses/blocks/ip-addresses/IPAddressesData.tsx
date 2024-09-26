@@ -1,4 +1,4 @@
-interface IIpAddressesData {
+interface IIPAddressesData {
   id: number;
   status: string;
   ipAddress: string;
@@ -7,7 +7,7 @@ interface IIpAddressesData {
   method: string;
 }
 
-const IpAddressesData: IIpAddressesData[] = [
+const IPAddressesData: IIPAddressesData[] = [
   {
     id: 1,
     status: 'bg-success',
@@ -250,4 +250,4 @@ const IpAddressesData: IIpAddressesData[] = [
   }
 ];
 
-export { IpAddressesData, type IIpAddressesData };
+export { IPAddressesData, type IIPAddressesData };
