@@ -1,10 +1,9 @@
 import { IScrollspyMenuItem, IScrollspyMenuItems, IScrollspyMenuProps } from './';
 
 const ScrollspyMenu = ({ items, offset }: IScrollspyMenuProps) => {
-  const buildAnchor = (item: IScrollspyMenuItem, indent: boolean = false, index: number) => {
+  const buildAnchor = (item: IScrollspyMenuItem, indent: boolean = false) => {
     return (
       <a
-        key={index}
         href={item.url}
         data-scrollspy-anchor="true"
         className={`flex items-center rounded-lg pl-2.5 pr-2.5 py-2.5 ${

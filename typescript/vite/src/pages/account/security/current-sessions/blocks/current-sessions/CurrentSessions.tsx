@@ -5,6 +5,7 @@ import { DataGrid, KeenIcon } from '@/components';
 import { ColumnDef } from '@tanstack/react-table';
 
 import { CurrentSessionsData, ICurrentSessionsData } from '.';
+import { toAbsoluteUrl } from '@/utils';
 
 const CurrentSessions = () => {
   const columns = useMemo<ColumnDef<ICurrentSessionsData>[]>(
@@ -17,11 +18,11 @@ const CurrentSessions = () => {
         cell: (info) => (
           <div className="flex items-center gap-2.5">
             <div className="shrink-0">
-              {/* <img
-                src={toAbsoluteUrl({`/media/avatars/${info.row.original.user.avatar}`})}
+              <img
+                src={toAbsoluteUrl(`/media/avatars/${info.row.original.user.avatar}`)}
                 className="h-9 rounded-full"
                 alt=""
-              /> */}
+              />
             </div>
             <a className="leading-none font-semibold text-gray-900 hover:text-primary" href="#">
               {info.row.original.user.name}

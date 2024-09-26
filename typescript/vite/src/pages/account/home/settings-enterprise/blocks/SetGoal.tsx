@@ -1,7 +1,15 @@
 import { KeenIcon, Menu, MenuItem, MenuToggle } from '@/components';
 import { DropdownCard2 } from '@/partials/dropdowns/general';
+import { useState } from 'react';
 
 const SetGoal = () => {
+  const [value, setValue] = useState(1);
+
+  const handleChange = () => {
+    setValue(event.target.value);
+  };
+
+  
   return (
     <div className="card">
       <div className="card-header gap-2" id="settings_set_goal">
@@ -49,13 +57,12 @@ const SetGoal = () => {
 
           <div className="mb-3">
             <input
-              className="range card"
-              id="range_1"
+              className="range"
               max="10"
               min="0"
               type="range"
-              value="1"
-              readOnly
+              value={value}
+              onChange={handleChange}
             />
           </div>
         </div>

@@ -5,7 +5,6 @@ import { AuthProvider } from '@/auth/providers/JWTProvider';
 // import { AuthProvider } from '@/auth/providers/Auth0Provider';
 // import { AuthProvider } from '@/auth/providers/FirebaseProvider';
 import {
-  PathnameProvider,
   LayoutProvider,
   LoadersProvider,
   MenuProvider,
