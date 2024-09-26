@@ -1,10 +1,9 @@
 import { useMemo } from 'react';
-import { DataGrid } from '@/components'; // Agar bu sizning custom komponentingiz bo'lsa
-import { toAbsoluteUrl } from '@/utils'; // Avatarlar uchun absolute URLni ishlatish
+import { DataGrid } from '@/components'; 
+import { toAbsoluteUrl } from '@/utils'; 
 import { UsersData } from './UsersData';
 import { KeenIcon } from '@/components';
 
-// IUsersData interfeysi
 interface IUsersData {
   user: {
     avatar: string;
@@ -20,7 +19,6 @@ interface IUsersData {
   enforce: boolean;
 }
 
-// EnforceSwitch componenti
 const EnforceSwitch = ({ enforce }: { enforce: boolean }) => {
   return (
     <label className="switch switch-sm">
@@ -130,7 +128,7 @@ const Users = () => {
   return (
     <div className="card card-grid min-w-full">
       <div className="card-header py-5 flex-wrap">
-        <h3 className="card-title">Current Sessions</h3>
+        <h3 className="card-title">Showing 10 of 49,053 users</h3>
 
         <div className="flex flex-wrap gap-2 lg:gap-5">
           <div className="flex">
@@ -140,7 +138,6 @@ const Users = () => {
             </label>
           </div>
 
-          {/* Dropdownlar va Filter tugmasi */}
           <div className="flex flex-wrap gap-2.5">
             <select className="select select-sm w-28">
               <option value="1">Active</option>
@@ -167,9 +164,9 @@ const Users = () => {
           data={data}
           rowSelect={true}
           paginationSize={10}
-          initialSorting={[{ id: 'current-sessions', desc: false }]}
+          initialSorting={[{ id: 'users', desc: false }]}
           saveState={true}
-          saveStateId="current-sessions-grid"
+          saveStateId="users-grid"
         />
       </div>
     </div>
