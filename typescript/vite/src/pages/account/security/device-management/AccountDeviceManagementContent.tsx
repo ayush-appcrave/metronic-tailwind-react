@@ -1,4 +1,4 @@
-import { Device } from './blocks/device';
+import { Device } from './blocks';
 
 const AccountDeviceManagementContent = () => {
   return (

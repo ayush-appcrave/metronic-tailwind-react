@@ -13,17 +13,24 @@ const ProfileBloggerContent = () => {
       <div className="col-span-1">
         <div className="grid gap-5 lg:gap-7.5">
           <Statistics data={data} />
+
           <Summary title="Profile" />
+
           <CommunityBadges title="Community Badges" />
+
           <Collaborate title="Collaborate" />
+
           <Tags title="Skills" />
         </div>
       </div>
       <div className="col-span-1 lg:col-span-2">
         <div className="flex flex-col gap-5 lg:gap-7.5">
           <UnlockPartnerships />
+
           <Posts />
+
           <Replies />
+
           <Activity />
         </div>
       </div>

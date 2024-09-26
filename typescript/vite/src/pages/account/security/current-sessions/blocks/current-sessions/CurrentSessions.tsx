@@ -1,11 +1,10 @@
 /* eslint-disable prettier/prettier */
 import { useMemo } from 'react';
 import { DataGrid, KeenIcon } from '@/components';
-// import { toAbsoluteUrl } from '@/utils';
+import { toAbsoluteUrl } from '@/utils';
 import { ColumnDef } from '@tanstack/react-table';
 
 import { CurrentSessionsData, ICurrentSessionsData } from '.';
-import { toAbsoluteUrl } from '@/utils';
 
 const CurrentSessions = () => {
   const columns = useMemo<ColumnDef<ICurrentSessionsData>[]>(
@@ -53,6 +52,9 @@ const CurrentSessions = () => {
         id: 'ipAddress',
         header: () => 'IP Address',
         enableSorting: true,
+        cell: (info) => {
+          return info.row.original.ipAddress;
+        },
         meta: {
           className: 'w-[240px]',
         },
@@ -64,11 +66,11 @@ const CurrentSessions = () => {
         enableSorting: true,
         cell: (info) => (
           <div className="flex items-center gap-1.5">
-            {/* <img
-              src={toAbsoluteUrl({`/media/flags/${info.row.original.location.flag}`})}
+            <img
+              src={toAbsoluteUrl(`/media/flags/${info.row.original.location.flag}`)}
               className="h-4 rounded-full"
               alt=""
-            /> */}
+            />
             <span className="leading-none text-gray-700">{info.row.original.location.name}</span>
           </div>
         ),

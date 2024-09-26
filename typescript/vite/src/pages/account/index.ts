@@ -1,4 +1,4 @@
-export * from './activity/ActivityPage';
+export * from './activity/AccountActivityPage';
 export * from './api-keys/AccountApiKeysPage';
 export * from './appearance/AccountAppearancePage';
 export * from './billing';

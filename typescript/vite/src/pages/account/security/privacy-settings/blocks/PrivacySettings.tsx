@@ -1,3 +1,4 @@
+import { Fragment } from 'react';
 import { CommonHexagonBadge } from '@/partials/common';
 import { KeenIcon } from '@/components';
 
@@ -14,10 +15,10 @@ const PrivacySettings = () => {
     {
       icon: 'search-list',
       title: (
-        <>
+        <Fragment>
           Show up in search results
           <span className="badge badge-xs badge-primary badge-outline">Pro</span>
-        </>
+        </Fragment>
       ),
       description: 'Control your visibility by choosing if you appear in search results.',
       actions: (
@@ -29,10 +30,10 @@ const PrivacySettings = () => {
     {
       icon: 'message-notify',
       title: (
-        <>
+        <Fragment>
           Manage Read Receipts for Messages
           <span className="badge badge-xs badge-primary badge-outline">Pro</span>
-        </>
+        </Fragment>
       ),
       description: 'Enable or disable read receipts for private messages.',
       actions: (
@@ -54,10 +55,10 @@ const PrivacySettings = () => {
     {
       icon: 'discount',
       title: (
-        <>
+        <Fragment>
           Ad Personalization Settings
           <span className="badge badge-xs badge-info badge-outline">Beta</span>
-        </>
+        </Fragment>
       ),
       description: 'Customize how ads are targeted to your interests.',
       actions: (
@@ -89,21 +90,21 @@ const PrivacySettings = () => {
     {
       icon: 'questionnaire-tablet',
       title: (
-        <>
+        <Fragment>
           Private vulnerability reporting
           <span className="badge badge-xs badge-info badge-outline">Beta</span>
-        </>
+        </Fragment>
       ),
       description: 'Confidential channel for reporting system vulnerabilities.',
       actions: (
-        <>
+        <Fragment>
           <a href="#" className="btn btn-sm btn-light btn-danger btn-outline">
             Disable all
           </a>
           <a href="#" className="btn btn-sm btn-light btn-outline">
             Enable all
           </a>
-        </>
+        </Fragment>
       )
     }
   ];

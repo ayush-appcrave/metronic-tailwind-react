@@ -7,8 +7,11 @@ const ProfileCRMContent = () => {
       <div className="col-span-1">
         <div className="grid gap-5 lg:gap-7.5">
           <GeneralInfo />
+
           <Attributes />
+
           <ApiCredentials />
+
           <Tags title="Skills" />
         </div>
       </div>
@@ -16,9 +19,11 @@ const ProfileCRMContent = () => {
         <div className="flex flex-col gap-5 lg:gap-7.5">
           <div className="flex flex-col gap-5 lg:gap-7.5">
             <Deals />
+
             <Activity />
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-5 lg:gap-7.5">
               <Connections title="Connections" />
+
               <RecentInvoices />
             </div>
           </div>

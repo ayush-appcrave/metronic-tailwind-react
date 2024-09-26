@@ -1,10 +1,11 @@
+import { Fragment } from 'react';
 import { KeenIcon } from '@/components';
 import { toAbsoluteUrl } from '@/utils/Assets';
 import { Link } from 'react-router-dom';
 
 const Branding = () => {
   return (
-    <>
+    <Fragment>
       <style>
         {`
           .branding-bg {
@@ -31,10 +32,8 @@ const Branding = () => {
         <div className="card-body lg:py-7.5 py-5">
           <div className="flex flex-wrap md:flex-nowrap gap-5 lg:gap-14">
             <div className="flex flex-col max-w-72 w-full">
-              <div className="text-gray-900 text-sm font-semibold">Company Logo</div>
-              <span className="text-gray-600 text-2sm font-medium">
-                Emblematic Corporate Identity Symbol
-              </span>
+              <div className="text-gray-900 text-sm font-medium">Company Logo</div>
+              <span className="text-gray-700 text-2sm">Emblematic Corporate Identity Symbol</span>
             </div>
 
             <div className="flex flex-wrap sm:flex-nowrap w-full gap-5 lg:gap-7.5">
@@ -95,10 +94,8 @@ const Branding = () => {
 
           <div className="flex flex-wrap md:flex-nowrap gap-5 lg:gap-14">
             <div className="flex flex-col max-w-72 w-full">
-              <div className="text-gray-900 text-sm font-semibold">Brand Color</div>
-              <span className="text-gray-600 text-2sm font-medium">
-                Signature Palette Branding Element
-              </span>
+              <div className="text-gray-900 text-sm font-medium">Brand Color</div>
+              <span className="text-gray-700 text-2sm">Signature Palette Branding Element</span>
             </div>
 
             <label className="input">
@@ -111,10 +108,8 @@ const Branding = () => {
 
           <div className="flex flex-wrap md:flex-nowrap gap-5 lg:gap-14">
             <div className="flex flex-col max-w-72 w-full">
-              <div className="text-gray-900 text-sm font-semibold">Branding</div>
-              <span className="text-gray-600 text-2sm font-medium">
-                Comprehensive Image Identity Design
-              </span>
+              <div className="text-gray-900 text-sm font-medium">Branding</div>
+              <span className="text-gray-700 text-2sm">Comprehensive Image Identity Design</span>
             </div>
 
             <div className="flex flex-col gap-5 grow">
@@ -161,7 +156,7 @@ const Branding = () => {
           </div>
         </div>
       </div>
-    </>
+    </Fragment>
   );
 };
 

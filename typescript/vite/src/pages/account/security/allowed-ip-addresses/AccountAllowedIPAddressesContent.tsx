@@ -1,5 +1,5 @@
 import { MiscFaq, MiscHelp } from '@/partials/misc';
-import { IPAddresses } from './blocks/ip-addresses';
+import { IPAddresses } from './blocks';
 
 const AccountAllowedIPAddressesContent = () => {
   return (

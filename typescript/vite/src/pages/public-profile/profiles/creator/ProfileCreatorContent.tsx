@@ -50,18 +50,11 @@ const ProfileCreatorContent = () => {
         <div className="flex flex-col gap-5 lg:gap-7.5">
           <FeaturesHighlight
             image={
-              <>
-                <img
-                  src={toAbsoluteUrl('/media/illustrations/18.svg')}
-                  className="dark:hidden max-h-[200px]"
-                  alt=""
-                />
-                <img
-                  src={toAbsoluteUrl('/media/illustrations/18-dark.svg')}
-                  className="light:hidden max-h-[200px]"
-                  alt=""
-                />
-              </>
+              <img
+                src={toAbsoluteUrl('/media/illustrations/18.svg')}
+                className="dark:hidden max-h-[200px]"
+                alt=""
+              />
             }
             title="Restyle Your Space:<br>Soft Goods Makeover Ideas"
             description="Transform your living space beautifully with our Restyle Your Space: Soft Goods Makeover Ideas tutorial"

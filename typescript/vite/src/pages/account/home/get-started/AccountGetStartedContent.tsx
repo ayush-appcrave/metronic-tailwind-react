@@ -1,3 +1,5 @@
+import { Fragment } from 'react';
+
 import { Options, IOptionsItems } from './blocks';
 
 const AccountGetStartedContent = () => {
@@ -71,7 +73,7 @@ const AccountGetStartedContent = () => {
   ];
 
   return (
-    <>
+    <Fragment>
       <Options items={items} dropdown={true} />
 
       <div className="flex grow justify-center pt-5 lg:pt-7.5">
@@ -79,7 +81,7 @@ const AccountGetStartedContent = () => {
           More Account Options
         </a>
       </div>
-    </>
+    </Fragment>
   );
 };
 

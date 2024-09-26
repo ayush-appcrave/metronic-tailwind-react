@@ -1,9 +1,10 @@
+import { Fragment } from 'react';
 import { toAbsoluteUrl } from '@/utils/Assets';
 import { Link } from 'react-router-dom';
 
 const Empty = () => {
   return (
-    <>
+    <Fragment>
       <div className="card p-8 lg:p-12">
         <div className="card-body">
           <div className="grid justify-center py-5">
@@ -36,7 +37,7 @@ const Empty = () => {
           Check ready Templates
         </Link>
       </div>
-    </>
+    </Fragment>
   );
 };
 

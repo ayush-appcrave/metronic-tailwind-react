@@ -1,2 +1,2 @@
-export * from './ApiIntegrations';
 export * from './Webhooks';
+export * from './api-integrations';

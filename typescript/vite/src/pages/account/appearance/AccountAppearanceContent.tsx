@@ -2,6 +2,7 @@ import { MiscEngage, MiscFaq, MiscHighlightedPosts, IHighlightedPostsItems } fro
 import { toAbsoluteUrl } from '@/utils';
 import { Branding } from '../home/company-profile';
 import { AdvancedSettingsAppearance } from '../home/settings-sidebar';
+
 import { Accessibility, DisableDefaultBrand } from './blocks';
 
 const AccountAppearanceContent = () => {
@@ -52,18 +53,11 @@ const AccountAppearanceContent = () => {
             title="Contact Support"
             description="Need assistance? Contact our support team for prompt, personalized help your queries & concerns."
             image={
-              <>
-                <img
-                  src={toAbsoluteUrl('/media/illustrations/31.svg')}
-                  className="dark:hidden max-h-[150px]"
-                  alt=""
-                />
-                <img
-                  src={toAbsoluteUrl('/media/illustrations/31-dark.svg')}
-                  className="light:hidden max-h-[150px]"
-                  alt=""
-                />
-              </>
+              <img
+                src={toAbsoluteUrl('/media/illustrations/31.svg')}
+                className="dark:hidden max-h-[150px]"
+                alt=""
+              />
             }
             more={{
               title: 'Contact Support',

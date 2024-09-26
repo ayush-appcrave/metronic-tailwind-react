@@ -26,8 +26,8 @@ const Plan = () => {
         key={index}
         className="grid grid-cols-1 content-between gap-1.5 border border-dashed border-gray-400 shrink-0 rounded-md px-3.5 py-2 min-w-24 max-w-auto"
       >
-        <span className="text-gray-900 text-md leading-none font-semibold">{statistic.total}</span>
-        <span className="text-gray-600 text-2sm font-medium">{statistic.description}</span>
+        <span className="text-gray-900 text-md leading-none font-medium">{statistic.total}</span>
+        <span className="text-gray-700 text-2sm">{statistic.description}</span>
       </div>
     );
   };
@@ -42,7 +42,7 @@ const Plan = () => {
                 <h2 className="text-2xl font-semibold text-gray-900">Basic Plan</h2>
                 <span className="badge badge-sm badge-success badge-outline">Monthly</span>
               </div>
-              <p className="text-2sm font-medium text-gray-600">
+              <p className="text-2sm text-gray-700">
                 Essential Features for Startups and Individuals
               </p>
             </div>
@@ -63,7 +63,7 @@ const Plan = () => {
           </div>
 
           <div className="flex flex-col gap-3.5">
-            <span className="text-2sm font-medium text-gray-600">Usage (32 of 40 users)</span>
+            <span className="text-2sm text-gray-700">Usage (32 of 40 users)</span>
             <div className="progress progress-primary">
               <div className="progress-bar" style={{ width: '80%' }}></div>
             </div>

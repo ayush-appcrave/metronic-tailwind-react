@@ -38,11 +38,11 @@ const CalendarAccounts = () => {
           <div className="flex flex-col">
             <a
               href="#"
-              className="text-sm font-semibold text-gray-900 hover:text-primary-active mb-px"
+              className="text-sm font-medium text-gray-900 hover:text-primary-active mb-px"
             >
               {item.title}
             </a>
-            <a href="#" className="text-2sm font-medium text-gray-600 hover:text-primary-active">
+            <a href="#" className="text-2sm text-gray-700 hover:text-primary-active">
               {item.email}
             </a>
           </div>

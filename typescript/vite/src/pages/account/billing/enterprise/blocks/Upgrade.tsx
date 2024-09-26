@@ -1,10 +1,11 @@
+import { Fragment } from 'react';
 import { KeenIcon } from '@/components';
 import { CommonHexagonBadge } from '@/partials/common';
 import { toAbsoluteUrl } from '@/utils/Assets';
 
 const Upgrade = () => {
   return (
-    <>
+    <Fragment>
       <style>
         {`
           .upgrade-bg {
@@ -57,7 +58,7 @@ const Upgrade = () => {
           </div>
         </div>
       </div>
-    </>
+    </Fragment>
   );
 };
 

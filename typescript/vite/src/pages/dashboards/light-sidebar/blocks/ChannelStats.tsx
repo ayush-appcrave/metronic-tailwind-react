@@ -1,3 +1,4 @@
+import { Fragment } from 'react';
 import { toAbsoluteUrl } from '@/utils/Assets';
 
 interface IChannelStatsItem {
@@ -60,7 +61,7 @@ const ChannelStats = () => {
   };
 
   return (
-    <>
+    <Fragment>
       <style>
         {`
           .channel-stats-bg {
@@ -75,7 +76,7 @@ const ChannelStats = () => {
       {items.map((item, index) => {
         return renderItem(item, index);
       })}
-    </>
+    </Fragment>
   );
 };
 

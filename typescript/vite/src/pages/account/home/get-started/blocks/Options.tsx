@@ -52,11 +52,11 @@ const Options = ({ items, dropdown }: IOptionsProps) => {
           <div className="flex flex-col gap-3">
             <Link
               to={`${item.path}`}
-              className="text-base font-semibold leading-none text-gray-900 hover:text-primary-active"
+              className="text-base font-medium leading-none text-gray-900 hover:text-primary-active"
             >
               {item.title}
             </Link>
-            <span className="text-2sm font-medium text-gray-600 leading-5">{item.desc}</span>
+            <span className="text-2sm text-gray-700 leading-5">{item.desc}</span>
           </div>
         </div>
       </div>

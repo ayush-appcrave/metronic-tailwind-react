@@ -1,3 +1,4 @@
+import { Fragment } from 'react';
 import { KeenIcon } from '@/components';
 import { Link } from 'react-router-dom';
 import { CardUserMini } from '@/partials/cards';
@@ -213,7 +214,7 @@ const NetworkMiniCardsContent = () => {
   );
 
   return (
-    <>
+    <Fragment>
       <div className="flex items-center justify-between gap-2.5 flex-wrap mb-7.5">
         <h3 className="text-md text-gray-900 font-medium">Showing {items.length} Users</h3>
 
@@ -254,7 +255,7 @@ const NetworkMiniCardsContent = () => {
           Show more Users
         </Link>
       </div>
-    </>
+    </Fragment>
   );
 };
 

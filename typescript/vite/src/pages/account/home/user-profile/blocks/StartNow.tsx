@@ -1,9 +1,10 @@
+import { Fragment } from 'react';
 import { toAbsoluteUrl } from '@/utils/Assets';
 import { Link } from 'react-router-dom';
 
 const StartNow = () => {
   return (
-    <>
+    <Fragment>
       <style>
         {`
           .start-now-bg {
@@ -23,7 +24,7 @@ const StartNow = () => {
             Deals for Personal Satisfaction
           </h3>
 
-          <span className="text-gray-700 text-sm font-medium block mb-5">
+          <span className="text-gray-700 text-sm block mb-5">
             Discover promotions crafted to match your preferences.
           </span>
 
@@ -45,7 +46,7 @@ const StartNow = () => {
           />
         </div>
       </div>
-    </>
+    </Fragment>
   );
 };
 

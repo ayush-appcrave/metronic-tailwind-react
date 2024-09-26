@@ -1,4 +1,4 @@
-import { Invoicing } from './blocks/invoicing';
+import { Invoicing } from './blocks';
 
 const AccountHistoryContent = () => {
   return (

@@ -56,7 +56,7 @@ const CommunityBadges = () => {
             fill={item.fill}
           />
 
-          <span className="text-gray-900 text-sm font-semibold">{item.title}</span>
+          <span className="text-gray-900 text-sm font-medium">{item.title}</span>
         </div>
 
         <div className="btn btn-sm btn-icon text-gray-300 group-hover:text-primary-active">

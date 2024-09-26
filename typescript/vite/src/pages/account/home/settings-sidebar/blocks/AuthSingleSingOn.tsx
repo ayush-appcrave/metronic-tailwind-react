@@ -1,3 +1,4 @@
+import { Fragment } from 'react';
 import { toAbsoluteUrl } from '@/utils/Assets';
 
 interface IAuthSingleSingOnItem {
@@ -59,7 +60,7 @@ const AuthSingleSingOn = () => {
   };
 
   return (
-    <>
+    <Fragment>
       <style>
         {`
           .singl-sign-on-bg {
@@ -157,7 +158,7 @@ const AuthSingleSingOn = () => {
           </div>
         </div>
       </div>
-    </>
+    </Fragment>
   );
 };
 

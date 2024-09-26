@@ -64,7 +64,7 @@ const Teams = () => {
         accessorFn: (row) => row.members,
         id: 'members',
         header: () => 'Members',
-        enableSorting: false,
+        enableSorting: true,
         cell: (info) => (
           <CommonAvatars
             size="size-[30px]"

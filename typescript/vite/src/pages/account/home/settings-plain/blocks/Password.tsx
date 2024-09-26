@@ -1,4 +1,4 @@
-const PlainPassword = () => {
+const Password = () => {
   return (
     <div className="card pb-2.5">
       <div className="card-header" id="password_settings">
@@ -7,7 +7,6 @@ const PlainPassword = () => {
       <div className="card-body grid gap-5">
         <div className="flex items-baseline flex-wrap lg:flex-nowrap gap-2.5">
           <label className="form-label max-w-56">Current Password</label>
-
           <input
             type="text"
             className="input"
@@ -19,13 +18,11 @@ const PlainPassword = () => {
 
         <div className="flex items-baseline flex-wrap lg:flex-nowrap gap-2.5">
           <label className="form-label max-w-56">New Password</label>
-
           <input type="text" className="input" placeholder="New password" value="" readOnly />
         </div>
 
         <div className="flex items-baseline flex-wrap lg:flex-nowrap gap-2.5 mb-2.5">
           <label className="form-label max-w-56">Confirm New Password</label>
-
           <input
             type="text"
             className="input"
@@ -43,4 +40,4 @@ const PlainPassword = () => {
   );
 };
 
-export { PlainPassword };
+export { Password };

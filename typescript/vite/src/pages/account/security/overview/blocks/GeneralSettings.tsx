@@ -1,3 +1,4 @@
+import { Fragment } from 'react';
 import { KeenIcon } from '@/components';
 import { CommonHexagonBadge } from '@/partials/common';
 
@@ -14,10 +15,10 @@ const GeneralSettings = () => {
     {
       icon: 'people',
       title: (
-        <>
+        <Fragment>
           Prevent members from inviting others
           <span className="badge badge-xs badge-primary badge-outline">Pro</span>
-        </>
+        </Fragment>
       ),
       description: 'Restrict members from sending invites to new potential members.',
       actions: (
@@ -29,10 +30,10 @@ const GeneralSettings = () => {
     {
       icon: 'abstract-37',
       title: (
-        <>
+        <Fragment>
           Prevent members from installing third-party integrations
           <span className="badge badge-xs badge-primary badge-outline">Pro</span>
-        </>
+        </Fragment>
       ),
       description: 'Prohibit the installation of external apps or integrations by members..',
       actions: (
@@ -54,10 +55,10 @@ const GeneralSettings = () => {
     {
       icon: 'shield-tick',
       title: (
-        <>
+        <Fragment>
           Push protection for yourself
           <span className="badge badge-xs badge-info badge-outline">Beta</span>
-        </>
+        </Fragment>
       ),
       description: 'Enable users to create and display a profile publicly.',
       actions: (
@@ -89,21 +90,21 @@ const GeneralSettings = () => {
     {
       icon: 'questionnaire-tablet',
       title: (
-        <>
+        <Fragment>
           Private vulnerability reporting
           <span className="badge badge-xs badge-info badge-outline">Beta</span>
-        </>
+        </Fragment>
       ),
       description: 'Confidential channel for reporting system vulnerabilities.',
       actions: (
-        <>
+        <Fragment>
           <a href="#" className="btn btn-sm btn-light btn-danger btn-outline">
             Disable all
           </a>
           <a href="#" className="btn btn-sm btn-light btn-outline">
             Enable all
           </a>
-        </>
+        </Fragment>
       )
     }
   ];

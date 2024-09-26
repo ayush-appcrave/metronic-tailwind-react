@@ -42,18 +42,11 @@ const AccountOverviewContent = () => {
         <div className="flex flex-col gap-5 lg:gap-7.5">
           <FeaturesHighlight
             image={
-              <>
-                <img
-                  src={toAbsoluteUrl('/media/illustrations/5.svg')}
-                  className="dark:hidden max-h-36"
-                  alt=""
-                />
-                <img
-                  src={toAbsoluteUrl('/media/illustrations/5-dark.svg')}
-                  className="light:hidden max-h-36"
-                  alt=""
-                />
-              </>
+              <img
+                src={toAbsoluteUrl('/media/illustrations/5.svg')}
+                className="dark:hidden max-h-36"
+                alt=""
+              />
             }
             title="Essential Personal Security Tips for Enhanced Safety"
             description="Transform your living space beautifully with our Restyle Your Space: Soft Goods Makeover Ideas tutorial"
@@ -65,9 +58,13 @@ const AccountOverviewContent = () => {
           />
 
           <GeneralSettings />
+
           <Authentification />
+
           <QuickSettings />
+
           <LoginSessions />
+
           <TrustedDevices />
         </div>
       </div>
@@ -75,18 +72,11 @@ const AccountOverviewContent = () => {
         <div className="flex flex-col gap-5 lg:gap-7.5">
           <ProductInsight
             image={
-              <>
-                <img
-                  src={toAbsoluteUrl('/media/brand-logos/apple-black.svg')}
-                  className="dark:hidden h-5"
-                  alt=""
-                />
-                <img
-                  src={toAbsoluteUrl('/media/brand-logos/apple-white.svg')}
-                  className="light:hidden h-5"
-                  alt=""
-                />
-              </>
+              <img
+                src={toAbsoluteUrl('/media/brand-logos/apple-black.svg')}
+                className="dark:hidden h-5"
+                alt=""
+              />
             }
             title="iOS"
             description="Active Sessions"

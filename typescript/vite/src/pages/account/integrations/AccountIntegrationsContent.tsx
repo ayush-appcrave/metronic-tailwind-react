@@ -1,3 +1,4 @@
+import { Fragment } from 'react';
 import { MiscFaq, MiscHelp2, MiscStarter } from '@/partials/misc';
 import { toAbsoluteUrl } from '@/utils';
 
@@ -10,27 +11,19 @@ const AccountIntegrationsContent = () => {
 
       <MiscStarter
         image={
-          <>
-            <img
-              src={toAbsoluteUrl('/media/illustrations/28.svg')}
-              className="dark:hidden max-h-[230px]"
-              alt=""
-            />
-            ||
-            <img
-              src={toAbsoluteUrl('/media/illustrations/28-dark.svg')}
-              className="light:hidden max-h-[230px]"
-              alt=""
-            />
-          </>
+          <img
+            src={toAbsoluteUrl('/media/illustrations/28.svg')}
+            className="dark:hidden max-h-[230px]"
+            alt=""
+          />
         }
         title="Add New Integration"
         subTitle={
-          <>
+          <Fragment>
             Explore New Integration: Expand Your Toolkit with Cutting-Edge,
             <br />
             User-Friendly Solutions Tailored for Efficient and Innovative Project Management.
-          </>
+          </Fragment>
         }
         engage={{
           path: '/network/user-cards/mini-cards',

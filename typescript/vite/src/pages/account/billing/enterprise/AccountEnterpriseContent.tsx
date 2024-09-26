@@ -23,7 +23,7 @@ const AccountEnterpriseContent = () => {
       </div>
 
       <div className="col-span-2 lg:col-span-1 flex">
-        <PaymentMethods icon="credit-cart" />
+        <PaymentMethods />
       </div>
 
       <div className="col-span-2 lg:col-span-1">

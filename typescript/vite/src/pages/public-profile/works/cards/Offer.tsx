@@ -1,3 +1,4 @@
+import { Fragment } from 'react';
 import { Link } from 'react-router-dom';
 
 import { KeenIcon } from '@/components';
@@ -15,7 +16,7 @@ interface IOfferRowProps {
 
 const Offer = ({ path, size, iconSize, title, subTitle }: IOfferRowProps) => {
   return (
-    <>
+    <Fragment>
       <style>
         {`
           .offer-bg {
@@ -51,7 +52,7 @@ const Offer = ({ path, size, iconSize, title, subTitle }: IOfferRowProps) => {
           </div>
         </div>
       </Link>
-    </>
+    </Fragment>
   );
 };
 

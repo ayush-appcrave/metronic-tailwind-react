@@ -42,7 +42,7 @@ const Webhooks = () => {
           <div className="grow">
             <label className="switch">
               <span className="switch-label">Use Custom Header</span>
-              <input type="checkbox" defaultChecked value="1" />
+              <input type="checkbox" defaultChecked value="1" readOnly />
             </label>
           </div>
         </div>

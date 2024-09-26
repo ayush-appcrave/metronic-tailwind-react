@@ -1,6 +1,6 @@
 import { toAbsoluteUrl } from '@/utils';
 import { MiscEngage, MiscFaq, MiscHighlightedPosts, IHighlightedPostsItems } from '@/partials/misc';
-import { TeamInfo, ConnectedProfiles, Seats } from './blocks';
+import { TeamInfo, ConnectedProfiles, Seats, Members } from './blocks';
 
 const AccountTeamInfoContent = () => {
   const posts: IHighlightedPostsItems = [
@@ -33,7 +33,7 @@ const AccountTeamInfoContent = () => {
         <div className="flex flex-col gap-5 lg:gap-7.5">
           <TeamInfo />
 
-          {/* {{ theme.page('_members') }} */}
+          <Members />
 
           <MiscFaq />
 
@@ -41,18 +41,11 @@ const AccountTeamInfoContent = () => {
             title="Questions ?"
             description="Visit our Help Center for detailed assistance on billing, payments, and subscriptions."
             image={
-              <>
-                <img
-                  src={toAbsoluteUrl('/media/illustrations/29.svg')}
-                  className="dark:hidden max-h-44"
-                  alt=""
-                />
-                <img
-                  src={toAbsoluteUrl('media/illustrations/29-dark.svg')}
-                  className="light:hidden max-h-44"
-                  alt=""
-                />
-              </>
+              <img
+                src={toAbsoluteUrl('/media/illustrations/29.svg')}
+                className="dark:hidden max-h-44"
+                alt=""
+              />
             }
             more={{
               title: 'Go to Help Center',

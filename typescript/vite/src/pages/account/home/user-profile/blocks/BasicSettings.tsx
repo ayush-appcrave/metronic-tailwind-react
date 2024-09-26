@@ -14,7 +14,7 @@ const BasicSettings = ({ title }: IBasicSettingsProps) => {
         <div className="flex items-center gap-2">
           <label className="switch switch-sm">
             <span className="switch-label">Public Profile</span>
-            <input type="checkbox" value="1" name="check" defaultChecked />
+            <input type="checkbox" value="1" name="check" defaultChecked readOnly />
           </label>
         </div>
       </div>
@@ -22,9 +22,9 @@ const BasicSettings = ({ title }: IBasicSettingsProps) => {
         <table className="table align-middle text-sm text-gray-500">
           <tbody>
             <tr>
-              <td className="py-2 min-w-36">Email</td>
+              <td className="py-2 min-w-36 text-gray-600 font-normal">Email</td>
               <td className="py-2 min-w-60">
-                <a href="#" className="text-gray-700 text-sm hover:text-primary-active">
+                <a href="#" className="text-gray-800 font-normal text-sm hover:text-primary-active">
                   jasontt@studio.co
                 </a>
               </td>
@@ -36,8 +36,8 @@ const BasicSettings = ({ title }: IBasicSettingsProps) => {
             </tr>
 
             <tr>
-              <td className="py-2">Password</td>
-              <td className="py-2 text-gray-600">Password last changed 2 months ago</td>
+              <td className="py-2text-gray-600 font-normal">Password</td>
+              <td className="py-2 text-gray-700 font-normal">Password last changed 2 months ago</td>
               <td className="py-2 text-right">
                 <a href="#" className="btn btn-sm btn-icon btn-clear btn-primary">
                   <KeenIcon icon="notepad-edit" />
@@ -46,8 +46,8 @@ const BasicSettings = ({ title }: IBasicSettingsProps) => {
             </tr>
 
             <tr>
-              <td className="py-3.5">2FA</td>
-              <td className="py-3.5 text-gray-600">To be set</td>
+              <td className="py-3.5text-gray-600 font-normal">2FA</td>
+              <td className="py-3.5 text-gray-700 font-normal">To be set</td>
               <td className="py-3 text-right">
                 <a href="#" className="btn btn-link btn-sm">
                   Setup
@@ -56,7 +56,7 @@ const BasicSettings = ({ title }: IBasicSettingsProps) => {
             </tr>
 
             <tr>
-              <td className="py-2">Sign-in with</td>
+              <td className="py-2text-gray-600 font-normal">Sign-in with</td>
               <td className="py-0.5">
                 <div className="flex items-center gap-2.5">
                   <a
@@ -72,7 +72,7 @@ const BasicSettings = ({ title }: IBasicSettingsProps) => {
 
                   <a
                     href="#"
-                    className="flex items-center justify-center size-8 bg-white rounded-full border border-gray-300"
+                    className="flex items-center justify-center size-8 bg-light rounded-full border border-gray-300"
                   >
                     <img
                       src={toAbsoluteUrl('/media/brand-logos/facebook.svg')}
@@ -83,7 +83,7 @@ const BasicSettings = ({ title }: IBasicSettingsProps) => {
 
                   <a
                     href="#"
-                    className="flex items-center justify-center size-8 bg-white rounded-full border border-gray-300"
+                    className="flex items-center justify-center size-8 bg-light rounded-full border border-gray-300"
                   >
                     <img
                       src={toAbsoluteUrl('/media/brand-logos/apple-black.svg')}
@@ -106,8 +106,8 @@ const BasicSettings = ({ title }: IBasicSettingsProps) => {
             </tr>
 
             <tr>
-              <td className="py-3">Team Account</td>
-              <td className="py-3 text-gray-600">To be set</td>
+              <td className="py-3text-gray-600 font-normal">Team Account</td>
+              <td className="py-3 text-gray-700 font-normal">To be set</td>
               <td className="py-3 text-right">
                 <a href="#" className="btn btn-link btn-sm">
                   Setup
@@ -116,7 +116,7 @@ const BasicSettings = ({ title }: IBasicSettingsProps) => {
             </tr>
 
             <tr>
-              <td className="py-2">Social Profiles</td>
+              <td className="py-2 text-gray-600 font-normal">Social Profiles</td>
               <td className="py-0.5">
                 <div className="flex items-center gap-2.5">
                   <a
@@ -132,7 +132,7 @@ const BasicSettings = ({ title }: IBasicSettingsProps) => {
 
                   <a
                     href="#"
-                    className="flex items-center justify-center size-8 bg-white rounded-full border border-gray-300"
+                    className="flex items-center justify-center size-8 bg-light rounded-full border border-gray-300"
                   >
                     <img
                       src={toAbsoluteUrl('/media/brand-logos/twitch-purple.svg')}
@@ -143,7 +143,7 @@ const BasicSettings = ({ title }: IBasicSettingsProps) => {
 
                   <a
                     href="#"
-                    className="flex items-center justify-center size-8 bg-white rounded-full border border-gray-300"
+                    className="flex items-center justify-center size-8 bg-light rounded-full border border-gray-300"
                   >
                     <img
                       src={toAbsoluteUrl('/media/brand-logos/x.svg')}
@@ -159,7 +159,7 @@ const BasicSettings = ({ title }: IBasicSettingsProps) => {
 
                   <a
                     href="#"
-                    className="flex items-center justify-center size-8 bg-white rounded-full border border-gray-300"
+                    className="flex items-center justify-center size-8 bg-light rounded-full border border-gray-300"
                   >
                     <img
                       src={toAbsoluteUrl('/media/brand-logos/dribbble.svg')}
@@ -177,10 +177,10 @@ const BasicSettings = ({ title }: IBasicSettingsProps) => {
             </tr>
 
             <tr>
-              <td className="py-3">Referral Link</td>
-              <td className="py-3 text-gray-600 text-2sm">
+              <td className="py-3 text-gray-600 text-sm font-normal">Referral Link</td>
+              <td className="py-3 text-gray-700 text-2sm font-normal">
                 <div className="flex items-center gap-0.5">
-                  <a href="#" className="text-gray-700 text-sm hover:text-primary-active">
+                  <a href="#" className="text-gray-800 text-sm hover:text-primary-active">
                     https://studio.co/W3gvQOI35dt
                   </a>
                   <button className="btn btn-xs btn-light btn-clear btn-icon">
