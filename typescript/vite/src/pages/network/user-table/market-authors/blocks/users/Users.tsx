@@ -12,26 +12,26 @@ const Users = () => {
       {
         accessorFn: (row: IUsersData) => row.user,
         id: 'users',
-        header: () => 'Member', 
+        header: () => 'Author', 
         enableSorting: true,
         cell: ({ row }) => {  // 'row' argumentini cell funksiyasiga qo'shdik
           return (
             
-            <div className="flex items-center gap-4">
+            <div className="flex items-center gap-2.5">
               <img
                 src={toAbsoluteUrl(`/media/avatars/${row.original.user.avatar}`)}
-                className="rounded-full size-9 shrink-0"
+                className="rounded-full size-7 shrink-0"
                 alt={`${row.original.user.userName}`}
               />
 
-              <div className="flex flex-col gap-0.5">
+              <div className="flex flex-col">
                 <Link to="#" className="text-sm font-medium text-gray-900 hover:text-primary-active mb-px">
                   {row.original.user.userName}
                 </Link>
                 
-                <Link to="#" className="text-2sm text-gray-700 font-normal hover:text-primary-active">
-                  {row.original.user.userGmail}
-                </Link> 
+                <span className="text-2sm text-gray-700 font-normal">
+                  {row.original.user.description}
+                </span> 
               </div>
             </div>
           );
@@ -42,70 +42,88 @@ const Users = () => {
         }
       },
       {
-        accessorFn: (row) => row.role,
-        id: 'role',
-        header: () => 'Pole',
+        accessorFn: (row) => row.total,
+        id: 'total',
+        header: () => 'Earnings',
         enableSorting: true,
         cell: (info) => {
-          return info.row.original.role;
+          return info.row.original.total;
         },
         meta: {
-          className: 'w-[170px]',
+          className: 'w-[150px]',
         }
       },   
       {
-        accessorFn: (row) => row.status,
-        id: 'status',
-        header: () => 'Status',
-        enableSorting: true,
-        cell: (info) => {                    
-          return (
-            <span className={`badge badge-${info.row.original.status.color} badge-outline rounded-[30px]`}>
-              <span className={`size-1.5 rounded-full bg-${info.row.original.status.color} me-1.5`}></span>
-              {info.row.original.status.label}
-            </span>
-          );
-        },
-        meta: {
-          className: 'w-[170px]',
-          cellClassName: 'text-gray-800 font-normal',
-        }
-      },
-      {
-        accessorFn: (row) => row.location,
-        id: 'location',
-        header: () => 'Location',
+        accessorFn: (row) => row.team,
+        id: 'team',
+        header: () => 'Team',
         enableSorting: true,
         cell: (info) => {                    
           return (
             
             <div className="flex items-center text-gray-800 font-normal gap-1.5">
-              <img
-                src={toAbsoluteUrl(`/media/flags/${info.row.original.flag}`)}
-                className="rounded-full size-4 shrink-0"
-                alt={`${info.row.original.user.userName}`}
+              <img 
+                src={toAbsoluteUrl(`/media/brand-logos/${info.row.original.team.logo}`)} 
+                className="size-[18px] shrinc-0"
+                alt={``}
               />
-              {info.row.original.location}
+              {info.row.original.team.label}
             </div>
           );
         }, 
         meta: {
-          className: 'w-[170px]' 
+          className: 'min-w-[170px]' 
+        }
+      },   
+      {
+        accessorFn: (row) => row.products,
+        id: 'products',
+        header: () => 'Products',
+        enableSorting: true,
+        cell: (info) => {
+          return info.row.original.products;
+        },
+        meta: {
+          className: 'min-w-[150px]'
         }
       },    
       {
-        accessorFn: (row) => row.activity,
-        id: 'activity',
-        header: () => 'Activity',
+        accessorFn: (row: IUsersData) => row.rating,
+        id: 'rating',
+        header: () => 'Rating',
         enableSorting: true,
-        cell: (info) => {                    
-          return info.row.original.activity;
+        cell: (info: any) => {
+          return ;
         },
         meta: {
-          className: 'w-[170px]',
-          cellClassName: 'text-gray-800 font-normal',
-        }
+          className: 'w-[170px]' 
+        },
       },
+      {
+        id: 'social',
+        header: () => 'Social Profiles',
+        enableSorting: false,
+        cell: () => {                    
+          return (
+            <div className="flex items-center gap-2.5">
+              <Link to="#">
+                <KeenIcon icon="facebook" className='text-gray-500 text-lg'/> 
+              </Link>
+
+              <Link to="#">
+                <KeenIcon icon="dribbble" className='text-gray-500 text-lg'/> 
+              </Link>
+
+              <Link to="#">
+                <KeenIcon icon="tiktok" className='text-gray-500 text-lg'/> 
+              </Link> 
+            </div>
+          );
+        },
+        meta: {
+          className: 'w-[170px]'
+        }
+      },      
       {
         id: 'edit',
         header: () => '',
@@ -120,7 +138,8 @@ const Users = () => {
         meta: {
           className: 'w-[70px]'
         }
-      }
+      },      
+        
     ],
     []
   );
@@ -130,7 +149,7 @@ const Users = () => {
   return (
     <div className="card card-grid h-full min-w-full">
       <div className="card-header">
-        <h3 className="card-title">Showing 20 of 68 users</h3>
+        <h3 className="card-title">Showing 10 of 49,053 users</h3>
 
 				<div className="flex items-center gap-2.5">
           <div className="flex">

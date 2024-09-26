@@ -1,70 +1,71 @@
-/* eslint-disable prettier/prettier */
-import { useMemo } from 'react';
+import { useMemo, useState } from 'react';
 import { toAbsoluteUrl } from '@/utils';
 import { Link } from 'react-router-dom';
 import { DataGrid, KeenIcon } from '@/components';
 import { ColumnDef } from '@tanstack/react-table';
-import { UsersData, IUsersData } from './';
+import { UsersData, IUsersData } from './'; 
 
 const Users = () => {
+  const [users, setUsers] = useState<IUsersData[]>(UsersData); // Initialize state with UsersData
+
+  const handleToggle = (index: number) => {
+    setUsers((prevUsers) => {
+      const updatedUsers = [...prevUsers];
+      updatedUsers[index] = {
+        ...updatedUsers[index],
+        switch: !updatedUsers[index].switch // Toggle the switch state
+      };
+      return updatedUsers;
+    });
+  };
+
   const columns = useMemo<ColumnDef<IUsersData>[]>(
     () => [
       {
         accessorFn: (row: IUsersData) => row.user,
         id: 'users',
-        header: () => 'Member', 
+        header: () => 'Users', 
         enableSorting: true,
-        cell: ({ row }) => {  // 'row' argumentini cell funksiyasiga qo'shdik
+        cell: ({ row }) => {  
           return (
-            
-            <div className="flex items-center gap-4">
+            <div className="flex items-center gap-2.5">
               <img
                 src={toAbsoluteUrl(`/media/avatars/${row.original.user.avatar}`)}
-                className="rounded-full size-9 shrink-0"
+                className="rounded-full size-7 shrink-0"
                 alt={`${row.original.user.userName}`}
               />
 
-              <div className="flex flex-col gap-0.5">
-                <Link to="#" className="text-sm font-medium text-gray-900 hover:text-primary-active mb-px">
-                  {row.original.user.userName}
-                </Link>
-                
-                <Link to="#" className="text-2sm text-gray-700 font-normal hover:text-primary-active">
-                  {row.original.user.userGmail}
-                </Link> 
-              </div>
+              <Link to="#" className="text-sm font-medium text-gray-900 hover:text-primary-active">
+                {row.original.user.userName}
+              </Link>
             </div>
           );
         },
         meta: {
-          className: 'min-w-[200px]',
-          cellClassName: 'text-gray-800 font-normal',
+          className: 'min-w-[180px]',
+          cellClassName: 'font-normal text-gray-800',
         }
       },
       {
-        accessorFn: (row) => row.role,
+        accessorFn: (row) => row.phone,
         id: 'role',
-        header: () => 'Pole',
+        header: () => 'Phone',
         enableSorting: true,
         cell: (info) => {
-          return info.row.original.role;
+          return info.row.original.phone;
         },
         meta: {
           className: 'w-[170px]',
+          cellClassName: 'font-normal text-gray-800',
         }
       },   
       {
-        accessorFn: (row) => row.status,
-        id: 'status',
-        header: () => 'Status',
+        accessorFn: (row) => row.branch,
+        id: 'branch',
+        header: () => 'Branch',
         enableSorting: true,
         cell: (info) => {                    
-          return (
-            <span className={`badge badge-${info.row.original.status.color} badge-outline rounded-[30px]`}>
-              <span className={`size-1.5 rounded-full bg-${info.row.original.status.color} me-1.5`}></span>
-              {info.row.original.status.label}
-            </span>
-          );
+          return info.row.original.branch;
         },
         meta: {
           className: 'w-[170px]',
@@ -72,21 +73,22 @@ const Users = () => {
         }
       },
       {
-        accessorFn: (row) => row.location,
-        id: 'location',
-        header: () => 'Location',
+        accessorFn: (row) => row.logos,
+        id: 'image',
+        header: () => 'Connected Apps',
         enableSorting: true,
         cell: (info) => {                    
           return (
-            
             <div className="flex items-center text-gray-800 font-normal gap-1.5">
+            {Array.isArray(info.row.original.logos) && info.row.original.logos.map((logo, index) => (
               <img
-                src={toAbsoluteUrl(`/media/flags/${info.row.original.flag}`)}
-                className="rounded-full size-4 shrink-0"
-                alt={`${info.row.original.user.userName}`}
+                key={index}
+                src={toAbsoluteUrl(`/media/brand-logos/${logo}`)} 
+                className="size-[18px] shrinc-0"
+                alt={``}
               />
-              {info.row.original.location}
-            </div>
+            ))}
+          </div>
           );
         }, 
         meta: {
@@ -94,16 +96,45 @@ const Users = () => {
         }
       },    
       {
-        accessorFn: (row) => row.activity,
-        id: 'activity',
-        header: () => 'Activity',
+        accessorFn: (row) => row.labels,
+        id: 'label',
+        header: () => 'Tags', 
         enableSorting: true,
         cell: (info) => {                    
-          return info.row.original.activity;
+          return (
+            <div className="flex items-center text-gray-800 font-normal gap-1.5">
+              {Array.isArray(info.row.original.labels) && info.row.original.labels.map((label, index) => (
+                <span key={index} className="badge badge-sm">{label}</span> 
+              ))}
+            </div>
+          );
+        }, 
+        meta: {
+          className: 'w-[180px]' 
+        }
+      },      
+      {
+        accessorFn: (row) => row.switch,
+        id: 'switch',
+        header: () => 'Enforce 2FA',
+        enableSorting: true,
+        cell: ({ row }) => {
+          const userSwitch = row.original.switch; // Har bir foydalanuvchining switch holati
+          return (
+            <div className="flex items-center mb-2">
+              <label className="switch switch-sm">
+                <input 
+                  type="checkbox" 
+                  checked={userSwitch}  
+                  onChange={() => handleToggle(row.index)} // Use row.index for the correct user
+                />
+                <span className="slider round"></span>  
+              </label>
+            </div>
+          );
         },
         meta: {
-          className: 'w-[170px]',
-          cellClassName: 'text-gray-800 font-normal',
+          className: 'w-[140px]' 
         }
       },
       {
@@ -120,17 +151,18 @@ const Users = () => {
         meta: {
           className: 'w-[70px]'
         }
-      }
+      },      
+        
     ],
     []
   );
 
-  const data: IUsersData[] = useMemo(() => UsersData, []);
+  const data: IUsersData[] = useMemo(() => users, [users]); // Use users state
 
   return (
     <div className="card card-grid h-full min-w-full">
       <div className="card-header">
-        <h3 className="card-title">Showing 20 of 68 users</h3>
+        <h3 className="card-title">Showing 10 of 49,053 users</h3>
 
 				<div className="flex items-center gap-2.5">
           <div className="flex">

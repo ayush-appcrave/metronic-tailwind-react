@@ -1,2 +1,2 @@
-export * from './device';
-export * from './deviceData';
+export * from './Device';
+export * from './DeviceData';
