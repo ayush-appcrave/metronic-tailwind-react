@@ -1,9 +1,9 @@
-import { DropdownCrudItem1 } from '@/partials/dropdowns/general';
-import { CrudDatatableToolbar } from '@/partials/crud';
-import { KeenIcon } from '@/components';
 import { Link } from 'react-router-dom';
+import { KeenIcon, Menu, MenuItem, MenuToggle } from '@/components';
 import { toAbsoluteUrl } from '@/utils';
+import { CrudDatatableToolbar } from '@/partials/crud';
 import { CommonAvatar } from '@/partials/common';
+import { DropdownCardItem1 } from '@/partials/dropdowns/general';
 
 interface IInvitesMember {
   avatar: string;
@@ -616,20 +616,28 @@ const Invites = ({ title = 'Invites' }: IInvitesProps) => {
         <td className="text-gray-800 font-normal">{each.recentlyActivity}</td>
 
         <td>
-          <div className="menu inline-flex" data-menu="true">
-            <div
-              className="menu-item"
-              data-menu-item-trigger="click|lg:click"
-              data-menu-item-toggle="dropdown"
-              data-menu-item-placement="bottom-end"
-              data-menu-item-offset="0, 10px"
+          <Menu className="items-stretch">
+            <MenuItem
+              toggle="dropdown"
+              trigger="click"
+              dropdownProps={{
+                placement: 'bottom-end',
+                modifiers: [
+                  {
+                    name: 'offset',
+                    options: {
+                      offset: [0, 10] // [skid, distance]
+                    }
+                  }
+                ]
+              }}
             >
-              <button className="menu-toggle btn btn-sm btn-icon btn-light btn-clear">
+              <MenuToggle className="btn btn-sm btn-icon btn-light btn-clear mb-2.5-">
                 <KeenIcon icon="dots-vertical" />
-              </button>
-              <DropdownCrudItem1 />
-            </div>
-          </div>
+              </MenuToggle>
+              {DropdownCardItem1()}
+            </MenuItem>
+          </Menu>
         </td>
       </tr>
     );

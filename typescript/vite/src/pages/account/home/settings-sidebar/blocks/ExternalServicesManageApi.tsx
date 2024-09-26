@@ -1,3 +1,4 @@
+import { Fragment } from 'react';
 import { KeenIcon } from '@/components';
 import { CommonHexagonBadge } from '@/partials/common';
 import { toAbsoluteUrl } from '@/utils/Assets';
@@ -12,7 +13,7 @@ const ExternalServicesManageApi = ({
   switch: showSwitch
 }: IExternalServicesManageApiProps) => {
   return (
-    <>
+    <Fragment>
       <style>
         {`
           .user-access-bg {
@@ -100,7 +101,7 @@ const ExternalServicesManageApi = ({
           </p>
         </div>
       </div>
-    </>
+    </Fragment>
   );
 };
 

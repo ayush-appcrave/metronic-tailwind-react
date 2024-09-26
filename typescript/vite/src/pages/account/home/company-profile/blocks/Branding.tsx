@@ -1,10 +1,11 @@
+import { Fragment } from 'react';
 import { KeenIcon } from '@/components';
 import { toAbsoluteUrl } from '@/utils/Assets';
 import { Link } from 'react-router-dom';
 
 const Branding = () => {
   return (
-    <>
+    <Fragment>
       <style>
         {`
           .branding-bg {
@@ -155,7 +156,7 @@ const Branding = () => {
           </div>
         </div>
       </div>
-    </>
+    </Fragment>
   );
 };
 

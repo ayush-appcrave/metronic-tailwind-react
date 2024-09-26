@@ -1,4 +1,5 @@
 import { MiscFaq, MiscHelp } from '@/partials/misc';
+
 import { Plans } from './blocks';
 
 const AccountPlansContent = () => {

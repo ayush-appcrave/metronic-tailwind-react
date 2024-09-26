@@ -1,3 +1,5 @@
+import { Fragment } from 'react';
+
 interface IBackupSettingsItem {
   title: string;
   description: string;
@@ -11,7 +13,7 @@ const BackupSettings = () => {
       title: 'Automatic Backup',
       description: 'Scheduled Data Protection',
       control: (
-        <>
+        <Fragment>
           <label className="switch switch-sm">
             <input
               defaultChecked
@@ -22,21 +24,21 @@ const BackupSettings = () => {
               readOnly
             />
           </label>
-        </>
+        </Fragment>
       )
     },
     {
       title: 'Backup Frequency',
       description: 'Select Preferred Backup',
       control: (
-        <>
+        <Fragment>
           <select className="select select-sm max-w-24">
             <option value="daily">Daily</option>
             <option value="weekly">Weekly</option>
             <option value="monthly">Monthly</option>
             <option value="yearly">Yearly</option>
           </select>
-        </>
+        </Fragment>
       )
     },
     {

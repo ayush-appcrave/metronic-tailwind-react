@@ -36,11 +36,8 @@ const PaymentHistory = () => {
     return (
       <tr key={index}>
         <td className="text-sm font-normal text-gray-800">{table.date}</td>
-
         <td className="text-sm font-normal text-gray-800 lg:text-right">{table.type}</td>
-
         <td className="text-sm font-normal text-gray-800 lg:text-right">{table.amount}</td>
-
         <td>
           <Menu className="items-stretch">
             <MenuItem
@@ -107,6 +104,7 @@ const PaymentHistory = () => {
               <th className="w-8"></th>
             </tr>
           </thead>
+
           <tbody>
             {tables.map((table, index) => {
               return renderItem(table, index);

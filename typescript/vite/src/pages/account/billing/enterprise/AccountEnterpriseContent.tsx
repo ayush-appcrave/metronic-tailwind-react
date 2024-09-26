@@ -1,11 +1,6 @@
-import { MiscHelp } from '@/partials/misc'; 
-import {
-  BillingInvoicing,
-  CompanyProfile,
-  LatestPayment,
-  NextPayment,
-  Upgrade
-} from './blocks'; 
+import { MiscHelp } from '@/partials/misc';
+
+import { BillingInvoicing, CompanyProfile, LatestPayment, NextPayment, Upgrade } from './blocks';
 
 import { PaymentMethods } from '../basic';
 
@@ -29,7 +24,7 @@ const AccountEnterpriseContent = () => {
       </div>
 
       <div className="col-span-2 lg:col-span-1 flex">
-        <PaymentMethods icon="credit-cart" />
+        <PaymentMethods />
       </div>
 
       <div className="col-span-2 lg:col-span-1">

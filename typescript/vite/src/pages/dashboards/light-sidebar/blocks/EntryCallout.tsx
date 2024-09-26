@@ -1,3 +1,4 @@
+import { Fragment } from 'react';
 import { toAbsoluteUrl } from '@/utils/Assets';
 import { Link } from 'react-router-dom';
 import { CommonAvatars } from '@/partials/common';
@@ -8,7 +9,7 @@ interface IEntryCalloutProps {
 
 const EntryCallout = ({ className }: IEntryCalloutProps) => {
   return (
-    <>
+    <Fragment>
       <style>
         {`
           .entry-callout-bg {
@@ -58,7 +59,7 @@ const EntryCallout = ({ className }: IEntryCalloutProps) => {
           </Link>
         </div>
       </div>
-    </>
+    </Fragment>
   );
 };
 

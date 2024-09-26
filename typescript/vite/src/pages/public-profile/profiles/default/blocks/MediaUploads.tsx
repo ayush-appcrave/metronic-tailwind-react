@@ -1,3 +1,4 @@
+import { Fragment } from 'react';
 import ApexChart from 'react-apexcharts';
 import { ApexOptions } from 'apexcharts';
 import { IApexChartOptions } from '@/types/apexcharts';
@@ -162,7 +163,7 @@ const MediaUploads = () => {
   };
 
   return (
-    <>
+    <Fragment>
       <div className="card">
         <div className="card-header">
           <h3 className="card-title">Media Uploads</h3>
@@ -201,7 +202,7 @@ const MediaUploads = () => {
           />
         </div>
       </div>
-    </>
+    </Fragment>
   );
 };
 

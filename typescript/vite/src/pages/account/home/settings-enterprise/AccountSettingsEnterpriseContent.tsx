@@ -1,8 +1,9 @@
 import { DataImport } from '../company-profile';
 import { CalendarAccounts } from '../user-profile';
 import { TrustedDevices } from '../../security/overview/blocks';
-import { Account, Connections, PaymentHistory, SetGoal, Upgrade, YourCurrentPlan } from './blocks';
 import { AuthTwoFactor } from '../settings-sidebar';
+
+import { Account, Connections, PaymentHistory, SetGoal, Upgrade, YourCurrentPlan } from './blocks';
 
 const AccountSettingsEnterpriseContent = () => {
   return (

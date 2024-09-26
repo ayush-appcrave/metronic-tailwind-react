@@ -1,5 +1,5 @@
 import { MiscHelp } from '@/partials/misc';
-import { SecurityLog } from './blocks/security-log';
+import { SecurityLog } from './blocks';
 
 const AccountSecurityLogContent = () => {
   return (

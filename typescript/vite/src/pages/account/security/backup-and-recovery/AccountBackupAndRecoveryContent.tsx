@@ -24,12 +24,15 @@ const AccountBackupAndRecoveryContent = () => {
       <div className="col-span-2">
         <div className="grid gap-5 lg:gap-7.5">
           <Backup />
+
           <MiscFaq />
         </div>
       </div>
+
       <div className="col-span-1">
         <div className="grid gap-5 lg:gap-7.5">
           <BackupSettings />
+
           <MiscHighlightedPosts posts={posts} />
         </div>
       </div>

@@ -1,4 +1,5 @@
 import { DeleteAccount } from '../settings-sidebar';
+
 import { BasicSettings, Password } from './blocks';
 
 const AccountSettingsPlainContent = () => {

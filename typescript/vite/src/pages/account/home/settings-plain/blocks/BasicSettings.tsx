@@ -27,25 +27,21 @@ const BasicSettings = ({ title }: IGeneralSettingsProps) => {
 
         <div className="flex items-baseline flex-wrap lg:flex-nowrap gap-2.5">
           <label className="form-label max-w-56">Name</label>
-
           <input type="text" className="input" value="Jason Tatum" readOnly />
         </div>
 
         <div className="flex items-baseline flex-wrap lg:flex-nowrap gap-2.5">
           <label className="form-label max-w-56">Phone number</label>
-
           <input type="text" className="input" placeholder="Phone number" value="" readOnly />
         </div>
 
         <div className="flex items-baseline flex-wrap lg:flex-nowrap gap-2.5">
           <label className="form-label max-w-56">Email</label>
-
           <input type="text" className="input" value="jason@studio.io" readOnly />
         </div>
 
         <div className="flex items-baseline flex-wrap lg:flex-nowrap gap-2.5">
           <label className="form-label max-w-56">Address</label>
-
           <input
             type="text"
             className="input"
@@ -57,7 +53,6 @@ const BasicSettings = ({ title }: IGeneralSettingsProps) => {
 
         <div className="flex items-baseline flex-wrap lg:flex-nowrap gap-2.5">
           <label className="form-label max-w-56">Country</label>
-
           <select className="select">
             <option>Spain</option>
             <option>Option 2</option>
@@ -67,19 +62,16 @@ const BasicSettings = ({ title }: IGeneralSettingsProps) => {
 
         <div className="flex items-baseline flex-wrap lg:flex-nowrap gap-2.5">
           <label className="form-label max-w-56">State</label>
-
           <input type="text" className="input" placeholder="State" value="" readOnly />
         </div>
 
         <div className="flex items-baseline flex-wrap lg:flex-nowrap gap-2.5">
           <label className="form-label max-w-56">City</label>
-
           <input type="text" className="input" value="Barcelona" readOnly />
         </div>
 
         <div className="flex items-baseline flex-wrap lg:flex-nowrap gap-2.5 mb-2.5">
           <label className="form-label max-w-56">Postcode</label>
-
           <input type="text" className="input" value="08012" readOnly />
         </div>
 
