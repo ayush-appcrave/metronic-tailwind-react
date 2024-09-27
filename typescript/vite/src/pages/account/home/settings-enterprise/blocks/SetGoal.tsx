@@ -1,6 +1,8 @@
-import { KeenIcon, Menu, MenuItem, MenuToggle } from '@/components';
-import { DropdownCard2 } from '@/partials/dropdowns/general';
 import { useState } from 'react';
+
+import { KeenIcon, Menu, MenuItem, MenuToggle } from '@/components';
+
+import { DropdownCard2 } from '@/partials/dropdowns/general';
 
 const SetGoal = () => {
   const [value, setValue] = useState(1);

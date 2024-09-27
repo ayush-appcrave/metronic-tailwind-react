@@ -1,6 +1,7 @@
 import { KeenIcon, Menu, MenuItem, MenuToggle } from '@/components';
-import { DropdownCardItem1 } from '@/partials/dropdowns/general';
 import { toAbsoluteUrl } from '@/utils';
+
+import { DropdownCardItem1 } from '@/partials/dropdowns/general';
 
 interface IConnectedProfilesItem {
   user: {

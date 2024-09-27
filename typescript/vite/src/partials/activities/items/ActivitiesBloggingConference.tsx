@@ -1,8 +1,15 @@
+import { Link } from 'react-router-dom';
+
+import { toAbsoluteUrl } from '@/utils';
+
 import { TimelinesWrapper } from '@/partials/timelines/default/item';
 
-import { IBloggingConferenceProps } from './types';
-import { Link } from 'react-router-dom';
-import { toAbsoluteUrl } from '@/utils';
+interface IBloggingConferenceProps {
+  heading?: string;
+  datetime?: string;
+  image?: string;
+  title?: string;
+}
 
 const ActivitiesBloggingConference = ({
   heading,
@@ -26,31 +33,17 @@ const ActivitiesBloggingConference = ({
         <div className="card-body lg:py-4">
           <div className="flex justify-center py-4">
             {image ? (
-              <>
-                <img
-                  src={toAbsoluteUrl('/media/illustrations/28.svg')}
-                  className="dark:hidden max-h-[160px]"
-                  alt=""
-                />
-                <img
-                  src={toAbsoluteUrl('/media/illustrations/28-dark.svg')}
-                  className="light:hidden max-h-[160px]"
-                  alt=""
-                />
-              </>
+              <img
+                src={toAbsoluteUrl('/media/illustrations/28.svg')}
+                className="dark:hidden max-h-[160px]"
+                alt=""
+              />
             ) : (
-              <>
-                <img
-                  src={toAbsoluteUrl('/media/illustrations/3.svg')}
-                  className="dark:hidden max-h-[160px]"
-                  alt=""
-                />
-                <img
-                  src={toAbsoluteUrl('/media/illustrations/3-dark.svg')}
-                  className="light:hidden max-h-[160px]"
-                  alt=""
-                />
-              </>
+              <img
+                src={toAbsoluteUrl('/media/illustrations/3.svg')}
+                className="dark:hidden max-h-[160px]"
+                alt=""
+              />
             )}
           </div>
 
@@ -73,4 +66,4 @@ const ActivitiesBloggingConference = ({
   );
 };
 
-export { ActivitiesBloggingConference };
+export { ActivitiesBloggingConference, type IBloggingConferenceProps };

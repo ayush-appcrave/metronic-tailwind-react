@@ -1,4 +1,5 @@
 import React from 'react';
+
 import { CardNowPlaying } from '@/partials/cards';
 
 interface INowPlayingItem {

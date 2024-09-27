@@ -1,8 +1,8 @@
 import { KeenIcon } from '@/components';
 import { toAbsoluteUrl } from '@/utils/Assets';
 
-import { IWork, IAuthorProps } from './types';
 import { CommonAvatar } from '../common';
+import { IAuthorProps, IWork } from './CardAuthor';
 
 const CardAuthorRow = ({ avatar, name, location, works }: IAuthorProps) => {
   const renderItem = (work: IWork, index: number) => {

@@ -1,10 +1,11 @@
 import { Container } from '@/components/container';
+import { KeenIcon } from '@/components';
 import { MENU_SIDEBAR } from '@/config/menu.config';
+import { toAbsoluteUrl } from '@/utils/Assets';
+
 import { UserProfileHero } from '@/partials/heros';
 import { NavbarMenu } from '@/partials/menu/NavbarMenu';
 import { Navbar, NavbarActions, NavbarDropdown } from '@/partials/navbar';
-import { toAbsoluteUrl } from '@/utils/Assets';
-import { KeenIcon } from '@/components';
 
 import { CampaignsContent } from '.';
 

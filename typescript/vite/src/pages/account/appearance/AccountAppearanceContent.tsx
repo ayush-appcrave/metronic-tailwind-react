@@ -1,8 +1,9 @@
-import { MiscEngage, MiscFaq, MiscHighlightedPosts, IHighlightedPostsItems } from '@/partials/misc';
 import { toAbsoluteUrl } from '@/utils';
+
+import { MiscEngage, MiscFaq, MiscHighlightedPosts, IHighlightedPostsItems } from '@/partials/misc';
+
 import { Branding } from '../home/company-profile';
 import { AdvancedSettingsAppearance } from '../home/settings-sidebar';
-
 import { Accessibility, DisableDefaultBrand } from './blocks';
 
 const AccountAppearanceContent = () => {

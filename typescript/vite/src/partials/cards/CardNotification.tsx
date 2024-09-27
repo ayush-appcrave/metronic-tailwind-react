@@ -1,7 +1,14 @@
 import { KeenIcon } from '@/components';
 
-import { INotificationProps } from './types';
 import { CommonHexagonBadge } from '../common';
+
+interface INotificationProps {
+  icon: string;
+  title: string;
+  description: string;
+  button?: boolean;
+  actions: React.ReactNode;
+}
 
 const CardNotification = ({ icon, title, description, button, actions }: INotificationProps) => {
   return (
@@ -35,4 +42,4 @@ const CardNotification = ({ icon, title, description, button, actions }: INotifi
   );
 };
 
-export { CardNotification };
+export { CardNotification, type INotificationProps };

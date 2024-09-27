@@ -3,7 +3,15 @@ import clsx from 'clsx';
 import { KeenIcon } from '@/components';
 import { toAbsoluteUrl } from '@/utils/Assets';
 
-import { IAvatarProps } from './types';
+interface IAvatarProps {
+  image?: string;
+  fallback?: string;
+  icon?: string;
+  iconClass?: string;
+  badgeClass?: string;
+  className?: string;
+  imageClass?: string;
+}
 
 const CommonAvatar = ({
   image,
@@ -32,4 +40,4 @@ const CommonAvatar = ({
   );
 };
 
-export { CommonAvatar };
+export { CommonAvatar, type IAvatarProps };

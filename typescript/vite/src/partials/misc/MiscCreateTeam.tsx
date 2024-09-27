@@ -1,6 +1,17 @@
-import { ICreateTeamProps } from './types';
 import clsx from 'clsx';
 import { Link } from 'react-router-dom';
+
+interface ICreateTeamProps {
+  className?: string;
+  image: string;
+  title: string;
+  subTitle: string;
+  engage: {
+    path: string;
+    btnColor: string;
+    label: string;
+  };
+}
 
 const MiscCreateTeam = ({ className, image, title, subTitle, engage }: ICreateTeamProps) => {
   return (
@@ -25,4 +36,4 @@ const MiscCreateTeam = ({ className, image, title, subTitle, engage }: ICreateTe
   );
 };
 
-export { MiscCreateTeam };
+export { MiscCreateTeam, type ICreateTeamProps };

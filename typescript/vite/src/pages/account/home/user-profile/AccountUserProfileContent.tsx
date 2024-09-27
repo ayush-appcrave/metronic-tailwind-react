@@ -1,5 +1,4 @@
 import { RecentUploads } from '@/pages/public-profile/profiles/default';
-
 import {
   BasicSettings,
   CalendarAccounts,

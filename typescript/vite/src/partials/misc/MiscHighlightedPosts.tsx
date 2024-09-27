@@ -1,7 +1,7 @@
-import { KeenIcon } from '@/components';
-import { Link } from 'react-router-dom';
-import { CommonHexagonBadge } from '../common';
 import React from 'react';
+import { Link } from 'react-router-dom';
+import { KeenIcon } from '@/components';
+import { CommonHexagonBadge } from '../common';
 
 interface IHighlightedPostsItem {
   icon: string;

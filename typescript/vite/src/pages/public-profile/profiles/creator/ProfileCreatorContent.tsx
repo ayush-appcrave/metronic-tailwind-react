@@ -1,5 +1,6 @@
 import { toAbsoluteUrl } from '@/utils';
 
+import { CommunityBadges, Tags } from '../default';
 import {
   Activities,
   FeaturesHighlight,
@@ -11,7 +12,6 @@ import {
   Users,
   Works
 } from './blocks';
-import { CommunityBadges, Tags } from '../default';
 
 const ProfileCreatorContent = () => {
   const data: IStatisticsItems = [

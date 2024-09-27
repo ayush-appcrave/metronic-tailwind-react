@@ -1,9 +1,18 @@
+import { Link } from 'react-router-dom';
+
 import { KeenIcon, Menu, MenuItem, MenuToggle } from '@/components';
 
-import { IRoleProps } from './types';
-import { CommonHexagonBadge } from '../common';
 import { DropdownCardItem1 } from '../dropdowns/general';
-import { Link } from 'react-router-dom';
+import { CommonHexagonBadge } from '../common';
+
+interface IRoleProps {
+  path: string;
+  title: string;
+  subTitle: string;
+  description: string;
+  team: string;
+  badge: React.ReactNode;
+}
 
 const CardRole = ({ path, title, subTitle, description, team, badge }: IRoleProps) => {
   return (
@@ -54,4 +63,4 @@ const CardRole = ({ path, title, subTitle, description, team, badge }: IRoleProp
   );
 };
 
-export { CardRole };
+export { CardRole, type IRoleProps };

@@ -1,6 +1,10 @@
 import clsx from 'clsx';
 
-import { IRatingProps } from './types';
+interface IRatingProps {
+  className?: string;
+  rating: number;
+  round?: number;
+}
 
 const CommonRating = ({ className, rating, round }: IRatingProps) => {
   return (
@@ -29,4 +33,4 @@ const CommonRating = ({ className, rating, round }: IRatingProps) => {
   );
 };
 
-export { CommonRating };
+export { CommonRating, type IRatingProps };

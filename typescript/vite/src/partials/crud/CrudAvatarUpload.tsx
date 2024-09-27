@@ -1,8 +1,7 @@
 import { KeenIcon } from '@/components';
 import { toAbsoluteUrl } from '@/utils/Assets';
-import { IAvatarUploadProps } from './types';
 
-const CrudAvatarUpload = ({ image }: IAvatarUploadProps) => {
+const CrudAvatarUpload = () => {
   return (
     <div className="image-input size-16" data-image-input="true">
       <input type="file" name="avatar" accept=".png, .jpg, .jpeg" />
@@ -24,14 +23,10 @@ const CrudAvatarUpload = ({ image }: IAvatarUploadProps) => {
         className="image-input-placeholder rounded-full border-2 border-success image-input-empty:border-gray-300"
         style={{ backgroundImage: `url(${toAbsoluteUrl(`/media/avatars/blank.png`)})` }}
       >
-        {image ? (
-          <div className="image-input-preview rounded-full"></div>
-        ) : (
-          <div
-            className="image-input-preview rounded-full"
-            style={{ backgroundImage: `url(${toAbsoluteUrl(`/media/avatars/300-2.png`)})` }}
-          ></div>
-        )}
+        <div
+          className="image-input-preview rounded-full"
+          style={{ backgroundImage: `url(${toAbsoluteUrl(`/media/avatars/300-2.png`)})` }}
+        ></div>
 
         <div className="flex items-center justify-center cursor-pointer h-5 left-0 right-0 bottom-0 bg-dark-clarity absolute">
           <svg

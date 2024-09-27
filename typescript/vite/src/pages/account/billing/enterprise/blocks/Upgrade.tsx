@@ -1,7 +1,9 @@
 import { Fragment } from 'react';
+
 import { KeenIcon } from '@/components';
-import { CommonHexagonBadge } from '@/partials/common';
 import { toAbsoluteUrl } from '@/utils/Assets';
+
+import { CommonHexagonBadge } from '@/partials/common';
 
 const Upgrade = () => {
   return (

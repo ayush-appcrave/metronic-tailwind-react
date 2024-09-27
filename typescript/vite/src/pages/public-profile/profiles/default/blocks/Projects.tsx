@@ -1,7 +1,8 @@
-import { KeenIcon, Menu, MenuItem, MenuToggle } from '@/components';
-import { CommonAvatars } from '@/partials/common';
-
 import { Link } from 'react-router-dom';
+
+import { KeenIcon, Menu, MenuItem, MenuToggle } from '@/components';
+
+import { CommonAvatars } from '@/partials/common';
 import { DropdownCrud1, DropdownCrudItem1 } from '@/partials/dropdowns/general';
 
 interface IProjectsItem {

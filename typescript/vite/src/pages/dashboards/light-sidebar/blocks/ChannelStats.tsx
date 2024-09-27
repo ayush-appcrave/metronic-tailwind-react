@@ -1,4 +1,5 @@
 import { Fragment } from 'react';
+
 import { toAbsoluteUrl } from '@/utils/Assets';
 
 interface IChannelStatsItem {
@@ -8,7 +9,6 @@ interface IChannelStatsItem {
   desc: string;
   path: string;
 }
-
 interface IChannelStatsItems extends Array<IChannelStatsItem> {}
 
 const ChannelStats = () => {

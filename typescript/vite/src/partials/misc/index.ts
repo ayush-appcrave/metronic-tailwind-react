@@ -5,4 +5,3 @@ export * from './MiscHelp';
 export * from './MiscHelp2';
 export * from './MiscHighlightedPosts';
 export * from './MiscStarter';
-export * from './types';

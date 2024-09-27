@@ -1,6 +1,7 @@
 import { KeenIcon } from '@/components';
-import { CommonAvatars } from '@/partials/common';
 import { toAbsoluteUrl } from '@/utils';
+
+import { CommonAvatars } from '@/partials/common';
 
 const TeamMeeting = () => {
   return (

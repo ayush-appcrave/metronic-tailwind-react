@@ -1,8 +1,10 @@
+import { Fragment } from 'react';
+
 import { toAbsoluteUrl } from '@/utils';
 
 const Saves = () => {
   return (
-    <>
+    <Fragment>
       <style>
         {`
           .post-saves-bg {
@@ -32,7 +34,7 @@ const Saves = () => {
           <button className="btn btn-light">Request Access</button>
         </div>
       </div>
-    </>
+    </Fragment>
   );
 };
 

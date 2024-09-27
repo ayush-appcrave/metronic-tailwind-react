@@ -1,5 +1,15 @@
 import { Link } from 'react-router-dom';
-import { IStarterProps } from './types';
+
+interface IStarterProps {
+  image: React.ReactNode;
+  title: string;
+  subTitle: React.ReactNode;
+  engage: {
+    path: string;
+    btnColor: string;
+    label: string;
+  };
+}
 
 const MiscStarter = ({ image, title, subTitle, engage }: IStarterProps) => {
   return (
@@ -24,4 +34,4 @@ const MiscStarter = ({ image, title, subTitle, engage }: IStarterProps) => {
   );
 };
 
-export { MiscStarter };
+export { MiscStarter, type IStarterProps };

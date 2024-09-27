@@ -1,4 +1,5 @@
 import { KeenIcon } from '@/components';
+
 import { CommonHexagonBadge } from '@/partials/common';
 
 interface IQuickSettingsItem {

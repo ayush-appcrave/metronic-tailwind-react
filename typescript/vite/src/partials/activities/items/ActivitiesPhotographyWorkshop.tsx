@@ -1,5 +1,6 @@
-import { TimelinesWrapper } from '@/partials/timelines/default/item';
 import { toAbsoluteUrl } from '@/utils/Assets';
+
+import { TimelinesWrapper } from '@/partials/timelines/default/item';
 
 const ActivitiesPhotographyWorkshop = () => {
   return (

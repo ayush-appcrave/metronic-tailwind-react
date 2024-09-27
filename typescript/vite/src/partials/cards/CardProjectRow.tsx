@@ -1,9 +1,30 @@
 import { KeenIcon, Menu, MenuItem, MenuToggle } from '@/components';
 import { toAbsoluteUrl } from '@/utils/Assets';
 
-import { CommonAvatars } from '../common';
-import { IProjectRowProps } from './types';
 import { DropdownCard2 } from '../dropdowns/general';
+import { CommonAvatars } from '../common';
+
+interface IProjectRowProps {
+  logo: string;
+  name: string;
+  description: string;
+  status: {
+    variant: string;
+    label: string;
+  };
+  progress: {
+    variant: string;
+    value: number;
+  };
+  team: {
+    size?: string;
+    group: Array<{ filename?: string; variant?: string; fallback?: string }>;
+    more?: {
+      variant?: string;
+      number?: number;
+    };
+  };
+}
 
 const CardProjectRow = ({ logo, name, description, status, progress, team }: IProjectRowProps) => {
   return (
@@ -68,4 +89,4 @@ const CardProjectRow = ({ logo, name, description, status, progress, team }: IPr
   );
 };
 
-export { CardProjectRow };
+export { CardProjectRow, type IProjectRowProps };

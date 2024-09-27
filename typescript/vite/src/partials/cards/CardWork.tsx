@@ -1,8 +1,17 @@
+import { Link } from 'react-router-dom';
+
 import { KeenIcon } from '@/components';
 import { toAbsoluteUrl } from '@/utils/Assets';
 
-import { IWorkProps } from './types';
-import { Link } from 'react-router-dom';
+interface IWorkProps {
+  image: string;
+  title: string;
+  description?: string;
+  authorAvatar: string;
+  authorName: string;
+  likes: number;
+  comments: number;
+}
 
 const CardWork = ({ image, title, authorAvatar, authorName, likes, comments }: IWorkProps) => {
   return (
@@ -54,4 +63,4 @@ const CardWork = ({ image, title, authorAvatar, authorName, likes, comments }: I
   );
 };
 
-export { CardWork };
+export { CardWork, type IWorkProps };

@@ -1,5 +1,7 @@
 import { toAbsoluteUrl } from '@/utils';
+
 import { MiscEngage, MiscFaq, MiscHighlightedPosts, IHighlightedPostsItems } from '@/partials/misc';
+
 import { TeamInfo, ConnectedProfiles, Seats, Members } from './blocks';
 
 const AccountTeamInfoContent = () => {

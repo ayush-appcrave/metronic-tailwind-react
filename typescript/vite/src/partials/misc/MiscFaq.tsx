@@ -1,7 +1,10 @@
-import { KeenIcon } from '@/components';
-
-import { IFaqItem, IFaqItems } from './types';
 import { Accordion, AccordionItem } from '@/components/accordion';
+
+interface IFaqItem {
+  title: string;
+  text: string;
+}
+interface IFaqItems extends Array<IFaqItem> {}
 
 const MiscFaq = () => {
   const items: IFaqItems = [
@@ -53,4 +56,4 @@ const MiscFaq = () => {
   );
 };
 
-export { MiscFaq };
+export { MiscFaq, type IFaqItem, type IFaqItems };

@@ -1,7 +1,27 @@
 import { KeenIcon } from '@/components';
 
 import { CommonAvatars, CommonRating } from '../common';
-import { ITeamProps } from './types';
+
+interface ITeamProps {
+  icon: string;
+  title: string;
+  description: string;
+  labels: string[];
+  team: {
+    size?: string;
+    group: Array<{ filename?: string; variant?: string; fallback?: string }>;
+    more?: {
+      number: number;
+      variant: string;
+    };
+    className?: string;
+  };
+  connected: boolean;
+  rating: {
+    value: number;
+    round: number;
+  };
+}
 
 const CardTeam = ({ icon, title, description, labels, rating, team, connected }: ITeamProps) => {
   const renderItem = (label: string, index: number) => {
@@ -34,7 +54,6 @@ const CardTeam = ({ icon, title, description, labels, rating, team, connected }:
         <div className="grid">
           <div className="flex items-center justify-between flex-wrap mb-3.5 gap-2">
             <span className="text-2xs text-gray-600 uppercase">skills</span>
-
             <div className="flex flex-wrap gap-1.5">
               {labels.map((label, index) => {
                 return renderItem(label, index);
@@ -46,7 +65,6 @@ const CardTeam = ({ icon, title, description, labels, rating, team, connected }:
 
           <div className="flex items-center justify-between flex-wrap my-2.5 gap-2">
             <span className="text-2xs text-gray-600 uppercase">rating</span>
-
             <CommonRating rating={rating.value} round={rating.round} />
           </div>
 
@@ -54,7 +72,6 @@ const CardTeam = ({ icon, title, description, labels, rating, team, connected }:
 
           <div className="flex items-center justify-between flex-wrap gap-2">
             <span className="text-2xs text-gray-600 uppercase">memebers</span>
-
             <CommonAvatars
               group={team.group}
               more={team.more}
@@ -80,4 +97,4 @@ const CardTeam = ({ icon, title, description, labels, rating, team, connected }:
   );
 };
 
-export { CardTeam };
+export { CardTeam, type ITeamProps };

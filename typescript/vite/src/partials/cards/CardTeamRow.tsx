@@ -1,7 +1,7 @@
 import { KeenIcon } from '@/components';
 
 import { CommonAvatars, CommonRating } from '../common';
-import { ITeamProps } from './types';
+import { ITeamProps } from './CardTeam';
 
 const CardTeamRow = ({ icon, title, description, labels, rating, team, connected }: ITeamProps) => {
   const renderItem = (label: string, index: number) => {

@@ -1,4 +1,5 @@
 import { KeenIcon } from '@/components';
+
 import { CardLocation } from '@/partials/cards';
 
 interface ILocationsItem {

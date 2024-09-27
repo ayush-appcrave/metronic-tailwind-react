@@ -1,4 +1,5 @@
 import { MiscFaq, MiscHighlightedPosts, IHighlightedPostsItems } from '@/partials/misc';
+
 import { Backup, BackupSettings } from './blocks';
 
 const AccountBackupAndRecoveryContent = () => {

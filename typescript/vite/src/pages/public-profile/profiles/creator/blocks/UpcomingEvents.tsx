@@ -1,5 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+
 import { toAbsoluteUrl } from '@/utils/Assets';
 
 interface IUpcomingEventsItem {

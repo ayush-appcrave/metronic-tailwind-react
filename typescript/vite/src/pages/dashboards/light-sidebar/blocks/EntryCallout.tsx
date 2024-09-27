@@ -1,6 +1,8 @@
 import { Fragment } from 'react';
-import { toAbsoluteUrl } from '@/utils/Assets';
 import { Link } from 'react-router-dom';
+
+import { toAbsoluteUrl } from '@/utils/Assets';
+
 import { CommonAvatars } from '@/partials/common';
 
 interface IEntryCalloutProps {

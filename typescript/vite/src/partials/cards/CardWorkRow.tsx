@@ -1,8 +1,8 @@
 import { KeenIcon, Menu, MenuItem, MenuToggle } from '@/components';
 import { toAbsoluteUrl } from '@/utils/Assets';
 
-import { IWorkRowProps } from './types';
 import { DropdownCard2 } from '../dropdowns/general';
+import { IWorkProps } from './CardWork';
 
 const CardWorkRow = ({
   image,
@@ -12,7 +12,7 @@ const CardWorkRow = ({
   authorName,
   likes,
   comments
-}: IWorkRowProps) => {
+}: IWorkProps) => {
   return (
     <div className="card p-5">
       <div className="flex flex-wrap justify-between items-center gap-7">

@@ -1,9 +1,31 @@
+import { Link } from 'react-router-dom';
+
 import { KeenIcon } from '@/components';
 import { toAbsoluteUrl } from '@/utils/Assets';
 
-import { IWork, IAuthorProps } from './types';
-import { Link } from 'react-router-dom';
 import { CommonAvatar } from '../common';
+
+interface IAvatar {
+  className?: string;
+  image?: string;
+  imageClass?: string;
+  fallback?: string;
+  badgeClass?: string;
+}
+
+interface IWork {
+  image: string;
+  title: string;
+  id: number;
+}
+
+interface IAuthorProps {
+  avatar?: IAvatar;
+  bgImage: string;
+  name: string;
+  location: string;
+  works: IWork[];
+}
 
 const CardAuthor = ({ avatar, bgImage, name, location, works }: IAuthorProps) => {
   const renderItem = (work: IWork, index: number) => {
@@ -99,4 +121,4 @@ const CardAuthor = ({ avatar, bgImage, name, location, works }: IAuthorProps) =>
   );
 };
 
-export { CardAuthor };
+export { CardAuthor, type IAvatar, type IWork, type IAuthorProps };

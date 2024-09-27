@@ -1,3 +1,5 @@
+import { Fragment } from 'react';
+
 import { KeenIcon } from '@/components';
 import { toAbsoluteUrl } from '@/utils';
 
@@ -80,7 +82,7 @@ const Likes = () => {
   };
 
   return (
-    <>
+    <Fragment>
       <div className="flex flex-col gap-2 lg:gap-5 pt-3.5 px-7.5 mb-5">
         {items.map((item, index) => {
           return renderItem(item, index);
@@ -92,7 +94,7 @@ const Likes = () => {
           Show more Likes
         </a>
       </div>
-    </>
+    </Fragment>
   );
 };
 

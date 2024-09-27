@@ -1,5 +1,12 @@
-import { IUserMiniProps } from './types';
 import { CommonAvatar } from '../common';
+import { IAvatar } from './CardAuthor';
+
+interface IUserMiniProps {
+  avatar?: IAvatar;
+  name: string;
+  verify: boolean;
+  email: string;
+}
 
 const CardUserMini = ({ avatar, verify, name, email }: IUserMiniProps) => {
   return (
@@ -47,4 +54,4 @@ const CardUserMini = ({ avatar, verify, name, email }: IUserMiniProps) => {
   );
 };
 
-export { CardUserMini };
+export { CardUserMini, type IUserMiniProps };

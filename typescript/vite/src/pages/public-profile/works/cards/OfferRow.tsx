@@ -1,7 +1,9 @@
 import { Fragment } from 'react';
+import { Link } from 'react-router-dom';
+
 import { KeenIcon } from '@/components';
 import { toAbsoluteUrl } from '@/utils/Assets';
-import { Link } from 'react-router-dom';
+
 import { CommonHexagonBadge } from '@/partials/common';
 
 import { IOfferRowProps } from './Offer';

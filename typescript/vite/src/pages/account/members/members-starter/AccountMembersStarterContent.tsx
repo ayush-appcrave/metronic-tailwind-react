@@ -1,4 +1,5 @@
 import { Fragment } from 'react';
+
 import { MiscFaq, MiscHelp2, MiscStarter } from '@/partials/misc';
 import { toAbsoluteUrl } from '@/utils';
 

@@ -1,7 +1,9 @@
-import { KeenIcon } from '@/components';
 import { Link } from 'react-router-dom';
-import { CommonAvatar } from '@/partials/common';
+
+import { KeenIcon } from '@/components';
 import clsx from 'clsx';
+
+import { CommonAvatar } from '@/partials/common';
 
 interface IBlockListItem {
   avatar: string;

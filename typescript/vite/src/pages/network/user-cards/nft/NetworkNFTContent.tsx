@@ -1,7 +1,9 @@
-import { KeenIcon } from '@/components';
-import { Link } from 'react-router-dom';
-import { CardNFT2, CardNFT2Row } from '@/partials/cards';
 import { useState } from 'react';
+import { Link } from 'react-router-dom';
+
+import { KeenIcon } from '@/components';
+
+import { CardNFT2, CardNFT2Row } from '@/partials/cards';
 
 interface IAvatar {
   className: string;

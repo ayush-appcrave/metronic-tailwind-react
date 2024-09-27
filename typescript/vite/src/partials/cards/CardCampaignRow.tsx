@@ -1,8 +1,8 @@
 import { KeenIcon, Menu, MenuItem, MenuToggle } from '@/components';
 import { toAbsoluteUrl } from '@/utils/Assets';
 
-import { ICampaignRowItem, ICampaignRowProps } from './types';
 import { DropdownCard2 } from '../dropdowns/general';
+import { ICampaignItem, ICampaignProps } from './CardCampaign';
 
 const CardCampaignRow = ({
   logo,
@@ -13,8 +13,8 @@ const CardCampaignRow = ({
   status,
   statistics,
   url
-}: ICampaignRowProps) => {
-  const renderItem = (statistic: ICampaignRowItem, index: number) => {
+}: ICampaignProps) => {
+  const renderItem = (statistic: ICampaignItem, index: number) => {
     return (
       <div
         key={index}

@@ -1,4 +1,5 @@
 import { toAbsoluteUrl } from '@/utils';
+
 import { MiscEngage } from '.';
 
 const MiscHelp = () => {
@@ -8,19 +9,11 @@ const MiscHelp = () => {
         title="Questions ?"
         description="Visit our Help Center for detailed assistance on billing, payments, and subscriptions."
         image={
-          (
-            <img
-              src={toAbsoluteUrl('/media/illustrations/2.svg')}
-              className="dark:hidden max-h-[150px]"
-              alt=""
-            />
-          ) || (
-            <img
-              src={toAbsoluteUrl('/media/illustrations/2-dark.svg')}
-              className="light:hidden max-h-[150px]"
-              alt=""
-            />
-          )
+          <img
+            src={toAbsoluteUrl('/media/illustrations/2.svg')}
+            className="dark:hidden max-h-[150px]"
+            alt=""
+          />
         }
         more={{ title: 'Go to Help Center', url: '#' }}
       />
@@ -29,19 +22,11 @@ const MiscHelp = () => {
         title="Contact Support"
         description="Need assistance? Contact our support team for prompt, personalized help your queries & concerns."
         image={
-          (
-            <img
-              src={toAbsoluteUrl('/media/illustrations/4.svg')}
-              className="dark:hidden max-h-[150px]"
-              alt=""
-            />
-          ) || (
-            <img
-              src={toAbsoluteUrl('/media/illustrations/4-dark.svg')}
-              className="light:hidden max-h-[150px]"
-              alt=""
-            />
-          )
+          <img
+            src={toAbsoluteUrl('/media/illustrations/4.svg')}
+            className="dark:hidden max-h-[150px]"
+            alt=""
+          />
         }
         more={{ title: 'Contact Support', url: '#' }}
       />

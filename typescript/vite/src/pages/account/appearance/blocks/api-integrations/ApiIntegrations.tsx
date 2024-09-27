@@ -1,7 +1,9 @@
 /* eslint-disable prettier/prettier */
 import { useMemo } from 'react';
-import { DataGrid, KeenIcon } from '@/components';
 import { ColumnDef } from '@tanstack/react-table';
+
+import { DataGrid, KeenIcon } from '@/components';
+
 import { CrudCardFooter } from '@/partials/crud';
 
 import { ApiIntegrationsData, IApiIntegrationsData } from '.';

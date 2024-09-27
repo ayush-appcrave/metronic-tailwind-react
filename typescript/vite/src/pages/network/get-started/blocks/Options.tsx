@@ -1,6 +1,7 @@
-import { KeenIcon } from '@/components';
-import { Link } from 'react-router-dom';
 import React from 'react';
+import { Link } from 'react-router-dom';
+
+import { KeenIcon } from '@/components';
 
 interface IOptionsSubItem {
   path: string;
