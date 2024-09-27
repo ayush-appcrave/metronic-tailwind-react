@@ -1,5 +1,14 @@
-import { IEngageProps } from './types';
 import { Link } from 'react-router-dom';
+
+interface IEngageProps {
+  title: string;
+  description: string;
+  image: any;
+  more: {
+    url: string;
+    title: string;
+  };
+}
 
 const MiscEngage = ({ title, description, image, more }: IEngageProps) => {
   return (
@@ -25,4 +34,4 @@ const MiscEngage = ({ title, description, image, more }: IEngageProps) => {
   );
 };
 
-export { MiscEngage };
+export { MiscEngage, type IEngageProps };

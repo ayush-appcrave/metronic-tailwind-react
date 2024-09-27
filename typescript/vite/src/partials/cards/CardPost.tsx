@@ -1,7 +1,12 @@
 import { KeenIcon } from '@/components';
 import { toAbsoluteUrl } from '@/utils/Assets';
 
-import { IPostProps } from './types';
+interface IPostProps {
+  image: string;
+  label: string;
+  description: string;
+  time: string;
+}
 
 const CardPost = ({ image, label, description, time }: IPostProps) => {
   return (
@@ -30,4 +35,4 @@ const CardPost = ({ image, label, description, time }: IPostProps) => {
   );
 };
 
-export { CardPost };
+export { CardPost, type IPostProps };

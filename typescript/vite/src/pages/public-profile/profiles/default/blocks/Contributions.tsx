@@ -1,8 +1,10 @@
 import ApexChart from 'react-apexcharts';
 import { ApexOptions } from 'apexcharts';
-import { KeenIcon, Menu, MenuItem, MenuToggle } from '@/components';
-import { DropdownCard2 } from '@/partials/dropdowns/general';
 import { IApexChartOptions } from '@/types/apexcharts';
+
+import { KeenIcon, Menu, MenuItem, MenuToggle } from '@/components';
+
+import { DropdownCard2 } from '@/partials/dropdowns/general';
 
 interface IApexContributionsOptions {
   series: any[];

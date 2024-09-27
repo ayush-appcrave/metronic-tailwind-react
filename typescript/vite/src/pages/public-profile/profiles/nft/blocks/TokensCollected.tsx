@@ -1,5 +1,6 @@
-import { CardNFT } from '@/partials/cards';
 import { Link } from 'react-router-dom';
+
+import { CardNFT } from '@/partials/cards';
 
 interface ITokensCollectedItem {
   image: string;

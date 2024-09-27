@@ -43,7 +43,7 @@ const TeamInfo = () => {
                 150x150px JPEG, PNG Image
               </td>
               <td className="py-2 text-center min-w-16">
-                <CrudAvatarUpload image="/media/images/600x600/23.jpg" />
+                <CrudAvatarUpload />
               </td>
             </tr>
           </thead>

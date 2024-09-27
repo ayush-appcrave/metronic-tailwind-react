@@ -1,6 +1,18 @@
 import { toAbsoluteUrl } from '@/utils/Assets';
 
-import { ITournamentProps } from './types';
+interface ITournamentProps {
+  image: string;
+  logo: string;
+  title: string;
+  time: string;
+  labels: string[];
+  progress: {
+    variant: string;
+    value: number;
+    slotNumber: number;
+    leftNumber: number;
+  };
+}
 
 const CardTournament = ({ image, logo, title, time, labels, progress }: ITournamentProps) => {
   const renderItem = (label: string, index: number) => {
@@ -56,4 +68,4 @@ const CardTournament = ({ image, logo, title, time, labels, progress }: ITournam
   );
 };
 
-export { CardTournament };
+export { CardTournament, type ITournamentProps };

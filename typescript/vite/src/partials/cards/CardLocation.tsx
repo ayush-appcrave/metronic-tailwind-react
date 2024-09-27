@@ -1,6 +1,10 @@
 import { toAbsoluteUrl } from '@/utils/Assets';
 
-import { ILocationProps } from './types';
+interface ILocationProps {
+  image: string;
+  title: string;
+  description: string;
+}
 
 const CardLocation = ({ image, title, description }: ILocationProps) => {
   return (
@@ -20,4 +24,4 @@ const CardLocation = ({ image, title, description }: ILocationProps) => {
   );
 };
 
-export { CardLocation };
+export { CardLocation, type ILocationProps };

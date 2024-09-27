@@ -1,4 +1,5 @@
 import { IHighlightedPostsItems, MiscHighlightedPosts } from '@/partials/misc';
+
 import { AccountSettings, Branding, DataImport, GeneralInfo, Members } from './blocks';
 
 const AccountCompanyProfileContent = () => {

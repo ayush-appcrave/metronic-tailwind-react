@@ -1,5 +1,6 @@
-import { KeenIcon } from '@/components';
 import { Fragment, useState } from 'react';
+
+import { KeenIcon } from '@/components';
 
 interface IPlanPrice {
   regular: string;

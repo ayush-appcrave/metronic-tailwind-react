@@ -1,13 +1,15 @@
+import { Fragment } from 'react';
+import { Link } from 'react-router-dom';
+
 import { KeenIcon } from '@/components';
 import { toAbsoluteUrl } from '@/utils/Assets';
 
-import { IAddNewProps } from './types';
-import { Link } from 'react-router-dom';
 import { CommonHexagonBadge } from '../common';
+import { IAddNewProps } from './CardAddNewRow';
 
 const CardAddNew = ({ path, size, iconSize, title, subTitle }: IAddNewProps) => {
   return (
-    <>
+    <Fragment>
       <style>
         {`
           .add-new-bg {
@@ -43,7 +45,7 @@ const CardAddNew = ({ path, size, iconSize, title, subTitle }: IAddNewProps) => 
           </div>
         </div>
       </Link>
-    </>
+    </Fragment>
   );
 };
 

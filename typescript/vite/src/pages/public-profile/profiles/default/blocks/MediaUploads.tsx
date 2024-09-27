@@ -2,7 +2,9 @@ import { Fragment } from 'react';
 import ApexChart from 'react-apexcharts';
 import { ApexOptions } from 'apexcharts';
 import { IApexChartOptions } from '@/types/apexcharts';
+
 import { KeenIcon, Menu, MenuItem, MenuToggle } from '@/components';
+
 import { DropdownCard2 } from '@/partials/dropdowns/general';
 
 const MediaUploads = () => {

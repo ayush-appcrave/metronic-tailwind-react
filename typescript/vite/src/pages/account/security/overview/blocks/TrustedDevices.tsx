@@ -1,6 +1,7 @@
 import { KeenIcon, Menu, MenuItem, MenuToggle } from '@/components';
-import { DropdownCard2 } from '@/partials/dropdowns/general';
 import { toAbsoluteUrl } from '@/utils';
+
+import { DropdownCard2 } from '@/partials/dropdowns/general';
 
 interface ITrustedDevicesItem {
   logo: string;

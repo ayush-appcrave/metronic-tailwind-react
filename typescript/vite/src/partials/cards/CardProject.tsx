@@ -1,7 +1,30 @@
 import { toAbsoluteUrl } from '@/utils/Assets';
 
 import { CommonAvatars } from '../common';
-import { IProjectProps } from './types';
+
+interface IProjectProps {
+  logo: string;
+  name: string;
+  description: string;
+  startDate?: string;
+  endDate?: string;
+  status: {
+    variant: string;
+    label: string;
+  };
+  progress: {
+    variant: string;
+    value: number;
+  };
+  team: {
+    size?: string;
+    group: Array<{ filename?: string; variant?: string; fallback?: string }>;
+    more?: {
+      variant?: string;
+      number?: number;
+    };
+  };
+}
 
 const CardProject = ({
   logo,
@@ -52,4 +75,4 @@ const CardProject = ({
   );
 };
 
-export { CardProject };
+export { CardProject, type IProjectProps };

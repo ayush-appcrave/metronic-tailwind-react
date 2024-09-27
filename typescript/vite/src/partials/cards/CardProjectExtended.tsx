@@ -1,9 +1,34 @@
 import { KeenIcon, Menu, MenuItem, MenuToggle } from '@/components';
 import { toAbsoluteUrl } from '@/utils/Assets';
 
-import { CommonAvatars } from '../common';
-import { IProjectExtendedItem, IProjectExtendedProps } from './types';
 import { DropdownCard2 } from '../dropdowns/general';
+import { CommonAvatars } from '../common';
+
+interface IProjectExtendedItem {
+  total: string;
+  description: string;
+}
+interface IProjectExtendedItems extends Array<IProjectExtendedItem> {}
+
+interface IProjectExtendedProps {
+  status: {
+    variant: string;
+    label: string;
+  };
+  logo: string;
+  title: string;
+  description: string;
+  team: {
+    size?: string;
+    group: Array<{ filename?: string; variant?: string; fallback?: string }>;
+  };
+  statistics: IProjectExtendedItem[];
+  progress?: {
+    variant: string;
+    value: number;
+  };
+  url: string;
+}
 
 const CardProjectExtended = ({
   status,
@@ -85,11 +110,16 @@ const CardProjectExtended = ({
         </div>
       </div>
 
-      <div className={`progress ${progress.variant}`}>
-        <div className="progress-bar" style={{ width: `${progress.value}%` }}></div>
+      <div className={`progress ${progress?.variant}`}>
+        <div className="progress-bar" style={{ width: `${progress?.value}%` }}></div>
       </div>
     </div>
   );
 };
 
-export { CardProjectExtended };
+export {
+  CardProjectExtended,
+  type IProjectExtendedItem,
+  type IProjectExtendedItems,
+  type IProjectExtendedProps
+};

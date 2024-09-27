@@ -1,4 +1,5 @@
 import { KeenIcon } from '@/components';
+
 import { CrudAvatarUpload } from '@/partials/crud';
 
 const PersonalInfo = () => {

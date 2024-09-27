@@ -1,8 +1,31 @@
 import { KeenIcon, Menu, MenuItem, MenuToggle } from '@/components';
 import { toAbsoluteUrl } from '@/utils/Assets';
 
-import { ICampaignItem, ICampaignProps } from './types';
 import { DropdownCard2 } from '../dropdowns/general';
+
+interface ICampaignItem {
+  total: string;
+  description: string;
+}
+interface ICampaignItems extends Array<ICampaignItem> {}
+
+interface ICampaignProps {
+  logo: string;
+  logoSize?: string;
+  logoDark?: string;
+  title: string;
+  description: string;
+  status: {
+    variant: string;
+    label: string;
+  };
+  statistics: ICampaignItem[];
+  progress?: {
+    variant: string;
+    value: number;
+  };
+  url: string;
+}
 
 const CardCampaign = ({
   logo,
@@ -95,11 +118,11 @@ const CardCampaign = ({
         </div>
       </div>
 
-      <div className={`progress ${progress.variant}`}>
-        <div className="progress-bar" style={{ width: `${progress.value}%` }}></div>
+      <div className={`progress ${progress?.variant}`}>
+        <div className="progress-bar" style={{ width: `${progress?.value}%` }}></div>
       </div>
     </div>
   );
 };
 
-export { CardCampaign };
+export { CardCampaign, type ICampaignItem, type ICampaignItems, type ICampaignProps };

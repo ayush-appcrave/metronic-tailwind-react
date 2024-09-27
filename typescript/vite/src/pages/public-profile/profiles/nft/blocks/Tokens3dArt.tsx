@@ -1,4 +1,5 @@
 import { Link } from 'react-router-dom';
+
 import { CardNFT } from '@/partials/cards';
 
 interface ITokens3dArtItem {

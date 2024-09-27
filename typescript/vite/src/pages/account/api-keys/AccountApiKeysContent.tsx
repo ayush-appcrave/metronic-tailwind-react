@@ -1,9 +1,10 @@
-import { MiscEngage, MiscFaq, MiscHighlightedPosts, IHighlightedPostsItems } from '@/partials/misc';
 import { toAbsoluteUrl } from '@/utils';
 import { KeenIcon } from '@/components';
-import { DoNotDistrub } from '../notifications';
+
+import { MiscEngage, MiscFaq, MiscHighlightedPosts, IHighlightedPostsItems } from '@/partials/misc';
 
 import { ExternalServicesManageApi } from '../home/settings-sidebar';
+import { DoNotDistrub } from '../notifications';
 import { ApiIntegrations, Webhooks } from './blocks';
 
 const AccountApiKeysContent = () => {

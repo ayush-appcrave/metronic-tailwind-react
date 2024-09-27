@@ -1,7 +1,7 @@
 import { KeenIcon } from '@/components';
 
-import { IUserSocialProps } from './types';
 import { CommonAvatar } from '../common';
+import { IUserSocialProps } from './CardUserSocial';
 
 const CardUserSocialRow = ({ avatar, name, description, verify }: IUserSocialProps) => {
   return (

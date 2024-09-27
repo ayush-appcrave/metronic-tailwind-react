@@ -1,7 +1,27 @@
 import { CommonAvatars } from '@/partials/common';
 import { toAbsoluteUrl } from '@/utils/Assets';
 
-import { INowPlayingItem, INowPlayingProps } from './types';
+interface INowPlayingItem {
+  number: string;
+  description: string;
+}
+interface INowPlayingItems extends Array<INowPlayingItem> {}
+
+interface INowPlayingProps {
+  image: string;
+  logo: string;
+  title: string;
+  date: string;
+  statistics: INowPlayingItem[];
+  label: number;
+  team: {
+    group: Array<{ filename: string }>;
+    more?: {
+      number: number;
+      variant: string;
+    };
+  };
+}
 
 const CardNowPlaying = ({
   image,
@@ -68,4 +88,4 @@ const CardNowPlaying = ({
   );
 };
 
-export { CardNowPlaying };
+export { CardNowPlaying, type INowPlayingItem, type INowPlayingItems, type INowPlayingProps };

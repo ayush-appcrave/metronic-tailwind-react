@@ -1,4 +1,5 @@
 import { MiscFaq, MiscHelp } from '@/partials/misc';
+
 import { CurrentSessions } from './blocks/';
 
 const AccountCurrentSessionsContent = () => {

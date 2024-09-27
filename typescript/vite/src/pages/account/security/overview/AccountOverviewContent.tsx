@@ -1,5 +1,7 @@
 import { toAbsoluteUrl } from '@/utils';
+
 import { MiscHighlightedPosts, IHighlightedPostsItems } from '@/partials/misc';
+
 import { FeaturesHighlight } from '@/pages/public-profile/profiles/creator';
 
 import {

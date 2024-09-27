@@ -1,5 +1,6 @@
-import { CommonHexagonBadge } from '@/partials/common';
 import { KeenIcon } from '@/components';
+
+import { CommonHexagonBadge } from '@/partials/common';
 
 interface IPermissionsToggleItem {
   icon: string;

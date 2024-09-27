@@ -1,4 +1,9 @@
-import { IHexagonBadgeProps } from './types';
+interface IHexagonBadgeProps {
+  size?: string;
+  stroke?: string;
+  fill?: string;
+  badge?: React.ReactNode;
+}
 
 const CommonHexagonBadge = ({ size, stroke, fill, badge }: IHexagonBadgeProps) => {
   return (
@@ -32,4 +37,4 @@ const CommonHexagonBadge = ({ size, stroke, fill, badge }: IHexagonBadgeProps) =
   );
 };
 
-export { CommonHexagonBadge };
+export { CommonHexagonBadge, type IHexagonBadgeProps };

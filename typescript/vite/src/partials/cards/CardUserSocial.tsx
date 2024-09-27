@@ -1,7 +1,14 @@
 import { KeenIcon } from '@/components';
 
-import { IUserSocialProps } from './types';
 import { CommonAvatar } from '../common';
+import { IAvatar } from './CardAuthor';
+
+interface IUserSocialProps {
+  avatar: IAvatar;
+  name: string;
+  description: string;
+  verify: boolean;
+}
 
 const CardUserSocial = ({ avatar, name, description, verify }: IUserSocialProps) => {
   return (
@@ -68,4 +75,4 @@ const CardUserSocial = ({ avatar, name, description, verify }: IUserSocialProps)
   );
 };
 
-export { CardUserSocial };
+export { CardUserSocial, type IUserSocialProps };

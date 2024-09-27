@@ -1,6 +1,6 @@
 import { KeenIcon, Menu, MenuItem, MenuToggle } from '@/components';
-import { CommonAvatar } from '@/partials/common';
 
+import { CommonAvatar } from '@/partials/common';
 import { DropdownCard1 } from '@/partials/dropdowns/general';
 
 interface IHeadingProps {

@@ -1,3 +1,5 @@
+import { Link } from 'react-router-dom';
+
 import {
   ActivitiesAnniversary,
   ActivitiesBloggingConference,
@@ -6,7 +8,6 @@ import {
   ActivitiesNewArticle,
   ActivitiesUpcomingContent
 } from '@/partials/activities/items';
-import { Link } from 'react-router-dom';
 
 const Activities = () => {
   return (

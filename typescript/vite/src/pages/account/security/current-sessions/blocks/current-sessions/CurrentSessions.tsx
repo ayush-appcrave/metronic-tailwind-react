@@ -1,8 +1,9 @@
 /* eslint-disable prettier/prettier */
 import { useMemo } from 'react';
+import { ColumnDef } from '@tanstack/react-table';
+
 import { DataGrid, KeenIcon } from '@/components';
 import { toAbsoluteUrl } from '@/utils';
-import { ColumnDef } from '@tanstack/react-table';
 
 import { CurrentSessionsData, ICurrentSessionsData } from '.';
 

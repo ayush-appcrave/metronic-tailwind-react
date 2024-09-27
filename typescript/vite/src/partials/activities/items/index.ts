@@ -14,4 +14,3 @@ export * from './ActivitiesProductWebinar';
 export * from './ActivitiesProjectStatus';
 export * from './ActivitiesUpcomingContent';
 export * from './ActivitiesVirtualTeam';
-export * from './types';

@@ -1,5 +1,6 @@
-import { CardPost } from '@/partials/cards';
 import { Link } from 'react-router-dom';
+
+import { CardPost } from '@/partials/cards';
 
 interface IPostsItem {
   image: string;

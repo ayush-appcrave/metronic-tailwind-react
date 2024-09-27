@@ -1,8 +1,15 @@
+import { Link } from 'react-router-dom';
+
 import { KeenIcon } from '@/components';
 import { toAbsoluteUrl } from '@/utils/Assets';
 
-import { IIntegrationProps } from './types';
-import { Link } from 'react-router-dom';
+interface IIntegrationProps {
+  logo: string;
+  path: string;
+  name: string;
+  description: string;
+  actions: React.ReactNode;
+}
 
 const CardIntegration = ({ logo, path, name, description, actions }: IIntegrationProps) => {
   return (
@@ -43,4 +50,4 @@ const CardIntegration = ({ logo, path, name, description, actions }: IIntegratio
   );
 };
 
-export { CardIntegration };
+export { CardIntegration, type IIntegrationProps };

@@ -1,10 +1,26 @@
+import { Link } from 'react-router-dom';
+
 import { KeenIcon, Menu, MenuItem, MenuToggle } from '@/components';
 import { toAbsoluteUrl } from '@/utils/Assets';
 
-import { INFT2Item, INFT2Props } from './types';
 import { DropdownCardItem1 } from '../dropdowns/general';
-import { Link } from 'react-router-dom';
 import { CommonAvatar } from '../common';
+import { IAvatar } from './CardAuthor';
+
+interface INFT2Item {
+  total: string;
+  description: string;
+}
+interface INFT2Items extends Array<INFT2Item> {}
+
+interface INFT2Props {
+  avatar?: IAvatar;
+  bgImage: string;
+  name: string;
+  email: string;
+  info: string;
+  statistics: INFT2Item[];
+}
 
 const CardNFT2 = ({ avatar, bgImage, name, email, info, statistics }: INFT2Props) => {
   const renderItem = (statistic: INFT2Item, index: number) => {
@@ -111,4 +127,4 @@ const CardNFT2 = ({ avatar, bgImage, name, email, info, statistics }: INFT2Props
   );
 };
 
-export { CardNFT2 };
+export { CardNFT2, type INFT2Item, type INFT2Items, type INFT2Props };

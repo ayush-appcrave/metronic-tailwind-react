@@ -1,4 +1,5 @@
 import { IHighlightedPostsItems, MiscHighlightedPosts } from '@/partials/misc';
+
 import { Details, Invoicing, PaymentMethods, Plan } from './blocks';
 
 const AccountBasicContent = () => {

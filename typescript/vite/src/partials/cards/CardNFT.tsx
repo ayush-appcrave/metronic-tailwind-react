@@ -1,7 +1,13 @@
 import { KeenIcon } from '@/components';
 import { toAbsoluteUrl } from '@/utils/Assets';
 
-import { INFTProps } from './types';
+interface INFTProps {
+  image: string;
+  title: string;
+  id: number;
+  info: string;
+  date: string;
+}
 
 const CardNFT = ({ image, id, title, info, date }: INFTProps) => {
   return (
@@ -15,7 +21,7 @@ const CardNFT = ({ image, id, title, info, date }: INFTProps) => {
         <div className="pb-6">
           <a
             href="#"
-            className="font-media/images/600x600/ block font-medium text-gray-900 hover:text-primary text-md leading-4 mb-2"
+            className="font-block font-medium text-gray-900 hover:text-primary text-md leading-4 mb-2"
           >
             {title}
           </a>
@@ -47,4 +53,4 @@ const CardNFT = ({ image, id, title, info, date }: INFTProps) => {
   );
 };
 
-export { CardNFT };
+export { CardNFT, type INFTProps };

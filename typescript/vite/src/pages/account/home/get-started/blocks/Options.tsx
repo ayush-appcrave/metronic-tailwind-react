@@ -1,6 +1,8 @@
-import { KeenIcon, Menu, MenuItem, MenuToggle } from '@/components';
-import { DropdownCard2 } from '@/partials/dropdowns/general';
 import { Link } from 'react-router-dom';
+
+import { KeenIcon, Menu, MenuItem, MenuToggle } from '@/components';
+
+import { DropdownCard2 } from '@/partials/dropdowns/general';
 
 interface IOptionsItem {
   icon: string;

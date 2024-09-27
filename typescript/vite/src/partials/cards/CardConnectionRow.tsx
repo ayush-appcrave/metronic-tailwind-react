@@ -1,7 +1,7 @@
 import { KeenIcon } from '@/components';
 
 import { CommonAvatar, CommonAvatars } from '../common';
-import { IConnectionItem, IConnectionProps } from './types';
+import { IConnectionItem, IConnectionProps } from './CardConnection';
 
 const CardConnectionRow = ({
   name,

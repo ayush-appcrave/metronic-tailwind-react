@@ -1,7 +1,35 @@
 import { KeenIcon } from '@/components';
 
 import { CommonAvatar, CommonAvatars } from '../common';
-import { IConnectionItem, IConnectionProps } from './types';
+
+interface IConnectionItem {
+  total: string;
+  description: string;
+}
+interface IConnectionItems extends Array<IConnectionItem> {}
+
+interface IConnectionProps {
+  name: string;
+  info: string;
+  avatar: {
+    className: string;
+    fallback?: string;
+    image?: string;
+    imageClass?: string;
+    badgeClass: string;
+  };
+  email: string;
+  team: {
+    size?: string;
+    group: Array<{ filename?: string; variant?: string; fallback?: string }>;
+    more?: {
+      number: number;
+      variant: string;
+    };
+  };
+  statistics: IConnectionItem[];
+  connected: boolean;
+}
 
 const CardConnection = ({
   name,
@@ -103,4 +131,4 @@ const CardConnection = ({
   );
 };
 
-export { CardConnection };
+export { CardConnection, type IConnectionItem, type IConnectionItems, type IConnectionProps };

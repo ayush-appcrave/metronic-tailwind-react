@@ -1,6 +1,8 @@
-import { KeenIcon } from '@/components';
-import { CardAuthor, CardAuthorRow } from '@/partials/cards';
 import { useState } from 'react';
+
+import { KeenIcon } from '@/components';
+
+import { CardAuthor, CardAuthorRow } from '@/partials/cards';
 
 interface IAuthorContentAvatar {
   className: string;

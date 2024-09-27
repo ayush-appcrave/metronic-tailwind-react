@@ -1,5 +1,6 @@
 import { KeenIcon } from '@/components';
 import { toAbsoluteUrl } from '@/utils/Assets';
+
 import { CommonHexagonBadge } from '@/partials/common';
 
 interface IAdvancedSettingsNotificationsItem {

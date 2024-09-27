@@ -1,5 +1,7 @@
-import { KeenIcon, Menu, MenuItem, MenuToggle } from '@/components';
 import { Link } from 'react-router-dom';
+
+import { KeenIcon, Menu, MenuItem, MenuToggle } from '@/components';
+
 import { DropdownCrud1, DropdownCrudItem1 } from '@/partials/dropdowns/general';
 
 interface IDealsItem {

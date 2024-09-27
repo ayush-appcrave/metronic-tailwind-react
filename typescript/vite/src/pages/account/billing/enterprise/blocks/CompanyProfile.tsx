@@ -1,5 +1,6 @@
-import { CommonAvatars, IAvatarsItems } from '@/partials/common';
 import { toAbsoluteUrl } from '@/utils';
+
+import { CommonAvatars, IAvatarsItems } from '@/partials/common';
 
 interface ICompanyProfileItem {
   total: string;

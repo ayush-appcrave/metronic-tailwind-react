@@ -1,6 +1,8 @@
 import { Fragment } from 'react';
-import { KeenIcon } from '@/components';
 import { Link } from 'react-router-dom';
+
+import { KeenIcon } from '@/components';
+
 import { CardUserMini } from '@/partials/cards';
 
 interface IAvatar {

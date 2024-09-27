@@ -1,9 +1,10 @@
 import { KeenIcon, Menu, MenuItem, MenuToggle } from '@/components';
 import { toAbsoluteUrl } from '@/utils/Assets';
 
-import { CommonAvatars } from '../common';
-import { IProjectExtendedRowItem, IProjectExtendedRowProps } from './types';
 import { DropdownCard2 } from '../dropdowns/general';
+import { CommonAvatars } from '../common';
+
+import { IProjectExtendedItem, IProjectExtendedProps } from './CardProjectExtended';
 
 const CardProjectExtendedRow = ({
   status,
@@ -13,8 +14,8 @@ const CardProjectExtendedRow = ({
   team,
   statistics,
   url
-}: IProjectExtendedRowProps) => {
-  const renderItem = (statistic: IProjectExtendedRowItem, index: number) => {
+}: IProjectExtendedProps) => {
+  const renderItem = (statistic: IProjectExtendedItem, index: number) => {
     return (
       <div
         key={index}

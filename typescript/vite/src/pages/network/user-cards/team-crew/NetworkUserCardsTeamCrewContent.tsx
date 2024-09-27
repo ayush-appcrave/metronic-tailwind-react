@@ -1,6 +1,8 @@
 import { useState } from 'react';
-import { KeenIcon } from '@/components';
 import { Link } from 'react-router-dom';
+
+import { KeenIcon } from '@/components';
+
 import { CardConnection, CardConnectionRow } from '@/partials/cards';
 
 interface ITeamCrewAvatar {

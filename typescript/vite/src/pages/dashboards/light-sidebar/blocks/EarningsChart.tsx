@@ -1,5 +1,6 @@
 import ApexChart from 'react-apexcharts';
 import { ApexOptions } from 'apexcharts';
+
 import { IApexChartOptions } from '@/types/apexcharts';
 
 const EarningsChart = () => {

@@ -1,8 +1,9 @@
+import { Link } from 'react-router-dom';
+
 import { KeenIcon } from '@/components';
 
-import { INFT2Item, INFT2Props } from './types';
-import { Link } from 'react-router-dom';
 import { CommonAvatar } from '../common';
+import { INFT2Item, INFT2Props } from './CardNFT2';
 
 const CardNFT2Row = ({ avatar, name, email, info, statistics }: INFT2Props) => {
   const renderItem = (statistic: INFT2Item, index: number) => {
