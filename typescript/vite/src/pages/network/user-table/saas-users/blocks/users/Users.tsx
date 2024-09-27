@@ -1,23 +1,9 @@
 import { useMemo } from 'react';
 import { DataGrid } from '@/components'; 
+import { ColumnDef } from '@tanstack/react-table';
 import { toAbsoluteUrl } from '@/utils'; 
-import { UsersData } from './UsersData';
+import { UsersData, IUsersData } from '.';
 import { KeenIcon } from '@/components';
-
-interface IUsersData {
-  user: {
-    avatar: string;
-    name: string;
-    email: string;
-  };
-  labels: string[];
-  license: {
-    type: string;
-    left: string;
-  };
-  payment: string;
-  enforce: boolean;
-}
 
 const EnforceSwitch = ({ enforce }: { enforce: boolean }) => {
   return (
@@ -28,10 +14,10 @@ const EnforceSwitch = ({ enforce }: { enforce: boolean }) => {
 };
 
 const Users = () => {
-  const columns = useMemo(
+  const columns = useMemo<ColumnDef<IUsersData>[]>(
     () => [
       {
-        accessorFn: (row: IUsersData) => row.user,
+        accessorFn: (row) => row.user,
         id: 'user',
         header: (): JSX.Element => <span className="text-gray-700 font-normal">Subscriber</span>, 
         enableSorting: true,
@@ -57,7 +43,7 @@ const Users = () => {
         },
       },
       {
-        accessorFn: (row: IUsersData) => row.labels,
+        accessorFn: (row) => row.labels,
         id: 'labels',
         header: (): JSX.Element => <span className="text-gray-700 font-normal">Products</span>,
         enableSorting: true,
@@ -75,7 +61,7 @@ const Users = () => {
         },
       },
       {
-        accessorFn: (row: IUsersData) => row.license,
+        accessorFn: (row) => row.license,
         id: 'license',
         header: (): JSX.Element => <span className="text-gray-700 font-normal">License</span>,
         enableSorting: true,
@@ -90,7 +76,7 @@ const Users = () => {
         },
       },
       {
-        accessorFn: (row: IUsersData) => row.payment,
+        accessorFn: (row) => row.payment,
         id: 'payment',
         header: (): JSX.Element => <span className="text-gray-700 font-normal">Latest Payment</span>,
         enableSorting: true,
@@ -101,7 +87,7 @@ const Users = () => {
         },
       },
       {
-        accessorFn: (row: IUsersData) => row.enforce,
+        accessorFn: (row) => row.enforce,
         id: 'enforce',
         header: (): JSX.Element => <span className="text-gray-700 font-normal">Enforce 2FA</span>,
         enableSorting: true,
