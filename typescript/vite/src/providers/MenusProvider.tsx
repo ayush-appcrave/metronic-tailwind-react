@@ -2,7 +2,7 @@ import { createContext, type PropsWithChildren, useContext, useState } from 'rea
 
 import { IMenuItemConfig, MenuConfigType } from '@/components/menu';
 
-export interface IMenuProps {
+export interface IMenusProps {
   configs: Map<string, MenuConfigType | null>;
   setMenuConfig: (name: string, config: MenuConfigType | null) => void;
   getMenuConfig: (name: string) => MenuConfigType | null;
@@ -10,7 +10,7 @@ export interface IMenuProps {
   getCurrentMenuItem: () => IMenuItemConfig | null;
 }
 
-const initialProps: IMenuProps = {
+const initialProps: IMenusProps = {
   configs: new Map(),
   setMenuConfig: () => {},
   getMenuConfig: () => null,
@@ -18,10 +18,10 @@ const initialProps: IMenuProps = {
   getCurrentMenuItem: () => null
 };
 
-const MenuContext = createContext<IMenuProps>(initialProps);
-const useMenu = () => useContext(MenuContext);
+const MenuContext = createContext<IMenusProps>(initialProps);
+const useMenus = () => useContext(MenuContext);
 
-const MenuProvider = ({ children }: PropsWithChildren) => {
+const MenusProvider = ({ children }: PropsWithChildren) => {
   const [currentMenuItem, setCurrentMenuItem] = useState<IMenuItemConfig | null>(null);
   const configs = initialProps.configs;
 
@@ -46,4 +46,5 @@ const MenuProvider = ({ children }: PropsWithChildren) => {
   );
 };
 
-export { MenuProvider, useMenu };
+// eslint-disable-next-line react-refresh/only-export-components
+export { MenusProvider, useMenus };

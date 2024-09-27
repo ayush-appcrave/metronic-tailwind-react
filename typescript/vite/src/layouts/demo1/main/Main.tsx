@@ -6,6 +6,7 @@ import { useMenuCurrentItem } from '@/components/menu';
 import { MENU_SIDEBAR } from '@/config/menu.config';
 
 import { Content, Footer, Header, Sidebar, useDemo1Layout } from '../';
+import { PageNavbar } from '@/pages/account';
 
 const Main = () => {
   const { layout } = useDemo1Layout();

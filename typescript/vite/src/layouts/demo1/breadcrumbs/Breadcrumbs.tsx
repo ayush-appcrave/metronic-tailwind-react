@@ -4,13 +4,13 @@ import { useLocation } from 'react-router';
 
 import { KeenIcon } from '@/components';
 import { MenuBreadcrumbsType, useMenuBreadcrumbs } from '@/components/menu';
-import { useMenu } from '@/providers';
+import { useMenus } from '@/providers';
 
 const Breadcrumbs = () => {
   const { pathname } = useLocation();
-  const { getMenuConfig } = useMenu();
+  const { getMenuConfig } = useMenus();
   const menuConfig = getMenuConfig('primary');
-  const items = menuConfig && useMenuBreadcrumbs(pathname, menuConfig);
+  const items = useMenuBreadcrumbs(pathname, menuConfig);
 
   const renderItems = (items: MenuBreadcrumbsType) => {
     return items.map((item, index) => {

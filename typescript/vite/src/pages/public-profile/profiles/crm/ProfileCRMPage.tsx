@@ -1,11 +1,9 @@
 import { Container } from '@/components/container';
-import { MENU_SIDEBAR } from '@/config/menu.config';
 import { UserProfileHero } from '@/partials/heros';
-import { NavbarMenu } from '@/partials/menu/NavbarMenu';
 import { Navbar, NavbarActions, NavbarDropdown } from '@/partials/navbar';
 import { toAbsoluteUrl } from '@/utils/Assets';
 import { KeenIcon } from '@/components';
-
+import { PageMenu } from '@/pages/public-profile';
 import { ProfileCRMContent } from '.';
 
 const ProfileCRMPage = () => {
@@ -30,7 +28,7 @@ const ProfileCRMPage = () => {
 
       <Container>
         <Navbar>
-          {MENU_SIDEBAR[2]?.children && <NavbarMenu items={MENU_SIDEBAR[2].children} />}
+          <PageMenu />
           <NavbarActions>
             <button type="button" className="btn btn-sm btn-primary">
               <KeenIcon icon="users" /> Connect

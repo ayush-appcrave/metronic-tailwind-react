@@ -1,13 +1,11 @@
-import { Drawer } from '@mui/material';
-import { Fragment, ReactNode, useEffect, useRef, useState } from 'react';
-import clsx from 'clsx';
-import { KeenIcon, MenuBreadcrumbsType, useMenuBreadcrumbs } from '@/components';
+import { Fragment } from 'react';
+import { KeenIcon, useMenuBreadcrumbs } from '@/components';
 import { Link } from 'react-router-dom';
-import { useMenu } from '@/providers';
+import { useMenus } from '@/providers';
 import { useLocation } from 'react-router';
 
 const ToolbarBreadcrumbs = () => {
-  const { getMenuConfig } = useMenu();
+  const { getMenuConfig } = useMenus();
   const { pathname } = useLocation();
   const items = useMenuBreadcrumbs(pathname, getMenuConfig('primary'));
 

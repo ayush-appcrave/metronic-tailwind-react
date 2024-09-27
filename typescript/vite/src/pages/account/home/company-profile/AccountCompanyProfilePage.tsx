@@ -1,7 +1,5 @@
 import { Container } from '@/components/container';
-import { MENU_SIDEBAR } from '@/config/menu.config';
-import { NavbarMenu } from '@/partials/menu';
-import { Navbar } from '@/partials/navbar';
+import { AccountCompanyProfileContent } from '.';
 import {
   Toolbar,
   ToolbarActions,
@@ -9,17 +7,13 @@ import {
   ToolbarHeading,
   ToolbarPageTitle
 } from '@/partials/toolbar';
-
-import { AccountCompanyProfileContent } from '.';
+import { Fragment } from 'react';
+import { PageNavbar } from '@/pages/account';
 
 const AccountCompanyProfilePage = () => {
   return (
-    <>
-      <Navbar>
-        <Container>
-          {MENU_SIDEBAR[3]?.children && <NavbarMenu items={MENU_SIDEBAR[3].children} />}
-        </Container>
-      </Navbar>
+    <Fragment>
+      <PageNavbar />
 
       <Container>
         <Toolbar>
@@ -45,7 +39,7 @@ const AccountCompanyProfilePage = () => {
       <Container>
         <AccountCompanyProfileContent />
       </Container>
-    </>
+    </Fragment>
   );
 };
 

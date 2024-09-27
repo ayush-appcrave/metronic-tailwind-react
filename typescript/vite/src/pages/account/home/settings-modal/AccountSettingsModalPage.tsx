@@ -28,7 +28,7 @@ const AccountSettingsModalPage = () => {
 
       <Container>
         <Navbar>
-          {MENU_SIDEBAR[2]?.children && <NavbarMenu items={MENU_SIDEBAR[2].children} />}
+          <PageMenu />
           <NavbarActions>
             <button type="button" className="btn btn-sm btn-primary">
               <KeenIcon icon="users" /> Connect

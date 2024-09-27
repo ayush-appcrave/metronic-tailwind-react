@@ -16,7 +16,7 @@ import {
   MenuSub,
   MenuTitle
 } from '@/components/menu';
-import { useMenu } from '@/providers/MenuProvider';
+import { useMenus } from '@/providers';
 
 const SidebarMenu = () => {
   const linkPl = 'ps-[10px]';
@@ -267,7 +267,7 @@ const SidebarMenu = () => {
     );
   };
 
-  const { getMenuConfig } = useMenu();
+  const { getMenuConfig } = useMenus();
   const menuConfig = getMenuConfig('primary');
 
   return (

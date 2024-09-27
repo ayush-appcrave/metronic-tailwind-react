@@ -6,3 +6,4 @@ export * from './profiles';
 export * from './projects';
 export * from './teams/ProfileTeamsPage';
 export * from './works/ProfileWorksPage';
+export * from './PageMenu';

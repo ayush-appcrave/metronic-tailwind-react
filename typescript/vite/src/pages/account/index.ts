@@ -8,3 +8,4 @@ export * from './invite-a-friend/AccountInviteAFriendPage';
 export * from './members';
 export * from './notifications/AccountNotificationsPage';
 export * from './security';
+export * from './PageNavbar';

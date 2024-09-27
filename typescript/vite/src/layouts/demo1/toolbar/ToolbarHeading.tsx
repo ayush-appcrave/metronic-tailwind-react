@@ -1,6 +1,5 @@
-import { ReactNode, useEffect, useRef, useState } from 'react';
-import clsx from 'clsx';
-import { useMenu } from '@/providers';
+import { ReactNode } from 'react';
+import { useMenus } from '@/providers';
 import { useMenuCurrentItem } from '@/components';
 import { useLocation } from 'react-router';
 
@@ -10,7 +9,7 @@ export interface IToolbarHeadingProps {
 }
 
 const ToolbarHeading = ({ title = '', description }: IToolbarHeadingProps) => {
-  const { getMenuConfig } = useMenu();
+  const { getMenuConfig } = useMenus();
   const { pathname } = useLocation();
   const currentMenuItem = useMenuCurrentItem(pathname, getMenuConfig('primary'));
 

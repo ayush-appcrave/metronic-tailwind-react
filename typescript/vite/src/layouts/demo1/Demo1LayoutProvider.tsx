@@ -3,7 +3,7 @@ import { useLocation } from 'react-router';
 import { useMenuChildren } from '@/components/menu';
 import { MENU_SIDEBAR } from '@/config/menu.config';
 import { useScrollPosition } from '@/hooks/useScrollPosition';
-import { useMenu } from '@/providers';
+import { useMenus } from '@/providers';
 import { ILayoutConfig, useLayout } from '@/providers/LayoutProvider';
 import { deepMerge } from '@/utils';
 import { demo1LayoutConfig } from './';
@@ -50,7 +50,7 @@ const useDemo1Layout = () => useContext(Demo1LayoutContext);
 
 const Demo1LayoutProvider = ({ children }: PropsWithChildren) => {
   const { pathname } = useLocation();
-  const { setMenuConfig } = useMenu();
+  const { setMenuConfig } = useMenus();
   const secondaryMenu = useMenuChildren(pathname, MENU_SIDEBAR, 0);
 
   setMenuConfig('primary', MENU_SIDEBAR);
