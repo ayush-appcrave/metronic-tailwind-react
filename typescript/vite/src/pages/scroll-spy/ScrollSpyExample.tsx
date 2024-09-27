@@ -1,6 +1,6 @@
 import { Helmet } from 'react-helmet';
 import { Container } from '@/components/container';
-import ScrollSpy from '@/components/scrollspy/Scrollspy.tsx';
+import { Scrollspy } from '@/components/scrollspy/Scrollspy.tsx';
 import { useRef } from 'react';
 
 const ScrollSpyExample = () => {

@@ -4,7 +4,7 @@ const AccountSettingsSidebar = () => {
   const items: IScrollspyMenuItems = [
     {
       title: 'Basic Settings',
-      url: '#basic_settings',
+      target: 'basic_settings',
       active: true
     },
     {
@@ -12,24 +12,24 @@ const AccountSettingsSidebar = () => {
       children: [
         {
           title: 'Email',
-          url: '#auth_email',
+          target: 'auth_email',
           active: false
         },
         {
           title: 'Password',
-          url: '#auth_password'
+          target: 'auth_password'
         },
         {
           title: 'Social Sign in',
-          url: '#auth_social_sign_in'
+          target: 'auth_social_sign_in'
         },
         {
           title: 'Single Sign On(SSO)',
-          url: '#auth_social_sign_in_sso'
+          target: 'auth_social_sign_in_sso'
         },
         {
           title: 'Two-Factor auth(2FA)',
-          url: '#auth_two_factor'
+          target: 'auth_two_factor'
         }
       ]
     },
@@ -38,19 +38,19 @@ const AccountSettingsSidebar = () => {
       children: [
         {
           title: 'Preferences',
-          url: '#advanced_settings_preferences'
+          target: 'advanced_settings_preferences'
         },
         {
           title: 'Appearance',
-          url: '#advanced_settings_appearance'
+          target: 'advanced_settings_appearance'
         },
         {
           title: 'Notifications',
-          url: '#advanced_settings_notifications'
+          target: 'advanced_settings_notifications'
         },
         {
           title: 'Address',
-          url: '#advanced_settings_address'
+          target: 'advanced_settings_address'
         }
       ]
     },
@@ -59,21 +59,21 @@ const AccountSettingsSidebar = () => {
       children: [
         {
           title: 'Manage API',
-          url: '#external_services_manage_api'
+          target: 'external_services_manage_api'
         },
         {
           title: 'Integrations',
-          url: '#external_services_integrations'
+          target: 'external_services_integrations'
         }
       ]
     },
     {
       title: 'Delete Account',
-      url: '#delete_account'
+      target: 'delete_account'
     }
   ];
 
-  return <ScrollspyMenu items={items} offset="80px|lg:110px" />;
+  return <ScrollspyMenu items={items} />;
 };
 
 export { AccountSettingsSidebar };

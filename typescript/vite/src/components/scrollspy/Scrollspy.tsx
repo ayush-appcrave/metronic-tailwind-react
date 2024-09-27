@@ -2,12 +2,12 @@ import * as React from 'react';
 import { MutableRefObject, ReactNode, useEffect, useRef, useState } from 'react';
 import { throttle } from '@/utils';
 
-interface ScrollSpyProps {
+interface IScrollSpyProps {
   children: ReactNode;
 
   // refs
-  navContainerRef?: MutableRefObject<HTMLDivElement | null>;
-  parentScrollContainerRef?: MutableRefObject<HTMLDivElement | null>;
+  navContainerRef?: MutableRefObject<HTMLElement | null>;
+  parentScrollContainerRef?: MutableRefObject<HTMLElement | null>;
 
   // throttle
   scrollThrottle?: number;
@@ -18,6 +18,8 @@ interface ScrollSpyProps {
   // offsets
   offsetTop?: number;
   offsetBottom?: number;
+
+  className?: string;
 
   // customize attributes
   dataAttribute?: string;
@@ -40,17 +42,19 @@ const Scrollspy = ({
   // callback
   onUpdateCallback,
 
+  className,
+
   // offsets
   offsetTop = 0,
   offsetBottom = 0,
 
   // customize attributes
-  dataAttribute = 'to-scrollspy-id',
+  dataAttribute = '-scrollspy',
   activeClass = 'active',
 
   useBoxMethod = true,
   updateHistoryStack = true
-}: ScrollSpyProps) => {
+}: IScrollSpyProps) => {
   const scrollContainerRef = useRef<HTMLDivElement | null>(null);
   const [navContainerItems, setNavContainerItems] = useState<NodeListOf<Element> | undefined>(); // prettier-ignore
 
@@ -145,7 +149,11 @@ const Scrollspy = ({
       : window.addEventListener('scroll', throttle(checkAndUpdateActiveScrollSpy, scrollThrottle));
   });
 
-  return <div ref={scrollContainerRef}>{children}</div>;
+  return (
+    <div className={className && className} ref={scrollContainerRef}>
+      {children}
+    </div>
+  );
 };
 
-export default Scrollspy;
+export { Scrollspy };
