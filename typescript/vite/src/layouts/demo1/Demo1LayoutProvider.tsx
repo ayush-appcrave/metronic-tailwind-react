@@ -14,6 +14,8 @@ export interface Demo1LayoutProviderProps {
   headerSticky: boolean;
   mobileSidebarOpen: boolean;
   mobileMegaMenuOpen: boolean;
+  sidebarMouseLeave: boolean;
+  setSidebarMouseLeave: (state: boolean) => void;
   setMobileSidebarOpen: (open: boolean) => void;
   setMobileMegaMenuOpen: (open: boolean) => void;
   setMegaMenuEnabled: (enabled: boolean) => void;
@@ -27,6 +29,10 @@ const initalLayoutProps: Demo1LayoutProviderProps = {
   headerSticky: false,
   mobileSidebarOpen: false,
   mobileMegaMenuOpen: false,
+  sidebarMouseLeave: false,
+  setSidebarMouseLeave: (state: boolean) => {
+    console.log(`${state}`);
+  },
   setMobileMegaMenuOpen: (open: boolean) => {
     console.log(`${open}`);
   },
@@ -70,6 +76,8 @@ const Demo1LayoutProvider = ({ children }: PropsWithChildren) => {
 
   const [mobileMegaMenuOpen, setMobileMegaMenuOpen] = useState(false);
 
+  const [sidebarMouseLeave, setSidebarMouseLeave] = useState(false);
+
   const scrollPosition = useScrollPosition();
 
   const headerSticky: boolean = scrollPosition > 0;
@@ -107,8 +115,10 @@ const Demo1LayoutProvider = ({ children }: PropsWithChildren) => {
         mobileSidebarOpen,
         mobileMegaMenuOpen,
         megaMenuEnabled,
+        sidebarMouseLeave,
         setMobileSidebarOpen,
         setMegaMenuEnabled,
+        setSidebarMouseLeave,
         setMobileMegaMenuOpen,
         setSidebarCollapse,
         setSidebarTheme

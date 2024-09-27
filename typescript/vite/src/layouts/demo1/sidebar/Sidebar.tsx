@@ -5,7 +5,6 @@ import { useDemo1Layout } from '../';
 import { SidebarContent, SidebarHeader } from './';
 import clsx from 'clsx';
 import { getHeight } from '@/utils';
-import { useLocation } from 'react-router';
 import { usePathname } from '@/providers';
 
 const Sidebar = () => {
@@ -26,7 +25,7 @@ const Sidebar = () => {
   }, [viewportHeight]);
 
   const desktopMode = useResponsive('up', 'lg');
-  const { mobileSidebarOpen, setMobileSidebarOpen } = useDemo1Layout();
+  const { mobileSidebarOpen, setSidebarMouseLeave, setMobileSidebarOpen } = useDemo1Layout();
   const { layout } = useDemo1Layout();
   const themeClass: string =
     layout.options.sidebar.theme === 'dark' || pathname === '/dark-sidebar'
@@ -37,10 +36,20 @@ const Sidebar = () => {
     setMobileSidebarOpen(false);
   };
 
+  const handleMouseEnter = () => {
+    setSidebarMouseLeave(false);
+  }
+
+  const handleMouseLeave = () => {
+    setSidebarMouseLeave(true);
+  }
+
   const renderContent = () => {
     return (
       <div
         ref={selfRef}
+        onMouseLeave={handleMouseLeave}
+        onMouseEnter={handleMouseEnter}
         className={clsx(
           'sidebar lg:fixed lg:z-20 lg:top-0 lg:bottom-0 lg:start-0 lg:translate-x-0 flex flex-col items-stretch shrink-0 bg-light lg:border lg:border-r-gray-200',
           themeClass
@@ -56,7 +65,7 @@ const Sidebar = () => {
     if (desktopMode === false && prevPathname !== pathname) {
       handleMobileSidebarClose();
     }
-  }, [pathname]);
+  }, [desktopMode, pathname, prevPathname]);
 
   if (desktopMode) {
     return renderContent();

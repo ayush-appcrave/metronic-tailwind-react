@@ -11,7 +11,15 @@ const MegaMenu = () => {
   const desktopMode = useResponsive('up', 'lg');
   const { pathname, prevPathname } = usePathname();
   const [disabled, setDisabled] = useState(true); // Initially set disabled to true
-  const { mobileMegaMenuOpen, setMobileMegaMenuOpen, setMegaMenuEnabled } = useDemo1Layout();
+  const {
+    layout,
+    sidebarMouseLeave,
+    mobileMegaMenuOpen,
+    setMobileMegaMenuOpen,
+    setMegaMenuEnabled
+  } = useDemo1Layout();
+
+  setMegaMenuEnabled(true);
 
   const handleDrawerClose = () => {
     setMobileMegaMenuOpen(false);
@@ -19,7 +27,7 @@ const MegaMenu = () => {
 
   // Change disabled state to false after a certain time (e.g., 5 seconds)
   useEffect(() => {
-    setMegaMenuEnabled(true);
+    setDisabled(true);
 
     const timer = setTimeout(() => {
       setDisabled(false);
@@ -27,7 +35,7 @@ const MegaMenu = () => {
 
     // Cleanup the timer when the component unmounts
     return () => clearTimeout(timer);
-  }, []);
+  }, [layout.options.sidebar.collapse, sidebarMouseLeave]);
 
   useEffect(() => {
     if (desktopMode === false && prevPathname !== pathname) {
