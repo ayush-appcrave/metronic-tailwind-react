@@ -25,7 +25,7 @@ const StoreClientsData: IStoreClientsData[] = [
 		clientId: 'MS-23456832',
 		ordersValue: '$427,456.09',
     location: {
-      flag: 'stonia.svg',
+      flag: 'estonia.svg',
       name: 'Estonia'
     },
     activity: 'Current session'
@@ -109,7 +109,7 @@ const StoreClientsData: IStoreClientsData[] = [
 		clientId: 'MS2-58372914',
 		ordersValue: '$40,210.15',
     location: {
-      flag: 'uturkey.svg',
+      flag: 'turkey.svg',
       name: 'Turkey'
     },
     activity: 'Current session'
@@ -249,7 +249,7 @@ const StoreClientsData: IStoreClientsData[] = [
 		clientId: 'MS-58394721',
 		ordersValue: '$33,210.15',
     location: {
-      flag: 'srussia.svg',
+      flag: 'russia.svg',
       name: 'Russia'
     },
     activity: 'Current session'
