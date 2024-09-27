@@ -11,7 +11,7 @@ const StoreClients = () => {
       {
         accessorFn: (row: IStoreClientsData) => row.user,
         id: 'user',
-        header: (): JSX.Element => <span>Member</span>, 
+        header: () => 'Member', 
         enableSorting: true,
         cell: (info: any) => (
           <div className="flex items-center gap-2.5">
@@ -37,7 +37,7 @@ const StoreClients = () => {
       {
         accessorFn: (row: IStoreClientsData) => row.clientId,
         id: 'clientId',
-        header: (): JSX.Element => <span>Client ID</span>,
+        header: () => 'Client ID',
         enableSorting: true,
         cell: (info: any) => info.row.original.clientId,
         meta: {
@@ -48,7 +48,7 @@ const StoreClients = () => {
       {
         accessorFn: (row: IStoreClientsData) => row.ordersValue,
         id: 'ordersValue',
-        header: (): JSX.Element => <span>Orders Value</span>,
+        header: () => 'Orders Value',
         enableSorting: true,
         cell: (info: any) => info.row.original.ordersValue,
         meta: {
@@ -59,7 +59,7 @@ const StoreClients = () => {
       {
         accessorFn: (row) => row.location,
         id: 'location',
-        header: (): JSX.Element => <span>Location</span>,
+        header: () => 'Location',
         enableSorting: true,
         cell: (info) => (
           <div className="flex items-center gap-1.5">
@@ -78,7 +78,7 @@ const StoreClients = () => {
       {
         accessorFn: (row) => row.activity,
         id: 'activity',
-        header: (): JSX.Element => <span>Activity</span>,
+        header: () => 'Activity',
         enableSorting: true,
         cell: (info: any) => info.row.original.activity,
         meta: {
@@ -88,7 +88,7 @@ const StoreClients = () => {
       },
       {
         id: 'actions',
-        header: (): JSX.Element => <span>Invoices</span>,
+        header: () => 'Invoices',
         enableSorting: true,
         cell: () => <button className="btn btn-link">View</button>,
         meta: {
