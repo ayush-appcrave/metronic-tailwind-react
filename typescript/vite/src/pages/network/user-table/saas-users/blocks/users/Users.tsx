@@ -19,7 +19,7 @@ const Users = () => {
       {
         accessorFn: (row) => row.user,
         id: 'user',
-        header: (): JSX.Element => <span className="text-gray-700 font-normal">Subscriber</span>, 
+        header: () => <span className="text-gray-700 font-normal">Subscriber</span>, 
         enableSorting: true,
         cell: (info: any) => (
           <div className="flex items-center gap-2.5">
@@ -45,7 +45,7 @@ const Users = () => {
       {
         accessorFn: (row) => row.labels,
         id: 'labels',
-        header: (): JSX.Element => <span className="text-gray-700 font-normal">Products</span>,
+        header: () => <span className="text-gray-700 font-normal">Products</span>,
         enableSorting: true,
         cell: (info: any) => (
           <div className="flex gap-1.5">
@@ -63,7 +63,7 @@ const Users = () => {
       {
         accessorFn: (row) => row.license,
         id: 'license',
-        header: (): JSX.Element => <span className="text-gray-700 font-normal">License</span>,
+        header: () => <span className="text-gray-700 font-normal">License</span>,
         enableSorting: true,
         cell: (info: any) => (
           <div className="flex flex-col">
@@ -78,7 +78,7 @@ const Users = () => {
       {
         accessorFn: (row) => row.payment,
         id: 'payment',
-        header: (): JSX.Element => <span className="text-gray-700 font-normal">Latest Payment</span>,
+        header: () => <span className="text-gray-700 font-normal">Latest Payment</span>,
         enableSorting: true,
         cell: (info: any) => info.row.original.payment,
         meta: {
@@ -89,7 +89,7 @@ const Users = () => {
       {
         accessorFn: (row) => row.enforce,
         id: 'enforce',
-        header: (): JSX.Element => <span className="text-gray-700 font-normal">Enforce 2FA</span>,
+        header: () => <span className="text-gray-700 font-normal">Enforce 2FA</span>,
         enableSorting: true,
         cell: (info: any) => <EnforceSwitch enforce={info.row.original.enforce} />,
         meta: {
@@ -98,7 +98,7 @@ const Users = () => {
       },
       {
         id: 'actions',
-        header: (): JSX.Element => <span className="text-gray-700 font-normal">Invoices</span>,
+        header: () => <span className="text-gray-700 font-normal">Invoices</span>,
         enableSorting: true,
         cell: () => <button className="btn btn-link">Download</button>,
         meta: {
