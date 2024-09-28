@@ -9,7 +9,7 @@ const StoreClients = () => {
   const columns = useMemo<ColumnDef<IStoreClientsData>[]>(
     () => [
       {
-        accessorFn: (row: IStoreClientsData) => row.user,
+        accessorFn: (row) => row.user,
         id: 'user',
         header: () => 'Member', 
         enableSorting: true,
@@ -35,7 +35,7 @@ const StoreClients = () => {
         },
       },
       {
-        accessorFn: (row: IStoreClientsData) => row.clientId,
+        accessorFn: (row) => row.clientId,
         id: 'clientId',
         header: () => 'Client ID',
         enableSorting: true,
@@ -46,7 +46,7 @@ const StoreClients = () => {
         },
       },
       {
-        accessorFn: (row: IStoreClientsData) => row.ordersValue,
+        accessorFn: (row) => row.ordersValue,
         id: 'ordersValue',
         header: () => 'Orders Value',
         enableSorting: true,
