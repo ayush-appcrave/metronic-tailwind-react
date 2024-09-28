@@ -5,6 +5,7 @@ import { Link } from 'react-router-dom';
 import { DataGrid, KeenIcon } from '@/components';
 import { ColumnDef } from '@tanstack/react-table';
 import { UsersData, IUsersData } from './';
+import { CommonRating } from '@/partials/common';
 
 const Users = () => {
   const columns = useMemo<ColumnDef<IUsersData>[]>(
@@ -88,16 +89,20 @@ const Users = () => {
         }
       },    
       {
-        accessorFn: (row: IUsersData) => row.rating,
+        accessorFn: (row) => row.rating.value,
         id: 'rating',
         header: () => 'Rating',
         enableSorting: true,
-        cell: (info: any) => {
-          return ;
-        },
+        cell: (info) => (
+          <CommonRating
+            rating={info.row.original.rating.value}
+            round={info.row.original.rating.round}
+          />
+        ),
         meta: {
-          className: 'w-[170px]' 
-        },
+          className: 'w-[170px]',
+          cellClassName: 'text-gray-700 font-normal'
+        } 
       },
       {
         id: 'social',
