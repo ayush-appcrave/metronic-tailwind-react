@@ -19,7 +19,7 @@ const UsersData: IUsersData[] = [
     phone: '(212) 867-5309',
     branch: 'Miami, FL',
     logos: ['slack.svg', 'twitch-purple.svg', 'invision.svg'], 
-    labels: ['Creator', 'Analyst'], 
+    labels: ['NFT', 'Design'],
     switch: true
   }, 
   {
