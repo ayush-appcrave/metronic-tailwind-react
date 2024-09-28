@@ -19,8 +19,7 @@ const MegaMenu = () => {
     setMegaMenuEnabled
   } = useDemo1Layout();
 
-  setMegaMenuEnabled(true);
-
+  // eslint-disable-next-line react-hooks/exhaustive-deps
   const handleDrawerClose = () => {
     setMobileMegaMenuOpen(false);
   };
@@ -38,10 +37,14 @@ const MegaMenu = () => {
   }, [layout.options.sidebar.collapse, sidebarMouseLeave]);
 
   useEffect(() => {
+    setMegaMenuEnabled(true);
+  });
+
+  useEffect(() => {
     if (desktopMode === false && prevPathname !== pathname) {
       handleDrawerClose();
     }
-  }, [pathname]);
+  }, [desktopMode, handleDrawerClose, pathname, prevPathname]);
 
   const renderContent = () => {
     return (

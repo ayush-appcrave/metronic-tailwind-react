@@ -101,13 +101,19 @@ export default plugin(({ addComponents, theme }) => {
       },
       '.card-body': {
         padding: '0',
-        table: {
+        '.table': {
           border: '0',
           'th:first-child, td:first-child': {
-            'padding-left': theme('custom.components.card.grid.px')
+            'padding-left': theme('custom.components.card.grid.px'),
+            '&.table-cell-center': {
+              'padding-right': theme('custom.components.card.grid.px')
+            }
           },
           'th:last-child, td:last-child': {
-            'padding-right': theme('custom.components.card.grid.px')
+            'padding-right': theme('custom.components.card.grid.px'),
+            '&.table-cell-center': {
+              'padding-left': theme('custom.components.card.grid.px')
+            }
           }
         }
       }

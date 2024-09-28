@@ -37,7 +37,7 @@ const AccountSettingsSidebarContent = () => {
   return (
     <div className="flex grow gap-5 lg:gap-7.5">
       {desktopMode && (
-        <div className="w-[230px] bg-light shrink-0">
+        <div className="w-[230px] shrink-0">
           <div
             className={clsx(
               'w-[230px]',

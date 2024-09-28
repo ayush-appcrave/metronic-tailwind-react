@@ -10,11 +10,7 @@ import { AccountPlansContent } from '.';
 const AccountPlansPage = () => {
   return (
     <>
-      <Navbar>
-        <Container>
-          {MENU_SIDEBAR[3]?.children && <NavbarMenu items={MENU_SIDEBAR[3].children} />}
-        </Container>
-      </Navbar>
+      <PageNavbar />
 
       <Container>
         <Toolbar>

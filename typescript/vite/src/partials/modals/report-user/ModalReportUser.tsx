@@ -5,12 +5,17 @@ import { useViewport } from '@/hooks';
 import { toAbsoluteUrl } from '@/utils';
 import { Link } from 'react-router-dom';
 
-interface ModalReportUserProps {
+interface IModalReportUserProps {
   open: boolean;
   onClose: () => void;
 }
+export interface IModalReportUserdDocsItem {
+  image: string;
+  desc: string;
+  date: string;
+}
 
-const ModalReportUser = forwardRef<HTMLDivElement, ModalReportUserProps>(
+const ModalReportUser = forwardRef<HTMLDivElement, IModalReportUserProps>(
   ({ open, onClose }, ref) => {
     const [scrollableHeight, setScrollableHeight] = useState<number>(0);
     const [viewportHeight] = useViewport();
@@ -75,7 +80,7 @@ const ModalReportUser = forwardRef<HTMLDivElement, ModalReportUserProps>(
           </div>
           <div className="flex flex-col gap-3.5">
             {items.map((item, index) => (
-              <label className="form-label flex items-center gap-2.5">
+              <label key={index} className="form-label flex items-center gap-2.5">
                 <input
                   className="radio radio-sm"
                   name="report-option"

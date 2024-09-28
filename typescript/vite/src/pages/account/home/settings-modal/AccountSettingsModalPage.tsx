@@ -1,10 +1,10 @@
+import { Fragment } from 'react';
 import { KeenIcon } from '@/components';
-import { Container } from '@/components/container';
-import { MENU_SIDEBAR } from '@/config/menu.config';
+import { Container } from '@/components/container';;
 import { UserProfileHero } from '@/partials/heros';
-import { NavbarMenu } from '@/partials/menu/NavbarMenu';
 import { Navbar, NavbarActions, NavbarDropdown } from '@/partials/navbar';
 import { toAbsoluteUrl } from '@/utils/Assets';
+import { PageMenu } from '@/pages/public-profile';
 
 const AccountSettingsModalPage = () => {
   const image = (
@@ -15,7 +15,7 @@ const AccountSettingsModalPage = () => {
   );
 
   return (
-    <>
+    <Fragment>
       <UserProfileHero
         name="Jenny Klabber"
         image={image}
@@ -42,7 +42,7 @@ const AccountSettingsModalPage = () => {
       </Container>
 
       <Container>Content</Container>
-    </>
+    </Fragment>
   );
 };
 

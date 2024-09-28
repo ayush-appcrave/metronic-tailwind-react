@@ -1,8 +1,5 @@
 import { Fragment } from 'react';
 import { Container } from '@/components/container';
-import { MENU_SIDEBAR } from '@/config/menu.config';
-import { NavbarMenu } from '@/partials/menu';
-import { Navbar } from '@/partials/navbar';
 import {
   Toolbar,
   ToolbarActions,
@@ -10,17 +7,13 @@ import {
   ToolbarHeading,
   ToolbarPageTitle
 } from '@/partials/toolbar';
-
+import { PageNavbar } from '@/pages/account';
 import { AccountActivityContent } from '.';
 
 const AccountActivityPage = () => {
   return (
     <Fragment>
-      <Navbar>
-        <Container>
-          {MENU_SIDEBAR[3]?.children && <NavbarMenu items={MENU_SIDEBAR[3].children} />}
-        </Container>
-      </Navbar>
+      <PageNavbar />
 
       <Container>
         <Toolbar>

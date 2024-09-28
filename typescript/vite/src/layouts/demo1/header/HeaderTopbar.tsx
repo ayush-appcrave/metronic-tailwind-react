@@ -1,9 +1,6 @@
 import { useRef, useState } from 'react';
-
 import { KeenIcon } from '@/components/keenicons';
 import { toAbsoluteUrl } from '@/utils';
-
-import { useDemo1Layout } from '../';
 import { Menu, MenuItem, MenuToggle } from '@/components';
 import { DropdownUser } from '@/partials/dropdowns/user';
 import { DropdownNotifications } from '@/partials/dropdowns/notifications';
@@ -12,7 +9,6 @@ import { DropdownChat } from '@/partials/dropdowns/chat';
 import { ModalSearch } from '@/partials/modals/search/ModalSearch';
 
 const HeaderTopbar = () => {
-  const { setMobileSidebarOpen } = useDemo1Layout();
   const itemChatRef = useRef<any>(null);
   const itemAppsRef = useRef<any>(null);
   const itemNotificationsRef = useRef<any>(null);

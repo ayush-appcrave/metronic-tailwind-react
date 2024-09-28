@@ -1,20 +1,14 @@
+import { Fragment } from 'react';
 import { Container } from '@/components/container';
-import { MENU_SIDEBAR } from '@/config/menu.config';
-import { NavbarMenu } from '@/partials/menu/NavbarMenu';
-import { Navbar } from '@/partials/navbar';
 import { Toolbar, ToolbarDescription, ToolbarHeading, ToolbarPageTitle } from '@/partials/toolbar';
-
+import { PageNavbar } from '@/pages/account';
 import { AccountSecurityGetStartedContent } from '.';
 import { Link } from 'react-router-dom';
 
 const AccountSecurityGetStartedPage = () => {
   return (
-    <>
-      <Navbar>
-        <Container>
-          {MENU_SIDEBAR[3]?.children && <NavbarMenu items={MENU_SIDEBAR[3].children} />}
-        </Container>
-      </Navbar>
+    <Fragment>
+      <PageNavbar />
 
       <Container>
         <Toolbar>
@@ -36,7 +30,7 @@ const AccountSecurityGetStartedPage = () => {
       <Container>
         <AccountSecurityGetStartedContent />
       </Container>
-    </>
+    </Fragment>
   );
 };
 
