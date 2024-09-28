@@ -40,8 +40,8 @@ const Visitors = () => {
         enableSorting: true,
         cell: (info) => (
           <div className="flex items-center gap-1.5 text-gray-800 font-normal">
-            <KeenIcon icon={info.row.original.browser.icon} className='text-sm' />
-            <span>{info.row.original.browser.name}</span>
+            <KeenIcon icon="chrome" />
+            <span>{info.row.original.browser}</span>
           </div>
         ),
         meta: {
