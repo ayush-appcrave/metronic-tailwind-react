@@ -1,9 +1,23 @@
 import { useMemo } from 'react';
 import { DataGrid } from '@/components'; 
-import { ColumnDef } from '@tanstack/react-table';
 import { toAbsoluteUrl } from '@/utils'; 
-import { UsersData, IUsersData } from '.';
+import { UsersData } from './UsersData';
 import { KeenIcon } from '@/components';
+
+interface IUsersData {
+  user: {
+    avatar: string;
+    name: string;
+    email: string;
+  };
+  labels: string[];
+  license: {
+    type: string;
+    left: string;
+  };
+  payment: string;
+  enforce: boolean;
+}
 
 const EnforceSwitch = ({ enforce }: { enforce: boolean }) => {
   return (
@@ -14,10 +28,10 @@ const EnforceSwitch = ({ enforce }: { enforce: boolean }) => {
 };
 
 const Users = () => {
-  const columns = useMemo<ColumnDef<IUsersData>[]>(
+  const columns = useMemo(
     () => [
       {
-        accessorFn: (row) => row.user,
+        accessorFn: (row: IUsersData) => row.user,
         id: 'user',
         header: () => <span className="text-gray-700 font-normal">Subscriber</span>, 
         enableSorting: true,
@@ -43,7 +57,7 @@ const Users = () => {
         },
       },
       {
-        accessorFn: (row) => row.labels,
+        accessorFn: (row: IUsersData) => row.labels,
         id: 'labels',
         header: () => <span className="text-gray-700 font-normal">Products</span>,
         enableSorting: true,
@@ -61,7 +75,7 @@ const Users = () => {
         },
       },
       {
-        accessorFn: (row) => row.license,
+        accessorFn: (row: IUsersData) => row.license,
         id: 'license',
         header: () => <span className="text-gray-700 font-normal">License</span>,
         enableSorting: true,
@@ -76,7 +90,7 @@ const Users = () => {
         },
       },
       {
-        accessorFn: (row) => row.payment,
+        accessorFn: (row: IUsersData) => row.payment,
         id: 'payment',
         header: () => <span className="text-gray-700 font-normal">Latest Payment</span>,
         enableSorting: true,
@@ -87,7 +101,7 @@ const Users = () => {
         },
       },
       {
-        accessorFn: (row) => row.enforce,
+        accessorFn: (row: IUsersData) => row.enforce,
         id: 'enforce',
         header: () => <span className="text-gray-700 font-normal">Enforce 2FA</span>,
         enableSorting: true,
