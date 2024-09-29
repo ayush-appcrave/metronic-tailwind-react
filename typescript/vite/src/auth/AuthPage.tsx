@@ -1,6 +1,4 @@
 import { Navigate, Route, Routes } from 'react-router';
-
-import { AuthLayout } from '../layouts/auth';
 // Auth0 login page
 // import { Auth0Login } from './layouts/default/auth0';
 // Firebase auth pages

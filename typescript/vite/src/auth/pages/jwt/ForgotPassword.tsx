@@ -98,10 +98,19 @@ const ForgotPassword = () => {
           )}
         </div>
 
-        <Link to="/auth/login" className="btn btn-primary flex justify-center grow">
-          <span className="indicator-label">{loading ? 'Please wait...' : 'Continue'}</span>
-          <KeenIcon icon="black-right" />
-        </Link>
+        <div className="flex flex-col gap-5 items-stretch">
+          <Link to="/auth/login" className="btn btn-primary flex justify-center grow">
+            {loading ? 'Please wait...' : 'Continue'}
+          </Link>
+
+          <Link
+            to="/auth/login"
+            className="flex items-center justify-center text-sm gap-2 text-gray-700 hover:text-primary"
+          >
+            <KeenIcon icon="black-left" />
+            Back to Login
+          </Link>
+        </div>
       </form>
     </div>
   );
