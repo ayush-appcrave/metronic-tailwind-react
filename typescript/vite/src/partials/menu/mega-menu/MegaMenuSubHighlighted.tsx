@@ -50,7 +50,7 @@ const MegaMenuSubHighlighted = (items: MenuConfigType) => {
     });
   };
 
-  return buildItems(items, 2);
+  return buildItems(items);
 };
 
 export { MegaMenuSubHighlighted };

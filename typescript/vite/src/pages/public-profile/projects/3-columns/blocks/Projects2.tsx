@@ -4,7 +4,7 @@ import { KeenIcon } from '@/components';
 
 import { CardProject, CardProjectRow } from '@/partials/cards';
 
-interface IProjectsItem {
+interface IProjects2Item {
   logo: string;
   name: string;
   description: string;
@@ -27,12 +27,13 @@ interface IProjectsItem {
     };
   };
 }
-interface IProjectsItems extends Array<IProjectsItem> {}
 
-const Projects = () => {
+interface IProjects2Items extends Array<IProjects2Item> {}
+
+const Projects2 = () => {
   const [activeView, setActiveView] = useState('cards');
 
-  const projects: IProjectsItems = [
+  const projects: IProjects2Items = [
     {
       logo: 'plurk.svg',
       name: 'Phoenix SaaS',
@@ -312,7 +313,7 @@ const Projects = () => {
     }
   ];
 
-  const renderProject = (project: IProjectsItem, index: number) => {
+  const renderProject = (project: IProjects2Item, index: number) => {
     return (
       <CardProject
         logo={project.logo}
@@ -328,7 +329,7 @@ const Projects = () => {
     );
   };
 
-  const renderItem = (item: IProjectsItem, index: number) => {
+  const renderItem = (item: IProjects2Item, index: number) => {
     return (
       <CardProjectRow
         logo={item.logo}
@@ -406,4 +407,4 @@ const Projects = () => {
   );
 };
 
-export { Projects, type IProjectsItem, type IProjectsItems };
+export { Projects2, type IProjects2Item, type IProjects2Items };

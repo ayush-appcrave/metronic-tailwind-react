@@ -1,12 +1,10 @@
-import { Drawer } from '@mui/material';
-import { ReactNode, useEffect, useRef, useState } from 'react';
-import clsx from 'clsx';
+import { ReactNode } from 'react';
 
-export interface IToolbarProps {
+export interface IToolbarActionsProps {
   children?: ReactNode;
 }
 
-const ToolbarActions = ({ children }: IToolbarProps) => {
+const ToolbarActions = ({ children }: IToolbarActionsProps) => {
   return <div className="flex items-center gap-2.5">{children}</div>;
 };
 

@@ -1,6 +1,4 @@
-import { Drawer } from '@mui/material';
-import { ReactNode, useEffect, useRef, useState } from 'react';
-import clsx from 'clsx';
+import { ReactNode } from 'react';
 
 export interface IToolbarProps {
   children?: ReactNode;

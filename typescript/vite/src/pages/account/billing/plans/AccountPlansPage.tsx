@@ -1,15 +1,13 @@
 import { Container } from '@/components/container';
-import { MENU_SIDEBAR } from '@/config/menu.config';
-import { NavbarMenu } from '@/partials/menu/NavbarMenu';
-import { Navbar } from '@/partials/navbar';
 import { Toolbar, ToolbarActions, ToolbarHeading } from '@/layouts/demo1/toolbar';
 import { Link } from 'react-router-dom';
-
+import { PageNavbar } from '@/pages/account';
 import { AccountPlansContent } from '.';
+import { Fragment } from 'react/jsx-runtime';
 
 const AccountPlansPage = () => {
   return (
-    <>
+    <Fragment>
       <PageNavbar />
 
       <Container>
@@ -26,7 +24,7 @@ const AccountPlansPage = () => {
       <Container>
         <AccountPlansContent />
       </Container>
-    </>
+    </Fragment>
   );
 };
 

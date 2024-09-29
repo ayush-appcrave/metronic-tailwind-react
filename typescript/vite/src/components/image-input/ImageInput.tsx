@@ -106,6 +106,7 @@ const ImageInput: FC<IImageInputProps> = ({
     }
     onChange?.(updatedList);
   };
+  
 
   const onImageUpdate = (index: number): void => {
     setKeyUpdate(index);
@@ -178,4 +179,4 @@ const ImageInput: FC<IImageInputProps> = ({
   );
 };
 
-export { ImageInput, type IImageInputProps, type ImageInputFilesType };
+export { ImageInput, type IImageInputFile, type IImageInputProps, type ImageInputFilesType };

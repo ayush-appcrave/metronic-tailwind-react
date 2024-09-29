@@ -4,7 +4,7 @@ import { Navbar, NavbarActions, NavbarDropdown } from '@/partials/navbar';
 import { toAbsoluteUrl } from '@/utils/Assets';
 import { KeenIcon } from '@/components';
 import { PageMenu } from '@/pages/public-profile';
-import { Projects } from './blocks';
+import { Projects2 } from './blocks';
 
 const ProjectColumn3Page = () => {
   const image = (
@@ -42,7 +42,7 @@ const ProjectColumn3Page = () => {
       </Container>
 
       <Container>
-        <Projects />
+        <Projects2 />
       </Container>
     </>
   );

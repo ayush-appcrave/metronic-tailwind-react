@@ -22,6 +22,7 @@ interface IProjectsItem {
     value: number;
   };
 }
+
 interface IProjectsItems extends Array<IProjectsItem> {}
 
 const Projects = () => {

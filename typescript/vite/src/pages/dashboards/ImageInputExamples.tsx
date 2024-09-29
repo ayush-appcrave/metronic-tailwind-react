@@ -2,26 +2,26 @@ import { useState } from 'react';
 import { Helmet } from 'react-helmet';
 
 import { Container } from '@/components/container';
-import { ImageInput, ImageType } from '@/components/image-input';
+import { ImageInput, IImageInputFile, ImageInputFilesType } from '@/components/image-input';
 
 const ImageInputExamples = () => {
-  const [images1, setImages1] = useState<ImageType[]>([]);
-  const [images2, setImages2] = useState<ImageType[]>([]);
-  const [images3, setImages3] = useState<ImageType[]>([]);
+  const [images1, setImages1] = useState<ImageInputFilesType[]>([]);
+  const [images2, setImages2] = useState<ImageInputFilesType[]>([]);
+  const [images3, setImages3] = useState<ImageInputFilesType[]>([]);
 
-  const onChange1 = (imageList: ImageType[], addUpdateIndex: number[] | undefined) => {
-    console.log(imageList, addUpdateIndex);
-    setImages1(imageList);
+  const onChange1 = (fileList: ImageInputFilesType, addUpdateIndex?: number[] | undefined) => {
+    console.log(fileList, addUpdateIndex);
+    setImages1([fileList]);
   };
 
-  const onChange2 = (imageList: ImageType[], addUpdateIndex: number[] | undefined) => {
-    console.log(imageList, addUpdateIndex);
-    setImages2(imageList);
+  const onChange2 = (fileList: ImageInputFilesType, addUpdateIndex?: number[] | undefined) => {
+    console.log(fileList, addUpdateIndex);
+    setImages2([fileList]);
   };
 
-  const onChange3 = (imageList: ImageType[], addUpdateIndex: number[] | undefined) => {
-    console.log(imageList, addUpdateIndex);
-    setImages3(imageList);
+  const onChange3 = (fileList: ImageInputFilesType, addUpdateIndex?: number[] | undefined) => {
+    console.log(fileList, addUpdateIndex);
+    setImages3([fileList]);
   };
 
   return (
@@ -35,12 +35,12 @@ const ImageInputExamples = () => {
           <div className="flex flex-col gap-2.5">
             <h2 className="text-2xl font-bold text-gray-900">Basic upload example</h2>
             <ImageInput value={images1} onChange={onChange1}>
-              {({ imageList, onImageUpload, onImageRemove }) => (
+              {({ fileList, onImageUpload, onImageRemove }) => (
                 <>
                   <button onClick={onImageUpload} className="btn btn-primary">
                     Change image
                   </button>
-                  {imageList.map((image: ImageType, index: number) => (
+                  {fileList.map((image: IImageInputFile, index: number) => (
                     <div key={index}>
                       <img src={image.dataURL} />
                       <div>
@@ -62,7 +62,7 @@ const ImageInputExamples = () => {
           <div className="flex flex-col gap-2.5">
             <h2 className="text-2xl font-bold text-gray-900">Multiple image upload example</h2>
             <ImageInput value={images2} onChange={onChange2} multiple>
-              {({ imageList, onImageUpload, onImageUpdate, onImageRemove, onImageRemoveAll }) => (
+              {({ fileList, onImageUpload, onImageUpdate, onImageRemove, onImageRemoveAll }) => (
                 <>
                   <div className="flex">
                     <button onClick={onImageUpload} className="btn btn-primary">
@@ -72,7 +72,7 @@ const ImageInputExamples = () => {
                       Remove all
                     </button>
                   </div>
-                  {imageList.map((image: ImageType, index: number) => (
+                  {fileList.map((image: IImageInputFile, index: number) => (
                     <div key={index}>
                       <img src={image.dataURL} />
                       <div>
@@ -102,18 +102,18 @@ const ImageInputExamples = () => {
           <div className="flex flex-col gap-2.5">
             <h2 className="text-2xl font-bold text-gray-900">Drag and drop</h2>
             <ImageInput value={images3} onChange={onChange3}>
-              {({ imageList, onImageUpload, onImageUpdate, onImageRemove, dragProps }) => (
+              {({ fileList, onImageUpload, onImageUpdate, onImageRemove, dragProps }) => (
                 <>
                   <div
                     className="btn btn-light justify-between h-auto py-3 lg:py-5 px-3 lg:px-6 group"
-                    onClick={imageList.length === 0 ? onImageUpload : () => {}}
-                    {...(imageList.length === 0 ? dragProps : {})}
+                    onClick={fileList.length === 0 ? onImageUpload : () => {}}
+                    {...(fileList.length === 0 ? dragProps : {})}
                   >
-                    {imageList.length === 0 ? (
+                    {fileList.length === 0 ? (
                       'Drag and drop your image here'
                     ) : (
                       <div>
-                        <img src={imageList[0].dataURL} />
+                        <img src={fileList[0].dataURL} />
                         <button
                           className="btn btn-success"
                           onClick={() => {

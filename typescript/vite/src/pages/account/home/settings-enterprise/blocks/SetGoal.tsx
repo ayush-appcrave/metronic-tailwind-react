@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { ChangeEvent, useState } from 'react';
 
 import { KeenIcon, Menu, MenuItem, MenuToggle } from '@/components';
 
@@ -7,8 +7,8 @@ import { DropdownCard2 } from '@/partials/dropdowns/general';
 const SetGoal = () => {
   const [value, setValue] = useState(1);
 
-  const handleChange = () => {
-    setValue(event.target.value);
+  const handleChange = (event: ChangeEvent<HTMLInputElement>) => {
+    setValue(Number(event.target.value));
   };
 
   return (

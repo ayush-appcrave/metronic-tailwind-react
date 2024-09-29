@@ -18,7 +18,7 @@ const ScrollSpyExample = () => {
           <p data-to-scrollspy-id="second">Section 2</p>
           <p data-to-scrollspy-id="third">Section 3</p>
         </div>
-        <ScrollSpy>
+        <Scrollspy>
           <div ref={scrollParentRef}>
             <div id="first">
               Lorem ipsum dolor sit amet consectetur adipisicing elit. Aut dolores veritatis
@@ -75,7 +75,7 @@ const ScrollSpyExample = () => {
               voluptatibus non fuga eos magni natus vel, rerum excepturi expedita. Tempore, vero!
             </div>
           </div>
-        </ScrollSpy>
+        </Scrollspy>
       </Container>
     </>
   );

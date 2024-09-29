@@ -1,6 +1,18 @@
 import { Scrollspy } from '@/components';
-import { IScrollspyMenuItem, IScrollspyMenuItems, IScrollspyMenuProps } from './';
 import { useRef } from 'react';
+
+export interface IScrollspyMenuItem {
+  title: string;
+  target?: string;
+  active?: boolean;
+  children?: IScrollspyMenuItem[];
+}
+export interface IScrollspyMenuItems extends Array<IScrollspyMenuItem> {}
+
+export interface IScrollspyMenuProps {
+  items: IScrollspyMenuItem[];
+  offset?: string;
+}
 
 const ScrollspyMenu = ({ items }: IScrollspyMenuProps) => {
   const buildAnchor = (item: IScrollspyMenuItem, indent: boolean = false) => {
