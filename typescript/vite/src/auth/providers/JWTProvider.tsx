@@ -54,6 +54,7 @@ const AuthProvider = ({ children }: PropsWithChildren) => {
       try {
         const { data: user } = await getUser();
         setCurrentUser(user);
+      // eslint-disable-next-line @typescript-eslint/no-unused-vars
       } catch (error) {
         saveAuth(undefined);
         setCurrentUser(undefined);
