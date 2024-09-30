@@ -21,11 +21,7 @@ const AccountIntegrationsPage = () => {
         <Toolbar>
           <ToolbarHeading>
             <ToolbarPageTitle />
-            <ToolbarDescription>
-              <span className="flex items-center gap-2 text-sm font-medium text-gray-600">
-                Enhance Workflows with Advanced Integrations.
-              </span>
-            </ToolbarDescription>
+            <ToolbarDescription>Enhance Workflows with Advanced Integrations.</ToolbarDescription>
           </ToolbarHeading>
           <ToolbarActions>
             <a href="#" className="btn btn-sm btn-light">

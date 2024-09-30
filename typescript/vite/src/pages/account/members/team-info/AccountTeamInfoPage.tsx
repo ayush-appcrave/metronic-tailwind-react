@@ -22,9 +22,7 @@ const AccountTeamInfoPage = () => {
           <ToolbarHeading>
             <ToolbarPageTitle />
             <ToolbarDescription>
-              <span className="flex items-center gap-2 text-sm font-medium text-gray-600">
-                Efficient team organization with real-time updates
-              </span>
+              Efficient team organization with real-time updates
             </ToolbarDescription>
           </ToolbarHeading>
           <ToolbarActions>

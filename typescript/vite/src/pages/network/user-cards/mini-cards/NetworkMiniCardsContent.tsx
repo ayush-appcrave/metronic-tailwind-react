@@ -220,7 +220,7 @@ const NetworkMiniCardsContent = () => {
       <div className="flex items-center justify-between gap-2.5 flex-wrap mb-7.5">
         <h3 className="text-md text-gray-900 font-medium">Showing {items.length} Users</h3>
 
-        <div className="flex items-center gap-2.5">
+        <div className="flex items-center flex-wrap gap-2.5">
           <select className="select select-sm w-28">
             <option value="1">Active</option>
             <option value="2">Disabled</option>

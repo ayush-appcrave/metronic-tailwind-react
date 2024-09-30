@@ -23,12 +23,12 @@ const AccountSecurityLogPage = () => {
           <ToolbarHeading>
             <ToolbarPageTitle />
             <ToolbarDescription>
-              <div className="flex items-center gap-2">
-                <span className="text-sm text-gray-700">Authorized Devices for Report Access</span>
+              <div className="flex items-center gap-2 font-medium">
+                <span className="text-sm text-gray-600">Authorized Devices for Report Access</span>
                 <span className="size-0.75 bg-gray-600 rounded-full"></span>
-                <Link to="/" className="font-medium btn btn-link link">
+                <a href="#" className="font-semibold btn btn-link link">
                   Unlink All Devices
-                </Link>
+                </a>
               </div>
             </ToolbarDescription>
           </ToolbarHeading>

@@ -22,11 +22,7 @@ const AccountCurrentSessionsPage = () => {
         <Toolbar>
           <ToolbarHeading>
             <ToolbarPageTitle />
-            <ToolbarDescription>
-              <span className="flex items-center gap-2 text-sm font-medium text-gray-600">
-                Authorized Devices for Report Access
-              </span>
-            </ToolbarDescription>
+            <ToolbarDescription>Authorized Devices for Report Access</ToolbarDescription>
           </ToolbarHeading>
           <ToolbarActions>
             <Link to="/account/security/security-log" className="btn btn-sm btn-light">

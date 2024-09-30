@@ -21,11 +21,7 @@ const AccountSettingsEnterprisePage = () => {
         <Toolbar>
           <ToolbarHeading>
             <ToolbarPageTitle />
-            <ToolbarDescription>
-              <span className="flex items-center gap-2 text-sm font-medium text-gray-600">
-                Tailored Tools for Business Scalability
-              </span>
-            </ToolbarDescription>
+            <ToolbarDescription>Tailored Tools for Business Scalability</ToolbarDescription>
           </ToolbarHeading>
           <ToolbarActions>
             <a href="#" className="btn btn-sm btn-light">

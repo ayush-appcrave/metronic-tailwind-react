@@ -35,7 +35,7 @@ const ProfileGamerPage = () => {
           <PageMenu />
 
           <NavbarActions>
-            <button type="button" className="btn btn-sm btn-primary">
+            <button className="dropdown-toggle btn btn-sm btn-primary">
               <KeenIcon icon="users" /> Connect
             </button>
             <button className="dropdown-toggle btn btn-sm btn-light">

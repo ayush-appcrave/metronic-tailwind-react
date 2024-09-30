@@ -204,7 +204,7 @@ const NetworkAuthorContent = () => {
       <div className="flex flex-wrap items-center gap-5 justify-between">
         <h3 className="text-md text-gray-900 font-medium">Showing {items.length} Users</h3>
 
-        <div className="flex items-center gap-5">
+        <div className="flex items-center flex-wrap gap-5">
           <div className="flex items-center gap-2.5">
             <select className="select select-sm w-28">
               <option value="1">Active</option>

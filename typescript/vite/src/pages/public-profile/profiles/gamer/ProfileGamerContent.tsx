@@ -39,13 +39,13 @@ const ProfileGamerContent = () => {
   ];
 
   return (
-    <div className="grid grid-cols-1 lg:grid-cols-3 gap-5 lg:gap-7.5">
-      <div className="col-span-1 lg:col-span-3">
+    <div className="grid grid-cols-1 lg:grid-cols-3 gap-y-5 lg:gap-7.5">
+      <div className="col-span-2 lg:col-span-3">
         <Statistics details={details} />
       </div>
 
       <div className="col-span-1">
-        <div className="grid gap-5 lg:gap-7.5">
+        <div className="flex flex-col gap-5 lg:gap-7.5">
           <FavoriteGames />
 
           <About />
@@ -59,13 +59,11 @@ const ProfileGamerContent = () => {
       </div>
       <div className="col-span-2">
         <div className="flex flex-col gap-5 lg:gap-7.5">
-          <div className="flex flex-col gap-5 lg:gap-7.5">
-            <Tournaments />
+          <Tournaments />
 
-            <NowPlaying />
+          <NowPlaying />
 
-            <Activity />
-          </div>
+          <Activity />
         </div>
       </div>
     </div>
