@@ -45,7 +45,7 @@ const CurrentSessionsData: ICurrentSessionsData[] = [
       name: 'Tyler Hero'
     },
     browser: {
-      icon: 'safari',
+      icon: 'chrome',
       name: 'Safari on iPhone'
     },
     ipAddress: '70.218.212.162',
@@ -61,7 +61,7 @@ const CurrentSessionsData: ICurrentSessionsData[] = [
       name: 'Leslie Alexander'
     },
     browser: {
-      icon: 'firefox',
+      icon: 'chrome',
       name: 'Firefox on Mac OS X'
     },
     ipAddress: '140.92.152.213',
@@ -77,7 +77,7 @@ const CurrentSessionsData: ICurrentSessionsData[] = [
       name: 'Robert Fox'
     },
     browser: {
-      icon: 'edge',
+      icon: 'chrome',
       name: 'Edge on Windows 10'
     },
     ipAddress: '214.219.147.46',
@@ -109,7 +109,7 @@ const CurrentSessionsData: ICurrentSessionsData[] = [
       name: 'Jerome Bell'
     },
     browser: {
-      icon: 'safari',
+      icon: 'chrome',
       name: 'Safari on iOS 14'
     },
     ipAddress: '246.44.68.100',
@@ -157,7 +157,7 @@ const CurrentSessionsData: ICurrentSessionsData[] = [
       name: 'Walter White'
     },
     browser: {
-      icon: 'firefox',
+      icon: 'chrome',
       name: 'Firefox on Windows 10'
     },
     ipAddress: '70.218.212.162',
@@ -173,7 +173,7 @@ const CurrentSessionsData: ICurrentSessionsData[] = [
       name: 'Mallory Horton'
     },
     browser: {
-      icon: 'firefox',
+      icon: 'chrome',
       name: 'Firefox on Mac OS X'
     },
     ipAddress: '75.243.106.80',
@@ -189,7 +189,7 @@ const CurrentSessionsData: ICurrentSessionsData[] = [
       name: 'Jacob Jones'
     },
     browser: {
-      icon: 'safari',
+      icon: 'chrome',
       name: 'Safari on Mac OS X'
     },
     ipAddress: '102.150.137.255',
@@ -205,7 +205,7 @@ const CurrentSessionsData: ICurrentSessionsData[] = [
       name: 'Marvin McKinney'
     },
     browser: {
-      icon: 'safari',
+      icon: 'chrome',
       name: 'Safari on macOS Big Sur'
     },
     ipAddress: '140.92.152.213',
@@ -237,7 +237,7 @@ const CurrentSessionsData: ICurrentSessionsData[] = [
       name: 'Tiffany Hayes'
     },
     browser: {
-      icon: 'firefox',
+      icon: 'chrome',
       name: 'Firefox on Windows 11'
     },
     ipAddress: '233.182.185.28',
@@ -253,7 +253,7 @@ const CurrentSessionsData: ICurrentSessionsData[] = [
       name: 'Michael Scott'
     },
     browser: {
-      icon: 'brave',
+      icon: 'chrome',
       name: 'Brave Browser on Windows 11'
     },
     ipAddress: '76.216.214.248',
@@ -269,7 +269,7 @@ const CurrentSessionsData: ICurrentSessionsData[] = [
       name: 'Robert Fox'
     },
     browser: {
-      icon: 'opera',
+      icon: 'chrome',
       name: 'Opera on Windows 11'
     },
     ipAddress: '102.150.137.255',
@@ -285,7 +285,7 @@ const CurrentSessionsData: ICurrentSessionsData[] = [
       name: 'Ralph Edwards'
     },
     browser: {
-      icon: 'edge-chromium',
+      icon: 'chrome',
       name: 'Edge (Chromium)'
     },
     ipAddress: '75.243.106.80',
@@ -333,7 +333,7 @@ const CurrentSessionsData: ICurrentSessionsData[] = [
       name: 'Guy Hawkins'
     },
     browser: {
-      icon: 'safari',
+      icon: 'chrome',
       name: 'Safari on iPhone'
     },
     ipAddress: '214.219.147.46',
@@ -365,7 +365,7 @@ const CurrentSessionsData: ICurrentSessionsData[] = [
       name: 'Esther Howard'
     },
     browser: {
-      icon: 'firefox',
+      icon: 'chrome',
       name: 'Firefox on Mac OS X'
     },
     ipAddress: '75.243.106.80',
@@ -397,7 +397,7 @@ const CurrentSessionsData: ICurrentSessionsData[] = [
       name: 'Albert Flores'
     },
     browser: {
-      icon: 'firefox',
+      icon: 'chrome',
       name: 'Firefox on Mac OS X'
     },
     ipAddress: '75.243.106.80',
@@ -413,7 +413,7 @@ const CurrentSessionsData: ICurrentSessionsData[] = [
       name: 'Donald Coleman'
     },
     browser: {
-      icon: 'safari',
+      icon: 'chrome',
       name: 'Safari on iOS 14'
     },
     ipAddress: '246.44.68.100',
@@ -445,7 +445,7 @@ const CurrentSessionsData: ICurrentSessionsData[] = [
       name: 'Paul Walker'
     },
     browser: {
-      icon: 'firefox',
+      icon: 'chrome',
       name: 'Firefox on Windows 10'
     },
     ipAddress: '70.218.212.162',
@@ -477,7 +477,7 @@ const CurrentSessionsData: ICurrentSessionsData[] = [
       name: 'Kevin Evans'
     },
     browser: {
-      icon: 'firefox',
+      icon: 'chrome',
       name: 'Firefox on Windows 11'
     },
     ipAddress: '233.182.185.28',
@@ -493,7 +493,7 @@ const CurrentSessionsData: ICurrentSessionsData[] = [
       name: 'Steven Harris'
     },
     browser: {
-      icon: 'firefox',
+      icon: 'chrome',
       name: 'Firefox on Windows 10'
     },
     ipAddress: '233.182.185.28',
@@ -525,7 +525,7 @@ const CurrentSessionsData: ICurrentSessionsData[] = [
       name: 'Justin Adams'
     },
     browser: {
-      icon: 'firefox',
+      icon: 'chrome',
       name: 'Firefox on Windows 11'
     },
     ipAddress: '233.182.185.28',
@@ -557,7 +557,7 @@ const CurrentSessionsData: ICurrentSessionsData[] = [
       name: 'Jessica Evans'
     },
     browser: {
-      icon: 'firefox',
+      icon: 'chrome',
       name: 'Firefox on Windows 11'
     },
     ipAddress: '233.182.185.28',
@@ -589,7 +589,7 @@ const CurrentSessionsData: ICurrentSessionsData[] = [
       name: 'Tyler Hero'
     },
     browser: {
-      icon: 'safari',
+      icon: 'chrome',
       name: 'Safari on iPhone'
     },
     ipAddress: '70.218.212.162',
@@ -605,7 +605,7 @@ const CurrentSessionsData: ICurrentSessionsData[] = [
       name: 'Leslie Alexander'
     },
     browser: {
-      icon: 'firefox',
+      icon: 'chrome',
       name: 'Firefox on Mac OS X'
     },
     ipAddress: '140.92.152.213',
@@ -621,7 +621,7 @@ const CurrentSessionsData: ICurrentSessionsData[] = [
       name: 'Robert Fox'
     },
     browser: {
-      icon: 'edge',
+      icon: 'chrome',
       name: 'Edge on Windows 10'
     },
     ipAddress: '214.219.147.46',
@@ -653,7 +653,7 @@ const CurrentSessionsData: ICurrentSessionsData[] = [
       name: 'Jerome Bell'
     },
     browser: {
-      icon: 'safari',
+      icon: 'chrome',
       name: 'Safari on iOS 14'
     },
     ipAddress: '246.44.68.100',
@@ -701,7 +701,7 @@ const CurrentSessionsData: ICurrentSessionsData[] = [
       name: 'Walter White'
     },
     browser: {
-      icon: 'firefox',
+      icon: 'chrome',
       name: 'Firefox on Windows 10'
     },
     ipAddress: '70.218.212.162',
@@ -717,7 +717,7 @@ const CurrentSessionsData: ICurrentSessionsData[] = [
       name: 'Mallory Horton'
     },
     browser: {
-      icon: 'firefox',
+      icon: 'chrome',
       name: 'Firefox on Mac OS X'
     },
     ipAddress: '75.243.106.80',
@@ -733,7 +733,7 @@ const CurrentSessionsData: ICurrentSessionsData[] = [
       name: 'Jacob Jones'
     },
     browser: {
-      icon: 'safari',
+      icon: 'chrome',
       name: 'Safari on Mac OS X'
     },
     ipAddress: '102.150.137.255',
@@ -749,7 +749,7 @@ const CurrentSessionsData: ICurrentSessionsData[] = [
       name: 'Marvin McKinney'
     },
     browser: {
-      icon: 'safari',
+      icon: 'chrome',
       name: 'Safari on macOS Big Sur'
     },
     ipAddress: '140.92.152.213',
@@ -781,7 +781,7 @@ const CurrentSessionsData: ICurrentSessionsData[] = [
       name: 'Tiffany Hayes'
     },
     browser: {
-      icon: 'firefox',
+      icon: 'chrome',
       name: 'Firefox on Windows 11'
     },
     ipAddress: '233.182.185.28',
@@ -797,7 +797,7 @@ const CurrentSessionsData: ICurrentSessionsData[] = [
       name: 'Michael Scott'
     },
     browser: {
-      icon: 'brave',
+      icon: 'chrome',
       name: 'Brave Browser on Windows 11'
     },
     ipAddress: '76.216.214.248',
@@ -813,7 +813,7 @@ const CurrentSessionsData: ICurrentSessionsData[] = [
       name: 'Robert Fox'
     },
     browser: {
-      icon: 'opera',
+      icon: 'chrome',
       name: 'Opera on Windows 11'
     },
     ipAddress: '102.150.137.255',
