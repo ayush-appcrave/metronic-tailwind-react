@@ -1,4 +1,6 @@
-import { useState } from 'react';
+import { Fragment, useState } from 'react';
+
+import { toAbsoluteUrl } from '@/utils';
 
 import {
   ActivitiesAnniversary,
@@ -48,7 +50,24 @@ const ProfileActivityContent = () => {
             {(year === 2024 || year === 2019) && <ActivitiesProductWebinar />}
             <ActivitiesFollowersMilestone />
             {(year === 2024 || year === 2021) && <ActivitiesProjectStatus />}
-            {(year === 2024 || year === 2018) && <ActivitiesBloggingConference image="" />}
+            {(year === 2024 || year === 2018) && (
+              <ActivitiesBloggingConference
+                image={
+                  <Fragment>
+                    <img
+                      src={toAbsoluteUrl(`/media/illustrations/3.svg`)}
+                      className="dark:hidden max-h-[160px]"
+                      alt=""
+                    />
+                    <img
+                      src={toAbsoluteUrl(`/media/illustrations/3-dark.svg`)}
+                      className="light:hidden max-h-[160px]"
+                      alt=""
+                    />
+                  </Fragment>
+                }
+              />
+            )}
             <ActivitiesDesignerWelcome />
             {(year === 2024 || year === 2017) && <ActivitiesNewTeam />}
             <ActivitiesVirtualTeam />

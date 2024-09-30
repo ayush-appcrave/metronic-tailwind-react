@@ -1,7 +1,9 @@
 import { Fragment } from 'react';
+import { Link } from 'react-router-dom';
+
 import { Container } from '@/components/container';
 import { Toolbar, ToolbarActions, ToolbarHeading } from '@/layouts/demo1/toolbar';
-import { Link } from 'react-router-dom';
+
 import { LightSidebarContent } from './';
 
 const LightSidebarPage = () => {

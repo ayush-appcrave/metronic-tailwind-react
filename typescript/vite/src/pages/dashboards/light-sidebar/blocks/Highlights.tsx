@@ -52,7 +52,7 @@ const Highlights = ({ limit }: IHighlightsProps) => {
             ) : (
               <KeenIcon icon="arrow-down" className="text-danger" />
             )}
-            {row.stats}%
+            &nbsp;{row.stats}%
           </span>
         </div>
       </div>

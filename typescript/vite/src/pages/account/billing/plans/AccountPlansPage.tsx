@@ -1,9 +1,9 @@
+import { Fragment } from 'react';
 import { Container } from '@/components/container';
 import { Toolbar, ToolbarActions, ToolbarHeading } from '@/layouts/demo1/toolbar';
 import { Link } from 'react-router-dom';
 import { PageNavbar } from '@/pages/account';
 import { AccountPlansContent } from '.';
-import { Fragment } from 'react/jsx-runtime';
 
 const AccountPlansPage = () => {
   return (

@@ -1,10 +1,14 @@
+import { Fragment } from 'react';
+
+import { toAbsoluteUrl } from '@/utils/Assets';
 import { Container } from '@/components/container';
+import { KeenIcon } from '@/components';
+
 import { UserProfileHero } from '@/partials/heros';
 import { Navbar, NavbarActions, NavbarDropdown } from '@/partials/navbar';
-import { toAbsoluteUrl } from '@/utils/Assets';
 import { PageMenu } from '@/pages/public-profile';
+
 import { ProfileFeedsContent } from '.';
-import { KeenIcon } from '@/components';
 
 const ProfileFeedsPage = () => {
   const image = (
@@ -15,7 +19,7 @@ const ProfileFeedsPage = () => {
   );
 
   return (
-    <>
+    <Fragment>
       <UserProfileHero
         name="Jenny Klabber"
         image={image}
@@ -29,6 +33,7 @@ const ProfileFeedsPage = () => {
       <Container>
         <Navbar>
           <PageMenu />
+
           <NavbarActions>
             <button type="button" className="btn btn-sm btn-primary">
               <KeenIcon icon="users" /> Connect
@@ -44,7 +49,7 @@ const ProfileFeedsPage = () => {
       <Container>
         <ProfileFeedsContent />
       </Container>
-    </>
+    </Fragment>
   );
 };
 

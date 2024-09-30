@@ -1,7 +1,10 @@
+import { Fragment } from 'react';
+
 import { toAbsoluteUrl } from '@/utils';
 
 import { MiscEngage, MiscFaq, MiscHighlightedPosts, IHighlightedPostsItems } from '@/partials/misc';
 
+import { Members } from '../permissions-toggle';
 import { PermissionsCheck } from './blocks';
 
 const AccountPermissionsCheckContent = () => {
@@ -35,11 +38,7 @@ const AccountPermissionsCheckContent = () => {
         <div className="flex flex-col gap-5 lg:gap-7.5">
           <PermissionsCheck />
 
-          {/* {{ 
-            theme.page('account/members/permissions-toggle/_members', {
-              'title': 'Role Members'
-            }) 
-          }} */}
+          <Members />
 
           <MiscFaq />
 
@@ -47,11 +46,18 @@ const AccountPermissionsCheckContent = () => {
             title="Contact Support"
             description="Need assistance? Contact our support team for prompt, personalized help your queries & concerns."
             image={
-              <img
-                src={toAbsoluteUrl('/media/illustrations/31.svg')}
-                className="dark:hidden max-h-[150px]"
-                alt=""
-              />
+              <Fragment>
+                <img
+                  src={toAbsoluteUrl('/media/illustrations/31.svg')}
+                  className="dark:hidden max-h-[150px]"
+                  alt=""
+                />
+                <img
+                  src={toAbsoluteUrl('/media/illustrations/31-dark.svg')}
+                  className="light:hidden max-h-[150px]"
+                  alt=""
+                />
+              </Fragment>
             }
             more={{
               title: 'Contact Support',

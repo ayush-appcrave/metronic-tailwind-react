@@ -12,7 +12,7 @@ const Saves = () => {
             margin-top: -1rem;
 		        height: 7rem;
           }
-          .dark .page-bg {
+          .dark .post-saves-bg {
             background-image: url('${toAbsoluteUrl('/media/images/2600x1200/bg-2-dark.png')}');
             height: 12rem;
 		        margin-bottom: -4.5rem;

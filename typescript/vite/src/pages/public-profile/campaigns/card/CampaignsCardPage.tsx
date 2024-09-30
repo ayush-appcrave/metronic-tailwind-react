@@ -1,9 +1,13 @@
+import { Fragment } from 'react';
+
 import { Container } from '@/components/container';
 import { KeenIcon } from '@/components';
 import { toAbsoluteUrl } from '@/utils/Assets';
+
 import { UserProfileHero } from '@/partials/heros';
 import { Navbar, NavbarActions, NavbarDropdown } from '@/partials/navbar';
 import { PageMenu } from '@/pages/public-profile';
+
 import { CampaignsContent } from '.';
 
 const CampaignsCardPage = () => {
@@ -15,7 +19,7 @@ const CampaignsCardPage = () => {
   );
 
   return (
-    <>
+    <Fragment>
       <UserProfileHero
         name="Jenny Klabber"
         image={image}
@@ -29,6 +33,7 @@ const CampaignsCardPage = () => {
       <Container>
         <Navbar>
           <PageMenu />
+
           <NavbarActions>
             <button type="button" className="btn btn-sm btn-primary">
               <KeenIcon icon="users" /> Connect
@@ -44,7 +49,7 @@ const CampaignsCardPage = () => {
       <Container>
         <CampaignsContent mode="card" />
       </Container>
-    </>
+    </Fragment>
   );
 };
 

@@ -1,3 +1,5 @@
+import { Fragment } from 'react';
+
 import { Container } from '@/components/container';
 import {
   Toolbar,
@@ -11,7 +13,7 @@ import { NetworkStoreClientsContent } from '.';
 
 const NetworkStoreClientsPage = () => {
   return (
-    <>
+    <Fragment>
       <Container>
         <Toolbar>
           <ToolbarHeading>
@@ -39,7 +41,7 @@ const NetworkStoreClientsPage = () => {
       <Container>
         <NetworkStoreClientsContent />
       </Container>
-    </>
+    </Fragment>
   );
 };
 

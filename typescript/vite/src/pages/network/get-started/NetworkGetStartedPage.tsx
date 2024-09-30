@@ -1,12 +1,14 @@
+import { Fragment } from 'react';
+import { Link } from 'react-router-dom';
+
 import { Container } from '@/components/container';
 import { Toolbar, ToolbarDescription, ToolbarHeading, ToolbarPageTitle } from '@/partials/toolbar';
 
 import { NetworkGetStartedContent } from '.';
-import { Link } from 'react-router-dom';
 
 const NetworkGetStartedPage = () => {
   return (
-    <>
+    <Fragment>
       <Container>
         <Toolbar>
           <ToolbarHeading>
@@ -25,7 +27,7 @@ const NetworkGetStartedPage = () => {
       <Container>
         <NetworkGetStartedContent />
       </Container>
-    </>
+    </Fragment>
   );
 };
 

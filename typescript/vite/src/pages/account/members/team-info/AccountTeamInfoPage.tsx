@@ -1,4 +1,5 @@
 import { Fragment } from 'react';
+
 import { Container } from '@/components/container';
 import {
   Toolbar,
@@ -8,6 +9,7 @@ import {
   ToolbarPageTitle
 } from '@/partials/toolbar';
 import { PageNavbar } from '@/pages/account';
+
 import { AccountTeamInfoContent } from '.';
 
 const AccountTeamInfoPage = () => {

@@ -1,4 +1,5 @@
 import { Fragment } from 'react';
+
 import { Container } from '@/components/container';
 import {
   Toolbar,
@@ -7,9 +8,9 @@ import {
   ToolbarHeading,
   ToolbarPageTitle
 } from '@/partials/toolbar';
+import { PageNavbar } from '@/pages/account';
 
 import { AccountSettingsEnterpriseContent } from '.';
-import { PageNavbar } from '@/pages/account';
 
 const AccountSettingsEnterprisePage = () => {
   return (

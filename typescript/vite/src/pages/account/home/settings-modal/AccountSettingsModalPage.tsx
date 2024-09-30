@@ -1,9 +1,11 @@
 import { Fragment } from 'react';
+
+import { toAbsoluteUrl } from '@/utils/Assets';
 import { KeenIcon } from '@/components';
-import { Container } from '@/components/container';;
+import { Container } from '@/components/container';
+
 import { UserProfileHero } from '@/partials/heros';
 import { Navbar, NavbarActions, NavbarDropdown } from '@/partials/navbar';
-import { toAbsoluteUrl } from '@/utils/Assets';
 import { PageMenu } from '@/pages/public-profile';
 
 const AccountSettingsModalPage = () => {

@@ -1,3 +1,5 @@
+import { Fragment } from 'react';
+
 import { Container } from '@/components/container';
 import {
   Toolbar,
@@ -11,7 +13,7 @@ import { NetworkUserCardsTeamCrewContent } from '.';
 
 const NetworkUserCardsTeamCrewPage = () => {
   return (
-    <>
+    <Fragment>
       <Container>
         <Toolbar>
           <ToolbarHeading>
@@ -36,7 +38,7 @@ const NetworkUserCardsTeamCrewPage = () => {
       <Container>
         <NetworkUserCardsTeamCrewContent />
       </Container>
-    </>
+    </Fragment>
   );
 };
 

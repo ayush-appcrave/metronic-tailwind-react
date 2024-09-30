@@ -1,4 +1,6 @@
 import { Fragment } from 'react';
+import { Link } from 'react-router-dom';
+
 import { Container } from '@/components/container';
 import {
   Toolbar,
@@ -8,8 +10,8 @@ import {
   ToolbarPageTitle
 } from '@/partials/toolbar';
 import { PageNavbar } from '@/pages/account';
+
 import { AccountSecurityLogContent } from '.';
-import { Link } from 'react-router-dom';
 
 const AccountSecurityLogPage = () => {
   return (

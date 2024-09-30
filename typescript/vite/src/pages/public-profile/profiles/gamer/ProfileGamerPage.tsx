@@ -1,9 +1,13 @@
+import { Fragment } from 'react';
+
 import { Container } from '@/components/container';
-import { UserProfileHero } from '@/partials/heros';
-import { Navbar, NavbarActions, NavbarDropdown } from '@/partials/navbar';
 import { toAbsoluteUrl } from '@/utils/Assets';
 import { KeenIcon } from '@/components';
+
+import { UserProfileHero } from '@/partials/heros';
+import { Navbar, NavbarActions, NavbarDropdown } from '@/partials/navbar';
 import { PageMenu } from '@/pages/public-profile';
+
 import { ProfileGamerContent } from '.';
 
 const ProfileGamerPage = () => {
@@ -15,7 +19,7 @@ const ProfileGamerPage = () => {
   );
 
   return (
-    <>
+    <Fragment>
       <UserProfileHero
         name="Floyd Miles"
         image={image}
@@ -29,6 +33,7 @@ const ProfileGamerPage = () => {
       <Container>
         <Navbar>
           <PageMenu />
+
           <NavbarActions>
             <button type="button" className="btn btn-sm btn-primary">
               <KeenIcon icon="users" /> Connect
@@ -47,7 +52,7 @@ const ProfileGamerPage = () => {
       <Container>
         <ProfileGamerContent />
       </Container>
-    </>
+    </Fragment>
   );
 };
 

@@ -30,7 +30,7 @@ const Error500Page = () => {
       <div className="text-md text-center text-gray-700 mb-10">
         Server error occurred. Please try again later or &nbsp;
         <a
-          href="https://devs.keenthememes.com"
+          href="https://devs.keenthemes.com"
           className="text-primary font-medium hover:text-primary-active"
         >
           Contact Us
