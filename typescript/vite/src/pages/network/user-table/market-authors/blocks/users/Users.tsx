@@ -52,6 +52,7 @@ const Users = () => {
         },
         meta: {
           className: 'w-[150px]',
+          cellClassName: 'font-normal text-gray-800'
         }
       },   
       {
@@ -65,7 +66,7 @@ const Users = () => {
             <div className="flex items-center text-gray-800 font-normal gap-1.5">
               <img 
                 src={toAbsoluteUrl(`/media/brand-logos/${info.row.original.team.logo}`)} 
-                className="size-[18px] shrinc-0"
+                className="w-5 shrinc-0"
                 alt={``}
               />
               {info.row.original.team.label}
@@ -85,7 +86,8 @@ const Users = () => {
           return info.row.original.products;
         },
         meta: {
-          className: 'min-w-[150px]'
+          className: 'min-w-[150px]',
+          cellClassName: 'font-normal text-gray-800'
         }
       },    
       {
