@@ -60,15 +60,14 @@ const Users = () => {
         enableSorting: true,
         cell: (info) => {                    
           return (
-            <span className={`badge badge-${info.row.original.status.color} badge-outline rounded-[30px]`}>
+            <span className={`badge badge-${info.row.original.status.color} shrink-0 badge-outline rounded-[30px]`}>
               <span className={`size-1.5 rounded-full bg-${info.row.original.status.color} me-1.5`}></span>
               {info.row.original.status.label}
             </span>
           );
         },
         meta: {
-          className: 'w-[170px]',
-          cellClassName: 'text-gray-800 font-normal',
+          className: 'min-w-[130px]' 
         }
       },
       {
@@ -129,10 +128,10 @@ const Users = () => {
 
   return (
     <div className="card card-grid h-full min-w-full">
-      <div className="card-header">
+      <div className="card-header flex-wrap gap-2.5">
         <h3 className="card-title">Showing 20 of 68 users</h3>
 
-				<div className="flex items-center gap-2.5">
+				<div className="flex items-center flex-wrap gap-2.5">
           <div className="flex">
             <label className="input input-sm">
               <KeenIcon icon="magnifier" />

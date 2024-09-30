@@ -161,10 +161,10 @@ const Users = () => {
 
   return (
     <div className="card card-grid h-full min-w-full">
-      <div className="card-header">
+      <div className="card-header flex-wrap gap-2.5">
         <h3 className="card-title">Showing 10 of 49,053 users</h3>
 
-				<div className="flex items-center gap-2.5">
+				<div className="flex items-center flex-wrap gap-2.5">
           <div className="flex">
             <label className="input input-sm">
               <KeenIcon icon="magnifier" />
