@@ -1,3 +1,5 @@
+import { Fragment } from 'react';
+
 import { toAbsoluteUrl } from '@/utils';
 
 import { MiscEngage, MiscFaq, MiscHighlightedPosts, IHighlightedPostsItems } from '@/partials/misc';
@@ -43,11 +45,18 @@ const AccountTeamInfoContent = () => {
             title="Questions ?"
             description="Visit our Help Center for detailed assistance on billing, payments, and subscriptions."
             image={
-              <img
-                src={toAbsoluteUrl('/media/illustrations/29.svg')}
-                className="dark:hidden max-h-44"
-                alt=""
-              />
+              <Fragment>
+                <img
+                  src={toAbsoluteUrl('/media/illustrations/29.svg')}
+                  className="dark:hidden max-h-44"
+                  alt=""
+                />
+                <img
+                  src={toAbsoluteUrl('/media/illustrations/29-dark.svg')}
+                  className="light:hidden max-h-44"
+                  alt=""
+                />
+              </Fragment>
             }
             more={{
               title: 'Go to Help Center',

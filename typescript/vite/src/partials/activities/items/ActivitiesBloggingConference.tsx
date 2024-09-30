@@ -1,13 +1,11 @@
 import { Link } from 'react-router-dom';
 
-import { toAbsoluteUrl } from '@/utils';
-
 import { TimelinesWrapper } from '@/partials/timelines/default/item';
 
 interface IBloggingConferenceProps {
   heading?: string;
   datetime?: string;
-  image?: string;
+  image?: React.ReactNode;
   title?: string;
 }
 
@@ -31,21 +29,7 @@ const ActivitiesBloggingConference = ({
 
       <div className="card shadow-none">
         <div className="card-body lg:py-4">
-          <div className="flex justify-center py-4">
-            {image ? (
-              <img
-                src={toAbsoluteUrl('/media/illustrations/28.svg')}
-                className="dark:hidden max-h-[160px]"
-                alt=""
-              />
-            ) : (
-              <img
-                src={toAbsoluteUrl('/media/illustrations/3.svg')}
-                className="dark:hidden max-h-[160px]"
-                alt=""
-              />
-            )}
-          </div>
+          <div className="flex justify-center py-4">{image}</div>
 
           <div className="flex flex-col gap-1">
             <div className="text-md font-semibold text-gray-900 text-center">

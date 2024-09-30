@@ -1,3 +1,5 @@
+import { Fragment } from 'react';
+
 import { Container } from '@/components/container';
 import {
   Toolbar,
@@ -11,7 +13,7 @@ import { NetworkUserTableTeamCrewContent } from '.';
 
 const NetworkUserTableTeamCrewPage = () => {
   return (
-    <>
+    <Fragment>
       <Container>
         <Toolbar>
           <ToolbarHeading>
@@ -39,7 +41,7 @@ const NetworkUserTableTeamCrewPage = () => {
       <Container>
         <NetworkUserTableTeamCrewContent />
       </Container>
-    </>
+    </Fragment>
   );
 };
 

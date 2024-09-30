@@ -70,7 +70,7 @@ const CompanyProfile = () => {
             <div className="flex flex-wrap items-center justify-between gap-2">
               <div className="flex flex-col gap-1">
                 <div className="flex items-center gap-2.5">
-                  <h2 className="text-2xl font-semibold text-gray-900">Cloud One </h2>
+                  <h2 className="text-2xl font-semibold text-gray-900">Cloud One Enterprise</h2>
                   <span className="badge badge-sm badge-success badge-outline">Monthly Plan</span>
                 </div>
                 <p className="text-2sm text-gray-700">

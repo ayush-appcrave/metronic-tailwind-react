@@ -1,3 +1,5 @@
+import { Fragment } from 'react';
+
 import { toAbsoluteUrl } from '@/utils';
 import { KeenIcon } from '@/components';
 
@@ -48,11 +50,18 @@ const AccountApiKeysContent = () => {
             title="Contact Support"
             description="Need assistance? Contact our support team for prompt, personalized help your queries & concerns."
             image={
-              <img
-                src={toAbsoluteUrl('/media/illustrations/31.svg')}
-                className="dark:hidden max-h-[150px]"
-                alt=""
-              />
+              <Fragment>
+                <img
+                  src={toAbsoluteUrl('/media/illustrations/31.svg')}
+                  className="dark:hidden max-h-[150px]"
+                  alt=""
+                />
+                <img
+                  src={toAbsoluteUrl('/media/illustrations/31-dark.svg')}
+                  className="light:hidden max-h-[150px]"
+                  alt=""
+                />
+              </Fragment>
             }
             more={{
               title: 'Contact Support',

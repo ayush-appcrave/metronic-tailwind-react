@@ -20,7 +20,16 @@ const UnlockPartnerships = () => {
             </p>
           </div>
 
-          <img src={toAbsoluteUrl('/media/illustrations/1.svg')} className="max-h-[160px]" alt="" />
+          <img
+            src={toAbsoluteUrl('/media/illustrations/1.svg')}
+            className="dark:hidden max-h-[160px]"
+            alt=""
+          />
+          <img
+            src={toAbsoluteUrl('/media/illustrations/1-dark.svg')}
+            className="light:hidden max-h-[160px]"
+            alt=""
+          />
         </div>
       </div>
 

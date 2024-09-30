@@ -1,9 +1,11 @@
+import { Fragment } from 'react';
+import { Link } from 'react-router-dom';
+
 import { Container } from '@/components/container';
 import { Toolbar, ToolbarDescription, ToolbarHeading, ToolbarPageTitle } from '@/partials/toolbar';
-import { AccountGetStartedContent } from '.';
-import { Link } from 'react-router-dom';
-import { Fragment } from 'react';
 import { PageNavbar } from '@/pages/account';
+
+import { AccountGetStartedContent } from '.';
 
 const AccountGetStartedPage = () => {
   return (

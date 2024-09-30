@@ -9,11 +9,18 @@ const AccountTeamsStarterContent = () => {
     <div className="grid gap-5 lg:gap-7.5">
       <MiscStarter
         image={
-          <img
-            src={toAbsoluteUrl('/media/illustrations/32.svg')}
-            className="dark:hidden max-h-[230px]"
-            alt=""
-          />
+          <Fragment>
+            <img
+              src={toAbsoluteUrl('/media/illustrations/32.svg')}
+              className="dark:hidden max-h-[230px]"
+              alt=""
+            />
+            <img
+              src={toAbsoluteUrl('/media/illustrations/32-dark.svg')}
+              className="light:hidden max-h-[230px]"
+              alt=""
+            />
+          </Fragment>
         }
         title="Swift Setup for New Teams"
         subTitle={

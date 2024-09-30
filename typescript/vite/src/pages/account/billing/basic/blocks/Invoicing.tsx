@@ -52,7 +52,7 @@ const Invoicing = () => {
     return (
       <tr key={index}>
         <td className="text-sm text-gray-800 font-normal">{table.number}</td>
-        <td className="llg:text-right">
+        <td className="lg:text-right">
           <div className={`badge badge-sm ${table.color} badge-outline`}>{table.label}</div>
         </td>
         <td className="text-sm text-gray-800 font-normal lg:text-right">{table.date}</td>

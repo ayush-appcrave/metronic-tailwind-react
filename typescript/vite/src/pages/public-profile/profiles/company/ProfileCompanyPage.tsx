@@ -1,9 +1,13 @@
-import { Container } from '@/components/container';
-import { UserProfileHero } from '@/partials/heros';
-import { Navbar, NavbarActions, NavbarDropdown } from '@/partials/navbar';
+import { Fragment } from 'react';
+
 import { toAbsoluteUrl } from '@/utils/Assets';
 import { KeenIcon } from '@/components';
+import { Container } from '@/components/container';
+
+import { UserProfileHero } from '@/partials/heros';
+import { Navbar, NavbarActions, NavbarDropdown } from '@/partials/navbar';
 import { PageMenu } from '@/pages/public-profile';
+
 import { ProfileCompanyContent } from './';
 
 const ProfileCompanyPage = () => {
@@ -14,7 +18,7 @@ const ProfileCompanyPage = () => {
   );
 
   return (
-    <>
+    <Fragment>
       <UserProfileHero
         name="Duolingo"
         image={image}
@@ -28,6 +32,7 @@ const ProfileCompanyPage = () => {
       <Container>
         <Navbar>
           <PageMenu />
+
           <NavbarActions>
             <button type="button" className="btn btn-sm btn-primary">
               <KeenIcon icon="users" /> Follow
@@ -43,7 +48,7 @@ const ProfileCompanyPage = () => {
       <Container>
         <ProfileCompanyContent />
       </Container>
-    </>
+    </Fragment>
   );
 };
 

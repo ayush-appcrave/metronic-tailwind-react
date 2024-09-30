@@ -70,7 +70,7 @@ const TeamInfo = () => {
               </td>
             </tr>
             <tr>
-              <td className="py-3  text-gray-600 font-normal">View as</td>
+              <td className="py-3 text-gray-600 font-normal">View as</td>
               <td className="py-3 text-gray-700">
                 <span className="badge badge-sm badge-outline badge-success">Public</span>
               </td>

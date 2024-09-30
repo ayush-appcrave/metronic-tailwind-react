@@ -1,3 +1,5 @@
+import { Fragment } from 'react';
+
 import { Container } from '@/components/container';
 import { NavbarActions } from '@/partials/navbar';
 import { Toolbar, ToolbarDescription, ToolbarHeading, ToolbarPageTitle } from '@/partials/toolbar';
@@ -6,7 +8,7 @@ import { NetworkVisitorsContent } from '.';
 
 const NetworkVisitorsPage = () => {
   return (
-    <>
+    <Fragment>
       <Container>
         <Toolbar>
           <ToolbarHeading>
@@ -34,7 +36,7 @@ const NetworkVisitorsPage = () => {
       <Container>
         <NetworkVisitorsContent />
       </Container>
-    </>
+    </Fragment>
   );
 };
 

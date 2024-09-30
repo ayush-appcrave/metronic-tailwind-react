@@ -12,6 +12,11 @@ const GettingStarted = () => {
             className="dark:hidden max-h-[170px]"
             alt=""
           />
+          <img
+            src={toAbsoluteUrl('/media/illustrations/11-dark.svg')}
+            className="light:hidden max-h-[170px]"
+            alt=""
+          />
         </div>
 
         <div className="text-lg font-medium text-gray-900 text-center">

@@ -1,4 +1,7 @@
+import { Fragment } from 'react';
 import { Link } from 'react-router-dom';
+
+import { toAbsoluteUrl } from '@/utils';
 
 import {
   ActivitiesAnniversary,
@@ -34,7 +37,22 @@ const Activities = () => {
 
         <ActivitiesUpcomingContent />
 
-        <ActivitiesBloggingConference image="/media/illustrations/3.svg" />
+        <ActivitiesBloggingConference
+          image={
+            <Fragment>
+              <img
+                src={toAbsoluteUrl(`/media/illustrations/3.svg`)}
+                className="dark:hidden max-h-[160px]"
+                alt=""
+              />
+              <img
+                src={toAbsoluteUrl(`/media/illustrations/3-dark.svg`)}
+                className="light:hidden max-h-[160px]"
+                alt=""
+              />
+            </Fragment>
+          }
+        />
 
         <ActivitiesFollowersMilestone />
 

@@ -13,11 +13,18 @@ const AccountIntegrationsContent = () => {
 
       <MiscStarter
         image={
-          <img
-            src={toAbsoluteUrl('/media/illustrations/28.svg')}
-            className="dark:hidden max-h-[230px]"
-            alt=""
-          />
+          <Fragment>
+            <img
+              src={toAbsoluteUrl('/media/illustrations/28.svg')}
+              className="dark:hidden max-h-[230px]"
+              alt=""
+            />
+            <img
+              src={toAbsoluteUrl('/media/illustrations/28-dark.svg')}
+              className="light:hidden max-h-[230px]"
+              alt=""
+            />
+          </Fragment>
         }
         title="Add New Integration"
         subTitle={

@@ -1,9 +1,11 @@
 import { Fragment } from 'react';
+import { Link } from 'react-router-dom';
+
 import { Container } from '@/components/container';
 import { Toolbar, ToolbarDescription, ToolbarHeading, ToolbarPageTitle } from '@/partials/toolbar';
 import { PageNavbar } from '@/pages/account';
+
 import { AccountSecurityGetStartedContent } from '.';
-import { Link } from 'react-router-dom';
 
 const AccountSecurityGetStartedPage = () => {
   return (

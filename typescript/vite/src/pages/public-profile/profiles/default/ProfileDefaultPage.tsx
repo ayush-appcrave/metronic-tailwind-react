@@ -1,9 +1,13 @@
-import { Container } from '@/components/container';
-import { UserProfileHero } from '@/partials/heros';
-import { Navbar, NavbarActions, NavbarDropdown } from '@/partials/navbar';
+import { Fragment } from 'react';
+
 import { toAbsoluteUrl } from '@/utils/Assets';
 import { KeenIcon } from '@/components';
+import { Container } from '@/components/container';
+
+import { UserProfileHero } from '@/partials/heros';
+import { Navbar, NavbarActions, NavbarDropdown } from '@/partials/navbar';
 import { PageMenu } from '@/pages/public-profile';
+
 import { ProfileDefaultContent } from '.';
 
 const ProfileDefaultPage = () => {
@@ -15,7 +19,7 @@ const ProfileDefaultPage = () => {
   );
 
   return (
-    <>
+    <Fragment>
       <UserProfileHero
         name="Jenny Klabber"
         image={image}
@@ -29,6 +33,7 @@ const ProfileDefaultPage = () => {
       <Container>
         <Navbar>
           <PageMenu />
+
           <NavbarActions>
             <button type="button" className="btn btn-sm btn-primary">
               <KeenIcon icon="users" /> Connect
@@ -44,7 +49,7 @@ const ProfileDefaultPage = () => {
       <Container>
         <ProfileDefaultContent />
       </Container>
-    </>
+    </Fragment>
   );
 };
 

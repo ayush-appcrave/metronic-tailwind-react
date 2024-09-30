@@ -1,9 +1,13 @@
-import { Container } from '@/components/container';
-import { UserProfileHero } from '@/partials/heros';
-import { Navbar, NavbarActions, NavbarDropdown } from '@/partials/navbar';
+import { Fragment } from 'react';
+
 import { toAbsoluteUrl } from '@/utils/Assets';
 import { KeenIcon } from '@/components';
+import { Container } from '@/components/container';
+
+import { UserProfileHero } from '@/partials/heros';
+import { Navbar, NavbarActions, NavbarDropdown } from '@/partials/navbar';
 import { PageMenu } from '@/pages/public-profile';
+
 import { ProfileCreatorContent } from '.';
 
 const ProfileCreatorPage = () => {
@@ -17,7 +21,7 @@ const ProfileCreatorPage = () => {
   );
 
   return (
-    <>
+    <Fragment>
       <UserProfileHero
         name="Inferno"
         image={image}
@@ -31,6 +35,7 @@ const ProfileCreatorPage = () => {
       <Container>
         <Navbar>
           <PageMenu />
+
           <NavbarActions>
             <a href="#" className="btn btn-sm btn-primary">
               <KeenIcon icon="mouse-square" /> Hire Us
@@ -49,7 +54,7 @@ const ProfileCreatorPage = () => {
       <Container>
         <ProfileCreatorContent />
       </Container>
-    </>
+    </Fragment>
   );
 };
 

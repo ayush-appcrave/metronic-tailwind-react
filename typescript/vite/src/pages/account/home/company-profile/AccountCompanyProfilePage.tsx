@@ -1,5 +1,6 @@
+import { Fragment } from 'react';
+
 import { Container } from '@/components/container';
-import { AccountCompanyProfileContent } from '.';
 import {
   Toolbar,
   ToolbarActions,
@@ -7,8 +8,9 @@ import {
   ToolbarHeading,
   ToolbarPageTitle
 } from '@/partials/toolbar';
-import { Fragment } from 'react';
 import { PageNavbar } from '@/pages/account';
+
+import { AccountCompanyProfileContent } from '.';
 
 const AccountCompanyProfilePage = () => {
   return (
