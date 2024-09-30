@@ -1,17 +1,16 @@
-import { useEffect } from 'react';
+import { Fragment, useEffect } from 'react';
 import { Helmet } from 'react-helmet';
 import { useLocation } from 'react-router';
-
 import { useMenuCurrentItem } from '@/components/menu';
-import { MENU_SIDEBAR } from '@/config/menu.config';
-
 import { Content, Footer, Header, Sidebar, useDemo1Layout } from '../';
-import { PageNavbar } from '@/pages/account';
+import { useMenus } from '@/providers';
 
 const Main = () => {
   const { layout } = useDemo1Layout();
   const { pathname } = useLocation();
-  const menuItem = useMenuCurrentItem(pathname, MENU_SIDEBAR);
+  const { getMenuConfig } = useMenus();
+  const menuConfig = getMenuConfig('primary');
+  const menuItem = useMenuCurrentItem(pathname, menuConfig);
 
   useEffect(() => {
     const bodyClass = document.body.classList;
@@ -32,8 +31,20 @@ const Main = () => {
     };
   }, [layout]);
 
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      document.body.classList.add('layout-initialized');
+    }, 1000); // 1000 milliseconds
+
+    // Remove the class when the component is unmounted
+    return () => {
+      document.body.classList.remove('layout-initialized');
+      clearTimeout(timer);
+    };
+  }, []);
+
   return (
-    <>
+    <Fragment>
       <Helmet>
         <title>{menuItem?.title}</title>
       </Helmet>
@@ -49,7 +60,7 @@ const Main = () => {
           <Footer />
         </div>
       </div>
-    </>
+    </Fragment>
   );
 };
 

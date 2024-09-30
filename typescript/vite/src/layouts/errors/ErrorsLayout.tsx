@@ -1,28 +1,12 @@
-import { Link, Outlet } from 'react-router-dom';
+import { Outlet } from 'react-router-dom';
 
 import { ErrorsLayoutProvider } from './ErrorsLayoutProvider';
 
 const Layout = () => {
   return (
-    <>
-      <h1>Errors layout</h1>
-      <ul>
-        <li>
-          <Link to="/dashboard">Dashboard page 1</Link>
-        </li>
-        <li>
-          <Link to="/dashboard2">Dashboard page 2</Link>
-        </li>
-        <li>
-          <Link to="/errors/404">404 Page not found</Link>
-        </li>
-        <li>
-          <Link to="/errors/500">500 Server internal error</Link>
-        </li>
-      </ul>
-      <h5>Errors content</h5>
+    <div className="flex flex-col items-center justify-center grow h-[95%]">
       <Outlet />
-    </>
+    </div>
   );
 };
 

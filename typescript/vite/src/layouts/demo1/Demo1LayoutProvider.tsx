@@ -8,7 +8,7 @@ import { ILayoutConfig, useLayout } from '@/providers/LayoutProvider';
 import { deepMerge } from '@/utils';
 import { demo1LayoutConfig } from './';
 
-export interface Demo1LayoutProviderProps {
+export interface IDemo1LayoutProviderProps {
   layout: ILayoutConfig;
   megaMenuEnabled: boolean;
   headerSticky: boolean;
@@ -23,7 +23,7 @@ export interface Demo1LayoutProviderProps {
   setSidebarTheme: (mode: string) => void;
 }
 
-const initalLayoutProps: Demo1LayoutProviderProps = {
+const initalLayoutProps: IDemo1LayoutProviderProps = {
   layout: demo1LayoutConfig,
   megaMenuEnabled: false,
   headerSticky: false,
@@ -50,7 +50,7 @@ const initalLayoutProps: Demo1LayoutProviderProps = {
   }
 };
 
-const Demo1LayoutContext = createContext<Demo1LayoutProviderProps>(initalLayoutProps);
+const Demo1LayoutContext = createContext<IDemo1LayoutProviderProps>(initalLayoutProps);
 
 const useDemo1Layout = () => useContext(Demo1LayoutContext);
 
@@ -129,4 +129,5 @@ const Demo1LayoutProvider = ({ children }: PropsWithChildren) => {
   );
 };
 
+// eslint-disable-next-line react-refresh/only-export-components
 export { Demo1LayoutProvider, useDemo1Layout };

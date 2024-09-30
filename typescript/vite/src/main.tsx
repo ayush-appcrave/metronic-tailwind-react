@@ -10,6 +10,7 @@ import ReactDOM from 'react-dom/client';
 import { App } from './App';
 import { setupAxios } from './auth';
 import { ProvidersWrapper } from './providers/ProvidersWrapper';
+import React from 'react';
 
 /**
  * Inject interceptors for axios.

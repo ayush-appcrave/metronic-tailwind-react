@@ -8,7 +8,7 @@ const KeenIconComponent = ({ icon, style, className = '' }: IKeenIconsProps) => 
   const { settings } = useSettings();
 
   if (typeof style === 'undefined') {
-    style = settings.keenIconsStyle;
+    style = settings.keeniconsStyle;
   }
 
   return <i className={clsx(`ki-${style}`, `ki-${icon}`, className)}></i>;

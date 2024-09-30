@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 import { createContext, type PropsWithChildren, useContext, useState } from 'react';
 
 import { getData, setData } from '../utils';
@@ -76,4 +77,5 @@ const LayoutProvider = ({ children }: PropsWithChildren) => {
   );
 };
 
+// eslint-disable-next-line react-refresh/only-export-components
 export { LayoutContext, LayoutProvider, useLayout };

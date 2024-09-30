@@ -1,7 +1,7 @@
+/* eslint-disable @typescript-eslint/no-unused-vars */
 import { createContext, type PropsWithChildren, useContext, useState } from 'react';
 
-import { defaultSettings } from '@/config/settings.config';
-import { ISettings, type SettingsModeType } from '@/config/types';
+import { defaultSettings, ISettings, type SettingsModeType } from '@/config/settings.config';
 
 import { getData, setData } from '../utils/LocalStorage';
 
@@ -25,8 +25,8 @@ const getStoredSettings = (): Partial<ISettings> => {
 
 const initialProps: ISettingsProps = {
   settings: { ...defaultSettings, ...getStoredSettings() },
-  updateSettings: (_: Partial<ISettings>) => {},
-  storeSettings: (_: Partial<ISettings>) => {},
+  updateSettings: (settings: Partial<ISettings>) => {},
+  storeSettings: (settings: Partial<ISettings>) => {},
   getMode: () => 'light'
 };
 
@@ -64,4 +64,5 @@ const SettingsProvider = ({ children }: PropsWithChildren) => {
   );
 };
 
+// eslint-disable-next-line react-refresh/only-export-components
 export { SettingsProvider, useSettings };

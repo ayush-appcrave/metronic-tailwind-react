@@ -65,7 +65,7 @@ const Sidebar = () => {
     if (desktopMode === false && prevPathname !== pathname) {
       handleMobileSidebarClose();
     }
-  }, [desktopMode, pathname, prevPathname]);
+  }, [desktopMode, handleMobileSidebarClose, pathname, prevPathname]);
 
   if (desktopMode) {
     return renderContent();

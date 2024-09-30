@@ -505,11 +505,11 @@ const MENU_SIDEBAR: MenuConfigType = [
       },
       {
         title: 'Error 404',
-        path: '/authentication/error-404'
+        path: '/error/404'
       },
       {
         title: 'Error 500',
-        path: '/authentication/error-500'
+        path: '/error/500'
       }
     ]
   },
@@ -919,8 +919,8 @@ const MENU_MEGA: MenuConfigType = [
             icon: 'shield-cross',
             path: 'authentication/account-deactivated'
           },
-          { title: 'Error 404', icon: 'message-question', path: 'authentication/error-404' },
-          { title: 'Error 500', icon: 'information', path: 'authentication/error-500' }
+          { title: 'Error 404', icon: 'message-question', path: 'error/404' },
+          { title: 'Error 500', icon: 'information', path: 'error/500' }
         ]
       }
     ]
