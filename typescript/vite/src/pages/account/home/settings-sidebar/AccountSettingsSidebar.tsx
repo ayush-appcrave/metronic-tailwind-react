@@ -1,4 +1,6 @@
+import { Scrollspy } from '@/components';
 import { IScrollspyMenuItems, ScrollspyMenu } from '@/partials/menu';
+import { useRef } from 'react';
 
 const AccountSettingsSidebar = () => {
   const items: IScrollspyMenuItems = [
@@ -73,7 +75,17 @@ const AccountSettingsSidebar = () => {
     }
   ];
 
-  return <ScrollspyMenu items={items} />;
+  const navRef = useRef<HTMLDivElement | null>(null);
+
+  return (
+    <Scrollspy
+      offsetTop={100}
+      navContainerRef={navRef}
+      parentScrollContainerRef={useRef(document.body)}
+    >
+      <ScrollspyMenu items={items} ref={navRef} />
+    </Scrollspy>
+  );
 };
 
 export { AccountSettingsSidebar };

@@ -11,10 +11,10 @@ export interface IScrollspyMenuItems extends Array<IScrollspyMenuItem> {}
 
 export interface IScrollspyMenuProps {
   items: IScrollspyMenuItem[];
-  offset?: string;
+  ref: any;
 }
 
-const ScrollspyMenu = ({ items }: IScrollspyMenuProps) => {
+const ScrollspyMenu = ({ items, ref }: IScrollspyMenuProps) => {
   const buildAnchor = (item: IScrollspyMenuItem, indent: boolean = false) => {
     return (
       <a
@@ -54,17 +54,13 @@ const ScrollspyMenu = ({ items }: IScrollspyMenuProps) => {
     });
   };
 
-  const navRef = useRef<HTMLDivElement | null>(null);
-
   return (
-    <Scrollspy
-      offsetTop={110}
-      navContainerRef={navRef}
-      parentScrollContainerRef={useRef(document.body)}
+    <div
+      ref={ref}
       className="flex flex-col grow relative before:absolute before:left-[10px] before:top-0 before:bottom-0 before:border-l before:border-gray-200"
     >
-      <div ref={navRef}>{renderChildren(items)}</div>
-    </Scrollspy>
+      {renderChildren(items)}
+    </div>
   );
 };
 
