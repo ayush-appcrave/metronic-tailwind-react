@@ -27,10 +27,25 @@ const SidebarMenu = () => {
   const iconWidth = 'w-[20px]';
   const iconSize = 'text-lg';
   const accordionLinkPl = 'ps-[10px]';
-  const accordionLinkGap = ['gap-[10px]', 'gap-[14px]', 'gap-[5px]', 'gap-[5px]', 'gap-[5px]'];
-  const accordionPl = ['ps-[10px]', 'ps-[22px]', 'ps-[22px]', 'ps-[22px]', 'pls[22px]'];
+  const accordionLinkGap = [
+    'gap-[10px]',
+    'gap-[14px]',
+    'gap-[5px]',
+    'gap-[5px]',
+    'gap-[5px]',
+    'gap-[5px]'
+  ];
+  const accordionPl = [
+    'ps-[10px]',
+    'ps-[22px]',
+    'ps-[22px]',
+    'ps-[22px]',
+    'ps-[22px]',
+    'ps-[22px]'
+  ];
   const accordionBorderLeft = [
     'before:start-[20px]',
+    'before:start-[32px]',
     'before:start-[32px]',
     'before:start-[32px]',
     'before:start-[32px]'

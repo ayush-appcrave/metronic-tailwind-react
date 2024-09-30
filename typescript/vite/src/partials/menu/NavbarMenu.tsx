@@ -32,7 +32,7 @@ const NavbarMenu = ({ items }: { items: MenuConfigType }) => {
             }}
           >
             <MenuLink className="pb-4 px-2 gap-0.5 cursor-pointer">
-              <MenuTitle className="font-medium text-gray-700 menu-item-active:text-primary menu-item-active:font-semibold menu-item-here:text-primary menu-item-here:font-semibold menu-item-show:text-primary menu-link-hover:text-primary">
+              <MenuTitle className="text-nowrap font-medium text-gray-700 menu-item-active:text-primary menu-item-active:font-semibold menu-item-here:text-primary menu-item-here:font-semibold menu-item-show:text-primary menu-link-hover:text-primary">
                 {item.title}
               </MenuTitle>
               {buildMenuToggle()}
@@ -49,7 +49,7 @@ const NavbarMenu = ({ items }: { items: MenuConfigType }) => {
             className="text-sm border-b-2 border-b-transparent menu-item-active:border-b-primary menu-item-here:border-b-primary"
           >
             <MenuLink path={item.path} className="pb-4 px-2">
-              <MenuTitle className="font-medium text-gray-700 menu-item-active:text-primary menu-item-active:font-semibold menu-item-here:text-primary menu-item-here:font-semibold menu-item-show:text-primary menu-item-show:font-semibold menu-link-hover:text-primary">
+              <MenuTitle className="text-nowrap font-medium text-gray-700 menu-item-active:text-primary menu-item-active:font-semibold menu-item-here:text-primary menu-item-here:font-semibold menu-item-show:text-primary menu-item-show:font-semibold menu-link-hover:text-primary">
                 {item.title}
               </MenuTitle>
             </MenuLink>

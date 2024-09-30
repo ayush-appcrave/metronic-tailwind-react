@@ -51,7 +51,6 @@ const Signup = () => {
         if (!register) {
           throw new Error('JWTProvider is required for this form.');
         }
-
         await register(values.email, values.password, undefined, undefined, values.changepassword);
         navigate(from, { replace: true });
       } catch (error) {
@@ -219,7 +218,7 @@ const Signup = () => {
           />
           <span className="checkbox-label">
             I accept{' '}
-            <Link to="https://keenthemes.com/metronic/?page=faq" className="text-2sm link">
+            <Link to="#" className="text-2sm link">
               Terms & Conditions
             </Link>
           </span>
@@ -235,7 +234,7 @@ const Signup = () => {
           className="btn btn-primary flex justify-center grow"
           disabled={loading || formik.isSubmitting}
         >
-          <span className="indicator-label">{loading ? 'Please wait...' : 'Sign UP'}</span>
+          {loading ? 'Please wait...' : 'Sign UP'}
         </button>
 
         {formik.status && (
