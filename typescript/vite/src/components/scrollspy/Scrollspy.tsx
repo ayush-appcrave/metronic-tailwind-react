@@ -1,156 +1,121 @@
 import * as React from 'react';
 import { MutableRefObject, ReactNode, useEffect, useRef, useState } from 'react';
-import { throttle } from '@/utils';
 
-interface IScrollSpyProps {
+type ScrollSpyProps = {
   children: ReactNode;
-
-  // refs
   navContainerRef?: MutableRefObject<HTMLElement | null>;
   parentScrollContainerRef?: MutableRefObject<HTMLElement | null>;
-
-  // throttle
   scrollThrottle?: number;
-
-  // callback
   onUpdateCallback?: (id: string) => void;
-
-  // offsets
   offsetTop?: number;
   offsetBottom?: number;
-
   className?: string;
-
-  // customize attributes
   dataAttribute?: string;
   activeClass?: string;
-
-  useBoxMethod?: boolean;
   updateHistoryStack?: boolean;
-}
+};
 
 const Scrollspy = ({
   children,
-
-  // refs
   navContainerRef,
   parentScrollContainerRef,
-
-  // throttle
-  scrollThrottle = 300,
-
-  // callback
+  scrollThrottle = 0,
   onUpdateCallback,
-
   className,
-
-  // offsets
   offsetTop = 0,
   offsetBottom = 0,
-
-  // customize attributes
-  dataAttribute = '-scrollspy',
+  dataAttribute = 'scrollspy',
   activeClass = 'active',
-
-  useBoxMethod = true,
   updateHistoryStack = true
-}: IScrollSpyProps) => {
+}: ScrollSpyProps) => {
   const scrollContainerRef = useRef<HTMLDivElement | null>(null);
-  const [navContainerItems, setNavContainerItems] = useState<NodeListOf<Element> | undefined>(); // prettier-ignore
+  const [navContainerItems, setNavContainerItems] = useState<NodeListOf<Element> | null>(null);
+  const prevIdTracker = useRef<string | null>(null);
 
-  const prevIdTracker = useRef('');
+  const throttle = (fn: Function, wait: number) => {
+    let timeout: any;
+    return (...args: any[]) => {
+      if (!timeout) {
+        fn(...args);
+        timeout = setTimeout(() => {
+          timeout = null;
+        }, wait);
+      }
+    };
+  };
 
   useEffect(() => {
-    navContainerRef
-      ? setNavContainerItems(navContainerRef.current!.querySelectorAll(`[data-${dataAttribute}]`))
-      : setNavContainerItems(document.querySelectorAll(`[data-${dataAttribute}]`));
-
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [navContainerRef]);
-
-  useEffect(() => {
-    checkAndUpdateActiveScrollSpy();
-
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [navContainerItems]);
+    if (navContainerRef?.current) {
+      const items = navContainerRef.current.querySelectorAll(`[data-${dataAttribute}]`);
+      setNavContainerItems(items);
+    }
+  }, [navContainerRef, dataAttribute]);
 
   const isVisible = (el: HTMLElement) => {
-    const rectInView = el.getBoundingClientRect();
+    const rect = el.getBoundingClientRect();
 
-    if (useBoxMethod) {
-      const useHeight = parentScrollContainerRef?.current
-        ? parentScrollContainerRef.current!.offsetHeight
-        : window.innerHeight;
-      const hitbox_top = useHeight;
-      const element_top = rectInView.top;
-      const element_bottom = rectInView.top + useHeight;
+    const elementTop = rect.top - (offsetTop || 0);
+    const elementBottom = rect.bottom - (offsetBottom || 0);
 
-      return hitbox_top < element_bottom + offsetBottom && hitbox_top > element_top - offsetTop;
-    } else {
-      const leniency = parentScrollContainerRef?.current
-        ? parentScrollContainerRef.current!.offsetHeight * 0.5
-        : window.innerHeight * 0.5;
-
-      const useHeight = parentScrollContainerRef?.current
-        ? parentScrollContainerRef?.current!.offsetHeight
-        : window.innerHeight;
-
-      return (
-        rectInView.top + leniency + offsetTop >= 0 &&
-        rectInView.bottom - leniency - offsetBottom <= useHeight
-      );
-    }
+    return elementTop <= 0 && elementBottom >= offsetTop;
   };
 
   const checkAndUpdateActiveScrollSpy = () => {
-    const scrollParentContainer = scrollContainerRef.current;
+    const scrollParent = scrollContainerRef.current;
+    if (!scrollParent || !navContainerItems) return;
 
-    if (!(scrollParentContainer && navContainerItems)) return;
+    let foundActive = false;
 
-    for (let i = 0; i < scrollParentContainer.children.length; i++) {
-      // get child element
-      const useChild = scrollParentContainer.children.item(i) as HTMLDivElement;
+    // Iterate through each child section to find the first visible one
+    for (let i = 0; i < scrollParent.children.length; i++) {
+      const child = scrollParent.children[i] as HTMLElement;
+      const id = child.id || child.querySelector('[id]')?.id;
 
-      const elementIsVisible = isVisible(useChild);
+      if (id && isVisible(child)) {
+        foundActive = true;
 
-      if (elementIsVisible) {
-        const changeHighlightedItemId = useChild.id;
-        if (prevIdTracker.current === changeHighlightedItemId) return;
-        navContainerItems.forEach((el) => {
-          const attrId = el.getAttribute(`data-${dataAttribute}`);
-          if (el.classList.contains(activeClass ?? 'active')) {
-            el.classList.remove(activeClass ?? 'active');
+        if (prevIdTracker.current !== id) {
+          // Update nav item classes
+          navContainerItems.forEach((navItem) => {
+            const attrId = navItem.getAttribute(`data-${dataAttribute}`);
+            navItem.classList.toggle(activeClass, attrId === id);
+          });
+
+          prevIdTracker.current = id;
+
+          if (onUpdateCallback) {
+            onUpdateCallback(id);
           }
-          if (
-            attrId === changeHighlightedItemId &&
-            !el.classList.contains(activeClass ?? 'active')
-          ) {
-            el.classList.add(activeClass ?? 'active');
-            if (onUpdateCallback) {
-              onUpdateCallback(changeHighlightedItemId);
-            }
-            prevIdTracker.current = changeHighlightedItemId;
-            if (updateHistoryStack) {
-              window.history.replaceState({}, '', `#${changeHighlightedItemId}`);
-            }
+
+          if (updateHistoryStack) {
+            window.history.replaceState({}, '', `#${id}`);
           }
-        });
+        }
         break;
       }
+    }
+
+    if (!foundActive && prevIdTracker.current) {
+      navContainerItems.forEach((navItem) => {
+        navItem.classList.remove(activeClass);
+      });
+      prevIdTracker.current = null;
     }
   };
 
   useEffect(() => {
-    parentScrollContainerRef
-      ? parentScrollContainerRef.current!.addEventListener('scroll', () => {
-          throttle(checkAndUpdateActiveScrollSpy, scrollThrottle);
-          console.log(parentScrollContainerRef);
-        })
-      : window.addEventListener('scroll', throttle(checkAndUpdateActiveScrollSpy, scrollThrottle));
-  });
+    const scrollElement = parentScrollContainerRef?.current || window;
+    const throttledScroll = throttle(checkAndUpdateActiveScrollSpy, scrollThrottle);
+
+    scrollElement.addEventListener('scroll', throttledScroll);
+
+    return () => {
+      scrollElement.removeEventListener('scroll', throttledScroll);
+    };
+  }, [parentScrollContainerRef, scrollThrottle, navContainerItems]);
 
   return (
-    <div className={className && className} ref={scrollContainerRef}>
+    <div className={className} ref={scrollContainerRef}>
       {children}
     </div>
   );

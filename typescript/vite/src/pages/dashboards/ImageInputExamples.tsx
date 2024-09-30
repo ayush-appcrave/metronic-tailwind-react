@@ -2,26 +2,26 @@ import { useState } from 'react';
 import { Helmet } from 'react-helmet';
 
 import { Container } from '@/components/container';
-import { ImageInput, IImageInputFile, ImageInputFilesType } from '@/components/image-input';
+import { ImageInput, IImageInputFile } from '@/components/image-input';
 
 const ImageInputExamples = () => {
-  const [images1, setImages1] = useState<ImageInputFilesType[]>([]);
-  const [images2, setImages2] = useState<ImageInputFilesType[]>([]);
-  const [images3, setImages3] = useState<ImageInputFilesType[]>([]);
+  const [images1, setImages1] = useState<IImageInputFile[]>([]);
+  const [images2, setImages2] = useState<IImageInputFile[]>([]);
+  const [images3, setImages3] = useState<IImageInputFile[]>([]);
 
-  const onChange1 = (fileList: ImageInputFilesType, addUpdateIndex?: number[] | undefined) => {
+  const onChange1 = (fileList: IImageInputFile[], addUpdateIndex: number[] | undefined) => {
     console.log(fileList, addUpdateIndex);
-    setImages1([fileList]);
+    setImages1(fileList);
   };
 
-  const onChange2 = (fileList: ImageInputFilesType, addUpdateIndex?: number[] | undefined) => {
+  const onChange2 = (fileList: IImageInputFile[], addUpdateIndex: number[] | undefined) => {
     console.log(fileList, addUpdateIndex);
-    setImages2([fileList]);
+    setImages2(fileList);
   };
 
-  const onChange3 = (fileList: ImageInputFilesType, addUpdateIndex?: number[] | undefined) => {
+  const onChange3 = (fileList: IImageInputFile[], addUpdateIndex: number[] | undefined) => {
     console.log(fileList, addUpdateIndex);
-    setImages3([fileList]);
+    setImages3(fileList);
   };
 
   return (

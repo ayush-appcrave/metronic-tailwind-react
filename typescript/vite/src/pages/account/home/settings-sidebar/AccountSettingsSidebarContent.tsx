@@ -1,5 +1,4 @@
 import { useResponsive, useScrollPosition } from '@/hooks';
-import { AccountSettingsSidebar } from '.';
 import {
   AdvancedSettingsAddress,
   AdvancedSettingsAppearance,
@@ -16,13 +15,17 @@ import {
   ExternalServicesManageApi
 } from './blocks';
 import clsx from 'clsx';
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
+import { Scrollspy } from '@/components/scrollspy/Scrollspy.tsx';
+import { AccountSettingsSidebar } from '@/pages/account/home/settings-sidebar/AccountSettingsSidebar.tsx';
 
 const AccountSettingsSidebarContent = () => {
   const desktopMode = useResponsive('up', 'lg');
 
   const scrollPosition = useScrollPosition();
   const [sidebarSticky, setSidebarSticky] = useState(false);
+
+  const navBar = useRef<HTMLDivElement | null>(null);
 
   useEffect(() => {
     if (scrollPosition > 200) {
@@ -39,6 +42,7 @@ const AccountSettingsSidebarContent = () => {
       {desktopMode && (
         <div className="w-[230px] shrink-0">
           <div
+            ref={navBar}
             className={clsx(
               'w-[230px]',
               sidebarSticky && 'fixed top-[calc(var(--tw-header-height)+1.875rem)] z-10 left-auto'
@@ -49,7 +53,11 @@ const AccountSettingsSidebarContent = () => {
         </div>
       )}
 
-      <div className="flex flex-col items-stretch grow gap-5 lg:gap-7.5">
+      <Scrollspy
+        className="flex flex-col items-stretch grow gap-5 lg:gap-7.5"
+        navContainerRef={navBar}
+        offsetTop={70}
+      >
         <BasicSettings />
 
         <AuthEmail />
@@ -75,7 +83,7 @@ const AccountSettingsSidebarContent = () => {
         <ExternalServicesIntegrations />
 
         <DeleteAccount />
-      </div>
+      </Scrollspy>
     </div>
   );
 };

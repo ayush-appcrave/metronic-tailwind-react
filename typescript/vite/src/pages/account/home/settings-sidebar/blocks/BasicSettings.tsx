@@ -1,4 +1,5 @@
 import { CrudAvatarUpload } from '@/partials/crud';
+import { ImageInput } from '@/components/image-input';
 
 const BasicSettings = () => {
   return (
