@@ -35,7 +35,7 @@ jobs:
           username: ${{ secrets.SSH_STAGING_USER }}
           password: ${{ secrets.SSH_STAGING_PSW }}
           port: 22
-          source: './typescript/vite/build/*'
+          source: './typescript/vite/dist/*'
           target: '~/www/hero'
           strip_components: 3
 
