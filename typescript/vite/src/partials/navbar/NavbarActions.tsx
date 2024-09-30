@@ -1,7 +1,7 @@
 import { INavbarActionsProps } from './';
 
 const NavbarActions = ({ children }: INavbarActionsProps) => {
-  return <div className="flex items-center lg:pb-4 gap-2.5">{children}</div>;
+  return <div className="flex items-center pb-4 gap-2.5">{children}</div>;
 };
 
 export { NavbarActions };

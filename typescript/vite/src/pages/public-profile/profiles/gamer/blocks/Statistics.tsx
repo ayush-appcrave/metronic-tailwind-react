@@ -17,7 +17,7 @@ const Statistics = ({ details }: IStatisticsProps) => {
   const renderData = (item: IStatisticsItem, index: number) => {
     return (
       <React.Fragment key={index}>
-        <div className="grid flex-1">
+        <div className="grid md:flex-1">
           <div className="flex justify-self-center items-center gap-3">
             <img
               src={toAbsoluteUrl(`/media/brand-logos/${item.image}`)}
@@ -42,7 +42,7 @@ const Statistics = ({ details }: IStatisticsProps) => {
   return (
     <div className="card">
       <div className="card-body">
-        <div className="flex lg:px-10 py-1 gap-2">
+        <div className="flex flex-wrap px-5 lg:px-10 py-1 gap-2">
           {details.map((item, index) => {
             return renderData(item, index);
           })}
