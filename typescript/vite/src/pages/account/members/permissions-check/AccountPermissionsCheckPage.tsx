@@ -21,11 +21,7 @@ const AccountPermissionsCheckPage = () => {
         <Toolbar>
           <ToolbarHeading>
             <ToolbarPageTitle />
-            <ToolbarDescription>
-              <span className="flex items-center gap-2 text-sm font-medium text-gray-600">
-                Overview of all team members and roles.
-              </span>
-            </ToolbarDescription>
+            <ToolbarDescription>Overview of all team members and roles.</ToolbarDescription>
           </ToolbarHeading>
           <ToolbarActions>
             <a href="#" className="btn btn-sm btn-light">

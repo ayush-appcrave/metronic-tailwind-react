@@ -21,11 +21,7 @@ const AccountSettingsPlainPage = () => {
         <Toolbar>
           <ToolbarHeading>
             <ToolbarPageTitle />
-            <ToolbarDescription>
-              <span className="flex items-center gap-2 text-sm font-medium text-gray-600">
-                Clean, Efficient User Experience
-              </span>
-            </ToolbarDescription>
+            <ToolbarDescription>Clean, Efficient User Experience</ToolbarDescription>
           </ToolbarHeading>
           <ToolbarActions>
             <a href="#" className="btn btn-sm btn-light">

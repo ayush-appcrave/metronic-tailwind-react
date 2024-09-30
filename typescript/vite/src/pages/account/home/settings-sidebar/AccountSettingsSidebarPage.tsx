@@ -21,11 +21,7 @@ const AccountSettingsSidebarPage = () => {
         <Toolbar>
           <ToolbarHeading>
             <ToolbarPageTitle />
-            <ToolbarDescription>
-              <span className="flex items-center gap-2 text-sm font-medium text-gray-600">
-                Intuitive Access to In-Depth Customization
-              </span>
-            </ToolbarDescription>
+            <ToolbarDescription>Intuitive Access to In-Depth Customization</ToolbarDescription>
           </ToolbarHeading>
           <ToolbarActions>
             <a href="#" className="btn btn-sm btn-light">
