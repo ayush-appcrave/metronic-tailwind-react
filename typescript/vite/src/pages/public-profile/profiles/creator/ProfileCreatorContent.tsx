@@ -33,7 +33,7 @@ const ProfileCreatorContent = () => {
   ];
 
   return (
-    <div className="grid grid-cols-1 xl:grid-cols-3 gap-5 lg:gap-7.5">
+    <div className="grid grid-cols-1 xl:grid-cols-3 gap-y-5 lg:gap-y-7.5 xl:gap-7.5">
       <div className="col-span-1">
         <div className="grid gap-5 lg:gap-7.5">
           <Statistics data={data} />
