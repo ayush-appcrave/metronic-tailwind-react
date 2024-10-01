@@ -37,7 +37,7 @@ const Users = () => {
           );
         },
         meta: {
-          className: 'min-w-[200px]',
+          className: 'min-w-[220px]',
           cellClassName: 'text-gray-800 font-normal',
         }
       },
@@ -50,7 +50,7 @@ const Users = () => {
           return info.row.original.role;
         },
         meta: {
-          className: 'w-[170px]',
+          className: 'min-w-[170px]',
         }
       },   
       {
@@ -67,7 +67,7 @@ const Users = () => {
           );
         },
         meta: {
-          className: 'min-w-[130px]' 
+          className: 'min-w-[170px]' 
         }
       },
       {
@@ -89,7 +89,7 @@ const Users = () => {
           );
         }, 
         meta: {
-          className: 'w-[170px]' 
+          className: 'min-w-[170px]' 
         }
       },    
       {
@@ -101,7 +101,7 @@ const Users = () => {
           return info.row.original.activity;
         },
         meta: {
-          className: 'w-[170px]',
+          className: 'min-w-[170px]',
           cellClassName: 'text-gray-800 font-normal',
         }
       },
