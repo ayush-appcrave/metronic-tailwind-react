@@ -25,7 +25,6 @@ const AuthPage = () => (
       <Route path="signup" element={<Signup />} />
       <Route path="2fa" element={<TwoFactorAuth />} />
       <Route path="check-email" element={<CheckEmail />} />
-
       <Route path="reset-password" element={<ResetPassword />} />
       <Route path="/reset-password/check-email" element={<ResetPasswordCheckEmail />} />
       <Route path="/reset-password/change" element={<ResetPasswordChange />} />
@@ -38,7 +37,6 @@ const AuthPage = () => (
       <Route path="/classic/signup" element={<Signup />} />
       <Route path="/classic/2fa" element={<TwoFactorAuth />} />
       <Route path="/classic/check-email" element={<CheckEmail />} />
-
       <Route path="/classic/reset-password" element={<ResetPassword />} />
       <Route path="/classic/reset-password/check-email" element={<ResetPasswordCheckEmail />} />
       <Route path="/classic/reset-password/change" element={<ResetPasswordChange />} />
