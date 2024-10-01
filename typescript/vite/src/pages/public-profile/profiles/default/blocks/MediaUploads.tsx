@@ -199,7 +199,7 @@ const MediaUploads = () => {
             options={options as ApexOptions}
             series={options.series}
             type="area"
-            width="694"
+            max-width="694"
             height="250"
           />
         </div>

@@ -167,13 +167,13 @@ const EarningsChart = () => {
 
   return (
     <div className="card h-full">
-      <div className="card-header">
+      <div className="card-header flex-wrap gap-2">
         <h3 className="card-title">Earnings</h3>
 
         <div className="flex gap-5">
           <label className="switch switch-sm">
             <input name="check" type="checkbox" value="1" className="order-2" readOnly />
-            <span className="switch-label order-1">Referrals only</span>
+            <span className="switch-label order-1 hidden sm:block">Referrals only</span>
           </label>
 
           <select className="select select-sm w-28" name="select">
@@ -190,7 +190,7 @@ const EarningsChart = () => {
           options={options as ApexOptions}
           series={options.series}
           type="area"
-          width="694"
+          max-width="694"
           height="250"
         />
       </div>
