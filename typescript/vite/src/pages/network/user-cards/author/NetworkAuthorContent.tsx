@@ -241,7 +241,7 @@ const NetworkAuthorContent = () => {
             </a>
             <a
               href="#"
-              className={`btn btn-icon ${activeTab === 'list' ? '' : 'active'}`}
+              className={`btn btn-icon ${activeTab === 'list' ? 'active' : ''}`}
               onClick={() => handleTabClick('list')}
               data-tab-toggle="#author_list"
             >

@@ -347,7 +347,7 @@ const NetworkNFTContent = () => {
             </a>
             <a
               href="#"
-              className={`btn btn-icon ${activeTab === 'list' ? '' : 'active'}`}
+              className={`btn btn-icon ${activeTab === 'list' ? 'active' : ''}`}
               onClick={() => handleTabClick('list')}
               data-tab-toggle="#network_list"
             >

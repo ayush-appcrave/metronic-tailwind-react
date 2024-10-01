@@ -193,7 +193,7 @@ const NetworkSocialContent = () => {
             </a>
             <a
               href="#"
-              className={`btn btn-icon ${activeTab === 'list' ? '' : 'active'}`}
+              className={`btn btn-icon ${activeTab === 'list' ? 'active' : ''}`}
               onClick={() => handleTabClick('list')}
               data-tab-toggle="#social_list"
             >

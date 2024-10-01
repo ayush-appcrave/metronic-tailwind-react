@@ -334,7 +334,7 @@ const NetworkUserCardsTeamCrewContent = () => {
             </a>
             <a
               href="#"
-              className={`btn btn-icon ${activeTab === 'list' ? '' : 'active'}`}
+              className={`btn btn-icon ${activeTab === 'list' ? 'active' : ''}`}
               onClick={() => handleTabClick('list')}
               data-tab-toggle="#team_crew_list"
             >

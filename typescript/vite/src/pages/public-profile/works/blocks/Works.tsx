@@ -142,7 +142,7 @@ const Works = () => {
           </a>
           <a
             href="#"
-            className={`btn btn-icon${activeView === 'list' ? 'active' : ''}`}
+            className={`btn btn-icon ${activeView === 'list' ? 'active' : ''}`}
             data-tab-toggle="#works_list"
             onClick={() => {
               setActiveView('list');
