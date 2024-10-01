@@ -173,7 +173,7 @@ const Members = () => {
 
   return (
     <div className="card card-grid min-w-full">
-      <div className="card-header py-5 flex-wrap">
+      <div className="card-header py-5 flex-wrap gap-2">
         <h3 className="card-title">Team Members</h3>
 
         <div className="flex gap-6">
