@@ -8,7 +8,6 @@ import { PageNavbar } from '@/pages/account';
 import { AccountGetStartedContent } from '@/pages/account/home/get-started';
 
 const AuthenticationAccountDeactivatedPage = () => {
-	
   return (
     <Fragment>
       <PageNavbar />

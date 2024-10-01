@@ -1,203 +1,52 @@
-import clsx from 'clsx';
-import { useFormik } from 'formik';
-import { useState } from 'react';
-import { Link, useLocation, useNavigate } from 'react-router-dom';
-import * as Yup from 'yup';
+import { Link } from 'react-router-dom';
 
-import { useAuthContext } from '../../useAuthContext';
-import { KeenIcon } from '@/components';
 import { toAbsoluteUrl } from '@/utils';
 
-const loginSchema = Yup.object().shape({
-  email: Yup.string()
-    .email('Wrong email format')
-    .min(3, 'Minimum 3 symbols')
-    .max(50, 'Maximum 50 symbols')
-    .required('Email is required'),
-  password: Yup.string()
-    .min(3, 'Minimum 3 symbols')
-    .max(50, 'Maximum 50 symbols')
-    .required('Password is required'),
-  rememberMe: Yup.boolean()
-});
-
-const initialValues = {
-  email: '',
-  password: '',
-  rememberMe: false
-};
-
 const TwoFactorAuth = () => {
-  const [loading, setLoading] = useState(false);
-  const { login } = useAuthContext();
-  const navigate = useNavigate();
-  const location = useLocation();
-  const from = location.state?.from?.pathname || '/';
-  const [showPassword, setShowPassword] = useState(false);
-
-  const formik = useFormik({
-    initialValues,
-    validationSchema: loginSchema,
-    onSubmit: async (values, { setStatus, setSubmitting }) => {
-      setLoading(true);
-      try {
-        if (!login) {
-          throw new Error('JWTProvider is required for this form.');
-        }
-
-        await login(values.email, values.password);
-
-        if (values.rememberMe) {
-          localStorage.setItem('email', values.email);
-        } else {
-          localStorage.removeItem('email');
-        }
-
-        navigate(from, { replace: true });
-        // eslint-disable-next-line @typescript-eslint/no-unused-vars
-      } catch (error) {
-        setStatus('The login details are incorrect');
-        setSubmitting(false);
-      }
-      setLoading(false);
-    }
-  });
-
-  const togglePassword = (event: React.MouseEvent<HTMLButtonElement>) => {
-    event.preventDefault();
-    setShowPassword(!showPassword);
-  };
-
   return (
-    <div className="card max-w-[370px] w-full">
-      <form
-        className="card-body flex flex-col gap-5 p-10"
-        onSubmit={formik.handleSubmit}
-        noValidate
-      >
-        <div className="text-center mb-2.5">
-          <h3 className="text-lg font-semibold text-gray-900 leading-none mb-2.5">Sign in</h3>
-          <div className="flex items-center justify-center font-medium">
-            <span className="text-2sm text-gray-600 me-1.5">Need an account?</span>
-            <Link to="/auth/signup" className="text-2sm link">
-              Sign up
-            </Link>
+    <div className="card max-w-[380px] w-full">
+      <form className="card-body flex flex-col gap-5 p-10">
+        <img
+          src={toAbsoluteUrl('/media/illustrations/34.svg')}
+          className="dark:hidden h-20 mb-2"
+          alt=""
+        />
+        <img
+          src={toAbsoluteUrl('/media/illustrations/34-dark.svg')}
+          className="light:hidden h-20 mb-2"
+          alt=""
+        />
+
+        <div className="text-center mb-2">
+          <h3 className="text-lg font-medium text-gray-900 mb-5">Verify your phone</h3>
+          <div className="flex flex-col">
+            <span className="text-2sm text-gray-700 mb-1.5">
+              Enter the verification code we sent to
+            </span>
+            <a href="#" className="text-sm font-medium text-gray-900">
+              ****** 7859
+            </a>
           </div>
         </div>
 
-        <div className="grid grid-cols-2 gap-2.5">
-          <a href="#" className="btn btn-light btn-sm justify-center">
-            <img
-              src={toAbsoluteUrl('/media/brand-logos/google.svg')}
-              className="size-3.5 shrink-0"
-            />
-            Use Google
-          </a>
-
-          <a href="#" className="btn btn-light btn-sm justify-center">
-            <img
-              src={toAbsoluteUrl('/media/brand-logos/apple-black.svg')}
-              className="size-3.5 shrink-0 dark:hidden"
-            />
-            <img
-              src={toAbsoluteUrl('/media/brand-logos/apple-white.svg')}
-              className="size-3.5 shrink-0 light:hidden"
-            />
-            Use Apple
-          </a>
-        </div>
-
-        <div className="flex items-center gap-2">
-          <span className="border-t border-gray-200 w-full"></span>
-          <span className="text-2xs text-gray-500 font-medium uppercase">Or</span>
-          <span className="border-t border-gray-200 w-full"></span>
-        </div>
-
-        <div className="flex flex-col gap-1">
-          <label className="form-label text-gray-900">Email</label>
-          <label className="input">
-            <input
-              placeholder="email@email.com"
-              {...formik.getFieldProps('email')}
-              className={clsx(
-                'form-control bg-transparent',
-                { 'is-invalid': formik.touched.email && formik.errors.email },
-                {
-                  'is-valid': formik.touched.email && !formik.errors.email
-                }
-              )}
-              type="email"
-              name="email"
-              autoComplete="off"
-            />
-          </label>
-          {formik.touched.email && formik.errors.email && (
-            <span role="alert" className="text-red-500 text-xs mt-1">
-              {formik.errors.email}
-            </span>
-          )}
-        </div>
-
-        <div className="flex flex-col gap-1">
-          <div className="flex items-center justify-between gap-1">
-            <label className="form-label text-gray-900">Password</label>
-            <Link to="/auth/forgot-password" className="text-2sm link shrink-0">
-              Forgot Password?
-            </Link>
-          </div>
-          <label className="input">
-            <input
-              type={showPassword ? 'text' : 'password'}
-              placeholder="Enter Password"
-              autoComplete="off"
-              {...formik.getFieldProps('password')}
-              className={clsx(
-                'form-control bg-transparent',
-                {
-                  'is-invalid': formik.touched.password && formik.errors.password
-                },
-                {
-                  'is-valid': formik.touched.password && !formik.errors.password
-                }
-              )}
-            />
-            <button className="btn btn-icon" onClick={togglePassword}>
-              <KeenIcon icon="eye" className={clsx('text-gray-500', { hidden: showPassword })} />
-              <KeenIcon
-                icon="eye-slash"
-                className={clsx('text-gray-500', { hidden: !showPassword })}
-              />
-            </button>
-          </label>
-          {formik.touched.password && formik.errors.password && (
-            <span role="alert" className="text-red-500 text-xs mt-1">
-              {formik.errors.password}
-            </span>
-          )}
-        </div>
-
-        <label className="checkbox-group">
+        <div className="flex flex-wrap justify-center gap-2.5">
           <input
-            className="checkbox checkbox-sm"
-            type="checkbox"
-            {...formik.getFieldProps('rememberMe')}
+            type="text"
+            className="input focus:border-primary-clarity focus:ring focus:ring-primary-clarity size-10 shrink-0 px-0 text-center"
+            placeholder=""
+            value=""
+            readOnly
           />
-          <span className="checkbox-label">Remember me</span>
-        </label>
+        </div>
 
-        <button
-          type="submit"
-          className="btn btn-primary flex justify-center grow"
-          disabled={loading || formik.isSubmitting}
-        >
-          <span className="indicator-label">{loading ? 'Please wait...' : 'Sign In'}</span>
-        </button>
+        <div className="flex items-center justify-center mb-2">
+          <span className="text-xs text-gray-700 me-1.5">Didn’t receive a code? (37s)</span>
+          <Link to="/auth/classic/login" className="text-xs link">
+            Resend
+          </Link>
+        </div>
 
-        {formik.status && (
-          <div className="text-red-500 text-xs mt-1" role="alert">
-            {formik.status}
-          </div>
-        )}
+        <button className="btn btn-primary flex justify-center grow">Continue</button>
       </form>
     </div>
   );

@@ -19,7 +19,7 @@ const forgotPasswordSchema = Yup.object().shape({
     .required('Email is required')
 });
 
-const ForgotPassword = () => {
+const ResetPassword = () => {
   const [loading, setLoading] = useState(false);
   const [hasErrors, setHasErrors] = useState<boolean | undefined>(undefined);
   const { requestPassword } = useAuthContext();
@@ -117,4 +117,4 @@ const ForgotPassword = () => {
   );
 };
 
-export { ForgotPassword };
+export { ResetPassword };

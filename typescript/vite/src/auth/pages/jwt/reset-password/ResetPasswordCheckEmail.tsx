@@ -1,120 +1,52 @@
-import clsx from 'clsx';
-import { useFormik } from 'formik';
-import { useState } from 'react';
 import { Link } from 'react-router-dom';
-import * as Yup from 'yup';
 
-import { useAuthContext } from '@/auth/useAuthContext';
-import { KeenIcon } from '@/components';
+import { toAbsoluteUrl } from '@/utils';
 
-const initialValues = {
-  email: ''
-};
-
-const forgotPasswordSchema = Yup.object().shape({
-  email: Yup.string()
-    .email('Wrong email format')
-    .min(3, 'Minimum 3 symbols')
-    .max(50, 'Maximum 50 symbols')
-    .required('Email is required')
-});
-
-const ForgotPassword = () => {
-  const [loading, setLoading] = useState(false);
-  const [hasErrors, setHasErrors] = useState<boolean | undefined>(undefined);
-  const { requestPassword } = useAuthContext();
-  const formik = useFormik({
-    initialValues,
-    validationSchema: forgotPasswordSchema,
-    onSubmit: async (values, { setStatus, setSubmitting }) => {
-      setLoading(true);
-      setHasErrors(undefined);
-      try {
-        if (!requestPassword) {
-          throw new Error('JWTProvider is required for this form.');
-        }
-
-        await requestPassword(values.email);
-
-        setHasErrors(false);
-        setLoading(false);
-        // eslint-disable-next-line @typescript-eslint/no-unused-vars
-      } catch (error) {
-        setHasErrors(true);
-        setLoading(false);
-        setSubmitting(false);
-        setStatus('The login detail is incorrect');
-      }
-    }
-  });
+const ResetPasswordCheckEmail = () => {
   return (
-    <div className="card max-w-[370px] w-full">
-      <form
-        className="card-body flex flex-col gap-5 p-10"
-        noValidate
-        onSubmit={formik.handleSubmit}
-      >
-        <div className="text-center">
-          <h3 className="text-lg font-semibold text-gray-900">Your Email</h3>
-          <span className="text-2sm text-gray-600 font-medium">
-            Enter your email to reset password
-          </span>
+    <div className="card max-w-[440px] w-full">
+      <div className="card-body p-10">
+        <div className="flex justify-center py-10">
+          <img
+            src={toAbsoluteUrl('/media/illustrations/30.svg')}
+            className="dark:hidden max-h-[130px]"
+            alt=""
+          />
+          <img
+            src={toAbsoluteUrl('/media/illustrations/30-dark.svg')}
+            className="light:hidden max-h-[130px]"
+            alt=""
+          />
         </div>
 
-        {hasErrors === true && (
-          <div className="mb-lg-15 alert alert-danger">
-            <div className="alert-text font-weight-bold">
-              Sorry, looks like there are some errors detected, please try again.
-            </div>
-          </div>
-        )}
-
-        {hasErrors === false && (
-          <div className="mb-10 bg-light-info p-8 rounded">
-            <div className="text-info">Sent password reset. Please check your email</div>
-          </div>
-        )}
-
-        <div className="flex flex-col gap-1">
-          <label className="form-label text-gray-900">Email</label>
-          <label className="input">
-            <input
-              type="email"
-              placeholder="email@email.com"
-              autoComplete="off"
-              {...formik.getFieldProps('email')}
-              className={clsx(
-                'form-control bg-transparent',
-                { 'is-invalid': formik.touched.email && formik.errors.email },
-                {
-                  'is-valid': formik.touched.email && !formik.errors.email
-                }
-              )}
-            />
-          </label>
-          {formik.touched.email && formik.errors.email && (
-            <span role="alert" className="text-red-500 text-xs mt-1">
-              {formik.errors.email}
-            </span>
-          )}
+        <h3 className="text-lg font-medium text-gray-900 text-center mb-3">Check your email</h3>
+        <div className="text-2sm text-center text-gray-700 mb-7.5">
+          Please click the link sent to your email
+          <a href="#" className="text-2sm text-gray-800 font-medium hover:text-primary-active">
+            bob@reui.io
+          </a>
+          <br />
+          to reset your password. Thank you
         </div>
 
-        <div className="flex flex-col gap-5 items-stretch">
-          <Link to="/auth/login" className="btn btn-primary flex justify-center grow">
-            {loading ? 'Please wait...' : 'Continue'}
-          </Link>
-
+        <div className="flex justify-center mb-5">
           <Link
-            to="/auth/login"
-            className="flex items-center justify-center text-sm gap-2 text-gray-700 hover:text-primary"
+            to="/auth/classic/reset-password/password-changed"
+            className="btn btn-primary flex justify-center"
           >
-            <KeenIcon icon="black-left" />
-            Back to Login
+            Skip for now
           </Link>
         </div>
-      </form>
+
+        <div className="flex items-center justify-center gap-1">
+          <span className="text-xs text-gray-600">Didn’t receive an email?</span>
+          <Link to="/auth/classic/reset-password/enter-email" className="text-xs font-medium link">
+            Resend
+          </Link>
+        </div>
+      </div>
     </div>
   );
 };
 
-export { ForgotPassword };
+export { ResetPasswordCheckEmail };
