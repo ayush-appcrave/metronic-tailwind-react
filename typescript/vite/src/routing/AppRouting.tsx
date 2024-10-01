@@ -78,6 +78,8 @@ import { RequireAuth } from '../auth/RequireAuth';
 import { Demo1Layout } from '../layouts/demo1';
 import { ErrorsRouting } from '../errors';
 import { useLoaders } from '../providers/LoadersProvider';
+import { AuthenticationWelcomeMessagePage } from '@/pages/authentication/welcome-message/AuthenticationWelcomeMessagePage';
+import { AuthenticationAccountDeactivatedPage } from '@/pages/authentication/account-deactivated/AuthenticationAccountDeactivatedPage';
 
 const AppRouting = (): ReactElement => {
   const { setProgressBarLoader } = useLoaders();
@@ -211,6 +213,11 @@ const AppRouting = (): ReactElement => {
           <Route path="/network/user-table/saas-users" element={<NetworkSaasUsersPage />} />
           <Route path="/network/user-table/store-clients" element={<NetworkStoreClientsPage />} />
           <Route path="/network/user-table/visitors" element={<NetworkVisitorsPage />} />
+          <Route path="/aurh/welcome-message" element={<AuthenticationWelcomeMessagePage />} />
+          <Route
+            path="/aurh/account-deactivated"
+            element={<AuthenticationAccountDeactivatedPage />}
+          />
         </Route>
       </Route>
       <Route path="error/*" element={<ErrorsRouting />} />
