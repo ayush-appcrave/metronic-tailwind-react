@@ -42,7 +42,7 @@ const Users = () => {
           );
         },
         meta: {
-          className: 'min-w-[180px]',
+          className: 'min-w-[200px]',
           cellClassName: 'font-normal text-gray-800',
         }
       },
@@ -55,7 +55,7 @@ const Users = () => {
           return info.row.original.phone;
         },
         meta: {
-          className: 'w-[170px]',
+          className: 'min-w-[170px]',
           cellClassName: 'font-normal text-gray-800',
         }
       },   
@@ -68,7 +68,7 @@ const Users = () => {
           return info.row.original.branch;
         },
         meta: {
-          className: 'w-[170px]',
+          className: 'min-w-[170px]',
           cellClassName: 'text-gray-800 font-normal',
         }
       },
@@ -92,7 +92,7 @@ const Users = () => {
           );
         }, 
         meta: {
-          className: 'w-[170px]' 
+          className: 'min-w-[170px]' 
         }
       },    
       {
@@ -110,7 +110,7 @@ const Users = () => {
           );
         }, 
         meta: {
-          className: 'w-[180px]' 
+          className: 'min-w-[180px]' 
         }
       },      
       {
@@ -134,7 +134,7 @@ const Users = () => {
           );
         },
         meta: {
-          className: 'w-[140px]' 
+          className: 'min-w-[140px]' 
         }
       },
       {
