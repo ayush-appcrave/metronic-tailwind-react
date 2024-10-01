@@ -4,24 +4,33 @@ import { Navigate, Route, Routes } from 'react-router';
 // Firebase auth pages
 // import { FirebaseLogin, FirebaseRegistration } from './layouts/default/firebase';
 // JWT auth pages
-import { ForgotPassword, Login, Signup } from './pages/jwt';
+import { ResetPassword, Login, Signup } from './pages/jwt';
 import { AuthBrandedLayout } from '@/layouts/auth-branded';
+import { AuthLayout } from '@/layouts/auth';
 
 const AuthPage = () => (
   <Routes>
     <Route element={<AuthBrandedLayout />}>
-      <Route path="login" element={<Login />} />
-      <Route path="signup" element={<Signup />} />
-      <Route path="forgot-password" element={<ForgotPassword />} />
       <Route index element={<Login />} />
-
-      {/* <Route path="login" element={<Auth0Login />} />
-      <Route index element={<Auth0Login />} /> */}
-
-      {/* <Route path="login" element={<FirebaseLogin />} />
-      <Route path="registration" element={<FirebaseRegistration />} />
-      <Route index element={<FirebaseLogin />} /> */}
-
+      <Route path="login" element={<Login />} />
+      <Route path="2fa" element={<TwoFactorAuth/>} />
+      <Route path="check-email" element={<CheckEmail/>} />
+      <Route path="signup" element={<Signup />} />
+      <Route path="reset-password" element={<ForgotPassword />} />
+      <Route path="reset-password/check-email" element={<ForgotPassword />} />
+      <Route path="reset-password/change" element={<ForgotPassword />} />
+      <Route path="reset-password/changed" element={<ForgotPassword />} />
+      <Route path="*" element={<Navigate to="/error/404" />} />
+    </Route>
+    <Route element={<AuthLayout />}>
+      <Route path="classic/login" element={<Login />} />
+      <Route path="classic/2fa" element={<TwoFactorAuth/>} />
+      <Route path="classic/check-email" element={<CheckEmail/>} />
+      <Route path="classic/signup" element={<Signup />} />
+      <Route path="classic/reset-password" element={<ForgotPassword />} />
+      <Route path="classic/reset-password/check-email" element={<ForgotPassword />} />
+      <Route path="classic/reset-password/change" element={<ForgotPassword />} />
+      <Route path="classic/reset-password/changed" element={<ForgotPassword />} />
       <Route path="*" element={<Navigate to="/error/404" />} />
     </Route>
   </Routes>

@@ -416,11 +416,11 @@ const MENU_SIDEBAR: MenuConfigType = [
         children: [
           {
             title: 'Sign In',
-            path: '/auth/classic/sign-in'
+            path: '/auth/classic/login'
           },
           {
             title: 'Sign Up',
-            path: '/auth/classic/sign-up'
+            path: '/auth/classic/signup'
           },
           {
             title: '2FA',
@@ -435,7 +435,7 @@ const MENU_SIDEBAR: MenuConfigType = [
             children: [
               {
                 title: 'Enter Email',
-                path: '/auth/classic/reset-password/enter-email'
+                path: '/auth/classic/reset-password'
               },
               {
                 title: 'Check Email',
@@ -443,11 +443,11 @@ const MENU_SIDEBAR: MenuConfigType = [
               },
               {
                 title: 'Change Password',
-                path: '/auth/classic/reset-password/change-password'
+                path: '/auth/classic/reset-password/change'
               },
               {
                 title: 'Password Changed',
-                path: '/auth/classic/reset-password/password-changed'
+                path: '/auth/classic/reset-password/changed'
               }
             ]
           }
@@ -477,7 +477,7 @@ const MENU_SIDEBAR: MenuConfigType = [
             children: [
               {
                 title: 'Enter Email',
-                path: '/auth/reset-password/enter-email'
+                path: '/auth/reset-password'
               },
               {
                 title: 'Check Email',
@@ -485,11 +485,11 @@ const MENU_SIDEBAR: MenuConfigType = [
               },
               {
                 title: 'Change Password',
-                path: '/auth/reset-password/change-password'
+                path: '/auth/reset-password/change'
               },
               {
                 title: 'Password Changed',
-                path: '/auth/reset-password/password-changed'
+                path: '/auth/reset-password/changed'
               }
             ]
           }

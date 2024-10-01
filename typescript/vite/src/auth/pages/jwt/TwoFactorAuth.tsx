@@ -27,7 +27,7 @@ const initialValues = {
   rememberMe: false
 };
 
-const Login = () => {
+const TwoFactorAuth = () => {
   const [loading, setLoading] = useState(false);
   const { login } = useAuthContext();
   const navigate = useNavigate();
@@ -203,4 +203,5 @@ const Login = () => {
   );
 };
 
-export { Login };
+export { TwoFactorAuth };
+
