@@ -78,7 +78,6 @@ import { RequireAuth } from '../auth/RequireAuth';
 import { Demo1Layout } from '../layouts/demo1';
 import { ErrorsRouting } from '../errors';
 import { useLoaders } from '../providers/LoadersProvider';
-import { ScrollSpyExample } from '@/pages/scroll-spy/ScrollSpyExample.tsx';
 
 const AppRouting = (): ReactElement => {
   const { setProgressBarLoader } = useLoaders();
@@ -200,7 +199,6 @@ const AppRouting = (): ReactElement => {
           <Route path="/account/members/appearance" element={<AccountAppearancePage />} />
           <Route path="/account/members/invite-a-friend" element={<AccountInviteAFriendPage />} />
           <Route path="/account/activity" element={<AccountActivityPage />} />
-          <Route path="/scroll-spy/example-1" element={<ScrollSpyExample />} />
           <Route path="/network/get-started" element={<NetworkGetStartedPage />} />
           <Route path="/network/user-cards/mini-cards" element={<NetworkMiniCardsPage />} />
           <Route path="/network/user-cards/team-crew" element={<NetworkUserCardsTeamCrewPage />} />

@@ -1,18 +1,13 @@
-import { Fragment, useState } from 'react';
-
+import { Fragment } from 'react';
 import { Container } from '@/components/container';
 import { toAbsoluteUrl } from '@/utils/Assets';
 import { KeenIcon } from '@/components';
-
 import { UserProfileHero } from '@/partials/heros';
 import { Navbar, NavbarActions, NavbarDropdown } from '@/partials/navbar';
 import { PageMenu } from '@/pages/public-profile';
-
 import { ProfileModalContent } from '.';
 
 const ProfileModalPage = () => {
-  const [isOpen, setIsOpen] = useState(true);
-
   const image = (
     <img
       src={toAbsoluteUrl('/media/avatars/300-1.png')}
@@ -48,7 +43,7 @@ const ProfileModalPage = () => {
         </Navbar>
       </Container>
 
-      <ProfileModalContent open={isOpen} onClose={() => setIsOpen(false)} />
+      <ProfileModalContent />
     </Fragment>
   );
 };
