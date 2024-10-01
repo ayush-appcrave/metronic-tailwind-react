@@ -38,7 +38,7 @@ const ForgotPassword = () => {
 
         setHasErrors(false);
         setLoading(false);
-      // eslint-disable-next-line @typescript-eslint/no-unused-vars
+        // eslint-disable-next-line @typescript-eslint/no-unused-vars
       } catch (error) {
         setHasErrors(true);
         setLoading(false);
