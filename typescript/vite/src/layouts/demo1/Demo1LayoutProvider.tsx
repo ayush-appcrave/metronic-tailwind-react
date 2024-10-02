@@ -1,10 +1,10 @@
-import { createContext, type PropsWithChildren, useContext, useState } from 'react';
+import { createContext, type PropsWithChildren, useContext, useEffect, useState } from 'react';
 import { useLocation } from 'react-router';
 import { useMenuChildren } from '@/components/menu';
 import { MENU_SIDEBAR } from '@/config/menu.config';
 import { useScrollPosition } from '@/hooks/useScrollPosition';
 import { useMenus } from '@/providers';
-import { ILayoutConfig, useLayout } from '@/providers/LayoutProvider';
+import { ILayoutConfig, useLayout } from '@/providers';
 import { deepMerge } from '@/utils';
 import { demo1LayoutConfig } from './';
 
@@ -62,13 +62,17 @@ const Demo1LayoutProvider = ({ children }: PropsWithChildren) => {
   setMenuConfig('primary', MENU_SIDEBAR);
   setMenuConfig('secondary', secondaryMenu);
 
-  const { getLayout, updateLayout } = useLayout();
+  const { getLayout, updateLayout, setCurrentLayout } = useLayout();
 
   const getLayoutConfig = () => {
     return deepMerge(demo1LayoutConfig, getLayout(demo1LayoutConfig.name));
   };
 
   const [layout, setLayout] = useState(getLayoutConfig);
+
+  useEffect(() => {
+    setCurrentLayout(layout);
+  }, [layout]);
 
   const [megaMenuEnabled, setMegaMenuEnabled] = useState(false);
 

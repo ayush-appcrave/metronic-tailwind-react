@@ -1,25 +1,25 @@
 import { createContext, type PropsWithChildren, useContext, useEffect, useState } from 'react';
 import { deepMerge } from '@/utils';
 import { ILayoutConfig, useLayout } from '@/providers';
-import { authLayoutConfig } from './AuthLayoutConfig';
+import { authLayoutBrandedConfig } from './AuthBrandedLayoutConfig';
 
 interface AuthLayoutProviderProps {
   layout: ILayoutConfig;
 }
 
 const initalLayoutProps: AuthLayoutProviderProps = {
-  layout: authLayoutConfig
+  layout: authLayoutBrandedConfig
 };
 
 const LayoutContext = createContext<AuthLayoutProviderProps>(initalLayoutProps);
 
-const useAuthLayout = () => useContext(LayoutContext);
+const useAuthBrandedLayout = () => useContext(LayoutContext);
 
-const AuthLayoutProvider = ({ children }: PropsWithChildren) => {
+const AuthBrandedLayoutProvider = ({ children }: PropsWithChildren) => {
   const { getLayout, setCurrentLayout } = useLayout();
 
   const getLayoutConfig = () => {
-    return deepMerge(authLayoutConfig, getLayout(authLayoutConfig.name));
+    return deepMerge(authLayoutBrandedConfig, getLayout(authLayoutBrandedConfig.name));
   };
 
   const [layout] = useState(getLayoutConfig);
@@ -40,4 +40,4 @@ const AuthLayoutProvider = ({ children }: PropsWithChildren) => {
 };
 
 // eslint-disable-next-line react-refresh/only-export-components
-export { AuthLayoutProvider, useAuthLayout };
+export { AuthBrandedLayoutProvider, useAuthBrandedLayout };

@@ -7,6 +7,7 @@ import * as Yup from 'yup';
 import { useAuthContext } from '../../useAuthContext';
 import { toAbsoluteUrl } from '@/utils';
 import { KeenIcon } from '@/components';
+import { useLayout } from '@/providers';
 
 const initialValues = {
   email: '',
@@ -41,6 +42,7 @@ const Signup = () => {
   const from = location.state?.from?.pathname || '/';
   const [showPassword, setShowPassword] = useState(false);
   const [showConfirmPassword, setShowConfirmPassword] = useState(false);
+  const { currentLayout } = useLayout();
 
   const formik = useFormik({
     initialValues,
@@ -83,7 +85,10 @@ const Signup = () => {
           <h3 className="text-lg font-semibold text-gray-900 leading-none mb-2.5">Sign up</h3>
           <div className="flex items-center justify-center font-medium">
             <span className="text-2sm text-gray-600 me-1.5">Already have an Account ?</span>
-            <Link to="/auth/login" className="text-2sm link">
+            <Link
+              to={currentLayout?.name === 'auth-branded' ? '/auth/login' : '/auth/classic/login'}
+              className="text-2sm link"
+            >
               Sign In
             </Link>
           </div>
@@ -135,7 +140,7 @@ const Signup = () => {
             />
           </label>
           {formik.touched.email && formik.errors.email && (
-            <span role="alert" className="text-red-500 text-xs mt-1">
+            <span role="alert" className="text-danger text-xs mt-1">
               {formik.errors.email}
             </span>
           )}
@@ -168,7 +173,7 @@ const Signup = () => {
             </button>
           </label>
           {formik.touched.password && formik.errors.password && (
-            <span role="alert" className="text-red-500 text-xs mt-1">
+            <span role="alert" className="text-danger text-xs mt-1">
               {formik.errors.password}
             </span>
           )}
@@ -204,7 +209,7 @@ const Signup = () => {
             </button>
           </label>
           {formik.touched.changepassword && formik.errors.changepassword && (
-            <span role="alert" className="text-red-500 text-xs mt-1">
+            <span role="alert" className="text-danger text-xs mt-1">
               {formik.errors.changepassword}
             </span>
           )}
@@ -224,7 +229,7 @@ const Signup = () => {
           </span>
         </label>
         {formik.touched.acceptTerms && formik.errors.acceptTerms && (
-          <span role="alert" className="text-red-500 text-xs mt-1">
+          <span role="alert" className="text-danger text-xs mt-1">
             {formik.errors.acceptTerms}
           </span>
         )}
@@ -238,7 +243,7 @@ const Signup = () => {
         </button>
 
         {formik.status && (
-          <div className="text-red-500 text-xs mt-1" role="alert">
+          <div className="text-danger text-xs mt-1" role="alert">
             {formik.status}
           </div>
         )}

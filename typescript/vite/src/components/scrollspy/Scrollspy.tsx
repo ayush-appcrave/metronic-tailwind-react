@@ -132,7 +132,8 @@ const Scrollspy = ({
 
   // Scroll to the section if the ID is present in the URL hash
   const scrollToHashSection = useCallback(() => {
-    const hash = window.location.hash.replace('#', '');
+    const hash = CSS.escape(window.location.hash.replace('#', ''));
+
     if (hash) {
       const targetElement = document.querySelector(
         `[data-${dataAttribute}-anchor="${hash}"]`

@@ -6,6 +6,7 @@ import * as Yup from 'yup';
 
 import { useAuthContext } from '@/auth/useAuthContext';
 import { KeenIcon } from '@/components';
+import { useLayout } from '@/providers';
 
 const initialValues = {
   email: ''
@@ -23,6 +24,8 @@ const ResetPassword = () => {
   const [loading, setLoading] = useState(false);
   const [hasErrors, setHasErrors] = useState<boolean | undefined>(undefined);
   const { requestPassword } = useAuthContext();
+  const { currentLayout } = useLayout();
+
   const formik = useFormik({
     initialValues,
     validationSchema: forgotPasswordSchema,
@@ -93,19 +96,22 @@ const ResetPassword = () => {
             />
           </label>
           {formik.touched.email && formik.errors.email && (
-            <span role="alert" className="text-red-500 text-xs mt-1">
+            <span role="alert" className="text-danger text-xs mt-1">
               {formik.errors.email}
             </span>
           )}
         </div>
 
         <div className="flex flex-col gap-5 items-stretch">
-          <Link to="/auth/login" className="btn btn-primary flex justify-center grow">
+          <Link
+            to={currentLayout?.name === 'auth-branded' ? '/auth/login' : '/auth/classic/login'}
+            className="btn btn-primary flex justify-center grow"
+          >
             {loading ? 'Please wait...' : 'Continue'}
           </Link>
 
           <Link
-            to="/auth/login"
+            to={currentLayout?.name === 'auth-branded' ? '/auth/login' : '/auth/classic/login'}
             className="flex items-center justify-center text-sm gap-2 text-gray-700 hover:text-primary"
           >
             <KeenIcon icon="black-left" />

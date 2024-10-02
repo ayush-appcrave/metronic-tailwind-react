@@ -1,8 +1,11 @@
 import { Link } from 'react-router-dom';
 
 import { toAbsoluteUrl } from '@/utils';
+import { useLayout } from '@/providers';
 
 const ResetPasswordCheckEmail = () => {
+  const { currentLayout } = useLayout();
+
   return (
     <div className="card max-w-[440px] w-full">
       <div className="card-body p-10">
@@ -31,7 +34,11 @@ const ResetPasswordCheckEmail = () => {
 
         <div className="flex justify-center mb-5">
           <Link
-            to="/auth/classic/reset-password/password-changed"
+            to={
+              currentLayout?.name === 'auth-branded'
+                ? '/auth/reset-password/changed'
+                : '/auth/classic/reset-password/changed'
+            }
             className="btn btn-primary flex justify-center"
           >
             Skip for now

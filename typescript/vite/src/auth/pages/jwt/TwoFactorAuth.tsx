@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom';
 
 import { toAbsoluteUrl } from '@/utils';
+import { KeenIcon } from '@/components';
 
 const TwoFactorAuth = () => {
   return (
@@ -70,6 +71,14 @@ const TwoFactorAuth = () => {
         </div>
 
         <button className="btn btn-primary flex justify-center grow">Continue</button>
+
+        <Link
+          to="/auth/login"
+          className="flex items-center justify-center text-sm gap-2 text-gray-700 hover:text-primary"
+        >
+          <KeenIcon icon="black-left" />
+          Back to Login
+        </Link>
       </form>
     </div>
   );

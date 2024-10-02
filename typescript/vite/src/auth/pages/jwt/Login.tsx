@@ -1,12 +1,12 @@
-import clsx from 'clsx';
-import { useFormik } from 'formik';
 import { useState } from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
+import clsx from 'clsx';
 import * as Yup from 'yup';
-
-import { useAuthContext } from '../../useAuthContext';
+import { useFormik } from 'formik';
 import { KeenIcon } from '@/components';
 import { toAbsoluteUrl } from '@/utils';
+import { useAuthContext } from '@/auth';
+import { useLayout } from '@/providers';
 
 const loginSchema = Yup.object().shape({
   email: Yup.string()
@@ -18,13 +18,13 @@ const loginSchema = Yup.object().shape({
     .min(3, 'Minimum 3 symbols')
     .max(50, 'Maximum 50 symbols')
     .required('Password is required'),
-  rememberMe: Yup.boolean()
+  remember: Yup.boolean()
 });
 
 const initialValues = {
-  email: '',
-  password: '',
-  rememberMe: false
+  email: 'demo@keenthemes.com',
+  password: 'demo1234',
+  remember: false
 };
 
 const Login = () => {
@@ -34,12 +34,14 @@ const Login = () => {
   const location = useLocation();
   const from = location.state?.from?.pathname || '/';
   const [showPassword, setShowPassword] = useState(false);
+  const { currentLayout } = useLayout();
 
   const formik = useFormik({
     initialValues,
     validationSchema: loginSchema,
     onSubmit: async (values, { setStatus, setSubmitting }) => {
       setLoading(true);
+
       try {
         if (!login) {
           throw new Error('JWTProvider is required for this form.');
@@ -47,7 +49,7 @@ const Login = () => {
 
         await login(values.email, values.password);
 
-        if (values.rememberMe) {
+        if (values.remember) {
           localStorage.setItem('email', values.email);
         } else {
           localStorage.removeItem('email');
@@ -79,7 +81,10 @@ const Login = () => {
           <h3 className="text-lg font-semibold text-gray-900 leading-none mb-2.5">Sign in</h3>
           <div className="flex items-center justify-center font-medium">
             <span className="text-2sm text-gray-600 me-1.5">Need an account?</span>
-            <Link to="/auth/signup" className="text-2sm link">
+            <Link
+              to={currentLayout?.name === 'auth-branded' ? '/auth/signup' : '/auth/classic/signup'}
+              className="text-2sm link"
+            >
               Sign up
             </Link>
           </div>
@@ -113,26 +118,28 @@ const Login = () => {
           <span className="border-t border-gray-200 w-full"></span>
         </div>
 
+        <div className="flex gap-2.5 border border-primary-clarity rounded-md p-3 bg-primary-light">
+          <KeenIcon icon="information-2" style="solid" className="text-primary text-lg" />
+          <div className="text-gray-700 text-xs">
+            Use <span className="font-semibold text-gray-900">demo@keenthemes.com</span> username
+            with <span className="font-semibold text-gray-900">demo1234</span> password.
+          </div>
+        </div>
+
         <div className="flex flex-col gap-1">
           <label className="form-label text-gray-900">Email</label>
           <label className="input">
             <input
-              placeholder="email@email.com"
-              {...formik.getFieldProps('email')}
-              className={clsx(
-                'form-control bg-transparent',
-                { 'is-invalid': formik.touched.email && formik.errors.email },
-                {
-                  'is-valid': formik.touched.email && !formik.errors.email
-                }
-              )}
-              type="email"
-              name="email"
+              placeholder="Enter username"
               autoComplete="off"
+              {...formik.getFieldProps('email')}
+              className={clsx('form-control', {
+                'is-invalid': formik.touched.email && formik.errors.email
+              })}
             />
           </label>
           {formik.touched.email && formik.errors.email && (
-            <span role="alert" className="text-red-500 text-xs mt-1">
+            <span role="alert" className="text-danger text-xs mt-1">
               {formik.errors.email}
             </span>
           )}
@@ -141,7 +148,14 @@ const Login = () => {
         <div className="flex flex-col gap-1">
           <div className="flex items-center justify-between gap-1">
             <label className="form-label text-gray-900">Password</label>
-            <Link to="/auth/classic/reset-password" className="text-2sm link shrink-0">
+            <Link
+              to={
+                currentLayout?.name === 'auth-branded'
+                  ? '/auth/reset-password'
+                  : '/auth/classic/reset-password'
+              }
+              className="text-2sm link shrink-0"
+            >
               Forgot Password?
             </Link>
           </div>
@@ -151,15 +165,9 @@ const Login = () => {
               placeholder="Enter Password"
               autoComplete="off"
               {...formik.getFieldProps('password')}
-              className={clsx(
-                'form-control bg-transparent',
-                {
-                  'is-invalid': formik.touched.password && formik.errors.password
-                },
-                {
-                  'is-valid': formik.touched.password && !formik.errors.password
-                }
-              )}
+              className={clsx('form-control', {
+                'is-invalid': formik.touched.password && formik.errors.password
+              })}
             />
             <button className="btn btn-icon" onClick={togglePassword}>
               <KeenIcon icon="eye" className={clsx('text-gray-500', { hidden: showPassword })} />
@@ -170,7 +178,7 @@ const Login = () => {
             </button>
           </label>
           {formik.touched.password && formik.errors.password && (
-            <span role="alert" className="text-red-500 text-xs mt-1">
+            <span role="alert" className="text-danger text-xs mt-1">
               {formik.errors.password}
             </span>
           )}
@@ -180,7 +188,7 @@ const Login = () => {
           <input
             className="checkbox checkbox-sm"
             type="checkbox"
-            {...formik.getFieldProps('rememberMe')}
+            {...formik.getFieldProps('remember')}
           />
           <span className="checkbox-label">Remember me</span>
         </label>
@@ -190,11 +198,11 @@ const Login = () => {
           className="btn btn-primary flex justify-center grow"
           disabled={loading || formik.isSubmitting}
         >
-          <span className="indicator-label">{loading ? 'Please wait...' : 'Sign In'}</span>
+          {loading ? 'Please wait...' : 'Sign In'}
         </button>
 
         {formik.status && (
-          <div className="text-red-500 text-xs mt-1" role="alert">
+          <div className="text-danger text-xs mt-1" role="alert">
             {formik.status}
           </div>
         )}

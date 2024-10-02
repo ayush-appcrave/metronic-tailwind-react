@@ -10,8 +10,8 @@ interface IModalAccountDeactivatedProps {
 
 const ModalAccountDeactivated = ({ open, onClose }: IModalAccountDeactivatedProps) => {
   return (
-    <Modal open={open} onClose={onClose} className="!flex py-[9.5%]">
-      <ModalContent className="max-w-[500px] w-full">
+    <Modal open={open} onClose={onClose}>
+      <ModalContent className="modal-center w-full max-w-[500px] max-h-[95%] scrollable-y-auto">
         <ModalHeader className="justify-end border-0 pt-5">
           <button className="btn btn-sm btn-icon btn-light btn-clear shrink-0" onClick={onClose}>
             <KeenIcon icon="cross" />

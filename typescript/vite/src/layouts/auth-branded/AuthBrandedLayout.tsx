@@ -1,14 +1,14 @@
 import { Link, Outlet } from 'react-router-dom';
-
+import { Fragment } from 'react';
 import { toAbsoluteUrl } from '@/utils';
 import useBodyClasses from '@/hooks/useBodyClasses';
-import { AuthLayoutProvider } from '../auth/AuthLayoutProvider';
+import { AuthBrandedLayoutProvider } from './AuthBrandedLayoutProvider';
 
-const LayoutBranded = () => {
+const Layout = () => {
   useBodyClasses('dark:bg-coal-500');
 
   return (
-    <>
+    <Fragment>
       <style>
         {`
           .branded-bg {
@@ -48,14 +48,14 @@ const LayoutBranded = () => {
           </div>
         </div>
       </div>
-    </>
+    </Fragment>
   );
 };
 
 const AuthBrandedLayout = () => (
-  <AuthLayoutProvider>
-    <LayoutBranded />
-  </AuthLayoutProvider>
+  <AuthBrandedLayoutProvider>
+    <Layout />
+  </AuthBrandedLayoutProvider>
 );
 
 export { AuthBrandedLayout };

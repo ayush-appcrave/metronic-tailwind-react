@@ -1,8 +1,10 @@
 import { Link } from 'react-router-dom';
-
 import { KeenIcon } from '@/components';
+import { useLayout } from '@/providers';
 
 const ResetPasswordEnterEmail = () => {
+  const { currentLayout } = useLayout();
+
   return (
     <div className="card max-w-[370px] w-full">
       <form className="card-body flex flex-col gap-5 p-10">
@@ -17,10 +19,14 @@ const ResetPasswordEnterEmail = () => {
         </div>
 
         <Link
-          to="/auth/classic/reset-password/check-email"
+          to={
+            currentLayout?.name === 'auth-branded'
+              ? '/auth/reset-password/check-email'
+              : '/auth/classic/reset-password/check-email'
+          }
           className="btn btn-primary flex justify-center grow"
         >
-          Contoinue
+          Continue
           <KeenIcon icon="black-right" />
         </Link>
       </form>

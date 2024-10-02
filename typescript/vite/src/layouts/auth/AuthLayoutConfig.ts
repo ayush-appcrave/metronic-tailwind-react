@@ -1,7 +1,7 @@
-import { type ILayoutConfig } from '../../providers/LayoutProvider';
+import { type ILayoutConfig } from '@/providers';
 
 const authLayoutConfig: ILayoutConfig = {
-  name: 'auth-layout',
+  name: 'auth',
   options: {}
 };
 
