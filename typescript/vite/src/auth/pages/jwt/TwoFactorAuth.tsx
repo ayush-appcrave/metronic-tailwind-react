@@ -33,8 +33,31 @@ const TwoFactorAuth = () => {
           <input
             type="text"
             className="input focus:border-primary-clarity focus:ring focus:ring-primary-clarity size-10 shrink-0 px-0 text-center"
-            placeholder=""
-            value=""
+            readOnly
+          />
+          <input
+            type="text"
+            className="input focus:border-primary-clarity focus:ring focus:ring-primary-clarity size-10 shrink-0 px-0 text-center"
+            readOnly
+          />
+          <input
+            type="text"
+            className="input focus:border-primary-clarity focus:ring focus:ring-primary-clarity size-10 shrink-0 px-0 text-center"
+            readOnly
+          />
+          <input
+            type="text"
+            className="input focus:border-primary-clarity focus:ring focus:ring-primary-clarity size-10 shrink-0 px-0 text-center"
+            readOnly
+          />
+          <input
+            type="text"
+            className="input focus:border-primary-clarity focus:ring focus:ring-primary-clarity size-10 shrink-0 px-0 text-center"
+            readOnly
+          />
+          <input
+            type="text"
+            className="input focus:border-primary-clarity focus:ring focus:ring-primary-clarity size-10 shrink-0 px-0 text-center"
             readOnly
           />
         </div>
