@@ -1,17 +1,17 @@
 import { createContext, type PropsWithChildren, useContext, useEffect, useState } from 'react';
-import { ILayoutConfig, useLayout } from '../../providers/LayoutProvider';
-import { errorsLayoutConfig } from './';
 import { deepMerge } from '@/utils';
+import { ILayoutConfig, useLayout } from '@/providers/LayoutProvider';
+import { errorsLayoutConfig } from './ErrorsLayoutConfig';
 
-interface IErrorsLayoutProviderProps {
+interface AuthLayoutProviderProps {
   layout: ILayoutConfig;
 }
 
-const initalLayoutProps: IErrorsLayoutProviderProps = {
+const initalLayoutProps: AuthLayoutProviderProps = {
   layout: errorsLayoutConfig
 };
 
-const LayoutContext = createContext<IErrorsLayoutProviderProps>(initalLayoutProps);
+const LayoutContext = createContext<AuthLayoutProviderProps>(initalLayoutProps);
 
 const useErrorsLayout = () => useContext(LayoutContext);
 

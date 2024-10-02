@@ -1,6 +1,6 @@
 import { createContext, type PropsWithChildren, useContext, useEffect, useState } from 'react';
 import { deepMerge } from '@/utils';
-import { ILayoutConfig, useLayout } from '@/providers';
+import { ILayoutConfig, useLayout } from '@/providers/LayoutProvider';
 import { authLayoutBrandedConfig } from './AuthBrandedLayoutConfig';
 
 interface AuthLayoutProviderProps {

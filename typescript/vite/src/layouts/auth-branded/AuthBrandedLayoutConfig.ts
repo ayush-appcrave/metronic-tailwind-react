@@ -1,4 +1,4 @@
-import { type ILayoutConfig } from '@/providers';
+import { type ILayoutConfig } from '@/providers/LayoutProvider';
 
 const authLayoutBrandedConfig: ILayoutConfig = {
   name: 'auth-branded',
