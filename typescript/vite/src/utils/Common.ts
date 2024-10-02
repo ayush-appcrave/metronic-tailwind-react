@@ -1,13 +1,21 @@
-export const throttle = (callback: () => void, limit?: number) => {
-  var tick = false;
-
-  return () => {
-    if (!tick) {
-      callback();
-      tick = true;
-      setTimeout(function () {
-        tick = false;
-      }, limit ?? 1);
+export const throttle = (func: (...args: any[]) => void, limit: number) => {
+  let lastFunc: any;
+  let lastRan: number;
+  return function (this: any, ...args: any[]) {
+    if (!lastRan) {
+      func.apply(this, args);
+      lastRan = Date.now();
+    } else {
+      clearTimeout(lastFunc);
+      lastFunc = setTimeout(
+        () => {
+          if (Date.now() - lastRan >= limit) {
+            func.apply(this, args);
+            lastRan = Date.now();
+          }
+        },
+        limit - (Date.now() - lastRan)
+      );
     }
   };
 };

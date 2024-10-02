@@ -1,122 +1,181 @@
-/* eslint-disable react-hooks/exhaustive-deps */
+import { throttle } from '@/utils';
 import * as React from 'react';
-import { MutableRefObject, ReactNode, useEffect, useRef, useState } from 'react';
+import { MutableRefObject, ReactNode, useEffect, useRef, useCallback } from 'react';
 
 type ScrollSpyProps = {
   children: ReactNode;
-  navContainerRef?: MutableRefObject<HTMLElement | null>;
-  parentScrollContainerRef?: MutableRefObject<HTMLElement | null>;
-  scrollThrottle?: number;
-  onUpdateCallback?: (id: string) => void;
-  offsetTop?: number;
-  offsetBottom?: number;
+  targetRef?: MutableRefObject<HTMLElement | Document | null>;
+  onUpdate?: (id: string) => void;
+  offset?: number;
+  smooth?: boolean;
   className?: string;
   dataAttribute?: string;
   activeClass?: string;
-  updateHistoryStack?: boolean;
+  history?: boolean;
+  throttleTime?: number;
 };
 
 const Scrollspy = ({
   children,
-  navContainerRef,
-  parentScrollContainerRef,
-  scrollThrottle = 0,
-  onUpdateCallback,
+  targetRef,
+  onUpdate,
   className,
-  offsetTop = 0,
-  offsetBottom = 0,
+  offset = 0,
+  smooth = true,
   dataAttribute = 'scrollspy',
   activeClass = 'active',
-  updateHistoryStack = true
+  history = true,
+  throttleTime = 200
 }: ScrollSpyProps) => {
-  const scrollContainerRef = useRef<HTMLDivElement | null>(null);
-  const [navContainerItems, setNavContainerItems] = useState<NodeListOf<Element> | null>(null);
+  const selfRef = useRef<HTMLDivElement | null>(null);
+  const anchorElementsRef = useRef<NodeListOf<Element> | null>(null); // Store anchor elements in useRef to avoid rerenders
   const prevIdTracker = useRef<string | null>(null);
 
-  const throttle = (fn: Function, wait: number) => {
-    let timeout: any;
-    return (...args: any[]) => {
-      if (!timeout) {
-        fn(...args);
-        timeout = setTimeout(() => {
-          timeout = null;
-        }, wait);
-      }
-    };
+  // Check if the element is visible
+  const isVisible = (element: HTMLElement): boolean => {
+    if (!element || element.getClientRects().length === 0) {
+      return false;
+    }
+    return getComputedStyle(element).getPropertyValue('visibility') === 'visible';
   };
 
-  useEffect(() => {
-    if (navContainerRef?.current) {
-      const items = navContainerRef.current.querySelectorAll(`[data-${dataAttribute}]`);
-      setNavContainerItems(items);
-    }
-  }, [navContainerRef, dataAttribute]);
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  const replaceHash = useCallback(
+    throttle((sectionId: string) => {
+      window.history.replaceState({}, '', `#${sectionId}`);
+    }, throttleTime),
+    [throttleTime]
+  );
 
-  const isVisible = (el: HTMLElement) => {
-    const rect = el.getBoundingClientRect();
+  // Update the active anchor based on the scroll position
+  const updateAnchor = (anchorElement: HTMLElement) => {
+    const sectionId = anchorElement.getAttribute(`data-${dataAttribute}-anchor`);
+    const sectionElement = document.getElementById(sectionId!);
 
-    const elementTop = rect.top - (offsetTop || 0);
-    const elementBottom = rect.bottom - (offsetBottom || 0);
+    if (!sectionElement || !isVisible(sectionElement)) return;
 
-    return elementTop <= 0 && elementBottom >= offsetTop;
-  };
+    const scrollPosition =
+      targetRef?.current === document
+        ? window.scrollY || document.documentElement.scrollTop
+        : (targetRef?.current as HTMLElement).scrollTop;
 
-  const checkAndUpdateActiveScrollSpy = () => {
-    const scrollParent = scrollContainerRef.current;
-    if (!scrollParent || !navContainerItems) return;
-
-    let foundActive = false;
-
-    // Iterate through each child section to find the first visible one
-    for (let i = 0; i < scrollParent.children.length; i++) {
-      const child = scrollParent.children[i] as HTMLElement;
-      const id = child.id || child.querySelector('[id]')?.id;
-
-      if (id && isVisible(child)) {
-        foundActive = true;
-
-        if (prevIdTracker.current !== id) {
-          // Update nav item classes
-          navContainerItems.forEach((navItem) => {
-            const attrId = navItem.getAttribute(`data-${dataAttribute}`);
-            navItem.classList.toggle(activeClass, attrId === id);
-          });
-
-          prevIdTracker.current = id;
-
-          if (onUpdateCallback) {
-            onUpdateCallback(id);
-          }
-
-          if (updateHistoryStack) {
-            window.history.replaceState({}, '', `#${id}`);
-          }
-        }
-        break;
-      }
+    let customOffset = offset;
+    const dataOffset = anchorElement.getAttribute(`data-${dataAttribute}-offset`);
+    if (dataOffset) {
+      customOffset = parseInt(dataOffset, 10);
     }
 
-    if (!foundActive && prevIdTracker.current) {
-      navContainerItems.forEach((navItem) => {
-        navItem.classList.remove(activeClass);
+    const offsetTop = sectionElement.offsetTop;
+
+    if (scrollPosition + customOffset >= offsetTop) {
+      anchorElementsRef.current?.forEach((item) => {
+        item.classList.remove(activeClass);
       });
-      prevIdTracker.current = null;
+
+      anchorElement.classList.add(activeClass);
+
+      if (onUpdate && sectionId) {
+        onUpdate(sectionId);
+      }
+
+      prevIdTracker.current = sectionId;
+
+      if (history) {
+        replaceHash(sectionId);
+      }
+
+      const parentAnchorElements = anchorElement.closest(`[data-${dataAttribute}-group`);
+      if (parentAnchorElements) {
+        parentAnchorElements.querySelector(`[data-${dataAttribute}]`)?.classList.add(activeClass);
+      }
     }
   };
 
-  useEffect(() => {
-    const scrollElement = parentScrollContainerRef?.current || window;
-    const throttledScroll = throttle(checkAndUpdateActiveScrollSpy, scrollThrottle);
+  // Handle the scroll event
+  const handleScroll = useCallback(() => {
+    anchorElementsRef.current?.forEach((element) => {
+      updateAnchor(element as HTMLElement); // Ensuring type as HTMLElement
+    });
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [anchorElementsRef]);
 
-    scrollElement.addEventListener('scroll', throttledScroll);
+  // Handle smooth scrolling to a section on click or when URL hash is present
+  const scrollTo = useCallback(
+    (anchorElement: HTMLElement) => (event?: Event) => {
+      if (event) event.preventDefault();
+      const sectionId = anchorElement
+        .getAttribute(`data-${dataAttribute}-anchor`)
+        ?.replace('#', '');
+      const sectionElement = document.getElementById(sectionId!);
+      if (!sectionElement) return;
+
+      const scrollToElement = targetRef?.current === document ? window : targetRef?.current;
+
+      let customOffset = offset;
+      const dataOffset = anchorElement.getAttribute(`data-${dataAttribute}-offset`);
+      if (dataOffset) {
+        customOffset = parseInt(dataOffset, 10);
+      }
+
+      const scrollTop = sectionElement.offsetTop - customOffset;
+
+      if (scrollToElement && 'scrollTo' in scrollToElement) {
+        scrollToElement.scrollTo({
+          top: scrollTop,
+          left: 0,
+          behavior: smooth ? 'smooth' : 'auto'
+        });
+      }
+    },
+    [dataAttribute, offset, smooth, targetRef]
+  );
+
+  // Scroll to the section if the ID is present in the URL hash
+  const scrollToHashSection = useCallback(() => {
+    const hash = window.location.hash.replace('#', '');
+    if (hash) {
+      const targetElement = document.querySelector(
+        `[data-${dataAttribute}-anchor="${hash}"]`
+      ) as HTMLElement;
+      if (targetElement) {
+        scrollTo(targetElement)();
+      }
+    }
+  }, [dataAttribute, scrollTo]);
+
+  useEffect(() => {
+    // Query elements and store them in the ref, avoiding unnecessary re-renders
+    if (selfRef.current) {
+      anchorElementsRef.current = selfRef.current.querySelectorAll(
+        `[data-${dataAttribute}-anchor]`
+      );
+    }
+
+    anchorElementsRef.current?.forEach((item) => {
+      item.addEventListener('click', scrollTo(item as HTMLElement));
+    });
+
+    const scrollElement = targetRef?.current === document ? window : targetRef?.current;
+
+    // Attach the scroll event to the correct scrollable element
+    scrollElement?.addEventListener('scroll', handleScroll);
+    console.log('init scroll event');
+
+    // Check if there's a hash in the URL and scroll to the corresponding section
+    setTimeout(() => {
+      scrollToHashSection();
+    }, 100); // Adding a slight delay to ensure content is fully rendered
 
     return () => {
-      scrollElement.removeEventListener('scroll', throttledScroll);
+      scrollElement?.removeEventListener('scroll', handleScroll);
+      anchorElementsRef.current?.forEach((item) => {
+        item.removeEventListener('click', scrollTo(item as HTMLElement));
+      });
     };
-  }, [parentScrollContainerRef, scrollThrottle, navContainerItems]);
+  }, [targetRef, selfRef, handleScroll, dataAttribute, scrollTo, scrollToHashSection]);
 
   return (
-    <div className={className} ref={scrollContainerRef}>
+    <div className={className} ref={selfRef}>
       {children}
     </div>
   );
