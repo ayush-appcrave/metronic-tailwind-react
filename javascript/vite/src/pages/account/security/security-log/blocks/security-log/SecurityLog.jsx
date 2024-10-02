@@ -76,7 +76,7 @@ const SecurityLog = () => {
     id: 'click',
     header: () => '',
     enableSorting: false,
-    cell: ({}) => <button className="btn btn-icon btn-light btn-clear btn-sm">
+    cell: () => <button className="btn btn-icon btn-light btn-clear btn-sm">
             <KeenIcon icon="notepad" />
           </button>,
     meta: {

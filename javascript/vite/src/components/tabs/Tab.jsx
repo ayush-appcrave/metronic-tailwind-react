@@ -4,13 +4,16 @@ import clsx from 'clsx';
 
 // Define the extended tab component
 const Tab = forwardRef((props, ref) => {
-  return <MuiTab slotProps={{
-    root: ({
-      selected,
-      disabled
-    }) => ({
-      className: clsx('tab', selected && 'active', disabled && 'disabled')
-    })
-  }} {...props} ref={ref} />;
+	return (
+		<MuiTab
+			slotProps={{
+				root: ({ selected, disabled }) => ({
+					className: clsx('tab', selected && 'active', disabled && 'disabled'),
+				}),
+			}}
+			{...props}
+			ref={ref}
+		/>
+	);
 });
 export { Tab };

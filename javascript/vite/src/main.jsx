@@ -8,6 +8,7 @@ import ReactDOM from 'react-dom/client';
 import { App } from './App';
 import { setupAxios } from './auth';
 import { ProvidersWrapper } from './providers/ProvidersWrapper';
+import React from 'react';
 
 /**
  * Inject interceptors for axios.
@@ -16,6 +17,8 @@ import { ProvidersWrapper } from './providers/ProvidersWrapper';
  */
 setupAxios(axios);
 const root = ReactDOM.createRoot(document.getElementById('root'));
-root.render(<ProvidersWrapper>
-    <App />
-  </ProvidersWrapper>);
+root.render(
+	<ProvidersWrapper>
+		<App />
+	</ProvidersWrapper>,
+);
