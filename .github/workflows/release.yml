@@ -36,8 +36,7 @@ jobs:
           password: ${{ secrets.SSH_PROD_PSW }}
           port: 22
           source: './typescript/vite/dist/*'
-          target: '~/var/www/keenthemes.com/current/public/metronic/tailwind/react'
-          rm: true
+          target: '/var/www/keenthemes.com/current/public/metronic/tailwind/react'
 
       - name: 19. Results
         run: |
