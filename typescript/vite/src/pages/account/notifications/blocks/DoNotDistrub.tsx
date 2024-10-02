@@ -1,8 +1,9 @@
 import { KeenIcon } from '@/components';
+import { ReactNode } from 'react';
 
 interface IDoNotDistrubProps {
   title?: string;
-  icon?: React.ReactNode;
+  icon?: ReactNode;
   text?: string;
 }
 

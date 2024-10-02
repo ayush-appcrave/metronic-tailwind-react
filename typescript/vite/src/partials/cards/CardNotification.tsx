@@ -1,13 +1,14 @@
 import { KeenIcon } from '@/components';
 
 import { CommonHexagonBadge } from '../common';
+import { ReactNode } from 'react';
 
 interface INotificationProps {
   icon: string;
   title: string;
   description: string;
   button?: boolean;
-  actions: React.ReactNode;
+  actions: ReactNode;
 }
 
 const CardNotification = ({ icon, title, description, button, actions }: INotificationProps) => {

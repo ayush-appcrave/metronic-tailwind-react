@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { type MouseEvent, useState } from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import clsx from 'clsx';
 import * as Yup from 'yup';
@@ -56,8 +56,7 @@ const Login = () => {
         }
 
         navigate(from, { replace: true });
-        // eslint-disable-next-line @typescript-eslint/no-unused-vars
-      } catch (error) {
+      } catch {
         setStatus('The login details are incorrect');
         setSubmitting(false);
       }
@@ -65,7 +64,7 @@ const Login = () => {
     }
   });
 
-  const togglePassword = (event: React.MouseEvent<HTMLButtonElement>) => {
+  const togglePassword = (event: MouseEvent<HTMLButtonElement>) => {
     event.preventDefault();
     setShowPassword(!showPassword);
   };

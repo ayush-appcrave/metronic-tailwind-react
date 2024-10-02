@@ -1,11 +1,12 @@
 import { KeenIcon } from '@/components';
 
 import { CardAddNew, CardRole } from '@/partials/cards';
+import { ReactNode } from 'react';
 
 interface IRolesItem {
   badge: {
     size: string;
-    badge: React.ReactNode;
+    badge: ReactNode;
     fill: string;
     stroke: string;
   };

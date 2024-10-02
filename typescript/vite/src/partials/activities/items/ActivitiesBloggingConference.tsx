@@ -1,11 +1,12 @@
 import { Link } from 'react-router-dom';
 
 import { TimelinesWrapper } from '@/partials/timelines/default/item';
+import { ReactNode } from 'react';
 
 interface IBloggingConferenceProps {
   heading?: string;
   datetime?: string;
-  image?: React.ReactNode;
+  image?: ReactNode;
   title?: string;
 }
 

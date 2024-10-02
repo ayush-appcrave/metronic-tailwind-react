@@ -1,7 +1,7 @@
 import { useMemo } from 'react';
 import { DataGrid, KeenIcon } from '@/components';
 import { ColumnDef } from '@tanstack/react-table';
-import { toAbsoluteUrl } from '@/utils'; 
+import { toAbsoluteUrl } from '@/utils';
 import { StoreClientsData, IStoreClientsData } from '.';
 
 const StoreClients = () => {
@@ -10,7 +10,7 @@ const StoreClients = () => {
       {
         accessorFn: (row) => row.user,
         id: 'user',
-        header: () => 'Member', 
+        header: () => 'Member',
         enableSorting: true,
         cell: (info: any) => (
           <div className="flex items-center gap-2.5">
@@ -20,7 +20,10 @@ const StoreClients = () => {
               alt=""
             />
             <div className="flex flex-col">
-              <a className="font-medium text-sm text-gray-900 hover:text-primary-active mb-px" href="#">
+              <a
+                className="font-medium text-sm text-gray-900 hover:text-primary-active mb-px"
+                href="#"
+              >
                 {info.row.original.user.name}
               </a>
               <a className="text-2sm text-gray-700 font-normal hover:text-primary-active" href="#">
@@ -30,8 +33,8 @@ const StoreClients = () => {
           </div>
         ),
         meta: {
-          className: 'min-w-[300px]',
-        },
+          className: 'min-w-[300px]'
+        }
       },
       {
         accessorFn: (row) => row.clientId,
@@ -41,8 +44,8 @@ const StoreClients = () => {
         cell: (info: any) => info.row.original.clientId,
         meta: {
           className: 'min-w-[150px]',
-          cellClassName: 'text-gray-800 font-normal',
-        },
+          cellClassName: 'text-gray-800 font-normal'
+        }
       },
       {
         accessorFn: (row) => row.ordersValue,
@@ -52,8 +55,8 @@ const StoreClients = () => {
         cell: (info: any) => info.row.original.ordersValue,
         meta: {
           className: 'min-w-[150px]',
-          cellClassName: 'text-gray-800 font-normal',
-        },
+          cellClassName: 'text-gray-800 font-normal'
+        }
       },
       {
         accessorFn: (row) => row.location,
@@ -71,8 +74,8 @@ const StoreClients = () => {
           </div>
         ),
         meta: {
-          className: 'w-[150px]',
-        },
+          className: 'w-[150px]'
+        }
       },
       {
         accessorFn: (row) => row.activity,
@@ -82,8 +85,8 @@ const StoreClients = () => {
         cell: (info: any) => info.row.original.activity,
         meta: {
           className: 'w-[150px]',
-          cellClassName: 'text-gray-800 font-normal',
-        },
+          cellClassName: 'text-gray-800 font-normal'
+        }
       },
       {
         id: 'actions',
@@ -92,16 +95,16 @@ const StoreClients = () => {
         cell: () => <button className="btn btn-link">View</button>,
         meta: {
           className: 'w-[100px]',
-          cellClassName: 'text-center',
-        },
+          cellClassName: 'text-center'
+        }
       },
       {
         id: 'dots',
         header: () => '',
         enableSorting: false,
-        cell: () => {                    
+        cell: () => {
           return (
-            <button className="btn btn-sm btn-icon btn-clear btn-light"> 
+            <button className="btn btn-sm btn-icon btn-clear btn-light">
               <KeenIcon icon="dots-vertical" />
             </button>
           );
@@ -109,7 +112,7 @@ const StoreClients = () => {
         meta: {
           className: 'w-[60px]'
         }
-      },  
+      }
     ],
     []
   );

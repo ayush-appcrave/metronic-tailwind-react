@@ -1,9 +1,10 @@
 import { Link } from 'react-router-dom';
 
 import { KeenIcon } from '@/components';
+import { ReactNode } from 'react';
 
 interface IFeaturesHighlightProps {
-  image: React.ReactNode;
+  image: ReactNode;
   title: string;
   description: string;
   more: { title: string; url: string };

@@ -95,8 +95,7 @@ const AppRouting = (): ReactElement => {
       if (verify) {
         await verify();
       }
-      // eslint-disable-next-line @typescript-eslint/no-unused-vars
-    } catch (error) {
+    } catch {
       throw new Error('Something went wrong!');
     } finally {
       setPreviousLocation(path);

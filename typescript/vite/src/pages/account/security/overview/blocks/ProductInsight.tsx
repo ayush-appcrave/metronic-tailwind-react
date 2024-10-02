@@ -1,7 +1,8 @@
 import { CommonHexagonBadge } from '@/partials/common';
+import { ReactNode } from 'react';
 
 interface IProductInsightProps {
-  image: React.ReactNode;
+  image: ReactNode;
   title: string;
   description: string;
   number: number;

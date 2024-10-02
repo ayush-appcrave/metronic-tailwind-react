@@ -4,6 +4,7 @@ import { KeenIcon, Menu, MenuItem, MenuToggle } from '@/components';
 
 import { DropdownCardItem1 } from '../dropdowns/general';
 import { CommonHexagonBadge } from '../common';
+import { ReactNode } from 'react';
 
 interface IRoleProps {
   path: string;
@@ -11,7 +12,7 @@ interface IRoleProps {
   subTitle: string;
   description: string;
   team: string;
-  badge: React.ReactNode;
+  badge: ReactNode;
 }
 
 const CardRole = ({ path, title, subTitle, description, team, badge }: IRoleProps) => {

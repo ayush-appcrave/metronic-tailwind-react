@@ -48,7 +48,7 @@ const FirebaseLogin = () => {
         await login(values.email, values.password);
 
         navigate(from, { replace: true });
-      } catch (error) {
+      } catch {
         setStatus('The login details are incorrect');
         setSubmitting(false);
       } finally {

@@ -1,4 +1,4 @@
-/* eslint-disable @typescript-eslint/no-unused-vars */
+/* eslint-disable no-unused-vars */
 import { createContext, type PropsWithChildren, useContext, useState } from 'react';
 
 import { getData, setData } from '../utils';

@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 import { PopperProps } from '@mui/base';
 import { HTMLAttributes, MouseEvent, ReactNode, RefAttributes, RefObject } from 'react';
 

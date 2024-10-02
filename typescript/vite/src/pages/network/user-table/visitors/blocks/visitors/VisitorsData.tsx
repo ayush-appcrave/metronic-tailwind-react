@@ -2,13 +2,13 @@ interface IVisitorsData {
   user: {
     avatar: string;
     name: string;
-  },
+  };
   browser: string;
   ipAddress: string;
   location: {
     flag: string;
     name: string;
-  },
+  };
   activity: string;
 }
 
@@ -291,7 +291,7 @@ const VisitorsData: IVisitorsData[] = [
       avatar: '300-27.png',
       name: 'Henry King'
     },
-     browser: 'Chrome on Mac OS X',
+    browser: 'Chrome on Mac OS X',
     ipAddress: '192.168.1.13',
     location: {
       name: 'Austria',

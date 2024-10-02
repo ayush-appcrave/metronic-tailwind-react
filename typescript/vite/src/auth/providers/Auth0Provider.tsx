@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 import { Auth0Client, User } from '@auth0/auth0-spa-js';
 import {
   createContext,

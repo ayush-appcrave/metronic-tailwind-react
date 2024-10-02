@@ -1,4 +1,7 @@
-import { createContext, useContext, useState, useEffect } from 'react';
+/* eslint-disable no-unused-vars */
+/* eslint-disable react-refresh/only-export-components */
+/* eslint-disable react-hooks/exhaustive-deps */
+import { createContext, useContext, useState, useEffect, ReactNode } from 'react';
 import { TDataGridProps } from './DataGrid';
 import { Table } from '@tanstack/react-table';
 
@@ -34,7 +37,7 @@ const DataGridProvider = <TData extends object>({
 }: {
   table: Table<TData>;
   props: TDataGridProps<TData>;
-  children: React.ReactNode;
+  children: ReactNode;
 }) => {
   const [loading, setLoading] = useState<boolean>(false);
   const [selectedRowIds, setSelectedRowIds] = useState<Set<string>>(new Set());

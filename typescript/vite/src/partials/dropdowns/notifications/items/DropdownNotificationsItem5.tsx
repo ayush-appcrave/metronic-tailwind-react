@@ -1,6 +1,5 @@
 import { toAbsoluteUrl } from '@/utils';
 import { Link } from 'react-router-dom';
-import { useState } from 'react';
 
 interface IDropdownNotificationsItemProps {
   userName: string;
@@ -23,12 +22,6 @@ const DropdownNotificationsItem5 = ({
   date,
   info
 }: IDropdownNotificationsItemProps) => {
-  const [inputValue, setInputValue] = useState('');
-
-  const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setInputValue(event.target.value);
-  };
-
   return (
     <div className="flex grow gap-2.5 px-5">
       <div className="relative shrink-0 mt-0.5">

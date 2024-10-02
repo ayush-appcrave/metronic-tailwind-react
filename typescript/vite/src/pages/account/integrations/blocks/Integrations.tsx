@@ -1,11 +1,12 @@
 import { CardIntegration } from '@/partials/cards';
+import { ReactNode } from 'react';
 
 interface IIntegrationsItem {
   logo: string;
   path: string;
   name: string;
   description: string;
-  actions: React.ReactNode;
+  actions: ReactNode;
 }
 interface IIntegrationsItems extends Array<IIntegrationsItem> {}
 

@@ -1,5 +1,5 @@
 import React, { forwardRef, useEffect, useState } from 'react';
-import { Modal, ModalContent, ModalBody, ModalHeader } from '@/components/modal'; // Import your custom Modal component
+import { Modal, ModalContent, ModalBody, ModalHeader } from '@/components/modal';
 import { KeenIcon, Menu, MenuItem, MenuToggle } from '@/components';
 import { Tab, TabPanel, Tabs, TabsList } from '@/components/tabs';
 import { DropdownCrud2 } from '@/partials/dropdowns/general';
@@ -22,7 +22,7 @@ interface ModalSearchProps {
   onClose: () => void;
 }
 
-const ModalSearch = forwardRef<HTMLDivElement, ModalSearchProps>(({ open, onClose }, ref) => {
+const ModalSearch = forwardRef<HTMLDivElement, ModalSearchProps>(({ open, onClose }) => {
   const [scrollableHeight, setScrollableHeight] = useState<number>(0);
   const [viewportHeight] = useViewport();
   const offset = 300;
