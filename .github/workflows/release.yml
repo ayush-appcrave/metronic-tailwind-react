@@ -37,6 +37,7 @@ jobs:
           port: 22
           source: './typescript/vite/dist/*'
           target: '/var/www/keenthemes.com/current/public/metronic/tailwind/react'
+          strip_components: 3
 
       - name: 19. Results
         run: |
