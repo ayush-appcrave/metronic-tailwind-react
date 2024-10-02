@@ -1,4 +1,4 @@
-import { useRef } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import { Scrollspy } from '@/components';
 import { Modal, ModalContent, ModalBody, ModalHeader } from '@/components/modal'; // Import your custom Modal component
 import { AccountSettingsSidebar } from '@/pages/account/home/settings-sidebar';
@@ -17,6 +17,7 @@ import {
   ExternalServicesIntegrations,
   ExternalServicesManageApi
 } from '@/pages/account/home/settings-sidebar/blocks';
+import { useResponsive, useViewport } from '@/hooks';
 
 interface IModalProfileProps {
   open: boolean;
@@ -24,8 +25,16 @@ interface IModalProfileProps {
 }
 
 const AccountSettingsModal = ({ open, onClose }: IModalProfileProps) => {
+  const desktopMode = useResponsive('up', 'lg');
   const navBar = useRef<HTMLDivElement | null>(null);
   const parentRef = useRef<HTMLDivElement | null>(null);
+  const [sidebarHeight, setSidebarHeight] = useState<number>(0);
+  const [viewportHeight] = useViewport();
+  const offset = 260;
+
+  useEffect(() => {
+    setSidebarHeight(viewportHeight - offset);
+  }, [viewportHeight]);
 
   return (
     <Modal open={open} onClose={onClose} className="!flex">
@@ -45,13 +54,19 @@ const AccountSettingsModal = ({ open, onClose }: IModalProfileProps) => {
         </ModalHeader>
         <ModalBody className="scrollable-y py-0 mb-5 ps-0 pe-3 -me-7" ref={parentRef}>
           <div className="flex grow gap-5 lg:gap-7.5">
-            <div className="hidden lg:block w-[230px] shrink-0">
-              <div ref={navBar} className="w-[230px] fixed z-10 scrollable-y-auto">
-                <Scrollspy offset={100} targetRef={parentRef}>
-                  <AccountSettingsSidebar />
-                </Scrollspy>
+            {desktopMode && (
+              <div className="block w-[230px] shrink-0">
+                <div
+                  ref={navBar}
+                  className="w-[230px] fixed z-10 scrollable-y-auto"
+                  style={{ maxHeight: `${sidebarHeight}px` }}
+                >
+                  <Scrollspy offset={100} targetRef={parentRef}>
+                    <AccountSettingsSidebar />
+                  </Scrollspy>
+                </div>
               </div>
-            </div>
+            )}
             <div className="flex flex-col items-stretch grow gap-5 lg:gap-7.5">
               <BasicSettings />
 
