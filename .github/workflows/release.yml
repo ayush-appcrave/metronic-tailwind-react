@@ -2,9 +2,10 @@ name: RELEASE DEPLOY
 
 on:
   push:
-    branches: [ main ]
-  pull_request:
-    branches: [ main ]
+    branches: [main]
+    paths: ['.github/**']
+  # pull_request:
+  workflow_dispatch:
 
 jobs:
   build:
