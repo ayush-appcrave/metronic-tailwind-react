@@ -1,8 +1,10 @@
 name: RELEASE DEPLOY
 
 on:
-  release:
-    types: [published]
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
 
 jobs:
   build:
@@ -34,10 +36,9 @@ jobs:
           password: ${{ secrets.SSH_PROD_PSW }}
           port: 22
           source: './typescript/vite/dist/*'
-          target: '/var/www/preview.keenthemes.com/public/metronic/tailwind/react'
-          strip_components: 2
+          target: '~/var/www/keenthemes.com/current/public/metronic/tailwind/react'
           rm: true
 
       - name: 19. Results
         run: |
-          echo "https://preview.keenthemes.com/metronic/tailwind/react"
+          echo "https://keenthemes.com/metronic/tailwind/react/"
