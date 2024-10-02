@@ -2,11 +2,8 @@
 import React, { useEffect, useMemo, useState } from 'react';
 import { ColumnDef } from '@tanstack/react-table';
 import { Link } from 'react-router-dom';
-
 import { DataGrid, KeenIcon } from '@/components';
-
 import { CommonAvatars, CommonRating } from '@/partials/common'; // Import avatar-related types and components
-
 import { TeamsData, ITeamData } from './';
 
 const Teams = () => {

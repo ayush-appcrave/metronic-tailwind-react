@@ -26,7 +26,7 @@ const AuthBrandedLayoutProvider = ({ children }: PropsWithChildren) => {
 
   useEffect(() => {
     setCurrentLayout(layout);
-  }, [layout]);
+  }, [layout, setCurrentLayout]);
 
   return (
     <LayoutContext.Provider

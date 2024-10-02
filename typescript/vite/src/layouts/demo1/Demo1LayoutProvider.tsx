@@ -72,7 +72,7 @@ const Demo1LayoutProvider = ({ children }: PropsWithChildren) => {
 
   useEffect(() => {
     setCurrentLayout(layout);
-  }, [layout]);
+  }, [layout, setCurrentLayout]);
 
   const [megaMenuEnabled, setMegaMenuEnabled] = useState(false);
 
