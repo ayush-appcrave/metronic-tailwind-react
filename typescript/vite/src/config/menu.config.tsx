@@ -435,7 +435,7 @@ const MENU_SIDEBAR: MenuConfigType = [
             children: [
               {
                 title: 'Enter Email',
-                path: '/auth/classic/reset-password'
+                path: '/auth/classic/reset-password/enter-email'
               },
               {
                 title: 'Check Email',
@@ -477,7 +477,7 @@ const MENU_SIDEBAR: MenuConfigType = [
             children: [
               {
                 title: 'Enter Email',
-                path: '/auth/reset-password'
+                path: '/auth/reset-password/enter-email'
               },
               {
                 title: 'Check Email',
@@ -497,11 +497,11 @@ const MENU_SIDEBAR: MenuConfigType = [
       },
       {
         title: 'Welcome Message',
-        path: '/aurh/welcome-message'
+        path: '/auth/welcome-message'
       },
       {
         title: 'Account Deactivated',
-        path: '/aurh/account-deactivated'
+        path: '/auth/account-deactivated'
       },
       {
         title: 'Error 404',
@@ -851,28 +851,28 @@ const MENU_MEGA: MenuConfigType = [
           {
             title: 'Classic Layout',
             children: [
-              { title: 'Sign In', path: 'auth/classic/sign-in' },
-              { title: 'Sign Up', path: 'auth/classic/sign-up' },
-              { title: '2FA', path: 'auth/classic/2fa' },
-              { title: 'Check Email', path: 'auth/classic/check-email' },
+              { title: 'Sign In', path: '/auth/classic/login' },
+              { title: 'Sign Up', path: '/auth/classic/signup' },
+              { title: '2FA', path: '/auth/classic/2fa' },
+              { title: 'Check Email', path: '/auth/classic/check-email' },
               {
                 title: 'Reset Password',
                 children: [
                   {
                     title: 'Enter Email',
-                    path: 'auth/classic/reset-password/enter-email'
+                    path: '/auth/classic/reset-password/enter-email'
                   },
                   {
                     title: 'Check Email',
-                    path: 'auth/classic/reset-password/check-email'
+                    path: '/auth/classic/reset-password/check-email'
                   },
                   {
                     title: 'Change Password',
-                    path: 'auth/classic/reset-password/change-password'
+                    path: '/auth/classic/reset-password/change'
                   },
                   {
                     title: 'Password is Changed',
-                    path: 'auth/classic/reset-password/password-changed'
+                    path: '/auth/classic/reset-password/changed'
                   }
                 ]
               }
@@ -881,28 +881,28 @@ const MENU_MEGA: MenuConfigType = [
           {
             title: 'Branded Layout',
             children: [
-              { title: 'Sign In', path: 'auth/login' },
-              { title: 'Sign Up', path: 'auth/signup' },
-              { title: '2FA', path: 'auth/branded/2fa' },
-              { title: 'Check Email', path: 'auth/check-email' },
+              { title: 'Sign In', path: '/auth/login' },
+              { title: 'Sign Up', path: '/auth/signup' },
+              { title: '2FA', path: '/auth/2fa' },
+              { title: 'Check Email', path: '/auth/check-email' },
               {
                 title: 'Reset Password',
                 children: [
                   {
                     title: 'Enter Email',
-                    path: 'auth/reset-password/enter-email'
+                    path: '/auth/reset-password/enter-email'
                   },
                   {
                     title: 'Check Email',
-                    path: 'auth/reset-password/check-email'
+                    path: '/auth/reset-password/check-email'
                   },
                   {
                     title: 'Change Password',
-                    path: 'auth/reset-password/change-password'
+                    path: '/auth/reset-password/change'
                   },
                   {
                     title: 'Password is Changed',
-                    path: 'auth/reset-password/password-changed'
+                    path: '/auth/reset-password/changed'
                   }
                 ]
               }
@@ -913,14 +913,14 @@ const MENU_MEGA: MenuConfigType = [
       {
         title: 'Other Pages',
         children: [
-          { title: 'Welcome Message', icon: 'like-2', path: 'auth/welcome-message' },
+          { title: 'Welcome Message', icon: 'like-2', path: '/auth/welcome-message' },
           {
             title: 'Account Deactivated',
             icon: 'shield-cross',
-            path: 'auth/account-deactivated'
+            path: '/auth/account-deactivated'
           },
-          { title: 'Error 404', icon: 'message-question', path: 'error/404' },
-          { title: 'Error 500', icon: 'information', path: 'error/500' }
+          { title: 'Error 404', icon: 'message-question', path: '/error/404' },
+          { title: 'Error 500', icon: 'information', path: '/error/500' }
         ]
       }
     ]

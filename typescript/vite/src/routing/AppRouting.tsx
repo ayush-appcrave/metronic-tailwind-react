@@ -213,9 +213,9 @@ const AppRouting = (): ReactElement => {
           <Route path="/network/user-table/saas-users" element={<NetworkSaasUsersPage />} />
           <Route path="/network/user-table/store-clients" element={<NetworkStoreClientsPage />} />
           <Route path="/network/user-table/visitors" element={<NetworkVisitorsPage />} />
-          <Route path="/aurh/welcome-message" element={<AuthenticationWelcomeMessagePage />} />
+          <Route path="/auth/welcome-message" element={<AuthenticationWelcomeMessagePage />} />
           <Route
-            path="/aurh/account-deactivated"
+            path="/auth/account-deactivated"
             element={<AuthenticationAccountDeactivatedPage />}
           />
         </Route>
