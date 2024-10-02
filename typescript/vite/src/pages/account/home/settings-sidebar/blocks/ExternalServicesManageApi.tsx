@@ -79,7 +79,7 @@ const ExternalServicesManageApi = ({
 
                 <div className="form-info text-gray-800 font-normal">
                   This API key can only access
-                  <a href="https://keenthemes.com/" className="link">
+                  <a href="https://keenthemes.com/" className="link ml-0.5">
                     @keenthemes
                   </a>
                   <br />
@@ -88,8 +88,8 @@ const ExternalServicesManageApi = ({
               </div>
             </div>
 
-            <div className="flex items-center gap-1.5">
-              <button className="btn btn-sm btn-dark">Renew Plan</button>
+            <div className="flex items-center flex-wrap md:flex-nowrap gap-1.5">
+              <button className="btn btn-sm btn-dark shrink-0">Renew Plan</button>
               <a href="#" className="btn btn-sm btn-clear btn-light">
                 Docs
               </a>
