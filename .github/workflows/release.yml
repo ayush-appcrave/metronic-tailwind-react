@@ -35,7 +35,7 @@ jobs:
           # Find and replace the Demo1Layout or similar import
           sed -i "s|import {.*Layout.*}|import { ${DEMO_NAME}Layout } from '../layouts/${{ matrix.demo }}';|" src/routing/AppRouting.tsx
           sed -i "s|<.*Layout.*>|<${DEMO_NAME}Layout />|" src/routing/AppRouting.tsx
-        working-directory: typescript/vite/react
+        working-directory: typescript/vite/src/routing
 
       - name: 4. Build Metronic Tailwind React
         run: |
