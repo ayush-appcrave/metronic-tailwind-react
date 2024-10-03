@@ -1,4 +1,3 @@
-import { KeenIcon } from '@/components';
 import { toAbsoluteUrl } from '@/utils';
 import React from 'react';
 import { Link } from 'react-router-dom';

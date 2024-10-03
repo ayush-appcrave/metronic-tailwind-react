@@ -67,7 +67,7 @@ const Members = () => {
     id: 'click',
     header: () => '',
     enableSorting: false,
-    cell: ({}) => <Menu className="items-stretch">
+    cell: () => <Menu className="items-stretch">
             <MenuItem toggle="dropdown" trigger="click" dropdownProps={{
         placement: 'bottom-end',
         modifiers: [{

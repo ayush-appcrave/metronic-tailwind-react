@@ -1,6 +1,6 @@
 import { User as Auth0UserModel } from '@auth0/auth0-spa-js';
 
-import { getData, setData } from '../utils';
+import { getData, setData } from '@/utils';
 import { type AuthModel } from './_models';
 
 const AUTH_LOCAL_STORAGE_KEY = `${import.meta.env.VITE_APP_NAME}-auth-v${
@@ -12,7 +12,6 @@ const getAuth = (): AuthModel | undefined => {
     const auth = getData(AUTH_LOCAL_STORAGE_KEY) as AuthModel | undefined;
 
     if (auth) {
-      // You can easily check auth_token expiration also
       return auth;
     } else {
       return undefined;

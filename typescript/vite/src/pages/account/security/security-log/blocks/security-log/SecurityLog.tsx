@@ -95,7 +95,7 @@ const SecurityLog = () => {
         id: 'click',
         header: () => '',
         enableSorting: false,
-        cell: ({ }) => (
+        cell: () => (
           <button 
             className="btn btn-icon btn-light btn-clear btn-sm" 
           >

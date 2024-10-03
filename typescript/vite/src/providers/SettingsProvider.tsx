@@ -1,14 +1,9 @@
-/* eslint-disable @typescript-eslint/no-unused-vars */
+/* eslint-disable no-unused-vars */
 import { createContext, type PropsWithChildren, useContext, useState } from 'react';
 
 import { defaultSettings, ISettings, type SettingsModeType } from '@/config/settings.config';
 
-import { getData, setData } from '../utils/LocalStorage';
-
-export interface ISetttingsConfig {
-  name: string;
-  options: any;
-}
+import { getData, setData } from '@/utils';
 
 export interface ISettingsProps {
   settings: ISettings;

@@ -1,4 +1,3 @@
-import { type MouseEvent } from 'react';
 import { Link } from 'react-router-dom';
 import { KeenIcon } from '@/components/keenicons';
 import { toAbsoluteUrl } from '@/utils';
@@ -8,18 +7,18 @@ import { useDemo1Layout } from '../';
 const HeaderLogo = () => {
   const { setMobileSidebarOpen, setMobileMegaMenuOpen, megaMenuEnabled } = useDemo1Layout();
 
-  const handleSidebarOpen = (event: MouseEvent<HTMLElement>) => {
+  const handleSidebarOpen = () => {
     setMobileSidebarOpen(true);
   };
 
-  const handleMegaMenuOpen = (event: MouseEvent<HTMLElement>) => {
+  const handleMegaMenuOpen = () => {
     setMobileMegaMenuOpen(true);
   };
 
   return (
     <div className="flex gap-1 lg:hidden items-center">
       <Link to="/" className="shrink-0">
-        <img src={toAbsoluteUrl('/media/app/mini-logo.svg')} className="h-[25px]" />
+        <img src={toAbsoluteUrl('/media/app/mini-logo.svg')} className="h-[25px]" alt="mini-logo" />
       </Link>
 
       <div className="flex items-center">

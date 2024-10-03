@@ -1,10 +1,11 @@
 import { CardNotification } from '@/partials/cards';
+import { ReactNode } from 'react';
 
 interface IAccessibilityItem {
   icon: string;
   title: string;
   description: string;
-  actions: React.ReactNode;
+  actions: ReactNode;
 }
 interface IAccessibilityItems extends Array<IAccessibilityItem> {}
 

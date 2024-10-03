@@ -4,13 +4,11 @@ import { forwardRef } from 'react';
 interface IModalBackdropProps {
   className?: string;
   open: boolean;
-  ownerState?: any;
 }
 
 // Forwarding ref to ensure this component can hold a ref
 const ModalBackdrop = forwardRef<HTMLDivElement, IModalBackdropProps>(
-  // eslint-disable-next-line @typescript-eslint/no-unused-vars
-  ({ className, ownerState, ...props }, ref) => {
+  ({ className, ...props }, ref) => {
     const { ...other } = props;
 
     return (

@@ -1,8 +1,8 @@
-import { forwardRef } from 'react';
+import { forwardRef, ReactNode } from 'react';
 
 interface ModalModalProps {
   className?: string;
-  children: React.ReactNode;
+  children: ReactNode;
   tabIndex?: number;
 }
 

@@ -1,7 +1,6 @@
-import React, { forwardRef, useState } from 'react';
-import { Modal, ModalContent, ModalBody, ModalHeader, ModalTitle } from '@/components/modal'; // Import your custom Modal component
+import React, { forwardRef } from 'react';
+import { Modal, ModalContent, ModalBody, ModalHeader, ModalTitle } from '@/components/modal';
 import { KeenIcon } from '@/components';
-import { useViewport } from '@/hooks';
 import { toAbsoluteUrl } from '@/utils';
 import { Link } from 'react-router-dom';
 
@@ -9,18 +8,9 @@ interface IModalReportUserProps {
   open: boolean;
   onClose: () => void;
 }
-export interface IModalReportUserdDocsItem {
-  image: string;
-  desc: string;
-  date: string;
-}
 
 const ModalReportUser = forwardRef<HTMLDivElement, IModalReportUserProps>(
   ({ open, onClose }, ref) => {
-    const [scrollableHeight, setScrollableHeight] = useState<number>(0);
-    const [viewportHeight] = useViewport();
-    const offset = 300;
-
     const buildNotice = () => {
       return (
         <div className="grid place-items-center gap-1 px-5">

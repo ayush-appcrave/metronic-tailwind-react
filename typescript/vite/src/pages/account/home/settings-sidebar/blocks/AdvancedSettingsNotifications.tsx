@@ -2,11 +2,12 @@ import { KeenIcon } from '@/components';
 import { toAbsoluteUrl } from '@/utils/Assets';
 
 import { CommonHexagonBadge } from '@/partials/common';
+import { ReactNode } from 'react';
 
 interface IAdvancedSettingsNotificationsItem {
   title: string;
   description: string;
-  badge: React.ReactNode;
+  badge: ReactNode;
 }
 interface IAdvancedSettingsNotificationsItems extends Array<IAdvancedSettingsNotificationsItem> {}
 

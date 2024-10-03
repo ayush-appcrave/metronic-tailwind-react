@@ -1,4 +1,4 @@
-import { Fragment } from 'react';
+import { Fragment, ReactNode } from 'react';
 
 import { KeenIcon } from '@/components';
 
@@ -6,9 +6,9 @@ import { CommonHexagonBadge } from '@/partials/common';
 
 interface IGeneralSettingsItem {
   icon: string;
-  title: React.ReactNode;
+  title: ReactNode;
   description: string;
-  actions: React.ReactNode;
+  actions: ReactNode;
 }
 interface IGeneralSettingsItems extends Array<IGeneralSettingsItem> {}
 

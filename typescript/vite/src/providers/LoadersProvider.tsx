@@ -1,4 +1,5 @@
-/* eslint-disable @typescript-eslint/no-unused-vars */
+/* eslint-disable no-unused-vars */
+/* eslint-disable react-refresh/only-export-components */
 import { createContext, type PropsWithChildren, useContext, useState } from 'react';
 
 import { ProgressBarLoader, ScreenLoader } from '@/components/loaders';

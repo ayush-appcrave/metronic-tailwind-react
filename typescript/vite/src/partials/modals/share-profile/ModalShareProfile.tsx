@@ -1,8 +1,6 @@
 import React, { forwardRef, useEffect, useState } from 'react';
-import { Modal, ModalContent, ModalBody, ModalHeader, ModalTitle } from '@/components/modal'; // Import your custom Modal component
-import { KeenIcon, Menu, MenuItem, MenuToggle } from '@/components';
-import { Tab, TabPanel, Tabs, TabsList } from '@/components/tabs';
-import { DropdownCrud2 } from '@/partials/dropdowns/general';
+import { Modal, ModalContent, ModalBody, ModalHeader, ModalTitle } from '@/components/modal';
+import { KeenIcon } from '@/components';
 import { useViewport } from '@/hooks';
 import {
   ModalShareProfileViaLink,
@@ -17,18 +15,14 @@ interface ModalShareProfileProps {
 }
 
 const ModalShareProfile = forwardRef<HTMLDivElement, ModalShareProfileProps>(
-  ({ open, onClose }, ref) => {
-    const [scrollableHeight, setScrollableHeight] = useState<number>(0);
+  ({ open, onClose }) => {
+    const [, setScrollableHeight] = useState<number>(0);
     const [viewportHeight] = useViewport();
     const offset = 300;
 
     useEffect(() => {
       setScrollableHeight(viewportHeight - offset);
     }, [viewportHeight]);
-
-    const handleSearchInput = () => {
-      // handle search input
-    };
 
     return (
       <Modal open={open} onClose={onClose}>

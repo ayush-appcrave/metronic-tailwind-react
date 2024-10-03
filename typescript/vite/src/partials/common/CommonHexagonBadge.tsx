@@ -1,8 +1,10 @@
+import { ReactNode } from 'react';
+
 interface IHexagonBadgeProps {
   size?: string;
   stroke?: string;
   fill?: string;
-  badge?: React.ReactNode;
+  badge?: ReactNode;
 }
 
 const CommonHexagonBadge = ({ size, stroke, fill, badge }: IHexagonBadgeProps) => {

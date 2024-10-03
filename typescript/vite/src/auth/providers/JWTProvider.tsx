@@ -1,3 +1,5 @@
+/* eslint-disable no-unused-vars */
+/* eslint-disable react-hooks/exhaustive-deps */
 import axios, { AxiosResponse } from 'axios';
 import {
   createContext,
@@ -9,7 +11,7 @@ import {
 } from 'react';
 
 import * as authHelper from '../_helpers';
-import { type AuthModel, type UserModel } from '../_models';
+import { type AuthModel, type UserModel } from '@/auth';
 
 const API_URL = import.meta.env.VITE_APP_API_URL;
 
@@ -54,7 +56,6 @@ const AuthProvider = ({ children }: PropsWithChildren) => {
       try {
         const { data: user } = await getUser();
         setCurrentUser(user);
-      // eslint-disable-next-line @typescript-eslint/no-unused-vars
       } catch (error) {
         saveAuth(undefined);
         setCurrentUser(undefined);

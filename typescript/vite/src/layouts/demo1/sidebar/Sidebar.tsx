@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import { Drawer } from '@/components';
 import { useEffect, useRef, useState } from 'react';
 import { useResponsive, useViewport } from '@/hooks';
@@ -38,11 +39,11 @@ const Sidebar = () => {
 
   const handleMouseEnter = () => {
     setSidebarMouseLeave(false);
-  }
+  };
 
   const handleMouseLeave = () => {
     setSidebarMouseLeave(true);
-  }
+  };
 
   const renderContent = () => {
     return (
@@ -62,7 +63,7 @@ const Sidebar = () => {
   };
 
   useEffect(() => {
-    if (desktopMode === false && prevPathname !== pathname) {
+    if (!desktopMode && prevPathname !== pathname) {
       handleMobileSidebarClose();
     }
   }, [desktopMode, handleMobileSidebarClose, pathname, prevPathname]);

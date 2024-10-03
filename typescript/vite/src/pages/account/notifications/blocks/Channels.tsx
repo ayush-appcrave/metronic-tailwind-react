@@ -1,11 +1,12 @@
 import { CardNotification } from '@/partials/cards';
+import { ReactNode } from 'react';
 
 interface IChannelsItem {
   icon: string;
   title: string;
   description: string;
   button?: boolean;
-  actions: React.ReactNode;
+  actions: ReactNode;
 }
 interface IChannelsItems extends Array<IChannelsItem> {}
 

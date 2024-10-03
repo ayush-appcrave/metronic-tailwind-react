@@ -3,14 +3,14 @@ import react from '@vitejs/plugin-react';
 import { defineConfig } from 'vite';
 
 export default defineConfig({
-  plugins: [react()],
-  base: '/metronic/tailwind/react',
-  resolve: {
-    alias: {
-      '@': fileURLToPath(new URL('./src', import.meta.url))
-    }
-  },
-  build: {
-    chunkSizeWarningLimit: 3000
-  }
+	plugins: [react()],
+	base: '/metronic/tailwind/react',
+	resolve: {
+		alias: {
+			'@': fileURLToPath(new URL('./src', import.meta.url)),
+		},
+	},
+	build: {
+		chunkSizeWarningLimit: 3000,
+	},
 });

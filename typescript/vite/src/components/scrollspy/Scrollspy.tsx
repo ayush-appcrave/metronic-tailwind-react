@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 import { throttle } from '@/utils';
 import * as React from 'react';
 import { MutableRefObject, ReactNode, useEffect, useRef, useCallback } from 'react';
@@ -28,7 +29,7 @@ const Scrollspy = ({
   throttleTime = 200
 }: ScrollSpyProps) => {
   const selfRef = useRef<HTMLDivElement | null>(null);
-  const anchorElementsRef = useRef<NodeListOf<Element> | null>(null); // Store anchor elements in useRef to avoid rerenders
+  const anchorElementsRef = useRef<Element[] | null>(null);
   const prevIdTracker = useRef<string | null>(null);
 
   // Check if the element is visible
@@ -147,8 +148,8 @@ const Scrollspy = ({
   useEffect(() => {
     // Query elements and store them in the ref, avoiding unnecessary re-renders
     if (selfRef.current) {
-      anchorElementsRef.current = selfRef.current.querySelectorAll(
-        `[data-${dataAttribute}-anchor]`
+      anchorElementsRef.current = Array.from(
+        selfRef.current.querySelectorAll(`[data-${dataAttribute}-anchor]`)
       );
     }
 
