@@ -25,45 +25,38 @@ const ModalShareProfileUsers = () => {
   ];
 
   return (
-    <div
-      className="scrollable-y-auto"
-      data-scrollable="true"
-      data-scrollable-max-height="auto"
-      data-scrollable-offset="1000px"
-    >
-      <div className="flex flex-col px-5 gap-2.5">
-        {items.map((item, index) => (
-          <div key={index} className="flex items-center flex-wrap gap-2">
-            <div className="flex items-center grow gap-2.5">
-              <img
-                src={toAbsoluteUrl(`/media/avatars/${item.avatar}`)}
-                className="rounded-full size-9 shrink-0"
-                alt={`${item.userName} avatar`}
-              />
-              <div className="flex flex-col">
-                <Link
-                  to="#"
-                  className="text-sm font-semibold text-gray-900 hover:text-primary-active mb-px"
-                >
-                  {item.userName}
-                </Link>
-                <Link
-                  to="#"
-                  className="thover:text-primary-active text-2sm font-medium text-gray-600"
-                >
-                  {item.email}
-                </Link>
-              </div>
+    <div className="flex flex-col px-5 gap-2.5">
+      {items.map((item, index) => (
+        <div key={index} className="flex items-center flex-wrap gap-2">
+          <div className="flex items-center grow gap-2.5">
+            <img
+              src={toAbsoluteUrl(`/media/avatars/${item.avatar}`)}
+              className="rounded-full size-9 shrink-0"
+              alt={`${item.userName} avatar`}
+            />
+            <div className="flex flex-col">
+              <Link
+                to="#"
+                className="text-sm font-semibold text-gray-900 hover:text-primary-active mb-px"
+              >
+                {item.userName}
+              </Link>
+              <Link
+                to="#"
+                className="thover:text-primary-active text-2sm font-medium text-gray-600"
+              >
+                {item.email}
+              </Link>
             </div>
-
-            <select className="select select-sm max-w-24" value={item.role}>
-              <option value="owner">Owner</option>
-              <option value="edit">Editor</option>
-              <option value="viewer">Viewer</option>
-            </select>
           </div>
-        ))}
-      </div>
+
+          <select className="select select-sm max-w-24" value={item.role}>
+            <option value="owner">Owner</option>
+            <option value="edit">Editor</option>
+            <option value="viewer">Viewer</option>
+          </select>
+        </div>
+      ))}
     </div>
   );
 };

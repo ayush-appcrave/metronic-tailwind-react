@@ -1,7 +1,6 @@
-import React, { forwardRef, useEffect, useState } from 'react';
+import React, { forwardRef } from 'react';
 import { Modal, ModalContent, ModalBody, ModalHeader, ModalTitle } from '@/components/modal';
 import { KeenIcon } from '@/components';
-import { useViewport } from '@/hooks';
 import {
   ModalShareProfileViaLink,
   ModalShareProfileViaEmail,
@@ -16,13 +15,7 @@ interface ModalShareProfileProps {
 
 const ModalShareProfile = forwardRef<HTMLDivElement, ModalShareProfileProps>(
   ({ open, onClose }) => {
-    const [, setScrollableHeight] = useState<number>(0);
-    const [viewportHeight] = useViewport();
-    const offset = 300;
-
-    useEffect(() => {
-      setScrollableHeight(viewportHeight - offset);
-    }, [viewportHeight]);
+    const scrollableHeight = 300;
 
     return (
       <Modal open={open} onClose={onClose}>
@@ -36,11 +29,19 @@ const ModalShareProfile = forwardRef<HTMLDivElement, ModalShareProfileProps>(
           </ModalHeader>
           <ModalBody className="grid gap-5 px-0 py-5">
             <ModalShareProfileViaLink />
+
             <div className="border-b border-b-gray-200"></div>
+
             <ModalShareProfileViaEmail />
+
             <div className="border-b border-b-gray-200"></div>
-            <ModalShareProfileUsers />
+
+            <div className="scrollable-y-auto" style={{ maxHeight: `${scrollableHeight}px` }}>
+              <ModalShareProfileUsers />
+            </div>
+
             <div className="border-b border-b-gray-200"></div>
+
             <ModalShareProfileSettings />
           </ModalBody>
         </ModalContent>
