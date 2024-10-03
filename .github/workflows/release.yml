@@ -3,8 +3,7 @@ name: RELEASE DEPLOY
 on:
   push:
     branches: [main]
-    paths: ['.github/**']
-  # pull_request:
+    paths: [".github/**"]
   workflow_dispatch:
 
 jobs:
@@ -14,32 +13,47 @@ jobs:
     strategy:
       matrix:
         node-version: [18.x]
+        demo: [demo1, demo2] # Add matrix for multiple demos
 
     steps:
       - uses: actions/checkout@v2
+
       - name: 1. Install Node.js ${{ matrix.node-version }}
         uses: actions/setup-node@v1
         with:
           node-version: ${{ matrix.node-version }}
 
-      - name: 2. Build Metronic Tailwind React
+      - name: 2. Update vite.config.ts base path
+        run: |
+          sed -i "s|base: '/metronic/tailwind/react'|base: '/metronic/tailwind/react/${{ matrix.demo }}'|" vite.config.ts
+        working-directory: typescript/vite
+
+      - name: 3. Update AppRouting.tsx with correct demo layout
+        run: |
+          # Capitalize the demo name (e.g., demo1 -> Demo1)
+          DEMO_NAME=$(echo "${{ matrix.demo }}" | sed 's/.*/\u&/')
+          # Find and replace the Demo1Layout or similar import
+          sed -i "s|import {.*Layout.*}|import { ${DEMO_NAME}Layout } from '../layouts/${{ matrix.demo }}';|" src/routing/AppRouting.tsx
+          sed -i "s|<.*Layout.*>|<${DEMO_NAME}Layout />|" src/routing/AppRouting.tsx
+        working-directory: typescript/vite/react
+
+      - name: 4. Build Metronic Tailwind React
         run: |
           yarn install
           CI=false yarn build
-          ls
         working-directory: typescript/vite
 
-      - name: 3. Publish Metronic Tailwind React
+      - name: 5. Publish Metronic Tailwind React for ${{ matrix.demo }}
         uses: appleboy/scp-action@master
         with:
           host: ${{ secrets.SSH_PROD_HOST }}
           username: ${{ secrets.SSH_PROD_USER }}
           password: ${{ secrets.SSH_PROD_PSW }}
           port: 22
-          source: './typescript/vite/dist/*'
-          target: '/var/www/keenthemes.com/current/public/metronic/tailwind/react'
+          source: "./typescript/vite/dist/*"
+          target: "/var/www/keenthemes.com/current/public/metronic/tailwind/react/${{ matrix.demo }}"
           strip_components: 3
 
-      - name: 19. Results
+      - name: 6. Results
         run: |
-          echo "https://keenthemes.com/metronic/tailwind/react/"
+          echo "https://keenthemes.com/metronic/tailwind/react/${{ matrix.demo }}/"
