@@ -16,7 +16,7 @@ import {
 } from './blocks';
 import clsx from 'clsx';
 import { useEffect, useRef, useState } from 'react';
-import { Scrollspy } from '@/components/scrollspy/Scrollspy.tsx';
+import { Scrollspy } from '@/components/scrollspy/Scrollspy';
 import { AccountSettingsSidebar } from '@/pages/account/home/settings-sidebar';
 
 const AccountSettingsSidebarContent = () => {

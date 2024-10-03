@@ -1,8 +1,10 @@
+import { ReactNode } from 'react';
+
 interface IApiIntegrationsData {
   integration: string;
   apiKey: string;
   dailyCalls: string;
-  actions: React.ReactNode;
+  actions: ReactNode;
 }
 
 const ApiIntegrationsData: IApiIntegrationsData[] = [

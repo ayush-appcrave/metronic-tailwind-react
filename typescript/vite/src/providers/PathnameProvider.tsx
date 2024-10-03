@@ -1,3 +1,4 @@
+/* eslint-disable react-refresh/only-export-components */
 import React, { createContext, useState, useContext, useEffect, ReactNode } from 'react';
 import { useLocation } from 'react-router-dom';
 
@@ -13,7 +14,7 @@ const PathnameProvider = ({ children }: { children: ReactNode }) => {
   const [prevPathname, setPrevPathname] = useState<string | undefined>(undefined);
 
   useEffect(() => {
-    setPrevPathname((prev) => {
+    setPrevPathname(() => {
       return pathname;
     });
   }, [pathname]);

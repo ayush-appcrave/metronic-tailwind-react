@@ -1,4 +1,3 @@
-import { KeenIcon } from '@/components';
 import React from 'react';
 import { IModalSearchSettingsGroup } from './types';
 import { Link } from 'react-router-dom';
@@ -9,7 +8,7 @@ export interface IModalSearchSettingsProps {
   more?: boolean;
 }
 
-const ModalSearchSettings = ({ items, more = true }: IModalSearchSettingsProps) => {
+const ModalSearchSettings = ({ items }: IModalSearchSettingsProps) => {
   return (
     <div className="menu menu-default p-0 flex-col">
       {items.map((group, groupIndex) => (

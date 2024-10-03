@@ -42,14 +42,11 @@ export default [
         },
     },
     {
-        files: ['**/*.js'],
+        files: ['**/*.tsx', '**/*.ts'],
         languageOptions: {
             ecmaVersion: 2020,
             sourceType: 'module',
             globals: cleanedGlobals,
-        },
-        plugins: {
-            prettier: prettierPlugin,
         },
         rules: {
             ...js.configs.recommended.rules,

@@ -1,12 +1,13 @@
 import { KeenIcon } from '@/components';
 
 import { CommonHexagonBadge } from '@/partials/common';
+import { ReactNode } from 'react';
 
 interface IQuickSettingsItem {
   icon: string;
   title: string;
   description: string;
-  actions: React.ReactNode;
+  actions: ReactNode;
 }
 interface IQuickSettingsItems extends Array<IQuickSettingsItem> {}
 

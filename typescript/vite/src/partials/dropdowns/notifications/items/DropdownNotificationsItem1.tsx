@@ -1,7 +1,7 @@
 import { toAbsoluteUrl } from '@/utils';
 import { Link } from 'react-router-dom';
 import { KeenIcon } from '@/components';
-import { useState } from 'react';
+import { ChangeEvent, useState } from 'react';
 
 interface IDropdownNotificationsItemProps {
   userName: string;
@@ -24,9 +24,9 @@ const DropdownNotificationsItem1 = ({
   specialist,
   text
 }: IDropdownNotificationsItemProps) => {
-  const [inputValue, setInputValue] = useState('');
+  const [, setInputValue] = useState('');
 
-  const handleInputChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+  const handleInputChange = (event: ChangeEvent<HTMLInputElement>) => {
     setInputValue(event.target.value);
   };
 

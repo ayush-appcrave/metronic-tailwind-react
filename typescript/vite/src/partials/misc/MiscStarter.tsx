@@ -1,9 +1,10 @@
 import { Link } from 'react-router-dom';
+import { ReactNode } from 'react';
 
 interface IStarterProps {
-  image: React.ReactNode;
+  image: ReactNode;
   title: string;
-  subTitle: React.ReactNode;
+  subTitle: ReactNode;
   engage: {
     path: string;
     btnColor: string;
@@ -24,7 +25,7 @@ const MiscStarter = ({ image, title, subTitle, engage }: IStarterProps) => {
           </div>
 
           <div className="flex justify-center mb-5">
-            <Link to={`${engage.path}`} className={`btn ${engage.btnColor}`}>
+            <Link to={engage.path} className={`btn ${engage.btnColor}`}>
               {engage.label}
             </Link>
           </div>

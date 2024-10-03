@@ -1,6 +1,6 @@
 import { matchPath } from 'react-router';
 
-import { IMenuItemProps, MenuBreadcrumbsType, MenuConfigType } from '../types';
+import { MenuBreadcrumbsType, MenuConfigType } from '../types';
 
 const useMenuBreadcrumbs = (
   pathname: string,
@@ -8,10 +8,7 @@ const useMenuBreadcrumbs = (
 ): MenuBreadcrumbsType => {
   pathname = pathname.trim();
 
-  const findParents = (
-    items: MenuConfigType | null,
-    parent?: IMenuItemProps
-  ): MenuBreadcrumbsType => {
+  const findParents = (items: MenuConfigType | null): MenuBreadcrumbsType => {
     if (!items) return [];
 
     for (let i = 0; i < items.length; i++) {
@@ -26,7 +23,7 @@ const useMenuBreadcrumbs = (
           }
         ];
       } else if (item.children) {
-        const parents = findParents(item.children as MenuConfigType, item as IMenuItemProps);
+        const parents = findParents(item.children as MenuConfigType);
 
         if (parents.length > 0) {
           return [item, ...parents];

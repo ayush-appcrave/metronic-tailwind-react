@@ -1,9 +1,9 @@
-import { Fragment } from 'react';
+import { Fragment, ReactNode } from 'react';
 
 interface IBackupSettingsItem {
   title: string;
   description: string;
-  control: React.ReactNode;
+  control: ReactNode;
 }
 interface IBackupSettingsItems extends Array<IBackupSettingsItem> {}
 

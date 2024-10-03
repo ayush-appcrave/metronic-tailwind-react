@@ -1,8 +1,8 @@
-import { forwardRef } from 'react';
+import { forwardRef, ReactNode } from 'react';
 
 interface ModalHeaderProps {
   className?: string;
-  children: React.ReactNode;
+  children: ReactNode;
 }
 
 // Forwarding ref to ensure this component can hold a ref

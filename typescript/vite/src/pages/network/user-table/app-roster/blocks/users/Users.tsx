@@ -3,7 +3,7 @@ import { toAbsoluteUrl } from '@/utils';
 import { Link } from 'react-router-dom';
 import { DataGrid, KeenIcon } from '@/components';
 import { ColumnDef } from '@tanstack/react-table';
-import { UsersData, IUsersData } from './'; 
+import { UsersData, IUsersData } from './';
 
 const Users = () => {
   const [users, setUsers] = useState<IUsersData[]>(UsersData); // Initialize state with UsersData
@@ -24,9 +24,9 @@ const Users = () => {
       {
         accessorFn: (row: IUsersData) => row.user,
         id: 'users',
-        header: () => 'Users', 
+        header: () => 'Users',
         enableSorting: true,
-        cell: ({ row }) => {  
+        cell: ({ row }) => {
           return (
             <div className="flex items-center gap-2.5">
               <img
@@ -43,7 +43,7 @@ const Users = () => {
         },
         meta: {
           className: 'min-w-[200px]',
-          cellClassName: 'font-normal text-gray-800',
+          cellClassName: 'font-normal text-gray-800'
         }
       },
       {
@@ -56,20 +56,20 @@ const Users = () => {
         },
         meta: {
           className: 'min-w-[170px]',
-          cellClassName: 'font-normal text-gray-800',
+          cellClassName: 'font-normal text-gray-800'
         }
-      },   
+      },
       {
         accessorFn: (row) => row.branch,
         id: 'branch',
         header: () => 'Branch',
         enableSorting: true,
-        cell: (info) => {                    
+        cell: (info) => {
           return info.row.original.branch;
         },
         meta: {
           className: 'min-w-[170px]',
-          cellClassName: 'text-gray-800 font-normal',
+          cellClassName: 'text-gray-800 font-normal'
         }
       },
       {
@@ -77,42 +77,46 @@ const Users = () => {
         id: 'image',
         header: () => 'Connected Apps',
         enableSorting: true,
-        cell: (info) => {                    
+        cell: (info) => {
           return (
             <div className="flex items-center text-gray-800 font-normal gap-1.5">
-            {Array.isArray(info.row.original.logos) && info.row.original.logos.map((logo, index) => (
-              <img
-                key={index}
-                src={toAbsoluteUrl(`/media/brand-logos/${logo}`)} 
-                className="size-[18px] shrinc-0"
-                alt={``}
-              />
-            ))}
-          </div>
+              {Array.isArray(info.row.original.logos) &&
+                info.row.original.logos.map((logo, index) => (
+                  <img
+                    key={index}
+                    src={toAbsoluteUrl(`/media/brand-logos/${logo}`)}
+                    className="size-[18px] shrinc-0"
+                    alt={``}
+                  />
+                ))}
+            </div>
           );
-        }, 
+        },
         meta: {
-          className: 'min-w-[170px]' 
+          className: 'min-w-[170px]'
         }
-      },    
+      },
       {
         accessorFn: (row) => row.labels,
         id: 'label',
-        header: () => 'Tags', 
+        header: () => 'Tags',
         enableSorting: true,
-        cell: (info) => {                    
+        cell: (info) => {
           return (
             <div className="flex items-center text-gray-800 font-normal gap-1.5">
-              {Array.isArray(info.row.original.labels) && info.row.original.labels.map((label, index) => (
-                <span key={index} className="badge badge-sm">{label}</span> 
-              ))}
+              {Array.isArray(info.row.original.labels) &&
+                info.row.original.labels.map((label, index) => (
+                  <span key={index} className="badge badge-sm">
+                    {label}
+                  </span>
+                ))}
             </div>
           );
-        }, 
+        },
         meta: {
-          className: 'min-w-[180px]' 
+          className: 'min-w-[180px]'
         }
-      },      
+      },
       {
         accessorFn: (row) => row.switch,
         id: 'switch',
@@ -123,36 +127,35 @@ const Users = () => {
           return (
             <div className="flex items-center mb-2">
               <label className="switch switch-sm">
-                <input 
-                  type="checkbox" 
-                  checked={userSwitch}  
+                <input
+                  type="checkbox"
+                  checked={userSwitch}
                   onChange={() => handleToggle(row.index)} // Use row.index for the correct user
                 />
-                <span className="slider round"></span>  
+                <span className="slider round"></span>
               </label>
             </div>
           );
         },
         meta: {
-          className: 'min-w-[140px]' 
+          className: 'min-w-[140px]'
         }
       },
       {
         id: 'edit',
         header: () => '',
         enableSorting: false,
-        cell: () => {                    
+        cell: () => {
           return (
             <button className="btn btn-sm btn-icon btn-clear btn-light">
-              <KeenIcon icon="dots-vertical" /> 
+              <KeenIcon icon="dots-vertical" />
             </button>
           );
         },
         meta: {
           className: 'w-[70px]'
         }
-      },      
-        
+      }
     ],
     []
   );
@@ -164,7 +167,7 @@ const Users = () => {
       <div className="card-header flex-wrap gap-2.5">
         <h3 className="card-title">Showing 10 of 49,053 users</h3>
 
-				<div className="flex items-center flex-wrap gap-2.5">
+        <div className="flex items-center flex-wrap gap-2.5">
           <div className="flex">
             <label className="input input-sm">
               <KeenIcon icon="magnifier" />
@@ -191,14 +194,14 @@ const Users = () => {
       </div>
 
       <div className="card-body">
-        <DataGrid 
-          columns={columns} 
-          data={data} 
-          rowSelect={true} 
+        <DataGrid
+          columns={columns}
+          data={data}
+          rowSelect={true}
           paginationSize={10}
-          initialSorting={[{ id: 'team', desc: false }]} 
-          saveState={true} 
-          saveStateId='Users-grid'
+          initialSorting={[{ id: 'team', desc: false }]}
+          saveState={true}
+          saveStateId="Users-grid"
         />
       </div>
     </div>

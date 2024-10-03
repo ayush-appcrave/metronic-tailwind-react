@@ -1,12 +1,9 @@
-import { KeenIcon } from '@/components';
-import { toAbsoluteUrl } from '@/utils';
 import React from 'react';
 import {
   IModalSearchIntegrationsItem,
   IModalSearchSettingsItem,
   IModalSearchUsersItem
 } from './types';
-import { ModalSearchSettings } from './ModalSearchSettings';
 import { ModalSearchIntegrations } from './ModalSearchIntegrations';
 import { ModalSearchUsers } from './ModalSearchUsers';
 import { ModalSearchSettingsItems } from './ModalSearchSettingsItems';

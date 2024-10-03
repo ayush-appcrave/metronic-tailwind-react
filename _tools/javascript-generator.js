@@ -8,23 +8,24 @@ const babel = require('@babel/core');
 
 const viteTypescriptSourcePath = `../typescript/vite`;
 const outputPath = `../javascript/vite`;
+const templateFile = `./javascript`;
 const outputSourcePath = `../javascript/vite/src`;
 
 const filesToCopy = [
   "src/auth",
   "src/components",
-  "src/css",
   "src/config",
+  "src/css",
+  "src/errors",
   "src/hooks",
   "src/i18n",
   "src/layouts",
-  "src/modules",
   "src/pages",
-  "src/providers",
+  "src/partials",
   "src/plugins",
+  "src/providers",
   "src/routing",
   "src/utils",
-  "src/partials",
   "src/App.tsx",
   "src/main.tsx",
   "src/index.css",
@@ -95,13 +96,14 @@ const generateJsVersion = async () => {
     console.log(">> Deleting folder <<");
     try {
       await removeAsync(outputPath);
+      await removeAsync(templateFile);
       console.log('>> Folder removed successfully. <<');
     } catch (error) {
       console.error(`>> Error removing folder: ${error} <<`);
     }
 
     exec(`npm create vite@latest javascript -- --template react`,
-      async (err, output) => {
+      async (err) => {
         if (err) {
           console.error(`>> Could not execute command: ${err} <<`);
           return;

@@ -1,7 +1,6 @@
 import { KeenIcon } from '@/components';
 import React from 'react';
 import { IModalSearchSettingsItem } from './types';
-import { Link } from 'react-router-dom';
 
 export interface IModalSearchSettingsItemsProps {
   items: IModalSearchSettingsItem[];

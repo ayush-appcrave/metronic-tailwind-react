@@ -1,7 +1,9 @@
+import { ReactNode } from 'react';
+
 interface IManageDataItem {
   title: string;
   description: string;
-  control: React.ReactNode;
+  control: ReactNode;
 }
 interface IManageDataItems extends Array<IManageDataItem> {}
 

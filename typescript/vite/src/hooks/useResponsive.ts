@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/rules-of-hooks */
 import tailwindConfig from 'tailwindcss/defaultConfig';
 
 import { ResponsiveBreakpointType, ResponsiveQueryType } from './types';

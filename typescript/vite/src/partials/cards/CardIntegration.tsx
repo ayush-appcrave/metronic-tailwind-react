@@ -2,13 +2,14 @@ import { Link } from 'react-router-dom';
 
 import { KeenIcon } from '@/components';
 import { toAbsoluteUrl } from '@/utils/Assets';
+import { ReactNode } from 'react';
 
 interface IIntegrationProps {
   logo: string;
   path: string;
   name: string;
   description: string;
-  actions: React.ReactNode;
+  actions: ReactNode;
 }
 
 const CardIntegration = ({ logo, path, name, description, actions }: IIntegrationProps) => {

@@ -5,7 +5,9 @@ import type { IImageInputFile } from '@/components/image-input';
 import { useState } from 'react';
 
 const CrudAvatarUpload = () => {
-  const [avatar, setAvatar] = useState<IImageInputFile[]>([]);
+  const [avatar, setAvatar] = useState<IImageInputFile[]>([
+    { dataURL: toAbsoluteUrl(`/media/avatars/300-2.png`) }
+  ]);
 
   return (
     <ImageInput value={avatar} onChange={(selectedAvatar) => setAvatar(selectedAvatar)}>
@@ -28,14 +30,7 @@ const CrudAvatarUpload = () => {
             className="image-input-placeholder rounded-full border-2 border-success image-input-empty:border-gray-300"
             style={{ backgroundImage: `url(${toAbsoluteUrl(`/media/avatars/blank.png`)})` }}
           >
-            {avatar.length < 1 ? (
-              <div
-                className="image-input-preview rounded-full"
-                style={{ backgroundImage: `url(${toAbsoluteUrl(`/media/avatars/300-2.png`)})` }}
-              ></div>
-            ) : (
-              <img src={avatar[0].dataURL} alt="selected-avatar" />
-            )}
+            {avatar.length > 0 && <img src={avatar[0].dataURL} alt="avatar" />}
 
             <div className="flex items-center justify-center cursor-pointer h-5 left-0 right-0 bottom-0 bg-dark-clarity absolute">
               <svg

@@ -1,6 +1,6 @@
 import { useMemo } from 'react';
-import { DataGrid } from '@/components'; 
-import { toAbsoluteUrl } from '@/utils'; 
+import { DataGrid } from '@/components';
+import { toAbsoluteUrl } from '@/utils';
 import { UsersData } from './UsersData';
 import { KeenIcon } from '@/components';
 
@@ -33,7 +33,7 @@ const Users = () => {
       {
         accessorFn: (row: IUsersData) => row.user,
         id: 'user',
-        header: () => <span className="text-gray-700 font-normal">Subscriber</span>, 
+        header: () => <span className="text-gray-700 font-normal">Subscriber</span>,
         enableSorting: true,
         cell: (info: any) => (
           <div className="flex items-center gap-2.5">
@@ -53,8 +53,8 @@ const Users = () => {
           </div>
         ),
         meta: {
-          className: 'min-w-[300px]',
-        },
+          className: 'min-w-[300px]'
+        }
       },
       {
         accessorFn: (row: IUsersData) => row.labels,
@@ -71,8 +71,8 @@ const Users = () => {
           </div>
         ),
         meta: {
-          className: 'min-w-[200px]',
-        },
+          className: 'min-w-[200px]'
+        }
       },
       {
         accessorFn: (row: IUsersData) => row.license,
@@ -81,13 +81,15 @@ const Users = () => {
         enableSorting: true,
         cell: (info: any) => (
           <div className="flex flex-col">
-            <span className="text-sm text-gray-800 font-medium">{info.row.original.license.type}</span>
+            <span className="text-sm text-gray-800 font-medium">
+              {info.row.original.license.type}
+            </span>
             <span className="text-xs text-gray-600">{info.row.original.license.left}</span>
           </div>
         ),
         meta: {
-          className: 'w-[175px]',
-        },
+          className: 'w-[175px]'
+        }
       },
       {
         accessorFn: (row: IUsersData) => row.payment,
@@ -97,8 +99,8 @@ const Users = () => {
         cell: (info: any) => info.row.original.payment,
         meta: {
           className: 'w-[175px]',
-          cellClassName: 'text-gray-800 font-medium',
-        },
+          cellClassName: 'text-gray-800 font-medium'
+        }
       },
       {
         accessorFn: (row: IUsersData) => row.enforce,
@@ -107,8 +109,8 @@ const Users = () => {
         enableSorting: true,
         cell: (info: any) => <EnforceSwitch enforce={info.row.original.enforce} />,
         meta: {
-          className: 'w-[137px]',
-        },
+          className: 'w-[137px]'
+        }
       },
       {
         id: 'actions',
@@ -117,8 +119,8 @@ const Users = () => {
         cell: () => <button className="btn btn-link">Download</button>,
         meta: {
           className: 'w-28'
-        },
-      },
+        }
+      }
     ],
     []
   );

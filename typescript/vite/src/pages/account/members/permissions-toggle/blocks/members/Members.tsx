@@ -93,7 +93,7 @@ const Members = () => {
         id: 'click',
         header: () => '',
         enableSorting: false,
-        cell: ({}) => (
+        cell: () => (
           <Menu className="items-stretch">
             <MenuItem
               toggle="dropdown"

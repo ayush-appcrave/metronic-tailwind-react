@@ -7,7 +7,7 @@ export interface IScrollspyMenuItem {
 export interface IScrollspyMenuItems extends Array<IScrollspyMenuItem> {}
 
 export interface IScrollspyMenuProps {
-  items: IScrollspyMenuItem[]
+  items: IScrollspyMenuItem[];
 }
 
 const ScrollspyMenu = ({ items }: IScrollspyMenuProps) => {

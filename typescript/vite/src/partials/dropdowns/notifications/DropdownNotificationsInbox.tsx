@@ -1,7 +1,5 @@
-import { ChangeEvent, useEffect, useLayoutEffect, useRef, useState } from 'react';
-import { getHeight, toAbsoluteUrl } from '@/utils';
-import { Link } from 'react-router-dom';
-import { KeenIcon } from '@/components';
+import { useEffect, useRef, useState } from 'react';
+import { getHeight } from '@/utils';
 import { useViewport } from '@/hooks';
 import {
   DropdownNotificationsItem10,

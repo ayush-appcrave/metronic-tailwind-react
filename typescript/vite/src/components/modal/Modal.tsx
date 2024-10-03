@@ -1,6 +1,6 @@
 import { forwardRef } from 'react';
 import { Modal as MuiModal, ModalProps as BaseModalProps } from '@mui/base/Modal';
-import { ModalBackdrop } from './ModalBackdrop';
+import { ModalBackdrop } from '@/components';
 import clsx from 'clsx';
 
 interface ModalProps extends BaseModalProps {
