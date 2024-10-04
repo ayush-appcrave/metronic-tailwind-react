@@ -12,25 +12,30 @@ import {
 import { PageNavbar } from '@/pages/account';
 
 import { AccountImportMembersContent } from '.';
+import { useLayout } from '@/providers';
 
 const AccountImportMembersPage = () => {
+  const { currentLayout } = useLayout();
+
   return (
     <Fragment>
       <PageNavbar />
 
-      <Container>
-        <Toolbar>
-          <ToolbarHeading>
-            <ToolbarPageTitle />
-            <ToolbarDescription>Overview of all team members and roles.</ToolbarDescription>
-          </ToolbarHeading>
-          <ToolbarActions>
-            <Link to="#" className="btn btn-sm btn-light">
-              Go to Teams
-            </Link>
-          </ToolbarActions>
-        </Toolbar>
-      </Container>
+      {currentLayout?.name === 'demo1-layout' && (
+        <Container>
+          <Toolbar>
+            <ToolbarHeading>
+              <ToolbarPageTitle />
+              <ToolbarDescription>Overview of all team members and roles.</ToolbarDescription>
+            </ToolbarHeading>
+            <ToolbarActions>
+              <Link to="#" className="btn btn-sm btn-light">
+                Go to Teams
+              </Link>
+            </ToolbarActions>
+          </Toolbar>
+        </Container>
+      )}
 
       <Container>
         <AccountImportMembersContent />

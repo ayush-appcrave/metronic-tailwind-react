@@ -11,25 +11,30 @@ import {
 import { PageNavbar } from '@/pages/account';
 
 import { AccountBasicContent } from '.';
+import { useLayout } from '@/providers';
 
 const AccountBasicPage = () => {
+  const { currentLayout } = useLayout();
+
   return (
     <Fragment>
       <PageNavbar />
 
-      <Container>
-        <Toolbar>
-          <ToolbarHeading>
-            <ToolbarPageTitle />
-            <ToolbarDescription>Central Hub for Personal Customization</ToolbarDescription>
-          </ToolbarHeading>
-          <ToolbarActions>
-            <a href="#" className="btn btn-sm btn-light">
-              Order History
-            </a>
-          </ToolbarActions>
-        </Toolbar>
-      </Container>
+      {currentLayout?.name === 'demo1-layout' && (
+        <Container>
+          <Toolbar>
+            <ToolbarHeading>
+              <ToolbarPageTitle />
+              <ToolbarDescription>Central Hub for Personal Customization</ToolbarDescription>
+            </ToolbarHeading>
+            <ToolbarActions>
+              <a href="#" className="btn btn-sm btn-light">
+                Order History
+              </a>
+            </ToolbarActions>
+          </Toolbar>
+        </Container>
+      )}
 
       <Container>
         <AccountBasicContent />

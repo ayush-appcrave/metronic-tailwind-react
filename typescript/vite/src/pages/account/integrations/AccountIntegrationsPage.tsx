@@ -11,25 +11,30 @@ import {
 import { PageNavbar } from '@/pages/account';
 
 import { AccountIntegrationsContent } from '.';
+import { useLayout } from '@/providers';
 
 const AccountIntegrationsPage = () => {
+  const { currentLayout } = useLayout();
+
   return (
     <Fragment>
       <PageNavbar />
 
-      <Container>
-        <Toolbar>
-          <ToolbarHeading>
-            <ToolbarPageTitle />
-            <ToolbarDescription>Enhance Workflows with Advanced Integrations.</ToolbarDescription>
-          </ToolbarHeading>
-          <ToolbarActions>
-            <a href="#" className="btn btn-sm btn-light">
-              Add New Integration
-            </a>
-          </ToolbarActions>
-        </Toolbar>
-      </Container>
+      {currentLayout?.name === 'demo1-layout' && (
+        <Container>
+          <Toolbar>
+            <ToolbarHeading>
+              <ToolbarPageTitle />
+              <ToolbarDescription>Enhance Workflows with Advanced Integrations.</ToolbarDescription>
+            </ToolbarHeading>
+            <ToolbarActions>
+              <a href="#" className="btn btn-sm btn-light">
+                Add New Integration
+              </a>
+            </ToolbarActions>
+          </Toolbar>
+        </Container>
+      )}
 
       <Container>
         <AccountIntegrationsContent />

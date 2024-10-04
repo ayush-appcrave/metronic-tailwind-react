@@ -11,25 +11,30 @@ import {
 import { PageNavbar } from '@/pages/account';
 
 import { AccountEnterpriseContent } from '.';
+import { useLayout } from '@/providers';
 
 const AccountEnterprisePage = () => {
+  const { currentLayout } = useLayout();
+
   return (
     <Fragment>
       <PageNavbar />
 
-      <Container>
-        <Toolbar>
-          <ToolbarHeading>
-            <ToolbarPageTitle />
-            <ToolbarDescription>Advanced Billing Solutions for Large Businesses</ToolbarDescription>
-          </ToolbarHeading>
-          <ToolbarActions>
-            <a href="#" className="btn btn-sm btn-light">
-              Order History
-            </a>
-          </ToolbarActions>
-        </Toolbar>
-      </Container>
+      {currentLayout?.name === 'demo1-layout' && (
+        <Container>
+          <Toolbar>
+            <ToolbarHeading>
+              <ToolbarPageTitle />
+              <ToolbarDescription>Advanced Billing Solutions for Large Businesses</ToolbarDescription>
+            </ToolbarHeading>
+            <ToolbarActions>
+              <a href="#" className="btn btn-sm btn-light">
+                Order History
+              </a>
+            </ToolbarActions>
+          </Toolbar>
+        </Container>
+      )}
 
       <Container>
         <AccountEnterpriseContent />
