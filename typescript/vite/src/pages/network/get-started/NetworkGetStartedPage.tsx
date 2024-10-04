@@ -6,8 +6,13 @@ import { NetworkGetStartedContent } from '.';
 import { useLayout } from '@/providers';
 
 const NetworkGetStartedPage = () => {
+<<<<<<< HEAD
   const { currentLayout } = useLayout();
 
+=======
+  const { currentLayout } = useLayout ();
+  
+>>>>>>> 0a11d8bdb6c7854fb5e1a8b3e7d54e4095c905fd
   return (
     <Fragment>
       {currentLayout?.name === 'demo1-layout' && (
