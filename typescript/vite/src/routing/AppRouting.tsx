@@ -75,7 +75,6 @@ import {
 
 import { AuthPage, useAuthContext } from '../auth';
 import { RequireAuth } from '../auth/RequireAuth';
-import { Demo1Layout } from '../layouts/demo1';
 import { Demo2Layout } from '../layouts/demo2';
 import { ErrorsRouting } from '../errors';
 import { useLoaders } from '../providers/LoadersProvider';
