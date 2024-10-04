@@ -1,9 +1,10 @@
 import { Container } from '@/components/container';
+import { Demo2Content } from '.';
 
-const Demo2Page = () => {  
+const Demo2Page = () => {
   return (
     <Container>
-      Hello demo2
+      <Demo2Content />
     </Container>
   );
 };
