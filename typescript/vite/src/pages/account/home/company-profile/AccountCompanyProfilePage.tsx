@@ -14,7 +14,6 @@ import { useLayout } from '@/providers';
 
 const AccountCompanyProfilePage = () => {
   const { currentLayout } = useLayout();
-  console.log('currentLayout:', currentLayout);
 
   return (
     <Fragment>
