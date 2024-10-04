@@ -66,10 +66,14 @@ const MenuItemComponent = forwardRef<IMenuItemRef | null, IMenuItemProps>(
       highlight,
       multipleExpand,
       setOpenAccordion,
-      isOpenAccordion
+      isOpenAccordion,
+      dropdownTimeout
     } = useMenu();
 
     const menuContainerRef = useRef<HTMLDivElement | null>(null);
+
+    // eslint-disable-next-line no-undef
+    const hideTimeoutRef = useRef<NodeJS.Timeout | null>(null);
 
     const { pathname, prevPathname } = usePathname();
 
@@ -124,6 +128,12 @@ const MenuItemComponent = forwardRef<IMenuItemRef | null, IMenuItemProps>(
     const handleMouseEnter = (e: MouseEvent<HTMLElement>) => {
       if (isMenuDisabled) return;
 
+      // Cancel any previously set hide timeout
+      if (hideTimeoutRef.current) {
+        clearTimeout(hideTimeoutRef.current);
+        hideTimeoutRef.current = null;
+      }
+
       if (propTrigger === 'hover') {
         setShow(true);
 
@@ -137,11 +147,16 @@ const MenuItemComponent = forwardRef<IMenuItemRef | null, IMenuItemProps>(
       if (isMenuDisabled) return;
 
       if (propTrigger === 'hover') {
-        setShow(false);
+        // Set a timeout to hide the dropdown after `dropdownTimeout` delay
+        hideTimeoutRef.current = setTimeout(() => {
+          setShow(false);
 
-        if (containerProps.onMouseLeave) {
-          containerProps.onMouseLeave(e);
-        }
+          if (containerProps.onMouseLeave) {
+            containerProps.onMouseLeave(e);
+          }
+
+          hideTimeoutRef.current = null; // Reset the timeout reference
+        }, dropdownTimeout);
       }
     };
 
@@ -368,6 +383,15 @@ const MenuItemComponent = forwardRef<IMenuItemRef | null, IMenuItemProps>(
         handleHide();
       }
     }, [pathname]);
+
+    // Cleanup: ensure that any timeouts are cleared when the component unmounts
+    useEffect(() => {
+      return () => {
+        if (hideTimeoutRef.current) {
+          clearTimeout(hideTimeoutRef.current);
+        }
+      };
+    }, []);
 
     return (
       <div

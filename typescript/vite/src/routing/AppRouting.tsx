@@ -1,6 +1,6 @@
 import { ReactElement, useEffect, useState } from 'react';
 import { Navigate, Route, Routes, useLocation } from 'react-router';
-import { LightSidebarPage, DarkSidebarPage, ImageInputExamples } from '@/pages/dashboards';
+import { DefaultPage, DarkSidebarPage } from '@/pages/dashboards';
 import {
   ProfileActivityPage,
   ProfileBloggerPage,
@@ -76,10 +76,12 @@ import {
 import { AuthPage, useAuthContext } from '../auth';
 import { RequireAuth } from '../auth/RequireAuth';
 import { Demo1Layout } from '../layouts/demo1';
+import { Demo2Layout } from '../layouts/demo2';
 import { ErrorsRouting } from '../errors';
 import { useLoaders } from '../providers/LoadersProvider';
 import { AuthenticationWelcomeMessagePage } from '@/pages/authentication/welcome-message/AuthenticationWelcomeMessagePage';
 import { AuthenticationAccountDeactivatedPage } from '@/pages/authentication/account-deactivated/AuthenticationAccountDeactivatedPage';
+import { AuthenticationGetStartedPage } from '@/pages/authentication/get-started/AuthenticationGetStartedPage';
 
 const AppRouting = (): ReactElement => {
   const { setProgressBarLoader } = useLoaders();
@@ -119,10 +121,9 @@ const AppRouting = (): ReactElement => {
   return (
     <Routes>
       <Route element={<RequireAuth />}>
-        <Route element={<Demo1Layout />}>
-          <Route path="/" element={<LightSidebarPage />} />
+        <Route element={<Demo2Layout />}>
+          <Route path="/" element={<DefaultPage />} />
           <Route path="/dark-sidebar" element={<DarkSidebarPage />} />
-          <Route path="/image-input-examples" element={<ImageInputExamples />} />
           <Route path="/public-profile/profiles/default" element={<ProfileDefaultPage />} />
           <Route path="/public-profile/profiles/creator" element={<ProfileCreatorPage />} />
           <Route path="/public-profile/profiles/company" element={<ProfileCompanyPage />} />
@@ -217,6 +218,7 @@ const AppRouting = (): ReactElement => {
             path="/auth/account-deactivated"
             element={<AuthenticationAccountDeactivatedPage />}
           />
+          <Route path="/authentication/get-started" element={<AuthenticationGetStartedPage />} />
         </Route>
       </Route>
       <Route path="error/*" element={<ErrorsRouting />} />

@@ -21,7 +21,9 @@ setupAxios(axios);
 
 const root = ReactDOM.createRoot(document.getElementById('root') as HTMLElement);
 root.render(
-  <ProvidersWrapper>
-    <App />
-  </ProvidersWrapper>
+  <React.StrictMode>
+    <ProvidersWrapper>
+      <App />
+    </ProvidersWrapper>
+  </React.StrictMode>
 );

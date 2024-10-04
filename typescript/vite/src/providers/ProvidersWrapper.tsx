@@ -10,6 +10,7 @@ import {
   SnackbarProvider,
   TranslationProvider
 } from '@/providers';
+import { HelmetProvider } from 'react-helmet-async';
 
 const queryClient = new QueryClient();
 
@@ -20,11 +21,13 @@ const ProvidersWrapper = ({ children }: PropsWithChildren) => {
         <AuthProvider>
           <SettingsProvider>
             <TranslationProvider>
-              <LayoutProvider>
-                <LoadersProvider>
-                  <MenusProvider>{children}</MenusProvider>
-                </LoadersProvider>
-              </LayoutProvider>
+              <HelmetProvider>
+                <LayoutProvider>
+                  <LoadersProvider>
+                    <MenusProvider>{children}</MenusProvider>
+                  </LoadersProvider>
+                </LayoutProvider>
+              </HelmetProvider>
             </TranslationProvider>
           </SettingsProvider>
         </AuthProvider>

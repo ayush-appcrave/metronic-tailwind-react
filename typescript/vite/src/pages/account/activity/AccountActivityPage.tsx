@@ -9,7 +9,6 @@ import {
   ToolbarPageTitle
 } from '@/partials/toolbar';
 import { PageNavbar } from '@/pages/account';
-
 import { AccountActivityContent } from '.';
 
 const AccountActivityPage = () => {

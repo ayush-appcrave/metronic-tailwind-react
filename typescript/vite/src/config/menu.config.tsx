@@ -1,29 +1,6 @@
-import { type MenuConfigType } from '../components/menu';
-import { type PathsType } from '.';
+import { type MenuConfigType } from '@/components/menu';
 
-// Auth paths
-const PATHS_AUTH: PathsType = {
-  login: '/auth/login',
-  register: '/auth/register',
-  verify: '/auth/verify',
-  resetPassword: '/auth/reset-password',
-  newPassword: '/auth/new-password'
-};
-
-// General paths
-const PATHS_GENERAL: PathsType = {
-  comingSoon: '/coming-disabled',
-  maintenance: '/maintenance',
-  pricing: '/pricing',
-  payment: '/payment',
-  about: '/about-us',
-  contact: '/contact-us',
-  faqs: '/faqs',
-  page404: '/404',
-  page500: '/500'
-};
-
-const MENU_SIDEBAR: MenuConfigType = [
+export const MENU_SIDEBAR: MenuConfigType = [
   {
     title: 'Dashboards',
     icon: 'element-11',
@@ -160,8 +137,12 @@ const MENU_SIDEBAR: MenuConfigType = [
     icon: 'setting-2',
     children: [
       {
-        title: 'Account Home',
+        title: 'Account',
         children: [
+          {
+            title: 'Dashboard',
+            path: '/'
+          },
           {
             title: 'Get Started',
             path: '/account/home/get-started'
@@ -542,7 +523,7 @@ const MENU_SIDEBAR: MenuConfigType = [
   }
 ];
 
-const MENU_MEGA: MenuConfigType = [
+export const MENU_MEGA: MenuConfigType = [
   {
     title: 'Home',
     path: '/'
@@ -975,4 +956,29 @@ const MENU_MEGA: MenuConfigType = [
   }
 ];
 
-export { MENU_SIDEBAR, MENU_MEGA, PATHS_AUTH, PATHS_GENERAL };
+export const MENU_ROOT: MenuConfigType = [
+  {
+    title: 'Public Profile',
+    icon: 'profile-circle',
+    rootPath: '/public-profile/',
+    path: 'public-profile/profiles/default'
+  },
+  {
+    title: 'Account',
+    icon: 'setting-2',
+    rootPath: '/account/',
+    path: '/'
+  },
+  {
+    title: 'Network',
+    icon: 'users',
+    rootPath: '/network/',
+    path: 'network/get-started'
+  },
+  {
+    title: 'Authentication',
+    icon: 'security-user',
+    rootPath: '/authentication/',
+    path: 'authentication/get-started'
+  }
+];

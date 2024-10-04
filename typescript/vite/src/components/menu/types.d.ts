@@ -25,6 +25,7 @@ export interface IMenuProps {
   children?: ReactNode;
   disabled?: boolean;
   highlight?: boolean;
+  dropdownTimeout?: number;
   multipleExpand?: boolean;
 }
 
@@ -33,6 +34,7 @@ export interface IMenuContextProps {
   children?: ReactNode;
   highlight?: boolean;
   disabled?: boolean;
+  dropdownTimeout?: number;
   multipleExpand?: boolean;
   setOpenAccordion: (id: number, level: number) => void;
   isOpenAccordion: (id: number, level: number) => boolean;
@@ -157,6 +159,7 @@ export interface IMenuItemConfig {
   separator?: boolean;
   tooltip?: string;
   path?: string;
+  rootPath?: string;
   bullet?: boolean;
   collapse?: boolean;
   collapseTitle?: string;

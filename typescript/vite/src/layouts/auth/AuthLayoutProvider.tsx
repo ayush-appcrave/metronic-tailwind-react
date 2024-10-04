@@ -1,6 +1,6 @@
 import { createContext, type PropsWithChildren, useContext, useEffect, useState } from 'react';
 import { deepMerge } from '@/utils';
-import { ILayoutConfig, useLayout } from '@/providers/LayoutProvider';
+import { ILayoutConfig, useLayout } from '@/providers';
 import { authLayoutConfig } from './AuthLayoutConfig';
 
 interface AuthLayoutProviderProps {
@@ -26,7 +26,7 @@ const AuthLayoutProvider = ({ children }: PropsWithChildren) => {
 
   useEffect(() => {
     setCurrentLayout(layout);
-  }, [layout, setCurrentLayout]);
+  });
 
   return (
     <LayoutContext.Provider

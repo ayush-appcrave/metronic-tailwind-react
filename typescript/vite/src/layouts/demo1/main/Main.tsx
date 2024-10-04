@@ -1,5 +1,5 @@
 import { Fragment, useEffect } from 'react';
-import { Helmet } from 'react-helmet';
+import { Helmet } from 'react-helmet-async';
 import { useLocation } from 'react-router';
 import { useMenuCurrentItem } from '@/components/menu';
 import { Content, Footer, Header, Sidebar, useDemo1Layout } from '../';

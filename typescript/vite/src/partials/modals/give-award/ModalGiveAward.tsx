@@ -13,7 +13,7 @@ interface ModalGiveAwardProps {
   onClose: () => void;
 }
 
-const ModalGiveAward = forwardRef<HTMLDivElement, ModalGiveAwardProps>(({ open, onClose }) => {
+const ModalGiveAward = ({ open, onClose }: ModalGiveAwardProps) => {
   const scrollableHeight = 300;
 
   return (
@@ -43,6 +43,6 @@ const ModalGiveAward = forwardRef<HTMLDivElement, ModalGiveAwardProps>(({ open, 
       </ModalContent>
     </Modal>
   );
-});
+};
 
 export { ModalGiveAward };

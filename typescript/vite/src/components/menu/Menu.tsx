@@ -15,6 +15,7 @@ const initalProps: IMenuContextProps = {
   disabled: false,
   highlight: false,
   multipleExpand: false,
+  dropdownTimeout: 0,
   // Default function for opening an accordion (to be overridden)
   setOpenAccordion: (level: number, id: number) => {
     console.log(`Accordion at level ${level}, with ID ${id} is now open`);
@@ -37,6 +38,7 @@ const MenuComponent = ({
   children,
   disabled = false,
   highlight = false,
+  dropdownTimeout = 150,
   multipleExpand = false
 }: IMenuProps) => {
   const [openAccordions, setOpenAccordions] = useState<{ [key: number]: number | null }>({});
@@ -72,7 +74,14 @@ const MenuComponent = ({
 
   return (
     <MenuContext.Provider
-      value={{ disabled, highlight, multipleExpand, setOpenAccordion, isOpenAccordion }}
+      value={{
+        disabled,
+        highlight,
+        dropdownTimeout,
+        multipleExpand,
+        setOpenAccordion,
+        isOpenAccordion
+      }}
     >
       <div className={clsx('menu', className && className)}>{modifiedChildren}</div>
     </MenuContext.Provider>

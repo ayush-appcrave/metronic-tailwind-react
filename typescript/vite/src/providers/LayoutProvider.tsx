@@ -12,7 +12,7 @@ export interface ILayoutProvider {
   layout: ILayoutConfig;
 }
 
-export interface ILayoutsProps {
+export interface ILayoutProps {
   getLayout: (name: string) => Partial<ILayoutConfig> | undefined;
   hasLayout: (name: string) => boolean;
   updateLayout: (name: string, config: Partial<ILayoutConfig>) => void;
@@ -28,7 +28,7 @@ const getLayouts = (): Map<string, Partial<ILayoutConfig>> => {
   return new Map(Object.entries(storedLayouts));
 };
 
-const initialProps: ILayoutsProps = {
+const initialProps: ILayoutProps = {
   getLayout: (name: string): Partial<ILayoutConfig> | undefined => {
     return {};
   },
@@ -38,19 +38,17 @@ const initialProps: ILayoutsProps = {
   setCurrentLayout: (layoutProvider: any) => {}
 };
 
-const LayoutContext = createContext<ILayoutsProps>(initialProps);
+const LayoutContext = createContext<ILayoutProps>(initialProps);
 const useLayout = () => useContext(LayoutContext);
 
 const LayoutProvider = ({ children }: PropsWithChildren) => {
   const getLayout = (name: string): Partial<ILayoutConfig> | undefined => {
     const storedLayouts = getLayouts();
-
     return storedLayouts.get(name);
   };
 
   const hasLayout = (name: string): boolean => {
     const storedLayouts = getLayouts();
-
     return storedLayouts && storedLayouts.has(name);
   };
 

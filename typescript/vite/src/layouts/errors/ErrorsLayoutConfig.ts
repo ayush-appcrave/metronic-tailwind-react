@@ -1,4 +1,4 @@
-import { type ILayoutConfig } from '@/providers/LayoutProvider';
+import { type ILayoutConfig } from '@/providers';
 
 const errorsLayoutConfig: ILayoutConfig = {
   name: 'errors-layout',
