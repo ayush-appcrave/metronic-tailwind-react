@@ -1,4 +1,4 @@
-import { type ILayoutConfig } from '@/providers'; // Importing the ILayoutConfig type from the providers
+import { type ILayoutConfig } from '@/providers';
 
 // Defining the layout configuration specific to Demo2 layout
 const Demo2LayoutConfig: ILayoutConfig = {
@@ -10,5 +10,4 @@ const Demo2LayoutConfig: ILayoutConfig = {
   }
 };
 
-// Exporting the Demo2LayoutConfig to be used in other parts of the application
 export { Demo2LayoutConfig };
