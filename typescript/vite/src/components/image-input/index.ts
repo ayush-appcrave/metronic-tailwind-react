@@ -1,2 +1,2 @@
-export * from './ImageInput.tsx';
-export * from './utils.ts';
+export * from './ImageInput';
+export * from './utils';
