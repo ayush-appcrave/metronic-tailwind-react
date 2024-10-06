@@ -110,7 +110,10 @@ const Teams = () => {
   const handleRowsSelectChange = (selectedRowIds: TDataGridSelectedRowIds) => {
     enqueueSnackbar(
       selectedRowIds.size > 0 ? `${selectedRowIds.size} rows selected` : `No rows are selected`,
-      { variant: 'info' }
+      { 
+        variant: 'solid', 
+        state: 'dark'
+      }
     );
   };
 
