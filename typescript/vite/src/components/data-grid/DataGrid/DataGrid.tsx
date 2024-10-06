@@ -4,12 +4,15 @@ import {
   getPaginationRowModel,
   getSortedRowModel,
   PaginationState,
+  Table,
   useReactTable
 } from '@tanstack/react-table';
 import { DataGridInner, DataGridProvider } from './';
 import { ReactNode, useEffect, useState } from 'react';
 
 export type TDataGridTableSpacingType = 'xs' | 'sm' | 'lg';
+
+export type TDataGridSelectedRowIds = Set<string>;
 
 export interface TDataGridProps<TData extends object> {
   columns: any[]; // Define columns and data props
@@ -18,6 +21,7 @@ export interface TDataGridProps<TData extends object> {
   saveState?: boolean;
   saveStateId?: string;
   rowSelect?: boolean;
+  onRowsSelectChange?: (prselectedRowIds: TDataGridSelectedRowIds) => void;
   emptyState?: ReactNode;
   cellsBorder?: boolean;
   tableSpacing?: TDataGridTableSpacingType;

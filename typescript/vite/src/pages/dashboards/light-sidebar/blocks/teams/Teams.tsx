@@ -1,12 +1,14 @@
 /* eslint-disable prettier/prettier */
 import React, { useEffect, useMemo, useState } from 'react';
+import { useSnackbar } from 'notistack';
 import { ColumnDef } from '@tanstack/react-table';
 import { Link } from 'react-router-dom';
-import { DataGrid, KeenIcon } from '@/components';
+import { DataGrid, KeenIcon, TDataGridSelectedRowIds } from '@/components';
 import { CommonAvatars, CommonRating } from '@/partials/common'; // Import avatar-related types and components
 import { TeamsData, ITeamData } from './';
 
 const Teams = () => {
+  const { enqueueSnackbar } = useSnackbar();
   const storageFilterId = 'teams-filter';
 
   const columns = useMemo<ColumnDef<ITeamData>[]>(
@@ -104,6 +106,14 @@ const Teams = () => {
     );
   }, [searchTerm, data]);
 
+  // Handler for sorting changes
+  const handleRowsSelectChange = (selectedRowIds: TDataGridSelectedRowIds) => {
+    enqueueSnackbar(
+      selectedRowIds.size > 0 ? `${selectedRowIds.size} rows selected` : `No rows are selected`,
+      { variant: 'info' }
+    );
+  };
+
   return (
     <div className="card card-grid h-full min-w-full">
       <div className="card-header">
@@ -125,6 +135,7 @@ const Teams = () => {
           columns={columns} 
           data={filteredData} 
           rowSelect={true} 
+          onRowsSelectChange={handleRowsSelectChange}
           initialSorting={[{ id: 'team', desc: false }]} 
           saveState={true} 
           saveStateId='teams-grid'

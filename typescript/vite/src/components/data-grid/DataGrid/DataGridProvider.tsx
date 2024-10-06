@@ -2,7 +2,7 @@
 /* eslint-disable react-refresh/only-export-components */
 /* eslint-disable react-hooks/exhaustive-deps */
 import { createContext, useContext, useState, useEffect, ReactNode } from 'react';
-import { TDataGridProps } from './DataGrid';
+import { TDataGridProps, TDataGridSelectedRowIds } from './DataGrid';
 import { Table } from '@tanstack/react-table';
 
 export interface IDataGridContextProps<TData extends object> {
@@ -80,22 +80,29 @@ const DataGridProvider = <TData extends object>({
   // Toggle individual row selection
   const toggleRowSelection = (id: string) => {
     setSelectedRowIds((prevSelected) => {
-      const newSelected = new Set(prevSelected);
+      const newSelected: TDataGridSelectedRowIds = new Set(prevSelected);
       if (newSelected.has(id)) {
         newSelected.delete(id); // Uncheck the row if already selected
       } else {
         newSelected.add(id); // Select the row if not selected
       }
+
+      if (props.onRowsSelectChange) {
+        props.onRowsSelectChange(newSelected);
+      }
+
       return newSelected;
     });
   };
 
   // Toggle all rows selection
   const toggleAllRowsSelection = (checked: boolean) => {
-    if (checked) {
-      setSelectedRowIds(new Set(currentRows)); // Select all rows
-    } else {
-      setSelectedRowIds(new Set()); // Deselect all rows
+    const newSelectedRowIds: TDataGridSelectedRowIds = checked ? new Set(currentRows) : new Set();
+
+    setSelectedRowIds(newSelectedRowIds); // Deselect all rows
+
+    if (props.onRowsSelectChange) {
+      props.onRowsSelectChange(newSelectedRowIds);
     }
   };
 
