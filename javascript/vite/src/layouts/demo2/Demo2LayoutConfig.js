@@ -1,5 +1,3 @@
-// Importing the ILayoutConfig type from the providers
-
 // Defining the layout configuration specific to Demo2 layout
 const Demo2LayoutConfig = {
   name: 'demo2-layout',
@@ -10,6 +8,4 @@ const Demo2LayoutConfig = {
     }
   }
 };
-
-// Exporting the Demo2LayoutConfig to be used in other parts of the application
 export { Demo2LayoutConfig };

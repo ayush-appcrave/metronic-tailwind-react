@@ -1,10 +1,14 @@
 /* eslint-disable prettier/prettier */
 import React, { useEffect, useMemo, useState } from 'react';
+import { useSnackbar } from 'notistack';
 import { Link } from 'react-router-dom';
 import { DataGrid, KeenIcon } from '@/components';
 import { CommonAvatars, CommonRating } from '@/partials/common'; // Import avatar-related types and components
 import { TeamsData } from './';
 const Teams = () => {
+  const {
+    enqueueSnackbar
+  } = useSnackbar();
   const storageFilterId = 'teams-filter';
   const columns = useMemo(() => [{
     accessorFn: row => row.team.name,
@@ -72,6 +76,14 @@ const Teams = () => {
 
     return data.filter(team => team.team.name.toLowerCase().includes(searchTerm.toLowerCase()) || team.team.description.toLowerCase().includes(searchTerm.toLowerCase()));
   }, [searchTerm, data]);
+
+  // Handler for sorting changes
+  const handleRowsSelectChange = selectedRowIds => {
+    enqueueSnackbar(selectedRowIds.size > 0 ? `${selectedRowIds.size} rows selected` : `No rows are selected`, {
+      variant: 'solid',
+      state: 'dark'
+    });
+  };
   return <div className="card card-grid h-full min-w-full">
       <div className="card-header">
         <h3 className="card-title">Teams</h3>
@@ -83,7 +95,7 @@ const Teams = () => {
       </div>
 
       <div className="card-body">
-        <DataGrid cellsBorder={true} columns={columns} data={filteredData} rowSelect={true} initialSorting={[{
+        <DataGrid cellsBorder={true} columns={columns} data={filteredData} rowSelect={true} onRowsSelectChange={handleRowsSelectChange} initialSorting={[{
         id: 'team',
         desc: false
       }]} saveState={true} saveStateId='teams-grid' />

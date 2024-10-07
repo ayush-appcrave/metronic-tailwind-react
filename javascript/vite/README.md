@@ -1,8 +1,38 @@
-# React + Vite
+# Metronic 9 | All-in-One Tailwind based React Template for Modern Web Applications
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## Quick Setup
 
-Currently, two official plugins are available:
+```sh
+npm install
+```
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+### Compile and Hot-Reload for Development
+
+```sh
+npm run dev
+```
+
+### Type-Check, Compile and Minify for Production
+
+```sh
+npm run build
+```
+
+### Lint with [ESLint](https://eslint.org/)
+
+```sh
+npm run lint
+```
+
+## React Documentation
+- Full documentation for the React version is coming soon! In the meantime, explore the source code and reach out to us for technical assistance through our support channels.
+
+## HTML Documentation
+- You can seamlessly use static HTML components in the React version by copying and pasting the HTML code. For reference, visit the. [Metronic HTML Documentation](https://keenthemes.com/metronic/tailwind/docs/components/avatar)
+
+## Get Metronic Pulse
+Metronic Pulse is a Laravel REST API boilerplate built for Metronic React applications.
+[Learn more](https://keenthemes.com/products/metronic-pulse)
+
+## Support
+- For technical help, our dedicated support team is available via the [Support Center](https://devs.keenthemes.com)

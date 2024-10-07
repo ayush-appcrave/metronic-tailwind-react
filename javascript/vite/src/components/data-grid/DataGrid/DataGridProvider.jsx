@@ -65,16 +65,20 @@ const DataGridProvider = ({
       } else {
         newSelected.add(id); // Select the row if not selected
       }
+      if (props.onRowsSelectChange) {
+        props.onRowsSelectChange(newSelected);
+      }
       return newSelected;
     });
   };
 
   // Toggle all rows selection
   const toggleAllRowsSelection = checked => {
-    if (checked) {
-      setSelectedRowIds(new Set(currentRows)); // Select all rows
-    } else {
-      setSelectedRowIds(new Set()); // Deselect all rows
+    const newSelectedRowIds = checked ? new Set(currentRows) : new Set();
+    setSelectedRowIds(newSelectedRowIds); // Deselect all rows
+
+    if (props.onRowsSelectChange) {
+      props.onRowsSelectChange(newSelectedRowIds);
     }
   };
 

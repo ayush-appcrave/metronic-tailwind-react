@@ -6,7 +6,7 @@ import { AccountActivityPage, AccountAllowedIPAddressesPage, AccountApiKeysPage,
 import { NetworkAppRosterPage, NetworkMarketAuthorsPage, NetworkAuthorPage, NetworkGetStartedPage, NetworkMiniCardsPage, NetworkNFTPage, NetworkSocialPage, NetworkUserCardsTeamCrewPage, NetworkSaasUsersPage, NetworkStoreClientsPage, NetworkUserTableTeamCrewPage, NetworkVisitorsPage } from '@/pages/network';
 import { AuthPage, useAuthContext } from '../auth';
 import { RequireAuth } from '../auth/RequireAuth';
-import { Demo2Layout } from '../layouts/demo2';
+import { Demo1Layout } from '../layouts/demo1';
 import { ErrorsRouting } from '../errors';
 import { useLoaders } from '../providers/LoadersProvider';
 import { AuthenticationWelcomeMessagePage } from '@/pages/authentication/welcome-message/AuthenticationWelcomeMessagePage';
@@ -43,11 +43,20 @@ const AppRouting = () => {
   }, [location]);
   useEffect(() => {
     setProgressBarLoader(false);
+
+    // Scroll to page top on route change if URL does not contain a hash
+    if (!CSS.escape(window.location.hash)) {
+      window.scrollTo({
+        top: 0,
+        behavior: 'smooth'
+      });
+    }
+
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [previousLocation]);
   return <Routes>
       <Route element={<RequireAuth />}>
-        <Route element={<Demo2Layout />}>
+        <Route element={<Demo1Layout />}>
           <Route path="/" element={<DefaultPage />} />
           <Route path="/dark-sidebar" element={<DarkSidebarPage />} />
           <Route path="/public-profile/profiles/default" element={<ProfileDefaultPage />} />

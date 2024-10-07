@@ -1,10 +1,10 @@
 import { createContext, useContext, useEffect, useState } from 'react';
-import { MENU_SIDEBAR } from '@/config'; // Import menu configuration for the sidebar
-import { useScrollPosition } from '@/hooks/useScrollPosition'; // Custom hook to get the scroll position
-import { useMenus } from '@/providers'; // Custom hook for managing menus
-import { useLayout } from '@/providers'; // Layout-related hooks and configuration
-import { deepMerge } from '@/utils'; // Utility to deep merge objects (used to merge layout configurations)
-import { Demo2LayoutConfig } from './'; // Layout configuration specific to Demo2
+import { MENU_SIDEBAR } from '@/config';
+import { useScrollPosition } from '@/hooks/useScrollPosition';
+import { useMenus } from '@/providers';
+import { useLayout } from '@/providers';
+import { deepMerge } from '@/utils';
+import { Demo2LayoutConfig } from './';
 
 // Interface defining the properties of the layout provider context
 
@@ -17,7 +17,6 @@ const initalLayoutProps = {
   mobileSidebarOpen: false,
   // Mobile sidebar is closed by default
   setMobileSidebarOpen: open => {
-    // Function to toggle mobile sidebar, initially just logs the state change
     console.log(`${open}`);
   }
 };
