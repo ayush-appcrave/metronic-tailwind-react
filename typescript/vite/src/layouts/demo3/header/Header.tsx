@@ -1,11 +1,11 @@
 import clsx from 'clsx';
 import { Container } from '@/components/container';
 import { HeaderLogo, HeaderTopbar } from '.';
-import { useDemo2Layout } from '..';
+import { useDemo3Layout } from '..';
 import { useEffect } from 'react';
 
 const Header = () => {
-  const { headerSticky } = useDemo2Layout();
+  const { headerSticky } = useDemo3Layout();
 
   useEffect(() => {
     if (headerSticky) {
