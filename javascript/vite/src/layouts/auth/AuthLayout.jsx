@@ -4,11 +4,10 @@ import { toAbsoluteUrl } from '@/utils';
 import useBodyClasses from '@/hooks/useBodyClasses';
 import { Fragment } from 'react';
 const Layout = () => {
-	useBodyClasses('dark:bg-coal-500');
-	return (
-		<Fragment>
-			<style>
-				{`
+  useBodyClasses('dark:bg-coal-500');
+  return <Fragment>
+      <style>
+        {`
           .page-bg {
             background-image: url('${toAbsoluteUrl('/media/images/2600x1200/bg-10.png')}');
           }
@@ -16,16 +15,13 @@ const Layout = () => {
             background-image: url('${toAbsoluteUrl('/media/images/2600x1200/bg-10-dark.png')}');
           }
         `}
-			</style>
-			<div className="flex items-center justify-center grow bg-center bg-no-repeat page-bg">
-				<Outlet />
-			</div>
-		</Fragment>
-	);
+      </style>
+      <div className="flex items-center justify-center grow bg-center bg-no-repeat page-bg">
+        <Outlet />
+      </div>
+    </Fragment>;
 };
-const AuthLayout = () => (
-	<AuthLayoutProvider>
-		<Layout />
-	</AuthLayoutProvider>
-);
+const AuthLayout = () => <AuthLayoutProvider>
+    <Layout />
+  </AuthLayoutProvider>;
 export { AuthLayout };

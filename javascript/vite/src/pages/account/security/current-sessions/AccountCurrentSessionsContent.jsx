@@ -1,14 +1,12 @@
 import { MiscFaq, MiscHelp } from '@/partials/misc';
 import { CurrentSessions } from './blocks/';
 const AccountCurrentSessionsContent = () => {
-	return (
-		<div className="grid gap-5 lg:gap-7.5">
-			<CurrentSessions />
+  return <div className="grid gap-5 lg:gap-7.5">
+      <CurrentSessions />
 
-			<MiscFaq />
+      <MiscFaq />
 
-			<MiscHelp />
-		</div>
-	);
+      <MiscHelp />
+    </div>;
 };
 export { AccountCurrentSessionsContent };

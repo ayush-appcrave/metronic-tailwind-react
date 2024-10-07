@@ -1,5 +1,5 @@
 const authLayoutConfig = {
-	name: 'auth',
-	options: {},
+  name: 'auth',
+  options: {}
 };
 export { authLayoutConfig };

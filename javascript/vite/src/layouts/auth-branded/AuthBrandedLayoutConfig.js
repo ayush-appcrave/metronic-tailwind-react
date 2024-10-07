@@ -1,5 +1,5 @@
 const authLayoutBrandedConfig = {
-	name: 'auth-branded',
-	options: {},
+  name: 'auth-branded',
+  options: {}
 };
 export { authLayoutBrandedConfig };

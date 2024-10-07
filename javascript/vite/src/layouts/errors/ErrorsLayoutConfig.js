@@ -1,5 +1,5 @@
 const errorsLayoutConfig = {
-	name: 'errors-layout',
-	options: {},
+  name: 'errors-layout',
+  options: {}
 };
 export { errorsLayoutConfig };

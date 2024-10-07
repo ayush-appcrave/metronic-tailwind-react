@@ -1,106 +1,77 @@
 import { createContext, useContext, useEffect, useState } from 'react';
-import { useLocation } from 'react-router';
-import { useMenuChildren } from '@/components/menu';
-import { MENU_SIDEBAR } from '@/config/menu.config';
-import { useScrollPosition } from '@/hooks/useScrollPosition';
-import { useMenus } from '@/providers';
-import { useLayout } from '@/providers';
-import { deepMerge } from '@/utils';
-import { Demo2LayoutConfig } from './';
+import { MENU_SIDEBAR } from '@/config'; // Import menu configuration for the sidebar
+import { useScrollPosition } from '@/hooks/useScrollPosition'; // Custom hook to get the scroll position
+import { useMenus } from '@/providers'; // Custom hook for managing menus
+import { useLayout } from '@/providers'; // Layout-related hooks and configuration
+import { deepMerge } from '@/utils'; // Utility to deep merge objects (used to merge layout configurations)
+import { Demo2LayoutConfig } from './'; // Layout configuration specific to Demo2
+
+// Interface defining the properties of the layout provider context
+
+// Initial layout provider properties, using Demo2 layout configuration as the default
 const initalLayoutProps = {
   layout: Demo2LayoutConfig,
-  megaMenuEnabled: false,
+  // Default layout configuration
   headerSticky: false,
+  // Header is not sticky by default
   mobileSidebarOpen: false,
-  mobileMegaMenuOpen: false,
-  sidebarMouseLeave: false,
-  setSidebarMouseLeave: state => {
-    console.log(`${state}`);
-  },
-  setMobileMegaMenuOpen: open => {
-    console.log(`${open}`);
-  },
+  // Mobile sidebar is closed by default
   setMobileSidebarOpen: open => {
+    // Function to toggle mobile sidebar, initially just logs the state change
     console.log(`${open}`);
-  },
-  setMegaMenuEnabled: enabled => {
-    console.log(`${enabled}`);
-  },
-  setSidebarCollapse: collapse => {
-    console.log(`${collapse}`);
-  },
-  setSidebarTheme: mode => {
-    console.log(`${mode}`);
   }
 };
+
+// Create a context to manage the layout-related state and logic for Demo2 layout
 const Demo2LayoutContext = createContext(initalLayoutProps);
+
+// Custom hook to access the layout context in other components
 const useDemo2Layout = () => useContext(Demo2LayoutContext);
+
+// Provider component that sets up the layout state and context for Demo2 layout
 const Demo2LayoutProvider = ({
   children
 }) => {
   const {
-    pathname
-  } = useLocation();
-  const {
     setMenuConfig
-  } = useMenus();
-  const secondaryMenu = useMenuChildren(pathname, MENU_SIDEBAR, 0);
-  setMenuConfig('primary', MENU_SIDEBAR);
-  setMenuConfig('secondary', secondaryMenu);
+  } = useMenus(); // Hook to manage menu configurations
   const {
     getLayout,
-    updateLayout,
     setCurrentLayout
-  } = useLayout();
-  const getLayoutConfig = () => {
-    return deepMerge(Demo2LayoutConfig, getLayout(Demo2LayoutConfig.name));
-  };
-  const [layout, setLayout] = useState(getLayoutConfig);
-  useEffect(() => {
-    setCurrentLayout(layout);
-  }, [layout, setCurrentLayout]);
-  const [megaMenuEnabled, setMegaMenuEnabled] = useState(false);
-  const [mobileSidebarOpen, setMobileSidebarOpen] = useState(false);
-  const [mobileMegaMenuOpen, setMobileMegaMenuOpen] = useState(false);
-  const [sidebarMouseLeave, setSidebarMouseLeave] = useState(false);
+  } = useLayout(); // Hook to get and set layout configuration
+
+  // Merge the Demo2 layout configuration with the current layout configuration fetched via getLayout
+  const layoutConfig = deepMerge(Demo2LayoutConfig, getLayout(Demo2LayoutConfig.name));
+
+  // Set the initial state for layout and mobile sidebar
+  const [layout] = useState(layoutConfig); // Layout configuration is stored in state
+  const [mobileSidebarOpen, setMobileSidebarOpen] = useState(false); // Manage state for mobile sidebar
+
+  // Get the current scroll position using a custom hook
   const scrollPosition = useScrollPosition();
-  const headerSticky = scrollPosition > 0;
-  const setSidebarCollapse = collapse => {
-    const updatedLayout = {
-      options: {
-        sidebar: {
-          collapse
-        }
-      }
-    };
-    updateLayout(Demo2LayoutConfig.name, updatedLayout);
-    setLayout(getLayoutConfig());
-  };
-  const setSidebarTheme = mode => {
-    const updatedLayout = {
-      options: {
-        sidebar: {
-          theme: mode
-        }
-      }
-    };
-    setLayout(deepMerge(layout, updatedLayout));
-  };
+
+  // Calculate whether the header should be sticky based on the scroll position and the layout's sticky offset
+  const headerSticky = scrollPosition > layout.options.header.stickyOffset;
+
+  // Set the menu configuration for the primary menu using the provided MENU_SIDEBAR configuration
+  setMenuConfig('primary', MENU_SIDEBAR);
+
+  // When the layout state changes, set the current layout configuration in the layout provider
+  useEffect(() => {
+    setCurrentLayout(layout); // Update the current layout in the global layout state
+  }, [layout, setCurrentLayout]); // Re-run this effect if layout or setCurrentLayout changes
+
+  // Provide the layout state, sticky header state, and sidebar state to children components via context
   return <Demo2LayoutContext.Provider value={{
     layout,
+    // The current layout configuration
     headerSticky,
+    // Whether the header should be sticky based on the scroll position
     mobileSidebarOpen,
-    mobileMegaMenuOpen,
-    megaMenuEnabled,
-    sidebarMouseLeave,
-    setMobileSidebarOpen,
-    setMegaMenuEnabled,
-    setSidebarMouseLeave,
-    setMobileMegaMenuOpen,
-    setSidebarCollapse,
-    setSidebarTheme
+    // Whether the mobile sidebar is currently open
+    setMobileSidebarOpen // Function to toggle the mobile sidebar state
   }}>
-      {children}
+      {children} {/* Render child components that consume this context */}
     </Demo2LayoutContext.Provider>;
 };
 

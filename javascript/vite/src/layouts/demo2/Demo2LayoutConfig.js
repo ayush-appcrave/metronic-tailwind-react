@@ -1,5 +1,15 @@
+// Importing the ILayoutConfig type from the providers
+
+// Defining the layout configuration specific to Demo2 layout
 const Demo2LayoutConfig = {
   name: 'demo2-layout',
-  options: {}
+  // Unique name identifier for this layout
+  options: {
+    header: {
+      stickyOffset: 200 // Offset value (in pixels) that determines when the header becomes sticky on scroll
+    }
+  }
 };
+
+// Exporting the Demo2LayoutConfig to be used in other parts of the application
 export { Demo2LayoutConfig };
