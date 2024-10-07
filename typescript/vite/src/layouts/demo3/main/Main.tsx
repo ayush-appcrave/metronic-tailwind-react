@@ -20,17 +20,7 @@ const Main = () => {
       </Helmet>
       <div className="flex grow flex-col [[data-sticky-header=on]_&]:pt-[--tw-header-height-default]">
         <Header />
-        <Navbar />
-        {!pathname.includes('/public-profile/') && (
-          <Toolbar>
-            <ToolbarHeading />
-            <ToolbarActions>
-              <Link to={'public-profile/profiles/default'} className="btn btn-light btn-sm">
-                View Profile
-              </Link>
-            </ToolbarActions>
-          </Toolbar>
-        )}
+        <Navbar /> 
         <Content />
         <Footer />
       </div>

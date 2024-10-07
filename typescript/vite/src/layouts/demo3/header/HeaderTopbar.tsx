@@ -1,12 +1,16 @@
-import { useRef } from 'react';
+import { useRef, useState } from 'react';
+import { Link } from 'react-router-dom';
 import { KeenIcon } from '@/components/keenicons';
 import { toAbsoluteUrl } from '@/utils';
 import { Menu, MenuItem, MenuToggle } from '@/components';
 import { DropdownUser } from '@/partials/dropdowns/user';
+import { ModalSearch } from '@/partials/modals/search/ModalSearch';
 import { DropdownNotifications } from '@/partials/dropdowns/notifications';
+import { DropdownApps } from '@/partials/dropdowns/apps';
 import { DropdownChat } from '@/partials/dropdowns/chat';
 
 const HeaderTopbar = () => {
+  const itemAppsRef = useRef<any>(null);
   const itemChatRef = useRef<any>(null);
   const itemNotificationsRef = useRef<any>(null);
 
@@ -14,8 +18,28 @@ const HeaderTopbar = () => {
     window.dispatchEvent(new Event('resize'));
   };
 
+  const [searchModalOpen, setSearchModalOpen] = useState(false);
+  const handleOpen = () => setSearchModalOpen(true);
+  const handleClose = () => {
+    setSearchModalOpen(false);
+  };
+
   return (
-    <div className="flex items-center gap-3.5">
+    <div className="flex items-center gap-2">
+      <Link to={'account/home/get-started'} className="btn btn-xs btn-primary">
+        Get Started
+      </Link> 
+
+      <div className="flex items-center">
+        <button
+          onClick={handleOpen}
+          className="btn btn-icon btn-icon-lg size-8 text-gray-600 hover:text-primary"
+        >
+          <KeenIcon icon="magnifier" />
+        </button>
+        <ModalSearch open={searchModalOpen} onClose={handleClose} />
+      </div>
+      
       <Menu className="items-stretch">
         <MenuItem
           ref={itemNotificationsRef}
@@ -34,9 +58,9 @@ const HeaderTopbar = () => {
           }}
         >
           <MenuToggle>
-            <div className="btn btn-icon btn-icon-lg size-9 rounded-full hover:bg-gray-200 dropdown-open:bg-gray-200 text-gray-600">
-              <KeenIcon icon="notification-on" />
-            </div>
+            <button className="btn btn-icon btn-icon-lg size-8 text-gray-600 hover:text-primary [dropdown-open:text-primary">
+              <KeenIcon icon="notification-status" />
+            </button>
           </MenuToggle>
           {DropdownNotifications({ menuTtemRef: itemNotificationsRef })}
         </MenuItem>
@@ -61,12 +85,39 @@ const HeaderTopbar = () => {
           }}
         >
           <MenuToggle>
-            <div className="btn btn-icon btn-icon-lg size-9 rounded-full hover:bg-gray-200 dropdown-open:bg-gray-200 text-gray-600">
+            <button className="btn btn-icon btn-icon-lg size-8 text-gray-600 hover:text-primary [dropdown-open:text-primary">
               <KeenIcon icon="messages" />
-            </div>
+            </button>
           </MenuToggle>
 
           {DropdownChat({ menuTtemRef: itemChatRef })}
+        </MenuItem>
+      </Menu>
+
+      <Menu className="items-stretch">
+        <MenuItem
+          ref={itemAppsRef}
+          toggle="dropdown"
+          trigger="click"
+          dropdownProps={{
+            placement: 'bottom-end',
+            modifiers: [
+              {
+                name: 'offset',
+                options: {
+                  offset: [10, 0] // [skid, distance]
+                }
+              }
+            ]
+          }}
+        >
+          <MenuToggle>
+            <button className="btn btn-icon btn-icon-lg size-8 text-gray-600 hover:text-primary [dropdown-open:text-primary">
+              <KeenIcon icon="element-11" />
+            </button>
+          </MenuToggle>
+
+          {DropdownApps()}
         </MenuItem>
       </Menu>
 
@@ -89,7 +140,7 @@ const HeaderTopbar = () => {
           <MenuToggle>
             <div className="btn btn-icon rounded-full">
               <img
-                className="size-9 rounded-full justify-center border border-gray-500 shrink-0"
+                className="size-8 rounded-full justify-center border border-gray-500 shrink-0"
                 src={toAbsoluteUrl('/media/avatars/300-2.png')}
                 alt=""
               />
