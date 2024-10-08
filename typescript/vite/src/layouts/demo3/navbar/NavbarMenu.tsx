@@ -106,8 +106,8 @@ const NavbarMenu = () => {
   };
 
   return (
-    <div className="grid">
-      <div className="scrollable-x-auto">
+    <div className="grid items-stretch">
+      <div className="scrollable-x-auto flex items-stretch">
         <Menu highlight={true} className="gap-5 lg:gap-7.5">
           {navbarMenu && navbarMenu.children && buildMenu(navbarMenu.children)}
         </Menu>

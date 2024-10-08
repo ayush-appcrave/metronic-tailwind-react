@@ -22,7 +22,7 @@ interface ModalSearchProps {
   onClose: () => void;
 }
 
-const ModalSearch = forwardRef<HTMLDivElement, ModalSearchProps>(({ open, onClose }) => {
+const ModalSearch = forwardRef<HTMLDivElement, ModalSearchProps>(({ open, onClose }, ref) => {
   const [scrollableHeight, setScrollableHeight] = useState<number>(0);
   const [viewportHeight] = useViewport();
   const offset = 300;
@@ -225,7 +225,7 @@ const ModalSearch = forwardRef<HTMLDivElement, ModalSearchProps>(({ open, onClos
   ];
 
   return (
-    <Modal open={open} onClose={onClose}>
+    <Modal open={open} onClose={onClose} ref={ref}>
       <ModalContent className="max-w-[600px] top-[15%]">
         <ModalHeader className="py-4 px-5">
           <KeenIcon icon="magnifier" className="text-gray-700 text-xl" />

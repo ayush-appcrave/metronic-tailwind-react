@@ -1,14 +1,16 @@
+/* eslint-disable no-unused-vars */
 import clsx from 'clsx';
 import { forwardRef } from 'react';
 
 interface IModalBackdropProps {
   className?: string;
   open: boolean;
+  ownerState: any;
 }
 
 // Forwarding ref to ensure this component can hold a ref
 const ModalBackdrop = forwardRef<HTMLDivElement, IModalBackdropProps>(
-  ({ className, ...props }, ref) => {
+  ({ className, ownerState, ...props }, ref) => {
     const { ...other } = props;
 
     return (
