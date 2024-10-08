@@ -81,8 +81,9 @@ const Sidebar = () => {
                 data-tooltip-placement="right"
                 target="_blank"
                 rel="noopener noreferrer"
-                className={`btn btn-icon btn-icon-lg rounded-full size-10 border border-transparent text-gray-600 hover:bg-light hover:text-primary hover:border-gray-300 ${
-                  item.active ? 'bg-light text-primary border-gray-300' : ''
+                className={`btn btn-icon btn-icon-lg rounded-full size-10 border here:border-gray-300 
+                  text-gray-600 hover:bg-light hover:text-primary hover:border-gray-300 ${
+                  item.active ? 'bg-light text-primary' : ''
                 }`}
               >
                 <span className="menu-icon">
@@ -96,7 +97,7 @@ const Sidebar = () => {
                 key={index}
                 data-tooltip={item.tooltip}
                 data-tooltip-placement="right"
-                className={`btn btn-icon btn-icon-lg rounded-full size-10 border border-transparent text-gray-600 hover:bg-light hover:text-primary hover:border-gray-300 ${
+                className={`btn btn-icon btn-icon-lg rounded-full size-10 border active:border-gray-300 text-gray-600 hover:bg-light hover:text-primary hover:border-gray-300 ${
                   item.active ? 'bg-light text-primary border-gray-300' : ''
                 }`}
               >

@@ -28,7 +28,14 @@ const HeaderLogo = () => {
 
   return (
     <div className="flex items-center gap-2 lg:gap-5">
-      <Link to="/" className="shrink-0">
+      <button 
+        type="button"
+        className="btn btn-icon btn-icon-lg hover:text-primary btn-sm -ms-2 lg:hidden" 
+      >
+        <KeenIcon icon="menu" /> 
+      </button>
+
+      <Link to="/" className="shrink-0 -ml-0.5">
         <img
           src={toAbsoluteUrl('/media/app/mini-logo-primary.svg')}
           className="dark:hidden min-h-[24px]"

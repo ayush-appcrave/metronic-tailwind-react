@@ -51,7 +51,7 @@ const HeaderTopbar = () => {
               {
                 name: 'offset',
                 options: {
-                  offset: [115, 10] // [skid, distance]
+                  offset: [115, 13] // [skid, distance]
                 }
               }
             ]
@@ -78,7 +78,7 @@ const HeaderTopbar = () => {
               {
                 name: 'offset',
                 options: {
-                  offset: [75, 10] // [skid, distance]
+                  offset: [75, 13] // [skid, distance]
                 }
               }
             ]
@@ -105,7 +105,7 @@ const HeaderTopbar = () => {
               {
                 name: 'offset',
                 options: {
-                  offset: [10, 0] // [skid, distance]
+                  offset: [10, 13] // [skid, distance]
                 }
               }
             ]
@@ -121,7 +121,7 @@ const HeaderTopbar = () => {
         </MenuItem>
       </Menu>
 
-      <Menu className="items-stretch -me-2">
+      <Menu className="items-stretch -me-1">
         <MenuItem
           toggle="dropdown"
           trigger="click"
@@ -131,7 +131,7 @@ const HeaderTopbar = () => {
               {
                 name: 'offset',
                 options: {
-                  offset: [20, 10] // [skid, distance]
+                  offset: [-5, 10] // [skid, distance]
                 }
               }
             ]
