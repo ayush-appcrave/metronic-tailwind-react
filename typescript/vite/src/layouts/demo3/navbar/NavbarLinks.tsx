@@ -1,7 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom'; 
 import { KeenIcon, Menu, MenuItem, MenuToggle, MenuSub } from '@/components';
-import { DropdownCard2 } from '@/partials/dropdowns/general';
 
 const NavbarLinks = () => {
   const months = [

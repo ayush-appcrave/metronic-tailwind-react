@@ -3,9 +3,8 @@ import { Helmet } from 'react-helmet-async';
 import { useLocation } from 'react-router';
 import { useMenuCurrentItem } from '@/components/menu';
 import { useMenus } from '@/providers';
-import { Header, Navbar, Content, Footer } from '..';
-import { Toolbar, ToolbarHeading, ToolbarActions } from '../toolbar';
-import { Link } from 'react-router-dom';
+import { Header, Navbar, Sidebar, Content, Footer } from '..';
+import { Toolbar, ToolbarHeading, ToolbarActions } from '../toolbar'; 
 
 const Main = () => {
   const { pathname } = useLocation();
@@ -18,11 +17,21 @@ const Main = () => {
       <Helmet>
         <title>{menuItem?.title}</title>
       </Helmet>
-      <div className="flex grow flex-col [[data-sticky-header=on]_&]:pt-[--tw-header-height-default]">
+      <div className="flex flex-col grow">
         <Header />
-        <Navbar /> 
-        <Content />
-        <Footer />
+
+        <div className="wrapper flex grow flex-col pt-[--tw-header-height]">
+          <Navbar /> 
+          <Sidebar />
+
+          <div className="scrollable-y-auto [scrollbar-width:auto] light:[--tw-scrollbar-thumb-color:var(--tw-content-scrollbar-color)] 
+            flex flex-col grow rounded-b-xl bg-[--tw-content-bg] dark:bg-[--tw-content-bg-dark] border-x border-b border-gray-400 
+          dark:border-gray-200 lg:mt-[--tw-navbar-height] mx-5 lg:ms-[--tw-sidebar-width] lg:me-5 pt-7 mb-5">  
+            <Toolbar />
+            <Content />
+            <Footer />
+          </div>
+        </div>
       </div>
     </Fragment>
   );

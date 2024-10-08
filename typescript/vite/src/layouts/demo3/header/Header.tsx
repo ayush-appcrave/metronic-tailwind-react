@@ -23,7 +23,7 @@ const Header = () => {
           'transition-[height] fixed z-10 top-0 left-0 right-0 shadow-sm backdrop-blur-md bg-white/70 dark:bg-coal-500/70 dark:border-b dark:border-b-coal-100'
       )}
     >
-      <Container className="flex justify-between items-stretch px-5 lg:ps-0 lg:gap-4">
+      <Container className="flex justify-between items-stretch px-5 lg:gap-4">
         <HeaderLogo />
         <HeaderTopbar />
       </Container>
