@@ -1,6 +1,5 @@
 import { matchPath } from 'react-router';
-
-import { MenuConfigType } from '../types';
+import { MenuConfigType } from '../types.d';
 
 const useMenuChildren = (
   pathname: string,
@@ -32,16 +31,27 @@ const useMenuChildren = (
       const item = items[i];
 
       if (item.children) {
+        console.log(`Checking item: ${item.title}, Pathname: ${pathname}, Level: ${currentLevel}`);
+
+        // Check if we're at the desired level and if any child is active
         if (level === currentLevel && hasActiveChild(item.children)) {
           return item.children;
-        } else {
-          return getChildren(item.children, level, currentLevel++);
+        }
+
+        // Recursively check the children, incrementing the current level
+        const children = getChildren(item.children, level, currentLevel + 1);
+
+        // If valid children were found, return them
+        if (children) {
+          return children;
         }
       } else if (level === currentLevel && item.path && matchPath(pathname, item.path)) {
+        // If it's a leaf node and matches the path, return the current items
         return items;
       }
     }
 
+    // Return null if no match was found at this level
     return null;
   };
 

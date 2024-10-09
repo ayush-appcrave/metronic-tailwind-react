@@ -3,7 +3,6 @@ export * from './Demo4LayoutConfig';
 export * from './Demo4LayoutProvider';
 export * from './main';
 export * from './header';
-export * from './navbar';
+export * from './sidebar';
 export * from './toolbar';
-export * from './content';
 export * from './footer';

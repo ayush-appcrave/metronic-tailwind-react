@@ -6,7 +6,6 @@ import { ToolbarBreadcrumbs } from './ToolbarBreadcrumbs';
 
 export interface IToolbarHeadingProps {
   title?: string | ReactNode;
-  description?: string | ReactNode;
 }
 
 const ToolbarHeading = ({ title = '' }: IToolbarHeadingProps) => {

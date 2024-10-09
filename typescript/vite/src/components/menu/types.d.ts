@@ -168,6 +168,7 @@ export interface IMenuItemConfig {
   dropdownProps?: MenuDropdownType;
   trigger?: MenuItemTriggerType;
   children?: IMenuItemConfig[];
+  childrenIndex?: number;
 }
 
 export type MenuConfigType = IMenuItemConfig[];

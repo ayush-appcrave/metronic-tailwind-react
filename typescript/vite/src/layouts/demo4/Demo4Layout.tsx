@@ -8,14 +8,14 @@ const Demo4Layout = () => {
 
   // Using the custom hook to set multiple CSS variables and class properties
   useBodyClasses(
-    `[--tw-page-bg:var(--tw-light)] [--tw-page-bg-dark:var(--tw-coal-500)] [--tw-header-height-default:100px] [[data-sticky-header=on]&]:[--tw-header-height:60px] [--tw-header-height:--tw-header-height-default] bg-[--tw-page-bg] dark:bg-[--tw-page-bg-dark]`
+    '[--tw-page-bg:#F6F6F9] [--tw-page-bg-dark:var(--tw-coal-200)] [--tw-content-bg:var(--tw-light)] [--tw-content-bg-dark:var(--tw-coal-500)] [--tw-content-scrollbar-color:#e8e8e8] [--tw-header-height:60px] [--tw-sidebar-width:290px] bg-[--tw-page-bg] dark:bg-[--tw-page-bg-dark] lg:overflow-hidden'
   );
 
   useEffect(() => {
     updateSettings({
       container: 'fluid'
     });
-  }, [updateSettings]);
+  }, []);
 
   return (
     // Providing layout context and rendering the main content
