@@ -23,7 +23,7 @@ const Main = () => {
       <div className="flex flex-col grow">
         <Header />
 
-        <div className="wrapper flex grow flex-col lg:pt-[--tw-header-height]">
+        <div className="wrapper flex grow flex-col pt-[56px]">
           <Sidebar />
 
           <Navbar />
