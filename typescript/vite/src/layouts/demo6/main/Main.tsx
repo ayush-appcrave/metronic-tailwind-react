@@ -1,47 +1,22 @@
-import { Fragment, useEffect } from 'react';
+import { Fragment } from 'react';
 import { Helmet } from 'react-helmet-async';
-import { useLocation } from 'react-router';
+import { Outlet, useLocation } from 'react-router';
 import { useMenuCurrentItem } from '@/components/menu';
-import { Content, Footer, Header, Sidebar, useDemo1Layout } from '../';
+import { Footer, Header, Sidebar, Toolbar, ToolbarActions, ToolbarHeading } from '../';
 import { useMenus } from '@/providers';
+import { useResponsive, useViewport } from '@/hooks';
+import { Link } from 'react-router-dom';
+import { KeenIcon } from '@/components';
+import { ToolbarMenu } from '../toolbar/ToolbarMenu';
 
 const Main = () => {
-  const { layout } = useDemo1Layout();
+  const mobileMode = useResponsive('down', 'lg');
   const { pathname } = useLocation();
   const { getMenuConfig } = useMenus();
   const menuConfig = getMenuConfig('primary');
   const menuItem = useMenuCurrentItem(pathname, menuConfig);
-
-  useEffect(() => {
-    const bodyClass = document.body.classList;
-
-    // Add a class to the body element
-    bodyClass.add('demo1');
-
-    if (layout.options.sidebar.fixed) bodyClass.add('sidebar-fixed');
-    if (layout.options.sidebar.collapse) bodyClass.add('sidebar-collapse');
-    if (layout.options.header.fixed) bodyClass.add('header-fixed');
-
-    // Remove the class when the component is unmounted
-    return () => {
-      bodyClass.remove('demo1');
-      bodyClass.remove('sidebar-fixed');
-      bodyClass.remove('sidebar-collapse');
-      bodyClass.remove('header-fixed');
-    };
-  }, [layout]);
-
-  useEffect(() => {
-    const timer = setTimeout(() => {
-      document.body.classList.add('layout-initialized');
-    }, 1000); // 1000 milliseconds
-
-    // Remove the class when the component is unmounted
-    return () => {
-      document.body.classList.remove('layout-initialized');
-      clearTimeout(timer);
-    };
-  }, []);
+  const [viewportHeight] = useViewport();
+  const scrollableHeight = viewportHeight - 200;
 
   return (
     <Fragment>
@@ -52,12 +27,30 @@ const Main = () => {
       <div className="flex grow">
         <Sidebar />
 
-        <div className="wrapper flex grow flex-col">
-          <Header />
+        <div className="flex grow flex-col pt-[--tw-header-height] lg:pt-0">
+          {mobileMode && <Header />}
 
-          <Content />
+          <main
+            className="scrollable-y-auto [scrollbar-width:auto] [--tw-scrollbar-thumb-color:var(--tw-content-scrollbar-color)] flex flex-col grow items-stretch rounded-xl bg-[--tw-content-bg] dark:bg-[--tw-content-bg-dark] border border-gray-300 dark:border-gray-200 lg:ms-[--tw-sidebar-width] pt-5 mt-0 lg:mt-[15px] m-[15px]"
+            style={{ height: `${scrollableHeight}px` }}
+          >
+            <div className="grow" role="content">
+              <Toolbar>
+                <ToolbarHeading />
 
-          <Footer />
+                <ToolbarActions>
+                  <Link to={'account/home/get-started'} className="btn btn-sm btn-light">
+                    <KeenIcon icon="exit-down !text-base" />
+                    Export
+                  </Link>
+                  <ToolbarMenu />
+                </ToolbarActions>
+              </Toolbar>
+              <Outlet />
+            </div>
+
+            <Footer />
+          </main>
         </div>
       </div>
     </Fragment>

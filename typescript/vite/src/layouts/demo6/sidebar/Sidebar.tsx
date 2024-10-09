@@ -2,62 +2,44 @@
 import { Drawer } from '@/components';
 import { useEffect, useRef, useState } from 'react';
 import { useResponsive, useViewport } from '@/hooks';
-import { useDemo1Layout } from '../';
-import { SidebarContent, SidebarHeader } from './';
-import clsx from 'clsx';
+import { useDemo6Layout } from '../';
+import { SidebarHeader, SidebarMenu, SidebarFooter } from './';
 import { getHeight } from '@/utils';
 import { usePathname } from '@/providers';
 
 const Sidebar = () => {
   const selfRef = useRef<HTMLDivElement>(null);
   const headerRef = useRef<HTMLDivElement>(null);
-  const [contentHeight, setContentHeight] = useState<number>(0);
+  const footerRef = useRef<HTMLDivElement>(null);
+  const [scrollableHeight, setScrollableHeight] = useState<number>(0);
   const [viewportHeight] = useViewport();
   const { pathname, prevPathname } = usePathname();
-
-  useEffect(() => {
-    if (headerRef.current) {
-      const headerHeight = getHeight(headerRef.current);
-      const availableHeight = viewportHeight - headerHeight;
-      setContentHeight(availableHeight);
-    } else {
-      setContentHeight(viewportHeight);
-    }
-  }, [viewportHeight]);
-
   const desktopMode = useResponsive('up', 'lg');
-  const { mobileSidebarOpen, setSidebarMouseLeave, setMobileSidebarOpen } = useDemo1Layout();
-  const { layout } = useDemo1Layout();
-  const themeClass: string =
-    layout.options.sidebar.theme === 'dark' || pathname === '/dark-sidebar'
-      ? 'dark [&.dark]:bg-coal-600'
-      : 'dark:bg-coal-600';
+  const { mobileSidebarOpen, setMobileSidebarOpen } = useDemo6Layout();
 
   const handleMobileSidebarClose = () => {
     setMobileSidebarOpen(false);
   };
 
-  const handleMouseEnter = () => {
-    setSidebarMouseLeave(false);
-  };
-
-  const handleMouseLeave = () => {
-    setSidebarMouseLeave(true);
-  };
+  useEffect(() => {
+    if (headerRef.current) {
+      const headerHeight = getHeight(headerRef.current);
+      const availableHeight = viewportHeight - headerHeight;
+      setScrollableHeight(availableHeight);
+    } else {
+      setScrollableHeight(viewportHeight);
+    }
+  }, [viewportHeight]);
 
   const renderContent = () => {
     return (
       <div
         ref={selfRef}
-        onMouseLeave={handleMouseLeave}
-        onMouseEnter={handleMouseEnter}
-        className={clsx(
-          'sidebar lg:fixed lg:z-20 lg:top-0 lg:bottom-0 lg:start-0 lg:translate-x-0 flex flex-col items-stretch shrink-0 bg-light lg:border lg:border-r-gray-200',
-          themeClass
-        )}
+        className="fixed top-0 bottom-0 z-20 hidden lg:flex flex-col shrink-0 w-[--tw-sidebar-width] bg-[--tw-page-bg] dark:bg-[--tw-page-bg-dark]"
       >
         {desktopMode && <SidebarHeader ref={headerRef} />}
-        <SidebarContent {...(desktopMode && { height: contentHeight })} />
+        <SidebarMenu height={scrollableHeight} />
+        <SidebarFooter ref={footerRef} />
       </div>
     );
   };

@@ -1,3 +1,4 @@
+import { Container } from '@/components';
 import { ReactNode } from 'react';
 
 export interface IToolbarProps {
@@ -6,8 +7,10 @@ export interface IToolbarProps {
 
 const Toolbar = ({ children }: IToolbarProps) => {
   return (
-    <div className="flex flex-wrap items-center lg:items-end justify-between gap-5 pb-7.5">
-      {children}
+    <div className="pb-5">
+      <Container className="flex items-center justify-between flex-wrap gap-3">
+        {children}
+      </Container>
     </div>
   );
 };
