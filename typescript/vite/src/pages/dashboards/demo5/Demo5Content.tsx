@@ -1,6 +1,7 @@
 import { Teams } from '../light-sidebar';
 import { TeamInfo } from '@/pages/account/members/team-info';
 import { MiscFaq } from '@/partials/misc';
+import { Options } from './blocks';
 
 const Demo5Content = () => {
   return (
@@ -14,7 +15,7 @@ const Demo5Content = () => {
 
         <div className="lg:col-span-1">
           <div className="grid grid-cols-1 gap-5 lg:gap-7.5 h-full items-stretch">
-            {/* {{ theme.page('_options') }}  */}
+            <Options />
           </div>
         </div>
       </div>

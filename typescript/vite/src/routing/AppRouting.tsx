@@ -81,6 +81,7 @@ import { useLoaders } from '../providers/LoadersProvider';
 import { AuthenticationWelcomeMessagePage } from '@/pages/authentication/welcome-message/AuthenticationWelcomeMessagePage';
 import { AuthenticationAccountDeactivatedPage } from '@/pages/authentication/account-deactivated/AuthenticationAccountDeactivatedPage';
 import { AuthenticationGetStartedPage } from '@/pages/authentication/get-started/AuthenticationGetStartedPage';
+import { Demo5Layout } from '@/layouts/demo5';
 
 const AppRouting = (): ReactElement => {
   const { setProgressBarLoader } = useLoaders();
