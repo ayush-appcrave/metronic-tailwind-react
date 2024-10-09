@@ -27,10 +27,10 @@ const HeaderLogo = () => {
   }, [pathname]);
 
   return (
-    <div className="flex items-center gap-2 lg:gap-5">
+    <div className="flex items-center gap-2 lg:gap-4">
       <button 
         type="button"
-        className="btn btn-icon btn-icon-lg hover:text-primary btn-sm -ms-2 lg:hidden" 
+        className="btn btn-icon btn-icon-lg hover:text-primary btn-sm -ms-2 lg:hidden"   
       >
         <KeenIcon icon="menu" /> 
       </button>
@@ -68,8 +68,8 @@ const HeaderLogo = () => {
               ]
             }}
           >
-            <MenuToggle className="text-gray-900 font-medium">
-              <MenuTitle>{selectedMenuItem.title}</MenuTitle>
+            <MenuToggle>
+              <MenuTitle className="!text-gray-900 !text-base !font-medium">{selectedMenuItem.title}</MenuTitle>
               <MenuArrow>
                 <KeenIcon icon="down" />
               </MenuArrow>
