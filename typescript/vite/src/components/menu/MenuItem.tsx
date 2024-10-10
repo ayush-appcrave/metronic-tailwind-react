@@ -51,6 +51,7 @@ const MenuItemComponent = forwardRef<IMenuItemRef | null, IMenuItemProps>(
       onClick,
       containerProps: ContainerPropsProp = {},
       children,
+      open = false,
       level = 0,
       index = 0
     } = props;
@@ -60,6 +61,8 @@ const MenuItemComponent = forwardRef<IMenuItemRef | null, IMenuItemProps>(
     const menuItemRef = useRef<HTMLDivElement | null>(null);
 
     const path = props.path || getMenuLinkPath(children);
+
+    console.log('menu iten open:', open);
 
     const {
       disabled: isMenuDisabled,
@@ -87,15 +90,15 @@ const MenuItemComponent = forwardRef<IMenuItemRef | null, IMenuItemProps>(
 
     const active: boolean = highlight ? path.length > 0 && match : false;
 
-    const [here, setHere] = useState(false);
-
-    const [show, setShow] = useState(false);
+    const [here, setHere] = useState(open);
 
     const accordionShow = isOpenAccordion(level, index);
 
-    const [transitioning, setTransitioning] = useState(false);
+    const [show, setShow] = useState(open);
 
-    const [accordionEnter, setAccordionEnter] = useState(false);
+    const [transitioning, setTransitioning] = useState(open);
+
+    const [accordionEnter, setAccordionEnter] = useState(open);
 
     const hasSub = Children.toArray(children).some(
       (child) => isValidElement(child) && child.type === MenuSub
@@ -363,7 +366,7 @@ const MenuItemComponent = forwardRef<IMenuItemRef | null, IMenuItemProps>(
     }, [accordionShow]);
 
     useEffect(() => {
-      if (highlight) {
+      if (!show && !here && highlight) {
         if (hasMenuActiveChild(pathname, children)) {
           if (propToggle === 'accordion') {
             setShow(true);

@@ -11,17 +11,18 @@ import { usePathname } from '@/providers';
 const Sidebar = () => {
   const selfRef = useRef<HTMLDivElement>(null);
   const headerRef = useRef<HTMLDivElement>(null);
-  const [contentHeight, setContentHeight] = useState<number>(0);
+  const [scrollableHeight, setScrollableHeight] = useState<number>(0);
+  const scrollableOffset = 40;
   const [viewportHeight] = useViewport();
   const { pathname, prevPathname } = usePathname();
 
   useEffect(() => {
     if (headerRef.current) {
       const headerHeight = getHeight(headerRef.current);
-      const availableHeight = viewportHeight - headerHeight;
-      setContentHeight(availableHeight);
+      const availableHeight = viewportHeight - headerHeight - scrollableOffset;
+      setScrollableHeight(availableHeight);
     } else {
-      setContentHeight(viewportHeight);
+      setScrollableHeight(viewportHeight);
     }
   }, [viewportHeight]);
 
@@ -57,7 +58,7 @@ const Sidebar = () => {
         )}
       >
         {desktopMode && <SidebarHeader ref={headerRef} />}
-        <SidebarContent {...(desktopMode && { height: contentHeight })} />
+        <SidebarContent {...(desktopMode && { height: scrollableHeight })} />
       </div>
     );
   };

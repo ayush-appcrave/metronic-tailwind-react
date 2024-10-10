@@ -6,17 +6,19 @@ import {
   MenuArrow,
   MenuIcon,
   MenuItem,
+  MenuLabel,
   MenuLink,
   MenuSub,
-  MenuTitle,
-  MenuToggle
+  MenuTitle
 } from '@/components/menu';
 import { MENU_ROOT } from '@/config';
 import { KeenIcon } from '@/components';
 
-const SidebarHeader = forwardRef<HTMLDivElement>(() => {
+const SidebarHeader = forwardRef<HTMLDivElement, any>((props, ref) => {
   const { pathname } = useLocation();
   const [selectedMenuItem, setSelectedMenuItem] = useState(MENU_ROOT[1]);
+
+  const handleInputChange = () => {};
 
   useEffect(() => {
     MENU_ROOT.forEach((item) => {
@@ -27,8 +29,8 @@ const SidebarHeader = forwardRef<HTMLDivElement>(() => {
   }, [pathname]);
 
   return (
-    <div>
-      <div className="flex items-center gap-2.5 px-3.5 h-[70px]">
+    <div ref={ref}>
+      <div className="flex items-center justify-between gap-2.5 px-3.5 h-[70px]">
         <Link to="/">
           <img
             src={toAbsoluteUrl('/media/app/mini-logo-circle.svg')}
@@ -40,8 +42,9 @@ const SidebarHeader = forwardRef<HTMLDivElement>(() => {
           />
         </Link>
 
-        <Menu className="menu-default">
+        <Menu className="grow">
           <MenuItem
+            className="grow"
             toggle="dropdown"
             trigger="hover"
             dropdownProps={{
@@ -56,13 +59,15 @@ const SidebarHeader = forwardRef<HTMLDivElement>(() => {
               ]
             }}
           >
-            <MenuToggle className="text-gray-900 font-medium">
-              <MenuTitle>{selectedMenuItem.title}</MenuTitle>
+            <MenuLabel className="text-gray-900 font-medium grow justify-between">
+              <MenuTitle className="text-base font-medium text-gray-900 grow justify-start">
+                MetronicCloud
+              </MenuTitle>
               <MenuArrow>
-                <KeenIcon icon="down" />
+                <KeenIcon icon="down" className="text-2xs me-1 text-gray-500" />
               </MenuArrow>
-            </MenuToggle>
-            <MenuSub className="menu-default">
+            </MenuLabel>
+            <MenuSub className="menu-default w-48 py-2">
               {MENU_ROOT.map((item, index) => (
                 <MenuItem key={index} className={item === selectedMenuItem ? 'active' : ''}>
                   <MenuLink path={item.path}>
@@ -83,7 +88,13 @@ const SidebarHeader = forwardRef<HTMLDivElement>(() => {
       <div className="pt-2.5 px-3.5 mb-1">
         <div className="input">
           <KeenIcon icon="magnifier" />
-          <input placeholder="Search" type="text" className="min-w-0" value="" />
+          <input
+            placeholder="Search"
+            type="text"
+            onChange={handleInputChange}
+            className="min-w-0"
+            value=""
+          />
           <span className="text-2sm text-gray-700 text-nowrap">cmd + /</span>
         </div>
       </div>

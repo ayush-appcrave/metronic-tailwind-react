@@ -1,17 +1,12 @@
 import clsx from 'clsx';
-
 import { KeenIcon } from '@/components/keenicons';
 import {
   IMenuItemConfig,
   Menu,
   MenuArrow,
-  MenuBadge,
-  MenuBullet,
   MenuConfigType,
-  MenuHeading,
   MenuIcon,
   MenuItem,
-  MenuLabel,
   MenuLink,
   MenuSub,
   MenuTitle
@@ -19,84 +14,31 @@ import {
 import { useMenus } from '@/providers';
 
 const SidebarMenuPrimary = () => {
-  const linkPl = 'ps-[10px]';
-  const linkPr = 'pe-[10px]';
-  const linkPy = 'py-[6px]';
-  const subLinkPy = 'py-[8px]';
-  const rightOffset = 'me-[-10px]';
-  const iconWidth = 'w-[20px]';
-  const iconSize = 'text-lg';
-  const accordionLinkPl = 'ps-[10px]';
-  const accordionLinkGap = [
-    'gap-[10px]',
-    'gap-[14px]',
-    'gap-[5px]',
-    'gap-[5px]',
-    'gap-[5px]',
-    'gap-[5px]'
-  ];
-  const accordionPl = [
-    'ps-[10px]',
-    'ps-[22px]',
-    'ps-[22px]',
-    'ps-[22px]',
-    'ps-[22px]',
-    'ps-[22px]'
-  ];
-  const accordionBorderLeft = [
-    'before:start-[20px]',
-    'before:start-[32px]',
-    'before:start-[32px]',
-    'before:start-[32px]',
-    'before:start-[32px]'
-  ];
+  const subIndetion = ['ps-7', 'ps-2.5', 'ps-2.5'];
 
   const buildMenu = (items: MenuConfigType) => {
     return items.map((item, index) => {
-      if (item.heading) {
-        return buildMenuHeading(item, index);
-      } else if (item.disabled) {
-        return buildMenuItemRootDisabled(item, index);
-      } else {
-        return buildMenuItemRoot(item, index);
+      if (!item.heading && !item.disabled && item.title != 'Dashboards') {
+        return buildMenuItemRoot(item, index, 0);
       }
     });
   };
 
-  const buildMenuItemRoot = (item: IMenuItemConfig, index: number) => {
+  const buildMenuItemRoot = (item: IMenuItemConfig, index: number, level: number) => {
     if (item.children) {
       return (
-        <MenuItem
-          key={index}
-          {...(item.toggle && { toggle: item.toggle })}
-          {...(item.trigger && { trigger: item.trigger })}
-        >
-          <MenuLink
-            className={clsx(
-              'flex items-center grow cursor-pointer border border-transparent',
-              accordionLinkGap[0],
-              linkPl,
-              linkPr,
-              linkPy
-            )}
-          >
-            <MenuIcon className={clsx('items-start text-gray-500 dark:text-gray-400', iconWidth)}>
-              {item.icon && <KeenIcon icon={item.icon} className={iconSize} />}
+        <MenuItem key={index} toggle="accordion" trigger="click">
+          <MenuLink className="gap-2.5 py-2 px-2.5 rounded-md border border-transparent">
+            <MenuIcon className="items-start text-gray-600 text-lg menu-item-here:text-gray-800 menu-item-show:text-gray-800 menu-link-hover:text-gray-800 dark:menu-item-here:text-gray-900 dark:menu-item-show:text-gray-900 dark:menu-link-hover:text-gray-900">
+              {item.icon && <KeenIcon icon={item.icon} />}
             </MenuIcon>
-            <MenuTitle className="text-sm font-semibold text-gray-700 menu-item-active:text-primary menu-link-hover:!text-primary">
+            <MenuTitle className="font-medium text-sm text-gray-800 menu-item-here:text-gray-900 menu-item-show:text-gray-900 menu-link-hover:text-gray-900">
               {item.title}
             </MenuTitle>
             {buildMenuArrow()}
           </MenuLink>
-          <MenuSub
-            className={clsx(
-              'relative before:absolute before:top-0 before:bottom-0 before:border-l before:border-gray-200',
-              '[&_.MuiCollapse-wrapperInner]:flex [&_.MuiCollapse-wrapperInner]:flex-col [&_.MuiCollapse-wrapperInner]:gap-0.5',
-              accordionBorderLeft[0],
-              accordionPl[0]
-            )}
-          >
-            {buildMenuItemChildren(item.children, index, 1)}
+          <MenuSub className={clsx('menu-accordion gap-px', subIndetion[level])}>
+            {buildMenuItemChildren(item.children, index, level + 1)}
           </MenuSub>
         </MenuItem>
       );
@@ -106,22 +48,14 @@ const SidebarMenuPrimary = () => {
           <MenuLink
             path={item.path}
             className={clsx(
-              'border border-transparent menu-item-active:bg-secondary-active dark:menu-item-active:bg-coal-300 dark:menu-item-active:border-gray-100 menu-item-active:rounded-lg hover:bg-secondary-active dark:hover:bg-coal-300 dark:hover:border-gray-100 hover:rounded-lg',
-              accordionLinkGap[0],
-              linkPy,
-              linkPl,
-              linkPr
+              'gap-2.5 py-2 px-2.5 rounded-md border border-transparent menu-item-active:border-gray-200 menu-item-active:bg-light menu-link-hover:bg-light menu-link-hover:border-gray-200',
+              subIndetion[level]
             )}
           >
-            <MenuIcon
-              className={clsx(
-                'items-start text-gray-500 dark:text-gray-400 menu-item-active:text-primary menu-link-hover:!text-primary',
-                iconWidth
-              )}
-            >
-              {item.icon && <KeenIcon icon={item.icon} className={iconSize} />}
+            <MenuIcon className="items-start text-lg text-gray-600 menu-item-active:text-gray-800 menu-item-here:text-gray-800 menu-item-show:text-gray-800 menu-link-hover:text-gray-800 dark:menu-item-active:text-gray-900 dark:menu-item-here:text-gray-900 dark:menu-item-show:text-gray-900 dark:menu-link-hover:text-gray-900">
+              {item.icon && <KeenIcon icon={item.icon} />}
             </MenuIcon>
-            <MenuTitle className="text-sm font-semibold text-gray-700 menu-item-active:text-primary menu-link-hover:!text-primary">
+            <MenuTitle className="text-sm text-gray-800 font-medium menu-item-here:text-gray-900 menu-item-show:text-gray-900 menu-link-hover:text-gray-900">
               {item.title}
             </MenuTitle>
           </MenuLink>
@@ -130,28 +64,9 @@ const SidebarMenuPrimary = () => {
     }
   };
 
-  const buildMenuItemRootDisabled = (item: IMenuItemConfig, index: number) => {
-    return (
-      <MenuItem key={index}>
-        <MenuLabel
-          className={clsx('border border-transparent', accordionLinkGap[0], linkPy, linkPl, linkPr)}
-        >
-          <MenuIcon className={clsx('items-start text-gray-500 dark:text-gray-400', iconWidth)}>
-            {item.icon && <KeenIcon icon={item.icon} className={iconSize} />}
-          </MenuIcon>
-          <MenuTitle className="text-sm font-semibold text-gray-700">{item.title}</MenuTitle>
-
-          {item.disabled && buildMenuSoon()}
-        </MenuLabel>
-      </MenuItem>
-    );
-  };
-
   const buildMenuItemChildren = (items: MenuConfigType, index: number, level: number = 0) => {
     return items.map((item, index) => {
-      if (item.disabled) {
-        return buildMenuItemChildDisabled(item, index, level);
-      } else {
+      if (!item.disabled) {
         return buildMenuItemChild(item, index, level);
       }
     });
@@ -162,44 +77,25 @@ const SidebarMenuPrimary = () => {
       return (
         <MenuItem
           key={index}
-          {...(item.toggle && { toggle: item.toggle })}
-          {...(item.trigger && { trigger: item.trigger })}
+          toggle="accordion"
+          trigger="click"
           className={clsx(item.collapse && 'flex-col-reverse')}
         >
-          <MenuLink
-            className={clsx(
-              'border border-transparent grow cursor-pointer',
-              accordionLinkGap[level],
-              accordionLinkPl,
-              linkPr,
-              subLinkPy
-            )}
-          >
-            {buildMenuBullet()}
-
+          <MenuLink className="py-2 px-2.5 rounded-md border border-transparent">
             {item.collapse ? (
-              <MenuTitle className="text-2sm font-medium text-gray-500 dark:text-gray-400">
+              <MenuTitle className="text-2sm text-gray-600 menu-item-here:text-gray-800 menu-item-show:text-gray-800 menu-link-hover:text-gray-800 dark:menu-item-here:text-gray-900 dark:menu-item-show:text-gray-900 dark:menu-link-hover:text-gray-900">
                 <span className="hidden menu-item-show:!flex">{item.collapseTitle}</span>
                 <span className="flex menu-item-show:hidden">{item.expandTitle}</span>
               </MenuTitle>
             ) : (
-              <MenuTitle className="text-2sm font-medium mr-1 text-gray-700 menu-item-active:text-primary menu-item-active:font-semibold menu-link-hover:!text-primary">
+              <MenuTitle className="text-2sm text-gray-800 menu-item-active:text-gray-900 menu-item-here:text-gray-900 menu-item-show:text-gray-900 menu-link-hover:text-gray-900">
                 {item.title}
               </MenuTitle>
             )}
 
             {buildMenuArrow()}
           </MenuLink>
-          <MenuSub
-            className={clsx(
-              !item.collapse &&
-                'before:top-0 before:bottom-0 before:border-l before:border-gray-200',
-              '[&_.MuiCollapse-wrapperInner]:flex [&_.MuiCollapse-wrapperInner]:flex-col [&_.MuiCollapse-wrapperInner]:gap-0.5',
-              !item.collapse && accordionBorderLeft[level],
-              !item.collapse && accordionPl[level],
-              !item.collapse && 'relative before:absolute'
-            )}
-          >
+          <MenuSub className={clsx('menu-accordion gap-px', !item.collapse && subIndetion[level])}>
             {buildMenuItemChildren(item.children, index, item.collapse ? level : level + 1)}
           </MenuSub>
         </MenuItem>
@@ -209,16 +105,9 @@ const SidebarMenuPrimary = () => {
         <MenuItem key={index}>
           <MenuLink
             path={item.path}
-            className={clsx(
-              'border border-transparent items-center grow menu-item-active:bg-secondary-active dark:menu-item-active:bg-coal-300 dark:menu-item-active:border-gray-100 menu-item-active:rounded-lg hover:bg-secondary-active dark:hover:bg-coal-300 dark:hover:border-gray-100 hover:rounded-lg',
-              accordionLinkGap[level],
-              accordionLinkPl,
-              linkPr,
-              subLinkPy
-            )}
+            className="py-2 px-2.5 rounded-md border border-transparent menu-item-active:border-gray-200 menu-item-active:bg-light menu-link-hover:bg-light menu-link-hover:border-gray-200"
           >
-            {buildMenuBullet()}
-            <MenuTitle className="text-2sm font-medium text-gray-700 menu-item-active:text-primary menu-item-active:font-semibold menu-link-hover:!text-primary">
+            <MenuTitle className="text-2sm text-gray-800 menu-item-active:text-gray-900 menu-link-hover:text-gray-900">
               {item.title}
             </MenuTitle>
           </MenuLink>
@@ -227,58 +116,12 @@ const SidebarMenuPrimary = () => {
     }
   };
 
-  const buildMenuItemChildDisabled = (item: IMenuItemConfig, index: number, level: number = 0) => {
-    return (
-      <MenuItem key={index}>
-        <MenuLabel
-          className={clsx(
-            'border border-transparent items-center grow',
-            accordionLinkGap[level],
-            accordionLinkPl,
-            linkPr,
-            subLinkPy
-          )}
-        >
-          {buildMenuBullet()}
-          <MenuTitle className="text-2sm font-medium text-gray-700">{item.title}</MenuTitle>
-          {item.disabled && buildMenuSoon()}
-        </MenuLabel>
-      </MenuItem>
-    );
-  };
-
-  const buildMenuHeading = (item: IMenuItemConfig, index: number) => {
-    return (
-      <MenuItem key={index} className="pt-2.25 pb-px">
-        <MenuHeading
-          className={clsx('uppercase text-2sm font-semibold text-gray-500', linkPl, linkPr)}
-        >
-          {item.heading}
-        </MenuHeading>
-      </MenuItem>
-    );
-  };
-
   const buildMenuArrow = () => {
     return (
-      <MenuArrow className={clsx('text-gray-400 w-[20px] shrink-0 justify-end ms-1', rightOffset)}>
-        <KeenIcon icon="plus" className="text-2xs menu-item-show:hidden" />
-        <KeenIcon icon="minus" className="text-2xs hidden menu-item-show:inline-flex" />
+      <MenuArrow className="text-gray-600 menu-item-here:text-gray-800 menu-item-show:text-gray-800 menu-link-hover:text-gray-800">
+        <KeenIcon icon="down" className="text-xs menu-item-show:hidden" />
+        <KeenIcon icon="up" className="text-xs hidden menu-item-show:inline-flex" />
       </MenuArrow>
-    );
-  };
-
-  const buildMenuBullet = () => {
-    return (
-      <MenuBullet className="flex w-[6px] relative before:absolute before:top-0 before:size-[6px] before:rounded-full before:-translate-x-1/2 before:-translate-y-1/2 menu-item-active:before:bg-primary menu-item-hover:before:bg-primary"></MenuBullet>
-    );
-  };
-
-  const buildMenuSoon = () => {
-    return (
-      <MenuBadge className={rightOffset}>
-        <span className="badge badge-xs">Soon</span>
-      </MenuBadge>
     );
   };
 
@@ -286,7 +129,7 @@ const SidebarMenuPrimary = () => {
   const menuConfig = getMenuConfig('primary');
 
   return (
-    <Menu highlight={true} multipleExpand={false} className="flex flex-col grow gap-0.5">
+    <Menu highlight={true} multipleExpand={false} className="flex flex-col w-full gap-1.5 px-3.5">
       {menuConfig && buildMenu(menuConfig)}
     </Menu>
   );

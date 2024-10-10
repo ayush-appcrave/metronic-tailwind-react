@@ -4,7 +4,7 @@ import { useDemo1Layout } from '../';
 import { toAbsoluteUrl } from '@/utils';
 import { SidebarToggle } from './';
 
-const SidebarHeader = forwardRef<HTMLDivElement>(() => {
+const SidebarHeader = forwardRef<HTMLDivElement, any>((props, ref) => {
   const { layout } = useDemo1Layout();
 
   const lightLogo = () => (
@@ -46,7 +46,10 @@ const SidebarHeader = forwardRef<HTMLDivElement>(() => {
   );
 
   return (
-    <div className="sidebar-header hidden lg:flex items-center relative justify-between px-6 shrink-0">
+    <div
+      ref={ref}
+      className="sidebar-header hidden lg:flex items-center relative justify-between px-6 shrink-0"
+    >
       {layout.options.sidebar.theme === 'light' ? lightLogo() : darkLogo()}
       <SidebarToggle />
     </div>

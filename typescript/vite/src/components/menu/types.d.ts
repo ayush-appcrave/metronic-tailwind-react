@@ -50,6 +50,7 @@ export interface IMenuItemProps {
   path?: string;
   level?: number;
   index?: number;
+  open?: boolean;
   toggle?: MenuItemToggleType;
   trigger?: MenuItemTriggerType;
   disabled?: boolean;

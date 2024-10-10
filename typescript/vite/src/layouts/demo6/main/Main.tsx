@@ -4,20 +4,17 @@ import { Outlet, useLocation } from 'react-router';
 import { useMenuCurrentItem } from '@/components/menu';
 import { Footer, Header, Sidebar, Toolbar, ToolbarActions, ToolbarHeading } from '../';
 import { useMenus } from '@/providers';
-import { useResponsive, useViewport } from '@/hooks';
+import { useResponsive } from '@/hooks';
 import { Link } from 'react-router-dom';
 import { KeenIcon } from '@/components';
 import { ToolbarMenu } from '../toolbar/ToolbarMenu';
 
 const Main = () => {
   const mobileMode = useResponsive('down', 'lg');
-  const desktopMode = useResponsive('up', 'lg');
   const { pathname } = useLocation();
   const { getMenuConfig } = useMenus();
   const menuConfig = getMenuConfig('primary');
   const menuItem = useMenuCurrentItem(pathname, menuConfig);
-  const [viewportHeight] = useViewport();
-  const scrollableHeight = viewportHeight - 200;
 
   return (
     <Fragment>
@@ -27,17 +24,11 @@ const Main = () => {
 
       <div className="flex grow">
         <Sidebar />
+        {mobileMode && <Header />}
 
         <div className="flex grow flex-col pt-[--tw-header-height] lg:pt-0">
-          {mobileMode && <Header />}
-
-          <main
-            className="scrollable-y-auto [scrollbar-width:auto] [--tw-scrollbar-thumb-color:var(--tw-content-scrollbar-color)] flex flex-col grow items-stretch rounded-xl bg-[--tw-content-bg] dark:bg-[--tw-content-bg-dark] border border-gray-300 dark:border-gray-200 lg:ms-[--tw-sidebar-width] pt-5 mt-0 lg:mt-[15px] m-[15px]"
-            style={{
-              ...(desktopMode && scrollableHeight > 0 && { height: `${scrollableHeight}px` })
-            }}
-          >
-            <div className="grow" role="content">
+          <div className="lg:scrollable-y-auto lg:[scrollbar-width:auto] lg:[--tw-scrollbar-thumb-color:var(--tw-content-scrollbar-color)] flex flex-col grow items-stretch rounded-xl bg-[--tw-content-bg] dark:bg-[--tw-content-bg-dark] border border-gray-300 dark:border-gray-200 lg:ms-[--tw-sidebar-width] pt-5 mt-0 lg:mt-[15px] m-[15px]">
+            <main className="grow" role="content">
               <Toolbar>
                 <ToolbarHeading />
 
@@ -50,10 +41,10 @@ const Main = () => {
                 </ToolbarActions>
               </Toolbar>
               <Outlet />
-            </div>
+            </main>
 
             <Footer />
-          </main>
+          </div>
         </div>
       </div>
     </Fragment>

@@ -9,7 +9,7 @@ import ReactDOM from 'react-dom/client';
 
 import { App } from './App';
 import { setupAxios } from './auth';
-import { ProvidersWrapper } from './providers/ProvidersWrapper';
+import { ProvidersWrapper } from './providers';
 import React from 'react';
 
 /**
@@ -19,7 +19,7 @@ import React from 'react';
  */
 setupAxios(axios);
 
-const root = ReactDOM.createRoot(document.getElementById('root') as HTMLElement);
+const root = ReactDOM.createRoot(document.body);
 root.render(
   <React.StrictMode>
     <ProvidersWrapper>
