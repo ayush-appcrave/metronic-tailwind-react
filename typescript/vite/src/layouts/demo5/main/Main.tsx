@@ -6,6 +6,7 @@ import { useMenus } from '@/providers';
 import { Header, Navbar, Content, Footer } from '../';
 import { Toolbar, ToolbarHeading, ToolbarActions } from '../toolbar';
 import { Link } from 'react-router-dom';
+import { Sidebar } from '../sidebar';
 
 const Main = () => {
   const { pathname } = useLocation();
@@ -22,7 +23,7 @@ const Main = () => {
         <Header />
         <Navbar />
         <div className="container-fixed w-full flex px-0 lg:ps-4">
-          {/* {{ theme.layout("demo:_sidebar") }} */}
+          <Sidebar />
 
           <main className="flex flex-col grow">
             {!pathname.includes('/public-profile/') && (

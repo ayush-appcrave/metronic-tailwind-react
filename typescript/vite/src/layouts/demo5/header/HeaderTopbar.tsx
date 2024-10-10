@@ -59,7 +59,7 @@ const HeaderTopbar = () => {
                 {
                   name: 'offset',
                   options: {
-                    offset: [75, 10] // [skid, distance]
+                    offset: [60, 10] // [skid, distance]
                   }
                 }
               ]
@@ -84,7 +84,7 @@ const HeaderTopbar = () => {
               {
                 name: 'offset',
                 options: {
-                  offset: [20, 10] // [skid, distance]
+                  offset: [5, 10] // [skid, distance]
                 }
               }
             ]
