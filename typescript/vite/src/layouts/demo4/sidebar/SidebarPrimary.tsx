@@ -4,6 +4,9 @@ import { useEffect, useRef, useState } from 'react';
 import { getHeight, toAbsoluteUrl } from '@/utils';
 import { useViewport } from '@/hooks';
 import { DropdownUser } from '@/partials/dropdowns/user';
+import { DropdownChat } from '@/partials/dropdowns/chat';
+import { DropdownApps } from '@/partials/dropdowns/apps';
+
 
 interface IMenuItem {
   icon: string;
@@ -73,6 +76,10 @@ const SidebarPrimary = () => {
       }
     });
   }, [pathname]);
+  const itemChatRef = useRef<any>(null);
+  const handleDropdownChatShow = () => {
+    window.dispatchEvent(new Event('resize'));
+  };
 
   return (
     <div className="flex flex-col items-stretch shrink-0 gap-5 py-5 w-[70px] border-e border-gray-300 dark:border-gray-200">
@@ -110,13 +117,59 @@ const SidebarPrimary = () => {
       </div>
       <div ref={footerRef} className="flex flex-col gap-5 items-center shrink-0">
         <div className="flex flex-col gap-1.5">
-          <button className="btn btn-icon btn-icon-xl relative rounded-md size-9 border border-transparent hover:bg-light hover:text-primary hover:border-gray-200 text-gray-600">
-            <KeenIcon icon="messages" />
-          </button>
+          <Menu>
+            <MenuItem
+              ref={itemChatRef}
+              onShow={handleDropdownChatShow}
+              toggle="dropdown"
+              trigger="click"
+              dropdownProps={{
+                placement: 'right-end',
+                modifiers: [
+                  {
+                    name: 'offset',
+                    options: {
+                      offset: [10, 15] // [skid, distance]
+                    }
+                  }
+                ]
+              }}
+            >
+              <MenuToggle>
+                <button className="btn btn-icon btn-icon-xl size-9 border border-transparent hover:bg-light hover:text-primary hover:border-gray-200 dropdown-open:bg-gray-200 text-gray-600">
+                  <KeenIcon icon="messages" />
+                </button>
+              </MenuToggle>
 
-          <button className="btn btn-icon btn-icon-xl relative rounded-md size-9 border border-transparent hover:bg-light hover:text-primary hover:border-gray-200 text-gray-600">
-            <KeenIcon icon="setting-2" />
-          </button>
+              {DropdownChat({ menuTtemRef: itemChatRef })}
+            </MenuItem>
+          </Menu>
+
+          <Menu>
+            <MenuItem
+              ref={itemChatRef}
+              onShow={handleDropdownChatShow}
+              toggle="dropdown"
+              trigger="click"
+              dropdownProps={{
+                placement: 'right-end',
+                modifiers: [
+                  {
+                    name: 'offset',
+                    options: {
+                      offset: [-10, 15] // [skid, distance]
+                    }
+                  }
+                ]
+              }}
+            >
+              <MenuToggle className="btn btn-icon btn-icon-xl size-9 border border-transparent hover:bg-light hover:text-primary hover:border-gray-200 dropdown-open:bg-gray-200 text-gray-600">
+                <KeenIcon icon="setting-2" className="text-gray-600" />
+              </MenuToggle>
+
+              {DropdownApps()}
+            </MenuItem>
+          </Menu>
         </div>
 
         <Menu>
