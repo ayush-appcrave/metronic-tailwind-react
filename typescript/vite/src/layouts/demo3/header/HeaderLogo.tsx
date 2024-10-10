@@ -56,7 +56,9 @@ const HeaderLogo = () => {
           />
         </Link>
 
-        <div className="flex items-center">
+         
+      </div>
+      <div className="flex items-center">
           <h3 className="text-gray-700 text-base hidden md:block">MetronicTeam</h3>
           <span className="text-sm text-gray-400 font-medium px-2.5 hidden md:inline">/</span>
 
@@ -101,7 +103,6 @@ const HeaderLogo = () => {
             </MenuItem>
           </Menu>
         </div>
-      </div>
     </div>
   );
 };
