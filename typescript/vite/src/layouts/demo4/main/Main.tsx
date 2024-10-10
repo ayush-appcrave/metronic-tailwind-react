@@ -1,4 +1,4 @@
-import { Fragment, useEffect, useState } from 'react';
+import { Fragment, useEffect, useRef, useState } from 'react';
 import { Helmet } from 'react-helmet-async';
 import { Outlet, useLocation } from 'react-router';
 import { useMenuCurrentItem } from '@/components/menu';
@@ -7,6 +7,8 @@ import { Header, Sidebar, Footer, Toolbar, ToolbarActions, ToolbarHeading } from
 import { Link } from 'react-router-dom';
 import { KeenIcon } from '@/components';
 import { useResponsive, useViewport } from '@/hooks';
+import { ModalSearch } from '@/partials/modals/search/ModalSearch';
+import { DropdownNotifications } from '@/partials/dropdowns/notifications';
 
 const Main = () => {
   const mobileMode = useResponsive('down', 'lg');
@@ -23,6 +25,15 @@ const Main = () => {
     const calculateHeight = viewportHeight - scrollableOffset;
     setScrollableHeight(calculateHeight);
   }, [viewportHeight]);
+
+ 
+  
+    const [searchModalOpen, setSearchModalOpen] = useState(false);
+    const handleOpen = () => setSearchModalOpen(true);
+    const handleClose = () => {
+      setSearchModalOpen(false);
+    };
+    const itemNotificationsRef = useRef<any>(null);
 
   return (
     <Fragment>
@@ -46,7 +57,25 @@ const Main = () => {
                 <ToolbarHeading />
 
                 <ToolbarActions>
-                  <Link to={'account/home/get-started'} className="btn btn-sm btn-light">
+                  <div className="flex items-center">
+                    <button
+                      onClick={handleOpen}
+                      className="btn btn-icon btn-icon-lg size-9 rounded-md hover:bg-gray-200 dropdown-open:bg-gray-200 hover:text-primary text-gray-600"
+                    >
+                      <KeenIcon icon="magnifier" />
+                    </button>
+                    <ModalSearch open={searchModalOpen} onClose={handleClose} />
+                  </div>
+                  <div className="flex items-center">
+                    <button
+                      onClick={handleOpen}
+                      className="btn btn-icon btn-icon-lg size-9 rounded-md hover:bg-gray-200 dropdown-open:bg-gray-200 hover:text-primary text-gray-600"
+                    >
+                      <KeenIcon icon="notification-status" />
+                    </button>
+                    {DropdownNotifications({ menuTtemRef: itemNotificationsRef })}
+                  </div>
+                  <Link to={'account/home/get-started'} className="btn btn-xs btn-light">
                     <KeenIcon icon="exit-down !text-base" />
                     Export
                   </Link>
