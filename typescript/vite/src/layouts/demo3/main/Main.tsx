@@ -48,7 +48,6 @@ const Main = () => {
                   </ToolbarActions>
                 </Toolbar>
               )}
-
               <Outlet />
             </div>
 

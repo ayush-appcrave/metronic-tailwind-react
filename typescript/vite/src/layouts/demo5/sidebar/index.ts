@@ -1,3 +1,3 @@
 export * from './Sidebar';
-export * from './DashboardMenu';
-export * from './DefaultMenu';
+export * from './SidebarMenuDefault';
+export * from './SidebarMenuDashboard';

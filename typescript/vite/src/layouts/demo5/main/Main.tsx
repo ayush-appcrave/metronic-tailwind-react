@@ -1,9 +1,9 @@
 import { Fragment } from 'react';
 import { Helmet } from 'react-helmet-async';
-import { useLocation } from 'react-router';
+import { Outlet, useLocation } from 'react-router';
 import { useMenuCurrentItem } from '@/components/menu';
 import { useMenus } from '@/providers';
-import { Header, Navbar, Content, Footer } from '../';
+import { Header, Navbar, Footer } from '../';
 import { Toolbar, ToolbarHeading, ToolbarActions } from '../toolbar';
 import { Link } from 'react-router-dom';
 import { Sidebar } from '../sidebar';
@@ -25,20 +25,22 @@ const Main = () => {
         <div className="container-fixed w-full flex px-0 lg:ps-4">
           <Sidebar />
 
-          <main className="flex flex-col grow">
-            {!pathname.includes('/public-profile/') && (
-              <Toolbar>
-                <ToolbarHeading />
-                <ToolbarActions>
-                  <Link to={'/public-profile/profiles/default'} className="btn btn-light btn-sm">
-                    View Profile
-                  </Link>
-                </ToolbarActions>
-              </Toolbar>
-            )}
-            <Content />
+          <div className="flex flex-col grow">
+            <main className="grow" role="content">
+              {!pathname.includes('/public-profile/') && (
+                <Toolbar>
+                  <ToolbarHeading />
+                  <ToolbarActions>
+                    <Link to={'/public-profile/profiles/default'} className="btn btn-light btn-sm">
+                      View Profile
+                    </Link>
+                  </ToolbarActions>
+                </Toolbar>
+              )}
+              <Outlet />
+            </main>
             <Footer />
-          </main>
+          </div>
         </div>
       </div>
     </Fragment>

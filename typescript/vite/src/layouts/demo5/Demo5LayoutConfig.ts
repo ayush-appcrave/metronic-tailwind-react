@@ -4,19 +4,12 @@ import { type ILayoutConfig } from '@/providers';
 const demo5LayoutConfig: ILayoutConfig = {
   // Setting the layout name to 'demo1-layout'
   name: 'demo5-layout',
-
-  // Defining configuration options for the layout
   options: {
-    // Sidebar configuration
-    sidebar: {
-      theme: 'light', // Sidebar theme set to light
-      fixed: true, // Sidebar is fixed in position
-      collapse: false // Sidebar is not collapsed by default
-    },
-
-    // Header configuration
     header: {
-      fixed: true // Header is fixed in position
+      stickyOffset: 200 // Offset value (in pixels) that determines when the header becomes sticky on scroll
+    },
+    sidebar: {
+      stickyOffset: 200 // Offset value (in pixels) that determines when the sidebar becomes sticky on scroll
     }
   }
 };

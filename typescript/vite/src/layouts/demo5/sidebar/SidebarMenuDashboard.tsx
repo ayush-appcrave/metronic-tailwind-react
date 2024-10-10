@@ -1,4 +1,4 @@
-import { Menu, MenuItem, MenuLink, MenuTitle, MenuToggle, KeenIcon } from '@/components';
+import { Menu, MenuItem, MenuLink, MenuTitle, MenuToggle, KeenIcon, MenuSub, MenuIcon } from '@/components';
 
 interface IDashboardDropdownItem {
   title: string;
@@ -21,7 +21,7 @@ interface IDashboardMenuItem {
 }
 interface IDashboardMenuItems extends Array<IDashboardMenuItem> {}
 
-const DashboardMenu = () => {
+const SidebarMenuDashboard = () => {
   const dropdownItems: IDashboardDropdownItems = [
     {
       title: 'Client API',
@@ -144,16 +144,18 @@ const DashboardMenu = () => {
             </span>
           </MenuToggle>
 
-          <Menu className="w-[182px] py-2">
+          <MenuSub className="menu-dropdown menu-default w-[182px] py-2">
             {dropdownItems.map((item, index) => (
               <MenuItem key={index} className={item.active ? 'active' : ''}>
                 <MenuLink path={item.path}>
-                  <KeenIcon icon={item.icon} />
+                  <MenuIcon>
+                    <KeenIcon icon={item.icon} />
+                  </MenuIcon>
                   <MenuTitle>{item.title}</MenuTitle>
                 </MenuLink>
               </MenuItem>
             ))}
-          </Menu>
+          </MenuSub>
         </MenuItem>
       </Menu>
 
@@ -168,13 +170,10 @@ const DashboardMenu = () => {
               <MenuItem key={index} className={item.active ? 'active' : ''}>
                 <MenuLink
                   path={item.path}
-                  className="py-2 px-2.5 gap-2 rounded-md border border-transparent"
+                  className="py-2 px-2.5 gap-2 rounded-md border border-transparent menu-item-active:border-gray-200 menu-item-active:bg-light menu-link-hover:bg-light menu-link-hover:border-gray-200"
                 >
                   <KeenIcon icon={item.icon} />
-                  <MenuTitle
-                    className="text-2sm 
-                      text-gray-800"
-                  >
+                  <MenuTitle className="text-2sm text-gray-800 menu-item-active:font-medium menu-item-active:text-primary menu-link-hover:text-primary">
                     {item.title}
                   </MenuTitle>
                 </MenuLink>
@@ -187,4 +186,4 @@ const DashboardMenu = () => {
   );
 };
 
-export { DashboardMenu };
+export { SidebarMenuDashboard };

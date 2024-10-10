@@ -12,44 +12,18 @@ import { demo5LayoutConfig } from './Demo5LayoutConfig';
 // Interface defining the structure for layout provider properties
 export interface IDemo5LayoutProviderProps {
   layout: ILayoutConfig; // Current layout configuration
-  megaMenuEnabled: boolean; // Determines if the mega menu is enabled
   headerSticky: boolean; // Tracks if the header should be sticky based on scroll
   mobileSidebarOpen: boolean; // Indicates if the mobile sidebar is open
-  mobileMegaMenuOpen: boolean; // Indicates if the mobile mega menu is open
-  sidebarMouseLeave: boolean; // Tracks whether the mouse has left the sidebar
-  setSidebarMouseLeave: (state: boolean) => void; // Function to update sidebar mouse leave state
   setMobileSidebarOpen: (open: boolean) => void; // Function to toggle mobile sidebar state
-  setMobileMegaMenuOpen: (open: boolean) => void; // Function to toggle mobile mega menu state
-  setMegaMenuEnabled: (enabled: boolean) => void; // Function to enable or disable the mega menu
-  setSidebarCollapse: (collapse: boolean) => void; // Function to collapse or expand the sidebar
-  setSidebarTheme: (mode: string) => void; // Function to set the sidebar theme
 }
 
 // Initial layout properties with default values
 const initalLayoutProps: IDemo5LayoutProviderProps = {
   layout: demo5LayoutConfig, // Default layout configuration
-  megaMenuEnabled: false, // Mega menu disabled by default
   headerSticky: false, // Header is not sticky by default
   mobileSidebarOpen: false, // Mobile sidebar is closed by default
-  mobileMegaMenuOpen: false, // Mobile mega menu is closed by default
-  sidebarMouseLeave: false, // Sidebar mouse leave is false initially
-  setSidebarMouseLeave: (state: boolean) => {
-    console.log(`${state}`);
-  },
-  setMobileMegaMenuOpen: (open: boolean) => {
-    console.log(`${open}`);
-  },
   setMobileSidebarOpen: (open: boolean) => {
     console.log(`${open}`);
-  },
-  setMegaMenuEnabled: (enabled: boolean) => {
-    console.log(`${enabled}`);
-  },
-  setSidebarCollapse: (collapse: boolean) => {
-    console.log(`${collapse}`);
-  },
-  setSidebarTheme: (mode: string) => {
-    console.log(`${mode}`);
   }
 };
 
@@ -83,44 +57,11 @@ const Demo5LayoutProvider = ({ children }: PropsWithChildren) => {
     setCurrentLayout(layout);
   });
 
-  const [megaMenuEnabled, setMegaMenuEnabled] = useState(false); // State for mega menu toggle
-
   const [mobileSidebarOpen, setMobileSidebarOpen] = useState(false); // State for mobile sidebar
-
-  const [mobileMegaMenuOpen, setMobileMegaMenuOpen] = useState(false); // State for mobile mega menu
-
-  const [sidebarMouseLeave, setSidebarMouseLeave] = useState(false); // State for sidebar mouse leave
 
   const scrollPosition = useScrollPosition(); // Tracks the scroll position
 
-  const headerSticky: boolean = scrollPosition > 0; // Makes the header sticky based on scroll
-
-  // Function to collapse or expand the sidebar
-  const setSidebarCollapse = (collapse: boolean) => {
-    const updatedLayout = {
-      options: {
-        sidebar: {
-          collapse
-        }
-      }
-    };
-
-    updateLayout(demo5LayoutConfig.name, updatedLayout); // Updates the layout with the collapsed state
-    setLayout(getLayoutConfig()); // Refreshes the layout configuration
-  };
-
-  // Function to set the sidebar theme (e.g., light or dark)
-  const setSidebarTheme = (mode: string) => {
-    const updatedLayout = {
-      options: {
-        sidebar: {
-          theme: mode
-        }
-      }
-    };
-
-    setLayout(deepMerge(layout, updatedLayout)); // Merges and sets the updated layout
-  };
+  const headerSticky: boolean = scrollPosition > layout.options.header.stickyOffset; // Makes the header sticky based on scroll
 
   return (
     // Provides the layout configuration and controls via context to the application
@@ -129,15 +70,7 @@ const Demo5LayoutProvider = ({ children }: PropsWithChildren) => {
         layout,
         headerSticky,
         mobileSidebarOpen,
-        mobileMegaMenuOpen,
-        megaMenuEnabled,
-        sidebarMouseLeave,
-        setMobileSidebarOpen,
-        setMegaMenuEnabled,
-        setSidebarMouseLeave,
-        setMobileMegaMenuOpen,
-        setSidebarCollapse,
-        setSidebarTheme
+        setMobileSidebarOpen
       }}
     >
       {children}
