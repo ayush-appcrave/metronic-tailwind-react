@@ -127,7 +127,7 @@ const AppRouting = (): ReactElement => {
   return (
     <Routes>
       <Route element={<RequireAuth />}>
-        <Route element={<Demo4Layout />}>
+        <Route element={<Demo5Layout />}>
           <Route path="/" element={<DefaultPage />} />
           <Route path="/dark-sidebar" element={<DarkSidebarPage />} />
           <Route path="/public-profile/profiles/default" element={<ProfileDefaultPage />} />
