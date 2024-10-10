@@ -1,11 +1,12 @@
 import clsx from 'clsx';
 import { Link } from 'react-router-dom';
+import { ReactNode } from 'react';
 
 interface ICreateTeamProps {
   className?: string;
-  image: string;
+  image: ReactNode;
   title: string;
-  subTitle: string;
+  subTitle: ReactNode;
   engage: {
     path: string;
     btnColor: string;
