@@ -6,5 +6,4 @@ export * from './header';
 export * from './navbar';
 export * from './toolbar';
 export * from './sidebar';
-export * from './content';
 export * from './footer';

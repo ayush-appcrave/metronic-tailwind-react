@@ -13,10 +13,16 @@ import {
 } from '@/components/menu';
 import { MENU_ROOT } from '@/config';
 import { useEffect, useState } from 'react';
+import { useDemo3Layout } from '..';
 
 const HeaderLogo = () => {
   const { pathname } = useLocation();
   const [selectedMenuItem, setSelectedMenuItem] = useState(MENU_ROOT[1]);
+  const { setMobileSidebarOpen } = useDemo3Layout();
+
+  const handleSidebarOpen = () => {
+    setMobileSidebarOpen(true);
+  };
 
   useEffect(() => {
     MENU_ROOT.forEach((item) => {
@@ -28,11 +34,12 @@ const HeaderLogo = () => {
 
   return (
     <div className="flex items-center gap-2 lg:gap-4">
-      <button 
+      <button
         type="button"
-        className="btn btn-icon btn-icon-lg hover:text-primary btn-sm -ms-2 lg:hidden"   
+        onClick={handleSidebarOpen}
+        className="btn btn-icon btn-icon-lg hover:text-primary btn-sm -ms-2 lg:hidden"
       >
-        <KeenIcon icon="menu" /> 
+        <KeenIcon icon="menu" />
       </button>
 
       <Link to="/" className="shrink-0 -ml-0.5">
@@ -69,7 +76,9 @@ const HeaderLogo = () => {
             }}
           >
             <MenuToggle>
-              <MenuTitle className="!text-gray-900 !text-base !font-medium">{selectedMenuItem.title}</MenuTitle>
+              <MenuTitle className="!text-gray-900 !text-base !font-medium">
+                {selectedMenuItem.title}
+              </MenuTitle>
               <MenuArrow>
                 <KeenIcon icon="down" />
               </MenuArrow>

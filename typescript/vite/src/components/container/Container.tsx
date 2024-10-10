@@ -16,7 +16,7 @@ const Container = ({ children, width, className = '' }: PageContainerProps) => {
   const widthMode = width ?? container;
 
   return (
-    <div className={clsx(className, widthMode === 'fixed' ? 'container-fluid' : 'container-fixed')}>
+    <div className={clsx(className, widthMode === 'fixed' ? 'container-fixed' : 'container-fluid')}>
       {children}
     </div>
   );

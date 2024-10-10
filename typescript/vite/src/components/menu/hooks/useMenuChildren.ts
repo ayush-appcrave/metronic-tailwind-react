@@ -31,8 +31,6 @@ const useMenuChildren = (
       const item = items[i];
 
       if (item.children) {
-        console.log(`Checking item: ${item.title}, Pathname: ${pathname}, Level: ${currentLevel}`);
-
         // Check if we're at the desired level and if any child is active
         if (level === currentLevel && hasActiveChild(item.children)) {
           return item.children;

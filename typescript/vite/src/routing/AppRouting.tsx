@@ -75,13 +75,12 @@ import {
 
 import { AuthPage, useAuthContext } from '../auth';
 import { RequireAuth } from '../auth/RequireAuth';
-import { Demo4Layout } from '../layouts/demo4';
+import { Demo3Layout } from '../layouts/demo3';
 import { ErrorsRouting } from '../errors';
 import { useLoaders } from '../providers/LoadersProvider';
 import { AuthenticationWelcomeMessagePage } from '@/pages/authentication/welcome-message/AuthenticationWelcomeMessagePage';
 import { AuthenticationAccountDeactivatedPage } from '@/pages/authentication/account-deactivated/AuthenticationAccountDeactivatedPage';
 import { AuthenticationGetStartedPage } from '@/pages/authentication/get-started/AuthenticationGetStartedPage';
-import { Demo5Layout } from '@/layouts/demo5';
 
 const AppRouting = (): ReactElement => {
   const { setProgressBarLoader } = useLoaders();
@@ -127,7 +126,7 @@ const AppRouting = (): ReactElement => {
   return (
     <Routes>
       <Route element={<RequireAuth />}>
-        <Route element={<Demo4Layout />}>
+        <Route element={<Demo3Layout />}>
           <Route path="/" element={<DefaultPage />} />
           <Route path="/dark-sidebar" element={<DarkSidebarPage />} />
           <Route path="/public-profile/profiles/default" element={<ProfileDefaultPage />} />

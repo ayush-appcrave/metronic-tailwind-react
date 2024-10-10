@@ -19,17 +19,18 @@ const SidebarMenuDefault = () => {
   const indention = ['ps-2.5', 'ps-5', 'px-7'];
 
   const buildMenu = (items: MenuConfigType) => {
-    return items.map((item) => {
+    return items.map((item, index) => {
       if (!item.disabled) {
-        return buildMenuItem(item);
+        return buildMenuItem(item, index);
       }
     });
   };
 
-  const buildMenuItem = (item: IMenuItemConfig, level: number = 0) => {
+  const buildMenuItem = (item: IMenuItemConfig, index: number, level: number = 0) => {
     if (item.children) {
       return (
         <MenuItem
+          key={index}
           toggle="accordion"
           trigger="click"
           className={item.collapse ? 'flex-col-reverse' : ''}
@@ -56,7 +57,7 @@ const SidebarMenuDefault = () => {
       );
     } else {
       return (
-        <MenuItem>
+        <MenuItem key={index}>
           <MenuLink
             path={item.path}
             className={clsx(
@@ -74,9 +75,9 @@ const SidebarMenuDefault = () => {
   };
 
   const buildMenuChildren = (items: MenuConfigType, level: number) => {
-    return items.map((item) => {
+    return items.map((item, index) => {
       if (!item.disabled) {
-        return buildMenuItem(item, level);
+        return buildMenuItem(item, index, level);
       }
     });
   };
@@ -89,7 +90,7 @@ const SidebarMenuDefault = () => {
       </MenuArrow>
     );
   };
-  
+
   return (
     <Menu highlight={true} multipleExpand={false} className="flex flex-col w-full gap-px px-2.5">
       {menuConfig && buildMenu(menuConfig)}

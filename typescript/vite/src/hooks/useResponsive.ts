@@ -1,8 +1,9 @@
 /* eslint-disable react-hooks/rules-of-hooks */
 import tailwindConfig from 'tailwindcss/defaultConfig';
-
-import { ResponsiveBreakpointType, ResponsiveQueryType } from './types';
 import { useMediaQuery } from './useMediaQuery';
+
+export type ResponsiveBreakpointType = 'sm' | 'md' | 'lg' | 'xl' | '2xl' | number;
+export type ResponsiveQueryType = 'up' | 'down' | 'between';
 
 const breakpoints: ResponsiveBreakpointType[] = ['sm', 'md', 'lg', 'xl', '2xl'];
 

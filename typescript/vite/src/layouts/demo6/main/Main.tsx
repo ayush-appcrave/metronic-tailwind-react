@@ -11,6 +11,7 @@ import { ToolbarMenu } from '../toolbar/ToolbarMenu';
 
 const Main = () => {
   const mobileMode = useResponsive('down', 'lg');
+  const desktopMode = useResponsive('up', 'lg');
   const { pathname } = useLocation();
   const { getMenuConfig } = useMenus();
   const menuConfig = getMenuConfig('primary');
@@ -32,7 +33,9 @@ const Main = () => {
 
           <main
             className="scrollable-y-auto [scrollbar-width:auto] [--tw-scrollbar-thumb-color:var(--tw-content-scrollbar-color)] flex flex-col grow items-stretch rounded-xl bg-[--tw-content-bg] dark:bg-[--tw-content-bg-dark] border border-gray-300 dark:border-gray-200 lg:ms-[--tw-sidebar-width] pt-5 mt-0 lg:mt-[15px] m-[15px]"
-            style={{ height: `${scrollableHeight}px` }}
+            style={{
+              ...(desktopMode && scrollableHeight > 0 && { height: `${scrollableHeight}px` })
+            }}
           >
             <div className="grow" role="content">
               <Toolbar>

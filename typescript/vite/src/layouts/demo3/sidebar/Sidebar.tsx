@@ -1,117 +1,149 @@
 import { Link } from 'react-router-dom';
 import { KeenIcon } from '@/components/keenicons';
+import { useResponsive, useViewport } from '@/hooks';
+import { useDemo3Layout } from '..';
+import { useEffect } from 'react';
+import { usePathname } from '@/providers';
+import { Drawer } from '@/components';
 
 const Sidebar = () => {
+  const { mobileSidebarOpen, setMobileSidebarOpen } = useDemo3Layout();
+  const { pathname, prevPathname } = usePathname();
+  const desktopMode = useResponsive('up', 'lg');
+  const [viewportHeight] = useViewport();
+  const scrollableOffset = 70;
+  const scrollableHeight = viewportHeight - scrollableOffset;
   const items = [
     {
       icon: 'chart-line-star',
       path: '/',
-      tooltip: 'Dashboard',
+      tooltip: 'Dashboard'
     },
     {
       icon: 'profile-circle',
       path: 'public-profile/profiles/default',
-      tooltip: 'Profile',
+      tooltip: 'Profile'
     },
     {
       icon: 'setting-2',
       active: true,
       path: 'account/home/get-started',
-      tooltip: 'Account',
+      tooltip: 'Account'
     },
     {
       icon: 'users',
       path: 'network/get-started',
-      tooltip: 'Network',
+      tooltip: 'Network'
     },
     {
       icon: 'security-user',
       path: 'account/billing/plans',
-      tooltip: 'Plans',
+      tooltip: 'Plans'
     },
     {
       icon: 'messages',
       path: 'account/security/security-log',
-      tooltip: 'Security Logs',
+      tooltip: 'Security Logs'
     },
     {
       icon: 'shop',
       path: 'account/notifications',
-      tooltip: 'Notifications',
+      tooltip: 'Notifications'
     },
     {
       icon: 'cheque',
       path: 'account/members/roles',
-      tooltip: 'ACL',
+      tooltip: 'ACL'
     },
     {
       icon: 'code',
       path: 'account/api-keys',
-      tooltip: 'API Keys',
+      tooltip: 'API Keys'
     },
     {
       icon: 'question',
       path: 'https://keenthemes.com/metronic/tailwind/docs/',
-      tooltip: 'Docs',
+      tooltip: 'Docs'
     }
   ];
 
-  return (
-    <div
-      id="sidebar"
-      className="fixed w-[--tw-sidebar-width] lg:top-[--tw-header-height] top-0 bottom-0 z-20 hidden lg:flex flex-col items-stretch shrink-0 group py-3 lg:py-0"
-      data-drawer="true"
-      data-drawer-enable="true|lg:false"
-      data-drawer-class="drawer drawer-start top-0 bottom-0"
-    >
-      <div id="sidebar_content" className="flex grow shrink-0">
-        <div 
-          className="scrollable-y-auto grow gap-2.5 shrink-0 flex items-center flex-col"
-          data-scrollable="true"
-          data-scrollable-height="auto"
-          data-scrollable-wrappers="#sidebar_content"
-          data-scrollable-offset="0px"
-        >
-          {items.map((item, index) => (
-            item.path.startsWith('http') ? (
-              <a
-                href={item.path}
-                key={index}
-                data-tooltip={item.tooltip}
-                data-tooltip-placement="right"
-                target="_blank"
-                rel="noopener noreferrer"
-                className={`btn btn-icon btn-icon-lg rounded-full size-10 border here:border-gray-300 
-                  text-gray-600 hover:bg-light hover:text-primary hover:border-gray-300 ${
-                  item.active ? 'bg-light text-primary' : ''
-                }`}
-              >
-                <span className="menu-icon">
-                  <KeenIcon icon={item.icon} />
-                </span>
-                <span className="tooltip">{item.tooltip}</span>
-              </a>
-            ) : (
-              <Link
-                to={item.path}
-                key={index}
-                data-tooltip={item.tooltip}
-                data-tooltip-placement="right"
-                className={`btn btn-icon btn-icon-lg rounded-full size-10 border active:border-gray-300 text-gray-600 hover:bg-light hover:text-primary hover:border-gray-300 ${
-                  item.active ? 'bg-light text-primary border-gray-300' : ''
-                }`}
-              >
-                <span className="menu-icon">
-                  <KeenIcon icon={item.icon} />
-                </span>
-                <span className="tooltip">{item.tooltip}</span>
-              </Link>
-            )
-          ))}
+  const handleMobileSidebarClose = () => {
+    setMobileSidebarOpen(false);
+  };
+
+  const renderContent = () => {
+    return (
+      <div className="lg:fixed w-[--tw-sidebar-width] lg:top-[--tw-header-height] top-0 bottom-0 z-20 flex flex-col items-stretch shrink-0 group py-3 lg:py-0">
+        <div className="flex grow shrink-0">
+          <div
+            className="scrollable-y-auto grow gap-2.5 shrink-0 flex items-center flex-col"
+            style={{
+              ...(desktopMode && scrollableHeight > 0 && { height: `${scrollableHeight}px` })
+            }}
+          >
+            {items.map((item, index) =>
+              item.path.startsWith('http') ? (
+                <a
+                  href={item.path}
+                  key={index}
+                  data-tooltip={item.tooltip}
+                  data-tooltip-placement="right"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className={`btn btn-icon btn-icon-lg rounded-full size-10 border here:border-gray-300 
+                    text-gray-600 hover:bg-light hover:text-primary hover:border-gray-300 ${
+                      item.active ? 'bg-light text-primary' : ''
+                    }`}
+                >
+                  <span className="menu-icon">
+                    <KeenIcon icon={item.icon} />
+                  </span>
+                  <span className="tooltip">{item.tooltip}</span>
+                </a>
+              ) : (
+                <Link
+                  to={item.path}
+                  key={index}
+                  data-tooltip={item.tooltip}
+                  data-tooltip-placement="right"
+                  className={`btn btn-icon btn-icon-lg rounded-full size-10 border active:border-gray-300 text-gray-600 hover:bg-light hover:text-primary hover:border-gray-300 ${
+                    item.active ? 'bg-light text-primary border-gray-300' : ''
+                  }`}
+                >
+                  <span className="menu-icon">
+                    <KeenIcon icon={item.icon} />
+                  </span>
+                  <span className="tooltip">{item.tooltip}</span>
+                </Link>
+              )
+            )}
+          </div>
         </div>
       </div>
-    </div>
-  );
+    );
+  };
+
+  useEffect(() => {
+    if (!desktopMode && prevPathname !== pathname) {
+      handleMobileSidebarClose();
+    }
+  }, [desktopMode, handleMobileSidebarClose, pathname, prevPathname]);
+
+  if (desktopMode) {
+    return renderContent();
+  } else {
+    return (
+      <Drawer
+        open={mobileSidebarOpen}
+        onClose={handleMobileSidebarClose}
+        ModalProps={{
+          keepMounted: true
+        }}
+      >
+        {renderContent()}
+      </Drawer>
+    );
+  }
 };
 
 export { Sidebar };

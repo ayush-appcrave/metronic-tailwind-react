@@ -10,6 +10,7 @@ import { useResponsive, useViewport } from '@/hooks';
 
 const Main = () => {
   const mobileMode = useResponsive('down', 'lg');
+  const desktopMode = useResponsive('up', 'lg');
   const { pathname } = useLocation();
   const { getMenuConfig } = useMenus();
   const menuConfig = getMenuConfig('primary');
@@ -37,7 +38,7 @@ const Main = () => {
           <main
             className="scrollable-y-auto [scrollbar-width:auto] light:[--tw-scrollbar-thumb-color:var(--tw-content-scrollbar-color)] flex flex-col grow rounded-xl bg-[--tw-content-bg] dark:bg-[--tw-content-bg-dark] border border-gray-300 dark:border-gray-200 lg:ms-[--tw-sidebar-width] pt-5 mt-0 lg:mt-5 m-5"
             style={{
-              ...(scrollableHeight > 0 && { height: `${scrollableHeight}px` })
+              ...(desktopMode && scrollableHeight > 0 && { height: `${scrollableHeight}px` })
             }}
           >
             <div className="grow" role="content">

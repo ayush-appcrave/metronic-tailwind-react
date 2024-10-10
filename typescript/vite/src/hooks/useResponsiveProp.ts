@@ -1,6 +1,5 @@
 /* eslint-disable react-hooks/rules-of-hooks */
-import { useResponsive } from '.';
-import { ResponsiveBreakpointType } from './types';
+import { useResponsive, ResponsiveBreakpointType } from '.';
 
 export default function useResponsiveProp(prop: any, defaultProp: any = null) {
   let value = prop;
