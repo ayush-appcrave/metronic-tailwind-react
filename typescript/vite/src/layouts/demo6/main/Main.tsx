@@ -26,24 +26,26 @@ const Main = () => {
         <Sidebar />
         {mobileMode && <Header />}
 
-        <div className="flex grow flex-col pt-[--tw-header-height] lg:pt-0">
-          <div className="lg:scrollable-y-auto lg:[scrollbar-width:auto] lg:[--tw-scrollbar-thumb-color:var(--tw-content-scrollbar-color)] flex flex-col grow items-stretch rounded-xl bg-[--tw-content-bg] dark:bg-[--tw-content-bg-dark] border border-gray-300 dark:border-gray-200 lg:ms-[--tw-sidebar-width] pt-5 mt-0 lg:mt-[15px] m-[15px]">
-            <main className="grow" role="content">
-              <Toolbar>
-                <ToolbarHeading />
+        <div className="flex flex-col lg:flex-row grow pt-[--tw-header-height] lg:pt-0">
+          <div className="flex flex-col grow items-stretch rounded-xl bg-[--tw-content-bg] dark:bg-[--tw-content-bg-dark] border border-gray-300 dark:border-gray-200 lg:ms-[--tw-sidebar-width] mt-0 lg:mt-[15px] m-[15px]">
+            <div className="flex flex-col grow lg:scrollable-y-auto lg:[scrollbar-width:auto] lg:light:[--tw-scrollbar-thumb-color:var(--tw-content-scrollbar-color)] pt-5">
+              <main className="grow" role="content">
+                <Toolbar>
+                  <ToolbarHeading />
 
-                <ToolbarActions>
-                  <Link to={'account/home/get-started'} className="btn btn-sm btn-light">
-                    <KeenIcon icon="exit-down !text-base" />
-                    Export
-                  </Link>
-                  <ToolbarMenu />
-                </ToolbarActions>
-              </Toolbar>
-              <Outlet />
-            </main>
+                  <ToolbarActions>
+                    <Link to={'account/home/get-started'} className="btn btn-sm btn-light">
+                      <KeenIcon icon="exit-down !text-base" />
+                      Export
+                    </Link>
+                    <ToolbarMenu />
+                  </ToolbarActions>
+                </Toolbar>
+                <Outlet />
+              </main>
 
-            <Footer />
+              <Footer />
+            </div>
           </div>
         </div>
       </div>

@@ -62,8 +62,6 @@ const MenuItemComponent = forwardRef<IMenuItemRef | null, IMenuItemProps>(
 
     const path = props.path || getMenuLinkPath(children);
 
-    console.log('menu iten open:', open);
-
     const {
       disabled: isMenuDisabled,
       highlight,

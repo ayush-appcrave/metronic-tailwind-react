@@ -19,7 +19,7 @@ import React from 'react';
  */
 setupAxios(axios);
 
-const root = ReactDOM.createRoot(document.body);
+const root = ReactDOM.createRoot(document.getElementById('root') as HTMLElement);
 root.render(
   <React.StrictMode>
     <ProvidersWrapper>
