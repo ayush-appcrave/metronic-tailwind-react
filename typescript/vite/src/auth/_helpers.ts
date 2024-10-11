@@ -21,21 +21,6 @@ const getAuth = (): AuthModel | undefined => {
   }
 };
 
-const getAuth0 = (): Auth0UserModel | undefined => {
-  try {
-    const auth = getData(AUTH_LOCAL_STORAGE_KEY) as Auth0UserModel | undefined;
-
-    if (auth) {
-      // You can easily check auth_token expiration also
-      return auth;
-    } else {
-      return undefined;
-    }
-  } catch (error) {
-    console.error('AUTH LOCAL STORAGE PARSE ERROR', error);
-  }
-};
-
 const setAuth = (auth: AuthModel | Auth0UserModel) => {
   setData(AUTH_LOCAL_STORAGE_KEY, auth);
 };
@@ -68,4 +53,4 @@ export function setupAxios(axios: any) {
   );
 }
 
-export { AUTH_LOCAL_STORAGE_KEY, getAuth, getAuth0, removeAuth, setAuth };
+export { AUTH_LOCAL_STORAGE_KEY, getAuth, removeAuth, setAuth };

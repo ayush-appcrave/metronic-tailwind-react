@@ -4,7 +4,7 @@ import { useSnackbar } from 'notistack';
 import { ColumnDef } from '@tanstack/react-table';
 import { Link } from 'react-router-dom';
 import { DataGrid, KeenIcon, TDataGridSelectedRowIds } from '@/components';
-import { CommonAvatars, CommonRating } from '@/partials/common'; // Import avatar-related types and components
+import { CommonAvatars, CommonRating } from '@/partials/common';
 import { TeamsData, ITeamData } from './';
 
 const Teams = () => {
@@ -82,22 +82,22 @@ const Teams = () => {
     []
   );
 
-  // Memoize the team data
   const data: ITeamData[] = useMemo(() => TeamsData, []);
 
-  // Initialize search term from localStorage if available
   const [searchTerm, setSearchTerm] = useState(() => {
     return localStorage.getItem(storageFilterId) || '';
   });
 
-  // Update localStorage whenever the search term changes
   useEffect(() => {
     localStorage.setItem(storageFilterId, searchTerm);
   }, [searchTerm]);
 
-  // Filtered data based on search term
+  useEffect(() => {
+
+  }, []);
+
   const filteredData = useMemo(() => {
-    if (!searchTerm) return data; // If no search term, return full data
+    if (!searchTerm) return data;
 
     return data.filter(
       (team) =>
@@ -106,7 +106,6 @@ const Teams = () => {
     );
   }, [searchTerm, data]);
 
-  // Handler for sorting changes
   const handleRowsSelectChange = (selectedRowIds: TDataGridSelectedRowIds) => {
     enqueueSnackbar(
       selectedRowIds.size > 0 ? `${selectedRowIds.size} rows selected` : `No rows are selected`,
@@ -127,7 +126,7 @@ const Teams = () => {
             type="text"
             placeholder="Search Teams"
             value={searchTerm}
-            onChange={(e) => setSearchTerm(e.target.value)} // Update search term
+            onChange={(e) => setSearchTerm(e.target.value)}
           />
         </div>
       </div>
