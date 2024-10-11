@@ -18,36 +18,56 @@ import clsx from 'clsx';
 import { useEffect, useRef, useState } from 'react';
 import { Scrollspy } from '@/components/scrollspy/Scrollspy';
 import { AccountSettingsSidebar } from '@/pages/account/home/settings-sidebar';
+import { useLayout } from '@/providers';
+
+const stickySidebarClasses: Record<string, string> = {
+  'demo1-layout': 'top-[calc(var(--tw-header-height)+1rem)]',
+  'demo2-layout': 'top-[calc(var(--tw-header-height)+1rem)]',
+  'demo3-layout': 'top-[calc(var(--tw-header-height)+var(--tw-navbar-height)+1rem)]',
+  'demo4-layout': 'top-[3rem]',
+  'demo5-layout': 'top-[calc(var(--tw-header-height)+1.5rem)]',
+  'demo6-layout': 'top-[3rem]',
+  'demo7-layout': 'top-[calc(var(--tw-header-height)+1rem)]',
+  'demo8-layout': 'top-[calc(var(--tw-header-height)+1rem)]',
+  'demo9-layout': 'top-[calc(var(--tw-header-height)+1rem)]',
+  'demo10-layout': 'top-[calc(var(--tw-header-height)+1rem)]'
+};
 
 const AccountSettingsSidebarContent = () => {
   const desktopMode = useResponsive('up', 'lg');
-
-  const scrollPosition = useScrollPosition();
+  const { currentLayout } = useLayout();
   const [sidebarSticky, setSidebarSticky] = useState(false);
 
-  const navBar = useRef<HTMLDivElement | null>(null);
-  const parentRef = useRef(document);
+  // Initialize ref for parentEl
+  const parentRef = useRef<HTMLElement | Document>(document); // Default to document
+  const scrollPosition = useScrollPosition({ targetRef: parentRef });
 
+  // Effect to update parentRef after the component mounts
   useEffect(() => {
-    if (scrollPosition > 200) {
-      setSidebarSticky(true);
-    } else {
-      setSidebarSticky(false);
+    const scrollableElement = document.getElementById('scrollable_content');
+    if (scrollableElement) {
+      parentRef.current = scrollableElement;
     }
-  }, [scrollPosition]);
+  }, []); // Run only once on component mount
+
+  // Handle scroll position and sidebar stickiness
+  useEffect(() => {
+    setSidebarSticky(scrollPosition > 100);
+  }, [scrollPosition, currentLayout?.options]);
+
+  // Get the sticky class based on the current layout, provide a default if not found
+  const stickyClass = currentLayout?.name
+    ? stickySidebarClasses[currentLayout.name] || 'top-[calc(var(--tw-header-height)+1rem)]'
+    : 'top-[calc(var(--tw-header-height)+1rem)]';
 
   return (
     <div className="flex grow gap-5 lg:gap-7.5">
       {desktopMode && (
         <div className="w-[230px] shrink-0">
           <div
-            ref={navBar}
-            className={clsx(
-              'w-[230px]',
-              sidebarSticky && 'fixed top-[calc(var(--tw-header-height)+1.875rem)] z-10 left-auto'
-            )}
+            className={clsx('w-[230px]', sidebarSticky && `fixed z-10 left-auto ${stickyClass}`)}
           >
-            <Scrollspy offset={110} targetRef={parentRef}>
+            <Scrollspy offset={100} targetRef={parentRef}>
               <AccountSettingsSidebar />
             </Scrollspy>
           </div>

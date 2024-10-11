@@ -5,7 +5,7 @@ import { MutableRefObject, ReactNode, useEffect, useRef, useCallback } from 'rea
 
 type ScrollSpyProps = {
   children: ReactNode;
-  targetRef?: MutableRefObject<HTMLElement | Document | null>;
+  targetRef?: MutableRefObject<HTMLElement | Document | undefined>;
   onUpdate?: (id: string) => void;
   offset?: number;
   smooth?: boolean;

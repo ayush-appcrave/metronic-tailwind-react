@@ -7,7 +7,6 @@ import { DropdownUser } from '@/partials/dropdowns/user';
 import { DropdownChat } from '@/partials/dropdowns/chat';
 import { DropdownApps } from '@/partials/dropdowns/apps';
 
-
 interface IMenuItem {
   icon: string;
   tooltip: string;

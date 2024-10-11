@@ -9,7 +9,7 @@ import { useDemo4Layout } from '../';
 const Sidebar = () => {
   const desktopMode = useResponsive('up', 'lg');
   const mobileMode = useResponsive('down', 'lg');
-  const { pathname, prevPathname } = usePathname();  
+  const { pathname, prevPathname } = usePathname();
   const { mobileSidebarOpen, setMobileSidebarOpen } = useDemo4Layout();
 
   const handleMobileSidebarClose = () => {

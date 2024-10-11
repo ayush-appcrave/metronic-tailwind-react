@@ -28,7 +28,10 @@ const Main = () => {
 
         <div className="flex flex-col lg:flex-row grow pt-[--tw-header-height] lg:pt-0">
           <div className="flex flex-col grow items-stretch rounded-xl bg-[--tw-content-bg] dark:bg-[--tw-content-bg-dark] border border-gray-300 dark:border-gray-200 lg:ms-[--tw-sidebar-width] mt-0 lg:mt-[15px] m-[15px]">
-            <div className="flex flex-col grow lg:scrollable-y-auto lg:[scrollbar-width:auto] lg:light:[--tw-scrollbar-thumb-color:var(--tw-content-scrollbar-color)] pt-5">
+            <div
+              id="scrollable_content"
+              className="flex flex-col grow lg:scrollable-y-auto lg:[scrollbar-width:auto] lg:light:[--tw-scrollbar-thumb-color:var(--tw-content-scrollbar-color)] pt-5"
+            >
               <main className="grow" role="content">
                 <Toolbar>
                   <ToolbarHeading />

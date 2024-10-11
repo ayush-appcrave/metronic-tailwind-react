@@ -12,6 +12,7 @@ import { DropdownNotifications } from '@/partials/dropdowns/notifications';
 
 const Main = () => {
   const mobileMode = useResponsive('down', 'lg');
+  const itemNotificationsRef = useRef<HTMLDivElement>(null);
   const { pathname } = useLocation();
   const { getMenuConfig } = useMenus();
   const menuConfig = getMenuConfig('primary');
@@ -21,7 +22,6 @@ const Main = () => {
   const handleClose = () => {
     setSearchModalOpen(false);
   };
-  const itemNotificationsRef = useRef<any>(null);
 
   return (
     <Fragment>
@@ -35,7 +35,10 @@ const Main = () => {
           <Sidebar />
 
           <div className="flex grow rounded-xl bg-[--tw-content-bg] dark:bg-[--tw-content-bg-dark] border border-gray-300 dark:border-gray-200 lg:ms-[--tw-sidebar-width] mt-0 lg:mt-5 m-5">
-            <div className="flex flex-col lg:scrollable-y-auto lg:[scrollbar-width:auto] lg:light:[--tw-scrollbar-thumb-color:var(--tw-content-scrollbar-color)] pt-5">
+            <div
+              id="scrollable_content"
+              className="flex flex-col grow lg:scrollable-y-auto lg:[scrollbar-width:auto] lg:light:[--tw-scrollbar-thumb-color:var(--tw-content-scrollbar-color)] pt-5"
+            >
               <main className="grow" role="content">
                 <Toolbar>
                   <ToolbarHeading />
