@@ -1,4 +1,4 @@
-import { Connections, Tags } from '../default';
+import { Contributors, Tags } from '../default';
 import { Activity, ApiCredentials, Attributes, Deals, GeneralInfo, RecentInvoices } from './blocks';
 
 const ProfileCRMContent = () => {
@@ -22,7 +22,7 @@ const ProfileCRMContent = () => {
 
             <Activity />
             <div className="grid grid-cols-1 lg:grid-cols-2 gap-5 lg:gap-7.5">
-              <Connections title="Connections" />
+              <Contributors />
 
               <RecentInvoices />
             </div>

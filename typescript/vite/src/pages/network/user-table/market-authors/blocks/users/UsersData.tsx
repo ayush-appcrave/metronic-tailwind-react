@@ -207,7 +207,7 @@ const UsersData: IUsersData[] = [
     },
     total: '$41,620.45',
     team: {
-      logo: 'twitch-purple..svg',
+      logo: 'twitch-purple.svg',
       label: 'Market Masters'
     },
     products: '742',

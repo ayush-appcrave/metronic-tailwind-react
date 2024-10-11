@@ -177,7 +177,7 @@ const UsersData: IUsersData[] = [
       color: 'success'
     },
     location: 'Japan',
-    flag: 'apan.svg',
+    flag: 'japan.svg',
     activity: 'Yesterday, 17:45'
   },
   {

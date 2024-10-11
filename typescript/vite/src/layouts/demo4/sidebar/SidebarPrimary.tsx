@@ -191,7 +191,7 @@ const SidebarPrimary = () => {
               <div className="btn btn-icon rounded-full">
                 <img
                   className="size-8 rounded-full justify-center border border-gray-500 shrink-0"
-                  src={toAbsoluteUrl('/media/avatars/300-2.png')}
+                  src={toAbsoluteUrl('/media/avatars/gray/5.png')}
                   alt=""
                 />
               </div>
