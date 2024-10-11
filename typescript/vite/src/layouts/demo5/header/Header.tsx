@@ -1,5 +1,4 @@
 import clsx from 'clsx';
-import { Container } from '@/components/container';
 import { HeaderLogo, HeaderTopbar } from '.';
 import { useDemo5Layout } from '../';
 import { useEffect } from 'react';
@@ -23,10 +22,10 @@ const Header = () => {
           'transition-[height] fixed z-10 top-0 left-0 right-0 shadow-sm backdrop-blur-md bg-white/70 dark:bg-coal-500/70 dark:border-b dark:border-b-coal-100'
       )}
     >
-      <Container className="flex flex-wrap justify-between items-center lg:gap-4">
+      <div className="container-fluid flex flex-wrap justify-between items-center lg:gap-4">
         <HeaderLogo />
         <HeaderTopbar />
-      </Container>
+      </div>
     </header>
   );
 };

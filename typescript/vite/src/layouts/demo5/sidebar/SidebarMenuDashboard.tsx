@@ -1,4 +1,13 @@
-import { Menu, MenuItem, MenuLink, MenuTitle, MenuToggle, KeenIcon, MenuSub, MenuIcon } from '@/components';
+import {
+  Menu,
+  MenuItem,
+  MenuLink,
+  MenuTitle,
+  MenuToggle,
+  KeenIcon,
+  MenuSub,
+  MenuIcon
+} from '@/components';
 
 interface IDashboardDropdownItem {
   title: string;
@@ -24,7 +33,7 @@ interface IDashboardMenuItems extends Array<IDashboardMenuItem> {}
 const SidebarMenuDashboard = () => {
   const dropdownItems: IDashboardDropdownItems = [
     {
-      title: 'Client API',
+      title: 'Admin API',
       path: '',
       icon: 'calendar',
       active: true
@@ -32,7 +41,7 @@ const SidebarMenuDashboard = () => {
     {
       title: 'Client API',
       path: '',
-      icon: 'calendar'
+      icon: 'setting'
     }
   ];
 
@@ -144,7 +153,7 @@ const SidebarMenuDashboard = () => {
             </span>
           </MenuToggle>
 
-          <MenuSub className="menu-dropdown menu-default w-[182px] py-2">
+          <MenuSub className="menu-default w-[182px] py-2">
             {dropdownItems.map((item, index) => (
               <MenuItem key={index} className={item.active ? 'active' : ''}>
                 <MenuLink path={item.path}>

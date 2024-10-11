@@ -14,9 +14,7 @@ const ApiIntegrations = () => {
         id: 'integration',
         header: () => 'Integration',
         enableSorting: true,
-        cell: (info) => {
-          return info.row.original.integration;
-        },
+        cell: (info) => info.getValue(),
         meta: {
           className: 'min-w-[206px]',
           cellClassName: 'text-gray-700 font-normal'
@@ -48,9 +46,7 @@ const ApiIntegrations = () => {
         id: 'dailyCalls',
         header: () => 'Daily Calls',
         enableSorting: true,
-        cell: (info) => {                    
-          return info.row.original.dailyCalls;
-        },
+        cell: (info) => info.getValue(),
         meta: {
           className: 'min-w-[122px]',
           cellClassName: 'text-gray-700 font-normal',
@@ -61,9 +57,7 @@ const ApiIntegrations = () => {
         id: 'actions',
         header: () => 'Status',
         enableSorting: true,
-        cell: (info) => {                    
-          return info.row.original.actions;
-        },
+        cell: (info) => info.getValue(),
         meta: {
           className: 'min-w-[98px]',
           cellClassName: 'text-gray-700 font-normal',
@@ -113,7 +107,7 @@ const ApiIntegrations = () => {
           data={data} 
           rowSelect={false} 
           paginationSize={10}
-          initialSorting={[{ id: 'api-integrations', desc: false }]} 
+          initialSorting={[{ id: 'integration', desc: false }]} 
           saveState={true} 
           saveStateId='api-integrations-grid'
         />

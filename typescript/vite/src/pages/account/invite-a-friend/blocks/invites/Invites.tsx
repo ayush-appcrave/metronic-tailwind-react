@@ -96,9 +96,7 @@ const Invites = () => {
         id: 'recentlyActivity',
         header: () => 'Recent activity',
         enableSorting: true,
-        cell: (info) => {
-          return info.row.original.recentlyActivity;
-        },
+        cell: (info) => info.getValue(),
         meta: {
           className: 'min-w-[160px]',
           cellClassName: 'text-gray-700 font-normal'
@@ -197,7 +195,7 @@ const Invites = () => {
           data={filteredData} 
           rowSelect={true}
           paginationSize={5}
-          initialSorting={[{ id: 'invites', desc: false }]} 
+          initialSorting={[{ id: 'member', desc: false }]} 
           saveState={true} 
           saveStateId='invites-grid'
         />

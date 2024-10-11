@@ -27,6 +27,7 @@ const IPAddresses = () => {
         id: 'ipAddress',
         header: () => 'IP Address',
         enableSorting: true,
+        cell: (info) => info.getValue(),
         meta: {
           className: 'min-w-[250px]',
         },
@@ -36,6 +37,7 @@ const IPAddresses = () => {
         id: 'lastSession',
         header: () => 'Last Session',
         enableSorting: true,
+        cell: (info) => info.getValue(),
         meta: {
           className: 'w-[185px]',
         },
@@ -45,6 +47,7 @@ const IPAddresses = () => {
         id: 'label',
         header: () => 'Label',
         enableSorting: true,
+        cell: (info) => info.getValue(),
         meta: {
           className: 'w-[185px]',
         },
@@ -62,6 +65,7 @@ const IPAddresses = () => {
           </>
         ),
         enableSorting: true,
+        cell: (info) => info.getValue(),
         meta: {
           className: 'w-[185px]',
         },
@@ -126,7 +130,7 @@ const IPAddresses = () => {
           data={data} 
           rowSelect={true} 
           paginationSize={10}
-          initialSorting={[{ id: 'ip-address', desc: false }]} 
+          initialSorting={[{ id: 'method', desc: false }]} 
           saveState={true} 
           saveStateId='ip-addresses-grid'
         />

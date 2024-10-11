@@ -14,9 +14,7 @@ const SecurityLog = () => {
         id: 'timestamp',
         header: () => 'Timestamp',
         enableSorting: true,
-        cell: (info) => {
-          return info.row.original.timestamp;
-        },
+        cell: (info) => info.getValue(),
         meta: {
           className: 'min-w-[200px]'
         },
@@ -46,9 +44,7 @@ const SecurityLog = () => {
         id: 'actionTaken',
         header: () => 'Action Taken',
         enableSorting: true,
-        cell: (info) => {
-          return info.row.original.actionTaken;
-        },
+        cell: (info) => info.getValue(),
         meta: {
           className: 'min-w-[200px]',
         },
@@ -58,9 +54,7 @@ const SecurityLog = () => {
         id: 'sourceIp',
         header: () => 'Source IP',
         enableSorting: true,
-        cell: (info) => {
-          return info.row.original.sourceIp;
-        },
+        cell: (info) => info.getValue(),
         meta: {
           className: 'min-w-[130px]',
         },
@@ -70,9 +64,7 @@ const SecurityLog = () => {
         id: 'destinationIp',
         header: () => 'Destination IP',
         enableSorting: true,
-        cell: (info) => {
-          return info.row.original.destinationIp;
-        },
+        cell: (info) => info.getValue(),
         meta: {
           className: 'min-w-[130px]',
         },

@@ -25,22 +25,20 @@ const Main = () => {
         <div className="container-fixed w-full flex px-0 lg:ps-4">
           <Sidebar />
 
-          <div className="flex flex-col grow">
-            <main className="grow" role="content">
-              {!pathname.includes('/public-profile/') && (
-                <Toolbar>
-                  <ToolbarHeading />
-                  <ToolbarActions>
-                    <Link to={'/public-profile/profiles/default'} className="btn btn-light btn-sm">
-                      View Profile
-                    </Link>
-                  </ToolbarActions>
-                </Toolbar>
-              )}
-              <Outlet />
-            </main>
+          <main className="flex flex-col grow">
+            {!pathname.includes('/public-profile/') && (
+              <Toolbar>
+                <ToolbarHeading />
+                <ToolbarActions>
+                  <Link to={'/public-profile/profiles/default'} className="btn btn-light btn-sm">
+                    View Profile
+                  </Link>
+                </ToolbarActions>
+              </Toolbar>
+            )}
+            <Outlet />
             <Footer />
-          </div>
+          </main>
         </div>
       </div>
     </Fragment>

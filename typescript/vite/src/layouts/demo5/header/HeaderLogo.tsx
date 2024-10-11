@@ -1,4 +1,4 @@
-import { Link, useLocation } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import { KeenIcon } from '@/components/keenicons';
 import { toAbsoluteUrl } from '@/utils';
 import {
@@ -11,8 +11,7 @@ import {
   MenuTitle,
   MenuToggle
 } from '@/components/menu';
-import { MENU_ROOT } from '@/config';
-import { useEffect, useState } from 'react';
+import { useDemo5Layout } from '..';
 
 interface IHeaderLogoTeam {
   title: string;
@@ -35,8 +34,11 @@ interface IHeaderLogoStaging {
 interface IHeaderLogoStagings extends Array<IHeaderLogoStaging> {}
 
 const HeaderLogo = () => {
-  const { pathname } = useLocation();
-  const [selectedMenuItem, setSelectedMenuItem] = useState(MENU_ROOT[1]);
+  const { setMobileSidebarOpen } = useDemo5Layout();
+
+  const handleSidebarOpen = () => {
+    setMobileSidebarOpen(true);
+  };
 
   const teams: IHeaderLogoTeams = [
     {
@@ -83,16 +85,16 @@ const HeaderLogo = () => {
     }
   ];
 
-  useEffect(() => {
-    MENU_ROOT.forEach((item) => {
-      if (item.rootPath && pathname.includes(item.rootPath)) {
-        setSelectedMenuItem(item);
-      }
-    });
-  }, [pathname]);
-
   return (
     <div className="flex items-center gap-2 lg:gap-5">
+      <button
+        type="button"
+        onClick={handleSidebarOpen}
+        className="btn btn-icon btn-light btn-clear btn-sm -ms-2 lg:hidden"
+      >
+        <KeenIcon icon="menu" />
+      </button>
+
       <Link to="/">
         <img
           src={toAbsoluteUrl('/media/app/mini-logo-circle.svg')}
@@ -106,7 +108,7 @@ const HeaderLogo = () => {
         />
       </Link>
 
-      <div className="flex items-center">
+      <div className="lg:flex items-center">
         <Menu className="menu-default">
           <MenuItem
             toggle="dropdown"
@@ -129,12 +131,9 @@ const HeaderLogo = () => {
                 <KeenIcon icon="down" />
               </MenuArrow>
             </MenuToggle>
-            <MenuSub className="menu-default">
+            <MenuSub className="menu-default w-48 py-2">
               {teams.map((team, index) => (
-                <MenuItem
-                  key={index}
-                  className={pathname.includes(team.urlPartial) ? 'active' : ''}
-                >
+                <MenuItem key={index}>
                   <MenuLink path={team.path}>
                     {team.icon && (
                       <MenuIcon>
@@ -148,11 +147,9 @@ const HeaderLogo = () => {
             </MenuSub>
           </MenuItem>
         </Menu>
-      </div>
 
-      <span className="text-sm text-gray-400 font-medium px-2.5 hidden md:inline">/</span>
+        <span className="text-sm text-gray-400 font-medium px-2.5 md:inline">/</span>
 
-      <div className="flex items-center">
         <Menu className="menu-default">
           <MenuItem
             toggle="dropdown"
@@ -177,7 +174,7 @@ const HeaderLogo = () => {
             </MenuToggle>
             <MenuSub className="menu-default w-48 py-2">
               {items.map((item, index) => (
-                <MenuItem key={index} className={item === selectedMenuItem ? 'active' : ''}>
+                <MenuItem key={index}>
                   <MenuLink path="#">
                     {item.icon && (
                       <MenuIcon>
@@ -191,11 +188,9 @@ const HeaderLogo = () => {
             </MenuSub>
           </MenuItem>
         </Menu>
-      </div>
 
-      <span className="text-sm text-gray-400 font-medium px-2.5">/</span>
+        <span className="text-sm text-gray-400 font-medium px-2.5">/</span>
 
-      <div className="flex items-center">
         <Menu className="menu-default">
           <MenuItem
             toggle="dropdown"
@@ -220,7 +215,7 @@ const HeaderLogo = () => {
             </MenuToggle>
             <MenuSub className="menu-default w-48 py-2">
               {stagings.map((staging, index) => (
-                <MenuItem key={index} className={staging === selectedMenuItem ? 'active' : ''}>
+                <MenuItem key={index}>
                   <MenuLink path="#">
                     {staging.icon && (
                       <MenuIcon>
