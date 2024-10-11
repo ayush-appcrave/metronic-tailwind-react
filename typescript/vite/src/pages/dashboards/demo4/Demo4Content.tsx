@@ -54,7 +54,6 @@ const Demo4Content = () => {
           <BlockList
             className="h-full"
             text="Users on the block list are unable to send chat requests or messages to you anymore, ever, or again"
-            limit={3}
           />
         </div>
       </div>

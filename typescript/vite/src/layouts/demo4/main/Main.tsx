@@ -1,7 +1,7 @@
 import { Fragment, useRef, useState } from 'react';
 import { Helmet } from 'react-helmet-async';
 import { Outlet, useLocation } from 'react-router';
-import { useMenuCurrentItem } from '@/components/menu';
+import { Menu, MenuItem, MenuToggle, useMenuCurrentItem } from '@/components/menu';
 import { useMenus } from '@/providers';
 import { Header, Sidebar, Footer, Toolbar, ToolbarActions, ToolbarHeading } from '..';
 import { Link } from 'react-router-dom';
@@ -50,15 +50,31 @@ const Main = () => {
                       </button>
                       <ModalSearch open={searchModalOpen} onClose={handleClose} />
                     </div>
-                    <div className="flex items-center">
-                      <button
-                        onClick={handleOpen}
-                        className="btn btn-icon btn-icon-lg size-9 rounded-md hover:bg-gray-200 dropdown-open:bg-gray-200 hover:text-primary text-gray-600"
+                    <Menu className="items-stretch">
+                      <MenuItem
+                        ref={itemNotificationsRef}
+                        toggle="dropdown"
+                        trigger="click"
+                        dropdownProps={{
+                          placement: 'bottom-end',
+                          modifiers: [
+                            {
+                              name: 'offset',
+                              options: {
+                                offset: [115, 13] // [skid, distance]
+                              }
+                            }
+                          ]
+                        }}
                       >
-                        <KeenIcon icon="notification-status" />
-                      </button>
-                      {DropdownNotifications({ menuTtemRef: itemNotificationsRef })}
-                    </div>
+                        <MenuToggle>
+                          <button className="btn btn-icon btn-icon-lg size-8 text-gray-600 hover:text-primary [dropdown-open:text-primary">
+                            <KeenIcon icon="notification-status" />
+                          </button>
+                        </MenuToggle>
+                        {DropdownNotifications({ menuTtemRef: itemNotificationsRef })}
+                      </MenuItem>
+                    </Menu>
                     <Link to={'account/home/get-started'} className="btn btn-xs btn-light">
                       <KeenIcon icon="exit-down !text-base" />
                       Export
