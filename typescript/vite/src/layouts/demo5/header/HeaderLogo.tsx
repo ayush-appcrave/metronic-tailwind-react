@@ -12,6 +12,7 @@ import {
   MenuToggle
 } from '@/components/menu';
 import { useDemo5Layout } from '..';
+import { useResponsive } from '@/hooks';
 
 interface IHeaderLogoTeam {
   title: string;
@@ -34,6 +35,7 @@ interface IHeaderLogoStaging {
 interface IHeaderLogoStagings extends Array<IHeaderLogoStaging> {}
 
 const HeaderLogo = () => {
+  const desktopMode = useResponsive('up', 'lg');
   const { setMobileSidebarOpen } = useDemo5Layout();
 
   const handleSidebarOpen = () => {
@@ -108,128 +110,130 @@ const HeaderLogo = () => {
         />
       </Link>
 
-      <div className="lg:flex items-center">
-        <Menu className="menu-default">
-          <MenuItem
-            toggle="dropdown"
-            trigger="hover"
-            dropdownProps={{
-              placement: 'bottom-start',
-              modifiers: [
-                {
-                  name: 'offset',
-                  options: {
-                    offset: [0, 10] // [skid, distance]
+      {desktopMode && (
+        <div className="lg:flex items-center">
+          <Menu className="menu-default">
+            <MenuItem
+              toggle="dropdown"
+              trigger="hover"
+              dropdownProps={{
+                placement: 'bottom-start',
+                modifiers: [
+                  {
+                    name: 'offset',
+                    options: {
+                      offset: [0, 10] // [skid, distance]
+                    }
                   }
-                }
-              ]
-            }}
-          >
-            <MenuToggle className="text-gray-900 text-sm font-medium">
-              MetronicTeam
-              <MenuArrow>
-                <KeenIcon icon="down" />
-              </MenuArrow>
-            </MenuToggle>
-            <MenuSub className="menu-default w-48 py-2">
-              {teams.map((team, index) => (
-                <MenuItem key={index}>
-                  <MenuLink path={team.path}>
-                    {team.icon && (
-                      <MenuIcon>
-                        <KeenIcon icon={team.icon} />
-                      </MenuIcon>
-                    )}
-                    <MenuTitle>{team.title}</MenuTitle>
-                  </MenuLink>
-                </MenuItem>
-              ))}
-            </MenuSub>
-          </MenuItem>
-        </Menu>
+                ]
+              }}
+            >
+              <MenuToggle className="text-gray-900 text-sm font-medium">
+                MetronicTeam
+                <MenuArrow>
+                  <KeenIcon icon="down" />
+                </MenuArrow>
+              </MenuToggle>
+              <MenuSub className="menu-default w-48 py-2">
+                {teams.map((team, index) => (
+                  <MenuItem key={index}>
+                    <MenuLink path={team.path}>
+                      {team.icon && (
+                        <MenuIcon>
+                          <KeenIcon icon={team.icon} />
+                        </MenuIcon>
+                      )}
+                      <MenuTitle>{team.title}</MenuTitle>
+                    </MenuLink>
+                  </MenuItem>
+                ))}
+              </MenuSub>
+            </MenuItem>
+          </Menu>
 
-        <span className="text-sm text-gray-400 font-medium px-2.5 md:inline">/</span>
+          <span className="text-sm text-gray-400 font-medium px-2.5 md:inline">/</span>
 
-        <Menu className="menu-default">
-          <MenuItem
-            toggle="dropdown"
-            trigger="hover"
-            dropdownProps={{
-              placement: 'bottom-start',
-              modifiers: [
-                {
-                  name: 'offset',
-                  options: {
-                    offset: [0, 10] // [skid, distance]
+          <Menu className="menu-default">
+            <MenuItem
+              toggle="dropdown"
+              trigger="hover"
+              dropdownProps={{
+                placement: 'bottom-start',
+                modifiers: [
+                  {
+                    name: 'offset',
+                    options: {
+                      offset: [0, 10] // [skid, distance]
+                    }
                   }
-                }
-              ]
-            }}
-          >
-            <MenuToggle className="text-gray-900 text-sm font-medium">
-              Fall 24 Campaign
-              <MenuArrow>
-                <KeenIcon icon="down" />
-              </MenuArrow>
-            </MenuToggle>
-            <MenuSub className="menu-default w-48 py-2">
-              {items.map((item, index) => (
-                <MenuItem key={index}>
-                  <MenuLink path="#">
-                    {item.icon && (
-                      <MenuIcon>
-                        <KeenIcon icon={item.icon} />
-                      </MenuIcon>
-                    )}
-                    <MenuTitle>{item.title}</MenuTitle>
-                  </MenuLink>
-                </MenuItem>
-              ))}
-            </MenuSub>
-          </MenuItem>
-        </Menu>
+                ]
+              }}
+            >
+              <MenuToggle className="text-gray-900 text-sm font-medium">
+                Fall 24 Campaign
+                <MenuArrow>
+                  <KeenIcon icon="down" />
+                </MenuArrow>
+              </MenuToggle>
+              <MenuSub className="menu-default w-48 py-2">
+                {items.map((item, index) => (
+                  <MenuItem key={index}>
+                    <MenuLink path="#">
+                      {item.icon && (
+                        <MenuIcon>
+                          <KeenIcon icon={item.icon} />
+                        </MenuIcon>
+                      )}
+                      <MenuTitle>{item.title}</MenuTitle>
+                    </MenuLink>
+                  </MenuItem>
+                ))}
+              </MenuSub>
+            </MenuItem>
+          </Menu>
 
-        <span className="text-sm text-gray-400 font-medium px-2.5">/</span>
+          <span className="text-sm text-gray-400 font-medium px-2.5">/</span>
 
-        <Menu className="menu-default">
-          <MenuItem
-            toggle="dropdown"
-            trigger="hover"
-            dropdownProps={{
-              placement: 'bottom-start',
-              modifiers: [
-                {
-                  name: 'offset',
-                  options: {
-                    offset: [0, 10] // [skid, distance]
+          <Menu className="menu-default">
+            <MenuItem
+              toggle="dropdown"
+              trigger="hover"
+              dropdownProps={{
+                placement: 'bottom-start',
+                modifiers: [
+                  {
+                    name: 'offset',
+                    options: {
+                      offset: [0, 10] // [skid, distance]
+                    }
                   }
-                }
-              ]
-            }}
-          >
-            <MenuToggle className="text-gray-900 text-sm font-medium">
-              Staging
-              <MenuArrow>
-                <KeenIcon icon="down" />
-              </MenuArrow>
-            </MenuToggle>
-            <MenuSub className="menu-default w-48 py-2">
-              {stagings.map((staging, index) => (
-                <MenuItem key={index}>
-                  <MenuLink path="#">
-                    {staging.icon && (
-                      <MenuIcon>
-                        <KeenIcon icon={staging.icon} />
-                      </MenuIcon>
-                    )}
-                    <MenuTitle>{staging.title}</MenuTitle>
-                  </MenuLink>
-                </MenuItem>
-              ))}
-            </MenuSub>
-          </MenuItem>
-        </Menu>
-      </div>
+                ]
+              }}
+            >
+              <MenuToggle className="text-gray-900 text-sm font-medium">
+                Staging
+                <MenuArrow>
+                  <KeenIcon icon="down" />
+                </MenuArrow>
+              </MenuToggle>
+              <MenuSub className="menu-default w-48 py-2">
+                {stagings.map((staging, index) => (
+                  <MenuItem key={index}>
+                    <MenuLink path="#">
+                      {staging.icon && (
+                        <MenuIcon>
+                          <KeenIcon icon={staging.icon} />
+                        </MenuIcon>
+                      )}
+                      <MenuTitle>{staging.title}</MenuTitle>
+                    </MenuLink>
+                  </MenuItem>
+                ))}
+              </MenuSub>
+            </MenuItem>
+          </Menu>
+        </div>
+      )}
     </div>
   );
 };

@@ -19,7 +19,7 @@ const HeaderTopbar = () => {
     <div className="flex items-center gap-2 lg:gap-3.5">
       <Link to="/account/members/team-members" className="btn btn-sm btn-light">
         <KeenIcon icon="users" />
-        Add <span className="md:inline">Teammate</span>
+        Add <span className="hidden md:inline">Teammate</span>
       </Link>
 
       <div className="flex items-center gap-1">

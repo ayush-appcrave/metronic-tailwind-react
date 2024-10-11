@@ -1,5 +1,5 @@
 import { Link, useLocation } from 'react-router-dom';
-import { KeenIcon, Menu, MenuItem, MenuToggle } from '@/components';
+import { KeenIcon, Menu, MenuItem, MenuToggle, DefaultTooltip } from '@/components';
 import { useEffect, useRef, useState } from 'react';
 import { getHeight, toAbsoluteUrl } from '@/utils';
 import { useViewport } from '@/hooks';
@@ -102,15 +102,15 @@ const SidebarPrimary = () => {
           }}
         >
           {menuItems.map((item, index) => (
-            <Link
-              key={index}
-              to={item.path}
-              className={`btn btn-icon btn-icon-xl rounded-md size-9 border border-transparent text-gray-600 hover:bg-light hover:text-primary hover:border-gray-200 ${item === selectedMenuItem && 'active bg-light text-primary border-gray-200'}`}
-            >
-              <span className="menu-icon">
+            <DefaultTooltip key={index} title={item.tooltip} placement="right">
+              <Link
+                key={index}
+                to={item.path}
+                className={`btn btn-icon btn-icon-xl rounded-md size-9 border border-transparent text-gray-600 hover:bg-light hover:text-primary hover:border-gray-200 ${item === selectedMenuItem && 'active bg-light text-primary border-gray-200'}`}
+              >
                 <KeenIcon icon={item.icon} />
-              </span>
-            </Link>
+              </Link>
+            </DefaultTooltip>
           ))}
         </div>
       </div>
