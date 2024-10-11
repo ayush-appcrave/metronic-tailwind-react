@@ -83,9 +83,7 @@ const Members = () => {
         id: 'recentlyActivity',
         header: () => 'Recent activity',
         enableSorting: true,
-        cell: (info) => {
-          return info.row.original.recentlyActivity;
-        },
+        cell: (info) => info.getValue(),
         meta: {
           className: 'min-w-[160px]',
         },
@@ -183,7 +181,7 @@ const Members = () => {
           data={filteredData} 
           rowSelect={true} 
           paginationSize={5}
-          initialSorting={[{ id: 'members', desc: false }]} 
+          initialSorting={[{ id: 'member', desc: false }]} 
           saveState={true} 
           saveStateId='members-grid'
         />

@@ -53,9 +53,7 @@ const CurrentSessions = () => {
         id: 'ipAddress',
         header: () => 'IP Address',
         enableSorting: true,
-        cell: (info) => {
-          return info.row.original.ipAddress;
-        },
+        cell: (info) => info.getValue(),
         meta: {
           className: 'w-[240px]',
         },
@@ -140,7 +138,7 @@ const CurrentSessions = () => {
           data={data} 
           rowSelect={true} 
           paginationSize={10}
-          initialSorting={[{ id: 'current-sessions', desc: false }]} 
+          initialSorting={[{ id: 'user', desc: false }]} 
           saveState={true} 
           saveStateId='current-sessions-grid'
         />

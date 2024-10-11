@@ -13,7 +13,14 @@ const Sidebar = () => {
   const [sidebarSticky, setSidebarSticky] = useState(false);
   const scrollPosition = useScrollPosition();
   const [scrollableHeight, setScrollableHeight] = useState<number>(0);
-  const scrollableOffset = 150;
+  const scrollableOffset = 100;
+  const desktopMode = useResponsive('up', 'lg');
+  const { mobileSidebarOpen, setMobileSidebarOpen } = useDemo5Layout();
+  const { layout } = useDemo5Layout();
+
+  const handleMobileSidebarClose = () => {
+    setMobileSidebarOpen(false);
+  };
 
   useEffect(() => {
     if (scrollPosition > layout.options.sidebar.stickyOffset) {
@@ -28,20 +35,12 @@ const Sidebar = () => {
     setScrollableHeight(availableHeight);
   }, [viewportHeight]);
 
-  const desktopMode = useResponsive('up', 'lg');
-  const { mobileSidebarOpen, setMobileSidebarOpen } = useDemo5Layout();
-  const { layout } = useDemo5Layout();
-
-  const handleMobileSidebarClose = () => {
-    setMobileSidebarOpen(false);
-  };
-
   const renderContent = () => {
     return (
-      <div className="w-[--tw-sidebar-width] shrink-0 hidden lg:flex items-start">
+      <div className="w-[--tw-sidebar-width] shrink-0 flex items-start">
         <div
           className={clsx(
-            'w-[--tw-sidebar-width] z-5 lg:top-[80px] top-0 bottom-0 lg:right-auto lg:left-auto shrink-0 py-3 lg:py-0 bg-light dark:bg-coal-100 lg:dark:bg-transparent',
+            'w-[--tw-sidebar-width] z-5 lg:top-[80px] top-0 bottom-0 lg:right-auto lg:left-auto shrink-0 p-5 lg:p-0 bg-light dark:bg-coal-100 lg:dark:bg-transparent',
             sidebarSticky && 'fixed top-[calc(var(--tw-header-height)+1.875rem)] z-10 left-auto'
           )}
         >
