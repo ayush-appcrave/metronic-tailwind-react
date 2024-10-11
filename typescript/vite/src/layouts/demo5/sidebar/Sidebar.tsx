@@ -62,7 +62,7 @@ const Sidebar = () => {
     if (!desktopMode && prevPathname !== pathname) {
       handleMobileSidebarClose();
     }
-  }, [desktopMode, handleMobileSidebarClose, pathname, prevPathname]);
+  }, [desktopMode, pathname, prevPathname]);
 
   if (desktopMode) {
     return renderContent();

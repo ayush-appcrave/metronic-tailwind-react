@@ -64,10 +64,11 @@ const Sidebar = () => {
   };
 
   useEffect(() => {
+    // Hide drawer on route chnage after menu link click
     if (!desktopMode && prevPathname !== pathname) {
       handleMobileSidebarClose();
     }
-  }, [desktopMode, handleMobileSidebarClose, pathname, prevPathname]);
+  }, [desktopMode, pathname, prevPathname]);
 
   if (desktopMode) {
     return renderContent();

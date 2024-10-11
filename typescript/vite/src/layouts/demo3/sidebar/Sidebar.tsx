@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import { Link } from 'react-router-dom';
 import { KeenIcon } from '@/components/keenicons';
 import { useResponsive, useViewport } from '@/hooks';
@@ -10,6 +11,7 @@ const Sidebar = () => {
   const { mobileSidebarOpen, setMobileSidebarOpen } = useDemo3Layout();
   const { pathname, prevPathname } = usePathname();
   const desktopMode = useResponsive('up', 'lg');
+  const mobileMode = useResponsive('down', 'lg');
   const [viewportHeight] = useViewport();
   const scrollableOffset = 70;
   const scrollableHeight = viewportHeight - scrollableOffset;
@@ -124,10 +126,10 @@ const Sidebar = () => {
   };
 
   useEffect(() => {
-    if (!desktopMode && prevPathname !== pathname) {
+    if (mobileMode && prevPathname !== pathname) {
       handleMobileSidebarClose();
     }
-  }, [desktopMode, handleMobileSidebarClose, pathname, prevPathname]);
+  }, [mobileMode, pathname, prevPathname]);
 
   if (desktopMode) {
     return renderContent();

@@ -7,8 +7,9 @@ import { usePathname } from '@/providers';
 import { useDemo4Layout } from '../';
 
 const Sidebar = () => {
-  const { pathname, prevPathname } = usePathname();
   const desktopMode = useResponsive('up', 'lg');
+  const mobileMode = useResponsive('down', 'lg');
+  const { pathname, prevPathname } = usePathname();  
   const { mobileSidebarOpen, setMobileSidebarOpen } = useDemo4Layout();
 
   const handleMobileSidebarClose = () => {
@@ -25,10 +26,11 @@ const Sidebar = () => {
   };
 
   useEffect(() => {
-    if (!desktopMode && prevPathname !== pathname) {
+    // Hide drawer on route chnage after menu link click
+    if (mobileMode && prevPathname !== pathname) {
       handleMobileSidebarClose();
     }
-  }, [desktopMode]);
+  }, [mobileMode, pathname, prevPathname]);
 
   if (desktopMode) {
     return renderContent();
