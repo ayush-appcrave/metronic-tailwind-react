@@ -16,7 +16,7 @@ interface ICreateTeamProps {
 
 const MiscCreateTeam = ({ className, image, title, subTitle, engage }: ICreateTeamProps) => {
   return (
-    <div className={clsx(className && className)}>
+    <div className={clsx('card', className && className)}>
       <div className="card-body flex flex-col place-content-center gap-5">
         <div className="flex justify-center">{image}</div>
 
