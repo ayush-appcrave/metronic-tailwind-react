@@ -148,7 +148,7 @@ const Device = () => {
         />
       </div>
     </div>
-  );
+  )
 };
 
 export { Device };
