@@ -1,4 +1,4 @@
-import { KeenIcon } from '@/components';
+import { DefaultTooltip, KeenIcon } from '@/components';
 import {
   MenuConfigType,
   MenuItem,
@@ -48,13 +48,13 @@ const MegaMenuSubDropdown = (items: MenuConfigType) => {
       } else {
         return (
           <MenuItem key={index}>
-            <MenuLink path={item.path} className={clsx('grow-0')}>
+            <MenuLink path={item.path}>
               {item.icon && (
                 <MenuIcon>
                   <KeenIcon icon={item.icon} />
                 </MenuIcon>
               )}
-              <MenuTitle className={clsx('grow-0')}>{item.title}</MenuTitle>
+              <MenuTitle>{item.title}</MenuTitle>
 
               {item.disabled && (
                 <MenuBadge>
@@ -66,6 +66,12 @@ const MegaMenuSubDropdown = (items: MenuConfigType) => {
                 <MenuBadge>
                   <span className="badge badge-primary badge-outline badge-xs">{item.badge}</span>
                 </MenuBadge>
+              )}
+
+              {item.tooltip && (
+                <DefaultTooltip title={item.tooltip.title} placement={item.tooltip.placement}>
+                  <KeenIcon icon="information-2" className="text-gray-500 text-md" />
+                </DefaultTooltip>
               )}
             </MenuLink>
           </MenuItem>

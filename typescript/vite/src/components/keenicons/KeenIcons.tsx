@@ -1,19 +1,20 @@
+import React, { forwardRef } from 'react';
 import clsx from 'clsx';
-import { memo } from 'react';
-
-import { useSettings } from '../../providers/SettingsProvider';
+import { useSettings } from '@/providers';
 import { IKeenIconsProps } from './types';
 
-const KeenIconComponent = ({ icon, style, className = '' }: IKeenIconsProps) => {
-  const { settings } = useSettings();
+// KeenIcon using forwardRef to pass the ref and spread props
+const KeenIcon = forwardRef<HTMLElement, IKeenIconsProps>(
+  ({ icon, style, className = '', ...props }, ref) => {
+    const { settings } = useSettings();
 
-  if (typeof style === 'undefined') {
-    style = settings.keeniconsStyle;
+    if (!style) {
+      style = settings.keeniconsStyle;
+    }
+
+    // Spread props and apply the ref to the <i> element
+    return <i ref={ref} {...props} className={clsx(`ki-${style}`, `ki-${icon}`, className)} />;
   }
-
-  return <i className={clsx(`ki-${style}`, `ki-${icon}`, className)}></i>;
-};
-
-const KeenIcon = memo(KeenIconComponent);
+);
 
 export { KeenIcon };

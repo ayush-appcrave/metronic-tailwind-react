@@ -1,9 +1,7 @@
 /* eslint-disable prettier/prettier */
 import { useMemo } from 'react';
 import { ColumnDef } from '@tanstack/react-table';
-
-import { DataGrid, KeenIcon } from '@/components';
-
+import { DataGrid, DefaultTooltip, KeenIcon } from '@/components';
 import { IPAddressesData, IIPAddressesData } from '.';
 
 const IPAddresses = () => {
@@ -57,10 +55,9 @@ const IPAddresses = () => {
         id: 'method',
         header: () => (
           <>
-            <KeenIcon icon="information-2" className="text-lg leading-none" />
-            <span className="tooltip max-w-48">
-              Verify the identity of a user trying to access a resource
-            </span>
+            <DefaultTooltip title="Verify the identity of a user trying to access a resource" placement="left" className="max-w-48">
+              <KeenIcon icon="information-2" className="text-lg leading-none" />
+            </DefaultTooltip>
             Method
           </>
         ),

@@ -1,5 +1,6 @@
 /* eslint-disable no-unused-vars */
 import { PopperProps } from '@mui/base';
+import { TooltipProps } from '@mui/material/Tooltip';
 import { HTMLAttributes, MouseEvent, ReactNode, RefAttributes, RefObject } from 'react';
 
 export type MenuEventHandlerType = (e: MouseEvent<HTMLElement>) => void;
@@ -158,7 +159,7 @@ export interface IMenuItemConfig {
   icon?: string;
   badge?: string;
   separator?: boolean;
-  tooltip?: string;
+  tooltip?: Partial<TooltipProps>;
   path?: string;
   rootPath?: string;
   bullet?: boolean;

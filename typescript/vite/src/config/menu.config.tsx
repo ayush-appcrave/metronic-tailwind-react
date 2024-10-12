@@ -937,7 +937,10 @@ export const MENU_MEGA: MenuConfigType = [
       },
       {
         title: 'Licenses & FAQ',
-        tooltip: 'Learn more about licenses',
+        tooltip: {
+          title: 'Learn more about licenses',
+          placement: 'right'
+        },
         icon: 'subtitle',
         path: 'https://keenthemes.com/metronic/tailwind/docs/getting-started/license'
       },
