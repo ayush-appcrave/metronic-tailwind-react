@@ -197,7 +197,7 @@ const Invites = () => {
           data={filteredData} 
           rowSelect={true}
           paginationSize={5}
-          initialSorting={[{ id: 'invites', desc: false }]} 
+          initialSorting={[{ id: 'member', desc: false }]} 
           saveState={true} 
           saveStateId='invites-grid'
         />
