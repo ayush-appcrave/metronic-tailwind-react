@@ -1,5 +1,5 @@
 import React from 'react';
-import { DataGridPagination, useDataGrid } from './';
+import { DataGridPagination, useDataGrid } from '..';
 
 const DataGridToolbar = () => {
   const { table, props } = useDataGrid();

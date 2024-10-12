@@ -1,5 +1,5 @@
 import React, { ReactNode } from 'react';
-import { useDataGrid } from '.';
+import { useDataGrid } from '..';
 import clsx from 'clsx';
 
 export interface TDataGridTableProps {

@@ -1,5 +1,5 @@
 import React from 'react';
-import { useDataGrid } from './';
+import { useDataGrid } from '..';
 
 const DataGridTableHeadRowsSelect = () => {
   const { isSelectAllChecked, isSelectAllIndeterminate, toggleAllRowsSelection } = useDataGrid();

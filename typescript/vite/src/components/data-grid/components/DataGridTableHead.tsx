@@ -1,7 +1,6 @@
 import clsx from 'clsx';
 import React, { ReactNode } from 'react';
-import { useDataGrid } from '@/components/data-grid';
-import { DataGridTableHeadRowsSelect } from './DataGridTableHeadRowsSelect';
+import { DataGridTableHeadRowsSelect, useDataGrid } from '..';
 
 export interface TDataGridTableHeadProps {
   className?: string;

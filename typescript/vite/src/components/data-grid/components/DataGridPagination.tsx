@@ -1,6 +1,6 @@
 import React, { Fragment } from 'react';
 import { KeenIcon } from '@/components';
-import { useDataGrid } from '.';
+import { useDataGrid } from '..';
 
 const DataGridPagination = () => {
   const { table, props } = useDataGrid();

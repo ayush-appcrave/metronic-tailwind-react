@@ -41,7 +41,7 @@ const MenuItemComponent = forwardRef<IMenuItemRef | null, IMenuItemProps>(
       toggle,
       trigger,
       dropdownProps,
-      dropdownZIndex = 100,
+      dropdownZIndex = 1300,
       disabled,
       tabIndex,
       className,
@@ -364,7 +364,7 @@ const MenuItemComponent = forwardRef<IMenuItemRef | null, IMenuItemProps>(
     }, [accordionShow]);
 
     useEffect(() => {
-      if (!show && !here && highlight) {
+      if (highlight) {
         if (hasMenuActiveChild(pathname, children)) {
           if (propToggle === 'accordion') {
             setShow(true);

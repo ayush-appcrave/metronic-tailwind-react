@@ -1,17 +1,17 @@
 import { Fragment } from 'react';
-import { useDataGrid } from './';
-import { DataGridLoader } from '../DataGridLoader';
 import {
+  useDataGrid,
+  DataGridLoader,
   DataGridTable,
   DataGridTableBody,
   DataGridTableBodyCell,
   DataGridTableBodyRow,
   DataGridTableHead,
   DataGridTableHeadCell,
+  DataGridTableEmpty,
   DataGridToolbar
 } from '..';
 import { flexRender } from '@tanstack/react-table';
-import { DataGridTableEmpty } from '../';
 
 const DataGridInner = () => {
   const { loading, table } = useDataGrid(); // Destructure props to get emptyText

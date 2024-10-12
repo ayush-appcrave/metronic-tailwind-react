@@ -1,4 +1,4 @@
-import { useDataGrid } from './DataGrid/DataGridProvider';
+import { useDataGrid } from '..';
 
 const DataGridTableEmpty = () => {
   const { table, props } = useDataGrid(); // Destructure props to get emptyText

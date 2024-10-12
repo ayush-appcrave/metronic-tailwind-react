@@ -1,10 +1,10 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import {
   getCoreRowModel,
   getFilteredRowModel,
   getPaginationRowModel,
   getSortedRowModel,
   PaginationState,
-  Table,
   useReactTable
 } from '@tanstack/react-table';
 import { DataGridInner, DataGridProvider } from './';
@@ -65,10 +65,10 @@ const DataGrid = <TData extends object>(props: TDataGridProps<TData>) => {
         const parsedState = JSON.parse(savedState);
         return {
           pagination: {
-            pageIndex: parsedState.pageIndex || 0,
-            pageSize: parsedState.pageSize || mergedProps.paginationSize || 5
+            pageIndex: parsedState.pageIndex ?? 0,
+            pageSize: parsedState.pageSize ?? mergedProps.paginationSize ?? 5
           },
-          sorting: parsedState.sorting || mergedProps.initialSorting || []
+          sorting: parsedState.sorting ?? mergedProps.initialSorting ?? []
         };
       }
     }
@@ -81,8 +81,47 @@ const DataGrid = <TData extends object>(props: TDataGridProps<TData>) => {
     };
   };
 
-  // eslint-disable-next-line react-hooks/exhaustive-deps
-  const saveState = (newState: any) => {
+  // Validate if saved sorting column exists in the columns config
+  const validateSorting = (sorting: any[], columns: any[]) => {
+    const validColumnIds = new Set(columns.map((column) => column.id));
+    return sorting.filter((sort) => validColumnIds.has(sort.id));
+  };
+
+  // Validate pageIndex and pageSize against current data and pagination sizes
+  const validatePagination = (
+    pagination: PaginationState,
+    dataLength: number,
+    paginationSizes: number[]
+  ): PaginationState => {
+    const validPageSize = paginationSizes.includes(pagination.pageSize)
+      ? pagination.pageSize
+      : paginationSizes[0];
+    const totalPages = Math.ceil(dataLength / validPageSize);
+    const validPageIndex = Math.min(pagination.pageIndex, Math.max(0, totalPages - 1));
+
+    return {
+      pageIndex: validPageIndex,
+      pageSize: validPageSize
+    };
+  };
+
+  // Load initial saved state (pagination, sorting)
+  const { pagination: initialPagination, sorting: initialSorting } = loadSavedState();
+
+  // Validate the initial sorting and pagination state
+  const validatedInitialSorting = validateSorting(initialSorting, mergedProps.columns);
+  const validatedInitialPagination = validatePagination(
+    initialPagination,
+    mergedProps.data.length,
+    mergedProps.paginationSizes!
+  );
+
+  // Initialize pagination and sorting states
+  const [pagination, setPagination] = useState<PaginationState>(validatedInitialPagination);
+  const [sorting, setSorting] = useState<any[]>(validatedInitialSorting);
+
+  // Function to save pagination and sorting state
+  const handleSaveState = (newState: any) => {
     if (props.saveState && props.saveStateId) {
       const existingState = localStorage.getItem(props.saveStateId);
       let mergedState = newState;
@@ -95,13 +134,6 @@ const DataGrid = <TData extends object>(props: TDataGridProps<TData>) => {
       localStorage.setItem(props.saveStateId, JSON.stringify(mergedState));
     }
   };
-
-  // Load initial saved state (pagination, sorting)
-  const { pagination: initialPagination, sorting: initialSorting } = loadSavedState();
-
-  // Initialize pagination and sorting states
-  const [pagination, setPagination] = useState<PaginationState>(initialPagination);
-  const [sorting, setSorting] = useState<any[]>(initialSorting);
 
   // Initialize the table using useReactTable and pass props.columns and props.data
   const table = useReactTable({
@@ -122,12 +154,12 @@ const DataGrid = <TData extends object>(props: TDataGridProps<TData>) => {
 
   // Save pagination, sorting state when they change
   useEffect(() => {
-    saveState({
+    handleSaveState({
       pageIndex: table.getState().pagination.pageIndex,
       pageSize: table.getState().pagination.pageSize,
       sorting: table.getState().sorting
     });
-  }, [saveState, table]);
+  }, [handleSaveState, table]);
 
   return (
     <DataGridProvider table={table} props={mergedProps}>

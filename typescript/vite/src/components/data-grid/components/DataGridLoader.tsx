@@ -1,5 +1,5 @@
 import React from 'react';
-import { useDataGrid } from '.';
+import { useDataGrid } from '..';
 
 const DataGridLoader = () => {
   const { props } = useDataGrid();

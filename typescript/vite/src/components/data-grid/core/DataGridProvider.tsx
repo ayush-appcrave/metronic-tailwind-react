@@ -2,7 +2,7 @@
 /* eslint-disable react-refresh/only-export-components */
 /* eslint-disable react-hooks/exhaustive-deps */
 import { createContext, useContext, useState, useEffect, ReactNode } from 'react';
-import { TDataGridProps, TDataGridSelectedRowIds } from './DataGrid';
+import { TDataGridProps, TDataGridSelectedRowIds } from '..';
 import { Table } from '@tanstack/react-table';
 
 export interface IDataGridContextProps<TData extends object> {

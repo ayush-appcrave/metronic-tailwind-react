@@ -140,10 +140,6 @@ export const MENU_SIDEBAR: MenuConfigType = [
         title: 'Account',
         children: [
           {
-            title: 'Dashboard',
-            path: '/'
-          },
-          {
             title: 'Get Started',
             path: '/account/home/get-started'
           },

@@ -1,5 +1,5 @@
 import React, { ReactNode } from 'react';
-import { DataGridTableBodyRowSelect, useDataGrid } from './';
+import { DataGridTableBodyRowSelect, useDataGrid } from '..';
 
 export interface TDataGridTableBodyRowProps {
   children: ReactNode;
