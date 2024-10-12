@@ -53,8 +53,8 @@ const ApiIntegrations = () => {
         }
       },
       {
-        accessorFn: (row) => row.actions,
-        id: 'actions',
+        accessorFn: (row) => row.status,
+        id: 'status',
         header: () => 'Status',
         enableSorting: true,
         cell: (info) => info.getValue(),

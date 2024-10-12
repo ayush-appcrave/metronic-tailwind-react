@@ -74,7 +74,7 @@ const StoreClients = () => {
           </div>
         ),
         meta: {
-          className: 'w-[150px]'
+          className: 'min-w-[150px]'
         }
       },
       {
@@ -84,7 +84,7 @@ const StoreClients = () => {
         enableSorting: true,
         cell: (info: any) => info.row.original.activity,
         meta: {
-          className: 'w-[150px]',
+          className: 'min-w-[150px]',
           cellClassName: 'text-gray-800 font-normal'
         }
       },
@@ -94,7 +94,7 @@ const StoreClients = () => {
         enableSorting: true,
         cell: () => <button className="btn btn-link">View</button>,
         meta: {
-          className: 'w-[100px]',
+          className: 'min-w-[100px]',
           cellClassName: 'text-center'
         }
       },

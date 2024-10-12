@@ -37,7 +37,7 @@ const Users = () => {
           );
         },
         meta: {
-          className: 'min-w-[220px]',
+          className: 'min-w-[250px]',
           cellClassName: 'text-gray-800 font-normal',
         }
       },
@@ -163,7 +163,7 @@ const Users = () => {
           data={data} 
           rowSelect={true} 
           paginationSize={10}
-          initialSorting={[{ id: 'team', desc: false }]} 
+          initialSorting={[{ id: 'users', desc: false }]} 
           saveState={true} 
           saveStateId='Users-grid'
         />

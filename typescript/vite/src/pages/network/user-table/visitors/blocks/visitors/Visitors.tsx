@@ -57,7 +57,7 @@ const Visitors = () => {
           return info.row.original.ipAddress;
         },
         meta: {
-          className: 'w-[190px]',
+          className: 'min-w-[190px]',
         },
       },
       {
@@ -76,7 +76,7 @@ const Visitors = () => {
           </div>
         ),
         meta: {
-          className: 'w-[190px]',
+          className: 'min-w-[190px]',
         },
       },
       {
@@ -86,7 +86,7 @@ const Visitors = () => {
         enableSorting: true,
         cell: (info: any) => info.row.original.activity,
         meta: {
-          className: 'w-[150px]',
+          className: 'min-w-[150px]',
           cellClassName: 'text-gray-800 font-normal',
         },
       },
@@ -151,7 +151,7 @@ const Visitors = () => {
           data={data} 
           rowSelect={true} 
           paginationSize={10}
-          initialSorting={[{ id: 'current-sessions', desc: false }]} 
+          initialSorting={[{ id: 'user', desc: false }]} 
           saveState={true} 
           saveStateId='current-sessions-grid'
         />

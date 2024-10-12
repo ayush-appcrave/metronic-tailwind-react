@@ -84,7 +84,7 @@ const Members = () => {
         enableSorting: true,
         cell: (info) => info.getValue(),
         meta: {
-          className: 'w-[225px]',
+          className: 'min-w-[225px]',
         },
       },
       {
