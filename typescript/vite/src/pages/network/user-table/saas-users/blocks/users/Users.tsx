@@ -88,7 +88,7 @@ const Users = () => {
           </div>
         ),
         meta: {
-          className: 'w-[175px]'
+          className: 'min-w-[175px]'
         }
       },
       {
@@ -98,7 +98,7 @@ const Users = () => {
         enableSorting: true,
         cell: (info: any) => info.row.original.payment,
         meta: {
-          className: 'w-[175px]',
+          className: 'min-w-[175px]',
           cellClassName: 'text-gray-800 font-medium'
         }
       },
@@ -109,7 +109,7 @@ const Users = () => {
         enableSorting: true,
         cell: (info: any) => <EnforceSwitch enforce={info.row.original.enforce} />,
         meta: {
-          className: 'w-[137px]'
+          className: 'min-w-[137px]'
         }
       },
       {
@@ -166,7 +166,7 @@ const Users = () => {
           data={data}
           rowSelect={true}
           paginationSize={10}
-          initialSorting={[{ id: 'users', desc: false }]}
+          initialSorting={[{ id: 'user', desc: false }]}
           saveState={true}
           saveStateId="users-grid"
         />

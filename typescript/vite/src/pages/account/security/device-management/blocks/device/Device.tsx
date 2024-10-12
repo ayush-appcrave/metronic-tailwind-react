@@ -142,7 +142,7 @@ const Device = () => {
           data={data} 
           rowSelect={true} 
           paginationSize={10}
-          initialSorting={[{ id: 'team', desc: false }]} 
+          initialSorting={[{ id: 'device', desc: false }]} 
           saveState={true} 
           saveStateId='device-grid'
         />

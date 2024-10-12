@@ -122,7 +122,7 @@ const SecurityLog = () => {
           data={data} 
           rowSelect={true} 
           paginationSize={10}
-          initialSorting={[{ id: 'security-log', desc: false }]} 
+          initialSorting={[{ id: 'timestamp', desc: false }]} 
           saveState={true} 
           saveStateId='security-log-grid'
         />

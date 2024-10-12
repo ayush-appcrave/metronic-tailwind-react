@@ -60,7 +60,7 @@ const Backup= () => {
           );
         },
         meta: {
-          className: 'w-[260px]',
+          className: 'min-w-[260px]',
         }
       },
   

@@ -48,7 +48,7 @@ const Users = () => {
       },
       {
         accessorFn: (row) => row.phone,
-        id: 'role',
+        id: 'phone',
         header: () => 'Phone',
         enableSorting: true,
         cell: (info) => {
@@ -199,7 +199,7 @@ const Users = () => {
           data={data}
           rowSelect={true}
           paginationSize={5}
-          initialSorting={[{ id: 'team', desc: false }]}
+          initialSorting={[{ id: 'phone', desc: false }]}
           saveState={true}
           saveStateId="Users-grid"
         />
