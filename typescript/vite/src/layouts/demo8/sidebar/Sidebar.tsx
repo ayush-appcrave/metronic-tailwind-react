@@ -45,7 +45,7 @@ const Sidebar = () => {
 
   const renderContent = () => {
     return (
-      <div className="lg:fixed lg:top-0 lg:bottom-0 lg:z-20 flex flex-col grow items-stretch shrink-0 bg-[--tw-page-bg] dark:bg-[--tw-page-bg-dark] w-[--tw-sidebar-width]">
+      <div className="lg:fixed lg:top-0 lg:bottom-0 lg:z-20 flex flex-col grow shrink-0 bg-[--tw-page-bg] dark:bg-[--tw-page-bg-dark] w-[--tw-sidebar-width]">
         {desktopMode && (
           <div
             ref={headerRef}
@@ -65,9 +65,9 @@ const Sidebar = () => {
         )}
 
         <div
-          className="scrollable-y grow gap-2.5 shrink-0 flex items-center pt-5 lg:pt-0 ps-3 pe-3 lg:pe-0 flex-col"
+          className="scrollable-y gap-2.5 shrink-0 flex grow items-center pt-5 lg:pt-0 ps-3 pe-3 lg:pe-0 flex-col mb-10"
           style={{
-            ...(scrollableHeight > 0 && { height: `${scrollableHeight}px` })
+            ...(desktopMode && scrollableHeight > 0 && { height: `${scrollableHeight}px` })
           }}
         >
           <SidebarMenu />
@@ -180,7 +180,6 @@ const Sidebar = () => {
         ModalProps={{
           keepMounted: true
         }}
-        classes={{ paper: 'flex flex-col items-stretch' }}
       >
         {renderContent()}
       </Drawer>
