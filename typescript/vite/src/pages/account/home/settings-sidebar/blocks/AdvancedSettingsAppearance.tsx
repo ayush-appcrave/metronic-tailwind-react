@@ -13,7 +13,7 @@ interface IAdvancedSettingsAppearanceProps {
   title: string;
 }
 
-const AdvancedSettingsAppearance = ({ title = 'Appearance' }: IAdvancedSettingsAppearanceProps) => {
+const AdvancedSettingsAppearance = ({ title }: IAdvancedSettingsAppearanceProps) => {
   const items: IAdvancedSettingsAppearanceItems = [
     {
       image: '28.jpg',
