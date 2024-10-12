@@ -53,7 +53,7 @@ const Invoicing = () => {
       },
       {
         accessorFn: (row) => row.dueDate,
-        id: 'date',
+        id: 'dueDate',
         header: () => 'Due Date',
         enableSorting: true,
         cell: (info) => {                    
@@ -66,7 +66,7 @@ const Invoicing = () => {
       },    
       {
         accessorFn: (row) => row.amount,
-        id: 'date',
+        id: 'amount',
         header: () => 'Amount',
         enableSorting: true,
         cell: (info) => {                    

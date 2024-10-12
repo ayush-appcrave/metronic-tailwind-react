@@ -13,7 +13,7 @@ const InvoicingData: IInvoicingData[] = [
     label: 'Upcoming',
     color: 'badge-warning',
     date: '6 Aug, 2024',
-    dueDate: '6 Aug, 2024', // Changed to date
+    dueDate: 'HR Dept', // Changed to date
     amount: '24.00'
   },
   {
@@ -61,7 +61,7 @@ const InvoicingData: IInvoicingData[] = [
     label: 'Upcoming',
     color: 'badge-warning',
     date: '07 Nov, 2024',
-    dueDate: '07 Nov, 2024', // Changed to date
+    dueDate: 'Design Dept', // Changed to date
     amount: '67.00'
   },
   {
@@ -101,7 +101,7 @@ const InvoicingData: IInvoicingData[] = [
     label: 'Upcoming',
     color: 'badge-warning',
     date: '01 Mar, 2024',
-    dueDate: '01 Mar, 2024', // Changed to date
+    dueDate: 'Marketing Dept', // Changed to date
     amount: '150.00'
   },
   {
@@ -133,7 +133,7 @@ const InvoicingData: IInvoicingData[] = [
     label: 'Upcoming',
     color: 'badge-warning',
     date: '10 Jun, 2024',
-    dueDate: '10 Jun, 2024', // Changed to date
+    dueDate: 'Finance Dept', // Changed to date
     amount: '130.00'
   },
   {
@@ -165,7 +165,7 @@ const InvoicingData: IInvoicingData[] = [
     label: 'Upcoming',
     color: 'badge-warning',
     date: '12 Oct, 2024',
-    dueDate: '12 Oct, 2024', // Changed to date
+    dueDate: 'IT Dept', // Changed to date
     amount: '500.00'
   },
   {
@@ -181,7 +181,7 @@ const InvoicingData: IInvoicingData[] = [
     label: 'Upcoming',
     color: 'badge-warning',
     date: '19 Sep, 2024',
-    dueDate: '19 Sep, 2024', // Changed to date
+    dueDate: 'R&D Dept', // Changed to date
     amount: '350.00'
   },
   {
