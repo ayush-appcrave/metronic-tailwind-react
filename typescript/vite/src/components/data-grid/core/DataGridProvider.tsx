@@ -17,6 +17,7 @@ import { TDataGridProps, TDataGridSelectedRowIds } from './DataGrid'; // Import 
 export interface IDataGridContextProps<TData extends object> {
   props: TDataGridProps<TData>;
   table: any;
+  totalRows: number;
   loading: boolean;
   setLoading: (state: boolean) => void;
   selectedRowIds: Set<string>;
@@ -39,6 +40,7 @@ export const useDataGrid = () => {
 
 export const DataGridProvider = <TData extends object>(props: TDataGridProps<TData>) => {
   const defaultValues: Partial<TDataGridProps<TData>> = {
+    data: [],
     saveState: false,
     saveStateId: '',
     cellsBorder: true,
@@ -57,6 +59,10 @@ export const DataGridProvider = <TData extends object>(props: TDataGridProps<TDa
   };
 
   const mergedProps = { ...defaultValues, ...props };
+
+  const [data, setData] = useState<TData[]>(mergedProps.data ?? []);
+  const [loading, setLoading] = useState<boolean>(false);
+  const [totalRows, setTotalRows] = useState<number>(mergedProps.data?.length ?? 0);
 
   // State management for selected rows
   const [selectedRowIds, setSelectedRowIds] = useState<Set<string>>(new Set());
@@ -113,16 +119,13 @@ export const DataGridProvider = <TData extends object>(props: TDataGridProps<TDa
   const validatedInitialSorting = validateSorting(initialSorting, mergedProps.columns);
   const validatedInitialPagination = validatePagination(
     initialPagination,
-    mergedProps.data.length,
+    totalRows,
     mergedProps.paginationSizes!
   );
 
   const [pagination, setPagination] = useState<PaginationState>(validatedInitialPagination);
   const [sorting, setSorting] = useState<any[]>(validatedInitialSorting);
   const [filters, setFilters] = useState<ColumnFiltersState>([]);
-  const [data, setData] = useState<TData[]>(mergedProps.data);
-  const [loading, setLoading] = useState<boolean>(false);
-  const [totalRows, setTotalRows] = useState<number>(0);
 
   const fetchServerSideData = async () => {
     if (!mergedProps.onFetchData) return;
@@ -176,7 +179,7 @@ export const DataGridProvider = <TData extends object>(props: TDataGridProps<TDa
 
   const table = useReactTable({
     columns: mergedProps.columns,
-    data: mergedProps.serverSide ? data : mergedProps.data,
+    data: data,
     pageCount: mergedProps.serverSide ? Math.ceil(totalRows / pagination.pageSize) : undefined,
     getCoreRowModel: getCoreRowModel(),
     getSortedRowModel: getSortedRowModel(),
@@ -242,12 +245,13 @@ export const DataGridProvider = <TData extends object>(props: TDataGridProps<TDa
 
   // Handle data loading (trigger loading when data is being fetched)
   useEffect(() => {
-    if (props.data.length === 0) {
+    if (data.length === 0) {
+      console.log('wow:1');
       setLoading(true);
     } else {
       setLoading(false); // Data loaded
     }
-  }, [props.data]);
+  }, [data]);
 
   useEffect(() => {
     const allRowIds = table.getRowModel().rows.map((row) => row.id);
@@ -263,6 +267,7 @@ export const DataGridProvider = <TData extends object>(props: TDataGridProps<TDa
       value={{
         props: mergedProps,
         table,
+        totalRows,
         loading,
         setLoading,
         selectedRowIds,

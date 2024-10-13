@@ -1,43 +1,15 @@
-import React, { useEffect, useMemo, useState } from 'react';
+import React, { useMemo, useState } from 'react';
 import { useSnackbar } from 'notistack';
 import { ColumnDef } from '@tanstack/react-table';
 import { Link } from 'react-router-dom';
 import { DataGrid, TDataGridRequestParams, KeenIcon, TDataGridSelectedRowIds } from '@/components';
 import { CommonRating } from '@/partials/common';
-import { Team, QueryApiResponse } from './teams-types.ts';
+import { Team, QueryApiResponse } from './teams-types';
 import axios from 'axios';
-import { formatIsoDate } from '@/utils/Date.ts';
-import { TeamUsers } from '@/pages/dashboards/light-sidebar/blocks/teams/TeamUsers.tsx';
+import { formatIsoDate } from '@/utils/Date';
+import { TeamUsers } from '@/pages/dashboards/light-sidebar/blocks/teams/TeamUsers';
 
 type TeamsQueryApiResponse = QueryApiResponse<Team>;
-
-const fetchTeams = async (params: TDataGridRequestParams) => {
-  try {
-    const response = await axios.get<TeamsQueryApiResponse>(
-      `${import.meta.env.VITE_APP_API_URL}/teams/query`,
-      {
-        params: {
-          page: params.pageIndex,
-          'items-per-page': params.pageSize,
-          sort: params.sorting[0]?.id || 'name',
-          order: params.sorting[0]?.desc ? 'desc' : 'asc'
-        }
-      }
-    );
-
-    // Returning the formatted data and total count directly from the response
-    return {
-      data: response.data, // Server response's data
-      totalCount: response.pagination.total // Server response's total count
-    };
-  } catch (error) {
-    console.error('Failed to fetch data:', error);
-    return {
-      data: [],
-      totalCount: 0
-    };
-  }
-};
 
 const Teams = () => {
   const { enqueueSnackbar } = useSnackbar();
@@ -49,21 +21,19 @@ const Teams = () => {
         id: 'team',
         header: () => 'Team',
         enableSorting: true,
-        cell: (info) => {
-          return (
-            <div className="flex flex-col gap-2">
-              <Link
-                className="leading-none font-medium text-sm text-gray-900 hover:text-primary"
-                to="#"
-              >
-                {info.row.original.name}
-              </Link>
-              <span className="text-2sm text-gray-700 font-normal leading-3">
-                {info.row.original.description}
-              </span>
-            </div>
-          );
-        },
+        cell: (info) => (
+          <div className="flex flex-col gap-2">
+            <Link
+              className="leading-none font-medium text-sm text-gray-900 hover:text-primary"
+              to="#"
+            >
+              {info.row.original.name}
+            </Link>
+            <span className="text-2sm text-gray-700 font-normal leading-3">
+              {info.row.original.description}
+            </span>
+          </div>
+        ),
         meta: {
           className: 'min-w-[280px]'
         }
@@ -107,9 +77,38 @@ const Teams = () => {
     []
   );
 
+  const [searchQuery, setSearchQuery] = useState('');
+
+  const fetchTeams = async (params: TDataGridRequestParams) => {
+    try {
+      const queryParams = new URLSearchParams();
+
+      queryParams.set('page', String(params.pageIndex + 1)); // Page is 1-indexed on server
+      queryParams.set('items_per_page', String(params.pageSize));
+      queryParams.set('sort', params.sorting[0]?.id || 'name');
+      queryParams.set('order', params.sorting[0]?.desc ? 'desc' : 'asc');
+      queryParams.set('query', searchQuery);
+
+      const response = await axios.get<TeamsQueryApiResponse>(
+        `${import.meta.env.VITE_APP_API_URL}/teams/query?${queryParams.toString()}`
+      );
+
+      return {
+        data: response.data.data, // Server response data
+        totalCount: response.data.pagination.total // Total count for pagination
+      };
+    } catch (error) {
+      console.error('Failed to fetch data:', error);
+      return {
+        data: [],
+        totalCount: 0
+      };
+    }
+  };
+
   const handleRowsSelectChange = (selectedRowIds: TDataGridSelectedRowIds) => {
     enqueueSnackbar(
-      selectedRowIds.size > 0 ? `${selectedRowIds.size} rows selected` : `No rows are selected`,
+      selectedRowIds.size > 0 ? `${selectedRowIds.size} rows selected` : 'No rows are selected',
       {
         variant: 'solid',
         state: 'dark'
@@ -123,6 +122,12 @@ const Teams = () => {
         <h3 className="card-title">Teams</h3>
         <div className="input input-sm max-w-48">
           <KeenIcon icon="magnifier" />
+          <input
+            type="text"
+            placeholder="Search Teams"
+            value={searchQuery}
+            onChange={(e) => setSearchQuery(e.target.value)}
+          />
         </div>
       </div>
 
@@ -130,12 +135,10 @@ const Teams = () => {
         <DataGrid
           cellsBorder={true}
           columns={columns}
-          data={[]}
           serverSide={true}
           onFetchData={fetchTeams}
           rowSelect={true}
           onRowsSelectChange={handleRowsSelectChange}
-          initialSorting={[{ id: 'team', desc: false }]}
           saveState={true}
           saveStateId="teams-grid"
         />

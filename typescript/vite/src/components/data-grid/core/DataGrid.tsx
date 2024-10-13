@@ -14,7 +14,7 @@ export type TDataGridRequestParams = {
 }
 export interface TDataGridProps<TData extends object> {
   columns: any[];
-  data: TData[];
+  data?: TData[];
   loadingText?: string;
   saveState?: boolean;
   saveStateId?: string;

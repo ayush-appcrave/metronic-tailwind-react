@@ -3,25 +3,23 @@ import { KeenIcon } from '@/components';
 import { useDataGrid } from '..';
 
 const DataGridPagination = () => {
-  const { table, props } = useDataGrid();
+  const { table, totalRows, props } = useDataGrid();
 
   // Calculate pagination values
   const pageIndex = table.getState().pagination.pageIndex;
   const pageSize = table.getState().pagination.pageSize;
-  const rowCount = table.getFilteredRowModel().rows.length;
 
   // Calculate from, to, and total count values for pagination info
   const from = pageIndex * pageSize + 1;
-  const to = Math.min((pageIndex + 1) * pageSize, rowCount);
-  const count = rowCount;
+  const to = Math.min((pageIndex + 1) * pageSize, totalRows);
 
   // Replace placeholders in paginationInfo
   const paginationInfo = props.paginationInfo
     ? props.paginationInfo
         .replace('{from}', from.toString())
         .replace('{to}', to.toString())
-        .replace('{count}', count.toString())
-    : `${from} - ${to} of ${count}`; // Default fallback format
+        .replace('{count}', totalRows.toString())
+    : `${from} - ${to} of ${totalRows}`; // Default fallback format
 
   // Pagination limit logic
   const pageCount = table.getPageCount();
