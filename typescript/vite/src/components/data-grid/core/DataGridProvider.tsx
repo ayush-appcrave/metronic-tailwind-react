@@ -1,13 +1,22 @@
-/* eslint-disable no-unused-vars */
 /* eslint-disable react-refresh/only-export-components */
+/* eslint-disable no-unused-vars */
 /* eslint-disable react-hooks/exhaustive-deps */
-import { createContext, useContext, useState, useEffect, ReactNode } from 'react';
-import { TDataGridProps, TDataGridSelectedRowIds } from '..';
-import { Table } from '@tanstack/react-table';
+import {
+  getCoreRowModel,
+  getFilteredRowModel,
+  getPaginationRowModel,
+  getSortedRowModel,
+  PaginationState,
+  useReactTable,
+  ColumnFiltersState
+} from '@tanstack/react-table';
+import { createContext, useContext, useEffect, useState, ReactNode } from 'react';
+import { DataGridInner } from './DataGridInner'; // Import DataGridInner
+import { TDataGridProps, TDataGridSelectedRowIds } from './DataGrid'; // Import DataGrid props
 
 export interface IDataGridContextProps<TData extends object> {
   props: TDataGridProps<TData>;
-  table: Table<TData>;
+  table: any;
   loading: boolean;
   setLoading: (state: boolean) => void;
   selectedRowIds: Set<string>;
@@ -18,11 +27,9 @@ export interface IDataGridContextProps<TData extends object> {
   isSelectAllIndeterminate: boolean;
 }
 
-// Create the context
 const DataGridContext = createContext<IDataGridContextProps<any> | undefined>(undefined);
 
-// Custom hook to use the DataGrid context
-const useDataGrid = () => {
+export const useDataGrid = () => {
   const context = useContext(DataGridContext);
   if (!context) {
     throw new Error('useDataGrid must be used within a DataGridProvider');
@@ -30,22 +37,187 @@ const useDataGrid = () => {
   return context;
 };
 
-const DataGridProvider = <TData extends object>({
-  table,
-  props,
-  children
-}: {
-  table: Table<TData>;
-  props: TDataGridProps<TData>;
-  children: ReactNode;
-}) => {
-  const [loading, setLoading] = useState<boolean>(false);
+export const DataGridProvider = <TData extends object>(props: TDataGridProps<TData>) => {
+  const defaultValues: Partial<TDataGridProps<TData>> = {
+    saveState: false,
+    saveStateId: '',
+    cellsBorder: true,
+    loadingText: 'Loading...',
+    rowSelect: false,
+    emptyState: 'No data available',
+    paginationInfo: '{from} - {to} of {count}',
+    paginationSizes: [5, 10, 25, 50, 100],
+    paginationSizesLabel: 'Show',
+    paginationSizesDesc: 'per page',
+    paginationSize: 5,
+    paginationMoreLimit: 5,
+    paginationMore: false,
+    initialSorting: [],
+    serverSide: false
+  };
+
+  const mergedProps = { ...defaultValues, ...props };
+
+  // State management for selected rows
   const [selectedRowIds, setSelectedRowIds] = useState<Set<string>>(new Set());
   const [isSelectAllChecked, setIsSelectAllChecked] = useState<boolean>(false);
   const [isSelectAllIndeterminate, setIsSelectAllIndeterminate] = useState<boolean>(false);
 
-  // Get the IDs of the current rows being displayed
-  const currentRows = table.getRowModel().rows.map((row) => row.id);
+  const loadSavedState = (): { pagination: PaginationState; sorting: any[] } => {
+    if (props.saveState && props.saveStateId) {
+      const savedState = localStorage.getItem(props.saveStateId);
+      if (savedState) {
+        const parsedState = JSON.parse(savedState);
+        return {
+          pagination: {
+            pageIndex: parsedState.pageIndex ?? 0,
+            pageSize: parsedState.pageSize ?? mergedProps.paginationSize ?? 5
+          },
+          sorting: parsedState.sorting ?? mergedProps.initialSorting ?? []
+        };
+      }
+    }
+    return {
+      pagination: {
+        pageIndex: 0,
+        pageSize: mergedProps.paginationSize || 5
+      },
+      sorting: mergedProps.initialSorting || []
+    };
+  };
+
+  const validateSorting = (sorting: any[], columns: any[]) => {
+    const validColumnIds = new Set(columns.map((column) => column.id));
+    return sorting.filter((sort) => validColumnIds.has(sort.id));
+  };
+
+  const validatePagination = (
+    pagination: PaginationState,
+    dataLength: number,
+    paginationSizes: number[]
+  ): PaginationState => {
+    const validPageSize = paginationSizes.includes(pagination.pageSize)
+      ? pagination.pageSize
+      : paginationSizes[0];
+    const totalPages = Math.ceil(dataLength / validPageSize);
+    const validPageIndex = Math.min(pagination.pageIndex, Math.max(0, totalPages - 1));
+
+    return {
+      pageIndex: validPageIndex,
+      pageSize: validPageSize
+    };
+  };
+
+  const { pagination: initialPagination, sorting: initialSorting } = loadSavedState();
+
+  const validatedInitialSorting = validateSorting(initialSorting, mergedProps.columns);
+  const validatedInitialPagination = validatePagination(
+    initialPagination,
+    mergedProps.data.length,
+    mergedProps.paginationSizes!
+  );
+
+  const [pagination, setPagination] = useState<PaginationState>(validatedInitialPagination);
+  const [sorting, setSorting] = useState<any[]>(validatedInitialSorting);
+  const [filters, setFilters] = useState<ColumnFiltersState>([]);
+  const [data, setData] = useState<TData[]>(mergedProps.data);
+  const [loading, setLoading] = useState<boolean>(false);
+  const [totalRows, setTotalRows] = useState<number>(0);
+
+  const fetchServerSideData = async () => {
+    if (!mergedProps.onFetchData) return;
+
+    setLoading(true);
+    try {
+      const requestParams = {
+        pageIndex: pagination.pageIndex,
+        pageSize: pagination.pageSize,
+        sorting,
+        filters
+      };
+
+      const { data, totalCount } = await mergedProps.onFetchData(requestParams);
+      setData(data);
+      setTotalRows(totalCount);
+    } catch (error) {
+      console.error('Failed to fetch data:', error);
+    } finally {
+      setLoading(false); // Stop loading once data is fetched
+    }
+  };
+
+  const handleSaveState = (newState: any) => {
+    if (props.saveState && props.saveStateId) {
+      const existingState = localStorage.getItem(props.saveStateId);
+      let mergedState = newState;
+
+      if (existingState) {
+        const parsedState = JSON.parse(existingState);
+        mergedState = { ...parsedState, ...newState };
+      }
+
+      localStorage.setItem(props.saveStateId, JSON.stringify(mergedState));
+    }
+  };
+
+  useEffect(() => {
+    if (mergedProps.serverSide) {
+      fetchServerSideData();
+    }
+  }, [pagination, sorting, filters]);
+
+  useEffect(() => {
+    handleSaveState({
+      pageIndex: pagination.pageIndex,
+      pageSize: pagination.pageSize,
+      sorting
+    });
+  }, [pagination, sorting]);
+
+  const table = useReactTable({
+    columns: mergedProps.columns,
+    data: mergedProps.serverSide ? data : mergedProps.data,
+    pageCount: mergedProps.serverSide ? Math.ceil(totalRows / pagination.pageSize) : undefined,
+    getCoreRowModel: getCoreRowModel(),
+    getSortedRowModel: getSortedRowModel(),
+    getFilteredRowModel: getFilteredRowModel(),
+    getPaginationRowModel: getPaginationRowModel(),
+    manualPagination: mergedProps.serverSide,
+    manualSorting: mergedProps.serverSide,
+    manualFiltering: mergedProps.serverSide,
+    onPaginationChange: setPagination,
+    onSortingChange: setSorting,
+    onColumnFiltersChange: setFilters,
+    state: { pagination, sorting, columnFilters: filters }
+  });
+
+  const toggleRowSelection = (id: string) => {
+    setSelectedRowIds((prevSelected) => {
+      const newSelected: TDataGridSelectedRowIds = new Set(prevSelected);
+      if (newSelected.has(id)) {
+        newSelected.delete(id);
+      } else {
+        newSelected.add(id);
+      }
+      if (props.onRowsSelectChange) {
+        props.onRowsSelectChange(newSelected);
+      }
+      return newSelected;
+    });
+  };
+
+  const toggleAllRowsSelection = (checked: boolean) => {
+    const allRowIds = table.getRowModel().rows.map((row) => row.id);
+    const newSelectedRowIds: TDataGridSelectedRowIds = checked ? new Set(allRowIds) : new Set();
+    setSelectedRowIds(newSelectedRowIds);
+    if (props.onRowsSelectChange) {
+      props.onRowsSelectChange(newSelectedRowIds);
+    }
+  };
+
+  const getSelectedRowIds = () => {
+    return Array.from(selectedRowIds);
+  };
 
   // Handle sorting, pagination, and search loading
   const handleStateChange = () => {
@@ -77,59 +249,19 @@ const DataGridProvider = <TData extends object>({
     }
   }, [props.data]);
 
-  // Toggle individual row selection
-  const toggleRowSelection = (id: string) => {
-    setSelectedRowIds((prevSelected) => {
-      const newSelected: TDataGridSelectedRowIds = new Set(prevSelected);
-      if (newSelected.has(id)) {
-        newSelected.delete(id); // Uncheck the row if already selected
-      } else {
-        newSelected.add(id); // Select the row if not selected
-      }
-
-      if (props.onRowsSelectChange) {
-        props.onRowsSelectChange(newSelected);
-      }
-
-      return newSelected;
-    });
-  };
-
-  // Toggle all rows selection
-  const toggleAllRowsSelection = (checked: boolean) => {
-    const newSelectedRowIds: TDataGridSelectedRowIds = checked ? new Set(currentRows) : new Set();
-
-    setSelectedRowIds(newSelectedRowIds); // Deselect all rows
-
-    if (props.onRowsSelectChange) {
-      props.onRowsSelectChange(newSelectedRowIds);
-    }
-  };
-
-  // Update the "Select All" and indeterminate states
   useEffect(() => {
-    if (currentRows.length === 0) {
-      setIsSelectAllChecked(false);
-      setIsSelectAllIndeterminate(false);
-      return;
-    }
-
-    const isAllSelected = currentRows.every((id) => selectedRowIds.has(id));
-    const isSomeSelected = currentRows.some((id) => selectedRowIds.has(id));
+    const allRowIds = table.getRowModel().rows.map((row) => row.id);
+    const isAllSelected = allRowIds.every((id) => selectedRowIds.has(id));
+    const isSomeSelected = allRowIds.some((id) => selectedRowIds.has(id));
 
     setIsSelectAllChecked(isAllSelected);
     setIsSelectAllIndeterminate(!isAllSelected && isSomeSelected);
-  }, [selectedRowIds, currentRows]);
-
-  // Get all selected row IDs
-  const getSelectedRowIds = () => {
-    return Array.from(selectedRowIds);
-  };
+  }, [selectedRowIds, table.getRowModel().rows]);
 
   return (
     <DataGridContext.Provider
       value={{
-        props,
+        props: mergedProps,
         table,
         loading,
         setLoading,
@@ -141,9 +273,7 @@ const DataGridProvider = <TData extends object>({
         isSelectAllIndeterminate
       }}
     >
-      {children}
+      <DataGridInner />
     </DataGridContext.Provider>
   );
 };
-
-export { DataGridProvider, useDataGrid };

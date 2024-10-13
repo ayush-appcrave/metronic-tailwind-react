@@ -9,11 +9,11 @@ import {
   DataGridTableHead,
   DataGridTableHeadCell,
   DataGridTableEmpty,
-  DataGridToolbar,
-} from '..'; // Ensure these imports are correct
-import { flexRender, Row, Cell } from '@tanstack/react-table'; // Import Row and Cell types
+  DataGridToolbar
+} from '..';
+import { flexRender } from '@tanstack/react-table';
 
-const DataGridInner = <TData extends object>() => {
+const DataGridInner = () => {
   const { loading, table } = useDataGrid();
 
   return (
@@ -24,7 +24,7 @@ const DataGridInner = <TData extends object>() => {
             <DataGridTableHead>
               {table
                 .getHeaderGroups()
-                .map((headerGroup: { headers: any[]; }) =>
+                .map((headerGroup) =>
                   headerGroup.headers.map((header, index) => (
                     <DataGridTableHeadCell key={index} header={header} />
                   ))
@@ -32,11 +32,11 @@ const DataGridInner = <TData extends object>() => {
             </DataGridTableHead>
             <DataGridTableBody>
               {table.getRowModel().rows.length > 0 ? (
-                table.getRowModel().rows.map((row: Row<TData>, rowIndex: number) => (
-                  <DataGridTableBodyRow key={rowIndex} id={row.id}>
-                    {row.getVisibleCells().map((cell: Cell<TData, any>, cellIndex: number) => (
+                table.getRowModel().rows.map((row, index) => (
+                  <DataGridTableBodyRow key={index} id={row.id}>
+                    {row.getVisibleCells().map((cell, index) => (
                       <DataGridTableBodyCell
-                        key={cellIndex}
+                        key={index}
                         id={cell.id}
                         className={cell.column.columnDef.meta?.cellClassName || ''}
                       >
@@ -50,7 +50,7 @@ const DataGridInner = <TData extends object>() => {
               )}
             </DataGridTableBody>
           </DataGridTable>
-          {loading && <DataGridLoader />} {/* Show loader if loading */}
+          {loading && <DataGridLoader />}
         </div>
         <DataGridToolbar />
       </div>
