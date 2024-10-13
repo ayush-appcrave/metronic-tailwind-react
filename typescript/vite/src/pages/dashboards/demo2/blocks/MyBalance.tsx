@@ -1,7 +1,6 @@
 import { useState } from 'react';
 import ApexChart from 'react-apexcharts';
 import { ApexOptions } from 'apexcharts';
-import { IApexChartOptions } from '@/types/apexcharts';
 import { KeenIcon, Menu, MenuItem, MenuToggle } from '@/components';
 import clsx from 'clsx';
 
@@ -43,7 +42,7 @@ const MyBalance = ({ className }: IMyBalanceProps) => {
 
   const { data, categories } = getDataForPeriod(activePeriod);
 
-  const options: IApexChartOptions = {
+  const options: ApexOptions = {
     series: [
       {
         name: 'series1',
@@ -152,7 +151,6 @@ const MyBalance = ({ className }: IMyBalanceProps) => {
       fillOpacity: 1,
       discrete: [],
       shape: 'circle',
-      radius: 2,
       offsetX: 0,
       offsetY: 0,
       onClick: undefined,
@@ -165,7 +163,6 @@ const MyBalance = ({ className }: IMyBalanceProps) => {
     },
     fill: {
       gradient: {
-        enabled: true,
         opacityFrom: 0.25,
         opacityTo: 0
       }
@@ -173,7 +170,6 @@ const MyBalance = ({ className }: IMyBalanceProps) => {
     grid: {
       borderColor: 'var(--tw-gray-200)',
       strokeDashArray: 5,
-      clipMarkers: false,
       yaxis: {
         lines: {
           show: true
@@ -237,7 +233,7 @@ const MyBalance = ({ className }: IMyBalanceProps) => {
 
       <ApexChart
         id="my_balance_chart"
-        options={options as ApexOptions}
+        options={options}
         series={options.series}
         type="area"
         max-width="361"
