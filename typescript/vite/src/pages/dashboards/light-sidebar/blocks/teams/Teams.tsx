@@ -1,20 +1,45 @@
-/* eslint-disable prettier/prettier */
 import React, { useEffect, useMemo, useState } from 'react';
 import { useSnackbar } from 'notistack';
 import { ColumnDef } from '@tanstack/react-table';
 import { Link } from 'react-router-dom';
 import { DataGrid, KeenIcon, TDataGridSelectedRowIds } from '@/components';
-import { CommonAvatars, CommonRating } from '@/partials/common';
-import { TeamsData, ITeamData } from './';
+import { CommonRating } from '@/partials/common';
+import { Team, QueryApiResponse } from './teams-types.ts';
+import axios from 'axios';
+import { formatIsoDate } from '@/utils/Date.ts';
+import { TeamUsers } from '@/pages/dashboards/light-sidebar/blocks/teams/TeamUsers.tsx';
+
+type TeamsQueryApiResponse = QueryApiResponse<Team>;
+
+const storageFilterId = 'teams-filter';
+const fetchTeams = () => {
+  return axios.get<TeamsQueryApiResponse>(
+    `${import.meta.env.VITE_APP_API_URL}/teams/query?${new URLSearchParams({
+      items_per_page: '15'
+    }).toString()}`
+  );
+};
 
 const Teams = () => {
   const { enqueueSnackbar } = useSnackbar();
-  const storageFilterId = 'teams-filter';
+  const [teamsResponse, setTeamsResponse] = useState<TeamsQueryApiResponse>();
+  const [searchTerm, setSearchTerm] = useState(() => {
+    return localStorage.getItem(storageFilterId) || '';
+  });
 
-  const columns = useMemo<ColumnDef<ITeamData>[]>(
+  useEffect(() => {
+    localStorage.setItem(storageFilterId, searchTerm);
+  }, [searchTerm]);
+
+  useEffect(() => {
+    fetchTeams().then((value) => setTeamsResponse(value.data));
+  }, []);
+
+  const teams = useMemo<Team[] | undefined>(() => teamsResponse?.data, [teamsResponse]);
+  const columns = useMemo<ColumnDef<Team>[]>(
     () => [
       {
-        accessorFn: (row) => row.team.name,
+        accessorFn: (row) => row.name,
         id: 'team',
         header: () => 'Team',
         enableSorting: true,
@@ -25,10 +50,10 @@ const Teams = () => {
                 className="leading-none font-medium text-sm text-gray-900 hover:text-primary"
                 to="#"
               >
-                {info.row.original.team.name}
+                {info.row.original.name}
               </Link>
               <span className="text-2sm text-gray-700 font-normal leading-3">
-                {info.row.original.team.description}
+                {info.row.original.description}
               </span>
             </div>
           );
@@ -38,14 +63,14 @@ const Teams = () => {
         }
       },
       {
-        accessorFn: (row) => row.rating.value,
+        accessorFn: (row) => row.rating,
         id: 'rating',
         header: () => 'Rating',
         enableSorting: true,
         cell: (info) => (
           <CommonRating
-            rating={info.row.original.rating.value}
-            round={info.row.original.rating.round}
+            rating={Math.floor(info.row.original.rating)}
+            round={info.row.original.rating % 1}
           />
         ),
         meta: {
@@ -53,27 +78,21 @@ const Teams = () => {
         }
       },
       {
-        accessorFn: (row) => row.lastModified,
+        accessorFn: (row) => row.updated_at,
         id: 'lastModified',
         enableSorting: true,
         header: () => 'Last Modified',
-        cell: (info) => info.getValue(),
+        cell: (info) => formatIsoDate(info.row.original.updated_at),
         meta: {
           className: 'min-w-[135px]'
         }
       },
       {
-        accessorFn: (row) => row.members,
+        accessorFn: (row) => row.users,
         id: 'members',
         header: () => 'Members',
         enableSorting: true,
-        cell: (info) => (
-          <CommonAvatars
-            size="size-[30px]"
-            group={info.row.original.members.group}
-            more={info.row.original.members.more}
-          />
-        ),
+        cell: (info) => <TeamUsers users={info.row.original.users} />,
         meta: {
           className: 'min-w-[135px]'
         }
@@ -82,35 +101,21 @@ const Teams = () => {
     []
   );
 
-  const data: ITeamData[] = useMemo(() => TeamsData, []);
-
-  const [searchTerm, setSearchTerm] = useState(() => {
-    return localStorage.getItem(storageFilterId) || '';
-  });
-
-  useEffect(() => {
-    localStorage.setItem(storageFilterId, searchTerm);
-  }, [searchTerm]);
-
-  useEffect(() => {
-
-  }, []);
-
   const filteredData = useMemo(() => {
-    if (!searchTerm) return data;
+    if (!searchTerm) return teams;
 
-    return data.filter(
+    return teams?.filter(
       (team) =>
-        team.team.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
-        team.team.description.toLowerCase().includes(searchTerm.toLowerCase())
+        team.name.toLowerCase().includes(searchTerm.toLowerCase()) ||
+        team.description.toLowerCase().includes(searchTerm.toLowerCase())
     );
-  }, [searchTerm, data]);
+  }, [searchTerm, teams]);
 
   const handleRowsSelectChange = (selectedRowIds: TDataGridSelectedRowIds) => {
     enqueueSnackbar(
       selectedRowIds.size > 0 ? `${selectedRowIds.size} rows selected` : `No rows are selected`,
-      { 
-        variant: 'solid', 
+      {
+        variant: 'solid',
         state: 'dark'
       }
     );
@@ -132,16 +137,18 @@ const Teams = () => {
       </div>
 
       <div className="card-body">
-        <DataGrid 
-          cellsBorder={true}
-          columns={columns} 
-          data={filteredData} 
-          rowSelect={true} 
-          onRowsSelectChange={handleRowsSelectChange}
-          initialSorting={[{ id: 'team', desc: false }]} 
-          saveState={true} 
-          saveStateId='teams-grid'
-        />
+        {filteredData && (
+          <DataGrid
+            cellsBorder={true}
+            columns={columns}
+            data={filteredData}
+            rowSelect={true}
+            onRowsSelectChange={handleRowsSelectChange}
+            initialSorting={[{ id: 'team', desc: false }]}
+            saveState={true}
+            saveStateId="teams-grid"
+          />
+        )}
       </div>
     </div>
   );

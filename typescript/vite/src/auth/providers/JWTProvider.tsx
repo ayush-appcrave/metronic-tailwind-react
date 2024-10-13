@@ -96,7 +96,7 @@ const AuthProvider = ({ children }: PropsWithChildren) => {
     }
   };
 
-  // Register user using default registraion information
+  // Register user using default registration information
   const register = async (
     email: string,
     password: string,

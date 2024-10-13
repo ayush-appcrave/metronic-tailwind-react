@@ -73,14 +73,14 @@ import {
   NetworkVisitorsPage
 } from '@/pages/network';
 
-import { AuthPage, useAuthContext } from '../auth';
-import { RequireAuth } from '../auth/RequireAuth';
-import { Demo8Layout } from '../layouts/demo8';
-import { ErrorsRouting } from '../errors';
-import { useLoaders } from '../providers/LoadersProvider';
+import { AuthPage, useAuthContext } from '@/auth';
+import { RequireAuth } from '@/auth';
+import { ErrorsRouting } from '@/errors';
+import { useLoaders } from '@/providers';
 import { AuthenticationWelcomeMessagePage } from '@/pages/authentication/welcome-message/AuthenticationWelcomeMessagePage';
 import { AuthenticationAccountDeactivatedPage } from '@/pages/authentication/account-deactivated/AuthenticationAccountDeactivatedPage';
 import { AuthenticationGetStartedPage } from '@/pages/authentication/get-started/AuthenticationGetStartedPage';
+import { Demo1Layout } from '@/layouts/demo1';
 
 const AppRouting = (): ReactElement => {
   const { setProgressBarLoader } = useLoaders();
@@ -126,7 +126,7 @@ const AppRouting = (): ReactElement => {
   return (
     <Routes>
       <Route element={<RequireAuth />}>
-        <Route element={<Demo8Layout />}>
+        <Route element={<Demo1Layout />}>
           <Route path="/" element={<DefaultPage />} />
           <Route path="/dark-sidebar" element={<DarkSidebarPage />} />
           <Route path="/public-profile/profiles/default" element={<ProfileDefaultPage />} />
