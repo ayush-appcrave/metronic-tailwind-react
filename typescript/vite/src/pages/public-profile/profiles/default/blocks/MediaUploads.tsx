@@ -1,7 +1,6 @@
 import { Fragment } from 'react';
 import ApexChart from 'react-apexcharts';
 import { ApexOptions } from 'apexcharts';
-import { IApexChartOptions } from '@/types/apexcharts';
 
 import { KeenIcon, Menu, MenuItem, MenuToggle } from '@/components';
 
@@ -24,7 +23,7 @@ const MediaUploads = () => {
     'Dec'
   ];
 
-  const options: IApexChartOptions = {
+  const options: ApexOptions = {
     series: [
       {
         name: 'series1',
@@ -130,7 +129,6 @@ const MediaUploads = () => {
       strokeDashArray: 0,
       fillOpacity: 1,
       shape: 'circle',
-      radius: 2,
       showNullDataPoints: true,
       hover: {
         size: 8,
@@ -142,7 +140,6 @@ const MediaUploads = () => {
     },
     fill: {
       gradient: {
-        enabled: true,
         opacityFrom: 0.25,
         opacityTo: 0
       }
@@ -150,7 +147,6 @@ const MediaUploads = () => {
     grid: {
       borderColor: 'var(--tw-gray-200)',
       strokeDashArray: 5,
-      clipMarkers: false,
       yaxis: {
         lines: {
           show: true
@@ -196,7 +192,7 @@ const MediaUploads = () => {
         <div className="px-3 py-1">
           <ApexChart
             id="media_uploads_chart"
-            options={options as ApexOptions}
+            options={options}
             series={options.series}
             type="area"
             max-width="694"
