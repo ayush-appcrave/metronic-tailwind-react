@@ -2,9 +2,15 @@ import ApexChart from 'react-apexcharts';
 import { ApexOptions } from 'apexcharts';
 
 import { IApexChartOptions } from '@/types/apexcharts';
+import axios from 'axios';
+import { useEffect, useState } from 'react';
+
+const fetchEarningsChart = () => {
+  return axios.get<number[]>(`${import.meta.env.VITE_APP_API_URL}/sales/index`);
+};
 
 const EarningsChart = () => {
-  const data: number[] = [75, 25, 45, 15, 85, 35, 70, 25, 35, 15, 45, 30];
+  const [charData, setCharData] = useState<number[]>();
   const categories: string[] = [
     'Jan',
     'Feb',
@@ -20,11 +26,15 @@ const EarningsChart = () => {
     'Dec'
   ];
 
-  const options: IApexChartOptions = {
+  useEffect(() => {
+    fetchEarningsChart().then((value) => setCharData(value.data));
+  }, []);
+
+  const options: ApexOptions = {
     series: [
       {
         name: 'series1',
-        data: data
+        data: charData ?? []
       }
     ],
     chart: {
@@ -51,7 +61,6 @@ const EarningsChart = () => {
       axisBorder: {
         show: false
       },
-      maxTicks: 12,
       axisTicks: {
         show: false
       },
@@ -130,7 +139,6 @@ const EarningsChart = () => {
       fillOpacity: 1,
       discrete: [],
       shape: 'circle',
-      radius: 2,
       offsetX: 0,
       offsetY: 0,
       onClick: undefined,
@@ -143,7 +151,6 @@ const EarningsChart = () => {
     },
     fill: {
       gradient: {
-        enabled: true,
         opacityFrom: 0.25,
         opacityTo: 0
       }
@@ -151,7 +158,6 @@ const EarningsChart = () => {
     grid: {
       borderColor: 'var(--tw-gray-200)',
       strokeDashArray: 5,
-      clipMarkers: false,
       yaxis: {
         lines: {
           show: true
@@ -185,14 +191,16 @@ const EarningsChart = () => {
         </div>
       </div>
       <div className="card-body flex flex-col justify-end items-stretch grow px-3 py-1">
-        <ApexChart
-          id="earnings_chart"
-          options={options as ApexOptions}
-          series={options.series}
-          type="area"
-          max-width="694"
-          height="250"
-        />
+        {charData && (
+          <ApexChart
+            id="earnings_chart"
+            options={options}
+            series={options.series}
+            type="area"
+            max-width="694"
+            height="250"
+          />
+        )}
       </div>
     </div>
   );
