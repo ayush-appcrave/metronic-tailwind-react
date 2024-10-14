@@ -41,7 +41,7 @@ const Main = () => {
             <Toolbar>
               <ToolbarHeading />
               <ToolbarActions>
-                <Link to={'account/home/get-started'} className="btn btn-xs btn-light">
+                <Link to={'account/home/get-started'} className="btn btn-sm btn-light">
                   <KeenIcon icon="exit-down !text-base" />
                   Export
                 </Link>

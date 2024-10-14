@@ -3,6 +3,5 @@ export * from './Demo7LayoutConfig';
 export * from './Demo7LayoutProvider';
 export * from './main';
 export * from './header';
-export * from './navbar';
 export * from './toolbar';
 export * from './footer';

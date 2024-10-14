@@ -10,7 +10,7 @@ const ToolbarBreadcrumbs = () => {
   const items = useMenuBreadcrumbs(pathname, getMenuConfig('primary'));
 
   return (
-    <div className="flex items-center gap-1 text-sm font-normal">
+    <div className="flex items-center gap-1 text-2sm">
       {items.map((item, index) => (
         <Fragment key={index}>
           {item.path ? (
