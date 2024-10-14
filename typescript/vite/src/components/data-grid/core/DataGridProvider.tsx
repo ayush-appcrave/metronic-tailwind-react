@@ -50,8 +50,9 @@ export const DataGridProvider = <TData extends object>(props: TDataGridProps<TDa
     paginationInfo: '{from} - {to} of {count}',
     paginationSizes: [5, 10, 25, 50, 100],
     paginationSizesLabel: 'Show',
-    paginationSizesDesc: 'per page',
+    paginationSizesDescription: 'per page',
     paginationSize: 5,
+    paginationPage: 0,
     paginationMoreLimit: 5,
     paginationMore: false,
     initialSorting: [],
@@ -70,22 +71,26 @@ export const DataGridProvider = <TData extends object>(props: TDataGridProps<TDa
   const [isSelectAllIndeterminate, setIsSelectAllIndeterminate] = useState<boolean>(false);
 
   const loadSavedState = (): { pagination: PaginationState; sorting: any[] } => {
-    if (props.saveState && props.saveStateId) {
-      const savedState = localStorage.getItem(props.saveStateId);
+    if (mergedProps.saveState && mergedProps.saveStateId) {
+      const savedState = localStorage.getItem(mergedProps.saveStateId);
       if (savedState) {
         const parsedState = JSON.parse(savedState);
+        console.log('fall back:', parsedState.pageIndex);
+
         return {
           pagination: {
-            pageIndex: parsedState.pageIndex ?? 0,
+            pageIndex: parsedState.pageIndex ?? mergedProps.paginationPage,
             pageSize: parsedState.pageSize ?? mergedProps.paginationSize ?? 5
           },
           sorting: parsedState.sorting ?? mergedProps.initialSorting ?? []
         };
       }
     }
+
+    console.log('fall back');
     return {
       pagination: {
-        pageIndex: 0,
+        pageIndex: mergedProps.paginationPage || 0,
         pageSize: mergedProps.paginationSize || 5
       },
       sorting: mergedProps.initialSorting || []

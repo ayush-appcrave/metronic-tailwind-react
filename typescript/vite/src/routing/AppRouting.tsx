@@ -73,14 +73,14 @@ import {
   NetworkVisitorsPage
 } from '@/pages/network';
 
-import { AuthPage, useAuthContext } from '@/auth';
-import { RequireAuth } from '@/auth';
-import { ErrorsRouting } from '@/errors';
-import { useLoaders } from '@/providers';
+import { AuthPage, useAuthContext } from '../auth';
+import { RequireAuth } from '../auth/RequireAuth';
+import { Demo10Layout } from '../layouts/demo10';
+import { ErrorsRouting } from '../errors';
+import { useLoaders } from '../providers/LoadersProvider';
 import { AuthenticationWelcomeMessagePage } from '@/pages/authentication/welcome-message/AuthenticationWelcomeMessagePage';
 import { AuthenticationAccountDeactivatedPage } from '@/pages/authentication/account-deactivated/AuthenticationAccountDeactivatedPage';
 import { AuthenticationGetStartedPage } from '@/pages/authentication/get-started/AuthenticationGetStartedPage';
-import { Demo10Layout } from '@/layouts/demo10';
 
 const AppRouting = (): ReactElement => {
   const { setProgressBarLoader } = useLoaders();

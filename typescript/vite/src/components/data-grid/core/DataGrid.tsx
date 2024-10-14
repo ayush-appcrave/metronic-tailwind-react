@@ -26,8 +26,9 @@ export interface TDataGridProps<TData extends object> {
   paginationInfo?: string;
   paginationSizes?: number[];
   paginationSizesLabel?: string;
-  paginationSizesDesc?: string;
+  paginationSizesDescription?: string;
   paginationSize?: number;
+  paginationPage?: number;
   paginationMore?: boolean;
   paginationMoreLimit?: number;
   initialSorting?: { id: string; desc?: boolean }[];
