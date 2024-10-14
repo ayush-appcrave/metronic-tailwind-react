@@ -75,7 +75,7 @@ import {
 
 import { AuthPage, useAuthContext } from '../auth';
 import { RequireAuth } from '../auth/RequireAuth';
-import { Demo8Layout } from '../layouts/demo8';
+import { Demo9Layout } from '../layouts/demo9';
 import { ErrorsRouting } from '../errors';
 import { useLoaders } from '../providers/LoadersProvider';
 import { AuthenticationWelcomeMessagePage } from '@/pages/authentication/welcome-message/AuthenticationWelcomeMessagePage';
@@ -126,7 +126,7 @@ const AppRouting = (): ReactElement => {
   return (
     <Routes>
       <Route element={<RequireAuth />}>
-        <Route element={<Demo8Layout />}>
+        <Route element={<Demo9Layout />}>
           <Route path="/" element={<DefaultPage />} />
           <Route path="/dark-sidebar" element={<DarkSidebarPage />} />
           <Route path="/public-profile/profiles/default" element={<ProfileDefaultPage />} />
