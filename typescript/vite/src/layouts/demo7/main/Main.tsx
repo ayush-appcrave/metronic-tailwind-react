@@ -3,7 +3,7 @@ import { Helmet } from 'react-helmet-async';
 import { Outlet, useLocation } from 'react-router';
 import { Menu, MenuItem, MenuSub, MenuToggle, useMenuCurrentItem } from '@/components/menu';
 import { useMenus } from '@/providers';
-import { Header, Footer } from '../';
+import { Header, Footer } from '..';
 import { Toolbar, ToolbarHeading, ToolbarActions } from '../toolbar';
 import { Link } from 'react-router-dom';
 import { KeenIcon } from '@/components';

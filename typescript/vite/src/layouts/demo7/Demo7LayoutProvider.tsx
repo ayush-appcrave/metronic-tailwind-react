@@ -4,7 +4,7 @@ import { useScrollPosition } from '@/hooks/useScrollPosition';
 import { useMenus } from '@/providers';
 import { ILayoutConfig, useLayout } from '@/providers';
 import { deepMerge } from '@/utils';
-import { Demo7LayoutConfig } from './';
+import { Demo7LayoutConfig } from '.';
 
 // Interface defining the properties of the layout provider context
 export interface IDemo7LayoutProviderProps {
@@ -24,7 +24,7 @@ const initalLayoutProps: IDemo7LayoutProviderProps = {
   }
 };
 
-// Create a context to manage the layout-related state and logic for Demo7 layout
+// Create a context to manage the layout-related state and logic for Dem7 layout
 const Demo7LayoutContext = createContext<IDemo7LayoutProviderProps>(initalLayoutProps);
 
 // Custom hook to access the layout context in other components
