@@ -173,10 +173,8 @@ const Teams = () => {
           columns={columns} 
           data={filteredData} 
           rowSelect={true}
-          paginationSize={10}
-          initialSorting={[{ id: 'team', desc: false }]} 
-          saveState={true} 
-          saveStateId='teams-grid'
+          pagination={{ size: 10 }}
+          sorting={[{ id: 'team', desc: false }]}
         />
       </div>
     </div>

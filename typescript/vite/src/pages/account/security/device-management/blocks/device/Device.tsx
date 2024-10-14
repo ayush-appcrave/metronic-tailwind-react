@@ -141,10 +141,8 @@ const Device = () => {
           columns={columns} 
           data={data} 
           rowSelect={true} 
-          paginationSize={10}
-          initialSorting={[{ id: 'device', desc: false }]} 
-          saveState={true} 
-          saveStateId='device-grid'
+          pagination={{ size: 10 }}
+          sorting={[{ id: 'device', desc: false }]}
         />
       </div>
     </div>

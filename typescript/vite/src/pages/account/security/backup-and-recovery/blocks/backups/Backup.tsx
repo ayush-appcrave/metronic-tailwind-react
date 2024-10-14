@@ -118,10 +118,8 @@ const Backup= () => {
           columns={columns} 
           data={data} 
           rowSelect={true} 
-          paginationSize={10}
-          initialSorting={[{ id: 'when', desc: false }]} 
-          saveState={true} 
-          saveStateId='backup-grid'
+          pagination={{ size: 10 }}
+          sorting={[{ id: 'when', desc: false }]}
         />
       </div>
     </div>

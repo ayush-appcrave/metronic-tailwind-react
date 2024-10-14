@@ -121,8 +121,8 @@ const SecurityLog = () => {
           columns={columns} 
           data={data} 
           rowSelect={true} 
-          paginationSize={10}
-          initialSorting={[{ id: 'timestamp', desc: false }]} 
+          pagination={{ size: 10 }}
+          sorting={[{ id: 'timestamp', desc: false }]} 
           saveState={true} 
           saveStateId='security-log-grid'
         />

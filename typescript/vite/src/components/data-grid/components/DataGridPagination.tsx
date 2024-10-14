@@ -14,8 +14,8 @@ const DataGridPagination = () => {
   const to = Math.min((pageIndex + 1) * pageSize, totalRows);
 
   // Replace placeholders in paginationInfo
-  const paginationInfo = props.paginationInfo
-    ? props.paginationInfo
+  const paginationInfo = props.pagination?.info
+    ? props.pagination.info
         .replace('{from}', from.toString())
         .replace('{to}', to.toString())
         .replace('{count}', totalRows.toString())
@@ -23,7 +23,7 @@ const DataGridPagination = () => {
 
   // Pagination limit logic
   const pageCount = table.getPageCount();
-  const paginationMoreLimit = props.paginationMoreLimit || 5;
+  const paginationMoreLimit = props.pagination?.moreLimit || 5;
 
   // Determine the start and end of the pagination group
   const currentGroupStart = Math.floor(pageIndex / paginationMoreLimit) * paginationMoreLimit;

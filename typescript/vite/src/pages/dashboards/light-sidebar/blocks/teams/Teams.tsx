@@ -85,8 +85,8 @@ const Teams = () => {
 
       queryParams.set('page', String(params.pageIndex + 1)); // Page is 1-indexed on server
       queryParams.set('items_per_page', String(params.pageSize));
-      queryParams.set('sort', params.sorting[0]?.id || 'name');
-      queryParams.set('order', params.sorting[0]?.desc ? 'desc' : 'asc');
+      queryParams.set('sort', params.sorting?.[0]?.id || 'name');
+      queryParams.set('order', params.sorting?.[0]?.desc ? 'desc' : 'asc');
       queryParams.set('query', searchQuery);
 
       const response = await axios.get<TeamsQueryApiResponse>(
@@ -133,14 +133,14 @@ const Teams = () => {
 
       <div className="card-body">
         <DataGrid
-          cellsBorder={true}
+          layout={{ cellsBorder: true }}
           columns={columns}
           serverSide={true}
           onFetchData={fetchTeams}
           rowSelect={true}
+          pagination={{ page: 1 }}
+          sorting={[{ id: 'rating', desc: false }]}
           onRowsSelectChange={handleRowsSelectChange}
-          saveState={true}
-          saveStateId="teams-grid"
         />
       </div>
     </div>

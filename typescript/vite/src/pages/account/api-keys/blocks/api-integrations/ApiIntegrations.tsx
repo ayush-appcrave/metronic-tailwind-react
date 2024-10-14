@@ -106,10 +106,8 @@ const ApiIntegrations = () => {
           columns={columns} 
           data={data} 
           rowSelect={false} 
-          paginationSize={10}
-          initialSorting={[{ id: 'integration', desc: false }]} 
-          saveState={true} 
-          saveStateId='api-integrations-grid'
+          pagination={{ size: 10 }}
+          sorting={[{ id: 'integration', desc: false }]} 
         />
       </div>
     </div>

@@ -180,10 +180,8 @@ const Members = () => {
           columns={columns} 
           data={filteredData} 
           rowSelect={true} 
-          paginationSize={5}
-          initialSorting={[{ id: 'member', desc: false }]} 
-          saveState={true} 
-          saveStateId='members-grid'
+          pagination={{ size: 5 }}
+          sorting={[{ id: 'member', desc: false }]}
         />
       </div>
     </div>

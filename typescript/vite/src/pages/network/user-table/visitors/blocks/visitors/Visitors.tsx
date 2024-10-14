@@ -150,10 +150,8 @@ const Visitors = () => {
           columns={columns} 
           data={data} 
           rowSelect={true} 
-          paginationSize={10}
-          initialSorting={[{ id: 'user', desc: false }]} 
-          saveState={true} 
-          saveStateId='current-sessions-grid'
+          pagination={{ size: 10 }}
+          sorting={[{ id: 'user', desc: false }]}
         />
       </div>
     </div>

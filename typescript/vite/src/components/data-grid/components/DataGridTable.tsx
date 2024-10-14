@@ -19,8 +19,8 @@ const DataGridTable = ({ children }: TDataGridTableProps) => {
     <table
       className={clsx(
         'table',
-        props.cellsBorder && 'table-border',
-        props.tableSpacing && spacingClasses[props.tableSpacing]
+        props.layout?.cellsBorder && 'table-border',
+        props.layout?.tableSpacing && spacingClasses[props.layout.tableSpacing]
       )}
     >
       {children}

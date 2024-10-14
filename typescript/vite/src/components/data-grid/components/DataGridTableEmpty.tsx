@@ -7,7 +7,7 @@ const DataGridTableEmpty = () => {
   return (
     <tr>
       <td colSpan={totalColumns} className="text-center py-4">
-        {props.emptyState || 'No data available'}
+        {props.messages?.empty || 'No data available'}
       </td>
     </tr>
   );

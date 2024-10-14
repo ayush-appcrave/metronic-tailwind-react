@@ -112,10 +112,8 @@ const Invoicing = () => {
           columns={columns} 
           data={data} 
           rowSelect={true} 
-          paginationSize={5}
-          initialSorting={[{ id: 'invoice', desc: false }]} 
-          saveState={true} 
-          saveStateId='invoicing-grid'
+          pagination={{ size: 5 }}
+          sorting={[{ id: 'invoice', desc: false }]} 
         />
       </div>
     </div>

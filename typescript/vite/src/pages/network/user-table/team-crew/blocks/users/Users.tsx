@@ -162,8 +162,8 @@ const Users = () => {
           columns={columns} 
           data={data} 
           rowSelect={true} 
-          paginationSize={10}
-          initialSorting={[{ id: 'users', desc: false }]} 
+          pagination={{ size: 10 }}
+          sorting={[{ id: 'users', desc: false }]} 
           saveState={true} 
           saveStateId='Users-grid'
         />

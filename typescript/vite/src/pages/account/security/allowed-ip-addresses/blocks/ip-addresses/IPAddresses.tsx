@@ -126,10 +126,8 @@ const IPAddresses = () => {
           columns={columns} 
           data={data} 
           rowSelect={true} 
-          paginationSize={10}
-          initialSorting={[{ id: 'method', desc: false }]} 
-          saveState={true} 
-          saveStateId='ip-addresses-grid'
+          pagination={{ size: 10 }}
+          sorting={[{ id: 'method', desc: false }]}
         />
       </div>
     </div>

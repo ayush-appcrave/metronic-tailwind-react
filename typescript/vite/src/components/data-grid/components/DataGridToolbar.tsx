@@ -7,7 +7,7 @@ const DataGridToolbar = () => {
   return (
     <div className="card-footer justify-center md:justify-between flex-col md:flex-row gap-3 text-gray-600 text-2sm font-medium">
       <div className="flex items-center gap-2">
-        {props.paginationSizesLabel}
+        {props.pagination?.sizesLabel}
         <select
           className="select select-sm w-16"
           value={table.getState().pagination.pageSize}
@@ -15,13 +15,13 @@ const DataGridToolbar = () => {
             table.setPageSize(Number(e.target.value));
           }}
         >
-          {props.paginationSizes?.map((pageSize) => (
-            <option key={pageSize} value={pageSize}>
-              {pageSize}
+          {props.pagination?.sizes?.map((size, index) => (
+            <option key={index} value={size}>
+              {size}
             </option>
           ))}
         </select>{' '}
-        {props.paginationSizesDesc}
+        {props.pagination?.sizesDescription}
       </div>
       <DataGridPagination />
     </div>

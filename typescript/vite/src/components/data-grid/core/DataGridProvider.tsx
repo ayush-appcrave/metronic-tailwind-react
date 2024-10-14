@@ -10,9 +10,10 @@ import {
   useReactTable,
   ColumnFiltersState
 } from '@tanstack/react-table';
-import { createContext, useContext, useEffect, useState, ReactNode } from 'react';
-import { DataGridInner } from './DataGridInner'; // Import DataGridInner
-import { TDataGridProps, TDataGridSelectedRowIds } from './DataGrid'; // Import DataGrid props
+import { createContext, useContext, useEffect, useState } from 'react';
+import { DataGridInner } from './DataGridInner';
+import { TDataGridProps, TDataGridSelectedRowIds } from './DataGrid';
+import { deepMerge } from '@/utils';
 
 export interface IDataGridContextProps<TData extends object> {
   props: TDataGridProps<TData>;
@@ -40,26 +41,26 @@ export const useDataGrid = () => {
 
 export const DataGridProvider = <TData extends object>(props: TDataGridProps<TData>) => {
   const defaultValues: Partial<TDataGridProps<TData>> = {
-    data: [],
-    saveState: false,
-    saveStateId: '',
-    cellsBorder: true,
-    loadingText: 'Loading...',
+    messages: {
+      empty: 'No data available',
+      loading: 'Loading...'
+    },
+    pagination: {
+      info: '{from} - {to} of {count}',
+      sizes: [5, 10, 25, 50, 100],
+      sizesLabel: 'Show',
+      sizesDescription: 'per page',
+      size: 5,
+      page: 0,
+      moreLimit: 5,
+      more: false
+    },
+    layout: { cellsBorder: true },
     rowSelect: false,
-    emptyState: 'No data available',
-    paginationInfo: '{from} - {to} of {count}',
-    paginationSizes: [5, 10, 25, 50, 100],
-    paginationSizesLabel: 'Show',
-    paginationSizesDescription: 'per page',
-    paginationSize: 5,
-    paginationPage: 0,
-    paginationMoreLimit: 5,
-    paginationMore: false,
-    initialSorting: [],
     serverSide: false
   };
 
-  const mergedProps = { ...defaultValues, ...props };
+  const mergedProps = deepMerge(defaultValues, props);
 
   const [data, setData] = useState<TData[]>(mergedProps.data ?? []);
   const [loading, setLoading] = useState<boolean>(false);
@@ -70,68 +71,15 @@ export const DataGridProvider = <TData extends object>(props: TDataGridProps<TDa
   const [isSelectAllChecked, setIsSelectAllChecked] = useState<boolean>(false);
   const [isSelectAllIndeterminate, setIsSelectAllIndeterminate] = useState<boolean>(false);
 
-  const loadSavedState = (): { pagination: PaginationState; sorting: any[] } => {
-    if (mergedProps.saveState && mergedProps.saveStateId) {
-      const savedState = localStorage.getItem(mergedProps.saveStateId);
-      if (savedState) {
-        const parsedState = JSON.parse(savedState);
-        console.log('fall back:', parsedState.pageIndex);
+  // Pagination and Sorting from props
+  const [pagination, setPagination] = useState<PaginationState>({
+    pageIndex: props.pagination?.page ?? 0,
+    pageSize: props.pagination?.size ?? 5
+  });
+  const [sorting, setSorting] = useState<any[]>(mergedProps.sorting ?? []);
+  const [filters, setFilters] = useState<ColumnFiltersState>(mergedProps.filters ?? []);
 
-        return {
-          pagination: {
-            pageIndex: parsedState.pageIndex ?? mergedProps.paginationPage,
-            pageSize: parsedState.pageSize ?? mergedProps.paginationSize ?? 5
-          },
-          sorting: parsedState.sorting ?? mergedProps.initialSorting ?? []
-        };
-      }
-    }
-
-    console.log('fall back');
-    return {
-      pagination: {
-        pageIndex: mergedProps.paginationPage || 0,
-        pageSize: mergedProps.paginationSize || 5
-      },
-      sorting: mergedProps.initialSorting || []
-    };
-  };
-
-  const validateSorting = (sorting: any[], columns: any[]) => {
-    const validColumnIds = new Set(columns.map((column) => column.id));
-    return sorting.filter((sort) => validColumnIds.has(sort.id));
-  };
-
-  const validatePagination = (
-    pagination: PaginationState,
-    dataLength: number,
-    paginationSizes: number[]
-  ): PaginationState => {
-    const validPageSize = paginationSizes.includes(pagination.pageSize)
-      ? pagination.pageSize
-      : paginationSizes[0];
-    const totalPages = Math.ceil(dataLength / validPageSize);
-    const validPageIndex = Math.min(pagination.pageIndex, Math.max(0, totalPages - 1));
-
-    return {
-      pageIndex: validPageIndex,
-      pageSize: validPageSize
-    };
-  };
-
-  const { pagination: initialPagination, sorting: initialSorting } = loadSavedState();
-
-  const validatedInitialSorting = validateSorting(initialSorting, mergedProps.columns);
-  const validatedInitialPagination = validatePagination(
-    initialPagination,
-    totalRows,
-    mergedProps.paginationSizes!
-  );
-
-  const [pagination, setPagination] = useState<PaginationState>(validatedInitialPagination);
-  const [sorting, setSorting] = useState<any[]>(validatedInitialSorting);
-  const [filters, setFilters] = useState<ColumnFiltersState>([]);
-
+  // Fetch data for server-side pagination, sorting, and filtering
   const fetchServerSideData = async () => {
     if (!mergedProps.onFetchData) return;
 
@@ -145,46 +93,23 @@ export const DataGridProvider = <TData extends object>(props: TDataGridProps<TDa
       };
 
       const { data, totalCount } = await mergedProps.onFetchData(requestParams);
-      setData(data);
-      setTotalRows(totalCount);
+
+      if (data && totalCount) {
+        setData(data);
+        setTotalRows(totalCount);
+      }
     } catch (error) {
+      setLoading(false);
       console.error('Failed to fetch data:', error);
     } finally {
       setLoading(false); // Stop loading once data is fetched
     }
   };
 
-  const handleSaveState = (newState: any) => {
-    if (props.saveState && props.saveStateId) {
-      const existingState = localStorage.getItem(props.saveStateId);
-      let mergedState = newState;
-
-      if (existingState) {
-        const parsedState = JSON.parse(existingState);
-        mergedState = { ...parsedState, ...newState };
-      }
-
-      localStorage.setItem(props.saveStateId, JSON.stringify(mergedState));
-    }
-  };
-
-  useEffect(() => {
-    if (mergedProps.serverSide) {
-      fetchServerSideData();
-    }
-  }, [pagination, sorting, filters]);
-
-  useEffect(() => {
-    handleSaveState({
-      pageIndex: pagination.pageIndex,
-      pageSize: pagination.pageSize,
-      sorting
-    });
-  }, [pagination, sorting]);
-
   const table = useReactTable({
-    columns: mergedProps.columns,
-    data: data,
+    columns: mergedProps.columns, // Access columns from mergedProps
+    data: data, // Access data from mergedProps
+    debugTable: false,
     pageCount: mergedProps.serverSide ? Math.ceil(totalRows / pagination.pageSize) : undefined,
     getCoreRowModel: getCoreRowModel(),
     getSortedRowModel: getSortedRowModel(),
@@ -196,7 +121,11 @@ export const DataGridProvider = <TData extends object>(props: TDataGridProps<TDa
     onPaginationChange: setPagination,
     onSortingChange: setSorting,
     onColumnFiltersChange: setFilters,
-    state: { pagination, sorting, columnFilters: filters }
+    state: {
+      pagination,
+      sorting,
+      columnFilters: filters
+    }
   });
 
   const toggleRowSelection = (id: string) => {
@@ -236,6 +165,12 @@ export const DataGridProvider = <TData extends object>(props: TDataGridProps<TDa
     return () => clearTimeout(timer);
   };
 
+  useEffect(() => {
+    if (mergedProps.serverSide) {
+      fetchServerSideData();
+    }
+  }, [pagination, sorting, filters]);
+
   // Listen for sorting changes
   useEffect(() => {
     if (table.getState().sorting.length > 0) {
@@ -251,7 +186,6 @@ export const DataGridProvider = <TData extends object>(props: TDataGridProps<TDa
   // Handle data loading (trigger loading when data is being fetched)
   useEffect(() => {
     if (data.length === 0) {
-      console.log('wow:1');
       setLoading(true);
     } else {
       setLoading(false); // Data loaded
