@@ -525,7 +525,7 @@ export const MENU_MEGA: MenuConfigType = [
     path: '/'
   },
   {
-    title: 'Public Profile',
+    title: 'Profiles',
     children: [
       {
         title: 'Profiles',

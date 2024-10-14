@@ -1,45 +1,19 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import { Drawer } from '@/components';
 import { useResponsive } from '@/hooks';
-import { MENU_MEGA } from '@/config/menu.config';
-import { MegaMenuContent } from '@/partials/menu/mega-menu';
-import { Menu } from '@/components/menu';
-import { useEffect, useState } from 'react';
+import { useEffect } from 'react';
 import { usePathname } from '@/providers';
-import { useDemo1Layout } from '@/layouts/demo1';
+import { useDemo9Layout } from '@/layouts/demo9';
+import { MegaMenuInner } from '.';
 
 const MegaMenu = () => {
   const desktopMode = useResponsive('up', 'lg');
   const { pathname, prevPathname } = usePathname();
-  const [disabled, setDisabled] = useState(true); // Initially set disabled to true
-  const {
-    layout,
-    sidebarMouseLeave,
-    mobileMegaMenuOpen,
-    setMobileMegaMenuOpen,
-    setMegaMenuEnabled
-  } = useDemo1Layout();
+  const { mobileMegaMenuOpen, setMobileMegaMenuOpen } = useDemo9Layout();
 
-  // eslint-disable-next-line react-hooks/exhaustive-deps
   const handleDrawerClose = () => {
     setMobileMegaMenuOpen(false);
   };
-
-  // Change disabled state to false after a certain time (e.g., 5 seconds)
-  useEffect(() => {
-    setDisabled(true);
-
-    const timer = setTimeout(() => {
-      setDisabled(false);
-    }, 1000); // 1000 milliseconds
-
-    // Cleanup the timer when the component unmounts
-    return () => clearTimeout(timer);
-  }, [layout.options.sidebar.collapse, sidebarMouseLeave]);
-
-  useEffect(() => {
-    setMegaMenuEnabled(true);
-  });
 
   useEffect(() => {
     // Hide drawer on route chnage after menu link click
@@ -48,21 +22,8 @@ const MegaMenu = () => {
     }
   }, [desktopMode, pathname, prevPathname]);
 
-  const renderContent = () => {
-    return (
-      <Menu
-        multipleExpand={true}
-        disabled={disabled}
-        highlight={true}
-        className="items-stretch flex-col lg:flex-row gap-5 lg:gap-7.5 grow lg:grow-0"
-      >
-        {MegaMenuContent(MENU_MEGA)}
-      </Menu>
-    );
-  };
-
   if (desktopMode) {
-    return renderContent();
+    return <MegaMenuInner />;
   } else {
     return (
       <Drawer
@@ -73,12 +34,12 @@ const MegaMenu = () => {
         }}
         PaperProps={{
           sx: {
-            width: '250px',
+            width: '225px',
             maxWidth: '90%' // Set the maximum width to 90%
           }
         }}
       >
-        {renderContent()}
+        <MegaMenuInner />
       </Drawer>
     );
   }

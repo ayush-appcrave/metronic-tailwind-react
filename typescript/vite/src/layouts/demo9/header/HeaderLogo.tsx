@@ -41,10 +41,10 @@ interface IHeaderLogoMonths extends Array<IHeaderLogoMonth> {}
 
 const HeaderLogo = () => {
   const desktopMode = useResponsive('up', 'lg');
-  const { setMobileSidebarOpen } = useDemo9Layout();
+  const { setMobileMegaMenuOpen } = useDemo9Layout();
 
   const handleSidebarOpen = () => {
-    setMobileSidebarOpen(true);
+    setMobileMegaMenuOpen(true);
   };
 
   const teams: IHeaderLogoTeams = [
