@@ -3,7 +3,7 @@ import { Helmet } from 'react-helmet-async';
 import { Outlet, useLocation } from 'react-router';
 import { Menu, MenuItem, MenuSub, MenuToggle, useMenuCurrentItem } from '@/components/menu';
 import { useMenus } from '@/providers';
-import { Header, Footer } from '../';
+import { Header, Footer } from '..';
 import { Toolbar, ToolbarHeading, ToolbarActions } from '../toolbar';
 import { Link } from 'react-router-dom';
 import { KeenIcon } from '@/components';
@@ -13,7 +13,6 @@ const Main = () => {
   const { getMenuConfig } = useMenus();
   const menuConfig = getMenuConfig('primary');
   const menuItem = useMenuCurrentItem(pathname, menuConfig);
-
   const months = [
     { title: 'January, 2024' },
     { title: 'February, 2024' },
@@ -75,16 +74,16 @@ const Main = () => {
                     </MenuToggle>
 
                     <MenuSub className="menu-default w-48 scrollable-y max-h-[250px]">
-                        {months.map((item, index) => (
-                          <div className={`menu-item ${item.active ? 'active' : ''}`} key={index}>
-                            <Link to="/" className="menu-link">
-                              <span className="menu-title">{item.title}</span>
-                            </Link>
-                          </div>
-                        ))}
-                      </MenuSub>
-                    </MenuItem>
-                  </Menu>
+                      {months.map((item, index) => (
+                        <div className={`menu-item ${item.active ? 'active' : ''}`} key={index}>
+                          <Link to="/" className="menu-link">
+                            <span className="menu-title">{item.title}</span>
+                          </Link>
+                        </div>
+                      ))}
+                    </MenuSub>
+                  </MenuItem>
+                </Menu>
               </ToolbarActions>
             </Toolbar>
           )}
