@@ -18,7 +18,7 @@ const Teams = () => {
     () => [
       {
         accessorFn: (row) => row.name,
-        id: 'team',
+        id: 'name',
         header: () => 'Team',
         enableSorting: true,
         cell: (info) => (
@@ -55,7 +55,7 @@ const Teams = () => {
       },
       {
         accessorFn: (row) => row.updated_at,
-        id: 'lastModified',
+        id: 'updated_at',
         enableSorting: true,
         header: () => 'Last Modified',
         cell: (info) => formatIsoDate(info.row.original.updated_at),
@@ -65,9 +65,9 @@ const Teams = () => {
       },
       {
         accessorFn: (row) => row.users,
-        id: 'members',
+        id: 'users',
         header: () => 'Members',
-        enableSorting: true,
+        enableSorting: false,
         cell: (info) => <TeamUsers users={info.row.original.users} />,
         meta: {
           className: 'min-w-[135px]'
@@ -85,9 +85,15 @@ const Teams = () => {
 
       queryParams.set('page', String(params.pageIndex + 1)); // Page is 1-indexed on server
       queryParams.set('items_per_page', String(params.pageSize));
-      queryParams.set('sort', params.sorting?.[0]?.id || 'name');
-      queryParams.set('order', params.sorting?.[0]?.desc ? 'desc' : 'asc');
-      queryParams.set('query', searchQuery);
+
+      if (params.sorting?.[0]?.id) {
+        queryParams.set('sort', params.sorting[0].id);
+        queryParams.set('order', params.sorting[0].desc ? 'desc' : 'asc');
+      }
+
+      if (searchQuery.length > 2) {
+        queryParams.set('query', searchQuery);
+      }
 
       const response = await axios.get<TeamsQueryApiResponse>(
         `${import.meta.env.VITE_APP_API_URL}/teams/query?${queryParams.toString()}`
@@ -99,6 +105,11 @@ const Teams = () => {
       };
     } catch (error) {
       console.error('Failed to fetch data:', error);
+      enqueueSnackbar('An error occurred while fetching data. Please try again later', {
+        variant: 'solid',
+        state: 'danger'
+      });
+
       return {
         data: [],
         totalCount: 0
@@ -138,8 +149,8 @@ const Teams = () => {
           serverSide={true}
           onFetchData={fetchTeams}
           rowSelect={true}
-          pagination={{ page: 1 }}
-          sorting={[{ id: 'rating', desc: false }]}
+          pagination={{ size: 5 }}
+          //sorting={[{ id: 'name', desc: false }]}
           onRowsSelectChange={handleRowsSelectChange}
         />
       </div>
