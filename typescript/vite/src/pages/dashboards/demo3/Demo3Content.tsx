@@ -1,14 +1,14 @@
 import { toAbsoluteUrl } from '@/utils';
-import { MiscCreateTeam } from '@/partials/misc'; 
+import { MiscCreateTeam } from '@/partials/misc';
 import { BlockList } from '@/pages/account/security/privacy-settings';
-import { Highlights, Teams } from '../light-sidebar'; 
+import { Highlights, Teams } from '@/pages/dashboards/demo1';
 import { Integrations, ManageData } from '@/pages/dashboards/demo2/blocks';
 
 const Demo3Content = () => {
   return (
     <div className="grid gap-5 lg:gap-7.5">
       <div className="grid lg:grid-cols-3 gap-5 lg:gap-7.5 items-stretch">
-        <div className="lg:col-span-2"> 
+        <div className="lg:col-span-2">
           <MiscCreateTeam
             image={
               <>
@@ -36,7 +36,7 @@ const Demo3Content = () => {
             engage={{
               path: 'public-profile/teams',
               label: 'Create Team',
-              btnColor: 'btn-dark',
+              btnColor: 'btn-dark'
             }}
           />
         </div>
@@ -53,7 +53,7 @@ const Demo3Content = () => {
 
         <div className="lg:col-span-1">
           <BlockList
-            className="h-full" 
+            className="h-full"
             limit={3}
             text="Users on the block list are unable to send chat requests or messages to you anymore, ever, or again"
           />
@@ -73,4 +73,4 @@ const Demo3Content = () => {
   );
 };
 
-export { Demo3Content }; 
+export { Demo3Content };

@@ -1,7 +1,5 @@
 import ApexChart from 'react-apexcharts';
 import { ApexOptions } from 'apexcharts';
-
-import { IApexChartOptions } from '@/types/apexcharts';
 import axios from 'axios';
 import { useEffect, useState } from 'react';
 

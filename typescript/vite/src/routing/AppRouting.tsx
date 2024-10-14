@@ -1,6 +1,6 @@
 import { ReactElement, useEffect, useState } from 'react';
 import { Navigate, Route, Routes, useLocation } from 'react-router';
-import { DefaultPage, DarkSidebarPage } from '@/pages/dashboards';
+import { DefaultPage, Demo1DarkSidebarPage } from '@/pages/dashboards';
 import {
   ProfileActivityPage,
   ProfileBloggerPage,
@@ -128,7 +128,7 @@ const AppRouting = (): ReactElement => {
       <Route element={<RequireAuth />}>
         <Route element={<Demo1Layout />}>
           <Route path="/" element={<DefaultPage />} />
-          <Route path="/dark-sidebar" element={<DarkSidebarPage />} />
+          <Route path="/dark-sidebar" element={<Demo1DarkSidebarPage />} />
           <Route path="/public-profile/profiles/default" element={<ProfileDefaultPage />} />
           <Route path="/public-profile/profiles/creator" element={<ProfileCreatorPage />} />
           <Route path="/public-profile/profiles/company" element={<ProfileCompanyPage />} />

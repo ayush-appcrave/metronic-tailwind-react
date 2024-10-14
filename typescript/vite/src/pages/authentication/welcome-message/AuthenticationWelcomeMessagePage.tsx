@@ -1,10 +1,8 @@
 import { Fragment, useState } from 'react';
 import { Link } from 'react-router-dom';
-
 import { Container } from '@/components/container';
 import { Toolbar, ToolbarDescription, ToolbarHeading, ToolbarPageTitle } from '@/partials/toolbar';
 import { PageNavbar } from '@/pages/account';
-
 import { ModalWelcomMessage } from '@/partials/modals/welcome-message';
 import { AccountGetStartedContent } from '@/pages/account/home/get-started';
 

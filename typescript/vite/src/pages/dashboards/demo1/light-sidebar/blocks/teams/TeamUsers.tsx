@@ -1,7 +1,7 @@
 import clsx from 'clsx';
 import { toAbsoluteUrl } from '@/utils';
 import React from 'react';
-import { User } from '@/pages/dashboards/light-sidebar/blocks/teams/teams-types.ts';
+import { User } from './teams-types.ts';
 
 type TeamUsersProps = {
   users: User[];

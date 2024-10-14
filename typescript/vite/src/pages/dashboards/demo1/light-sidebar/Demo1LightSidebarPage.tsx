@@ -4,9 +4,9 @@ import { Link } from 'react-router-dom';
 import { Container } from '@/components/container';
 import { Toolbar, ToolbarActions, ToolbarHeading } from '@/layouts/demo1/toolbar';
 
-import { LightSidebarContent } from './';
+import { Demo1LightSidebarContent } from './';
 
-const LightSidebarPage = () => {
+const Demo1LightSidebarPage = () => {
   return (
     <Fragment>
       <Container>
@@ -21,10 +21,10 @@ const LightSidebarPage = () => {
       </Container>
 
       <Container>
-        <LightSidebarContent />
+        <Demo1LightSidebarContent />
       </Container>
     </Fragment>
   );
 };
 
-export { LightSidebarPage };
+export { Demo1LightSidebarPage };

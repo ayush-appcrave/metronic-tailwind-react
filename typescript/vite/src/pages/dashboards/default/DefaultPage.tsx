@@ -1,11 +1,11 @@
 import { useLayout } from '@/providers';
-import { LightSidebarPage, Demo2Page, Demo3Page, Demo4Page, Demo5Page } from '../';
+import { Demo1LightSidebarPage, Demo2Page, Demo3Page, Demo4Page, Demo5Page } from '../';
 
 const DefaultPage = () => {
   const { currentLayout } = useLayout();
 
   if (currentLayout?.name === 'demo1-layout') {
-    return <LightSidebarPage />;
+    return <Demo1LightSidebarPage />;
   } else if (currentLayout?.name === 'demo2-layout') {
     return <Demo2Page />;
   } else if (currentLayout?.name === 'demo3-layout') {

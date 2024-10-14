@@ -2,9 +2,9 @@ import { Fragment } from 'react';
 import { Container } from '@/components/container';
 import { Toolbar, ToolbarActions, ToolbarHeading } from '@/layouts/demo1/toolbar';
 import { Link } from 'react-router-dom';
-import { LightSidebarContent } from '../light-sidebar';
+import { Demo1LightSidebarContent } from '../light-sidebar';
 
-const DarkSidebarPage = () => {
+const Demo1DarkSidebarPage = () => {
   return (
     <Fragment>
       <Container>
@@ -19,10 +19,10 @@ const DarkSidebarPage = () => {
       </Container>
 
       <Container>
-        <LightSidebarContent />
+        <Demo1LightSidebarContent />
       </Container>
     </Fragment>
   );
 };
 
-export { DarkSidebarPage };
+export { Demo1DarkSidebarPage };

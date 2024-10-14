@@ -26,8 +26,8 @@ interface IModalProfileProps {
 
 const AccountSettingsModal = ({ open, onClose }: IModalProfileProps) => {
   const desktopMode = useResponsive('up', 'lg');
-  const navBar = useRef<HTMLDivElement | null>(null);
-  const parentRef = useRef<HTMLDivElement | null>(null);
+  const navBar = useRef<any | null>(null);
+  const parentRef = useRef<any | null>(null);
   const [sidebarHeight, setSidebarHeight] = useState<number>(0);
   const [viewportHeight] = useViewport();
   const offset = 260;

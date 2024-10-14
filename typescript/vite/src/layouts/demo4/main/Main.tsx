@@ -12,7 +12,7 @@ import { DropdownNotifications } from '@/partials/dropdowns/notifications';
 
 const Main = () => {
   const mobileMode = useResponsive('down', 'lg');
-  const itemNotificationsRef = useRef<HTMLDivElement>(null);
+  const itemNotificationsRef = useRef<any>(null);
   const { pathname } = useLocation();
   const { getMenuConfig } = useMenus();
   const menuConfig = getMenuConfig('primary');

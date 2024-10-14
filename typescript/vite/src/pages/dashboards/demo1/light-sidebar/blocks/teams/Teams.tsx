@@ -7,7 +7,7 @@ import { CommonRating } from '@/partials/common';
 import { Team, QueryApiResponse } from './teams-types';
 import axios from 'axios';
 import { formatIsoDate } from '@/utils/Date';
-import { TeamUsers } from '@/pages/dashboards/light-sidebar/blocks/teams/TeamUsers';
+import { TeamUsers } from './TeamUsers';
 
 type TeamsQueryApiResponse = QueryApiResponse<Team>;
 
