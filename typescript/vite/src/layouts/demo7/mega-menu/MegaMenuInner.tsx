@@ -21,14 +21,14 @@ const MegaMenuInner = () => {
     const authItem = items[4];
     const helpItem = items[5];
 
-    const linkClass = 'lg:py-3.5 border-b border-b-transparent menu-item-active:border-b-gray-800 text-gray-800 menu-item-hover:text-gray-900 menu-item-active:text-gray-900 menu-item-here:border-b-gray-800 menu-item-here:text-gray-900';
-    const titleClass = 'font-medium text-gray-800 text-sm';
+    const linkClass = 'border-b border-b-transparent menu-item-active:border-b-gray-400 menu-item-here:border-b-gray-400';
+    const titleClass = 'text-2sm text-gray-800 dark:menu-item-here:text-gray-900 dark:menu-item-active:text-gray-900 menu-item-show:text-gray-900 menu-item-here:text-gray-900 menu-item-active:font-medium menu-item-here:font-medium';
 
     return (
       <Fragment>
         <MenuItem key="home">
           <MenuLink path={homeItem.path} className={linkClass}>
-            <MenuTitle className={titleClass}>{homeItem.title}</MenuTitle>
+            <MenuTitle className={titleClass}>Boards</MenuTitle>
           </MenuLink>
         </MenuItem>
 
@@ -41,7 +41,7 @@ const MegaMenuInner = () => {
           }}
         >
           <MenuLink className={linkClass}>
-            <MenuTitle className={titleClass}>{publicProfilesItem.title}</MenuTitle>
+            <MenuTitle className={titleClass}>Profiles</MenuTitle>
             {buildArrow()}
           </MenuLink>
           {MegaMenuSubProfiles(items)}
@@ -64,7 +64,7 @@ const MegaMenuInner = () => {
           }}
         >
           <MenuLink className={linkClass}>
-            <MenuTitle className={titleClass}>{myAccountItem.title}</MenuTitle>
+            <MenuTitle className={titleClass}>Account</MenuTitle>
             {buildArrow()}
           </MenuLink>
           {MegaMenuSubAccount(items)}
@@ -110,7 +110,7 @@ const MegaMenuInner = () => {
           }}
         >
           <MenuLink className={linkClass}>
-            <MenuTitle className={titleClass}>{authItem.title}</MenuTitle>
+            <MenuTitle className={titleClass}>Auth</MenuTitle>
             {buildArrow()}
           </MenuLink>
           {MegaMenuSubAuth(items)}
