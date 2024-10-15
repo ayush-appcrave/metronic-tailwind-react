@@ -738,7 +738,7 @@ export const MENU_MEGA: TMenuConfig = [
           {
             title: 'Security',
             children: [
-              { title: 'Get Started', path: '/security/get-started' },
+              { title: 'Get Started', path: '/account/security/get-started' },
               { title: 'Security Overview', path: '/account/security/overview' },
               { title: 'IP Addresses', path: '/account/security/allowed-ip-addresses' },
               { title: 'Privacy Settings', path: '/account/security/privacy-settings' },
@@ -796,10 +796,10 @@ export const MENU_MEGA: TMenuConfig = [
             title: 'User Cards',
             children: [
               { title: 'Mini Cards', path: '/network/user-cards/mini-cards' },
-              { title: 'Team Members', path: '/network/user-cards/author' },
-              { title: 'Authors', path: '/network/user-cards/nft' },
-              { title: 'NFT Users', path: '/network/user-cards/social' },
-              { title: 'Social Users', path: '#' },
+              { title: 'Team Members', path: '/network/user-cards/team-crew' },
+              { title: 'Authors', path: '/network/user-cards/author' },
+              { title: 'NFT Users', path: '/network/user-cards/nft' },
+              { title: 'Social Users', path: '/network/user-cards/social' },
               { title: 'Gamers', path: '#', disabled: true }
             ]
           },

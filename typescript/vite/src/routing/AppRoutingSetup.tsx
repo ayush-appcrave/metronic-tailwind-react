@@ -165,7 +165,7 @@ const AppRoutingSetup = (): ReactElement => {
           <Route path="/account/notifications" element={<AccountNotificationsPage />} />
           <Route path="/account/api-keys" element={<AccountApiKeysPage />} />
           <Route path="/account/appearance" element={<AccountAppearancePage />} />
-          <Route path="/account/members/invite-a-friend" element={<AccountInviteAFriendPage />} />
+          <Route path="/account/invite-a-friend" element={<AccountInviteAFriendPage />} />
           <Route path="/account/activity" element={<AccountActivityPage />} />
           <Route path="/network/get-started" element={<NetworkGetStartedPage />} />
           <Route path="/network/user-cards/mini-cards" element={<NetworkMiniCardsPage />} />
@@ -173,12 +173,12 @@ const AppRoutingSetup = (): ReactElement => {
           <Route path="/network/user-cards/author" element={<NetworkAuthorPage />} />
           <Route path="/network/user-cards/nft" element={<NetworkNFTPage />} />
           <Route path="/network/user-cards/social" element={<NetworkSocialPage />} />
-          <Route path="/network/user-table/team-crew" element={<NetworkUserTableTeamCrewPage />} />
-          <Route path="/network/user-table/app-roster" element={<NetworkAppRosterPage />} />
-          <Route path="/network/user-table/market-authors" element={<NetworkMarketAuthorsPage />} />
-          <Route path="/network/user-table/saas-users" element={<NetworkSaasUsersPage />} />
-          <Route path="/network/user-table/store-clients" element={<NetworkStoreClientsPage />} />
-          <Route path="/network/user-table/visitors" element={<NetworkVisitorsPage />} />
+          <Route path="/network/user-base/team-crew" element={<NetworkUserTableTeamCrewPage />} />
+          <Route path="/network/user-base/app-roster" element={<NetworkAppRosterPage />} />
+          <Route path="/network/user-base/market-authors" element={<NetworkMarketAuthorsPage />} />
+          <Route path="/network/user-base/saas-users" element={<NetworkSaasUsersPage />} />
+          <Route path="/network/user-base/store-clients" element={<NetworkStoreClientsPage />} />
+          <Route path="/network/user-base/visitors" element={<NetworkVisitorsPage />} />
           <Route path="/auth/welcome-message" element={<AuthenticationWelcomeMessagePage />} />
           <Route
             path="/auth/account-deactivated"
