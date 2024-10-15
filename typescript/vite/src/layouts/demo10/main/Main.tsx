@@ -14,31 +14,43 @@ const Main = () => {
   const { pathname } = useLocation();
   const { getMenuConfig } = useMenus();
   const menuConfig = getMenuConfig('primary');
+  const menuItem = useMenuCurrentItem(pathname, menuConfig);
 
   return (
     <Fragment>
-      <div className="flex flex-col grow">
-        <Header />
+      <Helmet>
+        <title>{menuItem?.title}</title>
+      </Helmet>
 
-        <div className="flex grow flex-col pt-[--tw-header-height] lg:pt-0">	
+      <div className="flex grow">
+        {mobileMode && <Header />}
+
+        <div className="flex flex-col lg:flex-row grow pt-[--tw-header-height] lg:pt-0">
           <Sidebar />
-          {mobileMode && <Header />}
 
-          <main className="scrollable-y-auto [scrollbar-width:auto] [--tw-scrollbar-thumb-color:var(--tw-gray-300)] flex flex-col grow lg:rounded-l-xl bg-[--tw-content-bg] dark:bg-[--tw-content-bg-dark] border border-gray-300 dark:border-gray-200 lg:ms-[--tw-sidebar-width] pt-5" role="content">
-            <Toolbar>
-              <ToolbarHeading />
+          <div className="flex flex-col grow lg:rounded-l-xl bg-[--tw-content-bg] dark:bg-[--tw-content-bg-dark] border border-gray-300 dark:border-gray-200 lg:ms-[--tw-sidebar-width]">
+            <div
+              id="scrollable_content"
+              className="flex flex-col grow lg:scrollable-y-auto lg:[scrollbar-width:auto] lg:light:[--tw-scrollbar-thumb-color:var(--tw-content-scrollbar-color)] pt-5"
+            >
+              <main className="grow" role="content">
+                <Toolbar>
+                  <ToolbarHeading />
+                  <ToolbarActions>
+                    <Link to={'account/home/get-started'} className="btn btn-sm btn-light">
+                      <KeenIcon icon="exit-down !text-base" />
+                      Export
+                    </Link>
+                    <ToolbarMenu />
+                  </ToolbarActions>
+                </Toolbar>
 
-              <ToolbarActions>
-                <Link to={'account/home/get-started'} className="btn btn-sm btn-light">
-                  <KeenIcon icon="exit-down !text-base" />
-                  Export
-                </Link>
-                <ToolbarMenu />
-              </ToolbarActions>
-            </Toolbar>
-            <Outlet />
-          </main>
-        </div> 
+                <Outlet />
+              </main>
+              <Footer />
+            </div>
+          </div>
+        </div>
       </div>
     </Fragment>
   );
