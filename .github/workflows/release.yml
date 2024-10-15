@@ -34,10 +34,10 @@ jobs:
           DEMO_NAME=$(echo "${{ matrix.demo }}" | awk '{print toupper(substr($0,1,1)) tolower(substr($0,2))}')
 
           # Replace the import line for the Demo Layout, matching exact structure with case sensitivity
-          sed -i "s|import { Demo[0-9]*Layout } from '../layouts/.*';|import { ${DEMO_NAME}Layout } from '../layouts/${{ matrix.demo }}';|" src/routing/AppRoutingSetup.tsx
+          sed -i "s|import { Demo[0-9]*Layout } from '@/layouts/.*';|import { ${DEMO_NAME}Layout } from '../layouts/${{ matrix.demo }}';|" src/routing/AppRoutingSetup.tsx
 
           # Replace the JSX layout usage, targeting the layout component usage with correct capitalization
-          sed -i "s|<Demo[0-9]*Layout />|<${DEMO_NAME}Layout />|" src/routing/AppRoutingSetup.tsx
+          sed -i "s|<Demo[0-9]*Layout.?/>|<${DEMO_NAME}Layout />|" src/routing/AppRoutingSetup.tsx
         working-directory: typescript/vite
 
       - name: 4. Build Metronic Tailwind React
