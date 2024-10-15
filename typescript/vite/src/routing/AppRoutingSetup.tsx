@@ -75,7 +75,7 @@ import {
 
 import { AuthPage } from '@/auth';
 import { RequireAuth } from '@/auth/RequireAuth';
-import { Demo10Layout } from '@/layouts/demo10';
+import { Demo7Layout } from '@/layouts/demo7';
 import { ErrorsRouting } from '@/errors';
 import {
   AuthenticationWelcomeMessagePage,
@@ -87,7 +87,7 @@ const AppRoutingSetup = (): ReactElement => {
   return (
     <Routes>
       <Route element={<RequireAuth />}>
-        <Route element={<Demo10Layout />}>
+        <Route element={<Demo7Layout />}>
           <Route path="/" element={<DefaultPage />} />
           <Route path="/dark-sidebar" element={<Demo1DarkSidebarPage />} />
           <Route path="/public-profile/profiles/default" element={<ProfileDefaultPage />} />
@@ -154,7 +154,7 @@ const AppRoutingSetup = (): ReactElement => {
           <Route path="/account/members/import-members" element={<AccountImportMembersPage />} />
           <Route path="/account/members/roles" element={<AccountRolesPage />} />
           <Route
-            path="/account/members/permissions-toggler"
+            path="/account/members/permissions-toggle"
             element={<AccountPermissionsTogglePage />}
           />
           <Route
@@ -164,7 +164,7 @@ const AppRoutingSetup = (): ReactElement => {
           <Route path="/account/integrations" element={<AccountIntegrationsPage />} />
           <Route path="/account/notifications" element={<AccountNotificationsPage />} />
           <Route path="/account/api-keys" element={<AccountApiKeysPage />} />
-          <Route path="/account/members/appearance" element={<AccountAppearancePage />} />
+          <Route path="/account/appearance" element={<AccountAppearancePage />} />
           <Route path="/account/members/invite-a-friend" element={<AccountInviteAFriendPage />} />
           <Route path="/account/activity" element={<AccountActivityPage />} />
           <Route path="/network/get-started" element={<NetworkGetStartedPage />} />

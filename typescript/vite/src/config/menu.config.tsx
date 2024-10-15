@@ -260,7 +260,7 @@ export const MENU_SIDEBAR: TMenuConfig = [
           },
           {
             title: 'Permissions - Toggler',
-            path: '/account/members/permissions-toggler'
+            path: '/account/members/permissions-toggle'
           },
           {
             title: 'Permissions - Check',
@@ -291,7 +291,7 @@ export const MENU_SIDEBAR: TMenuConfig = [
         children: [
           {
             title: 'Appearance',
-            path: '/account/members/appearance'
+            path: '/account/appearance'
           },
           {
             title: 'Invite a Friend',
