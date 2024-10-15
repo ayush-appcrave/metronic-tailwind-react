@@ -1,9 +1,10 @@
 /* eslint-disable react-hooks/exhaustive-deps */
-import { Drawer } from '@/components';
 import { useEffect, useState } from 'react';
+import { Drawer } from '@/components';
 import clsx from 'clsx';
 import { useResponsive, useScrollPosition, useViewport } from '@/hooks';
 import { usePathname } from '@/providers';
+
 import { useDemo5Layout } from '../';
 import { SidebarMenuDashboard, SidebarMenuDefault } from '.';
 

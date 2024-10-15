@@ -1,6 +1,6 @@
 import { type ILayoutConfig } from '@/providers';
 
-// Defining the layout configuration specific to Demo2 layout
+// Defining the layout configuration specific to Demo9 layout
 const Demo9LayoutConfig: ILayoutConfig = {
   name: 'demo9-layout', // Unique name identifier for this layout
   options: {

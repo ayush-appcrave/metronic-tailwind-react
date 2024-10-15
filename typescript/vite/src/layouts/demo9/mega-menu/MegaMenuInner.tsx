@@ -1,7 +1,14 @@
-import { Fragment, useEffect, useState } from 'react';
+import { Fragment } from 'react';
 import { useResponsive } from '@/hooks';
-import { KeenIcon } from '@/components';
-import { MenuConfigType, MenuItem, MenuLink, MenuTitle, MenuArrow, Menu } from '@/components/menu';
+import {
+  MenuConfigType,
+  MenuItem,
+  MenuLink,
+  MenuTitle,
+  MenuArrow,
+  Menu,
+  KeenIcon
+} from '@/components';
 import {
   MegaMenuSubProfiles,
   MegaMenuSubAccount,
@@ -21,7 +28,8 @@ const MegaMenuInner = () => {
     const authItem = items[4];
     const helpItem = items[5];
 
-    const linkClass = 'lg:py-3.5 border-b border-b-transparent menu-item-active:border-b-gray-800 text-gray-800 menu-item-hover:text-gray-900 menu-item-active:text-gray-900 menu-item-here:border-b-gray-800 menu-item-here:text-gray-900';
+    const linkClass =
+      'lg:py-3.5 border-b border-b-transparent menu-item-active:border-b-gray-800 text-gray-800 menu-item-hover:text-gray-900 menu-item-active:text-gray-900 menu-item-here:border-b-gray-800 menu-item-here:text-gray-900';
     const titleClass = 'font-medium text-gray-800 text-sm';
 
     return (

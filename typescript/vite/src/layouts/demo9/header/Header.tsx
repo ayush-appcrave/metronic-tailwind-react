@@ -1,8 +1,9 @@
+import { useEffect } from 'react';
 import clsx from 'clsx';
 import { Container } from '@/components/container';
-import { HeaderLogo, HeaderSearch, HeaderTopbar } from '.';
+
 import { useDemo9Layout } from '../';
-import { useEffect } from 'react';
+import { HeaderLogo, HeaderSearch, HeaderTopbar } from '.';
 
 const Header = () => {
   const { headerSticky } = useDemo9Layout();

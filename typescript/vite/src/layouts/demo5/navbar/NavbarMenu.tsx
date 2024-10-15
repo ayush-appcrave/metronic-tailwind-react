@@ -1,4 +1,4 @@
-import { Menu, MenuItem, MenuLink, MenuTitle } from '@/components/menu';
+import { Menu, MenuItem, MenuLink, MenuTitle } from '@/components';
 
 interface INavbarMenuItem {
   title: string;
