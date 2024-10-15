@@ -1,5 +1,4 @@
 import { Link } from 'react-router-dom';
-import { KeenIcon } from '@/components/keenicons';
 import { toAbsoluteUrl } from '@/utils';
 import {
   Menu,
@@ -9,10 +8,12 @@ import {
   MenuLink,
   MenuSub,
   MenuTitle,
-  MenuToggle
-} from '@/components/menu';
-import { useDemo9Layout } from '..';
+  MenuToggle,
+  KeenIcon
+} from '@/components';
 import { useResponsive } from '@/hooks';
+
+import { useDemo9Layout } from '..';
 
 interface IHeaderLogoTeam {
   title: string;
@@ -21,18 +22,6 @@ interface IHeaderLogoTeam {
   path: string;
 }
 interface IHeaderLogoTeams extends Array<IHeaderLogoTeam> {}
-
-interface IHeaderLogoItem {
-  title: string;
-  icon: string;
-}
-interface IHeaderLogoItems extends Array<IHeaderLogoItem> {}
-
-interface IHeaderLogoStaging {
-  title: string;
-  icon: string;
-}
-interface IHeaderLogoStagings extends Array<IHeaderLogoStaging> {}
 
 interface IHeaderLogoMonth {
   title: string;
@@ -59,36 +48,6 @@ const HeaderLogo = () => {
       icon: 'setting-2',
       urlPartial: '/account/',
       path: '/'
-    }
-  ];
-
-  const items: IHeaderLogoItems = [
-    {
-      title: 'Fall ‘24 Campaign',
-      icon: 'profile-circle'
-    },
-    {
-      title: 'Fall Winter 2024 ',
-      icon: 'setting-2'
-    },
-    {
-      title: 'Barberry Autmn 24',
-      icon: 'users'
-    },
-    {
-      title: 'PF24 Advertising',
-      icon: 'security-user'
-    }
-  ];
-
-  const stagings: IHeaderLogoStagings = [
-    {
-      title: 'Staging',
-      icon: 'profile-circle'
-    },
-    {
-      title: 'Account',
-      icon: 'setting-2'
     }
   ];
 

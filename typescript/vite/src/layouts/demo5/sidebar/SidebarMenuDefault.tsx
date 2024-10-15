@@ -1,6 +1,4 @@
 import clsx from 'clsx';
-
-import { KeenIcon } from '@/components/keenicons';
 import {
   IMenuItemConfig,
   Menu,
@@ -9,8 +7,9 @@ import {
   MenuItem,
   MenuLink,
   MenuSub,
-  MenuTitle
-} from '@/components/menu';
+  MenuTitle,
+  KeenIcon
+} from '@/components';
 import { useMenus } from '@/providers';
 
 const SidebarMenuDefault = () => {

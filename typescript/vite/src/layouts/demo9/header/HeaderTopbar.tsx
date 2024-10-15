@@ -1,6 +1,5 @@
 import { useRef } from 'react';
-import { KeenIcon } from '@/components/keenicons';
-import { Menu, MenuItem, MenuToggle } from '@/components';
+import { Menu, MenuItem, MenuToggle, KeenIcon } from '@/components';
 import { DropdownUser } from '@/partials/dropdowns/user';
 import { DropdownNotifications } from '@/partials/dropdowns/notifications';
 import { DropdownCard2 } from '@/partials/dropdowns/general';

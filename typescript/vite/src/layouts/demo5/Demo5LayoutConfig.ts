@@ -1,6 +1,6 @@
 import { type ILayoutConfig } from '@/providers';
 
-// Defining the demo1 layout configuration using the ILayoutConfig type
+// Defining the demo5 layout configuration using the ILayoutConfig type
 const demo5LayoutConfig: ILayoutConfig = {
   // Setting the layout name to 'demo1-layout'
   name: 'demo5-layout',

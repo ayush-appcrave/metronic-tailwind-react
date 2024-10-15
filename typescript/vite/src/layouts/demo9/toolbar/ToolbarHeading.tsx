@@ -1,8 +1,9 @@
 import { ReactNode } from 'react';
+import { useLocation } from 'react-router';
 import { useMenus } from '@/providers';
 import { useMenuCurrentItem } from '@/components';
-import { useLocation } from 'react-router';
-import { ToolbarBreadcrumbs } from './ToolbarBreadcrumbs';
+
+import { ToolbarBreadcrumbs } from '.';
 
 export interface IToolbarHeadingProps {
   title?: string | ReactNode;

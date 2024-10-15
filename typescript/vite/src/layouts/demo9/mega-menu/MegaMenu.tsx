@@ -1,9 +1,10 @@
 /* eslint-disable react-hooks/exhaustive-deps */
+import { useEffect } from 'react';
 import { Drawer } from '@/components';
 import { useResponsive } from '@/hooks';
-import { useEffect } from 'react';
 import { usePathname } from '@/providers';
 import { useDemo9Layout } from '@/layouts/demo9';
+
 import { MegaMenuInner } from '.';
 
 const MegaMenu = () => {

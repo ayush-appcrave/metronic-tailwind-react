@@ -1,6 +1,6 @@
 import { Link } from 'react-router-dom';
-import { KeenIcon } from '@/components/keenicons';
 import { toAbsoluteUrl } from '@/utils';
+import { useResponsive } from '@/hooks';
 import {
   Menu,
   MenuArrow,
@@ -9,10 +9,11 @@ import {
   MenuLink,
   MenuSub,
   MenuTitle,
-  MenuToggle
-} from '@/components/menu';
+  MenuToggle,
+  KeenIcon
+} from '@/components';
+
 import { useDemo5Layout } from '..';
-import { useResponsive } from '@/hooks';
 
 interface IHeaderLogoTeam {
   title: string;

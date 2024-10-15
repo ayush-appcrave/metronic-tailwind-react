@@ -1,8 +1,8 @@
 import { Fragment } from 'react';
-import { useMenuBreadcrumbs } from '@/components';
-import { Link } from 'react-router-dom';
-import { useMenus } from '@/providers';
 import { useLocation } from 'react-router';
+import { Link } from 'react-router-dom';
+import { useMenuBreadcrumbs } from '@/components';
+import { useMenus } from '@/providers';
 
 const ToolbarBreadcrumbs = () => {
   const { getMenuConfig } = useMenus();

@@ -1,12 +1,13 @@
 import { createContext, type PropsWithChildren, useContext, useEffect, useState } from 'react';
+import { useLocation } from 'react-router';
 import { MENU_SIDEBAR } from '@/config';
 import { useScrollPosition } from '@/hooks/useScrollPosition';
 import { useMenus } from '@/providers';
 import { ILayoutConfig, useLayout } from '@/providers';
 import { deepMerge } from '@/utils';
-import { Demo9LayoutConfig } from './';
 import { useMenuChildren } from '@/components';
-import { useLocation } from 'react-router';
+
+import { Demo9LayoutConfig } from './';
 
 // Interface defining the properties of the layout provider context
 export interface IDemo9LayoutProviderProps {
@@ -16,7 +17,7 @@ export interface IDemo9LayoutProviderProps {
   setMobileMegaMenuOpen: (open: boolean) => void; // Function to toggle the mobile sidebar
 }
 
-// Initial layout provider properties, using Demo2 layout configuration as the default
+// Initial layout provider properties, using Demo9 layout configuration as the default
 const initalLayoutProps: IDemo9LayoutProviderProps = {
   layout: Demo9LayoutConfig, // Default layout configuration
   headerSticky: false, // Header is not sticky by default
@@ -26,13 +27,13 @@ const initalLayoutProps: IDemo9LayoutProviderProps = {
   }
 };
 
-// Create a context to manage the layout-related state and logic for Demo2 layout
+// Create a context to manage the layout-related state and logic for Demo9 layout
 const Demo9LayoutContext = createContext<IDemo9LayoutProviderProps>(initalLayoutProps);
 
 // Custom hook to access the layout context in other components
 const useDemo9Layout = () => useContext(Demo9LayoutContext);
 
-// Provider component that sets up the layout state and context for Demo2 layout
+// Provider component that sets up the layout state and context for Demo9 layout
 const Demo9LayoutProvider = ({ children }: PropsWithChildren) => {
   const { pathname } = useLocation(); // Gets the current path
   const { getLayout, setCurrentLayout } = useLayout(); // Hook to get and set layout configuration
@@ -43,7 +44,7 @@ const Demo9LayoutProvider = ({ children }: PropsWithChildren) => {
   setMenuConfig('primary', MENU_SIDEBAR);
   setMenuConfig('secondary', secondaryMenu);
 
-  // Merge the Demo 9 layout configuration with the current layout configuration fetched via getLayout
+  // Merge the Demo9 layout configuration with the current layout configuration fetched via getLayout
   const layoutConfig = deepMerge(Demo9LayoutConfig, getLayout(Demo9LayoutConfig.name));
 
   // Set the initial state for layout and mobile sidebar
