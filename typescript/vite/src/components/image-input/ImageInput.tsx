@@ -10,11 +10,11 @@ interface IImageInputFile {
   [key: string]: any;
 }
 
-type ImageInputFilesType = IImageInputFile[];
+type TImageInputFiles = IImageInputFile[];
 
 interface IImageInputProps {
-  value: ImageInputFilesType;
-  onChange: (value: ImageInputFilesType, addUpdatedIndex?: number[]) => void;
+  value: TImageInputFiles;
+  onChange: (value: TImageInputFiles, addUpdatedIndex?: number[]) => void;
   children?: (props: IImageInputExport) => React.ReactNode;
   multiple?: boolean;
   maxNumber?: number;
@@ -24,7 +24,7 @@ interface IImageInputProps {
 }
 
 interface IImageInputExport {
-  fileList: ImageInputFilesType;
+  fileList: TImageInputFiles;
   onImageUpload: () => void;
   onImageRemoveAll: () => void;
   onImageUpdate: (index: number) => void;
@@ -77,7 +77,7 @@ const ImageInput: FC<IImageInputProps> = ({
     if (!files) return;
     const fileList = await getListFiles(files, DEFAULT_DATA_URL_KEY);
     if (!fileList.length) return;
-    let updatedFileList: ImageInputFilesType;
+    let updatedFileList: TImageInputFiles;
     const updatedIndexes: number[] = [];
     if (keyUpdate > DEFAULT_NULL_INDEX) {
       const [firstFile] = fileList;
@@ -179,4 +179,4 @@ const ImageInput: FC<IImageInputProps> = ({
   );
 };
 
-export { ImageInput, type IImageInputProps, type ImageInputFilesType, type IImageInputFile };
+export { ImageInput, type IImageInputProps, type TImageInputFiles, type IImageInputFile };

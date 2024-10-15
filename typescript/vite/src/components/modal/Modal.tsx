@@ -3,13 +3,13 @@ import { Modal as MuiModal, ModalProps as BaseModalProps } from '@mui/base/Modal
 import { ModalBackdrop } from '@/components';
 import clsx from 'clsx';
 
-interface ModalProps extends BaseModalProps {
+interface IModalProps extends BaseModalProps {
   zIndex?: number;
   className?: string; // For content-specific Tailwind stylesx
 }
 
 // Forwarding ref to ensure this component can hold a ref
-const Modal = forwardRef<HTMLDivElement, ModalProps>(
+const Modal = forwardRef<HTMLDivElement, IModalProps>(
   ({ open, onClose, children, className, zIndex = 100, ...props }, ref) => {
     return (
       <MuiModal

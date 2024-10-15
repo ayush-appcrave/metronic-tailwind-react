@@ -1,6 +1,6 @@
-import { type MenuConfigType } from '@/components/menu';
+import { type TMenuConfig } from '@/components/menu';
 
-export const MENU_SIDEBAR: MenuConfigType = [
+export const MENU_SIDEBAR: TMenuConfig = [
   {
     title: 'Dashboards',
     icon: 'element-11',
@@ -519,7 +519,7 @@ export const MENU_SIDEBAR: MenuConfigType = [
   }
 ];
 
-export const MENU_MEGA: MenuConfigType = [
+export const MENU_MEGA: TMenuConfig = [
   {
     title: 'Home',
     path: '/'
@@ -955,7 +955,7 @@ export const MENU_MEGA: MenuConfigType = [
   }
 ];
 
-export const MENU_ROOT: MenuConfigType = [
+export const MENU_ROOT: TMenuConfig = [
   {
     title: 'Public Profile',
     icon: 'profile-circle',

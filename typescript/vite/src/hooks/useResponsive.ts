@@ -2,18 +2,18 @@
 import tailwindConfig from 'tailwindcss/defaultConfig';
 import { useMediaQuery } from './useMediaQuery';
 
-export type ResponsiveBreakpointType = 'sm' | 'md' | 'lg' | 'xl' | '2xl' | number;
-export type ResponsiveQueryType = 'up' | 'down' | 'between';
+export type TResponsiveBreakpoint = 'sm' | 'md' | 'lg' | 'xl' | '2xl' | number;
+export type TResponsiveQuery = 'up' | 'down' | 'between';
 
-const breakpoints: ResponsiveBreakpointType[] = ['sm', 'md', 'lg', 'xl', '2xl'];
+const breakpoints: TResponsiveBreakpoint[] = ['sm', 'md', 'lg', 'xl', '2xl'];
 
 const useResponsive = (
-  query: ResponsiveQueryType,
-  key?: ResponsiveBreakpointType,
-  start?: ResponsiveBreakpointType,
-  end?: ResponsiveBreakpointType
+  query: TResponsiveQuery,
+  key?: TResponsiveBreakpoint,
+  start?: TResponsiveBreakpoint,
+  end?: TResponsiveBreakpoint
 ) => {
-  const screens = tailwindConfig?.theme?.screens as Record<string, ResponsiveBreakpointType>;
+  const screens = tailwindConfig?.theme?.screens as Record<string, TResponsiveBreakpoint>;
 
   if (query === 'up' && key) {
     key = breakpoints.includes(key) && screens ? screens[key] : key;

@@ -7,7 +7,7 @@ import {
   MenuArrow,
   MenuBadge,
   MenuBullet,
-  MenuConfigType,
+  TMenuConfig,
   MenuHeading,
   MenuIcon,
   MenuItem,
@@ -51,7 +51,7 @@ const SidebarMenu = () => {
     'before:start-[32px]'
   ];
 
-  const buildMenu = (items: MenuConfigType) => {
+  const buildMenu = (items: TMenuConfig) => {
     return items.map((item, index) => {
       if (item.heading) {
         return buildMenuHeading(item, index);
@@ -147,7 +147,7 @@ const SidebarMenu = () => {
     );
   };
 
-  const buildMenuItemChildren = (items: MenuConfigType, index: number, level: number = 0) => {
+  const buildMenuItemChildren = (items: TMenuConfig, index: number, level: number = 0) => {
     return items.map((item, index) => {
       if (item.disabled) {
         return buildMenuItemChildDisabled(item, index, level);

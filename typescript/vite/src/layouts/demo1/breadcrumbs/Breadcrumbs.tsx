@@ -3,7 +3,7 @@ import { Fragment } from 'react';
 import { useLocation } from 'react-router';
 
 import { KeenIcon } from '@/components';
-import { MenuBreadcrumbsType, useMenuBreadcrumbs } from '@/components/menu';
+import { TMenuBreadcrumbs, useMenuBreadcrumbs } from '@/components/menu';
 import { useMenus } from '@/providers';
 
 const Breadcrumbs = () => {
@@ -12,7 +12,7 @@ const Breadcrumbs = () => {
   const menuConfig = getMenuConfig('primary');
   const items = useMenuBreadcrumbs(pathname, menuConfig);
 
-  const renderItems = (items: MenuBreadcrumbsType) => {
+  const renderItems = (items: TMenuBreadcrumbs) => {
     return items.map((item, index) => {
       const last = index === items.length - 1;
 

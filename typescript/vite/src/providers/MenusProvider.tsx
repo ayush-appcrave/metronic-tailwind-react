@@ -1,12 +1,11 @@
 /* eslint-disable no-unused-vars */
 import { createContext, type PropsWithChildren, useContext, useState } from 'react';
-
-import { IMenuItemConfig, MenuConfigType } from '@/components/menu';
+import { IMenuItemConfig, TMenuConfig } from '@/components/menu';
 
 export interface IMenusProps {
-  configs: Map<string, MenuConfigType | null>;
-  setMenuConfig: (name: string, config: MenuConfigType | null) => void;
-  getMenuConfig: (name: string) => MenuConfigType | null;
+  configs: Map<string, TMenuConfig | null>;
+  setMenuConfig: (name: string, config: TMenuConfig | null) => void;
+  getMenuConfig: (name: string) => TMenuConfig | null;
   setCurrentMenuItem: (config: IMenuItemConfig | null) => void;
   getCurrentMenuItem: () => IMenuItemConfig | null;
 }
@@ -26,7 +25,7 @@ const MenusProvider = ({ children }: PropsWithChildren) => {
   const [currentMenuItem, setCurrentMenuItem] = useState<IMenuItemConfig | null>(null);
   const configs = initialProps.configs;
 
-  const setMenuConfig = (name: string, config: MenuConfigType | null) => {
+  const setMenuConfig = (name: string, config: TMenuConfig | null) => {
     configs.set(name, config);
   };
 
@@ -34,7 +33,7 @@ const MenusProvider = ({ children }: PropsWithChildren) => {
     return currentMenuItem;
   };
 
-  const getMenuConfig = (name: string): MenuConfigType | null => {
+  const getMenuConfig = (name: string): TMenuConfig | null => {
     return configs.get(name) ?? null;
   };
 

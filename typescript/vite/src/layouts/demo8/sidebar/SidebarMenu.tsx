@@ -3,7 +3,7 @@ import {
   IMenuItemConfig,
   Menu,
   MenuArrow,
-  MenuConfigType,
+  TMenuConfig,
   MenuIcon,
   MenuItem,
   MenuLink,
@@ -47,7 +47,7 @@ const SidebarMenu = () => {
     }
   ];
 
-  const buildMenu = (items: MenuConfigType) => {
+  const buildMenu = (items: TMenuConfig) => {
     return items.map((item, index) => {
       return buildMenuItemRoot(item, index);
     });
@@ -172,7 +172,7 @@ const SidebarMenu = () => {
     }
   };
 
-  const buildMenuChildren = (items: MenuConfigType, level: number) => {
+  const buildMenuChildren = (items: TMenuConfig, level: number) => {
     return items.map((item, index) => {
       if (!item.disabled) {
         return buildMenuItemChild(item, index, level);

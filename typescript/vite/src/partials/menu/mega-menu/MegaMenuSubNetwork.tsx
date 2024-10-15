@@ -1,7 +1,7 @@
-import { MenuConfigType, IMenuItemConfig, MenuSub } from '@/components/menu';
+import { TMenuConfig, IMenuItemConfig, MenuSub } from '@/components/menu';
 import { MegaMenuSubDefault, MegaMenuSubHighlighted, MegaMenuFooter } from './components';
 
-const MegaMenuSubNetwork = (items: MenuConfigType) => {
+const MegaMenuSubNetwork = (items: TMenuConfig) => {
   const networkItem = items[3];
   const networkItemGeneral = networkItem.children ? networkItem.children[0] : {};
   const networkItemOthers = networkItem.children ? networkItem.children[1] : {};

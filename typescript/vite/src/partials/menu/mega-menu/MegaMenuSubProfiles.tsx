@@ -1,7 +1,7 @@
-import { MenuConfigType, IMenuItemConfig, MenuSub } from '@/components/menu';
+import { TMenuConfig, IMenuItemConfig, MenuSub } from '@/components/menu';
 import { MegaMenuSubDefault, MegaMenuFooter } from './components';
 
-const MegaMenuSubProfiles = (items: MenuConfigType) => {
+const MegaMenuSubProfiles = (items: TMenuConfig) => {
   const publicProfilesItem = items[1];
 
   return (

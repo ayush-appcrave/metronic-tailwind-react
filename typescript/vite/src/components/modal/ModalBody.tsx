@@ -1,6 +1,6 @@
 import { forwardRef, ReactNode, CSSProperties } from 'react';
 
-interface ModalModalProps {
+interface IModalBodyProps {
   className?: string;
   children: ReactNode;
   tabIndex?: number;
@@ -8,7 +8,7 @@ interface ModalModalProps {
 }
 
 // Forwarding ref to ensure this component can hold a ref
-const ModalBody = forwardRef<HTMLDivElement, ModalModalProps>(
+const ModalBody = forwardRef<HTMLDivElement, IModalBodyProps>(
   ({ className, children, style, tabIndex = -1 }, ref) => {
     return (
       <div ref={ref} tabIndex={tabIndex} className={`modal-body ${className}`} style={style}>

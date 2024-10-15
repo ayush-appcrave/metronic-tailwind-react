@@ -1,7 +1,7 @@
 import { Fragment, useEffect, useState } from 'react';
 import { useResponsive } from '@/hooks';
 import { KeenIcon } from '@/components';
-import { MenuConfigType, MenuItem, MenuLink, MenuTitle, MenuArrow, Menu } from '@/components/menu';
+import { TMenuConfig, MenuItem, MenuLink, MenuTitle, MenuArrow, Menu } from '@/components/menu';
 import {
   MegaMenuSubProfiles,
   MegaMenuSubAccount,
@@ -13,7 +13,7 @@ import { MENU_MEGA } from '@/config';
 
 const MegaMenuInner = () => {
   const desktopMode = useResponsive('up', 'lg');
-  const build = (items: MenuConfigType) => {
+  const build = (items: TMenuConfig) => {
     const homeItem = items[0];
     const publicProfilesItem = items[1];
     const myAccountItem = items[2];

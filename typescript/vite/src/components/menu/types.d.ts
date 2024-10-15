@@ -3,23 +3,23 @@ import { PopperProps } from '@mui/base';
 import { TooltipProps } from '@mui/material/Tooltip';
 import { HTMLAttributes, MouseEvent, ReactNode, RefAttributes, RefObject } from 'react';
 
-export type MenuEventHandlerType = (e: MouseEvent<HTMLElement>) => void;
+export type TMenuEventHandler = (e: MouseEvent<HTMLElement>) => void;
 
-export type MenuClickEventType = (e: MouseEvent<HTMLElement>, props: unknown) => void;
+export type TMenuClickEvent = (e: MouseEvent<HTMLElement>, props: unknown) => void;
 
-export type MenuShowType = boolean;
+export type TMenuShow = boolean;
 
-export type MenuTriggerType = 'click' | 'hover';
+export type TMenuTrigger = 'click' | 'hover';
 
-export type MenuItemTriggerType = Record<string, MenuToggleType> | MenuTriggerType;
+export type TMenuItemTrigger = Record<string, TMenuToggle> | TMenuTrigger;
 
-export type MenuToggleType = 'accordion' | 'dropdown';
+export type TMenuToggle = 'accordion' | 'dropdown';
 
-export type MenuItemToggleType = Record<string, MenuToggleType> | MenuToggleType;
+export type TMenuItemToggle = Record<string, TMenuToggle> | TMenuToggle;
 
-export type MenuDropdownType = Partial<Omit<PopperProps, 'children'>>;
+export type TMenuDropdown = Partial<Omit<PopperProps, 'children'>>;
 
-export type MenuTabIndexType = number;
+export type TMenuTabIndex = number;
 
 export interface IMenuProps {
   className?: string;
@@ -52,19 +52,19 @@ export interface IMenuItemProps {
   level?: number;
   index?: number;
   open?: boolean;
-  toggle?: MenuItemToggleType;
-  trigger?: MenuItemTriggerType;
+  toggle?: TMenuItemToggle;
+  trigger?: TMenuItemTrigger;
   disabled?: boolean;
-  dropdownProps?: MenuDropdownType;
+  dropdownProps?: TMenuDropdown;
   dropdownZIndex?: number;
   className?: string;
   closeParentMenu?: CallableFunction;
-  onClick?: MenuClickEventType;
+  onClick?: TMenuClickEvent;
   onShow?: CallableFunction;
   onHide?: CallableFunction;
   handleParentHide?: CallableFunction;
-  handleClick?: MenuEventHandlerType;
-  tabIndex?: MenuTabIndexType;
+  handleClick?: TMenuEventHandler;
+  tabIndex?: TMenuTabIndex;
   itemRef?: unknown;
   containerProps?: HTMLAttributes<HTMLElement> & RefAttributes<HTMLElement | null>;
   containerRef?: RefObject<HTMLDivElement>;
@@ -78,46 +78,46 @@ export interface IMenuLinkProps {
   newTab?: boolean;
   hasItemSub?: boolean;
   className?: string;
-  tabIndex?: MenuTabIndexType;
-  handleToggle?: MenuEventHandlerType;
-  handleClick?: MenuEventHandlerType;
+  tabIndex?: TMenuTabIndex;
+  handleToggle?: TMenuEventHandler;
+  handleClick?: TMenuEventHandler;
   children?: ReactNode;
 }
 
 export interface IMenuLabelProps {
   hasItemSub?: boolean;
   className?: string;
-  tabIndex?: MenuTabIndexType;
-  handleToggle?: MenuEventHandlerType;
-  handleClick?: MenuEventHandlerType;
+  tabIndex?: TMenuTabIndex;
+  handleToggle?: TMenuEventHandler;
+  handleClick?: TMenuEventHandler;
   children?: ReactNode;
 }
 
 export interface IMenuToggleProps {
   className?: string;
-  tabIndex?: MenuTabIndexType;
+  tabIndex?: TMenuTabIndex;
   hasItemSub?: boolean;
   menuItemRef?: unknown;
-  handleToggle?: MenuEventHandlerType;
-  handleClick?: MenuEventHandlerType;
-  onClick?: MenuClickEventType;
+  handleToggle?: TMenuEventHandler;
+  handleClick?: TMenuEventHandler;
+  onClick?: TMenuClickEvent;
   children?: ReactNode;
 }
 
 export interface IMenuSubProps {
   level?: number;
-  show?: MenuShowType;
+  show?: TMenuShow;
   enter?: boolean;
-  toggle?: MenuToggleType;
+  toggle?: TMenuToggle;
   ref?: unknown;
   menuItemRef?: unknown;
   tabIndex?: number;
   className?: string;
   rootClassName?: string;
   baseClassName?: string;
-  onClick?: MenuClickEventType;
+  onClick?: TMenuClickEvent;
   handleParentHide?: CallableFunction;
-  handleClick?: MenuEventHandlerType;
+  handleClick?: TMenuEventHandler;
   handleEntered?: () => void;
   handleExited?: () => void;
   accordionIn?: boolean;
@@ -166,14 +166,14 @@ export interface IMenuItemConfig {
   collapse?: boolean;
   collapseTitle?: string;
   expandTitle?: string;
-  toggle?: MenuItemToggleType;
-  dropdownProps?: MenuDropdownType;
-  trigger?: MenuItemTriggerType;
+  toggle?: TMenuItemToggle;
+  dropdownProps?: TMenuDropdown;
+  trigger?: TMenuItemTrigger;
   children?: IMenuItemConfig[];
   childrenIndex?: number;
 }
 
-export type MenuConfigType = IMenuItemConfig[];
+export type TMenuConfig = IMenuItemConfig[];
 
 export interface IMenuBreadcrumb {
   title?: string;
@@ -181,4 +181,4 @@ export interface IMenuBreadcrumb {
   active?: boolean;
 }
 
-export type MenuBreadcrumbsType = IMenuBreadcrumb[];
+export type TMenuBreadcrumbs = IMenuBreadcrumb[];

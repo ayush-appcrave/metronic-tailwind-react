@@ -1,5 +1,5 @@
 import { MutableRefObject } from 'react';
-import { ImageInputFilesType } from './';
+import { TImageInputFiles } from './';
 
 export const openFileDialog = (inputRef: MutableRefObject<HTMLInputElement | null>): void => {
   if (!inputRef.current) {
@@ -37,13 +37,13 @@ export const getImage = async (file: File): Promise<HTMLImageElement> => {
 export const getListFiles = async (
   files: FileList,
   dataURLKey: string
-): Promise<ImageInputFilesType> => {
+): Promise<TImageInputFiles> => {
   const promiseFiles: Array<Promise<string>> = [];
   for (let i = 0; i < files.length; i += 1) {
     promiseFiles.push(getBase64(files[i]));
   }
   return await Promise.all(promiseFiles).then((fileListBase64: string[]) => {
-    const fileList: ImageInputFilesType = fileListBase64.map((base64, index) => ({
+    const fileList: TImageInputFiles = fileListBase64.map((base64, index) => ({
       [dataURLKey]: base64,
       file: files[index]
     }));

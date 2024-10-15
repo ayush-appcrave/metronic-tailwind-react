@@ -5,7 +5,7 @@ import {
   IMenuItemConfig,
   Menu,
   MenuArrow,
-  MenuConfigType,
+  TMenuConfig,
   MenuItem,
   MenuLink,
   MenuSub,
@@ -18,7 +18,7 @@ const SidebarMenuDefault = () => {
   const menuConfig = getMenuConfig('secondary');
   const indention = ['ps-2.5', 'ps-5', 'px-7'];
 
-  const buildMenu = (items: MenuConfigType) => {
+  const buildMenu = (items: TMenuConfig) => {
     return items.map((item, index) => {
       if (!item.disabled) {
         return buildMenuItem(item, index);
@@ -74,7 +74,7 @@ const SidebarMenuDefault = () => {
     }
   };
 
-  const buildMenuChildren = (items: MenuConfigType, level: number) => {
+  const buildMenuChildren = (items: TMenuConfig, level: number) => {
     return items.map((item, index) => {
       if (!item.disabled) {
         return buildMenuItem(item, index, level);

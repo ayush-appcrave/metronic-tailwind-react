@@ -2,7 +2,7 @@ import React from 'react';
 import MuiDrawer, { DrawerProps as MuiDrawerProps } from '@mui/material/Drawer';
 import { styled } from '@mui/material/styles';
 
-type DrawerProps = MuiDrawerProps & {
+type TDrawerProps = MuiDrawerProps & {
   // Add any additional props if needed
 };
 
@@ -16,7 +16,7 @@ const StyledDrawer = styled(MuiDrawer)(() => ({
   }
 }));
 
-const Drawer = (props: DrawerProps) => {
+const Drawer = (props: TDrawerProps) => {
   return <StyledDrawer {...props}>{props.children}</StyledDrawer>;
 };
 

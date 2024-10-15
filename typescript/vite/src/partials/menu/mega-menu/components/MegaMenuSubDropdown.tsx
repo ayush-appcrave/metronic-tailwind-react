@@ -1,6 +1,6 @@
 import { DefaultTooltip, KeenIcon } from '@/components';
 import {
-  MenuConfigType,
+  TMenuConfig,
   MenuItem,
   MenuLink,
   MenuSub,
@@ -14,10 +14,10 @@ import { useResponsive } from '@/hooks';
 import clsx from 'clsx';
 import { ReactNode } from 'react';
 
-const MegaMenuSubDropdown = (items: MenuConfigType) => {
+const MegaMenuSubDropdown = (items: TMenuConfig) => {
   const desktopMode = useResponsive('up', 'lg');
 
-  const buildItems = (items: MenuConfigType): ReactNode => {
+  const buildItems = (items: TMenuConfig): ReactNode => {
     return items.map((item, index) => {
       if (item.separator) {
         return <MenuSeparator key={index} />;

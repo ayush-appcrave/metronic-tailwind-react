@@ -1,7 +1,7 @@
 import { KeenIcon } from '@/components';
 import {
   Menu,
-  MenuConfigType,
+  TMenuConfig,
   MenuItem,
   MenuLink,
   MenuSub,
@@ -9,8 +9,8 @@ import {
   MenuToggle
 } from '@/components/menu';
 
-const NavbarMenu = ({ items }: { items: MenuConfigType }) => {
-  const buildMenu = (items: MenuConfigType) => {
+const NavbarMenu = ({ items }: { items: TMenuConfig }) => {
+  const buildMenu = (items: TMenuConfig) => {
     return items.map((item, index) => {
       if (item.children) {
         return (
@@ -59,7 +59,7 @@ const NavbarMenu = ({ items }: { items: MenuConfigType }) => {
     });
   };
 
-  const buildMenuSub = (items: MenuConfigType) => {
+  const buildMenuSub = (items: TMenuConfig) => {
     return items.map((item, index) => {
       if (item.children) {
         return (

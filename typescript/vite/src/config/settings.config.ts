@@ -1,15 +1,13 @@
-import { type KeenIconsStyleType } from '../components/keenicons/types';
+import { type TKeenIconsStyle } from '../components/keenicons/types';
 
-export type SettingsModeType = 'light' | 'dark' | 'system';
+export type TSettingsMode = 'light' | 'dark' | 'system';
 
-export type SettingsContainerType = 'default' | 'fluid' | 'fixed';
-
-export type PathsType = Record<string, string>;
+export type TSettingsContainer = 'default' | 'fluid' | 'fixed';
 
 export interface ISettings {
-  mode: SettingsModeType;
-  container: SettingsContainerType;
-  keeniconsStyle: KeenIconsStyleType;
+  mode: TSettingsMode;
+  container: TSettingsContainer;
+  keeniconsStyle: TKeenIconsStyle;
 }
 
 // Default settings for the application

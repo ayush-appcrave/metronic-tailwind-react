@@ -4,7 +4,7 @@ import {
   IMenuItemConfig,
   Menu,
   MenuArrow,
-  MenuConfigType,
+  TMenuConfig,
   MenuIcon,
   MenuItem,
   MenuLink,
@@ -16,7 +16,7 @@ import { useMenus } from '@/providers';
 const SidebarMenuPrimary = () => {
   const subIndetion = ['ps-7', 'ps-2.5', 'ps-2.5'];
 
-  const buildMenu = (items: MenuConfigType) => {
+  const buildMenu = (items: TMenuConfig) => {
     return items.map((item, index) => {
       if (!item.heading && !item.disabled && item.title != 'Dashboards') {
         return buildMenuItemRoot(item, index, 0);
@@ -64,7 +64,7 @@ const SidebarMenuPrimary = () => {
     }
   };
 
-  const buildMenuItemChildren = (items: MenuConfigType, index: number, level: number = 0) => {
+  const buildMenuItemChildren = (items: TMenuConfig, index: number, level: number = 0) => {
     return items.map((item, index) => {
       if (!item.disabled) {
         return buildMenuItemChild(item, index, level);

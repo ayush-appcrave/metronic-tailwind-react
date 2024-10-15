@@ -2,7 +2,7 @@ import { KeenIcon } from '@/components/keenicons';
 import {
   Menu,
   MenuArrow,
-  MenuConfigType,
+  TMenuConfig,
   MenuItem,
   MenuLink,
   MenuSub,
@@ -27,7 +27,7 @@ const NavbarMenu = () => {
     navbarMenu = primaryMenu?.[3];
   }
 
-  const buildMenu = (items: MenuConfigType) => {
+  const buildMenu = (items: TMenuConfig) => {
     return items.map((item, index) => {
       if (item.children) {
         return (
@@ -70,7 +70,7 @@ const NavbarMenu = () => {
     });
   };
 
-  const buildMenuChildren = (items: MenuConfigType) => {
+  const buildMenuChildren = (items: TMenuConfig) => {
     return items.map((item, index) => {
       if (item.children) {
         return (

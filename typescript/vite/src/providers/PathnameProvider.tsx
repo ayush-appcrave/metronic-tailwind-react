@@ -2,12 +2,12 @@
 import React, { createContext, useState, useContext, useEffect, ReactNode } from 'react';
 import { useLocation } from 'react-router-dom';
 
-interface PathnameContextProps {
+interface IPathnameContextProps {
   pathname: string;
   prevPathname: string | undefined;
 }
 
-const PathnameContext = createContext<PathnameContextProps | undefined>(undefined);
+const PathnameContext = createContext<IPathnameContextProps | undefined>(undefined);
 
 const PathnameProvider = ({ children }: { children: ReactNode }) => {
   const { pathname } = useLocation();
@@ -26,7 +26,7 @@ const PathnameProvider = ({ children }: { children: ReactNode }) => {
   );
 };
 
-const usePathname = (): PathnameContextProps => {
+const usePathname = (): IPathnameContextProps => {
   const context = useContext(PathnameContext);
   if (!context) {
     throw new Error('usePathname must be used within a PathnameProvider');

@@ -1,10 +1,9 @@
 import { useEffect, useState } from 'react';
 
-type ReturnType = [number, number];
-type DimensionsType = [number, number];
+type TUseViewport = [number, number];
 
-const useViewport = (): ReturnType => {
-  const [dimensions, setDimensions] = useState<DimensionsType>([
+const useViewport = (): TUseViewport => {
+  const [dimensions, setDimensions] = useState<TUseViewport>([
     window.innerHeight,
     window.innerWidth
   ]);

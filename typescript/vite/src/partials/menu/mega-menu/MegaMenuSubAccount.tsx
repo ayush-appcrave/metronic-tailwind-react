@@ -1,7 +1,7 @@
-import { MenuConfigType, IMenuItemConfig, MenuSub } from '@/components/menu';
+import { TMenuConfig, IMenuItemConfig, MenuSub } from '@/components/menu';
 import { MegaMenuSubHighlighted, MegaMenuSubDefault } from './components';
 
-const MegaMenuSubAccount = (items: MenuConfigType) => {
+const MegaMenuSubAccount = (items: TMenuConfig) => {
   const myAccountItem = items[2];
   const myAccountItemGeneral = myAccountItem.children ? myAccountItem.children[0] : {};
   const myAccountItemOthers = myAccountItem.children ? myAccountItem.children[1] : {};

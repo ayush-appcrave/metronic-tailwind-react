@@ -1,19 +1,19 @@
 import { matchPath } from 'react-router';
-import { MenuConfigType } from '../types.d';
+import { TMenuConfig } from '../types.d';
 
 const useMenuChildren = (
   pathname: string,
-  items: MenuConfigType,
+  items: TMenuConfig,
   level: number
-): MenuConfigType | null => {
-  const hasActiveChild = (items: MenuConfigType): boolean => {
+): TMenuConfig | null => {
+  const hasActiveChild = (items: TMenuConfig): boolean => {
     for (let i = 0; i < items.length; i++) {
       const item = items[i];
 
       if (item.path && matchPath(pathname, item.path)) {
         return true;
       } else if (item.children) {
-        if (hasActiveChild(item.children as MenuConfigType)) {
+        if (hasActiveChild(item.children as TMenuConfig)) {
           return true;
         }
       }
@@ -23,10 +23,10 @@ const useMenuChildren = (
   };
 
   const getChildren = (
-    items: MenuConfigType,
+    items: TMenuConfig,
     level: number = 0,
     currentLevel: number = 0
-  ): MenuConfigType | null => {
+  ): TMenuConfig | null => {
     for (let i = 0; i < items.length; i++) {
       const item = items[i];
 

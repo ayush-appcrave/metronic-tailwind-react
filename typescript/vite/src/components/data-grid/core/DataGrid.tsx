@@ -2,7 +2,7 @@
 import { ReactNode } from 'react';
 import { DataGridInner, DataGridProvider } from '.';
 
-export type TDataGridTableSpacingType = 'xs' | 'sm' | 'lg';
+export type TDataGridTableSpacing = 'xs' | 'sm' | 'lg';
 
 export type TDataGridSelectedRowIds = Set<string>;
 
@@ -24,7 +24,7 @@ export interface TDataGridProps<TData extends object> {
   };
   layout?: {
     cellsBorder?: boolean;
-    tableSpacing?: TDataGridTableSpacingType;
+    tableSpacing?: TDataGridTableSpacing;
   };
   pagination?: {
     page?: number;

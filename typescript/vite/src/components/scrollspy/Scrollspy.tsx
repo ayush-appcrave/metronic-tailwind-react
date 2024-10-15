@@ -3,7 +3,7 @@ import { throttle } from '@/utils';
 import * as React from 'react';
 import { MutableRefObject, ReactNode, useEffect, useRef, useCallback } from 'react';
 
-type ScrollSpyProps = {
+type IScrollSpyProps = {
   children: ReactNode;
   targetRef?: MutableRefObject<HTMLElement | Document | undefined>;
   onUpdate?: (id: string) => void;
@@ -27,7 +27,7 @@ const Scrollspy = ({
   activeClass = 'active',
   history = true,
   throttleTime = 200
-}: ScrollSpyProps) => {
+}: IScrollSpyProps) => {
   const selfRef = useRef<HTMLDivElement | null>(null);
   const anchorElementsRef = useRef<Element[] | null>(null);
   const prevIdTracker = useRef<string | null>(null);

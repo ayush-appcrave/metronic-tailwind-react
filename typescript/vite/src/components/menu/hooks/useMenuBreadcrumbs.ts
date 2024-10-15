@@ -1,14 +1,14 @@
 import { matchPath } from 'react-router';
 
-import { MenuBreadcrumbsType, MenuConfigType } from '../types';
+import { TMenuBreadcrumbs, TMenuConfig } from '../types';
 
 const useMenuBreadcrumbs = (
   pathname: string,
-  items: MenuConfigType | null
-): MenuBreadcrumbsType => {
+  items: TMenuConfig | null
+): TMenuBreadcrumbs => {
   pathname = pathname.trim();
 
-  const findParents = (items: MenuConfigType | null): MenuBreadcrumbsType => {
+  const findParents = (items: TMenuConfig | null): TMenuBreadcrumbs => {
     if (!items) return [];
 
     for (let i = 0; i < items.length; i++) {
@@ -23,7 +23,7 @@ const useMenuBreadcrumbs = (
           }
         ];
       } else if (item.children) {
-        const parents = findParents(item.children as MenuConfigType);
+        const parents = findParents(item.children as TMenuConfig);
 
         if (parents.length > 0) {
           return [item, ...parents];

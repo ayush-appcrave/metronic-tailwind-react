@@ -1,6 +1,6 @@
 import { KeenIcon } from '@/components';
 import {
-  MenuConfigType,
+  TMenuConfig,
   MenuItem,
   MenuLink,
   MenuTitle,
@@ -10,8 +10,8 @@ import {
 import clsx from 'clsx';
 import { ReactNode } from 'react';
 
-const MegaMenuSubDefault = (items: MenuConfigType) => {
-  const buildItems = (items: MenuConfigType): ReactNode => {
+const MegaMenuSubDefault = (items: TMenuConfig) => {
+  const buildItems = (items: TMenuConfig): ReactNode => {
     return items.map((item, index) => {
       if (item.children) {
         return (

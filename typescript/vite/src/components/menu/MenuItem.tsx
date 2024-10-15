@@ -26,8 +26,8 @@ import {
   MenuLabel,
   MenuLink,
   MenuSub,
-  MenuToggleType,
-  MenuTriggerType,
+  TMenuToggle,
+  TMenuTrigger,
   IMenuToggleProps,
   MenuToggle,
   useMenu
@@ -80,9 +80,9 @@ const MenuItemComponent = forwardRef<IMenuItemRef | null, IMenuItemProps>(
 
     const { match } = useMatchPath(path);
 
-    const propToggle: MenuToggleType = useResponsiveProp(toggle, 'accordion');
+    const propToggle: TMenuToggle = useResponsiveProp(toggle, 'accordion');
 
-    const propTrigger: MenuTriggerType = useResponsiveProp(trigger, 'click');
+    const propTrigger: TMenuTrigger = useResponsiveProp(trigger, 'click');
 
     const propDropdownProps = useResponsiveProp(dropdownProps);
 

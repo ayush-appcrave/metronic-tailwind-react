@@ -1,7 +1,7 @@
-import { IMenuItemConfig, MenuConfigType, MenuSub } from '@/components/menu';
+import { IMenuItemConfig, TMenuConfig, MenuSub } from '@/components/menu';
 import { MegaMenuFooter, MegaMenuSubDefault, MegaMenuSubHighlighted } from './components';
 
-const MegaMenuSubAuth = (items: MenuConfigType) => {
+const MegaMenuSubAuth = (items: TMenuConfig) => {
   const authItem = items[4];
   const authItemGeneral = authItem.children ? authItem.children[0] : {};
   const authItemOthers = authItem.children ? authItem.children[1] : {};

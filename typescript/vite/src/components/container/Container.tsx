@@ -2,15 +2,15 @@ import clsx from 'clsx';
 import { type ReactNode } from 'react';
 
 import { useSettings } from '../../providers/SettingsProvider';
-import { SettingsContainerType } from '@/config';
+import { TSettingsContainer } from '@/config';
 
-export interface PageContainerProps {
+export interface TPageContainerProps {
   children?: ReactNode;
-  width?: SettingsContainerType;
+  width?: TSettingsContainer;
   className?: string;
 }
 
-const Container = ({ children, width, className = '' }: PageContainerProps) => {
+const Container = ({ children, width, className = '' }: TPageContainerProps) => {
   const { settings } = useSettings();
   const { container } = settings;
   const widthMode = width ?? container;

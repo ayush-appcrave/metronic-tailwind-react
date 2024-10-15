@@ -1,7 +1,7 @@
-import { MenuConfigType, MenuSub } from '@/components/menu';
+import { TMenuConfig, MenuSub } from '@/components/menu';
 import { MegaMenuSubDropdown } from './components';
 
-const MegaMenuSubHelp = (items: MenuConfigType) => {
+const MegaMenuSubHelp = (items: TMenuConfig) => {
   const helpItem = items[5];
 
   return (
