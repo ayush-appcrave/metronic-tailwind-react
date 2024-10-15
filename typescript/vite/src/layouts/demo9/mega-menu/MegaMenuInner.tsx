@@ -65,7 +65,7 @@ const MegaMenuInner = () => {
               {
                 name: 'offset',
                 options: {
-                  offset: [-300, 0] // [skid, distance]
+                  offset: [-158, 0] // [skid, distance]
                 }
               }
             ]
@@ -88,7 +88,7 @@ const MegaMenuInner = () => {
               {
                 name: 'offset',
                 options: {
-                  offset: [-300, 0] // [skid, distance]
+                  offset: [-50, 0] // [skid, distance]
                 }
               }
             ]
@@ -111,7 +111,7 @@ const MegaMenuInner = () => {
               {
                 name: 'offset',
                 options: {
-                  offset: [-300, 0] // [skid, distance]
+                  offset: [-100, 0] // [skid, distance]
                 }
               }
             ]
