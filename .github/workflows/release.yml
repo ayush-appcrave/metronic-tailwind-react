@@ -13,7 +13,7 @@ jobs:
     strategy:
       matrix:
         node-version: [18.x]
-        demo: [demo1, demo2] # Add matrix for multiple demos
+        demo: [demo1, demo2, demo3, demo4, demo5, demo6, demo7, demo8, demo9, demo10] # Add matrix for multiple demos
 
     steps:
       - uses: actions/checkout@v2
@@ -28,16 +28,16 @@ jobs:
           sed -i "s|base: '/metronic/tailwind/react'|base: '/metronic/tailwind/react/${{ matrix.demo }}'|" vite.config.ts
         working-directory: typescript/vite
 
-      - name: 3. Update AppRouting.tsx with correct demo layout
+      - name: 3. Update AppRoutingSetup.tsx with correct demo layout
         run: |
           # Capitalize only the first letter of the demo name (e.g., demo1 -> Demo1)
           DEMO_NAME=$(echo "${{ matrix.demo }}" | awk '{print toupper(substr($0,1,1)) tolower(substr($0,2))}')
 
           # Replace the import line for the Demo Layout, matching exact structure with case sensitivity
-          sed -i "s|import { Demo[0-9]*Layout } from '../layouts/.*';|import { ${DEMO_NAME}Layout } from '../layouts/${{ matrix.demo }}';|" src/routing/AppRouting.tsx
+          sed -i "s|import { Demo[0-9]*Layout } from '@/layouts/.*';|import { ${DEMO_NAME}Layout } from '@/layouts/${{ matrix.demo }}';|" src/routing/AppRoutingSetup.tsx
 
           # Replace the JSX layout usage, targeting the layout component usage with correct capitalization
-          sed -i "s|<Demo[0-9]*Layout />|<${DEMO_NAME}Layout />|" src/routing/AppRouting.tsx
+          sed -i "s|<Demo[0-9]*Layout />|<${DEMO_NAME}Layout />|g" src/routing/AppRoutingSetup.tsx
         working-directory: typescript/vite
 
       - name: 4. Build Metronic Tailwind React
