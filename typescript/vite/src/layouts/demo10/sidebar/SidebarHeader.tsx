@@ -12,13 +12,11 @@ import {
   MenuTitle
 } from '@/components/menu';
 import { MENU_ROOT } from '@/config';
-import { KeenIcon } from '@/components'; 
+import { KeenIcon } from '@/components';
 
 const SidebarHeader = forwardRef<HTMLDivElement, any>((props, ref) => {
   const { pathname } = useLocation();
   const [selectedMenuItem, setSelectedMenuItem] = useState(MENU_ROOT[1]);
-
-  const handleInputChange = () => {};
 
   useEffect(() => {
     MENU_ROOT.forEach((item) => {
@@ -29,14 +27,14 @@ const SidebarHeader = forwardRef<HTMLDivElement, any>((props, ref) => {
   }, [pathname]);
 
   return (
-    <div className="flex flex-col gap-2.5">
+    <div ref={ref} className="flex flex-col gap-2.5">
       <div className="flex items-center gap-2.5 px-3.5 h-[70px]">
         <Link to="/">
           <img
             src={toAbsoluteUrl('/media/app/mini-logo-circle-success.svg')}
             className="h-[34px]"
-          /> 
-        </Link> 
+          />
+        </Link>
 
         <Menu className="menu-default grow">
           <MenuItem
@@ -56,9 +54,7 @@ const SidebarHeader = forwardRef<HTMLDivElement, any>((props, ref) => {
             }}
           >
             <MenuLabel className="cursor-pointer text-gray-900 font-medium grow justify-between">
-              <MenuTitle className="!text-lg font-medium text-inverse grow">
-                Metronic
-              </MenuTitle>
+              <MenuTitle className="!text-lg font-medium text-inverse grow">Metronic</MenuTitle>
               <div className="flex flex-col text-2xs text-gray-900 font-medium">
                 <MenuArrow>
                   <KeenIcon icon="up" />
@@ -84,19 +80,19 @@ const SidebarHeader = forwardRef<HTMLDivElement, any>((props, ref) => {
               ))}
             </MenuSub>
           </MenuItem>
-        </Menu> 
+        </Menu>
       </div>
 
-      <div className="flex items-center gap-2.5 px-3.5"> 
+      <div className="flex items-center gap-2.5 px-3.5">
         <a href="/" className="btn btn-dark btn-sm justify-center min-w-[198px]">
-        <KeenIcon icon="plus" />
+          <KeenIcon icon="plus" />
           Add New
-        </a> 
+        </a>
 
-        <button className="btn btn-icon btn-dark btn-icon-lg size-8 hover:text-primary" data-modal-toggle="#search_modal">
+        <button className="btn btn-icon btn-dark btn-icon-lg size-8 hover:text-primary">
           <KeenIcon icon="magnifier" />
         </button>
-      </div>  
+      </div>
     </div>
   );
 });
