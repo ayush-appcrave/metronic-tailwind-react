@@ -17,7 +17,7 @@ import { useMenus } from '@/providers';
 const SidebarMenuPrimary = () => {
   const newItem = {
     title: "Overview",
-    description: "Tailwind CSS based HTML and JavaScript toolkit for building modern and scalable web applications",
+    description: "",
     icon: "home-3",
     path: "/",
   };
@@ -27,8 +27,6 @@ const SidebarMenuPrimary = () => {
 
   // Prepend the new item to the menuConfig
   const menuConfigWithNewItem = [newItem, ...menuConfig];
-
-  
 
   const subIndetion = ['ps-7', 'ps-2.5', 'ps-2.5']; 
 
@@ -146,7 +144,7 @@ const SidebarMenuPrimary = () => {
     <div className="mb-5">
       <h3 className="text-sm text-gray-500 uppercase ps-5 inline-block mb-3">Pages</h3>
       <Menu highlight={true} multipleExpand={false} className="flex flex-col w-full gap-1.5 px-3.5">
-        {menuConfigWithNewItem && buildMenu(menuConfigWithNewItem)}
+        {menuConfig && buildMenu(menuConfigWithNewItem)}
       </Menu>
     </div>
   );
