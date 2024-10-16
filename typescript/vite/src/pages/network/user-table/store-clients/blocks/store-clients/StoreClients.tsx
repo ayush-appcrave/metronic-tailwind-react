@@ -128,7 +128,7 @@ const StoreClients = () => {
           <div className="flex">
             <label className="input input-sm">
               <KeenIcon icon="magnifier" />
-              <input placeholder="Search users" type="text" value="" />
+              <input placeholder="Search users" type="text" value="" readOnly />
             </label>
           </div>
 
