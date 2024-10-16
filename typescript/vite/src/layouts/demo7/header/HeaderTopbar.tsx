@@ -25,7 +25,7 @@ const HeaderTopbar = () => {
 
       <div className="border-e border-gray-200 h-5 mx-1.5 lg:mx-3"></div>
 
-      <Menu className="items-stretch -me-2">
+      <Menu className="items-stretch">
         <MenuItem
           toggle="dropdown"
           trigger="click"
