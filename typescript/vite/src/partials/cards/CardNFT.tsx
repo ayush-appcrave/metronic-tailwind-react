@@ -21,7 +21,7 @@ const CardNFT = ({ image, id, title, info, date }: INFTProps) => {
         <div className="pb-6">
           <a
             href="#"
-            className="font-block font-medium text-gray-900 hover:text-primary text-md leading-4 mb-2"
+            className="block font-medium text-gray-900 hover:text-primary text-md leading-4 mb-2"
           >
             {title}
           </a>

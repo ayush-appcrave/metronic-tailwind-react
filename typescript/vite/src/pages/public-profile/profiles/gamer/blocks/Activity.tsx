@@ -28,7 +28,7 @@ const Activity = () => {
               readOnly
             />
             <span className="switch-label order-1">
-              Auto refresh:
+              Auto refresh:&nbsp;
               <span className="hidden switch-off:inline">Off</span>
               <span className="hidden switch-on:inline">On</span>
             </span>

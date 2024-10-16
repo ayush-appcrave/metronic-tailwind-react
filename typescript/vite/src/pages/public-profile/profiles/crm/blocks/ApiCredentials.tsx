@@ -11,7 +11,7 @@ const ApiCredentials = () => {
         <div className="text-sm text-gray-800 leading-5.5 pb-5">
           The granted credentials serve a twofold function, enabling
           <a href="#" className="link">
-            API authentication&nbsp;
+            &nbsp;API authentication&nbsp;
           </a>
           and governing JavaScript customization
         </div>
