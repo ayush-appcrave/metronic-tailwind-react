@@ -16,7 +16,7 @@ const SetGoal = () => {
       <div className="card-header gap-2" id="settings_set_goal">
         <h3 className="card-title">Set a Goal</h3>
 
-        <Menu className="items-stretch">
+        <Menu>
           <MenuItem
             toggle="dropdown"
             trigger="click"
@@ -32,7 +32,7 @@ const SetGoal = () => {
               ]
             }}
           >
-            <MenuToggle className="btn btn-sm btn-icon btn-light btn-clear mb-2.5-">
+            <MenuToggle className="btn btn-sm btn-icon btn-light btn-clear">
               <KeenIcon icon="dots-vertical" />
             </MenuToggle>
             {DropdownCard2()}
@@ -58,7 +58,7 @@ const SetGoal = () => {
 
           <div className="mb-3">
             <input
-              className="range"
+              className="range card"
               max="10"
               min="0"
               type="range"
