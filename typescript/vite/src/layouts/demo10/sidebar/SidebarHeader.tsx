@@ -13,10 +13,17 @@ import {
 } from '@/components/menu';
 import { MENU_ROOT } from '@/config';
 import { KeenIcon } from '@/components';
+import { ModalSearch } from '@/partials/modals/search/ModalSearch';
 
 const SidebarHeader = forwardRef<HTMLDivElement, any>((props, ref) => {
   const { pathname } = useLocation();
   const [selectedMenuItem, setSelectedMenuItem] = useState(MENU_ROOT[1]);
+
+  const [searchModalOpen, setSearchModalOpen] = useState(false);
+  const handleSearchModalOpen = () => setSearchModalOpen(true);
+  const handleSearchModalClose = () => {
+    setSearchModalOpen(false);
+  };
 
   useEffect(() => {
     MENU_ROOT.forEach((item) => {
@@ -68,7 +75,7 @@ const SidebarHeader = forwardRef<HTMLDivElement, any>((props, ref) => {
             <MenuSub className="menu-default w-48 py-2">
               {MENU_ROOT.map((item, index) => (
                 <MenuItem key={index} className={item === selectedMenuItem ? 'active' : ''}>
-                  <MenuLink path={item.path}>
+                  <MenuLink path={item.path} className="gap-2.5 py-2 px-2.5 rounded-md !menu-item-hover:bg-transparent !menu-item-here:bg-transparent">
                     {item.icon && (
                       <MenuIcon>
                         <KeenIcon icon={item.icon} />
@@ -89,9 +96,15 @@ const SidebarHeader = forwardRef<HTMLDivElement, any>((props, ref) => {
           Add New
         </Link> 
 
-        <button className="btn btn-icon btn-dark btn-icon-lg size-8 hover:text-primary">
-          <KeenIcon icon="magnifier" />
-        </button>
+        <div className="flex items-center">
+          <button
+            onClick={handleSearchModalOpen}
+            className="btn btn-icon btn-dark btn-icon-lg size-8 hover:text-primary"
+          >
+            <KeenIcon icon="magnifier" />
+          </button>
+          <ModalSearch open={searchModalOpen} onClose={handleSearchModalClose} />
+        </div> 
       </div>
     </div>
   );
