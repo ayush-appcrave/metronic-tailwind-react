@@ -13,7 +13,7 @@ interface IAdvancedSettingsAppearanceProps {
   title: string;
 }
 
-const AdvancedSettingsAppearance = ({ title = 'Appearance' }: IAdvancedSettingsAppearanceProps) => {
+const AdvancedSettingsAppearance = ({ title }: IAdvancedSettingsAppearanceProps) => {
   const items: IAdvancedSettingsAppearanceItems = [
     {
       image: '28.jpg',
@@ -65,7 +65,7 @@ const AdvancedSettingsAppearance = ({ title = 'Appearance' }: IAdvancedSettingsA
   return (
     <div className="card">
       <div className="card-header" id="advanced_settings_appearance">
-        <h3 className="card-title">{title}</h3>
+        <h3 className="card-title">{title || 'Appearance'}</h3>
       </div>
 
       <div className="card-body lg:py-7.5">

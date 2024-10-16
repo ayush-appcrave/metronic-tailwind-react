@@ -103,7 +103,7 @@ const Backup= () => {
   return (
     <div className="card card-grid h-full min-w-full">
       <div className="card-header">
-        <h3 className="card-title">Devices</h3>
+        <h3 className="card-title">Backups</h3>
 
         <label className="switch switch-sm">
           <span className="switch-label">

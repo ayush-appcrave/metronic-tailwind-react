@@ -62,8 +62,8 @@ const AccountOverviewContent = () => {
             description="Transform your living space beautifully with our Restyle Your Space: Soft Goods Makeover Ideas tutorial"
             more={{ title: 'Review Security Tips', url: '#' }}
             features={[
-              ['Strong Passwords', 'Budget-Friendly'],
-              ['Two-Factor Authentication', 'Fresh Look']
+              ['Strong Passwords', 'Two-Factor Authentication'],
+              ['Budget-Friendly', 'Fresh Look']
             ]}
           />
 

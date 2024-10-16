@@ -100,8 +100,8 @@ const Members = ({ url }: IMembersProps) => {
 
         <td className="text-right text-gray-700 text-sm">{table.joined}</td>
 
-        <td>
-          <Menu className="items-stretch">
+        <td className="text-right">
+          <Menu className="inline-flex">
             <MenuItem
               toggle="dropdown"
               trigger="click"
@@ -131,7 +131,7 @@ const Members = ({ url }: IMembersProps) => {
   return (
     <div className="card min-w-full">
       <div className="card-header">
-        <h3 className="card-title">Connections</h3>
+        <h3 className="card-title">Members</h3>
 
         <div className="flex items-center gap-5">
           <div className="flex items-center gap-2">

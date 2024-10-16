@@ -30,7 +30,7 @@ const Sidebar = () => {
   const footerRef = useRef<HTMLDivElement>(null);
   const [scrollableHeight, setScrollableHeight] = useState<number>(0);
   const [viewportHeight] = useViewport();
-  const scrollableOffset = 10;
+  const scrollableOffset = 40;
 
   useEffect(() => {
     if (footerRef.current) {
@@ -65,7 +65,7 @@ const Sidebar = () => {
         )}
 
         <div
-          className="scrollable-y gap-2.5 shrink-0 flex grow items-center pt-5 lg:pt-0 ps-3 pe-3 lg:pe-0 flex-col mb-10"
+          className="scrollable-y-auto gap-2.5 shrink-0 flex grow items-center pt-5 lg:pt-0 px-3 flex-col mb-10"
           style={{
             ...(desktopMode && scrollableHeight > 0 && { height: `${scrollableHeight}px` })
           }}

@@ -22,7 +22,7 @@ const CardPost = ({ image, label, description, time }: IPostProps) => {
         </a>
         <a
           href="#"
-          className="font-semibold text-gray-900 text-lg leading-6 mb-1.5 hover:text-primary"
+          className="font-medium text-gray-900 text-lg leading-6 mb-1.5 hover:text-primary"
         >
           {description}
         </a>

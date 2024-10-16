@@ -1,7 +1,7 @@
+import { Fragment, ReactNode } from 'react';
 import { Link } from 'react-router-dom';
 
 import { KeenIcon } from '@/components';
-import { ReactNode } from 'react';
 
 interface IFeaturesHighlightProps {
   image: ReactNode;
@@ -41,11 +41,11 @@ const FeaturesHighlight = ({
 
             <div className="grid md:grid-cols-2 gap-2">
               {features.map((feature, index) => (
-                <div key={index}>
+                <Fragment key={index}>
                   {feature.map((cell, index) => {
                     return renderItem(cell, index);
                   })}
-                </div>
+                </Fragment>
               ))}
             </div>
           </div>

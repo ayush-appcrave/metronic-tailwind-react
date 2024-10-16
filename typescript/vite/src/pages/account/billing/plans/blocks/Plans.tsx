@@ -229,8 +229,12 @@ const Plans = () => {
   const renderItem = (feature: IPlansItem, index: number) => {
     return (
       <tr key={index}>
-        <td className="table-border-l !px-5 !py-3.5">{feature.title}</td>
-        <td className="table-border-l !px-5 !py-3.5">{renderFeatureDetail(feature.plans.basic)}</td>
+        <td className="table-border-l !px-5 !py-3.5">
+          <div className="text-gray-900 text-2sm leading-none font-medium">{feature.title}</div>
+        </td>
+        <td className="table-border-l !px-5 !py-3.5">
+          <div className="text-gray-800 text-2sm">{renderFeatureDetail(feature.plans.basic)}</div>
+        </td>
         <td className="table-border-l !px-5 !py-3.5">{renderFeatureDetail(feature.plans.pro)}</td>
         <td className="table-border-l !px-5 !py-3.5">
           {renderFeatureDetail(feature.plans.premium)}
