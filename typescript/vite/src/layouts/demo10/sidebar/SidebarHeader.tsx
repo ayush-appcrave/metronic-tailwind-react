@@ -54,7 +54,7 @@ const SidebarHeader = forwardRef<HTMLDivElement, any>((props, ref) => {
             }}
           >
             <MenuLabel className="cursor-pointer text-gray-900 font-medium grow justify-between">
-              <MenuTitle className="text-lg font-medium text-inverse grow">Metronic</MenuTitle>
+              <MenuTitle className="!text-lg font-medium text-inverse grow">Metronic</MenuTitle>
               <div className="flex flex-col text-gray-900 font-medium">
                 <MenuArrow>
                   <KeenIcon icon="up" />
