@@ -54,8 +54,8 @@ const SidebarHeader = forwardRef<HTMLDivElement, any>((props, ref) => {
             }}
           >
             <MenuLabel className="cursor-pointer text-gray-900 font-medium grow justify-between">
-              <MenuTitle className="!text-lg font-medium text-inverse grow">Metronic</MenuTitle>
-              <div className="flex flex-col text-2xs text-gray-900 font-medium">
+              <MenuTitle className="text-lg font-medium text-inverse grow">Metronic</MenuTitle>
+              <div className="flex flex-col text-gray-900 font-medium">
                 <MenuArrow>
                   <KeenIcon icon="up" />
                 </MenuArrow>
@@ -65,7 +65,7 @@ const SidebarHeader = forwardRef<HTMLDivElement, any>((props, ref) => {
               </div>
             </MenuLabel>
 
-            <MenuSub className="menu-default w-48 py-2">
+            <MenuSub className="w-48 py-2">
               {MENU_ROOT.map((item, index) => (
                 <MenuItem key={index} className={item === selectedMenuItem ? 'active' : ''}>
                   <MenuLink path={item.path}>
@@ -84,10 +84,10 @@ const SidebarHeader = forwardRef<HTMLDivElement, any>((props, ref) => {
       </div>
 
       <div className="flex items-center gap-2.5 px-3.5">
-        <a href="/" className="btn btn-dark btn-sm justify-center min-w-[198px]">
+        <Link to="public-profile/projects/3-columns" className="btn btn-dark btn-sm justify-center min-w-[198px]">
           <KeenIcon icon="plus" />
           Add New
-        </a>
+        </Link> 
 
         <button className="btn btn-icon btn-dark btn-icon-lg size-8 hover:text-primary">
           <KeenIcon icon="magnifier" />
