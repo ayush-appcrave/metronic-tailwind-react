@@ -67,7 +67,7 @@ const Connections = ({ url }: IConnectionsProps) => {
   const renderItem = (table: IConnectionsItem, index: number) => {
     return (
       <tr key={index}>
-        <td className="py-3.5">
+        <td>
           <div className="flex items-center grow gap-2.5">
             <img
               src={toAbsoluteUrl(`/media/avatars/${table.avatar}`)}
@@ -101,7 +101,7 @@ const Connections = ({ url }: IConnectionsProps) => {
         </td>
 
         <td className="text-right">
-          <Menu className="items-stretch">
+          <Menu className="inline-flex">
             <MenuItem
               toggle="dropdown"
               trigger="click"
