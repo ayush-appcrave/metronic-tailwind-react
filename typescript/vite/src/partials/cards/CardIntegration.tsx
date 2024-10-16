@@ -32,11 +32,11 @@ const CardIntegration = ({ logo, path, name, description, actions }: IIntegratio
         <div className="flex flex-col gap-1 lg:gap-2.5">
           <Link
             to={`${path}`}
-            className="text-base font-semibold text-gray-900 hover:text-primary-active"
+            className="text-base font-medium text-gray-900 hover:text-primary-active"
           >
             {name}
           </Link>
-          <span className="text-2sm font-medium text-gray-600">{description}</span>
+          <span className="text-2sm text-gray-700">{description}</span>
         </div>
       </div>
 

@@ -97,7 +97,7 @@ const CompanyProfile = () => {
   return (
     <div className="card">
       <div className="card-header">
-        <h3 className="card-title">ProfileCompany Profile</h3>
+        <h3 className="card-title">Company Profile</h3>
       </div>
       <div className="card-body">
         <h3 className="text-base font-semibold text-gray-900 leading-none mb-5">Headquarter</h3>
@@ -126,7 +126,7 @@ const CompanyProfile = () => {
 
         <div className="grid gap-2.5 mb-7">
           <div className="text-md font-semibold text-gray-900">About</div>
-          <p className="text-sm text-gray-700 font-medium leading-5.5">
+          <p className="text-sm text-gray-800 leading-5.5">
             Now that I’m done thoroughly mangling that vague metaphor, let’s get down to business.
             You know you need to start blogging to grow your business, but you don’t know how. In
             this post, I’ll show you how to write a great blog post in five simple steps that people
