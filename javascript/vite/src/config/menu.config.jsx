@@ -732,22 +732,22 @@ export const MENU_MEGA = [{
       badge: 'Datatables',
       children: [{
         title: 'Team Crew',
-        path: '/network/user-base/team-crew'
+        path: '/network/user-table/team-crew'
       }, {
         title: 'App Roster',
-        path: '/network/user-base/app-roster'
+        path: '/network/user-table/app-roster'
       }, {
         title: 'Market Authors',
-        path: '/network/user-base/market-authors'
+        path: '/network/user-table/market-authors'
       }, {
         title: 'SaaS Users',
-        path: '/network/user-base/saas-users'
+        path: '/network/user-table/saas-users'
       }, {
         title: 'Store Clients',
-        path: '/network/user-base/store-clients'
+        path: '/network/user-table/store-clients'
       }, {
         title: 'Visitors',
-        path: '/network/user-base/visitors'
+        path: '/network/user-table/visitors'
       }]
     }]
   }]

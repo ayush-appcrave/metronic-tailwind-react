@@ -73,12 +73,12 @@ const AppRoutingSetup = () => {
           <Route path="/network/user-cards/author" element={<NetworkAuthorPage />} />
           <Route path="/network/user-cards/nft" element={<NetworkNFTPage />} />
           <Route path="/network/user-cards/social" element={<NetworkSocialPage />} />
-          <Route path="/network/user-base/team-crew" element={<NetworkUserTableTeamCrewPage />} />
-          <Route path="/network/user-base/app-roster" element={<NetworkAppRosterPage />} />
-          <Route path="/network/user-base/market-authors" element={<NetworkMarketAuthorsPage />} />
-          <Route path="/network/user-base/saas-users" element={<NetworkSaasUsersPage />} />
-          <Route path="/network/user-base/store-clients" element={<NetworkStoreClientsPage />} />
-          <Route path="/network/user-base/visitors" element={<NetworkVisitorsPage />} />
+          <Route path="/network/user-table/team-crew" element={<NetworkUserTableTeamCrewPage />} />
+          <Route path="/network/user-table/app-roster" element={<NetworkAppRosterPage />} />
+          <Route path="/network/user-table/market-authors" element={<NetworkMarketAuthorsPage />} />
+          <Route path="/network/user-table/saas-users" element={<NetworkSaasUsersPage />} />
+          <Route path="/network/user-table/store-clients" element={<NetworkStoreClientsPage />} />
+          <Route path="/network/user-table/visitors" element={<NetworkVisitorsPage />} />
           <Route path="/auth/welcome-message" element={<AuthenticationWelcomeMessagePage />} />
           <Route path="/auth/account-deactivated" element={<AuthenticationAccountDeactivatedPage />} />
           <Route path="/authentication/get-started" element={<AuthenticationGetStartedPage />} />

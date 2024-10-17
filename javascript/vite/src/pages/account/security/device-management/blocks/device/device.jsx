@@ -1,6 +1,6 @@
 /* eslint-disable prettier/prettier */
 import { useMemo } from 'react';
-import { DataGrid, KeenIcon } from '@/components';
+import { DataGrid, DefaultTooltip, KeenIcon } from '@/components';
 import { DeviceData } from '.';
 const Device = () => {
   const columns = useMemo(() => [{
@@ -56,11 +56,10 @@ const Device = () => {
     accessorFn: row => row.added,
     id: 'added',
     header: () => <>
-            <KeenIcon icon="information-2" className="text-lg leading-none " />
-            <span className="tooltip max-w-48">
-              Time is based on your local timezone.
-            </span>
-            Added
+            <DefaultTooltip title="Verify the identity of a user trying to access a resource" placement="left" className="max-w-48">
+              <KeenIcon icon="information-2" className="text-lg leading-none" />
+            </DefaultTooltip>
+            Method
           </>,
     enableSorting: true,
     meta: {

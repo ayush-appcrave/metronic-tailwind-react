@@ -31,7 +31,7 @@ const SidebarMenuDefault = () => {
             {buildMenuChildren(item.children, item.collapse ? level : level + 1)}
           </MenuSub>
         </MenuItem>;
-    } else {
+    } else if (!item.disabled) {
       return <MenuItem key={index}>
           <MenuLink path={item.path} className={clsx('py-2 pe-2.5 rounded-md border border-transparent menu-item-active:border-gray-200 menu-item-active:bg-light menu-link-hover:bg-light menu-link-hover:border-gray-200', indention[level])}>
             <MenuTitle className="text-2sm text-gray-800 menu-item-active:font-medium menu-item-active:text-primary menu-link-hover:text-primary">
