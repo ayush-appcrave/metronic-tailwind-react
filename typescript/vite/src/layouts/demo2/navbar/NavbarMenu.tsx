@@ -33,7 +33,7 @@ const NavbarMenu = () => {
         return (
           <MenuItem
             key={index}
-            className="border-b border-b-transparent menu-item-active:border-b-gray-900 menu-item-here:border-b-gray-900"
+            className="border-b-2 border-b-transparent menu-item-active:border-b-gray-900 menu-item-here:border-b-gray-900"
             trigger="hover"
             toggle="dropdown"
             dropdownProps={{
@@ -53,7 +53,7 @@ const NavbarMenu = () => {
             </MenuSub>
           </MenuItem>
         );
-      } else {
+      } else if (!item.disabled) {
         return (
           <MenuItem
             key={index}
@@ -93,7 +93,7 @@ const NavbarMenu = () => {
             </MenuSub>
           </MenuItem>
         );
-      } else {
+      } else if (!item.disabled) {
         return (
           <MenuItem key={index}>
             <MenuLink path={item.path}>

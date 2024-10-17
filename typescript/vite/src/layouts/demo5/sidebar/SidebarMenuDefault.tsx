@@ -55,7 +55,7 @@ const SidebarMenuDefault = () => {
           </MenuSub>
         </MenuItem>
       );
-    } else {
+    } else if (!item.disabled) {
       return (
         <MenuItem key={index}>
           <MenuLink
