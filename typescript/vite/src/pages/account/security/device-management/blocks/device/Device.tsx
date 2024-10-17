@@ -2,7 +2,7 @@
 import { useMemo } from 'react';
 import { ColumnDef } from '@tanstack/react-table';
 
-import { DataGrid, KeenIcon } from '@/components';
+import { DataGrid, DefaultTooltip, KeenIcon } from '@/components';
 
 import { DeviceData, IDeviceData } from '.';
 
@@ -65,11 +65,10 @@ const Device = () => {
         id: 'added',
         header: () => (
           <>
-            <KeenIcon icon="information-2" className="text-lg leading-none " />
-            <span className="tooltip max-w-48">
-              Time is based on your local timezone.
-            </span>
-            Added
+            <DefaultTooltip title="Verify the identity of a user trying to access a resource" placement="left" className="max-w-48">
+              <KeenIcon icon="information-2" className="text-lg leading-none" />
+            </DefaultTooltip>
+            Method
           </>
         ),
         enableSorting: true, 

@@ -66,7 +66,7 @@ const SecurityLog = () => {
         enableSorting: true,
         cell: (info) => info.getValue(),
         meta: {
-          className: 'min-w-[130px]',
+          className: 'min-w-[140px]',
         },
       },
       {
