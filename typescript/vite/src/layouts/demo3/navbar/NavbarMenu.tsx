@@ -53,7 +53,7 @@ const NavbarMenu = () => {
             </MenuSub>
           </MenuItem>
         );
-      } else {
+      } else if (!item.disabled) {
         return (
           <MenuItem
             key={index}
@@ -93,7 +93,7 @@ const NavbarMenu = () => {
             </MenuSub>
           </MenuItem>
         );
-      } else {
+      } else if (!item.disabled) {
         return (
           <MenuItem key={index}>
             <MenuLink path={item.path}>

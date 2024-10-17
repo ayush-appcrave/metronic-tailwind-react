@@ -75,7 +75,7 @@ import {
 
 import { AuthPage } from '@/auth';
 import { RequireAuth } from '@/auth/RequireAuth';
-import { Demo1Layout } from '@/layouts/demo1';
+import { Demo3Layout } from '@/layouts/demo3';
 import { ErrorsRouting } from '@/errors';
 import {
   AuthenticationWelcomeMessagePage,
@@ -87,7 +87,7 @@ const AppRoutingSetup = (): ReactElement => {
   return (
     <Routes>
       <Route element={<RequireAuth />}>
-        <Route element={<Demo1Layout />}>
+        <Route element={<Demo3Layout />}>
           <Route path="/" element={<DefaultPage />} />
           <Route path="/dark-sidebar" element={<Demo1DarkSidebarPage />} />
           <Route path="/public-profile/profiles/default" element={<ProfileDefaultPage />} />
@@ -173,12 +173,12 @@ const AppRoutingSetup = (): ReactElement => {
           <Route path="/network/user-cards/author" element={<NetworkAuthorPage />} />
           <Route path="/network/user-cards/nft" element={<NetworkNFTPage />} />
           <Route path="/network/user-cards/social" element={<NetworkSocialPage />} />
-          <Route path="/network/user-base/team-crew" element={<NetworkUserTableTeamCrewPage />} />
-          <Route path="/network/user-base/app-roster" element={<NetworkAppRosterPage />} />
-          <Route path="/network/user-base/market-authors" element={<NetworkMarketAuthorsPage />} />
-          <Route path="/network/user-base/saas-users" element={<NetworkSaasUsersPage />} />
-          <Route path="/network/user-base/store-clients" element={<NetworkStoreClientsPage />} />
-          <Route path="/network/user-base/visitors" element={<NetworkVisitorsPage />} />
+          <Route path="/network/user-table/team-crew" element={<NetworkUserTableTeamCrewPage />} />
+          <Route path="/network/user-table/app-roster" element={<NetworkAppRosterPage />} />
+          <Route path="/network/user-table/market-authors" element={<NetworkMarketAuthorsPage />} />
+          <Route path="/network/user-table/saas-users" element={<NetworkSaasUsersPage />} />
+          <Route path="/network/user-table/store-clients" element={<NetworkStoreClientsPage />} />
+          <Route path="/network/user-table/visitors" element={<NetworkVisitorsPage />} />
           <Route path="/auth/welcome-message" element={<AuthenticationWelcomeMessagePage />} />
           <Route
             path="/auth/account-deactivated"
