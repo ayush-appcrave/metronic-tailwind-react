@@ -1,7 +1,7 @@
 /* eslint-disable no-unused-vars */
 import { createContext, type PropsWithChildren, useContext, useState } from 'react';
 
-import { defaultSettings, ISettings, type TSettingsMode } from '@/config/settings.config';
+import { defaultSettings, ISettings, type TSettingsThemeMode } from '@/config/settings.config';
 
 import { getData, setData } from '@/utils';
 
@@ -9,7 +9,7 @@ export interface ISettingsProps {
   settings: ISettings;
   storeSettings: (settings: Partial<ISettings>) => void;
   updateSettings: (settings: Partial<ISettings>) => void;
-  getMode: () => TSettingsMode;
+  getThemeMode: () => TSettingsThemeMode;
 }
 
 const SETTINGS_CONFIGS_KEY = 'settings-configs';
@@ -22,7 +22,7 @@ const initialProps: ISettingsProps = {
   settings: { ...defaultSettings, ...getStoredSettings() },
   updateSettings: (settings: Partial<ISettings>) => {},
   storeSettings: (settings: Partial<ISettings>) => {},
-  getMode: () => 'light'
+  getThemeMode: () => 'light'
 };
 
 const LayoutsContext = createContext<ISettingsProps>(initialProps);
@@ -40,12 +40,12 @@ const SettingsProvider = ({ children }: PropsWithChildren) => {
     updateSettings(newSettings);
   };
 
-  const getMode = (): TSettingsMode => {
-    const { mode } = settings;
+  const getThemeMode = (): TSettingsThemeMode => {
+    const { themeMode } = settings;
 
-    if (mode === 'system') {
+    if (themeMode === 'system') {
       return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
-    } else if (mode === 'dark') {
+    } else if (themeMode === 'dark') {
       return 'dark';
     } else {
       return 'light';
@@ -53,7 +53,7 @@ const SettingsProvider = ({ children }: PropsWithChildren) => {
   };
 
   return (
-    <LayoutsContext.Provider value={{ settings, updateSettings, storeSettings, getMode }}>
+    <LayoutsContext.Provider value={{ settings, updateSettings, storeSettings, getThemeMode }}>
       {children}
     </LayoutsContext.Provider>
   );

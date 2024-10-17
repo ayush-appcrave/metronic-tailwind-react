@@ -12,7 +12,7 @@ const App = () => {
   useEffect(() => {
     document.documentElement.classList.remove('dark');
     document.documentElement.classList.remove('light');
-    document.documentElement.classList.add(settings.mode);
+    document.documentElement.classList.add(settings.themeMode);
   }, [settings]);
 
   return (

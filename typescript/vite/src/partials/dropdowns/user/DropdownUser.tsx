@@ -21,10 +21,10 @@ const DropdownUser = () => {
 
   const handleThemeMode = (event: ChangeEvent<HTMLInputElement>) => {
     console.log('checked:' + event.target.checked);
-    const newMode = event.target.checked ? 'dark' : 'light';
+    const newThemeMode = event.target.checked ? 'dark' : 'light';
 
     storeSettings({
-      mode: newMode
+      themeMode: newThemeMode
     });
   };
 
@@ -200,7 +200,7 @@ const DropdownUser = () => {
               <input
                 name="theme"
                 type="checkbox"
-                checked={settings.mode === 'dark'}
+                checked={settings.themeMode === 'dark'}
                 onChange={handleThemeMode}
                 value="1"
               />
