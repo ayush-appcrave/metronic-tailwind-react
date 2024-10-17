@@ -14,7 +14,6 @@ import {
 import { MENU_ROOT } from '@/config';
 import { KeenIcon } from '@/components';
 import { ModalSearch } from '@/partials/modals/search/ModalSearch';
-import { MegaMenuSubDropdown } from '@/partials/menu/mega-menu';
 
 const SidebarHeader = forwardRef<HTMLDivElement, any>((props, ref) => {
   const { pathname } = useLocation();
@@ -48,7 +47,7 @@ const SidebarHeader = forwardRef<HTMLDivElement, any>((props, ref) => {
           <MenuItem
             className="grow"
             toggle="dropdown"
-            trigger="hover"
+            trigger="click"
             dropdownProps={{
               placement: 'bottom-start',
               modifiers: [
@@ -73,10 +72,10 @@ const SidebarHeader = forwardRef<HTMLDivElement, any>((props, ref) => {
               </div>
             </MenuLabel>
 
-            <div className="menu-dropdown w-48 py-2">
+            <MenuSub className="menu-default w-48 py-2" baseClassName="dark">
               {MENU_ROOT.map((item, index) => (
                 <MenuItem key={index} className={item === selectedMenuItem ? 'active' : ''}>
-                  <MenuLink path={item.path} >
+                  <MenuLink path={item.path}>
                     {item.icon && (
                       <MenuIcon>
                         <KeenIcon icon={item.icon} />
@@ -86,16 +85,19 @@ const SidebarHeader = forwardRef<HTMLDivElement, any>((props, ref) => {
                   </MenuLink>
                 </MenuItem>
               ))}
-            </div>
+            </MenuSub>
           </MenuItem>
         </Menu>
       </div>
 
       <div className="flex items-center gap-2.5 px-3.5">
-        <Link to="public-profile/projects/3-columns" className="btn btn-dark btn-sm justify-center min-w-[198px]">
+        <Link
+          to="public-profile/projects/3-columns"
+          className="btn btn-dark btn-sm justify-center min-w-[198px]"
+        >
           <KeenIcon icon="plus" />
           Add New
-        </Link> 
+        </Link>
 
         <div className="flex items-center">
           <button
@@ -105,7 +107,7 @@ const SidebarHeader = forwardRef<HTMLDivElement, any>((props, ref) => {
             <KeenIcon icon="magnifier" />
           </button>
           <ModalSearch open={searchModalOpen} onClose={handleSearchModalClose} />
-        </div> 
+        </div>
       </div>
     </div>
   );
