@@ -13,10 +13,18 @@ import {
 } from '@/components/menu';
 import { MENU_ROOT } from '@/config';
 import { KeenIcon } from '@/components';
+import { ModalSearch } from '@/partials/modals/search/ModalSearch';
+import { MegaMenuSubDropdown } from '@/partials/menu/mega-menu';
 
 const SidebarHeader = forwardRef<HTMLDivElement, any>((props, ref) => {
   const { pathname } = useLocation();
   const [selectedMenuItem, setSelectedMenuItem] = useState(MENU_ROOT[1]);
+
+  const [searchModalOpen, setSearchModalOpen] = useState(false);
+  const handleSearchModalOpen = () => setSearchModalOpen(true);
+  const handleSearchModalClose = () => {
+    setSearchModalOpen(false);
+  };
 
   useEffect(() => {
     MENU_ROOT.forEach((item) => {
@@ -29,7 +37,7 @@ const SidebarHeader = forwardRef<HTMLDivElement, any>((props, ref) => {
   return (
     <div ref={ref} className="flex flex-col gap-2.5">
       <div className="flex items-center gap-2.5 px-3.5 h-[70px]">
-        <Link to="/">
+        <Link to="/index.html">
           <img
             src={toAbsoluteUrl('/media/app/mini-logo-circle-success.svg')}
             className="h-[34px]"
@@ -54,8 +62,8 @@ const SidebarHeader = forwardRef<HTMLDivElement, any>((props, ref) => {
             }}
           >
             <MenuLabel className="cursor-pointer text-gray-900 font-medium grow justify-between">
-              <MenuTitle className="!text-lg font-medium text-inverse grow">Metronic</MenuTitle>
-              <div className="flex flex-col text-2xs text-gray-900 font-medium">
+              <span className="text-lg font-medium text-inverse grow">Metronic</span>
+              <div className="flex flex-col text-gray-900 font-medium">
                 <MenuArrow>
                   <KeenIcon icon="up" />
                 </MenuArrow>
@@ -65,10 +73,10 @@ const SidebarHeader = forwardRef<HTMLDivElement, any>((props, ref) => {
               </div>
             </MenuLabel>
 
-            <MenuSub className="menu-default w-48 py-2">
+            <div className="menu-dropdown w-48 py-2">
               {MENU_ROOT.map((item, index) => (
                 <MenuItem key={index} className={item === selectedMenuItem ? 'active' : ''}>
-                  <MenuLink path={item.path}>
+                  <MenuLink path={item.path} >
                     {item.icon && (
                       <MenuIcon>
                         <KeenIcon icon={item.icon} />
@@ -78,20 +86,26 @@ const SidebarHeader = forwardRef<HTMLDivElement, any>((props, ref) => {
                   </MenuLink>
                 </MenuItem>
               ))}
-            </MenuSub>
+            </div>
           </MenuItem>
         </Menu>
       </div>
 
       <div className="flex items-center gap-2.5 px-3.5">
-        <a href="/" className="btn btn-dark btn-sm justify-center min-w-[198px]">
+        <Link to="public-profile/projects/3-columns" className="btn btn-dark btn-sm justify-center min-w-[198px]">
           <KeenIcon icon="plus" />
           Add New
-        </a>
+        </Link> 
 
-        <button className="btn btn-icon btn-dark btn-icon-lg size-8 hover:text-primary">
-          <KeenIcon icon="magnifier" />
-        </button>
+        <div className="flex items-center">
+          <button
+            onClick={handleSearchModalOpen}
+            className="btn btn-icon btn-dark btn-icon-lg size-8 hover:text-primary"
+          >
+            <KeenIcon icon="magnifier" />
+          </button>
+          <ModalSearch open={searchModalOpen} onClose={handleSearchModalClose} />
+        </div> 
       </div>
     </div>
   );

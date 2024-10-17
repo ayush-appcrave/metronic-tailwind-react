@@ -13,8 +13,7 @@ const SidebarMenu = ({ height = 0 }: ISidebarMenuProps) => {
           ...(height > 0 && { height: `${height}px` })
         }}
       >
-        <SidebarMenuPrimary />
-        <div className="border-b border-gray-300 mt-4 mb-1 mx-3.5"></div>
+        <SidebarMenuPrimary /> 
         <SidebarMenuSecondary />
       </div>
     </div>
