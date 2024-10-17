@@ -7,3 +7,4 @@ export * from './data-grid';
 export * from './modal';
 export * from './tabs';
 export * from './drawer';
+export * from './tooltip';

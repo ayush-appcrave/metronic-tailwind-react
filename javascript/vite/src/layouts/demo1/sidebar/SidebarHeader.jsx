@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import { useDemo1Layout } from '../';
 import { toAbsoluteUrl } from '@/utils';
 import { SidebarToggle } from './';
-const SidebarHeader = forwardRef(() => {
+const SidebarHeader = forwardRef((props, ref) => {
   const {
     layout
   } = useDemo1Layout();
@@ -21,7 +21,7 @@ const SidebarHeader = forwardRef(() => {
       <img src={toAbsoluteUrl('/media/app/default-logo-dark.svg')} className="default-logo min-h-[22px] max-w-none" />
       <img src={toAbsoluteUrl('/media/app/mini-logo.svg')} className="small-logo min-h-[22px] max-w-none" />
     </Link>;
-  return <div className="sidebar-header hidden lg:flex items-center relative justify-between px-6 shrink-0">
+  return <div ref={ref} className="sidebar-header hidden lg:flex items-center relative justify-between px-6 shrink-0">
       {layout.options.sidebar.theme === 'light' ? lightLogo() : darkLogo()}
       <SidebarToggle />
     </div>;

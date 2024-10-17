@@ -8,7 +8,7 @@ import { ModalSearchDocs, ModalSearchMixed, ModalSearchSettings, ModalSearchInte
 const ModalSearch = forwardRef(({
   open,
   onClose
-}) => {
+}, ref) => {
   const [scrollableHeight, setScrollableHeight] = useState(0);
   const [viewportHeight] = useViewport();
   const offset = 300;
@@ -233,7 +233,7 @@ const ModalSearch = forwardRef(({
     label: 'Remote',
     color: 'badge-primary'
   }];
-  return <Modal open={open} onClose={onClose}>
+  return <Modal open={open} onClose={onClose} ref={ref}>
       <ModalContent className="max-w-[600px] top-[15%]">
         <ModalHeader className="py-4 px-5">
           <KeenIcon icon="magnifier" className="text-gray-700 text-xl" />

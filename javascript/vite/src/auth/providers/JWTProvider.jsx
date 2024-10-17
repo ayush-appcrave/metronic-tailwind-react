@@ -67,7 +67,7 @@ const AuthProvider = ({
     }
   };
 
-  // Register user using default registraion information
+  // Register user using default registration information
   const register = async (email, password, firstname, lastname, password_confirmation) => {
     try {
       const {

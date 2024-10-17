@@ -50,7 +50,7 @@ const Backup = () => {
             </div>;
     },
     meta: {
-      className: 'w-[260px]'
+      className: 'min-w-[260px]'
     }
   }, {
     id: 'edit',
@@ -80,7 +80,7 @@ const Backup = () => {
   const data = useMemo(() => BackupData, []);
   return <div className="card card-grid h-full min-w-full">
       <div className="card-header">
-        <h3 className="card-title">Devices</h3>
+        <h3 className="card-title">Backups</h3>
 
         <label className="switch switch-sm">
           <span className="switch-label">
@@ -91,10 +91,12 @@ const Backup = () => {
       </div>
 
       <div className="card-body">
-        <DataGrid columns={columns} data={data} rowSelect={true} paginationSize={10} initialSorting={[{
+        <DataGrid columns={columns} data={data} rowSelect={true} pagination={{
+        size: 10
+      }} sorting={[{
         id: 'when',
         desc: false
-      }]} saveState={true} saveStateId='backup-grid' />
+      }]} />
       </div>
     </div>;
 };

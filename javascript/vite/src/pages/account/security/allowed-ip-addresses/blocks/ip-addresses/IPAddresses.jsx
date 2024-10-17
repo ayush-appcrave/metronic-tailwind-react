@@ -1,6 +1,6 @@
 /* eslint-disable prettier/prettier */
 import { useMemo } from 'react';
-import { DataGrid, KeenIcon } from '@/components';
+import { DataGrid, DefaultTooltip, KeenIcon } from '@/components';
 import { IPAddressesData } from '.';
 const IPAddresses = () => {
   const columns = useMemo(() => [{
@@ -18,6 +18,7 @@ const IPAddresses = () => {
     id: 'ipAddress',
     header: () => 'IP Address',
     enableSorting: true,
+    cell: info => info.getValue(),
     meta: {
       className: 'min-w-[250px]'
     }
@@ -26,6 +27,7 @@ const IPAddresses = () => {
     id: 'lastSession',
     header: () => 'Last Session',
     enableSorting: true,
+    cell: info => info.getValue(),
     meta: {
       className: 'w-[185px]'
     }
@@ -34,6 +36,7 @@ const IPAddresses = () => {
     id: 'label',
     header: () => 'Label',
     enableSorting: true,
+    cell: info => info.getValue(),
     meta: {
       className: 'w-[185px]'
     }
@@ -41,13 +44,13 @@ const IPAddresses = () => {
     accessorFn: row => row.method,
     id: 'method',
     header: () => <>
-            <KeenIcon icon="information-2" className="text-lg leading-none" />
-            <span className="tooltip max-w-48">
-              Verify the identity of a user trying to access a resource
-            </span>
+            <DefaultTooltip title="Verify the identity of a user trying to access a resource" placement="left" className="max-w-48">
+              <KeenIcon icon="information-2" className="text-lg leading-none" />
+            </DefaultTooltip>
             Method
           </>,
     enableSorting: true,
+    cell: info => info.getValue(),
     meta: {
       className: 'w-[185px]'
     }
@@ -93,10 +96,12 @@ const IPAddresses = () => {
       </div>
 
       <div className="card-body">
-        <DataGrid columns={columns} data={data} rowSelect={true} paginationSize={10} initialSorting={[{
-        id: 'ip-address',
+        <DataGrid columns={columns} data={data} rowSelect={true} pagination={{
+        size: 10
+      }} sorting={[{
+        id: 'method',
         desc: false
-      }]} saveState={true} saveStateId='ip-addresses-grid' />
+      }]} />
       </div>
     </div>;
 };

@@ -149,7 +149,6 @@ const MyBalance = ({
       fillOpacity: 1,
       discrete: [],
       shape: 'circle',
-      radius: 2,
       offsetX: 0,
       offsetY: 0,
       onClick: undefined,
@@ -162,7 +161,6 @@ const MyBalance = ({
     },
     fill: {
       gradient: {
-        enabled: true,
         opacityFrom: 0.25,
         opacityTo: 0
       }
@@ -170,7 +168,6 @@ const MyBalance = ({
     grid: {
       borderColor: 'var(--tw-gray-200)',
       strokeDashArray: 5,
-      clipMarkers: false,
       yaxis: {
         lines: {
           show: true

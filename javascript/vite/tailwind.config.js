@@ -445,20 +445,20 @@ module.exports = {
           }
         },
         container: {
-          fixed: {
-            px: {
-              DEFAULT: theme('spacing.6'),
-              xl: theme('spacing.10')
-            },
-            'max-width': theme('screens.xl')
-          },
-          fluid: {
-            px: {
-              DEFAULT: theme('spacing.6'),
-              lg: theme('spacing.10')
-            }
-          }
-        },
+					fixed: {
+						px: {
+							DEFAULT: theme('spacing')['6'],
+							xl: theme('spacing')['7.5']
+						},
+						'max-width': theme('screens.xl')
+					},
+					fluid: {
+						px: {
+							DEFAULT: theme('spacing')['6'],
+							xl: theme('spacing')['7.5']
+						}
+					}
+				},
         btn: {
           xs: {
             height: '1.75rem',

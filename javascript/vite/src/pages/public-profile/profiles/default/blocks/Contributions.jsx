@@ -19,8 +19,7 @@ const Contributions = ({
     },
     stroke: {
       show: true,
-      width: 2,
-      colors: 'var(--tw-light)'
+      width: 2
     },
     dataLabels: {
       enabled: false
@@ -41,10 +40,6 @@ const Contributions = ({
       labels: {
         colors: 'var(--tw-gray-700)',
         useSeriesColors: false
-      },
-      markers: {
-        width: 8,
-        height: 8
       }
     },
     responsive: [{

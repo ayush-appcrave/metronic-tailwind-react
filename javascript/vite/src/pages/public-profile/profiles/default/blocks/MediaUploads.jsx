@@ -111,7 +111,6 @@ const MediaUploads = () => {
       strokeDashArray: 0,
       fillOpacity: 1,
       shape: 'circle',
-      radius: 2,
       showNullDataPoints: true,
       hover: {
         size: 8,
@@ -123,7 +122,6 @@ const MediaUploads = () => {
     },
     fill: {
       gradient: {
-        enabled: true,
         opacityFrom: 0.25,
         opacityTo: 0
       }
@@ -131,7 +129,6 @@ const MediaUploads = () => {
     grid: {
       borderColor: 'var(--tw-gray-200)',
       strokeDashArray: 5,
-      clipMarkers: false,
       yaxis: {
         lines: {
           show: true

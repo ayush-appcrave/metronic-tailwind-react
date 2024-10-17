@@ -10,7 +10,8 @@ import { usePathname } from '@/providers';
 const Sidebar = () => {
   const selfRef = useRef(null);
   const headerRef = useRef(null);
-  const [contentHeight, setContentHeight] = useState(0);
+  const [scrollableHeight, setScrollableHeight] = useState(0);
+  const scrollableOffset = 40;
   const [viewportHeight] = useViewport();
   const {
     pathname,
@@ -19,10 +20,10 @@ const Sidebar = () => {
   useEffect(() => {
     if (headerRef.current) {
       const headerHeight = getHeight(headerRef.current);
-      const availableHeight = viewportHeight - headerHeight;
-      setContentHeight(availableHeight);
+      const availableHeight = viewportHeight - headerHeight - scrollableOffset;
+      setScrollableHeight(availableHeight);
     } else {
-      setContentHeight(viewportHeight);
+      setScrollableHeight(viewportHeight);
     }
   }, [viewportHeight]);
   const desktopMode = useResponsive('up', 'lg');
@@ -48,15 +49,16 @@ const Sidebar = () => {
     return <div ref={selfRef} onMouseLeave={handleMouseLeave} onMouseEnter={handleMouseEnter} className={clsx('sidebar lg:fixed lg:z-20 lg:top-0 lg:bottom-0 lg:start-0 lg:translate-x-0 flex flex-col items-stretch shrink-0 bg-light lg:border lg:border-r-gray-200', themeClass)}>
         {desktopMode && <SidebarHeader ref={headerRef} />}
         <SidebarContent {...desktopMode && {
-        height: contentHeight
+        height: scrollableHeight
       }} />
       </div>;
   };
   useEffect(() => {
+    // Hide drawer on route chnage after menu link click
     if (!desktopMode && prevPathname !== pathname) {
       handleMobileSidebarClose();
     }
-  }, [desktopMode, handleMobileSidebarClose, pathname, prevPathname]);
+  }, [desktopMode, pathname, prevPathname]);
   if (desktopMode) {
     return renderContent();
   } else {

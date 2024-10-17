@@ -80,10 +80,12 @@ const ApiIntegrations = () => {
       </div>
 
       <div className="card-body scrollable-x-auto">
-        <DataGrid columns={columns} data={data} rowSelect={false} paginationSize={10} initialSorting={[{
+        <DataGrid columns={columns} data={data} rowSelect={false} pagination={{
+        size: 10
+      }} sorting={[{
         id: 'api-integrations',
         desc: false
-      }]} saveState={true} saveStateId='api-integrations-grid' />
+      }]} />
       </div>
 
       <CrudCardFooter />

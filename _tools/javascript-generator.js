@@ -30,7 +30,6 @@ const filesToCopy = [
   "src/main.tsx",
   "src/index.css",
   ".env",
-  "tailwind.config.d.ts",
   "tailwind.config.js",
   "postcss.config.cjs",
   "index.html",

@@ -14,7 +14,7 @@ const CardNFT = ({
 
       <div className="card-border card-rounded-b px-3.5 pt-5 pb-3.5">
         <div className="pb-6">
-          <a href="#" className="font-block font-medium text-gray-900 hover:text-primary text-md leading-4 mb-2">
+          <a href="#" className="block font-medium text-gray-900 hover:text-primary text-md leading-4 mb-2">
             {title}
           </a>
           <div className="text-2sm text-gray-700">

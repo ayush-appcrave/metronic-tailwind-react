@@ -12,19 +12,6 @@ const getAuth = () => {
     console.error('AUTH LOCAL STORAGE PARSE ERROR', error);
   }
 };
-const getAuth0 = () => {
-  try {
-    const auth = getData(AUTH_LOCAL_STORAGE_KEY);
-    if (auth) {
-      // You can easily check auth_token expiration also
-      return auth;
-    } else {
-      return undefined;
-    }
-  } catch (error) {
-    console.error('AUTH LOCAL STORAGE PARSE ERROR', error);
-  }
-};
 const setAuth = auth => {
   setData(AUTH_LOCAL_STORAGE_KEY, auth);
 };
@@ -48,4 +35,4 @@ export function setupAxios(axios) {
     return config;
   }, async err => await Promise.reject(err));
 }
-export { AUTH_LOCAL_STORAGE_KEY, getAuth, getAuth0, removeAuth, setAuth };
+export { AUTH_LOCAL_STORAGE_KEY, getAuth, removeAuth, setAuth };

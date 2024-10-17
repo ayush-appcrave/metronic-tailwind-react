@@ -55,7 +55,7 @@ const Users = () => {
             <span className="text-xs text-gray-600">{info.row.original.license.left}</span>
           </div>,
     meta: {
-      className: 'w-[175px]'
+      className: 'min-w-[175px]'
     }
   }, {
     accessorFn: row => row.payment,
@@ -64,7 +64,7 @@ const Users = () => {
     enableSorting: true,
     cell: info => info.row.original.payment,
     meta: {
-      className: 'w-[175px]',
+      className: 'min-w-[175px]',
       cellClassName: 'text-gray-800 font-medium'
     }
   }, {
@@ -74,7 +74,7 @@ const Users = () => {
     enableSorting: true,
     cell: info => <EnforceSwitch enforce={info.row.original.enforce} />,
     meta: {
-      className: 'w-[137px]'
+      className: 'min-w-[137px]'
     }
   }, {
     id: 'actions',
@@ -94,7 +94,7 @@ const Users = () => {
           <div className="flex">
             <label className="input input-sm">
               <KeenIcon icon="magnifier" />
-              <input placeholder="Search users" type="text" value="" />
+              <input placeholder="Search users" type="text" value="" readOnly />
             </label>
           </div>
 
@@ -119,10 +119,12 @@ const Users = () => {
       </div>
 
       <div className="card-body">
-        <DataGrid columns={columns} data={data} rowSelect={true} paginationSize={10} initialSorting={[{
-        id: 'users',
+        <DataGrid columns={columns} data={data} rowSelect={true} pagination={{
+        size: 10
+      }} sorting={[{
+        id: 'user',
         desc: false
-      }]} saveState={true} saveStateId="users-grid" />
+      }]} />
       </div>
     </div>;
 };

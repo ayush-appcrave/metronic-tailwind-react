@@ -114,7 +114,6 @@ const Scrollspy = ({
 
     // Attach the scroll event to the correct scrollable element
     scrollElement?.addEventListener('scroll', handleScroll);
-    console.log('init scroll event');
 
     // Check if there's a hash in the URL and scroll to the corresponding section
     setTimeout(() => {

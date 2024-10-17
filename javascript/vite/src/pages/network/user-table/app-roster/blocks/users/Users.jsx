@@ -38,7 +38,7 @@ const Users = () => {
     }
   }, {
     accessorFn: row => row.phone,
-    id: 'role',
+    id: 'phone',
     header: () => 'Phone',
     enableSorting: true,
     cell: info => {
@@ -154,10 +154,12 @@ const Users = () => {
       </div>
 
       <div className="card-body">
-        <DataGrid columns={columns} data={data} rowSelect={true} paginationSize={10} initialSorting={[{
-        id: 'team',
+        <DataGrid columns={columns} data={data} rowSelect={true} pagination={{
+        size: 5
+      }} sorting={[{
+        id: 'phone',
         desc: false
-      }]} saveState={true} saveStateId="Users-grid" />
+      }]} />
       </div>
     </div>;
 };

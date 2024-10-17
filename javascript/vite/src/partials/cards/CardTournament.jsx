@@ -22,10 +22,10 @@ const CardTournament = ({
           <img src={toAbsoluteUrl(`/media/brand-logos/${logo}`)} className="size" alt="" />
 
           <div className="grid grid-cols-1 gap-0.5">
-            <a href="#" className="text-gray-900 hover:text-primary-active text-md font-semibold mb-px">
+            <a href="#" className="text-gray-900 hover:text-primary-active text-md font-medium mb-px">
               {title}
             </a>
-            <time className="flex items-center gap-1.5 text-3xs font-medium text-gray-500">
+            <time className="flex items-center gap-1.5 text-3xs text-gray-600">
               <div className="rounded-full w-1.5 h-1.5 bg-danger gap-1.5"></div> {time}
             </time>
           </div>

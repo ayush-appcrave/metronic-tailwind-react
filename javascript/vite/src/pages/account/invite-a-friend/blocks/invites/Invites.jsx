@@ -68,9 +68,7 @@ const Invites = () => {
     id: 'recentlyActivity',
     header: () => 'Recent activity',
     enableSorting: true,
-    cell: info => {
-      return info.row.original.recentlyActivity;
-    },
+    cell: info => info.getValue(),
     meta: {
       className: 'min-w-[160px]',
       cellClassName: 'text-gray-700 font-normal'
@@ -138,10 +136,12 @@ const Invites = () => {
       </div>
 
       <div className="card-body">
-        <DataGrid columns={columns} data={filteredData} rowSelect={true} paginationSize={5} initialSorting={[{
-        id: 'invites',
+        <DataGrid columns={columns} data={filteredData} rowSelect={true} pagination={{
+        size: 5
+      }} sorting={[{
+        id: 'member',
         desc: false
-      }]} saveState={true} saveStateId='invites-grid' />
+      }]} />
       </div>
     </div>;
 };

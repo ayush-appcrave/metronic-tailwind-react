@@ -41,7 +41,7 @@ const Visitors = () => {
       return info.row.original.ipAddress;
     },
     meta: {
-      className: 'w-[190px]'
+      className: 'min-w-[190px]'
     }
   }, {
     accessorFn: row => row.location,
@@ -53,7 +53,7 @@ const Visitors = () => {
             <span className="leading-none text-gray-700">{info.row.original.location.name}</span>
           </div>,
     meta: {
-      className: 'w-[190px]'
+      className: 'min-w-[190px]'
     }
   }, {
     accessorFn: row => row.activity,
@@ -62,7 +62,7 @@ const Visitors = () => {
     enableSorting: true,
     cell: info => info.row.original.activity,
     meta: {
-      className: 'w-[150px]',
+      className: 'min-w-[150px]',
       cellClassName: 'text-gray-800 font-normal'
     }
   }, {
@@ -87,7 +87,7 @@ const Visitors = () => {
           <div className="flex">
             <label className="input input-sm">
               <KeenIcon icon="magnifier" />
-              <input placeholder="Search users" type="text" value="" />
+              <input placeholder="Search users" type="text" value="" readOnly />
             </label>
           </div>
 
@@ -112,10 +112,12 @@ const Visitors = () => {
       </div>
 
       <div className="card-body">
-        <DataGrid columns={columns} data={data} rowSelect={true} paginationSize={10} initialSorting={[{
-        id: 'current-sessions',
+        <DataGrid columns={columns} data={data} rowSelect={true} pagination={{
+        size: 10
+      }} sorting={[{
+        id: 'user',
         desc: false
-      }]} saveState={true} saveStateId='current-sessions-grid' />
+      }]} />
       </div>
     </div>;
 };

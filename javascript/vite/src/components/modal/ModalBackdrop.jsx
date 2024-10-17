@@ -1,8 +1,10 @@
+/* eslint-disable no-unused-vars */
 import clsx from 'clsx';
 import { forwardRef } from 'react';
 // Forwarding ref to ensure this component can hold a ref
 const ModalBackdrop = forwardRef(({
   className,
+  ownerState,
   ...props
 }, ref) => {
   const {

@@ -1,3 +1,4 @@
+import { Fragment } from 'react';
 import { Link } from 'react-router-dom';
 import { KeenIcon } from '@/components';
 const FeaturesHighlight = ({
@@ -24,11 +25,11 @@ const FeaturesHighlight = ({
             <p className="text-sm font-normal  text-gray-700 leading-5.5 mb-2.5">{description}</p>
 
             <div className="grid md:grid-cols-2 gap-2">
-              {features.map((feature, index) => <div key={index}>
+              {features.map((feature, index) => <Fragment key={index}>
                   {feature.map((cell, index) => {
                 return renderItem(cell, index);
               })}
-                </div>)}
+                </Fragment>)}
             </div>
           </div>
 

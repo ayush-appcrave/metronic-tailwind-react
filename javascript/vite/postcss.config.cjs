@@ -10,6 +10,6 @@ module.exports = {
       }
     },
     'tailwindcss': {},
-    'autoprefixer': {},
+    'autoprefixer': {}
   },
 };

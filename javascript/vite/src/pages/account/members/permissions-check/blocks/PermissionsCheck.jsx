@@ -51,7 +51,7 @@ const PermissionsCheck = () => {
     module: 'Merchant List',
     view: true,
     modify: true,
-    publish: true,
+    publish: false,
     configure: false
   }];
   const renderItem = (each, index) => {

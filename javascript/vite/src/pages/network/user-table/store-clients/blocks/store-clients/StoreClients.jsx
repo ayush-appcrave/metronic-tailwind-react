@@ -52,7 +52,7 @@ const StoreClients = () => {
             <span className="text-gray-800 font-normal">{info.row.original.location.name}</span>
           </div>,
     meta: {
-      className: 'w-[150px]'
+      className: 'min-w-[150px]'
     }
   }, {
     accessorFn: row => row.activity,
@@ -61,7 +61,7 @@ const StoreClients = () => {
     enableSorting: true,
     cell: info => info.row.original.activity,
     meta: {
-      className: 'w-[150px]',
+      className: 'min-w-[150px]',
       cellClassName: 'text-gray-800 font-normal'
     }
   }, {
@@ -70,7 +70,7 @@ const StoreClients = () => {
     enableSorting: true,
     cell: () => <button className="btn btn-link">View</button>,
     meta: {
-      className: 'w-[100px]',
+      className: 'min-w-[100px]',
       cellClassName: 'text-center'
     }
   }, {
@@ -95,7 +95,7 @@ const StoreClients = () => {
           <div className="flex">
             <label className="input input-sm">
               <KeenIcon icon="magnifier" />
-              <input placeholder="Search users" type="text" value="" />
+              <input placeholder="Search users" type="text" value="" readOnly />
             </label>
           </div>
 
@@ -120,10 +120,12 @@ const StoreClients = () => {
       </div>
 
       <div className="card-body">
-        <DataGrid columns={columns} data={data} rowSelect={true} paginationSize={10} initialSorting={[{
+        <DataGrid columns={columns} data={data} rowSelect={true} pagination={{
+        size: 10
+      }} sorting={[{
         id: 'user',
         desc: false
-      }]} saveState={true} saveStateId="users-grid" />
+      }]} />
       </div>
     </div>;
 };

@@ -22,7 +22,7 @@ const Teams = () => {
             </div>;
     },
     meta: {
-      className: 'w-[350px]',
+      className: 'min-w-[350px]',
       cellClassName: 'text-gray-700 font-normal'
     }
   }, {
@@ -117,10 +117,12 @@ const Teams = () => {
       </div>
 
       <div className="card-body">
-        <DataGrid columns={columns} data={filteredData} rowSelect={true} paginationSize={10} initialSorting={[{
+        <DataGrid columns={columns} data={filteredData} rowSelect={true} pagination={{
+        size: 10
+      }} sorting={[{
         id: 'team',
         desc: false
-      }]} saveState={true} saveStateId='teams-grid' />
+      }]} />
       </div>
     </div>;
 };

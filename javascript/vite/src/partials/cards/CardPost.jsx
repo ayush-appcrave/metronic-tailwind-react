@@ -15,7 +15,7 @@ const CardPost = ({
         <a href="#" className="font-medium text-brand text-2sm hover:text-primary">
           {label}
         </a>
-        <a href="#" className="font-semibold text-gray-900 text-lg leading-6 mb-1.5 hover:text-primary">
+        <a href="#" className="font-medium text-gray-900 text-lg leading-6 mb-1.5 hover:text-primary">
           {description}
         </a>
         <time className="flex items-center gap-1.5 text-2sm font-medium text-gray-600 leading-none">

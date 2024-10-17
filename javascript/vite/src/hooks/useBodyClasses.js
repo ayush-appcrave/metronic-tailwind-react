@@ -1,14 +1,19 @@
 import { useEffect } from 'react';
 const useBodyClasses = classNames => {
   useEffect(() => {
-    const classes = classNames.split(' ');
+    // Split classNames by spaces, including multi-line support
+    const classes = classNames.split(/\s+/).filter(Boolean); // Filter out empty strings
 
-    // Add classes to body when component mounts
-    classes.forEach(className => document.body.classList.add(className));
+    // Add each class to the body element when the component mounts
+    classes.forEach(className => {
+      document.body.classList.add(className);
+    });
 
-    // Cleanup function to remove classes when component unmounts
+    // Cleanup function to remove classes when the component unmounts
     return () => {
-      classes.forEach(className => document.body.classList.remove(className));
+      classes.forEach(className => {
+        document.body.classList.remove(className);
+      });
     };
   }, [classNames]); // Re-run the effect if classNames changes
 };

@@ -59,7 +59,7 @@ const Connections = () => {
         </td>
 
         <td className="text-right">
-          <Menu className="items-stretch">
+          <Menu className="inline-flex">
             <MenuItem toggle="dropdown" trigger="click" dropdownProps={{
             placement: 'bottom-end',
             modifiers: [{
@@ -82,7 +82,7 @@ const Connections = () => {
       <div className="card-header">
         <h3 className="card-title">Connections</h3>
 
-        <Menu className="items-stretch">
+        <Menu>
           <MenuItem toggle="dropdown" trigger="click" dropdownProps={{
           placement: 'bottom-end',
           modifiers: [{
@@ -92,7 +92,7 @@ const Connections = () => {
             }
           }]
         }}>
-            <MenuToggle className="btn btn-sm btn-icon btn-light btn-clear mb-2.5-">
+            <MenuToggle className="btn btn-sm btn-icon btn-light btn-clear">
               <KeenIcon icon="dots-vertical" />
             </MenuToggle>
             {DropdownCard2()}
@@ -103,16 +103,14 @@ const Connections = () => {
       <div className="card-table scrollable-x-auto">
         <div className="scrollable-auto">
           <table className="table align-middle text-2sm text-gray-600">
-            <thead>
+            <tbody>
               <tr className="bg-gray-100">
                 <th className="text-start font-medium min-w-48 py-2.5">Name</th>
                 <th className="text-right font-medium min-w-20 py-2.5">Joint Links</th>
                 <th className="text-right font-medium min-w-20 py-2.5">Status</th>
                 <th className="min-w-16"></th>
               </tr>
-            </thead>
 
-            <tbody>
               {tables.map((table, index) => {
               return renderItem(table, index);
             })}

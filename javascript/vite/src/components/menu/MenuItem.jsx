@@ -12,7 +12,7 @@ const MenuItemComponent = forwardRef(function MenuItem(props, ref) {
     toggle,
     trigger,
     dropdownProps,
-    dropdownZIndex = 100,
+    dropdownZIndex = 1300,
     disabled,
     tabIndex,
     className,
@@ -22,6 +22,7 @@ const MenuItemComponent = forwardRef(function MenuItem(props, ref) {
     onClick,
     containerProps: ContainerPropsProp = {},
     children,
+    open = false,
     level = 0,
     index = 0
   } = props;
@@ -53,11 +54,11 @@ const MenuItemComponent = forwardRef(function MenuItem(props, ref) {
   const propTrigger = useResponsiveProp(trigger, 'click');
   const propDropdownProps = useResponsiveProp(dropdownProps);
   const active = highlight ? path.length > 0 && match : false;
-  const [here, setHere] = useState(false);
-  const [show, setShow] = useState(false);
+  const [here, setHere] = useState(open);
   const accordionShow = isOpenAccordion(level, index);
-  const [transitioning, setTransitioning] = useState(false);
-  const [accordionEnter, setAccordionEnter] = useState(false);
+  const [show, setShow] = useState(open);
+  const [transitioning, setTransitioning] = useState(open);
+  const [accordionEnter, setAccordionEnter] = useState(open);
   const hasSub = Children.toArray(children).some(child => isValidElement(child) && child.type === MenuSub);
   const handleHide = () => {
     if (hasSub) {

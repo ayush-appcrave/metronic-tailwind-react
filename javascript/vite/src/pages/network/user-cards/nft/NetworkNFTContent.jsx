@@ -216,7 +216,7 @@ const NetworkNFTContent = () => {
             </select>
 
             <button className="btn btn-sm btn-outline btn-primary">
-              <KeenIcon icon="setting-4" />
+              <KeenIcon icon="setting-4" /> Filters
             </button>
           </div>
 

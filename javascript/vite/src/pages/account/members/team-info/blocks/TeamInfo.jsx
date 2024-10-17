@@ -30,7 +30,7 @@ const TeamInfo = () => {
       </div>
       <div className="card-table scrollable-x-auto pb-3">
         <table className="table align-middle text-sm">
-          <thead>
+          <tbody>
             <tr>
               <td className="py-2 min-w-32 text-gray-600 font-normal">Thumbnail</td>
               <td className="py-2 text-gray-700 font-normal min-w-32 text-2sm">
@@ -40,8 +40,7 @@ const TeamInfo = () => {
                 <CrudAvatarUpload />
               </td>
             </tr>
-          </thead>
-          <tbody>
+
             <tr>
               <td className="py-2 text-gray-600 font-normal">Team Name</td>
               <td className="py-2 text-gray-700 font-normal">Product Management</td>
@@ -51,6 +50,7 @@ const TeamInfo = () => {
                 </a>
               </td>
             </tr>
+
             <tr>
               <td className="py-2 text-gray-600 font-normal">Description</td>
               <td className="py-2 text-gray-700 font-normal">
@@ -63,6 +63,7 @@ const TeamInfo = () => {
                 </a>
               </td>
             </tr>
+
             <tr>
               <td className="py-3 text-gray-600 font-normal">View as</td>
               <td className="py-3 text-gray-700">
@@ -74,6 +75,7 @@ const TeamInfo = () => {
                 </a>
               </td>
             </tr>
+
             <tr>
               <td className="py-3 text-gray-600 font-normal">Skills</td>
               <td className="py-3 text-gray-700">

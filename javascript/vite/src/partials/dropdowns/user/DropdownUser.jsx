@@ -1,4 +1,4 @@
-import { KeenIcon } from '@/components';
+import { DefaultTooltip, KeenIcon } from '@/components';
 import { MenuItem, MenuLink, MenuSub, MenuTitle, MenuSeparator, MenuArrow, MenuIcon } from '@/components/menu';
 import { Fragment } from 'react';
 import { toAbsoluteUrl } from '@/utils';
@@ -98,6 +98,9 @@ const DropdownUser = () => {
                     <KeenIcon icon="icon" />
                   </MenuIcon>
                   <MenuTitle>Billing</MenuTitle>
+                  <DefaultTooltip title="Payment & subscription info" placement="top" className="max-w-48">
+                    <KeenIcon icon="information-2" className="text-gray-500 text-md" />
+                  </DefaultTooltip>
                 </MenuLink>
               </MenuItem>
               <MenuItem>

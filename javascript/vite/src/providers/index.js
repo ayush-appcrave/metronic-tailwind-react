@@ -5,3 +5,4 @@ export * from './LayoutProvider';
 export * from './SettingsProvider';
 export * from './SnackbarProvider';
 export * from './TranslationProvider';
+export * from './ProvidersWrapper';

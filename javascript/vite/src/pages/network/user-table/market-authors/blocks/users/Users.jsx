@@ -148,10 +148,12 @@ const Users = () => {
       </div>
 
       <div className="card-body">
-        <DataGrid columns={columns} data={data} rowSelect={true} paginationSize={10} initialSorting={[{
+        <DataGrid columns={columns} data={data} rowSelect={true} pagination={{
+        size: 5
+      }} sorting={[{
         id: 'team',
         desc: false
-      }]} saveState={true} saveStateId='Users-grid' />
+      }]} />
       </div>
     </div>;
 };

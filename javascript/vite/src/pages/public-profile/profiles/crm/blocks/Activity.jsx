@@ -8,7 +8,7 @@ const Activity = () => {
         <div className="flex items-center gap-2">
           <label className="switch">
             <span className="switch-label">
-              Auto refresh:
+              Auto refresh:&nbsp;
               <span className="switch-on:hidden">Off</span>
               <span className="hidden switch-on:inline">On</span>
             </span>

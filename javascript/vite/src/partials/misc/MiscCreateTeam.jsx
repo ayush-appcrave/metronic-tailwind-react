@@ -7,7 +7,7 @@ const MiscCreateTeam = ({
   subTitle,
   engage
 }) => {
-  return <div className={clsx(className && className)}>
+  return <div className={clsx('card', className && className)}>
       <div className="card-body flex flex-col place-content-center gap-5">
         <div className="flex justify-center">{image}</div>
 

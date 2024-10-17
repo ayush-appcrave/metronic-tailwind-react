@@ -37,9 +37,7 @@ const CurrentSessions = () => {
     id: 'ipAddress',
     header: () => 'IP Address',
     enableSorting: true,
-    cell: info => {
-      return info.row.original.ipAddress;
-    },
+    cell: info => info.getValue(),
     meta: {
       className: 'w-[240px]'
     }
@@ -102,10 +100,12 @@ const CurrentSessions = () => {
       </div>
 
       <div className="card-body">
-        <DataGrid columns={columns} data={data} rowSelect={true} paginationSize={10} initialSorting={[{
-        id: 'current-sessions',
+        <DataGrid columns={columns} data={data} rowSelect={true} pagination={{
+        size: 10
+      }} sorting={[{
+        id: 'user',
         desc: false
-      }]} saveState={true} saveStateId='current-sessions-grid' />
+      }]} />
       </div>
     </div>;
 };

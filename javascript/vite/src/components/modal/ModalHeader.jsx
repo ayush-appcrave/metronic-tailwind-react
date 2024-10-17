@@ -5,7 +5,7 @@ const ModalHeader = forwardRef(({
   children
 }, ref) => {
   return <div ref={ref} className={`modal-header ${className}`}>
-      {children}
-    </div>;
+        {children}
+      </div>;
 });
 export { ModalHeader };

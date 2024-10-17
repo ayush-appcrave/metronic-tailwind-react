@@ -29,7 +29,7 @@ const Users = () => {
             </div>;
     },
     meta: {
-      className: 'min-w-[220px]',
+      className: 'min-w-[250px]',
       cellClassName: 'text-gray-800 font-normal'
     }
   }, {
@@ -128,10 +128,12 @@ const Users = () => {
       </div>
 
       <div className="card-body">
-        <DataGrid columns={columns} data={data} rowSelect={true} paginationSize={10} initialSorting={[{
-        id: 'team',
+        <DataGrid columns={columns} data={data} rowSelect={true} pagination={{
+        size: 10
+      }} sorting={[{
+        id: 'users',
         desc: false
-      }]} saveState={true} saveStateId='Users-grid' />
+      }]} />
       </div>
     </div>;
 };

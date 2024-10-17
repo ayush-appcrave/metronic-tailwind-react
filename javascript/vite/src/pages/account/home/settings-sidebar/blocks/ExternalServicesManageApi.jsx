@@ -54,8 +54,8 @@ const ExternalServicesManageApi = ({
                 </div>
 
                 <div className="form-info text-gray-800 font-normal">
-                  This API key can only access
-                  <a href="https://keenthemes.com/" className="link ml-0.5">
+                  This API key can only access&nbsp;
+                  <a href="https://keenthemes.com/" className="link">
                     @keenthemes
                   </a>
                   <br />

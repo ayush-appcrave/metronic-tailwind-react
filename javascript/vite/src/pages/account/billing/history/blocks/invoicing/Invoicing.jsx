@@ -42,7 +42,7 @@ const Invoicing = () => {
     }
   }, {
     accessorFn: row => row.dueDate,
-    id: 'date',
+    id: 'dueDate',
     header: () => 'Due Date',
     enableSorting: true,
     cell: info => {
@@ -54,7 +54,7 @@ const Invoicing = () => {
     }
   }, {
     accessorFn: row => row.amount,
-    id: 'date',
+    id: 'amount',
     header: () => 'Amount',
     enableSorting: true,
     cell: info => {
@@ -87,10 +87,12 @@ const Invoicing = () => {
       </div>
 
       <div className="card-body">
-        <DataGrid columns={columns} data={data} rowSelect={true} paginationSize={5} initialSorting={[{
-        id: 'invoicing',
+        <DataGrid columns={columns} data={data} rowSelect={true} pagination={{
+        size: 5
+      }} sorting={[{
+        id: 'invoice',
         desc: false
-      }]} saveState={true} saveStateId='invoicing-grid' />
+      }]} />
       </div>
     </div>;
 };

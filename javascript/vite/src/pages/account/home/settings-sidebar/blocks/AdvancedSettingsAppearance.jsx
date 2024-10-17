@@ -1,7 +1,7 @@
 import { KeenIcon } from '@/components';
 import { toAbsoluteUrl } from '@/utils/Assets';
 const AdvancedSettingsAppearance = ({
-  title = 'Appearance'
+  title
 }) => {
   const items = [{
     image: '28.jpg',
@@ -32,7 +32,7 @@ const AdvancedSettingsAppearance = ({
   };
   return <div className="card">
       <div className="card-header" id="advanced_settings_appearance">
-        <h3 className="card-title">{title}</h3>
+        <h3 className="card-title">{title || 'Appearance'}</h3>
       </div>
 
       <div className="card-body lg:py-7.5">

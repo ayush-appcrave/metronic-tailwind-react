@@ -101,9 +101,6 @@ export const MENU_SIDEBAR = [{
   children: [{
     title: 'Account',
     children: [{
-      title: 'Dashboard',
-      path: '/'
-    }, {
       title: 'Get Started',
       path: '/account/home/get-started'
     }, {
@@ -192,7 +189,7 @@ export const MENU_SIDEBAR = [{
       path: '/account/members/roles'
     }, {
       title: 'Permissions - Toggler',
-      path: '/account/members/permissions-toggler'
+      path: '/account/members/permissions-toggle'
     }, {
       title: 'Permissions - Check',
       path: '/account/members/permissions-check'
@@ -216,7 +213,7 @@ export const MENU_SIDEBAR = [{
     },
     children: [{
       title: 'Appearance',
-      path: '/account/members/appearance'
+      path: '/account/appearance'
     }, {
       title: 'Invite a Friend',
       path: '/account/members/invite-a-friend'
@@ -388,7 +385,7 @@ export const MENU_MEGA = [{
   title: 'Home',
   path: '/'
 }, {
-  title: 'Public Profile',
+  title: 'Profiles',
   children: [{
     title: 'Profiles',
     children: [{
@@ -606,7 +603,7 @@ export const MENU_MEGA = [{
       title: 'Security',
       children: [{
         title: 'Get Started',
-        path: '/security/get-started'
+        path: '/account/security/get-started'
       }, {
         title: 'Security Overview',
         path: '/account/security/overview'
@@ -715,16 +712,16 @@ export const MENU_MEGA = [{
         path: '/network/user-cards/mini-cards'
       }, {
         title: 'Team Members',
-        path: '/network/user-cards/author'
+        path: '/network/user-cards/team-crew'
       }, {
         title: 'Authors',
-        path: '/network/user-cards/nft'
+        path: '/network/user-cards/author'
       }, {
         title: 'NFT Users',
-        path: '/network/user-cards/social'
+        path: '/network/user-cards/nft'
       }, {
         title: 'Social Users',
-        path: '#'
+        path: '/network/user-cards/social'
       }, {
         title: 'Gamers',
         path: '#',
@@ -863,7 +860,10 @@ export const MENU_MEGA = [{
     }]
   }, {
     title: 'Licenses & FAQ',
-    tooltip: 'Learn more about licenses',
+    tooltip: {
+      title: 'Learn more about licenses',
+      placement: 'right'
+    },
     icon: 'subtitle',
     path: 'https://keenthemes.com/metronic/tailwind/docs/getting-started/license'
   }, {
@@ -882,20 +882,24 @@ export const MENU_ROOT = [{
   title: 'Public Profile',
   icon: 'profile-circle',
   rootPath: '/public-profile/',
-  path: 'public-profile/profiles/default'
+  path: 'public-profile/profiles/default',
+  childrenIndex: 2
 }, {
   title: 'Account',
   icon: 'setting-2',
   rootPath: '/account/',
-  path: '/'
+  path: '/',
+  childrenIndex: 3
 }, {
   title: 'Network',
   icon: 'users',
   rootPath: '/network/',
-  path: 'network/get-started'
+  path: 'network/get-started',
+  childrenIndex: 4
 }, {
   title: 'Authentication',
   icon: 'security-user',
   rootPath: '/authentication/',
-  path: 'authentication/get-started'
+  path: 'authentication/get-started',
+  childrenIndex: 5
 }];

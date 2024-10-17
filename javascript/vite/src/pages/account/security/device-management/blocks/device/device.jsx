@@ -114,10 +114,12 @@ const Device = () => {
       </div>
 
       <div className="card-body">
-        <DataGrid columns={columns} data={data} rowSelect={true} paginationSize={10} initialSorting={[{
-        id: 'team',
+        <DataGrid columns={columns} data={data} rowSelect={true} pagination={{
+        size: 10
+      }} sorting={[{
+        id: 'device',
         desc: false
-      }]} saveState={true} saveStateId='device-grid' />
+      }]} />
       </div>
     </div>;
 };

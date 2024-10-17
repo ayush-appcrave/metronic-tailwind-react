@@ -44,7 +44,7 @@ const Connections = ({
   }];
   const renderItem = (table, index) => {
     return <tr key={index}>
-        <td className="py-3.5">
+        <td>
           <div className="flex items-center grow gap-2.5">
             <img src={toAbsoluteUrl(`/media/avatars/${table.avatar}`)} className="rounded-full size-9 shrink-0" alt="" />
 
@@ -69,7 +69,7 @@ const Connections = ({
         </td>
 
         <td className="text-right">
-          <Menu className="items-stretch">
+          <Menu className="inline-flex">
             <MenuItem toggle="dropdown" trigger="click" dropdownProps={{
             placement: 'bottom-end',
             modifiers: [{
