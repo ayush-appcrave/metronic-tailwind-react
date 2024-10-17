@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import { KeenIcon } from '@/components';
 import { toAbsoluteUrl } from '@/utils/Assets';
 import { CommonHexagonBadge } from '../common';
+import { useSettings } from '@/providers';
 const CardAddNew = ({
   path,
   size,
@@ -10,19 +11,13 @@ const CardAddNew = ({
   title,
   subTitle
 }) => {
+  const {
+    getThemeMode
+  } = useSettings();
   return <Fragment>
-      <style>
-        {`
-          .add-new-bg {
-            background-image: url('${toAbsoluteUrl('/media/images/2600x1200/bg-4.png')}');
-          }
-          .dark .add-new-bg {
-            background-image: url('${toAbsoluteUrl('/media/images/2600x1200/bg-4-dark.png')}');
-          }
-        `}
-      </style>
-
-      <Link to={`${path}`} className="card border-2 border-dashed border-brand-clarity bg-center bg-[length:600px] bg-no-repeat add-new-bg">
+      <Link to={`${path}`} className="card border-2 border-dashed border-brand-clarity bg-center bg-[length:600px] bg-no-repeat" style={{
+      backgroundImage: getThemeMode() === 'dark' ? `url('${toAbsoluteUrl('/media/images/2600x1200/bg-4-dark.png')}')` : `url('${toAbsoluteUrl('/media/images/2600x1200/bg-4.png')}')`
+    }}>
         <div className="card-body grid items-center">
           <div className="flex flex-col gap-3">
             <div className="flex justify-center pt-5">

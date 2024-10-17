@@ -11,7 +11,7 @@ const ProfileDefaultPage = () => {
   return <Fragment>
       <UserProfileHero name="Jenny Klabber" image={image} info={[{
       label: 'KeenThemes',
-      icon: 'abstract'
+      icon: 'abstract-41'
     }, {
       label: 'SF, Bay Area',
       icon: 'geolocation'

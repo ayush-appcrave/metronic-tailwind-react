@@ -1,5 +1,6 @@
 import clsx from 'clsx';
-import { Menu, MenuArrow, MenuItem, MenuLink, MenuSub, MenuTitle, KeenIcon } from '@/components';
+import { KeenIcon } from '@/components/keenicons';
+import { Menu, MenuArrow, MenuItem, MenuLink, MenuSub, MenuTitle } from '@/components/menu';
 import { useMenus } from '@/providers';
 const SidebarMenuDefault = () => {
   const {
@@ -21,12 +22,12 @@ const SidebarMenuDefault = () => {
             {item.collapse ? <MenuTitle className="text-2sm text-gray-600 menu-link-hover:text-gray-900">
                 <span className="hidden menu-item-show:!flex">{item.collapseTitle}</span>
                 <span className="flex menu-item-show:hidden">{item.expandTitle}</span>
-              </MenuTitle> : <MenuTitle className="text-2sm text-gray-800 menu-item-here:text-gray-900 menu-item-show:text-gray-900 menu-link-hover:text-gray-900">
+              </MenuTitle> : <MenuTitle className="text-2sm text-gray-800 menu-item-active:font-medium menu-item-active:text-primary menu-link-hover:text-primary">
                 {item.title}
               </MenuTitle>}
             {buildMenuArrow()}
           </MenuLink>
-          <MenuSub className="menu-accordion gap-px">
+          <MenuSub className="gap-px">
             {buildMenuChildren(item.children, item.collapse ? level : level + 1)}
           </MenuSub>
         </MenuItem>;

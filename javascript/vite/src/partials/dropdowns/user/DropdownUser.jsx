@@ -16,9 +16,9 @@ const DropdownUser = () => {
   } = useAuthContext();
   const handleThemeMode = event => {
     console.log('checked:' + event.target.checked);
-    const newMode = event.target.checked ? 'dark' : 'light';
+    const newThemeMode = event.target.checked ? 'dark' : 'light';
     storeSettings({
-      mode: newMode
+      themeMode: newThemeMode
     });
   };
   const buildHeader = () => {
@@ -163,7 +163,7 @@ const DropdownUser = () => {
             </span>
             <span className="menu-title">Dark Mode</span>
             <label className="switch switch-sm">
-              <input name="theme" type="checkbox" checked={settings.mode === 'dark'} onChange={handleThemeMode} value="1" />
+              <input name="theme" type="checkbox" checked={settings.themeMode === 'dark'} onChange={handleThemeMode} value="1" />
             </label>
           </div>
         </div>

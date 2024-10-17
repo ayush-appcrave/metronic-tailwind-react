@@ -13,7 +13,7 @@ const initialProps = {
   },
   updateSettings: settings => {},
   storeSettings: settings => {},
-  getMode: () => 'light'
+  getThemeMode: () => 'light'
 };
 const LayoutsContext = createContext(initialProps);
 const useSettings = () => useContext(LayoutsContext);
@@ -34,13 +34,13 @@ const SettingsProvider = ({
     });
     updateSettings(newSettings);
   };
-  const getMode = () => {
+  const getThemeMode = () => {
     const {
-      mode
+      themeMode
     } = settings;
-    if (mode === 'system') {
+    if (themeMode === 'system') {
       return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
-    } else if (mode === 'dark') {
+    } else if (themeMode === 'dark') {
       return 'dark';
     } else {
       return 'light';
@@ -50,7 +50,7 @@ const SettingsProvider = ({
     settings,
     updateSettings,
     storeSettings,
-    getMode
+    getThemeMode
   }}>
       {children}
     </LayoutsContext.Provider>;

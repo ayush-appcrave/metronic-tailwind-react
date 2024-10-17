@@ -23,7 +23,7 @@ const DefaultPage = () => {
   } else if (currentLayout?.name === 'demo9-layout') {
     return <Demo2Page />;
   } else if (currentLayout?.name === 'demo10-layout') {
-    return <Demo2Page />;
+    return <Demo3Page />;
   }
 };
 export { DefaultPage };

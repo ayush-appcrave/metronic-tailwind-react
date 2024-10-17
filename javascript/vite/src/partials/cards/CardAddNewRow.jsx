@@ -1,7 +1,6 @@
 import { Fragment } from 'react';
 import { Link } from 'react-router-dom';
 import { KeenIcon } from '@/components';
-import { toAbsoluteUrl } from '@/utils/Assets';
 import { CommonHexagonBadge } from '../common';
 const CardAddNewRow = ({
   path,
@@ -11,17 +10,6 @@ const CardAddNewRow = ({
   subTitle
 }) => {
   return <Fragment>
-      <style>
-        {`
-          .add-new-bg {
-            background-image: url('${toAbsoluteUrl('/media/images/2600x1200/bg-3.png')}');
-          }
-          .dark .add-new-bg {
-            background-image: url('${toAbsoluteUrl('/media/images/2600x1200/bg-3-dark.png')}');
-          }
-        `}
-      </style>
-
       <Link to={`/${path}`} className="card border-2 border-dashed border-brand-clarity bg-center bg-cover bg-no-repeat">
         <div className="card-body">
           <div className="flex items-center justify-center gap-5">
