@@ -24,7 +24,7 @@ const ProfileDefaultPage = () => {
         name="Jenny Klabber"
         image={image}
         info={[
-          { label: 'KeenThemes', icon: 'abstract' },
+          { label: 'KeenThemes', icon: 'abstract-41' },
           { label: 'SF, Bay Area', icon: 'geolocation' },
           { email: 'jenny@kteam.com', icon: 'sms' }
         ]}
