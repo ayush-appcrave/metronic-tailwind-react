@@ -53,7 +53,7 @@ const Sidebar = () => {
         onMouseLeave={handleMouseLeave}
         onMouseEnter={handleMouseEnter}
         className={clsx(
-          'sidebar lg:fixed lg:z-20 lg:top-0 lg:bottom-0 lg:start-0 lg:translate-x-0 flex flex-col items-stretch shrink-0 bg-light lg:border lg:border-r-gray-200',
+          'sidebar lg:fixed lg:z-20 lg:top-0 lg:bottom-0 lg:start-0 lg:translate-x-0 flex flex-col items-stretch shrink-0 bg-light lg:border lg:border-e-gray-200',
           themeClass
         )}
       >

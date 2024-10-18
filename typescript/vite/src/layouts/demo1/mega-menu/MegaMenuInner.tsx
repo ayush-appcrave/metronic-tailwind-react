@@ -41,7 +41,8 @@ const MegaMenuInner = () => {
     const authItem = items[4];
     const helpItem = items[5];
 
-    const linkClass = 'menu-link text-sm text-gray-700 font-medium menu-link-hover:text-primary menu-item-active:text-gray-900 menu-item-show:text-primary menu-item-here:text-gray-900';
+    const linkClass =
+      'menu-link text-sm text-gray-700 font-medium menu-link-hover:text-primary menu-item-active:text-gray-900 menu-item-show:text-primary menu-item-here:text-gray-900';
     const titleClass = 'text-nowrap';
 
     return (
