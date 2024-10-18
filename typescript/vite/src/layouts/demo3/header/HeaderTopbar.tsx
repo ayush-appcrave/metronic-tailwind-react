@@ -25,12 +25,12 @@ const HeaderTopbar = () => {
   };
 
   return (
-    <div className="flex items-center gap-2">
-      <Link to={'account/home/get-started'} className="btn btn-xs btn-primary">
+    <div className="flex items-center lg:gap-3.5">
+      <Link to={'/account/home/get-started'} className="btn btn-xs btn-primary mr-1 sm:mr-0">
         Get Started
       </Link>
 
-      <div className="flex items-center">
+      <div className="flex items-center gap-1.5">
         <button
           onClick={handleSearchModalOpen}
           className="btn btn-icon btn-icon-lg size-8 text-gray-600 hover:text-primary"
@@ -38,11 +38,91 @@ const HeaderTopbar = () => {
           <KeenIcon icon="magnifier" />
         </button>
         <ModalSearch open={searchModalOpen} onClose={handleSearchModalClose} />
+
+        <Menu className="items-stretch">
+          <MenuItem
+            ref={itemNotificationsRef}
+            toggle="dropdown"
+            trigger="click"
+            dropdownProps={{
+              placement: 'bottom-end',
+              modifiers: [
+                {
+                  name: 'offset',
+                  options: {
+                    offset: [10, 10] // [skid, distance]
+                  }
+                }
+              ]
+            }}
+          >
+            <MenuToggle>
+              <button className="btn btn-icon btn-icon-lg size-8 text-gray-600 hover:text-primary [dropdown-open:text-primary">
+                <KeenIcon icon="notification-status" />
+              </button>
+            </MenuToggle>
+            {DropdownNotifications({ menuTtemRef: itemNotificationsRef })}
+          </MenuItem>
+        </Menu>
+
+        <Menu className="items-stretch">
+          <MenuItem
+            ref={itemChatRef}
+            onShow={handleDropdownChatShow}
+            toggle="dropdown"
+            trigger="click"
+            dropdownProps={{
+              placement: 'bottom-end',
+              modifiers: [
+                {
+                  name: 'offset',
+                  options: {
+                    offset: [10, 10] // [skid, distance]
+                  }
+                }
+              ]
+            }}
+          >
+            <MenuToggle>
+              <button className="btn btn-icon btn-icon-lg size-8 text-gray-600 hover:text-primary [dropdown-open:text-primary">
+                <KeenIcon icon="messages" />
+              </button>
+            </MenuToggle>
+
+            {DropdownChat({ menuTtemRef: itemChatRef })}
+          </MenuItem>
+        </Menu>
+
+        <Menu className="items-stretch">
+          <MenuItem
+            ref={itemAppsRef}
+            toggle="dropdown"
+            trigger="click"
+            dropdownProps={{
+              placement: 'bottom-end',
+              modifiers: [
+                {
+                  name: 'offset',
+                  options: {
+                    offset: [10, 10] // [skid, distance]
+                  }
+                }
+              ]
+            }}
+          >
+            <MenuToggle>
+              <button className="btn btn-icon btn-icon-lg size-8 text-gray-600 hover:text-primary [dropdown-open:text-primary">
+                <KeenIcon icon="element-11" />
+              </button>
+            </MenuToggle>
+
+            {DropdownApps()}
+          </MenuItem>
+        </Menu>
       </div>
 
       <Menu className="items-stretch">
         <MenuItem
-          ref={itemNotificationsRef}
           toggle="dropdown"
           trigger="click"
           dropdownProps={{
@@ -51,87 +131,7 @@ const HeaderTopbar = () => {
               {
                 name: 'offset',
                 options: {
-                  offset: [115, 13] // [skid, distance]
-                }
-              }
-            ]
-          }}
-        >
-          <MenuToggle>
-            <button className="btn btn-icon btn-icon-lg size-8 text-gray-600 hover:text-primary [dropdown-open:text-primary">
-              <KeenIcon icon="notification-status" />
-            </button>
-          </MenuToggle>
-          {DropdownNotifications({ menuTtemRef: itemNotificationsRef })}
-        </MenuItem>
-      </Menu>
-
-      <Menu className="items-stretch">
-        <MenuItem
-          ref={itemChatRef}
-          onShow={handleDropdownChatShow}
-          toggle="dropdown"
-          trigger="click"
-          dropdownProps={{
-            placement: 'bottom-end',
-            modifiers: [
-              {
-                name: 'offset',
-                options: {
-                  offset: [75, 13] // [skid, distance]
-                }
-              }
-            ]
-          }}
-        >
-          <MenuToggle>
-            <button className="btn btn-icon btn-icon-lg size-8 text-gray-600 hover:text-primary [dropdown-open:text-primary">
-              <KeenIcon icon="messages" />
-            </button>
-          </MenuToggle>
-
-          {DropdownChat({ menuTtemRef: itemChatRef })}
-        </MenuItem>
-      </Menu>
-
-      <Menu className="items-stretch">
-        <MenuItem
-          ref={itemAppsRef}
-          toggle="dropdown"
-          trigger="click"
-          dropdownProps={{
-            placement: 'bottom-end',
-            modifiers: [
-              {
-                name: 'offset',
-                options: {
-                  offset: [10, 13] // [skid, distance]
-                }
-              }
-            ]
-          }}
-        >
-          <MenuToggle>
-            <button className="btn btn-icon btn-icon-lg size-8 text-gray-600 hover:text-primary [dropdown-open:text-primary">
-              <KeenIcon icon="element-11" />
-            </button>
-          </MenuToggle>
-
-          {DropdownApps()}
-        </MenuItem>
-      </Menu>
-
-      <Menu className="items-stretch -me-1">
-        <MenuItem
-          toggle="dropdown"
-          trigger="click"
-          dropdownProps={{
-            placement: 'bottom-end',
-            modifiers: [
-              {
-                name: 'offset',
-                options: {
-                  offset: [-5, 10] // [skid, distance]
+                  offset: [0, 9] // [skid, distance]
                 }
               }
             ]
@@ -141,7 +141,7 @@ const HeaderTopbar = () => {
             <div className="btn btn-icon rounded-full">
               <img
                 className="size-8 rounded-full justify-center border border-gray-500 shrink-0"
-                src={toAbsoluteUrl('/media/avatars/300-2.png')}
+                src={toAbsoluteUrl('/media/avatars/gray/5.png')}
                 alt=""
               />
             </div>

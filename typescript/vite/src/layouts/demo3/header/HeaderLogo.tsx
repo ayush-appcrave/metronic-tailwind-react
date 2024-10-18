@@ -33,7 +33,7 @@ const HeaderLogo = () => {
   }, [pathname]);
 
   return (
-    <div className="flex items-center mr-1">
+    <div className="flex items-center me-1">
       <div className="flex items-center justify-center lg:w-[--tw-sidebar-width] gap-2 shrink-0">
         <button
           type="button"
@@ -55,54 +55,52 @@ const HeaderLogo = () => {
             alt="logo"
           />
         </Link>
-
-         
       </div>
       <div className="flex items-center">
-          <h3 className="text-gray-700 text-base hidden md:block">MetronicTeam</h3>
-          <span className="text-sm text-gray-400 font-medium px-2.5 hidden md:inline">/</span>
+        <h3 className="text-gray-700 text-base hidden md:block">MetronicTeam</h3>
+        <span className="text-sm text-gray-400 font-medium px-2.5 hidden md:inline">/</span>
 
-          <Menu className="menu-default">
-            <MenuItem
-              toggle="dropdown"
-              trigger="hover"
-              dropdownProps={{
-                placement: 'bottom-start',
-                modifiers: [
-                  {
-                    name: 'offset',
-                    options: {
-                      offset: [0, 10] // [skid, distance]
-                    }
+        <Menu className="menu-default">
+          <MenuItem
+            toggle="dropdown"
+            trigger="hover"
+            dropdownProps={{
+              placement: 'bottom-start',
+              modifiers: [
+                {
+                  name: 'offset',
+                  options: {
+                    offset: [0, 10] // [skid, distance]
                   }
-                ]
-              }}
-            >
-              <MenuToggle>
-                <MenuTitle className="!text-gray-900 !text-base !font-medium">
-                  {selectedMenuItem.title}
-                </MenuTitle>
-                <MenuArrow>
-                  <KeenIcon icon="down" />
-                </MenuArrow>
-              </MenuToggle>
-              <MenuSub className="menu-default">
-                {MENU_ROOT.map((item, index) => (
-                  <MenuItem key={index} className={item === selectedMenuItem ? 'active' : ''}>
-                    <MenuLink path={item.path}>
-                      {item.icon && (
-                        <MenuIcon>
-                          <KeenIcon icon={item.icon} />
-                        </MenuIcon>
-                      )}
-                      <MenuTitle>{item.title}</MenuTitle>
-                    </MenuLink>
-                  </MenuItem>
-                ))}
-              </MenuSub>
-            </MenuItem>
-          </Menu>
-        </div>
+                }
+              ]
+            }}
+          >
+            <MenuToggle>
+              <MenuTitle className="!text-gray-900 !text-base !font-medium">
+                {selectedMenuItem.title}
+              </MenuTitle>
+              <MenuArrow>
+                <KeenIcon icon="down" />
+              </MenuArrow>
+            </MenuToggle>
+            <MenuSub className="menu-default">
+              {MENU_ROOT.map((item, index) => (
+                <MenuItem key={index} className={item === selectedMenuItem ? 'active' : ''}>
+                  <MenuLink path={item.path}>
+                    {item.icon && (
+                      <MenuIcon>
+                        <KeenIcon icon={item.icon} />
+                      </MenuIcon>
+                    )}
+                    <MenuTitle>{item.title}</MenuTitle>
+                  </MenuLink>
+                </MenuItem>
+              ))}
+            </MenuSub>
+          </MenuItem>
+        </Menu>
+      </div>
     </div>
   );
 };

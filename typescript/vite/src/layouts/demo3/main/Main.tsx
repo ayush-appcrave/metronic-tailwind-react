@@ -27,16 +27,13 @@ const Main = () => {
           <Navbar />
 
           <div className="flex grow rounded-b-xl bg-[--tw-content-bg] dark:bg-[--tw-content-bg-dark] border-x border-b border-gray-400 dark:border-gray-200 lg:mt-[--tw-navbar-height] mx-5 lg:ms-[--tw-sidebar-width] mb-5">
-            <div
-              id="scrollable_content"
-              className="lg:scrollable-y lg:[scrollbar-width:auto] lg:light:[--tw-scrollbar-thumb-color:var(--tw-content-scrollbar-color)] flex flex-col grow pt-7 lg:[&_.container-fluid]:pe-4"
-            >
+            <div className="flex flex-col grow lg:scrollable-y lg:[scrollbar-width:auto] lg:light:[--tw-scrollbar-thumb-color:var(--tw-content-scrollbar-color)] pt-7 lg:[&_.container-fluid]:pe-4">
               <main className="grow" role="content">
                 {pathname !== '/' && (
                   <Toolbar>
                     <ToolbarHeading />
                     <ToolbarActions>
-                      <Link to={'account/home/get-started'} className="btn btn-sm btn-light">
+                      <Link to={'/account/home/get-started'} className="btn btn-sm btn-light">
                         <KeenIcon icon="exit-down !text-base" />
                         Export
                       </Link>
