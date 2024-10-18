@@ -27,7 +27,7 @@ const HeaderLogo = () => {
   }, [pathname]);
 
   return (
-    <div className="flex items-center gap-2 lg:gap-5 2xl:-ml-[60px]">
+    <div className="flex items-center gap-2 lg:gap-5 2xl:-ms-[60px]">
       <Link to="/" className="shrink-0">
         <img
           src={toAbsoluteUrl('/media/app/mini-logo-circle.svg')}
