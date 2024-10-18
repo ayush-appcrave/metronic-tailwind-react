@@ -1,12 +1,5 @@
 import { KeenIcon } from '@/components';
-import {
-  TMenuConfig,
-  MenuItem,
-  MenuLink,
-  MenuTitle,
-  MenuIcon,
-  MenuBadge
-} from '@/components/menu';
+import { TMenuConfig, MenuItem, MenuLink, MenuTitle, MenuIcon, MenuBadge } from '@/components/menu';
 import clsx from 'clsx';
 import { ReactNode } from 'react';
 
