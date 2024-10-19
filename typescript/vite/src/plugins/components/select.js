@@ -10,7 +10,7 @@ export default plugin(({ addComponents, theme }) => {
       'box-shadow': 'none',
       'outline': 'none',
       'background-repeat': 'no-repeat',
-      'background-position': `inset-inline-end 0.675rem center`, // Logical property for RTL/LTR
+      'background-position': `right 0.675rem center`, // Logical property for RTL/LTR
       'background-size': '14px 11px',
       'background-image': `url("${svgToDataUri(`<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16"><path fill="none" stroke="${theme('base.colors.gray.light.600')}" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m2 5 6 6 6-6"/></svg>`)}")`,
       '.dark &': {
@@ -78,5 +78,10 @@ export default plugin(({ addComponents, theme }) => {
       'background-size': '14px 12px',
       'background-position': `inset-inline-end 0.75rem center`, // Logical property for RTL/LTR
     },
+    '[dir=rtl]': {
+      '.select': {
+       'background-position': `left 0.675rem center`, // Logical property for RTL/LTR
+      }
+    }
   });
 });
