@@ -61,6 +61,9 @@ export default plugin(({ addComponents, theme }) => {
         '.menu-item > .menu-accordion .menu-item > .menu-accordion .menu-item > .menu-link, .menu-item > .menu-accordion .menu-item > .menu-accordion .menu-item > .menu-label': {
           'margin-inline-start': theme('spacing')['11'],
         },
+        '.menu-item > .menu-accordion .menu-item > .menu-accordion .menu-item > .menu-accordion .menu-item > .menu-link, .menu-item > .menu-accordion .menu-item > .menu-accordion .menu-item > .menu-accordion .menu-item > .menu-label': {
+          'margin-inline-start': theme('spacing')['14'],
+        }
       },
     },
     '.menu-fit': {
