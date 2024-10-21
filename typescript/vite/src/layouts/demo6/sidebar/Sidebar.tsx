@@ -23,7 +23,7 @@ const Sidebar = () => {
 
   const renderContent = () => {
     return (
-      <div className="lg:fixed lg:top-0 lg:bottom-0 lg:z-20 flex flex-col shrink-0 w-[--tw-sidebar-width] bg-[--tw-page-bg] dark:bg-[--tw-page-bg-dark]">
+      <div className="fixed top-0 bottom-0 z-20 lg:flex flex-col shrink-0 w-[--tw-sidebar-width] bg-[--tw-page-bg] dark:bg-[--tw-page-bg-dark]">
         <SidebarHeader ref={headerRef} />
         <SidebarMenu height={scrollableHeight} />
         <SidebarFooter ref={footerRef} />

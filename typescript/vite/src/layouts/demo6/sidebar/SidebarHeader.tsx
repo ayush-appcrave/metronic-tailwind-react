@@ -30,7 +30,7 @@ const SidebarHeader = forwardRef<HTMLDivElement, any>((props, ref) => {
 
   return (
     <div ref={ref}>
-      <div className="flex items-center justify-between gap-2.5 px-3.5 h-[70px]">
+      <div className="flex items-center gap-2.5 px-3.5 h-[70px]">
         <Link to="/">
           <img
             src={toAbsoluteUrl('/media/app/mini-logo-circle.svg')}
@@ -42,7 +42,7 @@ const SidebarHeader = forwardRef<HTMLDivElement, any>((props, ref) => {
           />
         </Link>
 
-        <Menu className="grow">
+        <Menu className="menu-default grow">
           <MenuItem
             className="grow"
             toggle="dropdown"
@@ -53,18 +53,18 @@ const SidebarHeader = forwardRef<HTMLDivElement, any>((props, ref) => {
                 {
                   name: 'offset',
                   options: {
-                    offset: [0, 10] // [skid, distance]
+                    offset: [0, 15] // [skid, distance]
                   }
                 }
               ]
             }}
           >
             <MenuLabel className="text-gray-900 font-medium grow justify-between">
-              <MenuTitle className="text-base font-medium text-gray-900 grow justify-start">
+              <span className="text-base font-medium text-gray-900 grow justify-start">
                 MetronicCloud
-              </MenuTitle>
+              </span>
               <MenuArrow>
-                <KeenIcon icon="down" className="text-2xs me-1 text-gray-500" />
+                <KeenIcon icon="down" />
               </MenuArrow>
             </MenuLabel>
             <MenuSub className="menu-default w-48 py-2">
