@@ -45,11 +45,11 @@ const Sidebar = () => {
 
   const renderContent = () => {
     return (
-      <div className="lg:fixed lg:top-0 lg:bottom-0 lg:z-20 flex flex-col grow shrink-0 bg-[--tw-page-bg] dark:bg-[--tw-page-bg-dark] w-[--tw-sidebar-width]">
+      <div className="fixed top-0 bottom-0 z-20 lg:flex flex-col items-stretch shrink-0 bg-[--tw-page-bg] dark:bg-[--tw-page-bg-dark]">
         {desktopMode && (
           <div
             ref={headerRef}
-            className="flex items-center flex-none justify-center shrink-0 pt-8 pb-3.5"
+            className="hidden lg:flex items-center justify-center shrink-0 pt-8 pb-3.5"
           >
             <Link to="/">
               <img
@@ -65,7 +65,7 @@ const Sidebar = () => {
         )}
 
         <div
-          className="scrollable-y-auto gap-2.5 shrink-0 flex grow items-center pt-5 lg:pt-0 px-3 flex-col mb-10"
+          className="scrollable-y-hover grow gap-2.5 shrink-0 flex items-center pt-5 lg:pt-0 ps-3 pe-3 lg:pe-0 flex-col"
           style={{
             ...(desktopMode && scrollableHeight > 0 && { height: `${scrollableHeight}px` })
           }}
@@ -87,16 +87,14 @@ const Sidebar = () => {
                     {
                       name: 'offset',
                       options: {
-                        offset: [10, 15] // [skid, distance]
+                        offset: [110, 30] // [skid, distance]
                       }
                     }
                   ]
                 }}
               >
-                <MenuToggle>
-                  <button className="btn btn-icon btn-icon-xl size-9 border border-transparent hover:bg-light hover:text-primary hover:border-gray-200 dropdown-open:bg-gray-200 text-gray-600">
-                    <KeenIcon icon="messages" />
-                  </button>
+                <MenuToggle className="btn btn-icon btn-icon-xl relative rounded-md size-9 border border-transparent hover:bg-light hover:text-primary hover:border-gray-200 dropdown-open:bg-gray-200 text-gray-600">
+                  <KeenIcon icon="messages" />
                 </MenuToggle>
 
                 {DropdownChat({ menuTtemRef: itemChatRef })}
@@ -115,14 +113,14 @@ const Sidebar = () => {
                     {
                       name: 'offset',
                       options: {
-                        offset: [-10, 15] // [skid, distance]
+                        offset: [-20, 30] // [skid, distance]
                       }
                     }
                   ]
                 }}
               >
-                <MenuToggle className="btn btn-icon btn-icon-xl size-9 border border-transparent hover:bg-light hover:text-primary hover:border-gray-200 dropdown-open:bg-gray-200 text-gray-600">
-                  <KeenIcon icon="setting-2" className="text-gray-600" />
+                <MenuToggle className="btn btn-icon btn-icon-xl relative rounded-md size-9 border border-transparent hover:bg-light hover:text-primary hover:border-gray-200 dropdown-open:bg-gray-200 text-gray-600">
+                  <KeenIcon icon="setting-2" />
                 </MenuToggle>
 
                 {DropdownApps()}
@@ -140,20 +138,18 @@ const Sidebar = () => {
                   {
                     name: 'offset',
                     options: {
-                      offset: [-10, 15]
+                      offset: [-20, 28]
                     }
                   }
                 ]
               }}
             >
-              <MenuToggle>
-                <div className="btn btn-icon rounded-full">
-                  <img
-                    className="size-8 justify-center rounded-lg border border-gray-500 shrink-0"
-                    src={toAbsoluteUrl('/media/avatars/gray/5.png')}
-                    alt=""
-                  />
-                </div>
+              <MenuToggle className="btn btn-icon">
+                <img
+                  className="size-8 justify-center rounded-lg border border-gray-500 shrink-0"
+                  src={toAbsoluteUrl('/media/avatars/gray/5.png')}
+                  alt=""
+                />
               </MenuToggle>
               {DropdownUser()}
             </MenuItem>
