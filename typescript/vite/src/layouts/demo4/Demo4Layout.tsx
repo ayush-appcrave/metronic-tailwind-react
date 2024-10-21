@@ -1,11 +1,7 @@
 import useBodyClasses from '@/hooks/useBodyClasses';
 import { Demo4LayoutProvider, Main } from '.';
-import { useEffect } from 'react';
-import { useSettings } from '@/providers';
 
 const Demo4Layout = () => {
-  const { updateSettings } = useSettings();
-
   // Using the custom hook to set multiple CSS variables and class properties
   useBodyClasses(`
     [--tw-page-bg:#F6F6F9] 
@@ -19,12 +15,6 @@ const Demo4Layout = () => {
     dark:bg-[--tw-page-bg-dark] 
     lg:overflow-hidden
   `);
-
-  useEffect(() => {
-    updateSettings({
-      container: 'fluid'
-    });
-  });
 
   return (
     // Providing layout context and rendering the main content

@@ -16,12 +16,12 @@ const Header = () => {
       <Container className="flex items-center justify-between flex-wrap gap-3">
         <Link to="/">
           <img
-            src={toAbsoluteUrl('/media/app/mini-logo-circle.svg')}
-            className="dark:hidden h-[42px]"
+            src={toAbsoluteUrl('/media/app/mini-logo-gray.svg')}
+            className="dark:hidden min-h-[30px]"
           />
           <img
-            src={toAbsoluteUrl('/media/app/mini-logo-circle-dark.svg')}
-            className="hidden dark:inline-block h-[42px]"
+            src={toAbsoluteUrl('/media/app/mini-logo-gray-dark.svg')}
+            className="hidden dark:block min-h-[30px]"
           />
         </Link>
 

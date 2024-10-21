@@ -20,7 +20,7 @@ const menuItems: IMenuItem[] = [
     icon: 'profile-circle',
     tooltip: 'Profile',
     path: '/public-profile/profiles/default',
-    rootPath: 'public-profile/'
+    rootPath: '/public-profile/'
   },
   {
     icon: 'setting-2',
@@ -33,7 +33,7 @@ const menuItems: IMenuItem[] = [
     icon: 'security-user',
     tooltip: 'Authentication',
     path: '/authentication/get-started',
-    rootPath: 'authentication/'
+    rootPath: '/authentication/'
   },
   { icon: 'code', tooltip: 'Plans', path: '/account/billing/plans', rootPath: '' },
   {
