@@ -3,7 +3,7 @@ import { Helmet } from 'react-helmet-async';
 import { Outlet, useLocation } from 'react-router';
 import { Menu, MenuItem, MenuToggle, useMenuCurrentItem } from '@/components/menu';
 import { useMenus } from '@/providers';
-import { Header, Sidebar, Footer, Toolbar, ToolbarActions, ToolbarHeading } from '..';
+import { Header, Sidebar, Footer, Toolbar, ToolbarHeading } from '..';
 import { Link } from 'react-router-dom';
 import { KeenIcon } from '@/components';
 import { useResponsive } from '@/hooks';
@@ -43,17 +43,16 @@ const Main = () => {
                 <Toolbar>
                   <ToolbarHeading />
 
-                  <ToolbarActions>
-                    <div className="flex items-center">
-                      <button
-                        onClick={handleOpen}
-                        className="btn btn-icon btn-icon-lg size-9 rounded-md hover:bg-gray-200 dropdown-open:bg-gray-200 hover:text-primary text-gray-600"
-                      >
-                        <KeenIcon icon="magnifier" />
-                      </button>
-                      <ModalSearch open={searchModalOpen} onClose={handleClose} />
-                    </div>
-                    <Menu className="items-stretch">
+                  <div className="flex items-center flex-wrap gap-1.5 lg:gap-2.5">
+                    <button
+                      onClick={handleOpen}
+                      className="btn btn-icon btn-icon-lg size-8 rounded-md hover:bg-gray-200 dropdown-open:bg-gray-200 hover:text-primary text-gray-600"
+                    >
+                      <KeenIcon icon="magnifier" className="!text-base" />
+                    </button>
+                    <ModalSearch open={searchModalOpen} onClose={handleClose} />
+
+                    <Menu className="me-1.5">
                       <MenuItem
                         ref={itemNotificationsRef}
                         toggle="dropdown"
@@ -64,32 +63,33 @@ const Main = () => {
                             {
                               name: 'offset',
                               options: {
-                                offset: [115, 13] // [skid, distance]
+                                offset: [10, 10] // [skid, distance]
                               }
                             }
                           ]
                         }}
                       >
-                        <MenuToggle>
-                          <button className="btn btn-icon btn-icon-lg size-8 text-gray-600 hover:text-primary [dropdown-open:text-primary">
-                            <KeenIcon icon="notification-status" />
-                          </button>
+                        <MenuToggle className="btn btn-icon btn-icon-lg size-8 rounded-md hover:bg-gray-200 dropdown-open:bg-gray-200 hover:text-primary text-gray-600">
+                          <KeenIcon icon="notification-status" className="!text-base" />
                         </MenuToggle>
                         {DropdownNotifications({ menuTtemRef: itemNotificationsRef })}
                       </MenuItem>
                     </Menu>
-                    <Link to={'account/home/get-started'} className="btn btn-xs btn-light">
+
+                    <Link
+                      to={'/account/home/get-started'}
+                      className="btn btn-xs btn-icon-lg btn-light"
+                    >
                       <KeenIcon icon="exit-down !text-base" />
                       Export
                     </Link>
-                  </ToolbarActions>
+                  </div>
                 </Toolbar>
 
                 <Outlet />
               </main>
-
-              <Footer />
             </div>
+            <Footer />
           </div>
         </div>
       </div>
