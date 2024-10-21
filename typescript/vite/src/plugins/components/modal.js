@@ -19,8 +19,8 @@ export default plugin(({ addComponents, theme }) => {
     },
     '.modal-content': {		
       'position': 'relative',
-      'margin-inline-start': 'auto',
-      'margin-inline-end': 'auto',
+      'margin-left': 'auto',
+      'margin-right': 'auto',
       'border-radius': theme('custom.components.common.borderRadius.modal'),
       'box-shadow': 'var(--tw-modal-box-shadow)', 
       'background-color': 'var(--tw-modal-background-color)', 
@@ -90,6 +90,8 @@ export default plugin(({ addComponents, theme }) => {
     '.modal-center': {
       'left': '50%',
       'top': '50%',
+      'margin-left': '0',
+      'margin-right': '0',
       'transform': 'translate(-50%, -50%)',
     },
     '.modal-center-y': {
@@ -97,7 +99,7 @@ export default plugin(({ addComponents, theme }) => {
       'transform': 'translateY(-50%)',
     },
     '.modal-center-x': {
-      'left': '50%',
+      'inset-inline-start': '50%',
       'transform': 'translateX(-50%)',
     },
     '.modal-rounded-t': {
@@ -107,6 +109,17 @@ export default plugin(({ addComponents, theme }) => {
     '.modal-rounded-b': {
       'border-end-start-radius': theme('custom.components.common.borderRadius.modal'),
       'border-end-end-radius': theme('custom.components.common.borderRadius.modal'),
-    },
+    }
+  });
+
+  // RTL
+  addComponents({
+    '[dir=rtl]': {
+      '.modal-center': {
+        'left': 'auto',
+        'right': '50%',
+        'transform': 'translate(50%, -50%)',
+      }
+    }
   });
 });
