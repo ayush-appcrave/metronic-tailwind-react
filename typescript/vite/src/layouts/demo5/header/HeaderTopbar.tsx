@@ -6,7 +6,6 @@ import { DropdownUser } from '@/partials/dropdowns/user';
 import { DropdownNotifications } from '@/partials/dropdowns/notifications';
 import { DropdownApps } from '@/partials/dropdowns/apps';
 
-
 const HeaderTopbar = () => {
   const itemChatRef = useRef<any>(null);
   const itemNotificationsRef = useRef<any>(null);

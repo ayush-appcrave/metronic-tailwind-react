@@ -179,7 +179,7 @@ const HeaderLogo = () => {
               <MenuSub className="menu-default w-48 py-2">
                 {items.map((item, index) => (
                   <MenuItem key={index}>
-                    <MenuLink path="#">
+                    <MenuLink path="/">
                       {item.icon && (
                         <MenuIcon>
                           <KeenIcon icon={item.icon} />
@@ -220,7 +220,7 @@ const HeaderLogo = () => {
               <MenuSub className="menu-default w-48 py-2">
                 {stagings.map((staging, index) => (
                   <MenuItem key={index}>
-                    <MenuLink path="#">
+                    <MenuLink path="/">
                       {staging.icon && (
                         <MenuIcon>
                           <KeenIcon icon={staging.icon} />

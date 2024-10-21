@@ -41,7 +41,7 @@ const Sidebar = () => {
       <div className="w-[--tw-sidebar-width] shrink-0 lg:flex items-start">
         <div
           className={clsx(
-            'w-[--tw-sidebar-width] z-5 lg:top-[80px] top-0 bottom-0 lg:right-auto lg:left-auto shrink-0 py-3 lg:py-0 bg-light dark:bg-coal-100 lg:dark:bg-transparent',
+            'w-[--tw-sidebar-width] z-5 lg:top-[80px] top-0 bottom-0 lg:end-auto lg:start-auto shrink-0 py-3 lg:py-0 bg-light dark:bg-coal-100 lg:dark:bg-transparent',
             sidebarSticky && 'fixed'
           )}
         >
