@@ -46,7 +46,7 @@ const AccountSecurityGetStartedContent = () => {
     }
   ];
 
-  return <Options items={items} dropdown={true} />;
+  return <Options items={items} dropdown={false} />;
 };
 
 export { AccountSecurityGetStartedContent };
