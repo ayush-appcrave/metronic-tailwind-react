@@ -27,6 +27,9 @@ npm run lint
 ## React Documentation
 - Full documentation for the React version is coming soon! In the meantime, explore the source code and reach out to us for technical assistance through our support channels.
 
+## Setup Demos(Demo 1 - Demo 10)
+- Please refer to this guide to set up your preferred demo effortlessly. [Metronic 9 Tailwind React Demos Setup](https://devs.keenthemes.com/question/metronic-9-tailwind-react-demos-setup)
+
 ## HTML Documentation
 - You can seamlessly use static HTML components in the React version by copying and pasting the HTML code. For reference, visit the. [Metronic HTML Documentation](https://keenthemes.com/metronic/tailwind/docs/components/avatar)
 
