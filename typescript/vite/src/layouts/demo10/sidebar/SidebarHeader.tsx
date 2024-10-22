@@ -36,7 +36,7 @@ const SidebarHeader = forwardRef<HTMLDivElement, any>((props, ref) => {
   return (
     <div ref={ref} className="flex flex-col gap-2.5">
       <div className="flex items-center gap-2.5 px-3.5 h-[70px]">
-        <Link to="/index.html">
+        <Link to="/">
           <img
             src={toAbsoluteUrl('/media/app/mini-logo-circle-success.svg')}
             className="h-[34px]"
@@ -92,7 +92,7 @@ const SidebarHeader = forwardRef<HTMLDivElement, any>((props, ref) => {
 
       <div className="flex items-center gap-2.5 px-3.5">
         <Link
-          to="public-profile/projects/3-columns"
+          to="/public-profile/projects/3-columns"
           className="btn btn-dark btn-sm justify-center min-w-[198px]"
         >
           <KeenIcon icon="plus" />

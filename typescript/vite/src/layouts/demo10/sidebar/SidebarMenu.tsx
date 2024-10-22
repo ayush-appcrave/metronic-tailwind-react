@@ -13,7 +13,7 @@ const SidebarMenu = ({ height = 0 }: ISidebarMenuProps) => {
           ...(height > 0 && { height: `${height}px` })
         }}
       >
-        <SidebarMenuPrimary /> 
+        <SidebarMenuPrimary />
         <SidebarMenuSecondary />
       </div>
     </div>

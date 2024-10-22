@@ -1,4 +1,3 @@
-import React from 'react';
 import clsx from 'clsx';
 import { KeenIcon } from '@/components/keenicons';
 import {
@@ -10,16 +9,16 @@ import {
   MenuItem,
   MenuLink,
   MenuSub,
-  MenuTitle,
+  MenuTitle
 } from '@/components/menu';
 import { useMenus } from '@/providers';
 
 const SidebarMenuPrimary = () => {
   const newItem = {
-    title: "Overview",
-    description: "",
-    icon: "home-3",
-    path: "/",
+    title: 'Overview',
+    description: '',
+    icon: 'home-3',
+    path: '/'
   };
 
   const { getMenuConfig } = useMenus();
@@ -28,7 +27,7 @@ const SidebarMenuPrimary = () => {
   // Prepend the new item to the menuConfig
   //const menuConfigWithNewItem = [newItem, ...menuConfig];
 
-  const subIndetion = ['ps-7', 'ps-2.5', 'ps-2.5']; 
+  const subIndetion = ['ps-7', 'ps-2.5', 'ps-2.5'];
 
   const buildMenu = (items: TMenuConfig) => {
     return items.map((item, index) => {

@@ -18,7 +18,7 @@ const Header = () => {
           <img
             src={toAbsoluteUrl('/media/app/mini-logo-circle-success.svg')}
             className="h-[34px]"
-          /> 
+          />
         </Link>
 
         <button
