@@ -1,5 +1,3 @@
-import React from 'react';
-import clsx from 'clsx';
 import { toAbsoluteUrl } from '@/utils';
 import { Menu, MenuItem, MenuLink, MenuTitle, MenuIcon } from '@/components/menu';
 
