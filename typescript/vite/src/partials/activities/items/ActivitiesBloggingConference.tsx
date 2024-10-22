@@ -41,7 +41,7 @@ const ActivitiesBloggingConference = ({
               <Link to="/public-profile/profiles/company" className="text-2sm font-semibold link">
                 Axio new release
               </Link>
-              <span className="text-2sm font-medium text-gray-600 mr-2">email campaign</span>
+              <span className="text-2sm font-medium text-gray-600 me-2">email campaign</span>
               <span className="badge badge-sm badge-success badge-outline">Public</span>
             </div>
           </div>

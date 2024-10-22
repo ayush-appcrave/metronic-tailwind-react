@@ -11,7 +11,7 @@ const DropdownNotificationsItem7 = () => {
           className="rounded-full size-8"
           alt="Nova Hawthorne avatar"
         />
-        <span className="size-1.5 badge badge-circle bg-gray-400  absolute top-7 end-0.5 ring-1 ring-light transform -translate-y-1/2"></span>
+        <span className="size-1.5 badge badge-circle bg-gray-400 absolute top-7 end-0.5 ring-1 ring-light transform -translate-y-1/2"></span>
       </div>
 
       <div className="flex flex-col gap-3 grow" id="notification_request_7">

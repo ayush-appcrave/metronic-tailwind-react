@@ -41,10 +41,7 @@ const ModalShareProfileUsers = () => {
               >
                 {item.userName}
               </Link>
-              <Link
-                to="#"
-                className="thover:text-primary-active text-2sm font-medium text-gray-600"
-              >
+              <Link to="#" className="hover:text-primary-active text-2sm font-medium text-gray-600">
                 {item.email}
               </Link>
             </div>

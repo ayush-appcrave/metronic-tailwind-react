@@ -81,7 +81,7 @@ const NavbarMenu = ({ items }: { items: TMenuConfig }) => {
             }}
           >
             <MenuLink className="py-1.5 px-2 gap-0.5 cursor-pointer">
-              <MenuTitle className="mr-1 font-normal text-gray-700 menu-item-active:text-primary menu-item-here:text-gray-900 menu-item-show:text-gray-900 menu-link-hover:!text-primary">
+              <MenuTitle className="me-1 font-normal text-gray-700 menu-item-active:text-primary menu-item-here:text-gray-900 menu-item-show:text-gray-900 menu-link-hover:!text-primary">
                 {item.title}
               </MenuTitle>
               {buildMenuToggle()}
