@@ -29,7 +29,7 @@ const FeaturesHighlight = ({
 
   return (
     <div className="card">
-      <div className="card-body px-10 py-7.5 lg:pr-12.5">
+      <div className="card-body px-10 py-7.5 lg:pe-12.5">
         <div className="flex flex-wrap xl:flex-nowrap items-center justify-between gap-6 md:gap-10 p-2.5">
           <div className="flex flex-col items-start gap-3 md:max-w-[60%]">
             <h2
