@@ -41,7 +41,7 @@ const CardNFT = ({ image, id, title, info, date }: INFTProps) => {
               </span>
             </div>
           </div>
-          <div className="flex flex-col justify-self-end text-right gap-2">
+          <div className="flex flex-col justify-self-end text-end gap-2">
             <span className="text-2sm text-gray-700">Ending in</span>
             <span className="text-2sm font-semibold text-gray-900 leading-none tracking-tight">
               {date}

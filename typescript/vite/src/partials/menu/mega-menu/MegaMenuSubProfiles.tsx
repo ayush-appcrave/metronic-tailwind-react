@@ -11,7 +11,7 @@ const MegaMenuSubProfiles = (items: TMenuConfig) => {
           {publicProfilesItem.children?.map((item: IMenuItemConfig, index) => {
             return (
               <div key={`item-${index}`} className="menu menu-default menu-fit flex-col">
-                <h3 className="text-sm text-gray-800 font-semibold leading-none pl-2.5 mb-2 lg:mb-5">
+                <h3 className="text-sm text-gray-800 font-semibold leading-none ps-2.5 mb-2 lg:mb-5">
                   {item.title}
                 </h3>
                 <div className="grid lg:grid-cols-2 lg:gap-5">

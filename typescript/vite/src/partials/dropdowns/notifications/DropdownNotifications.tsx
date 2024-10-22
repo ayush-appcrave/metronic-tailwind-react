@@ -37,7 +37,7 @@ const DropdownNotifications = ({ menuTtemRef }: IDropdownNotificationProps) => {
             <Tab value={1}>All</Tab>
             <Tab value={2} className="relative">
               Inbox
-              <span className="badge badge-dot badge-success size-[5px] absolute top-2 right-0 transform translate-y-1/2 translate-x-full"></span>
+              <span className="badge badge-dot badge-success size-[5px] absolute top-2 end-0 transform translate-y-1/2 translate-x-full"></span>
             </Tab>
             <Tab value={3}>Team</Tab>
             <Tab value={4}>Following</Tab>

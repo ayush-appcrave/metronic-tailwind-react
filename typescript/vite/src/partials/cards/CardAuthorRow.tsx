@@ -7,7 +7,7 @@ import { IAuthorProps, IWork } from './CardAuthor';
 const CardAuthorRow = ({ avatar, name, location, works }: IAuthorProps) => {
   const renderItem = (work: IWork, index: number) => {
     return (
-      <div key={index} className="flex items-center gap-3.5 min-w-64 last:mr-5">
+      <div key={index} className="flex items-center gap-3.5 min-w-64 last:me-5">
         <div
           className="rounded-md bg-no-repeat bg-cover min-w-24 max-w-24 h-12 shrink-0"
           style={{

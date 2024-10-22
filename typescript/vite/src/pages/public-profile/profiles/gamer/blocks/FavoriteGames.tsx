@@ -35,7 +35,7 @@ const FavoriteGames = () => {
       </div>
 
       <div className="card-body">
-        <div className="flex flex-wrap gap-2.5 xl:mr-14 mb-1.5">
+        <div className="flex flex-wrap gap-2.5 xl:me-14 mb-1.5">
           {items.map((item, index) => {
             return renderItem(item, index);
           })}

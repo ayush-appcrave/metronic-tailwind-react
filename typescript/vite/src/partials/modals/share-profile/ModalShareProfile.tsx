@@ -19,7 +19,7 @@ const ModalShareProfile = ({ open, onClose }: ModalShareProfileProps) => {
   return (
     <Modal open={open} onClose={onClose}>
       <ModalContent className="max-w-[600px] top-[15%]">
-        <ModalHeader className="">
+        <ModalHeader>
           <ModalTitle>Share Profile</ModalTitle>
 
           <button className="btn btn-sm btn-icon btn-light btn-clear shrink-0" onClick={onClose}>

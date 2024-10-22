@@ -34,7 +34,7 @@ const Demo3Content = () => {
               </>
             }
             engage={{
-              path: 'public-profile/teams',
+              path: '/public-profile/teams',
               label: 'Create Team',
               btnColor: 'btn-dark'
             }}

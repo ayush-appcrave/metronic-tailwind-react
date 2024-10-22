@@ -36,10 +36,7 @@ const CardProjectRow = ({ logo, name, description, status, progress, team }: IPr
           </div>
 
           <div className="flex flex-col">
-            <a
-              href="#"
-              className="text-lg font-media/brand text-gray-900 hover:text-primary-active mb-px"
-            >
+            <a href="#" className="text-lg text-gray-900 hover:text-primary-active mb-px">
               {name}
             </a>
             <span className="text-sm text-gray-700">{description}</span>

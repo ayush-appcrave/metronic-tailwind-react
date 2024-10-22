@@ -30,7 +30,7 @@ interface IAuthorProps {
 const CardAuthor = ({ avatar, bgImage, name, location, works }: IAuthorProps) => {
   const renderItem = (work: IWork, index: number) => {
     return (
-      <div key={index} className="card mb-4 border-0 last:mr-5">
+      <div key={index} className="card mb-4 border-0 last:me-5">
         <div
           className="bg-cover bg-no-repeat card-rounded-t w-[240px] shrink-0 h-44"
           style={{

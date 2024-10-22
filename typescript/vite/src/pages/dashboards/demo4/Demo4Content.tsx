@@ -19,7 +19,7 @@ const Demo4Content = () => {
                 />
                 <img
                   src={toAbsoluteUrl('/media/illustrations/32-dark.svg')}
-                  className="light:hidden max-h-[180px]" 
+                  className="light:hidden max-h-[180px]"
                   alt=""
                 />
               </Fragment>
@@ -34,7 +34,7 @@ const Demo4Content = () => {
               </Fragment>
             }
             engage={{
-              path: 'public-profile/teams',
+              path: '/public-profile/teams',
               label: 'Create Team',
               btnColor: 'btn-primary'
             }}
