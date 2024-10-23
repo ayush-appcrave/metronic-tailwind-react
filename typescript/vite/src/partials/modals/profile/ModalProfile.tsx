@@ -110,11 +110,7 @@ const ModalProfile = ({ open, onClose }: IModalProfileProps) => {
               </div>
             </div>
           </ModalHeader>
-<<<<<<< HEAD
-          <ModalBody className="scrollable-y py-0 mb-5 pl-6 ps-3 me-3">
-=======
           <ModalBody className="scrollable-y py-0 mb-5 ps-6 pe-3 me-3">
->>>>>>> 0b3ecc5a1ceab0179e587745f0a71171d9a70323
             <div className="grid grid-cols-1 xl:grid-cols-3 gap-5 lg:gap-7.5">
               <div className="col-span-1">
                 <div className="grid gap-5 lg:gap-7.5">
