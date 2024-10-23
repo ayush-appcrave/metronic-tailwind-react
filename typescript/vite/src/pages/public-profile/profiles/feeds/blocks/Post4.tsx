@@ -29,7 +29,7 @@ const Post4 = () => {
         date="Week ago"
       />
 
-      <p className="text-sm font-medium text-gray-600 leading-5.5 mb-5 px-7.5">
+      <p className="text-sm text-gray-800 leading-5.5 mb-5 px-7.5">
         This doesn’t mean that all bloggers are insincere fakers. On the contrary, many bloggers’
         natural curiosity is what makes them great at what they do. If you blog for a living, you
         have to be comfortable jumping from one topic to the next, even if you don’t know anything

@@ -70,7 +70,7 @@ const Deals = () => {
         <td className="text-sm text-gray-800">{item.date} days</td>
 
         <td className="text-start">
-          <Menu className="items-stretch">
+          <Menu>
             <MenuItem
               toggle="dropdown"
               trigger="click"
@@ -86,7 +86,7 @@ const Deals = () => {
                 ]
               }}
             >
-              <MenuToggle className="btn btn-sm btn-icon btn-light btn-clear mb-2.5-">
+              <MenuToggle className="btn btn-sm btn-icon btn-light btn-clear">
                 <KeenIcon icon="dots-vertical" />
               </MenuToggle>
               {DropdownCrudItem1()}
@@ -102,7 +102,7 @@ const Deals = () => {
       <div className="card-header">
         <h3 className="card-title">Deals</h3>
 
-        <Menu className="items-stretch">
+        <Menu>
           <MenuItem
             toggle="dropdown"
             trigger="click"
@@ -118,7 +118,7 @@ const Deals = () => {
               ]
             }}
           >
-            <MenuToggle className="btn btn-sm btn-icon btn-light btn-clear mb-2.5-">
+            <MenuToggle className="btn btn-sm btn-icon btn-light btn-clear">
               <KeenIcon icon="dots-vertical" />
             </MenuToggle>
             {DropdownCrud1()}
@@ -126,7 +126,7 @@ const Deals = () => {
         </Menu>
       </div>
       <div className="card-table scrollable-x-auto">
-        <table className="table text-right">
+        <table className="table text-end">
           <thead>
             <tr>
               <th className="text-start min-w-[150px] !text-gray-700">Deal Name</th>

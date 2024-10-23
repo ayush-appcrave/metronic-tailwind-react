@@ -63,7 +63,7 @@ const RecentInvoices = () => {
         <div className="flex items-center gap-2.5">
           <span className="text-sm text-gray-800">${item.ammount}</span>
 
-          <Menu className="items-stretch">
+          <Menu>
             <MenuItem
               toggle="dropdown"
               trigger="click"
@@ -79,7 +79,7 @@ const RecentInvoices = () => {
                 ]
               }}
             >
-              <MenuToggle className="btn btn-sm btn-icon btn-light btn-clear mb-2.5-">
+              <MenuToggle className="btn btn-sm btn-icon btn-light btn-clear">
                 <KeenIcon icon="dots-vertical" />
               </MenuToggle>
               {DropdownCardItem2()}
@@ -95,7 +95,7 @@ const RecentInvoices = () => {
       <div className="card-header">
         <h3 className="card-title">Recent Invoices</h3>
 
-        <Menu className="items-stretch">
+        <Menu>
           <MenuItem
             toggle="dropdown"
             trigger="click"
@@ -111,7 +111,7 @@ const RecentInvoices = () => {
               ]
             }}
           >
-            <MenuToggle className="btn btn-sm btn-icon btn-light btn-clear mb-2.5-">
+            <MenuToggle className="btn btn-sm btn-icon btn-light btn-clear">
               <KeenIcon icon="dots-vertical" />
             </MenuToggle>
             {DropdownCard2()}

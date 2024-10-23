@@ -166,7 +166,7 @@ const MediaUploads = () => {
         <div className="card-header">
           <h3 className="card-title">Media Uploads</h3>
 
-          <Menu className="items-stretch">
+          <Menu>
             <MenuItem
               toggle="dropdown"
               trigger="click"
@@ -182,7 +182,7 @@ const MediaUploads = () => {
                 ]
               }}
             >
-              <MenuToggle className="btn btn-sm btn-icon btn-light btn-clear mb-2.5-">
+              <MenuToggle className="btn btn-sm btn-icon btn-light btn-clear">
                 <KeenIcon icon="dots-vertical" />
               </MenuToggle>
               {DropdownCard2()}

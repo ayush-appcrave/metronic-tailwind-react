@@ -34,7 +34,7 @@ const Statistics = ({ details }: IStatisticsProps) => {
           </div>
         </div>
 
-        <span className="[&:not(:last-child)]:border-r border-r-gray-300 my-1"></span>
+        <span className="[&:not(:last-child)]:border-e border-e-gray-300 my-1"></span>
       </React.Fragment>
     );
   };

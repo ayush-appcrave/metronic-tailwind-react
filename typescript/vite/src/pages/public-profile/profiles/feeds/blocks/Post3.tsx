@@ -34,7 +34,7 @@ const Post3 = () => {
         date="1 week ago"
       />
 
-      <p className="text-sm font-medium text-gray-600 leading-5.5 px-7.5">
+      <p className="text-sm text-gray-800 leading-5.5 px-7.5">
         You also need to be able to accept that not every post is going to get your motor running.
         Some posts will feel like a chore, but if you have editorial control over what you write
         about, then choose topics you’d want to read – even if they relate to niche industries.

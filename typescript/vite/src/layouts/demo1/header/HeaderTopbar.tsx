@@ -24,18 +24,16 @@ const HeaderTopbar = () => {
   };
 
   return (
-    <div className="flex items-stretch gap-1 lg:gap-3.5">
-      <div className="flex items-center">
-        <button
-          onClick={handleOpen}
-          className="btn btn-icon btn-icon-lg size-9 rounded-full hover:bg-primary-light hover:text-primary text-gray-500"
-        >
-          <KeenIcon icon="magnifier" />
-        </button>
-        <ModalSearch open={searchModalOpen} onClose={handleClose} />
-      </div>
+    <div className="flex items-center gap-2 lg:gap-3.5">
+      <button
+        onClick={handleOpen}
+        className="btn btn-icon btn-icon-lg size-9 rounded-full hover:bg-primary-light hover:text-primary text-gray-500"
+      >
+        <KeenIcon icon="magnifier" />
+      </button>
+      <ModalSearch open={searchModalOpen} onClose={handleClose} />
 
-      <Menu className="items-stretch">
+      <Menu>
         <MenuItem
           ref={itemChatRef}
           onShow={handleShow}
@@ -47,23 +45,21 @@ const HeaderTopbar = () => {
               {
                 name: 'offset',
                 options: {
-                  offset: [170, 0] // [skid, distance]
+                  offset: [170, 10] // [skid, distance]
                 }
               }
             ]
           }}
         >
-          <MenuToggle>
-            <div className="btn btn-icon btn-icon-lg size-9 rounded-full hover:bg-primary-light hover:text-primary text-gray-500 menu-item-show:bg-primary-light menu-item-show:text-primary">
-              <KeenIcon icon="messages" />
-            </div>
+          <MenuToggle className="btn btn-icon btn-icon-lg size-9 rounded-full hover:bg-primary-light hover:text-primary dropdown-open:bg-primary-light dropdown-open:text-primary text-gray-500">
+            <KeenIcon icon="messages" />
           </MenuToggle>
 
           {DropdownChat({ menuTtemRef: itemChatRef })}
         </MenuItem>
       </Menu>
 
-      <Menu className="items-stretch">
+      <Menu>
         <MenuItem
           ref={itemAppsRef}
           toggle="dropdown"
@@ -74,23 +70,21 @@ const HeaderTopbar = () => {
               {
                 name: 'offset',
                 options: {
-                  offset: [10, 0] // [skid, distance]
+                  offset: [10, 10] // [skid, distance]
                 }
               }
             ]
           }}
         >
-          <MenuToggle>
-            <div className="btn btn-icon btn-icon-lg size-9 rounded-full hover:bg-primary-light hover:text-primary text-gray-500 menu-item-show:bg-primary-light menu-item-show:text-primary">
-              <KeenIcon icon="element-11" />
-            </div>
+          <MenuToggle className="btn btn-icon btn-icon-lg size-9 rounded-full hover:bg-primary-light hover:text-primary dropdown-open:bg-primary-light dropdown-open:text-primary text-gray-500">
+            <KeenIcon icon="element-11" />
           </MenuToggle>
 
           {DropdownApps()}
         </MenuItem>
       </Menu>
 
-      <Menu className="items-stretch">
+      <Menu>
         <MenuItem
           ref={itemNotificationsRef}
           toggle="dropdown"
@@ -101,22 +95,21 @@ const HeaderTopbar = () => {
               {
                 name: 'offset',
                 options: {
-                  offset: [70, 0] // [skid, distance]
+                  offset: [70, 10] // [skid, distance]
                 }
               }
             ]
           }}
         >
-          <MenuToggle>
-            <div className="btn btn-icon btn-icon-lg size-9 rounded-full hover:bg-primary-light hover:text-primary text-gray-500 menu-item-show:bg-primary-light menu-item-show:text-primary">
-              <KeenIcon icon="notification-on" />
-            </div>
+          <MenuToggle className="btn btn-icon btn-icon-lg relative cursor-pointer size-9 rounded-full hover:bg-primary-light hover:text-primary dropdown-open:bg-primary-light dropdown-open:text-primary text-gray-500">
+            <KeenIcon icon="notification-on" />
+            <span className="badge badge-dot badge-success size-[5px] absolute top-0.5 end-0.5 transform translate-y-1/2"></span>
           </MenuToggle>
           {DropdownNotifications({ menuTtemRef: itemNotificationsRef })}
         </MenuItem>
       </Menu>
 
-      <Menu className="items-stretch -me-2">
+      <Menu>
         <MenuItem
           toggle="dropdown"
           trigger="click"
@@ -126,20 +119,18 @@ const HeaderTopbar = () => {
               {
                 name: 'offset',
                 options: {
-                  offset: [20, 0] // [skid, distance]
+                  offset: [20, 10] // [skid, distance]
                 }
               }
             ]
           }}
         >
-          <MenuToggle>
-            <div className="btn btn-icon rounded-full">
-              <img
-                className="size-9 rounded-full border-2 border-success shrink-0"
-                src={toAbsoluteUrl('/media/avatars/300-2.png')}
-                alt=""
-              />
-            </div>
+          <MenuToggle className="btn btn-icon rounded-full">
+            <img
+              className="size-9 rounded-full border-2 border-success shrink-0"
+              src={toAbsoluteUrl('/media/avatars/300-2.png')}
+              alt=""
+            />
           </MenuToggle>
           {DropdownUser()}
         </MenuItem>

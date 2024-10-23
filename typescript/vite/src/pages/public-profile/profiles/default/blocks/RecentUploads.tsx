@@ -54,7 +54,7 @@ const RecentUploads = ({ title }: IRecentUploadsProps) => {
           </div>
         </div>
 
-        <Menu className="items-stretch">
+        <Menu>
           <MenuItem
             toggle="dropdown"
             trigger="click"
@@ -70,7 +70,7 @@ const RecentUploads = ({ title }: IRecentUploadsProps) => {
               ]
             }}
           >
-            <MenuToggle className="btn btn-sm btn-icon btn-light btn-clear mb-2.5-">
+            <MenuToggle className="btn btn-sm btn-icon btn-light btn-clear">
               <KeenIcon icon="dots-vertical" />
             </MenuToggle>
             {DropdownCardItem1()}
@@ -85,7 +85,7 @@ const RecentUploads = ({ title }: IRecentUploadsProps) => {
       <div className="card-header">
         <h3 className="card-title">{title}</h3>
 
-        <Menu className="items-stretch">
+        <Menu>
           <MenuItem
             toggle="dropdown"
             trigger="click"
@@ -101,7 +101,7 @@ const RecentUploads = ({ title }: IRecentUploadsProps) => {
               ]
             }}
           >
-            <MenuToggle className="btn btn-sm btn-icon btn-light btn-clear mb-2.5-">
+            <MenuToggle className="btn btn-sm btn-icon btn-light btn-clear">
               <KeenIcon icon="dots-vertical" />
             </MenuToggle>
             {DropdownCard1()}

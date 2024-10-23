@@ -29,7 +29,7 @@ const ChannelStats = () => {
     return (
       <div
         key={index}
-        className="card flex-col justify-between gap-6 h-full bg-cover bg-[right_top_-1.7rem] bg-no-repeat channel-stats-bg"
+        className="card flex-col justify-between gap-6 h-full bg-cover rtl:bg-[left_top_-1.7rem] bg-[right_top_-1.7rem] bg-no-repeat channel-stats-bg"
       >
         {item.logoDark ? (
           <>

@@ -64,7 +64,7 @@ const Contributors = () => {
           </div>
         </div>
 
-        <Menu className="items-stretch">
+        <Menu>
           <MenuItem
             toggle="dropdown"
             trigger="click"
@@ -80,7 +80,7 @@ const Contributors = () => {
               ]
             }}
           >
-            <MenuToggle className="btn btn-sm btn-icon btn-light btn-clear mb-2.5-">
+            <MenuToggle className="btn btn-sm btn-icon btn-light btn-clear">
               <KeenIcon icon="dots-vertical" />
             </MenuToggle>
             {DropdownCardItem1()}
@@ -95,7 +95,7 @@ const Contributors = () => {
       <div className="card-header gap-2">
         <h3 className="card-title">Contributors</h3>
 
-        <Menu className="items-stretch">
+        <Menu>
           <MenuItem
             toggle="dropdown"
             trigger="click"
@@ -111,7 +111,7 @@ const Contributors = () => {
               ]
             }}
           >
-            <MenuToggle className="btn btn-sm btn-icon btn-light btn-clear mb-2.5-">
+            <MenuToggle className="btn btn-sm btn-icon btn-light btn-clear">
               <KeenIcon icon="dots-vertical" />
             </MenuToggle>
             {DropdownCard1()}

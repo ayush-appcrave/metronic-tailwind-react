@@ -30,17 +30,14 @@ const Heading = ({ author, avatar, date }: IHeadingProps) => {
         />
 
         <div className="flex flex-col">
-          <a
-            href="#"
-            className="text-md font-semibold text-gray-900 hover:text-primary-active mb-1"
-          >
+          <a href="#" className="text-md font-medium text-gray-900 hover:text-primary-active mb-1">
             {author}
           </a>
-          <time className="text-sm font-medium text-gray-600">{date}</time>
+          <time className="text-sm text-gray-600">{date}</time>
         </div>
       </div>
 
-      <Menu className="items-stretch">
+      <Menu>
         <MenuItem
           toggle="dropdown"
           trigger="click"
@@ -56,7 +53,7 @@ const Heading = ({ author, avatar, date }: IHeadingProps) => {
             ]
           }}
         >
-          <MenuToggle className="btn btn-sm btn-icon btn-light btn-clear mb-2.5-">
+          <MenuToggle className="btn btn-sm btn-icon btn-light btn-clear">
             <KeenIcon icon="dots-vertical" />
           </MenuToggle>
           {DropdownCard1()}
