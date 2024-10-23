@@ -28,7 +28,7 @@ const BasicSettings = ({ title }: IBasicSettingsProps) => {
                   jasontt@studio.co
                 </a>
               </td>
-              <td className="py-2 max-w-16 text-right">
+              <td className="py-2 max-w-16 text-end">
                 <a href="#" className="btn btn-sm btn-icon btn-clear btn-primary">
                   <KeenIcon icon="notepad-edit" />
                 </a>
@@ -36,9 +36,9 @@ const BasicSettings = ({ title }: IBasicSettingsProps) => {
             </tr>
 
             <tr>
-              <td className="py-2text-gray-600 font-normal">Password</td>
+              <td className="py-2 text-gray-600 font-normal">Password</td>
               <td className="py-2 text-gray-700 font-normal">Password last changed 2 months ago</td>
-              <td className="py-2 text-right">
+              <td className="py-2 text-end">
                 <a href="#" className="btn btn-sm btn-icon btn-clear btn-primary">
                   <KeenIcon icon="notepad-edit" />
                 </a>
@@ -48,7 +48,7 @@ const BasicSettings = ({ title }: IBasicSettingsProps) => {
             <tr>
               <td className="py-3.5text-gray-600 font-normal">2FA</td>
               <td className="py-3.5 text-gray-700 font-normal">To be set</td>
-              <td className="py-3 text-right">
+              <td className="py-3 text-end">
                 <a href="#" className="btn btn-link btn-sm">
                   Setup
                 </a>
@@ -98,7 +98,7 @@ const BasicSettings = ({ title }: IBasicSettingsProps) => {
                   </a>
                 </div>
               </td>
-              <td className="py-2 text-right">
+              <td className="py-2 text-end">
                 <a href="#" className="btn btn-sm btn-icon btn-clear btn-primary">
                   <KeenIcon icon="notepad-edit" />
                 </a>
@@ -108,7 +108,7 @@ const BasicSettings = ({ title }: IBasicSettingsProps) => {
             <tr>
               <td className="py-3text-gray-600 font-normal">Team Account</td>
               <td className="py-3 text-gray-700 font-normal">To be set</td>
-              <td className="py-3 text-right">
+              <td className="py-3 text-end">
                 <a href="#" className="btn btn-link btn-sm">
                   Setup
                 </a>
@@ -169,7 +169,7 @@ const BasicSettings = ({ title }: IBasicSettingsProps) => {
                   </a>
                 </div>
               </td>
-              <td className="py-2 text-right">
+              <td className="py-2 text-end">
                 <a href="#" className="btn btn-sm btn-icon btn-clear btn-primary">
                   <KeenIcon icon="notepad-edit" />
                 </a>
@@ -188,7 +188,7 @@ const BasicSettings = ({ title }: IBasicSettingsProps) => {
                   </button>
                 </div>
               </td>
-              <td className="py-3 text-right">
+              <td className="py-3 text-end">
                 <a href="#" className="btn btn-link btn-sm">
                   Re-create
                 </a>

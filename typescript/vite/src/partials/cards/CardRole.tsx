@@ -49,7 +49,7 @@ const CardRole = ({ path, title, subTitle, description, team, badge }: IRoleProp
               ]
             }}
           >
-            <MenuToggle className="btn btn-sm btn-icon btn-light btn-clear mb-2.5-">
+            <MenuToggle className="btn btn-sm btn-icon btn-light btn-clear">
               <KeenIcon icon="dots-vertical" />
             </MenuToggle>
             {DropdownCardItem1()}

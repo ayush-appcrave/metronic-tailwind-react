@@ -14,7 +14,7 @@ const CrudAvatarUpload = () => {
       {({ onImageUpload }) => (
         <div className="image-input size-16" onClick={onImageUpload}>
           <div
-            className="btn btn-icon btn-icon-xs btn-light shadow-default absolute z-1 size-5 -top-0.5 -right-0.5 rounded-full"
+            className="btn btn-icon btn-icon-xs btn-light shadow-default absolute z-1 size-5 -top-0.5 -end-0.5 rounded-full"
             onClick={(e) => {
               e.stopPropagation();
               setAvatar([]);
@@ -32,7 +32,7 @@ const CrudAvatarUpload = () => {
           >
             {avatar.length > 0 && <img src={avatar[0].dataURL} alt="avatar" />}
 
-            <div className="flex items-center justify-center cursor-pointer h-5 start-0 end-0 bottom-0 bg-dark-clarity absolute">
+            <div className="flex items-center justify-center cursor-pointer h-5 start-0 right-0 bottom-0 bg-dark-clarity absolute">
               <svg
                 xmlns="http://www.w3.org/2000/svg"
                 width="14"

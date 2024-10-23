@@ -65,7 +65,7 @@ const AccountSettingsSidebarContent = () => {
       {desktopMode && (
         <div className="w-[230px] shrink-0">
           <div
-            className={clsx('w-[230px]', sidebarSticky && `fixed z-10 left-auto ${stickyClass}`)}
+            className={clsx('w-[230px]', sidebarSticky && `fixed z-10 start-auto ${stickyClass}`)}
           >
             <Scrollspy offset={100} targetRef={parentRef}>
               <AccountSettingsSidebar />

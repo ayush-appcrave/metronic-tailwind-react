@@ -86,11 +86,11 @@ const Members = ({ url }: IMembersProps) => {
           </div>
         </td>
 
-        <td className="text-right">
+        <td className="text-end">
           <span className="badge badge-sm badge-outline">{table.label}</span>
         </td>
 
-        <td className="text-right">
+        <td className="text-end">
           <span
             className={`badge badge-sm badge-outline ${table.disabled ? 'badge-danger' : 'badge-success'}`}
           >
@@ -98,7 +98,7 @@ const Members = ({ url }: IMembersProps) => {
           </span>
         </td>
 
-        <td className="text-right text-gray-700 text-sm">{table.joined}</td>
+        <td className="text-end text-gray-700 text-sm">{table.joined}</td>
 
         <td className="text-right">
           <Menu className="inline-flex">
@@ -157,7 +157,7 @@ const Members = ({ url }: IMembersProps) => {
                 ]
               }}
             >
-              <MenuToggle className="btn btn-sm btn-icon btn-light btn-clear mb-2.5-">
+              <MenuToggle className="btn btn-sm btn-icon btn-light btn-clear">
                 <KeenIcon icon="dots-vertical" />
               </MenuToggle>
               {DropdownCrud1()}
@@ -172,9 +172,9 @@ const Members = ({ url }: IMembersProps) => {
             <tbody>
               <tr className="bg-gray-100">
                 <th className="text-start font-medium min-w-52">Name</th>
-                <th className="text-right font-medium min-w-36">Role</th>
-                <th className="text-right font-medium min-w-32">2FA</th>
-                <th className="text-right font-medium min-w-20">Joined</th>
+                <th className="text-end font-medium min-w-36">Role</th>
+                <th className="text-end font-medium min-w-32">2FA</th>
+                <th className="text-end font-medium min-w-20">Joined</th>
                 <th className="min-w-16"></th>
               </tr>
 

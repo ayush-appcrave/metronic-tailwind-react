@@ -91,7 +91,7 @@ const CardConnectionRow = ({
             <CommonAvatars group={team.group} more={team.more} size={team.size} />
           </div>
 
-          <div className="text-right w-28">
+          <div className="text-end w-28">
             {connected ? (
               <a className="btn btn-light btn-sm">
                 <KeenIcon icon="check-circle" /> Connected

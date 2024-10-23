@@ -57,7 +57,7 @@ const ExternalServicesManageApi = ({
             </label>
           </div>
 
-          <div className="flex items-center justify-between grow border border-gray-200 rounded-xl gap-2 p-5 [background-position:220%_44%] bg-no-repeat bg-[length:650px] user-access-bg">
+          <div className="flex items-center justify-between grow border border-gray-200 rounded-xl gap-2 p-5 rtl:[background-position:-100%_44%] [background-position:220%_44%] bg-no-repeat bg-[length:650px] user-access-bg">
             <div className="flex items-center gap-4">
               <CommonHexagonBadge
                 stroke="stroke-brand-clarity"

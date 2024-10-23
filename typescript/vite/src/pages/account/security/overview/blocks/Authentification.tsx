@@ -13,7 +13,7 @@ const Authentification = () => {
             <tr>
               <td className="text-gray-600 font-normal">Password</td>
               <td className="text-gray-700 font-normal">Password last changed 2 months ago</td>
-              <td className="text-right">
+              <td className="text-end">
                 <a href="#" className="btn btn-sm btn-icon btn-icon-lg link">
                   <KeenIcon icon="notepad-edit" />
                 </a>
@@ -22,7 +22,7 @@ const Authentification = () => {
             <tr>
               <td className="text-gray-600 font-normal">2FA</td>
               <td className="text-gray-700 font-normal">To be set</td>
-              <td className="text-right">
+              <td className="text-end">
                 <a href="#" className="btn btn-link btn-sm">
                   Setup
                 </a>
@@ -71,7 +71,7 @@ const Authentification = () => {
                   </a>
                 </div>
               </td>
-              <td className="text-right">
+              <td className="text-end">
                 <a href="#" className="btn btn-sm btn-icon btn-icon-lg link">
                   <KeenIcon icon="notepad-edit" />
                 </a>

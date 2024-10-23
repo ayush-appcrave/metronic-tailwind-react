@@ -20,7 +20,7 @@ const Upgrade = () => {
       </style>
 
       <div className="card rounded-xl">
-        <div className="flex items-center justify-between grow gap-2 p-5 [background-position:121%_41%] bg-no-repeat bg-[length:660px_310px] upgrade-bg">
+        <div className="flex items-center justify-between grow gap-2 p-5 rtl:[background-position:-30%_41%][background-position:121%_41%] bg-no-repeat bg-[length:660px_310px] upgrade-bg">
           <div className="flex items-center gap-4">
             <CommonHexagonBadge
               stroke="stroke-brand-clarity"

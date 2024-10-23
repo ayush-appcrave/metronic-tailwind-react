@@ -47,11 +47,11 @@ const BillingInvoicing = () => {
     return (
       <tr key={index}>
         <td className="text-sm text-gray-800">{table.number}</td>
-        <td className="lg:text-right">
+        <td className="lg:text-end">
           <div className={`badge badge-sm ${table.color} badge-outline`}>{table.label}</div>
         </td>
-        <td className="text-sm text-gray-800 lg:text-right">{table.date}</td>
-        <td className="text-sm text-gray-800 lg:text-right">${table.ammount}</td>
+        <td className="text-sm text-gray-800 lg:text-end">{table.date}</td>
+        <td className="text-sm text-gray-800 lg:text-end">${table.ammount}</td>
         <td>
           <Menu className="items-stretch">
             <MenuItem
@@ -96,9 +96,9 @@ const BillingInvoicing = () => {
           <thead>
             <tr>
               <th className="min-w-50">Invoice</th>
-              <th className="min-w-16 text-right">Status</th>
-              <th className="min-w-30 text-right">Date</th>
-              <th className="min-w-16 text-right">Amount</th>
+              <th className="min-w-16 text-end">Status</th>
+              <th className="min-w-30 text-end">Date</th>
+              <th className="min-w-16 text-end">Amount</th>
               <th className="w-8"></th>
             </tr>
           </thead>

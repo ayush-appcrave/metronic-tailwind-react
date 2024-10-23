@@ -178,12 +178,12 @@ const Members = () => {
           <div className="relative">
             <KeenIcon
               icon="magnifier"
-              className="leading-none text-md text-gray-500 absolute top-1/2 left-0 -translate-y-1/2 ml-3"
+              className="leading-none text-md text-gray-500 absolute top-1/2 start-0 -translate-y-1/2 ms-3"
             />
             <input
               type="text"
               placeholder="Search Members"
-              className="input input-sm pl-8"
+              className="input input-sm ps-8"
               value={searchTerm}
               onChange={(e) => setSearchTerm(e.target.value)} // Update search term
             />
