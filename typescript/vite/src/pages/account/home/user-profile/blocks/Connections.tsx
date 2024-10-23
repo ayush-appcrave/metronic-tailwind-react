@@ -90,9 +90,9 @@ const Connections = ({ url }: IConnectionsProps) => {
           </div>
         </td>
 
-        <td className="py-2 text-right">{table.jointLinks}</td>
+        <td className="py-2 text-end">{table.jointLinks}</td>
 
-        <td className="py-2 text-right">
+        <td className="py-2 text-end">
           <button
             className={`btn btn-xs btn-icon btn-primary btn-outline rounded-full ${table.connected ? 'active' : ''}`}
           >
@@ -100,7 +100,7 @@ const Connections = ({ url }: IConnectionsProps) => {
           </button>
         </td>
 
-        <td className="text-right">
+        <td className="text-end">
           <Menu className="inline-flex">
             <MenuItem
               toggle="dropdown"
@@ -163,8 +163,8 @@ const Connections = ({ url }: IConnectionsProps) => {
             <tbody>
               <tr className="bg-gray-100">
                 <th className="text-start font-normal min-w-48 py-2.5">Name</th>
-                <th className="text-right font-medium min-w-20 py-2.5">Joint Links</th>
-                <th className="text-right font-medium min-w-20 py-2.5">Status</th>
+                <th className="text-end font-medium min-w-20 py-2.5">Joint Links</th>
+                <th className="text-end font-medium min-w-20 py-2.5">Status</th>
                 <th className="min-w-16"></th>
               </tr>
 

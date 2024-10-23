@@ -103,7 +103,7 @@ const Projects = () => {
   const renderItem = (item: IProjectsItem, index: number) => {
     return (
       <tr key={index}>
-        <td className="text-left">
+        <td className="text-start">
           <a href="#" className="text-sm font-medium text-gray-900 hover:text-primary">
             {item.name}
           </a>
@@ -123,7 +123,7 @@ const Projects = () => {
 
         <td className="text-sm font-medium text-gray-700">{item.dueDate}</td>
 
-        <td className="text-left">
+        <td className="text-start">
           <Menu className="items-stretch">
             <MenuItem
               toggle="dropdown"
@@ -140,7 +140,7 @@ const Projects = () => {
                 ]
               }}
             >
-              <MenuToggle className="btn btn-sm btn-icon btn-light btn-clear mb-2.5-">
+              <MenuToggle className="btn btn-sm btn-icon btn-light btn-clear">
                 <KeenIcon icon="dots-vertical" />
               </MenuToggle>
               {DropdownCrudItem1()}
@@ -184,7 +184,7 @@ const Projects = () => {
         <table className="table text-right">
           <thead>
             <tr>
-              <th className="text-left min-w-52 !font-normal !text-gray-700">Project Name</th>
+              <th className="text-start min-w-52 !font-normal !text-gray-700">Project Name</th>
               <th className="min-w-40 !font-normal !text-gray-700">Progress</th>
               <th className="min-w-32 !font-normal !text-gray-700">People</th>
               <th className="min-w-32 !font-normal !text-gray-700">Due Date</th>

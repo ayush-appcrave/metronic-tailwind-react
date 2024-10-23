@@ -318,7 +318,7 @@ const DropdownChat = ({ menuTtemRef }: IDropdownChatProps) => {
       <div className="relative grow mx-5 mb-2.5">
         <img
           src={toAbsoluteUrl('/media/avatars/300-2.png')}
-          className="rounded-full size-[30px] absolute left-0 top-2/4 -translate-y-2/4 ms-2.5"
+          className="rounded-full size-[30px] absolute start-0 top-2/4 -translate-y-2/4 ms-2.5"
           alt=""
         />
 
@@ -330,7 +330,7 @@ const DropdownChat = ({ menuTtemRef }: IDropdownChatProps) => {
           value=""
         />
 
-        <div className="flex items-center gap-2.5 absolute right-3 top-1/2 -translate-y-1/2">
+        <div className="flex items-center gap-2.5 absolute end-3 top-1/2 -translate-y-1/2">
           <button className="btn btn-sm btn-icon btn-light btn-clear">
             <KeenIcon icon="exit-up" />
           </button>

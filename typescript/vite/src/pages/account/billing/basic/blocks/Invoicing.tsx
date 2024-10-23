@@ -52,11 +52,11 @@ const Invoicing = () => {
     return (
       <tr key={index}>
         <td className="text-sm text-gray-800 font-normal">{table.number}</td>
-        <td className="lg:text-right">
+        <td className="lg:text-end">
           <div className={`badge badge-sm ${table.color} badge-outline`}>{table.label}</div>
         </td>
-        <td className="text-sm text-gray-800 font-normal lg:text-right">{table.date}</td>
-        <td className="text-sm text-gray-700 font-normal lg:text-right">${table.ammount}</td>
+        <td className="text-sm text-gray-800 font-normal lg:text-end">{table.date}</td>
+        <td className="text-sm text-gray-700 font-normal lg:text-end">${table.ammount}</td>
         <td>
           <div className="btn btn-sm btn-icon btn-clear btn-primary">
             <KeenIcon icon="exit-down" />
@@ -81,9 +81,9 @@ const Invoicing = () => {
           <thead>
             <tr>
               <th className="min-w-52">Invoice</th>
-              <th className="min-w-24 text-right">Status</th>
-              <th className="min-w-32 text-right">Date</th>
-              <th className="min-w-20 text-right">Amount</th>
+              <th className="min-w-24 text-end">Status</th>
+              <th className="min-w-32 text-end">Date</th>
+              <th className="min-w-20 text-end">Amount</th>
               <th className="w-8"></th>
             </tr>
           </thead>

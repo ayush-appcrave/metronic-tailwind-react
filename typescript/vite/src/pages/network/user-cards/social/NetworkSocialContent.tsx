@@ -27,7 +27,7 @@ const NetworkSocialContent = () => {
         image: '300-1.png',
         imageClass: 'rounded-full',
         badgeClass:
-          'flex size-2.5 bg-success rounded-full ring-2 ring-light absolute bottom-0.5 left-16 transform -translate-y-1/2'
+          'flex size-2.5 bg-success rounded-full ring-2 ring-light absolute bottom-0.5 start-16 transform -translate-y-1/2'
       },
       name: 'Jenny Klabber',
       description: 'San Antonio, TX',
@@ -39,7 +39,7 @@ const NetworkSocialContent = () => {
           'flex items-center justify-center relative text-2.5xl text-danger size-20 ring-1 ring-danger-clarity bg-danger-light rounded-full',
         fallback: 'K',
         badgeClass:
-          'flex size-2.5 bg-success rounded-full ring-2 ring-light absolute bottom-0.5 left-16 transform -translate-y-1/2'
+          'flex size-2.5 bg-success rounded-full ring-2 ring-light absolute bottom-0.5 start-16 transform -translate-y-1/2'
       },
       name: 'Kevin Warren',
       description: 'Fort Wayne, IN',
@@ -51,7 +51,7 @@ const NetworkSocialContent = () => {
         image: '300-9.png',
         imageClass: 'rounded-full',
         badgeClass:
-          'flex size-2.5 bg-success rounded-full ring-2 ring-light absolute bottom-0.5 left-16 transform -translate-y-1/2'
+          'flex size-2.5 bg-success rounded-full ring-2 ring-light absolute bottom-0.5 start-16 transform -translate-y-1/2'
       },
       name: 'Brian Davis',
       description: 'Reno, NV',
@@ -63,7 +63,7 @@ const NetworkSocialContent = () => {
         image: '300-11.png',
         imageClass: 'rounded-full',
         badgeClass:
-          'flex size-2.5 bg-success rounded-full ring-2 ring-light absolute bottom-0.5 left-16 transform -translate-y-1/2'
+          'flex size-2.5 bg-success rounded-full ring-2 ring-light absolute bottom-0.5 start-16 transform -translate-y-1/2'
       },
       name: 'Guy Hawkins',
       description: 'Irving, TX',
@@ -75,7 +75,7 @@ const NetworkSocialContent = () => {
         image: '300-30.png',
         imageClass: 'rounded-full',
         badgeClass:
-          'flex size-2.5 bg-success rounded-full ring-2 ring-light absolute bottom-0.5 left-16 transform -translate-y-1/2'
+          'flex size-2.5 bg-success rounded-full ring-2 ring-light absolute bottom-0.5 start-16 transform -translate-y-1/2'
       },
       name: 'Albert Flores',
       description: 'Boise, ID',
@@ -87,7 +87,7 @@ const NetworkSocialContent = () => {
           'flex items-center justify-center relative text-2.5xl text-info size-20 ring-1 ring-info-clarity bg-info-light rounded-full',
         fallback: 'S',
         badgeClass:
-          'flex size-2.5 bg-success rounded-full ring-2 ring-light absolute bottom-0.5 left-16 transform -translate-y-1/2'
+          'flex size-2.5 bg-success rounded-full ring-2 ring-light absolute bottom-0.5 start-16 transform -translate-y-1/2'
       },
       name: 'Savannah Nguyen',
       description: 'Spokane, WA',
@@ -99,7 +99,7 @@ const NetworkSocialContent = () => {
           'flex items-center justify-center relative text-2.5xl text-success size-20 ring-1 ring-success-clarity bg-success-light rounded-full',
         fallback: 'M',
         badgeClass:
-          'flex size-2.5 bg-gray-400 rounded-full ring-2 ring-light absolute bottom-0.5 left-16 transform -translate-y-1/2'
+          'flex size-2.5 bg-gray-400 rounded-full ring-2 ring-light absolute bottom-0.5 start-16 transform -translate-y-1/2'
       },
       name: 'Marvin McKinney',
       description: 'Richmond, VA',
@@ -111,7 +111,7 @@ const NetworkSocialContent = () => {
         image: '300-3.png',
         imageClass: 'rounded-full',
         badgeClass:
-          'flex size-2.5 bg-success rounded-full ring-2 ring-light absolute bottom-0.5 left-16 transform -translate-y-1/2'
+          'flex size-2.5 bg-success rounded-full ring-2 ring-light absolute bottom-0.5 start-16 transform -translate-y-1/2'
       },
       name: 'Darrell Steward',
       description: 'Baton Rouge, LA',
@@ -123,7 +123,7 @@ const NetworkSocialContent = () => {
         image: '300-5.png',
         imageClass: 'rounded-full',
         badgeClass:
-          'flex size-2.5 bg-success rounded-full ring-2 ring-light absolute bottom-0.5 left-16 transform -translate-y-1/2'
+          'flex size-2.5 bg-success rounded-full ring-2 ring-light absolute bottom-0.5 start-16 transform -translate-y-1/2'
       },
       name: 'Eleanor Pena',
       description: 'Des Moines, IA',

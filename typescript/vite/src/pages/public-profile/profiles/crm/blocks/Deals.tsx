@@ -55,7 +55,7 @@ const Deals = () => {
   const renderItem = (item: IDealsItem, index: number) => {
     return (
       <tr key={index}>
-        <td className="text-left">
+        <td className="text-start">
           <a href="#" className="text-sm font-medium text-gray-900 hover:text-primary">
             {item.name}
           </a>
@@ -69,7 +69,7 @@ const Deals = () => {
 
         <td className="text-sm text-gray-800">{item.date} days</td>
 
-        <td className="text-left">
+        <td className="text-start">
           <Menu className="items-stretch">
             <MenuItem
               toggle="dropdown"
@@ -118,7 +118,7 @@ const Deals = () => {
               ]
             }}
           >
-            <MenuToggle className="btn btn-sm btn-icon btn-light btn-clear mb-2.5-">
+            <MenuToggle className="btn btn-sm btn-icon btn-light btn-clear">
               <KeenIcon icon="dots-vertical" />
             </MenuToggle>
             {DropdownCrud1()}
@@ -129,7 +129,7 @@ const Deals = () => {
         <table className="table text-right">
           <thead>
             <tr>
-              <th className="text-left min-w-[150px] !text-gray-700">Deal Name</th>
+              <th className="text-start min-w-[150px] !text-gray-700">Deal Name</th>
               <th className="min-w-[100px] !text-gray-700">Amount</th>
               <th className="min-w-[100px]">Status</th>
               <th className="min-w-[110px] !text-gray-700">Duration</th>

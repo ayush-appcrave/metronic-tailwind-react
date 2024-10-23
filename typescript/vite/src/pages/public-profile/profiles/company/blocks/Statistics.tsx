@@ -22,7 +22,7 @@ const Statistics = ({ items }: IStatisticsProps) => {
         </div>
 
         {index !== items.length - 1 && (
-          <span className="[&:not(:last-child)]:border-r border-r-gray-300 my-1"></span>
+          <span className="[&:not(:last-child)]:border-e border-e-gray-300 my-1"></span>
         )}
       </React.Fragment>
     );

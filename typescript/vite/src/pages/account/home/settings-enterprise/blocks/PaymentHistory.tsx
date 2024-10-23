@@ -37,8 +37,8 @@ const PaymentHistory = () => {
     return (
       <tr key={index}>
         <td className="text-sm font-normal text-gray-800">{table.date}</td>
-        <td className="text-sm font-normal text-gray-800 lg:text-right">{table.type}</td>
-        <td className="text-sm font-normal text-gray-800 lg:text-right">{table.amount}</td>
+        <td className="text-sm font-normal text-gray-800 lg:text-end">{table.type}</td>
+        <td className="text-sm font-normal text-gray-800 lg:text-end">{table.amount}</td>
         <td>
           <Menu className="items-stretch">
             <MenuItem
@@ -88,7 +88,7 @@ const PaymentHistory = () => {
               ]
             }}
           >
-            <MenuToggle className="btn btn-sm btn-icon btn-light btn-clear mb-2.5-">
+            <MenuToggle className="btn btn-sm btn-icon btn-light btn-clear">
               <KeenIcon icon="dots-vertical" />
             </MenuToggle>
             {DropdownCrud2()}
@@ -100,8 +100,8 @@ const PaymentHistory = () => {
           <thead>
             <tr>
               <th className="min-w-40">Date</th>
-              <th className="min-w-40 lg:text-right">Type</th>
-              <th className="min-w-40 lg:text-right">Amount</th>
+              <th className="min-w-40 lg:text-end">Type</th>
+              <th className="min-w-40 lg:text-end">Amount</th>
               <th className="w-8"></th>
             </tr>
           </thead>

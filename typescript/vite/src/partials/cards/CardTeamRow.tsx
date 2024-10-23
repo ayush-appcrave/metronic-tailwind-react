@@ -31,7 +31,7 @@ const CardTeamRow = ({ icon, title, description, labels, rating, team, connected
         </div>
 
         <div className="flex flex-wrap items-center gap-6 lg:gap-12">
-          <div className="grid gap-5 justify-end lg:text-right">
+          <div className="grid gap-5 justify-end lg:text-end">
             <span className="text-2xs font-normal text-gray-500 uppercase">skills</span>
             <div className="flex gap-1.5">
               {labels.map((label, index) => {
@@ -40,12 +40,12 @@ const CardTeamRow = ({ icon, title, description, labels, rating, team, connected
             </div>
           </div>
 
-          <div className="grid justify-end gap-6 lg:text-right">
+          <div className="grid justify-end gap-6 lg:text-end">
             <div className="text-2xs text-gray-600 uppercase">rating</div>
             <CommonRating rating={rating.value} round={rating.round} />
           </div>
 
-          <div className="grid justify-end gap-3.5 lg:text-right lg:min-w-24 shrink-0 max-w-auto">
+          <div className="grid justify-end gap-3.5 lg:text-end lg:min-w-24 shrink-0 max-w-auto">
             <span className="text-2xs text-gray-600 uppercase">memebers</span>
             <CommonAvatars
               group={team.group}

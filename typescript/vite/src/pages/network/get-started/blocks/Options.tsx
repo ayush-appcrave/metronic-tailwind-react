@@ -42,7 +42,7 @@ const Options = ({ items }: IOptionsProps) => {
                   {link.title}
                 </Link>
                 {subIndex <= item.sub.length - 1 && (
-                  <span className="h-3.5 border-l border-l-gray-300 last-of-type:hidden mx-2 mb-1"></span>
+                  <span className="h-3.5 border-s border-s-gray-300 last-of-type:hidden mx-2 mb-1"></span>
                 )}
               </React.Fragment>
             ))}

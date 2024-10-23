@@ -50,7 +50,7 @@ const Backup= () => {
                   <KeenIcon icon="files" className="text-sm text-gray-500" />
                   <p>{info.row.original.details.pages} pages</p>
                 </span>
-                <span className="border-r border-r-gray-300 h-4"></span>
+                <span className="border-e border-e-gray-300 h-4"></span>
                 <span className="flex items-center gap-1">
                   <KeenIcon icon="picture" className="text-sm text-gray-500" />
                   <p>{info.row.original.details.media} media</p>

@@ -21,7 +21,7 @@ const Work = () => {
               <td className="py-2 min-w-72 w-full text-gray-800 font-normal">
                 English <span className="text-gray-600 font-normal">-Fluent</span>
               </td>
-              <td className="py-2 text-right min-w-24">
+              <td className="py-2 text-end min-w-24">
                 <a href="#" className="btn btn-sm btn-icon btn-clear btn-primary">
                   <KeenIcon icon="notepad-edit" />
                 </a>
@@ -31,7 +31,7 @@ const Work = () => {
             <tr>
               <td className="py-2 text-gray-600 font-normal">Hourly Rate</td>
               <td className="py-2 text-gray-800 font-normal">$28 / hour</td>
-              <td className="py-2 text-right">
+              <td className="py-2 text-end">
                 <a href="#" className="btn btn-sm btn-icon btn-clear btn-primary">
                   <KeenIcon icon="notepad-edit" />
                 </a>
@@ -41,7 +41,7 @@ const Work = () => {
             <tr>
               <td className="py-2text-gray-600 font-normal">Avaibilaty</td>
               <td className="py-2 text-gray-800 font-normal">32 hours a week</td>
-              <td className="py-2 text-right">
+              <td className="py-2 text-end">
                 <a href="#" className="btn btn-sm btn-icon btn-clear btn-primary">
                   <KeenIcon icon="notepad-edit" />
                 </a>
@@ -62,7 +62,7 @@ const Work = () => {
                   <span className="badge badge-sm badge-gray-200">Management</span>
                 </div>
               </td>
-              <td className="py-3 text-right">
+              <td className="py-3 text-end">
                 <a href="#" className="btn btn-sm btn-icon btn-clear btn-primary">
                   <KeenIcon icon="notepad-edit" />
                 </a>
@@ -75,7 +75,7 @@ const Work = () => {
                 We&apos;re open to partnerships, guest posts, and more. Join us to share your
                 insights and grow your audience.
               </td>
-              <td className="py-4 text-right">
+              <td className="py-4 text-end">
                 <a href="#" className="btn btn-sm btn-icon btn-clear btn-primary">
                   <KeenIcon icon="notepad-edit" />
                 </a>

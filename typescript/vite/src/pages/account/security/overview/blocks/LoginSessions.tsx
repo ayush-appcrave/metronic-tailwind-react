@@ -69,9 +69,9 @@ const LoginSessions = () => {
           </div>
         </td>
 
-        <td className="text-right text-gray-700 font-normal">{row.location}</td>
+        <td className="text-end text-gray-700 font-normal">{row.location}</td>
 
-        <td className="text-right text-gray-700 font-normal">{row.recent}</td>
+        <td className="text-end text-gray-700 font-normal">{row.recent}</td>
 
         <td className="!pr-7.5">
           <Menu className="items-stretch">
@@ -136,9 +136,9 @@ const LoginSessions = () => {
             <thead>
               <tr>
                 <th className="text-left  min-w-48">Name</th>
-                <th className="text-right min-w-20">Location</th>
-                <th className="text-right min-w-20">Recent activity</th>
-                <th className="text-right w-[70px]"></th>
+                <th className="text-end min-w-20">Location</th>
+                <th className="text-end min-w-20">Recent activity</th>
+                <th className="text-end w-[70px]"></th>
               </tr>
             </thead>
             <tbody>

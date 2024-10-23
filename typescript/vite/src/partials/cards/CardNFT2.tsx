@@ -41,7 +41,7 @@ const CardNFT2 = ({ avatar, bgImage, name, email, info, statistics }: INFT2Props
         className="card-header card-rounded-t flex justify-end items-start relative p-0 bg-no-repeat bg-cover bg-center h-[120px]"
         style={{ backgroundImage: `url(${toAbsoluteUrl(`/media/images/2600x1200/${bgImage}`)})` }}
       >
-        <div className="menu mt-2.5 mr-2.5" data-menu="true">
+        <div className="menu mt-2.5 me-2.5" data-menu="true">
           <Menu className="items-stretch">
             <MenuItem
               toggle="dropdown"
@@ -58,7 +58,7 @@ const CardNFT2 = ({ avatar, bgImage, name, email, info, statistics }: INFT2Props
                 ]
               }}
             >
-              <MenuToggle className="btn btn-sm btn-icon btn-light btn-clear mb-2.5-">
+              <MenuToggle className="btn btn-sm btn-icon btn-light btn-clear">
                 <KeenIcon icon="setting-2" />
               </MenuToggle>
               {DropdownCardItem1()}
@@ -107,7 +107,7 @@ const CardNFT2 = ({ avatar, bgImage, name, email, info, statistics }: INFT2Props
           </a>
           <div className="flex items-center text-xs font-medium text-success">
             {info}
-            <KeenIcon icon="copy" className="ml-1 text-gray-400 text-md" />
+            <KeenIcon icon="copy" className="ms-1 text-gray-400 text-md" />
           </div>
         </div>
 
