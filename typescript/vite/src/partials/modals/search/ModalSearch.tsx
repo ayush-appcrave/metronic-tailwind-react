@@ -233,7 +233,7 @@ const ModalSearch = forwardRef<HTMLDivElement, ModalSearchProps>(({ open, onClos
             type="text"
             name="query"
             value=""
-            className="input px-0 border-none bg-transparent shadow-none ml-2.5"
+            className="input px-0 border-none bg-transparent shadow-none ms-2.5"
             onChange={handleSearchInput}
             placeholder="Tap to start search"
           />

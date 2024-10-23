@@ -16,11 +16,11 @@ const ScrollspyMenu = ({ items }: IScrollspyMenuProps) => {
       <div
         key={index}
         data-scrollspy-anchor={item.target}
-        className={`cursor-pointer flex items-center rounded-lg pl-2.5 pr-2.5 py-2.5 border border-transparent text-gray-800 hover:text-primary scrollspy-active:bg-secondary-active scrollspy-active:text-primary scrollspy-active:font-medium dark:hover:bg-coal-300 dark:hover:border-gray-100 hover:rounded-lg dark:scrollspy-active:bg-coal-300 dark:scrollspy-active:border-gray-100 ${
+        className={`cursor-pointer flex items-center rounded-lg ps-2.5 pe-2.5 py-2.5 border border-transparent text-gray-800 hover:text-primary scrollspy-active:bg-secondary-active scrollspy-active:text-primary scrollspy-active:font-medium dark:hover:bg-coal-300 dark:hover:border-gray-100 hover:rounded-lg dark:scrollspy-active:bg-coal-300 dark:scrollspy-active:border-gray-100 ${
           indent ? 'gap-3.5' : 'gap-1.5'
         } ${item.active ? 'active' : ''} text-2sm font-medium hover:text-primary`}
       >
-        <span className="flex w-1.5 relative before:absolute before:top-0 before:size-1.5 before:rounded-full before:-translate-x-2/4 before:-translate-y-2/4 scrollspy-active:before:bg-primary"></span>
+        <span className="flex w-1.5 relative before:absolute before:top-0 before:size-1.5 before:rounded-full rtl:before:translate-x-2/4 before:-translate-x-2/4 before:-translate-y-2/4 scrollspy-active:before:bg-primary"></span>
         {item.title}
       </div>
     );
@@ -37,7 +37,7 @@ const ScrollspyMenu = ({ items }: IScrollspyMenuProps) => {
       if (item.children) {
         return (
           <div key={index} className="flex flex-col">
-            <div className="pl-5 pr-2.5 py-2.5 text-2sm font-semibold text-gray-900">
+            <div className="ps-5 pe-2.5 py-2.5 text-2sm font-semibold text-gray-900">
               {item.title}
             </div>
             <div className="flex flex-col">{buildSubAnchors(item.children)}</div>
@@ -50,7 +50,7 @@ const ScrollspyMenu = ({ items }: IScrollspyMenuProps) => {
   };
 
   return (
-    <div className="flex flex-col grow relative before:absolute before:left-[10px] before:top-0 before:bottom-0 before:border-l before:border-gray-200">
+    <div className="flex flex-col grow relative before:absolute before:start-[10px] before:top-0 before:bottom-0 before:border-s before:border-gray-200">
       {renderChildren(items)}
     </div>
   );
