@@ -30,7 +30,7 @@ const MegaMenuSubAuth = (items: TMenuConfig) => {
             })}
           </div>
         </div>
-        <div className="lg:w-[250px] mb-4 lg:mb-0 lg:border-l lg:border-l-gray-200 rounded-xl lg:rounded-r-xl lg:rounded-l-none shrink-0 px-3 py-4 lg:p-7.5 bg-light-active dark:bg-coal-500 dark:lg:border-l-coal-100">
+        <div className="lg:w-[250px] mb-4 lg:mb-0 lg:border-s lg:border-s-gray-200 rounded-xl lg:rounded-e-xl lg:rounded-s-none shrink-0 px-3 py-4 lg:p-7.5 bg-light-active dark:bg-coal-500 dark:lg:border-s-coal-100">
           <h3 className="text-sm text-gray-800 font-semibold leading-none ps-2.5 mb-5">
             {authItemOthers.title}
           </h3>

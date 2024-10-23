@@ -20,7 +20,7 @@ const ScrollspyMenu = ({ items }: IScrollspyMenuProps) => {
           indent ? 'gap-3.5' : 'gap-1.5'
         } ${item.active ? 'active' : ''} text-2sm font-medium hover:text-primary`}
       >
-        <span className="flex w-1.5 relative before:absolute before:top-0 before:size-1.5 before:rounded-full before:-translate-x-2/4 before:-translate-y-2/4 scrollspy-active:before:bg-primary"></span>
+        <span className="flex w-1.5 relative before:absolute before:top-0 before:size-1.5 before:rounded-full rtl:before:translate-x-2/4 before:-translate-x-2/4 before:-translate-y-2/4 scrollspy-active:before:bg-primary"></span>
         {item.title}
       </div>
     );

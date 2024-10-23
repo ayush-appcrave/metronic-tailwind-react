@@ -8,8 +8,8 @@ const MegaMenuSubAccount = (items: TMenuConfig) => {
 
   return (
     <MenuSub className="flex-col lg:flex-row gap-0 w-full lg:max-w-[1240px]">
-      <div className="lg:w-[250px] mt-2 lg:mt-0 lg:border-r lg:border-r-gray-200 rounded-xl lg:rounded-l-xl lg:rounded-r-none shrink-0 px-3 py-4 lg:p-7.5 bg-light-active dark:bg-coal-500 dark:lg:border-r-coal-100">
-        <h3 className="text-sm text-gray-800 font-semibold leading-none ps-2.5 mb-2 lg:mb-5">
+      <div className="lg:w-[250px] mt-2 lg:mt-0 lg:border-e lg:border-e-gray-200 rounded-xl lg:rounded-s-xl lg:rounded-e-none shrink-0 px-3 py-4 lg:p-7.5 bg-light-active dark:bg-coal-500 dark:lg:border-e-coal-100">
+        <h3 className="text-sm text-gray-800 font-semibold leading-none pl-2.5 mb-2 lg:mb-5">
           {myAccountItemGeneral.title}
         </h3>
         <div className="menu menu-default menu-fit flex-col gap-0.5">
