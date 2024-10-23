@@ -12,11 +12,8 @@ import { ProfileCreatorContent } from '.';
 
 const ProfileCreatorPage = () => {
   const image = (
-    <div className="flex items-center justify-center rounded-full border-2 border-danger-clarity bg-light h-[100px] w-[100px]">
-      <img
-        src={toAbsoluteUrl('/media/brand-logos/inferno.svg')}
-        className="max-h-[50px] max-w-full size-11"
-      />
+    <div className="flex items-center justify-center rounded-full border-2 border-danger-clarity bg-light size-[100px] shrink-0">
+      <img src={toAbsoluteUrl('/media/brand-logos/inferno.svg')} className="size-11" />
     </div>
   );
 

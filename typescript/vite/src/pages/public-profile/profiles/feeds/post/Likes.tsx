@@ -58,13 +58,11 @@ const Likes = () => {
           <div className="flex flex-col">
             <a
               href="#"
-              className="text-md font-semibold text-gray-900 hover:text-primary-active mb-px"
+              className="text-md font-medium text-gray-900 hover:text-primary-active mb-px"
             >
               {item.name}
             </a>
-            <span className="text-2sm font-medium text-gray-500">
-              {item.subscribers} mutual subscribers
-            </span>
+            <span className="text-2sm text-gray-700">{item.subscribers} mutual subscribers</span>
           </div>
         </div>
 

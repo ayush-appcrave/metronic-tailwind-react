@@ -166,7 +166,7 @@ const MediaUploads = () => {
         <div className="card-header">
           <h3 className="card-title">Media Uploads</h3>
 
-          <Menu className="items-stretch">
+          <Menu>
             <MenuItem
               toggle="dropdown"
               trigger="click"

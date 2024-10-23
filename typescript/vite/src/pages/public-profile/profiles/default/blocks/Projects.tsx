@@ -116,7 +116,7 @@ const Projects = () => {
         </td>
 
         <td>
-          <div className="flex justify-end shrink-0">
+          <div className="flex justify-end rtl:justify-start shrink-0">
             <CommonAvatars group={item.team.group} more={item.team.more} />
           </div>
         </td>
@@ -124,7 +124,7 @@ const Projects = () => {
         <td className="text-sm font-medium text-gray-700">{item.dueDate}</td>
 
         <td className="text-start">
-          <Menu className="items-stretch">
+          <Menu>
             <MenuItem
               toggle="dropdown"
               trigger="click"
@@ -156,7 +156,7 @@ const Projects = () => {
       <div className="card-header">
         <h3 className="card-title">Projects</h3>
 
-        <Menu className="items-stretch">
+        <Menu>
           <MenuItem
             toggle="dropdown"
             trigger="click"
@@ -172,7 +172,7 @@ const Projects = () => {
               ]
             }}
           >
-            <MenuToggle className="btn btn-sm btn-icon btn-light btn-clear mb-2.5-">
+            <MenuToggle className="btn btn-sm btn-icon btn-light btn-clear">
               <KeenIcon icon="dots-vertical" />
             </MenuToggle>
             {DropdownCrud1()}

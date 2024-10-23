@@ -84,7 +84,7 @@ const Connections = ({ title }: IConnectionsProps) => {
       <div className="card-header gap-2">
         <h3 className="card-title">{title}</h3>
 
-        <Menu className="items-stretch">
+        <Menu>
           <MenuItem
             toggle="dropdown"
             trigger="click"
@@ -100,7 +100,7 @@ const Connections = ({ title }: IConnectionsProps) => {
               ]
             }}
           >
-            <MenuToggle className="btn btn-sm btn-icon btn-light btn-clear mb-2.5-">
+            <MenuToggle className="btn btn-sm btn-icon btn-light btn-clear">
               <KeenIcon icon="dots-vertical" />
             </MenuToggle>
             {DropdownCard1()}

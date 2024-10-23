@@ -64,7 +64,7 @@ const Contributors = () => {
           </div>
         </div>
 
-        <Menu className="items-stretch">
+        <Menu>
           <MenuItem
             toggle="dropdown"
             trigger="click"
@@ -95,7 +95,7 @@ const Contributors = () => {
       <div className="card-header gap-2">
         <h3 className="card-title">Contributors</h3>
 
-        <Menu className="items-stretch">
+        <Menu>
           <MenuItem
             toggle="dropdown"
             trigger="click"

@@ -3,7 +3,7 @@
 	--tw-sidebar-transition-duration: 0.3s;
 	--tw-sidebar-transition-timing: ease;
 	--tw-sidebar-width: theme('custom.layouts.demo1.sidebar.width.desktop');
-	--tw-sidebar-defualt-width: theme('custom.layouts.demo1.sidebar.width.desktop');
+	--tw-sidebar-default-width: theme('custom.layouts.demo1.sidebar.width.desktop');
 	--tw-header-height: theme('custom.layouts.demo1.header.height.desktop');
 }
 
@@ -39,11 +39,11 @@
 	}
 
 	.demo1 .sidebar .sidebar-wrapper {
-		width: var(--tw-sidebar-defualt-width);
+		width: var(--tw-sidebar-default-width);
 	}
 
 	.demo1 .sidebar .sidebar-logo {
-		width: var(--tw-sidebar-defualt-width);
+		width: var(--tw-sidebar-default-width);
 	}
 
 	.demo1 .sidebar .small-logo {
@@ -77,7 +77,7 @@
 	}
 
 	.demo1.sidebar-collapse .sidebar:hover:not(.animating) {
-		width: var(--tw-sidebar-defualt-width);
+		width: var(--tw-sidebar-default-width);
 		transition: width var(--tw-sidebar-transition-duration) var(--tw-sidebar-transition-timing);
 	}
 

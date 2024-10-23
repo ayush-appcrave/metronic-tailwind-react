@@ -54,7 +54,7 @@ const RecentUploads = ({ title }: IRecentUploadsProps) => {
           </div>
         </div>
 
-        <Menu className="items-stretch">
+        <Menu>
           <MenuItem
             toggle="dropdown"
             trigger="click"
@@ -85,7 +85,7 @@ const RecentUploads = ({ title }: IRecentUploadsProps) => {
       <div className="card-header">
         <h3 className="card-title">{title}</h3>
 
-        <Menu className="items-stretch">
+        <Menu>
           <MenuItem
             toggle="dropdown"
             trigger="click"

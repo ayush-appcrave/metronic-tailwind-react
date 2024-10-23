@@ -13,7 +13,7 @@ const ProjectColumn3Page = () => {
   const image = (
     <img
       src={toAbsoluteUrl('/media/avatars/300-1.png')}
-      className="rounded-full border-3 border-success max-h-[100px] max-w-full"
+      className="rounded-full border-3 border-success h-[100px] shrink-0"
     />
   );
 

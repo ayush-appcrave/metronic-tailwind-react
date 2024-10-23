@@ -19,13 +19,13 @@ const Breadcrumbs = () => {
       return (
         <Fragment key={`root-${index}`}>
           <span
-            className={clsx(item.active ? 'text-gray-700' : 'text-gray-600')}
+            className={clsx(item.active ? 'text-gray-700' : 'text-gray-700')}
             key={`item-${index}`}
           >
             {item.title}
           </span>
           {!last && (
-            <KeenIcon icon="right" className="text-gray-500 text-xs" key={`separator-${index}`} />
+            <KeenIcon icon="right" className="text-gray-500 text-3xs" key={`separator-${index}`} />
           )}
         </Fragment>
       );
@@ -34,7 +34,7 @@ const Breadcrumbs = () => {
 
   const render = () => {
     return (
-      <div className="flex [.header_&]:below-lg:hidden items-center gap-1 text-xs lg:text-sm font-normal mb-2.5 lg:mb-0">
+      <div className="flex [.header_&]:below-lg:hidden items-center gap-1.25 text-xs lg:text-sm font-medium mb-2.5 lg:mb-0">
         {items && renderItems(items)}
       </div>
     );

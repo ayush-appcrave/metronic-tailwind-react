@@ -75,7 +75,7 @@ const Contributions = ({ title }: IContributionsProps) => {
       <div className="card-header">
         <h3 className="card-title">{title}</h3>
 
-        <Menu className="items-stretch">
+        <Menu>
           <MenuItem
             toggle="dropdown"
             trigger="click"

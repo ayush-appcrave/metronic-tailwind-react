@@ -63,7 +63,7 @@ const RecentInvoices = () => {
         <div className="flex items-center gap-2.5">
           <span className="text-sm text-gray-800">${item.ammount}</span>
 
-          <Menu className="items-stretch">
+          <Menu>
             <MenuItem
               toggle="dropdown"
               trigger="click"
@@ -95,7 +95,7 @@ const RecentInvoices = () => {
       <div className="card-header">
         <h3 className="card-title">Recent Invoices</h3>
 
-        <Menu className="items-stretch">
+        <Menu>
           <MenuItem
             toggle="dropdown"
             trigger="click"
