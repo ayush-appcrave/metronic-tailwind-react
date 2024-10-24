@@ -48,7 +48,7 @@ const Main = () => {
                       <KeenIcon icon="magnifier" />
                     </button>
                     <ModalSearch open={searchModalOpen} onClose={handleClose} />
-                    <Menu className="items-stretch">
+                    <Menu>
                       <MenuItem
                         ref={itemNotificationsRef}
                         toggle="dropdown"
