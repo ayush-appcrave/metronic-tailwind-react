@@ -1,4 +1,4 @@
-import { type LanguageCodeType } from '@/i18n';
+import { type TLanguageCode } from '@/i18n';
 
 export interface AuthModel {
   access_token: string;
@@ -19,6 +19,6 @@ export interface UserModel {
   phone?: string;
   roles?: number[];
   pic?: string;
-  language?: LanguageCodeType;
+  language?: TLanguageCode;
   auth?: AuthModel;
 }
