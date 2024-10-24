@@ -102,8 +102,7 @@ const HeaderTopbar = () => {
           }}
         >
           <MenuToggle className="btn btn-icon btn-icon-lg relative cursor-pointer size-9 rounded-full hover:bg-primary-light hover:text-primary dropdown-open:bg-primary-light dropdown-open:text-primary text-gray-500">
-            <KeenIcon icon="notification-on" />
-            <span className="badge badge-dot badge-success size-[5px] absolute top-0.5 end-0.5 transform translate-y-1/2"></span>
+            <KeenIcon icon="notification-status" />
           </MenuToggle>
           {DropdownNotifications({ menuTtemRef: itemNotificationsRef })}
         </MenuItem>
