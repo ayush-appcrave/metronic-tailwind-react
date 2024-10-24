@@ -52,12 +52,10 @@
 
 	.demo1.sidebar-fixed .wrapper {
 		padding-inline-start: var(--tw-sidebar-width);
-		transition: padding-inline-start var(--tw-sidebar-transition-duration) var(--tw-sidebar-transition-timing);
 	}
 
 	.demo1.sidebar-fixed.header-fixed .header {
 		inset-inline-start: var(--tw-sidebar-width);
-		transition: inset-inline-start var(--tw-sidebar-transition-duration) var(--tw-sidebar-transition-timing);
 	}
 
 	.demo1.sidebar-fixed.header-fixed .wrapper {
@@ -123,4 +121,12 @@
 	.demo1.sidebar-collapse .sidebar .sidebar-content {
 		overflow: hidden;
 	}
+} 
+
+.demo1.layout-initialized .wrapper {	
+	transition: padding-inline-start var(--tw-sidebar-transition-duration) var(--tw-sidebar-transition-timing);
+}
+
+.demo1.layout-initialized .header {
+	transition: inset-inline-start var(--tw-sidebar-transition-duration) var(--tw-sidebar-transition-timing);
 }
