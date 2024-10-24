@@ -41,8 +41,8 @@ const Main = () => {
             <Toolbar>
               <ToolbarHeading />
               <ToolbarActions>
-                <Link to={'account/home/get-started'} className="btn btn-sm btn-light">
-                  <KeenIcon icon="exit-down !text-base" />
+                <Link to={'/account/home/get-started'} className="btn btn-sm btn-light">
+                  <KeenIcon icon="exit-down" className="!text-base" />
                   Export
                 </Link>
 
@@ -56,7 +56,7 @@ const Main = () => {
                         {
                           name: 'offset',
                           options: {
-                            offset: [0, 1] // [skid, distance]
+                            offset: [0, 0] // [skid, distance]
                           }
                         }
                       ]
@@ -73,7 +73,7 @@ const Main = () => {
                       </span>
                     </MenuToggle>
 
-                    <MenuSub className="menu-default w-48 scrollable-y max-h-[250px]">
+                    <MenuSub className="w-48 py-2 scrollable-y max-h-[250px]">
                       {months.map((item, index) => (
                         <div className={`menu-item ${item.active ? 'active' : ''}`} key={index}>
                           <Link to="/" className="menu-link">
