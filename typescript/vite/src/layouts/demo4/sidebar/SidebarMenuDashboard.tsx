@@ -157,7 +157,7 @@ const SidebarMenuDashboard = () => {
             </span>
           </MenuToggle>
 
-          <MenuSub className="menu-default w-[170px] py-2">
+          <MenuSub className="w-[170px] py-2">
             {dropdownItems.map((item, index) => (
               <MenuItem key={index} className={item.active ? 'active' : ''}>
                 <MenuLink path={item.path}>
@@ -190,8 +190,11 @@ const SidebarMenuDashboard = () => {
                   <MenuItem key={index} className={item.active ? 'active' : ''}>
                     <MenuLink
                       path={item.title}
-                      className="py-2 px-2.5 rounded-md border border-transparent menu-item-active:border-gray-200 menu-item-active:bg-light menu-link-hover:bg-light menu-link-hover:border-gray-200"
+                      className="py-2 px-2.5 rounded-md border border-transparent menu-item-active:border-gray-200 menu-item-active:bg-light menu-link-hover:bg-light menu-link-hover:border-gray-200 "
                     >
+                      <MenuIcon>
+                        <KeenIcon icon="" />
+                      </MenuIcon>
                       <MenuTitle className="text-2sm text-gray-800 menu-item-active:font-medium menu-item-active:text-primary menu-link-hover:text-primary">
                         {item.title}
                       </MenuTitle>

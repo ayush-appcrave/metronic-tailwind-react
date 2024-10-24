@@ -36,7 +36,10 @@ const SidebarMenuDefault = () => {
           className={item.collapse ? 'flex-col-reverse' : ''}
         >
           <MenuLink
-            className={clsx('py-2 pe-2.5 rounded-md border border-transparent', indention[level])}
+            className={clsx(
+              'py-2 pe-2.5 rounded-md border border-transparent',
+              indention[level - 1]
+            )}
           >
             {item.collapse ? (
               <MenuTitle className="text-2sm text-gray-600 menu-link-hover:text-gray-900">

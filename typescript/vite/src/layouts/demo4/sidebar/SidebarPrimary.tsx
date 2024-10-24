@@ -1,5 +1,5 @@
 import { Link, useLocation } from 'react-router-dom';
-import { KeenIcon, Menu, MenuItem, MenuToggle, DefaultTooltip } from '@/components';
+import { KeenIcon, Menu, MenuItem, MenuToggle, DefaultTooltip, MenuIcon } from '@/components';
 import { useEffect, useRef, useState } from 'react';
 import { getHeight, toAbsoluteUrl } from '@/utils';
 import { useViewport } from '@/hooks';
@@ -108,7 +108,10 @@ const SidebarPrimary = () => {
                 to={item.path}
                 className={`btn btn-icon btn-icon-xl rounded-md size-9 border border-transparent text-gray-600 hover:bg-light hover:text-primary hover:border-gray-200 ${item === selectedMenuItem && 'active bg-light text-primary border-gray-200'}`}
               >
-                <KeenIcon icon={item.icon} />
+                <MenuIcon>
+                  <KeenIcon icon={item.icon} />
+                </MenuIcon>
+                <span className="tooltip">{item.tooltip}</span>
               </Link>
             </DefaultTooltip>
           ))}
@@ -134,10 +137,8 @@ const SidebarPrimary = () => {
                 ]
               }}
             >
-              <MenuToggle>
-                <button className="btn btn-icon btn-icon-xl size-9 border border-transparent hover:bg-light hover:text-primary hover:border-gray-200 dropdown-open:bg-gray-200 text-gray-600">
-                  <KeenIcon icon="messages" />
-                </button>
+              <MenuToggle className="btn btn-icon btn-icon-xl relative rounded-md size-9 border border-transparent hover:bg-light hover:text-primary hover:border-gray-200 dropdown-open:bg-gray-200 text-gray-600">
+                <KeenIcon icon="messages" />
               </MenuToggle>
 
               {DropdownChat({ menuTtemRef: itemChatRef })}
@@ -162,8 +163,8 @@ const SidebarPrimary = () => {
                 ]
               }}
             >
-              <MenuToggle className="btn btn-icon btn-icon-xl size-9 border border-transparent hover:bg-light hover:text-primary hover:border-gray-200 dropdown-open:bg-gray-200 text-gray-600">
-                <KeenIcon icon="setting-2" className="text-gray-600" />
+              <MenuToggle className="btn btn-icon btn-icon-xl relative rounded-md size-9 border border-transparent hover:bg-light hover:text-primary hover:border-gray-200 dropdown-open:bg-gray-200 text-gray-600">
+                <KeenIcon icon="setting-2" />
               </MenuToggle>
 
               {DropdownApps()}
@@ -187,14 +188,12 @@ const SidebarPrimary = () => {
               ]
             }}
           >
-            <MenuToggle>
-              <div className="btn btn-icon rounded-full">
-                <img
-                  className="size-8 rounded-full justify-center border border-gray-500 shrink-0"
-                  src={toAbsoluteUrl('/media/avatars/gray/5.png')}
-                  alt=""
-                />
-              </div>
+            <MenuToggle className="btn btn-icon rounded-full">
+              <img
+                className="size-8 rounded-full justify-center border border-gray-500 shrink-0"
+                src={toAbsoluteUrl('/media/avatars/gray/5.png')}
+                alt=""
+              />
             </MenuToggle>
             {DropdownUser()}
           </MenuItem>

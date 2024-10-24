@@ -1,5 +1,5 @@
 import { Fragment } from 'react';
-import { KeenIcon, useMenuBreadcrumbs } from '@/components';
+import { useMenuBreadcrumbs } from '@/components';
 import { Link } from 'react-router-dom';
 import { useMenus } from '@/providers';
 import { useLocation } from 'react-router';
@@ -10,7 +10,7 @@ const ToolbarBreadcrumbs = () => {
   const items = useMenuBreadcrumbs(pathname, getMenuConfig('primary'));
 
   return (
-    <div className="flex items-center gap-1 text-sm font-normal">
+    <div className="flex items-center flex-wrap gap-1 text-sm">
       {items.map((item, index) => (
         <Fragment key={index}>
           {item.path ? (
@@ -22,9 +22,7 @@ const ToolbarBreadcrumbs = () => {
               {item.title}
             </span>
           )}
-          {index !== items.length - 1 && (
-            <KeenIcon icon="right" className="text-gray-400 text-3xs" />
-          )}
+          {index !== items.length - 1 && <span className="text-gray-400 text-sm">/</span>}
         </Fragment>
       ))}
     </div>
