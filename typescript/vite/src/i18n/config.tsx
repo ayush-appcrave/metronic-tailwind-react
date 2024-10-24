@@ -7,8 +7,8 @@ import { type TLanguage } from './types.d';
 
 const I18N_MESSAGES = {
   en: enMessages,
-  fr: frMessages,
   ar: arMessages,
+  fr: frMessages,
   zh: zhMessages
 };
 
@@ -23,6 +23,13 @@ const I18N_LANGUAGES: readonly TLanguage[] = [
     messages: I18N_MESSAGES.en
   },
   {
+    label: 'Arabic (Saudi)',
+    code: 'ar',
+    direction: 'rtl',
+    flag: toAbsoluteUrl('/media/flags/saudi-arabia.svg'),
+    messages: I18N_MESSAGES.ar
+  },
+  {
     label: 'French',
     code: 'fr',
     direction: 'ltr',
@@ -35,13 +42,6 @@ const I18N_LANGUAGES: readonly TLanguage[] = [
     direction: 'ltr',
     flag: toAbsoluteUrl('/media/flags/china.svg'),
     messages: I18N_MESSAGES.zh
-  },
-  {
-    label: 'Arabic(Saudi)',
-    code: 'ar',
-    direction: 'rtl',
-    flag: toAbsoluteUrl('/media/flags/saudi-arabia.svg'),
-    messages: I18N_MESSAGES.ar
   }
 ];
 

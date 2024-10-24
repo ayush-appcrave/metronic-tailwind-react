@@ -14,6 +14,7 @@ import { DropdownUserLanguages } from './DropdownUserLanguages';
 import { Link } from 'react-router-dom';
 import { useSettings } from '@/providers/SettingsProvider';
 import { useAuthContext } from '@/auth';
+import { FormattedMessage } from 'react-intl';
 
 interface IDropdownUserProps {
   menuItemRef: any;
@@ -70,7 +71,9 @@ const DropdownUser = ({ menuItemRef }: IDropdownUserProps) => {
               <MenuIcon className="menu-icon">
                 <KeenIcon icon="badge" />
               </MenuIcon>
-              <MenuTitle>Public Profile</MenuTitle>
+              <MenuTitle>
+                <FormattedMessage id="USER.MENU.PUBLIC_PROFILE" defaultMessage="" />
+              </MenuTitle>
             </MenuLink>
           </MenuItem>
           <MenuItem>
@@ -183,7 +186,7 @@ const DropdownUser = ({ menuItemRef }: IDropdownUserProps) => {
               <MenuTitle>Dev Forum</MenuTitle>
             </MenuLink>
           </MenuItem>
-          {DropdownUserLanguages({ menuItemRef: menuItemRef })}
+          <DropdownUserLanguages menuItemRef={menuItemRef} />
           <MenuSeparator />
         </div>
       </Fragment>

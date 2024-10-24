@@ -22,7 +22,7 @@ const DropdownUserLanguages = ({ menuItemRef }: IDropdownUserLanguagesProps) => 
     return I18N_LANGUAGES.map((item, index) => (
       <MenuItem
         key={index}
-        className={clsx(item === currentLanguage && 'active')}
+        className={clsx(item.code === currentLanguage.code && 'active')}
         onClick={() => {
           handleLanguage(item);
         }}
@@ -32,7 +32,7 @@ const DropdownUserLanguages = ({ menuItemRef }: IDropdownUserLanguagesProps) => 
             <img src={item.flag} className="inline-block size-4 rounded-full" alt={item.label} />
           </MenuIcon>
           <MenuTitle>{item.label}</MenuTitle>
-          {item === currentLanguage && (
+          {item.code === currentLanguage.code && (
             <MenuBadge>
               <KeenIcon icon="check-circle" style="solid" className="text-success text-base" />
             </MenuBadge>
@@ -72,7 +72,7 @@ const DropdownUserLanguages = ({ menuItemRef }: IDropdownUserLanguagesProps) => 
           />
         </div>
       </MenuLink>
-      <MenuSub className="menu-default light:border-gray-300 w-[175px]">{buildItems()}</MenuSub>
+      <MenuSub className="menu-default light:border-gray-300 w-[190px]">{buildItems()}</MenuSub>
     </MenuItem>
   );
 };
