@@ -26,7 +26,7 @@ const HeaderTopbar = () => {
 
   return (
     <div className="flex items-center lg:gap-3.5">
-      <Link to={'/account/home/get-started'} className="btn btn-xs btn-primary mr-1 sm:mr-0">
+      <Link to={'/account/home/get-started'} className="btn btn-xs btn-primary me-1 sm:me-0">
         Get Started
       </Link>
 
@@ -39,7 +39,7 @@ const HeaderTopbar = () => {
         </button>
         <ModalSearch open={searchModalOpen} onClose={handleSearchModalClose} />
 
-        <Menu className="items-stretch">
+        <Menu>
           <MenuItem
             ref={itemNotificationsRef}
             toggle="dropdown"
@@ -56,16 +56,14 @@ const HeaderTopbar = () => {
               ]
             }}
           >
-            <MenuToggle>
-              <button className="btn btn-icon btn-icon-lg size-8 text-gray-600 hover:text-primary [dropdown-open:text-primary">
-                <KeenIcon icon="notification-status" />
-              </button>
+            <MenuToggle className="btn btn-icon btn-icon-lg size-8 text-gray-600 hover:text-primary [dropdown-open:text-primary">
+              <KeenIcon icon="notification-status" />
             </MenuToggle>
             {DropdownNotifications({ menuTtemRef: itemNotificationsRef })}
           </MenuItem>
         </Menu>
 
-        <Menu className="items-stretch">
+        <Menu>
           <MenuItem
             ref={itemChatRef}
             onShow={handleDropdownChatShow}
@@ -83,17 +81,15 @@ const HeaderTopbar = () => {
               ]
             }}
           >
-            <MenuToggle>
-              <button className="btn btn-icon btn-icon-lg size-8 text-gray-600 hover:text-primary [dropdown-open:text-primary">
-                <KeenIcon icon="messages" />
-              </button>
+            <MenuToggle className="btn btn-icon btn-icon-lg size-8 text-gray-600 hover:text-primary [dropdown-open:text-primary">
+              <KeenIcon icon="messages" />
             </MenuToggle>
 
             {DropdownChat({ menuTtemRef: itemChatRef })}
           </MenuItem>
         </Menu>
 
-        <Menu className="items-stretch">
+        <Menu>
           <MenuItem
             ref={itemAppsRef}
             toggle="dropdown"
@@ -110,10 +106,8 @@ const HeaderTopbar = () => {
               ]
             }}
           >
-            <MenuToggle>
-              <button className="btn btn-icon btn-icon-lg size-8 text-gray-600 hover:text-primary [dropdown-open:text-primary">
-                <KeenIcon icon="element-11" />
-              </button>
+            <MenuToggle className="btn btn-icon btn-icon-lg size-8 text-gray-600 hover:text-primary [dropdown-open:text-primary">
+              <KeenIcon icon="element-11" />
             </MenuToggle>
 
             {DropdownApps()}
@@ -121,7 +115,7 @@ const HeaderTopbar = () => {
         </Menu>
       </div>
 
-      <Menu className="items-stretch">
+      <Menu>
         <MenuItem
           toggle="dropdown"
           trigger="click"
@@ -137,14 +131,12 @@ const HeaderTopbar = () => {
             ]
           }}
         >
-          <MenuToggle>
-            <div className="btn btn-icon rounded-full">
-              <img
-                className="size-8 rounded-full justify-center border border-gray-500 shrink-0"
-                src={toAbsoluteUrl('/media/avatars/gray/5.png')}
-                alt=""
-              />
-            </div>
+          <MenuToggle className="btn btn-icon rounded-full">
+            <img
+              className="size-8 rounded-full justify-center border border-gray-500 shrink-0"
+              src={toAbsoluteUrl('/media/avatars/gray/5.png')}
+              alt=""
+            />
           </MenuToggle>
           {DropdownUser()}
         </MenuItem>

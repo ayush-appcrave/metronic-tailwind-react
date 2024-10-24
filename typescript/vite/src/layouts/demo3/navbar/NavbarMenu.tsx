@@ -33,7 +33,7 @@ const NavbarMenu = () => {
         return (
           <MenuItem
             key={index}
-            className="border-b-2 border-b-transparent menu-item-active:border-b-gray-900 menu-item-here:border-b-gray-900 lg:ms-2"
+            className="border-b-2 border-b-transparent menu-item-active:border-b-gray-900 menu-item-here:border-b-gray-900"
             trigger="hover"
             toggle="dropdown"
             dropdownProps={{
@@ -79,7 +79,15 @@ const NavbarMenu = () => {
             trigger="hover"
             toggle="dropdown"
             dropdownProps={{
-              placement: 'right-start'
+              placement: 'right-start',
+              modifiers: [
+                {
+                  name: 'offset',
+                  options: {
+                    offset: [-10, 0] // [skid, distance]
+                  }
+                }
+              ]
             }}
           >
             <MenuLink>
@@ -88,7 +96,7 @@ const NavbarMenu = () => {
                 <KeenIcon icon="down" className="text-2xs [.menu-dropdown_&]:-rotate-90" />
               </MenuArrow>
             </MenuLink>
-            <MenuSub className="menu-default py-2" rootClassName="min-w-[200px]">
+            <MenuSub className="menu-default py" rootClassName="min-w-[200px]">
               {buildMenuChildren(item.children)}
             </MenuSub>
           </MenuItem>

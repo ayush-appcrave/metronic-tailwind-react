@@ -7,7 +7,7 @@ export interface IToolbarProps {
 
 const Toolbar = ({ children }: IToolbarProps) => {
   return (
-    <div className="pb-5">
+    <div className="pb-6">
       <Container className="flex items-center justify-between flex-wrap gap-3">
         {children}
       </Container>

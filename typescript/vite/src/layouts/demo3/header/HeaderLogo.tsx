@@ -33,7 +33,7 @@ const HeaderLogo = () => {
   }, [pathname]);
 
   return (
-    <div className="flex items-center me-1">
+    <div className="flex items-center mr-1">
       <div className="flex items-center justify-center lg:w-[--tw-sidebar-width] gap-2 shrink-0">
         <button
           type="button"
@@ -76,15 +76,13 @@ const HeaderLogo = () => {
               ]
             }}
           >
-            <MenuToggle>
-              <MenuTitle className="!text-gray-900 !text-base !font-medium">
-                {selectedMenuItem.title}
-              </MenuTitle>
+            <MenuToggle className="text-gray-900 font-medium">
+              {selectedMenuItem.title}
               <MenuArrow>
                 <KeenIcon icon="down" />
               </MenuArrow>
             </MenuToggle>
-            <MenuSub className="menu-default">
+            <MenuSub className="w-48 py-2">
               {MENU_ROOT.map((item, index) => (
                 <MenuItem key={index} className={item === selectedMenuItem ? 'active' : ''}>
                   <MenuLink path={item.path}>
