@@ -27,7 +27,7 @@ const HeaderLogo = () => {
   }, [pathname]);
 
   return (
-    <div className="flex items-center gap-2 lg:gap-5 2xl:-ms-[60px]">
+    <div className="flex items-center gap-2 lg:gap-5 2xl:-ml-[60px]">
       <Link to="/" className="shrink-0">
         <img
           src={toAbsoluteUrl('/media/app/mini-logo-circle.svg')}
@@ -62,12 +62,12 @@ const HeaderLogo = () => {
             }}
           >
             <MenuToggle className="text-gray-900 font-medium">
-              <MenuTitle>{selectedMenuItem.title}</MenuTitle>
+              {selectedMenuItem.title}
               <MenuArrow>
                 <KeenIcon icon="down" />
               </MenuArrow>
             </MenuToggle>
-            <MenuSub className="menu-default">
+            <MenuSub className="menu-default w-48">
               {MENU_ROOT.map((item, index) => (
                 <MenuItem key={index} className={item === selectedMenuItem ? 'active' : ''}>
                   <MenuLink path={item.path}>

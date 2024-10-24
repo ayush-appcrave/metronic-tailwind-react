@@ -79,7 +79,15 @@ const NavbarMenu = () => {
             trigger="hover"
             toggle="dropdown"
             dropdownProps={{
-              placement: 'right-start'
+              placement: 'right-start',
+              modifiers: [
+                {
+                  name: 'offset',
+                  options: {
+                    offset: [-10, 0] // [skid, distance]
+                  }
+                }
+              ]
             }}
           >
             <MenuLink>
@@ -88,7 +96,7 @@ const NavbarMenu = () => {
                 <KeenIcon icon="down" className="text-2xs [.menu-dropdown_&]:-rotate-90" />
               </MenuArrow>
             </MenuLink>
-            <MenuSub className="menu-default py-2" rootClassName="min-w-[200px]">
+            <MenuSub className="menu-default" rootClassName="min-w-[200px]">
               {buildMenuChildren(item.children)}
             </MenuSub>
           </MenuItem>
