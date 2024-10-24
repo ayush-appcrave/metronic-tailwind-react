@@ -72,7 +72,7 @@ const SidebarHeader = forwardRef<HTMLDivElement, any>((props, ref) => {
               </div>
             </MenuLabel>
 
-            <MenuSub className="menu-default w-48 py-2" baseClassName="dark">
+            <MenuSub className="w-48 py-2" baseClassName="dark">
               {MENU_ROOT.map((item, index) => (
                 <MenuItem key={index} className={item === selectedMenuItem ? 'active' : ''}>
                   <MenuLink path={item.path}>

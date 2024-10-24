@@ -23,7 +23,7 @@ const Header = () => {
 
         <button
           onClick={handleMobileSidebarOpen}
-          className="btn btn-icon btn-light btn-clear btn-sm -me-2"
+          className="btn btn-icon btn-light btn-clear btn-sm me-2"
         >
           <KeenIcon icon="menu" />
         </button>

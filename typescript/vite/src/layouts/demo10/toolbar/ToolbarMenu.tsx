@@ -29,7 +29,7 @@ const ToolbarMenu = () => {
             {
               name: 'offset',
               options: {
-                offset: [0, 1] // [skid, distance]
+                offset: [0, 0] // [skid, distance]
               }
             }
           ]
@@ -46,7 +46,7 @@ const ToolbarMenu = () => {
           </span>
         </MenuToggle>
 
-        <MenuSub className="menu-default w-48 scrollable-y max-h-[250px]">
+        <MenuSub className="w-48 py-2 scrollable-y max-h-[250px]">
           {months.map((item, index) => (
             <div className={`menu-item ${item.active ? 'active' : ''}`} key={index}>
               <Link to="/" className="menu-link">
