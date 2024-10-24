@@ -59,7 +59,7 @@ const SidebarHeader = forwardRef<HTMLDivElement, any>((props, ref) => {
               ]
             }}
           >
-            <MenuLabel className="text-gray-900 font-medium grow justify-between">
+            <MenuLabel className="cursor-pointer text-gray-900 font-medium grow justify-between">
               <span className="text-base font-medium text-gray-900 grow justify-start">
                 MetronicCloud
               </span>
@@ -67,7 +67,7 @@ const SidebarHeader = forwardRef<HTMLDivElement, any>((props, ref) => {
                 <KeenIcon icon="down" />
               </MenuArrow>
             </MenuLabel>
-            <MenuSub className="menu-default w-48 py-2">
+            <MenuSub className="w-48 py-2">
               {MENU_ROOT.map((item, index) => (
                 <MenuItem key={index} className={item === selectedMenuItem ? 'active' : ''}>
                   <MenuLink path={item.path}>
