@@ -2,8 +2,11 @@ import { KeenIcon } from '@/components/keenicons';
 import { Menu, MenuItem, MenuToggle } from '@/components';
 import { DropdownUser } from '@/partials/dropdowns/user';
 import { Link } from 'react-router-dom';
+import { useRef } from 'react';
 
 const HeaderTopbar = () => {
+  const itemUserRef = useRef<any>(null);
+  
   return (
     <div className="flex items-center flex-wrap gap-2 lg:gap-3.5">
       <div className="flex items-center gap-1.5 lg:gap-3.5">
@@ -27,6 +30,7 @@ const HeaderTopbar = () => {
 
       <Menu className="cursor-pointer">
         <MenuItem
+          ref={itemUserRef}
           toggle="dropdown"
           trigger="click"
           dropdownProps={{
@@ -57,7 +61,7 @@ const HeaderTopbar = () => {
               />
             </svg>
           </MenuToggle>
-          {DropdownUser()}
+          {DropdownUser({ menuItemRef: itemUserRef })}
         </MenuItem>
       </Menu>
     </div>

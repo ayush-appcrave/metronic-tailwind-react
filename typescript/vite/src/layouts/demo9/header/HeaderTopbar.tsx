@@ -7,6 +7,7 @@ import { DropdownCard2 } from '@/partials/dropdowns/general';
 const HeaderTopbar = () => {
   const itemChatRef = useRef<any>(null);
   const itemNotificationsRef = useRef<any>(null);
+  const itemUserRef = useRef<any>(null);
 
   const handleDropdownChatShow = () => {
     window.dispatchEvent(new Event('resize'));
@@ -41,6 +42,7 @@ const HeaderTopbar = () => {
 
         <Menu className="items-stretch">
           <MenuItem
+            ref={itemUserRef}
             toggle="dropdown"
             trigger="click"
             dropdownProps={{
@@ -58,7 +60,7 @@ const HeaderTopbar = () => {
             <MenuToggle className="btn btn-icon btn-icon-base btn-sm text-gray-600 hover:text-primary dropdown-open:text-primary">
               <KeenIcon icon="profile-circle" />
             </MenuToggle>
-            {DropdownUser()}
+            {DropdownUser({ menuItemRef: itemUserRef })}
           </MenuItem>
         </Menu>
       </div>

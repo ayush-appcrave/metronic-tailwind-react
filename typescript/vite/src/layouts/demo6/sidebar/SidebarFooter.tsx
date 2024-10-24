@@ -8,11 +8,13 @@ import { DropdownNotifications } from '@/partials/dropdowns/notifications';
 const SidebarFooter = forwardRef<HTMLDivElement, any>((props, ref) => {
   const { logout } = useAuthContext();
   const itemNotificationsRef = useRef<any>(null);
+  const itemUserRef = useRef<any>(null);
 
   return (
     <div ref={ref} className="flex flex-center justify-between shrink-0 ps-4 pe-3.5 mb-3.5">
       <Menu data-menu="true">
         <MenuItem
+          ref={itemUserRef}
           toggle="dropdown"
           trigger="click"
           dropdownProps={{
@@ -34,7 +36,7 @@ const SidebarFooter = forwardRef<HTMLDivElement, any>((props, ref) => {
               alt=""
             />
           </MenuToggle>
-          {DropdownUser()}
+          {DropdownUser({ menuItemRef: itemUserRef })}
         </MenuItem>
       </Menu>
 

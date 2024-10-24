@@ -1,46 +1,38 @@
 import { KeenIcon } from '@/components';
 import { MenuItem, MenuLink, MenuTitle, MenuIcon, MenuBadge, MenuSub } from '@/components/menu';
-import { toAbsoluteUrl } from '@/utils';
 import clsx from 'clsx';
+import { I18N_LANGUAGES, TLanguage, useLanguage } from '@/i18n';
 
-const DropdownUserLanguages = () => {
-  const languages = [
-    {
-      title: 'English',
-      flag: 'united-states.svg',
-      active: true
-    },
-    {
-      title: 'Spanish',
-      flag: 'spain.svg'
-    },
-    {
-      title: 'German',
-      flag: 'germany.svg'
-    },
-    {
-      title: 'Japanese',
-      flag: 'japan.svg'
-    },
-    {
-      title: 'French',
-      flag: 'france.svg'
+interface IDropdownUserLanguagesProps {
+  menuItemRef: any;
+}
+
+const DropdownUserLanguages = ({ menuItemRef }: IDropdownUserLanguagesProps) => {
+  const { currentLanguage, changeLanguage } = useLanguage();
+
+  const handleLanguage = (lang: TLanguage) => {
+    changeLanguage(lang);
+
+    if (menuItemRef.current) {
+      menuItemRef.current.hide(); // Call the closeMenu method to hide the submenu
     }
-  ];
+  };
 
   const buildItems = () => {
-    return languages.map((item, index) => (
-      <MenuItem key={index} className={clsx(item.active && 'active')}>
+    return I18N_LANGUAGES.map((item, index) => (
+      <MenuItem
+        key={index}
+        className={clsx(item === currentLanguage && 'active')}
+        onClick={() => {
+          handleLanguage(item);
+        }}
+      >
         <MenuLink className="h-10">
           <MenuIcon>
-            <img
-              src={toAbsoluteUrl(`/media/flags/${item.flag}`)}
-              className="inline-block size-4 rounded-full"
-              alt={item.title}
-            />
+            <img src={item.flag} className="inline-block size-4 rounded-full" alt={item.label} />
           </MenuIcon>
-          <MenuTitle>{item.title}</MenuTitle>
-          {item.active && (
+          <MenuTitle>{item.label}</MenuTitle>
+          {item === currentLanguage && (
             <MenuBadge>
               <KeenIcon icon="check-circle" style="solid" className="text-success text-base" />
             </MenuBadge>
@@ -60,7 +52,7 @@ const DropdownUserLanguages = () => {
           {
             name: 'offset',
             options: {
-              offset: [-10, 0] // [skid, distance]
+              offset: [-10, 0]
             }
           }
         ]
@@ -72,15 +64,15 @@ const DropdownUserLanguages = () => {
         </MenuIcon>
         <MenuTitle>Language</MenuTitle>
         <div className="flex items-center gap-1.5 rounded-md border border-gray-300 text-gray-600 p-1.5 text-2xs font-medium shrink-0">
-          English
+          {currentLanguage.label}
           <img
-            src={toAbsoluteUrl('/media/flags/united-states.svg')}
+            src={currentLanguage.flag}
             className="inline-block size-3.5 rounded-full"
-            alt=""
+            alt="{currentLanguage.label}"
           />
         </div>
       </MenuLink>
-      <MenuSub className="menu-default light:border-gray-300 w-[170px]">{buildItems()}</MenuSub>
+      <MenuSub className="menu-default light:border-gray-300 w-[175px]">{buildItems()}</MenuSub>
     </MenuItem>
   );
 };

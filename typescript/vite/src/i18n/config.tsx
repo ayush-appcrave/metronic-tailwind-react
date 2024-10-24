@@ -3,7 +3,7 @@ import arMessages from './messages/ar.json';
 import enMessages from './messages/en.json';
 import frMessages from './messages/fr.json';
 import zhMessages from './messages/zh.json';
-import { type TLanguage } from './types';
+import { type TLanguage } from './types.d';
 
 const I18N_MESSAGES = {
   en: enMessages,
@@ -37,7 +37,7 @@ const I18N_LANGUAGES: readonly TLanguage[] = [
     messages: I18N_MESSAGES.zh
   },
   {
-    label: 'Arabic (Saudi)',
+    label: 'Arabic(Saudi)',
     code: 'ar',
     direction: 'rtl',
     flag: toAbsoluteUrl('/media/flags/saudi-arabia.svg'),

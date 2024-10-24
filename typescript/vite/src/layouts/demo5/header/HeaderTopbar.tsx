@@ -8,6 +8,7 @@ import { DropdownApps } from '@/partials/dropdowns/apps';
 
 const HeaderTopbar = () => {
   const itemChatRef = useRef<any>(null);
+  const itemUserRef = useRef<any>(null);
   const itemNotificationsRef = useRef<any>(null);
 
   const handleDropdownChatShow = () => {
@@ -75,6 +76,7 @@ const HeaderTopbar = () => {
 
       <Menu>
         <MenuItem
+          ref={itemUserRef}
           toggle="dropdown"
           trigger="click"
           dropdownProps={{
@@ -96,7 +98,7 @@ const HeaderTopbar = () => {
               alt=""
             />
           </MenuToggle>
-          {DropdownUser()}
+          {DropdownUser({ menuItemRef: itemUserRef })}
         </MenuItem>
       </Menu>
     </div>

@@ -1,3 +1,3 @@
 export * from '../providers/TranslationProvider';
 export * from './config';
-export * from './types';
+export * from './types.d';

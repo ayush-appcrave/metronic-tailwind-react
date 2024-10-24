@@ -15,12 +15,15 @@ import { Link } from 'react-router-dom';
 import { useSettings } from '@/providers/SettingsProvider';
 import { useAuthContext } from '@/auth';
 
-const DropdownUser = () => {
+interface IDropdownUserProps {
+  menuItemRef: any;
+}
+
+const DropdownUser = ({ menuItemRef }: IDropdownUserProps) => {
   const { settings, storeSettings } = useSettings();
   const { logout } = useAuthContext();
 
   const handleThemeMode = (event: ChangeEvent<HTMLInputElement>) => {
-    console.log('checked:' + event.target.checked);
     const newThemeMode = event.target.checked ? 'dark' : 'light';
 
     storeSettings({
@@ -180,7 +183,7 @@ const DropdownUser = () => {
               <MenuTitle>Dev Forum</MenuTitle>
             </MenuLink>
           </MenuItem>
-          <DropdownUserLanguages />
+          {DropdownUserLanguages({ menuItemRef: menuItemRef })}
           <MenuSeparator />
         </div>
       </Fragment>

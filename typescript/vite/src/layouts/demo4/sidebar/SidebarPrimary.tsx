@@ -50,6 +50,7 @@ const menuItems: IMenuItem[] = [
 const SidebarPrimary = () => {
   const headerRef = useRef<HTMLDivElement>(null);
   const footerRef = useRef<HTMLDivElement>(null);
+  const itemUserRef = useRef<any>(null);
   const [scrollableHeight, setScrollableHeight] = useState<number>(0);
   const [viewportHeight] = useViewport();
   const scrollableOffset = 80;
@@ -174,6 +175,7 @@ const SidebarPrimary = () => {
 
         <Menu>
           <MenuItem
+            ref={itemUserRef}
             toggle="dropdown"
             trigger="click"
             dropdownProps={{
@@ -195,7 +197,7 @@ const SidebarPrimary = () => {
                 alt=""
               />
             </MenuToggle>
-            {DropdownUser()}
+            {DropdownUser({ menuItemRef: itemUserRef })}
           </MenuItem>
         </Menu>
       </div>

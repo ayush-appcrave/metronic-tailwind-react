@@ -18,6 +18,8 @@ const Sidebar = () => {
   const { pathname, prevPathname } = usePathname();
   const { mobileSidebarOpen, setMobileSidebarOpen } = useDemo8Layout();
   const itemChatRef = useRef<any>(null);
+  const itemUserRef = useRef<any>(null);
+
   const handleDropdownChatShow = () => {
     window.dispatchEvent(new Event('resize'));
   };
@@ -130,6 +132,7 @@ const Sidebar = () => {
 
           <Menu>
             <MenuItem
+              ref={itemUserRef}
               toggle="dropdown"
               trigger="click"
               dropdownProps={{
@@ -151,7 +154,7 @@ const Sidebar = () => {
                   alt=""
                 />
               </MenuToggle>
-              {DropdownUser()}
+              {DropdownUser({ menuItemRef: itemUserRef })}
             </MenuItem>
           </Menu>
         </div>
