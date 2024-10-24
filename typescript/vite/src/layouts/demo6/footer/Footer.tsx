@@ -7,8 +7,8 @@ const Footer = () => {
   return (
     <footer className="footer">
       <Container>
-        <div className="flex flex-col md:flex-row justify-center md:justify-between items-center gap-2 py-5">
-          <div className="flex gap-2 font-normal text-2sm">
+        <div className="flex flex-col md:flex-row justify-center md:justify-between items-center gap-3 py-5">
+          <div className="flex order-2 md:order-1  gap-2 font-normal text-2sm">
             <span className="text-gray-500">{currentYear} &copy;</span>
             <a
               href="https://keenthemes.com"
@@ -18,18 +18,21 @@ const Footer = () => {
               Keenthemes Inc.
             </a>
           </div>
-          <nav className="flex gap-2 font-normal text-2sm text-gray-600">
-            <a href={generalSettings.aboutLink} target="_blank" className="hover:text-primary">
-              About
+          <nav className="flex order-1 md:order-2 gap-4 font-normal text-2sm text-gray-600">
+            <a href={generalSettings.docsLink} target="_blank" className="hover:text-primary">
+              Docs
             </a>
-            <a href={generalSettings.devsLink} target="_blank" className="hover:text-primary">
-              Support
+            <a href={generalSettings.purchaseLink} target="_blank" className="hover:text-primary">
+              Purchase
             </a>
             <a href={generalSettings.faqLink} target="_blank" className="hover:text-primary">
               FAQ
             </a>
-            <a href={generalSettings.purchaseLink} target="_blank" className="hover:text-primary">
-              Purchase
+            <a href="https://devs.keenthemes.com" target="_blank" className="hover:text-primary">
+              Support
+            </a>
+            <a href={generalSettings.licenseLink} target="_blank" className="hover:text-primary">
+              License
             </a>
           </nav>
         </div>
