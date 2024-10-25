@@ -55,7 +55,7 @@ const Options = () => {
           >
             View page
           </Link>
-          <KeenIcon icon="right" className="text-primary text-xs" />
+          <KeenIcon icon="right" className="text-primary text-xs rtl:transform rtl:rotate-180" />
         </div>
       </div>
     );

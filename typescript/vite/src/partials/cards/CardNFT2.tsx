@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom';
-
+import { useLanguage } from '@/i18n';
 import { KeenIcon, Menu, MenuItem, MenuToggle } from '@/components';
 import { toAbsoluteUrl } from '@/utils/Assets';
 
@@ -23,6 +23,8 @@ interface INFT2Props {
 }
 
 const CardNFT2 = ({ avatar, bgImage, name, email, info, statistics }: INFT2Props) => {
+  const { isRTL } = useLanguage();
+
   const renderItem = (statistic: INFT2Item, index: number) => {
     return (
       <div
@@ -47,12 +49,12 @@ const CardNFT2 = ({ avatar, bgImage, name, email, info, statistics }: INFT2Props
               toggle="dropdown"
               trigger="click"
               dropdownProps={{
-                placement: 'bottom-end',
+                placement: isRTL() ? 'bottom-start' : 'bottom-end',
                 modifiers: [
                   {
                     name: 'offset',
                     options: {
-                      offset: [0, 10] // [skid, distance]
+                      offset: isRTL() ? [0, -10] : [0, 10] // [skid, distance]
                     }
                   }
                 ]

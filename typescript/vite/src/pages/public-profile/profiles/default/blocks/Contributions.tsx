@@ -1,6 +1,6 @@
 import ApexChart from 'react-apexcharts';
 import { ApexOptions } from 'apexcharts';
-
+import { useLanguage } from '@/i18n';
 import { KeenIcon, Menu, MenuItem, MenuToggle } from '@/components';
 
 import { DropdownCard2 } from '@/partials/dropdowns/general';
@@ -10,6 +10,7 @@ interface IContributionsProps {
 }
 
 const Contributions = ({ title }: IContributionsProps) => {
+  const { isRTL } = useLanguage();
   const data: number[] = [44, 55, 41, 17, 15];
   const labels: string[] = ['ERP', 'HRM', 'DMS', 'CRM', 'DAM'];
   const colors: string[] = [
@@ -80,12 +81,12 @@ const Contributions = ({ title }: IContributionsProps) => {
             toggle="dropdown"
             trigger="click"
             dropdownProps={{
-              placement: 'bottom-end',
+              placement: isRTL() ? 'bottom-start' : 'bottom-end',
               modifiers: [
                 {
                   name: 'offset',
                   options: {
-                    offset: [0, 10] // [skid, distance]
+                    offset: isRTL() ? [0, -10] : [0, 10] // [skid, distance]
                   }
                 }
               ]

@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom';
-
+import { useLanguage } from '@/i18n';
 import { KeenIcon, Menu, MenuItem, MenuToggle } from '@/components';
 
 import { DropdownCardItem1 } from '../dropdowns/general';
@@ -16,6 +16,8 @@ interface IRoleProps {
 }
 
 const CardRole = ({ path, title, subTitle, description, team, badge }: IRoleProps) => {
+  const { isRTL } = useLanguage();
+
   return (
     <div className="card flex flex-col gap-5 p-5 lg:p-7.5">
       <div className="flex items-center flex-wrap justify-between gap-1">
@@ -38,12 +40,12 @@ const CardRole = ({ path, title, subTitle, description, team, badge }: IRoleProp
             toggle="dropdown"
             trigger="click"
             dropdownProps={{
-              placement: 'bottom-end',
+              placement: isRTL() ? 'bottom-start' : 'bottom-end',
               modifiers: [
                 {
                   name: 'offset',
                   options: {
-                    offset: [0, 10] // [skid, distance]
+                    offset: isRTL() ? [0, -10] : [0, 10] // [skid, distance]
                   }
                 }
               ]

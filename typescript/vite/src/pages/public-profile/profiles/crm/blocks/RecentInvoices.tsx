@@ -1,5 +1,5 @@
 import { KeenIcon, Menu, MenuItem, MenuToggle } from '@/components';
-
+import { useLanguage } from '@/i18n';
 import { DropdownCard2, DropdownCardItem2 } from '@/partials/dropdowns/general';
 
 interface IRecentInvoicesItem {
@@ -11,6 +11,8 @@ interface IRecentInvoicesItem {
 interface IRecentInvoicesItems extends Array<IRecentInvoicesItem> {}
 
 const RecentInvoices = () => {
+  const { isRTL } = useLanguage();
+
   const items: IRecentInvoicesItems = [
     {
       icon: 'cheque',
@@ -68,12 +70,12 @@ const RecentInvoices = () => {
               toggle="dropdown"
               trigger="click"
               dropdownProps={{
-                placement: 'bottom-end',
+                placement: isRTL() ? 'bottom-start' : 'bottom-end',
                 modifiers: [
                   {
                     name: 'offset',
                     options: {
-                      offset: [0, 10] // [skid, distance]
+                      offset: isRTL() ? [0, -10] : [0, 10] // [skid, distance]
                     }
                   }
                 ]
@@ -100,12 +102,12 @@ const RecentInvoices = () => {
             toggle="dropdown"
             trigger="click"
             dropdownProps={{
-              placement: 'bottom-end',
+              placement: isRTL() ? 'bottom-start' : 'bottom-end',
               modifiers: [
                 {
                   name: 'offset',
                   options: {
-                    offset: [0, 10] // [skid, distance]
+                    offset: isRTL() ? [0, -10] : [0, 10] // [skid, distance]
                   }
                 }
               ]

@@ -1,6 +1,6 @@
 import { KeenIcon, Menu, MenuItem, MenuToggle } from '@/components';
 import { toAbsoluteUrl } from '@/utils/Assets';
-
+import { useLanguage } from '@/i18n';
 import { DropdownCard2 } from '../dropdowns/general';
 import { CommonAvatars } from '../common';
 
@@ -40,6 +40,8 @@ const CardProjectExtended = ({
   progress,
   url
 }: IProjectExtendedProps) => {
+  const { isRTL } = useLanguage();
+
   const renderItem = (statistic: IProjectExtendedItem, index: number) => {
     return (
       <div
@@ -63,12 +65,12 @@ const CardProjectExtended = ({
               toggle="dropdown"
               trigger="click"
               dropdownProps={{
-                placement: 'bottom-end',
+                placement: isRTL() ? 'bottom-start' : 'bottom-end',
                 modifiers: [
                   {
                     name: 'offset',
                     options: {
-                      offset: [0, 10] // [skid, distance]
+                      offset: isRTL() ? [0, -10] : [0, 10] // [skid, distance]
                     }
                   }
                 ]

@@ -7,8 +7,11 @@ import {
   MenuSub,
   MenuTitle
 } from '@/components';
+import { useLanguage } from '@/i18n';
 
 const DropdownCrud2 = () => {
+  const { isRTL } = useLanguage();
+
   return (
     <MenuSub className="menu-default" rootClassName="w-full max-w-[175px]">
       <MenuItem path="#">
@@ -23,12 +26,12 @@ const DropdownCrud2 = () => {
         toggle="dropdown"
         trigger="hover"
         dropdownProps={{
-          placement: 'right-start',
+          placement: isRTL() ? 'left-start' : 'right-start',
           modifiers: [
             {
               name: 'offset',
               options: {
-                offset: [-15, 0] // [skid, distance]
+                offset: isRTL() ? [15, 0] : [-15, 0] // [skid, distance]
               }
             }
           ]
@@ -40,7 +43,7 @@ const DropdownCrud2 = () => {
           </MenuIcon>
           <MenuTitle>Export</MenuTitle>
           <MenuArrow>
-            <KeenIcon icon="right" className="text-3xs" />
+            <KeenIcon icon="right" className="text-3xs rtl:transform rtl:rotate-180" />
           </MenuArrow>
         </MenuLink>
         <MenuSub className="menu-default" rootClassName="w-full max-w-[175px]">

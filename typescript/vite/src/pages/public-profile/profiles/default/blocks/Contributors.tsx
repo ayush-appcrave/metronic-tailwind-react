@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom';
-
+import { useLanguage } from '@/i18n';
 import { KeenIcon, Menu, MenuItem, MenuToggle } from '@/components';
 import { toAbsoluteUrl } from '@/utils/Assets';
 
@@ -14,6 +14,8 @@ interface IContributorsItem {
 interface IContributorsItems extends Array<IContributorsItem> {}
 
 const Contributors = () => {
+  const { isRTL } = useLanguage();
+
   const items: IContributorsItems = [
     {
       avatar: '300-3.png',
@@ -69,12 +71,12 @@ const Contributors = () => {
             toggle="dropdown"
             trigger="click"
             dropdownProps={{
-              placement: 'bottom-end',
+              placement: isRTL() ? 'bottom-start' : 'bottom-end',
               modifiers: [
                 {
                   name: 'offset',
                   options: {
-                    offset: [0, 10] // [skid, distance]
+                    offset: isRTL() ? [0, -10] : [0, 10] // [skid, distance]
                   }
                 }
               ]
@@ -100,12 +102,12 @@ const Contributors = () => {
             toggle="dropdown"
             trigger="click"
             dropdownProps={{
-              placement: 'bottom-end',
+              placement: isRTL() ? 'bottom-start' : 'bottom-end',
               modifiers: [
                 {
                   name: 'offset',
                   options: {
-                    offset: [0, 10] // [skid, distance]
+                    offset: isRTL() ? [0, -10] : [0, 10] // [skid, distance]
                   }
                 }
               ]

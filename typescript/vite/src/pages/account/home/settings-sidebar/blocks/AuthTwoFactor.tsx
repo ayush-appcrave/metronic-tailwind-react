@@ -1,5 +1,5 @@
 import { KeenIcon, Menu, MenuItem, MenuToggle } from '@/components';
-
+import { useLanguage } from '@/i18n';
 import { DropdownCard2 } from '@/partials/dropdowns/general';
 import { CommonHexagonBadge } from '@/partials/common';
 
@@ -12,6 +12,8 @@ interface IAuthTwoFactorItem {
 interface IAuthTwoFactorItems extends Array<IAuthTwoFactorItem> {}
 
 const AuthTwoFactor = () => {
+  const { isRTL } = useLanguage();
+
   const items: IAuthTwoFactorItems = [
     {
       icon: 'message-text-2',
@@ -75,12 +77,12 @@ const AuthTwoFactor = () => {
             toggle="dropdown"
             trigger="click"
             dropdownProps={{
-              placement: 'bottom-end',
+              placement: isRTL() ? 'bottom-start' : 'bottom-end',
               modifiers: [
                 {
                   name: 'offset',
                   options: {
-                    offset: [0, 10] // [skid, distance]
+                    offset: isRTL() ? [0, -10] : [0, 10] // [skid, distance]
                   }
                 }
               ]

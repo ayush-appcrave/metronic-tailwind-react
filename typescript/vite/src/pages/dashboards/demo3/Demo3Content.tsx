@@ -2,7 +2,8 @@ import { toAbsoluteUrl } from '@/utils';
 import { MiscCreateTeam } from '@/partials/misc';
 import { BlockList } from '@/pages/account/security/privacy-settings';
 import { Highlights, Teams } from '@/pages/dashboards/demo1';
-import { Integrations, ManageData } from '@/pages/dashboards/demo2/blocks';
+import { ManageData } from '@/pages/dashboards/demo2/blocks';
+import { Integrations } from './blocks';
 
 const Demo3Content = () => {
   return (

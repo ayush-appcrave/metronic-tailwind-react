@@ -44,7 +44,7 @@ const Options = () => {
     return (
       <div
         key={index}
-        className="card px-5 lg:px-7.5 h-full bg-[length:85%] [background-position:9rem_-3.5rem] bg-no-repeat channel-stats-bg"
+        className="card px-5 lg:px-7.5 h-full bg-[length:85%] [background-position:9rem_-4rem] rtl:[background-position:-4rem_-4rem] bg-no-repeat channel-stats-bg"
       >
         <div className="flex flex-col gap-4 pt-6">
           <KeenIcon icon={item.icon} className="text-2xl text-gray-600" />
@@ -59,7 +59,7 @@ const Options = () => {
           <Link to={`${item.path}`} className="btn text-primary hover:text-primary-active px-0">
             View page
           </Link>
-          <KeenIcon icon="right" className="text-primary text-xs" />
+          <KeenIcon icon="right" className="text-primary text-xs rtl:transform rtl:rotate-180" />
         </div>
       </div>
     );

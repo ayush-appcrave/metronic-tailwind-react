@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom';
-
+import { useLanguage } from '@/i18n';
 import { KeenIcon, Menu, MenuItem, MenuToggle } from '@/components';
 
 import { DropdownCrud1, DropdownCrudItem1 } from '@/partials/dropdowns/general';
@@ -14,6 +14,8 @@ interface IDealsItem {
 interface IDealsItems extends Array<IDealsItem> {}
 
 const Deals = () => {
+  const { isRTL } = useLanguage();
+
   const items: IDealsItems = [
     {
       name: 'Acme Software License',
@@ -75,12 +77,12 @@ const Deals = () => {
               toggle="dropdown"
               trigger="click"
               dropdownProps={{
-                placement: 'bottom-end',
+                placement: isRTL() ? 'bottom-start' : 'bottom-end',
                 modifiers: [
                   {
                     name: 'offset',
                     options: {
-                      offset: [0, 10] // [skid, distance]
+                      offset: isRTL() ? [0, -10] : [0, 10] // [skid, distance]
                     }
                   }
                 ]
@@ -107,12 +109,12 @@ const Deals = () => {
             toggle="dropdown"
             trigger="click"
             dropdownProps={{
-              placement: 'bottom-end',
+              placement: isRTL() ? 'bottom-start' : 'bottom-end',
               modifiers: [
                 {
                   name: 'offset',
                   options: {
-                    offset: [0, 10] // [skid, distance]
+                    offset: isRTL() ? [0, -10] : [0, 10] // [skid, distance]
                   }
                 }
               ]

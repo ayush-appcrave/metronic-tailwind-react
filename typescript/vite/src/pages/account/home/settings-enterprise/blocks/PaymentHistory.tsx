@@ -1,5 +1,5 @@
 import { KeenIcon, Menu, MenuItem, MenuToggle } from '@/components';
-
+import { useLanguage } from '@/i18n';
 import { DropdownCrud2, DropdownCrudItem1 } from '@/partials/dropdowns/general';
 
 interface IPaymentHistoryItem {
@@ -10,6 +10,8 @@ interface IPaymentHistoryItem {
 interface IPaymentHistoryItems extends Array<IPaymentHistoryItem> {}
 
 const PaymentHistory = () => {
+  const { isRTL } = useLanguage();
+
   const tables: IPaymentHistoryItems = [
     {
       date: '24 Aug, 2024',
@@ -45,7 +47,7 @@ const PaymentHistory = () => {
               toggle="dropdown"
               trigger="click"
               dropdownProps={{
-                placement: 'bottom-end',
+                placement: isRTL() ? 'bottom-start' : 'bottom-end',
                 modifiers: [
                   {
                     name: 'offset',
@@ -56,7 +58,7 @@ const PaymentHistory = () => {
                 ]
               }}
             >
-              <MenuToggle className="btn btn-sm btn-icon btn-light btn-clear mb-2.5-">
+              <MenuToggle className="btn btn-sm btn-icon btn-light btn-clear">
                 <KeenIcon icon="dots-vertical" />
               </MenuToggle>
               {DropdownCrudItem1()}
@@ -77,7 +79,7 @@ const PaymentHistory = () => {
             toggle="dropdown"
             trigger="click"
             dropdownProps={{
-              placement: 'bottom-end',
+              placement: isRTL() ? 'bottom-start' : 'bottom-end',
               modifiers: [
                 {
                   name: 'offset',

@@ -13,6 +13,7 @@ import {
   MenuArrow,
   MenuIcon
 } from '@/components/menu';
+import { useLanguage } from '@/i18n';
 import { useViewport } from '@/hooks';
 import { CommonAvatars } from '@/partials/common';
 import { IDropdownChatProps, IDropdownMessage } from './types';
@@ -25,6 +26,7 @@ const DropdownChat = ({ menuTtemRef }: IDropdownChatProps) => {
   const footerRef = useRef<HTMLDivElement>(null);
   const [scrollableHeight, setScrollableHeight] = useState<number>(0);
   const [viewportHeight] = useViewport();
+  const { isRTL } = useLanguage();
   const offset = 110;
 
   useEffect(() => {
@@ -102,12 +104,12 @@ const DropdownChat = ({ menuTtemRef }: IDropdownChatProps) => {
                 toggle="dropdown"
                 trigger="click"
                 dropdownProps={{
-                  placement: 'bottom-end',
+                  placement: isRTL() ? 'bottom-start' : 'bottom-end',
                   modifiers: [
                     {
                       name: 'offset',
                       options: {
-                        offset: [0, 0] // [skid, distance]
+                        offset: isRTL() ? [0, -10] : [0, 10] // [skid, distance]
                       }
                     }
                   ]
@@ -129,12 +131,12 @@ const DropdownChat = ({ menuTtemRef }: IDropdownChatProps) => {
                     toggle="dropdown"
                     trigger="hover"
                     dropdownProps={{
-                      placement: 'right-start',
+                      placement: isRTL() ? 'left-start' : 'right-start',
                       modifiers: [
                         {
                           name: 'offset',
                           options: {
-                            offset: [-15, 0] // [skid, distance]
+                            offset: isRTL() ? [15, 0] : [-15, 0] // [skid, distance]
                           }
                         }
                       ]
@@ -146,7 +148,7 @@ const DropdownChat = ({ menuTtemRef }: IDropdownChatProps) => {
                       </MenuIcon>
                       <MenuTitle>Team</MenuTitle>
                       <MenuArrow>
-                        <KeenIcon icon="right" className="text-3xs" />
+                        <KeenIcon icon="right" className="text-3xs rtl:transform rtl:rotate-180" />
                       </MenuArrow>
                     </MenuLink>
                     <MenuSub className="menu-default" rootClassName="w-full max-w-[175px]">

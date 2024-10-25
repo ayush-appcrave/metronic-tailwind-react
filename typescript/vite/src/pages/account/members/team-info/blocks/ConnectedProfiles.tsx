@@ -1,6 +1,6 @@
 import { KeenIcon, Menu, MenuItem, MenuToggle } from '@/components';
 import { toAbsoluteUrl } from '@/utils';
-
+import { useLanguage } from '@/i18n';
 import { DropdownCardItem1 } from '@/partials/dropdowns/general';
 
 interface IConnectedProfilesItem {
@@ -15,6 +15,8 @@ interface IConnectedProfilesItem {
 interface IConnectedProfilesItems extends Array<IConnectedProfilesItem> {}
 
 const ConnectedProfiles = () => {
+  const { isRTL } = useLanguage();
+
   const items: IConnectedProfilesItems = [
     {
       user: {
@@ -80,12 +82,12 @@ const ConnectedProfiles = () => {
               toggle="dropdown"
               trigger="click"
               dropdownProps={{
-                placement: 'bottom-end',
+                placement: isRTL() ? 'bottom-start' : 'bottom-end',
                 modifiers: [
                   {
                     name: 'offset',
                     options: {
-                      offset: [0, 10] // [skid, distance]
+                      offset: isRTL() ? [0, -10] : [0, 10] // [skid, distance]
                     }
                   }
                 ]

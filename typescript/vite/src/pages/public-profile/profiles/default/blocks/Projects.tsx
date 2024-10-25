@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom';
-
+import { useLanguage } from '@/i18n';
 import { KeenIcon, Menu, MenuItem, MenuToggle } from '@/components';
 
 import { CommonAvatars } from '@/partials/common';
@@ -23,6 +23,8 @@ interface IProjectsItem {
 interface IProjectsItems extends Array<IProjectsItem> {}
 
 const Projects = () => {
+  const { isRTL } = useLanguage();
+
   const items: IProjectsItems = [
     {
       name: 'Acme software development',
@@ -129,12 +131,12 @@ const Projects = () => {
               toggle="dropdown"
               trigger="click"
               dropdownProps={{
-                placement: 'bottom-end',
+                placement: isRTL() ? 'bottom-start' : 'bottom-end',
                 modifiers: [
                   {
                     name: 'offset',
                     options: {
-                      offset: [0, 10] // [skid, distance]
+                      offset: isRTL() ? [0, -10] : [0, 10] // [skid, distance]
                     }
                   }
                 ]
@@ -161,12 +163,12 @@ const Projects = () => {
             toggle="dropdown"
             trigger="click"
             dropdownProps={{
-              placement: 'bottom-end',
+              placement: isRTL() ? 'bottom-start' : 'bottom-end',
               modifiers: [
                 {
                   name: 'offset',
                   options: {
-                    offset: [0, 10] // [skid, distance]
+                    offset: isRTL() ? [0, -10] : [0, 10] // [skid, distance]
                   }
                 }
               ]

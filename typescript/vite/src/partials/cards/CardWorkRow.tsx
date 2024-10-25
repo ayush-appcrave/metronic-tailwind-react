@@ -1,6 +1,6 @@
 import { KeenIcon, Menu, MenuItem, MenuToggle } from '@/components';
 import { toAbsoluteUrl } from '@/utils/Assets';
-
+import { useLanguage } from '@/i18n';
 import { DropdownCard2 } from '../dropdowns/general';
 import { IWorkProps } from './CardWork';
 
@@ -13,6 +13,8 @@ const CardWorkRow = ({
   likes,
   comments
 }: IWorkProps) => {
+  const { isRTL } = useLanguage();
+
   return (
     <div className="card p-5">
       <div className="flex flex-wrap justify-between items-center gap-7">
@@ -67,12 +69,12 @@ const CardWorkRow = ({
               toggle="dropdown"
               trigger="click"
               dropdownProps={{
-                placement: 'bottom-end',
+                placement: isRTL() ? 'bottom-start' : 'bottom-end',
                 modifiers: [
                   {
                     name: 'offset',
                     options: {
-                      offset: [0, 10] // [skid, distance]
+                      offset: isRTL() ? [0, -10] : [0, 10] // [skid, distance]
                     }
                   }
                 ]
