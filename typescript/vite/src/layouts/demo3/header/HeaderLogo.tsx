@@ -84,7 +84,7 @@ const HeaderLogo = () => {
                 <KeenIcon icon="down" />
               </MenuArrow>
             </MenuToggle>
-            <MenuSub className="w-48 py-2">
+            <MenuSub className="menu-default w-48 py-2">
               {MENU_ROOT.map((item, index) => (
                 <MenuItem key={index} className={item === selectedMenuItem ? 'active' : ''}>
                   <MenuLink path={item.path}>

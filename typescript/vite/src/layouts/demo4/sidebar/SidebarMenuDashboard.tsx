@@ -8,6 +8,7 @@ import {
   MenuTitle,
   MenuToggle
 } from '@/components/menu';
+import { useLanguage } from '@/i18n';
 
 interface IDropdownItem {
   title: string;
@@ -52,6 +53,7 @@ const SidebarMenuDashboard = () => {
       icon: 'badge'
     }
   ];
+  const { isRTL } = useLanguage();
 
   const menuItems: IMenuItem[] = [
     {
@@ -136,12 +138,12 @@ const SidebarMenuDashboard = () => {
           toggle="dropdown"
           trigger="hover"
           dropdownProps={{
-            placement: 'bottom-end',
+            placement: isRTL() ? 'bottom-start' : 'bottom-end', 
             modifiers: [
               {
                 name: 'offset',
                 options: {
-                  offset: [-4, 0] // [skid, distance]
+                  offset: isRTL() ? [4, 0] : [-4, 0] // [skid, distance] 
                 }
               }
             ]
@@ -157,7 +159,7 @@ const SidebarMenuDashboard = () => {
             </span>
           </MenuToggle>
 
-          <MenuSub className="w-[170px] py-2">
+          <MenuSub className="menu-default w-[170px] py-2">
             {dropdownItems.map((item, index) => (
               <MenuItem key={index} className={item.active ? 'active' : ''}>
                 <MenuLink path={item.path}>

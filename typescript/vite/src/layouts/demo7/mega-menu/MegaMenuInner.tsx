@@ -10,6 +10,7 @@ import {
   MegaMenuSubHelp
 } from '@/partials/menu/mega-menu';
 import { MENU_MEGA } from '@/config';
+import { useLanguage } from '@/i18n';  
 
 const MegaMenuInner = () => {
   const desktopMode = useResponsive('up', 'lg');
@@ -20,6 +21,7 @@ const MegaMenuInner = () => {
     const networkItem = items[3];
     const authItem = items[4];
     const helpItem = items[5];
+    const { isRTL } = useLanguage();
 
     const linkClass = 'border-b border-b-transparent menu-item-active:border-b-gray-400 menu-item-here:border-b-gray-400';
     const titleClass = 'text-2sm text-gray-800 dark:menu-item-here:text-gray-900 dark:menu-item-active:text-gray-900 menu-item-show:text-gray-900 menu-item-here:text-gray-900 menu-item-active:font-medium menu-item-here:font-medium';
@@ -37,7 +39,7 @@ const MegaMenuInner = () => {
           toggle={desktopMode ? 'dropdown' : 'accordion'}
           trigger={desktopMode ? 'hover' : 'click'}
           dropdownProps={{
-            placement: 'bottom-start'
+            placement: isRTL() ? 'bottom-end' : 'bottom-start', 
           }}
         >
           <MenuLink className={linkClass}>
@@ -52,12 +54,12 @@ const MegaMenuInner = () => {
           toggle={desktopMode ? 'dropdown' : 'accordion'}
           trigger={desktopMode ? 'hover' : 'click'}
           dropdownProps={{
-            placement: 'bottom-start',
+            placement: isRTL() ? 'bottom-end' : 'bottom-start', 
             modifiers: [
               {
                 name: 'offset',
                 options: {
-                  offset: [-300, 0] // [skid, distance]
+                  offset: isRTL() ? [300, 0] : [-300, 0] // [skid, distance]  
                 }
               }
             ]

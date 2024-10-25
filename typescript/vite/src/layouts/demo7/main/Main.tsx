@@ -7,11 +7,13 @@ import { Header, Footer } from '..';
 import { Toolbar, ToolbarHeading, ToolbarActions } from '../toolbar';
 import { Link } from 'react-router-dom';
 import { KeenIcon } from '@/components';
+import { useLanguage } from '@/i18n';  
 
 const Main = () => {
   const { pathname } = useLocation();
   const { getMenuConfig } = useMenus();
   const menuConfig = getMenuConfig('primary');
+  const { isRTL } = useLanguage();
   const menuItem = useMenuCurrentItem(pathname, menuConfig);
   const months = [
     { title: 'January, 2024' },
@@ -51,7 +53,7 @@ const Main = () => {
                     toggle="dropdown"
                     trigger="hover"
                     dropdownProps={{
-                      placement: 'bottom-end',
+                      placement: isRTL() ? 'bottom-start' : 'bottom-end', 
                       modifiers: [
                         {
                           name: 'offset',
