@@ -2,7 +2,7 @@ import { type TMenuConfig } from '@/components/menu';
 
 export const MENU_SIDEBAR: TMenuConfig = [
   {
-    title: 'MENU.SIDEBAR.DASHBOARDS',
+    title: 'Dashboards',
     icon: 'element-11',
     children: [
       {
