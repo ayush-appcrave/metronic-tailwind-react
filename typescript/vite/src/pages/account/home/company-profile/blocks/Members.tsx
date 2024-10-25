@@ -100,7 +100,7 @@ const Members = ({ url }: IMembersProps) => {
 
         <td className="text-end text-gray-700 text-sm">{table.joined}</td>
 
-        <td className="text-right">
+        <td className="text-end">
           <Menu className="inline-flex">
             <MenuItem
               toggle="dropdown"
