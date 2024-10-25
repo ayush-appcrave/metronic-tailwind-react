@@ -5,11 +5,13 @@ import { Menu, MenuItem, MenuToggle } from '@/components';
 import { DropdownUser } from '@/partials/dropdowns/user';
 import { DropdownNotifications } from '@/partials/dropdowns/notifications';
 import { DropdownChat } from '@/partials/dropdowns/chat';
+import { useLanguage } from '@/i18n';
 
 const HeaderTopbar = () => {
   const itemChatRef = useRef<any>(null);
   const itemUserRef = useRef<any>(null);
   const itemNotificationsRef = useRef<any>(null);
+  const { isRTL } = useLanguage();
 
   const handleDropdownChatShow = () => {
     window.dispatchEvent(new Event('resize'));
@@ -24,7 +26,7 @@ const HeaderTopbar = () => {
             toggle="dropdown"
             trigger="click"
             dropdownProps={{
-              placement: 'bottom-end',
+              placement: isRTL() ? 'bottom-start' : 'bottom-end', 
               modifiers: [
                 {
                   name: 'offset',
@@ -49,7 +51,7 @@ const HeaderTopbar = () => {
             toggle="dropdown"
             trigger="click"
             dropdownProps={{
-              placement: 'bottom-end',
+              placement: isRTL() ? 'bottom-start' : 'bottom-end',  
               modifiers: [
                 {
                   name: 'offset',
@@ -75,7 +77,7 @@ const HeaderTopbar = () => {
           toggle="dropdown"
           trigger="click"
           dropdownProps={{
-            placement: 'bottom-end',
+            placement: isRTL() ? 'bottom-start' : 'bottom-end',  
             modifiers: [
               {
                 name: 'offset',

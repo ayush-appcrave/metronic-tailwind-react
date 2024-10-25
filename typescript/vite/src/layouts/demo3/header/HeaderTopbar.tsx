@@ -8,12 +8,14 @@ import { ModalSearch } from '@/partials/modals/search/ModalSearch';
 import { DropdownNotifications } from '@/partials/dropdowns/notifications';
 import { DropdownApps } from '@/partials/dropdowns/apps';
 import { DropdownChat } from '@/partials/dropdowns/chat';
+import { useLanguage } from '@/i18n';
 
 const HeaderTopbar = () => {
   const itemAppsRef = useRef<any>(null);
   const itemChatRef = useRef<any>(null);
   const itemUserRef = useRef<any>(null);
   const itemNotificationsRef = useRef<any>(null);
+  const { isRTL } = useLanguage();
 
   const handleDropdownChatShow = () => {
     window.dispatchEvent(new Event('resize'));
@@ -46,12 +48,12 @@ const HeaderTopbar = () => {
             toggle="dropdown"
             trigger="click"
             dropdownProps={{
-              placement: 'bottom-end',
+              placement: isRTL() ? 'bottom-start' : 'bottom-end', 
               modifiers: [
                 {
                   name: 'offset',
                   options: {
-                    offset: [10, 10] // [skid, distance]
+                    offset: isRTL() ? [200, 20] : [10, 10] // [skid, distance] 
                   }
                 }
               ]
@@ -60,7 +62,7 @@ const HeaderTopbar = () => {
             <MenuToggle className="btn btn-icon btn-icon-lg size-8 text-gray-600 hover:text-primary [dropdown-open:text-primary">
               <KeenIcon icon="notification-status" />
             </MenuToggle>
-            {DropdownNotifications({ menuTtemRef: itemNotificationsRef })}
+             
           </MenuItem>
         </Menu>
 
@@ -71,7 +73,7 @@ const HeaderTopbar = () => {
             toggle="dropdown"
             trigger="click"
             dropdownProps={{
-              placement: 'bottom-end',
+              placement: isRTL() ? 'bottom-start' : 'bottom-end', 
               modifiers: [
                 {
                   name: 'offset',
@@ -96,7 +98,7 @@ const HeaderTopbar = () => {
             toggle="dropdown"
             trigger="click"
             dropdownProps={{
-              placement: 'bottom-end',
+              placement: isRTL() ? 'bottom-start' : 'bottom-end', 
               modifiers: [
                 {
                   name: 'offset',
@@ -122,7 +124,7 @@ const HeaderTopbar = () => {
           toggle="dropdown"
           trigger="click"
           dropdownProps={{
-            placement: 'bottom-end',
+            placement: isRTL() ? 'bottom-start' : 'bottom-end', 
             modifiers: [
               {
                 name: 'offset',

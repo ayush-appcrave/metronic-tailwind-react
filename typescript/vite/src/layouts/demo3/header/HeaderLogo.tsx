@@ -14,11 +14,13 @@ import {
 import { MENU_ROOT } from '@/config';
 import { useEffect, useState } from 'react';
 import { useDemo3Layout } from '..';
+import { useLanguage } from '@/i18n';
 
 const HeaderLogo = () => {
   const { pathname } = useLocation();
   const [selectedMenuItem, setSelectedMenuItem] = useState(MENU_ROOT[1]);
   const { setMobileSidebarOpen } = useDemo3Layout();
+  const { isRTL } = useLanguage();
 
   const handleSidebarOpen = () => {
     setMobileSidebarOpen(true);
@@ -65,7 +67,7 @@ const HeaderLogo = () => {
             toggle="dropdown"
             trigger="hover"
             dropdownProps={{
-              placement: 'bottom-start',
+              placement: isRTL() ? 'bottom-end' : 'bottom-start',
               modifiers: [
                 {
                   name: 'offset',

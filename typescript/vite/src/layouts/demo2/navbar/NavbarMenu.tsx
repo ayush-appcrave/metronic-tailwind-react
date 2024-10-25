@@ -10,11 +10,13 @@ import {
 } from '@/components/menu';
 import { useMenus } from '@/providers';
 import { useLocation } from 'react-router';
+import { useLanguage } from '@/i18n';
 
 const NavbarMenu = () => {
   const { pathname } = useLocation();
   const { getMenuConfig } = useMenus();
   const primaryMenu = getMenuConfig('primary');
+  const { isRTL } = useLanguage();
   let navbarMenu;
 
   if (pathname.includes('/public-profile/')) {
@@ -37,7 +39,7 @@ const NavbarMenu = () => {
             trigger="hover"
             toggle="dropdown"
             dropdownProps={{
-              placement: 'bottom-start'
+              placement: isRTL() ? 'bottom-end' : 'bottom-start',  
             }}
           >
             <MenuLink className="gap-1.5 pb-2 lg:pb-4">
@@ -79,7 +81,7 @@ const NavbarMenu = () => {
             trigger="hover"
             toggle="dropdown"
             dropdownProps={{
-              placement: 'right-start',
+              placement: isRTL() ? 'left-start' : 'right-start', 
               modifiers: [
                 {
                   name: 'offset',
