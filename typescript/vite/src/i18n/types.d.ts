@@ -12,7 +12,8 @@ export interface TLanguage {
   messages: Record<string, string> | Record<string, MessageFormatElement[]>;
 }
 
-export interface TranslationProviderProps {
+export interface ITranslationProviderProps {
   currentLanguage: TLanguage;
-  changeLanguage: (lang: TLanguage) => void;
+  isRTL: () => boolean;
+  changeLanguage: (lang:TLanguage) => void;
 }

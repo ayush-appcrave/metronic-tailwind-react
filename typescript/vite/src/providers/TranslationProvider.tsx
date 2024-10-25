@@ -12,21 +12,21 @@ import { createContext, type PropsWithChildren, useContext, useEffect, useState 
 import { IntlProvider } from 'react-intl';
 
 import { I18N_CONFIG_KEY, I18N_DEFAULT_LANGUAGE } from '@/i18n';
-import { type TLanguage, type TranslationProviderProps } from '@/i18n';
+import { type TLanguage, type ITranslationProviderProps } from '@/i18n';
 import { getData, setData } from '@/utils';
 
 const getInitialLanguage = () => {
   const currentLanguage = getData(I18N_CONFIG_KEY) as TLanguage | undefined;
-
   return currentLanguage ?? I18N_DEFAULT_LANGUAGE;
 };
 
-const initialProps: TranslationProviderProps = {
+const initialProps: ITranslationProviderProps = {
   currentLanguage: getInitialLanguage(),
-  changeLanguage: (_: TLanguage) => {}
+  changeLanguage: (_: TLanguage) => {},
+  isRTL: () => false
 };
 
-const TranslationsContext = createContext<TranslationProviderProps>(initialProps);
+const TranslationsContext = createContext<ITranslationProviderProps>(initialProps);
 const useLanguage = () => useContext(TranslationsContext);
 
 const I18NProvider = ({ children }: PropsWithChildren) => {
@@ -51,6 +51,10 @@ const TranslationProvider = ({ children }: PropsWithChildren) => {
     setCurrentLanguage(language);
   };
 
+  const isRTL = () => {
+    return currentLanguage.direction === 'rtl';
+  }
+
   useEffect(() => {
     document.documentElement.setAttribute('dir', currentLanguage.direction);
   }, [currentLanguage]);
@@ -58,6 +62,7 @@ const TranslationProvider = ({ children }: PropsWithChildren) => {
   return (
     <TranslationsContext.Provider
       value={{
+        isRTL,
         currentLanguage,
         changeLanguage
       }}

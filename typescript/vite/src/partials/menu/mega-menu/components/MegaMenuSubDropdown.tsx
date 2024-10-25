@@ -11,11 +11,13 @@ import {
   MenuSeparator
 } from '@/components/menu';
 import { useResponsive } from '@/hooks';
+import { useLanguage } from '@/i18n';
 import clsx from 'clsx';
 import { ReactNode } from 'react';
 
 const MegaMenuSubDropdown = (items: TMenuConfig) => {
   const desktopMode = useResponsive('up', 'lg');
+  const { isRTL } = useLanguage();
 
   const buildItems = (items: TMenuConfig): ReactNode => {
     return items.map((item, index) => {
@@ -28,7 +30,7 @@ const MegaMenuSubDropdown = (items: TMenuConfig) => {
             toggle={desktopMode ? 'dropdown' : 'accordion'}
             trigger={desktopMode ? 'hover' : 'click'}
             dropdownProps={{
-              placement: 'right-start'
+              placement: isRTL() ? 'left-start' : 'right-start'
             }}
           >
             <MenuLink className="grow-0">
@@ -39,7 +41,7 @@ const MegaMenuSubDropdown = (items: TMenuConfig) => {
               )}
               <MenuTitle className={clsx('')}>{item.title}</MenuTitle>
               <MenuArrow>
-                <KeenIcon icon="right" className="text-3xs" />
+                <KeenIcon icon="right" className="text-3xs rtl:transform rtl:rotate-180" />
               </MenuArrow>
             </MenuLink>
             <MenuSub className="menu-default lg:w-[220px]">{buildItems(item.children)}</MenuSub>

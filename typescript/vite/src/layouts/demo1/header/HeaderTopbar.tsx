@@ -7,8 +7,10 @@ import { DropdownNotifications } from '@/partials/dropdowns/notifications';
 import { DropdownApps } from '@/partials/dropdowns/apps';
 import { DropdownChat } from '@/partials/dropdowns/chat';
 import { ModalSearch } from '@/partials/modals/search/ModalSearch';
+import { useLanguage } from '@/i18n';
 
 const HeaderTopbar = () => {
+  const { isRTL } = useLanguage();
   const itemChatRef = useRef<any>(null);
   const itemAppsRef = useRef<any>(null);
   const itemUserRef = useRef<any>(null);
@@ -41,12 +43,12 @@ const HeaderTopbar = () => {
           toggle="dropdown"
           trigger="click"
           dropdownProps={{
-            placement: 'bottom-end',
+            placement: isRTL() ? 'bottom-start' : 'bottom-end',
             modifiers: [
               {
                 name: 'offset',
                 options: {
-                  offset: [170, 10] // [skid, distance]
+                  offset: isRTL() ? [-170, 10] : [170, 10]
                 }
               }
             ]
@@ -66,12 +68,12 @@ const HeaderTopbar = () => {
           toggle="dropdown"
           trigger="click"
           dropdownProps={{
-            placement: 'bottom-end',
+            placement: isRTL() ? 'bottom-start' : 'bottom-end',
             modifiers: [
               {
                 name: 'offset',
                 options: {
-                  offset: [10, 10] // [skid, distance]
+                  offset: isRTL() ? [10, 10] : [-10, 10]
                 }
               }
             ]
@@ -91,12 +93,12 @@ const HeaderTopbar = () => {
           toggle="dropdown"
           trigger="click"
           dropdownProps={{
-            placement: 'bottom-end',
+            placement: isRTL() ? 'bottom-start' : 'bottom-end',
             modifiers: [
               {
                 name: 'offset',
                 options: {
-                  offset: [70, 10] // [skid, distance]
+                  offset: isRTL() ? [70, 10] : [-70, 10] // [skid, distance]
                 }
               }
             ]
@@ -115,12 +117,12 @@ const HeaderTopbar = () => {
           toggle="dropdown"
           trigger="click"
           dropdownProps={{
-            placement: 'bottom-end',
+            placement: isRTL() ? 'bottom-start' : 'bottom-end',
             modifiers: [
               {
                 name: 'offset',
                 options: {
-                  offset: [20, 10] // [skid, distance]
+                  offset: isRTL() ? [-20, 10] : [20, 10] // [skid, distance]
                 }
               }
             ]

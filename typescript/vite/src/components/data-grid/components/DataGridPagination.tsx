@@ -79,7 +79,7 @@ const DataGridPagination = () => {
           onClick={() => table.previousPage()}
           disabled={!table.getCanPreviousPage()}
         >
-          <KeenIcon icon="black-left" />
+          <KeenIcon icon="black-left" className="rtl:transform rtl:rotate-180" />
         </button>
 
         {renderEllipsisPrevButton()}
@@ -89,7 +89,7 @@ const DataGridPagination = () => {
         {renderEllipsisNextButton()}
 
         <button className="btn" onClick={() => table.nextPage()} disabled={!table.getCanNextPage()}>
-          <KeenIcon icon="black-right" />
+          <KeenIcon icon="black-right" className="rtl:transform rtl:rotate-180" />
         </button>
       </div>
     </div>

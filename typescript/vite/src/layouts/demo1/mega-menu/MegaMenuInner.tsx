@@ -11,9 +11,11 @@ import {
 } from '@/partials/menu/mega-menu';
 import { useDemo1Layout } from '../Demo1LayoutProvider';
 import { MENU_MEGA } from '@/config';
+import { useLanguage } from '@/i18n';
 
 const MegaMenuInner = () => {
   const desktopMode = useResponsive('up', 'lg');
+  const { isRTL } = useLanguage();
   const [disabled, setDisabled] = useState(true); // Initially set disabled to true
   const { layout, sidebarMouseLeave, setMegaMenuEnabled } = useDemo1Layout();
 
@@ -58,7 +60,7 @@ const MegaMenuInner = () => {
           toggle={desktopMode ? 'dropdown' : 'accordion'}
           trigger={desktopMode ? 'hover' : 'click'}
           dropdownProps={{
-            placement: 'bottom-start'
+            placement: isRTL() ? 'bottom-end' : 'bottom-start'
           }}
         >
           <MenuLink className={linkClass}>
@@ -73,12 +75,12 @@ const MegaMenuInner = () => {
           toggle={desktopMode ? 'dropdown' : 'accordion'}
           trigger={desktopMode ? 'hover' : 'click'}
           dropdownProps={{
-            placement: 'bottom-start',
+            placement: isRTL() ? 'bottom-end' : 'bottom-start',
             modifiers: [
               {
                 name: 'offset',
                 options: {
-                  offset: [-300, 0] // [skid, distance]
+                  offset: isRTL() ? [300, 0] : [-300, 0] // [skid, distance]
                 }
               }
             ]
@@ -96,12 +98,12 @@ const MegaMenuInner = () => {
           toggle={desktopMode ? 'dropdown' : 'accordion'}
           trigger={desktopMode ? 'hover' : 'click'}
           dropdownProps={{
-            placement: 'bottom-start',
+            placement: isRTL() ? 'bottom-end' : 'bottom-start',
             modifiers: [
               {
                 name: 'offset',
                 options: {
-                  offset: [-300, 0] // [skid, distance]
+                  offset: isRTL() ? [300, 0] : [-300, 0] // [skid, distance]
                 }
               }
             ]
@@ -119,12 +121,12 @@ const MegaMenuInner = () => {
           toggle={desktopMode ? 'dropdown' : 'accordion'}
           trigger={desktopMode ? 'hover' : 'click'}
           dropdownProps={{
-            placement: 'bottom-start',
+            placement: isRTL() ? 'bottom-end' : 'bottom-start',
             modifiers: [
               {
                 name: 'offset',
                 options: {
-                  offset: [-300, 0] // [skid, distance]
+                  offset: isRTL() ? [300, 0] : [-300, 0] // [skid, distance]
                 }
               }
             ]
@@ -142,12 +144,12 @@ const MegaMenuInner = () => {
           toggle={desktopMode ? 'dropdown' : 'accordion'}
           trigger={desktopMode ? 'hover' : 'click'}
           dropdownProps={{
-            placement: 'bottom-start',
+            placement: isRTL() ? 'bottom-end' : 'bottom-start',
             modifiers: [
               {
                 name: 'offset',
                 options: {
-                  offset: [-20, 0] // [skid, distance]
+                  offset: isRTL() ? [20, 0] : [-20, 0] // [skid, distance]
                 }
               }
             ]
