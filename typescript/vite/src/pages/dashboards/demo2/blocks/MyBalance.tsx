@@ -3,7 +3,7 @@ import ApexChart from 'react-apexcharts';
 import { ApexOptions } from 'apexcharts';
 import { KeenIcon, Menu, MenuItem, MenuToggle } from '@/components';
 import clsx from 'clsx';
-
+import { useLanguage } from '@/i18n';
 import { DropdownCard2 } from '@/partials/dropdowns/general';
 
 interface IMyBalanceProps {
@@ -12,6 +12,7 @@ interface IMyBalanceProps {
 
 const MyBalance = ({ className }: IMyBalanceProps) => {
   const [activePeriod, setActivePeriod] = useState('Month');
+  const { isRTL } = useLanguage();
 
   const getDataForPeriod = (period: string) => {
     switch (period) {
@@ -193,18 +194,18 @@ const MyBalance = ({ className }: IMyBalanceProps) => {
             toggle="dropdown"
             trigger="click"
             dropdownProps={{
-              placement: 'bottom-end',
+              placement: isRTL() ? 'bottom-start' : 'bottom-end',
               modifiers: [
                 {
                   name: 'offset',
                   options: {
-                    offset: [0, 10] // [skid, distance]
+                    offset: isRTL() ? [0, -10] : [0, 10] // [skid, distance]
                   }
                 }
               ]
             }}
           >
-            <MenuToggle className="btn btn-sm btn-icon btn-light btn-clear mb-2.5-">
+            <MenuToggle className="btn btn-sm btn-icon btn-light btn-clear">
               <KeenIcon icon="dots-vertical" />
             </MenuToggle>
             {DropdownCard2()}

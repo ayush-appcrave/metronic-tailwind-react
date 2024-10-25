@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom';
-
+import { useLanguage } from '@/i18n';
 import { KeenIcon, Menu, MenuItem, MenuToggle } from '@/components';
 import { toAbsoluteUrl } from '@/utils/Assets';
 
@@ -18,6 +18,8 @@ interface IConnectionsProps {
 }
 
 const Connections = ({ title }: IConnectionsProps) => {
+  const { isRTL } = useLanguage();
+
   const items: IConnectionsItems = [
     {
       avatar: '300-3.png',
@@ -89,12 +91,12 @@ const Connections = ({ title }: IConnectionsProps) => {
             toggle="dropdown"
             trigger="click"
             dropdownProps={{
-              placement: 'bottom-end',
+              placement: isRTL() ? 'bottom-start' : 'bottom-end',
               modifiers: [
                 {
                   name: 'offset',
                   options: {
-                    offset: [0, 10] // [skid, distance]
+                    offset: isRTL() ? [0, -10] : [0, 10] // [skid, distance]
                   }
                 }
               ]

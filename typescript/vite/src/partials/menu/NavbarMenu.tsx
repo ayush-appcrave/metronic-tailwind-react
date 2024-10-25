@@ -8,8 +8,11 @@ import {
   MenuTitle,
   MenuToggle
 } from '@/components/menu';
+import { useLanguage } from '@/i18n';
 
 const NavbarMenu = ({ items }: { items: TMenuConfig }) => {
+  const { isRTL } = useLanguage();
+
   const buildMenu = (items: TMenuConfig) => {
     return items.map((item, index) => {
       if (item.children) {
@@ -20,7 +23,7 @@ const NavbarMenu = ({ items }: { items: TMenuConfig }) => {
             toggle="dropdown"
             trigger="click"
             dropdownProps={{
-              placement: 'bottom-start',
+              placement: isRTL() ? 'bottom-start' : 'bottom-end',
               modifiers: [
                 {
                   name: 'offset',
@@ -69,7 +72,7 @@ const NavbarMenu = ({ items }: { items: TMenuConfig }) => {
             toggle="dropdown"
             trigger="hover"
             dropdownProps={{
-              placement: 'right-start',
+              placement: isRTL() ? 'left-start' : 'right-start',
               modifiers: [
                 {
                   name: 'offset',

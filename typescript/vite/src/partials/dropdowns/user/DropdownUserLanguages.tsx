@@ -1,3 +1,4 @@
+import { FormattedMessage } from 'react-intl';
 import { KeenIcon } from '@/components';
 import { MenuItem, MenuLink, MenuTitle, MenuIcon, MenuBadge, MenuSub } from '@/components/menu';
 import clsx from 'clsx';
@@ -9,6 +10,7 @@ interface IDropdownUserLanguagesProps {
 
 const DropdownUserLanguages = ({ menuItemRef }: IDropdownUserLanguagesProps) => {
   const { currentLanguage, changeLanguage } = useLanguage();
+  const { isRTL } = useLanguage();
 
   const handleLanguage = (lang: TLanguage) => {
     changeLanguage(lang);
@@ -47,12 +49,12 @@ const DropdownUserLanguages = ({ menuItemRef }: IDropdownUserLanguagesProps) => 
       toggle="dropdown"
       trigger="hover"
       dropdownProps={{
-        placement: 'left-start',
+        placement: isRTL() ? 'left-start' : 'right-start',
         modifiers: [
           {
             name: 'offset',
             options: {
-              offset: [-10, 0]
+              offset: isRTL() ? [-10, 0] : [10, 0] // [skid, distance]
             }
           }
         ]
@@ -62,7 +64,9 @@ const DropdownUserLanguages = ({ menuItemRef }: IDropdownUserLanguagesProps) => 
         <MenuIcon>
           <KeenIcon icon="icon" />
         </MenuIcon>
-        <MenuTitle>Language</MenuTitle>
+        <MenuTitle>
+          <FormattedMessage id="USER.MENU.LANGUAGE" />
+        </MenuTitle>
         <div className="flex items-center gap-1.5 rounded-md border border-gray-300 text-gray-600 p-1.5 text-2xs font-medium shrink-0">
           {currentLanguage.label}
           <img

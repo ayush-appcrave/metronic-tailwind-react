@@ -1,5 +1,5 @@
 import { KeenIcon, Menu, MenuItem, MenuToggle } from '@/components';
-
+import { useLanguage } from '@/i18n';
 import { CommonAvatar } from '@/partials/common';
 import { DropdownCard1 } from '@/partials/dropdowns/general';
 
@@ -18,6 +18,8 @@ interface IHeadingProps {
 }
 
 const Heading = ({ author, avatar, date }: IHeadingProps) => {
+  const { isRTL } = useLanguage();
+
   return (
     <div className="flex justify-between items-center mb-5 p-7.5 pb-0">
       <div className="flex items-center gap-3">
@@ -42,12 +44,12 @@ const Heading = ({ author, avatar, date }: IHeadingProps) => {
           toggle="dropdown"
           trigger="click"
           dropdownProps={{
-            placement: 'bottom-end',
+            placement: isRTL() ? 'bottom-start' : 'bottom-end',
             modifiers: [
               {
                 name: 'offset',
                 options: {
-                  offset: [0, 10] // [skid, distance]
+                  offset: isRTL() ? [0, -10] : [0, 10] // [skid, distance]
                 }
               }
             ]

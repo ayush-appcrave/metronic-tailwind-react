@@ -1,11 +1,12 @@
 import { ChangeEvent, useState } from 'react';
-
+import { useLanguage } from '@/i18n';
 import { KeenIcon, Menu, MenuItem, MenuToggle } from '@/components';
 
 import { DropdownCard2 } from '@/partials/dropdowns/general';
 
 const SetGoal = () => {
   const [value, setValue] = useState(1);
+  const { isRTL } = useLanguage();
 
   const handleChange = (event: ChangeEvent<HTMLInputElement>) => {
     setValue(Number(event.target.value));
@@ -21,7 +22,7 @@ const SetGoal = () => {
             toggle="dropdown"
             trigger="click"
             dropdownProps={{
-              placement: 'bottom-end',
+              placement: isRTL() ? 'bottom-start' : 'bottom-end',
               modifiers: [
                 {
                   name: 'offset',

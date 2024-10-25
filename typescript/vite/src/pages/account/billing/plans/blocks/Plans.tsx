@@ -248,8 +248,10 @@ const Plans = () => {
 
   return (
     <div className="scrollable-x-auto pt-3 -mt-3">
-      <table className="table table-fixed min-w-[1000px] table-border-b table-border-e table-rounded card-rounded 
-      [&_tr:nth-of-type(2)>td]:table-border-t [&_tr:nth-of-type(2)>td:first-child]:card-rounded-ts">
+      <table
+        className="table table-fixed min-w-[1000px] table-border-b table-border-e table-rounded card-rounded 
+      [&_tr:nth-of-type(2)>td]:table-border-t [&_tr:nth-of-type(2)>td:first-child]:card-rounded-ts"
+      >
         <tbody>
           <tr>
             <td className="!border-b-0 align-bottom !p-5 !pt-7.5 !pb-6">

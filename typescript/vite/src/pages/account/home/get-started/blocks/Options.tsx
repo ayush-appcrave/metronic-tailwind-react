@@ -1,5 +1,5 @@
 import { Link } from 'react-router-dom';
-
+import { useLanguage } from '@/i18n';
 import { KeenIcon, Menu, MenuItem, MenuToggle } from '@/components';
 
 import { DropdownCard2 } from '@/partials/dropdowns/general';
@@ -18,6 +18,8 @@ interface IOptionsProps {
 }
 
 const Options = ({ items, dropdown }: IOptionsProps) => {
+  const { isRTL } = useLanguage();
+
   const renderProject = (item: IOptionsItem, index: number) => {
     return (
       <div key={index} className="card p-5 lg:p-7.5 lg:pt-7">
@@ -31,12 +33,12 @@ const Options = ({ items, dropdown }: IOptionsProps) => {
                   toggle="dropdown"
                   trigger="click"
                   dropdownProps={{
-                    placement: 'bottom-end',
+                    placement: isRTL() ? 'bottom-start' : 'bottom-end',
                     modifiers: [
                       {
                         name: 'offset',
                         options: {
-                          offset: [0, 10] // [skid, distance]
+                          offset: isRTL() ? [0, -10] : [0, 10] // [skid, distance]
                         }
                       }
                     ]

@@ -1,8 +1,8 @@
 import { Fragment } from 'react';
-import { BlockList, ReportSettings } from '@/pages/account/security/privacy-settings';
+import { BlockList } from '@/pages/account/security/privacy-settings';
 import { MiscCreateTeam } from '@/partials/misc';
 import { toAbsoluteUrl } from '@/utils';
-import { Teams } from '..';
+import { Highlights, Teams } from '..';
 
 const Demo4Content = () => {
   return (
@@ -42,7 +42,7 @@ const Demo4Content = () => {
         </div>
 
         <div className="lg:col-span-1">
-          <ReportSettings className="h-full" />
+          <Highlights />
         </div>
       </div>
 

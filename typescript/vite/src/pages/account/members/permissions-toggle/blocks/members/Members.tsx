@@ -1,7 +1,7 @@
 /* eslint-disable prettier/prettier */
 import { useEffect, useMemo, useState } from 'react';
 import { ColumnDef } from '@tanstack/react-table';
-
+import { useLanguage } from '@/i18n';
 import { DataGrid, KeenIcon, Menu, MenuItem, MenuToggle } from '@/components';
 import { toAbsoluteUrl } from '@/utils';
 
@@ -10,6 +10,7 @@ import { DropdownCard1 } from '@/partials/dropdowns/general';
 import { MembersData, IMembersData } from '.';
 
 const Members = () => {
+  const { isRTL } = useLanguage();
   const storageFilterId = 'members-filter';
 
   const columns = useMemo<ColumnDef<IMembersData>[]>(
@@ -97,12 +98,12 @@ const Members = () => {
               toggle="dropdown"
               trigger="click"
               dropdownProps={{
-                placement: 'bottom-end',
+                placement: isRTL() ? 'bottom-start' : 'bottom-end',
                 modifiers: [
                   {
                     name: 'offset',
                     options: {
-                      offset: [0, 10] // [skid, distance]
+                      offset: isRTL() ? [0, -10] : [0, 10] // [skid, distance]
                     }
                   }
                 ]
@@ -120,7 +121,7 @@ const Members = () => {
         },
       },
     ],
-    []
+    [isRTL]
   );
 
   // Memoize the team data

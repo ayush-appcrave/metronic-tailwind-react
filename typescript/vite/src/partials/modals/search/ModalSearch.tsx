@@ -4,6 +4,7 @@ import { KeenIcon, Menu, MenuItem, MenuToggle } from '@/components';
 import { Tab, TabPanel, Tabs, TabsList } from '@/components/tabs';
 import { DropdownCrud2 } from '@/partials/dropdowns/general';
 import { useViewport } from '@/hooks';
+import { useLanguage } from '@/i18n';
 import {
   ModalSearchDocs,
   ModalSearchMixed,
@@ -25,6 +26,7 @@ interface ModalSearchProps {
 const ModalSearch = forwardRef<HTMLDivElement, ModalSearchProps>(({ open, onClose }, ref) => {
   const [scrollableHeight, setScrollableHeight] = useState<number>(0);
   const [viewportHeight] = useViewport();
+  const { isRTL } = useLanguage();
   const offset = 300;
 
   useEffect(() => {
@@ -258,7 +260,7 @@ const ModalSearch = forwardRef<HTMLDivElement, ModalSearchProps>(({ open, onClos
                   toggle="dropdown"
                   trigger="click"
                   dropdownProps={{
-                    placement: 'bottom-end',
+                    placement: isRTL() ? 'bottom-start' : 'bottom-end',
                     modifiers: [
                       {
                         name: 'offset',

@@ -1,5 +1,5 @@
 import { KeenIcon, Menu, MenuItem, MenuToggle } from '@/components';
-
+import { useLanguage } from '@/i18n';
 import { DropdownCard1 } from '@/partials/dropdowns/general';
 
 interface IHighlightsRow {
@@ -22,6 +22,8 @@ interface IHighlightsProps {
 }
 
 const Highlights = ({ limit }: IHighlightsProps) => {
+  const { isRTL } = useLanguage();
+
   const rows: IHighlightsRows = [
     { icon: 'shop', text: 'Online Store', total: 172, stats: 3.9, increase: true },
     { icon: 'facebook', text: 'Facebook', total: 85, stats: 0.7, increase: false },
@@ -78,12 +80,12 @@ const Highlights = ({ limit }: IHighlightsProps) => {
             toggle="dropdown"
             trigger="click"
             dropdownProps={{
-              placement: 'bottom-end',
+              placement: isRTL() ? 'bottom-start' : 'bottom-end',
               modifiers: [
                 {
                   name: 'offset',
                   options: {
-                    offset: [0, 10] // [skid, distance]
+                    offset: isRTL() ? [0, -10] : [0, 10] // [skid, distance]
                   }
                 }
               ]

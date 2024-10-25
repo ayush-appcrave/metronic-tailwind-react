@@ -1,6 +1,6 @@
 import { KeenIcon, Menu, MenuItem, MenuToggle } from '@/components';
 import { toAbsoluteUrl } from '@/utils/Assets';
-
+import { useLanguage } from '@/i18n';
 import { DropdownCard2, DropdownCardItem1 } from '@/partials/dropdowns/general';
 
 interface IConnection {
@@ -12,6 +12,8 @@ interface IConnection {
 interface IConnections extends Array<IConnection> {}
 
 const Connections = () => {
+  const { isRTL } = useLanguage();
+
   const tables: IConnections = [
     {
       avatar: '300-3.png',
@@ -90,12 +92,12 @@ const Connections = () => {
               toggle="dropdown"
               trigger="click"
               dropdownProps={{
-                placement: 'bottom-end',
+                placement: isRTL() ? 'bottom-start' : 'bottom-end',
                 modifiers: [
                   {
                     name: 'offset',
                     options: {
-                      offset: [0, 10] // [skid, distance]
+                      offset: isRTL() ? [0, -10] : [0, 10] // [skid, distance]
                     }
                   }
                 ]
@@ -122,12 +124,12 @@ const Connections = () => {
             toggle="dropdown"
             trigger="click"
             dropdownProps={{
-              placement: 'bottom-end',
+              placement: isRTL() ? 'bottom-start' : 'bottom-end',
               modifiers: [
                 {
                   name: 'offset',
                   options: {
-                    offset: [0, 10] // [skid, distance]
+                    offset: isRTL() ? [0, -10] : [0, 10] // [skid, distance]
                   }
                 }
               ]

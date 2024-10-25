@@ -1,6 +1,6 @@
 import { KeenIcon, Menu, MenuItem, MenuToggle } from '@/components';
 import { toAbsoluteUrl } from '@/utils/Assets';
-
+import { useLanguage } from '@/i18n';
 import { DropdownCard2 } from '../dropdowns/general';
 
 interface ICampaignItem {
@@ -38,6 +38,8 @@ const CardCampaign = ({
   progress,
   url
 }: ICampaignProps) => {
+  const { isRTL } = useLanguage();
+
   const renderItem = (statistic: ICampaignItem, index: number) => {
     return (
       <div
@@ -61,12 +63,12 @@ const CardCampaign = ({
               toggle="dropdown"
               trigger="click"
               dropdownProps={{
-                placement: 'bottom-end',
+                placement: isRTL() ? 'bottom-start' : 'bottom-end',
                 modifiers: [
                   {
                     name: 'offset',
                     options: {
-                      offset: [0, 10] // [skid, distance]
+                      offset: isRTL() ? [0, -10] : [0, 10] // [skid, distance]
                     }
                   }
                 ]

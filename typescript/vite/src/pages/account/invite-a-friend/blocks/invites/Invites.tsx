@@ -2,7 +2,7 @@
 import React, { useEffect, useMemo, useState } from 'react';
 import { ColumnDef } from '@tanstack/react-table';
 import { Link } from 'react-router-dom';
-
+import { useLanguage } from '@/i18n';
 import { DataGrid, KeenIcon, Menu, MenuItem, MenuToggle } from '@/components';
 import { toAbsoluteUrl } from '@/utils';
 
@@ -11,6 +11,7 @@ import { DropdownCrudItem1 } from '@/partials/dropdowns/general';
 import { InvitesData, IInvitesData } from '.';
 
 const Invites = () => {
+  const { isRTL } = useLanguage();
   const storageFilterId = 'teams-filter';
 
   const columns = useMemo<ColumnDef<IInvitesData>[]>(
@@ -112,12 +113,12 @@ const Invites = () => {
               toggle="dropdown"
               trigger="click"
               dropdownProps={{
-                placement: 'bottom-end',
+                placement: isRTL() ? 'bottom-start' : 'bottom-end',
                 modifiers: [
                   {
                     name: 'offset',
                     options: {
-                      offset: [0, 10] // [skid, distance]
+                      offset: isRTL() ? [0, -10] : [0, 10] // [skid, distance]
                     }
                   }
                 ]
@@ -135,7 +136,7 @@ const Invites = () => {
         },
       },
     ],
-    []
+    [isRTL]
   );
 
   // Memoize the team data

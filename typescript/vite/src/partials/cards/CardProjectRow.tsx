@@ -1,6 +1,6 @@
 import { KeenIcon, Menu, MenuItem, MenuToggle } from '@/components';
 import { toAbsoluteUrl } from '@/utils/Assets';
-
+import { useLanguage } from '@/i18n';
 import { DropdownCard2 } from '../dropdowns/general';
 import { CommonAvatars } from '../common';
 
@@ -27,6 +27,7 @@ interface IProjectRowProps {
 }
 
 const CardProjectRow = ({ logo, name, description, status, progress, team }: IProjectRowProps) => {
+  const { isRTL } = useLanguage();
   return (
     <div className="card p-7">
       <div className="flex items-center flex-wrap justify-between gap-5">
@@ -62,12 +63,12 @@ const CardProjectRow = ({ logo, name, description, status, progress, team }: IPr
                 toggle="dropdown"
                 trigger="click"
                 dropdownProps={{
-                  placement: 'bottom-end',
+                  placement: isRTL() ? 'bottom-start' : 'bottom-end',
                   modifiers: [
                     {
                       name: 'offset',
                       options: {
-                        offset: [0, 10] // [skid, distance]
+                        offset: isRTL() ? [0, -10] : [0, 10] // [skid, distance]
                       }
                     }
                   ]
