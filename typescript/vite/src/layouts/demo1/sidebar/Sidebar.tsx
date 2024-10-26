@@ -53,7 +53,7 @@ const Sidebar = () => {
         onMouseLeave={handleMouseLeave}
         onMouseEnter={handleMouseEnter}
         className={clsx(
-          'sidebar bg-light border-e border-e-gray-200 dark:border-e-coal-100 fixed top-0 bottom-0 z-20 hidden lg:flex flex-col items-stretch shrink-0',
+          'sidebar bg-light border-e border-e-gray-200 dark:border-e-coal-100 fixed top-0 bottom-0 z-20 lg:flex flex-col items-stretch shrink-0',
           themeClass
         )}
       >

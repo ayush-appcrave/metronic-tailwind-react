@@ -75,7 +75,7 @@ const Sidebar = () => {
 
   const renderContent = () => {
     return (
-      <div className="fixed w-[--tw-sidebar-width] lg:top-[--tw-header-height] top-0 bottom-0 z-20 hidden lg:flex flex-col items-stretch shrink-0 group py-3 lg:py-0">
+      <div className="fixed w-[--tw-sidebar-width] lg:top-[--tw-header-height] top-0 bottom-0 z-20 lg:flex flex-col items-stretch shrink-0 group py-3 lg:py-0">
         <div className="flex grow shrink-0">
           <div
             className="scrollable-y-auto grow gap-2.5 shrink-0 flex items-center flex-col"
