@@ -157,7 +157,7 @@ const SidebarMenuDashboard = () => {
             </span>
           </MenuToggle>
 
-          <MenuSub className="w-[170px] py-2">
+          <MenuSub className="menu-default w-[170px] py-2">
             {dropdownItems.map((item, index) => (
               <MenuItem key={index} className={item.active ? 'active' : ''}>
                 <MenuLink path={item.path}>

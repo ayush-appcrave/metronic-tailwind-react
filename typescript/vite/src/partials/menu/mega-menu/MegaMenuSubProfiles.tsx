@@ -17,7 +17,7 @@ const MegaMenuSubProfiles = (items: TMenuConfig) => {
                 <div className="grid lg:grid-cols-2 lg:gap-5">
                   {item.children?.map((item: IMenuItemConfig, index) => {
                     return (
-                      <div key={`item-${index}`} className="flex flex-col gap-0.5">
+                      <div key={`item-${index}`} className="flex flex-col">
                         {item.children && MegaMenuSubDefault(item.children)}
                       </div>
                     );

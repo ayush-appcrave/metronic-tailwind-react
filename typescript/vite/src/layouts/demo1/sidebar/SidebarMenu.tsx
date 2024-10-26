@@ -140,9 +140,7 @@ const SidebarMenu = () => {
           <MenuIcon className={clsx('items-start text-gray-500 dark:text-gray-400', iconWidth)}>
             {item.icon && <KeenIcon icon={item.icon} className={iconSize} />}
           </MenuIcon>
-          <MenuTitle className="text-sm font-medium text-gray-800">
-            {item.title}
-          </MenuTitle>
+          <MenuTitle className="text-sm font-medium text-gray-800">{item.title}</MenuTitle>
 
           {item.disabled && buildMenuSoon()}
         </MenuLabel>
@@ -243,9 +241,7 @@ const SidebarMenu = () => {
           )}
         >
           {buildMenuBullet()}
-          <MenuTitle className="text-2sm font-normal text-gray-800">
-            {item.title}
-          </MenuTitle>
+          <MenuTitle className="text-2sm font-normal text-gray-800">{item.title}</MenuTitle>
           {item.disabled && buildMenuSoon()}
         </MenuLabel>
       </MenuItem>
