@@ -4,11 +4,13 @@ import { useAuthContext } from '@/auth';
 import { KeenIcon, Menu, MenuIcon, MenuItem, MenuToggle } from '@/components';
 import { DropdownUser } from '@/partials/dropdowns/user';
 import { DropdownNotifications } from '@/partials/dropdowns/notifications';
+import { useLanguage } from '@/i18n';  
 
 const SidebarFooter = forwardRef<HTMLDivElement, any>((props, ref) => {
   const { logout } = useAuthContext();
   const itemUserRef = useRef<any>(null);
   const itemNotificationsRef = useRef<any>(null);
+  const { isRTL } = useLanguage();
 
   return (
     <div ref={ref} className="flex flex-center justify-between shrink-0 ps-4 pe-3.5 mb-3.5">
@@ -18,12 +20,12 @@ const SidebarFooter = forwardRef<HTMLDivElement, any>((props, ref) => {
           toggle="dropdown"
           trigger="click"
           dropdownProps={{
-            placement: 'right-end',
+            placement: isRTL() ? 'right-start' : 'right-end', 
             modifiers: [
               {
                 name: 'offset',
                 options: {
-                  offset: [-10, 15] // [skid, distance]
+                  offset: isRTL() ? [10, 0] : [-10, 0] // [skid, distance] 
                 }
               }
             ]
@@ -46,7 +48,7 @@ const SidebarFooter = forwardRef<HTMLDivElement, any>((props, ref) => {
             toggle="dropdown"
             trigger="click"
             dropdownProps={{
-              placement: 'right-end',
+              placement: isRTL() ? 'right-start' : 'right-end',
               modifiers: [
                 {
                   name: 'offset',

@@ -91,7 +91,7 @@ const Main = () => {
                         </span>
                       </MenuToggle>
 
-                      <MenuSub className="w-48 py-2 scrollable-y max-h-[250px]">
+                      <MenuSub className="menu-default w-48 py-2 scrollable-y max-h-[250px]">
                         {months.map((item, index) => (
                           <MenuItem key={index} className={item.active ? 'active' : ''}>
                             <MenuLink path="/">

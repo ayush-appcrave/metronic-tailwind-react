@@ -9,6 +9,7 @@ import { KeenIcon } from '@/components';
 import { useResponsive } from '@/hooks';
 import { ModalSearch } from '@/partials/modals/search/ModalSearch';
 import { DropdownNotifications } from '@/partials/dropdowns/notifications';
+import { useLanguage } from '@/i18n';  
 
 const Main = () => {
   const mobileMode = useResponsive('down', 'lg');
@@ -19,6 +20,7 @@ const Main = () => {
   const menuItem = useMenuCurrentItem(pathname, menuConfig);
   const [searchModalOpen, setSearchModalOpen] = useState(false);
   const handleOpen = () => setSearchModalOpen(true);
+  const { isRTL } = useLanguage();
   const handleClose = () => {
     setSearchModalOpen(false);
   };
@@ -31,7 +33,7 @@ const Main = () => {
       <div className="flex grow">
         {mobileMode && <Header />}
 
-        <div className="flex flex-col lg:flex-row grow pt-[--tw-header-height] lg:pt-0">
+        <div className="flex flex-col lg:flex-row grow pt-[--tw-header-height]lg:pt-0">
           <Sidebar />
 
           <div className="flex flex-col grow rounded-xl bg-[--tw-content-bg] dark:bg-[--tw-content-bg-dark] border border-gray-300 dark:border-gray-200 lg:ms-[--tw-sidebar-width] mt-0 lg:mt-5 m-5">
@@ -55,7 +57,7 @@ const Main = () => {
                         toggle="dropdown"
                         trigger="click"
                         dropdownProps={{
-                          placement: 'bottom-end',
+                          placement: isRTL() ? 'bottom-start' : 'bottom-end', 
                           modifiers: [
                             {
                               name: 'offset',

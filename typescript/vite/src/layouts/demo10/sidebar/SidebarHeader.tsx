@@ -14,6 +14,7 @@ import {
 import { MENU_ROOT } from '@/config';
 import { KeenIcon } from '@/components';
 import { ModalSearch } from '@/partials/modals/search/ModalSearch';
+import { useLanguage } from '@/i18n';  
 
 const SidebarHeader = forwardRef<HTMLDivElement, any>((props, ref) => {
   const { pathname } = useLocation();
@@ -24,6 +25,7 @@ const SidebarHeader = forwardRef<HTMLDivElement, any>((props, ref) => {
   const handleSearchModalClose = () => {
     setSearchModalOpen(false);
   };
+  const { isRTL } = useLanguage();
 
   useEffect(() => {
     MENU_ROOT.forEach((item) => {
@@ -49,7 +51,7 @@ const SidebarHeader = forwardRef<HTMLDivElement, any>((props, ref) => {
             toggle="dropdown"
             trigger="click"
             dropdownProps={{
-              placement: 'bottom-start',
+              placement: isRTL() ? 'bottom-end' : 'bottom-start', 
               modifiers: [
                 {
                   name: 'offset',
