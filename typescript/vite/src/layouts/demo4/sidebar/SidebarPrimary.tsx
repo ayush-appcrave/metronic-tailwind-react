@@ -6,6 +6,7 @@ import { useViewport } from '@/hooks';
 import { DropdownUser } from '@/partials/dropdowns/user';
 import { DropdownChat } from '@/partials/dropdowns/chat';
 import { DropdownApps } from '@/partials/dropdowns/apps';
+import { useLanguage } from '@/i18n';
 
 interface IMenuItem {
   icon: string;
@@ -54,6 +55,7 @@ const SidebarPrimary = () => {
   const [scrollableHeight, setScrollableHeight] = useState<number>(0);
   const [viewportHeight] = useViewport();
   const scrollableOffset = 80;
+  const { isRTL } = useLanguage();
 
   useEffect(() => {
     if (headerRef.current && footerRef.current) {
@@ -127,7 +129,7 @@ const SidebarPrimary = () => {
               toggle="dropdown"
               trigger="click"
               dropdownProps={{
-                placement: 'right-end',
+                placement: isRTL() ? 'left-end' : 'right-end',  
                 modifiers: [
                   {
                     name: 'offset',
@@ -153,12 +155,12 @@ const SidebarPrimary = () => {
               toggle="dropdown"
               trigger="click"
               dropdownProps={{
-                placement: 'right-end',
+                placement: isRTL() ? 'left-end' : 'right-end',  
                 modifiers: [
                   {
                     name: 'offset',
                     options: {
-                      offset: [-10, 15] // [skid, distance]
+                      offset: isRTL() ? [10, 15] : [-10, 15] // [skid, distance]  
                     }
                   }
                 ]
@@ -179,12 +181,12 @@ const SidebarPrimary = () => {
             toggle="dropdown"
             trigger="click"
             dropdownProps={{
-              placement: 'right-end',
+              placement: isRTL() ? 'left-end' : 'right-end',
               modifiers: [
                 {
                   name: 'offset',
                   options: {
-                    offset: [-10, 15]
+                    offset: isRTL() ? [10, 15] : [-10, 15] // [skid, distance] 
                   }
                 }
               ]

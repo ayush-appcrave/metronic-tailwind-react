@@ -53,7 +53,7 @@ const HeaderTopbar = () => {
                 {
                   name: 'offset',
                   options: {
-                    offset: isRTL() ? [200, 20] : [10, 10] // [skid, distance] 
+                    offset: [10, 10] // [skid, distance]
                   }
                 }
               ]
@@ -62,7 +62,7 @@ const HeaderTopbar = () => {
             <MenuToggle className="btn btn-icon btn-icon-lg size-8 text-gray-600 hover:text-primary [dropdown-open:text-primary">
               <KeenIcon icon="notification-status" />
             </MenuToggle>
-             
+            {DropdownNotifications({ menuTtemRef: itemNotificationsRef })}
           </MenuItem>
         </Menu>
 

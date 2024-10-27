@@ -13,12 +13,14 @@ import {
 } from '@/components/menu';
 import { useMenus } from '@/providers';
 import { useResponsive } from '@/hooks';
+import { useLanguage } from '@/i18n';  
 
 const SidebarMenu = () => {
   const isDesktop = useResponsive('up', 'lg');
   const { getMenuConfig } = useMenus();
   const primaryMenuConfig = getMenuConfig('primary');
   const megaMenuConfig = getMenuConfig('mega');
+  const { isRTL } = useLanguage();
   const menuConfig = [
     {
       title: 'Boards',
@@ -61,12 +63,12 @@ const SidebarMenu = () => {
           toggle="dropdown"
           trigger="hover"
           dropdownProps={{
-            placement: 'right-start',
+            placement: isRTL() ? 'right-end' : 'right-start', 
             modifiers: [
               {
                 name: 'offset',
                 options: {
-                  offset: [-10, 14]
+                  offset: isRTL() ? [10, 14] : [-10, 14] // [skid, distance] 
                 }
               }
             ]

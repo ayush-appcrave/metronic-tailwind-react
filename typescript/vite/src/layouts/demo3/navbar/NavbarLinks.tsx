@@ -1,6 +1,8 @@
 import { KeenIcon, Menu, MenuItem, MenuToggle, MenuSub, MenuLink, MenuTitle } from '@/components';
+import { useLanguage } from '@/i18n';
 
 const NavbarLinks = () => {
+  const { isRTL } = useLanguage();
   const months = [
     { title: 'January, 2024' },
     { title: 'February, 2024' },
@@ -22,7 +24,7 @@ const NavbarLinks = () => {
         toggle="dropdown"
         trigger="hover"
         dropdownProps={{
-          placement: 'bottom-end',
+          placement: isRTL() ? 'bottom-start' : 'bottom-end', 
           modifiers: [
             {
               name: 'offset',

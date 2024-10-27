@@ -13,10 +13,12 @@ import {
 } from '@/components/menu';
 import { MENU_ROOT } from '@/config';
 import { KeenIcon } from '@/components';
+import { useLanguage } from '@/i18n';
 
 const SidebarHeader = forwardRef<HTMLDivElement, any>((props, ref) => {
   const { pathname } = useLocation();
   const [selectedMenuItem, setSelectedMenuItem] = useState(MENU_ROOT[1]);
+  const { isRTL } = useLanguage();
 
   const handleInputChange = () => {};
 
@@ -48,7 +50,7 @@ const SidebarHeader = forwardRef<HTMLDivElement, any>((props, ref) => {
             toggle="dropdown"
             trigger="hover"
             dropdownProps={{
-              placement: 'bottom-start',
+              placement: isRTL() ? 'bottom-end' : 'bottom-start',  
               modifiers: [
                 {
                   name: 'offset',
@@ -67,7 +69,7 @@ const SidebarHeader = forwardRef<HTMLDivElement, any>((props, ref) => {
                 <KeenIcon icon="down" />
               </MenuArrow>
             </MenuLabel>
-            <MenuSub className="w-48 py-2">
+            <MenuSub className="menu-default w-48 py-2">
               {MENU_ROOT.map((item, index) => (
                 <MenuItem key={index} className={item === selectedMenuItem ? 'active' : ''}>
                   <MenuLink path={item.path}>

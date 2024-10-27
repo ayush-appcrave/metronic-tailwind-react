@@ -14,6 +14,7 @@ import {
 } from '@/components';
 
 import { useDemo5Layout } from '..';
+import { useLanguage } from '@/i18n';
 
 interface IHeaderLogoTeam {
   title: string;
@@ -38,6 +39,7 @@ interface IHeaderLogoStagings extends Array<IHeaderLogoStaging> {}
 const HeaderLogo = () => {
   const desktopMode = useResponsive('up', 'lg');
   const { setMobileSidebarOpen } = useDemo5Layout();
+  const { isRTL } = useLanguage();
 
   const handleSidebarOpen = () => {
     setMobileSidebarOpen(true);
@@ -118,7 +120,7 @@ const HeaderLogo = () => {
               toggle="dropdown"
               trigger="hover"
               dropdownProps={{
-                placement: 'bottom-start',
+                placement: isRTL() ? 'bottom-end' : 'bottom-start',  
                 modifiers: [
                   {
                     name: 'offset',
@@ -159,7 +161,7 @@ const HeaderLogo = () => {
               toggle="dropdown"
               trigger="hover"
               dropdownProps={{
-                placement: 'bottom-start',
+                placement: isRTL() ? 'bottom-end' : 'bottom-start', 
                 modifiers: [
                   {
                     name: 'offset',
@@ -200,7 +202,7 @@ const HeaderLogo = () => {
               toggle="dropdown"
               trigger="hover"
               dropdownProps={{
-                placement: 'bottom-start',
+                placement: isRTL() ? 'bottom-end' : 'bottom-start', 
                 modifiers: [
                   {
                     name: 'offset',

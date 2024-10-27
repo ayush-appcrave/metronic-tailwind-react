@@ -11,6 +11,7 @@ import { DropdownApps } from '@/partials/dropdowns/apps';
 import { useDemo8Layout } from '..';
 import { SidebarMenu } from '.';
 import { usePathname } from '@/providers';
+import { useLanguage } from '@/i18n';  
 
 const Sidebar = () => {
   const desktopMode = useResponsive('up', 'lg');
@@ -19,6 +20,7 @@ const Sidebar = () => {
   const { mobileSidebarOpen, setMobileSidebarOpen } = useDemo8Layout();
   const itemChatRef = useRef<any>(null);
   const itemUserRef = useRef<any>(null);
+  const { isRTL } = useLanguage();
 
   const handleDropdownChatShow = () => {
     window.dispatchEvent(new Event('resize'));
@@ -84,7 +86,7 @@ const Sidebar = () => {
                 toggle="dropdown"
                 trigger="click"
                 dropdownProps={{
-                  placement: 'right-end',
+                  placement: isRTL() ? 'right-start' : 'right-end', 
                   modifiers: [
                     {
                       name: 'offset',
@@ -110,12 +112,12 @@ const Sidebar = () => {
                 toggle="dropdown"
                 trigger="click"
                 dropdownProps={{
-                  placement: 'right-end',
+                  placement: isRTL() ? 'right-start' : 'right-end', 
                   modifiers: [
                     {
                       name: 'offset',
                       options: {
-                        offset: [-20, 30] // [skid, distance]
+                        offset: isRTL() ? [-20, 30] : [20, 30] // [skid, distance] 
                       }
                     }
                   ]
@@ -136,12 +138,12 @@ const Sidebar = () => {
               toggle="dropdown"
               trigger="click"
               dropdownProps={{
-                placement: 'right-end',
+                placement: isRTL() ? 'right-start' : 'right-end',
                 modifiers: [
                   {
                     name: 'offset',
                     options: {
-                      offset: [-20, 28]
+                      offset: isRTL() ? [-20, 28] : [20, 28] // [skid, distance] 
                     }
                   }
                 ]

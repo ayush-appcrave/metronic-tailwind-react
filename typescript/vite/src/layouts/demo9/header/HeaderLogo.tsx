@@ -14,6 +14,7 @@ import {
 import { useResponsive } from '@/hooks';
 
 import { useDemo9Layout } from '..';
+import { useLanguage } from '@/i18n';  
 
 interface IHeaderLogoTeam {
   title: string;
@@ -31,6 +32,7 @@ interface IHeaderLogoMonths extends Array<IHeaderLogoMonth> {}
 const HeaderLogo = () => {
   const desktopMode = useResponsive('up', 'lg');
   const { setMobileMegaMenuOpen } = useDemo9Layout();
+  const { isRTL } = useLanguage();
 
   const handleSidebarOpen = () => {
     setMobileMegaMenuOpen(true);
@@ -92,7 +94,7 @@ const HeaderLogo = () => {
               toggle="dropdown"
               trigger="hover"
               dropdownProps={{
-                placement: 'bottom-start',
+                placement: isRTL() ? 'bottom-end' : 'bottom-start', 
                 modifiers: [
                   {
                     name: 'offset',
@@ -133,7 +135,7 @@ const HeaderLogo = () => {
               toggle="dropdown"
               trigger="hover"
               dropdownProps={{
-                placement: 'bottom-start',
+                placement: isRTL() ? 'bottom-end' : 'bottom-start',  
                 modifiers: [
                   {
                     name: 'offset',

@@ -3,11 +3,13 @@ import { Menu, MenuItem, MenuToggle, KeenIcon } from '@/components';
 import { DropdownUser } from '@/partials/dropdowns/user';
 import { DropdownNotifications } from '@/partials/dropdowns/notifications';
 import { DropdownCard2 } from '@/partials/dropdowns/general';
+import { useLanguage } from '@/i18n';  
 
 const HeaderTopbar = () => {
   const itemChatRef = useRef<any>(null);
   const itemNotificationsRef = useRef<any>(null);
   const itemUserRef = useRef<any>(null);
+  const { isRTL } = useLanguage();
 
   const handleDropdownChatShow = () => {
     window.dispatchEvent(new Event('resize'));
@@ -22,12 +24,12 @@ const HeaderTopbar = () => {
             toggle="dropdown"
             trigger="click"
             dropdownProps={{
-              placement: 'bottom-end',
+              placement: isRTL() ? 'bottom-start' : 'bottom-end', 
               modifiers: [
                 {
                   name: 'offset',
                   options: {
-                    offset: [-7, 10] // [skid, distance]
+                    offset: isRTL() ? [7, 10] : [-7, 10] // [skid, distance] 
                   }
                 }
               ]
@@ -46,12 +48,12 @@ const HeaderTopbar = () => {
             toggle="dropdown"
             trigger="click"
             dropdownProps={{
-              placement: 'bottom-end',
+              placement: isRTL() ? 'bottom-start' : 'bottom-end', 
               modifiers: [
                 {
                   name: 'offset',
                   options: {
-                    offset: [-7, 10] // [skid, distance]
+                    offset: isRTL() ? [7, 10] : [-7, 10] // [skid, distance] 
                   }
                 }
               ]
@@ -85,7 +87,7 @@ const HeaderTopbar = () => {
           toggle="dropdown"
           trigger="click"
           dropdownProps={{
-            placement: 'bottom-end',
+            placement: isRTL() ? 'bottom-start' : 'bottom-end', 
             modifiers: [
               {
                 name: 'offset',

@@ -8,6 +8,7 @@ import {
   MenuSub,
   MenuIcon
 } from '@/components';
+import { useLanguage } from '@/i18n';
 
 interface IDashboardDropdownItem {
   title: string;
@@ -31,6 +32,7 @@ interface IDashboardMenuItem {
 interface IDashboardMenuItems extends Array<IDashboardMenuItem> {}
 
 const SidebarMenuDashboard = () => {
+  const { isRTL } = useLanguage();
   const dropdownItems: IDashboardDropdownItems = [
     {
       title: 'Admin API',
@@ -132,7 +134,7 @@ const SidebarMenuDashboard = () => {
           toggle="dropdown"
           trigger="hover"
           dropdownProps={{
-            placement: 'bottom-end',
+            placement: isRTL() ? 'bottom-start' : 'bottom-end',  
             modifiers: [
               {
                 name: 'offset',
