@@ -1,5 +1,4 @@
 /* eslint-disable no-unused-vars */
-/* eslint-disable react-hooks/exhaustive-deps */
 import axios, { AxiosResponse } from 'axios';
 import {
   createContext,
@@ -50,13 +49,12 @@ const AuthProvider = ({ children }: PropsWithChildren) => {
   const [auth, setAuth] = useState<AuthModel | undefined>(authHelper.getAuth());
   const [currentUser, setCurrentUser] = useState<UserModel | undefined>();
 
-  // Verity user session and validate bearer authentication
   const verify = async () => {
     if (auth) {
       try {
         const { data: user } = await getUser();
         setCurrentUser(user);
-      } catch (error) {
+      } catch {
         saveAuth(undefined);
         setCurrentUser(undefined);
       }
@@ -65,12 +63,10 @@ const AuthProvider = ({ children }: PropsWithChildren) => {
 
   useEffect(() => {
     verify().finally(() => {
-      // delay for layout initialization
       setLoading(false);
     });
   }, []);
 
-  // Set auth object and save it to local storage
   const saveAuth = (auth: AuthModel | undefined) => {
     setAuth(auth);
     if (auth) {
@@ -80,7 +76,6 @@ const AuthProvider = ({ children }: PropsWithChildren) => {
     }
   };
 
-  // Login user with email and password
   const login = async (email: string, password: string) => {
     try {
       const { data: auth } = await axios.post<AuthModel>(LOGIN_URL, {
@@ -96,7 +91,6 @@ const AuthProvider = ({ children }: PropsWithChildren) => {
     }
   };
 
-  // Register user using default registration information
   const register = async (email: string, password: string, password_confirmation?: string) => {
     try {
       const { data: auth } = await axios.post(REGISTER_URL, {
@@ -113,19 +107,16 @@ const AuthProvider = ({ children }: PropsWithChildren) => {
     }
   };
 
-  // Server should return object => { result: boolean } (Is Email in DB)
   const requestPassword = async (email: string) => {
     await axios.post<{ result: boolean }>(REQUEST_PASSWORD_URL, {
       email
     });
   };
 
-  // Returns user by using bearer authentication token
   const getUser = async () => {
     return await axios.get<UserModel>(GET_USER_BY_ACCESSTOKEN_URL);
   };
 
-  // Delete auth local storage and resets current user state
   const logout = () => {
     saveAuth(undefined);
     setCurrentUser(undefined);
