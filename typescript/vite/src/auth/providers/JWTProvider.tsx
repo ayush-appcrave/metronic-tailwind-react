@@ -97,18 +97,10 @@ const AuthProvider = ({ children }: PropsWithChildren) => {
   };
 
   // Register user using default registration information
-  const register = async (
-    email: string,
-    password: string,
-    firstname?: string,
-    lastname?: string,
-    password_confirmation?: string
-  ) => {
+  const register = async (email: string, password: string, password_confirmation?: string) => {
     try {
       const { data: auth } = await axios.post(REGISTER_URL, {
         email,
-        first_name: 'DefaultName',
-        last_name: 'DefaultSurname',
         password,
         password_confirmation
       });
