@@ -6,7 +6,7 @@ import {
   MenuLink,
   MenuSub,
   MenuTitle,
-  MenuToggle
+  MenuArrow
 } from '@/components/menu';
 import { useLanguage } from '@/i18n';
 
@@ -19,7 +19,7 @@ const NavbarMenu = ({ items }: { items: TMenuConfig }) => {
         return (
           <MenuItem
             key={index}
-            className="text-sm border-b-2 border-b-transparent menu-item-active:border-b-primary menu-item-here:border-b-primary"
+            className="border-b-2 border-b-transparent menu-item-active:border-b-primary menu-item-here:border-b-primary"
             toggle="dropdown"
             trigger="click"
             dropdownProps={{
@@ -34,8 +34,8 @@ const NavbarMenu = ({ items }: { items: TMenuConfig }) => {
               ]
             }}
           >
-            <MenuLink className="pb-4 px-2 gap-0.5 cursor-pointer">
-              <MenuTitle className="text-nowrap font-medium text-gray-700 menu-item-active:text-primary menu-item-active:font-semibold menu-item-here:text-primary menu-item-here:font-semibold menu-item-show:text-primary menu-link-hover:text-primary">
+            <MenuLink className="gap-1.5 pb-2 lg:pb-4 px-2">
+              <MenuTitle className="text-nowrap text-sm text-gray-700 menu-item-active:text-primary menu-item-active:font-medium menu-item-here:text-primary menu-item-here:font-medium menu-item-show:text-primary menu-link-hover:text-primary">
                 {item.title}
               </MenuTitle>
               {buildMenuToggle()}
@@ -89,19 +89,19 @@ const NavbarMenu = ({ items }: { items: TMenuConfig }) => {
               </MenuTitle>
               {buildMenuToggle()}
             </MenuLink>
-            <MenuSub className="menu-default" rootClassName="w-full max-w-[175px]">
+            <MenuSub className="menu-default" rootClassName="py-2 min-w-[200px]">
               {buildMenuSub(item.children)}
             </MenuSub>
           </MenuItem>
         );
       } else {
         return (
-          <MenuItem className="text-sm" key={index}>
-            <MenuLink
-              path={item.path}
-              className="py-1.5 px-2 gap-0.5 rounded-lg menu-item-active:bg-secondary-active"
-            >
-              <MenuTitle className="font-normal text-gray-700 menu-item-active:text-primary menu-item-here:text-primary menu-item-show:text-primary menu-link-hover:!text-primary">
+          <MenuItem
+            className="border-b-2 border-b-transparent menu-item-active:border-b-primary menu-item-here:border-b-primary"
+            key={index}
+          >
+            <MenuLink path={item.path} className="gap-1.5 pb-2 lg:pb-4 px-2">
+              <MenuTitle className="text-nowrap font-medium text-sm text-gray-700 menu-item-active:text-primary menu-item-active:font-semibold menu-item-here:text-primary menu-item-here:font-semibold menu-item-show:text-primary menu-link-hover:text-primary">
                 {item.title}
               </MenuTitle>
             </MenuLink>
@@ -113,9 +113,12 @@ const NavbarMenu = ({ items }: { items: TMenuConfig }) => {
 
   const buildMenuToggle = () => {
     return (
-      <MenuToggle className="justify-end me-[-2px] w-[20px] text-gray-500 menu-item-active:text-primary menu-item-here:text-primary menu-item-show:text-primary menu-link-hover:text-primary">
-        <KeenIcon icon="down" className="text-xs [.menu-dropdown_&]:-rotate-90" />
-      </MenuToggle>
+      <MenuArrow>
+        <KeenIcon
+          icon="down"
+          className="text-2xs text-gray-500 menu-item-active:text-primary menu-item-here:text-primary menu-item-show:text-primary menu-link-hover:text-primary"
+        />
+      </MenuArrow>
     );
   };
 
