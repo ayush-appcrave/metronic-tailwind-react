@@ -1,13 +1,21 @@
 import { Fragment } from 'react';
 import { Helmet } from 'react-helmet-async';
 import { Outlet, useLocation } from 'react-router';
-import { Menu, MenuItem, MenuSub, MenuToggle, useMenuCurrentItem } from '@/components/menu';
+import {
+  Menu,
+  MenuItem,
+  MenuLink,
+  MenuSub,
+  MenuTitle,
+  MenuToggle,
+  useMenuCurrentItem
+} from '@/components/menu';
 import { useMenus } from '@/providers';
 import { Header, Footer } from '..';
 import { Toolbar, ToolbarHeading, ToolbarActions } from '../toolbar';
 import { Link } from 'react-router-dom';
 import { KeenIcon } from '@/components';
-import { useLanguage } from '@/i18n';  
+import { useLanguage } from '@/i18n';
 
 const Main = () => {
   const { pathname } = useLocation();
@@ -53,7 +61,7 @@ const Main = () => {
                     toggle="dropdown"
                     trigger="hover"
                     dropdownProps={{
-                      placement: isRTL() ? 'bottom-start' : 'bottom-end', 
+                      placement: isRTL() ? 'bottom-start' : 'bottom-end',
                       modifiers: [
                         {
                           name: 'offset',
@@ -75,13 +83,13 @@ const Main = () => {
                       </span>
                     </MenuToggle>
 
-                    <MenuSub className="w-48 py-2 scrollable-y max-h-[250px]">
+                    <MenuSub className="menu-default w-48 py-2 scrollable-y max-h-[250px]">
                       {months.map((item, index) => (
-                        <div className={`menu-item ${item.active ? 'active' : ''}`} key={index}>
-                          <Link to="/" className="menu-link">
-                            <span className="menu-title">{item.title}</span>
-                          </Link>
-                        </div>
+                        <MenuItem key={index} className={item.active ? 'active' : ''}>
+                          <MenuLink path="/">
+                            <MenuTitle>{item.title}</MenuTitle>
+                          </MenuLink>
+                        </MenuItem>
                       ))}
                     </MenuSub>
                   </MenuItem>

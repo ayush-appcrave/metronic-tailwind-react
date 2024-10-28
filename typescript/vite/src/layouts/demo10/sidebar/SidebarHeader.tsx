@@ -14,7 +14,7 @@ import {
 import { MENU_ROOT } from '@/config';
 import { KeenIcon } from '@/components';
 import { ModalSearch } from '@/partials/modals/search/ModalSearch';
-import { useLanguage } from '@/i18n';  
+import { useLanguage } from '@/i18n';
 
 const SidebarHeader = forwardRef<HTMLDivElement, any>((props, ref) => {
   const { pathname } = useLocation();
@@ -49,9 +49,9 @@ const SidebarHeader = forwardRef<HTMLDivElement, any>((props, ref) => {
           <MenuItem
             className="grow"
             toggle="dropdown"
-            trigger="click"
+            trigger="hover"
             dropdownProps={{
-              placement: isRTL() ? 'bottom-end' : 'bottom-start', 
+              placement: isRTL() ? 'bottom-end' : 'bottom-start',
               modifiers: [
                 {
                   name: 'offset',
@@ -74,7 +74,7 @@ const SidebarHeader = forwardRef<HTMLDivElement, any>((props, ref) => {
               </div>
             </MenuLabel>
 
-            <MenuSub className="w-48 py-2" baseClassName="dark">
+            <MenuSub className="menu-default w-48 py-2" baseClassName="dark">
               {MENU_ROOT.map((item, index) => (
                 <MenuItem key={index} className={item === selectedMenuItem ? 'active' : ''}>
                   <MenuLink path={item.path}>

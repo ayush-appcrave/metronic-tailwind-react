@@ -13,7 +13,7 @@ import {
   MenuLink
 } from '@/components';
 import { useMenus } from '@/providers';
-
+import { useLanguage } from '@/i18n';
 import { Header, Navbar, Footer, Toolbar, ToolbarHeading, ToolbarActions } from '../';
 
 interface IMainMonth {
@@ -27,6 +27,7 @@ const Main = () => {
   const { getMenuConfig } = useMenus();
   const menuConfig = getMenuConfig('primary');
   const menuItem = useMenuCurrentItem(pathname, menuConfig);
+  const { isRTL } = useLanguage();
 
   const months: IMainMonths = [
     { title: 'January, 2024' },
@@ -69,7 +70,7 @@ const Main = () => {
                       toggle="dropdown"
                       trigger="hover"
                       dropdownProps={{
-                        placement: 'bottom-end',
+                        placement: isRTL() ? 'bottom-start' : 'bottom-end',
                         modifiers: [
                           {
                             name: 'offset',
