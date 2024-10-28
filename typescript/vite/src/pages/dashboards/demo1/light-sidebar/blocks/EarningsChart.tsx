@@ -169,8 +169,6 @@ const EarningsChart = () => {
     }
   };
 
-  console.log('chartok!!!');
-
   return (
     <div className="card h-full">
       <div className="card-header">

@@ -68,7 +68,6 @@ const ImageInput: FC<IImageInputProps> = ({
   }, [handleClickInput]);
 
   const onInputChange = async (e: ChangeEvent<HTMLInputElement>): Promise<void> => {
-    console.log('onInputChange');
     await handleChange(e.target.files);
     if (inputRef.current) inputRef.current.value = '';
   };
