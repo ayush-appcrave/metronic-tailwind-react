@@ -13,7 +13,7 @@ import {
 } from '@/components/menu';
 import { useMenus } from '@/providers';
 import { useResponsive } from '@/hooks';
-import { useLanguage } from '@/i18n';  
+import { useLanguage } from '@/i18n';
 
 const SidebarMenu = () => {
   const isDesktop = useResponsive('up', 'lg');
@@ -63,12 +63,12 @@ const SidebarMenu = () => {
           toggle="dropdown"
           trigger="hover"
           dropdownProps={{
-            placement: isRTL() ? 'right-end' : 'right-start', 
+            placement: isRTL() ? 'right-end' : 'right-start',
             modifiers: [
               {
                 name: 'offset',
                 options: {
-                  offset: isRTL() ? [10, 14] : [-10, 14] // [skid, distance] 
+                  offset: isRTL() ? [10, 14] : [-10, 14] // [skid, distance]
                 }
               }
             ]
@@ -198,7 +198,7 @@ const SidebarMenu = () => {
           <MenuLink className="grow cursor-pointer">
             <MenuTitle>{item.title}</MenuTitle>
             <MenuArrow>
-              <KeenIcon icon="right" className="text-3xs" />
+              <KeenIcon icon="right" className="text-3xs rtl:translate rtl:rotate-180" />
             </MenuArrow>
           </MenuLink>
           <MenuSub className="menu-default gap-0.5 w-[220px] scrollable-y-auto lg:overflow-visible max-h-[50vh]">
