@@ -126,13 +126,13 @@ const Device = () => {
   const data: IDeviceData[] = useMemo(() => DeviceData, []);
 
   return (
-    <div className="card card-grid h-full min-w-full">
-      <div className="card-header">
+    <div className="card card-grid min-w-full">
+      <div className="card-header py-5 flex-wrap">
         <h3 className="card-title">Devices</h3>
 
-				<button className="btn btn-primary btn-sm"> 
-					Add Device
-				</button>
+				<div className="flex gap-5">
+          <a href="#" className="btn btn-sm btn-primary">Add Device</a>
+        </div>
       </div>
 
       <div className="card-body">

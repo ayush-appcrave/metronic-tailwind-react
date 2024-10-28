@@ -47,6 +47,9 @@ const ProfileActivityPage = () => {
       </Container>
 
       <Container>
+        <div className="flex flex-wrap items-center gap-5 justify-between mb-7.5">
+          <h3 className="text-lg text-gray-900 font-semibold">Activity</h3>
+        </div>
         <ProfileActivityContent />
       </Container>
     </Fragment>

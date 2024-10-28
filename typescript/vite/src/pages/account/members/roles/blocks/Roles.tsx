@@ -3,13 +3,15 @@ import { KeenIcon } from '@/components';
 import { CardAddNew, CardRole } from '@/partials/cards';
 import { ReactNode } from 'react';
 
+interface Badge {
+  size: string;
+  badge: ReactNode;
+  fill: string;
+  stroke: string;
+}
+
 interface IRolesItem {
-  badge: {
-    size: string;
-    badge: ReactNode;
-    fill: string;
-    stroke: string;
-  };
+  badge: Badge;
   title: string;
   subTitle: string;
   description: string;
@@ -122,7 +124,7 @@ const Roles = () => {
         description={item.description}
         team={item.team}
         path={item.path}
-        badge={item.badge.badge}
+        badge={item.badge}
       />
     );
   };

@@ -15,7 +15,7 @@ const ProfileCompanyContent = () => {
     { number: '624', label: 'Employees' },
     { number: '60.7M', label: 'Users' },
     { number: '369M', label: 'Revenue' },
-    { number: '27', label: 'ProfileCompany Rank' }
+    { number: '27', label: 'Company Rank' }
   ];
 
   const data: INetworkItems = [

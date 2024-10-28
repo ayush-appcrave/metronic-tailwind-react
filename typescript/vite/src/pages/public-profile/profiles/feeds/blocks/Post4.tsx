@@ -44,6 +44,7 @@ const Post4 = () => {
           comments={2}
           likes="47k"
           saves={900}
+          className="mx-7.5"
         />
 
         {activeTab === 'comments' && (

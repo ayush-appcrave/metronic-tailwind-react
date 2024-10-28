@@ -2,6 +2,7 @@ import { toAbsoluteUrl } from '@/utils/Assets';
 
 interface IFavoriteGamesItem {
   image: string;
+  className?: string;
 }
 interface IFavoriteGamesItems extends Array<IFavoriteGamesItem> {}
 
@@ -10,7 +11,7 @@ const FavoriteGames = () => {
     { image: '13.jpg' },
     { image: '14.jpg' },
     { image: '15.jpg' },
-    { image: '16.jpg' },
+    { image: '16.jpg', className: 'border' },
     { image: '17.jpg' },
     { image: '18.jpg' },
     { image: '19.jpg' },
@@ -21,7 +22,7 @@ const FavoriteGames = () => {
     return (
       <img
         src={toAbsoluteUrl(`/media/images/600x600/${item.image}`)}
-        className="rounded-xl w-11 h-11"
+        className={`rounded-xl w-11 h-11 ${item.className}`}
         alt=""
         key={index}
       />

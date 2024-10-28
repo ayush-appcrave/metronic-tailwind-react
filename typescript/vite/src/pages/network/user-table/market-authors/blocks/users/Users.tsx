@@ -17,7 +17,6 @@ const Users = () => {
         enableSorting: true,
         cell: ({ row }) => {  // 'row' argumentini cell funksiyasiga qo'shdik
           return (
-            
             <div className="flex items-center gap-2.5">
               <img
                 src={toAbsoluteUrl(`/media/avatars/${row.original.user.avatar}`)}
@@ -38,7 +37,7 @@ const Users = () => {
           );
         },
         meta: {
-          className: 'min-w-[200px]',
+          className: 'min-w-[250px]',
           cellClassName: 'text-gray-800 font-normal',
         }
       },
@@ -74,7 +73,7 @@ const Users = () => {
           );
         }, 
         meta: {
-          className: 'min-w-[170px]' 
+          className: 'min-w-[175px]' 
         }
       },   
       {
@@ -102,7 +101,7 @@ const Users = () => {
           />
         ),
         meta: {
-          className: 'w-[170px]',
+          className: 'w-[150px]',
           cellClassName: 'text-gray-700 font-normal'
         } 
       },
@@ -128,7 +127,7 @@ const Users = () => {
           );
         },
         meta: {
-          className: 'w-[170px]'
+          className: 'w-[150px]'
         }
       },      
       {
@@ -143,7 +142,7 @@ const Users = () => {
           );
         },
         meta: {
-          className: 'w-[70px]'
+          className: 'w-[60px]'
         }
       },      
         
@@ -154,11 +153,11 @@ const Users = () => {
   const data: IUsersData[] = useMemo(() => UsersData, []);
 
   return (
-    <div className="card card-grid h-full min-w-full">
-      <div className="card-header flex-wrap gap-2.5">
-        <h3 className="card-title">Showing 10 of 49,053 users</h3>
+    <div className="card card-grid min-w-full">
+      <div className="card-header flex-wrap gap-2">
+        <h3 className="card-title font-medium text-sm">Showing 10 of 49,053 users</h3>
 
-				<div className="flex items-center flex-wrap gap-2.5">
+				<div className="flex flex-wrap gap-2 lg:gap-5">
           <div className="flex">
             <label className="input input-sm">
               <KeenIcon icon="magnifier" />
@@ -166,21 +165,23 @@ const Users = () => {
             </label>
           </div>
 
-          <select className="select select-sm w-28">
-            <option value="1">Active</option>
-            <option value="2">Disabled</option>
-            <option value="2">Pending</option>
-          </select>
+          <div className="flex flex-wrap gap-2.5">
+            <select className="select select-sm w-28">
+              <option value="1">Active</option>
+              <option value="2">Disabled</option>
+              <option value="2">Pending</option>
+            </select>
 
-          <select className="select select-sm w-28">
-            <option value="1">Latest</option>
-            <option value="2">Older</option>
-            <option value="3">Oldest</option>
-          </select>
+            <select className="select select-sm w-28">
+              <option value="1">Latest</option>
+              <option value="2">Older</option>
+              <option value="3">Oldest</option>
+            </select>
 
-          <button className="btn btn-sm btn-outline btn-primary">
-            <KeenIcon icon="setting-4" /> Filters
-          </button>
+            <button className="btn btn-sm btn-outline btn-primary">
+              <KeenIcon icon="setting-4" /> Filters
+            </button>
+          </div>
         </div>
       </div>
 
