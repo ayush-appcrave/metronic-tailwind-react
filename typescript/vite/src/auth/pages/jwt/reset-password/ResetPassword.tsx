@@ -23,7 +23,7 @@ const forgotPasswordSchema = Yup.object().shape({
 const ResetPassword = () => {
   const [loading, setLoading] = useState(false);
   const [hasErrors, setHasErrors] = useState<boolean | undefined>(undefined);
-  const { requestPassword } = useAuthContext();
+  const { requestPasswordResetLink } = useAuthContext();
   const { currentLayout } = useLayout();
 
   const formik = useFormik({
@@ -33,11 +33,11 @@ const ResetPassword = () => {
       setLoading(true);
       setHasErrors(undefined);
       try {
-        if (!requestPassword) {
+        if (!requestPasswordResetLink) {
           throw new Error('JWTProvider is required for this form.');
         }
 
-        await requestPassword(values.email);
+        await requestPasswordResetLink(values.email);
 
         setHasErrors(false);
         setLoading(false);
@@ -102,12 +102,9 @@ const ResetPassword = () => {
         </div>
 
         <div className="flex flex-col gap-5 items-stretch">
-          <Link
-            to={currentLayout?.name === 'auth-branded' ? '/auth/login' : '/auth/classic/login'}
-            className="btn btn-primary flex justify-center grow"
-          >
+          <button type="submit" className="btn btn-primary flex justify-center grow">
             {loading ? 'Please wait...' : 'Continue'}
-          </Link>
+          </button>
 
           <Link
             to={currentLayout?.name === 'auth-branded' ? '/auth/login' : '/auth/classic/login'}

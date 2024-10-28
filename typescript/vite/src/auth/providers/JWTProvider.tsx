@@ -13,11 +13,11 @@ import * as authHelper from '../_helpers';
 import { type AuthModel, type UserModel } from '@/auth';
 
 const API_URL = import.meta.env.VITE_APP_API_URL;
-
-export const GET_USER_BY_ACCESSTOKEN_URL = `${API_URL}/user`;
 export const LOGIN_URL = `${API_URL}/login`;
 export const REGISTER_URL = `${API_URL}/register`;
-export const REQUEST_PASSWORD_URL = `${API_URL}/forgotpassword`;
+export const FORGOT_PASSWORD_URL = `${API_URL}/forgot-password`;
+export const RESET_PASSWORD_URL = `${API_URL}/reset-password`;
+export const GET_USER_URL = `${API_URL}/user`;
 
 interface AuthContextProps {
   isLoading: boolean;
@@ -36,7 +36,13 @@ interface AuthContextProps {
     lastname?: string,
     password_confirmation?: string
   ) => Promise<void>;
-  requestPassword: (email: string) => Promise<void>;
+  requestPasswordResetLink: (email: string) => Promise<void>;
+  changePassword: (
+    email: string,
+    token: string,
+    password: string,
+    password_confirmation: string
+  ) => Promise<void>;
   getUser: () => Promise<AxiosResponse<any>>;
   logout: () => void;
   verify: () => Promise<void>;
@@ -107,14 +113,28 @@ const AuthProvider = ({ children }: PropsWithChildren) => {
     }
   };
 
-  const requestPassword = async (email: string) => {
-    await axios.post<{ result: boolean }>(REQUEST_PASSWORD_URL, {
+  const requestPasswordResetLink = async (email: string) => {
+    await axios.post(FORGOT_PASSWORD_URL, {
       email
     });
   };
 
+  const changePassword = async (
+    email: string,
+    token: string,
+    password: string,
+    password_confirmation: string
+  ) => {
+    await axios.post(RESET_PASSWORD_URL, {
+      email,
+      token,
+      password,
+      password_confirmation
+    });
+  };
+
   const getUser = async () => {
-    return await axios.get<UserModel>(GET_USER_BY_ACCESSTOKEN_URL);
+    return await axios.get<UserModel>(GET_USER_URL);
   };
 
   const logout = () => {
@@ -132,7 +152,8 @@ const AuthProvider = ({ children }: PropsWithChildren) => {
         setCurrentUser,
         login,
         register,
-        requestPassword,
+        requestPasswordResetLink,
+        changePassword,
         getUser,
         logout,
         verify

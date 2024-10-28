@@ -17,11 +17,11 @@ const AuthPage = () => (
   <Routes>
     <Route element={<AuthBrandedLayout />}>
       <Route index element={<Login />} />
-      <Route path="login" element={<Login />} />
-      <Route path="signup" element={<Signup />} />
-      <Route path="2fa" element={<TwoFactorAuth />} />
-      <Route path="check-email" element={<CheckEmail />} />
-      <Route path="reset-password" element={<ResetPassword />} />
+      <Route path="/login" element={<Login />} />
+      <Route path="/signup" element={<Signup />} />
+      <Route path="/2fa" element={<TwoFactorAuth />} />
+      <Route path="/check-email" element={<CheckEmail />} />
+      <Route path="/reset-password" element={<ResetPassword />} />
       <Route path="/reset-password/enter-email" element={<ResetPasswordEnterEmail />} />
       <Route path="/reset-password/check-email" element={<ResetPasswordCheckEmail />} />
       <Route path="/reset-password/change" element={<ResetPasswordChange />} />
