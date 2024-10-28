@@ -30,7 +30,8 @@ const Visitors = () => {
           </div>
         ),
         meta: {
-          className: 'min-w-[200px]'
+          className: 'min-w-[200px]',
+          cellClassName: 'text-gray-700 font-normal'
         },
       },
       {
@@ -46,6 +47,7 @@ const Visitors = () => {
         ),
         meta: {
           className: 'min-w-[250px]',
+          cellClassName: 'text-gray-700 font-normal'
         },
       },
       {
@@ -58,6 +60,7 @@ const Visitors = () => {
         },
         meta: {
           className: 'min-w-[190px]',
+          cellClassName: 'text-gray-700 font-normal'
         },
       },
       {
@@ -77,6 +80,7 @@ const Visitors = () => {
         ),
         meta: {
           className: 'min-w-[190px]',
+          cellClassName: 'text-gray-700 font-normal'
         },
       },
       {
@@ -86,8 +90,7 @@ const Visitors = () => {
         enableSorting: true,
         cell: (info: any) => info.row.original.activity,
         meta: {
-          className: 'min-w-[150px]',
-          cellClassName: 'text-gray-800 font-normal',
+          className: 'min-w-[190px]',
         },
       },
       {
@@ -114,8 +117,8 @@ const Visitors = () => {
 
   return (
     <div className="card card-grid min-w-full">
-      <div className="card-header py-5 flex-wrap gap-2">
-        <h3 className="card-title">Showing 10 of 49,053 users</h3>
+      <div className="card-header flex-wrap gap-2">
+        <h3 className="card-title font-medium text-sm">Showing 10 of 49,053 users</h3>
 
         <div className="flex flex-wrap gap-2 lg:gap-5">
           <div className="flex">
@@ -150,7 +153,7 @@ const Visitors = () => {
           columns={columns} 
           data={data} 
           rowSelect={true} 
-          pagination={{ size: 10 }}
+          pagination={{ size: 5 }}
           sorting={[{ id: 'user', desc: false }]}
         />
       </div>

@@ -129,8 +129,8 @@ const Users = () => {
 
   return (
     <div className="card card-grid min-w-full">
-      <div className="card-header py-5 flex-wrap gap-2">
-        <h3 className="card-title">Showing 10 of 49,053 users</h3>
+      <div className="card-header flex-wrap gap-2">
+        <h3 className="card-title font-medium text-sm">Showing 10 of 49,053 users</h3>
 
         <div className="flex flex-wrap gap-2 lg:gap-5">
           <div className="flex">
@@ -165,7 +165,7 @@ const Users = () => {
           columns={columns}
           data={data}
           rowSelect={true}
-          pagination={{ size: 10 }}
+          pagination={{ size: 5 }}
           sorting={[{ id: 'user', desc: false }]}
         />
       </div>

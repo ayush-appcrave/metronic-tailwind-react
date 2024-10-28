@@ -295,7 +295,7 @@ export const MENU_SIDEBAR: TMenuConfig = [
           },
           {
             title: 'Invite a Friend',
-            path: '/account/members/invite-a-friend'
+            path: '/account/invite-a-friend'
           },
           {
             title: 'Activity',

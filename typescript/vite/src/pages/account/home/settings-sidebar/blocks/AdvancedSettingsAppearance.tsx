@@ -54,7 +54,8 @@ const AdvancedSettingsAppearance = ({ title }: IAdvancedSettingsAppearanceProps)
           />
           <KeenIcon
             icon="check-circle"
-            className="checked ms-5 mb-5 text-xl text-success leading-none hidden solid"
+            className="checked ms-5 mb-5 text-xl text-success leading-none hidden"
+            style="solid"
           />
         </label>
         <span className="text-sm font-medium text-gray-900">{item.label}</span>

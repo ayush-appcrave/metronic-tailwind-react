@@ -72,8 +72,9 @@ const Work = () => {
             <tr>
               <td className="py-4 text-gray-600 font-normal">About</td>
               <td className="py-4 text-gray-800 font-normal">
-                We&apos;re open to partnerships, guest posts, and more. Join us to share your
-                insights and grow your audience.
+                We're open to partnerships, guest posts, and <br />
+                more. Join us to share your insights and grow <br />
+                your audience.
               </td>
               <td className="py-4 text-end">
                 <a href="#" className="btn btn-sm btn-icon btn-clear btn-primary">

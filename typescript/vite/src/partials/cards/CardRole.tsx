@@ -6,13 +6,20 @@ import { DropdownCardItem1 } from '../dropdowns/general';
 import { CommonHexagonBadge } from '../common';
 import { ReactNode } from 'react';
 
+interface Badge {
+  size: string;
+  badge: ReactNode;
+  fill: string;
+  stroke: string;
+}
+
 interface IRoleProps {
-  path: string;
+  badge: Badge;
   title: string;
   subTitle: string;
   description: string;
   team: string;
-  badge: ReactNode;
+  path: string;
 }
 
 const CardRole = ({ path, title, subTitle, description, team, badge }: IRoleProps) => {
@@ -22,20 +29,20 @@ const CardRole = ({ path, title, subTitle, description, team, badge }: IRoleProp
     <div className="card flex flex-col gap-5 p-5 lg:p-7.5">
       <div className="flex items-center flex-wrap justify-between gap-1">
         <div className="flex items-center gap-2.5">
-          <CommonHexagonBadge badge={badge} />
+          <CommonHexagonBadge {...badge} />
 
           <div className="flex flex-col">
             <Link
               to={`${path}`}
-              className="text-md font-semibold text-gray-900 hover:text-primary-active mb-px"
+              className="text-md font-medium text-gray-900 hover:text-primary-active mb-px"
             >
               {title}
             </Link>
-            <span className="text-2sm font-medium text-gray-600">{subTitle}</span>
+            <span className="text-2sm text-gray-700">{subTitle}</span>
           </div>
         </div>
 
-        <Menu className="items-stretch">
+        <Menu className="inline-flex">
           <MenuItem
             toggle="dropdown"
             trigger="click"
@@ -59,9 +66,9 @@ const CardRole = ({ path, title, subTitle, description, team, badge }: IRoleProp
         </Menu>
       </div>
 
-      <p className="text-2sm text-gray-600 font-medium">{description}</p>
+      <p className="text-2sm text-gray-700">{description}</p>
 
-      <span className="text-2sm text-gray-700 font-medium">{team}</span>
+      <span className="text-2sm text-gray-800">{team}</span>
     </div>
   );
 };

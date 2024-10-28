@@ -101,8 +101,8 @@ const Backup= () => {
   const data: IBackupData[] = useMemo(() => BackupData, []);
 
   return (
-    <div className="card card-grid h-full min-w-full">
-      <div className="card-header">
+    <div className="card card-grid min-w-full">
+      <div className="card-header py-5 flex-wrap">
         <h3 className="card-title">Backups</h3>
 
         <label className="switch switch-sm">
