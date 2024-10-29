@@ -3,7 +3,6 @@ const getData = (key: string): unknown | undefined => {
     const data = localStorage.getItem(key);
 
     if (data) {
-      // console.log("get data:" + data);
       return JSON.parse(data);
     }
   } catch (error) {

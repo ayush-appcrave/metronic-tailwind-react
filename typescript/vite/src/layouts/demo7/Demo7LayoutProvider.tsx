@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 import { createContext, type PropsWithChildren, useContext, useEffect, useState } from 'react';
 import { MENU_SIDEBAR } from '@/config';
 import { useScrollPosition } from '@/hooks/useScrollPosition';
@@ -21,9 +22,7 @@ const initalLayoutProps: IDemo7LayoutProviderProps = {
   layout: Demo7LayoutConfig, // Default layout configuration
   headerSticky: false, // Header is not sticky by default
   mobileMegaMenuOpen: false, // Mobile sidebar is closed by default
-  setMobileMegaMenuOpen: (open: boolean) => {
-    console.log(`${open}`);
-  }
+  setMobileMegaMenuOpen: (open: boolean) => {}
 };
 
 // Create a context to manage the layout-related state and logic for Demo2 layout
