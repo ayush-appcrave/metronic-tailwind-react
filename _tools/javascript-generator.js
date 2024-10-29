@@ -28,10 +28,9 @@ const filesToCopy = [
   "src/utils",
   "src/App.tsx",
   "src/main.tsx",
-  "src/index.css",
   ".env",
   "tailwind.config.js",
-  "postcss.config.cjs",
+  "postcss.config.js",
   "index.html",
   "public",
 ];
