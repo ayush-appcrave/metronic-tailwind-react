@@ -18,8 +18,8 @@ const ResetPasswordChange = () => {
   const { changePassword } = useAuthContext();
   const [loading, setLoading] = useState(false);
   const [hasErrors, setHasErrors] = useState<boolean | undefined>(undefined);
-  const [showNewPassword, setShowNewPassword] = useState(true);
-  const [showNewPasswordConfirmation, setShowNewPasswordConfirmation] = useState(true);
+  const [showNewPassword, setShowNewPassword] = useState(false);
+  const [showNewPasswordConfirmation, setShowNewPasswordConfirmation] = useState(false);
 
   const formik = useFormik({
     initialValues: {

@@ -29,13 +29,7 @@ interface AuthContextProps {
   loginWithGoogle?: () => Promise<void>;
   loginWithFacebook?: () => Promise<void>;
   loginWithGithub?: () => Promise<void>;
-  register: (
-    email: string,
-    password: string,
-    firstname?: string,
-    lastname?: string,
-    password_confirmation?: string
-  ) => Promise<void>;
+  register: (email: string, password: string, password_confirmation: string) => Promise<void>;
   requestPasswordResetLink: (email: string) => Promise<void>;
   changePassword: (
     email: string,
@@ -97,7 +91,7 @@ const AuthProvider = ({ children }: PropsWithChildren) => {
     }
   };
 
-  const register = async (email: string, password: string, password_confirmation?: string) => {
+  const register = async (email: string, password: string, password_confirmation: string) => {
     try {
       const { data: auth } = await axios.post(REGISTER_URL, {
         email,
