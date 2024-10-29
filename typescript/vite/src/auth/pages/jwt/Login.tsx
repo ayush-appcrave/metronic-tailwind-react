@@ -7,6 +7,7 @@ import { KeenIcon } from '@/components';
 import { toAbsoluteUrl } from '@/utils';
 import { useAuthContext } from '@/auth';
 import { useLayout } from '@/providers';
+import { Alert } from '@/components';
 
 const loginSchema = Yup.object().shape({
   email: Yup.string()
@@ -70,7 +71,7 @@ const Login = () => {
   };
 
   return (
-    <div className="card max-w-[370px] w-full">
+    <div className="card max-w-[390px] w-full">
       <form
         className="card-body flex flex-col gap-5 p-10"
         onSubmit={formik.handleSubmit}
@@ -117,13 +118,12 @@ const Login = () => {
           <span className="border-t border-gray-200 w-full"></span>
         </div>
 
-        <div className="flex gap-2.5 border border-primary-clarity rounded-md p-3 bg-primary-light">
-          <KeenIcon icon="information-2" style="solid" className="text-primary text-lg" />
-          <div className="text-gray-700 text-xs">
-            Use <span className="font-semibold text-gray-900">demo@keenthemes.com</span> username
-            with <span className="font-semibold text-gray-900">demo1234</span> password.
-          </div>
-        </div>
+        <Alert variant="primary">
+          Use <span className="font-semibold text-gray-900">demo@keenthemes.com</span> username and{' '}
+          <span className="font-semibold text-gray-900">demo1234</span> password.
+        </Alert>
+
+        {formik.status && <Alert variant="danger">{formik.status}</Alert>}
 
         <div className="flex flex-col gap-1">
           <label className="form-label text-gray-900">Email</label>
@@ -199,12 +199,6 @@ const Login = () => {
         >
           {loading ? 'Please wait...' : 'Sign In'}
         </button>
-
-        {formik.status && (
-          <div className="text-danger text-xs mt-1" role="alert">
-            {formik.status}
-          </div>
-        )}
       </form>
     </div>
   );

@@ -6,7 +6,7 @@ import * as Yup from 'yup';
 
 import { useAuthContext } from '../../useAuthContext';
 import { toAbsoluteUrl } from '@/utils';
-import { KeenIcon } from '@/components';
+import { Alert, KeenIcon } from '@/components';
 import { useLayout } from '@/providers';
 
 const initialValues = {
@@ -122,6 +122,8 @@ const Signup = () => {
           <span className="border-t border-gray-200 w-full"></span>
         </div>
 
+        {formik.status && <Alert variant="danger">{formik.status}</Alert>}
+
         <div className="flex flex-col gap-1">
           <label className="form-label text-gray-900">Email</label>
           <label className="input">
@@ -228,6 +230,7 @@ const Signup = () => {
             </Link>
           </span>
         </label>
+
         {formik.touched.acceptTerms && formik.errors.acceptTerms && (
           <span role="alert" className="text-danger text-xs mt-1">
             {formik.errors.acceptTerms}
@@ -241,12 +244,6 @@ const Signup = () => {
         >
           {loading ? 'Please wait...' : 'Sign UP'}
         </button>
-
-        {formik.status && (
-          <div className="text-danger text-xs mt-1" role="alert">
-            {formik.status}
-          </div>
-        )}
       </form>
     </div>
   );

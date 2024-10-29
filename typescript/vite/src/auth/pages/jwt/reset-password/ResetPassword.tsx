@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom';
 import * as Yup from 'yup';
 
 import { useAuthContext } from '@/auth/useAuthContext';
-import { KeenIcon } from '@/components';
+import { Alert, KeenIcon } from '@/components';
 import { useLayout } from '@/providers';
 
 const initialValues = {
@@ -63,18 +63,14 @@ const ResetPassword = () => {
           </span>
         </div>
 
-        {hasErrors === true && (
-          <div className="mb-lg-15 alert alert-danger">
-            <div className="alert-text font-weight-bold">
-              Sorry, looks like there are some errors detected, please try again.
-            </div>
-          </div>
+        {hasErrors && (
+          <Alert variant="danger">
+            Sorry, looks like there are some errors detected, please try again.
+          </Alert>
         )}
 
         {hasErrors === false && (
-          <div className="mb-10 bg-light-info p-8 rounded">
-            <div className="text-info">Sent password reset. Please check your email</div>
-          </div>
+          <Alert variant="success"> Sent password reset. Please check your email</Alert>
         )}
 
         <div className="flex flex-col gap-1">
@@ -102,7 +98,11 @@ const ResetPassword = () => {
         </div>
 
         <div className="flex flex-col gap-5 items-stretch">
-          <button type="submit" className="btn btn-primary flex justify-center grow">
+          <button
+            type="submit"
+            className="btn btn-primary flex justify-center grow"
+            disabled={loading || formik.isSubmitting}
+          >
             {loading ? 'Please wait...' : 'Continue'}
           </button>
 
