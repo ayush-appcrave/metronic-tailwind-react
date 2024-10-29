@@ -64,13 +64,13 @@ const ResetPassword = () => {
         </div>
 
         {hasErrors && (
-          <Alert variant="danger">
-            Sorry, looks like there are some errors detected, please try again.
-          </Alert>
+          <Alert variant="danger">Email address not found. Please check your entry.</Alert>
         )}
 
         {hasErrors === false && (
-          <Alert variant="success"> Sent password reset. Please check your email</Alert>
+          <Alert variant="success">
+            Password reset link sent. Please check your email to proceed
+          </Alert>
         )}
 
         <div className="flex flex-col gap-1">
