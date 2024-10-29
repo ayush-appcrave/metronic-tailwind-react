@@ -8,7 +8,7 @@ const NetworkMiniCardsContent = () => {
       className: 'size-20 relative',
       image: '300-1.png',
       imageClass: 'rounded-full',
-      badgeClass: 'flex size-2.5 bg-success rounded-full absolute bottom-0.5 left-16 transform -translate-y-1/2'
+      badgeClass: 'flex size-2.5 bg-success rounded-full absolute bottom-0.5 start-16 transform -translate-y-1/2'
     },
     name: 'Jenny Klabber',
     email: 'starlight.eth',
@@ -17,7 +17,7 @@ const NetworkMiniCardsContent = () => {
     avatar: {
       className: 'flex items-center justify-center relative text-2.5xl text-info size-20 ring-1 ring-info-clarity bg-info-light rounded-full',
       fallback: 'S',
-      badgeClass: 'flex size-2.5 bg-success rounded-full absolute bottom-0.5 left-16 transform -translate-y-1/2'
+      badgeClass: 'flex size-2.5 bg-success rounded-full absolute bottom-0.5 start-16 transform -translate-y-1/2'
     },
     name: 'Sarah Johnson',
     email: 'sarahjohnson.eth',
@@ -26,7 +26,7 @@ const NetworkMiniCardsContent = () => {
     avatar: {
       className: 'flex items-center justify-center relative text-2.5xl text-success size-20 ring-1 ring-success-clarity bg-success-light rounded-full',
       fallback: 'M',
-      badgeClass: 'flex size-2.5 bg-gray-400 rounded-full absolute bottom-0.5 left-16 transform -translate-y-1/2'
+      badgeClass: 'flex size-2.5 bg-gray-400 rounded-full absolute bottom-0.5 start-16 transform -translate-y-1/2'
     },
     name: 'Megan Tayloy',
     email: 'megantaylor.eth',
@@ -36,7 +36,7 @@ const NetworkMiniCardsContent = () => {
       className: 'size-20 relative',
       image: '300-8.png',
       imageClass: 'rounded-full',
-      badgeClass: 'flex size-2.5 bg-success rounded-full absolute bottom-0.5 left-16 transform -translate-y-1/2'
+      badgeClass: 'flex size-2.5 bg-success rounded-full absolute bottom-0.5 start-16 transform -translate-y-1/2'
     },
     name: 'Alex Martines',
     email: 'amartnes.eth',
@@ -46,7 +46,7 @@ const NetworkMiniCardsContent = () => {
       className: 'size-20 relative',
       image: '300-9.png',
       imageClass: 'rounded-full',
-      badgeClass: 'flex size-2.5 bg-gray-400 rounded-full absolute bottom-0.5 left-16 transform -translate-y-1/2'
+      badgeClass: 'flex size-2.5 bg-gray-400 rounded-full absolute bottom-0.5 start-16 transform -translate-y-1/2'
     },
     name: 'Brian Davis',
     email: 'briandavis.eth',
@@ -55,7 +55,7 @@ const NetworkMiniCardsContent = () => {
     avatar: {
       className: 'flex items-center justify-center relative text-2.5xl text-danger size-20 ring-1 ring-danger-clarity bg-danger-light rounded-full',
       fallback: 'k',
-      badgeClass: 'flex size-2.5 bg-success rounded-full absolute bottom-0.5 left-16 transform -translate-y-1/2'
+      badgeClass: 'flex size-2.5 bg-success rounded-full absolute bottom-0.5 start-16 transform -translate-y-1/2'
     },
     name: 'Kevin Wong',
     email: 'kevinwong.eth',
@@ -65,7 +65,7 @@ const NetworkMiniCardsContent = () => {
       className: 'size-20 relative',
       image: '300-5.png',
       imageClass: 'rounded-full',
-      badgeClass: 'flex size-2.5 bg-success rounded-full absolute bottom-0.5 left-16 transform -translate-y-1/2'
+      badgeClass: 'flex size-2.5 bg-success rounded-full absolute bottom-0.5 start-16 transform -translate-y-1/2'
     },
     name: 'Jenny Wilson',
     email: 'jennyklabber.eth',
@@ -75,7 +75,7 @@ const NetworkMiniCardsContent = () => {
       className: 'size-20 relative',
       image: '300-4.png',
       imageClass: 'rounded-full',
-      badgeClass: 'flex size-2.5 bg-success rounded-full absolute bottom-0.5 left-16 transform -translate-y-1/2'
+      badgeClass: 'flex size-2.5 bg-success rounded-full absolute bottom-0.5 start-16 transform -translate-y-1/2'
     },
     name: 'Robert Fox',
     email: 'roberfox.eth',
@@ -84,7 +84,7 @@ const NetworkMiniCardsContent = () => {
     avatar: {
       className: 'flex items-center justify-center relative text-2.5xl text-primary size-20 ring-1 ring-primary-clarity bg-primary-light rounded-full',
       fallback: 'B',
-      badgeClass: 'flex size-2.5 bg-success rounded-full absolute bottom-0.5 left-16 transform -translate-y-1/2'
+      badgeClass: 'flex size-2.5 bg-success rounded-full absolute bottom-0.5 start-16 transform -translate-y-1/2'
     },
     name: 'Bessie Cooper',
     email: 'bscoop.eth',
@@ -94,7 +94,7 @@ const NetworkMiniCardsContent = () => {
       className: 'size-20 relative',
       image: '300-13.png',
       imageClass: 'rounded-full',
-      badgeClass: 'flex size-2.5 bg-gray-400 rounded-full absolute bottom-0.5 left-16 transform -translate-y-1/2'
+      badgeClass: 'flex size-2.5 bg-gray-400 rounded-full absolute bottom-0.5 start-16 transform -translate-y-1/2'
     },
     name: 'Eleanor Pena',
     email: 'pena_707.eth',
@@ -104,7 +104,7 @@ const NetworkMiniCardsContent = () => {
       className: 'size-20 relative',
       image: '300-23.png',
       imageClass: 'rounded-full',
-      badgeClass: 'flex size-2.5 bg-success rounded-full absolute bottom-0.5 left-16 transform -translate-y-1/2'
+      badgeClass: 'flex size-2.5 bg-success rounded-full absolute bottom-0.5 start-16 transform -translate-y-1/2'
     },
     name: 'Darlene Robertson',
     email: 'msfoxy.eth',
@@ -113,7 +113,7 @@ const NetworkMiniCardsContent = () => {
     avatar: {
       className: 'flex items-center justify-center relative text-2.5xl text-warning size-20 ring-1 ring-warning-clarity bg-warning-light rounded-full',
       fallback: 'J',
-      badgeClass: 'flex size-2.5 bg-success rounded-full absolute bottom-0.5 left-16 transform -translate-y-1/2'
+      badgeClass: 'flex size-2.5 bg-success rounded-full absolute bottom-0.5 start-16 transform -translate-y-1/2'
     },
     name: 'Jerome Bell',
     email: 'nbatrends.eth',
@@ -123,7 +123,7 @@ const NetworkMiniCardsContent = () => {
       className: 'size-20 relative',
       image: '300-3.png',
       imageClass: 'rounded-full',
-      badgeClass: 'flex size-2.5 bg-gray-400 rounded-full absolute bottom-0.5 left-16 transform -translate-y-1/2'
+      badgeClass: 'flex size-2.5 bg-gray-400 rounded-full absolute bottom-0.5 start-16 transform -translate-y-1/2'
     },
     name: 'Devon Lane',
     email: 'notabooker.eth',
@@ -133,7 +133,7 @@ const NetworkMiniCardsContent = () => {
       className: 'size-20 relative',
       image: '300-11.png',
       imageClass: 'rounded-full',
-      badgeClass: 'flex size-2.5 bg-success rounded-full absolute bottom-0.5 left-16 transform -translate-y-1/2'
+      badgeClass: 'flex size-2.5 bg-success rounded-full absolute bottom-0.5 start-16 transform -translate-y-1/2'
     },
     name: 'Ralph Edwards',
     email: 'lorenstore.eth',
@@ -142,7 +142,7 @@ const NetworkMiniCardsContent = () => {
     avatar: {
       className: 'flex items-center justify-center relative text-2.5xl text-success size-20 ring-1 ring-success-clarity bg-success-light rounded-full',
       fallback: 'T',
-      badgeClass: 'flex size-2.5 bg-success rounded-full absolute bottom-0.5 left-16 transform -translate-y-1/2'
+      badgeClass: 'flex size-2.5 bg-success rounded-full absolute bottom-0.5 start-16 transform -translate-y-1/2'
     },
     name: 'Theresa Webb',
     email: 'betterthanvettel.eth',

@@ -87,7 +87,7 @@ const Roles = () => {
     path: '/public-profile/profiles/feeds'
   }];
   const renderItem = (item, index) => {
-    return <CardRole key={index} title={item.title} subTitle={item.subTitle} description={item.description} team={item.team} path={item.path} badge={item.badge.badge} />;
+    return <CardRole key={index} title={item.title} subTitle={item.subTitle} description={item.description} team={item.team} path={item.path} badge={item.badge} />;
   };
   return <div className="grid grid-cols-1 lg:grid-cols-2 xl:grid-cols-3 gap-5 lg:gap-7.5">
       {items.map((item, index) => {

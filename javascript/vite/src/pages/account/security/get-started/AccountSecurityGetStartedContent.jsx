@@ -36,6 +36,6 @@ const AccountSecurityGetStartedContent = () => {
     desc: 'Detailed Records of Security Events and Activities for Monitoring.',
     path: '/account/security/security-log'
   }];
-  return <Options items={items} dropdown={true} />;
+  return <Options items={items} dropdown={false} />;
 };
 export { AccountSecurityGetStartedContent };

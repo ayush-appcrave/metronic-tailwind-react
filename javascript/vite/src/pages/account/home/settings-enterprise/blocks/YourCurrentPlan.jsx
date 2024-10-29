@@ -1,7 +1,11 @@
 import { KeenIcon, Menu, MenuItem, MenuToggle } from '@/components';
 import { toAbsoluteUrl } from '@/utils/Assets';
+import { useLanguage } from '@/i18n';
 import { DropdownCard1 } from '@/partials/dropdowns/general';
 const YourCurrentPlan = () => {
+  const {
+    isRTL
+  } = useLanguage();
   const items = [{
     title: 'DevOps Integration',
     summary: 'Achieve faster releases, continuous integration & deployment',
@@ -37,7 +41,7 @@ const YourCurrentPlan = () => {
 
         <Menu className="items-stretch">
           <MenuItem toggle="dropdown" trigger="click" dropdownProps={{
-          placement: 'bottom-end',
+          placement: isRTL() ? 'bottom-start' : 'bottom-end',
           modifiers: [{
             name: 'offset',
             options: {
@@ -45,7 +49,7 @@ const YourCurrentPlan = () => {
             }
           }]
         }}>
-            <MenuToggle className="btn btn-sm btn-icon btn-light btn-clear mb-2.5-">
+            <MenuToggle className="btn btn-sm btn-icon btn-light btn-clear">
               <KeenIcon icon="dots-vertical" />
             </MenuToggle>
             {DropdownCard1()}

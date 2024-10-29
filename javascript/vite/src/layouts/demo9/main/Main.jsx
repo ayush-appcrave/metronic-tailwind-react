@@ -4,6 +4,7 @@ import { Helmet } from 'react-helmet-async';
 import { Outlet, useLocation } from 'react-router';
 import { MenuItem, MenuSub, MenuTitle, MenuToggle, useMenuCurrentItem, KeenIcon, Menu, MenuLink } from '@/components';
 import { useMenus } from '@/providers';
+import { useLanguage } from '@/i18n';
 import { Header, Navbar, Footer, Toolbar, ToolbarHeading, ToolbarActions } from '../';
 const Main = () => {
   const {
@@ -14,6 +15,9 @@ const Main = () => {
   } = useMenus();
   const menuConfig = getMenuConfig('primary');
   const menuItem = useMenuCurrentItem(pathname, menuConfig);
+  const {
+    isRTL
+  } = useLanguage();
   const months = [{
     title: 'January, 2024'
   }, {
@@ -61,7 +65,7 @@ const Main = () => {
 
                   <Menu className="menu-default">
                     <MenuItem toggle="dropdown" trigger="hover" dropdownProps={{
-                  placement: 'bottom-end',
+                  placement: isRTL() ? 'bottom-start' : 'bottom-end',
                   modifiers: [{
                     name: 'offset',
                     options: {
@@ -80,7 +84,7 @@ const Main = () => {
                         </span>
                       </MenuToggle>
 
-                      <MenuSub className="w-48 py-2 scrollable-y max-h-[250px]">
+                      <MenuSub className="menu-default w-48 py-2 scrollable-y max-h-[250px]">
                         {months.map((item, index) => <MenuItem key={index} className={item.active ? 'active' : ''}>
                             <MenuLink path="/">
                               <MenuTitle>{item.title}</MenuTitle>

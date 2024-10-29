@@ -19,7 +19,7 @@ const Post4 = () => {
       imageClass: 'rounded-full size-[50px]'
     }} date="Week ago" />
 
-      <p className="text-sm font-medium text-gray-600 leading-5.5 mb-5 px-7.5">
+      <p className="text-sm text-gray-800 leading-5.5 mb-5 px-7.5">
         This doesn’t mean that all bloggers are insincere fakers. On the contrary, many bloggers’
         natural curiosity is what makes them great at what they do. If you blog for a living, you
         have to be comfortable jumping from one topic to the next, even if you don’t know anything
@@ -27,7 +27,7 @@ const Post4 = () => {
       </p>
 
       <div>
-        <Tabs postId={4} activeTab={activeTab} setActiveTab={setActiveTab} comments={2} likes="47k" saves={900} />
+        <Tabs postId={4} activeTab={activeTab} setActiveTab={setActiveTab} comments={2} likes="47k" saves={900} className="mx-7.5" />
 
         {activeTab === 'comments' && <div id="post_4_comments">
             <Comments items={comments} />

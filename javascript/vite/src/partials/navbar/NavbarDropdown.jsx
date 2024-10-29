@@ -1,11 +1,15 @@
+import { Fragment, useRef, useState } from 'react';
 import { Menu, MenuIcon, MenuItem, MenuLabel, MenuSub, MenuTitle, MenuToggle } from '@/components/menu';
 import { KeenIcon } from '@/components/keenicons';
-import { Fragment, useRef, useState } from 'react';
+import { useLanguage } from '@/i18n';
 import { ModalShareProfile } from '../modals/share-profile';
 import { ModalGiveAward } from '../modals/give-award';
 import { ModalReportUser } from '../modals/report-user';
 const NavbarDropdown = () => {
   const itemRef = useRef(null);
+  const {
+    isRTL
+  } = useLanguage();
   const [ShareProfileModalOpen, setShareProfileModalOpen] = useState(false);
   const handleSettingsModalOpen = () => {
     setShareProfileModalOpen(true);
@@ -33,11 +37,11 @@ const NavbarDropdown = () => {
   return <Fragment>
       <Menu className="items-stretch">
         <MenuItem ref={itemRef} toggle="dropdown" trigger="click" dropdownProps={{
-        placement: 'bottom-end',
+        placement: isRTL() ? 'bottom-start' : 'bottom-end',
         modifiers: [{
           name: 'offset',
           options: {
-            offset: [0, 10] // [skid, distance]
+            offset: isRTL() ? [0, -10] : [0, 10] // [skid, distance]
           }
         }]
       }}>

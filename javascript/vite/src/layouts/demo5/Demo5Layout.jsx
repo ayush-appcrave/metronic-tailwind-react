@@ -5,8 +5,8 @@ const Demo5Layout = () => {
   useBodyClasses(`
     [--tw-header-height:54px]
     [--tw-sidebar-width:200px]
-    [--tw-header-bg:var(--tw-light-active)]
-    [--tw-header-bg-dark:var(--tw-gray-200)]
+    [--tw-header-bg:var(--tw-light)]
+    [--tw-header-bg-dark:var(--tw-coal-500)]
     bg-light 
     dark:bg-coal-500
   `);

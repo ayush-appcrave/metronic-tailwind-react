@@ -4,6 +4,7 @@ import { KeenIcon } from '@/components';
 import { MenuItem, MenuLink, MenuTitle, MenuArrow, Menu } from '@/components/menu';
 import { MegaMenuSubProfiles, MegaMenuSubAccount, MegaMenuSubNetwork, MegaMenuSubAuth, MegaMenuSubHelp } from '@/partials/menu/mega-menu';
 import { MENU_MEGA } from '@/config';
+import { useLanguage } from '@/i18n';
 const MegaMenuInner = () => {
   const desktopMode = useResponsive('up', 'lg');
   const build = items => {
@@ -13,6 +14,9 @@ const MegaMenuInner = () => {
     const networkItem = items[3];
     const authItem = items[4];
     const helpItem = items[5];
+    const {
+      isRTL
+    } = useLanguage();
     const linkClass = 'border-b border-b-transparent menu-item-active:border-b-gray-400 menu-item-here:border-b-gray-400';
     const titleClass = 'text-2sm text-gray-800 dark:menu-item-here:text-gray-900 dark:menu-item-active:text-gray-900 menu-item-show:text-gray-900 menu-item-here:text-gray-900 menu-item-active:font-medium menu-item-here:font-medium';
     return <Fragment>
@@ -23,7 +27,7 @@ const MegaMenuInner = () => {
         </MenuItem>
 
         <MenuItem key="public-profiles" toggle={desktopMode ? 'dropdown' : 'accordion'} trigger={desktopMode ? 'hover' : 'click'} dropdownProps={{
-        placement: 'bottom-start'
+        placement: isRTL() ? 'bottom-end' : 'bottom-start'
       }}>
           <MenuLink className={linkClass}>
             <MenuTitle className={titleClass}>Profiles</MenuTitle>
@@ -33,11 +37,11 @@ const MegaMenuInner = () => {
         </MenuItem>
 
         <MenuItem key="my-account" toggle={desktopMode ? 'dropdown' : 'accordion'} trigger={desktopMode ? 'hover' : 'click'} dropdownProps={{
-        placement: 'bottom-start',
+        placement: isRTL() ? 'bottom-end' : 'bottom-start',
         modifiers: [{
           name: 'offset',
           options: {
-            offset: [-300, 0] // [skid, distance]
+            offset: isRTL() ? [300, 0] : [-300, 0] // [skid, distance]  
           }
         }]
       }}>

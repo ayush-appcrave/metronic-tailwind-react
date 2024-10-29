@@ -17,7 +17,7 @@ const Header = () => {
           <img src={toAbsoluteUrl('/media/app/mini-logo-gray-dark.svg')} className="hidden dark:inline-block h-[30px]" />
         </Link>
 
-        <button onClick={handleMobileSidebarOpen} className="btn btn-icon btn-light btn-clear btn-sm -me-1">
+        <button onClick={handleMobileSidebarOpen} className="btn btn-icon btn-light btn-clear btn-sm me-1">
           <KeenIcon icon="menu" />
         </button>
       </Container>

@@ -5,6 +5,7 @@ import { Menu, MenuArrow, MenuIcon, MenuItem, MenuLabel, MenuLink, MenuSub, Menu
 import { MENU_ROOT } from '@/config';
 import { KeenIcon } from '@/components';
 import { ModalSearch } from '@/partials/modals/search/ModalSearch';
+import { useLanguage } from '@/i18n';
 const SidebarHeader = forwardRef((props, ref) => {
   const {
     pathname
@@ -15,6 +16,9 @@ const SidebarHeader = forwardRef((props, ref) => {
   const handleSearchModalClose = () => {
     setSearchModalOpen(false);
   };
+  const {
+    isRTL
+  } = useLanguage();
   useEffect(() => {
     MENU_ROOT.forEach(item => {
       if (item.rootPath && pathname.includes(item.rootPath)) {
@@ -24,13 +28,13 @@ const SidebarHeader = forwardRef((props, ref) => {
   }, [pathname]);
   return <div ref={ref} className="flex flex-col gap-2.5">
       <div className="flex items-center gap-2.5 px-3.5 h-[70px]">
-        <Link to="/index.html">
+        <Link to="/">
           <img src={toAbsoluteUrl('/media/app/mini-logo-circle-success.svg')} className="h-[34px]" />
         </Link>
 
         <Menu className="menu-default grow">
-          <MenuItem className="grow" toggle="dropdown" trigger="click" dropdownProps={{
-          placement: 'bottom-start',
+          <MenuItem className="grow" toggle="dropdown" trigger="hover" dropdownProps={{
+          placement: isRTL() ? 'bottom-end' : 'bottom-start',
           modifiers: [{
             name: 'offset',
             options: {
@@ -65,7 +69,7 @@ const SidebarHeader = forwardRef((props, ref) => {
       </div>
 
       <div className="flex items-center gap-2.5 px-3.5">
-        <Link to="public-profile/projects/3-columns" className="btn btn-dark btn-sm justify-center min-w-[198px]">
+        <Link to="/public-profile/projects/3-columns" className="btn btn-dark btn-sm justify-center min-w-[198px]">
           <KeenIcon icon="plus" />
           Add New
         </Link>

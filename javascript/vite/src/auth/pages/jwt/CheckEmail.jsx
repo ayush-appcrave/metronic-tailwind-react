@@ -12,7 +12,7 @@ const CheckEmail = () => {
         <div className="text-2sm text-center text-gray-700 mb-7.5">
           Please click the link sent to your email&nbsp;
           <a href="#" className="text-2sm text-gray-900 font-medium hover:text-primary-active">
-            bob@reui.io
+            bob@keenthemes.com
           </a>
           <br />
           to verify your account. Thank you

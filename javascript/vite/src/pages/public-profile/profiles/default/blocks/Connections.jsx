@@ -1,10 +1,14 @@
 import { Link } from 'react-router-dom';
+import { useLanguage } from '@/i18n';
 import { KeenIcon, Menu, MenuItem, MenuToggle } from '@/components';
 import { toAbsoluteUrl } from '@/utils/Assets';
 import { DropdownCard1 } from '@/partials/dropdowns/general';
 const Connections = ({
   title
 }) => {
+  const {
+    isRTL
+  } = useLanguage();
   const items = [{
     avatar: '300-3.png',
     name: 'Tyler Hero',
@@ -50,17 +54,17 @@ const Connections = ({
       <div className="card-header gap-2">
         <h3 className="card-title">{title}</h3>
 
-        <Menu className="items-stretch">
+        <Menu>
           <MenuItem toggle="dropdown" trigger="click" dropdownProps={{
-          placement: 'bottom-end',
+          placement: isRTL() ? 'bottom-start' : 'bottom-end',
           modifiers: [{
             name: 'offset',
             options: {
-              offset: [0, 10] // [skid, distance]
+              offset: isRTL() ? [0, -10] : [0, 10] // [skid, distance]
             }
           }]
         }}>
-            <MenuToggle className="btn btn-sm btn-icon btn-light btn-clear mb-2.5-">
+            <MenuToggle className="btn btn-sm btn-icon btn-light btn-clear">
               <KeenIcon icon="dots-vertical" />
             </MenuToggle>
             {DropdownCard1()}

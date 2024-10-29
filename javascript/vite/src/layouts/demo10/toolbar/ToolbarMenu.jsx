@@ -1,7 +1,11 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { KeenIcon, Menu, MenuItem, MenuToggle, MenuSub } from '@/components';
+import { useLanguage } from '@/i18n';
 const ToolbarMenu = () => {
+  const {
+    isRTL
+  } = useLanguage();
   const months = [{
     title: 'January, 2024'
   }, {
@@ -30,11 +34,11 @@ const ToolbarMenu = () => {
   }];
   return <Menu className="menu-default">
       <MenuItem toggle="dropdown" trigger="hover" dropdownProps={{
-      placement: 'bottom-end',
+      placement: isRTL() ? 'bottom-start' : 'bottom-end',
       modifiers: [{
         name: 'offset',
         options: {
-          offset: [0, 1] // [skid, distance]
+          offset: [0, 0] // [skid, distance]
         }
       }]
     }}>
@@ -49,7 +53,7 @@ const ToolbarMenu = () => {
           </span>
         </MenuToggle>
 
-        <MenuSub className="menu-default w-48 scrollable-y max-h-[250px]">
+        <MenuSub className="menu-default w-48 py-2 scrollable-y max-h-[250px]">
           {months.map((item, index) => <div className={`menu-item ${item.active ? 'active' : ''}`} key={index}>
               <Link to="/" className="menu-link">
                 <span className="menu-title">{item.title}</span>

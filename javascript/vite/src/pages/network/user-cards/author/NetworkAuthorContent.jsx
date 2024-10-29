@@ -11,7 +11,7 @@ const NetworkAuthorContent = () => {
       className: 'size-[120px] [.authors-row_&]:size-[80px] shrink-0 relative',
       image: '300-1.png',
       imageClass: 'rounded-full',
-      badgeClass: 'flex size-3 bg-success rounded-full ring-2 ring-light absolute bottom-2 left-[93px] [.authors-row_&]:left-[64px]'
+      badgeClass: 'flex size-3 bg-success rounded-full ring-2 ring-light absolute bottom-2 start-[93px] [.authors-row_&]:start-[64px]'
     },
     bgImage: 'bg-7.png',
     name: 'Jenny Klabber',

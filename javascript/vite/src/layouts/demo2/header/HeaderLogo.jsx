@@ -4,10 +4,14 @@ import { toAbsoluteUrl } from '@/utils';
 import { Menu, MenuArrow, MenuIcon, MenuItem, MenuLink, MenuSub, MenuTitle, MenuToggle } from '@/components/menu';
 import { MENU_ROOT } from '@/config';
 import { useEffect, useState } from 'react';
+import { useLanguage } from '@/i18n';
 const HeaderLogo = () => {
   const {
     pathname
   } = useLocation();
+  const {
+    isRTL
+  } = useLanguage();
   const [selectedMenuItem, setSelectedMenuItem] = useState(MENU_ROOT[1]);
   useEffect(() => {
     MENU_ROOT.forEach(item => {
@@ -28,7 +32,7 @@ const HeaderLogo = () => {
 
         <Menu className="menu-default">
           <MenuItem toggle="dropdown" trigger="hover" dropdownProps={{
-          placement: 'bottom-start',
+          placement: isRTL() ? 'bottom-end' : 'bottom-start',
           modifiers: [{
             name: 'offset',
             options: {
@@ -37,12 +41,12 @@ const HeaderLogo = () => {
           }]
         }}>
             <MenuToggle className="text-gray-900 font-medium">
-              <MenuTitle>{selectedMenuItem.title}</MenuTitle>
+              {selectedMenuItem.title}
               <MenuArrow>
                 <KeenIcon icon="down" />
               </MenuArrow>
             </MenuToggle>
-            <MenuSub className="menu-default">
+            <MenuSub className="menu-default w-48">
               {MENU_ROOT.map((item, index) => <MenuItem key={index} className={item === selectedMenuItem ? 'active' : ''}>
                   <MenuLink path={item.path}>
                     {item.icon && <MenuIcon>

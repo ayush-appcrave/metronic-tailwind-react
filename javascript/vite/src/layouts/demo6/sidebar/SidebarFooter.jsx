@@ -1,36 +1,43 @@
 import React, { forwardRef, useRef } from 'react';
 import { toAbsoluteUrl } from '@/utils';
 import { useAuthContext } from '@/auth';
-import { KeenIcon, Menu, MenuIcon, MenuItem, MenuToggle } from '@/components';
+import { KeenIcon, Menu, MenuItem, MenuToggle } from '@/components';
 import { DropdownUser } from '@/partials/dropdowns/user';
 import { DropdownNotifications } from '@/partials/dropdowns/notifications';
+import { useLanguage } from '@/i18n';
 const SidebarFooter = forwardRef((props, ref) => {
   const {
     logout
   } = useAuthContext();
   const itemNotificationsRef = useRef(null);
+  const itemUserRef = useRef(null);
+  const {
+    isRTL
+  } = useLanguage();
   return <div ref={ref} className="flex flex-center justify-between shrink-0 ps-4 pe-3.5 mb-3.5">
       <Menu data-menu="true">
-        <MenuItem toggle="dropdown" trigger="click" dropdownProps={{
-        placement: 'right-end',
+        <MenuItem ref={itemUserRef} toggle="dropdown" trigger="click" dropdownProps={{
+        placement: isRTL() ? 'right-start' : 'right-end',
         modifiers: [{
           name: 'offset',
           options: {
-            offset: [-10, 15] // [skid, distance]
+            offset: isRTL() ? [10, 15] : [-10, 15] // [skid, distance]  
           }
         }]
       }}>
           <MenuToggle className="btn btn-icon rounded-full">
             <img className="size-8 rounded-full justify-center border border-gray-500 shrink-0" src={toAbsoluteUrl('/media/avatars/gray/5.png')} alt="" />
           </MenuToggle>
-          {DropdownUser()}
+          {DropdownUser({
+          menuItemRef: itemUserRef
+        })}
         </MenuItem>
       </Menu>
 
       <div className="flex items-center gap-1.5">
         <Menu>
-          <MenuItem toggle="dropdown" trigger="click" dropdownProps={{
-          placement: 'right-end',
+          <MenuItem ref={itemNotificationsRef} toggle="dropdown" trigger="click" dropdownProps={{
+          placement: isRTL() ? 'right-start' : 'right-end',
           modifiers: [{
             name: 'offset',
             options: {
@@ -39,13 +46,22 @@ const SidebarFooter = forwardRef((props, ref) => {
           }]
         }}>
             <MenuToggle className="btn btn-icon btn-icon-lg relative size-8 hover:bg-light hover:text-primary dropdown-open:bg-gray-200 text-gray-600">
-              <MenuIcon>
-                <KeenIcon icon="notification-status" />
-              </MenuIcon>
+              <KeenIcon icon="notification-status" />
             </MenuToggle>
             {DropdownNotifications({
             menuTtemRef: itemNotificationsRef
           })}
+          </MenuItem>
+
+          <MenuItem toggle="dropdown" trigger="click" dropdownProps={{
+          placement: isRTL() ? 'right-start' : 'right-end',
+          modifiers: [{
+            name: 'offset',
+            options: {
+              offset: [10, 15]
+            }
+          }]
+        }}>
           </MenuItem>
         </Menu>
 

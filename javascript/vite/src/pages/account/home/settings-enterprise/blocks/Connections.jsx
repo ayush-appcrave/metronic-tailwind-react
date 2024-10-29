@@ -1,7 +1,11 @@
 import { KeenIcon, Menu, MenuItem, MenuToggle } from '@/components';
 import { toAbsoluteUrl } from '@/utils/Assets';
+import { useLanguage } from '@/i18n';
 import { DropdownCard2, DropdownCardItem1 } from '@/partials/dropdowns/general';
 const Connections = () => {
+  const {
+    isRTL
+  } = useLanguage();
   const tables = [{
     avatar: '300-3.png',
     name: 'Tyler Hero',
@@ -50,26 +54,26 @@ const Connections = () => {
           </div>
         </td>
 
-        <td className="py-2 text-right text-gray-600 font-nmedium">{table.jointLinks}</td>
+        <td className="py-2 text-end text-gray-600 font-nmedium">{table.jointLinks}</td>
 
-        <td className="py-2 text-right">
+        <td className="py-2 text-end">
           <button className="btn btn-xs btn-icon btn-primary rounded-full">
             <KeenIcon icon="check" />
           </button>
         </td>
 
-        <td className="text-right">
+        <td className="text-end">
           <Menu className="inline-flex">
             <MenuItem toggle="dropdown" trigger="click" dropdownProps={{
-            placement: 'bottom-end',
+            placement: isRTL() ? 'bottom-start' : 'bottom-end',
             modifiers: [{
               name: 'offset',
               options: {
-                offset: [0, 10] // [skid, distance]
+                offset: isRTL() ? [0, -10] : [0, 10] // [skid, distance]
               }
             }]
           }}>
-              <MenuToggle className="btn btn-sm btn-icon btn-light btn-clear mb-2.5-">
+              <MenuToggle className="btn btn-sm btn-icon btn-light btn-clear">
                 <KeenIcon icon="dots-vertical" />
               </MenuToggle>
               {DropdownCardItem1()}
@@ -84,11 +88,11 @@ const Connections = () => {
 
         <Menu>
           <MenuItem toggle="dropdown" trigger="click" dropdownProps={{
-          placement: 'bottom-end',
+          placement: isRTL() ? 'bottom-start' : 'bottom-end',
           modifiers: [{
             name: 'offset',
             options: {
-              offset: [0, 10] // [skid, distance]
+              offset: isRTL() ? [0, -10] : [0, 10] // [skid, distance]
             }
           }]
         }}>
@@ -106,8 +110,8 @@ const Connections = () => {
             <tbody>
               <tr className="bg-gray-100">
                 <th className="text-start font-medium min-w-48 py-2.5">Name</th>
-                <th className="text-right font-medium min-w-20 py-2.5">Joint Links</th>
-                <th className="text-right font-medium min-w-20 py-2.5">Status</th>
+                <th className="text-end font-medium min-w-20 py-2.5">Joint Links</th>
+                <th className="text-end font-medium min-w-20 py-2.5">Status</th>
                 <th className="min-w-16"></th>
               </tr>
 

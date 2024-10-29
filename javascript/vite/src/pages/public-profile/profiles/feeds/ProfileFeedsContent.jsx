@@ -10,7 +10,7 @@ const ProfileFeedsContent = () => {
     title: 'Uploads',
     value: '28.9k'
   }];
-  return <div className="grid grid-cols-1 xl:grid-cols-3 gap-y-5 lg:gap-y-7.5 xl:gap-7.5">
+  return <div className="grid grid-cols-1 lg:grid-cols-3 gap-5 lg:gap-7.5">
       <div className="col-span-1">
         <div className="grid gap-5 lg:gap-7.5">
           <Statistics data={data} />
@@ -31,6 +31,12 @@ const ProfileFeedsContent = () => {
           <Post3 />
 
           <Post4 />
+
+          <div className="flex justify-center">
+            <a href="#" className="btn btn-link">
+              Show more posts
+            </a>
+          </div>
         </div>
       </div>
     </div>;

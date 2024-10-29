@@ -24,7 +24,7 @@ const ChannelStats = () => {
     path: ''
   }];
   const renderItem = (item, index) => {
-    return <div key={index} className="card flex-col justify-between gap-6 h-full bg-cover bg-[right_top_-1.7rem] bg-no-repeat channel-stats-bg">
+    return <div key={index} className="card flex-col justify-between gap-6 h-full bg-cover rtl:bg-[left_top_-1.7rem] bg-[right_top_-1.7rem] bg-no-repeat channel-stats-bg">
         {item.logoDark ? <>
             <img src={toAbsoluteUrl(`/media/brand-logos/${item.logo}`)} className="dark:hidden w-7 mt-4 ms-5" alt="" />
             <img src={toAbsoluteUrl(`/media/brand-logos/${item.logoDark}`)} className="light:hidden w-7 mt-4 ms-5" alt="" />

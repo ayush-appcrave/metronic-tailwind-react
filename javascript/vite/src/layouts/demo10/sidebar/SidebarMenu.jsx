@@ -8,7 +8,7 @@ const SidebarMenu = ({
         height: `${height}px`
       })
     }}>
-        <SidebarMenuPrimary /> 
+        <SidebarMenuPrimary />
         <SidebarMenuSecondary />
       </div>
     </div>;

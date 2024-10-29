@@ -1,6 +1,10 @@
 import { KeenIcon, Menu, MenuItem, MenuToggle } from '@/components';
+import { useLanguage } from '@/i18n';
 import { DropdownCard2, DropdownCardItem2 } from '@/partials/dropdowns/general';
 const RecentInvoices = () => {
+  const {
+    isRTL
+  } = useLanguage();
   const items = [{
     icon: 'cheque',
     number: 'INV-2023-001',
@@ -45,17 +49,17 @@ const RecentInvoices = () => {
         <div className="flex items-center gap-2.5">
           <span className="text-sm text-gray-800">${item.ammount}</span>
 
-          <Menu className="items-stretch">
+          <Menu>
             <MenuItem toggle="dropdown" trigger="click" dropdownProps={{
-            placement: 'bottom-end',
+            placement: isRTL() ? 'bottom-start' : 'bottom-end',
             modifiers: [{
               name: 'offset',
               options: {
-                offset: [0, 10] // [skid, distance]
+                offset: isRTL() ? [0, -10] : [0, 10] // [skid, distance]
               }
             }]
           }}>
-              <MenuToggle className="btn btn-sm btn-icon btn-light btn-clear mb-2.5-">
+              <MenuToggle className="btn btn-sm btn-icon btn-light btn-clear">
                 <KeenIcon icon="dots-vertical" />
               </MenuToggle>
               {DropdownCardItem2()}
@@ -68,17 +72,17 @@ const RecentInvoices = () => {
       <div className="card-header">
         <h3 className="card-title">Recent Invoices</h3>
 
-        <Menu className="items-stretch">
+        <Menu>
           <MenuItem toggle="dropdown" trigger="click" dropdownProps={{
-          placement: 'bottom-end',
+          placement: isRTL() ? 'bottom-start' : 'bottom-end',
           modifiers: [{
             name: 'offset',
             options: {
-              offset: [0, 10] // [skid, distance]
+              offset: isRTL() ? [0, -10] : [0, 10] // [skid, distance]
             }
           }]
         }}>
-            <MenuToggle className="btn btn-sm btn-icon btn-light btn-clear mb-2.5-">
+            <MenuToggle className="btn btn-sm btn-icon btn-light btn-clear">
               <KeenIcon icon="dots-vertical" />
             </MenuToggle>
             {DropdownCard2()}

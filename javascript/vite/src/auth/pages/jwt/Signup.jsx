@@ -5,7 +5,7 @@ import { Link, useLocation, useNavigate } from 'react-router-dom';
 import * as Yup from 'yup';
 import { useAuthContext } from '../../useAuthContext';
 import { toAbsoluteUrl } from '@/utils';
-import { KeenIcon } from '@/components';
+import { Alert, KeenIcon } from '@/components';
 import { useLayout } from '@/providers';
 const initialValues = {
   email: '',
@@ -44,7 +44,7 @@ const Signup = () => {
         if (!register) {
           throw new Error('JWTProvider is required for this form.');
         }
-        await register(values.email, values.password, undefined, undefined, values.changepassword);
+        await register(values.email, values.password, values.changepassword);
         navigate(from, {
           replace: true
         });
@@ -94,6 +94,8 @@ const Signup = () => {
           <span className="text-2xs text-gray-500 font-medium uppercase">Or</span>
           <span className="border-t border-gray-200 w-full"></span>
         </div>
+
+        {formik.status && <Alert variant="danger">{formik.status}</Alert>}
 
         <div className="flex flex-col gap-1">
           <label className="form-label text-gray-900">Email</label>
@@ -162,6 +164,7 @@ const Signup = () => {
             </Link>
           </span>
         </label>
+
         {formik.touched.acceptTerms && formik.errors.acceptTerms && <span role="alert" className="text-danger text-xs mt-1">
             {formik.errors.acceptTerms}
           </span>}
@@ -169,10 +172,6 @@ const Signup = () => {
         <button type="submit" className="btn btn-primary flex justify-center grow" disabled={loading || formik.isSubmitting}>
           {loading ? 'Please wait...' : 'Sign UP'}
         </button>
-
-        {formik.status && <div className="text-danger text-xs mt-1" role="alert">
-            {formik.status}
-          </div>}
       </form>
     </div>;
 };

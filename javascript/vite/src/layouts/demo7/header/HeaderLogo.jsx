@@ -12,7 +12,7 @@ const HeaderLogo = () => {
   };
   return <div className="flex items-stretch gap-10 grow">
       <div className="flex items-center gap-2.5">
-        <Link to="/" className="shrink-0">
+        <Link to="/">
           <img src={toAbsoluteUrl('/media/app/mini-logo-circle-primary.svg')} className="dark:hidden min-h-[34px]" alt="logo" />
           <img src={toAbsoluteUrl('/media/app/mini-logo-circle-primary-dark.svg')} className="hidden dark:inline-block min-h-[34px]" alt="logo" />
         </Link>

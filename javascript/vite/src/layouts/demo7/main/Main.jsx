@@ -1,12 +1,13 @@
 import { Fragment } from 'react';
 import { Helmet } from 'react-helmet-async';
 import { Outlet, useLocation } from 'react-router';
-import { Menu, MenuItem, MenuSub, MenuToggle, useMenuCurrentItem } from '@/components/menu';
+import { Menu, MenuItem, MenuLink, MenuSub, MenuTitle, MenuToggle, useMenuCurrentItem } from '@/components/menu';
 import { useMenus } from '@/providers';
 import { Header, Footer } from '..';
 import { Toolbar, ToolbarHeading, ToolbarActions } from '../toolbar';
 import { Link } from 'react-router-dom';
 import { KeenIcon } from '@/components';
+import { useLanguage } from '@/i18n';
 const Main = () => {
   const {
     pathname
@@ -15,6 +16,9 @@ const Main = () => {
     getMenuConfig
   } = useMenus();
   const menuConfig = getMenuConfig('primary');
+  const {
+    isRTL
+  } = useLanguage();
   const menuItem = useMenuCurrentItem(pathname, menuConfig);
   const months = [{
     title: 'January, 2024'
@@ -53,18 +57,18 @@ const Main = () => {
           {!pathname.includes('/public-profile/') && <Toolbar>
               <ToolbarHeading />
               <ToolbarActions>
-                <Link to={'account/home/get-started'} className="btn btn-sm btn-light">
-                  <KeenIcon icon="exit-down !text-base" />
+                <Link to={'/account/home/get-started'} className="btn btn-sm btn-light">
+                  <KeenIcon icon="exit-down" className="!text-base" />
                   Export
                 </Link>
 
                 <Menu className="menu-default">
                   <MenuItem toggle="dropdown" trigger="hover" dropdownProps={{
-                placement: 'bottom-end',
+                placement: isRTL() ? 'bottom-start' : 'bottom-end',
                 modifiers: [{
                   name: 'offset',
                   options: {
-                    offset: [0, 1] // [skid, distance]
+                    offset: [0, 0] // [skid, distance]
                   }
                 }]
               }}>
@@ -79,12 +83,12 @@ const Main = () => {
                       </span>
                     </MenuToggle>
 
-                    <MenuSub className="menu-default w-48 scrollable-y max-h-[250px]">
-                      {months.map((item, index) => <div className={`menu-item ${item.active ? 'active' : ''}`} key={index}>
-                          <Link to="/" className="menu-link">
-                            <span className="menu-title">{item.title}</span>
-                          </Link>
-                        </div>)}
+                    <MenuSub className="menu-default w-48 py-2 scrollable-y max-h-[250px]">
+                      {months.map((item, index) => <MenuItem key={index} className={item.active ? 'active' : ''}>
+                          <MenuLink path="/">
+                            <MenuTitle>{item.title}</MenuTitle>
+                          </MenuLink>
+                        </MenuItem>)}
                     </MenuSub>
                   </MenuItem>
                 </Menu>

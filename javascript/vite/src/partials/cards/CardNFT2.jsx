@@ -1,4 +1,5 @@
 import { Link } from 'react-router-dom';
+import { useLanguage } from '@/i18n';
 import { KeenIcon, Menu, MenuItem, MenuToggle } from '@/components';
 import { toAbsoluteUrl } from '@/utils/Assets';
 import { DropdownCardItem1 } from '../dropdowns/general';
@@ -11,6 +12,9 @@ const CardNFT2 = ({
   info,
   statistics
 }) => {
+  const {
+    isRTL
+  } = useLanguage();
   const renderItem = (statistic, index) => {
     return <div key={index} className="grid grid-cols-1 gap-1.5 border-[0.5px] border-dashed border-gray-400 rounded-md px-2.5 py-2 shrink-0 max-w-auto">
         <span className="text-gray-900 text-sm leading-none font-medium">{statistic.total}</span>
@@ -21,18 +25,18 @@ const CardNFT2 = ({
       <div className="card-header card-rounded-t flex justify-end items-start relative p-0 bg-no-repeat bg-cover bg-center h-[120px]" style={{
       backgroundImage: `url(${toAbsoluteUrl(`/media/images/2600x1200/${bgImage}`)})`
     }}>
-        <div className="menu mt-2.5 mr-2.5" data-menu="true">
+        <div className="menu mt-2.5 me-2.5" data-menu="true">
           <Menu className="items-stretch">
             <MenuItem toggle="dropdown" trigger="click" dropdownProps={{
-            placement: 'bottom-end',
+            placement: isRTL() ? 'bottom-start' : 'bottom-end',
             modifiers: [{
               name: 'offset',
               options: {
-                offset: [0, 10] // [skid, distance]
+                offset: isRTL() ? [0, -10] : [0, 10] // [skid, distance]
               }
             }]
           }}>
-              <MenuToggle className="btn btn-sm btn-icon btn-light btn-clear mb-2.5-">
+              <MenuToggle className="btn btn-sm btn-icon btn-light btn-clear">
                 <KeenIcon icon="setting-2" />
               </MenuToggle>
               {DropdownCardItem1()}
@@ -62,7 +66,7 @@ const CardNFT2 = ({
           </a>
           <div className="flex items-center text-xs font-medium text-success">
             {info}
-            <KeenIcon icon="copy" className="ml-1 text-gray-400 text-md" />
+            <KeenIcon icon="copy" className="ms-1 text-gray-400 text-md" />
           </div>
         </div>
 

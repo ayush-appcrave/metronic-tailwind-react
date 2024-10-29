@@ -152,23 +152,24 @@ const Plans = () => {
   };
   const renderItem = (feature, index) => {
     return <tr key={index}>
-        <td className="table-border-l !px-5 !py-3.5">
+        <td className="table-border-s !px-5 !py-3.5">
           <div className="text-gray-900 text-2sm leading-none font-medium">{feature.title}</div>
         </td>
-        <td className="table-border-l !px-5 !py-3.5">
+        <td className="table-border-s !px-5 !py-3.5">
           <div className="text-gray-800 text-2sm">{renderFeatureDetail(feature.plans.basic)}</div>
         </td>
-        <td className="table-border-l !px-5 !py-3.5">{renderFeatureDetail(feature.plans.pro)}</td>
-        <td className="table-border-l !px-5 !py-3.5">
+        <td className="table-border-s !px-5 !py-3.5">{renderFeatureDetail(feature.plans.pro)}</td>
+        <td className="table-border-s !px-5 !py-3.5">
           {renderFeatureDetail(feature.plans.premium)}
         </td>
-        <td className="table-border-l !px-5 !py-3.5">
+        <td className="table-border-s !px-5 !py-3.5">
           {renderFeatureDetail(feature.plans.enterprise)}
         </td>
       </tr>;
   };
   return <div className="scrollable-x-auto pt-3 -mt-3">
-      <table className="table table-fixed min-w-[1000px] table-border-b table-border-r table-rounded card-rounded [&_tr:nth-of-type(2)>td]:table-border-t [&_tr:nth-of-type(2)>td:first-child]:card-rounded-tl">
+      <table className="table table-fixed min-w-[1000px] table-border-b table-border-e table-rounded card-rounded 
+      [&_tr:nth-of-type(2)>td]:table-border-t [&_tr:nth-of-type(2)>td:first-child]:card-rounded-ts">
         <tbody>
           <tr>
             <td className="!border-b-0 align-bottom !p-5 !pt-7.5 !pb-6">
@@ -179,19 +180,19 @@ const Plans = () => {
                 </div>
               </label>
             </td>
-            <td className="!border-b-0 table-border-l table-border-t card-rounded-tl bg-light-active dark:bg-coal-100 !p-5 !pt-7.5 relative">
-              <span className="absolute badge badge-sm badge-outline badge-success absolutes top-0 left-1/2 -translate-x-1/2 -translate-y-1/2">
+            <td className="!border-b-0 table-border-s table-border-t card-rounded-tl bg-light-active dark:bg-coal-100 !p-5 !pt-7.5 relative">
+              <span className="absolute badge badge-sm badge-outline badge-success absolutes top-0 start-1/2 rtl:translate-x-1/2 -translate-x-1/2 -translate-y-1/2">
                 Current Plan
               </span>
               {renderPlanInfo('basic', plans.info.basic)}
             </td>
-            <td className="!border-b-0 table-border-l table-border-t !p-5 !pt-7.5">
+            <td className="!border-b-0 table-border-s table-border-t !p-5 !pt-7.5">
               {renderPlanInfo('pro', plans.info.pro)}
             </td>
-            <td className="!border-b-0 table-border-l table-border-t !p-5 !pt-7.5">
+            <td className="!border-b-0 table-border-s table-border-t !p-5 !pt-7.5">
               {renderPlanInfo('premium', plans.info.premium)}
             </td>
-            <td className="!border-b-0 table-border-l table-border-t card-rounded-tr !p-5 !pt-7.5">
+            <td className="!border-b-0 table-border-s table-border-t card-rounded-tr !p-5 !pt-7.5">
               {renderPlanInfo('enterprise', plans.info.enterprise)}
             </td>
           </tr>

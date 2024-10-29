@@ -1,8 +1,12 @@
 import { Link } from 'react-router-dom';
+import { useLanguage } from '@/i18n';
 import { KeenIcon, Menu, MenuItem, MenuToggle } from '@/components';
 import { CommonAvatars } from '@/partials/common';
 import { DropdownCrud1, DropdownCrudItem1 } from '@/partials/dropdowns/general';
 const Projects = () => {
+  const {
+    isRTL
+  } = useLanguage();
   const items = [{
     name: 'Acme software development',
     team: {
@@ -97,7 +101,7 @@ const Projects = () => {
   }];
   const renderItem = (item, index) => {
     return <tr key={index}>
-        <td className="text-left">
+        <td className="text-start">
           <a href="#" className="text-sm font-medium text-gray-900 hover:text-primary">
             {item.name}
           </a>
@@ -112,25 +116,25 @@ const Projects = () => {
         </td>
 
         <td>
-          <div className="flex justify-end shrink-0">
+          <div className="flex justify-end rtl:justify-start shrink-0">
             <CommonAvatars group={item.team.group} more={item.team.more} />
           </div>
         </td>
 
         <td className="text-sm font-medium text-gray-700">{item.dueDate}</td>
 
-        <td className="text-left">
-          <Menu className="items-stretch">
+        <td className="text-start">
+          <Menu>
             <MenuItem toggle="dropdown" trigger="click" dropdownProps={{
-            placement: 'bottom-end',
+            placement: isRTL() ? 'bottom-start' : 'bottom-end',
             modifiers: [{
               name: 'offset',
               options: {
-                offset: [0, 10] // [skid, distance]
+                offset: isRTL() ? [0, -10] : [0, 10] // [skid, distance]
               }
             }]
           }}>
-              <MenuToggle className="btn btn-sm btn-icon btn-light btn-clear mb-2.5-">
+              <MenuToggle className="btn btn-sm btn-icon btn-light btn-clear">
                 <KeenIcon icon="dots-vertical" />
               </MenuToggle>
               {DropdownCrudItem1()}
@@ -143,17 +147,17 @@ const Projects = () => {
       <div className="card-header">
         <h3 className="card-title">Projects</h3>
 
-        <Menu className="items-stretch">
+        <Menu>
           <MenuItem toggle="dropdown" trigger="click" dropdownProps={{
-          placement: 'bottom-end',
+          placement: isRTL() ? 'bottom-start' : 'bottom-end',
           modifiers: [{
             name: 'offset',
             options: {
-              offset: [0, 10] // [skid, distance]
+              offset: isRTL() ? [0, -10] : [0, 10] // [skid, distance]
             }
           }]
         }}>
-            <MenuToggle className="btn btn-sm btn-icon btn-light btn-clear mb-2.5-">
+            <MenuToggle className="btn btn-sm btn-icon btn-light btn-clear">
               <KeenIcon icon="dots-vertical" />
             </MenuToggle>
             {DropdownCrud1()}
@@ -162,10 +166,10 @@ const Projects = () => {
       </div>
 
       <div className="card-table scrollable-x-auto">
-        <table className="table text-right">
+        <table className="table text-end">
           <thead>
             <tr>
-              <th className="text-left min-w-52 !font-normal !text-gray-700">Project Name</th>
+              <th className="text-start min-w-52 !font-normal !text-gray-700">Project Name</th>
               <th className="min-w-40 !font-normal !text-gray-700">Progress</th>
               <th className="min-w-32 !font-normal !text-gray-700">People</th>
               <th className="min-w-32 !font-normal !text-gray-700">Due Date</th>

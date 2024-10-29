@@ -16,7 +16,7 @@ const Upgrade = () => {
       </style>
 
       <div className="card rounded-xl">
-        <div className="flex items-center justify-between grow gap-5 p-5 bg-[center_right_-8rem] bg-no-repeat bg-[length:700px] upgrade-bg">
+        <div className="flex items-center justify-between grow gap-5 p-5 rtl:bg-[center_left_-8rem] bg-[center_right_-8rem] bg-no-repeat bg-[length:700px] upgrade-bg">
           <div className="flex items-center gap-4">
             <CommonHexagonBadge stroke="stroke-primary-clarity" fill="fill-primary-light" size="size-[50px]" badge={<KeenIcon icon="cheque" className="text-1.5xl text-primary" />} />
 

@@ -1,5 +1,9 @@
 import { KeenIcon, MenuArrow, MenuIcon, MenuItem, MenuLink, MenuSub, MenuTitle } from '@/components';
+import { useLanguage } from '@/i18n';
 const DropdownCrud1 = () => {
+  const {
+    isRTL
+  } = useLanguage();
   return <MenuSub className="menu-default" rootClassName="w-full max-w-[175px]">
       <MenuItem path="/account/home/settings-plain">
         <MenuLink>
@@ -18,11 +22,11 @@ const DropdownCrud1 = () => {
         </MenuLink>
       </MenuItem>
       <MenuItem toggle="dropdown" trigger="hover" dropdownProps={{
-      placement: 'right-start',
+      placement: isRTL() ? 'left-start' : 'right-start',
       modifiers: [{
         name: 'offset',
         options: {
-          offset: [-15, 0] // [skid, distance]
+          offset: isRTL() ? [15, 0] : [-15, 0] // [skid, distance]
         }
       }]
     }}>
@@ -32,7 +36,7 @@ const DropdownCrud1 = () => {
           </MenuIcon>
           <MenuTitle>Export</MenuTitle>
           <MenuArrow>
-            <KeenIcon icon="right" className="text-3xs" />
+            <KeenIcon icon="right" className="text-3xs rtl:transform rtl:rotate-180" />
           </MenuArrow>
         </MenuLink>
         <MenuSub className="menu-default" rootClassName="w-full max-w-[125px]">

@@ -1,16 +1,20 @@
 import { DefaultTooltip, KeenIcon } from '@/components';
 import { MenuItem, MenuLink, MenuSub, MenuTitle, MenuArrow, MenuIcon, MenuBadge, MenuSeparator } from '@/components/menu';
 import { useResponsive } from '@/hooks';
+import { useLanguage } from '@/i18n';
 import clsx from 'clsx';
 const MegaMenuSubDropdown = items => {
   const desktopMode = useResponsive('up', 'lg');
+  const {
+    isRTL
+  } = useLanguage();
   const buildItems = items => {
     return items.map((item, index) => {
       if (item.separator) {
         return <MenuSeparator key={index} />;
       } else if (item.children) {
         return <MenuItem key={index} toggle={desktopMode ? 'dropdown' : 'accordion'} trigger={desktopMode ? 'hover' : 'click'} dropdownProps={{
-          placement: 'right-start'
+          placement: isRTL() ? 'left-start' : 'right-start'
         }}>
             <MenuLink className="grow-0">
               {item.icon && <MenuIcon>
@@ -18,10 +22,12 @@ const MegaMenuSubDropdown = items => {
                 </MenuIcon>}
               <MenuTitle className={clsx('')}>{item.title}</MenuTitle>
               <MenuArrow>
-                <KeenIcon icon="right" className="text-3xs" />
+                <KeenIcon icon="right" className="text-3xs rtl:transform rtl:rotate-180" />
               </MenuArrow>
             </MenuLink>
-            <MenuSub className="menu-default lg:w-[220px]">{buildItems(item.children)}</MenuSub>
+            <MenuSub className="menu-default w-full max-w-[175px] lg:max-w-[220px]">
+              {buildItems(item.children)}
+            </MenuSub>
           </MenuItem>;
       } else {
         return <MenuItem key={index}>
@@ -29,7 +35,7 @@ const MegaMenuSubDropdown = items => {
               {item.icon && <MenuIcon>
                   <KeenIcon icon={item.icon} />
                 </MenuIcon>}
-              <MenuTitle>{item.title}</MenuTitle>
+              <MenuTitle className={clsx('grow-0')}>{item.title}</MenuTitle>
 
               {item.disabled && <MenuBadge>
                   <span className="badge badge-xs">Soon</span>

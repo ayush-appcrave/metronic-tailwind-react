@@ -1,7 +1,11 @@
 import { Link } from 'react-router-dom';
+import { useLanguage } from '@/i18n';
 import { KeenIcon, Menu, MenuItem, MenuToggle } from '@/components';
 import { DropdownCrud1, DropdownCrudItem1 } from '@/partials/dropdowns/general';
 const Deals = () => {
+  const {
+    isRTL
+  } = useLanguage();
   const items = [{
     name: 'Acme Software License',
     ammount: '5,000',
@@ -35,7 +39,7 @@ const Deals = () => {
   }];
   const renderItem = (item, index) => {
     return <tr key={index}>
-        <td className="text-left">
+        <td className="text-start">
           <a href="#" className="text-sm font-medium text-gray-900 hover:text-primary">
             {item.name}
           </a>
@@ -49,18 +53,18 @@ const Deals = () => {
 
         <td className="text-sm text-gray-800">{item.date} days</td>
 
-        <td className="text-left">
-          <Menu className="items-stretch">
+        <td className="text-start">
+          <Menu>
             <MenuItem toggle="dropdown" trigger="click" dropdownProps={{
-            placement: 'bottom-end',
+            placement: isRTL() ? 'bottom-start' : 'bottom-end',
             modifiers: [{
               name: 'offset',
               options: {
-                offset: [0, 10] // [skid, distance]
+                offset: isRTL() ? [0, -10] : [0, 10] // [skid, distance]
               }
             }]
           }}>
-              <MenuToggle className="btn btn-sm btn-icon btn-light btn-clear mb-2.5-">
+              <MenuToggle className="btn btn-sm btn-icon btn-light btn-clear">
                 <KeenIcon icon="dots-vertical" />
               </MenuToggle>
               {DropdownCrudItem1()}
@@ -73,17 +77,17 @@ const Deals = () => {
       <div className="card-header">
         <h3 className="card-title">Deals</h3>
 
-        <Menu className="items-stretch">
+        <Menu>
           <MenuItem toggle="dropdown" trigger="click" dropdownProps={{
-          placement: 'bottom-end',
+          placement: isRTL() ? 'bottom-start' : 'bottom-end',
           modifiers: [{
             name: 'offset',
             options: {
-              offset: [0, 10] // [skid, distance]
+              offset: isRTL() ? [0, -10] : [0, 10] // [skid, distance]
             }
           }]
         }}>
-            <MenuToggle className="btn btn-sm btn-icon btn-light btn-clear mb-2.5-">
+            <MenuToggle className="btn btn-sm btn-icon btn-light btn-clear">
               <KeenIcon icon="dots-vertical" />
             </MenuToggle>
             {DropdownCrud1()}
@@ -91,10 +95,10 @@ const Deals = () => {
         </Menu>
       </div>
       <div className="card-table scrollable-x-auto">
-        <table className="table text-right">
+        <table className="table text-end">
           <thead>
             <tr>
-              <th className="text-left min-w-[150px] !text-gray-700">Deal Name</th>
+              <th className="text-start min-w-[150px] !text-gray-700">Deal Name</th>
               <th className="min-w-[100px] !text-gray-700">Amount</th>
               <th className="min-w-[100px]">Status</th>
               <th className="min-w-[110px] !text-gray-700">Duration</th>

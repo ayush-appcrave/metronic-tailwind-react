@@ -2,6 +2,7 @@ import { KeenIcon } from '@/components/keenicons';
 import { Menu, MenuArrow, MenuIcon, MenuItem, MenuLink, MenuSeparator, MenuSub, MenuTitle } from '@/components/menu';
 import { useMenus } from '@/providers';
 import { useResponsive } from '@/hooks';
+import { useLanguage } from '@/i18n';
 const SidebarMenu = () => {
   const isDesktop = useResponsive('up', 'lg');
   const {
@@ -9,6 +10,9 @@ const SidebarMenu = () => {
   } = useMenus();
   const primaryMenuConfig = getMenuConfig('primary');
   const megaMenuConfig = getMenuConfig('mega');
+  const {
+    isRTL
+  } = useLanguage();
   const menuConfig = [{
     title: 'Boards',
     icon: 'chart-line-star',
@@ -38,11 +42,11 @@ const SidebarMenu = () => {
   const buildMenuItemRoot = (item, index, level = 0) => {
     if (item.children) {
       return <MenuItem key={index} toggle="dropdown" trigger="hover" dropdownProps={{
-        placement: 'right-start',
+        placement: isRTL() ? 'right-end' : 'right-start',
         modifiers: [{
           name: 'offset',
           options: {
-            offset: [-10, 14]
+            offset: isRTL() ? [10, 14] : [-10, 14] // [skid, distance]
           }
         }]
       }}>
@@ -142,7 +146,7 @@ const SidebarMenu = () => {
           <MenuLink className="grow cursor-pointer">
             <MenuTitle>{item.title}</MenuTitle>
             <MenuArrow>
-              <KeenIcon icon="right" className="text-3xs" />
+              <KeenIcon icon="right" className="text-3xs rtl:translate rtl:rotate-180" />
             </MenuArrow>
           </MenuLink>
           <MenuSub className="menu-default gap-0.5 w-[220px] scrollable-y-auto lg:overflow-visible max-h-[50vh]">

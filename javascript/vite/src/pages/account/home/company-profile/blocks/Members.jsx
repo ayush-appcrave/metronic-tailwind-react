@@ -1,9 +1,13 @@
 import { KeenIcon, Menu, MenuItem, MenuToggle } from '@/components';
 import { toAbsoluteUrl } from '@/utils/Assets';
+import { useLanguage } from '@/i18n';
 import { DropdownCrud1, DropdownCrudItem1 } from '@/partials/dropdowns/general';
 const Members = ({
   url
 }) => {
+  const {
+    isRTL
+  } = useLanguage();
   const tables = [{
     avatar: '300-3.png',
     name: 'Tyler Hero',
@@ -57,30 +61,30 @@ const Members = ({
           </div>
         </td>
 
-        <td className="text-right">
+        <td className="text-end">
           <span className="badge badge-sm badge-outline">{table.label}</span>
         </td>
 
-        <td className="text-right">
+        <td className="text-end">
           <span className={`badge badge-sm badge-outline ${table.disabled ? 'badge-danger' : 'badge-success'}`}>
             {table.disabled ? 'Disabled' : 'Enabled'}
           </span>
         </td>
 
-        <td className="text-right text-gray-700 text-sm">{table.joined}</td>
+        <td className="text-end text-gray-700 text-sm">{table.joined}</td>
 
-        <td className="text-right">
+        <td className="text-end">
           <Menu className="inline-flex">
             <MenuItem toggle="dropdown" trigger="click" dropdownProps={{
-            placement: 'bottom-end',
+            placement: isRTL() ? 'bottom-start' : 'bottom-end',
             modifiers: [{
               name: 'offset',
               options: {
-                offset: [0, 10] // [skid, distance]
+                offset: isRTL() ? [0, -10] : [0, 10] // [skid, distance]
               }
             }]
           }}>
-              <MenuToggle className="btn btn-sm btn-icon btn-light btn-clear mb-2.5-">
+              <MenuToggle className="btn btn-sm btn-icon btn-light btn-clear">
                 <KeenIcon icon="dots-vertical" />
               </MenuToggle>
               {DropdownCrudItem1()}
@@ -103,15 +107,15 @@ const Members = ({
 
           <Menu className="items-stretch">
             <MenuItem toggle="dropdown" trigger="click" dropdownProps={{
-            placement: 'bottom-end',
+            placement: isRTL() ? 'bottom-start' : 'bottom-end',
             modifiers: [{
               name: 'offset',
               options: {
-                offset: [0, 10] // [skid, distance]
+                offset: isRTL() ? [0, -10] : [0, 10] // [skid, distance]
               }
             }]
           }}>
-              <MenuToggle className="btn btn-sm btn-icon btn-light btn-clear mb-2.5-">
+              <MenuToggle className="btn btn-sm btn-icon btn-light btn-clear">
                 <KeenIcon icon="dots-vertical" />
               </MenuToggle>
               {DropdownCrud1()}
@@ -126,9 +130,9 @@ const Members = ({
             <tbody>
               <tr className="bg-gray-100">
                 <th className="text-start font-medium min-w-52">Name</th>
-                <th className="text-right font-medium min-w-36">Role</th>
-                <th className="text-right font-medium min-w-32">2FA</th>
-                <th className="text-right font-medium min-w-20">Joined</th>
+                <th className="text-end font-medium min-w-36">Role</th>
+                <th className="text-end font-medium min-w-32">2FA</th>
+                <th className="text-end font-medium min-w-20">Joined</th>
                 <th className="min-w-16"></th>
               </tr>
 

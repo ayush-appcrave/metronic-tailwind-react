@@ -19,7 +19,7 @@ const Post2 = () => {
       imageClass: 'rounded-full size-[50px]'
     }} date="2 days ago" />
 
-      <p className="mb-5 text-sm font-medium text-gray-600 leading-5.5 px-7.5">
+      <p className="mb-5 text-sm text-gray-800 leading-5.5 px-7.5">
         I can hear your objections already. “But Dan, I have to blog for a cardboard box
         manufacturing company.” I feel your pain, I really do.
       </p>

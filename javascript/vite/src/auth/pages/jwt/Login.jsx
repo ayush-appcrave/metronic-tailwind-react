@@ -7,6 +7,7 @@ import { KeenIcon } from '@/components';
 import { toAbsoluteUrl } from '@/utils';
 import { useAuthContext } from '@/auth';
 import { useLayout } from '@/providers';
+import { Alert } from '@/components';
 const loginSchema = Yup.object().shape({
   email: Yup.string().email('Wrong email format').min(3, 'Minimum 3 symbols').max(50, 'Maximum 50 symbols').required('Email is required'),
   password: Yup.string().min(3, 'Minimum 3 symbols').max(50, 'Maximum 50 symbols').required('Password is required'),
@@ -61,7 +62,7 @@ const Login = () => {
     event.preventDefault();
     setShowPassword(!showPassword);
   };
-  return <div className="card max-w-[370px] w-full">
+  return <div className="card max-w-[390px] w-full">
       <form className="card-body flex flex-col gap-5 p-10" onSubmit={formik.handleSubmit} noValidate>
         <div className="text-center mb-2.5">
           <h3 className="text-lg font-semibold text-gray-900 leading-none mb-2.5">Sign in</h3>
@@ -92,13 +93,12 @@ const Login = () => {
           <span className="border-t border-gray-200 w-full"></span>
         </div>
 
-        <div className="flex gap-2.5 border border-primary-clarity rounded-md p-3 bg-primary-light">
-          <KeenIcon icon="information-2" style="solid" className="text-primary text-lg" />
-          <div className="text-gray-700 text-xs">
-            Use <span className="font-semibold text-gray-900">demo@keenthemes.com</span> username
-            with <span className="font-semibold text-gray-900">demo1234</span> password.
-          </div>
-        </div>
+        <Alert variant="primary">
+          Use <span className="font-semibold text-gray-900">demo@keenthemes.com</span> username and{' '}
+          <span className="font-semibold text-gray-900">demo1234</span> password.
+        </Alert>
+
+        {formik.status && <Alert variant="danger">{formik.status}</Alert>}
 
         <div className="flex flex-col gap-1">
           <label className="form-label text-gray-900">Email</label>
@@ -145,10 +145,6 @@ const Login = () => {
         <button type="submit" className="btn btn-primary flex justify-center grow" disabled={loading || formik.isSubmitting}>
           {loading ? 'Please wait...' : 'Sign In'}
         </button>
-
-        {formik.status && <div className="text-danger text-xs mt-1" role="alert">
-            {formik.status}
-          </div>}
       </form>
     </div>;
 };

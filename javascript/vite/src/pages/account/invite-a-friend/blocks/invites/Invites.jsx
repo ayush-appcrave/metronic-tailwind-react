@@ -1,11 +1,15 @@
 /* eslint-disable prettier/prettier */
 import React, { useEffect, useMemo, useState } from 'react';
 import { Link } from 'react-router-dom';
+import { useLanguage } from '@/i18n';
 import { DataGrid, KeenIcon, Menu, MenuItem, MenuToggle } from '@/components';
 import { toAbsoluteUrl } from '@/utils';
 import { DropdownCrudItem1 } from '@/partials/dropdowns/general';
 import { InvitesData } from '.';
 const Invites = () => {
+  const {
+    isRTL
+  } = useLanguage();
   const storageFilterId = 'teams-filter';
   const columns = useMemo(() => [{
     accessorFn: row => row.member,
@@ -79,11 +83,11 @@ const Invites = () => {
     enableSorting: false,
     cell: () => <Menu className="items-stretch">
             <MenuItem toggle="dropdown" trigger="click" dropdownProps={{
-        placement: 'bottom-end',
+        placement: isRTL() ? 'bottom-start' : 'bottom-end',
         modifiers: [{
           name: 'offset',
           options: {
-            offset: [0, 10] // [skid, distance]
+            offset: isRTL() ? [0, -10] : [0, 10] // [skid, distance]
           }
         }]
       }}>
@@ -96,7 +100,7 @@ const Invites = () => {
     meta: {
       className: 'w-[60px]'
     }
-  }], []);
+  }], [isRTL]);
 
   // Memoize the team data
   const data = useMemo(() => InvitesData, []);
@@ -123,7 +127,7 @@ const Invites = () => {
 
         <div className="flex gap-6">
           <div className="relative">
-            <KeenIcon icon="magnifier" className="leading-none text-md text-gray-500 absolute top-1/2 left-0 -translate-y-1/2 ml-3" />
+            <KeenIcon icon="magnifier" className="leading-none text-md text-gray-500 absolute top-1/2 start-0 -translate-y-1/2 ms-3" />
             <input type="text" className="input input-sm pl-8" placeholder="Search Members" value={searchTerm} onChange={e => setSearchTerm(e.target.value)} // Update search term
           />
           </div>

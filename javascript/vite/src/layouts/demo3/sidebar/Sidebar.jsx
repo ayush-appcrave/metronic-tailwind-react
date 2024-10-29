@@ -26,36 +26,36 @@ const Sidebar = () => {
     tooltip: 'Dashboard'
   }, {
     icon: 'profile-circle',
-    path: 'public-profile/profiles/default',
+    path: '/public-profile/profiles/default',
     tooltip: 'Profile'
   }, {
     icon: 'setting-2',
     active: true,
-    path: 'account/home/get-started',
+    path: '/account/home/get-started',
     tooltip: 'Account'
   }, {
     icon: 'users',
-    path: 'network/get-started',
+    path: '/network/get-started',
     tooltip: 'Network'
   }, {
     icon: 'security-user',
-    path: 'account/billing/plans',
+    path: '/account/billing/plans',
     tooltip: 'Plans'
   }, {
     icon: 'messages',
-    path: 'account/security/security-log',
+    path: '/account/security/security-log',
     tooltip: 'Security Logs'
   }, {
     icon: 'shop',
-    path: 'account/notifications',
+    path: '/account/notifications',
     tooltip: 'Notifications'
   }, {
     icon: 'cheque',
-    path: 'account/members/roles',
+    path: '/account/members/roles',
     tooltip: 'ACL'
   }, {
     icon: 'code',
-    path: 'account/api-keys',
+    path: '/account/api-keys',
     tooltip: 'API Keys'
   }, {
     icon: 'question',
@@ -66,7 +66,7 @@ const Sidebar = () => {
     setMobileSidebarOpen(false);
   };
   const renderContent = () => {
-    return <div className="lg:fixed w-[--tw-sidebar-width] lg:top-[--tw-header-height] top-0 bottom-0 z-20 flex flex-col items-stretch shrink-0 group py-3 lg:py-0">
+    return <div className="fixed w-[--tw-sidebar-width] lg:top-[--tw-header-height] top-0 bottom-0 z-20 lg:flex flex-col items-stretch shrink-0 group py-3 lg:py-0">
         <div className="flex grow shrink-0">
           <div className="scrollable-y-auto grow gap-2.5 shrink-0 flex items-center flex-col" style={{
           ...(desktopMode && scrollableHeight > 0 && {

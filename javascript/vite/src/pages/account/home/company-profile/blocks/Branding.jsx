@@ -28,16 +28,16 @@ const Branding = () => {
         </div>
 
         <div className="card-body lg:py-7.5 py-5">
-          <div className="flex flex-wrap md:flex-nowrap gap-5 lg:gap-14">
-            <div className="flex flex-col max-w-72 w-full">
+          <div className="flex flex-wrap justify-between gap-5">
+            <div className="flex flex-col">
               <div className="text-gray-900 text-sm font-medium">Company Logo</div>
               <span className="text-gray-700 text-2sm">Emblematic Corporate Identity Symbol</span>
             </div>
 
-            <div className="flex flex-wrap sm:flex-nowrap w-full gap-5 lg:gap-7.5">
+            <div className="flex flex-wrap sm:flex-nowrap gap-5 lg:gap-7.5 max-w-96 w-full">
               <img src={toAbsoluteUrl('/media/brand-logos/hex-lab.svg')} className="h-[35px] mt-2" alt="" />
 
-              <div className="flex bg-center max-w-72 lg:w-full p-5 lg:p-7 bg-no-repeat bg-[length:550px] border border-gray-300 rounded-xl border-dashed branding-bg">
+              <div className="flex bg-center w-full p-5 lg:p-7 bg-no-repeat bg-[length:550px] border border-gray-300 rounded-xl border-dashed branding-bg">
                 <div className="flex flex-col place-items-center place-content-center text-center rounded-xl w-full">
                   <div className="flex items-center mb-2.5">
                     <div className="relative size-11 shrink-0">
@@ -69,27 +69,27 @@ const Branding = () => {
 
           <div className="border-t border-gray-200 my-7.5"></div>
 
-          <div className="flex flex-wrap md:flex-nowrap gap-5 lg:gap-14">
-            <div className="flex flex-col max-w-72 w-full">
+          <div className="flex flex-wrap justify-between gap-5">
+            <div className="flex flex-col">
               <div className="text-gray-900 text-sm font-medium">Brand Color</div>
               <span className="text-gray-700 text-2sm">Signature Palette Branding Element</span>
             </div>
 
-            <label className="input">
-              <KeenIcon icon="mouse-square" className="text-success" />
+            <label className="input sm:max-w-full xl:max-w-96 w-full">
+              <KeenIcon icon="mouse-square" className="text-success" style="solid" />
               <input type="text" value="#BA35A0" readOnly />
             </label>
           </div>
 
           <div className="border-t border-gray-200 my-7.5"></div>
 
-          <div className="flex flex-wrap md:flex-nowrap gap-5 lg:gap-14">
-            <div className="flex flex-col max-w-72 w-full">
+          <div className="flex flex-wrap justify-between gap-5">
+            <div className="flex flex-col">
               <div className="text-gray-900 text-sm font-medium">Branding</div>
               <span className="text-gray-700 text-2sm">Comprehensive Image Identity Design</span>
             </div>
 
-            <div className="flex flex-col gap-5 grow">
+            <div className="flex flex-col gap-5 max-w-96 w-full">
               <div className="flex flex-col gap-2.5">
                 <label className="checkbox-group">
                   <input type="checkbox" className="checkbox checkbox-sm" value="1" readOnly />

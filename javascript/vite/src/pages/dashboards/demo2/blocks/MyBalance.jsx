@@ -2,11 +2,15 @@ import { useState } from 'react';
 import ApexChart from 'react-apexcharts';
 import { KeenIcon, Menu, MenuItem, MenuToggle } from '@/components';
 import clsx from 'clsx';
+import { useLanguage } from '@/i18n';
 import { DropdownCard2 } from '@/partials/dropdowns/general';
 const MyBalance = ({
   className
 }) => {
   const [activePeriod, setActivePeriod] = useState('Month');
+  const {
+    isRTL
+  } = useLanguage();
   const getDataForPeriod = period => {
     switch (period) {
       case 'Today':
@@ -186,15 +190,15 @@ const MyBalance = ({
 
         <Menu className="items-stretch">
           <MenuItem toggle="dropdown" trigger="click" dropdownProps={{
-          placement: 'bottom-end',
+          placement: isRTL() ? 'bottom-start' : 'bottom-end',
           modifiers: [{
             name: 'offset',
             options: {
-              offset: [0, 10] // [skid, distance]
+              offset: isRTL() ? [0, -10] : [0, 10] // [skid, distance]
             }
           }]
         }}>
-            <MenuToggle className="btn btn-sm btn-icon btn-light btn-clear mb-2.5-">
+            <MenuToggle className="btn btn-sm btn-icon btn-light btn-clear">
               <KeenIcon icon="dots-vertical" />
             </MenuToggle>
             {DropdownCard2()}

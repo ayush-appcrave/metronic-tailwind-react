@@ -1,5 +1,5 @@
 import { Fragment } from 'react';
-import { KeenIcon, useMenuBreadcrumbs } from '@/components';
+import { useMenuBreadcrumbs } from '@/components';
 import { Link } from 'react-router-dom';
 import { useMenus } from '@/providers';
 import { useLocation } from 'react-router';
@@ -18,7 +18,7 @@ const ToolbarBreadcrumbs = () => {
             </Link> : <span className={index === items.length - 1 ? 'text-gray-900' : 'text-gray-700'}>
               {item.title}
             </span>}
-          {index !== items.length - 1 && <KeenIcon icon="right" className="text-gray-400 text-3xs" />}
+          {index !== items.length - 1 && <span className="text-gray-400 text-sm">/</span>}
         </Fragment>)}
     </div>;
 };

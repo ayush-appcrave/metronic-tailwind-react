@@ -1,44 +1,45 @@
+import { FormattedMessage } from 'react-intl';
 import { KeenIcon } from '@/components';
 import { MenuItem, MenuLink, MenuTitle, MenuIcon, MenuBadge, MenuSub } from '@/components/menu';
-import { toAbsoluteUrl } from '@/utils';
 import clsx from 'clsx';
-const DropdownUserLanguages = () => {
-  const languages = [{
-    title: 'English',
-    flag: 'united-states.svg',
-    active: true
-  }, {
-    title: 'Spanish',
-    flag: 'spain.svg'
-  }, {
-    title: 'German',
-    flag: 'germany.svg'
-  }, {
-    title: 'Japanese',
-    flag: 'japan.svg'
-  }, {
-    title: 'French',
-    flag: 'france.svg'
-  }];
+import { I18N_LANGUAGES, useLanguage } from '@/i18n';
+const DropdownUserLanguages = ({
+  menuItemRef
+}) => {
+  const {
+    currentLanguage,
+    changeLanguage
+  } = useLanguage();
+  const {
+    isRTL
+  } = useLanguage();
+  const handleLanguage = lang => {
+    changeLanguage(lang);
+    if (menuItemRef.current) {
+      menuItemRef.current.hide(); // Call the closeMenu method to hide the submenu
+    }
+  };
   const buildItems = () => {
-    return languages.map((item, index) => <MenuItem key={index} className={clsx(item.active && 'active')}>
+    return I18N_LANGUAGES.map((item, index) => <MenuItem key={index} className={clsx(item.code === currentLanguage.code && 'active')} onClick={() => {
+      handleLanguage(item);
+    }}>
         <MenuLink className="h-10">
           <MenuIcon>
-            <img src={toAbsoluteUrl(`/media/flags/${item.flag}`)} className="inline-block size-4 rounded-full" alt={item.title} />
+            <img src={item.flag} className="inline-block size-4 rounded-full" alt={item.label} />
           </MenuIcon>
-          <MenuTitle>{item.title}</MenuTitle>
-          {item.active && <MenuBadge>
+          <MenuTitle>{item.label}</MenuTitle>
+          {item.code === currentLanguage.code && <MenuBadge>
               <KeenIcon icon="check-circle" style="solid" className="text-success text-base" />
             </MenuBadge>}
         </MenuLink>
       </MenuItem>);
   };
   return <MenuItem toggle="dropdown" trigger="hover" dropdownProps={{
-    placement: 'left-start',
+    placement: isRTL() ? 'left-start' : 'right-start',
     modifiers: [{
       name: 'offset',
       options: {
-        offset: [-10, 0] // [skid, distance]
+        offset: isRTL() ? [-10, 0] : [10, 0] // [skid, distance]
       }
     }]
   }}>
@@ -46,13 +47,15 @@ const DropdownUserLanguages = () => {
         <MenuIcon>
           <KeenIcon icon="icon" />
         </MenuIcon>
-        <MenuTitle>Language</MenuTitle>
+        <MenuTitle>
+          <FormattedMessage id="USER.MENU.LANGUAGE" />
+        </MenuTitle>
         <div className="flex items-center gap-1.5 rounded-md border border-gray-300 text-gray-600 p-1.5 text-2xs font-medium shrink-0">
-          English
-          <img src={toAbsoluteUrl('/media/flags/united-states.svg')} className="inline-block size-3.5 rounded-full" alt="" />
+          {currentLanguage.label}
+          <img src={currentLanguage.flag} className="inline-block size-3.5 rounded-full" alt="{currentLanguage.label}" />
         </div>
       </MenuLink>
-      <MenuSub className="menu-default light:border-gray-300 w-[170px]">{buildItems()}</MenuSub>
+      <MenuSub className="menu-default light:border-gray-300 w-[190px]">{buildItems()}</MenuSub>
     </MenuItem>;
 };
 export { DropdownUserLanguages };

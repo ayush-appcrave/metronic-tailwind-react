@@ -1,4 +1,3 @@
-import React from 'react';
 import { Modal, ModalContent, ModalBody, ModalHeader, ModalTitle } from '@/components/modal';
 import { KeenIcon } from '@/components';
 import { ModalShareProfileViaLink, ModalShareProfileViaEmail, ModalShareProfileUsers, ModalShareProfileSettings } from '@/partials/modals/share-profile';

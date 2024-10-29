@@ -18,7 +18,8 @@ const AuthSingleSingOn = () => {
     checked: false
   }];
   const renderItem = (item, index) => {
-    return <label key={index} className="flex align-stretch cursor-pointer bg-center h-44 bg-no-repeat border border-gray-300 rounded-xl border-dashed has-[:checked]:border-primary bg-[length:500px] sso-active singl-sign-on-bg">
+    return <label key={index} className="flex align-stretch cursor-pointer bg-center h-44 bg-no-repeat border border-gray-300 rounded-xl border-dashed 
+        has-[:checked]:border-primary bg-[length:500px] sso-active singl-sign-on-bg">
         <div className="flex flex-col place-items-center place-content-center rounded-xl grow">
           <div className="flex items-center h-11">
             <img src={toAbsoluteUrl(`/media/brand-logos/${item.logo}`)} className={item.size} alt="" />

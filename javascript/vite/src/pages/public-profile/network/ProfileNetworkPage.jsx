@@ -7,7 +7,7 @@ import { Navbar, NavbarActions, NavbarDropdown } from '@/partials/navbar';
 import { PageMenu } from '@/pages/public-profile';
 import { Network } from './blocks';
 const ProfileNetworkPage = () => {
-  const image = <img src={toAbsoluteUrl('/media/avatars/300-1.png')} className="rounded-full border-3 border-success max-h-[100px] max-w-full" />;
+  const image = <img src={toAbsoluteUrl('/media/avatars/300-1.png')} className="rounded-full border-3 border-success size-[100px] shrink-0" />;
   return <Fragment>
       <UserProfileHero name="Jenny Klabber" image={image} info={[{
       label: 'KeenThemes',

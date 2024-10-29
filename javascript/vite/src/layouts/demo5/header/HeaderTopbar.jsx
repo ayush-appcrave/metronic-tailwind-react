@@ -5,9 +5,14 @@ import { Menu, MenuItem, MenuToggle, KeenIcon } from '@/components';
 import { DropdownUser } from '@/partials/dropdowns/user';
 import { DropdownNotifications } from '@/partials/dropdowns/notifications';
 import { DropdownApps } from '@/partials/dropdowns/apps';
+import { useLanguage } from '@/i18n';
 const HeaderTopbar = () => {
   const itemChatRef = useRef(null);
+  const itemUserRef = useRef(null);
   const itemNotificationsRef = useRef(null);
+  const {
+    isRTL
+  } = useLanguage();
   const handleDropdownChatShow = () => {
     window.dispatchEvent(new Event('resize'));
   };
@@ -20,11 +25,11 @@ const HeaderTopbar = () => {
       <div className="flex items-center gap-1">
         <Menu>
           <MenuItem ref={itemNotificationsRef} toggle="dropdown" trigger="click" dropdownProps={{
-          placement: 'bottom-end',
+          placement: isRTL() ? 'bottom-start' : 'bottom-end',
           modifiers: [{
             name: 'offset',
             options: {
-              offset: [115, 10] // [skid, distance]
+              offset: isRTL() ? [0, 10] : [115, 10] // [skid, distance] 
             }
           }]
         }}>
@@ -39,11 +44,11 @@ const HeaderTopbar = () => {
 
         <Menu>
           <MenuItem ref={itemChatRef} onShow={handleDropdownChatShow} toggle="dropdown" trigger="click" dropdownProps={{
-          placement: 'bottom-end',
+          placement: isRTL() ? 'bottom-start' : 'bottom-end',
           modifiers: [{
             name: 'offset',
             options: {
-              offset: [60, 10] // [skid, distance]
+              offset: isRTL() ? [0, 10] : [60, 10] // [skid, distance]  
             }
           }]
         }}>
@@ -57,8 +62,8 @@ const HeaderTopbar = () => {
       </div>
 
       <Menu>
-        <MenuItem toggle="dropdown" trigger="click" dropdownProps={{
-        placement: 'bottom-end',
+        <MenuItem ref={itemUserRef} toggle="dropdown" trigger="click" dropdownProps={{
+        placement: isRTL() ? 'bottom-start' : 'bottom-end',
         modifiers: [{
           name: 'offset',
           options: {
@@ -69,7 +74,9 @@ const HeaderTopbar = () => {
           <MenuToggle className="btn btn-icon rounded-full">
             <img className="size-7 rounded-full justify-center border border-gray-500 shrink-0" src={toAbsoluteUrl('/media/avatars/gray/5.png')} alt="" />
           </MenuToggle>
-          {DropdownUser()}
+          {DropdownUser({
+          menuItemRef: itemUserRef
+        })}
         </MenuItem>
       </Menu>
     </div>;

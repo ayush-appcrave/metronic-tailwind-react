@@ -3,11 +3,15 @@ import { toAbsoluteUrl } from '@/utils';
 import { useResponsive } from '@/hooks';
 import { Menu, MenuArrow, MenuIcon, MenuItem, MenuLink, MenuSub, MenuTitle, MenuToggle, KeenIcon } from '@/components';
 import { useDemo5Layout } from '..';
+import { useLanguage } from '@/i18n';
 const HeaderLogo = () => {
   const desktopMode = useResponsive('up', 'lg');
   const {
     setMobileSidebarOpen
   } = useDemo5Layout();
+  const {
+    isRTL
+  } = useLanguage();
   const handleSidebarOpen = () => {
     setMobileSidebarOpen(true);
   };
@@ -55,7 +59,7 @@ const HeaderLogo = () => {
       {desktopMode && <div className="lg:flex items-center">
           <Menu className="menu-default">
             <MenuItem toggle="dropdown" trigger="hover" dropdownProps={{
-          placement: 'bottom-start',
+          placement: isRTL() ? 'bottom-end' : 'bottom-start',
           modifiers: [{
             name: 'offset',
             options: {
@@ -86,7 +90,7 @@ const HeaderLogo = () => {
 
           <Menu className="menu-default">
             <MenuItem toggle="dropdown" trigger="hover" dropdownProps={{
-          placement: 'bottom-start',
+          placement: isRTL() ? 'bottom-end' : 'bottom-start',
           modifiers: [{
             name: 'offset',
             options: {
@@ -102,7 +106,7 @@ const HeaderLogo = () => {
               </MenuToggle>
               <MenuSub className="menu-default w-48 py-2">
                 {items.map((item, index) => <MenuItem key={index}>
-                    <MenuLink path="#">
+                    <MenuLink path="/">
                       {item.icon && <MenuIcon>
                           <KeenIcon icon={item.icon} />
                         </MenuIcon>}
@@ -117,7 +121,7 @@ const HeaderLogo = () => {
 
           <Menu className="menu-default">
             <MenuItem toggle="dropdown" trigger="hover" dropdownProps={{
-          placement: 'bottom-start',
+          placement: isRTL() ? 'bottom-end' : 'bottom-start',
           modifiers: [{
             name: 'offset',
             options: {
@@ -133,7 +137,7 @@ const HeaderLogo = () => {
               </MenuToggle>
               <MenuSub className="menu-default w-48 py-2">
                 {stagings.map((staging, index) => <MenuItem key={index}>
-                    <MenuLink path="#">
+                    <MenuLink path="/">
                       {staging.icon && <MenuIcon>
                           <KeenIcon icon={staging.icon} />
                         </MenuIcon>}

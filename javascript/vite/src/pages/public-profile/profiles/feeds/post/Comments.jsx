@@ -10,10 +10,10 @@ const Comments = ({
         <div className="grid gap-2.5 grow">
           <div className="flex justify-between items-center">
             <div className="flex items-center gap-1.5">
-              <a href="#" className="text-md font-semibold text-gray-900 hover:text-primary-active">
+              <a href="#" className="text-md font-medium text-gray-900 hover:text-primary-active">
                 {item.author}
               </a>
-              <span className="text-sm font-medium text-gray-600">{item.date}</span>
+              <span className="text-sm text-gray-700">{item.date}</span>
             </div>
 
             <div className="justify-center">
@@ -23,7 +23,7 @@ const Comments = ({
             </div>
           </div>
 
-          <p className="text-sm font-medium text-gray-700 heading-5.5">{item.text}</p>
+          <p className="text-sm text-gray-800 heading-5.5">{item.text}</p>
         </div>
       </div>;
   };

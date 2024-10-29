@@ -1,5 +1,9 @@
 import { Menu, MenuItem, MenuLink, MenuTitle, MenuToggle, KeenIcon, MenuSub, MenuIcon } from '@/components';
+import { useLanguage } from '@/i18n';
 const SidebarMenuDashboard = () => {
+  const {
+    isRTL
+  } = useLanguage();
   const dropdownItems = [{
     title: 'Admin API',
     path: '',
@@ -72,7 +76,7 @@ const SidebarMenuDashboard = () => {
   return <div className="flex flex-col gap-7.5 px-2.5">
       <Menu highlight={true} className="menu-default w-full p-0">
         <MenuItem className="w-full" toggle="dropdown" trigger="hover" dropdownProps={{
-        placement: 'bottom-end',
+        placement: isRTL() ? 'bottom-start' : 'bottom-end',
         modifiers: [{
           name: 'offset',
           options: {

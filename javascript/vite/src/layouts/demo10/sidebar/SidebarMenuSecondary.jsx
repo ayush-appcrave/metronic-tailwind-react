@@ -1,4 +1,3 @@
-import React from 'react';
 import { toAbsoluteUrl } from '@/utils';
 import { Menu, MenuItem, MenuLink, MenuTitle, MenuIcon } from '@/components/menu';
 const items = [{

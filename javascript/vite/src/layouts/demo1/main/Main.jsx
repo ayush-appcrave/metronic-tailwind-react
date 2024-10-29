@@ -1,8 +1,8 @@
 import { Fragment, useEffect } from 'react';
 import { Helmet } from 'react-helmet-async';
-import { useLocation } from 'react-router';
+import { Outlet, useLocation } from 'react-router';
 import { useMenuCurrentItem } from '@/components/menu';
-import { Content, Footer, Header, Sidebar, useDemo1Layout } from '../';
+import { Footer, Header, Sidebar, useDemo1Layout } from '../';
 import { useMenus } from '@/providers';
 const Main = () => {
   const {
@@ -49,16 +49,16 @@ const Main = () => {
         <title>{menuItem?.title}</title>
       </Helmet>
 
-      <div className="flex grow">
-        <Sidebar />
+      <Sidebar />
 
-        <div className="wrapper flex grow flex-col">
-          <Header />
+      <div className="wrapper flex grow flex-col">
+        <Header />
 
-          <Content />
+        <main className="grow content pt-5" role="content">
+          <Outlet />
+        </main>
 
-          <Footer />
-        </div>
+        <Footer />
       </div>
     </Fragment>;
 };

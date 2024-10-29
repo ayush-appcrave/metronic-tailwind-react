@@ -3,12 +3,13 @@ import { Helmet } from 'react-helmet-async';
 import { Outlet, useLocation } from 'react-router';
 import { Menu, MenuItem, MenuToggle, useMenuCurrentItem } from '@/components/menu';
 import { useMenus } from '@/providers';
-import { Header, Sidebar, Footer, Toolbar, ToolbarActions, ToolbarHeading } from '..';
+import { Header, Sidebar, Footer, Toolbar, ToolbarHeading, ToolbarActions } from '..';
 import { Link } from 'react-router-dom';
 import { KeenIcon } from '@/components';
 import { useResponsive } from '@/hooks';
 import { ModalSearch } from '@/partials/modals/search/ModalSearch';
 import { DropdownNotifications } from '@/partials/dropdowns/notifications';
+import { useLanguage } from '@/i18n';
 const Main = () => {
   const mobileMode = useResponsive('down', 'lg');
   const itemNotificationsRef = useRef(null);
@@ -22,6 +23,9 @@ const Main = () => {
   const menuItem = useMenuCurrentItem(pathname, menuConfig);
   const [searchModalOpen, setSearchModalOpen] = useState(false);
   const handleOpen = () => setSearchModalOpen(true);
+  const {
+    isRTL
+  } = useLanguage();
   const handleClose = () => {
     setSearchModalOpen(false);
   };
@@ -32,44 +36,42 @@ const Main = () => {
       <div className="flex grow">
         {mobileMode && <Header />}
 
-        <div className="flex flex-col lg:flex-row grow pt-[--tw-header-height] lg:pt-0">
+        <div className="flex flex-col lg:flex-row grow pt-[--tw-header-height]lg:pt-0">
           <Sidebar />
 
           <div className="flex flex-col grow rounded-xl bg-[--tw-content-bg] dark:bg-[--tw-content-bg-dark] border border-gray-300 dark:border-gray-200 lg:ms-[--tw-sidebar-width] mt-0 lg:mt-5 m-5">
-            <div id="scrollable_content" className="flex flex-col grow lg:scrollable-y-auto lg:[scrollbar-width:auto] lg:light:[--tw-scrollbar-thumb-color:var(--tw-content-scrollbar-color)] pt-5">
+            <div className="flex flex-col grow lg:scrollable-y-auto lg:[scrollbar-width:auto] lg:light:[--tw-scrollbar-thumb-color:var(--tw-content-scrollbar-color)] pt-5">
               <main className="grow" role="content">
                 <Toolbar>
                   <ToolbarHeading />
 
                   <ToolbarActions>
-                    <div className="flex items-center">
-                      <button onClick={handleOpen} className="btn btn-icon btn-icon-lg size-9 rounded-md hover:bg-gray-200 dropdown-open:bg-gray-200 hover:text-primary text-gray-600">
-                        <KeenIcon icon="magnifier" />
-                      </button>
-                      <ModalSearch open={searchModalOpen} onClose={handleClose} />
-                    </div>
-                    <Menu className="items-stretch">
+                    <button onClick={handleOpen} className="btn btn-icon btn-icon-lg size-8 rounded-md hover:bg-gray-200 dropdown-open:bg-gray-200 hover:text-primary text-gray-600">
+                      <KeenIcon icon="magnifier" className="!text-base" />
+                    </button>
+                    <ModalSearch open={searchModalOpen} onClose={handleClose} />
+
+                    <Menu className="me-1.5">
                       <MenuItem ref={itemNotificationsRef} toggle="dropdown" trigger="click" dropdownProps={{
-                      placement: 'bottom-end',
+                      placement: isRTL() ? 'bottom-start' : 'bottom-end',
                       modifiers: [{
                         name: 'offset',
                         options: {
-                          offset: [115, 13] // [skid, distance]
+                          offset: [10, 10] // [skid, distance]
                         }
                       }]
                     }}>
-                        <MenuToggle>
-                          <button className="btn btn-icon btn-icon-lg size-8 text-gray-600 hover:text-primary [dropdown-open:text-primary">
-                            <KeenIcon icon="notification-status" />
-                          </button>
+                        <MenuToggle className="dropdown-toggle btn btn-icon btn-icon-lg size-8 rounded-md hover:bg-gray-200 dropdown-open:bg-gray-200 hover:text-primary text-gray-600">
+                          <KeenIcon icon="notification-status" className="!text-base" />
                         </MenuToggle>
                         {DropdownNotifications({
                         menuTtemRef: itemNotificationsRef
                       })}
                       </MenuItem>
                     </Menu>
-                    <Link to={'account/home/get-started'} className="btn btn-xs btn-light">
-                      <KeenIcon icon="exit-down !text-base" />
+
+                    <Link to={'/account/home/get-started'} className="btn btn-xs btn-icon-lg btn-light">
+                      <KeenIcon icon="exit-down" className="!text-base" />
                       Export
                     </Link>
                   </ToolbarActions>
@@ -77,9 +79,8 @@ const Main = () => {
 
                 <Outlet />
               </main>
-
-              <Footer />
             </div>
+            <Footer />
           </div>
         </div>
       </div>

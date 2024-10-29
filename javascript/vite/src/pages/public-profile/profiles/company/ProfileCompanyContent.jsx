@@ -12,7 +12,7 @@ const ProfileCompanyContent = () => {
     label: 'Revenue'
   }, {
     number: '27',
-    label: 'ProfileCompany Rank'
+    label: 'Company Rank'
   }];
   const data = [{
     icon: 'dribbble',

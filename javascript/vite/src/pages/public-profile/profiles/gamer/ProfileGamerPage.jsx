@@ -7,7 +7,7 @@ import { Navbar, NavbarActions, NavbarDropdown } from '@/partials/navbar';
 import { PageMenu } from '@/pages/public-profile';
 import { ProfileGamerContent } from '.';
 const ProfileGamerPage = () => {
-  const image = <img src={toAbsoluteUrl('/media/avatars/300-27.png')} className="rounded-full border-3 border-success max-h-[100px] max-w-full" />;
+  const image = <img src={toAbsoluteUrl('/media/avatars/300-27.png')} className="rounded-full border-3 border-success size-[100px] shrink-0" />;
   return <Fragment>
       <UserProfileHero name="Floyd Miles" image={image} info={[{
       label: 'SF, Bay Area',
@@ -17,7 +17,7 @@ const ProfileGamerPage = () => {
       icon: 'twitch'
     }, {
       email: 'Level 22',
-      icon: ''
+      icon: 'ocus'
     }]} />
 
       <Container>

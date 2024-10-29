@@ -2,7 +2,7 @@ import { Link } from 'react-router-dom';
 import { toAbsoluteUrl } from '@/utils/Assets';
 const UnlockPartnerships = () => {
   return <div className="card">
-      <div className="card-body px-10 py-7.5 lg:pr-12.5">
+      <div className="card-body px-10 py-7.5 lg:pe-12.5">
         <div className="flex flex-wrap md:flex-nowrap items-center gap-6 md:gap-10">
           <div className="flex flex-col gap-3">
             <h2 className="text-1.5xl font-semibold text-gray-900">

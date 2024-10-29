@@ -1,10 +1,14 @@
 /* eslint-disable prettier/prettier */
 import { useEffect, useMemo, useState } from 'react';
+import { useLanguage } from '@/i18n';
 import { DataGrid, KeenIcon, Menu, MenuItem, MenuToggle } from '@/components';
 import { toAbsoluteUrl } from '@/utils';
 import { DropdownCard1 } from '@/partials/dropdowns/general';
 import { MembersData } from '.';
 const Members = () => {
+  const {
+    isRTL
+  } = useLanguage();
   const storageFilterId = 'members-filter';
   const columns = useMemo(() => [{
     accessorFn: row => row.member,
@@ -67,11 +71,11 @@ const Members = () => {
     enableSorting: false,
     cell: () => <Menu className="items-stretch">
             <MenuItem toggle="dropdown" trigger="click" dropdownProps={{
-        placement: 'bottom-end',
+        placement: isRTL() ? 'bottom-start' : 'bottom-end',
         modifiers: [{
           name: 'offset',
           options: {
-            offset: [0, 10] // [skid, distance]
+            offset: isRTL() ? [0, -10] : [0, 10] // [skid, distance]
           }
         }]
       }}>
@@ -84,7 +88,7 @@ const Members = () => {
     meta: {
       className: 'w-[60px]'
     }
-  }], []);
+  }], [isRTL]);
 
   // Memoize the team data
   const data = useMemo(() => MembersData, []);
@@ -111,8 +115,8 @@ const Members = () => {
 
         <div className="flex gap-6">
           <div className="relative">
-            <KeenIcon icon="magnifier" className="leading-none text-md text-gray-500 absolute top-1/2 left-0 -translate-y-1/2 ml-3" />
-            <input type="text" placeholder="Search Members" className="input input-sm pl-8" value={searchTerm} onChange={e => setSearchTerm(e.target.value)} // Update search term
+            <KeenIcon icon="magnifier" className="leading-none text-md text-gray-500 absolute top-1/2 start-0 -translate-y-1/2 ms-3" />
+            <input type="text" placeholder="Search Members" className="input input-sm ps-8" value={searchTerm} onChange={e => setSearchTerm(e.target.value)} // Update search term
           />
           </div>
 

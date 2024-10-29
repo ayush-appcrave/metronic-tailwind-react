@@ -20,7 +20,7 @@ const Sidebar = () => {
     setMobileSidebarOpen(false);
   };
   const renderContent = () => {
-    return <div className="lg:fixed top-0 bottom-0 z-20 flex items-stretch shrink-0 w-[--tw-sidebar-width] bg-[--tw-page-bg] dark:bg-[--tw-page-bg-dark]">
+    return <div className="fixed top-0 bottom-0 z-20 lg:flex items-stretch shrink-0 w-[--tw-sidebar-width] bg-[--tw-page-bg] dark:bg-[--tw-page-bg-dark]">
         <SidebarPrimary />
         <SidebarSecondary />
       </div>;

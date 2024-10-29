@@ -1,3 +1,4 @@
+import { useLanguage } from '@/i18n';
 import { KeenIcon } from '@/components';
 import { Menu, MenuItem, MenuSub, MenuToggle } from '@/components/menu';
 import { Tab, TabPanel, Tabs, TabsList } from '@/components/tabs';
@@ -9,6 +10,9 @@ import { DropdownNotificationsFollowing } from './DropdownNotificationsFollowing
 const DropdownNotifications = ({
   menuTtemRef
 }) => {
+  const {
+    isRTL
+  } = useLanguage();
   const handleClose = () => {
     if (menuTtemRef.current) {
       menuTtemRef.current.hide(); // Call the closeMenu method to hide the submenu
@@ -29,18 +33,18 @@ const DropdownNotifications = ({
             <Tab value={1}>All</Tab>
             <Tab value={2} className="relative">
               Inbox
-              <span className="badge badge-dot badge-success size-[5px] absolute top-2 right-0 transform translate-y-1/2 translate-x-full"></span>
+              <span className="badge badge-dot badge-success size-[5px] absolute top-2 rtl:start-0 end-0 transform translate-y-1/2 translate-x-full"></span>
             </Tab>
             <Tab value={3}>Team</Tab>
             <Tab value={4}>Following</Tab>
           </div>
-          <Menu className="items-stretch">
+          <Menu>
             <MenuItem toggle="dropdown" trigger="click" dropdownProps={{
-            placement: 'bottom-end',
+            placement: isRTL() ? 'bottom-start' : 'bottom-end',
             modifiers: [{
               name: 'offset',
               options: {
-                offset: [0, 0] // [skid, distance]
+                offset: isRTL() ? [0, -10] : [0, 10] // [skid, distance]
               }
             }]
           }}>

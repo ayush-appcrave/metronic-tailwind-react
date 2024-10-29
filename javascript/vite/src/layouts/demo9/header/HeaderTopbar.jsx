@@ -3,9 +3,14 @@ import { Menu, MenuItem, MenuToggle, KeenIcon } from '@/components';
 import { DropdownUser } from '@/partials/dropdowns/user';
 import { DropdownNotifications } from '@/partials/dropdowns/notifications';
 import { DropdownCard2 } from '@/partials/dropdowns/general';
+import { useLanguage } from '@/i18n';
 const HeaderTopbar = () => {
   const itemChatRef = useRef(null);
   const itemNotificationsRef = useRef(null);
+  const itemUserRef = useRef(null);
+  const {
+    isRTL
+  } = useLanguage();
   const handleDropdownChatShow = () => {
     window.dispatchEvent(new Event('resize'));
   };
@@ -13,11 +18,11 @@ const HeaderTopbar = () => {
       <div className="flex items-center gap-2 me-0.5">
         <Menu className="items-stretch">
           <MenuItem ref={itemNotificationsRef} toggle="dropdown" trigger="click" dropdownProps={{
-          placement: 'bottom-end',
+          placement: isRTL() ? 'bottom-start' : 'bottom-end',
           modifiers: [{
             name: 'offset',
             options: {
-              offset: [-7, 10] // [skid, distance]
+              offset: isRTL() ? [7, 10] : [-7, 10] // [skid, distance] 
             }
           }]
         }}>
@@ -31,19 +36,21 @@ const HeaderTopbar = () => {
         </Menu>
 
         <Menu className="items-stretch">
-          <MenuItem toggle="dropdown" trigger="click" dropdownProps={{
-          placement: 'bottom-end',
+          <MenuItem ref={itemUserRef} toggle="dropdown" trigger="click" dropdownProps={{
+          placement: isRTL() ? 'bottom-start' : 'bottom-end',
           modifiers: [{
             name: 'offset',
             options: {
-              offset: [-7, 10] // [skid, distance]
+              offset: isRTL() ? [7, 10] : [-7, 10] // [skid, distance] 
             }
           }]
         }}>
             <MenuToggle className="btn btn-icon btn-icon-base btn-sm text-gray-600 hover:text-primary dropdown-open:text-primary">
               <KeenIcon icon="profile-circle" />
             </MenuToggle>
-            {DropdownUser()}
+            {DropdownUser({
+            menuItemRef: itemUserRef
+          })}
           </MenuItem>
         </Menu>
       </div>
@@ -63,7 +70,7 @@ const HeaderTopbar = () => {
 
       <Menu className="items-stretch">
         <MenuItem ref={itemChatRef} onShow={handleDropdownChatShow} toggle="dropdown" trigger="click" dropdownProps={{
-        placement: 'bottom-end',
+        placement: isRTL() ? 'bottom-start' : 'bottom-end',
         modifiers: [{
           name: 'offset',
           options: {

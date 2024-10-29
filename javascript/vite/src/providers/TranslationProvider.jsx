@@ -7,27 +7,28 @@ import '@formatjs/intl-relativetimeformat/locale-data/es';
 import '@formatjs/intl-relativetimeformat/locale-data/fr';
 import '@formatjs/intl-relativetimeformat/locale-data/ja';
 import '@formatjs/intl-relativetimeformat/locale-data/zh';
-import { createContext, useContext, useState } from 'react';
+import { createContext, useContext, useEffect, useState } from 'react';
 import { IntlProvider } from 'react-intl';
 import { I18N_CONFIG_KEY, I18N_DEFAULT_LANGUAGE } from '@/i18n';
 import { getData, setData } from '@/utils';
-const calculateInitialLanguage = () => {
+const getInitialLanguage = () => {
   const currentLanguage = getData(I18N_CONFIG_KEY);
   return currentLanguage ?? I18N_DEFAULT_LANGUAGE;
 };
 const initialProps = {
-  currentLanguage: calculateInitialLanguage(),
-  changeLanguage: _ => {}
+  currentLanguage: getInitialLanguage(),
+  changeLanguage: _ => {},
+  isRTL: () => false
 };
 const TranslationsContext = createContext(initialProps);
-const useLang = () => useContext(TranslationsContext);
+const useLanguage = () => useContext(TranslationsContext);
 const I18NProvider = ({
   children
 }) => {
   const {
     currentLanguage
-  } = useLang();
-  return <IntlProvider messages={currentLanguage.messages} locale={currentLanguage.code} defaultLocale={calculateInitialLanguage().code}>
+  } = useLanguage();
+  return <IntlProvider messages={currentLanguage.messages} locale={currentLanguage.code} defaultLocale={getInitialLanguage().code}>
       {children}
     </IntlProvider>;
 };
@@ -39,11 +40,18 @@ const TranslationProvider = ({
     setData(I18N_CONFIG_KEY, language);
     setCurrentLanguage(language);
   };
+  const isRTL = () => {
+    return currentLanguage.direction === 'rtl';
+  };
+  useEffect(() => {
+    document.documentElement.setAttribute('dir', currentLanguage.direction);
+  }, [currentLanguage]);
   return <TranslationsContext.Provider value={{
+    isRTL,
     currentLanguage,
     changeLanguage
   }}>
       <I18NProvider>{children}</I18NProvider>
     </TranslationsContext.Provider>;
 };
-export { TranslationProvider, useLang };
+export { TranslationProvider, useLanguage };

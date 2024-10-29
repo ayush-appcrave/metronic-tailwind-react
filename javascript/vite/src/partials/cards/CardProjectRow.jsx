@@ -1,5 +1,6 @@
 import { KeenIcon, Menu, MenuItem, MenuToggle } from '@/components';
 import { toAbsoluteUrl } from '@/utils/Assets';
+import { useLanguage } from '@/i18n';
 import { DropdownCard2 } from '../dropdowns/general';
 import { CommonAvatars } from '../common';
 const CardProjectRow = ({
@@ -10,6 +11,9 @@ const CardProjectRow = ({
   progress,
   team
 }) => {
+  const {
+    isRTL
+  } = useLanguage();
   return <div className="card p-7">
       <div className="flex items-center flex-wrap justify-between gap-5">
         <div className="flex items-center gap-3.5">
@@ -18,7 +22,7 @@ const CardProjectRow = ({
           </div>
 
           <div className="flex flex-col">
-            <a href="#" className="text-lg font-media/brand text-gray-900 hover:text-primary-active mb-px">
+            <a href="#" className="text-lg text-gray-900 hover:text-primary-active mb-px">
               {name}
             </a>
             <span className="text-sm text-gray-700">{description}</span>
@@ -43,15 +47,15 @@ const CardProjectRow = ({
 
             <Menu className="items-stretch">
               <MenuItem toggle="dropdown" trigger="click" dropdownProps={{
-              placement: 'bottom-end',
+              placement: isRTL() ? 'bottom-start' : 'bottom-end',
               modifiers: [{
                 name: 'offset',
                 options: {
-                  offset: [0, 10] // [skid, distance]
+                  offset: isRTL() ? [0, -10] : [0, 10] // [skid, distance]
                 }
               }]
             }}>
-                <MenuToggle className="btn btn-sm btn-icon btn-light btn-clear mb-2.5-">
+                <MenuToggle className="btn btn-sm btn-icon btn-light btn-clear">
                   <KeenIcon icon="dots-vertical" />
                 </MenuToggle>
                 {DropdownCard2()}

@@ -1,14 +1,13 @@
-import React from 'react';
 import clsx from 'clsx';
 import { KeenIcon } from '@/components/keenicons';
 import { Menu, MenuArrow, MenuIcon, MenuItem, MenuLink, MenuSub, MenuTitle } from '@/components/menu';
 import { useMenus } from '@/providers';
 const SidebarMenuPrimary = () => {
   const newItem = {
-    title: "Overview",
-    description: "",
-    icon: "home-3",
-    path: "/"
+    title: 'Overview',
+    description: '',
+    icon: 'home-3',
+    path: '/'
   };
   const {
     getMenuConfig

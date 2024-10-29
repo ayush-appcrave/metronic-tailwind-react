@@ -5,8 +5,12 @@ import { MenuItem, MenuLink, MenuTitle, MenuArrow, Menu } from '@/components/men
 import { MegaMenuSubProfiles, MegaMenuSubAccount, MegaMenuSubNetwork, MegaMenuSubAuth, MegaMenuSubHelp } from '@/partials/menu/mega-menu';
 import { useDemo1Layout } from '../Demo1LayoutProvider';
 import { MENU_MEGA } from '@/config';
+import { useLanguage } from '@/i18n';
 const MegaMenuInner = () => {
   const desktopMode = useResponsive('up', 'lg');
+  const {
+    isRTL
+  } = useLanguage();
   const [disabled, setDisabled] = useState(true); // Initially set disabled to true
   const {
     layout,
@@ -44,7 +48,7 @@ const MegaMenuInner = () => {
         </MenuItem>
 
         <MenuItem key="public-profiles" toggle={desktopMode ? 'dropdown' : 'accordion'} trigger={desktopMode ? 'hover' : 'click'} dropdownProps={{
-        placement: 'bottom-start'
+        placement: isRTL() ? 'bottom-end' : 'bottom-start'
       }}>
           <MenuLink className={linkClass}>
             <MenuTitle className={titleClass}>{publicProfilesItem.title}</MenuTitle>
@@ -54,11 +58,11 @@ const MegaMenuInner = () => {
         </MenuItem>
 
         <MenuItem key="my-account" toggle={desktopMode ? 'dropdown' : 'accordion'} trigger={desktopMode ? 'hover' : 'click'} dropdownProps={{
-        placement: 'bottom-start',
+        placement: isRTL() ? 'bottom-end' : 'bottom-start',
         modifiers: [{
           name: 'offset',
           options: {
-            offset: [-300, 0] // [skid, distance]
+            offset: isRTL() ? [300, 0] : [-300, 0] // [skid, distance]
           }
         }]
       }}>
@@ -70,11 +74,11 @@ const MegaMenuInner = () => {
         </MenuItem>
 
         <MenuItem key="network" toggle={desktopMode ? 'dropdown' : 'accordion'} trigger={desktopMode ? 'hover' : 'click'} dropdownProps={{
-        placement: 'bottom-start',
+        placement: isRTL() ? 'bottom-end' : 'bottom-start',
         modifiers: [{
           name: 'offset',
           options: {
-            offset: [-300, 0] // [skid, distance]
+            offset: isRTL() ? [300, 0] : [-300, 0] // [skid, distance]
           }
         }]
       }}>
@@ -86,11 +90,11 @@ const MegaMenuInner = () => {
         </MenuItem>
 
         <MenuItem key="auth" toggle={desktopMode ? 'dropdown' : 'accordion'} trigger={desktopMode ? 'hover' : 'click'} dropdownProps={{
-        placement: 'bottom-start',
+        placement: isRTL() ? 'bottom-end' : 'bottom-start',
         modifiers: [{
           name: 'offset',
           options: {
-            offset: [-300, 0] // [skid, distance]
+            offset: isRTL() ? [300, 0] : [-300, 0] // [skid, distance]
           }
         }]
       }}>
@@ -102,11 +106,11 @@ const MegaMenuInner = () => {
         </MenuItem>
 
         <MenuItem key="help" toggle={desktopMode ? 'dropdown' : 'accordion'} trigger={desktopMode ? 'hover' : 'click'} dropdownProps={{
-        placement: 'bottom-start',
+        placement: isRTL() ? 'bottom-end' : 'bottom-start',
         modifiers: [{
           name: 'offset',
           options: {
-            offset: [-20, 0] // [skid, distance]
+            offset: isRTL() ? [20, 0] : [-20, 0] // [skid, distance]
           }
         }]
       }}>

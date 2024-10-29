@@ -4,6 +4,7 @@ import { KeenIcon, Menu, MenuItem, MenuToggle } from '@/components';
 import { Tab, TabPanel, Tabs, TabsList } from '@/components/tabs';
 import { DropdownCrud2 } from '@/partials/dropdowns/general';
 import { useViewport } from '@/hooks';
+import { useLanguage } from '@/i18n';
 import { ModalSearchDocs, ModalSearchMixed, ModalSearchSettings, ModalSearchIntegrations, ModalSearchUsers, ModalSearchEmpty, ModalSearchNoResults } from './';
 const ModalSearch = forwardRef(({
   open,
@@ -11,6 +12,9 @@ const ModalSearch = forwardRef(({
 }, ref) => {
   const [scrollableHeight, setScrollableHeight] = useState(0);
   const [viewportHeight] = useViewport();
+  const {
+    isRTL
+  } = useLanguage();
   const offset = 300;
   useEffect(() => {
     setScrollableHeight(viewportHeight - offset);
@@ -237,7 +241,7 @@ const ModalSearch = forwardRef(({
       <ModalContent className="max-w-[600px] top-[15%]">
         <ModalHeader className="py-4 px-5">
           <KeenIcon icon="magnifier" className="text-gray-700 text-xl" />
-          <input type="text" name="query" value="" className="input px-0 border-none bg-transparent shadow-none ml-2.5" onChange={handleSearchInput} placeholder="Tap to start search" />
+          <input type="text" name="query" value="" className="input px-0 border-none bg-transparent shadow-none ms-2.5" onChange={handleSearchInput} placeholder="Tap to start search" />
           <button className="btn btn-sm btn-icon btn-light btn-clear shrink-0" onClick={onClose}>
             <KeenIcon icon="cross" />
           </button>
@@ -256,7 +260,7 @@ const ModalSearch = forwardRef(({
               </div>
               <Menu className="items-stretch">
                 <MenuItem toggle="dropdown" trigger="click" dropdownProps={{
-                placement: 'bottom-end',
+                placement: isRTL() ? 'bottom-start' : 'bottom-end',
                 modifiers: [{
                   name: 'offset',
                   options: {

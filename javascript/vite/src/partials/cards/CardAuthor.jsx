@@ -10,7 +10,7 @@ const CardAuthor = ({
   works
 }) => {
   const renderItem = (work, index) => {
-    return <div key={index} className="card mb-4 border-0 last:mr-5">
+    return <div key={index} className="card mb-4 border-0 last:me-5">
         <div className="bg-cover bg-no-repeat card-rounded-t w-[240px] shrink-0 h-44" style={{
         backgroundImage: `url(${toAbsoluteUrl(`/media/images/600x600/${work.image}`)})`
       }}></div>

@@ -14,7 +14,7 @@ const NetworkUserCardsTeamCrewContent = () => {
       className: 'size-20 relative',
       image: '300-1.png',
       imageClass: 'rounded-full',
-      badgeClass: 'flex size-2.5 bg-success rounded-full absolute bottom-0.5 left-16 transform -translate-y-1/2'
+      badgeClass: 'flex size-2.5 bg-success rounded-full absolute bottom-0.5 start-16 transform -translate-y-1/2'
     },
     email: 'kevin@pinnacle.com',
     team: {
@@ -48,7 +48,7 @@ const NetworkUserCardsTeamCrewContent = () => {
     avatar: {
       className: 'flex items-center justify-center relative text-2.5xl text-info size-20 ring-1 ring-info-clarity bg-info-light rounded-full',
       fallback: 'S',
-      badgeClass: 'flex size-2.5 bg-success rounded-full absolute bottom-0.5 left-16 transform -translate-y-1/2'
+      badgeClass: 'flex size-2.5 bg-success rounded-full absolute bottom-0.5 start-16 transform -translate-y-1/2'
     },
     email: 'sarahj@innx.com',
     team: {
@@ -80,7 +80,7 @@ const NetworkUserCardsTeamCrewContent = () => {
     avatar: {
       className: 'flex items-center justify-center relative text-2.5xl text-danger size-20 ring-1 ring-danger-clarity bg-danger-light rounded-full',
       fallback: 'K',
-      badgeClass: 'flex size-2.5 bg-success rounded-full absolute bottom-0.5 left-16 transform -translate-y-1/2'
+      badgeClass: 'flex size-2.5 bg-success rounded-full absolute bottom-0.5 start-16 transform -translate-y-1/2'
     },
     email: 'kevin@pinnacle.com',
     team: {
@@ -113,7 +113,7 @@ const NetworkUserCardsTeamCrewContent = () => {
       className: 'size-20 relative',
       image: '300-9.png',
       imageClass: 'rounded-full',
-      badgeClass: 'flex size-2.5 bg-success rounded-full absolute bottom-0.5 left-16 transform -translate-y-1/2'
+      badgeClass: 'flex size-2.5 bg-success rounded-full absolute bottom-0.5 start-16 transform -translate-y-1/2'
     },
     email: 'brian@vortextech.com',
     team: {
@@ -145,7 +145,7 @@ const NetworkUserCardsTeamCrewContent = () => {
     avatar: {
       className: 'flex items-center justify-center relative text-2.5xl text-success size-20 ring-1 ring-success-clarity bg-success-light rounded-full',
       fallback: 'M',
-      badgeClass: 'flex size-2.5 bg-gray-400 rounded-full absolute bottom-0.5 left-16 transform -translate-y-1/2'
+      badgeClass: 'flex size-2.5 bg-gray-400 rounded-full absolute bottom-0.5 start-16 transform -translate-y-1/2'
     },
     email: 'megan@catalyst.com',
     team: {
@@ -178,7 +178,7 @@ const NetworkUserCardsTeamCrewContent = () => {
       className: 'size-20 relative',
       image: '300-8.png',
       imageClass: 'rounded-full',
-      badgeClass: 'flex size-2.5 bg-success rounded-full absolute bottom-0.5 left-16 transform -translate-y-1/2'
+      badgeClass: 'flex size-2.5 bg-success rounded-full absolute bottom-0.5 start-16 transform -translate-y-1/2'
     },
     email: 'alex@kteam.com',
     team: {

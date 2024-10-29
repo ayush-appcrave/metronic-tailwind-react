@@ -41,7 +41,7 @@ const Backup = () => {
                   <KeenIcon icon="files" className="text-sm text-gray-500" />
                   <p>{info.row.original.details.pages} pages</p>
                 </span>
-                <span className="border-r border-r-gray-300 h-4"></span>
+                <span className="border-e border-e-gray-300 h-4"></span>
                 <span className="flex items-center gap-1">
                   <KeenIcon icon="picture" className="text-sm text-gray-500" />
                   <p>{info.row.original.details.media} media</p>
@@ -78,8 +78,8 @@ const Backup = () => {
     }
   }], []);
   const data = useMemo(() => BackupData, []);
-  return <div className="card card-grid h-full min-w-full">
-      <div className="card-header">
+  return <div className="card card-grid min-w-full">
+      <div className="card-header py-5 flex-wrap">
         <h3 className="card-title">Backups</h3>
 
         <label className="switch switch-sm">

@@ -9,7 +9,7 @@ const Statistics = ({
           <span className="text-gray-700 text-sm font-normal">{item.title}</span>
         </div>
 
-        {index === 0 && <span className="sm:ml-8 sm:pl-8 border-l border-l-gray-200"></span>}
+        {index === 0 && <span className="sm:ms-8 sm:ps-8 border-s border-s-gray-200"></span>}
       </React.Fragment>;
   };
   return <div className="card">

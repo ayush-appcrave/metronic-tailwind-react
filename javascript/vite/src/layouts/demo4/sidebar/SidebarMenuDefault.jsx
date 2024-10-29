@@ -18,7 +18,7 @@ const SidebarMenuDefault = () => {
   const buildMenuItem = (item, index, level = 0) => {
     if (item.children) {
       return <MenuItem key={index} toggle="accordion" trigger="click" className={item.collapse ? 'flex-col-reverse' : ''}>
-          <MenuLink className={clsx('py-2 pe-2.5 rounded-md border border-transparent', indention[level])}>
+          <MenuLink className={clsx('py-2 pe-2.5 rounded-md border border-transparent', indention[level - 1])}>
             {item.collapse ? <MenuTitle className="text-2sm text-gray-600 menu-link-hover:text-gray-900">
                 <span className="hidden menu-item-show:!flex">{item.collapseTitle}</span>
                 <span className="flex menu-item-show:hidden">{item.expandTitle}</span>

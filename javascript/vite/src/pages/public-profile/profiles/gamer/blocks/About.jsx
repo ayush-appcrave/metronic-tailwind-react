@@ -15,7 +15,7 @@ const About = () => {
     return <tr key={index}>
         <td className="text-sm text-gray-600 pb-3 pe-4 lg:pe-12">{item.label}</td>
         <td className="text-sm text-gray-900 pb-3">
-          {item.type === 1 ? <span>{item.info}</span> : item.type === 2 ? <span>{item.info}</span> : <span dangerouslySetInnerHTML={{
+          {item.type === 1 ? item.info : item.type === 2 ? item.info : <span dangerouslySetInnerHTML={{
           __html: item.info
         }}></span>}
         </td>

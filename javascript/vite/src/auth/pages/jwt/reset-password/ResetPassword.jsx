@@ -4,7 +4,7 @@ import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import * as Yup from 'yup';
 import { useAuthContext } from '@/auth/useAuthContext';
-import { KeenIcon } from '@/components';
+import { Alert, KeenIcon } from '@/components';
 import { useLayout } from '@/providers';
 const initialValues = {
   email: ''
@@ -16,7 +16,7 @@ const ResetPassword = () => {
   const [loading, setLoading] = useState(false);
   const [hasErrors, setHasErrors] = useState(undefined);
   const {
-    requestPassword
+    requestPasswordResetLink
   } = useAuthContext();
   const {
     currentLayout
@@ -31,10 +31,10 @@ const ResetPassword = () => {
       setLoading(true);
       setHasErrors(undefined);
       try {
-        if (!requestPassword) {
+        if (!requestPasswordResetLink) {
           throw new Error('JWTProvider is required for this form.');
         }
-        await requestPassword(values.email);
+        await requestPasswordResetLink(values.email);
         setHasErrors(false);
         setLoading(false);
       } catch {
@@ -54,15 +54,11 @@ const ResetPassword = () => {
           </span>
         </div>
 
-        {hasErrors === true && <div className="mb-lg-15 alert alert-danger">
-            <div className="alert-text font-weight-bold">
-              Sorry, looks like there are some errors detected, please try again.
-            </div>
-          </div>}
+        {hasErrors && <Alert variant="danger">Email address not found. Please check your entry.</Alert>}
 
-        {hasErrors === false && <div className="mb-10 bg-light-info p-8 rounded">
-            <div className="text-info">Sent password reset. Please check your email</div>
-          </div>}
+        {hasErrors === false && <Alert variant="success">
+            Password reset link sent. Please check your email to proceed
+          </Alert>}
 
         <div className="flex flex-col gap-1">
           <label className="form-label text-gray-900">Email</label>
@@ -79,9 +75,9 @@ const ResetPassword = () => {
         </div>
 
         <div className="flex flex-col gap-5 items-stretch">
-          <Link to={currentLayout?.name === 'auth-branded' ? '/auth/login' : '/auth/classic/login'} className="btn btn-primary flex justify-center grow">
+          <button type="submit" className="btn btn-primary flex justify-center grow" disabled={loading || formik.isSubmitting}>
             {loading ? 'Please wait...' : 'Continue'}
-          </Link>
+          </button>
 
           <Link to={currentLayout?.name === 'auth-branded' ? '/auth/login' : '/auth/classic/login'} className="flex items-center justify-center text-sm gap-2 text-gray-700 hover:text-primary">
             <KeenIcon icon="black-left" />

@@ -1,8 +1,8 @@
 import { Fragment } from 'react';
-import { BlockList, ReportSettings } from '@/pages/account/security/privacy-settings';
+import { BlockList } from '@/pages/account/security/privacy-settings';
 import { MiscCreateTeam } from '@/partials/misc';
 import { toAbsoluteUrl } from '@/utils';
-import { Teams } from '..';
+import { Highlights, Teams } from '..';
 const Demo4Content = () => {
   return <div className="grid gap-5 lg:gap-7.5">
       <div className="grid lg:grid-cols-3 gap-5 lg:gap-7.5 items-stretch">
@@ -15,14 +15,14 @@ const Demo4Content = () => {
                 <br />
                 task organization, and progress tracking, all in one place.
               </Fragment>} engage={{
-          path: 'public-profile/teams',
+          path: '/public-profile/teams',
           label: 'Create Team',
           btnColor: 'btn-primary'
         }} />
         </div>
 
         <div className="lg:col-span-1">
-          <ReportSettings className="h-full" />
+          <Highlights />
         </div>
       </div>
 

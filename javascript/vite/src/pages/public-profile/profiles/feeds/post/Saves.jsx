@@ -22,7 +22,7 @@ const Saves = () => {
         <div className="text-xl font-medium text-gray-900 text-center my-2">
           Access Restricted for this Option
         </div>
-        <span className="text-sm font-medium text-gray-500 block mb-7.5">
+        <span className="text-sm text-gray-600 block mb-7.5">
           The user may not have the necessary privileges or permissions <br />
           to access this option in this page
         </span>

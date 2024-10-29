@@ -1,6 +1,10 @@
 import { KeenIcon, Menu, MenuItem, MenuToggle } from '@/components';
+import { useLanguage } from '@/i18n';
 import { DropdownCrud2, DropdownCrudItem1 } from '@/partials/dropdowns/general';
 const PaymentHistory = () => {
+  const {
+    isRTL
+  } = useLanguage();
   const tables = [{
     date: '24 Aug, 2024',
     type: 'Subscription Fee',
@@ -21,12 +25,12 @@ const PaymentHistory = () => {
   const renderItem = (table, index) => {
     return <tr key={index}>
         <td className="text-sm font-normal text-gray-800">{table.date}</td>
-        <td className="text-sm font-normal text-gray-800 lg:text-right">{table.type}</td>
-        <td className="text-sm font-normal text-gray-800 lg:text-right">{table.amount}</td>
+        <td className="text-sm font-normal text-gray-800 lg:text-end">{table.type}</td>
+        <td className="text-sm font-normal text-gray-800 lg:text-end">{table.amount}</td>
         <td>
           <Menu className="items-stretch">
             <MenuItem toggle="dropdown" trigger="click" dropdownProps={{
-            placement: 'bottom-end',
+            placement: isRTL() ? 'bottom-start' : 'bottom-end',
             modifiers: [{
               name: 'offset',
               options: {
@@ -34,7 +38,7 @@ const PaymentHistory = () => {
               }
             }]
           }}>
-              <MenuToggle className="btn btn-sm btn-icon btn-light btn-clear mb-2.5-">
+              <MenuToggle className="btn btn-sm btn-icon btn-light btn-clear">
                 <KeenIcon icon="dots-vertical" />
               </MenuToggle>
               {DropdownCrudItem1()}
@@ -49,7 +53,7 @@ const PaymentHistory = () => {
 
         <Menu className="items-stretch">
           <MenuItem toggle="dropdown" trigger="click" dropdownProps={{
-          placement: 'bottom-end',
+          placement: isRTL() ? 'bottom-start' : 'bottom-end',
           modifiers: [{
             name: 'offset',
             options: {
@@ -57,7 +61,7 @@ const PaymentHistory = () => {
             }
           }]
         }}>
-            <MenuToggle className="btn btn-sm btn-icon btn-light btn-clear mb-2.5-">
+            <MenuToggle className="btn btn-sm btn-icon btn-light btn-clear">
               <KeenIcon icon="dots-vertical" />
             </MenuToggle>
             {DropdownCrud2()}
@@ -69,8 +73,8 @@ const PaymentHistory = () => {
           <thead>
             <tr>
               <th className="min-w-40">Date</th>
-              <th className="min-w-40 lg:text-right">Type</th>
-              <th className="min-w-40 lg:text-right">Amount</th>
+              <th className="min-w-40 lg:text-end">Type</th>
+              <th className="min-w-40 lg:text-end">Amount</th>
               <th className="w-8"></th>
             </tr>
           </thead>

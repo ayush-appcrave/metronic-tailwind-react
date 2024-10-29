@@ -5,6 +5,7 @@ import { Menu, MenuArrow, MenuIcon, MenuItem, MenuLink, MenuSub, MenuTitle, Menu
 import { MENU_ROOT } from '@/config';
 import { useEffect, useState } from 'react';
 import { useDemo3Layout } from '..';
+import { useLanguage } from '@/i18n';
 const HeaderLogo = () => {
   const {
     pathname
@@ -13,6 +14,9 @@ const HeaderLogo = () => {
   const {
     setMobileSidebarOpen
   } = useDemo3Layout();
+  const {
+    isRTL
+  } = useLanguage();
   const handleSidebarOpen = () => {
     setMobileSidebarOpen(true);
   };
@@ -33,16 +37,14 @@ const HeaderLogo = () => {
           <img src={toAbsoluteUrl('/media/app/mini-logo-primary.svg')} className="dark:hidden min-h-[24px]" alt="logo" />
           <img src={toAbsoluteUrl('/media/app/mini-logo-primary-dark.svg')} className="hidden dark:inline-block min-h-[24px]" alt="logo" />
         </Link>
-
-         
       </div>
       <div className="flex items-center">
-          <h3 className="text-gray-700 text-base hidden md:block">MetronicTeam</h3>
-          <span className="text-sm text-gray-400 font-medium px-2.5 hidden md:inline">/</span>
+        <h3 className="text-gray-700 text-base hidden md:block">MetronicTeam</h3>
+        <span className="text-sm text-gray-400 font-medium px-2.5 hidden md:inline">/</span>
 
-          <Menu className="menu-default">
-            <MenuItem toggle="dropdown" trigger="hover" dropdownProps={{
-          placement: 'bottom-start',
+        <Menu className="menu-default">
+          <MenuItem toggle="dropdown" trigger="hover" dropdownProps={{
+          placement: isRTL() ? 'bottom-end' : 'bottom-start',
           modifiers: [{
             name: 'offset',
             options: {
@@ -50,27 +52,25 @@ const HeaderLogo = () => {
             }
           }]
         }}>
-              <MenuToggle>
-                <MenuTitle className="!text-gray-900 !text-base !font-medium">
-                  {selectedMenuItem.title}
-                </MenuTitle>
-                <MenuArrow>
-                  <KeenIcon icon="down" />
-                </MenuArrow>
-              </MenuToggle>
-              <MenuSub className="menu-default">
-                {MENU_ROOT.map((item, index) => <MenuItem key={index} className={item === selectedMenuItem ? 'active' : ''}>
-                    <MenuLink path={item.path}>
-                      {item.icon && <MenuIcon>
-                          <KeenIcon icon={item.icon} />
-                        </MenuIcon>}
-                      <MenuTitle>{item.title}</MenuTitle>
-                    </MenuLink>
-                  </MenuItem>)}
-              </MenuSub>
-            </MenuItem>
-          </Menu>
-        </div>
+            <MenuToggle className="text-gray-900 font-medium">
+              {selectedMenuItem.title}
+              <MenuArrow>
+                <KeenIcon icon="down" />
+              </MenuArrow>
+            </MenuToggle>
+            <MenuSub className="menu-default w-48 py-2">
+              {MENU_ROOT.map((item, index) => <MenuItem key={index} className={item === selectedMenuItem ? 'active' : ''}>
+                  <MenuLink path={item.path}>
+                    {item.icon && <MenuIcon>
+                        <KeenIcon icon={item.icon} />
+                      </MenuIcon>}
+                    <MenuTitle>{item.title}</MenuTitle>
+                  </MenuLink>
+                </MenuItem>)}
+            </MenuSub>
+          </MenuItem>
+        </Menu>
+      </div>
     </div>;
 };
 export { HeaderLogo };

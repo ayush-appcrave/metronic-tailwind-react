@@ -25,7 +25,7 @@ const AdvancedSettingsAppearance = ({
         backgroundImage: `url(${toAbsoluteUrl(`/media/images/600x400/${item.image}`)})`
       }}>
           <input className="appearance-none" type="radio" name="appearance_option" defaultChecked={item.checked} value="2" readOnly />
-          <KeenIcon icon="check-circle" className="checked ml-5 mb-5 text-xl text-success leading-none hidden solid" />
+          <KeenIcon icon="check-circle" className="checked ms-5 mb-5 text-xl text-success leading-none hidden" style="solid" />
         </label>
         <span className="text-sm font-medium text-gray-900">{item.label}</span>
       </div>;

@@ -3,11 +3,15 @@ import { toAbsoluteUrl } from '@/utils';
 import { Menu, MenuArrow, MenuIcon, MenuItem, MenuLink, MenuSub, MenuTitle, MenuToggle, KeenIcon } from '@/components';
 import { useResponsive } from '@/hooks';
 import { useDemo9Layout } from '..';
+import { useLanguage } from '@/i18n';
 const HeaderLogo = () => {
   const desktopMode = useResponsive('up', 'lg');
   const {
     setMobileMegaMenuOpen
   } = useDemo9Layout();
+  const {
+    isRTL
+  } = useLanguage();
   const handleSidebarOpen = () => {
     setMobileMegaMenuOpen(true);
   };
@@ -47,7 +51,7 @@ const HeaderLogo = () => {
 
           <Menu className="menu-default">
             <MenuItem toggle="dropdown" trigger="hover" dropdownProps={{
-          placement: 'bottom-start',
+          placement: isRTL() ? 'bottom-end' : 'bottom-start',
           modifiers: [{
             name: 'offset',
             options: {
@@ -78,7 +82,7 @@ const HeaderLogo = () => {
 
           <Menu className="menu-default w-[120px]">
             <MenuItem toggle="dropdown" trigger="hover" dropdownProps={{
-          placement: 'bottom-start',
+          placement: isRTL() ? 'bottom-end' : 'bottom-start',
           modifiers: [{
             name: 'offset',
             options: {

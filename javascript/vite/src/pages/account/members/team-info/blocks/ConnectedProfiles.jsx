@@ -1,7 +1,11 @@
 import { KeenIcon, Menu, MenuItem, MenuToggle } from '@/components';
 import { toAbsoluteUrl } from '@/utils';
+import { useLanguage } from '@/i18n';
 import { DropdownCardItem1 } from '@/partials/dropdowns/general';
 const ConnectedProfiles = () => {
+  const {
+    isRTL
+  } = useLanguage();
   const items = [{
     user: {
       name: 'Tyler Hero',
@@ -39,15 +43,15 @@ const ConnectedProfiles = () => {
 
           <Menu className="items-stretch">
             <MenuItem toggle="dropdown" trigger="click" dropdownProps={{
-            placement: 'bottom-end',
+            placement: isRTL() ? 'bottom-start' : 'bottom-end',
             modifiers: [{
               name: 'offset',
               options: {
-                offset: [0, 10] // [skid, distance]
+                offset: isRTL() ? [0, -10] : [0, 10] // [skid, distance]
               }
             }]
           }}>
-              <MenuToggle className="btn btn-sm btn-icon btn-light btn-clear mb-2.5-">
+              <MenuToggle className="btn btn-sm btn-icon btn-light btn-clear">
                 <KeenIcon icon="dots-vertical" />
               </MenuToggle>
               {DropdownCardItem1()}

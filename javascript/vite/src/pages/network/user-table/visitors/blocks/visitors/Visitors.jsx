@@ -18,7 +18,8 @@ const Visitors = () => {
             </a>
           </div>,
     meta: {
-      className: 'min-w-[200px]'
+      className: 'min-w-[200px]',
+      cellClassName: 'text-gray-700 font-normal'
     }
   }, {
     accessorFn: row => row.browser,
@@ -30,7 +31,8 @@ const Visitors = () => {
             <span>{info.row.original.browser}</span>
           </div>,
     meta: {
-      className: 'min-w-[250px]'
+      className: 'min-w-[250px]',
+      cellClassName: 'text-gray-700 font-normal'
     }
   }, {
     accessorFn: row => row.ipAddress,
@@ -41,7 +43,8 @@ const Visitors = () => {
       return info.row.original.ipAddress;
     },
     meta: {
-      className: 'min-w-[190px]'
+      className: 'min-w-[190px]',
+      cellClassName: 'text-gray-700 font-normal'
     }
   }, {
     accessorFn: row => row.location,
@@ -53,7 +56,8 @@ const Visitors = () => {
             <span className="leading-none text-gray-700">{info.row.original.location.name}</span>
           </div>,
     meta: {
-      className: 'min-w-[190px]'
+      className: 'min-w-[190px]',
+      cellClassName: 'text-gray-700 font-normal'
     }
   }, {
     accessorFn: row => row.activity,
@@ -62,8 +66,7 @@ const Visitors = () => {
     enableSorting: true,
     cell: info => info.row.original.activity,
     meta: {
-      className: 'min-w-[150px]',
-      cellClassName: 'text-gray-800 font-normal'
+      className: 'min-w-[190px]'
     }
   }, {
     id: 'click',
@@ -80,8 +83,8 @@ const Visitors = () => {
   }], []);
   const data = useMemo(() => VisitorsData, []);
   return <div className="card card-grid min-w-full">
-      <div className="card-header py-5 flex-wrap gap-2">
-        <h3 className="card-title">Showing 10 of 49,053 users</h3>
+      <div className="card-header flex-wrap gap-2">
+        <h3 className="card-title font-medium text-sm">Showing 10 of 49,053 users</h3>
 
         <div className="flex flex-wrap gap-2 lg:gap-5">
           <div className="flex">
@@ -113,7 +116,7 @@ const Visitors = () => {
 
       <div className="card-body">
         <DataGrid columns={columns} data={data} rowSelect={true} pagination={{
-        size: 10
+        size: 5
       }} sorting={[{
         id: 'user',
         desc: false

@@ -90,7 +90,7 @@ const PermissionsCheck = () => {
         <table className="table">
           <thead>
             <tr>
-              <th className="text-left text-gray-300 font-normal min-w-[300px]">Module</th>
+              <th className="text-start text-gray-300 font-normal min-w-[300px]">Module</th>
               <th className="min-w-24 text-gray-700 font-normal text-center">View</th>
               <th className="min-w-24 text-gray-700 font-normal text-center">Modify</th>
               <th className="min-w-24 text-gray-700 font-normal text-center">Publish</th>

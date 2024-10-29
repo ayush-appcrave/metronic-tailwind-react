@@ -1,8 +1,12 @@
 import { KeenIcon, Menu, MenuItem, MenuToggle } from '@/components';
+import { useLanguage } from '@/i18n';
 import { DropdownCard1 } from '@/partials/dropdowns/general';
 const Highlights = ({
   limit
 }) => {
+  const {
+    isRTL
+  } = useLanguage();
   const rows = [{
     icon: 'shop',
     text: 'Online Store',
@@ -70,13 +74,13 @@ const Highlights = ({
       <div className="card-header">
         <h3 className="card-title">Highlights</h3>
 
-        <Menu className="items-stretch">
+        <Menu>
           <MenuItem toggle="dropdown" trigger="click" dropdownProps={{
-          placement: 'bottom-end',
+          placement: isRTL() ? 'bottom-start' : 'bottom-end',
           modifiers: [{
             name: 'offset',
             options: {
-              offset: [0, 10] // [skid, distance]
+              offset: isRTL() ? [0, -10] : [0, 10] // [skid, distance]
             }
           }]
         }}>

@@ -1,4 +1,5 @@
 import { KeenIcon, Menu, MenuItem, MenuToggle } from '@/components';
+import { useLanguage } from '@/i18n';
 import { CommonAvatar } from '@/partials/common';
 import { DropdownCard1 } from '@/partials/dropdowns/general';
 const Heading = ({
@@ -6,29 +7,32 @@ const Heading = ({
   avatar,
   date
 }) => {
+  const {
+    isRTL
+  } = useLanguage();
   return <div className="flex justify-between items-center mb-5 p-7.5 pb-0">
       <div className="flex items-center gap-3">
         <CommonAvatar image={avatar.image} imageClass={avatar.imageClass} icon={avatar.icon} iconClass={avatar.iconClass} className={avatar.className} />
 
         <div className="flex flex-col">
-          <a href="#" className="text-md font-semibold text-gray-900 hover:text-primary-active mb-1">
+          <a href="#" className="text-md font-medium text-gray-900 hover:text-primary-active mb-1">
             {author}
           </a>
-          <time className="text-sm font-medium text-gray-600">{date}</time>
+          <time className="text-sm text-gray-600">{date}</time>
         </div>
       </div>
 
-      <Menu className="items-stretch">
+      <Menu>
         <MenuItem toggle="dropdown" trigger="click" dropdownProps={{
-        placement: 'bottom-end',
+        placement: isRTL() ? 'bottom-start' : 'bottom-end',
         modifiers: [{
           name: 'offset',
           options: {
-            offset: [0, 10] // [skid, distance]
+            offset: isRTL() ? [0, -10] : [0, 10] // [skid, distance]
           }
         }]
       }}>
-          <MenuToggle className="btn btn-sm btn-icon btn-light btn-clear mb-2.5-">
+          <MenuToggle className="btn btn-sm btn-icon btn-light btn-clear">
             <KeenIcon icon="dots-vertical" />
           </MenuToggle>
           {DropdownCard1()}

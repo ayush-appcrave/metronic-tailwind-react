@@ -13,7 +13,7 @@ const Users = ({
       </div>
 
       <div className="card-body">
-        <div className="flex flex-wrap gap-2.5 xl:mr-16">
+        <div className="flex flex-wrap gap-2.5 xl:me-16">
           {items.map((item, index) => {
           return renderItem(item, index);
         })}

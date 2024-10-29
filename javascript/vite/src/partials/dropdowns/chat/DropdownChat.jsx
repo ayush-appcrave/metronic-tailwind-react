@@ -4,6 +4,7 @@ import { getHeight, toAbsoluteUrl } from '@/utils';
 import { Link } from 'react-router-dom';
 import { KeenIcon } from '@/components';
 import { Menu, MenuItem, MenuLink, MenuSub, MenuTitle, MenuToggle, MenuArrow, MenuIcon } from '@/components/menu';
+import { useLanguage } from '@/i18n';
 import { useViewport } from '@/hooks';
 import { CommonAvatars } from '@/partials/common';
 import { DropdownChatMessageOut } from './DropdownChatMessageOut';
@@ -16,6 +17,9 @@ const DropdownChat = ({
   const footerRef = useRef(null);
   const [scrollableHeight, setScrollableHeight] = useState(0);
   const [viewportHeight] = useViewport();
+  const {
+    isRTL
+  } = useLanguage();
   const offset = 110;
   useEffect(() => {
     if (messagesRef.current) {
@@ -72,11 +76,11 @@ const DropdownChat = ({
 
             <Menu>
               <MenuItem toggle="dropdown" trigger="click" dropdownProps={{
-              placement: 'bottom-end',
+              placement: isRTL() ? 'bottom-start' : 'bottom-end',
               modifiers: [{
                 name: 'offset',
                 options: {
-                  offset: [0, 0] // [skid, distance]
+                  offset: isRTL() ? [0, -10] : [0, 10] // [skid, distance]
                 }
               }]
             }}>
@@ -93,11 +97,11 @@ const DropdownChat = ({
                     </MenuLink>
                   </MenuItem>
                   <MenuItem toggle="dropdown" trigger="hover" dropdownProps={{
-                  placement: 'right-start',
+                  placement: isRTL() ? 'left-start' : 'right-start',
                   modifiers: [{
                     name: 'offset',
                     options: {
-                      offset: [-15, 0] // [skid, distance]
+                      offset: isRTL() ? [15, 0] : [-15, 0] // [skid, distance]
                     }
                   }]
                 }}>
@@ -107,7 +111,7 @@ const DropdownChat = ({
                       </MenuIcon>
                       <MenuTitle>Team</MenuTitle>
                       <MenuArrow>
-                        <KeenIcon icon="right" className="text-3xs" />
+                        <KeenIcon icon="right" className="text-3xs rtl:transform rtl:rotate-180" />
                       </MenuArrow>
                     </MenuLink>
                     <MenuSub className="menu-default" rootClassName="w-full max-w-[175px]">
@@ -242,11 +246,11 @@ const DropdownChat = ({
   };
   const buildForm = () => {
     return <div className="relative grow mx-5 mb-2.5">
-        <img src={toAbsoluteUrl('/media/avatars/300-2.png')} className="rounded-full size-[30px] absolute left-0 top-2/4 -translate-y-2/4 ms-2.5" alt="" />
+        <img src={toAbsoluteUrl('/media/avatars/300-2.png')} className="rounded-full size-[30px] absolute start-0 top-2/4 -translate-y-2/4 ms-2.5" alt="" />
 
         <input type="text" className="input h-auto py-4 ps-12 bg-transparent" onChange={handleFormInput} placeholder="Write a message..." value="" />
 
-        <div className="flex items-center gap-2.5 absolute right-3 top-1/2 -translate-y-1/2">
+        <div className="flex items-center gap-2.5 absolute end-3 top-1/2 -translate-y-1/2">
           <button className="btn btn-sm btn-icon btn-light btn-clear">
             <KeenIcon icon="exit-up" />
           </button>

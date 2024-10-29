@@ -13,7 +13,7 @@ const NetworkNFTContent = () => {
       className: 'size-20 shrink-0 relative',
       image: '300-1.png',
       imageClass: 'rounded-full',
-      badgeClass: 'flex size-2.5 bg-success rounded-full ring-2 ring-light absolute bottom-0.5 left-16 transform -translate-y-1/2'
+      badgeClass: 'flex size-2.5 bg-success rounded-full ring-2 ring-light absolute bottom-0.5 start-16 transform -translate-y-1/2'
     },
     name: 'Jenny Klabber',
     email: '@jenny',
@@ -33,7 +33,7 @@ const NetworkNFTContent = () => {
     avatar: {
       className: 'flex items-center justify-center relative text-2.5xl text-danger size-20 ring-1 ring-danger-clarity bg-danger-light rounded-full',
       fallback: 'K',
-      badgeClass: 'flex size-2.5 bg-gray-400 rounded-full ring-2 ring-light absolute bottom-0.5 left-16 transform -translate-y-1/2'
+      badgeClass: 'flex size-2.5 bg-gray-400 rounded-full ring-2 ring-light absolute bottom-0.5 start-16 transform -translate-y-1/2'
     },
     name: 'Kevin Warren',
     email: '@wadeart',
@@ -54,7 +54,7 @@ const NetworkNFTContent = () => {
       className: 'size-20 shrink-0 relative',
       image: '300-12.png',
       imageClass: 'rounded-full',
-      badgeClass: 'flex size-2.5 bg-gray-400 rounded-full ring-2 ring-light absolute bottom-0.5 left-16 transform -translate-y-1/2'
+      badgeClass: 'flex size-2.5 bg-gray-400 rounded-full ring-2 ring-light absolute bottom-0.5 start-16 transform -translate-y-1/2'
     },
     name: 'Guy Hawkins',
     email: '@hawkinsnyc',
@@ -74,7 +74,7 @@ const NetworkNFTContent = () => {
     avatar: {
       className: 'flex items-center justify-center relative text-2.5xl text-primary size-20 ring-1 ring-primary-clarity bg-primary-light rounded-full',
       fallback: 'B',
-      badgeClass: 'flex size-2.5 bg-success rounded-full ring-2 ring-light absolute bottom-0.5 left-16 transform -translate-y-1/2'
+      badgeClass: 'flex size-2.5 bg-success rounded-full ring-2 ring-light absolute bottom-0.5 start-16 transform -translate-y-1/2'
     },
     name: 'Bessie Lane',
     email: '@booker777',
@@ -95,7 +95,7 @@ const NetworkNFTContent = () => {
       className: 'size-20 shrink-0 relative',
       image: '300-5.png',
       imageClass: 'rounded-full',
-      badgeClass: 'flex size-2.5 bg-success rounded-full ring-2 ring-light absolute bottom-0.5 left-16 transform -translate-y-1/2'
+      badgeClass: 'flex size-2.5 bg-success rounded-full ring-2 ring-light absolute bottom-0.5 start-16 transform -translate-y-1/2'
     },
     name: 'Bessie Cooper',
     email: '@bessie_c',
@@ -116,7 +116,7 @@ const NetworkNFTContent = () => {
       className: 'size-20 shrink-0 relative',
       image: '300-2.png',
       imageClass: 'rounded-full',
-      badgeClass: 'flex size-2.5 bg-gray-400 rounded-full ring-2 ring-light absolute bottom-0.5 left-16 transform -translate-y-1/2'
+      badgeClass: 'flex size-2.5 bg-gray-400 rounded-full ring-2 ring-light absolute bottom-0.5 start-16 transform -translate-y-1/2'
     },
     name: 'Jerome Bell',
     email: '@jerome',
@@ -137,7 +137,7 @@ const NetworkNFTContent = () => {
       className: 'size-20 shrink-0 relative',
       image: '300-14.png',
       imageClass: 'rounded-full',
-      badgeClass: 'flex size-2.5 bg-success rounded-full ring-2 ring-light absolute bottom-0.5 left-16 transform -translate-y-1/2'
+      badgeClass: 'flex size-2.5 bg-success rounded-full ring-2 ring-light absolute bottom-0.5 start-16 transform -translate-y-1/2'
     },
     name: 'Floyd Miles',
     email: '@milesandwales',
@@ -158,7 +158,7 @@ const NetworkNFTContent = () => {
       className: 'size-20 shrink-0 relative',
       image: '300-3.png',
       imageClass: 'rounded-full',
-      badgeClass: 'flex size-2.5 bg-success rounded-full ring-2 ring-light absolute bottom-0.5 left-16 transform -translate-y-1/2'
+      badgeClass: 'flex size-2.5 bg-success rounded-full ring-2 ring-light absolute bottom-0.5 start-16 transform -translate-y-1/2'
     },
     name: 'Albert Flores',
     email: '@alberanstanton',
@@ -179,7 +179,7 @@ const NetworkNFTContent = () => {
       className: 'size-20 shrink-0 relative',
       image: '300-17.png',
       imageClass: 'rounded-full',
-      badgeClass: 'flex size-2.5 bg-gray-400 rounded-full ring-2 ring-light absolute bottom-0.5 left-16 transform -translate-y-1/2'
+      badgeClass: 'flex size-2.5 bg-gray-400 rounded-full ring-2 ring-light absolute bottom-0.5 start-16 transform -translate-y-1/2'
     },
     name: 'Jacob Jones',
     email: '@jacobeth_99',

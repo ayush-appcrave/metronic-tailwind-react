@@ -16,7 +16,7 @@ const AccountTeamsPage = () => {
             <ToolbarHeading>
               <ToolbarPageTitle />
               <ToolbarDescription>
-                Efficient team organization with real-time updates
+                efficient team organization with real-time updates
               </ToolbarDescription>
             </ToolbarHeading>
             <ToolbarActions>

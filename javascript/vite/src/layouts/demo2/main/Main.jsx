@@ -24,17 +24,17 @@ const Main = () => {
 
         <Navbar />
 
-        <div className="grow" role="content">
+        <main className="grow" role="content">
           {!pathname.includes('/public-profile/') && <Toolbar>
               <ToolbarHeading />
               <ToolbarActions>
-                <Link to={'public-profile/profiles/default'} className="btn btn-light btn-sm">
+                <Link to={'/public-profile/profiles/default'} className="btn btn-light btn-sm">
                   View Profile
                 </Link>
               </ToolbarActions>
             </Toolbar>}
           <Outlet />
-        </div>
+        </main>
         <Footer />
       </div>
     </Fragment>;

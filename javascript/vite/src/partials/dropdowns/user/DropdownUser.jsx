@@ -1,12 +1,16 @@
-import { DefaultTooltip, KeenIcon } from '@/components';
-import { MenuItem, MenuLink, MenuSub, MenuTitle, MenuSeparator, MenuArrow, MenuIcon } from '@/components/menu';
 import { Fragment } from 'react';
+import { Link } from 'react-router-dom';
+import { FormattedMessage } from 'react-intl';
+import { useAuthContext } from '@/auth';
+import { useLanguage } from '@/i18n';
 import { toAbsoluteUrl } from '@/utils';
 import { DropdownUserLanguages } from './DropdownUserLanguages';
-import { Link } from 'react-router-dom';
 import { useSettings } from '@/providers/SettingsProvider';
-import { useAuthContext } from '@/auth';
-const DropdownUser = () => {
+import { DefaultTooltip, KeenIcon } from '@/components';
+import { MenuItem, MenuLink, MenuSub, MenuTitle, MenuSeparator, MenuArrow, MenuIcon } from '@/components/menu';
+const DropdownUser = ({
+  menuItemRef
+}) => {
   const {
     settings,
     storeSettings
@@ -14,8 +18,10 @@ const DropdownUser = () => {
   const {
     logout
   } = useAuthContext();
+  const {
+    isRTL
+  } = useLanguage();
   const handleThemeMode = event => {
-    console.log('checked:' + event.target.checked);
     const newThemeMode = event.target.checked ? 'dark' : 'light';
     storeSettings({
       themeMode: newThemeMode
@@ -46,7 +52,9 @@ const DropdownUser = () => {
               <MenuIcon className="menu-icon">
                 <KeenIcon icon="badge" />
               </MenuIcon>
-              <MenuTitle>Public Profile</MenuTitle>
+              <MenuTitle>
+                <FormattedMessage id="USER.MENU.PUBLIC_PROFILE" />
+              </MenuTitle>
             </MenuLink>
           </MenuItem>
           <MenuItem>
@@ -54,15 +62,17 @@ const DropdownUser = () => {
               <MenuIcon>
                 <KeenIcon icon="profile-circle" />
               </MenuIcon>
-              <MenuTitle>My Profile</MenuTitle>
+              <MenuTitle>
+                <FormattedMessage id="USER.MENU.MY_PROFILE" />
+              </MenuTitle>
             </MenuLink>
           </MenuItem>
           <MenuItem toggle="dropdown" trigger="hover" dropdownProps={{
-          placement: 'left-start',
+          placement: isRTL() ? 'left-start' : 'right-start',
           modifiers: [{
             name: 'offset',
             options: {
-              offset: [-50, 0] // [skid, distance]
+              offset: isRTL() ? [50, 0] : [-50, 0] // [skid, distance]
             }
           }]
         }}>
@@ -70,9 +80,11 @@ const DropdownUser = () => {
               <MenuIcon>
                 <KeenIcon icon="setting-2" />
               </MenuIcon>
-              <MenuTitle>My Account</MenuTitle>
+              <MenuTitle>
+                <FormattedMessage id="USER.MENU.MY_ACCOUNT" />
+              </MenuTitle>
               <MenuArrow>
-                <KeenIcon icon="right" className="text-3xs" />
+                <KeenIcon icon="right" className="text-3xs rtl:transform rtl:rotate-180" />
               </MenuArrow>
             </MenuLink>
             <MenuSub className="menu-default light:border-gray-300 w-[200px]] md:w-[220px]">
@@ -81,7 +93,9 @@ const DropdownUser = () => {
                   <MenuIcon>
                     <KeenIcon icon="coffee" />
                   </MenuIcon>
-                  <MenuTitle>Get Started</MenuTitle>
+                  <MenuTitle>
+                    <FormattedMessage id="USER.MENU.GET_STARTED" />
+                  </MenuTitle>
                 </MenuLink>
               </MenuItem>
               <MenuItem>
@@ -89,7 +103,9 @@ const DropdownUser = () => {
                   <MenuIcon>
                     <KeenIcon icon="some-files" />
                   </MenuIcon>
-                  <MenuTitle>My Profile</MenuTitle>
+                  <MenuTitle>
+                    <FormattedMessage id="USER.MENU.MY_PROFILE" />
+                  </MenuTitle>
                 </MenuLink>
               </MenuItem>
               <MenuItem>
@@ -97,8 +113,10 @@ const DropdownUser = () => {
                   <MenuIcon>
                     <KeenIcon icon="icon" />
                   </MenuIcon>
-                  <MenuTitle>Billing</MenuTitle>
-                  <DefaultTooltip title="Payment & subscription info" placement="top" className="max-w-48">
+                  <MenuTitle>
+                    <FormattedMessage id="USER.MENU.BILLING" />
+                  </MenuTitle>
+                  <DefaultTooltip title={<FormattedMessage id="USER.MENU.PAYMENT_&_SUBSCRIPTION_INFO" />} placement="top" className="max-w-48">
                     <KeenIcon icon="information-2" className="text-gray-500 text-md" />
                   </DefaultTooltip>
                 </MenuLink>
@@ -108,7 +126,9 @@ const DropdownUser = () => {
                   <MenuIcon>
                     <KeenIcon icon="medal-star" />
                   </MenuIcon>
-                  <MenuTitle>Security</MenuTitle>
+                  <MenuTitle>
+                    <FormattedMessage id="USER.MENU.SECURITY" />
+                  </MenuTitle>
                 </MenuLink>
               </MenuItem>
               <MenuItem>
@@ -116,7 +136,9 @@ const DropdownUser = () => {
                   <MenuIcon>
                     <KeenIcon icon="setting" />
                   </MenuIcon>
-                  <MenuTitle>Members & Roles</MenuTitle>
+                  <MenuTitle>
+                    <FormattedMessage id="USER.MENU.MEMBERS_&_ROLES" />
+                  </MenuTitle>
                 </MenuLink>
               </MenuItem>
               <MenuItem>
@@ -124,7 +146,9 @@ const DropdownUser = () => {
                   <MenuIcon>
                     <KeenIcon icon="switch" />
                   </MenuIcon>
-                  <MenuTitle>Integrations</MenuTitle>
+                  <MenuTitle>
+                    <FormattedMessage id="USER.MENU.INTEGRATIONS" />
+                  </MenuTitle>
                 </MenuLink>
               </MenuItem>
               <MenuSeparator />
@@ -133,7 +157,9 @@ const DropdownUser = () => {
                   <MenuIcon>
                     <KeenIcon icon="shield-tick" />
                   </MenuIcon>
-                  <MenuTitle>Notifications</MenuTitle>
+                  <MenuTitle>
+                    <FormattedMessage id="USER.MENU.NOTIFICATIONS" />
+                  </MenuTitle>
                   <label className="switch switch-sm">
                     <input name="check" type="checkbox" checked onChange={() => {}} value="1" />
                   </label>
@@ -146,10 +172,12 @@ const DropdownUser = () => {
               <MenuIcon>
                 <KeenIcon icon="message-programming" />
               </MenuIcon>
-              <MenuTitle>Dev Forum</MenuTitle>
+              <MenuTitle>
+                <FormattedMessage id="USER.MENU.DEV_FORUM" />
+              </MenuTitle>
             </MenuLink>
           </MenuItem>
-          <DropdownUserLanguages />
+          <DropdownUserLanguages menuItemRef={menuItemRef} />
           <MenuSeparator />
         </div>
       </Fragment>;
@@ -161,7 +189,9 @@ const DropdownUser = () => {
             <span className="menu-icon">
               <KeenIcon icon="moon" />
             </span>
-            <span className="menu-title">Dark Mode</span>
+            <span className="menu-title">
+              <FormattedMessage id="USER.MENU.DARK_MODE" />
+            </span>
             <label className="switch switch-sm">
               <input name="theme" type="checkbox" checked={settings.themeMode === 'dark'} onChange={handleThemeMode} value="1" />
             </label>
@@ -170,7 +200,7 @@ const DropdownUser = () => {
 
         <div className="menu-item px-4 py-1.5">
           <a onClick={logout} className="btn btn-sm btn-light justify-center">
-            Logout
+            <FormattedMessage id="USER.MENU.LOGOUT" />
           </a>
         </div>
       </div>;

@@ -2,7 +2,8 @@ import { toAbsoluteUrl } from '@/utils';
 import { MiscCreateTeam } from '@/partials/misc';
 import { BlockList } from '@/pages/account/security/privacy-settings';
 import { Highlights, Teams } from '@/pages/dashboards/demo1';
-import { Integrations, ManageData } from '@/pages/dashboards/demo2/blocks';
+import { ManageData } from '@/pages/dashboards/demo2/blocks';
+import { Integrations } from './blocks';
 const Demo3Content = () => {
   return <div className="grid gap-5 lg:gap-7.5">
       <div className="grid lg:grid-cols-3 gap-5 lg:gap-7.5 items-stretch">
@@ -15,7 +16,7 @@ const Demo3Content = () => {
                 <br />
                 task organization, and progress tracking, all in one place.
               </>} engage={{
-          path: 'public-profile/teams',
+          path: '/public-profile/teams',
           label: 'Create Team',
           btnColor: 'btn-dark'
         }} />

@@ -26,7 +26,6 @@ const ImageInput = ({
     handleClickInput();
   }, [handleClickInput]);
   const onInputChange = async e => {
-    console.log('onInputChange');
     await handleChange(e.target.files);
     if (inputRef.current) inputRef.current.value = '';
   };

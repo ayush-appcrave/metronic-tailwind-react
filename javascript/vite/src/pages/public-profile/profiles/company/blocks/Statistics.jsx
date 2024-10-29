@@ -11,7 +11,7 @@ const Statistics = ({
           <span className="text-gray-700 text-sm">{item.label}</span>
         </div>
 
-        {index !== items.length - 1 && <span className="[&:not(:last-child)]:border-r border-r-gray-300 my-1"></span>}
+        <span className="[&:not(:last-child)]:border-e border-e-gray-300 my-1"></span>
       </React.Fragment>;
   };
   return <div className="card">

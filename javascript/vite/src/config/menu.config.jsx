@@ -216,7 +216,7 @@ export const MENU_SIDEBAR = [{
       path: '/account/appearance'
     }, {
       title: 'Invite a Friend',
-      path: '/account/members/invite-a-friend'
+      path: '/account/invite-a-friend'
     }, {
       title: 'Activity',
       path: '/account/activity'

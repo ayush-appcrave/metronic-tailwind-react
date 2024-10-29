@@ -1,8 +1,12 @@
 import { Fragment } from 'react';
 import ApexChart from 'react-apexcharts';
+import { useLanguage } from '@/i18n';
 import { KeenIcon, Menu, MenuItem, MenuToggle } from '@/components';
 import { DropdownCard2 } from '@/partials/dropdowns/general';
 const MediaUploads = () => {
+  const {
+    isRTL
+  } = useLanguage();
   const data = [85, 65, 50, 70, 40, 45, 100, 55, 85, 60, 70, 90];
   const categories = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
   const options = {
@@ -146,17 +150,17 @@ const MediaUploads = () => {
         <div className="card-header">
           <h3 className="card-title">Media Uploads</h3>
 
-          <Menu className="items-stretch">
+          <Menu>
             <MenuItem toggle="dropdown" trigger="click" dropdownProps={{
-            placement: 'bottom-end',
+            placement: isRTL() ? 'bottom-start' : 'bottom-end',
             modifiers: [{
               name: 'offset',
               options: {
-                offset: [0, 10] // [skid, distance]
+                offset: isRTL() ? [0, -10] : [0, 10] // [skid, distance]
               }
             }]
           }}>
-              <MenuToggle className="btn btn-sm btn-icon btn-light btn-clear mb-2.5-">
+              <MenuToggle className="btn btn-sm btn-icon btn-light btn-clear">
                 <KeenIcon icon="dots-vertical" />
               </MenuToggle>
               {DropdownCard2()}

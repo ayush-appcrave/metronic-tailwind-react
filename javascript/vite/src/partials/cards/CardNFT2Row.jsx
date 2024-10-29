@@ -36,7 +36,7 @@ const CardNFT2Row = ({
               </a>
               <div className="flex items-center text-sm text-success">
                 {info}
-                <KeenIcon icon="copy" className="ml-1 text-gray-500 text-md" />
+                <KeenIcon icon="copy" className="ms-1 text-gray-500 text-md" />
               </div>
             </div>
           </div>

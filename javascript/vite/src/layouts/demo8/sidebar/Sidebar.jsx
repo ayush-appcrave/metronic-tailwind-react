@@ -11,6 +11,7 @@ import { DropdownApps } from '@/partials/dropdowns/apps';
 import { useDemo8Layout } from '..';
 import { SidebarMenu } from '.';
 import { usePathname } from '@/providers';
+import { useLanguage } from '@/i18n';
 const Sidebar = () => {
   const desktopMode = useResponsive('up', 'lg');
   const mobileMode = useResponsive('down', 'lg');
@@ -23,6 +24,10 @@ const Sidebar = () => {
     setMobileSidebarOpen
   } = useDemo8Layout();
   const itemChatRef = useRef(null);
+  const itemUserRef = useRef(null);
+  const {
+    isRTL
+  } = useLanguage();
   const handleDropdownChatShow = () => {
     window.dispatchEvent(new Event('resize'));
   };
@@ -45,15 +50,15 @@ const Sidebar = () => {
     }
   }, [viewportHeight]);
   const renderContent = () => {
-    return <div className="lg:fixed lg:top-0 lg:bottom-0 lg:z-20 flex flex-col grow shrink-0 bg-[--tw-page-bg] dark:bg-[--tw-page-bg-dark] w-[--tw-sidebar-width]">
-        {desktopMode && <div ref={headerRef} className="flex items-center flex-none justify-center shrink-0 pt-8 pb-3.5">
+    return <div className="fixed top-0 bottom-0 z-20 lg:flex flex-col items-stretch shrink-0 bg-[--tw-page-bg] dark:bg-[--tw-page-bg-dark]">
+        {desktopMode && <div ref={headerRef} className="hidden lg:flex items-center justify-center shrink-0 pt-8 pb-3.5">
             <Link to="/">
               <img src={toAbsoluteUrl('/media/app/mini-logo-square-gray.svg')} className="dark:hidden min-h-[42px]" />
               <img src={toAbsoluteUrl('/media/app/mini-logo-square-gray-dark.svg')} className="hidden dark:block min-h-[42px]" />
             </Link>
           </div>}
 
-        <div className="scrollable-y-auto gap-2.5 shrink-0 flex grow items-center pt-5 lg:pt-0 px-3 flex-col mb-10" style={{
+        <div className="scrollable-y-hover grow gap-2.5 shrink-0 flex items-center pt-5 lg:pt-0 ps-3 pe-3 lg:pe-0 flex-col" style={{
         ...(desktopMode && scrollableHeight > 0 && {
           height: `${scrollableHeight}px`
         })
@@ -65,18 +70,16 @@ const Sidebar = () => {
           <div className="flex flex-col gap-1.5">
             <Menu>
               <MenuItem ref={itemChatRef} onShow={handleDropdownChatShow} toggle="dropdown" trigger="click" dropdownProps={{
-              placement: 'right-end',
+              placement: isRTL() ? 'right-start' : 'right-end',
               modifiers: [{
                 name: 'offset',
                 options: {
-                  offset: [10, 15] // [skid, distance]
+                  offset: [110, 30] // [skid, distance]
                 }
               }]
             }}>
-                <MenuToggle>
-                  <button className="btn btn-icon btn-icon-xl size-9 border border-transparent hover:bg-light hover:text-primary hover:border-gray-200 dropdown-open:bg-gray-200 text-gray-600">
-                    <KeenIcon icon="messages" />
-                  </button>
+                <MenuToggle className="btn btn-icon btn-icon-xl relative rounded-md size-9 border border-transparent hover:bg-light hover:text-primary hover:border-gray-200 dropdown-open:bg-gray-200 text-gray-600">
+                  <KeenIcon icon="messages" />
                 </MenuToggle>
 
                 {DropdownChat({
@@ -87,16 +90,16 @@ const Sidebar = () => {
 
             <Menu>
               <MenuItem ref={itemChatRef} onShow={handleDropdownChatShow} toggle="dropdown" trigger="click" dropdownProps={{
-              placement: 'right-end',
+              placement: isRTL() ? 'right-start' : 'right-end',
               modifiers: [{
                 name: 'offset',
                 options: {
-                  offset: [-10, 15] // [skid, distance]
+                  offset: isRTL() ? [-20, 30] : [20, 30] // [skid, distance] 
                 }
               }]
             }}>
-                <MenuToggle className="btn btn-icon btn-icon-xl size-9 border border-transparent hover:bg-light hover:text-primary hover:border-gray-200 dropdown-open:bg-gray-200 text-gray-600">
-                  <KeenIcon icon="setting-2" className="text-gray-600" />
+                <MenuToggle className="btn btn-icon btn-icon-xl relative rounded-md size-9 border border-transparent hover:bg-light hover:text-primary hover:border-gray-200 dropdown-open:bg-gray-200 text-gray-600">
+                  <KeenIcon icon="setting-2" />
                 </MenuToggle>
 
                 {DropdownApps()}
@@ -105,21 +108,21 @@ const Sidebar = () => {
           </div>
 
           <Menu>
-            <MenuItem toggle="dropdown" trigger="click" dropdownProps={{
-            placement: 'right-end',
+            <MenuItem ref={itemUserRef} toggle="dropdown" trigger="click" dropdownProps={{
+            placement: isRTL() ? 'right-start' : 'right-end',
             modifiers: [{
               name: 'offset',
               options: {
-                offset: [-10, 15]
+                offset: isRTL() ? [-20, 28] : [20, 28] // [skid, distance] 
               }
             }]
           }}>
-              <MenuToggle>
-                <div className="btn btn-icon rounded-full">
-                  <img className="size-8 justify-center rounded-lg border border-gray-500 shrink-0" src={toAbsoluteUrl('/media/avatars/gray/5.png')} alt="" />
-                </div>
+              <MenuToggle className="btn btn-icon">
+                <img className="size-8 justify-center rounded-lg border border-gray-500 shrink-0" src={toAbsoluteUrl('/media/avatars/gray/5.png')} alt="" />
               </MenuToggle>
-              {DropdownUser()}
+              {DropdownUser({
+              menuItemRef: itemUserRef
+            })}
             </MenuItem>
           </Menu>
         </div>

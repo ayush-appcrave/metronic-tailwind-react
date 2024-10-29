@@ -91,23 +91,25 @@ const Teams = () => {
       state: 'dark'
     });
   };
-  return <div className="card card-grid h-full min-w-full">
-      <div className="card-header">
-        <h3 className="card-title">Teams</h3>
-        <div className="input input-sm max-w-48">
-          <KeenIcon icon="magnifier" />
-          <input type="text" placeholder="Search Teams" value={searchQuery} onChange={e => setSearchQuery(e.target.value)} />
+  return <div className="grid">
+      <div className="card card-grid h-full min-w-full">
+        <div className="card-header">
+          <h3 className="card-title">Teams</h3>
+          <div className="input input-sm max-w-48">
+            <KeenIcon icon="magnifier" />
+            <input type="text" placeholder="Search Teams" value={searchQuery} onChange={e => setSearchQuery(e.target.value)} />
+          </div>
         </div>
-      </div>
 
-      <div className="card-body">
-        <DataGrid layout={{
-        cellsBorder: true
-      }} columns={columns} serverSide={true} onFetchData={fetchTeams} rowSelect={true} pagination={{
-        size: 5
-      }}
-      //sorting={[{ id: 'name', desc: false }]}
-      onRowsSelectChange={handleRowsSelectChange} />
+        <div className="card-body">
+          <DataGrid layout={{
+          cellsBorder: true
+        }} columns={columns} serverSide={true} onFetchData={fetchTeams} rowSelect={true} pagination={{
+          size: 5
+        }}
+        //sorting={[{ id: 'name', desc: false }]}
+        onRowsSelectChange={handleRowsSelectChange} />
+        </div>
       </div>
     </div>;
 };
