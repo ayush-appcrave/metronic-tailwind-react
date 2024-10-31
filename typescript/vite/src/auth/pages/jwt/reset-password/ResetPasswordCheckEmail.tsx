@@ -2,9 +2,15 @@ import { Link } from 'react-router-dom';
 
 import { toAbsoluteUrl } from '@/utils';
 import { useLayout } from '@/providers';
+import { useEffect, useState } from 'react';
 
 const ResetPasswordCheckEmail = () => {
   const { currentLayout } = useLayout();
+  const [email, setEmail] = useState<string | null>(null);
+
+  useEffect(() => {
+    setEmail(new URLSearchParams(window.location.search).get('email'));
+  }, []);
 
   return (
     <div className="card max-w-[440px] w-full">
@@ -24,9 +30,9 @@ const ResetPasswordCheckEmail = () => {
 
         <h3 className="text-lg font-medium text-gray-900 text-center mb-3">Check your email</h3>
         <div className="text-2sm text-center text-gray-700 mb-7.5">
-          Please click the link sent to your email
+          Please click the link sent to your email{' '}
           <a href="#" className="text-2sm text-gray-800 font-medium hover:text-primary-active">
-            bob@reui.io
+            {email}
           </a>
           <br />
           to reset your password. Thank you
@@ -47,7 +53,14 @@ const ResetPasswordCheckEmail = () => {
 
         <div className="flex items-center justify-center gap-1">
           <span className="text-xs text-gray-600">Didn’t receive an email?</span>
-          <Link to="/auth/classic/reset-password/enter-email" className="text-xs font-medium link">
+          <Link
+            to={
+              currentLayout?.name === 'auth-branded'
+                ? '/auth/reset-password/enter-email'
+                : '/auth/classic/reset-password/enter-email'
+            }
+            className="text-xs font-medium link"
+          >
             Resend
           </Link>
         </div>
