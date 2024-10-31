@@ -11,6 +11,7 @@
 - **Language Switch**: Implemented a custom `useLanguage` hook for dynamic language switching.
 - **Language Translation**: Integrated `react-intl` and `FormatJS` for robust multi-language support.
 - **Alert Component**: Introduced a new `Alert` component to display contextual messages with icons.
+- **Password Reset**: [Metronic-Pulse](https://keenthemes.com/products/metronic-pulse) reset password API implementation.
 
 ### Updates
 - **Global CSS Enhancements**: Updated global CSS classes to fully support RTL direction. [Learn more](https://keenthemes.com/metronic/tailwind/docs/changelog).
