@@ -105,7 +105,7 @@ const ApiIntegrations = () => {
         <DataGrid 
           columns={columns} 
           data={data} 
-          rowSelect={false} 
+          rowSelect={true} 
           pagination={{ size: 10 }}
           sorting={[{ id: 'integration', desc: false }]} 
         />

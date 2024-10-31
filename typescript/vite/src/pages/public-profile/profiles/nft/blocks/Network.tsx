@@ -8,10 +8,10 @@ interface INetworkItems extends Array<INetworkItem> {}
 
 const Network = () => {
   const items: INetworkItems = [
-    { logo: 'abstract-41', info: 'jennynft' },
-    { logo: 'crown-2', info: 'nftmania' },
-    { logo: 'briefcase', info: 'jennynft' },
-    { logo: 'sms', info: 'jennyklabber' }
+    { logo: 'dribbble', info: 'jennynft' },
+    { logo: 'facebook', info: 'nftmania' },
+    { logo: 'twitter', info: 'jennynft' },
+    { logo: 'youtube', info: 'jennyklabber' }
   ];
 
   const renderItems = (item: INetworkItem, index: number) => {

@@ -40,8 +40,8 @@ const ReportSettings = ({ limit, className }: IReportSettingsProps) => {
     return (
       <label key={index} className="card-group flex items-center justify-between py-4 gap-2.5">
         <div className="flex flex-col justify-center gap-1.5">
-          <span className="leading-none font-semibold text-sm text-gray-900">{item.title}</span>
-          <span className="text-2sm text-gray-600">{item.description}</span>
+          <span className="leading-none font-medium text-sm text-gray-900">{item.title}</span>
+          <span className="text-2sm text-gray-700">{item.description}</span>
         </div>
 
         <input

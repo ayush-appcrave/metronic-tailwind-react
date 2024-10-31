@@ -76,12 +76,12 @@ const NetworkAuthorContent = () => {
         image: '300-3.png',
         imageClass: 'rounded-full',
         badgeClass:
-          'flex size-3 bg-success rounded-full ring-2 ring-light absolute bottom-2 left-[93px] [.authors-row_&]:left-[64px]'
+          'flex size-3 bg-success rounded-full ring-2 ring-light absolute bottom-2 start-[93px] [.authors-row_&]:start-[64px]'
       },
       bgImage: 'bg-8.png',
       name: 'Ralph Edwards',
       location: 'Sacramento, California',
-      url: '#',
+      url: '',
       works: [
         {
           image: '1.jpg',
@@ -111,12 +111,12 @@ const NetworkAuthorContent = () => {
         image: '300-17.png',
         imageClass: 'rounded-full',
         badgeClass:
-          'flex size-3 bg-gray-400 rounded-full ring-2 ring-light absolute bottom-2 left-[93px] [.authors-row_&]:left-[64px]'
+          'flex size-3 bg-gray-400 rounded-full ring-2 ring-light absolute bottom-2 start-[93px] [.authors-row_&]:start-[64px]'
       },
       bgImage: 'bg-9.png',
       name: 'Jacob Jones',
       location: 'Boston, Massachusetts',
-      url: '#',
+      url: '',
       works: [
         {
           image: '27.jpg',
@@ -146,12 +146,12 @@ const NetworkAuthorContent = () => {
         image: '300-5.png',
         imageClass: 'rounded-full',
         badgeClass:
-          'flex size-3 bg-gray-400 rounded-full ring-2 ring-light absolute bottom-2 left-[93px] [.authors-row_&]:left-[64px]'
+          'flex size-3 bg-gray-400 rounded-full ring-2 ring-light absolute bottom-2 start-[93px] [.authors-row_&]:start-[64px]'
       },
       bgImage: 'bg-10.png',
       name: 'Kristin Watson',
       location: 'Cleveland, Ohio',
-      url: '#',
+      url: '',
       works: [
         {
           image: '30.jpg',
