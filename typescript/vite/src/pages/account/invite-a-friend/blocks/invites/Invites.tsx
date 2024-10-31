@@ -176,7 +176,7 @@ const Invites = () => {
             />
             <input
               type="text"
-              className="input input-sm pl-8"
+              className="input input-sm ps-8"
               placeholder="Search Members"
               value={searchTerm}
               onChange={(e) => setSearchTerm(e.target.value)} // Update search term
@@ -195,7 +195,7 @@ const Invites = () => {
           columns={columns} 
           data={filteredData} 
           rowSelect={true}
-          pagination={{ size: 5 }}
+          pagination={{ size: 10 }}
           sorting={[{ id: 'member', desc: false }]} 
         />
       </div>

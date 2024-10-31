@@ -14,7 +14,7 @@ const InviteWithLink = () => {
             <div className="relative w-full">
               <input
                 type="text"
-                className="input pr-10"
+                className="input pe-10"
                 placeholder=""
                 name="user_email"
                 value="https://www.ktstudio.com/RSVP?c=12345XYZt"
