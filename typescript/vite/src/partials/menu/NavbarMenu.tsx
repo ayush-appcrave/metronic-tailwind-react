@@ -23,7 +23,7 @@ const NavbarMenu = ({ items }: { items: TMenuConfig }) => {
             toggle="dropdown"
             trigger="hover"
             dropdownProps={{
-              placement: isRTL() ? 'bottom-start' : 'bottom-end',
+              placement: isRTL() ? 'bottom-end' : 'bottom-start',
               modifiers: [
                 {
                   name: 'offset',
