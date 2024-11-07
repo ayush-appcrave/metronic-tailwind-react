@@ -76,7 +76,7 @@ const NetworkAuthorContent = () => {
         image: '300-3.png',
         imageClass: 'rounded-full',
         badgeClass:
-          'flex size-3 bg-success rounded-full ring-2 ring-light absolute bottom-2 left-[93px] [.authors-row_&]:left-[64px]'
+          'flex size-3 bg-success rounded-full ring-2 ring-light absolute bottom-2 start-[93px] [.authors-row_&]:start-[64px]'
       },
       bgImage: 'bg-8.png',
       name: 'Ralph Edwards',
@@ -111,7 +111,7 @@ const NetworkAuthorContent = () => {
         image: '300-17.png',
         imageClass: 'rounded-full',
         badgeClass:
-          'flex size-3 bg-gray-400 rounded-full ring-2 ring-light absolute bottom-2 left-[93px] [.authors-row_&]:left-[64px]'
+          'flex size-3 bg-gray-400 rounded-full ring-2 ring-light absolute bottom-2 start-[93px] [.authors-row_&]:start-[64px]'
       },
       bgImage: 'bg-9.png',
       name: 'Jacob Jones',
@@ -146,7 +146,7 @@ const NetworkAuthorContent = () => {
         image: '300-5.png',
         imageClass: 'rounded-full',
         badgeClass:
-          'flex size-3 bg-gray-400 rounded-full ring-2 ring-light absolute bottom-2 left-[93px] [.authors-row_&]:left-[64px]'
+          'flex size-3 bg-gray-400 rounded-full ring-2 ring-light absolute bottom-2 start-[93px] [.authors-row_&]:start-[64px]'
       },
       bgImage: 'bg-10.png',
       name: 'Kristin Watson',
