@@ -25,7 +25,7 @@ const AccountPlansPage = () => {
           </Toolbar>
         </Container>
       )}
-      
+
       <Container>
         <AccountPlansContent />
       </Container>

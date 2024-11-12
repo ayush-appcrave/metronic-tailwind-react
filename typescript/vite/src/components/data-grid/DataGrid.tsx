@@ -1,8 +1,8 @@
-/* eslint-disable no-unused-vars */
 import { ReactNode } from 'react';
 import { DataGridInner, DataGridProvider } from '.';
+import { RowSelectionState, Table, TableOptions  } from '@tanstack/react-table';
 
-export type TDataGridTableSpacing = 'xs' | 'sm' | 'lg';
+export type TDataGridLayoutCellSpacing = 'xs' | 'md' | 'sm' | 'lg';
 
 export type TDataGridSelectedRowIds = Set<string>;
 
@@ -10,21 +10,28 @@ export type TDataGridRequestParams = {
   pageIndex: number;
   pageSize: number;
   sorting?: { id: string; desc?: boolean }[];
-  filters?: { id: string; value: unknown }[];
+  customFilters?: { id: string; value: unknown }[];
 };
 
 export interface TDataGridProps<TData extends object> {
   columns: any[];
   data?: TData[];
-  rowSelect?: boolean;
-  onRowsSelectChange?: (selectedRowIds: TDataGridSelectedRowIds) => void;
+  rowSelection?: boolean;
+  getRowId?: TableOptions<TData>['getRowId'],
+  onRowSelectionChange: (state: RowSelectionState, table?: Table<TData>) => void;
   messages?: {
     loading?: ReactNode | string;
     empty?: ReactNode | string;
   };
   layout?: {
-    cellsBorder?: boolean;
-    tableSpacing?: TDataGridTableSpacing;
+    cellSpacing?: TDataGridLayoutCellSpacing;
+    cellBorder?: boolean;
+    card?: boolean;
+    classes?: {
+      table?: '';
+      container?: '';
+      root?: '';
+    };
   };
   pagination?: {
     page?: number;
@@ -38,17 +45,17 @@ export interface TDataGridProps<TData extends object> {
     info?: string;
   };
   sorting?: { id: string; desc?: boolean }[];
+  toolbar?: ReactNode;
   filters?: { id: string; value: unknown }[];
   serverSide?: boolean;
   onFetchData?: (params: any) => Promise<any>;
+  children?: ReactNode;
 }
 
-const DataGrid = <TData extends object>(props: TDataGridProps<TData>) => {
+export const DataGrid = <TData extends object>(props: TDataGridProps<TData>) => {
   return (
     <DataGridProvider {...props}>
       <DataGridInner />
     </DataGridProvider>
   );
 };
-
-export { DataGrid };

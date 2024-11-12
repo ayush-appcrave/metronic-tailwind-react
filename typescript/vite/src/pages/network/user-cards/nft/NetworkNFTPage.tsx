@@ -10,10 +10,10 @@ import {
 } from '@/partials/toolbar';
 
 import { NetworkNFTContent } from '.';
-import { useLayout } from '@/providers'; 
+import { useLayout } from '@/providers';
 
 const NetworkNFTPage = () => {
-  const { currentLayout } = useLayout ();
+  const { currentLayout } = useLayout();
 
   return (
     <Fragment>

@@ -28,7 +28,9 @@ const AccountSecurityLogPage = () => {
               <ToolbarPageTitle />
               <ToolbarDescription>
                 <div className="flex items-center gap-2 font-medium">
-                  <span className="text-sm text-gray-600">Authorized Devices for Report Access</span>
+                  <span className="text-sm text-gray-600">
+                    Authorized Devices for Report Access
+                  </span>
                   <span className="size-0.75 bg-gray-600 rounded-full"></span>
                   <a href="#" className="font-semibold btn btn-link link">
                     Unlink All Devices

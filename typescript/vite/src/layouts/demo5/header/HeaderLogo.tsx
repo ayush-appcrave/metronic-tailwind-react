@@ -120,7 +120,7 @@ const HeaderLogo = () => {
               toggle="dropdown"
               trigger="hover"
               dropdownProps={{
-                placement: isRTL() ? 'bottom-end' : 'bottom-start',  
+                placement: isRTL() ? 'bottom-end' : 'bottom-start',
                 modifiers: [
                   {
                     name: 'offset',
@@ -161,7 +161,7 @@ const HeaderLogo = () => {
               toggle="dropdown"
               trigger="hover"
               dropdownProps={{
-                placement: isRTL() ? 'bottom-end' : 'bottom-start', 
+                placement: isRTL() ? 'bottom-end' : 'bottom-start',
                 modifiers: [
                   {
                     name: 'offset',
@@ -202,7 +202,7 @@ const HeaderLogo = () => {
               toggle="dropdown"
               trigger="hover"
               dropdownProps={{
-                placement: isRTL() ? 'bottom-end' : 'bottom-start', 
+                placement: isRTL() ? 'bottom-end' : 'bottom-start',
                 modifiers: [
                   {
                     name: 'offset',

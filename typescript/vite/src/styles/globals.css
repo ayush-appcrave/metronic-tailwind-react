@@ -5,3 +5,6 @@
 
 /* Demos */
 @import "demos/demo1";
+
+/* Shadcn UI */
+@import "shadcn.ui";

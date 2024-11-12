@@ -10,10 +10,10 @@ import {
 } from '@/partials/toolbar';
 
 import { NetworkUserTableTeamCrewContent } from '.';
-import { useLayout } from '@/providers'; 
+import { useLayout } from '@/providers';
 
 const NetworkUserTableTeamCrewPage = () => {
-  const { currentLayout } = useLayout ();
+  const { currentLayout } = useLayout();
 
   return (
     <Fragment>

@@ -4,7 +4,7 @@ import { useAuthContext } from '@/auth';
 import { KeenIcon, Menu, MenuIcon, MenuItem, MenuToggle } from '@/components';
 import { DropdownUser } from '@/partials/dropdowns/user';
 import { DropdownNotifications } from '@/partials/dropdowns/notifications';
-import { useLanguage } from '@/i18n';  
+import { useLanguage } from '@/i18n';
 
 const SidebarFooter = forwardRef<HTMLDivElement, any>((props, ref) => {
   const { logout } = useAuthContext();
@@ -20,12 +20,12 @@ const SidebarFooter = forwardRef<HTMLDivElement, any>((props, ref) => {
           toggle="dropdown"
           trigger="click"
           dropdownProps={{
-            placement: isRTL() ? 'right-start' : 'right-end', 
+            placement: isRTL() ? 'right-start' : 'right-end',
             modifiers: [
               {
                 name: 'offset',
                 options: {
-                  offset: isRTL() ? [10, 0] : [-10, 0] // [skid, distance] 
+                  offset: isRTL() ? [10, 0] : [-10, 0] // [skid, distance]
                 }
               }
             ]

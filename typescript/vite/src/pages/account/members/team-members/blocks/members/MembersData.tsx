@@ -19,7 +19,7 @@ interface IMembersData {
   roles: string[];
   location: ILocation;
   status: IStatus;
-  recentlyActivity: string; 
+  recentlyActivity: string;
 }
 
 const MembersData: IMembersData[] = [

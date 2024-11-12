@@ -1,7 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { KeenIcon, Menu, MenuItem, MenuToggle, MenuSub } from '@/components';
-import { useLanguage } from '@/i18n';  
+import { useLanguage } from '@/i18n';
 
 const ToolbarMenu = () => {
   const { isRTL } = useLanguage();
@@ -26,7 +26,7 @@ const ToolbarMenu = () => {
         toggle="dropdown"
         trigger="hover"
         dropdownProps={{
-          placement: isRTL() ? 'bottom-start' : 'bottom-end', 
+          placement: isRTL() ? 'bottom-start' : 'bottom-end',
           modifiers: [
             {
               name: 'offset',

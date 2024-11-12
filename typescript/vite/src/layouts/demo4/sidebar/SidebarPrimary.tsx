@@ -129,7 +129,7 @@ const SidebarPrimary = () => {
               toggle="dropdown"
               trigger="click"
               dropdownProps={{
-                placement: isRTL() ? 'left-end' : 'right-end',  
+                placement: isRTL() ? 'left-end' : 'right-end',
                 modifiers: [
                   {
                     name: 'offset',
@@ -155,12 +155,12 @@ const SidebarPrimary = () => {
               toggle="dropdown"
               trigger="click"
               dropdownProps={{
-                placement: isRTL() ? 'left-end' : 'right-end',  
+                placement: isRTL() ? 'left-end' : 'right-end',
                 modifiers: [
                   {
                     name: 'offset',
                     options: {
-                      offset: isRTL() ? [10, 15] : [-10, 15] // [skid, distance]  
+                      offset: isRTL() ? [10, 15] : [-10, 15] // [skid, distance]
                     }
                   }
                 ]
@@ -186,7 +186,7 @@ const SidebarPrimary = () => {
                 {
                   name: 'offset',
                   options: {
-                    offset: isRTL() ? [10, 15] : [-10, 15] // [skid, distance] 
+                    offset: isRTL() ? [10, 15] : [-10, 15] // [skid, distance]
                   }
                 }
               ]

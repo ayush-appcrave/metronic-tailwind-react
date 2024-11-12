@@ -31,12 +31,12 @@ const HeaderTopbar = () => {
             toggle="dropdown"
             trigger="click"
             dropdownProps={{
-              placement: isRTL() ? 'bottom-start' : 'bottom-end',  
+              placement: isRTL() ? 'bottom-start' : 'bottom-end',
               modifiers: [
                 {
                   name: 'offset',
                   options: {
-                    offset: isRTL() ? [0, 10] : [115, 10] // [skid, distance] 
+                    offset: isRTL() ? [0, 10] : [115, 10] // [skid, distance]
                   }
                 }
               ]
@@ -56,12 +56,12 @@ const HeaderTopbar = () => {
             toggle="dropdown"
             trigger="click"
             dropdownProps={{
-              placement: isRTL() ? 'bottom-start' : 'bottom-end',  
+              placement: isRTL() ? 'bottom-start' : 'bottom-end',
               modifiers: [
                 {
                   name: 'offset',
                   options: {
-                    offset: isRTL() ? [0, 10] : [60, 10] // [skid, distance]  
+                    offset: isRTL() ? [0, 10] : [60, 10] // [skid, distance]
                   }
                 }
               ]
@@ -82,7 +82,7 @@ const HeaderTopbar = () => {
           toggle="dropdown"
           trigger="click"
           dropdownProps={{
-            placement: isRTL() ? 'bottom-start' : 'bottom-end',  
+            placement: isRTL() ? 'bottom-start' : 'bottom-end',
             modifiers: [
               {
                 name: 'offset',

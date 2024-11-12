@@ -24,7 +24,7 @@ const NavbarLinks = () => {
         toggle="dropdown"
         trigger="hover"
         dropdownProps={{
-          placement: isRTL() ? 'bottom-start' : 'bottom-end', 
+          placement: isRTL() ? 'bottom-start' : 'bottom-end',
           modifiers: [
             {
               name: 'offset',

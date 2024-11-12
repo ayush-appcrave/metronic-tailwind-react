@@ -10,14 +10,14 @@ import {
 } from '@/partials/toolbar';
 
 import { NetworkSaasUsersContent } from '.';
-import { useLayout } from '@/providers'; 
+import { useLayout } from '@/providers';
 
 const NetworkSaasUsersPage = () => {
-  const { currentLayout } = useLayout ();
+  const { currentLayout } = useLayout();
 
   return (
     <Fragment>
-      {currentLayout?.name === 'demo1-layout' && (  
+      {currentLayout?.name === 'demo1-layout' && (
         <Container>
           <Toolbar>
             <ToolbarHeading>

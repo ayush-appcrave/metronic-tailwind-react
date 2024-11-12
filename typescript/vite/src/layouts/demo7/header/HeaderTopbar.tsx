@@ -3,12 +3,12 @@ import { Menu, MenuItem, MenuToggle } from '@/components';
 import { DropdownUser } from '@/partials/dropdowns/user';
 import { Link } from 'react-router-dom';
 import { useRef } from 'react';
-import { useLanguage } from '@/i18n'; 
+import { useLanguage } from '@/i18n';
 
 const HeaderTopbar = () => {
   const itemUserRef = useRef<any>(null);
   const { isRTL } = useLanguage();
-  
+
   return (
     <div className="flex items-center flex-wrap gap-2 lg:gap-3.5">
       <div className="flex items-center gap-1.5 lg:gap-3.5">
@@ -36,7 +36,7 @@ const HeaderTopbar = () => {
           toggle="dropdown"
           trigger="click"
           dropdownProps={{
-            placement: isRTL() ? 'bottom-start' : 'bottom-end',   
+            placement: isRTL() ? 'bottom-start' : 'bottom-end',
             modifiers: [
               {
                 name: 'offset',

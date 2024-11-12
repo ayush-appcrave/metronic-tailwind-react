@@ -21,7 +21,7 @@ const getInitialLanguage = () => {
 
   // Check if langParam matches a supported language in I18N_LANGUAGES
   if (langParam) {
-    const matchedLanguage = I18N_LANGUAGES.find(lang => lang.code === langParam);
+    const matchedLanguage = I18N_LANGUAGES.find((lang) => lang.code === langParam);
     if (matchedLanguage) {
       setData(I18N_CONFIG_KEY, matchedLanguage);
       return matchedLanguage;

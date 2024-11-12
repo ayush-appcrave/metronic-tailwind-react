@@ -9,7 +9,7 @@ import { KeenIcon } from '@/components';
 import { useResponsive } from '@/hooks';
 import { ModalSearch } from '@/partials/modals/search/ModalSearch';
 import { DropdownNotifications } from '@/partials/dropdowns/notifications';
-import { useLanguage } from '@/i18n';  
+import { useLanguage } from '@/i18n';
 
 const Main = () => {
   const mobileMode = useResponsive('down', 'lg');
@@ -57,7 +57,7 @@ const Main = () => {
                         toggle="dropdown"
                         trigger="click"
                         dropdownProps={{
-                          placement: isRTL() ? 'bottom-start' : 'bottom-end', 
+                          placement: isRTL() ? 'bottom-start' : 'bottom-end',
                           modifiers: [
                             {
                               name: 'offset',

@@ -15,5 +15,5 @@ export interface TLanguage {
 export interface ITranslationProviderProps {
   currentLanguage: TLanguage;
   isRTL: () => boolean;
-  changeLanguage: (lang:TLanguage) => void;
+  changeLanguage: (lang: TLanguage) => void;
 }

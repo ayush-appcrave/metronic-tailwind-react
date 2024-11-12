@@ -11,7 +11,7 @@ import { DropdownApps } from '@/partials/dropdowns/apps';
 import { useDemo8Layout } from '..';
 import { SidebarMenu } from '.';
 import { usePathname } from '@/providers';
-import { useLanguage } from '@/i18n';  
+import { useLanguage } from '@/i18n';
 
 const Sidebar = () => {
   const desktopMode = useResponsive('up', 'lg');
@@ -86,7 +86,7 @@ const Sidebar = () => {
                 toggle="dropdown"
                 trigger="click"
                 dropdownProps={{
-                  placement: isRTL() ? 'right-start' : 'right-end', 
+                  placement: isRTL() ? 'right-start' : 'right-end',
                   modifiers: [
                     {
                       name: 'offset',
@@ -112,12 +112,12 @@ const Sidebar = () => {
                 toggle="dropdown"
                 trigger="click"
                 dropdownProps={{
-                  placement: isRTL() ? 'right-start' : 'right-end', 
+                  placement: isRTL() ? 'right-start' : 'right-end',
                   modifiers: [
                     {
                       name: 'offset',
                       options: {
-                        offset: isRTL() ? [-20, 30] : [20, 30] // [skid, distance] 
+                        offset: isRTL() ? [-20, 30] : [20, 30] // [skid, distance]
                       }
                     }
                   ]
@@ -143,7 +143,7 @@ const Sidebar = () => {
                   {
                     name: 'offset',
                     options: {
-                      offset: isRTL() ? [-20, 28] : [20, 28] // [skid, distance] 
+                      offset: isRTL() ? [-20, 28] : [20, 28] // [skid, distance]
                     }
                   }
                 ]

@@ -20,12 +20,12 @@ const SidebarFooter = forwardRef<HTMLDivElement, any>((props, ref) => {
           toggle="dropdown"
           trigger="click"
           dropdownProps={{
-            placement: isRTL() ? 'right-start' : 'right-end',  
+            placement: isRTL() ? 'right-start' : 'right-end',
             modifiers: [
               {
                 name: 'offset',
                 options: {
-                  offset: isRTL() ? [10, 15] : [-10, 15] // [skid, distance]  
+                  offset: isRTL() ? [10, 15] : [-10, 15] // [skid, distance]
                 }
               }
             ]
@@ -49,7 +49,7 @@ const SidebarFooter = forwardRef<HTMLDivElement, any>((props, ref) => {
             toggle="dropdown"
             trigger="click"
             dropdownProps={{
-              placement: isRTL() ? 'right-start' : 'right-end',  
+              placement: isRTL() ? 'right-start' : 'right-end',
               modifiers: [
                 {
                   name: 'offset',
@@ -70,7 +70,7 @@ const SidebarFooter = forwardRef<HTMLDivElement, any>((props, ref) => {
             toggle="dropdown"
             trigger="click"
             dropdownProps={{
-              placement: isRTL() ? 'right-start' : 'right-end',  
+              placement: isRTL() ? 'right-start' : 'right-end',
               modifiers: [
                 {
                   name: 'offset',
@@ -80,8 +80,7 @@ const SidebarFooter = forwardRef<HTMLDivElement, any>((props, ref) => {
                 }
               ]
             }}
-          >
-          </MenuItem>
+          ></MenuItem>
         </Menu>
 
         <div

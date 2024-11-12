@@ -1,14 +1,14 @@
 import React from 'react';
-import { useDataGrid } from '..';
+import { useDataGrid } from '.';
 
-const DataGridLoader = () => {
+export const DataGridLoader = () => {
   const { props } = useDataGrid();
 
   return (
     <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2">
-      <div className="flex items-center gap-2 px-4 py-2 font-medium leading-none text-2sm border border-gray-200 shadow-default rounded-md text-gray-500 bg-light">
+      <div className="text-muted-foreground bg-card  flex items-center gap-2 px-4 py-2 font-medium leading-none text-sm border shadow-sm rounded-md">
         <svg
-          className="animate-spin -ml-1 h-5 w-5 text-gray-600"
+          className="animate-spin -ml-1 h-5 w-5 text-muted-foreground"
           xmlns="http://www.w3.org/2000/svg"
           fill="none"
           viewBox="0 0 24 24"
@@ -32,5 +32,3 @@ const DataGridLoader = () => {
     </div>
   );
 };
-
-export { DataGridLoader };

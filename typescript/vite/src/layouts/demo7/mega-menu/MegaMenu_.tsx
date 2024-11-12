@@ -41,11 +41,11 @@ const MegaMenu = () => {
       <div className="flex items-stretch">
         <Menu highlight={true} className="menu flex-col lg:flex-row gap-5 lg:gap-7.5">
           {items.map((item, index) => (
-            <MenuItem
-              key={index}
-              className=""
-            >
-              <MenuLink path={item.path} className="border-b border-b-transparent menu-item-active:border-b-gray-400 menu-item-here:border-b-gray-400">
+            <MenuItem key={index} className="">
+              <MenuLink
+                path={item.path}
+                className="border-b border-b-transparent menu-item-active:border-b-gray-400 menu-item-here:border-b-gray-400"
+              >
                 <MenuTitle className="text-2sm text-gray-800 dark:menu-item-here:text-gray-900 dark:menu-item-active:text-gray-900 menu-item-show:text-gray-900 menu-item-here:text-gray-900 menu-item-active:font-medium menu-item-here:font-medium">
                   {item.title}
                 </MenuTitle>

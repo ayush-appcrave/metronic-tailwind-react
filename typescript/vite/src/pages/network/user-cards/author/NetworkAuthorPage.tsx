@@ -10,10 +10,10 @@ import {
 } from '@/partials/toolbar';
 
 import { NetworkAuthorContent } from '.';
-import { useLayout } from '@/providers'; 
+import { useLayout } from '@/providers';
 
 const NetworkAuthorPage = () => {
-  const { currentLayout } = useLayout ();
+  const { currentLayout } = useLayout();
 
   return (
     <Fragment>

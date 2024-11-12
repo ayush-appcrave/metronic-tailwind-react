@@ -10,10 +10,10 @@ import {
 } from '@/partials/toolbar';
 
 import { NetworkUserCardsTeamCrewContent } from '.';
-import { useLayout } from '@/providers'; 
+import { useLayout } from '@/providers';
 
 const NetworkUserCardsTeamCrewPage = () => {
-  const { currentLayout } = useLayout ();
+  const { currentLayout } = useLayout();
 
   return (
     <Fragment>

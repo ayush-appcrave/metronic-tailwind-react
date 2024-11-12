@@ -40,7 +40,7 @@ const NavbarMenu = () => {
             trigger="hover"
             toggle="dropdown"
             dropdownProps={{
-              placement: isRTL() ? 'bottom-end' : 'bottom-start' 
+              placement: isRTL() ? 'bottom-end' : 'bottom-start'
             }}
           >
             <MenuLink className="gap-1.5">
@@ -87,7 +87,7 @@ const NavbarMenu = () => {
                 {
                   name: 'offset',
                   options: {
-                    offset: isRTL() ? [10, 0] : [-10, 0] // [skid, distance] 
+                    offset: isRTL() ? [10, 0] : [-10, 0] // [skid, distance]
                   }
                 }
               ]

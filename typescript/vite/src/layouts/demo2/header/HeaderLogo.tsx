@@ -16,7 +16,7 @@ import { useEffect, useState } from 'react';
 import { useLanguage } from '@/i18n';
 
 const HeaderLogo = () => {
-  const { pathname, } = useLocation();
+  const { pathname } = useLocation();
   const { isRTL } = useLanguage();
   const [selectedMenuItem, setSelectedMenuItem] = useState(MENU_ROOT[1]);
 

@@ -10,14 +10,14 @@ import {
 } from '@/partials/toolbar';
 
 import { NetworkSocialContent } from '.';
-import { useLayout } from '@/providers'; 
+import { useLayout } from '@/providers';
 
 const NetworkSocialPage = () => {
-  const { currentLayout } = useLayout ();
+  const { currentLayout } = useLayout();
 
   return (
     <Fragment>
-      {currentLayout?.name === 'demo1-layout' && ( 
+      {currentLayout?.name === 'demo1-layout' && (
         <Container>
           <Toolbar>
             <ToolbarHeading>

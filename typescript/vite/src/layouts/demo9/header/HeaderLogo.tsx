@@ -14,7 +14,7 @@ import {
 import { useResponsive } from '@/hooks';
 
 import { useDemo9Layout } from '..';
-import { useLanguage } from '@/i18n';  
+import { useLanguage } from '@/i18n';
 
 interface IHeaderLogoTeam {
   title: string;
@@ -94,7 +94,7 @@ const HeaderLogo = () => {
               toggle="dropdown"
               trigger="hover"
               dropdownProps={{
-                placement: isRTL() ? 'bottom-end' : 'bottom-start', 
+                placement: isRTL() ? 'bottom-end' : 'bottom-start',
                 modifiers: [
                   {
                     name: 'offset',
@@ -135,7 +135,7 @@ const HeaderLogo = () => {
               toggle="dropdown"
               trigger="hover"
               dropdownProps={{
-                placement: isRTL() ? 'bottom-end' : 'bottom-start',  
+                placement: isRTL() ? 'bottom-end' : 'bottom-start',
                 modifiers: [
                   {
                     name: 'offset',

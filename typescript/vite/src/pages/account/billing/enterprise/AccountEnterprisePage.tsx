@@ -25,7 +25,9 @@ const AccountEnterprisePage = () => {
           <Toolbar>
             <ToolbarHeading>
               <ToolbarPageTitle />
-              <ToolbarDescription>Advanced Billing Solutions for Large Businesses</ToolbarDescription>
+              <ToolbarDescription>
+                Advanced Billing Solutions for Large Businesses
+              </ToolbarDescription>
             </ToolbarHeading>
             <ToolbarActions>
               <a href="#" className="btn btn-sm btn-light">

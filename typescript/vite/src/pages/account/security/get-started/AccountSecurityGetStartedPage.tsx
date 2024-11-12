@@ -24,7 +24,10 @@ const AccountSecurityGetStartedPage = () => {
                 <div className="flex items-center gap-2">
                   <span className="text-sm text-gray-700">19 issues need your attention</span>
                   <span className="size-0.75 bg-gray-600 rounded-full"></span>
-                  <Link to="/account/security/security-log" className="font-medium btn btn-link link">
+                  <Link
+                    to="/account/security/security-log"
+                    className="font-medium btn btn-link link"
+                  >
                     Security Log
                   </Link>
                 </div>

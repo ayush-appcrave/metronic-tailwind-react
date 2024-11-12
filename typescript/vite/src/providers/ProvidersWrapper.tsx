@@ -17,21 +17,19 @@ const queryClient = new QueryClient();
 const ProvidersWrapper = ({ children }: PropsWithChildren) => {
   return (
     <QueryClientProvider client={queryClient}>
-      <SnackbarProvider>
-        <AuthProvider>
-          <SettingsProvider>
-            <TranslationProvider>
-              <HelmetProvider>
-                <LayoutProvider>
-                  <LoadersProvider>
-                    <MenusProvider>{children}</MenusProvider>
-                  </LoadersProvider>
-                </LayoutProvider>
-              </HelmetProvider>
-            </TranslationProvider>
-          </SettingsProvider>
-        </AuthProvider>
-      </SnackbarProvider>
+      <AuthProvider>
+        <SettingsProvider>
+          <TranslationProvider>
+            <HelmetProvider>
+              <LayoutProvider>
+                <LoadersProvider>
+                  <MenusProvider>{children}</MenusProvider>
+                </LoadersProvider>
+              </LayoutProvider>
+            </HelmetProvider>
+          </TranslationProvider>
+        </SettingsProvider>
+      </AuthProvider>
     </QueryClientProvider>
   );
 };

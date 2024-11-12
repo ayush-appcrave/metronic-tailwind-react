@@ -21,7 +21,7 @@ const AccountSettingsPlainPage = () => {
       <PageNavbar />
 
       {currentLayout?.name === 'demo1-layout' && (
-      <Container>
+        <Container>
           <Toolbar>
             <ToolbarHeading>
               <ToolbarPageTitle />

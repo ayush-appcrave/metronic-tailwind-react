@@ -13,7 +13,6 @@ import { PageNavbar } from '@/pages/account';
 import { AccountPermissionsCheckContent } from '.';
 import { useLayout } from '@/providers';
 
-
 const AccountPermissionsCheckPage = () => {
   const { currentLayout } = useLayout();
 

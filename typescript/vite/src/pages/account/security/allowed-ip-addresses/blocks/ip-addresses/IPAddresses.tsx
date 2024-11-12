@@ -105,11 +105,11 @@ const IPAddresses = () => {
 
   const data: IIPAddressesData[] = useMemo(() => IPAddressesData, []);
 
-  return (
-    <div className="card card-grid min-w-full">
-      <div className="card-header">
-        <h3 className="card-title">IP Addresses</h3>
+  const Toolbar = () => {
 
+    return (
+      <div className="card-header px-5 border-b-0">
+        <h3 className="card-title">IP Addresses</h3>
         <div className="flex gap-5">
           <label className="switch switch-sm">
             <span className="switch-label">
@@ -120,17 +120,19 @@ const IPAddresses = () => {
           <a href="#" className="btn btn-sm btn-primary">Add IP Address</a>
         </div>
       </div>
+    );
+  }
 
-      <div className="card-body">
-        <DataGrid 
-          columns={columns} 
-          data={data} 
-          rowSelect={true} 
-          pagination={{ size: 10 }}
-          sorting={[{ id: 'method', desc: false }]}
-        />
-      </div>
-    </div>
+  return (
+    <DataGrid 
+      columns={columns} 
+      data={data} 
+      toolbar={<Toolbar/>}
+      rowSelection={true} 
+      layout={{ card: true }}
+      pagination={{ size: 10 }}
+      sorting={[{ id: 'method', desc: false }]}
+    />
   );
 };
 
