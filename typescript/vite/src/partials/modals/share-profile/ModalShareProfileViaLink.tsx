@@ -10,7 +10,7 @@ const ModalShareProfileViaLink = () => {
       </div>
 
       <label className="input">
-        <input type="text" value="https://metronic.com/profiles/x7g2vA3kZ5" />
+        <input type="text" value="https://metronic.com/profiles/x7g2vA3kZ5" onChange={() => {}} />
         <button className="btn btn-icon">
           <KeenIcon icon="copy" />
         </button>

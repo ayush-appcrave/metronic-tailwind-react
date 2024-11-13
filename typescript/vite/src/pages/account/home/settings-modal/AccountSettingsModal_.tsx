@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState } from 'react';
 import { Scrollspy } from '@/components';
+import { Modal, ModalContent, ModalBody, ModalHeader } from '@/components/modal'; // Import your custom Modal component
 import { AccountSettingsSidebar } from '@/pages/account/home/settings-sidebar';
 import {
   AdvancedSettingsAddress,
@@ -17,14 +18,7 @@ import {
   ExternalServicesManageApi
 } from '@/pages/account/home/settings-sidebar/blocks';
 import { useResponsive, useViewport } from '@/hooks';
-import {
-  Dialog,
-  DialogBody,
-  DialogContent,
-  DialogDescription,
-  DialogHeader,
-  DialogTitle
-} from '@/components/ui/dialog';
+import { Dialog, DialogBody, DialogContent, DialogHeader } from '@/components/ui/dialog';
 
 interface IModalProfileProps {
   open: boolean;
@@ -45,10 +39,8 @@ const AccountSettingsModal = ({ open, onOpenChange }: IModalProfileProps) => {
 
   return (
     <Dialog open={open} onOpenChange={onOpenChange}>
-      <DialogContent className="container-fixed max-w-[auto] flex flex-col p-10 overflow-hidden [&>button]:hidden">
+      <DialogContent className="container-fixed max-w-[auto] top-[5%] lg:top- translate-y-0 px-30 overflow-hidden pt-7.5 my-[3%] w-full [&>button]:hidden">
         <DialogHeader className="p-0 border-0">
-          <DialogTitle></DialogTitle>
-          <DialogDescription></DialogDescription>
           <div className="flex items-center justify-between flex-wrap grow gap-5 pb-7.5">
             <div className="flex flex-col justify-center gap-2">
               <h1 className="text-xl font-semibold leading-none text-gray-900">Settings - Modal</h1>

@@ -40,7 +40,7 @@ const AuthenticationAccountDeactivatedPage = () => {
 
       <Container>
         <AccountGetStartedContent />
-        <ModalAccountDeactivated open={profileModalOpen} onClose={handleClose} />
+        <ModalAccountDeactivated open={profileModalOpen} onOpenChange={handleClose} />
       </Container>
     </Fragment>
   );
