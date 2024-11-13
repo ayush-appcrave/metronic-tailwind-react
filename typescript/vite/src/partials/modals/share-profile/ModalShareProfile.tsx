@@ -17,7 +17,7 @@ const ModalShareProfile = ({ open, onClose }: ModalShareProfileProps) => {
   const scrollableHeight = 300;
 
   return (
-    <Modal open={open} onClose={onClose}>
+    <Modal open={open} onClose={onClose} disableEnforceFocus={true}>
       <ModalContent className="max-w-[600px] top-[15%]">
         <ModalHeader>
           <ModalTitle>Share Profile</ModalTitle>
