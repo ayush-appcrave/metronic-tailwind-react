@@ -39,7 +39,7 @@ const DataGridTable = <TData,>() => {
           <tr
             key={headerGroup.id}
             className={cn(
-              'border-b transition-colors bg-muted/30 data-[state=selected]:bg-muted',
+              'border-b bg-muted/30 data-[state=selected]:bg-muted',
               cellBorder && '[&_>:last-child]:border-e-0'
             )}
           >
@@ -69,7 +69,7 @@ const DataGridTable = <TData,>() => {
               key={row.id}
               data-state={row.getIsSelected() ? 'selected' : undefined}
               className={cn(
-                'border-b transition-colors hover:bg-muted/30 data-[state=selected]:bg-muted/50',
+                'border-b hover:bg-muted/30 data-[state=selected]:bg-muted/50',
                 cellBorder && '[&_>:last-child]:border-e-0'
               )}
             >
