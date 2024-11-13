@@ -7,6 +7,15 @@ import { toAbsoluteUrl } from '@/utils';
 
 import { CurrentSessionsData, ICurrentSessionsData } from '.';
 
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue
+} from '@/components/ui/select';
+
+
 const CurrentSessions = () => {
   const columns = useMemo<ColumnDef<ICurrentSessionsData>[]>(
     () => [
@@ -112,22 +121,32 @@ const CurrentSessions = () => {
             <input name="check" type="checkbox" value="1" readOnly />
           </label>
           <div className="flex gap-3">
-            <select className="select select-sm min-w-32" data-datatable-filter-column="browser">
-              <option value="">All Browsers</option>
-              <option value="chrome">Chrome</option>
-              <option value="firefox">Firefox</option>
-              <option value="edge">Edge</option>
-              <option value="safari">Safari</option>
-              <option value="Brave">Brave</option>
-            </select>
+            <Select defaultValue="1">
+              <SelectTrigger className="min-w-32" size="sm">
+                <SelectValue placeholder="Select" />
+              </SelectTrigger>
+              <SelectContent className="min-w-32">
+                <SelectItem value="1">All Browsers</SelectItem>
+                <SelectItem value="2">Chrome</SelectItem>
+                <SelectItem value="3">Firefox</SelectItem> 
+                <SelectItem value="4">Edge</SelectItem> 
+                <SelectItem value="5">Safari</SelectItem> 
+                <SelectItem value="6">Brave</SelectItem> 
+              </SelectContent>
+            </Select>  
 
-            <select className="select select-sm min-w-32">
-              <option>All Locations</option>
-              <option value="uk">London</option>
-              <option value="us">USA</option>
-              <option value="jp">Japan</option>
-              <option value="my">Malaysia</option>
-            </select>
+            <Select defaultValue="1">
+              <SelectTrigger className="min-w-32" size="sm">
+                <SelectValue placeholder="Select" />
+              </SelectTrigger>
+              <SelectContent className="min-w-32">
+                <SelectItem value="1">All Locations</SelectItem>
+                <SelectItem value="2">London</SelectItem>
+                <SelectItem value="3">USA</SelectItem> 
+                <SelectItem value="4">Japan</SelectItem> 
+                <SelectItem value="5">Malaysia</SelectItem>  
+              </SelectContent>
+            </Select>   
           </div>
         </div>
       </div>

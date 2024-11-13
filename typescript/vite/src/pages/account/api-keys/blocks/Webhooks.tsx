@@ -1,3 +1,12 @@
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue
+} from '@/components/ui/select';
+
+
 const Webhooks = () => {
   return (
     <div className="card pb-2.5">
@@ -28,12 +37,17 @@ const Webhooks = () => {
         <div className="flex items-center flex-wrap lg:flex-nowrap gap-2.5">
           <label className="form-label max-w-56">Event Type</label>
           <div className="grow">
-            <select className="select">
-              <option>All Events</option>
-              <option>Push Webhooks</option>
-              <option>Pipe Webhook</option>
-              <option>Plugin Webhooks</option>
-            </select>
+            <Select defaultValue="1">
+              <SelectTrigger>
+                <SelectValue placeholder="Select" />
+              </SelectTrigger>
+              <SelectContent>
+                <SelectItem value="1">All Events</SelectItem>
+                <SelectItem value="2">Push Webhooks</SelectItem>
+                <SelectItem value="3">Pipe Webhook</SelectItem> 
+                <SelectItem value="4">Plugin Webhooks</SelectItem> 
+              </SelectContent>
+            </Select>   
           </div>
         </div>
 

@@ -1,5 +1,13 @@
 import { KeenIcon } from '@/components';
 
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue
+} from '@/components/ui/select';
+
 const InvitePeople = () => {
   return (
     <form className="card">
@@ -22,12 +30,17 @@ const InvitePeople = () => {
         <div className="flex items-baseline flex-wrap gap-2.5">
           <label className="form-label max-w-32">Role</label>
           <div className="flex flex-col items-start grow gap-5">
-            <select className="select" name="user_role">
-              <option value="1">Member</option>
-              <option value="2">Editor</option>
-              <option value="3">Designer</option>
-              <option value="4">Admin</option>
-            </select>
+            <Select defaultValue="1">
+              <SelectTrigger>
+                <SelectValue placeholder="Select" />
+              </SelectTrigger>
+              <SelectContent>
+                <SelectItem value="1">Member</SelectItem>
+                <SelectItem value="2">Editor</SelectItem>
+                <SelectItem value="3">Designer</SelectItem> 
+                <SelectItem value="4">Admin</SelectItem>  
+              </SelectContent>
+            </Select>  
 
             <a href="#" className="btn btn-sm btn-light btn-outline">
               <KeenIcon icon="plus-squared" />

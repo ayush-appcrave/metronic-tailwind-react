@@ -55,10 +55,12 @@ const IPAddresses = () => {
         id: 'method',
         header: () => (
           <>
-            <DefaultTooltip title="Verify the identity of a user trying to access a resource" placement="left" className="max-w-48">
-              <KeenIcon icon="information-2" className="text-lg leading-none" />
-            </DefaultTooltip>
-            Method
+            <div className="flex items-center" >
+              <DefaultTooltip title="Verify the identity of a user trying to access a resource" placement="left" className="max-w-48">
+                <KeenIcon icon="information-2" className="text-lg leading-none me-1 mb-0.5" />
+              </DefaultTooltip>
+              <span>Method</span>
+            </div>
           </>
         ),
         enableSorting: true,

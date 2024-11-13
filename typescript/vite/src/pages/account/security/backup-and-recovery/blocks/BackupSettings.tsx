@@ -1,5 +1,13 @@
 import { Fragment, ReactNode } from 'react';
 
+import {
+  Select,
+  SelectContent,
+  SelectItem,
+  SelectTrigger,
+  SelectValue
+} from '@/components/ui/select';
+
 interface IBackupSettingsItem {
   title: string;
   description: string;
@@ -32,12 +40,17 @@ const BackupSettings = () => {
       description: 'Select Preferred Backup',
       control: (
         <Fragment>
-          <select className="select select-sm max-w-24">
-            <option value="daily">Daily</option>
-            <option value="weekly">Weekly</option>
-            <option value="monthly">Monthly</option>
-            <option value="yearly">Yearly</option>
-          </select>
+          <Select defaultValue="1">
+            <SelectTrigger className="w-24" size="sm">
+              <SelectValue placeholder="Select" />
+            </SelectTrigger>
+            <SelectContent className="w-24">
+              <SelectItem value="1">Daily</SelectItem>
+              <SelectItem value="2">Weekly</SelectItem>
+              <SelectItem value="3">Monthly</SelectItem> 
+              <SelectItem value="4">Yearly</SelectItem> 
+            </SelectContent>
+          </Select>  
         </Fragment>
       )
     },
