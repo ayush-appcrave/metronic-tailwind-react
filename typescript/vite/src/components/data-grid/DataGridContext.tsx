@@ -15,10 +15,10 @@ import {
   OnChangeFn,
   Table
 } from '@tanstack/react-table';
-import { createContext, useContext, useEffect, useState, useRef } from 'react';
+import { createContext, useContext, useEffect, useState, useCallback } from 'react';
 import { DataGridInner } from './DataGridInner';
 import { TDataGridProps } from './DataGrid';
-import { deepMerge } from '@/lib/helpers';
+import { deepMerge, debounce } from '@/lib/helpers';
 
 export interface IDataGridContextProps<TData extends object> {
   props: TDataGridProps<TData>;
@@ -65,33 +65,10 @@ export const DataGridProvider = <TData extends object>(props: TDataGridProps<TDa
 
   const mergedProps = deepMerge(defaultValues, props);
 
-  // Initialize data, loading, and totalRows states
-  const [data, setData] = useState<TData[]>([]);
-  const [loading, setLoading] = useState<boolean>(true);
-  const [totalRows, setTotalRows] = useState<number>(0);
+  const [data, setData] = useState<TData[]>(mergedProps.data || []);
+  const [loading, setLoading] = useState<boolean>(false);
+  const [totalRows, setTotalRows] = useState<number>(mergedProps.data ? mergedProps.data.length : 0);
 
-  // Mounted ref to prevent state updates after unmount
-  const isMountedRef = useRef(true);
-
-  useEffect(() => {
-    isMountedRef.current = true;
-    return () => {
-      isMountedRef.current = false;
-    };
-  }, []);
-
-  // Set initial data and totalRows in a useEffect
-  useEffect(() => {
-    if (mergedProps.data) {
-      if (isMountedRef.current) {
-        setData(mergedProps.data);
-        setTotalRows(mergedProps.data.length);
-        setLoading(false);
-      }
-    }
-  }, [mergedProps.data]);
-
-  // Pagination and Sorting from props
   const [pagination, setPagination] = useState<PaginationState>({
     pageIndex: props.pagination?.page ?? 0,
     pageSize: props.pagination?.size ?? 5
@@ -101,9 +78,8 @@ export const DataGridProvider = <TData extends object>(props: TDataGridProps<TDa
   const [columnFilters, setColumnFilters] = useState<ColumnFiltersState>([]);
   const [columnVisibility, setColumnVisibility] = useState<VisibilityState>({});
 
-  // Fetch data for server-side pagination, sorting, and filtering
-  const fetchServerSideData = async () => {
-    if (!mergedProps.onFetchData) return;
+  const fetchServerSideData = useCallback(async () => {
+    if (loading || !mergedProps.onFetchData) return;
 
     setLoading(true);
 
@@ -117,19 +93,30 @@ export const DataGridProvider = <TData extends object>(props: TDataGridProps<TDa
 
       const { data, totalCount } = await mergedProps.onFetchData(requestParams);
 
-      if (isMountedRef.current) {
-        setData(data || []);
-        setTotalRows(totalCount || 0);
-      }
+      setData(data || []);
+      setTotalRows(totalCount || 0);
     } catch (error) {
       console.error('Failed to fetch data:', error);
     } finally {
-      if (isMountedRef.current) setLoading(false);
+      setLoading(false);
     }
-  };
+  }, [loading, pagination, sorting, columnFilters, mergedProps.onFetchData]);
+
+  const debouncedFetchData = debounce(fetchServerSideData, 100);
+
+  // Trigger debounced fetch for server-side data; load local data if serverSide is false
+  useEffect(() => {
+    if (mergedProps.serverSide) {
+      debouncedFetchData();
+    } else {
+      setLoading(true); // Show loading bar for local data
+      setData(mergedProps.data || []);
+      setTotalRows(mergedProps.data ? mergedProps.data.length : 0);
+      setLoading(false); // Hide loading bar after data is set
+    }
+  }, [pagination, sorting, columnFilters, mergedProps.data, mergedProps.serverSide]);
 
   const handleRowSelectionChange: OnChangeFn<RowSelectionState> = (updaterOrValue) => {
-    // Update local rowSelection state
     setRowSelection((prev: RowSelectionState) =>
       typeof updaterOrValue === 'function' ? updaterOrValue(prev) : updaterOrValue
     );
@@ -154,10 +141,10 @@ export const DataGridProvider = <TData extends object>(props: TDataGridProps<TDa
     getRowId: mergedProps.getRowId || ((row, index) => String(index)),
     enableRowSelection: mergedProps.rowSelection,
     onRowSelectionChange: handleRowSelectionChange,
-    onSortingChange: setSorting,
-    onColumnFiltersChange: setColumnFilters,
+    onSortingChange: (newSorting) => !loading && setSorting(newSorting),
+    onColumnFiltersChange: (newFilters) => !loading && setColumnFilters(newFilters),
     onColumnVisibilityChange: setColumnVisibility,
-    onPaginationChange: setPagination,
+    onPaginationChange: (newPagination) => !loading && setPagination(newPagination),
     getCoreRowModel: getCoreRowModel(),
     getFilteredRowModel: getFilteredRowModel(),
     getPaginationRowModel: getPaginationRowModel(),
@@ -168,33 +155,6 @@ export const DataGridProvider = <TData extends object>(props: TDataGridProps<TDa
     manualSorting: mergedProps.serverSide,
     manualFiltering: mergedProps.serverSide
   });
-
-  // Handle sorting, pagination, and search loading
-  const handleStateChange = () => {
-    setLoading(true);
-    const timer = setTimeout(() => {
-      if (isMountedRef.current) setLoading(false);
-    }, 300);
-    return () => clearTimeout(timer);
-  };
-
-  useEffect(() => {
-    if (mergedProps.serverSide) {
-      fetchServerSideData();
-    }
-  }, [pagination, sorting, columnFilters]);
-
-  // Listen for sorting changes
-  useEffect(() => {
-    if (table.getState().sorting.length > 0) {
-      handleStateChange();
-    }
-  }, [table.getState().sorting]);
-
-  // Listen for pagination changes
-  useEffect(() => {
-    handleStateChange();
-  }, [table.getState().pagination]);
 
   return (
     <DataGridContext.Provider

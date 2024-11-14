@@ -27,7 +27,7 @@ const DropdownMenuSubTrigger = React.forwardRef<
   <DropdownMenuPrimitive.SubTrigger
     ref={ref}
     className={cn(
-      'flex cursor-default gap-2 select-none items-center rounded-sm px-2 py-1.5 text-sm outline-none focus:bg-accent data-[state=open]:bg-accent [&_svg]:pointer-events-none [&_svg]:size-4 [&_svg]:shrink-0',
+      'flex cursor-default gap-2 select-none items-center rounded-md px-2 py-1.5 text-sm outline-none focus:bg-accent data-[state=open]:bg-accent [&_svg]:pointer-events-none [&_svg]:size-4 [&_svg]:shrink-0',
       inset && 'pl-8',
       className
     )}
@@ -73,16 +73,32 @@ const DropdownMenuContent = React.forwardRef<
 DropdownMenuContent.displayName = DropdownMenuPrimitive.Content.displayName;
 
 const DropdownMenuItem = React.forwardRef<
-  React.ElementRef<typeof DropdownMenuPrimitive.Item>,
+  React.ElementRef<typeof DropdownMenuPrimitive.Item>, // Ref type from the primitive item component
   React.ComponentPropsWithoutRef<typeof DropdownMenuPrimitive.Item> & {
-    inset?: boolean;
+    inset?: boolean; // Optional inset prop to control padding
+    selected?: boolean; // New selected prop to control selected state styling
   }
->(({ className, inset, ...props }, ref) => (
+>(({ className, inset, selected, ...props }, ref) => (
   <DropdownMenuPrimitive.Item
     ref={ref}
+    data-selected={selected ? '' : undefined} // Conditionally add data-selected when selected is true
     className={cn(
-      'relative flex cursor-default select-none items-center gap-2 rounded-sm px-2 py-1.5 text-sm outline-none transition-colors focus:bg-accent focus:text-accent-foreground data-[disabled]:pointer-events-none data-[disabled]:opacity-50 [&_svg]:pointer-events-none [&_svg]:size-4 [&_svg]:shrink-0',
+      // Base styles for the item
+      'relative flex cursor-default select-none items-center gap-2 rounded-md px-2 py-1.5 text-sm outline-none transition-colors',
+
+      // Styles applied when the item is focused
+      'focus:bg-accent focus:text-accent-foreground',
+
+      // Styles applied when the item is disabled
+      'data-[disabled]:pointer-events-none data-[disabled]:opacity-50',
+
+      // Additional styles for any SVG elements inside the item
+      '[&_svg]:pointer-events-none [&_svg]:size-4 [&_svg]:shrink-0',
+
+      // Conditional class for inset
       inset && 'pl-8',
+
+      // Additional custom class name passed to the component
       className
     )}
     {...props}

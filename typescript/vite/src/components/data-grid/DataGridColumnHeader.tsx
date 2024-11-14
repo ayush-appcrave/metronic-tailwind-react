@@ -1,5 +1,5 @@
 import { HTMLAttributes, ReactNode } from 'react';
-import { ChevronsUpDown, ArrowUp, ArrowDown, EyeOff } from 'lucide-react';
+import { ChevronsUpDown, ArrowUp, ArrowDown, EyeOff, Check } from 'lucide-react';
 import { Column } from '@tanstack/react-table';
 import { cn } from '@/lib/utils';
 import { Button } from '@/components/ui/button';
@@ -9,7 +9,8 @@ import {
   DropdownMenuItem,
   DropdownMenuLabel,
   DropdownMenuSeparator,
-  DropdownMenuTrigger
+  DropdownMenuTrigger,
+  DropdownMenuCheckboxItem
 } from '@/components/ui/dropdown-menu';
 
 interface IDataGridColumnHeader<TData, TValue> extends HTMLAttributes<HTMLDivElement> {
@@ -92,11 +93,17 @@ export function DataGridColumnHeader<TData, TValue>({
             <>
               <DropdownMenuItem onClick={() => column.toggleSorting(false)}>
                 <ArrowUp className="!size-[0.825rem] text-muted-foreground/90" />
-                Asc
+                <span className="grow">Asc</span>
+                {column.getIsSorted() === 'asc' && (
+                  <Check className="size-4 text-muted-foreground/90" />
+                )}
               </DropdownMenuItem>
               <DropdownMenuItem onClick={() => column.toggleSorting(true)}>
                 <ArrowDown className="!size-[0.825rem] text-muted-foreground/90" />
-                Desc
+                <span className="grow">Desc</span>
+                {column.getIsSorted() === 'desc' && (
+                  <Check className="size-4 text-muted-foreground/90" />
+                )}
               </DropdownMenuItem>
             </>
           )}

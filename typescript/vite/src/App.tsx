@@ -17,7 +17,13 @@ const App = () => {
   }, [settings]);
 
   return (
-    <BrowserRouter basename={BASE_URL}>
+    <BrowserRouter
+      basename={BASE_URL}
+      future={{
+        v7_relativeSplatPath: true,
+        v7_startTransition: true
+      }}
+    >
       <PathnameProvider>
         <AppRouting />
       </PathnameProvider>

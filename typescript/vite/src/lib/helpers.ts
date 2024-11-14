@@ -21,6 +21,23 @@ export const throttle = (func: (...args: any[]) => void, limit: number) => {
   };
 };
 
+export function debounce<T extends (...args: any[]) => any>(
+  func: T,
+  wait: number
+): (...args: Parameters<T>) => void {
+  let timeout: NodeJS.Timeout | null = null;
+
+  return function (...args: Parameters<T>): void {
+    if (timeout) {
+      clearTimeout(timeout);
+    }
+
+    timeout = setTimeout(() => {
+      func(...args);
+    }, wait);
+  };
+}
+
 export function deepMerge(obj1: any, obj2: any): any {
   const output = Object.assign({}, obj1);
 
