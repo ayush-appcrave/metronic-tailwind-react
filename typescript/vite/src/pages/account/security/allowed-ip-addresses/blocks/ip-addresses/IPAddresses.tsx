@@ -27,7 +27,7 @@ const IPAddresses = () => {
       {
         accessorFn: (row) => row.status,
         id: 'status',
-        header: ({ column }) => <DataGridColumnHeader title="Status" filter={<ColumnInputFilter column={column}/>} column={column} />, 
+        header: ({ column }) => <DataGridColumnHeader title="Status" column={column}/>, 
         enableSorting: true,
         cell: (info) => (
           <span className={`badge badge-dot size-2 ${info.row.original.status}`}></span>
@@ -40,7 +40,7 @@ const IPAddresses = () => {
       {
         accessorFn: (row) => row.ipAddress,
         id: 'ipAddress',
-        header: ({ column }) => <DataGridColumnHeader title="IP Address" column={column}/>, 
+        header: ({ column }) => <DataGridColumnHeader title="IP Address" filter={<ColumnInputFilter column={column}/>} column={column} />,
         enableSorting: true,
         cell: (info) => info.getValue(),
         meta: {
