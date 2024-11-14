@@ -33,7 +33,7 @@ const IPAddresses = () => {
           <span className={`badge badge-dot size-2 ${info.row.original.status}`}></span>
         ),
         meta: {
-          className: 'w-[100px]',
+          headerClassName: 'w-0',
           cellClassName: 'text-center'
         },
       },
@@ -72,11 +72,11 @@ const IPAddresses = () => {
         id: 'method', 
         header: ({ column }) => (
           <>
-            <div className="flex items-center" >
-              <DefaultTooltip title="Verify the identity of a user trying to access a resource" placement="left" className="max-w-48">
-                <KeenIcon icon="information-2" className="text-lg leading-none me-1 mb-0.5" />
-              </DefaultTooltip>
+            <div className="flex items-center gap-0.5">
               <DataGridColumnHeader title="Method" column={column}/>
+              <DefaultTooltip title="Verify the identity of a user trying to access a resource" placement="bottom" className="max-w-48">
+                <KeenIcon icon="information-2" className="text-sm leading-none me-1 mb-0.5" />
+              </DefaultTooltip>
             </div>
           </>
         ),
@@ -99,7 +99,7 @@ const IPAddresses = () => {
           </button>
         ),
         meta: {
-          className: 'w-[60px]',
+          headerClassName: 'w-[60px]',
         },
       },
       {
@@ -115,7 +115,7 @@ const IPAddresses = () => {
           </button>
         ),
         meta: {
-          className: 'w-[60px]',
+          headerClassName: 'w-[60px]',
         },
       },
     ],

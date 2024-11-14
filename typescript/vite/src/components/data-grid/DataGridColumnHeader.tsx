@@ -33,7 +33,7 @@ export function DataGridColumnHeader<TData, TValue>({
       <Button
         variant="ghost"
         size="sm"
-        className="-ms-3 h-8 data-[state=open]:bg-accent !ring-0 !ring-offset-0"
+        className={cn('-ms-3 h-8 data-[state=open]:bg-accent !ring-0 !ring-offset-0', className)}
         onClick={() => {
           // Determine the current sorting state
           const isSorted = column.getIsSorted();
@@ -65,7 +65,10 @@ export function DataGridColumnHeader<TData, TValue>({
           <Button
             variant="ghost"
             size="sm"
-            className="-ms-3 h-8 data-[state=open]:bg-accent !ring-0 !ring-offset-0"
+            className={cn(
+              '-ms-3 h-8 data-[state=open]:bg-accent !ring-0 !ring-offset-0',
+              className
+            )}
           >
             <span className="text-sm">{title}</span>
             {column.getIsSorted() === 'desc' ? (
