@@ -1,4 +1,3 @@
-import { Settings2 } from 'lucide-react';
 import { Table } from '@tanstack/react-table';
 import { Button } from '@/components/ui/button';
 import {
@@ -9,6 +8,7 @@ import {
   DropdownMenuLabel,
   DropdownMenuSeparator
 } from '@/components/ui/dropdown-menu';
+import { KeenIcon } from '@/components/keenicons';
 
 interface IDataGridColumnVisibilityProps<TData> {
   table: Table<TData>;
@@ -18,13 +18,13 @@ export function DataGridColumnVisibility<TData>({ table }: IDataGridColumnVisibi
   return (
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
-        <Button variant="outline" size="sm">
-          <Settings2 className="h-4 w-4" />
+        <Button variant="light" size="sm">
+          <KeenIcon icon="setting-4" />
           Columns
         </Button>
       </DropdownMenuTrigger>
       <DropdownMenuContent align="end" className="w-[150px]">
-        <DropdownMenuLabel>Toggle columns</DropdownMenuLabel>
+        <DropdownMenuLabel className="font-medium">Toggle Columns</DropdownMenuLabel>
         <DropdownMenuSeparator />
         {table
           .getAllColumns()

@@ -1,10 +1,12 @@
 /* eslint-disable prettier/prettier */
 import { useMemo } from 'react';
 import { Column, ColumnDef, RowSelectionState } from '@tanstack/react-table';
-import { DataGrid, DataGridColumnHeader, DataGridColumnVisibility, DataGridRowSelect, DataGridRowSelectAll, KeenIcon, useDataGrid } from '@/components';
+import { DataGrid, DataGridColumnHeader, DataGridColumnVisibility, DataGridRowSelect, DataGridRowSelectAll, useDataGrid } from '@/components/data-grid';
 import { InvoicingData, IInvoicingData } from './';
 import { toast } from 'sonner';
 import { Input } from '@/components/ui/input';
+import { KeenIcon } from '@/components/keenicons';
+import { Button } from '@/components/ui/button';
 
 interface IColumnFilterProps<TData, TValue> {
   column: Column<TData, TValue>;
@@ -138,17 +140,18 @@ const Invoicing = () => {
 
   const Toolbar = () => {
     const { table } = useDataGrid();
+    const isFiltered = table.getState().columnFilters.length > 0
 
     return (
       <div className="card-header border-b-0 px-5">
         <h3 className="card-title">Billing and Invoicing</h3>
 
         <div className="flex items-center gap-2.5">
+          <DataGridColumnVisibility table={table}/>
           <button className="btn btn-light btn-sm">
             <KeenIcon icon="exit-down" />
             Download PDF
           </button>
-          <DataGridColumnVisibility table={table}/>
         </div>
       </div>
     );
