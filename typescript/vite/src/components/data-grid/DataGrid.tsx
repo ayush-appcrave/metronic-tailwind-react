@@ -18,7 +18,7 @@ export interface TDataGridProps<TData extends object> {
   data?: TData[];
   rowSelection?: boolean;
   getRowId?: TableOptions<TData>['getRowId'],
-  onRowSelectionChange: (state: RowSelectionState, table?: Table<TData>) => void;
+  onRowSelectionChange?: (state: RowSelectionState, table?: Table<TData>) => void;
   messages?: {
     loading?: ReactNode | string;
     empty?: ReactNode | string;

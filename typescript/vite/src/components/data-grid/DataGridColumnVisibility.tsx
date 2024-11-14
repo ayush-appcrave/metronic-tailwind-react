@@ -1,22 +1,26 @@
 import { Settings2 } from 'lucide-react';
 import { Table } from '@tanstack/react-table';
 import { Button } from '@/components/ui/button';
-import { DropdownMenu, DropdownMenuTrigger, DropdownMenuCheckboxItem, DropdownMenuContent, DropdownMenuLabel, DropdownMenuSeparator } from '@/components/ui/dropdown-menu';
-
+import {
+  DropdownMenu,
+  DropdownMenuTrigger,
+  DropdownMenuCheckboxItem,
+  DropdownMenuContent,
+  DropdownMenuLabel,
+  DropdownMenuSeparator
+} from '@/components/ui/dropdown-menu';
 
 interface IDataGridColumnVisibilityProps<TData> {
-  table: Table<TData>
+  table: Table<TData>;
 }
 
-export function DataGridColumnVisibility<TData>({
-  table,
-}: IDataGridColumnVisibilityProps<TData>) {
+export function DataGridColumnVisibility<TData>({ table }: IDataGridColumnVisibilityProps<TData>) {
   return (
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
         <Button variant="outline" size="sm">
           <Settings2 className="h-4 w-4" />
-          View
+          Columns
         </Button>
       </DropdownMenuTrigger>
       <DropdownMenuContent align="end" className="w-[150px]">
@@ -24,10 +28,7 @@ export function DataGridColumnVisibility<TData>({
         <DropdownMenuSeparator />
         {table
           .getAllColumns()
-          .filter(
-            (column) =>
-              typeof column.accessorFn !== "undefined" && column.getCanHide()
-          )
+          .filter((column) => typeof column.accessorFn !== 'undefined' && column.getCanHide())
           .map((column) => {
             return (
               <DropdownMenuCheckboxItem
@@ -38,9 +39,9 @@ export function DataGridColumnVisibility<TData>({
               >
                 {column.id}
               </DropdownMenuCheckboxItem>
-            )
+            );
           })}
       </DropdownMenuContent>
     </DropdownMenu>
-  )
+  );
 }

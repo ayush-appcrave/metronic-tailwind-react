@@ -22,18 +22,19 @@ type TeamsQueryApiResponse = QueryApiResponse<Team>;
 interface IColumnFilterProps<TData, TValue> {
   column: Column<TData, TValue>;
 }
-function ColumnFilter<TData, TValue>({ column }: IColumnFilterProps<TData, TValue>) {
-  return (
-    <Input
-      placeholder="Filter..."
-      value={(column.getFilterValue() as string) ?? ''}
-      onChange={(event) => column.setFilterValue(event.target.value)}
-      className="h-9 w-full max-w-40"
-    />
-  );
-}
 
 const Teams = () => {
+  const ColumnFilter = <TData, TValue>({ column }: IColumnFilterProps<TData, TValue>) => {
+    return (
+      <Input
+        placeholder="Filter..."
+        value={(column.getFilterValue() as string) ?? ''}
+        onChange={(event) => column.setFilterValue(event.target.value)}
+        className="h-9 w-full max-w-40"
+      />
+    );
+  };  
+
   const columns = useMemo<ColumnDef<Team>[]>(
     () => [
       {
@@ -137,10 +138,12 @@ const Teams = () => {
         totalCount: response.data.pagination.total // Total count for pagination
       };
     } catch (error) {
-      console.error('Failed to fetch data:', error);
-      enqueueSnackbar('An error occurred while fetching data. Please try again later', {
-        variant: 'solid',
-        state: 'danger'
+      toast(`Connection Error`, {
+        description: `An error occurred while fetching data. Please try again later`,
+        action: {
+          label: 'Ok',
+          onClick: () => console.log('Ok')
+        }
       });
 
       return {

@@ -1,18 +1,43 @@
 /* eslint-disable prettier/prettier */
 import { useMemo } from 'react';
-import { ColumnDef } from '@tanstack/react-table';
-
-import { DataGrid, KeenIcon } from '@/components';
-
+import { Column, ColumnDef, RowSelectionState } from '@tanstack/react-table';
+import { DataGrid, DataGridColumnHeader, DataGridColumnVisibility, DataGridRowSelect, DataGridRowSelectAll, KeenIcon, useDataGrid } from '@/components';
 import { InvoicingData, IInvoicingData } from './';
+import { toast } from 'sonner';
+import { Input } from '@/components/ui/input';
+
+interface IColumnFilterProps<TData, TValue> {
+  column: Column<TData, TValue>;
+}
 
 const Invoicing = () => {
+  const ColumnInputFilter = <TData, TValue>({ column }: IColumnFilterProps<TData, TValue>) => {
+    return (
+      <Input
+        placeholder="Filter..."
+        value={(column.getFilterValue() as string) ?? ''}
+        onChange={(event) => column.setFilterValue(event.target.value)}
+        className="h-9 w-full max-w-40"
+      />
+    );
+  };  
+
   const columns = useMemo<ColumnDef<IInvoicingData>[]>(
     () => [
       {
+        accessorKey: 'id',
+        header: () => <DataGridRowSelectAll />,
+        cell: ({ row }) => <DataGridRowSelect row={row} />,
+        enableSorting: false,
+        enableHiding: false,
+        meta: {
+          headerClassName: 'w-0'
+        }
+      },
+      {
         accessorFn: (row) => row.invoice,
         id: 'invoice',
-        header: () => 'Member',
+        header: ({ column }) => <DataGridColumnHeader title="Member" filter={<ColumnInputFilter column={column}/>} column={column} />,
         enableSorting: true,
         cell: (info) => {
           return info.row.original.invoice;
@@ -25,7 +50,7 @@ const Invoicing = () => {
       {
         accessorFn: (row) => row.label,
         id: 'label',
-        header: () => 'Status',
+        header: ({ column }) => <DataGridColumnHeader title="Status" column={column}/>,
         enableSorting: true,
         cell: (info) => {                    
           return (
@@ -41,7 +66,7 @@ const Invoicing = () => {
       {
         accessorFn: (row) => row.date,
         id: 'date',
-        header: () => 'Date',
+        header: ({ column }) => <DataGridColumnHeader title="Date" column={column}/>,
         enableSorting: true,
         cell: (info) => {                    
           return info.row.original.date;
@@ -54,8 +79,9 @@ const Invoicing = () => {
       {
         accessorFn: (row) => row.dueDate,
         id: 'dueDate',
-        header: () => 'Due Date',
+        header: ({ column }) => <DataGridColumnHeader title="Due Date" column={column}/>,
         enableSorting: true,
+        enableHiding: false,
         cell: (info) => {                    
           return info.row.original.dueDate;
         },
@@ -67,7 +93,7 @@ const Invoicing = () => {
       {
         accessorFn: (row) => row.amount,
         id: 'amount',
-        header: () => 'Amount',
+        header: ({ column }) => <DataGridColumnHeader title="Amount" column={column}/>,
         enableSorting: true,
         cell: (info) => {                    
           return info.row.original.amount;
@@ -96,27 +122,49 @@ const Invoicing = () => {
 
   const data: IInvoicingData[] = useMemo(() => InvoicingData, []);
 
-  return (
-    <div className="card card-grid h-full min-w-full">
-      <div className="card-header">
+  const handleRowSelection = (state: RowSelectionState) => {
+    const selectedRowIds = Object.keys(state);
+
+    if (selectedRowIds.length > 0) {
+      toast(`Total ${selectedRowIds.length} are selected.`, {
+        description: `Selected row IDs: ${selectedRowIds}`,
+        action: {
+          label: 'Undo',
+          onClick: () => console.log('Undo')
+        }
+      });
+    }
+  };
+
+  const Toolbar = () => {
+    const { table } = useDataGrid();
+
+    return (
+      <div className="card-header border-b-0 px-5">
         <h3 className="card-title">Billing and Invoicing</h3>
 
-				<button className="btn btn-light btn-sm">
-					<KeenIcon icon="exit-down" />
-					Download PDF
-				</button>
+        <div className="flex items-center gap-2.5">
+          <button className="btn btn-light btn-sm">
+            <KeenIcon icon="exit-down" />
+            Download PDF
+          </button>
+          <DataGridColumnVisibility table={table}/>
+        </div>
       </div>
+    );
+  };
 
-      <div className="card-body">
-        <DataGrid 
-          columns={columns} 
-          data={data} 
-          rowSelect={true} 
-          pagination={{ size: 5 }}
-          sorting={[{ id: 'invoice', desc: false }]} 
-        />
-      </div>
-    </div>
+  return (
+    <DataGrid 
+      columns={columns} 
+      data={data} 
+      rowSelection={true} 
+      onRowSelectionChange={handleRowSelection}
+      pagination={{ size: 5 }}
+      sorting={[{ id: 'invoice', desc: false }]} 
+      toolbar={<Toolbar />}
+      layout={{ card: true }}
+    />
   );
 };
 
