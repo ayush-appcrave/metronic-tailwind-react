@@ -1,18 +1,43 @@
 /* eslint-disable prettier/prettier */
 import { useMemo } from 'react';
-import { ColumnDef } from '@tanstack/react-table';
-
-import { DataGrid, DefaultTooltip, KeenIcon } from '@/components';
-
+import { Column, ColumnDef, RowSelectionState } from '@tanstack/react-table';
+import { DataGrid, DataGridColumnHeader, DataGridColumnVisibility, DataGridRowSelect, DataGridRowSelectAll, KeenIcon, useDataGrid, DefaultTooltip } from '@/components';
+import { toast } from 'sonner';
+import { Input } from '@/components/ui/input';
 import { DeviceData, IDeviceData } from '.';
 
+interface IColumnFilterProps<TData, TValue> {
+  column: Column<TData, TValue>;
+}
+
 const Device = () => {
+  const ColumnInputFilter = <TData, TValue>({ column }: IColumnFilterProps<TData, TValue>) => {
+    return (
+      <Input
+        placeholder="Filter..."
+        value={(column.getFilterValue() as string) ?? ''}
+        onChange={(event) => column.setFilterValue(event.target.value)}
+        className="h-9 w-full max-w-40"
+      />
+    );
+  }; 
+
   const columns = useMemo<ColumnDef<IDeviceData>[]>(
     () => [
       {
+        accessorKey: 'id',
+        header: () => <DataGridRowSelectAll />,
+        cell: ({ row }) => <DataGridRowSelect row={row} />,
+        enableSorting: false,
+        enableHiding: false,
+        meta: {
+          headerClassName: 'w-0'
+        }
+      },
+      {
         accessorFn: (row: IDeviceData) => row.device,
         id: 'device',
-        header: () => 'Device', 
+        header: ({ column }) => <DataGridColumnHeader title="Device" filter={<ColumnInputFilter column={column} />} column={column} />,
         enableSorting: true,
         cell: ({ row }) => {  // 'row' argumentini cell funksiyasiga qo'shdik
           return (
@@ -31,64 +56,64 @@ const Device = () => {
           );
         },
         meta: {
-          className: 'min-w-[200px]',
-          cellClassName: 'text-gray-800 font-normal',
+          className: 'min-w-[250px]',
+          cellClassName: 'text-sm text-gray-800 font-normal',
         }
       },
       {
         accessorFn: (row) => row.ipAddress,
         id: 'ipAddress',
-        header: () => 'IP Address',
+        header: ({ column }) => <DataGridColumnHeader title="IP Address" column={column} />,
         enableSorting: true,
         cell: (info) => {
           return info.row.original.ipAddress;
         },
         meta: {
-          className: 'w-[170px]',
+          className: 'min-w-[165px]',
+          cellClassName: 'text-sm text-gray-800 font-normal',
         }
       },   
       {
         accessorFn: (row) => row.location,
         id: 'location',
-        header: () => 'Location',
+        header: ({ column }) => <DataGridColumnHeader title="Location" column={column} />,
         enableSorting: true,
         cell: (info) => {                    
           return info.row.original.location;
         },
         meta: {
-          className: 'w-[170px]',
-          cellClassName: 'text-gray-800 font-normal',
+          className: 'min-w-[165px]',
+          cellClassName: 'text-sm text-gray-800 font-normal',
         }
       },
       {
         accessorFn: (row) => row.added,
         id: 'added',
-        header: () => (
-          <>
-            <div className="flex items-center" >
-              <DefaultTooltip title="Verify the identity of a user trying to access a resource" placement="left" className="max-w-48">
-                <KeenIcon icon="information-2" className="text-lg leading-none me-1 mb-0.5" />
-              </DefaultTooltip>
-              <span>Method</span>
-            </div> 
-          </>
+        header: ({ column }) => (
+          <div className="flex items-center" >
+            <DefaultTooltip title="Time is based on your local timezone." placement="left" className="max-w-48">
+              <KeenIcon icon="information-2" className="text-lg leading-none me-1 mb-0.5" />
+            </DefaultTooltip>
+            <DataGridColumnHeader title="Added" column={column} />
+          </div> 
         ),
         enableSorting: true, 
         meta: {
-          className: 'w-[170px]' 
+          className: 'min-w-[165px]',
+          cellClassName: 'text-sm text-gray-800 font-normal', 
         }
       },    
       {
         accessorFn: (row) => row.lastSession,
         id: 'lastSession',
-        header: () => 'LastSession',
+        header: ({ column }) => <DataGridColumnHeader title="Last Session" column={column} />,
         enableSorting: true,
         cell: (info) => {                    
           return info.row.original.lastSession;
         },
         meta: {
-          className: 'w-[170px]',
-          cellClassName: 'text-gray-800 font-normal',
+          className: 'min-w-[165px]',
+          cellClassName: 'text-sm text-gray-800 font-normal',
         }
       },
       {
@@ -103,7 +128,7 @@ const Device = () => {
           );
         },
         meta: {
-          className: 'w-[70px]'
+          className: 'w-[60px]'
         }
       },      
       {
@@ -118,7 +143,7 @@ const Device = () => {
           );
         },
         meta: {
-          className: 'w-[70px]'
+          className: 'w-[60px]'
         }
       },      
     ],
@@ -127,26 +152,46 @@ const Device = () => {
 
   const data: IDeviceData[] = useMemo(() => DeviceData, []);
 
-  return (
-    <div className="card card-grid min-w-full">
-      <div className="card-header py-5 flex-wrap">
+  const handleRowSelection = (state: RowSelectionState) => {
+    const selectedRowIds = Object.keys(state);
+
+    if (selectedRowIds.length > 0) {
+      toast(`Total ${selectedRowIds.length} are selected.`, {
+        description: `Selected row IDs: ${selectedRowIds}`,
+        action: {
+          label: 'Undo',
+          onClick: () => console.log('Undo')
+        }
+      });
+    }
+  };
+
+  const Toolbar = () => {
+    const { table } = useDataGrid();
+
+    return (
+      <div className="card-header px-5 py-5 border-b-0">
         <h3 className="card-title">Devices</h3>
 
-				<div className="flex gap-5">
+        <div className="flex gap-5">
           <a href="#" className="btn btn-sm btn-primary">Add Device</a>
+          <DataGridColumnVisibility table={table}/>
         </div>
       </div>
+    );
+  };
 
-      <div className="card-body">
-        <DataGrid 
-          columns={columns} 
-          data={data} 
-          rowSelect={true} 
-          pagination={{ size: 10 }}
-          sorting={[{ id: 'device', desc: false }]}
-        />
-      </div>
-    </div>
+  return (
+    <DataGrid 
+      columns={columns} 
+      data={data} 
+      rowSelection={true} 
+      onRowSelectionChange={handleRowSelection}
+      pagination={{ size: 10 }}
+      sorting={[{ id: 'device', desc: false }]} 
+      toolbar={<Toolbar />}
+      layout={{ card: true }}
+    />
   )
 };
 
