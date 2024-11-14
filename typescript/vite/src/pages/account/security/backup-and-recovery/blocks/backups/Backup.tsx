@@ -68,7 +68,9 @@ const Backup= () => {
         cell: (info) => {
           return (
             <div>
-              <p>{info.row.original.details.title}</p>
+              <span className="leading-none font-medium text-sm text-gray-900">
+                {info.row.original.details.title}
+              </span>
               <span className="flex items-center gap-2 text-xs text-gray-600 font-normal">
                 <span className="flex items-center gap-1">
                   <KeenIcon icon="files" className="text-sm text-gray-500" />
