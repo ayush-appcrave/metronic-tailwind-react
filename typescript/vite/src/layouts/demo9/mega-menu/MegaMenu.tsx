@@ -6,6 +6,13 @@ import { usePathname } from '@/providers';
 import { useDemo9Layout } from '@/layouts/demo9';
 
 import { MegaMenuInner } from '.';
+import {
+  Sheet,
+  SheetContent,
+  SheetDescription,
+  SheetHeader,
+  SheetTitle
+} from '@/components/ui/sheet';
 
 const MegaMenu = () => {
   const desktopMode = useResponsive('up', 'lg');
@@ -27,21 +34,20 @@ const MegaMenu = () => {
     return <MegaMenuInner />;
   } else {
     return (
-      <Drawer
-        open={mobileMegaMenuOpen}
-        onClose={handleDrawerClose}
-        ModalProps={{
-          keepMounted: true
-        }}
-        PaperProps={{
-          sx: {
-            width: '225px',
-            maxWidth: '90%' // Set the maximum width to 90%
-          }
-        }}
-      >
-        <MegaMenuInner />
-      </Drawer>
+      <Sheet open={mobileMegaMenuOpen} onOpenChange={handleDrawerClose}>
+        <SheetContent
+          className="border-0 p-0 w-[225px] scrollable-y-auto"
+          forceMount={true}
+          side="left"
+          close={false}
+        >
+          <SheetHeader className="sr-only">
+            <SheetTitle>Mobile Menu</SheetTitle>
+            <SheetDescription></SheetDescription>
+          </SheetHeader>
+          <MegaMenuInner />
+        </SheetContent>
+      </Sheet>
     );
   }
 };

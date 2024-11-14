@@ -108,7 +108,7 @@ const SidebarHeader = forwardRef<HTMLDivElement, any>((props, ref) => {
           >
             <KeenIcon icon="magnifier" />
           </button>
-          <ModalSearch open={searchModalOpen} onClose={handleSearchModalClose} />
+          <ModalSearch open={searchModalOpen} onOpenChange={handleSearchModalClose} />
         </div>
       </div>
     </div>

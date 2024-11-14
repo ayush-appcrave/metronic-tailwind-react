@@ -15,12 +15,12 @@ const SelectValue = SelectPrimitive.Value;
 
 // Define size variants for SelectTrigger
 const selectTriggerVariants = cva(
-  'flex bg-light-light w-full items-center justify-between rounded-md border border-input text-sm ring-offset-background placeholder:text-muted-foreground focus:outline-none focus:ring-1 focus:ring-ring data-[state=open]:ring-1 data-[state=open]:ring-ring focus:ring-offset-0 disabled:cursor-not-allowed disabled:opacity-50 [&>span]:line-clamp-1',
+  'flex bg-light-light w-full items-center justify-between rounded-md border border-input text-sm ring-0 focus:border-primary focus:ring-0 font-medium ring-offset-0 ring-offset-background placeholder:text-muted-foreground hover:border-gray-400 focus:outline-none focus:ring-0 focus:border-primary data-[state=open]:border-primary focus:ring-offset-0 disabled:cursor-not-allowed disabled:opacity-50 [&>span]:line-clamp-1',
   {
     variants: {
       size: {
-        default: 'h-10 px-3 py-2',
-        sm: 'h-8 px-2 py-1',
+        default: 'h-10 px-3 py-2 text-[0.8125rem]',
+        sm: 'h-8 px-2 py-1 text-xs',
         lg: 'h-11 px-4 py-3'
       }
     },
@@ -131,7 +131,7 @@ const SelectItem = React.forwardRef<
   <SelectPrimitive.Item
     ref={ref}
     className={cn(
-      'relative flex w-full cursor-default select-none items-center rounded-sm py-1.5 pl-8 pr-2 text-sm outline-none focus:bg-accent focus:text-accent-foreground data-[disabled]:pointer-events-none data-[disabled]:opacity-50',
+      'relative flex w-full cursor-default select-none items-center rounded-md py-1.5 pl-8 pr-2 text-[13px] outline-none focus:bg-accent focus:text-accent-foreground data-[disabled]:pointer-events-none data-[disabled]:opacity-50',
       className
     )}
     {...props}

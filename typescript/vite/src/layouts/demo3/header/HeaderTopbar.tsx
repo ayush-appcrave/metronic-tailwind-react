@@ -40,7 +40,7 @@ const HeaderTopbar = () => {
         >
           <KeenIcon icon="magnifier" />
         </button>
-        <ModalSearch open={searchModalOpen} onClose={handleSearchModalClose} />
+        <ModalSearch open={searchModalOpen} onOpenChange={handleSearchModalClose} />
 
         <Menu>
           <MenuItem

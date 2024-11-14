@@ -47,7 +47,7 @@ const Main = () => {
                     >
                       <KeenIcon icon="magnifier" />
                     </button>
-                    <ModalSearch open={searchModalOpen} onClose={handleClose} />
+                    <ModalSearch open={searchModalOpen} onOpenChange={handleClose} />
                     <Menu>
                       <MenuItem
                         ref={itemNotificationsRef}

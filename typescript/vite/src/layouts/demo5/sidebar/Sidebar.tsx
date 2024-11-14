@@ -1,12 +1,17 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import { useEffect, useState } from 'react';
-import { Drawer } from '@/components';
 import clsx from 'clsx';
 import { useResponsive, useScrollPosition, useViewport } from '@/hooks';
 import { usePathname } from '@/providers';
-
 import { useDemo5Layout } from '../';
 import { SidebarMenuDashboard, SidebarMenuDefault } from '.';
+import {
+  Sheet,
+  SheetContent,
+  SheetDescription,
+  SheetHeader,
+  SheetTitle
+} from '@/components/ui/sheet';
 
 const Sidebar = () => {
   const { pathname, prevPathname } = usePathname();
@@ -68,15 +73,20 @@ const Sidebar = () => {
     return renderContent();
   } else {
     return (
-      <Drawer
-        open={mobileSidebarOpen}
-        onClose={handleMobileSidebarClose}
-        ModalProps={{
-          keepMounted: true
-        }}
-      >
-        {renderContent()}
-      </Drawer>
+      <Sheet open={mobileSidebarOpen} onOpenChange={handleMobileSidebarClose}>
+        <SheetContent
+          className="border-0 p-0 w-[--tw-sidebar-width] scrollable-y-auto"
+          forceMount={true}
+          side="left"
+          close={false}
+        >
+          <SheetHeader className="sr-only">
+            <SheetTitle>Mobile Menu</SheetTitle>
+            <SheetDescription></SheetDescription>
+          </SheetHeader>
+          {renderContent()}
+        </SheetContent>
+      </Sheet>
     );
   }
 };
