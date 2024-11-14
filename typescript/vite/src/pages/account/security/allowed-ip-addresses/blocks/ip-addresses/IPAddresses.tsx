@@ -1,16 +1,33 @@
 /* eslint-disable prettier/prettier */
 import { useMemo } from 'react';
-import { ColumnDef } from '@tanstack/react-table';
-import { DataGrid, DefaultTooltip, KeenIcon } from '@/components';
+import { Column, ColumnDef, RowSelectionState } from '@tanstack/react-table';
+import { DataGrid, DataGridColumnHeader, DataGridColumnVisibility, DefaultTooltip, KeenIcon, useDataGrid } from '@/components';
 import { IPAddressesData, IIPAddressesData } from '.';
+import { toast } from 'sonner';
+import { Input } from '@/components/ui/input';
+
+interface IColumnFilterProps<TData, TValue> {
+  column: Column<TData, TValue>;
+}
 
 const IPAddresses = () => {
+  const ColumnInputFilter = <TData, TValue>({ column }: IColumnFilterProps<TData, TValue>) => {
+    return (
+      <Input
+        placeholder="Filter..."
+        value={(column.getFilterValue() as string) ?? ''}
+        onChange={(event) => column.setFilterValue(event.target.value)}
+        className="h-9 w-full max-w-40"
+      />
+    );
+  };  
+
   const columns = useMemo<ColumnDef<IIPAddressesData>[]>(
     () => [
       {
         accessorFn: (row) => row.status,
         id: 'status',
-        header: () => 'Status',
+        header: ({ column }) => <DataGridColumnHeader title="Status" filter={<ColumnInputFilter column={column}/>} column={column} />, 
         enableSorting: true,
         cell: (info) => (
           <span className={`badge badge-dot size-2 ${info.row.original.status}`}></span>
@@ -23,7 +40,7 @@ const IPAddresses = () => {
       {
         accessorFn: (row) => row.ipAddress,
         id: 'ipAddress',
-        header: () => 'IP Address',
+        header: ({ column }) => <DataGridColumnHeader title="IP Address" column={column}/>, 
         enableSorting: true,
         cell: (info) => info.getValue(),
         meta: {
@@ -33,7 +50,7 @@ const IPAddresses = () => {
       {
         accessorFn: (row) => row.lastSession,
         id: 'lastSession',
-        header: () => 'Last Session',
+        header: ({ column }) => <DataGridColumnHeader title="Last Session" column={column}/>,  
         enableSorting: true,
         cell: (info) => info.getValue(),
         meta: {
@@ -43,7 +60,7 @@ const IPAddresses = () => {
       {
         accessorFn: (row) => row.label,
         id: 'label',
-        header: () => 'Label',
+        header: ({ column }) => <DataGridColumnHeader title="Label" column={column}/>,  
         enableSorting: true,
         cell: (info) => info.getValue(),
         meta: {
@@ -52,14 +69,14 @@ const IPAddresses = () => {
       },
       {
         accessorFn: (row) => row.method,
-        id: 'method',
-        header: () => (
+        id: 'method', 
+        header: ({ column }) => (
           <>
             <div className="flex items-center" >
               <DefaultTooltip title="Verify the identity of a user trying to access a resource" placement="left" className="max-w-48">
                 <KeenIcon icon="information-2" className="text-lg leading-none me-1 mb-0.5" />
               </DefaultTooltip>
-              <span>Method</span>
+              <DataGridColumnHeader title="Method" column={column}/>
             </div>
           </>
         ),
@@ -107,35 +124,50 @@ const IPAddresses = () => {
 
   const data: IIPAddressesData[] = useMemo(() => IPAddressesData, []);
 
+  const handleRowSelection = (state: RowSelectionState) => {
+    const selectedRowIds = Object.keys(state);
+
+    if (selectedRowIds.length > 0) {
+      toast(`Total ${selectedRowIds.length} are selected.`, {
+        description: `Selected row IDs: ${selectedRowIds}`,
+        action: {
+          label: 'Undo',
+          onClick: () => console.log('Undo')
+        }
+      });
+    }
+  };
+
   const Toolbar = () => {
+    const { table } = useDataGrid();
 
     return (
-      <div className="card-header px-5 border-b-0">
+      <div className="card-header border-b-0 px-5">
         <h3 className="card-title">IP Addresses</h3>
-        <div className="flex gap-5">
-          <label className="switch switch-sm">
-            <span className="switch-label">
-              IP Allowlist Enabled
-            </span>
-            <input type="checkbox" value="1" name="check" defaultChecked readOnly />
-          </label>
-          <a href="#" className="btn btn-sm btn-primary">Add IP Address</a>
+
+        <div className="flex items-center gap-2.5">
+          <button className="btn btn-light btn-sm">
+            <KeenIcon icon="exit-down" />
+            IP Allowlist Enabled
+          </button>
+          <DataGridColumnVisibility table={table}/>
         </div>
       </div>
     );
-  }
+  }; 
 
   return (
     <DataGrid 
       columns={columns} 
       data={data} 
-      toolbar={<Toolbar/>}
       rowSelection={true} 
-      layout={{ card: true }}
+      onRowSelectionChange={handleRowSelection}
       pagination={{ size: 10 }}
-      sorting={[{ id: 'method', desc: false }]}
+      sorting={[{ id: 'method', desc: false }]} 
+      toolbar={<Toolbar />}
+      layout={{ card: true }}
     />
-  );
+  ); 
 };
 
 export { IPAddresses };
