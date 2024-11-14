@@ -1,12 +1,10 @@
 /* eslint-disable prettier/prettier */
 import { useMemo } from 'react';
-import { ColumnDef } from '@tanstack/react-table';
-
-import { DataGrid, KeenIcon } from '@/components';
 import { toAbsoluteUrl } from '@/utils';
-
-import { CurrentSessionsData, ICurrentSessionsData } from '.';
-
+import { Column, ColumnDef, RowSelectionState } from '@tanstack/react-table';
+import { DataGrid, DataGridColumnHeader, DataGridColumnVisibility, DataGridRowSelect, DataGridRowSelectAll, KeenIcon, useDataGrid } from '@/components';
+import { toast } from 'sonner';
+import { Input } from '@/components/ui/input';
 import {
   Select,
   SelectContent,
@@ -14,15 +12,40 @@ import {
   SelectTrigger,
   SelectValue
 } from '@/components/ui/select';
+import { CurrentSessionsData, ICurrentSessionsData } from '.';
 
+interface IColumnFilterProps<TData, TValue> {
+  column: Column<TData, TValue>;
+}
 
 const CurrentSessions = () => {
+  const ColumnInputFilter = <TData, TValue>({ column }: IColumnFilterProps<TData, TValue>) => {
+    return (
+      <Input
+        placeholder="Filter..."
+        value={(column.getFilterValue() as string) ?? ''}
+        onChange={(event) => column.setFilterValue(event.target.value)}
+        className="h-9 w-full max-w-40"
+      />
+    );
+  };
+
   const columns = useMemo<ColumnDef<ICurrentSessionsData>[]>(
     () => [
       {
+        accessorKey: 'id',
+        header: () => <DataGridRowSelectAll />,
+        cell: ({ row }) => <DataGridRowSelect row={row} />,
+        enableSorting: false,
+        enableHiding: false,
+        meta: {
+          headerClassName: 'w-0'
+        }
+      },
+      {
         accessorFn: (row) => row.user,
         id: 'user',
-        header: () => 'Person',
+        header: ({ column }) => <DataGridColumnHeader title='Person' filter={<ColumnInputFilter column={column} />} column={column} />,
         enableSorting: true,
         cell: (info) => (
           <div className="flex items-center gap-2.5">
@@ -39,13 +62,13 @@ const CurrentSessions = () => {
           </div>
         ),
         meta: {
-          className: 'min-w-[300px]'
+          headerClassName: 'min-w-[300px]'
         },
       },
       {
         accessorFn: (row) => row.browser,
         id: 'browser',
-        header: () => 'Browser',
+        header: ({ column }) => <DataGridColumnHeader title='Browser' column={column} />,
         enableSorting: true,
         cell: (info) => (
           <div className="flex items-center gap-2">
@@ -54,23 +77,23 @@ const CurrentSessions = () => {
           </div>
         ),
         meta: {
-          className: 'min-w-[240px]',
+          headerClassName: 'min-w-[240px]',
         },
       },
       {
         accessorFn: (row) => row.ipAddress,
         id: 'ipAddress',
-        header: () => 'IP Address',
+        header: ({ column }) => <DataGridColumnHeader title='IP Address' column={column} />,
         enableSorting: true,
         cell: (info) => info.getValue(),
         meta: {
-          className: 'w-[240px]',
+          headerClassName: 'w-[240px]',
         },
       },
       {
         accessorFn: (row) => row.location,
         id: 'location',
-        header: () => 'Location',
+        header: ({ column }) => <DataGridColumnHeader title='Location' column={column} />,
         enableSorting: true,
         cell: (info) => (
           <div className="flex items-center gap-1.5">
@@ -83,7 +106,7 @@ const CurrentSessions = () => {
           </div>
         ),
         meta: {
-          className: 'w-[200px]',
+          headerClassName: 'w-[200px]',
         },
       },
       {
@@ -99,7 +122,7 @@ const CurrentSessions = () => {
           </button>
         ),
         meta: {
-          className: 'w-[60px]',
+          headerClassName: 'w-[60px]',
         },
       },
     ],
@@ -108,18 +131,37 @@ const CurrentSessions = () => {
 
   const data: ICurrentSessionsData[] = useMemo(() => CurrentSessionsData, []);
 
-  return (
-    <div className="card card-grid min-w-full">
-      <div className="card-header py-5 flex-wrap">
+  const handleRowSelection = (state: RowSelectionState) => {
+    const selectedRowIds = Object.keys(state);
+
+    if (selectedRowIds.length > 0) {
+      toast(`Total ${selectedRowIds.length} are selected.`, {
+        description: `Selected row IDs: ${selectedRowIds}`,
+        action: {
+          label: 'Undo',
+          onClick: () => console.log('Undo')
+        }
+      });
+    }
+  };
+
+  const Toolbar = () => {
+    const { table } = useDataGrid();
+
+    return (
+      <div className="card-header px-5 py-5 border-b-0">
         <h3 className="card-title">Current Sessions</h3>
 
-        <div className="flex gap-5">
+        <div className="flex items-center gap-2.5">
           <label className="switch switch-sm">
             <span className="switch-label">
               Only Active Users
             </span>
             <input name="check" type="checkbox" value="1" readOnly />
           </label>
+
+          <DataGridColumnVisibility table={table}/>
+
           <div className="flex gap-3">
             <Select defaultValue="1">
               <SelectTrigger className="min-w-32" size="sm">
@@ -128,12 +170,12 @@ const CurrentSessions = () => {
               <SelectContent className="min-w-32">
                 <SelectItem value="1">All Browsers</SelectItem>
                 <SelectItem value="2">Chrome</SelectItem>
-                <SelectItem value="3">Firefox</SelectItem> 
-                <SelectItem value="4">Edge</SelectItem> 
-                <SelectItem value="5">Safari</SelectItem> 
-                <SelectItem value="6">Brave</SelectItem> 
+                <SelectItem value="3">Firefox</SelectItem>
+                <SelectItem value="4">Edge</SelectItem>
+                <SelectItem value="5">Safari</SelectItem>
+                <SelectItem value="6">Brave</SelectItem>
               </SelectContent>
-            </Select>  
+            </Select>
 
             <Select defaultValue="1">
               <SelectTrigger className="min-w-32" size="sm">
@@ -142,25 +184,28 @@ const CurrentSessions = () => {
               <SelectContent className="min-w-32">
                 <SelectItem value="1">All Locations</SelectItem>
                 <SelectItem value="2">London</SelectItem>
-                <SelectItem value="3">USA</SelectItem> 
-                <SelectItem value="4">Japan</SelectItem> 
-                <SelectItem value="5">Malaysia</SelectItem>  
+                <SelectItem value="3">USA</SelectItem>
+                <SelectItem value="4">Japan</SelectItem>
+                <SelectItem value="5">Malaysia</SelectItem>
               </SelectContent>
-            </Select>   
+            </Select> 
           </div>
         </div>
       </div>
+    );
+  };
 
-      <div className="card-body">
-        <DataGrid 
-          columns={columns} 
-          data={data} 
-          rowSelect={true} 
-          pagination={{ size: 10 }}
-          sorting={[{ id: 'user', desc: false }]} 
-        />
-      </div>
-    </div>
+  return (
+    <DataGrid 
+      columns={columns} 
+      data={data} 
+      rowSelection={true} 
+      onRowSelectionChange={handleRowSelection}
+      pagination={{ size: 10 }}
+      sorting={[{ id: 'user', desc: false }]} 
+      toolbar={<Toolbar />}
+      layout={{ card: true }}
+    />
   );
 };
 

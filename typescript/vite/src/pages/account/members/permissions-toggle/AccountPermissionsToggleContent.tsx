@@ -7,7 +7,7 @@ const AccountPermissionsToggleContent = () => {
     <div className="grid gap-5 lg:gap-7.5">
       <PermissionsToggle />
 
-      <Members />
+      <Members title="Team Members" />
 
       <MiscFaq />
 

@@ -1,29 +1,54 @@
 /* eslint-disable prettier/prettier */
 import { useMemo } from 'react';
-import { ColumnDef } from '@tanstack/react-table';
-
-import { DataGrid, KeenIcon } from '@/components';
-
+import { Column, ColumnDef, RowSelectionState } from '@tanstack/react-table';
+import { DataGrid, DataGridColumnHeader, DataGridColumnVisibility, DataGridRowSelect, DataGridRowSelectAll, KeenIcon, useDataGrid } from '@/components';
+import { toast } from 'sonner';
+import { Input } from '@/components/ui/input';
 import { ApiIntegrationsData, IApiIntegrationsData } from '.';
 
+interface IColumnFilterProps<TData, TValue> {
+  column: Column<TData, TValue>;
+}
+
 const ApiIntegrations = () => {
+  const ColumnInputFilter = <TData, TValue>({ column }: IColumnFilterProps<TData, TValue>) => {
+    return (
+      <Input
+        placeholder="Filter..."
+        value={(column.getFilterValue() as string) ?? ''}
+        onChange={(event) => column.setFilterValue(event.target.value)}
+        className="h-9 w-full max-w-40"
+      />
+    );
+  };
+
   const columns = useMemo<ColumnDef<IApiIntegrationsData>[]>(
     () => [
       {
+        accessorKey: 'id',
+        header: () => <DataGridRowSelectAll />,
+        cell: ({ row }) => <DataGridRowSelect row={row} />,
+        enableSorting: false,
+        enableHiding: false,
+        meta: {
+          headerClassName: 'w-0'
+        }
+      },
+      {
         accessorFn: (row) => row.integration,
         id: 'integration',
-        header: () => 'Integration',
+        header: ({ column }) => <DataGridColumnHeader title='Integration' filter={<ColumnInputFilter column={column} />} column={column} />,
         enableSorting: true,
         cell: (info) => info.getValue(),
         meta: {
-          className: 'min-w-[206px]',
+          headerClassName: 'min-w-[206px]',
           cellClassName: 'text-gray-700 font-normal'
         }
       },
       {
         accessorFn: (row) => row.apiKey,
         id: 'apiKey',
-        header: () => 'API Key',
+        header: ({ column }) => <DataGridColumnHeader title='API Key' column={column} />,
         enableSorting: true,
         cell: (info) => (
           <div className="flex items-center text-gray-800 font-normal">
@@ -37,29 +62,29 @@ const ApiIntegrations = () => {
           </div>
         ),
         meta: {
-          className: 'min-w-[224px]',
+          headerClassName: 'min-w-[224px]',
           cellClassName: 'text-gray-700 font-normal'
         }
       },   
       {
         accessorFn: (row) => row.dailyCalls,
         id: 'dailyCalls',
-        header: () => 'Daily Calls',
+        header: ({ column }) => <DataGridColumnHeader title='Daily Calls' column={column} />,
         enableSorting: true,
         cell: (info) => info.getValue(),
         meta: {
-          className: 'min-w-[122px]',
+          headerClassName: 'min-w-[122px]',
           cellClassName: 'text-gray-700 font-normal',
         }
       },
       {
         accessorFn: (row) => row.status,
         id: 'status',
-        header: () => 'Status',
+        header: ({ column }) => <DataGridColumnHeader title='Status' column={column} />,
         enableSorting: true,
         cell: (info) => info.getValue(),
         meta: {
-          className: 'min-w-[98px]',
+          headerClassName: 'min-w-[98px]',
           cellClassName: 'text-gray-700 font-normal',
         }
       },
@@ -77,7 +102,7 @@ const ApiIntegrations = () => {
           );
         },
         meta: {
-          className: 'w-[60px]'
+          headerClassName: 'w-[60px]'
         }
       },
     ],
@@ -86,31 +111,55 @@ const ApiIntegrations = () => {
 
   const data: IApiIntegrationsData[] = useMemo(() => ApiIntegrationsData, []);
 
-  return (
-    <div className="card card-grid min-w-full">
-      <div className="card-header py-5 flex-wrap">
+  const handleRowSelection = (state: RowSelectionState) => {
+    const selectedRowIds = Object.keys(state);
+
+    if (selectedRowIds.length > 0) {
+      toast(`Total ${selectedRowIds.length} are selected.`, {
+        description: `Selected row IDs: ${selectedRowIds}`,
+        action: {
+          label: 'Undo',
+          onClick: () => console.log('Undo')
+        }
+      });
+    }
+  };
+
+  const Toolbar = () => {
+    const { table } = useDataGrid();
+
+    return (
+      <div className="card-header px-5 py-5 border-b-0 gap-2">
         <h3 className="card-title">API Integrations</h3>
-        <div className="flex gap-7.5">
-          <label className="switch switch-sm">
-            <input name="check" type="checkbox" value="1" className="order-2" readOnly />
-            <span className="switch-label order-1">Pause all</span>
-          </label>
-          <a href="#" className="btn btn-sm btn-primary">
-            Add New
-          </a>
+
+        <div className="flex items-center gap-2.5">
+          <DataGridColumnVisibility table={table}/>
+
+          <div className="flex gap-7.5">
+            <label className="switch switch-sm">
+              <input name="check" type="checkbox" value="1" className="order-2" readOnly />
+              <span className="switch-label order-1">Pause all</span>
+            </label>
+            <a href="#" className="btn btn-sm btn-primary">
+              Add New
+            </a>
+          </div>
         </div>
       </div>
+    );
+  };
 
-      <div className="card-body">
-        <DataGrid 
-          columns={columns} 
-          data={data} 
-          rowSelect={true} 
-          pagination={{ size: 10 }}
-          sorting={[{ id: 'integration', desc: false }]} 
-        />
-      </div>
-    </div>
+  return (
+    <DataGrid 
+      columns={columns} 
+      data={data} 
+      rowSelection={true} 
+      onRowSelectionChange={handleRowSelection}
+      pagination={{ size: 10 }}
+      sorting={[{ id: 'integration', desc: false }]} 
+      toolbar={<Toolbar />}
+      layout={{ card: true }}
+    />
   );
 };
 
