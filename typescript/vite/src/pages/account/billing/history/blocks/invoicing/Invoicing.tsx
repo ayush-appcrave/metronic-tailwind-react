@@ -60,7 +60,7 @@ const Invoicing = () => {
           );
         },
         meta: {
-          className: 'w-[170px]',
+          headerClassName: 'w-[170px]',
         }
       },   
       {
@@ -72,7 +72,7 @@ const Invoicing = () => {
           return info.row.original.date;
         },
         meta: {
-          className: 'w-[170px]',
+          headerClassName: 'w-[170px]',
           cellClassName: 'text-gray-800 font-normal',
         }
       },
@@ -86,7 +86,7 @@ const Invoicing = () => {
           return info.row.original.dueDate;
         },
         meta: {
-          className: 'w-[170px]',
+          headerClassName: 'w-[170px]',
           cellClassName: 'text-gray-800 font-normal',
         }
       },    
@@ -99,7 +99,7 @@ const Invoicing = () => {
           return info.row.original.amount;
         },
         meta: {
-          className: 'w-[170px]',
+          headerClassName: 'w-[170px]',
           cellClassName: 'text-gray-800 font-normal',
         }
       },
@@ -113,7 +113,7 @@ const Invoicing = () => {
           );
         },
         meta: {
-          className: 'w-[100px]'
+          headerClassName: 'w-[100px]'
         }
       },      
     ],

@@ -215,8 +215,8 @@ const Users = () => {
     const { table } = useDataGrid();
 
     return (
-      <div className="card-header border-b-0 px-5">
-        <h3 className="card-title">Showing 10 of 49,053 users</h3>
+      <div className="card-header flex-wrap gap-2 border-b-0 px-5">
+        <h3 className="card-title font-medium text-sm">Showing 10 of 49,053 users</h3>
 
         <div className="flex flex-wrap gap-2 lg:gap-5">
           <div className="flex">

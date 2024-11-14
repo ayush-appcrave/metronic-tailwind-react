@@ -1,6 +1,6 @@
 import { useMemo } from 'react';
-import { DataGrid, KeenIcon } from '@/components';
-import { ColumnDef } from '@tanstack/react-table';
+import { DataGrid, DataGridColumnHeader, KeenIcon, useDataGrid, DataGridRowSelectAll, DataGridRowSelect } from '@/components';
+import { ColumnDef, Column, RowSelectionState } from '@tanstack/react-table';
 import { toAbsoluteUrl } from '@/utils';
 import {
   Select,
@@ -10,14 +10,41 @@ import {
   SelectValue
 } from '@/components/ui/select';
 import { StoreClientsData, IStoreClientsData } from '.';
+import { toast } from 'sonner';
+import { Input } from '@/components/ui/input';
+
+interface IColumnFilterProps<TData, TValue> {
+  column: Column<TData, TValue>;
+}
 
 const StoreClients = () => {
+  const ColumnInputFilter = <TData, TValue>({ column }: IColumnFilterProps<TData, TValue>) => {
+    return (
+      <Input
+        placeholder="Filter..."
+        value={(column.getFilterValue() as string) ?? ''}
+        onChange={(event) => column.setFilterValue(event.target.value)}
+        className="h-9 w-full max-w-40"
+      />
+    );
+  };  
+
   const columns = useMemo<ColumnDef<IStoreClientsData>[]>(
     () => [
       {
+        accessorKey: 'id',
+        header: () => <DataGridRowSelectAll />,
+        cell: ({ row }) => <DataGridRowSelect row={row} />,
+        enableSorting: false,
+        enableHiding: false,
+        meta: {
+          headerClassName: 'w-0'
+        }
+      },
+      {
         accessorFn: (row) => row.user,
         id: 'user',
-        header: () => 'Member',
+        header: ({ column }) => <DataGridColumnHeader title="Member" filter={<ColumnInputFilter column={column}/>} column={column} />,   
         enableSorting: true,
         cell: (info: any) => (
           <div className="flex items-center gap-2.5">
@@ -40,35 +67,35 @@ const StoreClients = () => {
           </div>
         ),
         meta: {
-          className: 'min-w-[300px]'
+          headerClassName: 'min-w-[300px]'
         }
       },
       {
         accessorFn: (row) => row.clientId,
         id: 'clientId',
-        header: () => 'Client ID',
+        header: ({ column }) => <DataGridColumnHeader title="Client ID" column={column}/>, 
         enableSorting: true,
         cell: (info: any) => info.row.original.clientId,
         meta: {
-          className: 'min-w-[150px]',
+          headerClassName: 'min-w-[150px]',
           cellClassName: 'text-gray-800 font-normal'
         }
       },
       {
         accessorFn: (row) => row.ordersValue,
         id: 'ordersValue',
-        header: () => 'Orders Value',
+        header: ({ column }) => <DataGridColumnHeader title="Orders Value" column={column}/>,  
         enableSorting: true,
         cell: (info: any) => info.row.original.ordersValue,
         meta: {
-          className: 'min-w-[150px]',
+          headerClassName: 'min-w-[150px]',
           cellClassName: 'text-gray-800 font-normal'
         }
       },
       {
         accessorFn: (row) => row.location,
         id: 'location',
-        header: () => 'Location',
+        header: ({ column }) => <DataGridColumnHeader title="Location" column={column}/>,   
         enableSorting: true,
         cell: (info) => (
           <div className="flex items-center gap-1.5">
@@ -81,27 +108,27 @@ const StoreClients = () => {
           </div>
         ),
         meta: {
-          className: 'min-w-[150px]'
+          headerClassName: 'min-w-[150px]'
         }
       },
       {
         accessorFn: (row) => row.activity,
         id: 'activity',
-        header: () => 'Activity',
+        header: ({ column }) => <DataGridColumnHeader title="Activity" column={column}/>,   
         enableSorting: true,
         cell: (info: any) => info.row.original.activity,
         meta: {
-          className: 'min-w-[150px]',
+          headerClassName: 'min-w-[150px]',
           cellClassName: 'text-gray-800 font-normal'
         }
       },
       {
         id: 'actions',
-        header: () => 'Invoices',
+        header: ({ column }) => <DataGridColumnHeader title="Invoices" column={column}/>,    
         enableSorting: true,
         cell: () => <button className="btn btn-link">View</button>,
         meta: {
-          className: 'min-w-[100px]',
+          headerClassName: 'min-w-[100px]',
           cellClassName: 'text-center'
         }
       },
@@ -117,7 +144,7 @@ const StoreClients = () => {
           );
         },
         meta: {
-          className: 'w-[60px]'
+          headerClassName: 'w-[60px]'
         }
       }
     ],
@@ -126,9 +153,25 @@ const StoreClients = () => {
 
   const data: IStoreClientsData[] = useMemo(() => StoreClientsData, []);
 
-  return (
-    <div className="card card-grid min-w-full">
-      <div className="card-header flex-wrap gap-2">
+  const handleRowSelection = (state: RowSelectionState) => {
+    const selectedRowIds = Object.keys(state);
+
+    if (selectedRowIds.length > 0) {
+      toast(`Total ${selectedRowIds.length} are selected.`, {
+        description: `Selected row IDs: ${selectedRowIds}`,
+        action: {
+          label: 'Undo',
+          onClick: () => console.log('Undo')
+        }
+      });
+    }
+  }; 
+
+  const Toolbar = () => {
+    const { table } = useDataGrid();
+
+    return (
+      <div className="card-header flex-wrap gap-2 border-b-0 px-5">
         <h3 className="card-title font-medium text-sm">Showing 10 of 49,053 users</h3>
 
         <div className="flex flex-wrap gap-2 lg:gap-5">
@@ -168,18 +211,21 @@ const StoreClients = () => {
           </div>
         </div>
       </div>
+    );
+  }; 
 
-      <div className="card-body">
-        <DataGrid
-          columns={columns}
-          data={data}
-          rowSelect={true}
-          pagination={{ size: 5 }}
-          sorting={[{ id: 'user', desc: false }]}
-        />
-      </div>
-    </div>
-  );
+  return ( 
+    <DataGrid 
+      columns={columns} 
+      data={data} 
+      rowSelection={true} 
+      onRowSelectionChange={handleRowSelection}
+      pagination={{ size: 5 }}
+      sorting={[{ id: 'user', desc: false }]} 
+      toolbar={<Toolbar />}
+      layout={{ card: true }}
+    />  
+  ); 
 };
 
 export { StoreClients };

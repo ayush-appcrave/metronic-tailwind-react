@@ -1,7 +1,8 @@
 import { useMemo } from 'react';
 import { toAbsoluteUrl } from '@/utils';
 import { UsersData } from './UsersData';
-import { KeenIcon, DataGrid } from '@/components';
+import { DataGrid, DataGridColumnHeader, KeenIcon, useDataGrid, DataGridRowSelectAll, DataGridRowSelect } from '@/components';
+import { ColumnDef, Column, RowSelectionState } from '@tanstack/react-table';
 import {
   Select,
   SelectContent,
@@ -9,6 +10,12 @@ import {
   SelectTrigger,
   SelectValue
 } from '@/components/ui/select';
+import { toast } from 'sonner';
+import { Input } from '@/components/ui/input';
+
+interface IColumnFilterProps<TData, TValue> {
+  column: Column<TData, TValue>;
+}
 
 interface IUsersData {
   user: {
@@ -26,6 +33,17 @@ interface IUsersData {
 }
 
 const EnforceSwitch = ({ enforce }: { enforce: boolean }) => {
+  const ColumnInputFilter = <TData, TValue>({ column }: IColumnFilterProps<TData, TValue>) => {
+    return (
+      <Input
+        placeholder="Filter..."
+        value={(column.getFilterValue() as string) ?? ''}
+        onChange={(event) => column.setFilterValue(event.target.value)}
+        className="h-9 w-full max-w-40"
+      />
+    );
+  };  
+
   return (
     <label className="switch switch-sm">
       <input type="checkbox" checked={enforce} value="1" readOnly />
@@ -34,12 +52,33 @@ const EnforceSwitch = ({ enforce }: { enforce: boolean }) => {
 };
 
 const Users = () => {
-  const columns = useMemo(
+  const ColumnInputFilter = <TData, TValue>({ column }: IColumnFilterProps<TData, TValue>) => {
+    return (
+      <Input
+        placeholder="Filter..."
+        value={(column.getFilterValue() as string) ?? ''}
+        onChange={(event) => column.setFilterValue(event.target.value)}
+        className="h-9 w-full max-w-40"
+      />
+    );
+  };  
+
+  const columns = useMemo<ColumnDef<IUsersData>[]>(
     () => [
+      {
+        accessorKey: 'id',
+        header: () => <DataGridRowSelectAll />,
+        cell: ({ row }) => <DataGridRowSelect row={row} />,
+        enableSorting: false,
+        enableHiding: false,
+        meta: {
+          headerClassName: 'w-0'
+        }
+      },
       {
         accessorFn: (row: IUsersData) => row.user,
         id: 'user',
-        header: () => <span className="text-gray-700 font-normal">Subscriber</span>,
+        header: ({ column }) => <DataGridColumnHeader title="Subscriber" filter={<ColumnInputFilter column={column}/>} column={column} />,  
         enableSorting: true,
         cell: (info: any) => (
           <div className="flex items-center gap-2.5">
@@ -59,13 +98,14 @@ const Users = () => {
           </div>
         ),
         meta: {
-          className: 'min-w-[300px]'
+          headerClassName: 'min-w-[300px]',
+          cellClassName: 'text-gray-700 font-normal'
         }
       },
       {
         accessorFn: (row: IUsersData) => row.labels,
         id: 'labels',
-        header: () => <span className="text-gray-700 font-normal">Products</span>,
+        header: ({ column }) => <DataGridColumnHeader title="Products" column={column}/>,   
         enableSorting: true,
         cell: (info: any) => (
           <div className="flex gap-1.5">
@@ -77,13 +117,14 @@ const Users = () => {
           </div>
         ),
         meta: {
-          className: 'min-w-[200px]'
+          headerClassName: 'min-w-[200px]',
+          cellClassName: 'text-gray-700 font-normal'
         }
       },
       {
         accessorFn: (row: IUsersData) => row.license,
         id: 'license',
-        header: () => <span className="text-gray-700 font-normal">License</span>,
+        header: ({ column }) => <DataGridColumnHeader title="License" column={column}/>,    
         enableSorting: true,
         cell: (info: any) => (
           <div className="flex flex-col">
@@ -94,13 +135,14 @@ const Users = () => {
           </div>
         ),
         meta: {
-          className: 'min-w-[175px]'
+          headerClassName: 'min-w-[175px]',
+          cellClassName: 'text-gray-700 font-normal'
         }
       },
       {
         accessorFn: (row: IUsersData) => row.payment,
         id: 'payment',
-        header: () => <span className="text-gray-700 font-normal">Latest Payment</span>,
+        header: ({ column }) => <DataGridColumnHeader title="Latest Payment" column={column}/>,  
         enableSorting: true,
         cell: (info: any) => info.row.original.payment,
         meta: {
@@ -111,20 +153,22 @@ const Users = () => {
       {
         accessorFn: (row: IUsersData) => row.enforce,
         id: 'enforce',
-        header: () => <span className="text-gray-700 font-normal">Enforce 2FA</span>,
+        header: ({ column }) => <DataGridColumnHeader title="Enforce 2FA" column={column}/>,   
         enableSorting: true,
         cell: (info: any) => <EnforceSwitch enforce={info.row.original.enforce} />,
         meta: {
-          className: 'min-w-[137px]'
+          headerClassName: 'min-w-[137px]',
+          cellClassName: 'text-gray-800 font-medium'
         }
       },
       {
         id: 'actions',
-        header: () => <span className="text-gray-700 font-normal">Invoices</span>,
+        header: ({ column }) => <DataGridColumnHeader title="Invoices" column={column}/>,    
         enableSorting: true,
         cell: () => <button className="btn btn-link">Download</button>,
         meta: {
-          className: 'w-28'
+          headerClassName: 'w-28',
+          cellClassName: 'text-gray-800 font-medium'
         }
       }
     ],
@@ -133,10 +177,26 @@ const Users = () => {
 
   const data: IUsersData[] = useMemo(() => UsersData, []);
 
-  return (
-    <div className="card card-grid min-w-full">
-      <div className="card-header flex-wrap gap-2">
-        <h3 className="card-title font-medium text-sm">Showing 10 of 49,053 users</h3>
+  const handleRowSelection = (state: RowSelectionState) => {
+    const selectedRowIds = Object.keys(state);
+
+    if (selectedRowIds.length > 0) {
+      toast(`Total ${selectedRowIds.length} are selected.`, {
+        description: `Selected row IDs: ${selectedRowIds}`,
+        action: {
+          label: 'Undo',
+          onClick: () => console.log('Undo')
+        }
+      });
+    }
+  }; 
+
+  const Toolbar = () => {
+    const { table } = useDataGrid();
+
+    return (
+      <div className="card-header flex-wrap gap-2 border-b-0 px-5">
+        <h3 className="card-title font-medium text-sm">howing 10 of 49,053 users</h3>
 
         <div className="flex flex-wrap gap-2 lg:gap-5">
           <div className="flex">
@@ -175,17 +235,20 @@ const Users = () => {
           </div>
         </div>
       </div>
+    );
+  }; 
 
-      <div className="card-body">
-        <DataGrid
-          columns={columns}
-          data={data}
-          rowSelect={true}
-          pagination={{ size: 5 }}
-          sorting={[{ id: 'user', desc: false }]}
-        />
-      </div>
-    </div>
+  return ( 
+    <DataGrid 
+      columns={columns} 
+      data={data} 
+      rowSelection={true} 
+      onRowSelectionChange={handleRowSelection}
+      pagination={{ size: 5 }}
+      sorting={[{ id: 'user', desc: false }]} 
+      toolbar={<Toolbar />}
+      layout={{ card: true }}
+    />  
   );
 };
 

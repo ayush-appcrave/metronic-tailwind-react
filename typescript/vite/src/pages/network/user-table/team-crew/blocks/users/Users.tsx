@@ -2,7 +2,7 @@
 import { useMemo } from 'react';
 import { Link } from 'react-router-dom';
 import { toAbsoluteUrl } from '@/utils';
-import { DataGrid, DataGridColumnHeader, DataGridColumnVisibility, KeenIcon, useDataGrid, DataGridRowSelectAll, DataGridRowSelect } from '@/components';
+import { DataGrid, DataGridColumnHeader, KeenIcon, useDataGrid, DataGridRowSelectAll, DataGridRowSelect } from '@/components';
 import { ColumnDef, Column, RowSelectionState } from '@tanstack/react-table';
 import {
   Select,
@@ -85,7 +85,7 @@ const Users = () => {
           return info.row.original.role;
         },
         meta: {
-          className: 'min-w-[180px]',
+          headerClassName: 'min-w-[180px]',
         }
       },   
       {
@@ -102,7 +102,7 @@ const Users = () => {
           );
         },
         meta: {
-          className: 'min-w-[180px]' 
+          headerClassName: 'min-w-[180px]' 
         }
       },
       {
@@ -124,7 +124,7 @@ const Users = () => {
           );
         }, 
         meta: {
-          className: 'min-w-[180px]' 
+          headerClassName: 'min-w-[180px]' 
         }
       },    
       {
@@ -136,7 +136,7 @@ const Users = () => {
           return info.row.original.activity;
         },
         meta: {
-          className: 'min-w-[180px]',
+          headerClassName: 'min-w-[180px]',
           cellClassName: 'text-gray-800 font-normal',
         }
       },
@@ -179,8 +179,8 @@ const Users = () => {
     const { table } = useDataGrid();
 
     return (
-      <div className="card-header border-b-0 px-5">
-        <h3 className="card-title">Showing 20 of 68 users</h3>
+      <div className="card-header flex-wrap gap-2 border-b-0 px-5">
+        <h3 className="card-title font-medium text-sm">Showing 20 of 68 users</h3>
 
         <div className="flex flex-wrap gap-2 lg:gap-5">
         <div className="flex">
