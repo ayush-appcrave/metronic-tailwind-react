@@ -51,7 +51,7 @@ const Teams = () => {
       {
         accessorFn: (row) => row.name,
         id: 'name',
-        header: ({ column }) => <DataGridColumnHeader title="Team" column={column} />,
+        header: ({ column }) => <DataGridColumnHeader title="Team" filter={<ColumnFilter column={column}/>} column={column} />,
         enableSorting: true,
         cell: (info) => (
           <div className="flex flex-col gap-2">
