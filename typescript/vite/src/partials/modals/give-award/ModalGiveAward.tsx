@@ -24,7 +24,7 @@ const ModalGiveAward = ({ open, onOpenChange }: ModalGiveAwardProps) => {
     <Dialog open={open} onOpenChange={onOpenChange}>
       <DialogContent className="max-w-[600px]">
         <DialogHeader className="py-4 px-5">
-          <DialogTitle></DialogTitle>
+          <DialogTitle>Give Award</DialogTitle>
           <DialogDescription></DialogDescription>
         </DialogHeader>
         <div className="grid gap-5 px-0 py-5">
