@@ -39,7 +39,7 @@ const Channels = () => {
       title: 'Slack',
       description: 'Receive instant alerts for messages and updates directly in Slack.',
       actions: (
-        <a href="#" className="btn btn-sm btn-light btn-outline">
+        <a href="#" className="btn btn-sm btn-light btn-outline text-center">
           Connect Slack
         </a>
       )
@@ -71,7 +71,7 @@ const Channels = () => {
 
   return (
     <div className="card">
-      <div className="card-header">
+      <div className="card-header gap-2">
         <h3 className="card-title">Notification Channels</h3>
 
         <div className="flex items-center gap-2">

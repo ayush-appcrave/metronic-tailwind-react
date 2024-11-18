@@ -120,7 +120,7 @@ const PermissionsCheck = () => {
 
   return (
     <div className="card">
-      <div className="card-header">
+      <div className="card-header gap-2">
         <h3 className="card-title">
           <a href="#" className="link">
             Project Manager
@@ -129,7 +129,7 @@ const PermissionsCheck = () => {
         </h3>
 
         <div className="flex gap-5">
-          <a href="#" className="btn btn-sm btn-light btn-outline">
+          <a href="#" className="btn btn-sm btn-light btn-outline shrink-0">
             New Permission
           </a>
         </div>

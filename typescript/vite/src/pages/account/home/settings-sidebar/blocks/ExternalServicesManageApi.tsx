@@ -57,7 +57,8 @@ const ExternalServicesManageApi = ({
             </label>
           </div>
 
-          <div className="flex items-center justify-between grow border border-gray-200 rounded-xl gap-2 p-5 rtl:[background-position:-100%_44%] [background-position:220%_44%] bg-no-repeat bg-[length:650px] user-access-bg">
+          <div className="flex items-center flex-wrap sm:flex-nowrap justify-between grow border border-gray-200 rounded-xl gap-2 p-5 
+          rtl:[background-position:-195px_-85px] [background-position:195px_-85px] bg-no-repeat bg-[length:650px] user-access-bg">
             <div className="flex items-center gap-4">
               <CommonHexagonBadge
                 stroke="stroke-brand-clarity"
@@ -67,14 +68,14 @@ const ExternalServicesManageApi = ({
               />
 
               <div className="flex flex-col gap-1.5">
-                <div className="flex items-center gap-2.5">
+                <div className="flex items-center flex-wrap gap-2.5">
                   <a
                     href="#"
                     className="text-base font-medium text-gray-900 hover:text-primary-active"
                   >
                     User Access
                   </a>
-                  <span className="badge badge-sm badge-outline">16 days left</span>
+                  <span className="badge badge-sm badge-outline shrink-0">16 days left</span>
                 </div>
 
                 <div className="form-info text-gray-800 font-normal">
