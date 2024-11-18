@@ -59,7 +59,7 @@ const Options = () => {
           <Link to={`${item.path}`} className="btn text-primary hover:text-primary-active px-0">
             View page
           </Link>
-          <KeenIcon icon="right" className="text-primary text-xs rtl:transform rtl:rotate-180" />
+          <KeenIcon icon="right" className="text-primary text-xs" />
         </div>
       </div>
     );
