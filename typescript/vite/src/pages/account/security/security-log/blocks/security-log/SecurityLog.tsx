@@ -1,28 +1,53 @@
 /* eslint-disable prettier/prettier */
 import { useMemo } from 'react';
-import { ColumnDef } from '@tanstack/react-table';
-
-import { DataGrid, KeenIcon } from '@/components';
-
+import { Column, ColumnDef, RowSelectionState } from '@tanstack/react-table';
+import { DataGrid, DataGridColumnHeader, DataGridColumnVisibility, DataGridRowSelect, DataGridRowSelectAll, KeenIcon, useDataGrid } from '@/components';
+import { toast } from 'sonner';
+import { Input } from '@/components/ui/input';
 import { SecurityLogData, ISecurityLogData } from '.';
 
+interface IColumnFilterProps<TData, TValue> {
+  column: Column<TData, TValue>;
+}
+
 const SecurityLog = () => {
+  const ColumnInputFilter = <TData, TValue>({ column }: IColumnFilterProps<TData, TValue>) => {
+    return (
+      <Input
+        placeholder="Filter..."
+        value={(column.getFilterValue() as string) ?? ''}
+        onChange={(event) => column.setFilterValue(event.target.value)}
+        className="h-9 w-full max-w-40"
+      />
+    );
+  };
+
   const columns = useMemo<ColumnDef<ISecurityLogData>[]>(
     () => [
       {
+        accessorKey: 'id',
+        header: () => <DataGridRowSelectAll />,
+        cell: ({ row }) => <DataGridRowSelect row={row} />,
+        enableSorting: false,
+        enableHiding: false,
+        meta: {
+          headerClassName: 'w-0'
+        }
+      },
+      {
         accessorFn: (row) => row.timestamp,
         id: 'timestamp',
-        header: () => 'Timestamp',
+        header: ({ column }) => <DataGridColumnHeader title='Timestamp' filter={<ColumnInputFilter column={column} />} column={column} />,
         enableSorting: true,
         cell: (info) => info.getValue(),
         meta: {
-          className: 'min-w-[200px]'
+          headerClassName: 'min-w-[200px]'
         },
       },
       {
         accessorFn: (row) => row.eventType,
         id: 'eventType',
-        header: () => 'Event Type',
+        header: ({ column }) => <DataGridColumnHeader title='Event Type' column={column} />,
         enableSorting: true,
         cell: (info) => (
           <div className="flex items-center gap-1.5">
@@ -36,43 +61,43 @@ const SecurityLog = () => {
           </div>
         ),
         meta: {
-          className: 'min-w-[200px]',
+          headerClassName: 'min-w-[200px]',
         },
       },
       {
         accessorFn: (row) => row.actionTaken,
         id: 'actionTaken',
-        header: () => 'Action Taken',
+        header: ({ column }) => <DataGridColumnHeader title='Action Taken' column={column} />,
         enableSorting: true,
         cell: (info) => info.getValue(),
         meta: {
-          className: 'min-w-[200px]',
+          headerClassName: 'min-w-[200px]',
         },
       },
       {
         accessorFn: (row) => row.sourceIp,
         id: 'sourceIp',
-        header: () => 'Source IP',
+        header: ({ column }) => <DataGridColumnHeader title='Source IP' column={column} />,
         enableSorting: true,
         cell: (info) => info.getValue(),
         meta: {
-          className: 'min-w-[130px]',
+          headerClassName: 'min-w-[130px]',
         },
       },
       {
         accessorFn: (row) => row.destinationIp,
         id: 'destinationIp',
-        header: () => 'Destination IP',
+        header: ({ column }) => <DataGridColumnHeader title='Destination IP' column={column} />,
         enableSorting: true,
         cell: (info) => info.getValue(),
         meta: {
-          className: 'min-w-[140px]',
+          headerClassName: 'min-w-[130px]',
         },
       },
       {
         accessorFn: (row) => row.severity,
         id: 'severity',
-        header: () => 'Severity',
+        header: ({ column }) => <DataGridColumnHeader title='Severity' column={column} />,
         enableSorting: true,
         cell: (info) => (
           <span className={`badge badge-sm badge-outline ${info.row.original.severity.variant}`}>
@@ -80,7 +105,7 @@ const SecurityLog = () => {
           </span>
         ),
         meta: {
-          className: 'min-w-[110px]',
+          headerClassName: 'min-w-[110px]',
         },
       },
       {
@@ -95,7 +120,7 @@ const SecurityLog = () => {
           </button>
         ),
         meta: {
-          className: 'w-[60px]',
+          headerClassName: 'w-[60px]',
         },
       },
     ],
@@ -104,28 +129,52 @@ const SecurityLog = () => {
 
   const data: ISecurityLogData[] = useMemo(() => SecurityLogData, []);
 
-  return (
-    <div className="card card-grid min-w-full">
-      <div className="card-header py-5 flex-wrap">
-        <h3 className="card-title">Security Log</h3>
-        <label className="switch switch-sm">
-          <input name="check" type="checkbox" value="1" defaultChecked className="order-2" readOnly />
-          <span className="switch-label order-1">
-            Push Alerts
-          </span>
-        </label>
-      </div>
+  const handleRowSelection = (state: RowSelectionState) => {
+    const selectedRowIds = Object.keys(state);
 
-      <div className="card-body">
-        <DataGrid 
-          columns={columns} 
-          data={data} 
-          rowSelect={true} 
-          pagination={{ size: 10 }}
-          sorting={[{ id: 'timestamp', desc: false }]}  
-        />
+    if (selectedRowIds.length > 0) {
+      toast(`Total ${selectedRowIds.length} are selected.`, {
+        description: `Selected row IDs: ${selectedRowIds}`,
+        action: {
+          label: 'Undo',
+          onClick: () => console.log('Undo')
+        }
+      });
+    }
+  };
+
+  const Toolbar = () => {
+    const { table } = useDataGrid();
+
+    return (
+      <div className="card-header px-5 py-4 border-b-0">
+        <h3 className="card-title">Security Log</h3>
+
+        <div className="flex items-center gap-2.5">
+          <DataGridColumnVisibility table={table}/>
+
+          <label className="switch switch-sm">
+            <input name="check" type="checkbox" value="1" defaultChecked className="order-2" readOnly />
+            <span className="switch-label order-1">
+              Push Alerts
+            </span>
+          </label>
+        </div>
       </div>
-    </div>
+    );
+  };
+
+  return (
+    <DataGrid 
+      columns={columns} 
+      data={data} 
+      rowSelection={true} 
+      onRowSelectionChange={handleRowSelection}
+      pagination={{ size: 10 }}
+      sorting={[{ id: 'timestamp', desc: false }]} 
+      toolbar={<Toolbar />}
+      layout={{ card: true }}
+    />
   );
 };
 

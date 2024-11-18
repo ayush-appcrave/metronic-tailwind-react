@@ -56,8 +56,8 @@ const Device = () => {
           );
         },
         meta: {
-          className: 'min-w-[250px]',
-          cellClassName: 'text-sm text-gray-800 font-normal',
+          headerClassName: 'min-w-[250px]',
+          cellClassName: 'text-sm text-gray-800 font-normal'
         }
       },
       {
@@ -69,8 +69,8 @@ const Device = () => {
           return info.row.original.ipAddress;
         },
         meta: {
-          className: 'min-w-[165px]',
-          cellClassName: 'text-sm text-gray-800 font-normal',
+          headerClassName: 'min-w-[165px]',
+          cellClassName: 'text-sm text-gray-800 font-normal'
         }
       },   
       {
@@ -82,8 +82,8 @@ const Device = () => {
           return info.row.original.location;
         },
         meta: {
-          className: 'min-w-[165px]',
-          cellClassName: 'text-sm text-gray-800 font-normal',
+          headerClassName: 'min-w-[165px]',
+          cellClassName: 'text-sm text-gray-800 font-normal'
         }
       },
       {
@@ -99,8 +99,8 @@ const Device = () => {
         ),
         enableSorting: true, 
         meta: {
-          className: 'min-w-[165px]',
-          cellClassName: 'text-sm text-gray-800 font-normal', 
+          headerClassName: 'min-w-[165px]',
+          cellClassName: 'text-sm text-gray-800 font-normal'
         }
       },    
       {
@@ -112,8 +112,8 @@ const Device = () => {
           return info.row.original.lastSession;
         },
         meta: {
-          className: 'min-w-[165px]',
-          cellClassName: 'text-sm text-gray-800 font-normal',
+          headerClassName: 'min-w-[165px]',
+          cellClassName: 'text-sm text-gray-800 font-normal'
         }
       },
       {
@@ -128,7 +128,7 @@ const Device = () => {
           );
         },
         meta: {
-          className: 'w-[60px]'
+          headerClassName: 'w-[60px]'
         }
       },      
       {
@@ -143,7 +143,7 @@ const Device = () => {
           );
         },
         meta: {
-          className: 'w-[60px]'
+          headerClassName: 'w-[60px]'
         }
       },      
     ],
@@ -173,9 +173,9 @@ const Device = () => {
       <div className="card-header px-5 py-5 border-b-0">
         <h3 className="card-title">Devices</h3>
 
-        <div className="flex gap-5">
-          <a href="#" className="btn btn-sm btn-primary">Add Device</a>
+        <div className="flex items-center gap-2.5">
           <DataGridColumnVisibility table={table}/>
+          <a href="#" className="btn btn-sm btn-primary">Add Device</a>
         </div>
       </div>
     );
