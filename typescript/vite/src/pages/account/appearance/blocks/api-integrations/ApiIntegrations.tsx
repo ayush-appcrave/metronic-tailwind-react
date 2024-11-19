@@ -64,6 +64,7 @@ const ApiIntegrations = () => {
           </div>
         ),
         meta: {
+          headerTitle: 'API Key',
           headerClassName: 'min-w-[224px]'
         }
       },   
@@ -76,6 +77,7 @@ const ApiIntegrations = () => {
           return info.row.original.dailyCalls;
         },
         meta: {
+          headerTitle: 'Daily Calls',
           headerClassName: 'min-w-[122px]'
         }
       },
@@ -136,7 +138,6 @@ const ApiIntegrations = () => {
         <h3 className="card-title">API Integrations</h3>
 
         <div className="flex items-center gap-2.5">
-          <DataGridColumnVisibility table={table}/>
           <div className="flex gap-7.5">
             <label className="switch switch-sm">
               <input name="check" type="checkbox" value="1" className="order-2" readOnly />
@@ -146,6 +147,7 @@ const ApiIntegrations = () => {
             </label>
             <a href="#" className="btn btn-sm btn-primary">Add New</a>
           </div>
+          <DataGridColumnVisibility table={table}/>
         </div>
       </div>
     );

@@ -123,6 +123,7 @@ const Invites = () => {
         enableSorting: true,
         cell: (info) => info.getValue(),
         meta: {
+          headerTitle: 'Recent activity',
           headerClassName: 'min-w-[160px]',
           cellClassName: 'text-gray-700 font-normal'
         }
@@ -209,28 +210,24 @@ const Invites = () => {
         <h3 className="card-title">Invites</h3>
 
         <div className="flex items-center gap-2.5">
-          <DataGridColumnVisibility table={table}/>
-
-          <div className="flex gap-6">
-            <div className="relative">
-              <KeenIcon
-                icon="magnifier"
-                className="leading-none text-md text-gray-500 absolute top-1/2 start-0 -translate-y-1/2 ms-3"
-              />
-              <input
-                type="text"
-                className="input input-sm ps-8"
-                placeholder="Search Members"
-                value={searchTerm}
-                onChange={(e) => setSearchTerm(e.target.value)} // Update search term
-              />
-            </div>
-
-            <label className="switch switch-sm">
-              <input name="check" type="checkbox" value="1" className="order-2" readOnly />
-              <span className="switch-label order-1">Active Users</span>
-            </label>
+          <div className="relative">
+            <KeenIcon
+              icon="magnifier"
+              className="leading-none text-md text-gray-500 absolute top-1/2 start-0 -translate-y-1/2 ms-3"
+            />
+            <input
+              type="text"
+              className="input input-sm ps-8"
+              placeholder="Search Members"
+              value={searchTerm}
+              onChange={(e) => setSearchTerm(e.target.value)} // Update search term
+            />
           </div>
+          <DataGridColumnVisibility table={table}/>
+          <label className="switch switch-sm">
+            <input name="check" type="checkbox" value="1" className="order-2" readOnly />
+            <span className="switch-label order-1">Active Users</span>
+          </label>
         </div>
       </div>
     );

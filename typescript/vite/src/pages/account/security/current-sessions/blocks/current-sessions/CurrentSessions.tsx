@@ -161,8 +161,6 @@ const CurrentSessions = () => {
             <input name="check" type="checkbox" value="1" readOnly />
           </label>
 
-          <DataGridColumnVisibility table={table}/>
-
           <div className="flex gap-3">
             <Select defaultValue="1">
               <SelectTrigger className="min-w-32" size="sm">
@@ -189,7 +187,9 @@ const CurrentSessions = () => {
                 <SelectItem value="4">Japan</SelectItem>
                 <SelectItem value="5">Malaysia</SelectItem>
               </SelectContent>
-            </Select> 
+            </Select>
+
+            <DataGridColumnVisibility table={table}/>
           </div>
         </div>
       </div>

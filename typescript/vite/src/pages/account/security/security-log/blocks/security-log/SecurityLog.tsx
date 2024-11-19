@@ -61,6 +61,7 @@ const SecurityLog = () => {
           </div>
         ),
         meta: {
+          headerTitle: 'Event Type',
           headerClassName: 'min-w-[200px]',
         },
       },
@@ -71,6 +72,7 @@ const SecurityLog = () => {
         enableSorting: true,
         cell: (info) => info.getValue(),
         meta: {
+          headerTitle: 'Action Taken',
           headerClassName: 'min-w-[200px]',
         },
       },
@@ -81,6 +83,7 @@ const SecurityLog = () => {
         enableSorting: true,
         cell: (info) => info.getValue(),
         meta: {
+          headerTitle: 'Source IP',
           headerClassName: 'min-w-[130px]',
         },
       },
@@ -91,6 +94,7 @@ const SecurityLog = () => {
         enableSorting: true,
         cell: (info) => info.getValue(),
         meta: {
+          headerTitle: 'Destination IP',
           headerClassName: 'min-w-[130px]',
         },
       },

@@ -62,6 +62,7 @@ const ApiIntegrations = () => {
           </div>
         ),
         meta: {
+          headerTitle: 'API Key',
           headerClassName: 'min-w-[224px]',
           cellClassName: 'text-gray-700 font-normal'
         }
@@ -73,6 +74,7 @@ const ApiIntegrations = () => {
         enableSorting: true,
         cell: (info) => info.getValue(),
         meta: {
+          headerTitle: 'Daily Calls',
           headerClassName: 'min-w-[122px]',
           cellClassName: 'text-gray-700 font-normal',
         }
@@ -133,8 +135,6 @@ const ApiIntegrations = () => {
         <h3 className="card-title">API Integrations</h3>
 
         <div className="flex items-center gap-2.5">
-          <DataGridColumnVisibility table={table}/>
-
           <div className="flex gap-7.5">
             <label className="switch switch-sm">
               <input name="check" type="checkbox" value="1" className="order-2" readOnly />
@@ -144,6 +144,7 @@ const ApiIntegrations = () => {
               Add New
             </a>
           </div>
+          <DataGridColumnVisibility table={table}/>
         </div>
       </div>
     );

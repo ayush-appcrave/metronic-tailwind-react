@@ -69,6 +69,7 @@ const Device = () => {
           return info.row.original.ipAddress;
         },
         meta: {
+          headerTitle: 'IP Address',
           headerClassName: 'min-w-[165px]',
           cellClassName: 'text-sm text-gray-800 font-normal'
         }
@@ -85,24 +86,24 @@ const Device = () => {
           headerClassName: 'min-w-[165px]',
           cellClassName: 'text-sm text-gray-800 font-normal'
         }
-      },
+      },  
       {
         accessorFn: (row) => row.added,
         id: 'added',
         header: ({ column }) => (
-          <div className="flex items-center" >
+          <div className="flex items-center">
             <DefaultTooltip title="Time is based on your local timezone." placement="left" className="max-w-48">
               <KeenIcon icon="information-2" className="text-lg leading-none me-1 mb-0.5" />
             </DefaultTooltip>
             <DataGridColumnHeader title="Added" column={column} />
           </div> 
         ),
-        enableSorting: true, 
+        enableSorting: true,
         meta: {
           headerClassName: 'min-w-[165px]',
           cellClassName: 'text-sm text-gray-800 font-normal'
         }
-      },    
+      },  
       {
         accessorFn: (row) => row.lastSession,
         id: 'lastSession',
@@ -112,6 +113,7 @@ const Device = () => {
           return info.row.original.lastSession;
         },
         meta: {
+          headerTitle: 'Last Session',
           headerClassName: 'min-w-[165px]',
           cellClassName: 'text-sm text-gray-800 font-normal'
         }
@@ -174,8 +176,8 @@ const Device = () => {
         <h3 className="card-title">Devices</h3>
 
         <div className="flex items-center gap-2.5">
-          <DataGridColumnVisibility table={table}/>
           <a href="#" className="btn btn-sm btn-primary">Add Device</a>
+          <DataGridColumnVisibility table={table}/>
         </div>
       </div>
     );

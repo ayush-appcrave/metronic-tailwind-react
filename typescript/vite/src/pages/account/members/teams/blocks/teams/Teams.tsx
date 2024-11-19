@@ -92,6 +92,7 @@ const Teams = () => {
         header: ({ column }) => <DataGridColumnHeader title='Last Modified' column={column} />,
         cell: (info) => info.getValue(),
         meta: {
+          headerTitle: 'Last Modified',
           headerClassName: 'w-[200px]',
           cellClassName: 'text-gray-700 font-normal'
         }
@@ -195,8 +196,6 @@ const Teams = () => {
         <h3 className="card-title">Teams</h3>
 
         <div className="flex items-center gap-2.5">
-          <DataGridColumnVisibility table={table}/>
-
           <div className="flex gap-6">
             <div className="relative">
               <KeenIcon
@@ -211,11 +210,12 @@ const Teams = () => {
                 onChange={(event) => table.getColumn('team')?.setFilterValue(event.target.value)}
               />
             </div>
-            <label className="switch switch-sm">
-              <input name="check" type="checkbox" value="1" className="order-2" readOnly />
-              <span className="switch-label order-1">Only Active Groups</span>
-            </label>
           </div>
+          <DataGridColumnVisibility table={table}/>
+          <label className="switch switch-sm">
+            <input name="check" type="checkbox" value="1" className="order-2" readOnly />
+            <span className="switch-label order-1">Only Active Groups</span>
+          </label>
         </div>
       </div>
     );

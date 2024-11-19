@@ -1,11 +1,10 @@
 /* eslint-disable prettier/prettier */
 import { useMemo } from 'react';
 import { Column, ColumnDef, RowSelectionState } from '@tanstack/react-table';
-import { DataGrid, DataGridColumnHeader, DataGridColumnVisibility, DataGridRowSelect, DataGridRowSelectAll, useDataGrid } from '@/components/data-grid';
+import { DataGrid, DataGridColumnHeader, DataGridColumnVisibility, DataGridRowSelect, DataGridRowSelectAll, useDataGrid, KeenIcon } from '@/components';
 import { InvoicingData, IInvoicingData } from './';
 import { toast } from 'sonner';
 import { Input } from '@/components/ui/input';
-import { KeenIcon } from '@/components/keenicons';
 import { Button } from '@/components/ui/button';
 
 interface IColumnFilterProps<TData, TValue> {
@@ -45,7 +44,7 @@ const Invoicing = () => {
           return info.row.original.invoice;
         },
         meta: {
-          className: 'min-w-[200px]',
+          headerClassName: 'min-w-[200px]',
           cellClassName: 'text-gray-800 font-normal',
         }
       },
@@ -83,11 +82,11 @@ const Invoicing = () => {
         id: 'dueDate',
         header: ({ column }) => <DataGridColumnHeader title="Due Date" column={column}/>,
         enableSorting: true,
-        enableHiding: false,
         cell: (info) => {                    
           return info.row.original.dueDate;
         },
         meta: {
+          headerTitle: 'Due Date',
           headerClassName: 'w-[170px]',
           cellClassName: 'text-gray-800 font-normal',
         }
@@ -147,11 +146,11 @@ const Invoicing = () => {
         <h3 className="card-title">Billing and Invoicing</h3>
 
         <div className="flex items-center gap-2.5">
-          <DataGridColumnVisibility table={table}/>
           <button className="btn btn-light btn-sm">
             <KeenIcon icon="exit-down" />
             Download PDF
           </button>
+          <DataGridColumnVisibility table={table}/>
         </div>
       </div>
     );
