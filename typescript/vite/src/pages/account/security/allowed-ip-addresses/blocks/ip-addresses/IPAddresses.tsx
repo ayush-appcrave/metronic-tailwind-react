@@ -1,7 +1,7 @@
 /* eslint-disable prettier/prettier */
 import { useMemo } from 'react';
 import { Column, ColumnDef, RowSelectionState } from '@tanstack/react-table';
-import { DataGrid, DataGridColumnHeader, DataGridColumnVisibility, DefaultTooltip, KeenIcon, useDataGrid } from '@/components';
+import { DataGrid, DataGridColumnHeader, DataGridColumnVisibility, DataGridRowSelect, DataGridRowSelectAll, DefaultTooltip, KeenIcon, useDataGrid } from '@/components';
 import { IPAddressesData, IIPAddressesData } from '.';
 import { toast } from 'sonner';
 import { Input } from '@/components/ui/input';
@@ -25,6 +25,16 @@ const IPAddresses = () => {
   const columns = useMemo<ColumnDef<IIPAddressesData>[]>(
     () => [
       {
+        accessorKey: 'id',
+        header: () => <DataGridRowSelectAll />,
+        cell: ({ row }) => <DataGridRowSelect row={row} />,
+        enableSorting: false,
+        enableHiding: false,
+        meta: {
+          headerClassName: 'w-0'
+        }
+      },
+      {
         accessorFn: (row) => row.status,
         id: 'status',
         header: ({ column }) => <DataGridColumnHeader title="Status" column={column}/>, 
@@ -33,7 +43,7 @@ const IPAddresses = () => {
           <span className={`badge badge-dot size-2 ${info.row.original.status}`}></span>
         ),
         meta: {
-          headerClassName: 'w-0',
+          headerClassName: 'w-[100px]',
           cellClassName: 'text-center'
         },
       },
@@ -45,7 +55,7 @@ const IPAddresses = () => {
         cell: (info) => info.getValue(),
         meta: {
           headerTitle: 'IP Address',
-          className: 'min-w-[250px]',
+          headerClassName: 'min-w-[170px]',
         },
       },
       {
@@ -56,7 +66,7 @@ const IPAddresses = () => {
         cell: (info) => info.getValue(),
         meta: {
           headerTitle: 'Last Session',
-          className: 'w-[185px]',
+          headerClassName: 'w-[185px]',
         },
       },
       {
@@ -66,7 +76,7 @@ const IPAddresses = () => {
         enableSorting: true,
         cell: (info) => info.getValue(),
         meta: {
-          className: 'w-[185px]',
+          headerClassName: 'min-w-[185px]',
         },
       },
       {
@@ -85,7 +95,7 @@ const IPAddresses = () => {
         enableSorting: true,
         cell: (info) => info.getValue(),
         meta: {
-          className: 'w-[185px]',
+          headerClassName: 'w-[185px]',
         },
       },
       {

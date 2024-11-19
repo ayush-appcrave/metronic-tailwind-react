@@ -74,7 +74,7 @@ const Invoicing = () => {
           return info.row.original.date;
         },
         meta: {
-          headerClassName: 'w-[170px]',
+          headerClassName: 'min-w-[170px]',
           cellClassName: 'text-gray-800 font-normal',
         }
       },
@@ -88,7 +88,7 @@ const Invoicing = () => {
           return info.row.original.dueDate;
         },
         meta: {
-          headerClassName: 'w-[170px]',
+          headerClassName: 'nin-w-[170px]',
           cellClassName: 'text-gray-800 font-normal',
         }
       },    

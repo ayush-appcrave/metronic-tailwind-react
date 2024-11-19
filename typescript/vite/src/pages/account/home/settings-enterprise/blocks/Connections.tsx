@@ -149,7 +149,7 @@ const Connections = () => {
             <tbody>
               <tr className="bg-gray-100">
                 <th className="text-start font-medium min-w-48 py-2.5">Name</th>
-                <th className="text-end font-medium min-w-20 py-2.5">Joint Links</th>
+                <th className="text-end font-medium min-w-28 py-2.5">Joint Links</th>
                 <th className="text-end font-medium min-w-20 py-2.5">Status</th>
                 <th className="min-w-16"></th>
               </tr>
