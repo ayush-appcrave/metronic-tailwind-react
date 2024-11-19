@@ -44,6 +44,7 @@ const IPAddresses = () => {
         enableSorting: true,
         cell: (info) => info.getValue(),
         meta: {
+          headerTitle: 'IP Address',
           className: 'min-w-[250px]',
         },
       },
@@ -54,6 +55,7 @@ const IPAddresses = () => {
         enableSorting: true,
         cell: (info) => info.getValue(),
         meta: {
+          headerTitle: 'Last Session',
           className: 'w-[185px]',
         },
       },

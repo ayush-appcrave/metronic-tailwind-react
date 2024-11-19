@@ -12,15 +12,19 @@ import { KeenIcon } from '@/components/keenicons';
 
 interface IDataGridColumnVisibilityProps<TData> {
   table: Table<TData>;
+  hideTitle?: boolean;
 }
 
-export function DataGridColumnVisibility<TData>({ table }: IDataGridColumnVisibilityProps<TData>) {
+export function DataGridColumnVisibility<TData>({
+  table,
+  hideTitle = false
+}: IDataGridColumnVisibilityProps<TData>) {
   return (
     <DropdownMenu>
       <DropdownMenuTrigger asChild>
         <Button variant="light" size="sm">
           <KeenIcon icon="setting-4" />
-          Columns
+          {!hideTitle && 'Columns'}
         </Button>
       </DropdownMenuTrigger>
       <DropdownMenuContent align="end" className="w-[150px]">
@@ -37,7 +41,7 @@ export function DataGridColumnVisibility<TData>({ table }: IDataGridColumnVisibi
                 checked={column.getIsVisible()}
                 onCheckedChange={(value) => column.toggleVisibility(!!value)}
               >
-                {column.id}
+                {column.columnDef.meta?.headerTitle || column.id}
               </DropdownMenuCheckboxItem>
             );
           })}

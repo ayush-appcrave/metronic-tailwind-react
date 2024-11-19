@@ -87,6 +87,7 @@ const CurrentSessions = () => {
         enableSorting: true,
         cell: (info) => info.getValue(),
         meta: {
+          headerTitle: 'IP Address',
           headerClassName: 'w-[240px]',
         },
       },

@@ -3,7 +3,7 @@
 ## Metronic v9.1.2 - November 20, 2024
 
 #### New Features
-- **Shadcn UI & Radix Integration**: Integrated the most popular React UI kits, Shadcn UI with Radix, for seamless and modern component usage. [Learn more](https://ui.shadcn.com/).
+- **Shadcn UI & Radix Integration**: Integrated the most popular React UI kits, Shadcn UI with Radix. [Learn more](https://ui.shadcn.com/).
 - **DataGrid Enhancements**: Improved DataGrid with advanced features, including sortable headers, column visibility control, and integrated filters.
 - **Date Picker**: Introduced a sleek and functional Date Picker component from Shadcn UI. [Learn more](https://ui.shadcn.com/docs/components/date-picker).
 - **Select**: Added the Shadcn UI Select component for enhanced dropdown functionality. [Learn more](https://ui.shadcn.com/docs/components/select).
