@@ -1,10 +1,10 @@
 /* eslint-disable prettier/prettier */
 import { useMemo } from 'react';
 import { Column, ColumnDef, RowSelectionState } from '@tanstack/react-table';
-import { DataGrid, DataGridColumnHeader, DataGridColumnVisibility, DefaultTooltip, KeenIcon, useDataGrid } from '@/components';
-import { IPAddressesData, IIPAddressesData } from '.';
+import { DataGrid, DataGridColumnHeader, DataGridColumnVisibility, DataGridRowSelect, DataGridRowSelectAll, useDataGrid, KeenIcon, DefaultTooltip } from '@/components';
 import { toast } from 'sonner';
 import { Input } from '@/components/ui/input';
+import { IPAddressesData, IIPAddressesData } from '.';
 
 interface IColumnFilterProps<TData, TValue> {
   column: Column<TData, TValue>;
@@ -24,6 +24,16 @@ const IPAddresses = () => {
 
   const columns = useMemo<ColumnDef<IIPAddressesData>[]>(
     () => [
+      {
+        accessorKey: 'id',
+        header: () => <DataGridRowSelectAll />,
+        cell: ({ row }) => <DataGridRowSelect row={row} />,
+        enableSorting: false,
+        enableHiding: false,
+        meta: {
+          headerClassName: 'w-0'
+        }
+      },
       {
         accessorFn: (row) => row.status,
         id: 'status',
@@ -45,7 +55,7 @@ const IPAddresses = () => {
         cell: (info) => info.getValue(),
         meta: {
           headerTitle: 'IP Address',
-          className: 'min-w-[250px]',
+          headerClassName: 'min-w-[250px]',
         },
       },
       {
@@ -56,7 +66,7 @@ const IPAddresses = () => {
         cell: (info) => info.getValue(),
         meta: {
           headerTitle: 'Last Session',
-          className: 'w-[185px]',
+          headerClassName: 'w-[185px]',
         },
       },
       {
@@ -66,26 +76,23 @@ const IPAddresses = () => {
         enableSorting: true,
         cell: (info) => info.getValue(),
         meta: {
-          className: 'w-[185px]',
+          headerClassName: 'w-[185px]',
         },
       },
       {
         accessorFn: (row) => row.method,
-        id: 'method', 
+        id: 'method',
         header: ({ column }) => (
-          <>
-            <div className="flex items-center gap-0.5">
-              <DataGridColumnHeader title="Method" column={column}/>
-              <DefaultTooltip title="Verify the identity of a user trying to access a resource" placement="bottom" className="max-w-48">
-                <KeenIcon icon="information-2" className="text-sm leading-none me-1 mb-0.5" />
-              </DefaultTooltip>
-            </div>
-          </>
+          <div className="flex items-center">
+            <DefaultTooltip title="Verify the identity of a user trying to access a resource" placement="left" className="max-w-48">
+              <KeenIcon icon="information-2" className="text-lg leading-none me-1 mb-0.5" />
+            </DefaultTooltip>
+            <DataGridColumnHeader title="Method" column={column} />
+          </div> 
         ),
         enableSorting: true,
-        cell: (info) => info.getValue(),
         meta: {
-          className: 'w-[185px]',
+          headerClassName: 'w-[185px]',
         },
       },
       {
@@ -148,10 +155,13 @@ const IPAddresses = () => {
         <h3 className="card-title">IP Addresses</h3>
 
         <div className="flex items-center gap-2.5">
-          <button className="btn btn-light btn-sm">
-            <KeenIcon icon="exit-down" />
-            IP Allowlist Enabled
-          </button>
+          <label className="switch switch-sm">
+            <span className="switch-label">
+              IP Allowlist Enabled
+            </span>
+            <input type="checkbox" value="1" name="check" defaultChecked readOnly />
+          </label>
+          <a href="#" id="select_ip_btn" className="btn btn-sm btn-primary">Add IP Address</a>
           <DataGridColumnVisibility table={table}/>
         </div>
       </div>
@@ -165,7 +175,7 @@ const IPAddresses = () => {
       rowSelection={true} 
       onRowSelectionChange={handleRowSelection}
       pagination={{ size: 10 }}
-      sorting={[{ id: 'method', desc: false }]} 
+      sorting={[{ id: 'ipAddress', desc: false }]} 
       toolbar={<Toolbar />}
       layout={{ card: true }}
     />

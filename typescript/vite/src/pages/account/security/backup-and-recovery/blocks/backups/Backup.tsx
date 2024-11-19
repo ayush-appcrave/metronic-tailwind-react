@@ -1,11 +1,11 @@
 /* eslint-disable prettier/prettier */
 import { useMemo } from 'react';
-import { Column, ColumnDef, RowSelectionState } from '@tanstack/react-table';
-import { DataGrid, DataGridColumnHeader, DataGridRowSelect, DataGridRowSelectAll, KeenIcon, useDataGrid } from '@/components';
 import { Link } from 'react-router-dom';
-import { BackupData, IBackupData } from '.';
+import { Column, ColumnDef, RowSelectionState } from '@tanstack/react-table';
+import { DataGrid, DataGridColumnHeader, DataGridRowSelect, DataGridRowSelectAll, KeenIcon, useDataGrid, DataGridColumnVisibility } from '@/components';
 import { toast } from 'sonner';
 import { Input } from '@/components/ui/input';
+import { BackupData, IBackupData } from '.';
 
 interface IColumnFilterProps<TData, TValue> {
   column: Column<TData, TValue>;
@@ -56,7 +56,7 @@ const Backup= () => {
           );
         },
         meta: {
-          className: 'min-w-[260px]',
+          headerClassName: 'min-w-[260px]',
           cellClassName: 'text-gray-800 font-normal',
         }
       },
@@ -86,7 +86,7 @@ const Backup= () => {
           );
         },
         meta: {
-          className: 'min-w-[260px]',
+          headerClassName: 'min-w-[260px]',
         }
       },
   
@@ -102,7 +102,7 @@ const Backup= () => {
           );
         },
         meta: {
-          className: 'w-[70px]'
+          headerClassName: 'w-[70px]'
         }
       },      
       {
@@ -117,7 +117,7 @@ const Backup= () => {
           );
         },
         meta: {
-          className: 'w-[70px]'
+          headerClassName: 'w-[70px]'
         }
       },      
     ],
@@ -145,15 +145,18 @@ const Backup= () => {
     const isFiltered = table.getState().columnFilters.length > 0
 
     return (
-      <div className="card-header py-5 border-b-0 flex-wrap">
+      <div className="card-header px-5 py-5 border-b-0 flex-wrap">
         <h3 className="card-title">Backups</h3>
 
-        <label className="switch switch-sm">
-          <span className="switch-label">
-            Cloud Sync
-          </span>
-          <input type="checkbox" value="1" name="check" defaultChecked readOnly />
-        </label>
+        <div className="flex items-center gap-2.5">
+          <DataGridColumnVisibility table={table}/>
+          <label className="switch switch-sm">
+            <span className="switch-label">
+              Cloud Sync
+            </span>
+            <input type="checkbox" value="1" name="check" defaultChecked readOnly />
+          </label>
+        </div>
       </div>
     );
   };
@@ -164,7 +167,7 @@ const Backup= () => {
       data={data} 
       rowSelection={true} 
       onRowSelectionChange={handleRowSelection}
-      pagination={{ size: 5 }}
+      pagination={{ size: 10 }}
       sorting={[{ id: 'when', desc: false }]} 
       toolbar={<Toolbar />}
       layout={{ card: true }}
