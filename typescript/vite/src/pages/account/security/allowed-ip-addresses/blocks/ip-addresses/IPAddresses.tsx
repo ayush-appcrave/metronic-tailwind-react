@@ -1,10 +1,10 @@
 /* eslint-disable prettier/prettier */
 import { useMemo } from 'react';
 import { Column, ColumnDef, RowSelectionState } from '@tanstack/react-table';
-import { DataGrid, DataGridColumnHeader, DataGridColumnVisibility, DataGridRowSelect, DataGridRowSelectAll, useDataGrid, KeenIcon, DefaultTooltip } from '@/components';
+import { DataGrid, DataGridColumnHeader, DataGridColumnVisibility, DataGridRowSelect, DataGridRowSelectAll, DefaultTooltip, KeenIcon, useDataGrid } from '@/components';
+import { IPAddressesData, IIPAddressesData } from '.';
 import { toast } from 'sonner';
 import { Input } from '@/components/ui/input';
-import { IPAddressesData, IIPAddressesData } from '.';
 
 interface IColumnFilterProps<TData, TValue> {
   column: Column<TData, TValue>;
@@ -43,7 +43,7 @@ const IPAddresses = () => {
           <span className={`badge badge-dot size-2 ${info.row.original.status}`}></span>
         ),
         meta: {
-          headerClassName: 'w-0',
+          headerClassName: 'w-[100px]',
           cellClassName: 'text-center'
         },
       },
@@ -55,7 +55,7 @@ const IPAddresses = () => {
         cell: (info) => info.getValue(),
         meta: {
           headerTitle: 'IP Address',
-          headerClassName: 'min-w-[250px]',
+          headerClassName: 'min-w-[170px]',
         },
       },
       {
@@ -76,7 +76,7 @@ const IPAddresses = () => {
         enableSorting: true,
         cell: (info) => info.getValue(),
         meta: {
-          headerClassName: 'w-[185px]',
+          headerClassName: 'min-w-[185px]',
         },
       },
       {

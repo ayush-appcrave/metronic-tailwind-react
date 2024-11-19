@@ -5,7 +5,6 @@ import { DataGrid, DataGridColumnHeader, DataGridColumnVisibility, DataGridRowSe
 import { InvoicingData, IInvoicingData } from './';
 import { toast } from 'sonner';
 import { Input } from '@/components/ui/input';
-import { Button } from '@/components/ui/button';
 
 interface IColumnFilterProps<TData, TValue> {
   column: Column<TData, TValue>;
@@ -73,7 +72,7 @@ const Invoicing = () => {
           return info.row.original.date;
         },
         meta: {
-          headerClassName: 'w-[170px]',
+          headerClassName: 'min-w-[170px]',
           cellClassName: 'text-gray-800 font-normal',
         }
       },
@@ -86,8 +85,7 @@ const Invoicing = () => {
           return info.row.original.dueDate;
         },
         meta: {
-          headerTitle: 'Due Date',
-          headerClassName: 'w-[170px]',
+          headerClassName: 'min-w-[170px]',
           cellClassName: 'text-gray-800 font-normal',
         }
       },    
