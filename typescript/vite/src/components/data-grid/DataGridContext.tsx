@@ -13,11 +13,12 @@ import {
   getFacetedUniqueValues,
   RowSelectionState,
   OnChangeFn,
-  Table
+  Table,
+  SortingState
 } from '@tanstack/react-table';
 import { createContext, useContext, useEffect, useState, useCallback } from 'react';
 import { DataGridInner } from './DataGridInner';
-import { TDataGridProps } from './DataGrid';
+import { TDataGridProps, TDataGridRequestParams } from './DataGrid';
 import { deepMerge, debounce } from '@/lib/helpers';
 
 export interface IDataGridContextProps<TData extends object> {
@@ -26,6 +27,7 @@ export interface IDataGridContextProps<TData extends object> {
   totalRows: number;
   loading: boolean;
   setLoading: (state: boolean) => void;
+  reload: () => void
 }
 
 const DataGridContext = createContext<IDataGridContextProps<any> | undefined>(undefined);
@@ -68,13 +70,12 @@ export const DataGridProvider = <TData extends object>(props: TDataGridProps<TDa
   const [data, setData] = useState<TData[]>(mergedProps.data || []);
   const [loading, setLoading] = useState<boolean>(false);
   const [totalRows, setTotalRows] = useState<number>(mergedProps.data ? mergedProps.data.length : 0);
-
   const [pagination, setPagination] = useState<PaginationState>({
     pageIndex: props.pagination?.page ?? 0,
     pageSize: props.pagination?.size ?? 5
   });
   const [rowSelection, setRowSelection] = useState(mergedProps.rowSelection);
-  const [sorting, setSorting] = useState<any[]>(mergedProps.sorting ?? []);
+  const [sorting, setSorting] = useState<SortingState>(mergedProps.sorting ?? []);
   const [columnFilters, setColumnFilters] = useState<ColumnFiltersState>([]);
   const [columnVisibility, setColumnVisibility] = useState<VisibilityState>({});
 
@@ -84,7 +85,7 @@ export const DataGridProvider = <TData extends object>(props: TDataGridProps<TDa
     setLoading(true);
 
     try {
-      const requestParams = {
+      const requestParams: TDataGridRequestParams = {
         pageIndex: pagination.pageIndex,
         pageSize: pagination.pageSize,
         sorting,
@@ -104,8 +105,7 @@ export const DataGridProvider = <TData extends object>(props: TDataGridProps<TDa
 
   const debouncedFetchData = debounce(fetchServerSideData, 100);
 
-  // Trigger debounced fetch for server-side data; load local data if serverSide is false
-  useEffect(() => {
+  const loadData = () => {
     if (mergedProps.serverSide) {
       debouncedFetchData();
     } else {
@@ -114,6 +114,11 @@ export const DataGridProvider = <TData extends object>(props: TDataGridProps<TDa
       setTotalRows(mergedProps.data ? mergedProps.data.length : 0);
       setLoading(false); // Hide loading bar after data is set
     }
+  }
+
+  // Trigger debounced fetch for server-side data; load local data if serverSide is false
+  useEffect(() => {
+    loadData();
   }, [pagination, sorting, columnFilters, mergedProps.data, mergedProps.serverSide]);
 
   const handleRowSelectionChange: OnChangeFn<RowSelectionState> = (updaterOrValue) => {
@@ -163,7 +168,8 @@ export const DataGridProvider = <TData extends object>(props: TDataGridProps<TDa
         table,
         totalRows,
         loading,
-        setLoading
+        setLoading,
+        reload: loadData
       }}
     >
       <DataGridInner />

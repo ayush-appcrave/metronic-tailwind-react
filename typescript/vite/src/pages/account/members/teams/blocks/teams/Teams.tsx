@@ -42,6 +42,13 @@ const Teams = () => {
         id: 'team',
         header: ({ column }) => <DataGridColumnHeader title='Team' filter={<ColumnInputFilter column={column} />} column={column} />,
         enableSorting: true,
+        filterFn: (row, columnId, filterValue) => {
+          const team = row.original.team; // Access the original row data
+          const nameMatch = team.name?.toLowerCase().includes(filterValue.toLowerCase());
+          const descriptionMatch = team.description?.toLowerCase().includes(filterValue.toLowerCase());
+          
+          return nameMatch || descriptionMatch;
+        },
         cell: (info) => {
           return (
             <div className="flex flex-col gap-2">
@@ -200,8 +207,8 @@ const Teams = () => {
                 type="text"
                 placeholder="Search Teams"
                 className="input input-sm ps-8"
-                value={searchTerm}
-                onChange={(e) => setSearchTerm(e.target.value)} // Update search term
+                value={(table.getColumn('team')?.getFilterValue() as string) ?? ''}
+                onChange={(event) => table.getColumn('team')?.setFilterValue(event.target.value)}
               />
             </div>
             <label className="switch switch-sm">

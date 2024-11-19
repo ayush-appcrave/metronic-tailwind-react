@@ -1,4 +1,4 @@
-import React, { useMemo, useState } from 'react';
+import React, { useEffect, useMemo, useRef, useState } from 'react';
 import { toast } from 'sonner';
 import { Column, ColumnDef, RowSelectionState } from '@tanstack/react-table';
 import { Link } from 'react-router-dom';
@@ -8,7 +8,8 @@ import {
   KeenIcon,
   DataGridRowSelect,
   DataGridRowSelectAll,
-  DataGridColumnHeader
+  DataGridColumnHeader,
+  useDataGrid
 } from '@/components';
 import { CommonRating } from '@/partials/common';
 import { Team, QueryApiResponse } from './teams-types';
@@ -25,15 +26,28 @@ interface IColumnFilterProps<TData, TValue> {
 
 const Teams = () => {
   const ColumnFilter = <TData, TValue>({ column }: IColumnFilterProps<TData, TValue>) => {
+    const [inputValue, setInputValue] = useState((column.getFilterValue() as string) ?? '');
+
+    const handleKeyDown = (event: React.KeyboardEvent<HTMLInputElement>) => {
+      if (event.key === 'Enter') {
+        column.setFilterValue(inputValue); // Apply the filter only on Enter
+      }
+    };
+
+    const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+      setInputValue(event.target.value); // Update local state
+    };
+
     return (
       <Input
         placeholder="Filter..."
-        value={(column.getFilterValue() as string) ?? ''}
-        onChange={(event) => column.setFilterValue(event.target.value)}
+        value={inputValue}
+        onChange={handleChange}
+        onKeyDown={handleKeyDown} // Trigger filter on Enter key
         className="h-9 w-full max-w-40"
       />
     );
-  };  
+  };
 
   const columns = useMemo<ColumnDef<Team>[]>(
     () => [
@@ -51,7 +65,13 @@ const Teams = () => {
       {
         accessorFn: (row) => row.name,
         id: 'name',
-        header: ({ column }) => <DataGridColumnHeader title="Team" filter={<ColumnFilter column={column}/>} column={column} />,
+        header: ({ column }) => (
+          <DataGridColumnHeader
+            title="Team"
+            filter={<ColumnFilter column={column} />}
+            column={column}
+          />
+        ),
         enableSorting: true,
         cell: (info) => (
           <div className="flex flex-col gap-2">
@@ -125,8 +145,17 @@ const Teams = () => {
         queryParams.set('order', params.sorting[0].desc ? 'desc' : 'asc');
       }
 
-      if (searchQuery.length > 2) {
+      if (searchQuery.trim().length > 0) {
         queryParams.set('query', searchQuery);
+      }
+
+      // Column filters
+      if (params.columnFilters) {
+        params.columnFilters.forEach(({ id, value }) => {
+          if (value !== undefined && value !== null) {
+            queryParams.set(`filter[${id}]`, String(value)); // Properly serialize filter values
+          }
+        });
       }
 
       const response = await axios.get<TeamsQueryApiResponse>(
@@ -167,13 +196,44 @@ const Teams = () => {
     }
   };
 
-  const Toolbar = () => {
+  const Toolbar = ({ setSearchQuery }: { setSearchQuery: (query: string) => void }) => {
+    const [inputValue, setInputValue] = useState(searchQuery);
+    const { table } = useDataGrid();
+
+    const handleKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
+      if (e.key === 'Enter') {
+        setSearchQuery(inputValue);
+        if (inputValue.trim() === '') {
+          // Remove the 'query' filter if input is empty
+          table.setColumnFilters(
+            table.getState().columnFilters.filter((filter) => filter.id !== 'query') // Exclude the filter with id 'query'
+          );
+        } else {
+          // Add or update the 'query' filter
+          table.setColumnFilters([
+            ...table.getState().columnFilters.filter((filter) => filter.id !== 'query'), // Remove existing 'query' filter
+            { id: 'query', value: inputValue }, // Add the new filter
+          ]);
+        }
+      }
+    };
+
+    const handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+      setInputValue(event.target.value); // Update local state
+    };
+
     return (
       <div className="card-header border-b-0 px-5">
         <h3 className="card-title">Teams</h3>
         <div className="input input-sm max-w-48">
           <KeenIcon icon="magnifier" />
-          <input type="text" placeholder="Search Teams" onChange={(e) => {}} />
+          <input
+            type="text"
+            placeholder="Search Teams"
+            value={inputValue}
+            onChange={handleChange}
+            onKeyDown={handleKeyDown}
+          />
         </div>
       </div>
     );
@@ -188,7 +248,7 @@ const Teams = () => {
       getRowId={(row: any) => row.id}
       onRowSelectionChange={handleRowSelection}
       pagination={{ size: 5 }}
-      toolbar={<Toolbar />}
+      toolbar={<Toolbar setSearchQuery={setSearchQuery} />}
       layout={{ card: true }}
     />
   );
