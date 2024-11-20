@@ -15,7 +15,7 @@ const filesToCopy = [
   "src/auth",
   "src/components",
   "src/config",
-  "src/css",
+  "src/styles",
   "src/errors",
   "src/hooks",
   "src/i18n",
