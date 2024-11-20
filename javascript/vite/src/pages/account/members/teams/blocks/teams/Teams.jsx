@@ -31,6 +31,12 @@ const Teams = () => {
       column
     }) => <DataGridColumnHeader title='Team' filter={<ColumnInputFilter column={column} />} column={column} />,
     enableSorting: true,
+    filterFn: (row, columnId, filterValue) => {
+      const team = row.original.team; // Access the original row data
+      const nameMatch = team.name?.toLowerCase().includes(filterValue.toLowerCase());
+      const descriptionMatch = team.description?.toLowerCase().includes(filterValue.toLowerCase());
+      return nameMatch || descriptionMatch;
+    },
     cell: info => {
       return <div className="flex flex-col gap-2">
               <Link className="leading-none font-medium text-sm text-gray-900 hover:text-primary" to="#">
@@ -66,6 +72,7 @@ const Teams = () => {
     }) => <DataGridColumnHeader title='Last Modified' column={column} />,
     cell: info => info.getValue(),
     meta: {
+      headerTitle: 'Last Modified',
       headerClassName: 'w-[200px]',
       cellClassName: 'text-gray-700 font-normal'
     }
@@ -146,19 +153,17 @@ const Teams = () => {
         <h3 className="card-title">Teams</h3>
 
         <div className="flex items-center gap-2.5">
-          <DataGridColumnVisibility table={table} />
-
           <div className="flex gap-6">
             <div className="relative">
               <KeenIcon icon="magnifier" className="leading-none text-md text-gray-500 absolute top-1/2 start-0 -translate-y-1/2 ms-3" />
-              <input type="text" placeholder="Search Teams" className="input input-sm ps-8" value={searchTerm} onChange={e => setSearchTerm(e.target.value)} // Update search term
-            />
+              <input type="text" placeholder="Search Teams" className="input input-sm ps-8" value={table.getColumn('team')?.getFilterValue() ?? ''} onChange={event => table.getColumn('team')?.setFilterValue(event.target.value)} />
             </div>
-            <label className="switch switch-sm">
-              <input name="check" type="checkbox" value="1" className="order-2" readOnly />
-              <span className="switch-label order-1">Only Active Groups</span>
-            </label>
           </div>
+          <DataGridColumnVisibility table={table} />
+          <label className="switch switch-sm">
+            <input name="check" type="checkbox" value="1" className="order-2" readOnly />
+            <span className="switch-label order-1">Only Active Groups</span>
+          </label>
         </div>
       </div>;
   };

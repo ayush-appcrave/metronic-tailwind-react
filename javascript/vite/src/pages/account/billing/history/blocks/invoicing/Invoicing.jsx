@@ -1,10 +1,9 @@
 /* eslint-disable prettier/prettier */
 import { useMemo } from 'react';
-import { DataGrid, DataGridColumnHeader, DataGridColumnVisibility, DataGridRowSelect, DataGridRowSelectAll, useDataGrid } from '@/components/data-grid';
+import { DataGrid, DataGridColumnHeader, DataGridColumnVisibility, DataGridRowSelect, DataGridRowSelectAll, useDataGrid, KeenIcon } from '@/components';
 import { InvoicingData } from './';
 import { toast } from 'sonner';
 import { Input } from '@/components/ui/input';
-import { KeenIcon } from '@/components/keenicons';
 const Invoicing = () => {
   const ColumnInputFilter = ({
     column
@@ -33,7 +32,7 @@ const Invoicing = () => {
       return info.row.original.invoice;
     },
     meta: {
-      className: 'min-w-[200px]',
+      headerClassName: 'min-w-[200px]',
       cellClassName: 'text-gray-800 font-normal'
     }
   }, {
@@ -62,7 +61,7 @@ const Invoicing = () => {
       return info.row.original.date;
     },
     meta: {
-      headerClassName: 'w-[170px]',
+      headerClassName: 'min-w-[170px]',
       cellClassName: 'text-gray-800 font-normal'
     }
   }, {
@@ -72,12 +71,11 @@ const Invoicing = () => {
       column
     }) => <DataGridColumnHeader title="Due Date" column={column} />,
     enableSorting: true,
-    enableHiding: false,
     cell: info => {
       return info.row.original.dueDate;
     },
     meta: {
-      headerClassName: 'w-[170px]',
+      headerClassName: 'min-w-[170px]',
       cellClassName: 'text-gray-800 font-normal'
     }
   }, {
@@ -127,11 +125,11 @@ const Invoicing = () => {
         <h3 className="card-title">Billing and Invoicing</h3>
 
         <div className="flex items-center gap-2.5">
-          <DataGridColumnVisibility table={table} />
           <button className="btn btn-light btn-sm">
             <KeenIcon icon="exit-down" />
             Download PDF
           </button>
+          <DataGridColumnVisibility table={table} />
         </div>
       </div>;
   };

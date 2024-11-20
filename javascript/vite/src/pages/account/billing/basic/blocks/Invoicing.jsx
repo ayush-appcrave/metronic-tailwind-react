@@ -1,4 +1,5 @@
 import { KeenIcon } from '@/components';
+import { Link } from 'react-router-dom';
 const Invoicing = () => {
   const tables = [{
     number: 'Invoice-2024-xd912c',
@@ -74,9 +75,9 @@ const Invoicing = () => {
         </table>
       </div>
       <div className="card-footer justify-center">
-        <a href="#" className="btn btn-link">
+        <Link to="/account/billing/history" className="btn btn-link">
           View all Payments
-        </a>
+        </Link>
       </div>
     </div>;
 };

@@ -58,7 +58,7 @@ const Members = () => {
     header: ({
       column
     }) => <DataGridColumnHeader title='Roles' column={column} />,
-    enableSorting: false,
+    enableSorting: true,
     cell: info => <div className="flex flex-wrap gap-2.5 mb-2">
             {info.row.original.roles.map((role, index) => <span key={index} className="badge badge-sm badge-light badge-outline">
                 {role}
@@ -107,6 +107,7 @@ const Members = () => {
     enableSorting: true,
     cell: info => info.getValue(),
     meta: {
+      headerTitle: 'Recent activity',
       headerClassName: 'min-w-[165px]',
       cellClassName: 'text-gray-700 font-normal'
     }
@@ -174,20 +175,16 @@ const Members = () => {
         <h3 className="card-title">Team Members</h3>
 
         <div className="flex items-center gap-2.5">
-          <DataGridColumnVisibility table={table} />
-
-          <div className="flex gap-6">
-            <div className="relative">
-              <KeenIcon icon="magnifier" className="leading-none text-md text-gray-500 absolute top-1/2 start-0 -translate-y-1/2 ms-3" />
-              <input type="text" placeholder="Search Members" className="input input-sm ps-8" value={searchTerm} onChange={e => setSearchTerm(e.target.value)} // Update search term
-            />
-            </div>
-
-            <label className="switch switch-sm">
-              <input name="check" type="checkbox" value="1" className="order-2" readOnly />
-              <span className="switch-label order-1">Active Users</span>
-            </label>
+          <div className="relative">
+            <KeenIcon icon="magnifier" className="leading-none text-md text-gray-500 absolute top-1/2 start-0 -translate-y-1/2 ms-3" />
+            <input type="text" placeholder="Search Members" className="input input-sm ps-8" value={searchTerm} onChange={e => setSearchTerm(e.target.value)} // Update search term
+          />
           </div>
+          <DataGridColumnVisibility table={table} />
+          <label className="switch switch-sm">
+            <input name="check" type="checkbox" value="1" className="order-2" readOnly />
+            <span className="switch-label order-1">Active Users</span>
+          </label>
         </div>
       </div>;
   };

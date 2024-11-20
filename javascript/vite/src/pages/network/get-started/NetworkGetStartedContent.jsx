@@ -6,19 +6,19 @@ const NetworkGetStartedContent = () => {
     description: 'A Broad Perspective on Our Comprehensive Security Features and Policies.',
     sub: [{
       title: 'Mini Cards',
-      path: '#'
+      path: 'network/user-cards/mini-cards'
     }, {
       title: 'Team Members',
-      path: '#'
+      path: 'account/members/team-members'
     }, {
       title: 'Athor',
-      path: '#'
+      path: 'network/user-cards/author'
     }, {
       title: 'NFT',
-      path: '#'
+      path: 'network/user-cards/nft'
     }, {
       title: 'Social',
-      path: '#'
+      path: 'network/user-cards/social'
     }]
   }, {
     icon: 'subtitle',
@@ -26,22 +26,22 @@ const NetworkGetStartedContent = () => {
     description: 'A Broad Perspective on Our Comprehensive Security Features and Policies.',
     sub: [{
       title: 'Team Crew',
-      path: '#'
+      path: 'network/user-cards/team-crew'
     }, {
       title: 'App Roster',
-      path: '#'
+      path: 'user-table/app-roster'
     }, {
       title: 'Visitor',
-      path: '#'
+      path: 'network/user-table/visitors'
     }, {
       title: 'Authors',
-      path: '#'
+      path: 'network/user-cards/author'
     }, {
       title: 'SaaS Users',
-      path: '#'
+      path: 'network/user-table/saas-users'
     }, {
       title: 'Store Clients',
-      path: '#'
+      path: 'network/user-table/store-clients'
     }]
   }, {
     icon: 'key-square',
@@ -49,22 +49,22 @@ const NetworkGetStartedContent = () => {
     description: 'A Broad Perspective on Our Comprehensive Security Features and Policies.',
     sub: [{
       title: 'Contacts',
-      path: '#'
+      path: 'account/members/roles'
     }, {
       title: 'Employee',
-      path: '#'
+      path: 'account/members/team-members'
     }, {
       title: 'Vendors',
-      path: '#'
+      path: 'network/user-table/market-authors'
     }, {
       title: 'Companies',
-      path: '#'
+      path: 'public-profile/profiles/company'
     }, {
       title: 'Service Agents',
-      path: '#'
+      path: 'account/api-keys'
     }, {
       title: 'Applicants',
-      path: '#'
+      path: 'network/user-table/store-clients'
     }]
   }, {
     icon: 'chart-pie-3',
@@ -72,22 +72,22 @@ const NetworkGetStartedContent = () => {
     description: 'A Broad Perspective on Our Comprehensive Security Features and Policies.',
     sub: [{
       title: 'Contacts',
-      path: '#'
+      path: 'account/members/roles'
     }, {
       title: 'Employee',
-      path: '#'
+      path: 'account/members/team-members'
     }, {
       title: 'Vendors',
-      path: '#'
+      path: 'network/user-table/market-authors'
     }, {
       title: 'Companies',
-      path: '#'
+      path: 'public-profile/profiles/company'
     }, {
       title: 'Service Agents',
-      path: '#'
+      path: 'account/api-keys'
     }, {
       title: 'Applicants',
-      path: '#'
+      path: 'network/user-table/store-clients'
     }]
   }, {
     icon: 'calendar-tick',
@@ -95,22 +95,22 @@ const NetworkGetStartedContent = () => {
     description: 'A Broad Perspective on Our Comprehensive Security Features and Policies.',
     sub: [{
       title: 'Contacts',
-      path: '#'
+      path: 'account/members/roles'
     }, {
       title: 'Employee',
-      path: '#'
+      path: 'account/members/team-members'
     }, {
       title: 'Vendors',
-      path: '#'
+      path: 'network/user-table/market-authors'
     }, {
       title: 'Companies',
-      path: '#'
+      path: 'public-profile/profiles/company'
     }, {
       title: 'Service Agents',
-      path: '#'
+      path: 'account/api-keys'
     }, {
       title: 'Applicants',
-      path: '#'
+      path: 'network/user-table/store-clients'
     }]
   }];
   return <div className="grid gap-5 lg:gap-7.5">

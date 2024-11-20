@@ -1,10 +1,10 @@
 /* eslint-disable prettier/prettier */
 import { useMemo } from 'react';
-import { DataGrid, DataGridColumnHeader, DataGridRowSelect, DataGridRowSelectAll, KeenIcon, useDataGrid } from '@/components';
 import { Link } from 'react-router-dom';
-import { BackupData } from '.';
+import { DataGrid, DataGridColumnHeader, DataGridRowSelect, DataGridRowSelectAll, KeenIcon, useDataGrid, DataGridColumnVisibility } from '@/components';
 import { toast } from 'sonner';
 import { Input } from '@/components/ui/input';
+import { BackupData } from '.';
 const Backup = () => {
   const ColumnInputFilter = ({
     column
@@ -45,7 +45,7 @@ const Backup = () => {
             </div>;
     },
     meta: {
-      className: 'min-w-[260px]',
+      headerClassName: 'min-w-[260px]',
       cellClassName: 'text-gray-800 font-normal'
     }
   }, {
@@ -74,7 +74,7 @@ const Backup = () => {
             </div>;
     },
     meta: {
-      className: 'min-w-[260px]'
+      headerClassName: 'min-w-[260px]'
     }
   }, {
     id: 'edit',
@@ -86,7 +86,7 @@ const Backup = () => {
             </Link>;
     },
     meta: {
-      className: 'w-[70px]'
+      headerClassName: 'w-[70px]'
     }
   }, {
     id: 'trash',
@@ -98,7 +98,7 @@ const Backup = () => {
 						</Link>;
     },
     meta: {
-      className: 'w-[70px]'
+      headerClassName: 'w-[70px]'
     }
   }], []);
   const data = useMemo(() => BackupData, []);
@@ -119,19 +119,22 @@ const Backup = () => {
       table
     } = useDataGrid();
     const isFiltered = table.getState().columnFilters.length > 0;
-    return <div className="card-header py-5 border-b-0 flex-wrap">
+    return <div className="card-header px-5 py-5 border-b-0 flex-wrap">
         <h3 className="card-title">Backups</h3>
 
-        <label className="switch switch-sm">
-          <span className="switch-label">
-            Cloud Sync
-          </span>
-          <input type="checkbox" value="1" name="check" defaultChecked readOnly />
-        </label>
+        <div className="flex items-center gap-2.5">
+          <DataGridColumnVisibility table={table} />
+          <label className="switch switch-sm">
+            <span className="switch-label">
+              Cloud Sync
+            </span>
+            <input type="checkbox" value="1" name="check" defaultChecked readOnly />
+          </label>
+        </div>
       </div>;
   };
   return <DataGrid columns={columns} data={data} rowSelection={true} onRowSelectionChange={handleRowSelection} pagination={{
-    size: 5
+    size: 10
   }} sorting={[{
     id: 'when',
     desc: false

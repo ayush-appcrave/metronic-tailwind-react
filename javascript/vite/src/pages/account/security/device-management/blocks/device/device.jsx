@@ -60,6 +60,7 @@ const Device = () => {
       return info.row.original.ipAddress;
     },
     meta: {
+      headerTitle: 'IP Address',
       headerClassName: 'min-w-[165px]',
       cellClassName: 'text-sm text-gray-800 font-normal'
     }
@@ -104,6 +105,7 @@ const Device = () => {
       return info.row.original.lastSession;
     },
     meta: {
+      headerTitle: 'Last Session',
       headerClassName: 'min-w-[165px]',
       cellClassName: 'text-sm text-gray-800 font-normal'
     }
@@ -153,8 +155,8 @@ const Device = () => {
         <h3 className="card-title">Devices</h3>
 
         <div className="flex items-center gap-2.5">
-          <DataGridColumnVisibility table={table} />
           <a href="#" className="btn btn-sm btn-primary">Add Device</a>
+          <DataGridColumnVisibility table={table} />
         </div>
       </div>;
   };

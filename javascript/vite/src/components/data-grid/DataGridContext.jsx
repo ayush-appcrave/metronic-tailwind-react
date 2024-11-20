@@ -71,9 +71,7 @@ export const DataGridProvider = props => {
     }
   }, [loading, pagination, sorting, columnFilters, mergedProps.onFetchData]);
   const debouncedFetchData = debounce(fetchServerSideData, 100);
-
-  // Trigger debounced fetch for server-side data; load local data if serverSide is false
-  useEffect(() => {
+  const loadData = () => {
     if (mergedProps.serverSide) {
       debouncedFetchData();
     } else {
@@ -82,6 +80,11 @@ export const DataGridProvider = props => {
       setTotalRows(mergedProps.data ? mergedProps.data.length : 0);
       setLoading(false); // Hide loading bar after data is set
     }
+  };
+
+  // Trigger debounced fetch for server-side data; load local data if serverSide is false
+  useEffect(() => {
+    loadData();
   }, [pagination, sorting, columnFilters, mergedProps.data, mergedProps.serverSide]);
   const handleRowSelectionChange = updaterOrValue => {
     setRowSelection(prev => typeof updaterOrValue === 'function' ? updaterOrValue(prev) : updaterOrValue);
@@ -123,7 +126,8 @@ export const DataGridProvider = props => {
     table,
     totalRows,
     loading,
-    setLoading
+    setLoading,
+    reload: loadData
   }}>
       <DataGridInner />
     </DataGridContext.Provider>;

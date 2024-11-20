@@ -69,7 +69,8 @@ const Visitors = () => {
     },
     meta: {
       headerClassName: 'min-w-[190px]',
-      cellClassName: 'text-gray-700 font-normal'
+      cellClassName: 'text-gray-700 font-normal',
+      headerTitle: 'IP Address'
     }
   }, {
     accessorFn: row => row.location,

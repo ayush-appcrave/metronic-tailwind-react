@@ -61,16 +61,16 @@ const GeneralSettings = () => {
         </Fragment>,
     description: 'Confidential channel for reporting system vulnerabilities.',
     actions: <Fragment>
-          <a href="#" className="btn btn-sm btn-light btn-danger btn-outline">
+          <a href="#" className="btn btn-sm btn-light btn-danger btn-outline shrink-0">
             Disable all
           </a>
-          <a href="#" className="btn btn-sm btn-light btn-outline">
+          <a href="#" className="btn btn-sm btn-light btn-outline shrink-0">
             Enable all
           </a>
         </Fragment>
   }];
   const renderItem = (item, index) => {
-    return <div key={index} className="card-group flex items-center justify-between py-4 gap-2.5">
+    return <div key={index} className="card-group flex items-center flex-wrap sm:flex-nowrap justify-between py-4 gap-2.5">
         <div className="flex items-center gap-3.5">
           <CommonHexagonBadge stroke="stroke-gray-300" fill="fill-gray-100" size="size-[50px]" badge={<KeenIcon icon={item.icon} className="text-1.5xl text-gray-500" />} />
 

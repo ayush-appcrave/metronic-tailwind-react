@@ -1,7 +1,7 @@
 import React, { useMemo, useState } from 'react';
 import { toast } from 'sonner';
 import { Link } from 'react-router-dom';
-import { DataGrid, KeenIcon, DataGridRowSelect, DataGridRowSelectAll, DataGridColumnHeader } from '@/components';
+import { DataGrid, KeenIcon, DataGridRowSelect, DataGridRowSelectAll, DataGridColumnHeader, useDataGrid } from '@/components';
 import { CommonRating } from '@/partials/common';
 import axios from 'axios';
 import { formatIsoDate } from '@/utils/Date';
@@ -11,7 +11,17 @@ const Teams = () => {
   const ColumnFilter = ({
     column
   }) => {
-    return <Input placeholder="Filter..." value={column.getFilterValue() ?? ''} onChange={event => column.setFilterValue(event.target.value)} className="h-9 w-full max-w-40" />;
+    const [inputValue, setInputValue] = useState(column.getFilterValue() ?? '');
+    const handleKeyDown = event => {
+      if (event.key === 'Enter') {
+        column.setFilterValue(inputValue); // Apply the filter only on Enter
+      }
+    };
+    const handleChange = event => {
+      setInputValue(event.target.value); // Update local state
+    };
+    return <Input placeholder="Filter..." value={inputValue} onChange={handleChange} onKeyDown={handleKeyDown} // Trigger filter on Enter key
+    className="h-9 w-full max-w-40" />;
   };
   const columns = useMemo(() => [{
     accessorKey: 'id',
@@ -87,8 +97,20 @@ const Teams = () => {
         queryParams.set('sort', params.sorting[0].id);
         queryParams.set('order', params.sorting[0].desc ? 'desc' : 'asc');
       }
-      if (searchQuery.length > 2) {
+      if (searchQuery.trim().length > 0) {
         queryParams.set('query', searchQuery);
+      }
+
+      // Column filters
+      if (params.columnFilters) {
+        params.columnFilters.forEach(({
+          id,
+          value
+        }) => {
+          if (value !== undefined && value !== null) {
+            queryParams.set(`filter[${id}]`, String(value)); // Properly serialize filter values
+          }
+        });
       }
       const response = await axios.get(`${import.meta.env.VITE_APP_API_URL}/teams/query?${queryParams.toString()}`);
       return {
@@ -122,18 +144,46 @@ const Teams = () => {
       });
     }
   };
-  const Toolbar = () => {
+  const Toolbar = ({
+    setSearchQuery
+  }) => {
+    const [inputValue, setInputValue] = useState(searchQuery);
+    const {
+      table
+    } = useDataGrid();
+    const handleKeyDown = e => {
+      if (e.key === 'Enter') {
+        setSearchQuery(inputValue);
+        if (inputValue.trim() === '') {
+          // Remove the 'query' filter if input is empty
+          table.setColumnFilters(table.getState().columnFilters.filter(filter => filter.id !== 'query') // Exclude the filter with id 'query'
+          );
+        } else {
+          // Add or update the 'query' filter
+          table.setColumnFilters([...table.getState().columnFilters.filter(filter => filter.id !== 'query'),
+          // Remove existing 'query' filter
+          {
+            id: 'query',
+            value: inputValue
+          } // Add the new filter
+          ]);
+        }
+      }
+    };
+    const handleChange = event => {
+      setInputValue(event.target.value); // Update local state
+    };
     return <div className="card-header border-b-0 px-5">
         <h3 className="card-title">Teams</h3>
         <div className="input input-sm max-w-48">
           <KeenIcon icon="magnifier" />
-          <input type="text" placeholder="Search Teams" onChange={e => {}} />
+          <input type="text" placeholder="Search Teams" value={inputValue} onChange={handleChange} onKeyDown={handleKeyDown} />
         </div>
       </div>;
   };
   return <DataGrid columns={columns} serverSide={true} onFetchData={fetchTeams} rowSelection={true} getRowId={row => row.id} onRowSelectionChange={handleRowSelection} pagination={{
     size: 5
-  }} toolbar={<Toolbar />} layout={{
+  }} toolbar={<Toolbar setSearchQuery={setSearchQuery} />} layout={{
     card: true
   }} />;
 };

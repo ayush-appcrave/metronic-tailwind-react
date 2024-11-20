@@ -16,7 +16,7 @@ const MiscHelp2 = () => {
             <img src={toAbsoluteUrl('/media/illustrations/31-dark.svg')} className="light:hidden max-h-[150px]" alt="" />
           </Fragment>} more={{
       title: 'Contact Support',
-      url: '#'
+      url: 'https://devs.keenthemes.com/unresolved'
     }} />
     </div>;
 };

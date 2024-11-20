@@ -1,6 +1,6 @@
 /* eslint-disable prettier/prettier */
 import { useMemo } from 'react';
-import { DataGrid, DataGridColumnHeader, DataGridColumnVisibility, DefaultTooltip, KeenIcon, useDataGrid } from '@/components';
+import { DataGrid, DataGridColumnHeader, DataGridColumnVisibility, DataGridRowSelect, DataGridRowSelectAll, DefaultTooltip, KeenIcon, useDataGrid } from '@/components';
 import { IPAddressesData } from '.';
 import { toast } from 'sonner';
 import { Input } from '@/components/ui/input';
@@ -11,6 +11,17 @@ const IPAddresses = () => {
     return <Input placeholder="Filter..." value={column.getFilterValue() ?? ''} onChange={event => column.setFilterValue(event.target.value)} className="h-9 w-full max-w-40" />;
   };
   const columns = useMemo(() => [{
+    accessorKey: 'id',
+    header: () => <DataGridRowSelectAll />,
+    cell: ({
+      row
+    }) => <DataGridRowSelect row={row} />,
+    enableSorting: false,
+    enableHiding: false,
+    meta: {
+      headerClassName: 'w-0'
+    }
+  }, {
     accessorFn: row => row.status,
     id: 'status',
     header: ({
@@ -19,7 +30,7 @@ const IPAddresses = () => {
     enableSorting: true,
     cell: info => <span className={`badge badge-dot size-2 ${info.row.original.status}`}></span>,
     meta: {
-      headerClassName: 'w-0',
+      headerClassName: 'w-[100px]',
       cellClassName: 'text-center'
     }
   }, {
@@ -31,7 +42,8 @@ const IPAddresses = () => {
     enableSorting: true,
     cell: info => info.getValue(),
     meta: {
-      className: 'min-w-[250px]'
+      headerTitle: 'IP Address',
+      headerClassName: 'min-w-[170px]'
     }
   }, {
     accessorFn: row => row.lastSession,
@@ -42,7 +54,8 @@ const IPAddresses = () => {
     enableSorting: true,
     cell: info => info.getValue(),
     meta: {
-      className: 'w-[185px]'
+      headerTitle: 'Last Session',
+      headerClassName: 'w-[185px]'
     }
   }, {
     accessorFn: row => row.label,
@@ -53,25 +66,22 @@ const IPAddresses = () => {
     enableSorting: true,
     cell: info => info.getValue(),
     meta: {
-      className: 'w-[185px]'
+      headerClassName: 'min-w-[185px]'
     }
   }, {
     accessorFn: row => row.method,
     id: 'method',
     header: ({
       column
-    }) => <>
-            <div className="flex items-center gap-0.5">
-              <DataGridColumnHeader title="Method" column={column} />
-              <DefaultTooltip title="Verify the identity of a user trying to access a resource" placement="bottom" className="max-w-48">
-                <KeenIcon icon="information-2" className="text-sm leading-none me-1 mb-0.5" />
-              </DefaultTooltip>
-            </div>
-          </>,
+    }) => <div className="flex items-center">
+            <DefaultTooltip title="Verify the identity of a user trying to access a resource" placement="left" className="max-w-48">
+              <KeenIcon icon="information-2" className="text-lg leading-none me-1 mb-0.5" />
+            </DefaultTooltip>
+            <DataGridColumnHeader title="Method" column={column} />
+          </div>,
     enableSorting: true,
-    cell: info => info.getValue(),
     meta: {
-      className: 'w-[185px]'
+      headerClassName: 'w-[185px]'
     }
   }, {
     id: 'edit',
@@ -119,10 +129,13 @@ const IPAddresses = () => {
         <h3 className="card-title">IP Addresses</h3>
 
         <div className="flex items-center gap-2.5">
-          <button className="btn btn-light btn-sm">
-            <KeenIcon icon="exit-down" />
-            IP Allowlist Enabled
-          </button>
+          <label className="switch switch-sm">
+            <span className="switch-label">
+              IP Allowlist Enabled
+            </span>
+            <input type="checkbox" value="1" name="check" defaultChecked readOnly />
+          </label>
+          <a href="#" id="select_ip_btn" className="btn btn-sm btn-primary">Add IP Address</a>
           <DataGridColumnVisibility table={table} />
         </div>
       </div>;
@@ -130,7 +143,7 @@ const IPAddresses = () => {
   return <DataGrid columns={columns} data={data} rowSelection={true} onRowSelectionChange={handleRowSelection} pagination={{
     size: 10
   }} sorting={[{
-    id: 'method',
+    id: 'ipAddress',
     desc: false
   }]} toolbar={<Toolbar />} layout={{
     card: true
