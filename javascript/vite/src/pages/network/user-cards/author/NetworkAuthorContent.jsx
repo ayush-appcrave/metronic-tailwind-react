@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { KeenIcon } from '@/components';
 import { CardAuthor, CardAuthorRow } from '@/partials/cards';
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 const NetworkAuthorContent = () => {
   const [activeTab, setActiveTab] = useState('cards');
   const handleTabClick = tab => {
@@ -39,12 +40,12 @@ const NetworkAuthorContent = () => {
       className: 'size-[120px] [.authors-row_&]:size-[80px] shrink-0 relative',
       image: '300-3.png',
       imageClass: 'rounded-full',
-      badgeClass: 'flex size-3 bg-success rounded-full ring-2 ring-light absolute bottom-2 left-[93px] [.authors-row_&]:left-[64px]'
+      badgeClass: 'flex size-3 bg-success rounded-full ring-2 ring-light absolute bottom-2 start-[93px] [.authors-row_&]:start-[64px]'
     },
     bgImage: 'bg-8.png',
     name: 'Ralph Edwards',
     location: 'Sacramento, California',
-    url: '#',
+    url: '',
     works: [{
       image: '1.jpg',
       title: 'Geometric Patterns',
@@ -67,12 +68,12 @@ const NetworkAuthorContent = () => {
       className: 'size-[120px] [.authors-row_&]:size-[80px] shrink-0 relative',
       image: '300-17.png',
       imageClass: 'rounded-full',
-      badgeClass: 'flex size-3 bg-gray-400 rounded-full ring-2 ring-light absolute bottom-2 left-[93px] [.authors-row_&]:left-[64px]'
+      badgeClass: 'flex size-3 bg-gray-400 rounded-full ring-2 ring-light absolute bottom-2 start-[93px] [.authors-row_&]:start-[64px]'
     },
     bgImage: 'bg-9.png',
     name: 'Jacob Jones',
     location: 'Boston, Massachusetts',
-    url: '#',
+    url: '',
     works: [{
       image: '27.jpg',
       title: 'Geometric Patterns',
@@ -95,12 +96,12 @@ const NetworkAuthorContent = () => {
       className: 'size-[120px] [.authors-row_&]:size-[80px] shrink-0 relative',
       image: '300-5.png',
       imageClass: 'rounded-full',
-      badgeClass: 'flex size-3 bg-gray-400 rounded-full ring-2 ring-light absolute bottom-2 left-[93px] [.authors-row_&]:left-[64px]'
+      badgeClass: 'flex size-3 bg-gray-400 rounded-full ring-2 ring-light absolute bottom-2 start-[93px] [.authors-row_&]:start-[64px]'
     },
     bgImage: 'bg-10.png',
     name: 'Kristin Watson',
     location: 'Cleveland, Ohio',
-    url: '#',
+    url: '',
     works: [{
       image: '30.jpg',
       title: 'Geometric Patterns',
@@ -127,17 +128,27 @@ const NetworkAuthorContent = () => {
 
         <div className="flex items-center flex-wrap gap-5">
           <div className="flex items-center gap-2.5">
-            <select className="select select-sm w-28">
-              <option value="1">Active</option>
-              <option value="2">Disabled</option>
-              <option value="2">Pending</option>
-            </select>
+            <Select defaultValue="active">
+              <SelectTrigger className="w-28" size="sm">
+                <SelectValue placeholder="Select" />
+              </SelectTrigger>
+              <SelectContent className="w-32">
+                <SelectItem value="active">Active</SelectItem>
+                <SelectItem value="disabled">Disabled</SelectItem>
+                <SelectItem value="pending">Pending</SelectItem>
+              </SelectContent>
+            </Select>
 
-            <select className="select select-sm w-28">
-              <option value="1">Latest</option>
-              <option value="2">Older</option>
-              <option value="3">Oldest</option>
-            </select>
+            <Select defaultValue="latest">
+              <SelectTrigger className="w-28" size="sm">
+                <SelectValue placeholder="Select" />
+              </SelectTrigger>
+              <SelectContent className="w-32">
+                <SelectItem value="latest">Latest</SelectItem>
+                <SelectItem value="older">Older</SelectItem>
+                <SelectItem value="oldest">Oldest</SelectItem>
+              </SelectContent>
+            </Select>
 
             <button className="btn btn-sm btn-outline btn-primary">
               <KeenIcon icon="setting-4" /> Filters

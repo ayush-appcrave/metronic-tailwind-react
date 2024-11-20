@@ -18,7 +18,7 @@ const OtherNotifications = () => {
     icon: 'cheque',
     title: 'Invoice Alert',
     description: 'Alert for new and unpaid invoices.',
-    actions: <a href="#" className="btn btn-sm btn-light btn-outline">
+    actions: <a href="#" className="btn btn-sm btn-light btn-outline text-center">
           View Invoices
         </a>
   }, {
@@ -54,7 +54,7 @@ const OtherNotifications = () => {
     return <CardNotification icon={item.icon} title={item.title} description={item.description} button={item.button} actions={item.actions} key={index} />;
   };
   return <div className="card">
-      <div className="card-header">
+      <div className="card-header gap-2">
         <h3 className="card-title">Other Notifications</h3>
 
         <div className="flex items-center gap-2">

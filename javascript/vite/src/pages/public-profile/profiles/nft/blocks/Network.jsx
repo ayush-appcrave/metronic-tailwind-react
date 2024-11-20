@@ -1,16 +1,16 @@
 import { KeenIcon } from '@/components';
 const Network = () => {
   const items = [{
-    logo: 'abstract-41',
+    logo: 'dribbble',
     info: 'jennynft'
   }, {
-    logo: 'crown-2',
+    logo: 'facebook',
     info: 'nftmania'
   }, {
-    logo: 'briefcase',
+    logo: 'twitter',
     info: 'jennynft'
   }, {
-    logo: 'sms',
+    logo: 'youtube',
     info: 'jennyklabber'
   }];
   const renderItems = (item, index) => {

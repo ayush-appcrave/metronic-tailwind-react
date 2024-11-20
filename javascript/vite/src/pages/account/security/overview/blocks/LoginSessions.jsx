@@ -1,7 +1,11 @@
 import { KeenIcon, Menu, MenuItem, MenuToggle } from '@/components';
+import { useLanguage } from '@/i18n';
 import { DropdownCardItem1, DropdownCrud1 } from '@/partials/dropdowns/general';
 import { CommonAvatar } from '@/partials/common';
 const LoginSessions = () => {
+  const {
+    isRTL
+  } = useLanguage();
   const rows = [{
     avatar: '300-3.png',
     name: 'Tyler Hero',
@@ -57,15 +61,15 @@ const LoginSessions = () => {
         <td className="!pr-7.5">
           <Menu className="items-stretch">
             <MenuItem toggle="dropdown" trigger="click" dropdownProps={{
-            placement: 'bottom-end',
+            placement: isRTL() ? 'bottom-start' : 'bottom-end',
             modifiers: [{
               name: 'offset',
               options: {
-                offset: [0, 10] // [skid, distance]
+                offset: isRTL() ? [0, 10] : [0, -10] // [skid, distance]
               }
             }]
           }}>
-              <MenuToggle className="btn btn-sm btn-icon btn-light btn-clear mb-2.5-">
+              <MenuToggle className="btn btn-sm btn-icon btn-light btn-clear">
                 <KeenIcon icon="dots-vertical" />
               </MenuToggle>
               {DropdownCardItem1()}
@@ -80,15 +84,15 @@ const LoginSessions = () => {
 
         <Menu className="items-stretch">
           <MenuItem toggle="dropdown" trigger="click" dropdownProps={{
-          placement: 'bottom-end',
+          placement: isRTL() ? 'bottom-start' : 'bottom-end',
           modifiers: [{
             name: 'offset',
             options: {
-              offset: [0, 10] // [skid, distance]
+              offset: isRTL() ? [0, 10] : [0, -10] // [skid, distance]
             }
           }]
         }}>
-            <MenuToggle className="btn btn-sm btn-icon btn-light btn-clear mb-2.5-">
+            <MenuToggle className="btn btn-sm btn-icon btn-light btn-clear">
               <KeenIcon icon="dots-vertical" />
             </MenuToggle>
             {DropdownCrud1()}
@@ -101,7 +105,7 @@ const LoginSessions = () => {
           <table className="table align-middle text-gray-700 text-sm">
             <thead>
               <tr>
-                <th className="text-left  min-w-48">Name</th>
+                <th className="text-start min-w-48">Name</th>
                 <th className="text-end min-w-20">Location</th>
                 <th className="text-end min-w-20">Recent activity</th>
                 <th className="text-end w-[70px]"></th>

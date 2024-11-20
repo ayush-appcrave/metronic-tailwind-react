@@ -7,12 +7,12 @@ const initalProps = {
   multipleExpand: false,
   dropdownTimeout: 0,
   // Default function for opening an accordion (to be overridden)
-  setOpenAccordion: (level, id) => {
-    console.log(`Accordion at level ${level}, with ID ${id} is now open`);
+  setOpenAccordion: (parentId, id) => {
+    console.log(`Accordion at level ${parentId}, with ID ${id} is now open`);
   },
   // Default function for checking if an accordion is open (to be overridden)
-  isOpenAccordion: (level, id) => {
-    console.log(`Checking if accordion at level ${level}, with ID ${id} is open`);
+  isOpenAccordion: (parentId, id) => {
+    console.log(`Checking if accordion at level ${parentId}, with ID ${id} is open`);
     return false; // By default, no accordion is open
   }
 };
@@ -33,21 +33,21 @@ const MenuComponent = ({
   const [openAccordions, setOpenAccordions] = useState({});
 
   // Function to handle the accordion toggle
-  const setOpenAccordion = (level, id) => {
+  const setOpenAccordion = (parentId, id) => {
     setOpenAccordions(prevState => ({
       ...prevState,
-      [level]: prevState[level] === id ? null : id // Toggle the current item and collapse others at the same level
+      [parentId]: prevState[parentId] === id ? null : id // Toggle the current item and collapse others at the same level
     }));
   };
-  const isOpenAccordion = (level, id) => {
-    return openAccordions[level] === id;
+  const isOpenAccordion = (parentId, id) => {
+    return openAccordions[parentId] === id;
   };
   const modifiedChildren = Children.map(children, (child, index) => {
     if (isValidElement(child)) {
       if (child.type === MenuItem) {
         const modifiedProps = {
-          level: 1,
-          index
+          parentId: 'root',
+          id: `root-${index}`
         };
         return cloneElement(child, modifiedProps);
       } else {

@@ -3,9 +3,11 @@ import { useFormik } from 'formik';
 import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import * as Yup from 'yup';
+import { useNavigate } from 'react-router-dom';
 import { useAuthContext } from '@/auth/useAuthContext';
 import { Alert, KeenIcon } from '@/components';
 import { useLayout } from '@/providers';
+import { AxiosError } from 'axios';
 const initialValues = {
   email: ''
 };
@@ -21,6 +23,7 @@ const ResetPassword = () => {
   const {
     currentLayout
   } = useLayout();
+  const navigate = useNavigate();
   const formik = useFormik({
     initialValues,
     validationSchema: forgotPasswordSchema,
@@ -37,11 +40,21 @@ const ResetPassword = () => {
         await requestPasswordResetLink(values.email);
         setHasErrors(false);
         setLoading(false);
-      } catch {
+        const params = new URLSearchParams();
+        params.append('email', values.email);
+        navigate({
+          pathname: currentLayout?.name === 'auth-branded' ? '/auth/reset-password/check-email' : '/auth/classic/reset-password/check-email',
+          search: params.toString()
+        });
+      } catch (error) {
+        if (error instanceof AxiosError && error.response) {
+          setStatus(error.response.data.message);
+        } else {
+          setStatus('Password reset failed. Please try again.');
+        }
         setHasErrors(true);
         setLoading(false);
         setSubmitting(false);
-        setStatus('The login detail is incorrect');
       }
     }
   });
@@ -54,7 +67,7 @@ const ResetPassword = () => {
           </span>
         </div>
 
-        {hasErrors && <Alert variant="danger">Email address not found. Please check your entry.</Alert>}
+        {hasErrors && <Alert variant="danger">{formik.status}</Alert>}
 
         {hasErrors === false && <Alert variant="success">
             Password reset link sent. Please check your email to proceed

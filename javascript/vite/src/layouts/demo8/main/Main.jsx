@@ -36,7 +36,7 @@ const Main = () => {
       <div className="flex grow">
         {mobileMode && <Header />}
 
-        <div className="flex flex-col lg:flex-row grow pt-[--tw-header-height]lg:pt-0">
+        <div className="flex flex-col lg:flex-row grow pt-[--tw-header-height] lg:pt-0">
           <Sidebar />
 
           <div className="flex flex-col grow rounded-xl bg-[--tw-content-bg] dark:bg-[--tw-content-bg-dark] border border-gray-300 dark:border-gray-200 lg:ms-[--tw-sidebar-width] mt-0 lg:mt-5 m-5">
@@ -49,7 +49,7 @@ const Main = () => {
                     <button onClick={handleOpen} className="btn btn-icon btn-icon-lg size-8 rounded-md hover:bg-gray-200 dropdown-open:bg-gray-200 hover:text-primary text-gray-600">
                       <KeenIcon icon="magnifier" className="!text-base" />
                     </button>
-                    <ModalSearch open={searchModalOpen} onClose={handleClose} />
+                    <ModalSearch open={searchModalOpen} onOpenChange={handleClose} />
 
                     <Menu className="me-1.5">
                       <MenuItem ref={itemNotificationsRef} toggle="dropdown" trigger="click" dropdownProps={{

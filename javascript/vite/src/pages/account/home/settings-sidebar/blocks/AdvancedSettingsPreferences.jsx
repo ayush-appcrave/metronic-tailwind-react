@@ -1,3 +1,4 @@
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 const AdvancedSettingsPreferences = () => {
   return <div className="card">
       <div className="card-header" id="advanced_settings_preferences">
@@ -6,32 +7,49 @@ const AdvancedSettingsPreferences = () => {
       <div className="card-body grid gap-5 lg:py-7.5">
         <div className="flex items-baseline flex-wrap lg:flex-nowrap gap-2.5">
           <label className="form-label max-w-56">Language</label>
-          <select className="select">
-            <option>American English</option>
-            <option>Option 2</option>
-            <option>Option 3</option>
-          </select>
+          <div className="grow">
+            <Select defaultValue="1">
+              <SelectTrigger>
+                <SelectValue placeholder="Select" />
+              </SelectTrigger>
+              <SelectContent>
+                <SelectItem value="1">American English</SelectItem>
+                <SelectItem value="2">Option 2</SelectItem>
+                <SelectItem value="3">Option 3</SelectItem> 
+              </SelectContent>
+            </Select> 
+          </div>
         </div>
 
         <div className="flex items-baseline flex-wrap lg:flex-nowrap gap-2.5">
           <label className="form-label max-w-56">Time zone</label>
           <div className="grow">
-            <select className="select">
-              <option>GMT -5:00 - Eastern Time(US & Canada)</option>
-              <option>Option 2</option>
-              <option>Option 3</option>
-            </select>
+            <Select defaultValue="4">
+              <SelectTrigger>
+                <SelectValue placeholder="Select" />
+              </SelectTrigger>
+              <SelectContent>
+                <SelectItem value="4">GMT -5:00 - Eastern Time(US & Canada)</SelectItem>
+                <SelectItem value="5">Option 2</SelectItem>
+                <SelectItem value="6">Option 3</SelectItem> 
+              </SelectContent>
+            </Select> 
           </div>
         </div>
 
         <div className="flex items-baseline flex-wrap lg:flex-nowrap gap-2.5 mb-2">
           <label className="form-label max-w-56">Currency</label>
           <div className="grow">
-            <select className="select">
-              <option>United States Dollar (USD)</option>
-              <option>Option 2</option>
-              <option>Option 3</option>
-            </select>
+            <Select defaultValue="7">
+              <SelectTrigger>
+                <SelectValue placeholder="Select" />
+              </SelectTrigger>
+              <SelectContent>
+                <SelectItem value="7">United States Dollar (USD)</SelectItem>
+                <SelectItem value="8">Option 2</SelectItem>
+                <SelectItem value="9">Option 3</SelectItem> 
+              </SelectContent>
+            </Select>  
           </div>
         </div>
 

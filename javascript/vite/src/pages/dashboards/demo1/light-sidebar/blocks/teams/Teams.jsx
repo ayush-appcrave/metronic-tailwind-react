@@ -1,19 +1,36 @@
 import React, { useMemo, useState } from 'react';
-import { useSnackbar } from 'notistack';
+import { toast } from 'sonner';
 import { Link } from 'react-router-dom';
-import { DataGrid, KeenIcon } from '@/components';
+import { DataGrid, KeenIcon, DataGridRowSelect, DataGridRowSelectAll, DataGridColumnHeader } from '@/components';
 import { CommonRating } from '@/partials/common';
 import axios from 'axios';
 import { formatIsoDate } from '@/utils/Date';
 import { TeamUsers } from './TeamUsers';
+import { Input } from '@/components/ui/input';
 const Teams = () => {
-  const {
-    enqueueSnackbar
-  } = useSnackbar();
+  const ColumnFilter = ({
+    column
+  }) => {
+    return <Input placeholder="Filter..." value={column.getFilterValue() ?? ''} onChange={event => column.setFilterValue(event.target.value)} className="h-9 w-full max-w-40" />;
+  };
   const columns = useMemo(() => [{
+    accessorKey: 'id',
+    accessorFn: row => row.id,
+    header: () => <DataGridRowSelectAll />,
+    cell: ({
+      row
+    }) => <DataGridRowSelect row={row} />,
+    enableSorting: false,
+    enableHiding: false,
+    meta: {
+      headerClassName: 'w-0'
+    }
+  }, {
     accessorFn: row => row.name,
     id: 'name',
-    header: () => 'Team',
+    header: ({
+      column
+    }) => <DataGridColumnHeader title="Team" filter={<ColumnFilter column={column} />} column={column} />,
     enableSorting: true,
     cell: info => <div className="flex flex-col gap-2">
             <Link className="leading-none font-medium text-sm text-gray-900 hover:text-primary" to="#">
@@ -24,12 +41,14 @@ const Teams = () => {
             </span>
           </div>,
     meta: {
-      className: 'min-w-[280px]'
+      headerClassName: 'min-w-[280px]'
     }
   }, {
     accessorFn: row => row.rating,
     id: 'rating',
-    header: () => 'Rating',
+    header: ({
+      column
+    }) => <DataGridColumnHeader title="Rating" column={column} />,
     enableSorting: true,
     cell: info => <CommonRating rating={Math.floor(info.row.original.rating)} round={info.row.original.rating % 1} />,
     meta: {
@@ -39,7 +58,10 @@ const Teams = () => {
     accessorFn: row => row.updated_at,
     id: 'updated_at',
     enableSorting: true,
-    header: () => 'Last Modified',
+    enableHiding: false,
+    header: ({
+      column
+    }) => <DataGridColumnHeader title="Last Modified" column={column} />,
     cell: info => formatIsoDate(info.row.original.updated_at),
     meta: {
       className: 'min-w-[135px]'
@@ -49,6 +71,7 @@ const Teams = () => {
     id: 'users',
     header: () => 'Members',
     enableSorting: false,
+    enableHiding: true,
     cell: info => <TeamUsers users={info.row.original.users} />,
     meta: {
       className: 'min-w-[135px]'
@@ -74,10 +97,12 @@ const Teams = () => {
         totalCount: response.data.pagination.total // Total count for pagination
       };
     } catch (error) {
-      console.error('Failed to fetch data:', error);
-      enqueueSnackbar('An error occurred while fetching data. Please try again later', {
-        variant: 'solid',
-        state: 'danger'
+      toast(`Connection Error`, {
+        description: `An error occurred while fetching data. Please try again later`,
+        action: {
+          label: 'Ok',
+          onClick: () => console.log('Ok')
+        }
       });
       return {
         data: [],
@@ -85,32 +110,31 @@ const Teams = () => {
       };
     }
   };
-  const handleRowsSelectChange = selectedRowIds => {
-    enqueueSnackbar(selectedRowIds.size > 0 ? `${selectedRowIds.size} rows selected` : 'No rows are selected', {
-      variant: 'solid',
-      state: 'dark'
-    });
+  const handleRowSelection = state => {
+    const selectedRowIds = Object.keys(state);
+    if (selectedRowIds.length > 0) {
+      toast(`Total ${selectedRowIds.length} are selected.`, {
+        description: `Selected row IDs: ${selectedRowIds}`,
+        action: {
+          label: 'Undo',
+          onClick: () => console.log('Undo')
+        }
+      });
+    }
   };
-  return <div className="grid">
-      <div className="card card-grid h-full min-w-full">
-        <div className="card-header">
-          <h3 className="card-title">Teams</h3>
-          <div className="input input-sm max-w-48">
-            <KeenIcon icon="magnifier" />
-            <input type="text" placeholder="Search Teams" value={searchQuery} onChange={e => setSearchQuery(e.target.value)} />
-          </div>
+  const Toolbar = () => {
+    return <div className="card-header border-b-0 px-5">
+        <h3 className="card-title">Teams</h3>
+        <div className="input input-sm max-w-48">
+          <KeenIcon icon="magnifier" />
+          <input type="text" placeholder="Search Teams" onChange={e => {}} />
         </div>
-
-        <div className="card-body">
-          <DataGrid layout={{
-          cellsBorder: true
-        }} columns={columns} serverSide={true} onFetchData={fetchTeams} rowSelect={true} pagination={{
-          size: 5
-        }}
-        //sorting={[{ id: 'name', desc: false }]}
-        onRowsSelectChange={handleRowsSelectChange} />
-        </div>
-      </div>
-    </div>;
+      </div>;
+  };
+  return <DataGrid columns={columns} serverSide={true} onFetchData={fetchTeams} rowSelection={true} getRowId={row => row.id} onRowSelectionChange={handleRowSelection} pagination={{
+    size: 5
+  }} toolbar={<Toolbar />} layout={{
+    card: true
+  }} />;
 };
 export { Teams };

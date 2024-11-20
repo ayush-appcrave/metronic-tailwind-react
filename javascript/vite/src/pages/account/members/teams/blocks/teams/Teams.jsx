@@ -1,15 +1,35 @@
 /* eslint-disable prettier/prettier */
 import React, { useEffect, useMemo, useState } from 'react';
 import { Link } from 'react-router-dom';
-import { DataGrid, KeenIcon } from '@/components';
+import { DataGrid, DataGridColumnHeader, DataGridColumnVisibility, DataGridRowSelect, DataGridRowSelectAll, KeenIcon, useDataGrid } from '@/components';
+import { toast } from 'sonner';
+import { Input } from '@/components/ui/input';
 import { CommonAvatars, CommonRating } from '@/partials/common';
 import { TeamsData } from './';
 const Teams = () => {
   const storageFilterId = 'teams-filter';
+  const ColumnInputFilter = ({
+    column
+  }) => {
+    return <Input placeholder="Filter..." value={column.getFilterValue() ?? ''} onChange={event => column.setFilterValue(event.target.value)} className="h-9 w-full max-w-40" />;
+  };
   const columns = useMemo(() => [{
+    accessorKey: 'id',
+    header: () => <DataGridRowSelectAll />,
+    cell: ({
+      row
+    }) => <DataGridRowSelect row={row} />,
+    enableSorting: false,
+    enableHiding: false,
+    meta: {
+      headerClassName: 'w-0'
+    }
+  }, {
     accessorFn: row => row.team.name,
     id: 'team',
-    header: () => 'Team',
+    header: ({
+      column
+    }) => <DataGridColumnHeader title='Team' filter={<ColumnInputFilter column={column} />} column={column} />,
     enableSorting: true,
     cell: info => {
       return <div className="flex flex-col gap-2">
@@ -22,37 +42,43 @@ const Teams = () => {
             </div>;
     },
     meta: {
-      className: 'min-w-[350px]',
+      headerClassName: 'min-w-[350px]',
       cellClassName: 'text-gray-700 font-normal'
     }
   }, {
     accessorFn: row => row.rating.value,
     id: 'rating',
-    header: () => 'Rating',
+    header: ({
+      column
+    }) => <DataGridColumnHeader title='Rating' column={column} />,
     enableSorting: true,
     cell: info => <CommonRating rating={info.row.original.rating.value} round={info.row.original.rating.round} />,
     meta: {
-      className: 'w-[200px]',
+      headerClassName: 'w-[200px]',
       cellClassName: 'text-gray-700 font-normal'
     }
   }, {
     accessorFn: row => row.lastModified,
     id: 'lastModified',
     enableSorting: true,
-    header: () => 'Last Modified',
+    header: ({
+      column
+    }) => <DataGridColumnHeader title='Last Modified' column={column} />,
     cell: info => info.getValue(),
     meta: {
-      className: 'w-[200px]',
+      headerClassName: 'w-[200px]',
       cellClassName: 'text-gray-700 font-normal'
     }
   }, {
     accessorFn: row => row.members,
     id: 'members',
-    header: () => 'Members',
+    header: ({
+      column
+    }) => <DataGridColumnHeader title='Members' column={column} />,
     enableSorting: true,
     cell: info => <CommonAvatars size="size-[30px]" group={info.row.original.members.group} more={info.row.original.members.more} />,
     meta: {
-      className: 'w-[200px]',
+      headerClassName: 'w-[200px]',
       cellClassName: 'text-gray-700 font-normal'
     }
   }, {
@@ -65,7 +91,7 @@ const Teams = () => {
             <KeenIcon icon="notepad-edit" />
           </button>,
     meta: {
-      className: 'w-[60px]'
+      headerClassName: 'w-[60px]'
     }
   }, {
     id: 'delete',
@@ -77,7 +103,7 @@ const Teams = () => {
             <KeenIcon icon="trash" />
           </button>,
     meta: {
-      className: 'w-[60px]'
+      headerClassName: 'w-[60px]'
     }
   }], []);
 
@@ -100,30 +126,49 @@ const Teams = () => {
 
     return data.filter(team => team.team.name.toLowerCase().includes(searchTerm.toLowerCase()) || team.team.description.toLowerCase().includes(searchTerm.toLowerCase()));
   }, [searchTerm, data]);
-  return <div className="card card-grid min-w-full">
-      <div className="card-header flex-wrap py-5">
+  const handleRowSelection = state => {
+    const selectedRowIds = Object.keys(state);
+    if (selectedRowIds.length > 0) {
+      toast(`Total ${selectedRowIds.length} are selected.`, {
+        description: `Selected row IDs: ${selectedRowIds}`,
+        action: {
+          label: 'Undo',
+          onClick: () => console.log('Undo')
+        }
+      });
+    }
+  };
+  const Toolbar = () => {
+    const {
+      table
+    } = useDataGrid();
+    return <div className="card-header px-5 py-5 border-b-0">
         <h3 className="card-title">Teams</h3>
-        <div className="flex gap-6">
-          <div className="relative">
-            <KeenIcon icon="magnifier" className="leading-none text-md text-gray-500 absolute top-1/2 start-0 -translate-y-1/2 ms-3" />
-            <input type="text" placeholder="Search Teams" className="input input-sm ps-8" value={searchTerm} onChange={e => setSearchTerm(e.target.value)} // Update search term
-          />
-          </div>
-          <label className="switch switch-sm">
-            <input name="check" type="checkbox" value="1" className="order-2" readOnly />
-            <span className="switch-label order-1">Only Active Groups</span>
-          </label>
-        </div>
-      </div>
 
-      <div className="card-body">
-        <DataGrid columns={columns} data={filteredData} rowSelect={true} pagination={{
-        size: 10
-      }} sorting={[{
-        id: 'team',
-        desc: false
-      }]} />
-      </div>
-    </div>;
+        <div className="flex items-center gap-2.5">
+          <DataGridColumnVisibility table={table} />
+
+          <div className="flex gap-6">
+            <div className="relative">
+              <KeenIcon icon="magnifier" className="leading-none text-md text-gray-500 absolute top-1/2 start-0 -translate-y-1/2 ms-3" />
+              <input type="text" placeholder="Search Teams" className="input input-sm ps-8" value={searchTerm} onChange={e => setSearchTerm(e.target.value)} // Update search term
+            />
+            </div>
+            <label className="switch switch-sm">
+              <input name="check" type="checkbox" value="1" className="order-2" readOnly />
+              <span className="switch-label order-1">Only Active Groups</span>
+            </label>
+          </div>
+        </div>
+      </div>;
+  };
+  return <DataGrid columns={columns} data={filteredData} rowSelection={true} onRowSelectionChange={handleRowSelection} pagination={{
+    size: 10
+  }} sorting={[{
+    id: 'team',
+    desc: false
+  }]} toolbar={<Toolbar />} layout={{
+    card: true
+  }} />;
 };
 export { Teams };

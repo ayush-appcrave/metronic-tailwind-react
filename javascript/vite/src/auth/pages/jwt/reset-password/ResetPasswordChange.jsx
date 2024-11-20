@@ -1,17 +1,24 @@
 import { useFormik } from 'formik';
 import * as Yup from 'yup';
-import { KeenIcon } from '@/components';
+import { Alert, KeenIcon } from '@/components';
 import { useAuthContext } from '@/auth';
 import { useState } from 'react';
 import clsx from 'clsx';
+import { useNavigate } from 'react-router-dom';
+import { useLayout } from '@/providers';
+import { AxiosError } from 'axios';
 const passwordSchema = Yup.object().shape({
   newPassword: Yup.string().min(6, 'Password must be at least 6 characters').required('New password is required'),
   confirmPassword: Yup.string().oneOf([Yup.ref('newPassword')], 'Passwords must match').required('Please confirm your new password')
 });
 const ResetPasswordChange = () => {
   const {
+    currentLayout
+  } = useLayout();
+  const {
     changePassword
   } = useAuthContext();
+  const navigate = useNavigate();
   const [loading, setLoading] = useState(false);
   const [hasErrors, setHasErrors] = useState(undefined);
   const [showNewPassword, setShowNewPassword] = useState(false);
@@ -40,9 +47,14 @@ const ResetPasswordChange = () => {
       try {
         await changePassword(email, token, values.newPassword, values.confirmPassword);
         setHasErrors(false);
-      } catch {
+        navigate(currentLayout?.name === 'auth-branded' ? '/auth/reset-password/changed' : '/auth/classic/reset-password/changed');
+      } catch (error) {
+        if (error instanceof AxiosError && error.response) {
+          setStatus(error.response.data.message);
+        } else {
+          setStatus('Password reset failed. Please try again.');
+        }
         setHasErrors(true);
-        setStatus('Password reset failed. Please try again.');
       } finally {
         setLoading(false);
         setSubmitting(false);
@@ -56,9 +68,7 @@ const ResetPasswordChange = () => {
           <span className="text-2sm text-gray-700">Enter your new password</span>
         </div>
 
-        {hasErrors && <div className="mb-4 alert alert-danger">
-            <div className="alert-text">There was an error. Please try again.</div>
-          </div>}
+        {hasErrors && <Alert variant="danger">{formik.status}</Alert>}
 
         <div className="flex flex-col gap-1">
           <label className="form-label text-gray-900">New Password</label>

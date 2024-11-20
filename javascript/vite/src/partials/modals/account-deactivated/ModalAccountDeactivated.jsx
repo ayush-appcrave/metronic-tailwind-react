@@ -1,19 +1,17 @@
-import { Modal, ModalContent, ModalBody, ModalHeader } from '@/components/modal'; // Import your custom Modal component
-import { KeenIcon } from '@/components';
 import { toAbsoluteUrl } from '@/utils';
 import { Link } from 'react-router-dom';
+import { Dialog, DialogBody, DialogContent, DialogDescription, DialogHeader, DialogTitle } from '@/components/ui/dialog';
 const ModalAccountDeactivated = ({
   open,
-  onClose
+  onOpenChange
 }) => {
-  return <Modal open={open} onClose={onClose}>
-      <ModalContent className="modal-center w-full max-w-[500px] max-h-[95%] scrollable-y-auto">
-        <ModalHeader className="justify-end border-0 pt-5">
-          <button className="btn btn-sm btn-icon btn-light btn-clear shrink-0" onClick={onClose}>
-            <KeenIcon icon="cross" />
-          </button>
-        </ModalHeader>
-        <ModalBody className="flex flex-col items-center pt-0 pb-10">
+  return <Dialog open={open} onOpenChange={onOpenChange}>
+      <DialogContent className="w-full max-w-[500px] max-h-[95%] scrollable-y-auto">
+        <DialogHeader className="justify-end border-0 pt-5">
+          <DialogTitle></DialogTitle>
+          <DialogDescription></DialogDescription>
+        </DialogHeader>
+        <DialogBody className="flex flex-col items-center pt-0 pb-10">
           <div className="mb-9">
             <img src={toAbsoluteUrl('/media/illustrations/23.svg')} className="dark:hidden max-h-[150px]" />
             <img src={toAbsoluteUrl('/media/illustrations/23-dark.svg')} className="light:hidden max-h-[150px]" />
@@ -31,8 +29,8 @@ const ModalAccountDeactivated = ({
           <Link to="/" className="btn btn-primary flex justify-center">
             Go to Home
           </Link>
-        </ModalBody>
-      </ModalContent>
-    </Modal>;
+        </DialogBody>
+      </DialogContent>
+    </Dialog>;
 };
 export { ModalAccountDeactivated };

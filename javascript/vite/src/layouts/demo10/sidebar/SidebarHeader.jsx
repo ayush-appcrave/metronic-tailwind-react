@@ -78,7 +78,7 @@ const SidebarHeader = forwardRef((props, ref) => {
           <button onClick={handleSearchModalOpen} className="btn btn-icon btn-dark btn-icon-lg size-8 hover:text-primary">
             <KeenIcon icon="magnifier" />
           </button>
-          <ModalSearch open={searchModalOpen} onClose={handleSearchModalClose} />
+          <ModalSearch open={searchModalOpen} onOpenChange={handleSearchModalClose} />
         </div>
       </div>
     </div>;

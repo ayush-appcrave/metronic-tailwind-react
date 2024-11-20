@@ -45,7 +45,7 @@ const Main = () => {
                     <button onClick={handleOpen} className="btn btn-icon btn-icon-lg size-9 rounded-md hover:bg-gray-200 dropdown-open:bg-gray-200 hover:text-primary text-gray-600">
                       <KeenIcon icon="magnifier" />
                     </button>
-                    <ModalSearch open={searchModalOpen} onClose={handleClose} />
+                    <ModalSearch open={searchModalOpen} onOpenChange={handleClose} />
                     <Menu>
                       <MenuItem ref={itemNotificationsRef} toggle="dropdown" trigger="click" dropdownProps={{
                       placement: 'bottom-end',

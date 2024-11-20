@@ -1,11 +1,10 @@
 import React, { forwardRef } from 'react';
-import { Modal, ModalContent, ModalBody, ModalHeader, ModalTitle } from '@/components/modal';
-import { KeenIcon } from '@/components';
 import { toAbsoluteUrl } from '@/utils';
 import { Link } from 'react-router-dom';
+import { Dialog, DialogContent, DialogDescription, DialogHeader, DialogTitle } from '@/components/ui/dialog';
 const ModalReportUser = forwardRef(({
   open,
-  onClose
+  onOpenChange
 }, ref) => {
   const buildNotice = () => {
     return <div className="grid place-items-center gap-1 px-5">
@@ -40,7 +39,7 @@ const ModalReportUser = forwardRef(({
           </div>
           <div className="flex flex-col gap-3.5">
             {items.map((item, index) => <label key={index} className="form-label flex items-center gap-2.5">
-                <input className="radio radio-sm" name="report-option" type="radio" value="{{ loop.index }}" checked />
+                <input className="radio radio-sm" name="report-option" type="radio" value="{{ loop.index }}" />
                 <div className="flex flex-col gap-0.5">
                   <div className="text-sm font-semibold text-gray-900">{item.name}</div>
                   <div className="text-2sm font-medium text-gray-600">{item.description}</div>
@@ -58,21 +57,16 @@ const ModalReportUser = forwardRef(({
   const buildButton = () => {
     return <div className="flex items-center gap-2.5 justify-end px-5">
           <button className="btn btn-sm btn-primary">Report this person</button>
-          <button className="btn btn-sm btn-light" data-modal-dismiss="true">
-            Cancel
-          </button>
+          <button className="btn btn-sm btn-light">Cancel</button>
         </div>;
   };
-  return <Modal open={open} onClose={onClose} ref={ref}>
-        <ModalContent className="max-w-[600px] top-[15%]">
-          <ModalHeader className="">
-            <ModalTitle>Report User</ModalTitle>
-
-            <button className="btn btn-sm btn-icon btn-light btn-clear shrink-0" onClick={onClose}>
-              <KeenIcon icon="cross" />
-            </button>
-          </ModalHeader>
-          <ModalBody className="grid gap-5 px-0 py-5">
+  return <Dialog open={open} onOpenChange={onOpenChange}>
+        <DialogContent className="max-w-[600px]" ref={ref}>
+          <DialogHeader>
+            <DialogTitle>Report User</DialogTitle>
+            <DialogDescription></DialogDescription>
+          </DialogHeader>
+          <div className="grid gap-5 px-0 py-5">
             {buildNotice()}
             <div className="border-b border-b-gray-200"></div>
             {buildOptions()}
@@ -80,8 +74,8 @@ const ModalReportUser = forwardRef(({
             {buildFooter()}
             <div className="border-b border-b-gray-200"></div>
             {buildButton()}
-          </ModalBody>
-        </ModalContent>
-      </Modal>;
+          </div>
+        </DialogContent>
+      </Dialog>;
 });
 export { ModalReportUser };

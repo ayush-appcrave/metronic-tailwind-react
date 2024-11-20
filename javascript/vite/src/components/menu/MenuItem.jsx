@@ -23,8 +23,8 @@ const MenuItemComponent = forwardRef(function MenuItem(props, ref) {
     containerProps: ContainerPropsProp = {},
     children,
     open = false,
-    level = 0,
-    index = 0
+    parentId,
+    id
   } = props;
   const {
     ...containerProps
@@ -39,6 +39,8 @@ const MenuItemComponent = forwardRef(function MenuItem(props, ref) {
     isOpenAccordion,
     dropdownTimeout
   } = useMenu();
+  const finalParentId = parentId !== undefined ? parentId : '';
+  const finalId = id !== undefined ? id : '';
   const menuContainerRef = useRef(null);
 
   // eslint-disable-next-line no-undef
@@ -55,7 +57,7 @@ const MenuItemComponent = forwardRef(function MenuItem(props, ref) {
   const propDropdownProps = useResponsiveProp(dropdownProps);
   const active = highlight ? path.length > 0 && match : false;
   const [here, setHere] = useState(open);
-  const accordionShow = isOpenAccordion(level, index);
+  const accordionShow = isOpenAccordion(finalParentId, finalId);
   const [show, setShow] = useState(open);
   const [transitioning, setTransitioning] = useState(open);
   const [accordionEnter, setAccordionEnter] = useState(open);
@@ -65,7 +67,7 @@ const MenuItemComponent = forwardRef(function MenuItem(props, ref) {
       setShow(false);
     }
     if (hasSub && propToggle === 'accordion' && multipleExpand === false) {
-      setOpenAccordion(level, -1);
+      setOpenAccordion(finalParentId, '');
     }
     if (handleParentHide) {
       handleParentHide();
@@ -76,7 +78,7 @@ const MenuItemComponent = forwardRef(function MenuItem(props, ref) {
       setShow(true);
     }
     if (hasSub && propToggle === 'accordion' && multipleExpand === false) {
-      setOpenAccordion(level, index);
+      setOpenAccordion(finalParentId, finalId);
     }
   };
   const handleMouseEnter = e => {
@@ -175,7 +177,7 @@ const MenuItemComponent = forwardRef(function MenuItem(props, ref) {
   const renderSubDropdown = child => {
     // Add some props to each child
     const modifiedProps = {
-      level: level + 1,
+      parentId: `${parentId}-${finalId}`,
       toggle: propToggle,
       handleParentHide: handleHide,
       tabIndex,
@@ -206,7 +208,7 @@ const MenuItemComponent = forwardRef(function MenuItem(props, ref) {
 
     // Add some props to each child
     const modifiedProps = {
-      level: level + 1,
+      parentId: `${parentId}-${finalId}`,
       tabIndex,
       show,
       enter: accordionEnter,

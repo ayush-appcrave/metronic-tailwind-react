@@ -26,7 +26,7 @@ const AccountSettingsEnterprisePage = () => {
               </a>
             </ToolbarActions>
           </Toolbar>
-      </Container>}
+        </Container>}
       <Container>
         <AccountSettingsEnterpriseContent />
       </Container>

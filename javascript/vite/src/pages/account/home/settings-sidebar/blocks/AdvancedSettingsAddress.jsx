@@ -1,3 +1,4 @@
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 const AdvancedSettingsAddress = () => {
   return <div className="card">
       <div className="card-header" id="advanced_settings_address">
@@ -12,11 +13,16 @@ const AdvancedSettingsAddress = () => {
         <div className="flex items-baseline flex-wrap lg:flex-nowrap gap-2.5">
           <label className="form-label max-w-56">Country</label>
           <div className="grow">
-            <select className="select" name="select">
-              <option value="1">Spain</option>
-              <option value="2">Option 2</option>
-              <option value="3">Option 3</option>
-            </select>
+            <Select defaultValue="1">
+              <SelectTrigger>
+                <SelectValue placeholder="Select" />
+              </SelectTrigger>
+              <SelectContent>
+                <SelectItem value="1">Spain</SelectItem>
+                <SelectItem value="2">Option 2</SelectItem>
+                <SelectItem value="3">Option 3</SelectItem> 
+              </SelectContent>
+            </Select>  
           </div>
         </div>
 

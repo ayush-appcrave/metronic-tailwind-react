@@ -9,7 +9,7 @@ const ModalShareProfileViaEmail = () => {
 
       <div className="flex flex-center gap-2.5">
         <label className="input">
-          <input type="text" value="miles.turner@gmail.com" />
+          <input type="text" value="miles.turner@gmail.com" onChange={() => {}} />
         </label>
 
         <button className="btn btn-primary">Share</button>

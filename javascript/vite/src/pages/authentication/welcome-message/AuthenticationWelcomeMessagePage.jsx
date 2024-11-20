@@ -35,7 +35,7 @@ const AuthenticationWelcomeMessagePage = () => {
 
       <Container>
         <AccountGetStartedContent />
-        <ModalWelcomMessage open={profileModalOpen} onClose={handleClose} />
+        <ModalWelcomMessage open={profileModalOpen} onOpenChange={handleClose} />
       </Container>
     </Fragment>;
 };

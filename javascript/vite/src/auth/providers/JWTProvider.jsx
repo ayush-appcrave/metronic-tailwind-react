@@ -1,6 +1,6 @@
 /* eslint-disable no-unused-vars */
 import axios from 'axios';
-import { createContext, useEffect, useState } from 'react';
+import { createContext, useState } from 'react';
 import * as authHelper from '../_helpers';
 const API_URL = import.meta.env.VITE_APP_API_URL;
 export const LOGIN_URL = `${API_URL}/login`;
@@ -28,11 +28,6 @@ const AuthProvider = ({
       }
     }
   };
-  useEffect(() => {
-    verify().finally(() => {
-      setLoading(false);
-    });
-  }, []);
   const saveAuth = auth => {
     setAuth(auth);
     if (auth) {
@@ -99,7 +94,8 @@ const AuthProvider = ({
     setCurrentUser(undefined);
   };
   return <AuthContext.Provider value={{
-    isLoading: loading,
+    loading,
+    setLoading,
     auth,
     saveAuth,
     currentUser,

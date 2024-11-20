@@ -137,7 +137,7 @@ const SidebarMenu = () => {
       </MenuArrow>;
   };
   const buildMenuBullet = () => {
-    return <MenuBullet className="flex w-[6px] relative before:absolute before:top-0 before:size-[6px] before:rounded-full rtl:before:translate-x-1/2 before:-translate-y-1/2 menu-item-active:before:bg-primary menu-item-hover:before:bg-primary"></MenuBullet>;
+    return <MenuBullet className="flex w-[6px] -start-[3px] rtl:start-0 relative before:absolute before:top-0 before:size-[6px] before:rounded-full rtl:before:translate-x-1/2 before:-translate-y-1/2 menu-item-active:before:bg-primary menu-item-hover:before:bg-primary"></MenuBullet>;
   };
   const buildMenuSoon = () => {
     return <MenuBadge className={rightOffset}>

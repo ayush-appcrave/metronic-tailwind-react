@@ -12,16 +12,17 @@ const MenuSubComponent = forwardRef(function MenuSub(props, ref) {
     handleEntered,
     handleExited,
     children,
-    level
+    parentId
   } = props;
+  const finalParentId = parentId !== undefined ? parentId : 'root';
   const modifiedChildren = Children.map(children, (child, index) => {
     if (isValidElement(child)) {
       if (child.type === MenuItem) {
         // Add some props to each child
         const modifiedProps = {
           handleParentHide,
-          level,
-          index
+          parentId: finalParentId,
+          id: `${finalParentId}-${index}`
         };
 
         // Return the child with modified props

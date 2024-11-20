@@ -142,7 +142,7 @@ const SidebarPrimary = () => {
             modifiers: [{
               name: 'offset',
               options: {
-                offset: isRTL() ? [10, 15] : [-10, 15] // [skid, distance]  
+                offset: isRTL() ? [10, 15] : [-10, 15] // [skid, distance]
               }
             }]
           }}>
@@ -161,7 +161,7 @@ const SidebarPrimary = () => {
           modifiers: [{
             name: 'offset',
             options: {
-              offset: isRTL() ? [10, 15] : [-10, 15] // [skid, distance] 
+              offset: isRTL() ? [10, 15] : [-10, 15] // [skid, distance]
             }
           }]
         }}>

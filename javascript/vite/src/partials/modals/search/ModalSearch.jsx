@@ -1,14 +1,14 @@
 import React, { forwardRef, useEffect, useState } from 'react';
-import { Modal, ModalContent, ModalBody, ModalHeader } from '@/components/modal';
 import { KeenIcon, Menu, MenuItem, MenuToggle } from '@/components';
 import { Tab, TabPanel, Tabs, TabsList } from '@/components/tabs';
 import { DropdownCrud2 } from '@/partials/dropdowns/general';
 import { useViewport } from '@/hooks';
 import { useLanguage } from '@/i18n';
 import { ModalSearchDocs, ModalSearchMixed, ModalSearchSettings, ModalSearchIntegrations, ModalSearchUsers, ModalSearchEmpty, ModalSearchNoResults } from './';
+import { Dialog, DialogBody, DialogContent, DialogDescription, DialogHeader, DialogTitle } from '@/components/ui/dialog';
 const ModalSearch = forwardRef(({
   open,
-  onClose
+  onOpenChange
 }, ref) => {
   const [scrollableHeight, setScrollableHeight] = useState(0);
   const [viewportHeight] = useViewport();
@@ -237,16 +237,15 @@ const ModalSearch = forwardRef(({
     label: 'Remote',
     color: 'badge-primary'
   }];
-  return <Modal open={open} onClose={onClose} ref={ref}>
-      <ModalContent className="max-w-[600px] top-[15%]">
-        <ModalHeader className="py-4 px-5">
+  return <Dialog open={open} onOpenChange={onOpenChange}>
+      <DialogContent className="max-w-[600px] top-[5%] lg:top-[15%] translate-y-0 [&>button]:top-8 [&>button]:end-7" ref={ref}>
+        <DialogHeader className="py-4">
+          <DialogTitle></DialogTitle>
+          <DialogDescription></DialogDescription>
           <KeenIcon icon="magnifier" className="text-gray-700 text-xl" />
           <input type="text" name="query" value="" className="input px-0 border-none bg-transparent shadow-none ms-2.5" onChange={handleSearchInput} placeholder="Tap to start search" />
-          <button className="btn btn-sm btn-icon btn-light btn-clear shrink-0" onClick={onClose}>
-            <KeenIcon icon="cross" />
-          </button>
-        </ModalHeader>
-        <ModalBody className="p-0 pb-5">
+        </DialogHeader>
+        <DialogBody className="p-0 pb-5">
           <Tabs defaultValue={1} className="">
             <TabsList className="justify-between px-5 mb-2.5">
               <div className="flex items-center gap-5">
@@ -301,8 +300,8 @@ const ModalSearch = forwardRef(({
               </TabPanel>
             </div>
           </Tabs>
-        </ModalBody>
-      </ModalContent>
-    </Modal>;
+        </DialogBody>
+      </DialogContent>
+    </Dialog>;
 });
 export { ModalSearch };

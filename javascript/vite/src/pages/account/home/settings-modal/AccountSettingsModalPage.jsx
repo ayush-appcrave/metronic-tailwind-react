@@ -41,7 +41,7 @@ const AccountSettingsModalPage = () => {
       </Container>
 
       <Container>
-        <AccountSettingsModal open={settingsModalOpen} onClose={handleSettingsModalClose} />
+        <AccountSettingsModal open={settingsModalOpen} onOpenChange={handleSettingsModalClose} />
       </Container>
     </Fragment>;
 };

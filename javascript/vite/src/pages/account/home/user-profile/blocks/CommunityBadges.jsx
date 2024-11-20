@@ -1,6 +1,11 @@
-import { KeenIcon } from '@/components';
+import { KeenIcon, Menu, MenuItem, MenuToggle } from '@/components';
 import { CommonHexagonBadge } from '@/partials/common';
+import { useLanguage } from '@/i18n';
+import { DropdownCrud1 } from '@/partials/dropdowns/general';
 const CommunityBadges = () => {
+  const {
+    isRTL
+  } = useLanguage();
   const items = [{
     title: 'Expert Contributor Badge',
     stroke: 'stroke-primary-clarity',
@@ -46,9 +51,22 @@ const CommunityBadges = () => {
       <div className="card-header gap-2">
         <h3 className="card-title">Badges</h3>
 
-        <div className="btn btn-sm btn-icon btn-icon-lg text-gray-500 hover:text-primary-active">
-          <KeenIcon icon="information-2" />
-        </div>
+        <Menu>
+          <MenuItem toggle="dropdown" trigger="click" dropdownProps={{
+          placement: isRTL() ? 'bottom-start' : 'bottom-end',
+          modifiers: [{
+            name: 'offset',
+            options: {
+              offset: isRTL() ? [0, 10] : [0, -10] // [skid, distance]
+            }
+          }]
+        }}>
+            <MenuToggle className="btn btn-sm btn-icon btn-icon-lg text-gray-500 hover:text-primary-active">
+              <KeenIcon icon="information-2" />
+            </MenuToggle>
+            {DropdownCrud1()}
+          </MenuItem>
+        </Menu>
       </div>
 
       <div className="card-body pb-7.5">

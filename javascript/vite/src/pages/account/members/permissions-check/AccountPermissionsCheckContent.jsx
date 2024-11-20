@@ -25,7 +25,7 @@ const AccountPermissionsCheckContent = () => {
         <div className="flex flex-col gap-5 lg:gap-7.5">
           <PermissionsCheck />
 
-          <Members />
+          <Members title="Role Members" />
 
           <MiscFaq />
 

@@ -34,7 +34,7 @@ const HeaderTopbar = () => {
         <button onClick={handleSearchModalOpen} className="btn btn-icon btn-icon-lg size-8 text-gray-600 hover:text-primary">
           <KeenIcon icon="magnifier" />
         </button>
-        <ModalSearch open={searchModalOpen} onClose={handleSearchModalClose} />
+        <ModalSearch open={searchModalOpen} onOpenChange={handleSearchModalClose} />
 
         <Menu>
           <MenuItem ref={itemNotificationsRef} toggle="dropdown" trigger="click" dropdownProps={{

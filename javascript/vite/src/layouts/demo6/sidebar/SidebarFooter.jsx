@@ -21,7 +21,7 @@ const SidebarFooter = forwardRef((props, ref) => {
         modifiers: [{
           name: 'offset',
           options: {
-            offset: isRTL() ? [10, 15] : [-10, 15] // [skid, distance]  
+            offset: isRTL() ? [10, 15] : [-10, 15] // [skid, distance]
           }
         }]
       }}>
@@ -61,8 +61,7 @@ const SidebarFooter = forwardRef((props, ref) => {
               offset: [10, 15]
             }
           }]
-        }}>
-          </MenuItem>
+        }}></MenuItem>
         </Menu>
 
         <div onClick={logout} className="btn btn-icon btn-icon-lg size-8 hover:bg-light hover:text-primary text-gray-600">

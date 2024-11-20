@@ -1,4 +1,5 @@
 import { CardNotification } from '@/partials/cards';
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 const Accessibility = () => {
   const items = [{
     icon: 'exit-right-corner',
@@ -19,11 +20,16 @@ const Accessibility = () => {
     title: 'Autoplay videos',
     description: 'Choose preferences for automatic video playback.',
     actions: <div className="grow min-w-48">
-          <select className="select w-full">
-            <option>System preferences</option>
-            <option>Sound</option>
-            <option>Focus</option>
-          </select>
+          <Select defaultValue="1">
+            <SelectTrigger className="w-full">
+              <SelectValue placeholder="Select" />
+            </SelectTrigger>
+            <SelectContent>
+              <SelectItem value="1">System preferences</SelectItem>
+              <SelectItem value="2">Sound</SelectItem>
+              <SelectItem value="3">Focus</SelectItem>  
+            </SelectContent>
+          </Select>  
         </div>
   }, {
     icon: 'screen',

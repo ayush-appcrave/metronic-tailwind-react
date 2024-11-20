@@ -8,42 +8,43 @@ const AppRouting = () => {
     setProgressBarLoader
   } = useLoaders();
   const {
-    verify
+    verify,
+    setLoading
   } = useAuthContext();
   const [previousLocation, setPreviousLocation] = useState('');
+  const [firstLoad, setFirstLoad] = useState(true);
   const location = useLocation();
   const path = location.pathname.trim();
-  const init = async () => {
-    setProgressBarLoader(true);
-    try {
-      if (verify) {
-        await verify();
-      }
-    } catch {
-      throw new Error('Something went wrong!');
-    } finally {
-      setPreviousLocation(path);
-      if (path === previousLocation) {
-        setPreviousLocation('');
-      }
-    }
-  };
   useEffect(() => {
-    init();
+    if (firstLoad) {
+      verify().finally(() => {
+        setLoading(false);
+        setFirstLoad(false);
+      });
+    }
+  });
+  useEffect(() => {
+    if (!firstLoad) {
+      setProgressBarLoader(true);
+      verify().catch(() => {
+        throw new Error('User verify request failed!');
+      }).finally(() => {
+        setPreviousLocation(path);
+        setProgressBarLoader(false);
+        if (path === previousLocation) {
+          setPreviousLocation('');
+        }
+      });
+    }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [location]);
   useEffect(() => {
-    setProgressBarLoader(false);
-
-    // Scroll to page top on route change if URL does not contain a hash
     if (!CSS.escape(window.location.hash)) {
       window.scrollTo({
         top: 0,
         behavior: 'smooth'
       });
     }
-
-    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [previousLocation]);
   return <AppRoutingSetup />;
 };

@@ -41,7 +41,7 @@ const MegaMenuInner = () => {
         modifiers: [{
           name: 'offset',
           options: {
-            offset: isRTL() ? [300, 0] : [-300, 0] // [skid, distance]  
+            offset: isRTL() ? [300, 0] : [-300, 0] // [skid, distance]
           }
         }]
       }}>

@@ -5,6 +5,6 @@ const ProfileModalContent = () => {
   const handleClose = () => {
     setProfileModalOpen(false);
   };
-  return <ModalProfile open={profileModalOpen} onClose={handleClose} />;
+  return <ModalProfile open={profileModalOpen} onOpenChange={handleClose} />;
 };
 export { ProfileModalContent };

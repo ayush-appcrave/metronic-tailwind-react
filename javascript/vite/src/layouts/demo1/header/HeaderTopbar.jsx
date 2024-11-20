@@ -28,7 +28,7 @@ const HeaderTopbar = () => {
       <button onClick={handleOpen} className="btn btn-icon btn-icon-lg size-9 rounded-full hover:bg-primary-light hover:text-primary text-gray-500">
         <KeenIcon icon="magnifier" />
       </button>
-      <ModalSearch open={searchModalOpen} onClose={handleClose} />
+      <ModalSearch open={searchModalOpen} onOpenChange={handleClose} />
 
       <Menu>
         <MenuItem ref={itemChatRef} onShow={handleShow} toggle="dropdown" trigger="click" dropdownProps={{
@@ -56,7 +56,7 @@ const HeaderTopbar = () => {
         modifiers: [{
           name: 'offset',
           options: {
-            offset: isRTL() ? [10, 10] : [-10, 10]
+            offset: isRTL() ? [-10, 10] : [10, 10]
           }
         }]
       }}>
@@ -74,7 +74,7 @@ const HeaderTopbar = () => {
         modifiers: [{
           name: 'offset',
           options: {
-            offset: isRTL() ? [70, 10] : [-70, 10] // [skid, distance]
+            offset: isRTL() ? [-70, 10] : [70, 10] // [skid, distance]
           }
         }]
       }}>

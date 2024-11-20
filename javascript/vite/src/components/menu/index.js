@@ -14,3 +14,4 @@ export * from './MenuArrow';
 export * from './hooks/useMenuCurrentItem';
 export * from './hooks/useMenuBreadcrumbs';
 export * from './hooks/useMenuChildren';
+export * from './types.d';

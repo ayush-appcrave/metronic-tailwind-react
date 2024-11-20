@@ -87,9 +87,10 @@ const NavbarDropdown = () => {
           </MenuSub>
         </MenuItem>
       </Menu>
-      <ModalShareProfile open={ShareProfileModalOpen} onClose={handleShareProfileModalClose} />
-      <ModalGiveAward open={giveAwardModalOpen} onClose={handleGiveAwardModalClose} />
-      <ModalReportUser open={reportUserModalOpen} onClose={handleReportUserModalClose} />
+
+      <ModalShareProfile open={ShareProfileModalOpen} onOpenChange={handleShareProfileModalClose} />
+      <ModalGiveAward open={giveAwardModalOpen} onOpenChange={handleGiveAwardModalClose} />
+      <ModalReportUser open={reportUserModalOpen} onOpenChange={handleReportUserModalClose} />
     </Fragment>;
 };
 export { NavbarDropdown };

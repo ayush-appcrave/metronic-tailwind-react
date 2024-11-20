@@ -1,5 +1,4 @@
 /* eslint-disable react-hooks/exhaustive-deps */
-import { Drawer } from '@/components';
 import { Link } from 'react-router-dom';
 import { KeenIcon, Menu, MenuItem, MenuToggle } from '@/components';
 import { useEffect, useRef, useState } from 'react';
@@ -12,6 +11,7 @@ import { useDemo8Layout } from '..';
 import { SidebarMenu } from '.';
 import { usePathname } from '@/providers';
 import { useLanguage } from '@/i18n';
+import { Sheet, SheetContent, SheetDescription, SheetHeader, SheetTitle } from '@/components/ui/sheet';
 const Sidebar = () => {
   const desktopMode = useResponsive('up', 'lg');
   const mobileMode = useResponsive('down', 'lg');
@@ -50,7 +50,7 @@ const Sidebar = () => {
     }
   }, [viewportHeight]);
   const renderContent = () => {
-    return <div className="fixed top-0 bottom-0 z-20 lg:flex flex-col items-stretch shrink-0 bg-[--tw-page-bg] dark:bg-[--tw-page-bg-dark]">
+    return <div className="grow lg:grow-0 lg:fixed top-0 bottom-0 z-20 flex flex-col items-stretch shrink-0 bg-[--tw-page-bg] dark:bg-[--tw-page-bg-dark]">
         {desktopMode && <div ref={headerRef} className="hidden lg:flex items-center justify-center shrink-0 pt-8 pb-3.5">
             <Link to="/">
               <img src={toAbsoluteUrl('/media/app/mini-logo-square-gray.svg')} className="dark:hidden min-h-[42px]" />
@@ -94,7 +94,7 @@ const Sidebar = () => {
               modifiers: [{
                 name: 'offset',
                 options: {
-                  offset: isRTL() ? [-20, 30] : [20, 30] // [skid, distance] 
+                  offset: isRTL() ? [-20, 30] : [20, 30] // [skid, distance]
                 }
               }]
             }}>
@@ -113,7 +113,7 @@ const Sidebar = () => {
             modifiers: [{
               name: 'offset',
               options: {
-                offset: isRTL() ? [-20, 28] : [20, 28] // [skid, distance] 
+                offset: isRTL() ? [-20, 28] : [20, 28] // [skid, distance]
               }
             }]
           }}>
@@ -137,11 +137,15 @@ const Sidebar = () => {
   if (desktopMode) {
     return renderContent();
   } else {
-    return <Drawer open={mobileSidebarOpen} onClose={handleMobileSidebarClose} ModalProps={{
-      keepMounted: true
-    }}>
-        {renderContent()}
-      </Drawer>;
+    return <Sheet open={mobileSidebarOpen} onOpenChange={handleMobileSidebarClose}>
+        <SheetContent className="border-0 p-0 w-[--tw-sidebar-width] flex items-stretch flex-col scrollable-y-auto" forceMount={true} side="left" close={false}>
+          <SheetHeader className="sr-only">
+            <SheetTitle>Mobile Menu</SheetTitle>
+            <SheetDescription></SheetDescription>
+          </SheetHeader>
+          {renderContent()}
+        </SheetContent>
+      </Sheet>;
   }
 };
 export { Sidebar };

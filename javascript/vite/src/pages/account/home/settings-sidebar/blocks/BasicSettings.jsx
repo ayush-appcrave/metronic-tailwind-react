@@ -1,4 +1,5 @@
 import { CrudAvatarUpload } from '@/partials/crud';
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 const BasicSettings = () => {
   return <div className="card pb-2.5">
       <div className="card-header" id="basic_settings">
@@ -36,12 +37,18 @@ const BasicSettings = () => {
 
         <div className="flex items-center flex-wrap gap-2.5">
           <label className="form-label max-w-56">Visibility</label>
+           
           <div className="grow">
-            <select className="select">
-              <option>Public</option>
-              <option>Option 2</option>
-              <option>Option 3</option>
-            </select>
+            <Select defaultValue="1">
+              <SelectTrigger>
+                <SelectValue placeholder="Select" />
+              </SelectTrigger>
+              <SelectContent>
+                <SelectItem value="1">Public</SelectItem>
+                <SelectItem value="2">Option 2</SelectItem>
+                <SelectItem value="3">Option 2</SelectItem> 
+              </SelectContent>
+            </Select>
           </div>
         </div>
 

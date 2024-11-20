@@ -4,10 +4,10 @@ import { useAuthContext } from './useAuthContext';
 const RequireAuth = () => {
   const {
     auth,
-    isLoading
+    loading
   } = useAuthContext();
   const location = useLocation();
-  if (isLoading) {
+  if (loading) {
     return <ScreenLoader />;
   }
   return auth ? <Outlet /> : <Navigate to="/auth/login" state={{

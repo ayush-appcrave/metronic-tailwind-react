@@ -5,10 +5,10 @@ import { Link } from 'react-router-dom';
 const ActivitiesProductWebinar = () => {
   return <TimelinesWrapper icon="calendar-tick" line={true}>
       <div className="flex flex-col pb-2.5">
-        <span className="text-sm font-medium text-gray-700">
+        <span className="text-sm text-gray-800">
           Jenny attended a webinar on new product features.
         </span>
-        <span className="text-xs font-medium text-gray-500">3 days ago, 11:45 AM</span>
+        <span className="text-xs text-gray-600">3 days ago, 11:45 AM</span>
       </div>
 
       <div className="card shadow-none p-4">
@@ -17,10 +17,10 @@ const ActivitiesProductWebinar = () => {
           <div className="flex flex-col gap-5 grow">
             <div className="flex flex-wrap items-center justify-between">
               <div className="flex flex-col gap-0.5">
-                <span className="text-md font-semibold text-gray-900 cursor-pointer hover:text-primary mb-px">
+                <span className="text-md font-medium text-gray-900 cursor-pointer hover:text-primary mb-px">
                   Leadership Development Series: Part 1
                 </span>
-                <span className="text-xs font-medium text-gray-500">
+                <span className="text-xs text-gray-600">
                   The first installment of a leadership development series.
                 </span>
               </div>
@@ -32,12 +32,12 @@ const ActivitiesProductWebinar = () => {
 
             <div className="flex flex-wrap gap-7.5">
               <div className="flex items-center gap-1.5">
-                <span className="text-2sm font-medium text-gray-500">Code:</span>
-                <span className="text-2sm font-semibold text-primary">#leaderdev-1</span>
+                <span className="text-2sm font-medium text-gray-600">Code:</span>
+                <span className="text-2sm text-primary">#leaderdev-1</span>
               </div>
 
               <div className="flex items-center gap-1.5">
-                <span className="text-2sm font-medium text-gray-500">Progress:</span>
+                <span className="text-2sm text-gray-600">Progress:</span>
                 <div className="progress progress-success min-w-[120px]">
                   <div className="progress-bar" style={{
                   width: '80%'
@@ -46,7 +46,7 @@ const ActivitiesProductWebinar = () => {
               </div>
 
               <div className="flex items-center gap-1.5 lg:min-w-24 shrink-0 max-w-auto">
-                <span className="text-2sm font-medium text-gray-500">Guests:</span>
+                <span className="text-2sm text-gray-600">Guests:</span>
                 <CommonAvatars size="size-7" group={[{
                 filename: '300-4.png'
               }, {

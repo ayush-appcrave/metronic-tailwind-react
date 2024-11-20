@@ -1,9 +1,17 @@
 import { useMemo, useState } from 'react';
-import { toAbsoluteUrl } from '@/utils';
 import { Link } from 'react-router-dom';
-import { DataGrid, KeenIcon } from '@/components';
+import { toAbsoluteUrl } from '@/utils';
+import { DataGrid, KeenIcon, DataGridColumnHeader, DataGridRowSelect, DataGridRowSelectAll, useDataGrid } from '@/components';
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 import { UsersData } from './';
+import { toast } from 'sonner';
+import { Input } from '@/components/ui/input';
 const Users = () => {
+  const ColumnInputFilter = ({
+    column
+  }) => {
+    return <Input placeholder="Filter..." value={column.getFilterValue() ?? ''} onChange={event => column.setFilterValue(event.target.value)} className="h-9 w-full max-w-40" />;
+  };
   const [users, setUsers] = useState(UsersData); // Initialize state with UsersData
 
   const handleToggle = index => {
@@ -17,9 +25,22 @@ const Users = () => {
     });
   };
   const columns = useMemo(() => [{
+    accessorKey: 'id',
+    header: () => <DataGridRowSelectAll />,
+    cell: ({
+      row
+    }) => <DataGridRowSelect row={row} />,
+    enableSorting: false,
+    enableHiding: false,
+    meta: {
+      headerClassName: 'w-0'
+    }
+  }, {
     accessorFn: row => row.user,
     id: 'users',
-    header: () => 'Users',
+    header: ({
+      column
+    }) => <DataGridColumnHeader title="Users" filter={<ColumnInputFilter column={column} />} column={column} />,
     enableSorting: true,
     cell: ({
       row
@@ -39,7 +60,9 @@ const Users = () => {
   }, {
     accessorFn: row => row.phone,
     id: 'phone',
-    header: () => 'Phone',
+    header: ({
+      column
+    }) => <DataGridColumnHeader title="Phone" column={column} />,
     enableSorting: true,
     cell: info => {
       return info.row.original.phone;
@@ -51,7 +74,9 @@ const Users = () => {
   }, {
     accessorFn: row => row.branch,
     id: 'branch',
-    header: () => 'Branch',
+    header: ({
+      column
+    }) => <DataGridColumnHeader title="Branch" column={column} />,
     enableSorting: true,
     cell: info => {
       return info.row.original.branch;
@@ -63,7 +88,9 @@ const Users = () => {
   }, {
     accessorFn: row => row.logos,
     id: 'image',
-    header: () => 'Connected Apps',
+    header: ({
+      column
+    }) => <DataGridColumnHeader title="Connected Apps" column={column} />,
     enableSorting: true,
     cell: info => {
       return <div className="flex items-center text-gray-800 font-normal gap-1.5">
@@ -76,7 +103,9 @@ const Users = () => {
   }, {
     accessorFn: row => row.labels,
     id: 'label',
-    header: () => 'Tags',
+    header: ({
+      column
+    }) => <DataGridColumnHeader title="Tags" column={column} />,
     enableSorting: true,
     cell: info => {
       return <div className="flex items-center text-gray-800 font-normal gap-1.5">
@@ -91,7 +120,9 @@ const Users = () => {
   }, {
     accessorFn: row => row.switch,
     id: 'switch',
-    header: () => 'Enforce 2FA',
+    header: ({
+      column
+    }) => <DataGridColumnHeader title="Enforce 2FA" column={column} />,
     enableSorting: true,
     cell: ({
       row
@@ -118,13 +149,28 @@ const Users = () => {
             </button>;
     },
     meta: {
-      className: 'w-[60px]'
+      headerClassName: 'w-[60px]'
     }
   }], []);
   const data = useMemo(() => users, [users]); // Use users state
 
-  return <div className="card card-grid min-w-full">
-      <div className="card-header flex-wrap gap-2">
+  const handleRowSelection = state => {
+    const selectedRowIds = Object.keys(state);
+    if (selectedRowIds.length > 0) {
+      toast(`Total ${selectedRowIds.length} are selected.`, {
+        description: `Selected row IDs: ${selectedRowIds}`,
+        action: {
+          label: 'Undo',
+          onClick: () => console.log('Undo')
+        }
+      });
+    }
+  };
+  const Toolbar = () => {
+    const {
+      table
+    } = useDataGrid();
+    return <div className="card-header flex-wrap gap-2 border-b-0 px-5">
         <h3 className="card-title font-medium text-sm">Showing 10 of 49,053 users</h3>
 
         <div className="flex flex-wrap gap-2 lg:gap-5">
@@ -136,33 +182,42 @@ const Users = () => {
           </div>
 
           <div className="flex flex-wrap gap-2.5">
-            <select className="select select-sm w-28">
-              <option value="1">Active</option>
-              <option value="2">Disabled</option>
-              <option value="2">Pending</option>
-            </select>
+            <Select defaultValue="active">
+              <SelectTrigger className="w-28" size="sm">
+                <SelectValue placeholder="Select" />
+              </SelectTrigger>
+              <SelectContent className="w-32">
+                <SelectItem value="active">Active</SelectItem>
+                <SelectItem value="disabled">Disabled</SelectItem>
+                <SelectItem value="pending">Pending</SelectItem>
+              </SelectContent>
+            </Select>
 
-            <select className="select select-sm w-28">
-              <option value="1">Latest</option>
-              <option value="2">Older</option>
-              <option value="3">Oldest</option>
-            </select>
+            <Select defaultValue="latest">
+              <SelectTrigger className="w-28" size="sm">
+                <SelectValue placeholder="Select" />
+              </SelectTrigger>
+              <SelectContent className="w-32">
+                <SelectItem value="latest">Latest</SelectItem>
+                <SelectItem value="older">Older</SelectItem>
+                <SelectItem value="oldest">Oldest</SelectItem>
+              </SelectContent>
+            </Select>
 
             <button className="btn btn-sm btn-outline btn-primary">
               <KeenIcon icon="setting-4" /> Filters
             </button>
-          </div>
+          </div> 
         </div>
-      </div>
-
-      <div className="card-body">
-        <DataGrid columns={columns} data={data} rowSelect={true} pagination={{
-        size: 5
-      }} sorting={[{
-        id: 'phone',
-        desc: false
-      }]} />
-      </div>
-    </div>;
+      </div>;
+  };
+  return <DataGrid columns={columns} data={data} rowSelection={true} onRowSelectionChange={handleRowSelection} pagination={{
+    size: 5
+  }} sorting={[{
+    id: 'phone',
+    desc: false
+  }]} toolbar={<Toolbar />} layout={{
+    card: true
+  }} />;
 };
 export { Users };

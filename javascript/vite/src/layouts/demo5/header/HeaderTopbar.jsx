@@ -29,7 +29,7 @@ const HeaderTopbar = () => {
           modifiers: [{
             name: 'offset',
             options: {
-              offset: isRTL() ? [0, 10] : [115, 10] // [skid, distance] 
+              offset: isRTL() ? [0, 10] : [115, 10] // [skid, distance]
             }
           }]
         }}>
@@ -48,7 +48,7 @@ const HeaderTopbar = () => {
           modifiers: [{
             name: 'offset',
             options: {
-              offset: isRTL() ? [0, 10] : [60, 10] // [skid, distance]  
+              offset: isRTL() ? [0, 10] : [60, 10] // [skid, distance]
             }
           }]
         }}>

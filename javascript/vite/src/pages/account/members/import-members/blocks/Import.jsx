@@ -60,7 +60,7 @@ const Import = () => {
         </div>
 
         <div className="text-gray-800 text-2sm">
-          <span className="text-danger uppercase">Warning:</span>
+          <span className="text-danger uppercase">Warning:&nbsp;</span>
           An email will be sent to all users created unless the welcome message is disabled in
           settings. Ensure the correct communication preferences are set.
         </div>

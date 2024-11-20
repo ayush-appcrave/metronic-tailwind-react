@@ -10,9 +10,9 @@ const AccountGetStartedPage = () => {
     currentLayout
   } = useLayout();
   return <Fragment>
-        <PageNavbar />
+      <PageNavbar />
 
-        {currentLayout?.name === 'demo1-layout' && <Container>
+      {currentLayout?.name === 'demo1-layout' && <Container>
           <Toolbar>
             <ToolbarHeading>
               <ToolbarPageTitle />
@@ -31,10 +31,10 @@ const AccountGetStartedPage = () => {
             </ToolbarHeading>
           </Toolbar>
         </Container>}
-        
-        <Container>
-          <AccountGetStartedContent />
-        </Container>
-      </Fragment>;
+
+      <Container>
+        <AccountGetStartedContent />
+      </Container>
+    </Fragment>;
 };
 export { AccountGetStartedPage };
