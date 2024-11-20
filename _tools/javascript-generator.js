@@ -26,6 +26,7 @@ const filesToCopy = [
   "src/providers",
   "src/routing",
   "src/utils",
+  "src/lib",
   "src/App.tsx",
   "src/main.tsx",
   ".env",
