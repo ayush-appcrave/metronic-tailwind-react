@@ -151,10 +151,10 @@ const IPAddresses = () => {
     const { table } = useDataGrid();
 
     return (
-      <div className="card-header border-b-0 px-5">
+      <div className="card-header border-b-0 px-5 flex-wrap">
         <h3 className="card-title">IP Addresses</h3>
 
-        <div className="flex items-center gap-2.5">
+        <div className="flex flex-wrap items-center gap-2.5">
           <label className="switch switch-sm">
             <span className="switch-label">
               IP Allowlist Enabled

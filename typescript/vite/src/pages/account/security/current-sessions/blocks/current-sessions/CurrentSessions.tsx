@@ -150,10 +150,10 @@ const CurrentSessions = () => {
     const { table } = useDataGrid();
 
     return (
-      <div className="card-header px-5 py-5 border-b-0">
+      <div className="card-header px-5 py-5 border-b-0 flex-wrap">
         <h3 className="card-title">Current Sessions</h3>
 
-        <div className="flex items-center gap-2.5">
+        <div className="flex flex-wrap items-center gap-2.5">
           <label className="switch switch-sm">
             <span className="switch-label">
               Only Active Users
@@ -188,9 +188,8 @@ const CurrentSessions = () => {
                 <SelectItem value="5">Malaysia</SelectItem>
               </SelectContent>
             </Select>
-
-            <DataGridColumnVisibility table={table}/>
           </div>
+          <DataGridColumnVisibility table={table}/>
         </div>
       </div>
     );

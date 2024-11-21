@@ -140,10 +140,10 @@ const Invoicing = () => {
     const isFiltered = table.getState().columnFilters.length > 0
 
     return (
-      <div className="card-header border-b-0 px-5">
+      <div className="card-header border-b-0 px-5 flex-wrap">
         <h3 className="card-title">Billing and Invoicing</h3>
 
-        <div className="flex items-center gap-2.5">
+        <div className="flex flex-wrap items-center gap-2.5">
           <button className="btn btn-light btn-sm">
             <KeenIcon icon="exit-down" />
             Download PDF

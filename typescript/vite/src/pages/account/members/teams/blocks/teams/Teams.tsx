@@ -192,10 +192,10 @@ const Teams = () => {
     const { table } = useDataGrid();
 
     return (
-      <div className="card-header px-5 py-5 border-b-0">
+      <div className="card-header flex-wrap px-5 py-5 border-b-0">
         <h3 className="card-title">Teams</h3>
 
-        <div className="flex items-center gap-2.5">
+        <div className="flex flex-wrap items-center gap-2.5">
           <div className="flex gap-6">
             <div className="relative">
               <KeenIcon
