@@ -12,13 +12,13 @@ const ModalShareProfileViaEmail = () => {
 
       <div className="flex flex-center gap-2.5">
         <label className="input">
-        <input
-          type="text"
-          name="query"
-          value={emailInput}
-          onChange={(e) => setEmailInput(e.target.value)}
-          placeholder="miles.turner@gmail.com"
-        />
+          <input
+            type="text"
+            name="query"
+            value={emailInput}
+            onChange={(e) => setEmailInput(e.target.value)}
+            placeholder="miles.turner@gmail.com"
+          />
         </label>
 
         <button className="btn btn-primary">Share</button>
