@@ -1,7 +1,9 @@
 import { Link } from 'react-router-dom';
 import { KeenIcon } from '@/components';
+import { useState } from 'react';
 
 const ApiCredentials = () => {
+  const [apiInput, setApiInput] = useState('');
   return (
     <div className="card">
       <div className="card-header">
@@ -18,7 +20,13 @@ const ApiCredentials = () => {
 
         <div className="flex flex-col flex-wrap gap-4">
           <div className="input input-sm">
-            <input type="text" value="hwewe4654fdd5sdfh" readOnly />
+            <input
+              type="text"
+              name="query"
+              value={apiInput}
+              onChange={(e) => setApiInput(e.target.value)}
+              placeholder="hwewe4654fdd5sdfh"
+            />
             <button className="btn btn-icon btn-sm">
               <KeenIcon icon="copy" />
             </button>
