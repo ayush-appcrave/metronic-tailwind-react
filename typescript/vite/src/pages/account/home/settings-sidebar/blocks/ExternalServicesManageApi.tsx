@@ -1,4 +1,4 @@
-import { Fragment } from 'react';
+import { Fragment, useState } from 'react';
 
 import { KeenIcon } from '@/components';
 import { toAbsoluteUrl } from '@/utils/Assets';
@@ -14,6 +14,9 @@ const ExternalServicesManageApi = ({
   title,
   switch: showSwitch
 }: IExternalServicesManageApiProps) => {
+
+const [apikeyInput, setApiKeyInput] = useState('abc123xyz456sample789key000');
+
   return (
     <Fragment>
       <style>
@@ -48,9 +51,9 @@ const ExternalServicesManageApi = ({
               <input
                 placeholder="Right icon"
                 type="text"
-                value="abc123xyz456sample789key000"
-                readOnly
-              />
+                value={apikeyInput}
+                onChange={(e) => setApiKeyInput(e.target.value)}
+              /> 
               <button className="btn btn-icon">
                 <KeenIcon icon="copy" />
               </button>

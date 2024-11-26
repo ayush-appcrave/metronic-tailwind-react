@@ -1,4 +1,4 @@
-import { Fragment } from 'react';
+import { Fragment, useState } from 'react';
 
 import { toAbsoluteUrl } from '@/utils/Assets';
 
@@ -11,6 +11,10 @@ interface IAuthSingleSingOnItem {
 interface IAuthSingleSingOnItems extends Array<IAuthSingleSingOnItem> {}
 
 const AuthSingleSingOn = () => {
+  const [clientIdInput, setClientIdInput] = useState('02874374-367145773');
+  const [clientSecretInput, setClientSecretInput] = useState('23djfn784957f8022we2232307822-cey2442');
+  const [customInput, setCustomInput] = useState('https://devs.keenthemes.com/rl/AirMikeStudios');
+
   const items: IAuthSingleSingOnItems = [
     {
       logo: 'azure.svg',
@@ -109,7 +113,12 @@ const AuthSingleSingOn = () => {
             <div className="w-full">
               <div className="flex items-baseline flex-wrap lg:flex-nowrap gap-2.5">
                 <label className="form-label max-w-56">Client ID</label>
-                <input className="input" type="text" value="02874374-367145773" readOnly />
+                <input
+                  className="input" 
+                  type="text"
+                  value={clientIdInput}
+                  onChange={(e) => setClientIdInput(e.target.value)}
+                /> 
               </div>
             </div>
 
@@ -117,11 +126,11 @@ const AuthSingleSingOn = () => {
               <div className="flex items-baseline flex-wrap lg:flex-nowrap gap-2.5">
                 <label className="form-label max-w-56">Client Secret</label>
                 <input
-                  className="input"
+                  className="input" 
                   type="text"
-                  value="23djfn784957f8022we2232307822-cey2442"
-                  readOnly
-                />
+                  value={customInput}
+                  onChange={(e) => setCustomInput(e.target.value)}
+                />  
               </div>
             </div>
 
@@ -141,11 +150,11 @@ const AuthSingleSingOn = () => {
                 <div className="grow">
                   <div className="input-group">
                     <input
-                      className="input"
+                      className="input" 
                       type="text"
-                      value="https://devs.keenthemes.com/rl/AirMikeStudios"
-                      readOnly
-                    />
+                      value={clientSecretInput}
+                      onChange={(e) => setClientSecretInput(e.target.value)}
+                    />   
                     <span className="btn btn-primary">Copy</span>
                   </div>
                 </div>

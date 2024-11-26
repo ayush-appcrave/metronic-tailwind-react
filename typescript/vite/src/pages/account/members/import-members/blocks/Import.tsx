@@ -1,3 +1,5 @@
+import { useState } from 'react';
+
 interface IImportItem {
   label: string;
   description: string;
@@ -6,6 +8,7 @@ interface IImportItem {
 interface IImportItems extends Array<IImportItem> {}
 
 const Import = () => {
+  const [customInput, setCustomInput] = useState('Your welcome message here');
   const options: IImportItems = [
     {
       label: 'Create new users',
@@ -77,12 +80,11 @@ const Import = () => {
         <div className="flex flex-col gap-4">
           <div className="text-gray-900 text-2sm font-medium">Custom welcome message</div>
           <textarea
-            name="message"
             className="textarea text-2sm text-gray-600 font-normal"
             rows={5}
-            value="Your welcome message here"
-            readOnly
-          >
+            value={customInput}
+            onChange={(e) => setCustomInput(e.target.value)}
+          >  
             Your welcome message here
           </textarea>
           <label className="flex items-center gap-1.5">

@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import {
   Select,
   SelectContent,
@@ -8,6 +9,7 @@ import {
 
 
 const Webhooks = () => {
+  const [webhooknameInput, setWebhookNameInput] = useState('CostaRicaHook');
   return (
     <div className="card pb-2.5">
       <div className="card-header" id="webhooks">
@@ -23,14 +25,19 @@ const Webhooks = () => {
         <div className="flex items-center flex-wrap lg:flex-nowrap gap-2.5">
           <label className="form-label max-w-56">Webhook URL</label>
           <div className="grow">
-            <input type="text" className="input" placeholder="Enter URL" value="" readOnly />
+            <input type="text" className="input" placeholder="Enter URL" />
           </div>
         </div>
 
         <div className="flex items-center flex-wrap lg:flex-nowrap gap-2.5">
           <label className="form-label max-w-56">Webhook Name</label>
           <div className="grow">
-            <input type="text" className="input" placeholder="" value="CostaRicaHook" readOnly />
+            <input
+              className="input"
+              type="text"
+              value={webhooknameInput}
+              onChange={(e) => setWebhookNameInput(e.target.value)}
+            /> 
           </div>
         </div>
 

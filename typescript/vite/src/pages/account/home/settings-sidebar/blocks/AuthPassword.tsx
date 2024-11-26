@@ -12,17 +12,19 @@ const AuthPassword = () => {
             <input
               className="input"
               type="text"
-              placeholder="Your current password"
-              value=""
-              readOnly
-            />
+              placeholder="Enter phone" 
+            />   
           </div>
         </div>
 
         <div className="w-full">
           <div className="flex items-baseline flex-wrap lg:flex-nowrap gap-2.5">
             <label className="form-label max-w-56">New Password</label>
-            <input className="input" type="text" placeholder="New password" value="" readOnly />
+            <input 
+              className="input" 
+              type="text" 
+              placeholder="New password" 
+            />
           </div>
         </div>
 
@@ -32,9 +34,7 @@ const AuthPassword = () => {
             <input
               className="input"
               type="text"
-              placeholder="Confirm new password"
-              value=""
-              readOnly
+              placeholder="Confirm new password" 
             />
           </div>
         </div>

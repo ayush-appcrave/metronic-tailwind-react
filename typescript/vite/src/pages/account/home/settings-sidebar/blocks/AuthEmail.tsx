@@ -1,4 +1,8 @@
+import { useState } from 'react';
+
 const AuthEmail = () => {
+  const [emailInput, setEmailInput] = useState('jason@studio.io');
+
   return (
     <div className="card pb-2.5">
       <div className="card-header" id="auth_email">
@@ -9,7 +13,12 @@ const AuthEmail = () => {
           <div className="flex items-baseline flex-wrap lg:flex-nowrap gap-2.5">
             <label className="form-label max-w-56">Email</label>
             <div className="flex flex-col tems-start grow gap-7.5 w-full">
-              <input className="input" type="text" value="jason@studio.io" readOnly />
+              <input
+                className="input"
+                type="text"
+                value={emailInput}
+                onChange={(e) => setEmailInput(e.target.value)}
+              />   
               <div className="flex items-center gap-7.5">
                 <label className="switch">
                   <span className="switch-label">Active</span>

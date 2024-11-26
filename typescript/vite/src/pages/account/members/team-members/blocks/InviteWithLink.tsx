@@ -1,6 +1,8 @@
+import { useState } from 'react';
 import { KeenIcon } from '@/components';
 
 const InviteWithLink = () => {
+  const [linkInput, setLinkInput] = useState('https://www.ktstudio.com/RSVP?c=12345XYZt');
   return (
     <form className="card">
       <div className="card-header">
@@ -13,13 +15,11 @@ const InviteWithLink = () => {
           <div className="flex flex-col items-start grow gap-5">
             <div className="relative w-full">
               <input
-                type="text"
                 className="input pe-10"
-                placeholder=""
-                name="user_email"
-                value="https://www.ktstudio.com/RSVP?c=12345XYZt"
-                readOnly
-              />
+                type="text"
+                value={linkInput}
+                onChange={(e) => setLinkInput(e.target.value)}
+              />  
               <button className="btn btn-clear btn-light btn-icon btn-sm absolute end-0 top-2/4 -translate-y-2/4 me-1.5">
                 <KeenIcon icon="copy" />
               </button>

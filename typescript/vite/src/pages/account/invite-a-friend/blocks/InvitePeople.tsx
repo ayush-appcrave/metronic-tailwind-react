@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import { KeenIcon } from '@/components';
 
 import {
@@ -9,6 +10,7 @@ import {
 } from '@/components/ui/select';
 
 const InvitePeople = () => {
+  const [invitepeopleInput, setInvitePeopleInput] = useState('jason@studio.io');
   return (
     <div className="card">
       <div className="card-header" id="webhooks">
@@ -19,12 +21,11 @@ const InvitePeople = () => {
           <span className="form-label max-w-32 w-full">Email</span>
           <div className="grow min-w-48">
             <input
+            className="input w-full"
               type="text"
-              className="input w-full"
-              placeholder=""
-              value="jason@studio.io"
-              readOnly
-            />
+              value={invitepeopleInput}
+              onChange={(e) => setInvitePeopleInput(e.target.value)}
+            /> 
           </div>
         </div>
 
