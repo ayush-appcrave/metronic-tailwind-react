@@ -1,5 +1,5 @@
 /* eslint-disable prettier/prettier */
-import { useMemo } from 'react';
+import { useMemo, useState } from 'react';
 import { ColumnDef, Column, RowSelectionState } from '@tanstack/react-table';
 import { DataGrid, DataGridColumnHeader, KeenIcon, useDataGrid, DataGridRowSelectAll, DataGridRowSelect } from '@/components';
 import { toAbsoluteUrl } from '@/utils';
@@ -163,6 +163,7 @@ const Visitors = () => {
 
   const Toolbar = () => {
     const { table } = useDataGrid();
+    const [searchInput, setSearchInput] = useState('');
 
     return (
       <div className="card-header flex-wrap gap-2 border-b-0 px-5">
@@ -172,7 +173,12 @@ const Visitors = () => {
           <div className="flex">
             <label className="input input-sm">
               <KeenIcon icon="magnifier" />
-              <input placeholder="Search users" type="text" value="" readOnly />
+              <input
+                type="text"
+                placeholder="Search users"
+                value={searchInput}
+                onChange={(e) => setSearchInput(e.target.value)}
+              />
             </label>
           </div>
 

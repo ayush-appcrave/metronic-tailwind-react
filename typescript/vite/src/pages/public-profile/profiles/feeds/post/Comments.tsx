@@ -1,6 +1,6 @@
+import { useState } from 'react';
 import { KeenIcon } from '@/components';
 import { toAbsoluteUrl } from '@/utils/Assets';
-
 import { ICommentsItem } from '../blocks';
 
 interface ICommentsProps {
@@ -8,6 +8,8 @@ interface ICommentsProps {
 }
 
 const Comments = ({ items }: ICommentsProps) => {
+  const [commentInput, setCommentInput] = useState('');
+
   const renderItem = (item: ICommentsItem, index: number) => {
     return (
       <div key={index} className="flex items-start gap-2.5">
@@ -52,7 +54,12 @@ const Comments = ({ items }: ICommentsProps) => {
           alt=""
         />
         <div className="input input-lg">
-          <input type="text" placeholder="your comment.." value="" readOnly />
+          <input
+            type="text"
+            placeholder="your comment.."
+            value={commentInput}
+            onChange={(e) => setCommentInput(e.target.value)}
+          />
           <button className="btn btn-icon btn-sm">
             <KeenIcon icon="picture" />
           </button>

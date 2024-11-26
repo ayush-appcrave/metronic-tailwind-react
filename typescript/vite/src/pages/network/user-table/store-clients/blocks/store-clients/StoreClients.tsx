@@ -1,5 +1,12 @@
-import { useMemo } from 'react';
-import { DataGrid, DataGridColumnHeader, KeenIcon, useDataGrid, DataGridRowSelectAll, DataGridRowSelect } from '@/components';
+import { useMemo, useState } from 'react';
+import {
+  DataGrid,
+  DataGridColumnHeader,
+  KeenIcon,
+  useDataGrid,
+  DataGridRowSelectAll,
+  DataGridRowSelect
+} from '@/components';
 import { ColumnDef, Column, RowSelectionState } from '@tanstack/react-table';
 import { toAbsoluteUrl } from '@/utils';
 import {
@@ -27,7 +34,7 @@ const StoreClients = () => {
         className="h-9 w-full max-w-40"
       />
     );
-  };  
+  };
 
   const columns = useMemo<ColumnDef<IStoreClientsData>[]>(
     () => [
@@ -44,7 +51,13 @@ const StoreClients = () => {
       {
         accessorFn: (row) => row.user,
         id: 'user',
-        header: ({ column }) => <DataGridColumnHeader title="Member" filter={<ColumnInputFilter column={column}/>} column={column} />,   
+        header: ({ column }) => (
+          <DataGridColumnHeader
+            title="Member"
+            filter={<ColumnInputFilter column={column} />}
+            column={column}
+          />
+        ),
         enableSorting: true,
         cell: (info: any) => (
           <div className="flex items-center gap-2.5">
@@ -73,7 +86,7 @@ const StoreClients = () => {
       {
         accessorFn: (row) => row.clientId,
         id: 'clientId',
-        header: ({ column }) => <DataGridColumnHeader title="Client ID" column={column}/>, 
+        header: ({ column }) => <DataGridColumnHeader title="Client ID" column={column} />,
         enableSorting: true,
         cell: (info: any) => info.row.original.clientId,
         meta: {
@@ -84,7 +97,7 @@ const StoreClients = () => {
       {
         accessorFn: (row) => row.ordersValue,
         id: 'ordersValue',
-        header: ({ column }) => <DataGridColumnHeader title="Orders Value" column={column}/>,  
+        header: ({ column }) => <DataGridColumnHeader title="Orders Value" column={column} />,
         enableSorting: true,
         cell: (info: any) => info.row.original.ordersValue,
         meta: {
@@ -95,7 +108,7 @@ const StoreClients = () => {
       {
         accessorFn: (row) => row.location,
         id: 'location',
-        header: ({ column }) => <DataGridColumnHeader title="Location" column={column}/>,   
+        header: ({ column }) => <DataGridColumnHeader title="Location" column={column} />,
         enableSorting: true,
         cell: (info) => (
           <div className="flex items-center gap-1.5">
@@ -114,7 +127,7 @@ const StoreClients = () => {
       {
         accessorFn: (row) => row.activity,
         id: 'activity',
-        header: ({ column }) => <DataGridColumnHeader title="Activity" column={column}/>,   
+        header: ({ column }) => <DataGridColumnHeader title="Activity" column={column} />,
         enableSorting: true,
         cell: (info: any) => info.row.original.activity,
         meta: {
@@ -124,7 +137,7 @@ const StoreClients = () => {
       },
       {
         id: 'actions',
-        header: ({ column }) => <DataGridColumnHeader title="Invoices" column={column}/>,    
+        header: ({ column }) => <DataGridColumnHeader title="Invoices" column={column} />,
         enableSorting: true,
         cell: () => <button className="btn btn-link">View</button>,
         meta: {
@@ -165,10 +178,11 @@ const StoreClients = () => {
         }
       });
     }
-  }; 
+  };
 
   const Toolbar = () => {
     const { table } = useDataGrid();
+    const [searchInput, setSearchInput] = useState('');
 
     return (
       <div className="card-header flex-wrap gap-2 border-b-0 px-5">
@@ -178,7 +192,12 @@ const StoreClients = () => {
           <div className="flex">
             <label className="input input-sm">
               <KeenIcon icon="magnifier" />
-              <input placeholder="Search users" type="text" value="" readOnly />
+              <input
+                type="text"
+                placeholder="Search users"
+                value={searchInput}
+                onChange={(e) => setSearchInput(e.target.value)}
+              />
             </label>
           </div>
 
@@ -212,20 +231,20 @@ const StoreClients = () => {
         </div>
       </div>
     );
-  }; 
+  };
 
-  return ( 
-    <DataGrid 
-      columns={columns} 
-      data={data} 
-      rowSelection={true} 
+  return (
+    <DataGrid
+      columns={columns}
+      data={data}
+      rowSelection={true}
       onRowSelectionChange={handleRowSelection}
       pagination={{ size: 5 }}
-      sorting={[{ id: 'user', desc: false }]} 
+      sorting={[{ id: 'user', desc: false }]}
       toolbar={<Toolbar />}
       layout={{ card: true }}
-    />  
-  ); 
+    />
+  );
 };
 
 export { StoreClients };

@@ -1,7 +1,14 @@
 import { useMemo, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { toAbsoluteUrl } from '@/utils';
-import { DataGrid, KeenIcon, DataGridColumnHeader, DataGridRowSelect, DataGridRowSelectAll, useDataGrid } from '@/components';
+import {
+  DataGrid,
+  KeenIcon,
+  DataGridColumnHeader,
+  DataGridRowSelect,
+  DataGridRowSelectAll,
+  useDataGrid
+} from '@/components';
 import { ColumnDef, Column, RowSelectionState } from '@tanstack/react-table';
 import {
   Select,
@@ -13,7 +20,6 @@ import {
 import { UsersData, IUsersData } from './';
 import { toast } from 'sonner';
 import { Input } from '@/components/ui/input';
-
 
 interface IColumnFilterProps<TData, TValue> {
   column: Column<TData, TValue>;
@@ -29,7 +35,7 @@ const Users = () => {
         className="h-9 w-full max-w-40"
       />
     );
-  };  
+  };
 
   const [users, setUsers] = useState<IUsersData[]>(UsersData); // Initialize state with UsersData
 
@@ -59,7 +65,13 @@ const Users = () => {
       {
         accessorFn: (row: IUsersData) => row.user,
         id: 'users',
-        header: ({ column }) => <DataGridColumnHeader title="Users" filter={<ColumnInputFilter column={column}/>} column={column} />, 
+        header: ({ column }) => (
+          <DataGridColumnHeader
+            title="Users"
+            filter={<ColumnInputFilter column={column} />}
+            column={column}
+          />
+        ),
         enableSorting: true,
         cell: ({ row }) => {
           return (
@@ -84,7 +96,7 @@ const Users = () => {
       {
         accessorFn: (row) => row.phone,
         id: 'phone',
-        header: ({ column }) => <DataGridColumnHeader title="Phone" column={column}/>,  
+        header: ({ column }) => <DataGridColumnHeader title="Phone" column={column} />,
         enableSorting: true,
         cell: (info) => {
           return info.row.original.phone;
@@ -97,7 +109,7 @@ const Users = () => {
       {
         accessorFn: (row) => row.branch,
         id: 'branch',
-        header: ({ column }) => <DataGridColumnHeader title="Branch" column={column}/>,   
+        header: ({ column }) => <DataGridColumnHeader title="Branch" column={column} />,
         enableSorting: true,
         cell: (info) => {
           return info.row.original.branch;
@@ -110,7 +122,7 @@ const Users = () => {
       {
         accessorFn: (row) => row.logos,
         id: 'image',
-        header: ({ column }) => <DataGridColumnHeader title="Connected Apps" column={column}/>,   
+        header: ({ column }) => <DataGridColumnHeader title="Connected Apps" column={column} />,
         enableSorting: true,
         cell: (info) => {
           return (
@@ -133,8 +145,8 @@ const Users = () => {
       },
       {
         accessorFn: (row) => row.labels,
-        id: 'label', 
-        header: ({ column }) => <DataGridColumnHeader title="Tags" column={column}/>,
+        id: 'label',
+        header: ({ column }) => <DataGridColumnHeader title="Tags" column={column} />,
         enableSorting: true,
         cell: (info) => {
           return (
@@ -155,7 +167,7 @@ const Users = () => {
       {
         accessorFn: (row) => row.switch,
         id: 'switch',
-        header: ({ column }) => <DataGridColumnHeader title="Enforce 2FA" column={column}/>, 
+        header: ({ column }) => <DataGridColumnHeader title="Enforce 2FA" column={column} />,
         enableSorting: true,
         cell: ({ row }) => {
           const userSwitch = row.original.switch; // Har bir foydalanuvchining switch holati
@@ -213,6 +225,7 @@ const Users = () => {
 
   const Toolbar = () => {
     const { table } = useDataGrid();
+    const [searchInput, setSearchInput] = useState('');
 
     return (
       <div className="card-header flex-wrap gap-2 border-b-0 px-5">
@@ -222,7 +235,12 @@ const Users = () => {
           <div className="flex">
             <label className="input input-sm">
               <KeenIcon icon="magnifier" />
-              <input placeholder="Search users" type="text" value="" readOnly />
+              <input
+                type="text"
+                placeholder="Search users"
+                value={searchInput}
+                onChange={(e) => setSearchInput(e.target.value)}
+              />
             </label>
           </div>
 
@@ -252,23 +270,23 @@ const Users = () => {
             <button className="btn btn-sm btn-outline btn-primary">
               <KeenIcon icon="setting-4" /> Filters
             </button>
-          </div> 
+          </div>
         </div>
       </div>
     );
   };
 
   return (
-    <DataGrid 
-      columns={columns} 
-      data={data} 
-      rowSelection={true} 
+    <DataGrid
+      columns={columns}
+      data={data}
+      rowSelection={true}
       onRowSelectionChange={handleRowSelection}
       pagination={{ size: 5 }}
-      sorting={[{ id: 'phone', desc: false }]} 
+      sorting={[{ id: 'phone', desc: false }]}
       toolbar={<Toolbar />}
       layout={{ card: true }}
-    />  
+    />
   );
 };
 
