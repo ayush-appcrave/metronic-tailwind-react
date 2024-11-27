@@ -1,7 +1,14 @@
-import { useMemo } from 'react';
+import { useMemo, useState } from 'react';
 import { toAbsoluteUrl } from '@/utils';
 import { UsersData } from './UsersData';
-import { DataGrid, DataGridColumnHeader, KeenIcon, useDataGrid, DataGridRowSelectAll, DataGridRowSelect } from '@/components';
+import {
+  DataGrid,
+  DataGridColumnHeader,
+  KeenIcon,
+  useDataGrid,
+  DataGridRowSelectAll,
+  DataGridRowSelect
+} from '@/components';
 import { ColumnDef, Column, RowSelectionState } from '@tanstack/react-table';
 import {
   Select,
@@ -33,17 +40,6 @@ interface IUsersData {
 }
 
 const EnforceSwitch = ({ enforce }: { enforce: boolean }) => {
-  const ColumnInputFilter = <TData, TValue>({ column }: IColumnFilterProps<TData, TValue>) => {
-    return (
-      <Input
-        placeholder="Filter..."
-        value={(column.getFilterValue() as string) ?? ''}
-        onChange={(event) => column.setFilterValue(event.target.value)}
-        className="h-9 w-full max-w-40"
-      />
-    );
-  };  
-
   return (
     <label className="switch switch-sm">
       <input type="checkbox" checked={enforce} value="1" readOnly />
@@ -61,7 +57,7 @@ const Users = () => {
         className="h-9 w-full max-w-40"
       />
     );
-  };  
+  };
 
   const columns = useMemo<ColumnDef<IUsersData>[]>(
     () => [
@@ -78,7 +74,13 @@ const Users = () => {
       {
         accessorFn: (row: IUsersData) => row.user,
         id: 'user',
-        header: ({ column }) => <DataGridColumnHeader title="Subscriber" filter={<ColumnInputFilter column={column}/>} column={column} />,  
+        header: ({ column }) => (
+          <DataGridColumnHeader
+            title="Subscriber"
+            filter={<ColumnInputFilter column={column} />}
+            column={column}
+          />
+        ),
         enableSorting: true,
         cell: (info: any) => (
           <div className="flex items-center gap-2.5">
@@ -105,7 +107,7 @@ const Users = () => {
       {
         accessorFn: (row: IUsersData) => row.labels,
         id: 'labels',
-        header: ({ column }) => <DataGridColumnHeader title="Products" column={column}/>,   
+        header: ({ column }) => <DataGridColumnHeader title="Products" column={column} />,
         enableSorting: true,
         cell: (info: any) => (
           <div className="flex gap-1.5">
@@ -124,7 +126,7 @@ const Users = () => {
       {
         accessorFn: (row: IUsersData) => row.license,
         id: 'license',
-        header: ({ column }) => <DataGridColumnHeader title="License" column={column}/>,    
+        header: ({ column }) => <DataGridColumnHeader title="License" column={column} />,
         enableSorting: true,
         cell: (info: any) => (
           <div className="flex flex-col">
@@ -142,7 +144,7 @@ const Users = () => {
       {
         accessorFn: (row: IUsersData) => row.payment,
         id: 'payment',
-        header: ({ column }) => <DataGridColumnHeader title="Latest Payment" column={column}/>,  
+        header: ({ column }) => <DataGridColumnHeader title="Latest Payment" column={column} />,
         enableSorting: true,
         cell: (info: any) => info.row.original.payment,
         meta: {
@@ -153,7 +155,7 @@ const Users = () => {
       {
         accessorFn: (row: IUsersData) => row.enforce,
         id: 'enforce',
-        header: ({ column }) => <DataGridColumnHeader title="Enforce 2FA" column={column}/>,   
+        header: ({ column }) => <DataGridColumnHeader title="Enforce 2FA" column={column} />,
         enableSorting: true,
         cell: (info: any) => <EnforceSwitch enforce={info.row.original.enforce} />,
         meta: {
@@ -163,7 +165,7 @@ const Users = () => {
       },
       {
         id: 'actions',
-        header: ({ column }) => <DataGridColumnHeader title="Invoices" column={column}/>,    
+        header: ({ column }) => <DataGridColumnHeader title="Invoices" column={column} />,
         enableSorting: true,
         cell: () => <button className="btn btn-link">Download</button>,
         meta: {
@@ -189,10 +191,11 @@ const Users = () => {
         }
       });
     }
-  }; 
+  };
 
   const Toolbar = () => {
     const { table } = useDataGrid();
+    const [searchInput, setSearchInput] = useState('');
 
     return (
       <div className="card-header flex-wrap gap-2 border-b-0 px-5">
@@ -202,7 +205,12 @@ const Users = () => {
           <div className="flex">
             <label className="input input-sm">
               <KeenIcon icon="magnifier" />
-              <input placeholder="Search users" type="text" value="" readOnly />
+              <input
+                type="text"
+                placeholder="Search users"
+                value={searchInput}
+                onChange={(e) => setSearchInput(e.target.value)}
+              />
             </label>
           </div>
 
@@ -236,19 +244,19 @@ const Users = () => {
         </div>
       </div>
     );
-  }; 
+  };
 
-  return ( 
-    <DataGrid 
-      columns={columns} 
-      data={data} 
-      rowSelection={true} 
+  return (
+    <DataGrid
+      columns={columns}
+      data={data}
+      rowSelection={true}
       onRowSelectionChange={handleRowSelection}
       pagination={{ size: 5 }}
-      sorting={[{ id: 'user', desc: false }]} 
+      sorting={[{ id: 'user', desc: false }]}
       toolbar={<Toolbar />}
       layout={{ card: true }}
-    />  
+    />
   );
 };
 

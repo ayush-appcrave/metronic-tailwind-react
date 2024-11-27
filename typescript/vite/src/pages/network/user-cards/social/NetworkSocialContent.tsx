@@ -20,6 +20,7 @@ interface ISocialContentItems extends Array<ISocialContentItem> {}
 
 const NetworkSocialContent = () => {
   const [activeTab, setActiveTab] = useState<'cards' | 'list'>('cards');
+  const [searchInput, setSearchInput] = useState('');
 
   const handleTabClick = (tab: 'cards' | 'list') => {
     setActiveTab(tab);
@@ -193,7 +194,12 @@ const NetworkSocialContent = () => {
           <div className="flex">
             <label className="input input-sm">
               <KeenIcon icon="magnifier" />
-              <input placeholder="Type name, team" type="text" value="" readOnly />
+              <input
+                type="text"
+                placeholder="Type name, team"
+                value={searchInput}
+                onChange={(e) => setSearchInput(e.target.value)}
+              />
             </label>
           </div>
 
