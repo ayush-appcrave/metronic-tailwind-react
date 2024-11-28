@@ -126,12 +126,11 @@ const SecurityLog = () => {
     const {
       table
     } = useDataGrid();
-    return <div className="card-header px-5 py-4 border-b-0">
+    return <div className="card-header flex-wrap px-5 py-4 border-b-0">
         <h3 className="card-title">Security Log</h3>
 
-        <div className="flex items-center gap-2.5">
+        <div className="flex flex-wrap items-center gap-2.5">
           <DataGridColumnVisibility table={table} />
-
           <label className="switch switch-sm">
             <input name="check" type="checkbox" value="1" defaultChecked className="order-2" readOnly />
             <span className="switch-label order-1">

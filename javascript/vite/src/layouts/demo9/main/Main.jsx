@@ -1,11 +1,16 @@
-import { Fragment } from 'react';
+import { Fragment, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { Helmet } from 'react-helmet-async';
 import { Outlet, useLocation } from 'react-router';
-import { MenuItem, MenuSub, MenuTitle, MenuToggle, useMenuCurrentItem, KeenIcon, Menu, MenuLink } from '@/components';
+import { useMenuCurrentItem } from '@/components';
 import { useMenus } from '@/providers';
 import { useLanguage } from '@/i18n';
 import { Header, Navbar, Footer, Toolbar, ToolbarHeading, ToolbarActions } from '../';
+import { Popover, PopoverContent, PopoverTrigger } from '@/components/ui/popover';
+import { Calendar } from '@/components/ui/calendar';
+import { addDays, format } from 'date-fns';
+import { cn } from '@/lib/utils';
+import { KeenIcon } from '@/components/keenicons';
 const Main = () => {
   const {
     pathname
@@ -18,32 +23,10 @@ const Main = () => {
   const {
     isRTL
   } = useLanguage();
-  const months = [{
-    title: 'January, 2024'
-  }, {
-    title: 'February, 2024'
-  }, {
-    title: 'March, 2024',
-    active: true
-  }, {
-    title: 'April, 2024'
-  }, {
-    title: 'May, 2024'
-  }, {
-    title: 'June, 2024'
-  }, {
-    title: 'July, 2024'
-  }, {
-    title: 'August, 2024'
-  }, {
-    title: 'September, 2024'
-  }, {
-    title: 'October, 2024'
-  }, {
-    title: 'November, 2024'
-  }, {
-    title: 'December, 2024'
-  }];
+  const [date, setDate] = useState({
+    from: new Date(2025, 0, 20),
+    to: addDays(new Date(2025, 0, 20), 20)
+  });
   return <Fragment>
       <Helmet>
         <title>{menuItem?.title}</title>
@@ -63,36 +46,19 @@ const Main = () => {
                     Export
                   </Link>
 
-                  <Menu className="menu-default">
-                    <MenuItem toggle="dropdown" trigger="hover" dropdownProps={{
-                  placement: isRTL() ? 'bottom-start' : 'bottom-end',
-                  modifiers: [{
-                    name: 'offset',
-                    options: {
-                      offset: [0, 0] // [skid, distance]
-                    }
-                  }]
-                }}>
-                      <MenuToggle className="btn btn-light btn-sm flex-nowrap">
-                        <span className="flex items-center me-1">
-                          <KeenIcon icon="calendar" className="!text-md" />
-                        </span>
-                        <span className="hidden md:inline text-nowrap">September, 2024</span>
-                        <span className="inline md:hidden text-nowrap">Sep, 2024</span>
-                        <span className="flex items-center lg:ms-4">
-                          <KeenIcon icon="down" className="!text-xs" />
-                        </span>
-                      </MenuToggle>
-
-                      <MenuSub className="menu-default w-48 py-2 scrollable-y max-h-[250px]">
-                        {months.map((item, index) => <MenuItem key={index} className={item.active ? 'active' : ''}>
-                            <MenuLink path="/">
-                              <MenuTitle>{item.title}</MenuTitle>
-                            </MenuLink>
-                          </MenuItem>)}
-                      </MenuSub>
-                    </MenuItem>
-                  </Menu>
+                  <Popover>
+                    <PopoverTrigger asChild>
+                    <button id="date" className={cn('btn btn-sm btn-light data-[state=open]:bg-light-active', !date && 'text-gray-400')}>
+                      <KeenIcon icon="calendar" className="me-0.5" />
+                      {date?.from ? date.to ? <>
+                            {format(date.from, 'LLL dd, y')} - {format(date.to, 'LLL dd, y')}
+                          </> : format(date.from, 'LLL dd, y') : <span>Pick a date range</span>}
+                    </button>
+                    </PopoverTrigger>
+                    <PopoverContent className="w-auto p-0" align="end">
+                      <Calendar initialFocus mode="range" defaultMonth={date?.from} selected={date} onSelect={setDate} numberOfMonths={2} />
+                    </PopoverContent>
+                  </Popover>
                 </ToolbarActions>
               </Toolbar>}
             <Outlet />

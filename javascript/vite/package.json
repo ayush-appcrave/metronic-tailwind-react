@@ -1,7 +1,7 @@
 {
   "name": "javascript",
   "private": true,
-  "version": "9.1.2",
+  "version": "0.0.0",
   "type": "module",
   "scripts": {
     "dev": "vite",
@@ -80,7 +80,7 @@
     "eslint-plugin-react": "^7.37.2",
     "eslint-plugin-react-hooks": "^5.1.0-rc-fb9a90fa48-20240614",
     "eslint-plugin-react-refresh": "^0.4.14",
-    "globals": "^15.11.0",
+    "globals": "^15.12.0",
     "vite": "^5.4.11",
     "autoprefixer": "^10.4.20",
     "eslint-config-prettier": "^9.1.0",

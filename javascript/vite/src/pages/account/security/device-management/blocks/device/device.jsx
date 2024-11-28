@@ -151,10 +151,10 @@ const Device = () => {
     const {
       table
     } = useDataGrid();
-    return <div className="card-header px-5 py-5 border-b-0">
+    return <div className="card-header px-5 py-5 border-b-0 flex-wrap">
         <h3 className="card-title">Devices</h3>
 
-        <div className="flex items-center gap-2.5">
+        <div className="flex flex-wrap items-center gap-2.5">
           <a href="#" className="btn btn-sm btn-primary">Add Device</a>
           <DataGridColumnVisibility table={table} />
         </div>

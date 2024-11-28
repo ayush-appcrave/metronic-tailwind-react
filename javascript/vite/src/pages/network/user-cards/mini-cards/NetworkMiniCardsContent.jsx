@@ -1,9 +1,10 @@
-import { Fragment } from 'react';
+import { Fragment, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { KeenIcon } from '@/components';
 import { CardUserMini } from '@/partials/cards';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 const NetworkMiniCardsContent = () => {
+  const [searchInput, setSearchInput] = useState('');
   const items = [{
     avatar: {
       className: 'size-20 relative',
@@ -184,7 +185,7 @@ const NetworkMiniCardsContent = () => {
           <div className="flex">
             <label className="input input-sm">
               <KeenIcon icon="magnifier" />
-              <input placeholder="Type name, team" type="text" value="" readOnly />
+              <input type="text" placeholder="Type name, team" value={searchInput} onChange={e => setSearchInput(e.target.value)} />
             </label>
           </div>
         </div>

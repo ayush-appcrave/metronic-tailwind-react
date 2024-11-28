@@ -5,6 +5,7 @@ import { CardConnection, CardConnectionRow } from '@/partials/cards';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 const NetworkUserCardsTeamCrewContent = () => {
   const [activeTab, setActiveTab] = useState('cards');
+  const [searchInput, setSearchInput] = useState('');
   const handleTabClick = tab => {
     setActiveTab(tab);
   };
@@ -246,7 +247,7 @@ const NetworkUserCardsTeamCrewContent = () => {
           <div className="flex">
             <label className="input input-sm">
               <KeenIcon icon="magnifier" />
-              <input placeholder="Type name, team" type="text" value="" readOnly />
+              <input type="text" placeholder="Type name, team" value={searchInput} onChange={e => setSearchInput(e.target.value)} />
             </label>
           </div>
 

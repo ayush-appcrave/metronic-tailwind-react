@@ -1,8 +1,10 @@
+import { useState } from 'react';
 import { KeenIcon } from '@/components';
 import { toAbsoluteUrl } from '@/utils/Assets';
 const Comments = ({
   items
 }) => {
+  const [commentInput, setCommentInput] = useState('');
   const renderItem = (item, index) => {
     return <div key={index} className="flex items-start gap-2.5">
         <img src={toAbsoluteUrl(`/media/avatars/${item.avatar}`)} className="rounded-full w-9 h-9 lg:w-[50px] lg:h-[50px] mt-1" alt="" />
@@ -35,7 +37,7 @@ const Comments = ({
       <div className="flex items-center gap-2.5">
         <img src={toAbsoluteUrl('/media/avatars/300-3.png')} className="rounded-full size-10 shrink-0" alt="" />
         <div className="input input-lg">
-          <input type="text" placeholder="your comment.." value="" readOnly />
+          <input type="text" placeholder="your comment.." value={commentInput} onChange={e => setCommentInput(e.target.value)} />
           <button className="btn btn-icon btn-sm">
             <KeenIcon icon="picture" />
           </button>

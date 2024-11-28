@@ -1,4 +1,4 @@
-import { useMemo } from 'react';
+import { useMemo, useState } from 'react';
 import { toAbsoluteUrl } from '@/utils';
 import { UsersData } from './UsersData';
 import { DataGrid, DataGridColumnHeader, KeenIcon, useDataGrid, DataGridRowSelectAll, DataGridRowSelect } from '@/components';
@@ -8,11 +8,6 @@ import { Input } from '@/components/ui/input';
 const EnforceSwitch = ({
   enforce
 }) => {
-  const ColumnInputFilter = ({
-    column
-  }) => {
-    return <Input placeholder="Filter..." value={column.getFilterValue() ?? ''} onChange={event => column.setFilterValue(event.target.value)} className="h-9 w-full max-w-40" />;
-  };
   return <label className="switch switch-sm">
       <input type="checkbox" checked={enforce} value="1" readOnly />
     </label>;
@@ -142,6 +137,7 @@ const Users = () => {
     const {
       table
     } = useDataGrid();
+    const [searchInput, setSearchInput] = useState('');
     return <div className="card-header flex-wrap gap-2 border-b-0 px-5">
         <h3 className="card-title font-medium text-sm">howing 10 of 49,053 users</h3>
 
@@ -149,7 +145,7 @@ const Users = () => {
           <div className="flex">
             <label className="input input-sm">
               <KeenIcon icon="magnifier" />
-              <input placeholder="Search users" type="text" value="" readOnly />
+              <input type="text" placeholder="Search users" value={searchInput} onChange={e => setSearchInput(e.target.value)} />
             </label>
           </div>
 

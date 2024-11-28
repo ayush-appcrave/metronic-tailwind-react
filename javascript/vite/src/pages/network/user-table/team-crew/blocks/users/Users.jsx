@@ -1,5 +1,5 @@
 /* eslint-disable prettier/prettier */
-import { useMemo } from 'react';
+import { useMemo, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { toAbsoluteUrl } from '@/utils';
 import { DataGrid, DataGridColumnHeader, KeenIcon, useDataGrid, DataGridRowSelectAll, DataGridRowSelect } from '@/components';
@@ -142,6 +142,7 @@ const Users = () => {
     const {
       table
     } = useDataGrid();
+    const [searchInput, setSearchInput] = useState('');
     return <div className="card-header flex-wrap gap-2 border-b-0 px-5">
         <h3 className="card-title font-medium text-sm">Showing 20 of 68 users</h3>
 
@@ -149,7 +150,7 @@ const Users = () => {
         <div className="flex">
             <label className="input input-sm">
               <KeenIcon icon="magnifier" />
-              <input placeholder="Search users" type="text" value="" readOnly />
+              <input type="text" placeholder="Search users" value={searchInput} onChange={e => setSearchInput(e.target.value)} />
             </label>
           </div>
 

@@ -54,7 +54,7 @@ const BlockList = ({
         <div className="text-sm text-gray-800">{text}</div>
 
         <div className="input-group">
-          <input className="input" placeholder="Block new user" type="text" value="" readOnly />
+          <input className="input" placeholder="Block new user" type="text" />
           <span className="btn btn-primary">Add</span>
         </div>
 

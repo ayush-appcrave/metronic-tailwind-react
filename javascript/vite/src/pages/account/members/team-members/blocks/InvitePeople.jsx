@@ -1,6 +1,8 @@
+import { useState } from 'react';
 import { KeenIcon } from '@/components';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
 const InvitePeople = () => {
+  const [emailInput, setEmailInput] = useState('jason@studio.io');
   return <form className="card">
       <div className="card-header">
         <h3 className="card-title">Invite People</h3>
@@ -8,7 +10,7 @@ const InvitePeople = () => {
       <div className="card-body grid gap-5">
         <div className="flex items-baseline flex-wrap lg:flex-nowrap gap-2.5">
           <label className="form-label max-w-32">Email</label>
-          <input type="text" className="input" placeholder="" name="user_email" value="jason@studio.io" readOnly />
+          <input className="input" type="text" value={emailInput} onChange={e => setEmailInput(e.target.value)} /> 
         </div>
 
         <div className="flex items-baseline flex-wrap gap-2.5">

@@ -34,7 +34,7 @@ const AuthTwoFactor = () => {
 
         <div className="flex items-center gap-2 lg:gap-6">
           <label className="switch switch-sm">
-            <input type="checkbox" defaultChecked={item.checkbox} value={item.checkbox ? '1' : '2'} readOnly />
+            <input type="checkbox" defaultChecked={item.checkbox} value={item.checkbox ? '1' : '2'} />
           </label>
         </div>
       </div>;
@@ -73,7 +73,7 @@ const AuthTwoFactor = () => {
             <label className="form-label max-w-56">Password</label>
 
             <div className="flex flex-col tems-start grow gap-3 w-full">
-              <input className="input" type="text" placeholder="Enter password" readOnly />
+              <input className="input" type="text" placeholder="Enter password" />
               <span className="form-info gray-800 font-normal">
                 Enter your password to setup Two-Factor authentication
               </span>

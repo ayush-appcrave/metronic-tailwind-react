@@ -1,4 +1,4 @@
-import { useMemo } from 'react';
+import { useMemo, useState } from 'react';
 import { DataGrid, DataGridColumnHeader, KeenIcon, useDataGrid, DataGridRowSelectAll, DataGridRowSelect } from '@/components';
 import { toAbsoluteUrl } from '@/utils';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
@@ -134,6 +134,7 @@ const StoreClients = () => {
     const {
       table
     } = useDataGrid();
+    const [searchInput, setSearchInput] = useState('');
     return <div className="card-header flex-wrap gap-2 border-b-0 px-5">
         <h3 className="card-title font-medium text-sm">Showing 10 of 49,053 users</h3>
 
@@ -141,7 +142,7 @@ const StoreClients = () => {
           <div className="flex">
             <label className="input input-sm">
               <KeenIcon icon="magnifier" />
-              <input placeholder="Search users" type="text" value="" readOnly />
+              <input type="text" placeholder="Search users" value={searchInput} onChange={e => setSearchInput(e.target.value)} />
             </label>
           </div>
 

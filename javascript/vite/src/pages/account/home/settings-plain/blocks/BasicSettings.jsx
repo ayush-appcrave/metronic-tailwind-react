@@ -1,8 +1,20 @@
 import { CrudAvatarUpload } from '@/partials/crud';
+import { Popover, PopoverContent, PopoverTrigger } from '@/components/ui/popover';
+import { Calendar } from '@/components/ui/calendar';
+import { format } from 'date-fns';
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from '@/components/ui/select';
+import { KeenIcon } from '@/components';
+import { useState } from 'react';
+import { cn } from '@/lib/utils';
 const BasicSettings = ({
   title
 }) => {
+  const [date, setDate] = useState(new Date(1984, 0, 20));
+  const [nameInput, setNameInput] = useState('Jason Tatum');
+  const [emailInput, setEmailInput] = useState('jason@studio.io');
+  const [addressInput, setAddressInput] = useState('Avinguda Imaginària, 789');
+  const [cityInput, setCityInput] = useState('Barcelona');
+  const [postcodeInput, setPostcodeInput] = useState('08012');
   return <div className="card pb-2.5">
       <div className="card-header" id="general_settings">
         <h3 className="card-title">{title}</h3>
@@ -24,22 +36,40 @@ const BasicSettings = ({
 
         <div className="flex items-baseline flex-wrap lg:flex-nowrap gap-2.5">
           <label className="form-label max-w-56">Name</label>
-          <input type="text" className="input" value="Jason Tatum" readOnly />
+          <input className="input" type="text" value={nameInput} onChange={e => setNameInput(e.target.value)} /> 
+        </div>
+
+        <div className="w-full">
+          <div className="flex items-baseline flex-wrap lg:flex-nowrap gap-2.5">
+            <label className="form-label flex items-center gap-1 max-w-56">Birth Date</label>
+            <Popover>
+              <PopoverTrigger asChild>
+                <button id="date" className={cn('input data-[state=open]:border-primary', !date && 'text-muted-foreground')}>
+                  <KeenIcon icon="calendar" className="-ms-0.5" />
+                  {date ? format(date, 'LLL dd, y') : <span>Pick a date</span>}
+                </button>
+              </PopoverTrigger>
+              <PopoverContent className="w-auto p-0" align="start">
+                <Calendar initialFocus mode="single" // Single date selection
+              defaultMonth={date} selected={date} onSelect={setDate} numberOfMonths={1} />
+              </PopoverContent>
+            </Popover>
+          </div>
         </div>
 
         <div className="flex items-baseline flex-wrap lg:flex-nowrap gap-2.5">
           <label className="form-label max-w-56">Phone number</label>
-          <input type="text" className="input" placeholder="Phone number" value="" readOnly />
+          <input type="text" className="input" placeholder="Phone number" />
         </div>
 
         <div className="flex items-baseline flex-wrap lg:flex-nowrap gap-2.5">
           <label className="form-label max-w-56">Email</label>
-          <input type="text" className="input" value="jason@studio.io" readOnly />
+          <input className="input" type="text" value={emailInput} onChange={e => setEmailInput(e.target.value)} />  
         </div>
 
         <div className="flex items-baseline flex-wrap lg:flex-nowrap gap-2.5">
           <label className="form-label max-w-56">Address</label>
-          <input type="text" className="input" placeholder="" value="Avinguda Imaginària, 789" readOnly />
+          <input className="input" type="text" value={addressInput} onChange={e => setAddressInput(e.target.value)} />  
         </div>
 
         <div className="flex items-baseline flex-wrap lg:flex-nowrap gap-2.5">
@@ -59,17 +89,17 @@ const BasicSettings = ({
 
         <div className="flex items-baseline flex-wrap lg:flex-nowrap gap-2.5">
           <label className="form-label max-w-56">State</label>
-          <input type="text" className="input" placeholder="State" value="" readOnly />
+          <input type="text" className="input" placeholder="State" />
         </div>
 
         <div className="flex items-baseline flex-wrap lg:flex-nowrap gap-2.5">
           <label className="form-label max-w-56">City</label>
-          <input type="text" className="input" value="Barcelona" readOnly />
+          <input className="input" type="text" value={cityInput} onChange={e => setCityInput(e.target.value)} />   
         </div>
 
         <div className="flex items-baseline flex-wrap lg:flex-nowrap gap-2.5 mb-2.5">
           <label className="form-label max-w-56">Postcode</label>
-          <input type="text" className="input" value="08012" readOnly />
+          <input className="input" type="text" value={postcodeInput} onChange={e => setPostcodeInput(e.target.value)} />    
         </div>
 
         <div className="flex justify-end">

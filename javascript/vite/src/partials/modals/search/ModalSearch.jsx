@@ -16,12 +16,10 @@ const ModalSearch = forwardRef(({
     isRTL
   } = useLanguage();
   const offset = 300;
+  const [searchInput, setSearchInput] = useState('');
   useEffect(() => {
     setScrollableHeight(viewportHeight - offset);
   }, [viewportHeight]);
-  const handleSearchInput = () => {
-    // handle search input
-  };
   const mixedSettingsItems = [{
     icon: 'badge',
     info: 'Public Profile'
@@ -243,7 +241,7 @@ const ModalSearch = forwardRef(({
           <DialogTitle></DialogTitle>
           <DialogDescription></DialogDescription>
           <KeenIcon icon="magnifier" className="text-gray-700 text-xl" />
-          <input type="text" name="query" value="" className="input px-0 border-none bg-transparent shadow-none ms-2.5" onChange={handleSearchInput} placeholder="Tap to start search" />
+          <input type="text" name="query" value={searchInput} className="input px-0 border-none bg-transparent shadow-none ms-2.5" onChange={e => setSearchInput(e.target.value)} placeholder="Tap to start search" />
         </DialogHeader>
         <DialogBody className="p-0 pb-5">
           <Tabs defaultValue={1} className="">

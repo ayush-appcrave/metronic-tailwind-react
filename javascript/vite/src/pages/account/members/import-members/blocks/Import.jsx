@@ -1,4 +1,6 @@
+import { useState } from 'react';
 const Import = () => {
+  const [customInput, setCustomInput] = useState('Your welcome message here');
   const options = [{
     label: 'Create new users',
     description: 'Select this option to create new user accounts for individuals whose details are included in the import data but who do not have an existing account in the system.',
@@ -48,7 +50,7 @@ const Import = () => {
 
         <div className="flex flex-col gap-4">
           <div className="text-gray-900 text-2sm font-medium">Custom welcome message</div>
-          <textarea name="message" className="textarea text-2sm text-gray-600 font-normal" rows={5} value="Your welcome message here" readOnly>
+          <textarea className="textarea text-2sm text-gray-600 font-normal" rows={5} value={customInput} onChange={e => setCustomInput(e.target.value)}>  
             Your welcome message here
           </textarea>
           <label className="flex items-center gap-1.5">

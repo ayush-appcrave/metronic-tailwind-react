@@ -245,10 +245,11 @@ const DropdownChat = ({
       </div>;
   };
   const buildForm = () => {
+    const [emailInput, setEmailInput] = useState('');
     return <div className="relative grow mx-5 mb-2.5">
         <img src={toAbsoluteUrl('/media/avatars/300-2.png')} className="rounded-full size-[30px] absolute start-0 top-2/4 -translate-y-2/4 ms-2.5" alt="" />
 
-        <input type="text" className="input h-auto py-4 ps-12 bg-transparent" onChange={handleFormInput} placeholder="Write a message..." value="" />
+        <input type="text" className="input h-auto py-4 ps-12 bg-transparent" onChange={e => setEmailInput(e.target.value)} placeholder="Write a message..." value={emailInput} />
 
         <div className="flex items-center gap-2.5 absolute end-3 top-1/2 -translate-y-1/2">
           <button className="btn btn-sm btn-icon btn-light btn-clear">

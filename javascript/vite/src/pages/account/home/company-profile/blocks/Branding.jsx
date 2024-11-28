@@ -1,8 +1,9 @@
-import { Fragment } from 'react';
+import { Fragment, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { KeenIcon } from '@/components';
 import { toAbsoluteUrl } from '@/utils/Assets';
 const Branding = () => {
+  const [brandColorInput, setBrandColorInput] = useState('#BA35A0');
   return <Fragment>
       <style>
         {`
@@ -77,7 +78,7 @@ const Branding = () => {
 
             <label className="input sm:max-w-full xl:max-w-96 w-full">
               <KeenIcon icon="mouse-square" className="text-success" style="solid" />
-              <input type="text" value="#BA35A0" readOnly />
+              <input type="text" value={brandColorInput} onChange={e => setBrandColorInput(e.target.value)} />
             </label>
           </div>
 

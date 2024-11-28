@@ -122,7 +122,7 @@ const Backup = () => {
     return <div className="card-header px-5 py-5 border-b-0 flex-wrap">
         <h3 className="card-title">Backups</h3>
 
-        <div className="flex items-center gap-2.5">
+        <div className="flex flex-wrap items-center gap-2.5">
           <DataGridColumnVisibility table={table} />
           <label className="switch switch-sm">
             <span className="switch-label">
