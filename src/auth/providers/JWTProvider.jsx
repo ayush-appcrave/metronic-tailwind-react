@@ -3,7 +3,7 @@ import axios from 'axios';
 import { createContext, useState } from 'react';
 import * as authHelper from '../_helpers';
 const API_URL = import.meta.env.VITE_APP_API_URL;
-export const LOGIN_URL = `${API_URL}/login`;
+export const LOGIN_URL = `${API_URL}/users/login`;
 export const REGISTER_URL = `${API_URL}/users/register`;
 export const FORGOT_PASSWORD_URL = `${API_URL}/forgot-password`;
 export const RESET_PASSWORD_URL = `${API_URL}/reset-password`;
@@ -18,8 +18,7 @@ const AuthProvider = ({ children }) => {
   const verify = async () => {
     if (auth) {
       try {
-        const { data: user } = await getUser();
-        setCurrentUser(user);
+        setCurrentUser(auth);
       } catch {
         saveAuth(undefined);
         setCurrentUser(undefined);
@@ -36,13 +35,15 @@ const AuthProvider = ({ children }) => {
   };
   const login = async (email, password) => {
     try {
-      const { data: auth } = await axios.post(LOGIN_URL, {
+      const { data } = await axios.post(LOGIN_URL, {
         email,
         password,
       });
+      const auth = data?.data;
+      console.log(auth);
       saveAuth(auth);
-      const { data: user } = await getUser();
-      setCurrentUser(user);
+      // const { data: user } = await getUser();
+      setCurrentUser(auth);
     } catch (error) {
       saveAuth(undefined);
       throw new Error(`Error ${error}`);

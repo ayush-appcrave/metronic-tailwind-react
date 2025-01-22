@@ -1,9 +1,19 @@
-import { Navigate, Route, Routes } from 'react-router';
-import { Login, ResetPassword, ResetPasswordChange, ResetPasswordChanged, ResetPasswordCheckEmail, ResetPasswordEnterEmail, Signup, TwoFactorAuth } from './pages/jwt';
-import { AuthBrandedLayout } from '@/layouts/auth-branded';
-import { AuthLayout } from '@/layouts/auth';
 import { CheckEmail } from '@/auth/pages/jwt';
-const AuthPage = () => <Routes>
+import { AuthLayout } from '@/layouts/auth';
+import { AuthBrandedLayout } from '@/layouts/auth-branded';
+import { Navigate, Route, Routes } from 'react-router';
+import {
+  Login,
+  ResetPassword,
+  ResetPasswordChange,
+  ResetPasswordChanged,
+  ResetPasswordCheckEmail,
+  ResetPasswordEnterEmail,
+  Signup,
+  TwoFactorAuth,
+} from './pages/jwt';
+const AuthPage = () => (
+  <Routes>
     <Route element={<AuthBrandedLayout />}>
       <Route index element={<Login />} />
       <Route path="/login" element={<Login />} />
@@ -30,5 +40,6 @@ const AuthPage = () => <Routes>
       <Route path="/classic/reset-password/changed" element={<ResetPasswordChanged />} />
       <Route path="*" element={<Navigate to="/error/404" />} />
     </Route>
-  </Routes>;
+  </Routes>
+);
 export { AuthPage };

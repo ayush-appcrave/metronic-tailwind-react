@@ -1,13 +1,13 @@
-import { Alert, KeenIcon } from '@/components';
+import { KeenIcon } from '@/components';
 import { useLayout } from '@/providers';
 import clsx from 'clsx';
 import { useFormik } from 'formik';
 import { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import * as Yup from 'yup';
-import { useAuthContext } from '../../useAuthContext';
 import { userRole } from '../../constants/userRole.js';
-import { VALIDATION_REGEX, VALIDATION_MESSAGES } from '../../constants/validation.js';
+import { VALIDATION_MESSAGES, VALIDATION_REGEX } from '../../constants/validation.js';
+import { useAuthContext } from '../../useAuthContext';
 
 const initialValues = {
   email: '',
@@ -17,9 +17,11 @@ const initialValues = {
 };
 const signupSchema = Yup.object().shape({
   fullname: Yup.string().min(3, 'Minimum 3 symbols').required('Full name is required'),
+
   email: Yup.string()
     .matches(VALIDATION_REGEX.EMAIL, VALIDATION_MESSAGES.EMAIL)
     .required(VALIDATION_MESSAGES.EMAIL.REQUIRED),
+
   password: Yup.string()
     .min(8, VALIDATION_MESSAGES.PASSWORD.MIN_LENGTH)
     .matches(VALIDATION_REGEX.PASSWORD_RULES.UPPERCASE, VALIDATION_MESSAGES.PASSWORD.UPPERCASE)
@@ -30,6 +32,7 @@ const signupSchema = Yup.object().shape({
       VALIDATION_MESSAGES.PASSWORD.SPECIAL_CHAR
     )
     .required('Password is required'),
+
   role: Yup.string().required('Role is required'),
 });
 
@@ -72,7 +75,7 @@ const Signup = () => {
   };
 
   return (
-    <div className="card max-w-[370px] w-full">
+    <div className="card max-w-[390px] w-full">
       <form
         className="card-body flex flex-col gap-5 p-10"
         noValidate
@@ -90,18 +93,12 @@ const Signup = () => {
             </Link>
           </div>
         </div>
-
         <div className="flex items-center gap-2">
           <span className="border-t border-gray-200 w-full"></span>
           <span className="text-2xs text-gray-500 font-medium uppercase">Or</span>
           <span className="border-t border-gray-200 w-full"></span>
         </div>
 
-        {formik.status && (
-          <Alert variant={formik.status.type === 'success' ? 'success' : 'danger'}>
-            {formik.status.message}
-          </Alert>
-        )}
         <div className="flex flex-col gap-1">
           <label className="form-label text-gray-900">FullName</label>
           <label className="input">
@@ -131,7 +128,7 @@ const Signup = () => {
           <label className="form-label text-gray-900">Email</label>
           <label className="input">
             <input
-              placeholder="email@email.com"
+              placeholder="email@mail.com"
               type="email"
               autoComplete="off"
               {...formik.getFieldProps('email')}
@@ -152,7 +149,6 @@ const Signup = () => {
             </span>
           )}
         </div>
-
         <div className="flex flex-col gap-1">
           <label className="form-label text-gray-900">Password</label>
           <label className="input">
@@ -219,7 +215,6 @@ const Signup = () => {
             </span>
           )}
         </div>
-
         <button
           type="submit"
           className="btn btn-primary flex justify-center grow"

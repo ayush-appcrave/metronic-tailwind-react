@@ -10,6 +10,7 @@ const getData = key => {
 };
 const setData = (key, value) => {
   try {
+    console.log("function set data got hit ",key,value)
     localStorage.setItem(key, JSON.stringify(value));
   } catch (error) {
     console.error('Save in local storage', error);
