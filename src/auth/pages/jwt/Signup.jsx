@@ -6,14 +6,9 @@ import { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import * as Yup from 'yup';
 import { useAuthContext } from '../../useAuthContext';
+import { userRole } from '../../constants/userRole.js';
+import { VALIDATION_REGEX, VALIDATION_MESSAGES } from '../../constants/validation.js';
 
-const UserRole = {
-  SYSTEM_ADMIN: 'systemAdmin',
-  SALES_MEMBER: 'salesMember',
-  RECRUITMENT_MEMBER: 'recruitmentMember',
-  ORG_MANAGER: 'organizationManager',
-  Manager: 'manager',
-};
 const initialValues = {
   email: '',
   password: '',
@@ -23,13 +18,17 @@ const initialValues = {
 const signupSchema = Yup.object().shape({
   fullname: Yup.string().min(3, 'Minimum 3 symbols').required('Full name is required'),
   email: Yup.string()
-    .email('Wrong email format')
-    .min(3, 'Minimum 3 symbols')
-    .max(50, 'Maximum 50 symbols')
-    .required('Email is required'),
+    .matches(VALIDATION_REGEX.EMAIL, VALIDATION_MESSAGES.EMAIL)
+    .required(VALIDATION_MESSAGES.EMAIL.REQUIRED),
   password: Yup.string()
-    .min(3, 'Minimum 3 symbols')
-    .max(50, 'Maximum 50 symbols')
+    .min(8, VALIDATION_MESSAGES.PASSWORD.MIN_LENGTH)
+    .matches(VALIDATION_REGEX.PASSWORD_RULES.UPPERCASE, VALIDATION_MESSAGES.PASSWORD.UPPERCASE)
+    .matches(VALIDATION_REGEX.PASSWORD_RULES.LOWERCASE, VALIDATION_MESSAGES.PASSWORD.LOWERCASE)
+    .matches(VALIDATION_REGEX.PASSWORD_RULES.NUMBER, VALIDATION_MESSAGES.PASSWORD.NUMBER)
+    .matches(
+      VALIDATION_REGEX.PASSWORD_RULES.SPECIAL_CHAR,
+      VALIDATION_MESSAGES.PASSWORD.SPECIAL_CHAR
+    )
     .required('Password is required'),
   role: Yup.string().required('Role is required'),
 });
@@ -107,7 +106,7 @@ const Signup = () => {
           <label className="form-label text-gray-900">FullName</label>
           <label className="input">
             <input
-              placeholder="full name"
+              placeholder="Full Name"
               type="text"
               autoComplete="off"
               {...formik.getFieldProps('fullname')}
@@ -204,7 +203,7 @@ const Signup = () => {
               })}
             >
               <option value="">Select a role</option>
-              {Object.entries(UserRole).map(([key, value]) => (
+              {Object.entries(userRole).map(([key, value]) => (
                 <option key={value} value={value}>
                   {key
                     .split('_')
@@ -226,7 +225,7 @@ const Signup = () => {
           className="btn btn-primary flex justify-center grow"
           disabled={loading || formik.isSubmitting}
         >
-          {loading ? 'Please wait...' : 'Sign UP'}
+          {loading ? 'Please wait...' : 'Sign Up'}
         </button>
       </form>
     </div>
