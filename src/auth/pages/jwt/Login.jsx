@@ -43,26 +43,28 @@ const Login = () => {
     onSubmit: async (values, { setStatus, setSubmitting }) => {
       setLoading(true);
       try {
-        if (!login) {
-          throw new Error('login function is required for this form.');
-        }
-        await login(values.email, values.password);
-        
-        if (values.remember) {
-          localStorage.setItem('email', values.email);
+        const response = await login(values.email, values.password);
+
+        if (response.success) {
+          setStatus({ type: 'success', message: response.message });
+          navigate(from, {
+            replace: true,
+          });
         } else {
-          localStorage.removeItem('email');
+          setStatus({ type: 'error', message: response.message });
         }
-        navigate(from, {
-          replace: true,
+      } catch (error) {
+        setStatus({
+          type: 'error',
+          message: error.response?.data?.message || 'Login failed',
         });
-      } catch {
-        setStatus('The login details are incorrect');
+      } finally {
         setSubmitting(false);
+        setLoading(false);
       }
-      setLoading(false);
     },
   });
+
   const togglePassword = (event) => {
     event.preventDefault();
     setShowPassword(!showPassword);

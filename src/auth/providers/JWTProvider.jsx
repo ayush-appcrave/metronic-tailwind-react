@@ -2,7 +2,9 @@
 import axios from 'axios';
 import { createContext, useState } from 'react';
 import * as authHelper from '../_helpers';
+
 const API_URL = import.meta.env.VITE_APP_API_URL;
+
 export const LOGIN_URL = `${API_URL}/users/login`;
 export const REGISTER_URL = `${API_URL}/users/register`;
 export const FORGOT_PASSWORD_URL = `${API_URL}/forgot-password`;
@@ -40,13 +42,20 @@ const AuthProvider = ({ children }) => {
         password,
       });
       const auth = data?.data;
-      console.log(auth);
       saveAuth(auth);
-      // const { data: user } = await getUser();
       setCurrentUser(auth);
+      return {
+        success: true,
+        message: data.message,
+      };
     } catch (error) {
       saveAuth(undefined);
-      throw new Error(`Error ${error}`);
+      return {
+        success: false,
+        statusCode: error.response?.data?.statusCode,
+        message: error.response?.data?.message,
+        errors: error.response?.data?.errors || [],
+      };
     }
   };
   const register = async (email, password, role, fullname) => {
@@ -67,7 +76,8 @@ const AuthProvider = ({ children }) => {
       return {
         success: false,
         statusCode: error.response?.data?.statusCode,
-        message: error.response?.data?.message || 'Registration failed',
+        message: error.response?.data?.message,
+        errors: error.response?.data?.errors || [],
       };
     }
   };

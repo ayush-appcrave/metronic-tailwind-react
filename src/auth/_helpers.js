@@ -13,7 +13,6 @@ const getAuth = () => {
   }
 };
 const setAuth = auth => {
-  console.log("hit the setauth");
   setData(AUTH_LOCAL_STORAGE_KEY, auth);
 };
 const removeAuth = () => {
