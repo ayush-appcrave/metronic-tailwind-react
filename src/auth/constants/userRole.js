@@ -1,8 +1,8 @@
 const userRole = {
-  SYSTEM_ADMIN: 'systemAdmin',
+  SYSTEM_ADMINISTRATION: 'systemAdministration',
   SALES_MANAGER: 'salesManager',
   RECRUITMENT_MANAGER: 'recruitmentManager',
-  ORGANIZATION_MANAGER: 'organizationManager',
+  OPERATION_MANAGER: 'operationManager',
 };
 
 export { userRole };
