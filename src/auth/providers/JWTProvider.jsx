@@ -6,6 +6,7 @@ import * as authHelper from '../_helpers';
 const API_URL = import.meta.env.VITE_APP_API_URL;
 
 export const LOGIN_URL = `${API_URL}/users/login`;
+export const LOGOUT_URL = `${API_URL}/users/logout`;
 export const REGISTER_URL = `${API_URL}/users/register`;
 export const FORGOT_PASSWORD_URL = `${API_URL}/forgot-password`;
 export const RESET_PASSWORD_URL = `${API_URL}/reset-password`;
@@ -100,10 +101,28 @@ const AuthProvider = ({ children }) => {
   const getUser = async () => {
     return await axios.get(GET_USER_URL);
   };
-  const logout = () => {
-    saveAuth(undefined);
-    setCurrentUser(undefined);
+
+  const logout = async () => {
+    try {
+      const response = await axios.post(LOGOUT_URL);
+
+      // Clear auth data from local storage
+      saveAuth(undefined);
+      setCurrentUser(undefined);
+
+      return {
+        success: true,
+        message: response.data?.message || 'Logged out successfully',
+      };
+    } catch (error) {
+      return {
+        success: false,
+        message: error.response?.data?.message || 'Logout failed',
+        statusCode: error.response?.data?.statusCode,
+      };
+    }
   };
+
   return (
     <AuthContext.Provider
       value={{

@@ -1,50 +1,63 @@
-import { Fragment } from 'react';
-import { Link } from 'react-router-dom';
-import { FormattedMessage } from 'react-intl';
 import { useAuthContext } from '@/auth';
-import { useLanguage } from '@/i18n';
-import { toAbsoluteUrl } from '@/utils';
-import { DropdownUserLanguages } from './DropdownUserLanguages';
-import { useSettings } from '@/providers/SettingsProvider';
 import { DefaultTooltip, KeenIcon } from '@/components';
-import { MenuItem, MenuLink, MenuSub, MenuTitle, MenuSeparator, MenuArrow, MenuIcon } from '@/components/menu';
-const DropdownUser = ({
-  menuItemRef
-}) => {
-  const {
-    settings,
-    storeSettings
-  } = useSettings();
-  const {
-    logout
-  } = useAuthContext();
-  const {
-    isRTL
-  } = useLanguage();
-  const handleThemeMode = event => {
+import {
+  MenuArrow,
+  MenuIcon,
+  MenuItem,
+  MenuLink,
+  MenuSeparator,
+  MenuSub,
+  MenuTitle,
+} from '@/components/menu';
+import { useLanguage } from '@/i18n';
+import { useSettings } from '@/providers/SettingsProvider';
+import { toAbsoluteUrl } from '@/utils';
+import { Fragment } from 'react';
+import { FormattedMessage } from 'react-intl';
+import { Link } from 'react-router-dom';
+import { DropdownUserLanguages } from './DropdownUserLanguages';
+
+const DropdownUser = ({ menuItemRef }) => {
+  const { settings, storeSettings } = useSettings();
+  const { logout } = useAuthContext();
+  const { isRTL } = useLanguage();
+  const handleThemeMode = (event) => {
     const newThemeMode = event.target.checked ? 'dark' : 'light';
     storeSettings({
-      themeMode: newThemeMode
+      themeMode: newThemeMode,
     });
   };
   const buildHeader = () => {
-    return <div className="flex items-center justify-between px-5 py-1.5 gap-1.5">
+    return (
+      <div className="flex items-center justify-between px-5 py-1.5 gap-1.5">
         <div className="flex items-center gap-2">
-          <img className="size-9 rounded-full border-2 border-success" src={toAbsoluteUrl('/media/avatars/300-2.png')} alt="" />
+          <img
+            className="size-9 rounded-full border-2 border-success"
+            src={toAbsoluteUrl('/media/avatars/300-2.png')}
+            alt=""
+          />
           <div className="flex flex-col gap-1.5">
-            <Link to="/account/hoteme/get-stard" className="text-sm text-gray-800 hover:text-primary font-semibold leading-none">
+            <Link
+              to="/account/hoteme/get-stard"
+              className="text-sm text-gray-800 hover:text-primary font-semibold leading-none"
+            >
               Cody Fisher
             </Link>
-            <a href="mailto:c.fisher@gmail.com" className="text-xs text-gray-600 hover:text-primary font-medium leading-none">
+            <a
+              href="mailto:c.fisher@gmail.com"
+              className="text-xs text-gray-600 hover:text-primary font-medium leading-none"
+            >
               c.fisher@gmail.com
             </a>
           </div>
         </div>
         <span className="badge badge-xs badge-primary badge-outline">Pro</span>
-      </div>;
+      </div>
+    );
   };
   const buildMenu = () => {
-    return <Fragment>
+    return (
+      <Fragment>
         <MenuSeparator />
         <div className="flex flex-col">
           <MenuItem>
@@ -67,15 +80,21 @@ const DropdownUser = ({
               </MenuTitle>
             </MenuLink>
           </MenuItem>
-          <MenuItem toggle="dropdown" trigger="hover" dropdownProps={{
-          placement: isRTL() ? 'left-start' : 'right-start',
-          modifiers: [{
-            name: 'offset',
-            options: {
-              offset: isRTL() ? [50, 0] : [-50, 0] // [skid, distance]
-            }
-          }]
-        }}>
+          <MenuItem
+            toggle="dropdown"
+            trigger="hover"
+            dropdownProps={{
+              placement: isRTL() ? 'left-start' : 'right-start',
+              modifiers: [
+                {
+                  name: 'offset',
+                  options: {
+                    offset: isRTL() ? [50, 0] : [-50, 0], // [skid, distance]
+                  },
+                },
+              ],
+            }}
+          >
             <MenuLink>
               <MenuIcon>
                 <KeenIcon icon="setting-2" />
@@ -116,7 +135,11 @@ const DropdownUser = ({
                   <MenuTitle>
                     <FormattedMessage id="USER.MENU.BILLING" />
                   </MenuTitle>
-                  <DefaultTooltip title={<FormattedMessage id="USER.MENU.PAYMENT_&_SUBSCRIPTION_INFO" />} placement="top" className="max-w-48">
+                  <DefaultTooltip
+                    title={<FormattedMessage id="USER.MENU.PAYMENT_&_SUBSCRIPTION_INFO" />}
+                    placement="top"
+                    className="max-w-48"
+                  >
                     <KeenIcon icon="information-2" className="text-gray-500 text-md" />
                   </DefaultTooltip>
                 </MenuLink>
@@ -180,10 +203,12 @@ const DropdownUser = ({
           <DropdownUserLanguages menuItemRef={menuItemRef} />
           <MenuSeparator />
         </div>
-      </Fragment>;
+      </Fragment>
+    );
   };
   const buildFooter = () => {
-    return <div className="flex flex-col">
+    return (
+      <div className="flex flex-col">
         <div className="menu-item mb-0.5">
           <div className="menu-link">
             <span className="menu-icon">
@@ -193,7 +218,13 @@ const DropdownUser = ({
               <FormattedMessage id="USER.MENU.DARK_MODE" />
             </span>
             <label className="switch switch-sm">
-              <input name="theme" type="checkbox" checked={settings.themeMode === 'dark'} onChange={handleThemeMode} value="1" />
+              <input
+                name="theme"
+                type="checkbox"
+                checked={settings.themeMode === 'dark'}
+                onChange={handleThemeMode}
+                value="1"
+              />
             </label>
           </div>
         </div>
@@ -203,12 +234,18 @@ const DropdownUser = ({
             <FormattedMessage id="USER.MENU.LOGOUT" />
           </a>
         </div>
-      </div>;
+      </div>
+    );
   };
-  return <MenuSub className="menu-default light:border-gray-300 w-[200px] md:w-[250px]" rootClassName="p-0">
+  return (
+    <MenuSub
+      className="menu-default light:border-gray-300 w-[200px] md:w-[250px]"
+      rootClassName="p-0"
+    >
       {buildHeader()}
       {buildMenu()}
       {buildFooter()}
-    </MenuSub>;
+    </MenuSub>
+  );
 };
 export { DropdownUser };
