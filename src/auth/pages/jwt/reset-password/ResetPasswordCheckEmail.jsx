@@ -10,6 +10,7 @@ const ResetPasswordCheckEmail = () => {
   useEffect(() => {
     setEmail(new URLSearchParams(window.location.search).get('email'));
   }, []);
+  
   return <div className="card max-w-[440px] w-full">
       <div className="card-body p-10">
         <div className="flex justify-center py-10">
@@ -32,7 +33,7 @@ const ResetPasswordCheckEmail = () => {
             Skip for now
           </Link>
         </div>
-
+          
         <div className="flex items-center justify-center gap-1">
           <span className="text-xs text-gray-600">Didn’t receive an email?</span>
           <Link to={currentLayout?.name === 'auth-branded' ? '/auth/reset-password/enter-email' : '/auth/classic/reset-password/enter-email'} className="text-xs font-medium link">

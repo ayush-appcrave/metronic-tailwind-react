@@ -19,7 +19,7 @@ import { DropdownUserLanguages } from './DropdownUserLanguages';
 
 const DropdownUser = ({ menuItemRef }) => {
   const { settings, storeSettings } = useSettings();
-  const { logout } = useAuthContext();
+  const { logout, currentUser } = useAuthContext();
   const { isRTL } = useLanguage();
   const handleThemeMode = (event) => {
     const newThemeMode = event.target.checked ? 'dark' : 'light';
@@ -27,6 +27,7 @@ const DropdownUser = ({ menuItemRef }) => {
       themeMode: newThemeMode,
     });
   };
+
   const buildHeader = () => {
     return (
       <div className="flex items-center justify-between px-5 py-1.5 gap-1.5">
@@ -41,13 +42,13 @@ const DropdownUser = ({ menuItemRef }) => {
               to="/account/hoteme/get-stard"
               className="text-sm text-gray-800 hover:text-primary font-semibold leading-none"
             >
-              Cody Fisher
+              {currentUser?.fullname}
             </Link>
             <a
-              href="mailto:c.fisher@gmail.com"
+              href={`mailto:${currentUser?.email}`}
               className="text-xs text-gray-600 hover:text-primary font-medium leading-none"
             >
-              c.fisher@gmail.com
+              {currentUser?.email}
             </a>
           </div>
         </div>

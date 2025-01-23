@@ -1,15 +1,16 @@
 import { CheckEmail } from '@/auth/pages/jwt';
-import { AuthLayout } from '@/layouts/auth';
+import { userRole } from '@/constants/userRole.js';
 import { AuthBrandedLayout } from '@/layouts/auth-branded';
+import { ProtectedRoute } from '@/routing';
 import { Navigate, Route, Routes } from 'react-router';
 import {
+  AddMember,
   Login,
   ResetPassword,
   ResetPasswordChange,
   ResetPasswordChanged,
   ResetPasswordCheckEmail,
   ResetPasswordEnterEmail,
-  Signup,
   TwoFactorAuth,
 } from './pages/jwt';
 const AuthPage = () => (
@@ -17,7 +18,9 @@ const AuthPage = () => (
     <Route element={<AuthBrandedLayout />}>
       <Route index element={<Login />} />
       <Route path="/login" element={<Login />} />
-      <Route path="/signup" element={<Signup />} />
+      <Route element={<ProtectedRoute allowedRoles={[userRole.SYSTEM_ADMINISTRATION]} />}>
+        <Route path="/members/add" element={<AddMember />} />
+      </Route>
       <Route path="/2fa" element={<TwoFactorAuth />} />
       <Route path="/check-email" element={<CheckEmail />} />
       <Route path="/reset-password" element={<ResetPassword />} />
@@ -28,7 +31,7 @@ const AuthPage = () => (
       <Route path="*" element={<Navigate to="/error/404" />} />
     </Route>
 
-    <Route element={<AuthLayout />}>
+    {/* <Route element={<AuthLayout />}>
       <Route path="/classic/login" element={<Login />} />
       <Route path="/classic/signup" element={<Signup />} />
       <Route path="/classic/2fa" element={<TwoFactorAuth />} />
@@ -39,7 +42,7 @@ const AuthPage = () => (
       <Route path="/classic/reset-password/change" element={<ResetPasswordChange />} />
       <Route path="/classic/reset-password/changed" element={<ResetPasswordChanged />} />
       <Route path="*" element={<Navigate to="/error/404" />} />
-    </Route>
+    </Route> */}
   </Routes>
 );
 export { AuthPage };

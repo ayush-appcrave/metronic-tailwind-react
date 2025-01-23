@@ -3,11 +3,11 @@ import { useLayout } from '@/providers';
 import clsx from 'clsx';
 import { useFormik } from 'formik';
 import { useState } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import * as Yup from 'yup';
-import { userRole } from '../../constants/userRole.js';
-import { VALIDATION_MESSAGES, VALIDATION_REGEX } from '../../constants/validation.js';
-import { useAuthContext } from '../../useAuthContext';
+import { userRole } from '../../../constants/userRole.js';
+import { VALIDATION_MESSAGES, VALIDATION_REGEX } from '../../../constants/validation.js';
+import { useAuthContext } from '../../useAuthContext.js';
 
 const initialValues = {
   email: '',
@@ -15,7 +15,7 @@ const initialValues = {
   role: '',
   fullname: '',
 };
-const signupSchema = Yup.object().shape({
+const AddMemberSchema = Yup.object().shape({
   fullname: Yup.string().min(3, 'Minimum 3 symbols').required('Full name is required'),
 
   email: Yup.string()
@@ -36,7 +36,7 @@ const signupSchema = Yup.object().shape({
   role: Yup.string().required('Role is required'),
 });
 
-const Signup = () => {
+const AddMember = () => {
   const [loading, setLoading] = useState(false);
   const { register } = useAuthContext();
   const navigate = useNavigate();
@@ -44,7 +44,7 @@ const Signup = () => {
   const { currentLayout } = useLayout();
   const formik = useFormik({
     initialValues,
-    validationSchema: signupSchema,
+    validationSchema: AddMemberSchema,
     onSubmit: async (values, { setStatus, setSubmitting }) => {
       setSubmitting(true);
       setLoading(true);
@@ -54,7 +54,7 @@ const Signup = () => {
       if (response.success) {
         setStatus({ type: 'success', message: response.message });
 
-        navigate('/auth/login', {
+        navigate('/react', {
           state: {
             registrationSuccess: true,
             message: response.message,
@@ -82,22 +82,9 @@ const Signup = () => {
         onSubmit={formik.handleSubmit}
       >
         <div className="text-center mb-2.5">
-          <h3 className="text-lg font-semibold text-gray-900 leading-none mb-2.5">Sign up</h3>
-          <div className="flex items-center justify-center font-medium">
-            <span className="text-2sm text-gray-600 me-1.5">Already have an Account ?</span>
-            <Link
-              to={currentLayout?.name === 'auth-branded' ? '/auth/login' : '/auth/classic/login'}
-              className="text-2sm link"
-            >
-              Sign In
-            </Link>
-          </div>
+          <h3 className="text-lg font-semibold text-gray-900 leading-none mb-2.5">Add Member</h3>
         </div>
-        <div className="flex items-center gap-2">
-          <span className="border-t border-gray-200 w-full"></span>
-          <span className="text-2xs text-gray-500 font-medium uppercase">Or</span>
-          <span className="border-t border-gray-200 w-full"></span>
-        </div>
+
         {formik.status && (
           <Alert variant={formik.status.type === 'success' ? 'success' : 'danger'}>
             {formik.status.message}
@@ -230,4 +217,4 @@ const Signup = () => {
     </div>
   );
 };
-export { Signup };
+export { AddMember };

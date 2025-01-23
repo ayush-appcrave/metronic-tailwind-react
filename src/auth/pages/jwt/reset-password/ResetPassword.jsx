@@ -42,10 +42,19 @@ const ResetPassword = () => {
         setLoading(false);
         const params = new URLSearchParams();
         params.append('email', values.email);
-        navigate({
-          pathname: currentLayout?.name === 'auth-branded' ? '/auth/reset-password/check-email' : '/auth/classic/reset-password/check-email',
-          search: params.toString()
-        });
+        setTimeout(() => {
+    setLoading(false);
+    navigate({
+      pathname: currentLayout?.name === 'auth-branded' 
+        ? '/auth/reset-password/check-email' 
+        : '/auth/classic/reset-password/check-email',
+      search: params.toString()
+    });
+  }, 1000);
+        // navigate({
+        //   pathname: currentLayout?.name === 'auth-branded' ? '/auth/reset-password/check-email' : '/auth/classic/reset-password/check-email',
+        //   search: params.toString()
+        // });
       } catch (error) {
         if (error instanceof AxiosError && error.response) {
           setStatus(error.response.data.message);
