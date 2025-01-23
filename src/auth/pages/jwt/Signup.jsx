@@ -1,4 +1,4 @@
-import { KeenIcon } from '@/components';
+import { Alert, KeenIcon } from '@/components';
 import { useLayout } from '@/providers';
 import clsx from 'clsx';
 import { useFormik } from 'formik';
@@ -46,21 +46,21 @@ const Signup = () => {
     initialValues,
     validationSchema: signupSchema,
     onSubmit: async (values, { setStatus, setSubmitting }) => {
+      setSubmitting(true);
       setLoading(true);
 
       const response = await register(values.email, values.password, values.role, values.fullname);
 
       if (response.success) {
         setStatus({ type: 'success', message: response.message });
-        setTimeout(() => {
-          navigate('/auth/login', {
-            state: {
-              registrationSuccess: true,
-              message: response.message,
-            },
-            replace: true,
-          });
-        }, 3000);
+
+        navigate('/auth/login', {
+          state: {
+            registrationSuccess: true,
+            message: response.message,
+          },
+          replace: true,
+        });
       } else {
         setStatus({ type: 'error', message: response.message });
       }
@@ -98,7 +98,11 @@ const Signup = () => {
           <span className="text-2xs text-gray-500 font-medium uppercase">Or</span>
           <span className="border-t border-gray-200 w-full"></span>
         </div>
-
+        {formik.status && (
+          <Alert variant={formik.status.type === 'success' ? 'success' : 'danger'}>
+            {formik.status.message}
+          </Alert>
+        )}
         <div className="flex flex-col gap-1">
           <label className="form-label text-gray-900">FullName</label>
           <label className="input">

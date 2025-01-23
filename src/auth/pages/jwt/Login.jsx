@@ -41,27 +41,20 @@ const Login = () => {
     initialValues,
     validationSchema: loginSchema,
     onSubmit: async (values, { setStatus, setSubmitting }) => {
+      setSubmitting(true);
       setLoading(true);
-      try {
-        const response = await login(values.email, values.password);
 
-        if (response.success) {
-          setStatus({ type: 'success', message: response.message });
-          navigate(from, {
-            replace: true,
-          });
-        } else {
-          setStatus({ type: 'error', message: response.message });
-        }
-      } catch (error) {
-        setStatus({
-          type: 'error',
-          message: error.response?.data?.message || 'Login failed',
-        });
-      } finally {
-        setSubmitting(false);
-        setLoading(false);
+      const response = await login(values.email, values.password);
+
+      if (response.success) {
+        setStatus({ type: 'success', message: response.message });
+        navigate(from, { replace: true });
+      } else {
+        setStatus({ type: 'error', message: response.message, errors: response.errors });
       }
+
+      setSubmitting(false);
+      setLoading(false);
     },
   });
 

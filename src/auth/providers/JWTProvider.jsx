@@ -42,8 +42,10 @@ const AuthProvider = ({ children }) => {
         password,
       });
       const auth = data?.data;
+
       saveAuth(auth);
       setCurrentUser(auth);
+
       return {
         success: true,
         message: data.message,
