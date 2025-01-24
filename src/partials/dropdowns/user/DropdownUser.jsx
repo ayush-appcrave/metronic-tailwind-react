@@ -191,16 +191,7 @@ const DropdownUser = ({ menuItemRef }) => {
               </MenuItem>
             </MenuSub>
           </MenuItem>
-          <MenuItem>
-            <MenuLink path="https://devs.keenthemes.com">
-              <MenuIcon>
-                <KeenIcon icon="message-programming" />
-              </MenuIcon>
-              <MenuTitle>
-                <FormattedMessage id="USER.MENU.DEV_FORUM" />
-              </MenuTitle>
-            </MenuLink>
-          </MenuItem>
+
           <DropdownUserLanguages menuItemRef={menuItemRef} />
           <MenuSeparator />
         </div>
