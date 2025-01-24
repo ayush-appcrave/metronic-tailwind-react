@@ -1,5 +1,5 @@
 import { BlockList, ReportSettings } from '@/pages/account/security/privacy-settings';
-import { EntryCallout, Teams } from '@/pages/dashboards/demo1';
+import { EntryCallout, Teams } from '@/pages/dashboards/DashboardOverview';
 import { Integrations, ManageData, MyBalance, Options } from './blocks';
 const Demo2Content = () => {
   return <div className="grid gap-5 lg:gap-7.5">

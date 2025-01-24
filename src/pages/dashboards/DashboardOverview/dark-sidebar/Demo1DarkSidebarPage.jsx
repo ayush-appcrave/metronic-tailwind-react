@@ -7,7 +7,14 @@ import { Calendar } from '@/components/ui/calendar';
 import { addDays, format } from 'date-fns';
 import { cn } from '@/lib/utils';
 import { KeenIcon } from '@/components/keenicons';
+import { useAuthContext } from '@/auth/useAuthContext';
+import { Button } from '@/components/ui/button';
+import { useNavigate } from 'react-router-dom';
+import { userRole } from '@/constants/userRole';
+
 const Demo1DarkSidebarPage = () => {
+  const navigate = useNavigate();
+  const { currentUser } = useAuthContext();
   const [date, setDate] = useState({
     from: new Date(2025, 0, 20),
     to: addDays(new Date(2025, 0, 20), 20)
@@ -17,6 +24,12 @@ const Demo1DarkSidebarPage = () => {
         <Toolbar>
           <ToolbarHeading title="Dashboard" description="Central Hub for Personal Customization" />
           <ToolbarActions>
+          {currentUser?.role === userRole.SYSTEM_ADMINISTRATION && (
+              <Button variant="default" size="sm" onClick={() => navigate('/auth/members/add')}>
+                <KeenIcon icon="plus" className="me-0.5" />
+                Add Member
+              </Button>
+            )}
             <Popover>
               <PopoverTrigger asChild>
                 <button id="date" className={cn('btn btn-sm btn-light data-[state=open]:bg-light-active', !date && 'text-gray-400')}>

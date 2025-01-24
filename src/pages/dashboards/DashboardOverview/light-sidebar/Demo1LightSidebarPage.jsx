@@ -10,11 +10,10 @@ import { cn } from '@/lib/utils';
 import { addDays, format } from 'date-fns';
 import { Fragment, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { Demo1LightSidebarContent } from './';
+import { Demo1LightSidebarContent } from '.';
 
 const Demo1LightSidebarPage = () => {
-  const navigate = useNavigate();
-  const { currentUser } = useAuthContext();
+ 
 
   const [date, setDate] = useState({
     from: new Date(2025, 0, 20),
@@ -26,12 +25,7 @@ const Demo1LightSidebarPage = () => {
         <Toolbar>
           <ToolbarHeading title="Dashboard" description="Central Hub for Personal Customization" />
           <ToolbarActions>
-            {currentUser?.role === userRole.SYSTEM_ADMINISTRATION && (
-              <Button variant="default" size="sm" onClick={() => navigate('/auth/members/add')}>
-                <KeenIcon icon="plus" className="me-0.5" />
-                Add Member
-              </Button>
-            )}
+           
             <Popover>
               <PopoverTrigger asChild>
                 <button

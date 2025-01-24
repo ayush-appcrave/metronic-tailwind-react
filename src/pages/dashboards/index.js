@@ -1,5 +1,5 @@
 export * from './default';
-export * from './demo1';
+export * from './DashboardOverview';
 export * from './demo2';
 export * from './demo3';
 export * from './demo4';
