@@ -11,7 +11,7 @@ export const REGISTER_URL = `${API_URL}/users/register`;
 export const FORGOT_PASSWORD_URL = `${API_URL}/forgot-password`;
 export const RESET_PASSWORD_URL = `${API_URL}/reset-password`;
 export const GET_USER_URL = `${API_URL}/user`;
-
+export const VERIFY_TOKEN_URL = `${API_URL}/users/verify-token`;
 const AuthContext = createContext(null);
 
 const AuthProvider = ({ children }) => {
@@ -39,14 +39,30 @@ const AuthProvider = ({ children }) => {
   const verify = async () => {
     const savedAuth = authHelper.getAuth();
     if (savedAuth) {
-      setAuth(savedAuth);
-      setCurrentUser(savedAuth);
-    } else {
-      saveAuth(undefined);
-      setCurrentUser(undefined);
+      try {
+        const response = await axios.post(VERIFY_TOKEN_URL);
+        console.log(response.data);
+        if (response.data.valid) {
+          // Update user data with fresh data from server
+          const verifiedAuth = {
+            ...savedAuth,
+            ...response.data.user
+          };
+          setAuth(verifiedAuth);
+          setCurrentUser(verifiedAuth);
+        } else {
+          saveAuth(undefined);
+          setCurrentUser(undefined);
+        }
+      } catch (error) {
+        // Token is invalid or expired
+        saveAuth(undefined);
+        setCurrentUser(undefined);
+      }
     }
     setLoading(false);
   };
+  
 
   useEffect(() => {
     verify();

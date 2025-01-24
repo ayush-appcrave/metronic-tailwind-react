@@ -54,7 +54,7 @@ const AddMember = () => {
       if (response.success) {
         setStatus({ type: 'success', message: response.message });
 
-        navigate('/react', {
+        navigate('/', {
           state: {
             registrationSuccess: true,
             message: response.message,
