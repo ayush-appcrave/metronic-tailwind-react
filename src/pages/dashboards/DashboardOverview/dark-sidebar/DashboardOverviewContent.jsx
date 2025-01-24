@@ -6,7 +6,7 @@ import {
   TeamMeeting,
   Teams,
 } from './blocks';
-const Demo1LightSidebarContent = () => {
+const DashboardOverviewContent = () => {
   return (
     <div className="grid gap-5 lg:gap-7.5">
       <div className="grid lg:grid-cols-3 gap-y-5 lg:gap-7.5 items-stretch">
@@ -43,4 +43,4 @@ const Demo1LightSidebarContent = () => {
     </div>
   );
 };
-export { Demo1LightSidebarContent };
+export { DashboardOverviewContent };

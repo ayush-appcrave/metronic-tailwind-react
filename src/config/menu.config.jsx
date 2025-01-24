@@ -1,17 +1,22 @@
 export const MENU_SIDEBAR = [
+  // {
+  //   title: 'Dashboards',
+  //   icon: 'element-11',
+  //   children: [
+  //     {
+  //       title: 'Light Sidebar',
+  //       path: '/',
+  //     },
+  //     {
+  //       title: 'Dark Sidebar',
+  //       path: '/dark-sidebar',
+  //     },
+  //   ],
+  // },
   {
     title: 'Dashboards',
     icon: 'element-11',
-    children: [
-      {
-        title: 'Light Sidebar',
-        path: '/',
-      },
-      {
-        title: 'Dark Sidebar',
-        path: '/dark-sidebar',
-      },
-    ],
+    path: '/dark-sidebar',
   },
   {
     heading: 'User',
