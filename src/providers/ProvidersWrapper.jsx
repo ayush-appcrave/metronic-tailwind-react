@@ -1,4 +1,3 @@
-import { QueryClient, QueryClientProvider } from 'react-query';
 import { AuthProvider } from '@/auth/providers/JWTProvider';
 import {
   LayoutProvider,
@@ -8,6 +7,7 @@ import {
   TranslationProvider,
 } from '@/providers';
 import { HelmetProvider } from 'react-helmet-async';
+import { QueryClient, QueryClientProvider } from 'react-query';
 const queryClient = new QueryClient();
 const ProvidersWrapper = ({ children }) => {
   return (
