@@ -45,7 +45,7 @@ const Login = () => {
       setLoading(true);
 
       const response = await login(values.email, values.password);
-
+      console.log(response)
       if (response.success) {
         setStatus({ type: 'success', message: response.message });
         navigate(from, { replace: true });
