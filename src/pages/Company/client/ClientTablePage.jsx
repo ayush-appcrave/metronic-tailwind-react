@@ -8,8 +8,8 @@ import {
 } from '@/partials/toolbar';
 import { useLayout } from '@/providers';
 import { Fragment } from 'react';
-import { NetworkUserTableTeamCrewContent } from '.';
-const NetworkUserTableTeamCrewPage = () => {
+import { ClientTableContent } from '.';
+const ClientTablePage = () => {
   const { currentLayout } = useLayout();
   return (
     <Fragment>
@@ -32,7 +32,7 @@ const NetworkUserTableTeamCrewPage = () => {
                 Import CSV
               </a>
               <a href="#" className="btn btn-sm btn-primary">
-                Add Member
+                Add Client
               </a>
             </ToolbarActions>
           </Toolbar>
@@ -40,9 +40,9 @@ const NetworkUserTableTeamCrewPage = () => {
       )}
 
       <Container>
-        <NetworkUserTableTeamCrewContent />
+        <ClientTableContent />
       </Container>
     </Fragment>
   );
 };
-export { NetworkUserTableTeamCrewPage };
+export { ClientTablePage };

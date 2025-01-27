@@ -5,6 +5,21 @@ export const MENU_SIDEBAR = [
     path: '/dashboard',
   },
   {
+    heading: 'Company',
+  },
+
+  {
+    title: 'Clients',
+    icon: 'user-square', // Professional client icon
+    path: '/company/clients',
+  },
+  {
+    title: 'Vendors',
+    icon: 'briefcase', // Business vendor icon
+    path: '/company/vendors',
+  },
+  
+  {
     heading: 'User',
   },
   {

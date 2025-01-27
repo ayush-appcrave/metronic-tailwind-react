@@ -1,3 +1,4 @@
+/* eslint-disable prettier/prettier */
 import {
   DataGrid,
   DataGridColumnHeader,
@@ -16,15 +17,9 @@ import {
 } from '@/components/ui/select';
 import { toAbsoluteUrl } from '@/utils';
 import { useMemo, useState } from 'react';
+import { Link } from 'react-router-dom';
 import { toast } from 'sonner';
-import { UsersData } from './UsersData';
-const EnforceSwitch = ({ enforce }) => {
-  return (
-    <label className="switch switch-sm">
-      <input type="checkbox" checked={enforce} value="1" readOnly />
-    </label>
-  );
-};
+import { UsersData } from '.';
 const Users = () => {
   const ColumnInputFilter = ({ column }) => {
     return (
@@ -50,104 +45,128 @@ const Users = () => {
       },
       {
         accessorFn: (row) => row.user,
-        id: 'user',
+        id: 'users',
         header: ({ column }) => (
           <DataGridColumnHeader
-            title="Subscriber"
+            title="Member"
             filter={<ColumnInputFilter column={column} />}
             column={column}
           />
         ),
         enableSorting: true,
-        cell: (info) => (
-          <div className="flex items-center gap-2.5">
-            <img
-              src={toAbsoluteUrl(`/media/avatars/${info.row.original.user.avatar}`)}
-              className="size-7 rounded-full shrink-0"
-              alt=""
-            />
-            <div className="flex flex-col">
-              <a className="font-medium text-gray-900 hover:text-primary-active mb-px" href="#">
-                {info.row.original.user.name}
-              </a>
-              <a className="text-2sm text-gray-700 hover:text-primary-active" href="#">
-                {info.row.original.user.email}
-              </a>
+        cell: ({ row }) => {
+          // 'row' argumentini cell funksiyasiga qo'shdik
+          return (
+            <div className="flex items-center gap-4">
+              <img
+                src={toAbsoluteUrl(`/media/avatars/${row.original.user.avatar}`)}
+                className="rounded-full size-9 shrink-0"
+                alt={`${row.original.user.userName}`}
+              />
+
+              <div className="flex flex-col gap-0.5">
+                <Link
+                  to="#"
+                  className="text-sm font-medium text-gray-900 hover:text-primary-active mb-px"
+                >
+                  {row.original.user.userName}
+                </Link>
+
+                <Link
+                  to="#"
+                  className="text-2sm text-gray-700 font-normal hover:text-primary-active"
+                >
+                  {row.original.user.userGmail}
+                </Link>
+              </div>
             </div>
-          </div>
-        ),
+          );
+        },
         meta: {
-          headerClassName: 'min-w-[300px]',
-          cellClassName: 'text-gray-700 font-normal',
+          className: 'min-w-[300px]',
+          cellClassName: 'text-gray-800 font-normal',
         },
       },
       {
-        accessorFn: (row) => row.labels,
-        id: 'labels',
-        header: ({ column }) => <DataGridColumnHeader title="Products" column={column} />,
+        accessorFn: (row) => row.role,
+        id: 'role',
+        header: ({ column }) => <DataGridColumnHeader title="Pole" column={column} />,
         enableSorting: true,
-        cell: (info) => (
-          <div className="flex gap-1.5">
-            {info.row.original.labels.map((label, index) => (
-              <span key={index} className="badge badge-sm">
-                {label}
-              </span>
-            ))}
-          </div>
-        ),
+        cell: (info) => {
+          return info.row.original.role;
+        },
         meta: {
-          headerClassName: 'min-w-[200px]',
-          cellClassName: 'text-gray-700 font-normal',
+          headerClassName: 'min-w-[180px]',
         },
       },
       {
-        accessorFn: (row) => row.license,
-        id: 'license',
-        header: ({ column }) => <DataGridColumnHeader title="License" column={column} />,
+        accessorFn: (row) => row.status,
+        id: 'status',
+        header: ({ column }) => <DataGridColumnHeader title="Status" column={column} />,
         enableSorting: true,
-        cell: (info) => (
-          <div className="flex flex-col">
-            <span className="text-sm text-gray-800 font-medium">
-              {info.row.original.license.type}
+        cell: (info) => {
+          return (
+            <span
+              className={`badge badge-${info.row.original.status.color} shrink-0 badge-outline rounded-[30px]`}
+            >
+              <span
+                className={`size-1.5 rounded-full bg-${info.row.original.status.color} me-1.5`}
+              ></span>
+              {info.row.original.status.label}
             </span>
-            <span className="text-xs text-gray-600">{info.row.original.license.left}</span>
-          </div>
-        ),
+          );
+        },
         meta: {
-          headerClassName: 'min-w-[175px]',
-          cellClassName: 'text-gray-700 font-normal',
+          headerClassName: 'min-w-[180px]',
         },
       },
       {
-        accessorFn: (row) => row.payment,
-        id: 'payment',
-        header: ({ column }) => <DataGridColumnHeader title="Latest Payment" column={column} />,
+        accessorFn: (row) => row.location,
+        id: 'location',
+        header: ({ column }) => <DataGridColumnHeader title="Location" column={column} />,
         enableSorting: true,
-        cell: (info) => info.row.original.payment,
+        cell: (info) => {
+          return (
+            <div className="flex items-center text-gray-800 font-normal gap-1.5">
+              <img
+                src={toAbsoluteUrl(`/media/flags/${info.row.original.flag}`)}
+                className="rounded-full size-4 shrink-0"
+                alt={`${info.row.original.user.userName}`}
+              />
+              {info.row.original.location}
+            </div>
+          );
+        },
         meta: {
-          className: 'min-w-[175px]',
-          cellClassName: 'text-gray-800 font-medium',
+          headerClassName: 'min-w-[180px]',
         },
       },
       {
-        accessorFn: (row) => row.enforce,
-        id: 'enforce',
-        header: ({ column }) => <DataGridColumnHeader title="Enforce 2FA" column={column} />,
+        accessorFn: (row) => row.activity,
+        id: 'activity',
+        header: ({ column }) => <DataGridColumnHeader title="Activity" column={column} />,
         enableSorting: true,
-        cell: (info) => <EnforceSwitch enforce={info.row.original.enforce} />,
+        cell: (info) => {
+          return info.row.original.activity;
+        },
         meta: {
-          headerClassName: 'min-w-[137px]',
-          cellClassName: 'text-gray-800 font-medium',
+          headerClassName: 'min-w-[180px]',
+          cellClassName: 'text-gray-800 font-normal',
         },
       },
       {
-        id: 'actions',
-        header: ({ column }) => <DataGridColumnHeader title="Invoices" column={column} />,
-        enableSorting: true,
-        cell: () => <button className="btn btn-link">Download</button>,
+        id: 'edit',
+        header: () => '',
+        enableSorting: false,
+        cell: () => {
+          return (
+            <button className="btn btn-sm btn-icon btn-clear btn-light">
+              <KeenIcon icon="dots-vertical" />
+            </button>
+          );
+        },
         meta: {
-          headerClassName: 'w-28',
-          cellClassName: 'text-gray-800 font-medium',
+          headerClassName: 'w-[60px]',
         },
       },
     ],
@@ -171,7 +190,7 @@ const Users = () => {
     const [searchInput, setSearchInput] = useState('');
     return (
       <div className="card-header flex-wrap gap-2 border-b-0 px-5">
-        <h3 className="card-title font-medium text-sm">howing 10 of 49,053 users</h3>
+        <h3 className="card-title font-medium text-sm">Showing 20 of 68 users</h3>
 
         <div className="flex flex-wrap gap-2 lg:gap-5">
           <div className="flex">
@@ -228,7 +247,7 @@ const Users = () => {
       }}
       sorting={[
         {
-          id: 'user',
+          id: 'users',
           desc: false,
         },
       ]}

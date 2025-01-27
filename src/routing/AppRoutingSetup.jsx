@@ -1,5 +1,6 @@
 import { Navigate, Route, Routes } from 'react-router';
 import { DefaultPage, DashboardOverviewPage } from '@/pages/dashboards';
+import {ClientTablePage} from "@/pages/company"
 import { ProfileActivityPage, ProfileBloggerPage, CampaignsCardPage, CampaignsListPage, ProjectColumn2Page, ProjectColumn3Page, ProfileCompanyPage, ProfileCreatorPage, ProfileCRMPage, ProfileDefaultPage, ProfileEmptyPage, ProfileFeedsPage, ProfileGamerPage, ProfileModalPage, ProfileNetworkPage, ProfileNFTPage, ProfilePlainPage, ProfileTeamsPage, ProfileWorksPage } from '@/pages/public-profile';
 import { AccountActivityPage, AccountAllowedIPAddressesPage, AccountApiKeysPage, AccountAppearancePage, AccountBackupAndRecoveryPage, AccountBasicPage, AccountCompanyProfilePage, AccountCurrentSessionsPage, AccountDeviceManagementPage, AccountEnterprisePage, AccountGetStartedPage, AccountHistoryPage, AccountImportMembersPage, AccountIntegrationsPage, AccountInviteAFriendPage, AccountMembersStarterPage, AccountNotificationsPage, AccountOverviewPage, AccountPermissionsCheckPage, AccountPermissionsTogglePage, AccountPlansPage, AccountPrivacySettingsPage, AccountRolesPage, AccountSecurityGetStartedPage, AccountSecurityLogPage, AccountSettingsEnterprisePage, AccountSettingsModalPage, AccountSettingsPlainPage, AccountSettingsSidebarPage, AccountTeamInfoPage, AccountTeamMembersPage, AccountTeamsPage, AccountTeamsStarterPage, AccountUserProfilePage } from '@/pages/account';
 import { NetworkAppRosterPage, NetworkMarketAuthorsPage, NetworkAuthorPage, NetworkGetStartedPage, NetworkMiniCardsPage, NetworkNFTPage, NetworkSocialPage, NetworkUserCardsTeamCrewPage, NetworkSaasUsersPage, NetworkStoreClientsPage, NetworkUserTableTeamCrewPage, NetworkVisitorsPage } from '@/pages/network';
@@ -67,6 +68,7 @@ const AppRoutingSetup = () => {
           <Route path="/account/appearance" element={<AccountAppearancePage />} />
           <Route path="/account/invite-a-friend" element={<AccountInviteAFriendPage />} />
           <Route path="/account/activity" element={<AccountActivityPage />} />
+          <Route path='/company/clients' element={<ClientTablePage />} />
           <Route path="/network/get-started" element={<NetworkGetStartedPage />} />
           <Route path="/network/user-cards/mini-cards" element={<NetworkMiniCardsPage />} />
           <Route path="/network/user-cards/team-crew" element={<NetworkUserCardsTeamCrewPage />} />
