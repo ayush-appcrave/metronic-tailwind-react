@@ -3,11 +3,11 @@ import axios from 'axios';
 import { createContext, useEffect, useState } from 'react';
 import * as authHelper from '../_helpers';
 
-const API_URL = import.meta.env.VITE_APP_API_URL;
+const API_BASE_URL = import.meta.env.VITE_APP_API_URL;
 
 export const AUTH_LOGIN_URL = `${API_BASE_URL}/users/login`;
 export const AUTH_LOGOUT_URL = `${API_BASE_URL}/users/logout`;
-export const AUTH_REGISTER_URL = `${API_BASE_URL}/users/register`;
+export const AUTH_CREATE_USER_URL = `${API_BASE_URL}/users/create-user`;
 export const AUTH_VERIFY_TOKEN_URL = `${API_BASE_URL}/users/verify-token`;
 export const FORGOT_PASSWORD_URL = `${API_BASE_URL}/forgot-password`;
 export const RESET_PASSWORD_URL = `${API_BASE_URL}/reset-password`;
@@ -103,7 +103,7 @@ const AuthProvider = ({ children }) => {
   };
   const register = async (email, password, role, fullname) => {
     try {
-      const response = await axios.post(AUTH_REGISTER_URL, {
+      const response = await axios.post(AUTH_CREATE_USER_URL, {
         email,
         password,
         role,

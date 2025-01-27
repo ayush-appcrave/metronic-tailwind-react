@@ -1,9 +1,9 @@
-import { useEffect } from 'react';
-import { BrowserRouter } from 'react-router-dom';
+import { Toaster } from '@/components/ui/sonner';
+import { PathnameProvider } from '@/providers';
 import { useSettings } from '@/providers/SettingsProvider';
 import { AppRouting } from '@/routing';
-import { PathnameProvider } from '@/providers';
-import { Toaster } from '@/components/ui/sonner';
+import { useEffect } from 'react';
+import { BrowserRouter } from 'react-router-dom';
 const {
   BASE_URL
 } = import.meta.env;
