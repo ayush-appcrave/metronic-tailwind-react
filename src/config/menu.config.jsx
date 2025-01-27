@@ -356,21 +356,6 @@ export const MENU_SIDEBAR = [
           },
         ],
       },
-      {
-        title: 'Cooperations',
-        path: '/network/cooperations',
-        disabled: true,
-      },
-      {
-        title: 'Leads',
-        path: '/network/leads',
-        disabled: true,
-      },
-      {
-        title: 'Donators',
-        path: '/network/donators',
-        disabled: true,
-      },
     ],
   },
   {
