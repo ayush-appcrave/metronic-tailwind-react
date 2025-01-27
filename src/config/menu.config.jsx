@@ -1,18 +1,4 @@
 export const MENU_SIDEBAR = [
-  // {
-  //   title: 'Dashboards',
-  //   icon: 'element-11',
-  //   children: [
-  //     {
-  //       title: 'Light Sidebar',
-  //       path: '/',
-  //     },
-  //     {
-  //       title: 'Dark Sidebar',
-  //       path: '/dark-sidebar',
-  //     },
-  //   ],
-  // },
   {
     title: 'Dashboards',
     icon: 'element-11',
@@ -493,37 +479,7 @@ export const MENU_SIDEBAR = [
       },
     ],
   },
-  {
-    heading: 'Apps',
-  },
-  {
-    title: 'User Management',
-    icon: 'users',
-    disabled: true,
-  },
-  {
-    title: 'Projects',
-    icon: 'questionnaire-tablet',
-    disabled: true,
-  },
-  {
-    title: 'eCommerce',
-    icon: 'handcart',
-    disabled: true,
-  },
-  {
-    heading: 'Miscellaneous',
-  },
-  {
-    title: 'Modals',
-    icon: 'some-files',
-    disabled: true,
-  },
-  {
-    title: 'Wizards',
-    icon: 'note-2',
-    disabled: true,
-  },
+  
 ];
 export const MENU_MEGA = [
   {
