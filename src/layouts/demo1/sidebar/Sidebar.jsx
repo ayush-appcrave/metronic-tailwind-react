@@ -35,7 +35,7 @@ export const Sidebar = () => {
   const {
     layout
   } = useDemo1Layout();
-  const themeClass = layout.options.sidebar.theme === 'dark' || pathname === '/dark-sidebar' ? 'dark [&.dark]:bg-coal-600' : 'dark:bg-coal-600';
+  const themeClass = 'dark [&.dark]:bg-coal-600';
   const handleMobileSidebarClose = () => {
     setMobileSidebarOpen(false);
   };

@@ -2,7 +2,7 @@ export const MENU_SIDEBAR = [
   {
     title: 'Dashboards',
     icon: 'element-11',
-    path: '/dark-sidebar',
+    path: '/dashboard',
   },
   {
     heading: 'User',
@@ -479,7 +479,6 @@ export const MENU_SIDEBAR = [
       },
     ],
   },
-  
 ];
 export const MENU_MEGA = [
   {
