@@ -20,6 +20,7 @@ import { useMemo, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { toast } from 'sonner';
 import { UsersData } from '.';
+
 const Users = () => {
   const ColumnInputFilter = ({ column }) => {
     return (

@@ -9,6 +9,7 @@ import {
 import { useLayout } from '@/providers';
 import { Fragment } from 'react';
 import { ClientTableContent } from '.';
+import { AddClientDialog } from './dialogs';
 const ClientTablePage = () => {
   const { currentLayout } = useLayout();
   return (
@@ -31,9 +32,8 @@ const ClientTablePage = () => {
               <a href="#" className="btn btn-sm btn-light">
                 Import CSV
               </a>
-              <a href="#" className="btn btn-sm btn-primary">
-                Add Client
-              </a>
+
+              <AddClientDialog />
             </ToolbarActions>
           </Toolbar>
         </Container>
