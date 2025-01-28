@@ -1,1 +1,1 @@
-export * from "./client/ClientTablePage"
+export * from "./client"

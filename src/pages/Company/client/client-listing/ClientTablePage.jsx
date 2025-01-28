@@ -8,8 +8,9 @@ import {
 } from '@/partials/toolbar';
 import { useLayout } from '@/providers';
 import { Fragment } from 'react';
-import { ClientTableContent } from '.';
-import { AddClientDialog } from './dialogs';
+import { Link } from 'react-router-dom';
+import { ClientTableContent } from '..';
+
 const ClientTablePage = () => {
   const { currentLayout } = useLayout();
   return (
@@ -21,9 +22,9 @@ const ClientTablePage = () => {
               <ToolbarPageTitle />
               <ToolbarDescription>
                 <div className="flex items-center flex-wrap gap-1.5 font-medium">
-                  <span className="text-md text-gray-700">All Members:</span>
+                  <span className="text-md text-gray-700">Registered Companies:</span>
                   <span className="text-md text-gray-800 font-medium me-2">49,053</span>
-                  <span className="text-md text-gray-700">Pro Licenses</span>
+                  <span className="text-md text-gray-700">Onboarded Clients</span>
                   <span className="text-md text-gray-800 font-medium">724</span>
                 </div>
               </ToolbarDescription>
@@ -32,8 +33,9 @@ const ClientTablePage = () => {
               <a href="#" className="btn btn-sm btn-light">
                 Import CSV
               </a>
-
-              <AddClientDialog />
+              <Link to="/company/clients/create" className="btn btn-sm btn-primary">
+                Add New Client
+              </Link>
             </ToolbarActions>
           </Toolbar>
         </Container>

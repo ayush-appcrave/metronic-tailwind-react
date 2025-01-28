@@ -1,2 +1,2 @@
-export * from './ClientTableContent';
-export * from './ClientTablePage';
+export * from "./client-listing"
+export * from "./create-client"

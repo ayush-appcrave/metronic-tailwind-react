@@ -34,16 +34,16 @@ const Users = () => {
   };
   const columns = useMemo(
     () => [
-      {
-        accessorKey: 'id',
-        header: () => <DataGridRowSelectAll />,
-        cell: ({ row }) => <DataGridRowSelect row={row} />,
-        enableSorting: false,
-        enableHiding: false,
-        meta: {
-          headerClassName: 'w-0',
-        },
-      },
+      // {
+      //   accessorKey: 'id',
+      //   header: () => <DataGridRowSelectAll />,
+      //   cell: ({ row }) => <DataGridRowSelect row={row} />,
+      //   enableSorting: false,
+      //   enableHiding: false,
+      //   meta: {
+      //     headerClassName: 'w-0',
+      //   },
+      // },
       {
         accessorFn: (row) => row.user,
         id: 'users',
@@ -241,10 +241,10 @@ const Users = () => {
     <DataGrid
       columns={columns}
       data={data}
-      rowSelection={true}
-      onRowSelectionChange={handleRowSelection}
+      // rowSelection={true}
+      // onRowSelectionChange={handleRowSelection}
       pagination={{
-        size: 5,
+        size: 10,
       }}
       sorting={[
         {
