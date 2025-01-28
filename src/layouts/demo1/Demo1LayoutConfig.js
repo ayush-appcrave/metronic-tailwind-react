@@ -6,16 +6,16 @@ const demo1LayoutConfig = {
   options: {
     // Sidebar configuration
     sidebar: {
-      theme: 'light',
+      theme: 'dark',
       // Sidebar theme set to light
       fixed: true,
       // Sidebar is fixed in position
-      collapse: false // Sidebar is not collapsed by default
+      collapse: false, // Sidebar is not collapsed by default
     },
     // Header configuration
     header: {
-      fixed: true // Header is fixed in position
-    }
-  }
+      fixed: true, // Header is fixed in position
+    },
+  },
 };
 export { demo1LayoutConfig };

@@ -87,6 +87,8 @@ const Demo1LayoutProvider = ({ children }) => {
 
   // Function to collapse or expand the sidebar
   const setSidebarCollapse = (collapse) => {
+    console.log('Current collapse state:', layout.options.sidebar.collapse);
+  console.log('New collapse state:', collapse);
     const updatedLayout = {
       options: {
         sidebar: {
@@ -96,7 +98,17 @@ const Demo1LayoutProvider = ({ children }) => {
     };
     updateLayout(demo1LayoutConfig.name, updatedLayout); // Updates the layout with the collapsed state
     setLayout(getLayoutConfig()); // Refreshes the layout configuration
+
+    console.log('Updated layout:', getLayoutConfig());
+
   };
+
+  // Add this to Demo1LayoutProvider.jsx
+useEffect(() => {
+  console.log('++++Layout config:', layout);
+  console.log('++++Sidebar collapse state:', layout.options.sidebar.collapse);
+}, [layout]);
+
 
   // Function to set the sidebar theme (e.g., light or dark)
   const setSidebarTheme = (mode) => {

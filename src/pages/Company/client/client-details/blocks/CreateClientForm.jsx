@@ -1,5 +1,4 @@
 import { Alert, KeenIcon } from '@/components';
-import { FileTable } from '@/components/file-management';
 import {
   Select,
   SelectContent,
@@ -7,16 +6,16 @@ import {
   SelectTrigger,
   SelectValue,
 } from '@/components/ui/select';
+import { Textarea } from '@/components/ui/textarea';
 import clsx from 'clsx';
 import { City, State } from 'country-state-city';
 import { useFormik } from 'formik';
 import { useState } from 'react';
 import * as Yup from 'yup';
 import { companyDocumentType, companyStatus } from '../../../../../constants/company';
+
 const CreateClientForm = () => {
   const [selectedState, setSelectedState] = useState('');
-  const [documents, setDocuments] = useState([]);
-
   const indianStates = State.getStatesOfCountry('IN');
   const cities = City.getCitiesOfState('IN', selectedState);
 
@@ -41,6 +40,7 @@ const CreateClientForm = () => {
       documentType: '',
       documentName: '',
       documentFile: null,
+      remarks: '',
     },
     validationSchema: Yup.object({
       companyname: Yup.string().required('Company name is required'),
@@ -70,25 +70,11 @@ const CreateClientForm = () => {
         is: companyDocumentType.OTHER,
         then: () => Yup.string().required('Document name is required'),
       }),
+      remarks: Yup.string().required('Initial remarks are required'),
     }),
     onSubmit: async (values, { setStatus, setSubmitting }) => {
       try {
-        const formData = new FormData();
-
-        Object.keys(values).forEach((key) => {
-          if (key !== 'documents') {
-            formData.append(key, values[key]);
-          }
-        });
-
-        // Add documents
-        documents.forEach((doc, index) => {
-          formData.append(`documents[${index}][type]`, doc.type);
-          formData.append(`documents[${index}][name]`, doc.name);
-          formData.append(`documents[${index}][file]`, doc.file);
-        });
-
-        console.log('Form submission data:', formData);
+        console.log(values);
         setStatus({ type: 'success', message: 'Client created successfully' });
       } catch (error) {
         setStatus({ type: 'error', message: error.message });
@@ -105,30 +91,7 @@ const CreateClientForm = () => {
     );
     formik.setFieldValue('companyaddress.city', '');
   };
-  const handleAddDocument = () => {
-    if (!formik.values.documentType || !formik.values.documentFile) return;
 
-    const newDocument = {
-      id: Date.now(),
-      type: formik.values.documentType,
-      name:
-        formik.values.documentType === companyDocumentType.OTHER
-          ? formik.values.documentName
-          : formik.values.documentType,
-      file: formik.values.documentFile,
-      url: URL.createObjectURL(formik.values.documentFile),
-    };
-
-    setDocuments((prev) => [...prev, newDocument]);
-
-    formik.setFieldValue('documentType', '');
-    formik.setFieldValue('documentName', '');
-    formik.setFieldValue('documentFile', null);
-  };
-
-  const handleDeleteDocument = (id) => {
-    setDocuments((prev) => prev.filter((doc) => doc.id !== id));
-  };
   return (
     <div className="card">
       <div className="card-header border-b border-gray-200 py-6">
@@ -375,73 +338,85 @@ const CreateClientForm = () => {
 
         {/* Documents Section */}
 
+       {/* Documents Section */}
+<div className="flex flex-col gap-4">
+  <h4 className="text-gray-900 font-medium">Company Documents</h4>
+  <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-8">
+    <div className="flex flex-col gap-1">
+      <label className="form-label text-gray-900">Document Type</label>
+      <Select
+        value={formik.values.documentType}
+        onValueChange={(value) => formik.setFieldValue('documentType', value)}
+      >
+        <SelectTrigger>
+          <SelectValue placeholder="Select Document Type" />
+        </SelectTrigger>
+        <SelectContent>
+          {Object.values(companyDocumentType).map((type) => (
+            <SelectItem key={type} value={type}>{type}</SelectItem>
+          ))}
+        </SelectContent>
+      </Select>
+    </div>
+
+    {formik.values.documentType === companyDocumentType.OTHER && (
+      <div className="flex flex-col gap-1">
+        <label className="form-label text-gray-900">Document Name</label>
+        <label className="input">
+          <input
+            type="text"
+            placeholder="Enter document name"
+            {...formik.getFieldProps('documentName')}
+            className={clsx('form-control', {
+              'is-invalid': formik.touched.documentName && formik.errors.documentName
+            })}
+          />
+        </label>
+        {formik.touched.documentName && formik.errors.documentName && (
+          <span className="text-danger text-xs mt-1">{formik.errors.documentName}</span>
+        )}
+      </div>
+    )}
+
+    <div className="flex flex-col gap-1">
+      <label className="form-label text-gray-900">Upload Document</label>
+      <label className="btn btn-light cursor-pointer">
+        <input
+          type="file"
+          className="hidden"
+          accept=".pdf,.doc,.docx"
+          onChange={(event) => {
+            formik.setFieldValue('documentFile', event.currentTarget.files[0]);
+          }}
+        />
+        <KeenIcon icon="document" className="me-2" />
+        Choose File
+      </label>
+      {formik.values.documentFile && (
+        <span className="text-sm text-gray-600 mt-1">
+          {formik.values.documentFile.name}
+        </span>
+      )}
+    </div>
+  </div>
+</div>
+
+
+        {/* Remarks Section */}
         <div className="flex flex-col gap-4">
-          <h4 className="text-gray-900 font-medium">Company Documents</h4>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-8">
-            <div className="flex flex-col gap-1">
-              <label className="form-label text-gray-900">Document Type</label>
-              <Select
-                value={formik.values.documentType}
-                onValueChange={(value) => formik.setFieldValue('documentType', value)}
-              >
-                <SelectTrigger>
-                  <SelectValue placeholder="Select Document Type" />
-                </SelectTrigger>
-                <SelectContent>
-                  {Object.values(companyDocumentType).map((type) => (
-                    <SelectItem key={type} value={type}>
-                      {type}
-                    </SelectItem>
-                  ))}
-                </SelectContent>
-              </Select>
-            </div>
-
-            {formik.values.documentType === companyDocumentType.OTHER && (
-              <div className="flex flex-col gap-1">
-                <label className="form-label text-gray-900">Document Name</label>
-                <label className="input">
-                  <input
-                    type="text"
-                    placeholder="Enter document name"
-                    {...formik.getFieldProps('documentName')}
-                    className={clsx('form-control', {
-                      'is-invalid': formik.touched.documentName && formik.errors.documentName,
-                    })}
-                  />
-                </label>
-                {formik.touched.documentName && formik.errors.documentName && (
-                  <span className="text-danger text-xs mt-1">{formik.errors.documentName}</span>
-                )}
-              </div>
+          <h4 className="text-gray-900 font-medium">Remarks</h4>
+          <div className="flex flex-col gap-1">
+            <Textarea
+              placeholder="Add your remarks about this client..."
+              className={clsx('min-h-[120px]', {
+                'border-red-500': formik.touched.remarks && formik.errors.remarks,
+              })}
+              {...formik.getFieldProps('remarks')}
+            />
+            {formik.touched.remarks && formik.errors.remarks && (
+              <span className="text-danger text-xs mt-1">{formik.errors.remarks}</span>
             )}
-
-            <div className="flex flex-col gap-1">
-              <label className="form-label text-gray-900">Upload Document</label>
-              <label className="btn btn-light cursor-pointer">
-                <input
-                  type="file"
-                  className="hidden"
-                  accept=".pdf,.doc,.docx"
-                  onChange={(event) => {
-                    formik.setFieldValue('documentFile', event.currentTarget.files[0]);
-                  }}
-                />
-                <KeenIcon icon="document" className="me-2" />
-                Choose File
-              </label>
-            </div>
           </div>
-
-          <div className="flex justify-end gap-2">
-            <button type="button" onClick={handleAddDocument} className="btn btn-sm btn-primary">
-              Add Document
-            </button>
-          </div>
-
-          {documents.length > 0 && (
-            <FileTable documents={documents} onDelete={handleDeleteDocument} />
-          )}
         </div>
 
         <div className="flex justify-end gap-2">

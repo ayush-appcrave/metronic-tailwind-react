@@ -4,13 +4,9 @@ import { useDemo1Layout } from '../Demo1LayoutProvider';
 const SidebarToggle = () => {
   const { layout, setSidebarCollapse } = useDemo1Layout();
   const handleClick = () => {
-    if (layout.options.sidebar.collapse) {
-      console.log('Expanding sidebar'); 
-      setSidebarCollapse(false);
-    } else {
-      console.log('Collapsing sidebar'); 
-      setSidebarCollapse(true);
-    }
+    console.log('Current sidebar state:', layout.options.sidebar);
+
+    setSidebarCollapse(!layout.options.sidebar.collapse);
   };
 
   const buttonBaseClass = clsx(
