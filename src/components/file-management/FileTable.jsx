@@ -1,4 +1,5 @@
 import { DataGrid, DataGridColumnHeader, KeenIcon } from '@/components';
+import { Button } from '@/components/ui/button';
 import { useMemo } from 'react';
 
 const FileTable = ({ documents, onDelete }) => {
@@ -10,34 +11,36 @@ const FileTable = ({ documents, onDelete }) => {
         cell: (info) => info.getValue(),
       },
       {
-        accessorKey: 'name',
+        accessorKey: 'file',
         header: ({ column }) => <DataGridColumnHeader title="Document Name" column={column} />,
-        cell: (info) => info.getValue(),
+        cell: (info) => info.getValue().name,
       },
       {
         accessorKey: 'url',
-        header: ({ column }) => <DataGridColumnHeader title="Document URL" column={column} />,
-        cell: (info) => (
-          <a
-            href={info.getValue()}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="text-primary hover:text-primary-active"
-          >
-            View Document
-          </a>
-        ),
-      },
-      {
-        id: 'actions',
-        cell: ({ row }) => (
-          <button
-            onClick={() => onDelete(row.original.id)}
-            className="btn btn-icon btn-sm btn-light-danger"
-          >
-            <KeenIcon icon="trash" className="text-danger" />
-          </button>
-        ),
+        header: ({ column }) => <DataGridColumnHeader title="Actions" column={column} />,
+        cell: (info) => {
+          const url = info.getValue();
+          return (
+            <div className="flex gap-2">
+              <Button
+                variant="ghost"
+                size="sm"
+                onClick={() => window.open(url, '_blank', 'noopener,noreferrer')}
+              >
+                <KeenIcon icon="eye" className="me-2" />
+                View
+              </Button>
+              <Button
+                variant="destructive"
+                size="sm"
+                onClick={() => onDelete(info.row.original.id)}
+              >
+                <KeenIcon icon="trash" className="me-2" />
+                Delete
+              </Button>
+            </div>
+          );
+        },
       },
     ],
     [onDelete]

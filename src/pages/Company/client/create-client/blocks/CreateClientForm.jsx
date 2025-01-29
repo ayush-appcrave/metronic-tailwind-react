@@ -1,5 +1,6 @@
-import { Alert, KeenIcon } from '@/components';
-import { FileTable } from '@/components/file-management';
+import { Alert } from '@/components';
+import { FileTable, FileUpload } from '@/components/file-management';
+
 import {
   Select,
   SelectContent,
@@ -13,6 +14,8 @@ import { useFormik } from 'formik';
 import { useState } from 'react';
 import * as Yup from 'yup';
 import { companyDocumentType, companyStatus } from '../../../../../constants/company';
+import { FILE_TYPES } from '../../../../../constants/fileTypes';
+
 const CreateClientForm = () => {
   const [selectedState, setSelectedState] = useState('');
   const [documents, setDocuments] = useState([]);
@@ -104,26 +107,6 @@ const CreateClientForm = () => {
       indianStates.find((state) => state.isoCode === stateCode)?.name || ''
     );
     formik.setFieldValue('companyaddress.city', '');
-  };
-  const handleAddDocument = () => {
-    if (!formik.values.documentType || !formik.values.documentFile) return;
-
-    const newDocument = {
-      id: Date.now(),
-      type: formik.values.documentType,
-      name:
-        formik.values.documentType === companyDocumentType.OTHER
-          ? formik.values.documentName
-          : formik.values.documentType,
-      file: formik.values.documentFile,
-      url: URL.createObjectURL(formik.values.documentFile),
-    };
-
-    setDocuments((prev) => [...prev, newDocument]);
-
-    formik.setFieldValue('documentType', '');
-    formik.setFieldValue('documentName', '');
-    formik.setFieldValue('documentFile', null);
   };
 
   const handleDeleteDocument = (id) => {
@@ -377,68 +360,28 @@ const CreateClientForm = () => {
 
         <div className="flex flex-col gap-4">
           <h4 className="text-gray-900 font-medium">Company Documents</h4>
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-8">
-            <div className="flex flex-col gap-1">
-              <label className="form-label text-gray-900">Document Type</label>
-              <Select
-                value={formik.values.documentType}
-                onValueChange={(value) => formik.setFieldValue('documentType', value)}
-              >
-                <SelectTrigger>
-                  <SelectValue placeholder="Select Document Type" />
-                </SelectTrigger>
-                <SelectContent>
-                  {Object.values(companyDocumentType).map((type) => (
-                    <SelectItem key={type} value={type}>
-                      {type}
-                    </SelectItem>
-                  ))}
-                </SelectContent>
-              </Select>
-            </div>
-
-            {formik.values.documentType === companyDocumentType.OTHER && (
-              <div className="flex flex-col gap-1">
-                <label className="form-label text-gray-900">Document Name</label>
-                <label className="input">
-                  <input
-                    type="text"
-                    placeholder="Enter document name"
-                    {...formik.getFieldProps('documentName')}
-                    className={clsx('form-control', {
-                      'is-invalid': formik.touched.documentName && formik.errors.documentName,
-                    })}
-                  />
-                </label>
-                {formik.touched.documentName && formik.errors.documentName && (
-                  <span className="text-danger text-xs mt-1">{formik.errors.documentName}</span>
-                )}
-              </div>
-            )}
-
-            <div className="flex flex-col gap-1">
-              <label className="form-label text-gray-900">Upload Document</label>
-              <label className="btn btn-light cursor-pointer">
-                <input
-                  type="file"
-                  className="hidden"
-                  accept=".pdf,.doc,.docx"
-                  onChange={(event) => {
-                    formik.setFieldValue('documentFile', event.currentTarget.files[0]);
-                  }}
-                />
-                <KeenIcon icon="document" className="me-2" />
-                Choose File
-              </label>
-            </div>
-          </div>
-
-          <div className="flex justify-end gap-2">
-            <button type="button" onClick={handleAddDocument} className="btn btn-sm btn-primary">
-              Add Document
-            </button>
-          </div>
-
+          <FileUpload
+            documentType={formik.values.documentType}
+            documentName={formik.values.documentName}
+            onTypeChange={(value) => formik.setFieldValue('documentType', value)}
+            onNameChange={(value) => formik.setFieldValue('documentName', value)}
+            onFileUpload={(file, displayName) => {
+              const newDocument = {
+                id: Date.now(),
+                type: displayName,
+                name: file.name,
+                file: file,
+                url: URL.createObjectURL(file),
+              };
+              setDocuments((prev) => [...prev, newDocument]);
+              formik.setFieldValue('documentType', '');
+              formik.setFieldValue('documentName', '');
+            }}
+            documentTypes={companyDocumentType}
+            isOtherType={formik.values.documentType === companyDocumentType.OTHER}
+            formik={formik}
+            acceptedFiles={[FILE_TYPES.PDF, FILE_TYPES.DOC, FILE_TYPES.DOCX]}
+          />
           {documents.length > 0 && (
             <FileTable documents={documents} onDelete={handleDeleteDocument} />
           )}
