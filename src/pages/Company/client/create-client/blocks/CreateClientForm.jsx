@@ -15,6 +15,10 @@ import { useState } from 'react';
 import * as Yup from 'yup';
 import { companyDocumentType, companyStatus, compnayTypes } from '../../../../../constants/company';
 import { FILE_TYPES } from '../../../../../constants/fileTypes';
+import axios from "axios";
+import * as authHelper from '../../../../../auth/_helpers.js';
+
+const API_BASE_URL = import.meta.env.VITE_APP_API_URL;
 
 const CreateClientForm = () => {
   const [selectedState, setSelectedState] = useState('');
@@ -25,26 +29,26 @@ const CreateClientForm = () => {
 
   const formik = useFormik({
     initialValues: {
-      companyname: '',
-      companyemail: '',
-      companyaddress: {
+      CompanyName: '',
+      CompanyEmail: '',
+      CompanyAddress: {
         city: '',
         state: '',
       },
-      companysociallinks: {
+      CompanySocialLinks: {
         linkedin: '',
         website: '',
       },
-      companygst: '',
-      companystatus: companyStatus.REQUEST_PENDING,
-      pocname: '',
-      poccontact: '',
-      pocemail: '',
-      documents: [],
-      documentType: '',
-      documentName: '',
-      documentFile: null,
-      modeofoperations: [],
+      CompanyGst: '',
+      CompanyStatus: companyStatus.REQUEST_PENDING,
+      PocName: '',
+      PocContact: '',
+      PocEmail: '',
+      Documents: [],
+      DocumentType: '',
+      DocumentName: '',
+      DocumentFile: null,
+      ModeOfOperations: [],
     },
     validationSchema: Yup.object({
       companyname: Yup.string().required('Company name is required'),
@@ -87,20 +91,22 @@ const CreateClientForm = () => {
       try {
         const formData = new FormData();
 
-        Object.keys(values).forEach((key) => {
-          if (key !== 'documents') {
-            formData.append(key, values[key]);
-          }
-        });
+        const response = await axios.post(`${API_BASE_URL}/company/create-company-type`,formik);
+        // Object.keys(values).forEach((key) => {
+        //   if (key !== 'documents') {
+        //     formData.append(key, values[key]);
+        //   }
+        // });
+        //
+        // // Add documents
+        // documents.forEach((doc, index) => {
+        //   formData.append(`documents[${index}][type]`, doc.type);
+        //   formData.append(`documents[${index}][name]`, doc.name);
+        //   formData.append(`documents[${index}][file]`, doc.file);
+        // });
+        //
+        // console.log('Form submission data:', formData);
 
-        // Add documents
-        documents.forEach((doc, index) => {
-          formData.append(`documents[${index}][type]`, doc.type);
-          formData.append(`documents[${index}][name]`, doc.name);
-          formData.append(`documents[${index}][file]`, doc.file);
-        });
-
-        console.log('Form submission data:', formData);
         setStatus({ type: 'success', message: 'Client created successfully' });
       } catch (error) {
         setStatus({ type: 'error', message: error.message });
