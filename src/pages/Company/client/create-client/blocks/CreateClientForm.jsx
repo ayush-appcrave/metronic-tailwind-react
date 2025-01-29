@@ -22,7 +22,7 @@ const API_BASE_URL = import.meta.env.VITE_APP_API_URL;
 
 const CreateClientForm = () => {
   const [selectedState, setSelectedState] = useState('');
-  const [documents, setDocuments] = useState([]);
+  const [Documents, setDocuments] = useState([]);
 
   const indianStates = State.getStatesOfCountry('IN');
   const cities = City.getCitiesOfState('IN', selectedState);
@@ -40,7 +40,7 @@ const CreateClientForm = () => {
         website: '',
       },
       CompanyGst: '',
-      CompanyStatus: companyStatus.REQUEST_PENDING,
+      CompanyStatus: companyStatus["1"],
       PocName: '',
       PocContact: '',
       PocEmail: '',
@@ -51,38 +51,38 @@ const CreateClientForm = () => {
       ModeOfOperations: [],
     },
     validationSchema: Yup.object({
-      companyname: Yup.string().required('Company name is required'),
-      companyemail: Yup.string().email('Invalid email').required('Company email is required'),
-      companyaddress: Yup.object({
+      CompanyName: Yup.string().required('Company name is required'),
+      CompanyEmail: Yup.string().email('Invalid email').required('Company email is required'),
+      CompanyAddress: Yup.object({
         state: Yup.string().required('State is required'),
         city: Yup.string().when('state', {
           is: (state) => !!state,
           then: () => Yup.string().required('City is required'),
         }),
       }),
-      companysociallinks: Yup.object({
+      CompanySocialLinks: Yup.object({
         linkedin: Yup.string().required('LinkedIn URL is required'),
         website: Yup.string().url('Invalid URL'),
       }),
-      companygst: Yup.string()
+      CompanyGst: Yup.string()
         .matches(
           /^[0-9]{2}[A-Z]{5}[0-9]{4}[A-Z]{1}[1-9A-Z]{1}Z[0-9A-Z]{1}$/,
           'Invalid GST format. Format: 22AAAAA0000A1Z5'
         )
         .length(15, 'GST number must be exactly 15 characters'),
-      companystatus: Yup.string()
+      CompanyStatus: Yup.string()
         .required('Status is required')
         .oneOf(Object.values(companyStatus), 'Invalid status'),
-      pocemail: Yup.string().email('Invalid email'),
-      documentName: Yup.string().when('documentType', {
-        is: companyDocumentType.OTHER,
+      PocEmail: Yup.string().email('Invalid email'),
+      DocumentName: Yup.string().when('DocumentType', {
+        is: companyDocumentType["5"],
         then: () => Yup.string().required('Document name is required'),
       }),
-      modeofoperations: Yup.array()
+      ModeOfOperations: Yup.array()
         .min(1, 'At least one mode of operation is required')
         .of(
           Yup.string().oneOf(
-            Object.values(compnayTypes.modeofoperations),
+            Object.values(compnayTypes.ModeOfOperations),
             'Invalid mode of operation'
           )
         ),
@@ -91,18 +91,18 @@ const CreateClientForm = () => {
       try {
         const formData = new FormData();
 
-        const response = await axios.post(`${API_BASE_URL}/company/create-company-type`,formik);
+        const response = await axios.post(`${API_BASE_URL}/company/create-company-type`,formik.values);
         // Object.keys(values).forEach((key) => {
-        //   if (key !== 'documents') {
+        //   if (key !== 'Documents') {
         //     formData.append(key, values[key]);
         //   }
         // });
         //
         // // Add documents
-        // documents.forEach((doc, index) => {
-        //   formData.append(`documents[${index}][type]`, doc.type);
-        //   formData.append(`documents[${index}][name]`, doc.name);
-        //   formData.append(`documents[${index}][file]`, doc.file);
+        // Documents.forEach((doc, index) => {
+        //   formData.append(`Documents[${index}][type]`, doc.type);
+        //   formData.append(`Documents[${index}][name]`, doc.name);
+        //   formData.append(`Documents[${index}][file]`, doc.file);
         // });
         //
         // console.log('Form submission data:', formData);
@@ -118,21 +118,21 @@ const CreateClientForm = () => {
   const handleStateChange = (stateCode) => {
     setSelectedState(stateCode);
     formik.setFieldValue(
-      'companyaddress.state',
+      'CompanyAddress.state',
       indianStates.find((state) => state.isoCode === stateCode)?.name || ''
     );
-    formik.setFieldValue('companyaddress.city', '');
+    formik.setFieldValue('CompanyAddress.city', '');
   };
 
   const handleDeleteDocument = (id) => {
     setDocuments((prev) => prev.filter((doc) => doc.id !== id));
   };
   const handleModeOfOperationsChange = (value) => {
-    const currentModes = formik.values.modeofoperations;
+    const currentModes = formik.values.ModeOfOperations;
     const updatedModes = currentModes.includes(value)
       ? currentModes.filter((mode) => mode !== value)
       : [...currentModes, value];
-    formik.setFieldValue('modeofoperations', updatedModes);
+    formik.setFieldValue('ModeOfOperations', updatedModes);
   };
   return (
     <div className="card">
@@ -157,14 +157,14 @@ const CreateClientForm = () => {
               <input
                 type="text"
                 placeholder="Enter company name"
-                {...formik.getFieldProps('companyname')}
+                {...formik.getFieldProps('CompanyName')}
                 className={clsx('form-control', {
-                  'is-invalid': formik.touched.companyname && formik.errors.companyname,
+                  'is-invalid': formik.touched.CompanyName && formik.errors.CompanyName,
                 })}
               />
             </label>
-            {formik.touched.companyname && formik.errors.companyname && (
-              <span className="text-danger text-xs mt-1">{formik.errors.companyname}</span>
+            {formik.touched.CompanyName && formik.errors.CompanyName && (
+              <span className="text-danger text-xs mt-1">{formik.errors.CompanyName}</span>
             )}
           </div>
 
@@ -176,14 +176,14 @@ const CreateClientForm = () => {
               <input
                 type="email"
                 placeholder="Enter company email"
-                {...formik.getFieldProps('companyemail')}
+                {...formik.getFieldProps('CompanyEmail')}
                 className={clsx('form-control', {
-                  'is-invalid': formik.touched.companyemail && formik.errors.companyemail,
+                  'is-invalid': formik.touched.CompanyEmail && formik.errors.CompanyEmail,
                 })}
               />
             </label>
-            {formik.touched.companyemail && formik.errors.companyemail && (
-              <span className="text-danger text-xs mt-1">{formik.errors.companyemail}</span>
+            {formik.touched.CompanyEmail && formik.errors.CompanyEmail && (
+              <span className="text-danger text-xs mt-1">{formik.errors.CompanyEmail}</span>
             )}
           </div>
         </div>
@@ -193,11 +193,11 @@ const CreateClientForm = () => {
             Mode of Operations <span className="text-danger">*</span>
           </label>
           <div className="flex md:flex-row flex-col gap-4">
-            {Object.entries(compnayTypes.modeofoperations).map(([key, value]) => (
+            {Object.entries(compnayTypes.ModeOfOperations).map(([key, value]) => (
               <div key={key} className="flex items-center space-x-2">
                 <Checkbox
                   id={`mode-${key}`}
-                  checked={formik.values.modeofoperations.includes(value)}
+                  checked={formik.values.ModeOfOperations.includes(value)}
                   onCheckedChange={() => handleModeOfOperationsChange(value)}
                 />
                 <label
@@ -209,8 +209,8 @@ const CreateClientForm = () => {
               </div>
             ))}
           </div>
-          {formik.touched.modeofoperations && formik.errors.modeofoperations && (
-            <span className="text-danger text-xs mt-1">{formik.errors.modeofoperations}</span>
+          {formik.touched.ModeOfOperations && formik.errors.ModeOfOperations && (
+            <span className="text-danger text-xs mt-1">{formik.errors.ModeOfOperations}</span>
           )}
         </div>
         {/* Address */}
@@ -223,7 +223,7 @@ const CreateClientForm = () => {
               <SelectTrigger
                 className={clsx('w-full', {
                   'border-red-500':
-                    formik.touched.companyaddress?.state && formik.errors.companyaddress?.state,
+                    formik.touched.CompanyAddress?.state && formik.errors.CompanyAddress?.state,
                 })}
               >
                 <SelectValue placeholder="Select State" />
@@ -236,8 +236,8 @@ const CreateClientForm = () => {
                 ))}
               </SelectContent>
             </Select>
-            {formik.touched.companyaddress?.state && formik.errors.companyaddress?.state && (
-              <span className="text-danger text-xs mt-1">{formik.errors.companyaddress.state}</span>
+            {formik.touched.CompanyAddress?.state && formik.errors.CompanyAddress?.state && (
+              <span className="text-danger text-xs mt-1">{formik.errors.CompanyAddress.state}</span>
             )}
           </div>
 
@@ -246,14 +246,14 @@ const CreateClientForm = () => {
               City {selectedState && <span className="text-danger">*</span>}
             </label>
             <Select
-              value={formik.values.companyaddress.city}
-              onValueChange={(city) => formik.setFieldValue('companyaddress.city', city)}
+              value={formik.values.CompanyAddress.city}
+              onValueChange={(city) => formik.setFieldValue('CompanyAddress.city', city)}
               disabled={!selectedState}
             >
               <SelectTrigger
                 className={clsx('w-full', {
                   'border-red-500':
-                    formik.touched.companyaddress?.city && formik.errors.companyaddress?.city,
+                    formik.touched.CompanyAddress?.city && formik.errors.CompanyAddress?.city,
                 })}
               >
                 <SelectValue placeholder="Select City" />
@@ -266,8 +266,8 @@ const CreateClientForm = () => {
                 ))}
               </SelectContent>
             </Select>
-            {formik.touched.companyaddress?.city && formik.errors.companyaddress?.city && (
-              <span className="text-danger text-xs mt-1">{formik.errors.companyaddress.city}</span>
+            {formik.touched.CompanyAddress?.city && formik.errors.CompanyAddress?.city && (
+              <span className="text-danger text-xs mt-1">{formik.errors.CompanyAddress.city}</span>
             )}
           </div>
         </div>
@@ -282,18 +282,18 @@ const CreateClientForm = () => {
               <input
                 type="url"
                 placeholder="Enter LinkedIn URL"
-                {...formik.getFieldProps('companysociallinks.linkedin')}
+                {...formik.getFieldProps('CompanySocialLinks.linkedin')}
                 className={clsx('form-control', {
                   'is-invalid':
-                    formik.touched.companysociallinks?.linkedin &&
-                    formik.errors.companysociallinks?.linkedin,
+                    formik.touched.CompanySocialLinks?.linkedin &&
+                    formik.errors.CompanySocialLinks?.linkedin,
                 })}
               />
             </label>
-            {formik.touched.companysociallinks?.linkedin &&
-              formik.errors.companysociallinks?.linkedin && (
+            {formik.touched.CompanySocialLinks?.linkedin &&
+              formik.errors.CompanySocialLinks?.linkedin && (
                 <span className="text-danger text-xs mt-1">
-                  {formik.errors.companysociallinks.linkedin}
+                  {formik.errors.CompanySocialLinks.linkedin}
                 </span>
               )}
           </div>
@@ -304,7 +304,7 @@ const CreateClientForm = () => {
               <input
                 type="url"
                 placeholder="Enter website URL"
-                {...formik.getFieldProps('companysociallinks.website')}
+                {...formik.getFieldProps('CompanySocialLinks.website')}
                 className="form-control"
               />
             </label>
@@ -319,14 +319,14 @@ const CreateClientForm = () => {
               <input
                 type="text"
                 placeholder="Enter GST number (e.g., 22AAAAA0000A1Z5)"
-                {...formik.getFieldProps('companygst')}
+                {...formik.getFieldProps('CompanyGst')}
                 className={clsx('form-control', {
-                  'is-invalid': formik.touched.companygst && formik.errors.companygst,
+                  'is-invalid': formik.touched.CompanyGst && formik.errors.CompanyGst,
                 })}
               />
             </label>
-            {formik.touched.companygst && formik.errors.companygst && (
-              <span className="text-danger text-xs mt-1">{formik.errors.companygst}</span>
+            {formik.touched.CompanyGst && formik.errors.CompanyGst && (
+              <span className="text-danger text-xs mt-1">{formik.errors.CompanyGst}</span>
             )}
           </div>
 
@@ -335,12 +335,12 @@ const CreateClientForm = () => {
               Status <span className="text-danger">*</span>
             </label>
             <Select
-              value={formik.values.companystatus}
-              onValueChange={(value) => formik.setFieldValue('companystatus', value)}
+              value={formik.values.CompanyStatus}
+              onValueChange={(value) => formik.setFieldValue('CompanyStatus', value)}
             >
               <SelectTrigger
                 className={clsx('w-full', {
-                  'border-red-500': formik.touched.companystatus && formik.errors.companystatus,
+                  'border-red-500': formik.touched.CompanyStatus && formik.errors.CompanyStatus,
                 })}
               >
                 <SelectValue placeholder="Select Status" />
@@ -353,8 +353,8 @@ const CreateClientForm = () => {
                 ))}
               </SelectContent>
             </Select>
-            {formik.touched.companystatus && formik.errors.companystatus && (
-              <span className="text-danger text-xs mt-1">{formik.errors.companystatus}</span>
+            {formik.touched.CompanyStatus && formik.errors.CompanyStatus && (
+              <span className="text-danger text-xs mt-1">{formik.errors.CompanyStatus}</span>
             )}
           </div>
         </div>
@@ -367,7 +367,7 @@ const CreateClientForm = () => {
               <input
                 type="text"
                 placeholder="Enter POC name"
-                {...formik.getFieldProps('pocname')}
+                {...formik.getFieldProps('PocName')}
                 className="form-control"
               />
             </label>
@@ -379,7 +379,7 @@ const CreateClientForm = () => {
               <input
                 type="tel"
                 placeholder="Enter POC contact"
-                {...formik.getFieldProps('poccontact')}
+                {...formik.getFieldProps('PocContact')}
                 className="form-control"
               />
             </label>
@@ -391,14 +391,14 @@ const CreateClientForm = () => {
               <input
                 type="email"
                 placeholder="Enter POC email"
-                {...formik.getFieldProps('pocemail')}
+                {...formik.getFieldProps('PocEmail')}
                 className={clsx('form-control', {
-                  'is-invalid': formik.touched.pocemail && formik.errors.pocemail,
+                  'is-invalid': formik.touched.PocEmail && formik.errors.PocEmail,
                 })}
               />
             </label>
-            {formik.touched.pocemail && formik.errors.pocemail && (
-              <span className="text-danger text-xs mt-1">{formik.errors.pocemail}</span>
+            {formik.touched.PocEmail && formik.errors.PocEmail && (
+              <span className="text-danger text-xs mt-1">{formik.errors.PocEmail}</span>
             )}
           </div>
         </div>
@@ -408,10 +408,10 @@ const CreateClientForm = () => {
         <div className="flex flex-col gap-4">
           <h4 className="text-gray-900 font-medium">Company Documents</h4>
           <FileUpload
-            documentType={formik.values.documentType}
-            documentName={formik.values.documentName}
-            onTypeChange={(value) => formik.setFieldValue('documentType', value)}
-            onNameChange={(value) => formik.setFieldValue('documentName', value)}
+            DocumentType={formik.values.DocumentType}
+            DocumentName={formik.values.DocumentName}
+            onTypeChange={(value) => formik.setFieldValue('DocumentType', value)}
+            onNameChange={(value) => formik.setFieldValue('DocumentName', value)}
             onFileUpload={(file, displayName) => {
               const newDocument = {
                 id: Date.now(),
@@ -421,16 +421,16 @@ const CreateClientForm = () => {
                 url: URL.createObjectURL(file),
               };
               setDocuments((prev) => [...prev, newDocument]);
-              formik.setFieldValue('documentType', '');
-              formik.setFieldValue('documentName', '');
+              formik.setFieldValue('DocumentType', '');
+              formik.setFieldValue('DocumentName', '');
             }}
             documentTypes={companyDocumentType}
-            isOtherType={formik.values.documentType === companyDocumentType.OTHER}
+            isOtherType={formik.values.DocumentType === companyDocumentType["5"]}
             formik={formik}
             acceptedFiles={[FILE_TYPES.PDF, FILE_TYPES.DOC, FILE_TYPES.DOCX]}
           />
-          {documents.length > 0 && (
-            <FileTable documents={documents} onDelete={handleDeleteDocument} />
+          {Documents.length > 0 && (
+            <FileTable documents={Documents} onDelete={handleDeleteDocument} />
           )}
         </div>
 

@@ -32,7 +32,7 @@ const CreateClientForm = () => {
         website: '',
       },
       companygst: '',
-      companystatus: companyStatus.REQUEST_PENDING,
+      companystatus: companyStatus["1"],
       pocname: '',
       poccontact: '',
       pocemail: '',
@@ -67,7 +67,7 @@ const CreateClientForm = () => {
         .oneOf(Object.values(companyStatus), 'Invalid status'),
       pocemail: Yup.string().email('Invalid email'),
       documentName: Yup.string().when('documentType', {
-        is: companyDocumentType.OTHER,
+        is: companyDocumentType["5"],
         then: () => Yup.string().required('Document name is required'),
       }),
       remarks: Yup.string().required('Initial remarks are required'),
@@ -359,7 +359,7 @@ const CreateClientForm = () => {
       </Select>
     </div>
 
-    {formik.values.documentType === companyDocumentType.OTHER && (
+    {formik.values.documentType === companyDocumentType["5"] && (
       <div className="flex flex-col gap-1">
         <label className="form-label text-gray-900">Document Name</label>
         <label className="input">
