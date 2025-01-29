@@ -3,7 +3,7 @@ export const compnayTypes = {
     VENDOR: 'vendor',
     CLIENT: 'client',
   },
-  subtypes: {
+  modeofoperations: {
     C2C: 'Contract-to-Contract (C2C)',
     C2H: 'Contract-to-Hire (C2H)',
     FTE: 'Full-Time Employment (FTE)',
