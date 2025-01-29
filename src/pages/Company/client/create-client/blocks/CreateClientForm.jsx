@@ -1,6 +1,6 @@
 import { Alert } from '@/components';
 import { FileTable, FileUpload } from '@/components/file-management';
-
+import { Checkbox } from '@/components/ui/checkbox';
 import {
   Select,
   SelectContent,
@@ -13,7 +13,7 @@ import { City, State } from 'country-state-city';
 import { useFormik } from 'formik';
 import { useState } from 'react';
 import * as Yup from 'yup';
-import { companyDocumentType, companyStatus } from '../../../../../constants/company';
+import { companyDocumentType, companyStatus, compnayTypes } from '../../../../../constants/company';
 import { FILE_TYPES } from '../../../../../constants/fileTypes';
 
 const CreateClientForm = () => {
@@ -44,6 +44,7 @@ const CreateClientForm = () => {
       documentType: '',
       documentName: '',
       documentFile: null,
+      modeofoperations: [],
     },
     validationSchema: Yup.object({
       companyname: Yup.string().required('Company name is required'),
@@ -73,6 +74,14 @@ const CreateClientForm = () => {
         is: companyDocumentType.OTHER,
         then: () => Yup.string().required('Document name is required'),
       }),
+      modeofoperations: Yup.array()
+        .min(1, 'At least one mode of operation is required')
+        .of(
+          Yup.string().oneOf(
+            Object.values(compnayTypes.modeofoperations),
+            'Invalid mode of operation'
+          )
+        ),
     }),
     onSubmit: async (values, { setStatus, setSubmitting }) => {
       try {
@@ -111,6 +120,13 @@ const CreateClientForm = () => {
 
   const handleDeleteDocument = (id) => {
     setDocuments((prev) => prev.filter((doc) => doc.id !== id));
+  };
+  const handleModeOfOperationsChange = (value) => {
+    const currentModes = formik.values.modeofoperations;
+    const updatedModes = currentModes.includes(value)
+      ? currentModes.filter((mode) => mode !== value)
+      : [...currentModes, value];
+    formik.setFieldValue('modeofoperations', updatedModes);
   };
   return (
     <div className="card">
@@ -165,7 +181,32 @@ const CreateClientForm = () => {
             )}
           </div>
         </div>
-
+        {/* Mode of Operations */}
+        <div className="flex flex-col gap-4">
+          <label className="form-label text-gray-900">
+            Mode of Operations <span className="text-danger">*</span>
+          </label>
+          <div className="flex md:flex-row flex-col gap-4">
+            {Object.entries(compnayTypes.modeofoperations).map(([key, value]) => (
+              <div key={key} className="flex items-center space-x-2">
+                <Checkbox
+                  id={`mode-${key}`}
+                  checked={formik.values.modeofoperations.includes(value)}
+                  onCheckedChange={() => handleModeOfOperationsChange(value)}
+                />
+                <label
+                  htmlFor={`mode-${key}`}
+                  className="text-sm font-medium leading-none peer-disabled:cursor-not-allowed peer-disabled:opacity-70"
+                >
+                  {value}
+                </label>
+              </div>
+            ))}
+          </div>
+          {formik.touched.modeofoperations && formik.errors.modeofoperations && (
+            <span className="text-danger text-xs mt-1">{formik.errors.modeofoperations}</span>
+          )}
+        </div>
         {/* Address */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-8">
           <div className="flex flex-col gap-1">
