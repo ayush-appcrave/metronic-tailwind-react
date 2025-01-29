@@ -31,15 +31,15 @@ const CreateClientForm = () => {
       CompanyName: '',
       CompanyEmail: '',
       CompanyAddress: {
-        city: '',
+        City: '',
         state: '',
       },
       CompanySocialLinks: {
-        linkedin: '',
-        website: '',
+        Linkedin: '',
+        Website: '',
       },
       CompanyGst: '',
-      CompanyStatus: companyStatus['1'],
+      CompanyStatus: '',
       PocName: '',
       PocContact: '',
       PocEmail: '',
@@ -53,15 +53,15 @@ const CreateClientForm = () => {
       CompanyName: Yup.string().required('Company name is required'),
       CompanyEmail: Yup.string().email('Invalid email').required('Company email is required'),
       CompanyAddress: Yup.object({
-        state: Yup.string().required('State is required'),
-        city: Yup.string().when('state', {
+        State: Yup.string().required('State is required'),
+        City: Yup.string().when('state', {
           is: (state) => !!state,
           then: () => Yup.string().required('City is required'),
         }),
       }),
       CompanySocialLinks: Yup.object({
-        linkedin: Yup.string().required('LinkedIn URL is required'),
-        website: Yup.string().url('Invalid URL'),
+        Linkedin: Yup.string().required('LinkedIn URL is required'),
+        Website: Yup.string().url('Invalid URL'),
       }),
       CompanyGst: Yup.string()
         .matches(
@@ -120,7 +120,7 @@ const CreateClientForm = () => {
   const handleStateChange = (stateCode) => {
     setSelectedState(stateCode);
     // Set the state code instead of the state name
-    formik.setFieldValue('CompanyAddress.state', stateCode);
+    formik.setFieldValue('CompanyAddress.State', stateCode);
     formik.setFieldValue('CompanyAddress.city', '');
   };
 
@@ -226,7 +226,7 @@ const CreateClientForm = () => {
               <SelectTrigger
                 className={clsx('w-full', {
                   'border-red-500':
-                    formik.touched.CompanyAddress?.state && formik.errors.CompanyAddress?.state,
+                    formik.touched.CompanyAddress?.State && formik.errors.CompanyAddress?.State,
                 })}
               >
                 <SelectValue placeholder="Select State" />
@@ -239,8 +239,8 @@ const CreateClientForm = () => {
                 ))}
               </SelectContent>
             </Select>
-            {formik.touched.CompanyAddress?.state && formik.errors.CompanyAddress?.state && (
-              <span className="text-danger text-xs mt-1">{formik.errors.CompanyAddress.state}</span>
+            {formik.touched.CompanyAddress?.State && formik.errors.CompanyAddress?.State && (
+              <span className="text-danger text-xs mt-1">{formik.errors.CompanyAddress.State}</span>
             )}
           </div>
 
@@ -249,14 +249,14 @@ const CreateClientForm = () => {
               City {selectedState && <span className="text-danger">*</span>}
             </label>
             <Select
-              value={formik.values.CompanyAddress.city}
+              value={formik.values.CompanyAddress.City}
               onValueChange={(cityCode) => formik.setFieldValue('CompanyAddress.city', cityCode)}
               disabled={!selectedState}
             >
               <SelectTrigger
                 className={clsx('w-full', {
                   'border-red-500':
-                    formik.touched.CompanyAddress?.city && formik.errors.CompanyAddress?.city,
+                    formik.touched.CompanyAddress?.City && formik.errors.CompanyAddress?.City,
                 })}
               >
                 <SelectValue placeholder="Select City" />
@@ -269,8 +269,8 @@ const CreateClientForm = () => {
                 ))}
               </SelectContent>
             </Select>
-            {formik.touched.CompanyAddress?.city && formik.errors.CompanyAddress?.city && (
-              <span className="text-danger text-xs mt-1">{formik.errors.CompanyAddress.city}</span>
+            {formik.touched.CompanyAddress?.City && formik.errors.CompanyAddress?.City && (
+              <span className="text-danger text-xs mt-1">{formik.errors.CompanyAddress.City}</span>
             )}
           </div>
         </div>
@@ -288,15 +288,15 @@ const CreateClientForm = () => {
                 {...formik.getFieldProps('CompanySocialLinks.linkedin')}
                 className={clsx('form-control', {
                   'is-invalid':
-                    formik.touched.CompanySocialLinks?.linkedin &&
-                    formik.errors.CompanySocialLinks?.linkedin,
+                    formik.touched.CompanySocialLinks?.Linkedin &&
+                    formik.errors.CompanySocialLinks?.Linkedin,
                 })}
               />
             </label>
-            {formik.touched.CompanySocialLinks?.linkedin &&
-              formik.errors.CompanySocialLinks?.linkedin && (
+            {formik.touched.CompanySocialLinks?.Linkedin &&
+              formik.errors.CompanySocialLinks?.Linkedin && (
                 <span className="text-danger text-xs mt-1">
-                  {formik.errors.CompanySocialLinks.linkedin}
+                  {formik.errors.CompanySocialLinks.Linkedin}
                 </span>
               )}
           </div>

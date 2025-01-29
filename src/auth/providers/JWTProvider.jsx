@@ -42,7 +42,6 @@ const AuthProvider = ({ children }) => {
     if (savedAuth) {
       try {
         const response = await axios.post(AUTH_VERIFY_TOKEN_URL);
-        console.log(response.data);
         if (response.data.valid) {
           // Update user data with fresh data from server
           const verifiedAuth = {
@@ -76,11 +75,11 @@ const AuthProvider = ({ children }) => {
       authHelper.removeAuth();
     }
   };
-  const login = async (email, password) => {
+  const login = async (Email, Password) => {
     try {
       const { data } = await axios.post(AUTH_LOGIN_URL, {
-        email,
-        password,
+        Email,
+        Password,
       });
       const auth = data?.data;
 
@@ -101,13 +100,13 @@ const AuthProvider = ({ children }) => {
       };
     }
   };
-  const register = async (email, password, role, fullname) => {
+  const register = async (Email, Password, Role, FullName) => {
     try {
       const response = await axios.post(AUTH_CREATE_USER_URL, {
-        email,
-        password,
-        role,
-        fullname,
+        Email,
+        Password,
+        Role,
+        FullName,
       });
 
       return {
@@ -125,17 +124,17 @@ const AuthProvider = ({ children }) => {
     }
   };
 
-  const requestPasswordResetLink = async (email) => {
+  const requestPasswordResetLink = async (Email) => {
     // await axios.post(FORGOT_PASSWORD_URL, {
-    //   email,
+    //   Email,
     // });
     return Promise.resolve();
   };
-  const changePassword = async (email, token, password, password_confirmation) => {
+  const changePassword = async (Email, token, Password, password_confirmation) => {
     await axios.post(RESET_PASSWORD_URL, {
-      email,
+      Email,
       token,
-      password,
+      Password,
       password_confirmation,
     });
   };

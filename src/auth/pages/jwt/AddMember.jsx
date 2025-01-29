@@ -1,5 +1,4 @@
 import { Alert, KeenIcon } from '@/components';
-import { useLayout } from '@/providers';
 import clsx from 'clsx';
 import { useFormik } from 'formik';
 import { useState } from 'react';
@@ -10,19 +9,19 @@ import { VALIDATION_MESSAGES, VALIDATION_REGEX } from '../../../constants/valida
 import { useAuthContext } from '../../useAuthContext.js';
 
 const initialValues = {
-  email: '',
-  password: '',
-  role: '',
-  fullname: '',
+  Email: '',
+  Password: '',
+  Role: '',
+  FullName: '',
 };
 const AddMemberSchema = Yup.object().shape({
-  fullname: Yup.string().min(3, 'Minimum 3 symbols').required('Full name is required'),
+  FullName: Yup.string().min(3, 'Minimum 3 symbols').required('FullName is required'),
 
-  email: Yup.string()
+  Email: Yup.string()
     .matches(VALIDATION_REGEX.EMAIL, VALIDATION_MESSAGES.EMAIL)
     .required(VALIDATION_MESSAGES.EMAIL.REQUIRED),
 
-  password: Yup.string()
+  Password: Yup.string()
     .min(8, VALIDATION_MESSAGES.PASSWORD.MIN_LENGTH)
     .matches(VALIDATION_REGEX.PASSWORD_RULES.UPPERCASE, VALIDATION_MESSAGES.PASSWORD.UPPERCASE)
     .matches(VALIDATION_REGEX.PASSWORD_RULES.LOWERCASE, VALIDATION_MESSAGES.PASSWORD.LOWERCASE)
@@ -33,7 +32,7 @@ const AddMemberSchema = Yup.object().shape({
     )
     .required('Password is required'),
 
-  role: Yup.string().required('Role is required'),
+  Role: Yup.string().required('Role is required'),
 });
 
 const AddMember = () => {
@@ -41,7 +40,6 @@ const AddMember = () => {
   const { register } = useAuthContext();
   const navigate = useNavigate();
   const [showPassword, setShowPassword] = useState(false);
-  const { currentLayout } = useLayout();
   const formik = useFormik({
     initialValues,
     validationSchema: AddMemberSchema,
@@ -49,7 +47,7 @@ const AddMember = () => {
       setSubmitting(true);
       setLoading(true);
 
-      const response = await register(values.email, values.password, values.role, values.fullname);
+      const response = await register(values.Email, values.Password, values.Role, values.FullName);
 
       if (response.success) {
         setStatus({ type: 'success', message: response.message });
@@ -97,21 +95,21 @@ const AddMember = () => {
               placeholder="Full Name"
               type="text"
               autoComplete="off"
-              {...formik.getFieldProps('fullname')}
+              {...formik.getFieldProps('FullName')}
               className={clsx(
                 'form-control bg-transparent',
                 {
-                  'is-invalid': formik.touched.fullname && formik.errors.fullname,
+                  'is-invalid': formik.touched.FullName && formik.errors.FullName,
                 },
                 {
-                  'is-valid': formik.touched.fullname && !formik.errors.fullname,
+                  'is-valid': formik.touched.FullName && !formik.errors.FullName,
                 }
               )}
             />
           </label>
-          {formik.touched.fullname && formik.errors.fullname && (
+          {formik.touched.FullName && formik.errors.FullName && (
             <span role="alert" className="text-danger text-xs mt-1">
-              {formik.errors.fullname}
+              {formik.errors.FullName}
             </span>
           )}
         </div>
@@ -122,21 +120,21 @@ const AddMember = () => {
               placeholder="email@mail.com"
               type="email"
               autoComplete="off"
-              {...formik.getFieldProps('email')}
+              {...formik.getFieldProps('Email')}
               className={clsx(
                 'form-control bg-transparent',
                 {
-                  'is-invalid': formik.touched.email && formik.errors.email,
+                  'is-invalid': formik.touched.Email && formik.errors.Email,
                 },
                 {
-                  'is-valid': formik.touched.email && !formik.errors.email,
+                  'is-valid': formik.touched.Email && !formik.errors.Email,
                 }
               )}
             />
           </label>
-          {formik.touched.email && formik.errors.email && (
+          {formik.touched.Email && formik.errors.Email && (
             <span role="alert" className="text-danger text-xs mt-1">
-              {formik.errors.email}
+              {formik.errors.Email}
             </span>
           )}
         </div>
@@ -147,14 +145,14 @@ const AddMember = () => {
               type={showPassword ? 'text' : 'password'}
               placeholder="Enter Password"
               autoComplete="off"
-              {...formik.getFieldProps('password')}
+              {...formik.getFieldProps('Password')}
               className={clsx(
                 'form-control bg-transparent',
                 {
-                  'is-invalid': formik.touched.password && formik.errors.password,
+                  'is-invalid': formik.touched.Password && formik.errors.Password,
                 },
                 {
-                  'is-valid': formik.touched.password && !formik.errors.password,
+                  'is-valid': formik.touched.Password && !formik.errors.Password,
                 }
               )}
             />
@@ -173,9 +171,9 @@ const AddMember = () => {
               />
             </button>
           </label>
-          {formik.touched.password && formik.errors.password && (
+          {formik.touched.Password && formik.errors.Password && (
             <span role="alert" className="text-danger text-xs mt-1">
-              {formik.errors.password}
+              {formik.errors.Password}
             </span>
           )}
         </div>
@@ -183,26 +181,26 @@ const AddMember = () => {
           <label className="form-label text-gray-900">Role</label>
           <label className="input">
             <select
-              {...formik.getFieldProps('role')}
+              {...formik.getFieldProps('Role')}
               className={clsx('form-select bg-transparent w-full', {
-                'is-invalid': formik.touched.role && formik.errors.role,
-                'is-valid': formik.touched.role && !formik.errors.role,
+                'is-invalid': formik.touched.Role && formik.errors.Role,
+                'is-valid': formik.touched.Role && !formik.errors.Role,
               })}
             >
-              <option value="">Select a role</option>
+              <option value="">Select a Role</option>
               {Object.entries(userRole).map(([key, value]) => (
-                <option key={value} value={value}>
-                  {key
-                    .split('_')
+                <option key={key} value={key}>
+                  {value
+                    .split(/(?=[A-Z])/) // Split camelCase into words
                     .map((word) => word.charAt(0).toUpperCase() + word.slice(1).toLowerCase())
                     .join(' ')}
                 </option>
               ))}
             </select>
           </label>
-          {formik.touched.role && formik.errors.role && (
+          {formik.touched.Role && formik.errors.Role && (
             <span role="alert" className="text-danger text-xs mt-1">
-              {formik.errors.role}
+              {formik.errors.Role}
             </span>
           )}
         </div>

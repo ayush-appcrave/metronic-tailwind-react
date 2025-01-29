@@ -1,9 +1,8 @@
-import { Navigate, Outlet } from 'react-router-dom';
 import { useAuthContext } from '@/auth/useAuthContext';
 import { ScreenLoader } from '@/components/loaders/ScreenLoader';
+import { Navigate, Outlet } from 'react-router-dom';
 const ProtectedRoute = ({ allowedRoles = [] }) => {
   const { currentUser, loading } = useAuthContext();
-  console.log(currentUser);
 
   if (loading) {
     return <ScreenLoader />;

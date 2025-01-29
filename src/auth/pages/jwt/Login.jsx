@@ -9,15 +9,15 @@ import * as Yup from 'yup';
 import { VALIDATION_MESSAGES, VALIDATION_REGEX } from '../../../constants/validation';
 
 const initialValues = {
-  email: '',
-  password: '',
+  Email: '',
+  Password: '',
 };
 const loginSchema = Yup.object().shape({
-  email: Yup.string()
+  Email: Yup.string()
     .matches(VALIDATION_REGEX.EMAIL, VALIDATION_MESSAGES.EMAIL)
     .required('Email is required'),
 
-  password: Yup.string()
+  Password: Yup.string()
     .min(8, VALIDATION_MESSAGES.PASSWORD.MIN_LENGTH)
     .matches(VALIDATION_REGEX.PASSWORD_RULES.UPPERCASE, VALIDATION_MESSAGES.PASSWORD.UPPERCASE)
     .matches(VALIDATION_REGEX.PASSWORD_RULES.LOWERCASE, VALIDATION_MESSAGES.PASSWORD.LOWERCASE)
@@ -44,8 +44,7 @@ const Login = () => {
       setSubmitting(true);
       setLoading(true);
 
-      const response = await login(values.email, values.password);
-      console.log(response);
+      const response = await login(values.Email, values.Password);
       if (response.success) {
         setStatus({ type: 'success', message: response.message });
         navigate(from, { replace: true });
@@ -84,15 +83,15 @@ const Login = () => {
             <input
               placeholder="Enter Email"
               autoComplete="off"
-              {...formik.getFieldProps('email')}
+              {...formik.getFieldProps('Email')}
               className={clsx('form-control', {
-                'is-invalid': formik.touched.email && formik.errors.email,
+                'is-invalid': formik.touched.Email && formik.errors.Email,
               })}
             />
           </label>
-          {formik.touched.email && formik.errors.email && (
+          {formik.touched.Email && formik.errors.Email && (
             <span role="alert" className="text-danger text-xs mt-1">
-              {formik.errors.email}
+              {formik.errors.Email}
             </span>
           )}
         </div>
@@ -116,9 +115,9 @@ const Login = () => {
               type={showPassword ? 'text' : 'password'}
               placeholder="Enter Password"
               autoComplete="off"
-              {...formik.getFieldProps('password')}
+              {...formik.getFieldProps('Password')}
               className={clsx('form-control', {
-                'is-invalid': formik.touched.password && formik.errors.password,
+                'is-invalid': formik.touched.Password && formik.errors.Password,
               })}
             />
             <button className="btn btn-icon" onClick={togglePassword}>
@@ -136,9 +135,9 @@ const Login = () => {
               />
             </button>
           </label>
-          {formik.touched.password && formik.errors.password && (
+          {formik.touched.Password && formik.errors.Password && (
             <span role="alert" className="text-danger text-xs mt-1">
-              {formik.errors.password}
+              {formik.errors.Password}
             </span>
           )}
         </div>
