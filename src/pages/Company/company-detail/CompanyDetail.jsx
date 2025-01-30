@@ -14,16 +14,16 @@ import { ClientForm } from './blocks';
 import { DocumentUpload } from './blocks/DocumentUpload';
 
 const CompanyDetail = ({ companyType }) => {
-  
+
   const { currentLayout } = useLayout();
   const { id } = useParams();
   const [companyId, setCompanyId] = useState(id || null);
 
-  const loadCompanyDetails = (companyId) => {
-    // API call or logic to fetch company details from DB
-    console.log(`Loading data for companyId: ${companyId}`);
-    setCompanyId(companyId); // Ensure state is updated properly
-  };
+  // const loadCompanyDetails = (companyId) => {
+  //   // API call or logic to fetch company details from DB
+  //   console.log(`Loading data for companyId: ${companyId}`);
+  //   setCompanyId(companyId); // Ensure state is updated properly
+  // };
 
   const handleClientCreated = (createdCompanyId) => {
     setCompanyId(createdCompanyId);
@@ -54,18 +54,13 @@ const CompanyDetail = ({ companyType }) => {
       )}
 
       <Container>
-      <div className="grid gap-5 lg:gap-7.5">
-      <ClientForm onClientCreated={handleClientCreated} companyType={companyType} companyID={companyId} />
-        </div>
         {/* Need to work on documents */}
-        {/* <div className="grid gap-5 lg:gap-7.5">
-          {!companyId ? (
-            <ClientForm onClientCreated={handleClientCreated} companyType={companyType} companyID={companyId} />
-          ) : (
-            <DocumentUpload companyId={companyId} />
-          )}
-        </div> */}
+        <div className="grid gap-5 lg:gap-7.5">
+          <ClientForm onClientCreated={handleClientCreated} companyType={companyType} companyID={companyId} />
+          {companyId && <DocumentUpload companyType={companyType} companyID={companyId} />}
+        </div>
       </Container>
+
     </Fragment>
   );
 };
