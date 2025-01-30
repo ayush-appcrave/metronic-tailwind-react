@@ -1,5 +1,4 @@
 import { Alert } from '@/components';
-import { FileTable, FileUpload } from '@/components/file-management';
 import { Checkbox } from '@/components/ui/checkbox';
 import {
   Select,
@@ -14,14 +13,12 @@ import { City, State } from 'country-state-city';
 import { useFormik } from 'formik';
 import { useState } from 'react';
 import * as Yup from 'yup';
-import { companyDocumentType, companyStatus, compnayTypes } from '../../../../../constants/company';
-import { FILE_TYPES } from '../../../../../constants/fileTypes';
+import { companyStatus, compnayTypes } from '../../../../../constants/company';
 
 const API_BASE_URL = import.meta.env.VITE_APP_API_URL;
 
-const CreateClientForm = () => {
+const ClientForm = () => {
   const [selectedState, setSelectedState] = useState('');
-  const [Documents, setDocuments] = useState([]);
 
   const indianStates = State.getStatesOfCountry('IN');
   const cities = City.getCitiesOfState('IN', selectedState);
@@ -30,9 +27,10 @@ const CreateClientForm = () => {
     initialValues: {
       CompanyName: '',
       CompanyEmail: '',
+      CompanyType: 1, // 1 for Client
       CompanyAddress: {
         City: '',
-        state: '',
+        State: '',
       },
       CompanySocialLinks: {
         Linkedin: '',
@@ -43,10 +41,6 @@ const CreateClientForm = () => {
       PocName: '',
       PocContact: '',
       PocEmail: '',
-      Documents: [],
-      DocumentType: '',
-      DocumentName: '',
-      DocumentFile: null,
       ModeOfOperations: [],
     },
     validationSchema: Yup.object({
@@ -60,60 +54,69 @@ const CreateClientForm = () => {
         }),
       }),
       CompanySocialLinks: Yup.object({
-        Linkedin: Yup.string().required('LinkedIn URL is required'),
+        Linkedin: Yup.string().url('Invalid URL').required('LinkedIn URL is required'),
+
         Website: Yup.string().url('Invalid URL'),
       }),
       CompanyGst: Yup.string()
-        .matches(
-          /^[0-9]{2}[A-Z]{5}[0-9]{4}[A-Z]{1}[1-9A-Z]{1}Z[0-9A-Z]{1}$/,
-          'Invalid GST format. Format: 22AAAAA0000A1Z5'
-        )
-        .length(15, 'GST number must be exactly 15 characters'),
+        .trim()
+        .when('this', {
+          is: (value) => value && value.length > 0, // If GST is not empty
+          then: Yup.string()
+            .matches(
+              /^[0-9]{2}[A-Z]{5}[0-9]{4}[A-Z]{1}[1-9A-Z]{1}Z[0-9A-Z]{1}$/,
+              'Invalid GST format. Format: 22AAAAA0000A1Z5'
+            )
+            .length(15, 'GST number must be exactly 15 characters'),
+        }),
+
       CompanyStatus: Yup.string()
         .required('Status is required')
         .oneOf(Object.keys(companyStatus), 'Invalid status'),
       PocEmail: Yup.string().email('Invalid email'),
-      DocumentName: Yup.string().when('DocumentType', {
-        is: companyDocumentType['5'],
-        then: () => Yup.string().required('Document name is required'),
-      }),
+
       ModeOfOperations: Yup.array()
         .min(1, 'At least one mode of operation is required')
         .of(
-          Yup.string().oneOf(
-            Object.keys(compnayTypes.ModeOfOperations),
-            'Invalid mode of operation'
-          )
+          Yup.number() // Expect numbers
+            .oneOf(
+              Object.keys(compnayTypes.ModeOfOperations).map(Number), // Convert keys to numbers
+              'Invalid mode of operation'
+            )
         ),
     }),
-    onSubmit: async (values, { setStatus, setSubmitting }) => {
+    onSubmit: async (values, { setStatus, setSubmitting, resetForm }) => {
       try {
-        const formData = new FormData();
+        // Prepare data for API request
+        const updatedValues = {
+          ...values,
+          CompanyStatus: Number(values.CompanyStatus),
+          CompanyType: Number(values.CompanyType),
+          ModeOfOperations: values.ModeOfOperations.map(Number), // Ensure ModeOfOperations is an array of numbers
+        };
 
-        const response = await axios.post(
-          `${API_BASE_URL}/company/create-company-type`,
-          formik.values
-        );
-        // Object.keys(values).forEach((key) => {
-        //   if (key !== 'Documents') {
-        //     formData.append(key, values[key]);
-        //   }
-        // });
-        //
-        // // Add documents
-        // Documents.forEach((doc, index) => {
-        //   formData.append(`Documents[${index}][type]`, doc.type);
-        //   formData.append(`Documents[${index}][name]`, doc.name);
-        //   formData.append(`Documents[${index}][file]`, doc.file);
-        // });
-        //
-        // console.log('Form submission data:', formData);
+        // Make API request
+        const response = await axios.post(`${API_BASE_URL}/company/create-company`, updatedValues);
 
-        setStatus({ type: 'success', message: 'Client created successfully' });
+        // Reset form on success
+
+        // Display success message from the backend response
+        setStatus({ type: 'success', message: response.data.message });
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+
+        setSelectedState('');
+        formik.setFieldValue('CompanyAddress.City', '');
+        resetForm();
       } catch (error) {
-        setStatus({ type: 'error', message: error.message });
+        // Handle errors from the backend response
+        const errorMessage =
+          error.response?.data?.message || 'An error occurred while creating the client.';
+        setStatus({ type: 'error', message: errorMessage });
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      } finally {
+        // Enable the submit button
+        setSubmitting(false);
       }
-      setSubmitting(false);
     },
   });
 
@@ -121,21 +124,18 @@ const CreateClientForm = () => {
     setSelectedState(stateCode);
     // Set the state code instead of the state name
     formik.setFieldValue('CompanyAddress.State', stateCode);
-    formik.setFieldValue('CompanyAddress.city', '');
-  };
-
-  const handleDeleteDocument = (id) => {
-    setDocuments((prev) => prev.filter((doc) => doc.id !== id));
+    formik.setFieldValue('CompanyAddress.City', '');
   };
   const handleModeOfOperationsChange = (id) => {
-    console.log(id);
     const currentModes = formik.values.ModeOfOperations;
-    const updatedModes = currentModes.includes(id)
-      ? currentModes.filter((mode) => mode !== id)
-      : [...currentModes, id];
+    const numericId = Number(id); // Convert id to a number
+    const updatedModes = currentModes.includes(numericId)
+      ? currentModes.filter((mode) => mode !== numericId) // Remove if already exists
+      : [...currentModes, numericId]; // Add if it doesn't exist
 
     formik.setFieldValue('ModeOfOperations', updatedModes);
   };
+
   return (
     <div className="card">
       <div className="card-header border-b border-gray-200 py-6">
@@ -199,8 +199,8 @@ const CreateClientForm = () => {
               <div key={key} className="flex items-center space-x-2">
                 <Checkbox
                   id={`mode-${key}`}
-                  checked={formik.values.ModeOfOperations.includes(key)}
-                  onCheckedChange={() => handleModeOfOperationsChange(key)}
+                  checked={formik.values.ModeOfOperations.includes(Number(key))} // Compare as numbers
+                  onCheckedChange={() => handleModeOfOperationsChange(key)} // Pass the key
                 />
                 <label
                   htmlFor={`mode-${key}`}
@@ -216,7 +216,7 @@ const CreateClientForm = () => {
           )}
         </div>
         {/* Address */}
-        {/* Address Section */}
+
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-8">
           <div className="flex flex-col gap-1">
             <label className="form-label text-gray-900">
@@ -250,7 +250,7 @@ const CreateClientForm = () => {
             </label>
             <Select
               value={formik.values.CompanyAddress.City}
-              onValueChange={(cityCode) => formik.setFieldValue('CompanyAddress.city', cityCode)}
+              onValueChange={(city) => formik.setFieldValue('CompanyAddress.City', city)}
               disabled={!selectedState}
             >
               <SelectTrigger
@@ -285,7 +285,7 @@ const CreateClientForm = () => {
               <input
                 type="url"
                 placeholder="Enter LinkedIn URL"
-                {...formik.getFieldProps('CompanySocialLinks.linkedin')}
+                {...formik.getFieldProps('CompanySocialLinks.Linkedin')}
                 className={clsx('form-control', {
                   'is-invalid':
                     formik.touched.CompanySocialLinks?.Linkedin &&
@@ -307,7 +307,7 @@ const CreateClientForm = () => {
               <input
                 type="url"
                 placeholder="Enter website URL"
-                {...formik.getFieldProps('CompanySocialLinks.website')}
+                {...formik.getFieldProps('CompanySocialLinks.Website')}
                 className="form-control"
               />
             </label>
@@ -339,7 +339,7 @@ const CreateClientForm = () => {
             </label>
             <Select
               value={formik.values.CompanyStatus}
-              onValueChange={(value) => formik.setFieldValue('CompanyStatus', value)} // ✅ Stores key (ID) instead of label
+              onValueChange={(value) => formik.setFieldValue('CompanyStatus', value)}
             >
               <SelectTrigger
                 className={clsx('w-full', {
@@ -349,17 +349,11 @@ const CreateClientForm = () => {
                 <SelectValue placeholder="Select Status" />
               </SelectTrigger>
               <SelectContent>
-                {Object.entries(companyStatus).map(
-                  (
-                    [key, value] // ✅ Iterating over [key, value]
-                  ) => (
-                    <SelectItem key={key} value={key}>
-                      {' '}
-                      {/* ✅ Using key (ID) as value */}
-                      {value} {/* Displaying the label */}
-                    </SelectItem>
-                  )
-                )}
+                {Object.entries(companyStatus).map(([key, value]) => (
+                  <SelectItem key={key} value={key}>
+                    {value}
+                  </SelectItem>
+                ))}
               </SelectContent>
             </Select>
             {formik.touched.CompanyStatus && formik.errors.CompanyStatus && (
@@ -412,37 +406,6 @@ const CreateClientForm = () => {
           </div>
         </div>
 
-        {/* Documents Section */}
-
-        <div className="flex flex-col gap-4">
-          <h4 className="text-gray-900 font-medium">Company Documents</h4>
-          <FileUpload
-            DocumentType={formik.values.DocumentType}
-            DocumentName={formik.values.DocumentName}
-            onTypeChange={(value) => formik.setFieldValue('DocumentType', value)}
-            onNameChange={(value) => formik.setFieldValue('DocumentName', value)}
-            onFileUpload={(file, displayName) => {
-              const newDocument = {
-                id: Date.now(),
-                type: displayName,
-                name: file.name,
-                file: file,
-                url: URL.createObjectURL(file),
-              };
-              setDocuments((prev) => [...prev, newDocument]);
-              formik.setFieldValue('DocumentType', '');
-              formik.setFieldValue('DocumentName', '');
-            }}
-            documentTypes={companyDocumentType}
-            isOtherType={formik.values.DocumentType === companyDocumentType['5']}
-            formik={formik}
-            acceptedFiles={[FILE_TYPES.PDF, FILE_TYPES.DOC, FILE_TYPES.DOCX]}
-          />
-          {Documents.length > 0 && (
-            <FileTable documents={Documents} onDelete={handleDeleteDocument} />
-          )}
-        </div>
-
         <div className="flex justify-end gap-2">
           <button type="submit" className="btn btn-primary" disabled={formik.isSubmitting}>
             {formik.isSubmitting ? 'Creating...' : 'Create Client'}
@@ -453,4 +416,4 @@ const CreateClientForm = () => {
   );
 };
 
-export { CreateClientForm };
+export { ClientForm };

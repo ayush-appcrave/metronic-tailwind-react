@@ -1,2 +1,2 @@
-export * from './CreateClientPage'
-export * from './CreateClientContent'
+export * from './CreateClientContent';
+export * from './CreateClientPage';

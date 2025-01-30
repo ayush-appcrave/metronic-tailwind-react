@@ -9,7 +9,8 @@ import {
 import { useLayout } from '@/providers';
 import { Fragment } from 'react';
 import { Link } from 'react-router-dom';
-import { CreateClientContent } from '..';
+
+import { ClientForm } from './blocks';
 
 const CreateClientPage = () => {
   const { currentLayout } = useLayout();
@@ -37,7 +38,7 @@ const CreateClientPage = () => {
       )}
 
       <Container>
-        <CreateClientContent />
+        <ClientForm />
       </Container>
     </Fragment>
   );
