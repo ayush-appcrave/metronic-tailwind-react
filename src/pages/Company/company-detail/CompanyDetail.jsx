@@ -7,22 +7,27 @@ import {
   ToolbarPageTitle,
 } from '@/partials/toolbar';
 import { useLayout } from '@/providers';
-import { Fragment } from 'react';
-import { Link } from 'react-router-dom';
+import { Fragment, useEffect, useState } from 'react';
+import { Link, useParams } from 'react-router-dom';
 
 import { ClientForm } from './blocks';
-import { useState } from 'react';
 import { DocumentUpload } from './blocks/DocumentUpload';
 
 const CompanyDetail = ({ companyType }) => {
-  console.log('company type', companyType);
+  
   const { currentLayout } = useLayout();
-  const [companyId, setCompanyId] = useState(null);
+  const { id } = useParams();
+  const [companyId, setCompanyId] = useState(id || null);
+
+  const loadCompanyDetails = (companyId) => {
+    // API call or logic to fetch company details from DB
+    console.log(`Loading data for companyId: ${companyId}`);
+    setCompanyId(companyId); // Ensure state is updated properly
+  };
 
   const handleClientCreated = (createdCompanyId) => {
     setCompanyId(createdCompanyId);
   };
-
 
   return (
     <Fragment>
@@ -33,7 +38,9 @@ const CompanyDetail = ({ companyType }) => {
               <ToolbarPageTitle />
               <ToolbarDescription>
                 <div className="flex items-center flex-wrap gap-1.5 font-medium">
-                  <span className="text-md text-gray-700">Create New {companyType} Profile</span>
+                  <span className="text-md text-gray-700">
+                    {companyId ? `Edit ${companyType} Profile` : `Create New ${companyType} Profile`}
+                  </span>
                 </div>
               </ToolbarDescription>
             </ToolbarHeading>
@@ -47,13 +54,17 @@ const CompanyDetail = ({ companyType }) => {
       )}
 
       <Container>
-        <div className="grid gap-5 lg:gap-7.5">
+      <div className="grid gap-5 lg:gap-7.5">
+      <ClientForm onClientCreated={handleClientCreated} companyType={companyType} companyID={companyId} />
+        </div>
+        {/* Need to work on documents */}
+        {/* <div className="grid gap-5 lg:gap-7.5">
           {!companyId ? (
-            <ClientForm onClientCreated={handleClientCreated} companyType={companyType} />
+            <ClientForm onClientCreated={handleClientCreated} companyType={companyType} companyID={companyId} />
           ) : (
             <DocumentUpload companyId={companyId} />
           )}
-        </div>
+        </div> */}
       </Container>
     </Fragment>
   );

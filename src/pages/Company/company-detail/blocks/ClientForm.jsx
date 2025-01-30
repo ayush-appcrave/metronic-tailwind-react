@@ -11,13 +11,13 @@ import axios from 'axios';
 import clsx from 'clsx';
 import { City, State } from 'country-state-city';
 import { useFormik } from 'formik';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import * as Yup from 'yup';
-import { companyStatus, compnayTypes } from '../../../../constants/company';
+import { companyStatus, companyTypes, } from '../../../../constants/company';
 
 const API_BASE_URL = import.meta.env.VITE_APP_API_URL;
 
-const ClientForm = ({companyType}) => {
+const ClientForm = ({ companyType, companyID }) => {
   const [selectedState, setSelectedState] = useState('');
 
   const indianStates = State.getStatesOfCountry('IN');
@@ -58,18 +58,7 @@ const ClientForm = ({companyType}) => {
 
         Website: Yup.string().url('Invalid URL'),
       }),
-      CompanyGst: Yup.string()
-        .trim()
-        .when('this', {
-          is: (value) => value && value.length > 0, // If GST is not empty
-          then: Yup.string()
-            .matches(
-              /^[0-9]{2}[A-Z]{5}[0-9]{4}[A-Z]{1}[1-9A-Z]{1}Z[0-9A-Z]{1}$/,
-              'Invalid GST format. Format: 22AAAAA0000A1Z5'
-            )
-            .length(15, 'GST number must be exactly 15 characters'),
-        }),
-
+      CompanyGst: Yup.string().trim(),
       CompanyStatus: Yup.string()
         .required('Status is required')
         .oneOf(Object.keys(companyStatus), 'Invalid status'),
@@ -80,7 +69,7 @@ const ClientForm = ({companyType}) => {
         .of(
           Yup.number() // Expect numbers
             .oneOf(
-              Object.keys(compnayTypes.ModeOfOperations).map(Number), // Convert keys to numbers
+              Object.keys(companyTypes.ModeOfOperations).map(Number), // Convert keys to numbers
               'Invalid mode of operation'
             )
         ),
@@ -92,25 +81,30 @@ const ClientForm = ({companyType}) => {
           ...values,
           CompanyStatus: Number(values.CompanyStatus),
           CompanyType: Number(values.CompanyType),
-          ModeOfOperations: values.ModeOfOperations.map(Number), // Ensure ModeOfOperations is an array of numbers
+          ModeOfOperations: values.ModeOfOperations.map(Number),
         };
 
-        // Make API request
-        const response = await axios.post(`${API_BASE_URL}/company/create-company`, updatedValues);
+        let response;
 
-        // Reset form on success
+        if (companyID) {
+          // Update existing company if ID is present
+          response = await axios.put(`${API_BASE_URL}/company/update-company/${companyID}`, updatedValues);
+        } else {
+          // Create new company if ID is absent
+          response = await axios.post(`${API_BASE_URL}/company/create-company`, updatedValues);
+        }
 
         // Display success message from the backend response
         setStatus({ type: 'success', message: response.data.message });
         window.scrollTo({ top: 0, behavior: 'smooth' });
 
-        setSelectedState('');
-        formik.setFieldValue('CompanyAddress.City', '');
-        resetForm();
+        // setSelectedState('');
+        // formik.setFieldValue('CompanyAddress.City', '');
+        // resetForm();
       } catch (error) {
         // Handle errors from the backend response
         const errorMessage =
-          error.response?.data?.message || `An error occurred while creating the ${companyType}.`;
+          error.response?.data?.message || `An error occurred while ${companyID ? 'updating' : 'creating'} the ${companyType}.`;
         setStatus({ type: 'error', message: errorMessage });
         window.scrollTo({ top: 0, behavior: 'smooth' });
       } finally {
@@ -121,11 +115,13 @@ const ClientForm = ({companyType}) => {
   });
 
   const handleStateChange = (stateCode) => {
-    setSelectedState(stateCode);
-    // Set the state code instead of the state name
-    formik.setFieldValue('CompanyAddress.State', stateCode);
-    formik.setFieldValue('CompanyAddress.City', '');
+    if (stateCode !== selectedState) {
+      setSelectedState(stateCode);
+      formik.setFieldValue('CompanyAddress.State', stateCode);
+      formik.setFieldValue('CompanyAddress.City', ''); // Only reset city if state changes
+    }
   };
+
   const handleModeOfOperationsChange = (id) => {
     const currentModes = formik.values.ModeOfOperations;
     const numericId = Number(id); // Convert id to a number
@@ -135,6 +131,55 @@ const ClientForm = ({companyType}) => {
 
     formik.setFieldValue('ModeOfOperations', updatedModes);
   };
+
+  const fetchCompanyDetails = async (companyId) => {
+    try {
+      const response = await axios.get(`${API_BASE_URL}/company/company-detail/${companyId}`);
+      const companyData = response.data.data;
+
+      if (!companyData) return; // Exit if no data
+
+      setSelectedState(companyData.CompanyAddress?.State || '');
+
+      // Prefill form with company data
+      formik.setValues({
+        CompanyName: companyData.CompanyName || '',
+        CompanyEmail: companyData.CompanyEmail || '',
+        CompanyType: companyData.CompanyType || (companyType === "Client" ? 1 : 2),
+        CompanyAddress: {
+          City: companyData.CompanyAddress?.City || '',
+          State: companyData.CompanyAddress?.State || '',
+        },
+        CompanySocialLinks: {
+          Linkedin: companyData.CompanySocialLinks?.Linkedin || '',
+          Website: companyData.CompanySocialLinks?.Website || '',
+        },
+        CompanyGst: companyData.CompanyGst || '',
+        CompanyStatus: String(companyData.CompanyStatus) || '',
+        PocName: companyData.PocName || '',
+        PocContact: companyData.PocContact || '',
+        PocEmail: companyData.PocEmail || '',
+        ModeOfOperations: companyData.ModeOfOperations || [],
+      });
+
+
+    } catch (error) {
+      console.error('Error fetching company details:', error);
+    }
+  };
+
+  useEffect(() => {
+    if (companyID) {
+      fetchCompanyDetails(companyID);
+    }
+  }, [companyID]);
+
+  // Ensure cities are available before setting the city
+useEffect(() => {
+  if (formik.values.CompanyAddress.City && cities.length) {
+    formik.setFieldValue('CompanyAddress.City', formik.values.CompanyAddress.City);
+  }
+}, [cities]);
 
   return (
     <div className="card">
@@ -195,7 +240,7 @@ const ClientForm = ({companyType}) => {
             Mode of Operations <span className="text-danger">*</span>
           </label>
           <div className="flex md:flex-row flex-col gap-4">
-            {Object.entries(compnayTypes.ModeOfOperations).map(([key, value]) => (
+            {Object.entries(companyTypes.ModeOfOperations).map(([key, value]) => (
               <div key={key} className="flex items-center space-x-2">
                 <Checkbox
                   id={`mode-${key}`}
@@ -408,7 +453,11 @@ const ClientForm = ({companyType}) => {
 
         <div className="flex justify-end gap-2">
           <button type="submit" className="btn btn-primary" disabled={formik.isSubmitting}>
-            {formik.isSubmitting ? 'Creating...' : `Create ${companyType}`}
+
+            {companyID
+              ? (formik.isSubmitting ? 'Updating...' : `Update ${companyType}`)
+              : (formik.isSubmitting ? 'Creating...' : `Create ${companyType}`)}
+
           </button>
         </div>
       </form>
