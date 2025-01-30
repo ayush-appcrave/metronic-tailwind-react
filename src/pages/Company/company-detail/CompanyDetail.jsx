@@ -15,8 +15,7 @@ import { useState } from 'react';
 import { DocumentUpload } from './blocks/DocumentUpload';
 
 const CompanyDetail = ({ companyType }) => {
-  console.log('company type', CompanyType);
-  console.log('company id', companyId);
+  console.log('company type', companyType);
   const { currentLayout } = useLayout();
   const [companyId, setCompanyId] = useState(null);
 
@@ -34,13 +33,13 @@ const CompanyDetail = ({ companyType }) => {
               <ToolbarPageTitle />
               <ToolbarDescription>
                 <div className="flex items-center flex-wrap gap-1.5 font-medium">
-                  <span className="text-md text-gray-700">Create New Client Profile</span>
+                  <span className="text-md text-gray-700">Create New {companyType} Profile</span>
                 </div>
               </ToolbarDescription>
             </ToolbarHeading>
             <ToolbarActions>
-              <Link to="/company/clients" className="btn btn-sm btn-light">
-                Back to Clients
+              <Link to={`/company/${companyType}`} className="btn btn-sm btn-light">
+                Back to {companyType}
               </Link>
             </ToolbarActions>
           </Toolbar>
@@ -50,7 +49,7 @@ const CompanyDetail = ({ companyType }) => {
       <Container>
         <div className="grid gap-5 lg:gap-7.5">
           {!companyId ? (
-            <ClientForm onClientCreated={handleClientCreated} />
+            <ClientForm onClientCreated={handleClientCreated} companyType={companyType} />
           ) : (
             <DocumentUpload companyId={companyId} />
           )}

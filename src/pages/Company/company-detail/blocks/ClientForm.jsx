@@ -17,7 +17,7 @@ import { companyStatus, compnayTypes } from '../../../../constants/company';
 
 const API_BASE_URL = import.meta.env.VITE_APP_API_URL;
 
-const ClientForm = () => {
+const ClientForm = ({companyType}) => {
   const [selectedState, setSelectedState] = useState('');
 
   const indianStates = State.getStatesOfCountry('IN');
@@ -27,7 +27,7 @@ const ClientForm = () => {
     initialValues: {
       CompanyName: '',
       CompanyEmail: '',
-      CompanyType: 1, // 1 for Client
+      CompanyType: companyType === "Client" ? 1 : 2, // 1 for Client, 2 for Vendor
       CompanyAddress: {
         City: '',
         State: '',
@@ -110,7 +110,7 @@ const ClientForm = () => {
       } catch (error) {
         // Handle errors from the backend response
         const errorMessage =
-          error.response?.data?.message || 'An error occurred while creating the client.';
+          error.response?.data?.message || `An error occurred while creating the ${companyType}.`;
         setStatus({ type: 'error', message: errorMessage });
         window.scrollTo({ top: 0, behavior: 'smooth' });
       } finally {
@@ -408,7 +408,7 @@ const ClientForm = () => {
 
         <div className="flex justify-end gap-2">
           <button type="submit" className="btn btn-primary" disabled={formik.isSubmitting}>
-            {formik.isSubmitting ? 'Creating...' : 'Create Client'}
+            {formik.isSubmitting ? 'Creating...' : `Create ${companyType}`}
           </button>
         </div>
       </form>

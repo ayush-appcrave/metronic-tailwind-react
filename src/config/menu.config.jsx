@@ -11,12 +11,12 @@ export const MENU_SIDEBAR = [
   {
     title: 'Clients',
     icon: 'user-square', // Professional client icon
-    path: '/company/clients',
+    path: '/company/client',
   },
   {
     title: 'Vendors',
     icon: 'briefcase', // Business vendor icon
-    path: '/company/vendors',
+    path: '/company/vendor',
   },
   
   {

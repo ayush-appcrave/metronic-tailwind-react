@@ -18,14 +18,14 @@ const AppRoutingSetup = () => {
         <Route path="/dashboard" element={<DashboardOverviewPage />} />
 
         {/* Clients */}
-        <Route path='/company/clients' element={<CompanyListing />} />
-        <Route path="/company/clients/create" element={<CompanyDetail companyType="client" companyID="" />} />
-        <Route path="/company/clients/detail/1" element={<CompanyDetail companyType="client" companyID="" />} />
+        <Route path='/company/client' element={<CompanyListing companyType="Client" />} />
+        <Route path="/company/client/create" element={<CompanyDetail companyType="Client" />} />
+        <Route path="/company/client/detail/:id" element={<CompanyDetail companyType="Client" />} />
 
-        {/* Vendor */}
-        <Route path='/company/vendors' element={<CompanyListing />} />
-        <Route path="/company/vendors/create" element={<CompanyDetail companyType="vendor" companyID="" />} />
-        <Route path="/company/vendors/detail/1" element={<CompanyDetail companyType="vendor" companyID="" />} />
+        {/* Vendors */}
+        <Route path='/company/vendor' element={<CompanyListing companyType="Vendor" />} />
+        <Route path="/company/vendor/create" element={<CompanyDetail companyType="Vendor" />} />
+        <Route path="/company/vendor/detail/:id" element={<CompanyDetail companyType="Vendor" />} />
 
         {/*Already Created Routes*/}
         <Route path="/public-profile/profiles/default" element={<ProfileDefaultPage />} />
