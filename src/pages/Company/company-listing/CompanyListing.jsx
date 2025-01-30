@@ -9,9 +9,9 @@ import {
 import { useLayout } from '@/providers';
 import { Fragment } from 'react';
 import { Link } from 'react-router-dom';
-import { ClientTableContent } from '..';
+import { Users } from './blocks/users';
 
-const ClientTablePage = () => {
+const CompanyListing = () => {
   const { currentLayout } = useLayout();
   return (
     <Fragment>
@@ -42,9 +42,11 @@ const ClientTablePage = () => {
       )}
 
       <Container>
-        <ClientTableContent />
+        <div className="grid gap-5 lg:gap-7.5">
+          <Users />
+        </div>
       </Container>
     </Fragment>
   );
 };
-export { ClientTablePage };
+export { CompanyListing };

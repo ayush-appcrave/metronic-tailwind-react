@@ -11,9 +11,19 @@ import { Fragment } from 'react';
 import { Link } from 'react-router-dom';
 
 import { ClientForm } from './blocks';
+import { useState } from 'react';
+import { DocumentUpload } from './blocks/DocumentUpload';
 
-const CreateClientPage = () => {
+const CompanyDetail = ({ companyType }) => {
+  console.log('company type', CompanyType);
+  console.log('company id', companyId);
   const { currentLayout } = useLayout();
+  const [companyId, setCompanyId] = useState(null);
+
+  const handleClientCreated = (createdCompanyId) => {
+    setCompanyId(createdCompanyId);
+  };
+
 
   return (
     <Fragment>
@@ -38,10 +48,16 @@ const CreateClientPage = () => {
       )}
 
       <Container>
-        <ClientForm />
+        <div className="grid gap-5 lg:gap-7.5">
+          {!companyId ? (
+            <ClientForm onClientCreated={handleClientCreated} />
+          ) : (
+            <DocumentUpload companyId={companyId} />
+          )}
+        </div>
       </Container>
     </Fragment>
   );
 };
 
-export { CreateClientPage };
+export { CompanyDetail };

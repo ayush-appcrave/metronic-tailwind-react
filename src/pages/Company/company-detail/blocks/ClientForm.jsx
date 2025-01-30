@@ -13,7 +13,7 @@ import { City, State } from 'country-state-city';
 import { useFormik } from 'formik';
 import { useState } from 'react';
 import * as Yup from 'yup';
-import { companyStatus, compnayTypes } from '../../../../../constants/company';
+import { companyStatus, compnayTypes } from '../../../../constants/company';
 
 const API_BASE_URL = import.meta.env.VITE_APP_API_URL;
 
