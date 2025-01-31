@@ -48,7 +48,8 @@ const FileUpload = ({ TypeId, Type }) => {
         pageSize: data.pageSize,
       });
     } catch (error) {
-      setUploadError('Failed to fetch documents.');
+      setUploadError(error.response.data.message || 'Failed to fetch documents.');
+      setTimeout(() => setUploadError(null), 5000);
     }
   };
 
@@ -72,11 +73,9 @@ const FileUpload = ({ TypeId, Type }) => {
 
       fetchDocuments(pagination.currentPage);
 
-      // ✅ Set success message from backend response
       setUploadSuccess(response.data.message);
 
-      // ✅ Hide success message after 5 seconds
-      setTimeout(() => setUploadSuccess(null), 5000);
+      setTimeout(() => setUploadSuccess(null), 3000);
     } catch (error) {
       setUploadError(
         error.response?.data?.message || 'Failed to upload document. Please try again.'
@@ -178,4 +177,3 @@ const FileUpload = ({ TypeId, Type }) => {
 };
 
 export { FileUpload };
-
