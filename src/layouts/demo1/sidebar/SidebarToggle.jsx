@@ -4,8 +4,6 @@ import { useDemo1Layout } from '../Demo1LayoutProvider';
 const SidebarToggle = () => {
   const { layout, setSidebarCollapse } = useDemo1Layout();
   const handleClick = () => {
-    console.log('Current sidebar state:', layout.options.sidebar);
-
     setSidebarCollapse(!layout.options.sidebar.collapse);
   };
 

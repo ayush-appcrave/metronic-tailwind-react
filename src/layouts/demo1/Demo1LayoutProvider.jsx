@@ -24,7 +24,7 @@ const initalLayoutProps = {
   // Mobile mega menu is closed by default
   sidebarMouseLeave: false,
   // Sidebar mouse leave is false initially
-  
+
   setSidebarMouseLeave: (state) => {
     console.log(`${state}`);
   },
@@ -53,11 +53,10 @@ const useDemo1Layout = () => useContext(Demo1LayoutContext);
 
 // Layout provider component that wraps the application
 const Demo1LayoutProvider = ({ children }) => {
-  
   const { pathname } = useLocation(); // Gets the current path
   const { setMenuConfig } = useMenus(); // Accesses menu configuration methods
   const secondaryMenu = useMenuChildren(pathname, MENU_SIDEBAR, 0); // Retrieves the secondary menu
-  
+
   // Sets the primary and secondary menu configurations
   setMenuConfig('primary', MENU_SIDEBAR);
   setMenuConfig('secondary', secondaryMenu);
@@ -87,8 +86,6 @@ const Demo1LayoutProvider = ({ children }) => {
 
   // Function to collapse or expand the sidebar
   const setSidebarCollapse = (collapse) => {
-    console.log('Current collapse state:', layout.options.sidebar.collapse);
-  console.log('New collapse state:', collapse);
     const updatedLayout = {
       options: {
         sidebar: {
@@ -100,15 +97,7 @@ const Demo1LayoutProvider = ({ children }) => {
     setLayout(getLayoutConfig()); // Refreshes the layout configuration
 
     console.log('Updated layout:', getLayoutConfig());
-
   };
-
-  // Add this to Demo1LayoutProvider.jsx
-useEffect(() => {
-  console.log('++++Layout config:', layout);
-  console.log('++++Sidebar collapse state:', layout.options.sidebar.collapse);
-}, [layout]);
-
 
   // Function to set the sidebar theme (e.g., light or dark)
   const setSidebarTheme = (mode) => {
