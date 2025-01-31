@@ -1,9 +1,17 @@
 'use client';
 
-import { getCoreRowModel, getFilteredRowModel, getPaginationRowModel, getSortedRowModel, useReactTable, getFacetedRowModel, getFacetedUniqueValues } from '@tanstack/react-table';
-import { createContext, useContext, useEffect, useState, useCallback } from 'react';
+import { debounce, deepMerge } from '@/lib/helpers';
+import {
+  getCoreRowModel,
+  getFacetedRowModel,
+  getFacetedUniqueValues,
+  getFilteredRowModel,
+  getPaginationRowModel,
+  getSortedRowModel,
+  useReactTable,
+} from '@tanstack/react-table';
+import { createContext, useCallback, useContext, useEffect, useState } from 'react';
 import { DataGridInner } from './DataGridInner';
-import { deepMerge, debounce } from '@/lib/helpers';
 const DataGridContext = createContext(undefined);
 export const useDataGrid = () => {
   const context = useContext(DataGridContext);
@@ -12,16 +20,16 @@ export const useDataGrid = () => {
   }
   return context;
 };
-export const DataGridProvider = props => {
+export const DataGridProvider = (props) => {
   const defaultValues = {
     messages: {
       empty: 'No data available',
-      loading: 'Loading...'
+      loading: 'Loading...',
     },
     layout: {
       cellSpacing: 'md',
       cellBorder: true,
-      card: false
+      card: false,
     },
     pagination: {
       info: '{from} - {to} of {count}',
@@ -31,10 +39,10 @@ export const DataGridProvider = props => {
       size: 5,
       page: 0,
       moreLimit: 5,
-      more: false
+      more: false,
     },
     rowSelection: false,
-    serverSide: false
+    serverSide: false,
   };
   const mergedProps = deepMerge(defaultValues, props);
   const [data, setData] = useState(mergedProps.data || []);
@@ -42,7 +50,7 @@ export const DataGridProvider = props => {
   const [totalRows, setTotalRows] = useState(mergedProps.data ? mergedProps.data.length : 0);
   const [pagination, setPagination] = useState({
     pageIndex: props.pagination?.page ?? 0,
-    pageSize: props.pagination?.size ?? 5
+    pageSize: props.pagination?.size ?? 5,
   });
   const [rowSelection, setRowSelection] = useState(mergedProps.rowSelection);
   const [sorting, setSorting] = useState(mergedProps.sorting ?? []);
@@ -56,12 +64,9 @@ export const DataGridProvider = props => {
         pageIndex: pagination.pageIndex,
         pageSize: pagination.pageSize,
         sorting,
-        columnFilters
+        columnFilters,
       };
-      const {
-        data,
-        totalCount
-      } = await mergedProps.onFetchData(requestParams);
+      const { data, totalCount } = await mergedProps.onFetchData(requestParams);
       setData(data || []);
       setTotalRows(totalCount || 0);
     } catch (error) {
@@ -86,10 +91,13 @@ export const DataGridProvider = props => {
   useEffect(() => {
     loadData();
   }, [pagination, sorting, columnFilters, mergedProps.data, mergedProps.serverSide]);
-  const handleRowSelectionChange = updaterOrValue => {
-    setRowSelection(prev => typeof updaterOrValue === 'function' ? updaterOrValue(prev) : updaterOrValue);
+  const handleRowSelectionChange = (updaterOrValue) => {
+    setRowSelection((prev) =>
+      typeof updaterOrValue === 'function' ? updaterOrValue(prev) : updaterOrValue
+    );
     if (mergedProps.onRowSelectionChange) {
-      const newSelection = typeof updaterOrValue === 'function' ? updaterOrValue(rowSelection) : updaterOrValue;
+      const newSelection =
+        typeof updaterOrValue === 'function' ? updaterOrValue(rowSelection) : updaterOrValue;
       mergedProps.onRowSelectionChange(newSelection, table);
     }
   };
@@ -102,15 +110,15 @@ export const DataGridProvider = props => {
       columnVisibility,
       rowSelection,
       columnFilters,
-      pagination
+      pagination,
     },
     getRowId: mergedProps.getRowId || ((row, index) => String(index)),
     enableRowSelection: mergedProps.rowSelection,
     onRowSelectionChange: handleRowSelectionChange,
-    onSortingChange: newSorting => !loading && setSorting(newSorting),
-    onColumnFiltersChange: newFilters => !loading && setColumnFilters(newFilters),
+    onSortingChange: (newSorting) => !loading && setSorting(newSorting),
+    onColumnFiltersChange: (newFilters) => !loading && setColumnFilters(newFilters),
     onColumnVisibilityChange: setColumnVisibility,
-    onPaginationChange: newPagination => !loading && setPagination(newPagination),
+    onPaginationChange: (newPagination) => !loading && setPagination(newPagination),
     getCoreRowModel: getCoreRowModel(),
     getFilteredRowModel: getFilteredRowModel(),
     getPaginationRowModel: getPaginationRowModel(),
@@ -119,16 +127,20 @@ export const DataGridProvider = props => {
     getFacetedUniqueValues: getFacetedUniqueValues(),
     manualPagination: mergedProps.serverSide,
     manualSorting: mergedProps.serverSide,
-    manualFiltering: mergedProps.serverSide
+    manualFiltering: mergedProps.serverSide,
   });
-  return <DataGridContext.Provider value={{
-    props: mergedProps,
-    table,
-    totalRows,
-    loading,
-    setLoading,
-    reload: loadData
-  }}>
+  return (
+    <DataGridContext.Provider
+      value={{
+        props: mergedProps,
+        table,
+        totalRows,
+        loading,
+        setLoading,
+        reload: loadData,
+      }}
+    >
       <DataGridInner />
-    </DataGridContext.Provider>;
+    </DataGridContext.Provider>
+  );
 };

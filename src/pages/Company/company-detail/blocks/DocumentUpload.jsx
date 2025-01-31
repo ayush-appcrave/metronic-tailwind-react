@@ -1,8 +1,7 @@
 import { FileUpload } from '@/components/file-management';
-import { companyDocumentType } from '../../../../constants/company';
 
-const DocumentUpload = ({ companyID, companyType }) => {
-  return <FileUpload TypeId={companyID} Type={companyDocumentType} />;
+const DocumentUpload = ({ companyID, Type }) => {
+  return <FileUpload TypeId={companyID} Type={Type} />;
 };
 
 export { DocumentUpload };

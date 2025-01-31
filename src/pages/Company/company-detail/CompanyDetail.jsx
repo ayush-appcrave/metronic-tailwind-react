@@ -62,7 +62,7 @@ const CompanyDetail = ({ companyType }) => {
             companyType={companyType}
             companyID={companyId}
           />
-          {companyId && <DocumentUpload companyType={companyType} companyID={companyId} />}
+          {companyId && <DocumentUpload Type={'Company'} companyID={companyId} />}
         </div>
       </Container>
     </Fragment>
