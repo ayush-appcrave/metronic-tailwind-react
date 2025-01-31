@@ -7,14 +7,13 @@ import {
   ToolbarPageTitle,
 } from '@/partials/toolbar';
 import { useLayout } from '@/providers';
-import { Fragment, useEffect, useState } from 'react';
+import { Fragment, useState } from 'react';
 import { Link, useParams } from 'react-router-dom';
 
 import { ClientForm } from './blocks';
 import { DocumentUpload } from './blocks/DocumentUpload';
 
 const CompanyDetail = ({ companyType }) => {
-
   const { currentLayout } = useLayout();
   const { id } = useParams();
   const [companyId, setCompanyId] = useState(id || null);
@@ -39,7 +38,9 @@ const CompanyDetail = ({ companyType }) => {
               <ToolbarDescription>
                 <div className="flex items-center flex-wrap gap-1.5 font-medium">
                   <span className="text-md text-gray-700">
-                    {companyId ? `Edit ${companyType} Profile` : `Create New ${companyType} Profile`}
+                    {companyId
+                      ? `Edit ${companyType} Profile`
+                      : `Create New ${companyType} Profile`}
                   </span>
                 </div>
               </ToolbarDescription>
@@ -56,11 +57,14 @@ const CompanyDetail = ({ companyType }) => {
       <Container>
         {/* Need to work on documents */}
         <div className="grid gap-5 lg:gap-7.5">
-          <ClientForm onClientCreated={handleClientCreated} companyType={companyType} companyID={companyId} />
+          <ClientForm
+            onClientCreated={handleClientCreated}
+            companyType={companyType}
+            companyID={companyId}
+          />
           {companyId && <DocumentUpload companyType={companyType} companyID={companyId} />}
         </div>
       </Container>
-
     </Fragment>
   );
 };

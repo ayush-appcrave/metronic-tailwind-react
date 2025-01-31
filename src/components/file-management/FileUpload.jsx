@@ -1,10 +1,10 @@
-import { useState } from 'react';
-import { Formik, Field, ErrorMessage } from 'formik';
-import * as Yup from 'yup';
-import axios from 'axios';
-import clsx from 'clsx';
 import { Alert, KeenIcon } from '@/components';
 import { FileTable } from '@/components/file-management';
+import axios from 'axios';
+import clsx from 'clsx';
+import { ErrorMessage, Field, Formik } from 'formik';
+import { useState } from 'react';
+import * as Yup from 'yup';
 
 const MAX_FILE_SIZE = 5 * 1024 * 1024; // 5MB
 const API_BASE_URL = import.meta.env.VITE_APP_API_URL;
@@ -13,7 +13,7 @@ const FileUpload = ({ TypeId, Type }) => {
   const [documents, setDocuments] = useState([]);
   const [uploadError, setUploadError] = useState(null);
   const [isUploading, setIsUploading] = useState(false);
-  
+
   const FileUploadSchema = Yup.object().shape({
     documentType: Yup.string().required('Document Type is required'),
   });
@@ -44,7 +44,9 @@ const FileUpload = ({ TypeId, Type }) => {
         },
       ]);
     } catch (error) {
-      setUploadError(error.response?.data?.message || 'Failed to upload document. Please try again.');
+      setUploadError(
+        error.response?.data?.message || 'Failed to upload document. Please try again.'
+      );
     } finally {
       setIsUploading(false);
     }
@@ -63,7 +65,7 @@ const FileUpload = ({ TypeId, Type }) => {
     <Formik
       initialValues={{ documentType: '', documentName: '' }}
       validationSchema={FileUploadSchema}
-      onSubmit={() => { }}
+      onSubmit={() => {}}
     >
       {({ values, setFieldValue }) => {
         return (
@@ -74,7 +76,7 @@ const FileUpload = ({ TypeId, Type }) => {
 
             {uploadError && <Alert variant="danger">{uploadError}</Alert>}
 
-            <div className='card-body flex flex-col gap-8 p-10'>
+            <div className="card-body flex flex-col gap-8 p-10">
               <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-8">
                 <div className="flex flex-col gap-1">
                   <label className="form-label text-gray-900">Document Type</label>
@@ -84,11 +86,20 @@ const FileUpload = ({ TypeId, Type }) => {
                     placeholder="Enter document type"
                     className="form-control"
                   />
-                  <ErrorMessage name="documentType" component="div" className="text-red-500 text-sm" />
+                  <ErrorMessage
+                    name="documentType"
+                    component="div"
+                    className="text-red-500 text-sm"
+                  />
                 </div>
                 <div className="flex flex-col gap-1">
                   <label className="form-label text-gray-900">Upload Document</label>
-                  <label className={clsx("btn cursor-pointer", !values.documentType ? 'btn-light opacity-50 cursor-not-allowed' : 'btn-light')}>
+                  <label
+                    className={clsx(
+                      'btn cursor-pointer',
+                      !values.documentType ? 'btn-light opacity-50 cursor-not-allowed' : 'btn-light'
+                    )}
+                  >
                     <input
                       type="file"
                       className="hidden"
@@ -111,7 +122,9 @@ const FileUpload = ({ TypeId, Type }) => {
               </div>
 
               {isUploading && <div className="text-gray-500 text-sm">Uploading...</div>}
-              {documents.length > 0 && <FileTable documents={documents} onDelete={handleDeleteDocument} />}
+              {documents.length > 0 && (
+                <FileTable documents={documents} onDelete={handleDeleteDocument} />
+              )}
             </div>
           </div>
         );
