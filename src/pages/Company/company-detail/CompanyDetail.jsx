@@ -12,6 +12,7 @@ import { Link, useParams } from 'react-router-dom';
 
 import { ClientForm } from './blocks';
 import { DocumentUpload } from './blocks/DocumentUpload';
+import { CommentSection } from './blocks/CommentSection';
 
 const CompanyDetail = ({ companyType }) => {
   const { currentLayout } = useLayout();
@@ -55,14 +56,22 @@ const CompanyDetail = ({ companyType }) => {
       )}
 
       <Container>
-        {/* Need to work on documents */}
-        <div className="grid gap-5 lg:gap-7.5">
-          <ClientForm
-            onClientCreated={handleClientCreated}
-            companyType={companyType}
-            companyID={companyId}
-          />
-          {companyId && <DocumentUpload Type={'Company'} companyID={companyId} />}
+        <div className='grid grid-cols-1 lg:grid-cols-4 gap-5 lg:gap-7.5'>
+          <div className='col-span-3'>
+            <div className="grid gap-5 lg:gap-7.5">
+              <ClientForm
+                onClientCreated={handleClientCreated}
+                companyType={companyType}
+                companyID={companyId}
+              />
+              {companyId && <DocumentUpload Type={'Company'} companyID={companyId} />}
+            </div>
+          </div>
+          <div className='col-span-1'>
+            <div className="grid gap-5 lg:gap-7.5">
+              {companyId && <CommentSection type={'Company'} typeId={companyId} />}
+            </div>
+          </div>
         </div>
       </Container>
     </Fragment>
