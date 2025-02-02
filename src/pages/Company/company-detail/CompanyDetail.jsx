@@ -51,7 +51,7 @@ const CompanyDetail = ({ companyType }) => {
 
       <Container>
         <div className="grid grid-cols-12 gap-5 lg:gap-7.5 max-w-full">
-          <div className="col-span-12 lg:col-span-8 min-w-0">
+          <div className={`col-span-12 ${companyId ? 'lg:col-span-8' : 'lg:col-span-12'} min-w-0`}>
             <div className="grid gap-5 lg:gap-7.5">
               <ClientForm
                 onClientCreated={handleClientCreated}
@@ -61,11 +61,13 @@ const CompanyDetail = ({ companyType }) => {
               {companyId && <DocumentUpload Type={'Company'} companyID={companyId} />}
             </div>
           </div>
-          <div className="col-span-12 lg:col-span-4 min-w-0">
-            <div className="grid gap-5 lg:gap-7.5">
-              {companyId && <CommentSection type={'Company'} typeId={companyId} />}
+          {companyId && (
+            <div className="col-span-12 lg:col-span-4 min-w-0">
+              <div className="grid gap-5 lg:gap-7.5">
+                <CommentSection type={'Company'} typeId={companyId} />
+              </div>
             </div>
-          </div>
+          )}
         </div>
       </Container>
     </Fragment>
