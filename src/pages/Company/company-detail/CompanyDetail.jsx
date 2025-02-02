@@ -11,19 +11,13 @@ import { Fragment, useState } from 'react';
 import { Link, useParams } from 'react-router-dom';
 
 import { ClientForm } from './blocks';
-import { DocumentUpload } from './blocks/DocumentUpload';
 import { CommentSection } from './blocks/CommentSection';
+import { DocumentUpload } from './blocks/DocumentUpload';
 
 const CompanyDetail = ({ companyType }) => {
   const { currentLayout } = useLayout();
   const { id } = useParams();
   const [companyId, setCompanyId] = useState(id || null);
-
-  // const loadCompanyDetails = (companyId) => {
-  //   // API call or logic to fetch company details from DB
-  //   console.log(`Loading data for companyId: ${companyId}`);
-  //   setCompanyId(companyId); // Ensure state is updated properly
-  // };
 
   const handleClientCreated = (createdCompanyId) => {
     setCompanyId(createdCompanyId);
@@ -56,8 +50,8 @@ const CompanyDetail = ({ companyType }) => {
       )}
 
       <Container>
-        <div className='grid grid-cols-1 lg:grid-cols-4 gap-5 lg:gap-7.5'>
-          <div className='col-span-3'>
+        <div className="grid grid-cols-12 gap-5 lg:gap-7.5 max-w-full">
+          <div className="col-span-12 lg:col-span-8 min-w-0">
             <div className="grid gap-5 lg:gap-7.5">
               <ClientForm
                 onClientCreated={handleClientCreated}
@@ -67,7 +61,7 @@ const CompanyDetail = ({ companyType }) => {
               {companyId && <DocumentUpload Type={'Company'} companyID={companyId} />}
             </div>
           </div>
-          <div className='col-span-1'>
+          <div className="col-span-12 lg:col-span-4 min-w-0">
             <div className="grid gap-5 lg:gap-7.5">
               {companyId && <CommentSection type={'Company'} typeId={companyId} />}
             </div>

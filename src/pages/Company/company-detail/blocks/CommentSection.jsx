@@ -1,5 +1,5 @@
-import React, { useState } from "react";
-import Comments from "../../../../components/comments/Comments";
+import React, { useState } from 'react';
+import Comments from '../../../../components/comments/Comments';
 
 const CommentSection = ({ type, typeId }) => {
   const [comments, setComments] = useState([]);
@@ -8,9 +8,7 @@ const CommentSection = ({ type, typeId }) => {
     setComments([newComment, ...comments]);
   };
 
-  return (
-    <Comments type={type} typeId={typeId} onAddComment={addComment} comments={comments} />
-  );
+  return <Comments type={type} typeId={typeId} onAddComment={addComment} comments={comments} />;
 };
 
 export { CommentSection };
