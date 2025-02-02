@@ -9,6 +9,8 @@ import {
   MenuSub,
   MenuTitle,
 } from '@/components/menu';
+import { MenuBadge } from '@/components/menu/MenuBadge';
+import { userRole } from '@/constants/userRole';
 import { useLanguage } from '@/i18n';
 import { useSettings } from '@/providers/SettingsProvider';
 import { toAbsoluteUrl } from '@/utils';
@@ -27,6 +29,24 @@ const DropdownUser = ({ menuItemRef }) => {
       themeMode: newThemeMode,
     });
   };
+  const getRoleName = (roleNumber) => {
+    return Object.entries(userRole).find(([key]) => Number(key) === roleNumber)?.[1] || 'User';
+  };
+
+  const getRoleBadgeClass = (role) => {
+    switch (role) {
+      case 1:
+        return 'badge-primary'; // SystemAdministration
+      case 2:
+        return 'badge-success'; // SalesManager
+      case 3:
+        return 'badge-info'; // RecruitmentManager
+      case 4:
+        return 'badge-warning'; // OperationManager
+      default:
+        return 'badge-primary';
+    }
+  };
 
   const buildHeader = () => {
     return (
@@ -42,17 +62,15 @@ const DropdownUser = ({ menuItemRef }) => {
               to="/account/hoteme/get-stard"
               className="text-sm text-gray-800 hover:text-primary font-semibold leading-none"
             >
-              {currentUser?.fullname}
+              {currentUser?.FullName}
             </Link>
-            <a
-              href={`mailto:${currentUser?.email}`}
-              className="text-xs text-gray-600 hover:text-primary font-medium leading-none"
+            <MenuBadge
+              className={`badge badge-xs ${getRoleBadgeClass(currentUser?.Role)} badge-outline !ml-0`}
             >
-              {currentUser?.email}
-            </a>
+              {getRoleName(currentUser?.Role)}
+            </MenuBadge>
           </div>
         </div>
-        <span className="badge badge-xs badge-primary badge-outline">Pro</span>
       </div>
     );
   };
