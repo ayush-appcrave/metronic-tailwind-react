@@ -6,7 +6,7 @@ import {
   SelectTrigger,
   SelectValue,
 } from '@/components/ui/select';
-import { companyStatus, companyTypes ,companyStatusColors} from '@/constants/company';
+import { companyStatus, companyStatusColors, companyTypes } from '@/constants/company';
 import axios from 'axios';
 import debounce from 'lodash/debounce';
 import { useEffect, useMemo, useState } from 'react';
@@ -70,7 +70,11 @@ const CompanyTable = ({ type, onStatsUpdate }) => {
     setCurrentPage(1);
     setSearchTerm('');
   };
-
+  const resetFilters = () => {
+    setSearchTerm('');
+    setStatusFilter('all');
+    setCurrentPage(1);
+  };
   const columns = useMemo(
     () => [
       {
@@ -131,11 +135,8 @@ const CompanyTable = ({ type, onStatsUpdate }) => {
         accessorKey: 'CompanyStatus',
         header: ({ column }) => <DataGridColumnHeader title="Status" column={column} />,
         cell: (info) => {
-          // Map status codes to colors
-        
-      
           const color = companyStatusColors[info.getValue()] || 'primary';
-      
+
           return (
             <span className={`badge badge-${color} badge-outline rounded-[30px]`}>
               <span className={`size-1.5 rounded-full bg-${color} me-1.5`}></span>
@@ -198,6 +199,9 @@ const CompanyTable = ({ type, onStatsUpdate }) => {
                 ))}
               </SelectContent>
             </Select>
+            <button onClick={resetFilters} className="btn btn-icon btn-sm btn-light-primary">
+              <KeenIcon icon="arrows-circle" className="fs-6" />
+            </button>
           </div>
         </div>
       </div>
@@ -223,4 +227,3 @@ const CompanyTable = ({ type, onStatsUpdate }) => {
 };
 
 export { CompanyTable };
-
