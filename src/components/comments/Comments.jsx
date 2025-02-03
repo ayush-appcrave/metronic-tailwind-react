@@ -119,19 +119,28 @@ const Comments = ({ type, typeId }) => {
       <div className="card-body p-10">
         {alert && <Alert variant={alert.type}>{alert.message}</Alert>}
 
-        <div className="flex flex-col gap-8">
+        <div className="flex flex-col gap-8 comment-height">
           {comments.map((comment) => (
             <div key={comment._id} className="border-b border-gray-200 pb-6">
               <div className="mb-3">
                 <span className="text-sm font-medium text-gray-900">
                   {comment?.CreatedBy?.FullName || 'Unknown'}
                 </span>
+                <br/>
+                <time className="text-xs text-gray-600">
+                  {new Date(comment.createdAt).toLocaleDateString()}{' '}
+                  {new Date(comment.createdAt).toLocaleTimeString([], {
+                    hour: '2-digit',
+                    minute: '2-digit',
+                    hour12: true,
+                  })}
+                </time>
               </div>
               {editingCommentId === comment._id ? (
                 <div className="mb-3">
                   <Textarea
                     {...editFormik.getFieldProps('Comment')}
-                    className="min-h-[80px] break-all whitespace-pre-wrap overflow-hidden max-w-full"
+                    className="min-h-[80px] whitespace-pre-wrap overflow-hidden max-w-full"
                   />
                   {editFormik.touched.Comment && editFormik.errors.Comment && (
                     <div className="text-red-500 text-sm mt-1">{editFormik.errors.Comment}</div>
@@ -146,19 +155,11 @@ const Comments = ({ type, typeId }) => {
                   </div>
                 </div>
               ) : (
-                <p className="text-sm text-gray-800 mb-3 break-all whitespace-pre-wrap overflow-hidden max-w-full">
+                <p className="text-sm text-gray-800 mb-3 whitespace-pre-wrap overflow-hidden max-w-full">
                   {comment.Comment}
                 </p>
               )}
               <div className="flex items-center justify-between">
-                <time className="text-xs text-gray-600">
-                  {new Date(comment.createdAt).toLocaleDateString()}{' '}
-                  {new Date(comment.createdAt).toLocaleTimeString([], {
-                    hour: '2-digit',
-                    minute: '2-digit',
-                    hour12: true,
-                  })}
-                </time>
                 {/* Edit comment and delete comment buttons */}
 
                 {/* <div className="flex gap-2">
@@ -186,6 +187,7 @@ const Comments = ({ type, typeId }) => {
               </div>
             </div>
           ))}
+          {comments.length ? null : <span>No Comments Found</span>}
         </div>
 
         <form onSubmit={formik.handleSubmit} className="mt-8">

@@ -10,6 +10,7 @@ import { companyStatus, companyTypes } from '@/constants/company';
 import axios from 'axios';
 import debounce from 'lodash/debounce';
 import { useEffect, useMemo, useState } from 'react';
+import { Link } from 'react-router-dom';
 
 const API_BASE_URL = import.meta.env.VITE_APP_API_URL;
 
@@ -50,6 +51,7 @@ const CompanyTable = ({ type, onStatsUpdate }) => {
         },
       });
 
+      console.log(response.data.data.data[0]._id);
       if (response.data?.data) {
         setCompanies(response.data.data.data);
         setPagination({
@@ -75,16 +77,23 @@ const CompanyTable = ({ type, onStatsUpdate }) => {
       {
         accessorKey: 'CompanyName',
         header: ({ column }) => <DataGridColumnHeader title="Company" column={column} />,
-        cell: (info) => (
-          <div className="flex flex-col gap-0.5">
-            <span className="text-sm font-medium text-gray-900 hover:text-primary-active">
-              {info.getValue()}
-            </span>
-            <span className="text-2sm text-gray-700 font-normal">
-              {info.row.original.CompanyEmail}
-            </span>
-          </div>
-        ),
+        cell: (info) => {
+          const companyId = info.row.original._id; // Assuming 'id' is the unique identifier
+      
+          return (
+            <div className="flex flex-col gap-0.5">
+              <Link
+                to={`/company/client/detail/${companyId}`} // Adjust this based on your routing setup
+                className="text-sm font-medium text-gray-900 hover:text-primary-active"
+              >
+                {info.getValue()}
+              </Link>
+              <span className="text-2sm text-gray-700 font-normal">
+                {info.row.original.CompanyEmail}
+              </span>
+            </div>
+          );
+        },
         meta: {
           className: 'min-w-[250px]',
         },
