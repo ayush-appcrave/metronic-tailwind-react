@@ -12,6 +12,7 @@ import clsx from 'clsx';
 import { City, State } from 'country-state-city';
 import { useFormik } from 'formik';
 import { useEffect, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import * as Yup from 'yup';
 import { companyStatus, companyTypes } from '../../../../constants/company';
 
@@ -22,6 +23,7 @@ const ClientForm = ({ companyType, companyID }) => {
   const [cities, setCities] = useState([]); // Store cities in state
 
   const indianStates = State.getStatesOfCountry('IN');
+  const navigate = useNavigate();
 
   const formik = useFormik({
     initialValues: {
@@ -88,24 +90,18 @@ const ClientForm = ({ companyType, companyID }) => {
 
         let response;
 
-        if (companyID) {
-          // Update existing company if ID is present
+        if (!companyID) {
+          response = await axios.post(`${API_BASE_URL}/company/create-company`, updatedValues);
+          // Navigate to the update page using the new company ID
+          navigate(`/company/${companyType.toLowerCase()}/detail/${response.data.data._id}`);
+        } else {
           response = await axios.put(
             `${API_BASE_URL}/company/update-company/${companyID}`,
             updatedValues
           );
-        } else {
-          // Create new company if ID is absent
-          response = await axios.post(`${API_BASE_URL}/company/create-company`, updatedValues);
         }
-
-        // Display success message from the backend response
         setStatus({ type: 'success', message: response.data.message });
         window.scrollTo({ top: 0, behavior: 'smooth' });
-
-        // setSelectedState('');
-        // formik.setFieldValue('CompanyAddress.City', '');
-        // resetForm();
       } catch (error) {
         // Handle errors from the backend response
         const errorMessage =
@@ -418,7 +414,6 @@ const ClientForm = ({ companyType, companyID }) => {
           </div>
         </div>
 
-        {/* POC Information */}
         {/* POC Information */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-8">
           <div className="flex flex-col gap-1">

@@ -7,7 +7,7 @@ import {
   ToolbarPageTitle,
 } from '@/partials/toolbar';
 import { useLayout } from '@/providers';
-import { Fragment, useState } from 'react';
+import { Fragment, useEffect, useState } from 'react';
 import { Link, useParams } from 'react-router-dom';
 
 import { ClientForm } from './blocks';
@@ -22,6 +22,9 @@ const CompanyDetail = ({ companyType }) => {
   const handleClientCreated = (createdCompanyId) => {
     setCompanyId(createdCompanyId);
   };
+  useEffect(() => {
+    setCompanyId(id);
+  }, [id]);
 
   return (
     <Fragment>

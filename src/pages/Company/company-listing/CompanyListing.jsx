@@ -32,7 +32,7 @@ const CompanyListing = ({ companyType }) => {
               </ToolbarDescription>
             </ToolbarHeading>
             <ToolbarActions>
-              <Link to={`/company/${companyType}/create`} className="btn btn-sm btn-primary">Add New {companyType}</Link>
+              <Link to={`/company/${companyType.toLowerCase()}/create`} className="btn btn-sm btn-primary">Add New {companyType}</Link>
             </ToolbarActions>
           </Toolbar>
         </Container>

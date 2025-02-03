@@ -119,7 +119,7 @@ const Comments = ({ type, typeId }) => {
       <div className="card-body p-10">
         {alert && <Alert variant={alert.type}>{alert.message}</Alert>}
 
-        <div className="flex flex-col gap-8 comment-height">
+        <div className="flex flex-col gap-8 scrollable-y h-[400px] pr-2">
           {comments.map((comment) => (
             <div key={comment._id} className="border-b border-gray-200 pb-6">
               <div className="mb-3">

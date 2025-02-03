@@ -51,7 +51,6 @@ const CompanyTable = ({ type, onStatsUpdate }) => {
         },
       });
 
-      console.log(response.data.data.data[0]._id);
       if (response.data?.data) {
         setCompanies(response.data.data.data);
         setPagination({
@@ -79,7 +78,7 @@ const CompanyTable = ({ type, onStatsUpdate }) => {
         header: ({ column }) => <DataGridColumnHeader title="Company" column={column} />,
         cell: (info) => {
           const companyId = info.row.original._id; // Assuming 'id' is the unique identifier
-      
+
           return (
             <div className="flex flex-col gap-0.5">
               <Link

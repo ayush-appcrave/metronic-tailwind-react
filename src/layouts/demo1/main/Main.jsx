@@ -1,19 +1,13 @@
+import { useMenuCurrentItem } from '@/components/menu';
+import { useMenus } from '@/providers';
 import { Fragment, useEffect } from 'react';
 import { Helmet } from 'react-helmet-async';
 import { Outlet, useLocation } from 'react-router';
-import { useMenuCurrentItem } from '@/components/menu';
-import { Footer, Header, Sidebar, useDemo1Layout } from '../';
-import { useMenus } from '@/providers';
+import { Header, Sidebar, useDemo1Layout } from '../';
 const Main = () => {
-  const {
-    layout
-  } = useDemo1Layout();
-  const {
-    pathname
-  } = useLocation();
-  const {
-    getMenuConfig
-  } = useMenus();
+  const { layout } = useDemo1Layout();
+  const { pathname } = useLocation();
+  const { getMenuConfig } = useMenus();
   const menuConfig = getMenuConfig('primary');
   const menuItem = useMenuCurrentItem(pathname, menuConfig);
   useEffect(() => {
@@ -44,7 +38,8 @@ const Main = () => {
       clearTimeout(timer);
     };
   }, []);
-  return <Fragment>
+  return (
+    <Fragment>
       <Helmet>
         <title>{menuItem?.title}</title>
       </Helmet>
@@ -57,9 +52,8 @@ const Main = () => {
         <main className="grow content pt-5" role="content">
           <Outlet />
         </main>
-
-        <Footer />
       </div>
-    </Fragment>;
+    </Fragment>
+  );
 };
 export { Main };
