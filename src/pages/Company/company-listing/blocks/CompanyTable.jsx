@@ -1,5 +1,4 @@
 import { DataGrid, DataGridColumnHeader, KeenIcon } from '@/components';
-import { Checkbox } from '@/components/ui/checkbox';
 import {
   Select,
   SelectContent,
@@ -94,17 +93,16 @@ const CompanyTable = ({ type, onStatsUpdate }) => {
         accessorKey: 'ModeOfOperations',
         header: ({ column }) => <DataGridColumnHeader title="Mode of Operations" column={column} />,
         cell: (info) => (
-          <div className="flex flex-col gap-2">
-            {Object.entries(companyTypes.ModeOfOperations).map(([key, value]) => (
-              <div key={key} className="flex items-center space-x-2">
-                <Checkbox checked={info.getValue().includes(Number(key))} disabled />
-                <label className="text-sm text-gray-700">{value}</label>
-              </div>
+          <ul className="list-disc list-inside">
+            {info.getValue().map((mode) => (
+              <li key={mode} className="text-sm text-gray-700">
+                {companyTypes.ModeOfOperations[mode]}
+              </li>
             ))}
-          </div>
+          </ul>
         ),
         meta: {
-          className: 'min-w-[300px]',
+          className: 'min-w-[250px]',
         },
       },
       {

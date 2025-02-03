@@ -11,9 +11,9 @@ import axios from 'axios';
 import clsx from 'clsx';
 import { City, State } from 'country-state-city';
 import { useFormik } from 'formik';
-import { useState, useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import * as Yup from 'yup';
-import { companyStatus, companyTypes, } from '../../../../constants/company';
+import { companyStatus, companyTypes } from '../../../../constants/company';
 
 const API_BASE_URL = import.meta.env.VITE_APP_API_URL;
 
@@ -27,7 +27,7 @@ const ClientForm = ({ companyType, companyID }) => {
     initialValues: {
       CompanyName: '',
       CompanyEmail: '',
-      CompanyType: companyType === "Client" ? 1 : 2, // 1 for Client, 2 for Vendor
+      CompanyType: companyType === 'Client' ? 1 : 2, // 1 for Client, 2 for Vendor
       CompanyAddress: {
         City: '',
         State: '',
@@ -62,7 +62,7 @@ const ClientForm = ({ companyType, companyID }) => {
       CompanyStatus: Yup.string()
         .required('Status is required')
         .oneOf(Object.keys(companyStatus), 'Invalid status'),
-      PocEmail: Yup.string().email('Invalid email'),
+      PocEmail: Yup.string().email('Invalid email').required('POC email is required'),
 
       ModeOfOperations: Yup.array()
         .min(1, 'At least one mode of operation is required')
@@ -88,7 +88,10 @@ const ClientForm = ({ companyType, companyID }) => {
 
         if (companyID) {
           // Update existing company if ID is present
-          response = await axios.put(`${API_BASE_URL}/company/update-company/${companyID}`, updatedValues);
+          response = await axios.put(
+            `${API_BASE_URL}/company/update-company/${companyID}`,
+            updatedValues
+          );
         } else {
           // Create new company if ID is absent
           response = await axios.post(`${API_BASE_URL}/company/create-company`, updatedValues);
@@ -104,7 +107,8 @@ const ClientForm = ({ companyType, companyID }) => {
       } catch (error) {
         // Handle errors from the backend response
         const errorMessage =
-          error.response?.data?.message || `An error occurred while ${companyID ? 'updating' : 'creating'} the ${companyType}.`;
+          error.response?.data?.message ||
+          `An error occurred while ${companyID ? 'updating' : 'creating'} the ${companyType}.`;
         setStatus({ type: 'error', message: errorMessage });
         window.scrollTo({ top: 0, behavior: 'smooth' });
       } finally {
@@ -145,7 +149,7 @@ const ClientForm = ({ companyType, companyID }) => {
       formik.setValues({
         CompanyName: companyData.CompanyName || '',
         CompanyEmail: companyData.CompanyEmail || '',
-        CompanyType: companyData.CompanyType || (companyType === "Client" ? 1 : 2),
+        CompanyType: companyData.CompanyType || (companyType === 'Client' ? 1 : 2),
         CompanyAddress: {
           City: companyData.CompanyAddress?.City || '',
           State: companyData.CompanyAddress?.State || '',
@@ -161,8 +165,6 @@ const ClientForm = ({ companyType, companyID }) => {
         PocEmail: companyData.PocEmail || '',
         ModeOfOperations: companyData.ModeOfOperations || [],
       });
-
-
     } catch (error) {
       console.error('Error fetching company details:', error);
     }
@@ -175,11 +177,11 @@ const ClientForm = ({ companyType, companyID }) => {
   }, [companyID]);
 
   // Ensure cities are available before setting the city
-useEffect(() => {
-  if (formik.values.CompanyAddress.City && cities.length) {
-    formik.setFieldValue('CompanyAddress.City', formik.values.CompanyAddress.City);
-  }
-}, [cities]);
+  useEffect(() => {
+    if (formik.values.CompanyAddress.City && cities.length) {
+      formik.setFieldValue('CompanyAddress.City', formik.values.CompanyAddress.City);
+    }
+  }, [cities]);
 
   return (
     <div className="card">
@@ -453,11 +455,13 @@ useEffect(() => {
 
         <div className="flex justify-end gap-2">
           <button type="submit" className="btn btn-primary" disabled={formik.isSubmitting}>
-
             {companyID
-              ? (formik.isSubmitting ? 'Updating...' : `Update ${companyType}`)
-              : (formik.isSubmitting ? 'Creating...' : `Create ${companyType}`)}
-
+              ? formik.isSubmitting
+                ? 'Updating...'
+                : `Update ${companyType}`
+              : formik.isSubmitting
+                ? 'Creating...'
+                : `Create ${companyType}`}
           </button>
         </div>
       </form>
