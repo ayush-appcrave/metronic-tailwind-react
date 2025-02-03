@@ -1,17 +1,84 @@
-import axios from 'axios';
-import React, { useEffect, useState } from 'react';
-import { Textarea } from '@/components/ui/textarea';
-import { Button } from '@/components/ui/button';
+import { Alert } from '@/components/Alert';
 import { KeenIcon } from '@/components/keenicons/KeenIcons';
+import { Button } from '@/components/ui/button';
+import { Textarea } from '@/components/ui/textarea';
+import axios from 'axios';
+import { useFormik } from 'formik';
+import { useEffect, useState } from 'react';
+import * as Yup from 'yup';
 
 const API_BASE_URL = import.meta.env.VITE_APP_API_URL;
 
 const Comments = ({ type, typeId }) => {
+  const [alert, setAlert] = useState(null);
   const [comments, setComments] = useState([]);
-  const [commentText, setCommentText] = useState('');
   const [loading, setLoading] = useState(false);
   const [editingCommentId, setEditingCommentId] = useState(null);
-  const [editText, setEditText] = useState('');
+
+  const showAlert = (message, type = 'primary') => {
+    setAlert({ message, type });
+    setTimeout(() => setAlert(null), 3000);
+  };
+
+  const validationSchema = Yup.object({
+    Comment: Yup.string()
+      .required('Comment is required')
+      .min(1, 'Comment cannot be empty')
+      .max(1000, 'Comment must not exceed 1000 characters')
+  });
+
+  const formik = useFormik({
+    initialValues: {
+      Comment: ''
+    },
+    validationSchema,
+    onSubmit: async (values, { resetForm }) => {
+      setLoading(true);
+      try {
+        const response = await axios.post(`${API_BASE_URL}/comment/add-comments`, {
+          Comment: values.Comment,
+          Type: type,
+          TypeId: typeId,
+        });
+
+        if (response.data && response.data.data) {
+          setComments((prevComments) => [response.data.data, ...prevComments]);
+          resetForm();
+          showAlert('Comment added successfully', 'success');
+        }
+      } catch (error) {
+        showAlert(error.response?.data?.message || 'Failed to add comment', 'danger');
+      } finally {
+        setLoading(false);
+      }
+    }
+  });
+
+  const editFormik = useFormik({
+    initialValues: {
+      Comment: ''
+    },
+    validationSchema,
+    onSubmit: async (values) => {
+      try {
+        const response = await axios.put(`${API_BASE_URL}/comment/${editingCommentId}`, {
+          Comment: values.Comment,
+        });
+
+        if (response.data && response.data.data) {
+          setComments((prevComments) =>
+            prevComments.map((comment) => 
+              comment._id === editingCommentId ? response.data.data : comment
+            )
+          );
+          setEditingCommentId(null);
+          showAlert('Comment updated successfully', 'success');
+        }
+      } catch (error) {
+        showAlert(error.response?.data?.message || 'Failed to update comment', 'danger');
+      }
+    }
+  });
 
   useEffect(() => {
     const fetchComments = async () => {
@@ -28,64 +95,19 @@ const Comments = ({ type, typeId }) => {
     fetchComments();
   }, [type, typeId]);
 
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    if (!commentText.trim()) return;
-
-    setLoading(true);
-    try {
-      const response = await axios.post(
-        `${API_BASE_URL}/comment/add-comments`,
-        {
-          Comment: commentText,
-          Type: type,
-          TypeId: typeId,
-        }
-      );
-
-      if (response.data && response.data.data) {
-        setComments((prevComments) => [response.data.data, ...prevComments]);
-        setCommentText('');
-      }
-    } catch (error) {
-      console.error('Error adding comment:', error);
-    } finally {
-      setLoading(false);
-    }
-  };
-
   const handleDeleteComment = async (commentId) => {
     try {
       await axios.delete(`${API_BASE_URL}/comment/${commentId}`);
-      setComments(prevComments => prevComments.filter(comment => comment._id !== commentId));
+      setComments((prevComments) => prevComments.filter((comment) => comment._id !== commentId));
+      showAlert('Comment deleted successfully', 'success');
     } catch (error) {
-      console.error('Error deleting comment:', error);
+      showAlert(error.response?.data?.message || 'Failed to delete comment', 'danger');
     }
   };
 
   const handleEditClick = (comment) => {
     setEditingCommentId(comment._id);
-    setEditText(comment.Comment);
-  };
-
-  const handleUpdateComment = async (commentId) => {
-    try {
-      const response = await axios.put(`${API_BASE_URL}/comment/${commentId}`, {
-        Comment: editText
-      });
-
-      if (response.data && response.data.data) {
-        setComments(prevComments => 
-          prevComments.map(comment => 
-            comment._id === commentId ? response.data.data : comment
-          )
-        );
-        setEditingCommentId(null);
-        setEditText('');
-      }
-    } catch (error) {
-      console.error('Error updating comment:', error);
-    }
+    editFormik.setValues({ Comment: comment.Comment });
   };
 
   return (
@@ -96,6 +118,8 @@ const Comments = ({ type, typeId }) => {
         </h3>
       </div>
       <div className="card-body p-10">
+        {alert && <Alert variant={alert.type}>{alert.message}</Alert>}
+
         <div className="flex flex-col gap-8">
           {comments.map((comment) => (
             <div key={comment._id} className="border-b border-gray-200 pb-6">
@@ -107,22 +131,24 @@ const Comments = ({ type, typeId }) => {
               {editingCommentId === comment._id ? (
                 <div className="mb-3">
                   <Textarea
-                    value={editText}
-                    onChange={(e) => setEditText(e.target.value)}
+                    {...editFormik.getFieldProps('Comment')}
                     className="min-h-[80px] break-all whitespace-pre-wrap overflow-hidden max-w-full"
                   />
+                  {editFormik.touched.Comment && editFormik.errors.Comment && (
+                    <div className="text-red-500 text-sm mt-1">{editFormik.errors.Comment}</div>
+                  )}
                   <div className="flex justify-end gap-2 mt-2">
                     <Button 
                       variant="outline" 
-                      size="sm"
+                      size="sm" 
                       onClick={() => setEditingCommentId(null)}
                     >
                       Cancel
                     </Button>
-                    <Button 
-                      variant="default" 
+                    <Button
+                      variant="default"
                       size="sm"
-                      onClick={() => handleUpdateComment(comment._id)}
+                      onClick={editFormik.handleSubmit}
                     >
                       Save
                     </Button>
@@ -135,7 +161,7 @@ const Comments = ({ type, typeId }) => {
               )}
               <div className="flex items-center justify-between">
                 <time className="text-xs text-gray-600">
-                  {new Date(comment.createdAt).toLocaleDateString()} {' '}
+                  {new Date(comment.createdAt).toLocaleDateString()}{' '}
                   {new Date(comment.createdAt).toLocaleTimeString([], {
                     hour: '2-digit',
                     minute: '2-digit',
@@ -144,8 +170,8 @@ const Comments = ({ type, typeId }) => {
                 </time>
                 <div className="flex gap-2">
                   {!editingCommentId && (
-                    <Button 
-                      variant="ghost" 
+                    <Button
+                      variant="ghost"
                       size="sm"
                       onClick={() => handleEditClick(comment)}
                       className="text-blue-500 hover:text-blue-600"
@@ -154,8 +180,8 @@ const Comments = ({ type, typeId }) => {
                       Edit
                     </Button>
                   )}
-                  <Button 
-                    variant="ghost" 
+                  <Button
+                    variant="ghost"
                     size="sm"
                     onClick={() => handleDeleteComment(comment._id)}
                     className="text-red-500 hover:text-red-600"
@@ -169,21 +195,18 @@ const Comments = ({ type, typeId }) => {
           ))}
         </div>
 
-        <form onSubmit={handleSubmit} className="mt-8">
+        <form onSubmit={formik.handleSubmit} className="mt-8">
           <Textarea
-            value={commentText}
-            onChange={(e) => setCommentText(e.target.value)}
+            {...formik.getFieldProps('Comment')}
             placeholder="Write your comment here..."
             disabled={loading}
             className="min-h-[120px] break-all whitespace-pre-wrap overflow-hidden max-w-full"
           />
+          {formik.touched.Comment && formik.errors.Comment && (
+            <div className="text-red-500 text-sm mt-1">{formik.errors.Comment}</div>
+          )}
           <div className="flex justify-end mt-4">
-            <Button 
-              type="submit"
-              variant="default"
-              size="default"
-              disabled={loading}
-            >
+            <Button type="submit" variant="default" size="default" disabled={loading}>
               {loading ? 'Posting...' : 'Post Comment'}
             </Button>
           </div>
