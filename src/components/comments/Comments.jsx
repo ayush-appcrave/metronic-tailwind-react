@@ -1,5 +1,4 @@
 import { Alert } from '@/components/Alert';
-import { KeenIcon } from '@/components/keenicons/KeenIcons';
 import { Button } from '@/components/ui/button';
 import { Textarea } from '@/components/ui/textarea';
 import axios from 'axios';
@@ -24,12 +23,12 @@ const Comments = ({ type, typeId }) => {
     Comment: Yup.string()
       .required('Comment is required')
       .min(1, 'Comment cannot be empty')
-      .max(1000, 'Comment must not exceed 1000 characters')
+      .max(1000, 'Comment must not exceed 1000 characters'),
   });
 
   const formik = useFormik({
     initialValues: {
-      Comment: ''
+      Comment: '',
     },
     validationSchema,
     onSubmit: async (values, { resetForm }) => {
@@ -51,12 +50,12 @@ const Comments = ({ type, typeId }) => {
       } finally {
         setLoading(false);
       }
-    }
+    },
   });
 
   const editFormik = useFormik({
     initialValues: {
-      Comment: ''
+      Comment: '',
     },
     validationSchema,
     onSubmit: async (values) => {
@@ -67,7 +66,7 @@ const Comments = ({ type, typeId }) => {
 
         if (response.data && response.data.data) {
           setComments((prevComments) =>
-            prevComments.map((comment) => 
+            prevComments.map((comment) =>
               comment._id === editingCommentId ? response.data.data : comment
             )
           );
@@ -77,7 +76,7 @@ const Comments = ({ type, typeId }) => {
       } catch (error) {
         showAlert(error.response?.data?.message || 'Failed to update comment', 'danger');
       }
-    }
+    },
   });
 
   useEffect(() => {
@@ -138,18 +137,10 @@ const Comments = ({ type, typeId }) => {
                     <div className="text-red-500 text-sm mt-1">{editFormik.errors.Comment}</div>
                   )}
                   <div className="flex justify-end gap-2 mt-2">
-                    <Button 
-                      variant="outline" 
-                      size="sm" 
-                      onClick={() => setEditingCommentId(null)}
-                    >
+                    <Button variant="outline" size="sm" onClick={() => setEditingCommentId(null)}>
                       Cancel
                     </Button>
-                    <Button
-                      variant="default"
-                      size="sm"
-                      onClick={editFormik.handleSubmit}
-                    >
+                    <Button variant="default" size="sm" onClick={editFormik.handleSubmit}>
                       Save
                     </Button>
                   </div>
@@ -168,7 +159,9 @@ const Comments = ({ type, typeId }) => {
                     hour12: true,
                   })}
                 </time>
-                <div className="flex gap-2">
+                {/* Edit comment and delete comment buttons */}
+
+                {/* <div className="flex gap-2">
                   {!editingCommentId && (
                     <Button
                       variant="ghost"
@@ -189,7 +182,7 @@ const Comments = ({ type, typeId }) => {
                     <KeenIcon icon="trash" className="mr-1" />
                     Delete
                   </Button>
-                </div>
+                </div> */}
               </div>
             </div>
           ))}
