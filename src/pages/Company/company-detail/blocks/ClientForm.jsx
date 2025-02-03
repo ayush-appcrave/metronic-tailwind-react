@@ -48,7 +48,7 @@ const ClientForm = ({ companyType, companyID }) => {
       CompanyEmail: Yup.string().email('Invalid email').required('Company email is required'),
       CompanyAddress: Yup.object({
         State: Yup.string().required('State is required'),
-        City: Yup.string().when('state', {
+        City: Yup.string().when('State', {
           is: (state) => !!state,
           then: () => Yup.string().required('City is required'),
         }),
