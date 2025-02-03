@@ -41,7 +41,7 @@ const CompanyDetail = ({ companyType }) => {
               </ToolbarDescription>
             </ToolbarHeading>
             <ToolbarActions>
-              <Link to={`/company/${companyType}`} className="btn btn-sm btn-light">
+              <Link to={`/company/${companyType.toLowerCase()}`} className="btn btn-sm btn-light">
                 Back to {companyType}
               </Link>
             </ToolbarActions>

@@ -19,9 +19,9 @@ const API_BASE_URL = import.meta.env.VITE_APP_API_URL;
 
 const ClientForm = ({ companyType, companyID }) => {
   const [selectedState, setSelectedState] = useState('');
+  const [cities, setCities] = useState([]); // Store cities in state
 
   const indianStates = State.getStatesOfCountry('IN');
-  const cities = City.getCitiesOfState('IN', selectedState);
 
   const formik = useFormik({
     initialValues: {
@@ -55,25 +55,27 @@ const ClientForm = ({ companyType, companyID }) => {
       }),
       CompanySocialLinks: Yup.object({
         Linkedin: Yup.string().url('Invalid URL').required('LinkedIn URL is required'),
-
         Website: Yup.string().url('Invalid URL'),
       }),
       CompanyGst: Yup.string().trim(),
       CompanyStatus: Yup.string()
         .required('Status is required')
         .oneOf(Object.keys(companyStatus), 'Invalid status'),
-      PocEmail: Yup.string().email('Invalid email').required('POC email is required'),
-
+      PocName: Yup.string().required('POC name is required'), // ✅ Required now
+      PocContact: Yup.string()
+        .matches(/^[0-9]{10}$/, 'POC contact must be a valid 10-digit number') // ✅ Required with validation
+        .required('POC contact is required'),
+      PocEmail: Yup.string().email('Invalid email').required('POC email is required'), // ✅ Required now
       ModeOfOperations: Yup.array()
         .min(1, 'At least one mode of operation is required')
         .of(
-          Yup.number() // Expect numbers
-            .oneOf(
-              Object.keys(companyTypes.ModeOfOperations).map(Number), // Convert keys to numbers
-              'Invalid mode of operation'
-            )
+          Yup.number().oneOf(
+            Object.keys(companyTypes.ModeOfOperations).map(Number),
+            'Invalid mode of operation'
+          )
         ),
     }),
+
     onSubmit: async (values, { setStatus, setSubmitting, resetForm }) => {
       try {
         // Prepare data for API request
@@ -120,12 +122,19 @@ const ClientForm = ({ companyType, companyID }) => {
 
   const handleStateChange = (stateCode) => {
     if (stateCode !== selectedState) {
-      setSelectedState(stateCode);
+      setSelectedState(stateCode); // Update state
+      setCities([]); // Reset cities when state changes
       formik.setFieldValue('CompanyAddress.State', stateCode);
-      formik.setFieldValue('CompanyAddress.City', ''); // Only reset city if state changes
+      formik.setFieldValue('CompanyAddress.City', ''); // Reset city field
     }
   };
-
+  useEffect(() => {
+    if (selectedState) {
+      const fetchedCities = City.getCitiesOfState('IN', selectedState);
+      setCities(fetchedCities); // Update cities state
+      formik.setFieldValue('CompanyAddress.City', ''); // Reset city field
+    }
+  }, [selectedState]);
   const handleModeOfOperationsChange = (id) => {
     const currentModes = formik.values.ModeOfOperations;
     const numericId = Number(id); // Convert id to a number
@@ -410,33 +419,50 @@ const ClientForm = ({ companyType, companyID }) => {
         </div>
 
         {/* POC Information */}
+        {/* POC Information */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-8">
           <div className="flex flex-col gap-1">
-            <label className="form-label text-gray-900">POC Name</label>
+            <label className="form-label text-gray-900">
+              POC Name <span className="text-danger">*</span>
+            </label>
             <label className="input">
               <input
                 type="text"
                 placeholder="Enter POC name"
                 {...formik.getFieldProps('PocName')}
-                className="form-control"
+                className={clsx('form-control', {
+                  'is-invalid': formik.touched.PocName && formik.errors.PocName,
+                })}
               />
             </label>
+            {formik.touched.PocName && formik.errors.PocName && (
+              <span className="text-danger text-xs mt-1">{formik.errors.PocName}</span>
+            )}
           </div>
 
           <div className="flex flex-col gap-1">
-            <label className="form-label text-gray-900">POC Contact</label>
+            <label className="form-label text-gray-900">
+              POC Contact <span className="text-danger">*</span>
+            </label>
             <label className="input">
               <input
                 type="tel"
                 placeholder="Enter POC contact"
                 {...formik.getFieldProps('PocContact')}
-                className="form-control"
+                className={clsx('form-control', {
+                  'is-invalid': formik.touched.PocContact && formik.errors.PocContact,
+                })}
               />
             </label>
+            {formik.touched.PocContact && formik.errors.PocContact && (
+              <span className="text-danger text-xs mt-1">{formik.errors.PocContact}</span>
+            )}
           </div>
 
           <div className="flex flex-col gap-1">
-            <label className="form-label text-gray-900">POC Email</label>
+            <label className="form-label text-gray-900">
+              POC Email <span className="text-danger">*</span>
+            </label>
             <label className="input">
               <input
                 type="email"
