@@ -9,6 +9,8 @@ import { RequireAuth } from '@/auth/RequireAuth';
 import { Demo1Layout } from '@/layouts/demo1';
 import { ErrorsRouting } from '@/errors';
 import { AuthenticationWelcomeMessagePage, AuthenticationAccountDeactivatedPage, AuthenticationGetStartedPage } from '@/pages/authentication';
+import { RequirementListing } from '../pages/requirement/requirement-listing/RequirmentListing';
+import { RequirementDetail } from '../pages/requirement/requirement-detail';
 const AppRoutingSetup = () => {
   return <Routes>
     <Route element={<RequireAuth />}>
@@ -26,6 +28,11 @@ const AppRoutingSetup = () => {
         <Route path='/company/vendor' element={<CompanyListing companyType="Vendor" />} />
         <Route path="/company/vendor/create" element={<CompanyDetail companyType="Vendor" />} />
         <Route path="/company/vendor/detail/:id" element={<CompanyDetail companyType="Vendor" />} />
+
+        {/* Requirement */}
+        <Route path='/requirement' element={<RequirementListing />} />
+        <Route path="/requirement/create" element={<RequirementDetail />} />
+        <Route path="/requirement/detail/:id" element={<RequirementDetail />} />
 
         {/*Already Created Routes*/}
         <Route path="/public-profile/profiles/default" element={<ProfileDefaultPage />} />

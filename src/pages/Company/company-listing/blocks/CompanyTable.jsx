@@ -6,7 +6,9 @@ import {
   SelectTrigger,
   SelectValue,
 } from '@/components/ui/select';
-import { companyStatus, companyStatusColors, companyTypes } from '@/constants/company';
+import { companyStatus, companyTypes } from '@/constants/company';
+import { StatusColorBadge } from '@/constants/badgeColor';
+
 import axios from 'axios';
 import debounce from 'lodash/debounce';
 import { useEffect, useMemo, useState } from 'react';
@@ -156,7 +158,7 @@ const CompanyTable = ({ type, onStatsUpdate }) => {
         accessorKey: 'CompanyStatus',
         header: ({ column }) => <DataGridColumnHeader title="Status" column={column} />,
         cell: (info) => {
-          const color = companyStatusColors[info.getValue()] || 'primary';
+          const color = StatusColorBadge[info.getValue()] || 'primary';
 
           return (
             <span className={`badge badge-${color} badge-outline rounded-full`}>
