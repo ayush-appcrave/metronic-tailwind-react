@@ -2,10 +2,10 @@ import { Alert } from '@/components/Alert';
 import { Button } from '@/components/ui/button';
 import { Textarea } from '@/components/ui/textarea';
 import axios from 'axios';
+import clsx from 'clsx';
 import { useFormik } from 'formik';
 import { useEffect, useState } from 'react';
 import * as Yup from 'yup';
-
 const API_BASE_URL = import.meta.env.VITE_APP_API_URL;
 
 const Comments = ({ type, typeId }) => {
@@ -119,14 +119,18 @@ const Comments = ({ type, typeId }) => {
       <div className="card-body p-10">
         {alert && <Alert variant={alert.type}>{alert.message}</Alert>}
 
-        <div className="flex flex-col gap-8 scrollable-y h-[400px] pr-2">
+        <div
+          className={clsx('flex flex-col gap-8 scrollable-y pr-2', {
+            'max-h-[400px] ': comments.length > 0,
+          })}
+        >
           {comments.map((comment) => (
             <div key={comment._id} className="border-b border-gray-200 pb-6">
               <div className="mb-3">
                 <span className="text-sm font-medium text-gray-900">
                   {comment?.CreatedBy?.FullName || 'Unknown'}
                 </span>
-                <br/>
+                <br />
                 <time className="text-xs text-gray-600">
                   {new Date(comment.createdAt).toLocaleDateString()}{' '}
                   {new Date(comment.createdAt).toLocaleTimeString([], {
