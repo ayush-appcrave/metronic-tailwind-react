@@ -45,9 +45,19 @@ const Login = () => {
       setLoading(true);
 
       const response = await login(values.Email, values.Password);
+      console.log(response);
+
       if (response.success) {
         setStatus({ type: 'success', message: response.message });
-        navigate(from, { replace: true });
+        const createdAt = new Date(response.data.CreatedAt);
+        const today = new Date();
+        const isNewUser = createdAt.toDateString() === today.toDateString();
+
+        if (isNewUser) {
+          navigate('/auth/welcome-message', { replace: true });
+        } else {
+          navigate(from, { replace: true });
+        }
       } else {
         setStatus({ type: 'error', message: response.message, errors: response.errors });
       }

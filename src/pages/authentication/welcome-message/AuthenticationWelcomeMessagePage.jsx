@@ -1,16 +1,17 @@
+import { Container } from '@/components/container';
+import { PageNavbar } from '@/pages/account';
+import { AccountGetStartedContent } from '@/pages/account/home/get-started';
+import { ModalWelcomMessage } from '@/partials/modals/welcome-message';
+import { Toolbar, ToolbarDescription, ToolbarHeading, ToolbarPageTitle } from '@/partials/toolbar';
 import { Fragment, useState } from 'react';
 import { Link } from 'react-router-dom';
-import { Container } from '@/components/container';
-import { Toolbar, ToolbarDescription, ToolbarHeading, ToolbarPageTitle } from '@/partials/toolbar';
-import { PageNavbar } from '@/pages/account';
-import { ModalWelcomMessage } from '@/partials/modals/welcome-message';
-import { AccountGetStartedContent } from '@/pages/account/home/get-started';
 const AuthenticationWelcomeMessagePage = () => {
   const [profileModalOpen, setProfileModalOpen] = useState(true);
   const handleClose = () => {
     setProfileModalOpen(false);
   };
-  return <Fragment>
+  return (
+    <Fragment>
       <PageNavbar />
 
       <Container>
@@ -19,7 +20,7 @@ const AuthenticationWelcomeMessagePage = () => {
             <ToolbarPageTitle />
             <ToolbarDescription>
               <div className="flex items-center gap-2 text-sm font-medium">
-                <span className="text-gray-800 font-medium">Jayson Tatum</span>
+                <span className="text-gray-800 font-medium">Jayson</span>
                 <a href="mailto:jaytatum@ktstudio.com" className="text-gray-700 hover:text-primary">
                   jaytatum@ktstudio.com
                 </a>
@@ -37,6 +38,7 @@ const AuthenticationWelcomeMessagePage = () => {
         <AccountGetStartedContent />
         <ModalWelcomMessage open={profileModalOpen} onOpenChange={handleClose} />
       </Container>
-    </Fragment>;
+    </Fragment>
+  );
 };
 export { AuthenticationWelcomeMessagePage };
