@@ -89,6 +89,7 @@ const AuthProvider = ({ children }) => {
       return {
         success: true,
         message: data.message,
+        data: data.data,
       };
     } catch (error) {
       saveAuth(undefined);

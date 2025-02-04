@@ -1,8 +1,10 @@
 import { CheckEmail } from '@/auth/pages/jwt';
 import { userRole } from '@/constants/userRole.js';
 import { AuthBrandedLayout } from '@/layouts/auth-branded';
+import { AuthenticationWelcomeMessagePage } from '@/pages/authentication/welcome-message';
 import { ProtectedRoute } from '@/routing';
 import { Navigate, Route, Routes } from 'react-router';
+
 import {
   AddMember,
   Login,
@@ -13,6 +15,7 @@ import {
   ResetPasswordEnterEmail,
   TwoFactorAuth,
 } from './pages/jwt';
+
 const AuthPage = () => (
   <Routes>
     <Route element={<AuthBrandedLayout />}>
@@ -21,6 +24,8 @@ const AuthPage = () => (
       <Route element={<ProtectedRoute allowedRoles={[userRole.SYSTEM_ADMINISTRATION]} />}>
         <Route path="/members/add" element={<AddMember />} />
       </Route>
+      <Route path="/welcome-message" element={<AuthenticationWelcomeMessagePage />} />
+
       <Route path="/2fa" element={<TwoFactorAuth />} />
       <Route path="/check-email" element={<CheckEmail />} />
       <Route path="/reset-password" element={<ResetPassword />} />

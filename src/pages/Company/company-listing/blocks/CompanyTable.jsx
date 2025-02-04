@@ -21,22 +21,33 @@ const CompanyTable = ({ type, onStatsUpdate }) => {
   const [currentPage, setCurrentPage] = useState(1);
   const [pagination, setPagination] = useState({ totalPages: 1, totalRecords: 0 });
   const [isLoading, setIsLoading] = useState(false);
+  const [assignedFilter, setAssignedFilter] = useState('all');
+  const [users, setUsers] = useState([]);
 
   const debouncedSearch = debounce((value) => {
     setSearchTerm(value);
     setCurrentPage(1);
     setStatusFilter('all');
   }, 500);
-
   useEffect(() => {
     fetchCompanies();
-  }, [statusFilter, searchTerm, currentPage, type]);
+  }, [statusFilter, searchTerm, currentPage, type, assignedFilter]);
 
   useEffect(() => {
     const onboardedCompanies = companies.filter((company) => company.CompanyStatus === 9).length;
     onStatsUpdate(pagination.totalRecords, onboardedCompanies);
   }, [companies, pagination.totalRecords]);
-
+  useEffect(() => {
+    const fetchUsers = async () => {
+      try {
+        const response = await axios.get(`${API_BASE_URL}/users`);
+        setUsers(response.data.data);
+      } catch (error) {
+        console.error('Error fetching users:', error);
+      }
+    };
+    fetchUsers();
+  }, []);
   const fetchCompanies = async () => {
     try {
       setIsLoading(true);
@@ -45,6 +56,7 @@ const CompanyTable = ({ type, onStatsUpdate }) => {
         params: {
           type: companyType,
           status: statusFilter === 'all' ? '' : statusFilter,
+          assigned: assignedFilter === 'all' ? '' : assignedFilter, // This is the key change
           search: searchTerm.trim(),
           page: currentPage,
           limit: 10,
@@ -52,7 +64,12 @@ const CompanyTable = ({ type, onStatsUpdate }) => {
       });
 
       if (response.data?.data) {
-        setCompanies(response.data.data.data);
+        const filteredCompanies =
+          assignedFilter === 'all'
+            ? response.data.data.data
+            : response.data.data.data.filter((company) => company.AssignedTo === assignedFilter);
+
+        setCompanies(filteredCompanies);
         setPagination({
           totalPages: response.data.data.totalPages,
           totalRecords: response.data.data.totalRecords,
@@ -74,6 +91,7 @@ const CompanyTable = ({ type, onStatsUpdate }) => {
     setSearchTerm('');
     setStatusFilter('all');
     setCurrentPage(1);
+    setAssignedFilter('all');
   };
   const columns = useMemo(
     () => [
@@ -124,7 +142,10 @@ const CompanyTable = ({ type, onStatsUpdate }) => {
           const state = info.row.original.CompanyAddress?.State || 'N/A';
           const city = info.row.original.CompanyAddress?.City || 'N/A';
           return (
-            <div className="flex items-center text-gray-800 font-normal">{`${state}, ${city}`}</div>
+            <div className="flex flex-col gap-0.5">
+              <span className="text-sm font-medium">{state}</span>
+              <span className="text-2sm text-gray-700">{city}</span>
+            </div>
           );
         },
         meta: {
@@ -138,7 +159,7 @@ const CompanyTable = ({ type, onStatsUpdate }) => {
           const color = companyStatusColors[info.getValue()] || 'primary';
 
           return (
-            <span className={`badge badge-${color} badge-outline rounded-[30px]`}>
+            <span className={`badge badge-${color} badge-outline rounded-full`}>
               <span className={`size-1.5 rounded-full bg-${color} me-1.5`}></span>
               {companyStatus[info.getValue()]}
             </span>
@@ -162,8 +183,16 @@ const CompanyTable = ({ type, onStatsUpdate }) => {
           className: 'min-w-[200px]',
         },
       },
+      {
+        accessorKey: 'AssignedTo',
+        header: ({ column }) => <DataGridColumnHeader title="Assigned To" column={column} />,
+        cell: (info) => {
+          const assignedUser = users.find((user) => user._id === info.getValue());
+          return <span>{assignedUser?.FullName || 'N/A'}</span>;
+        },
+      },
     ],
-    []
+    [users]
   );
 
   const Toolbar = () => {
@@ -184,7 +213,19 @@ const CompanyTable = ({ type, onStatsUpdate }) => {
               />
             </label>
           </div>
-
+          <Select value={assignedFilter} onValueChange={setAssignedFilter}>
+            <SelectTrigger className="w-40" size="sm">
+              <SelectValue placeholder="Assigned To" />
+            </SelectTrigger>
+            <SelectContent>
+              <SelectItem value="all">All Users</SelectItem>
+              {users.map((user) => (
+                <SelectItem key={user._id} value={user._id}>
+                  {user.FullName}
+                </SelectItem>
+              ))}
+            </SelectContent>
+          </Select>
           <div className="flex flex-wrap gap-2.5">
             <Select value={statusFilter} onValueChange={handleStatusFilter}>
               <SelectTrigger className="w-28" size="sm">

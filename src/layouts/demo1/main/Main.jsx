@@ -3,7 +3,7 @@ import { useMenus } from '@/providers';
 import { Fragment, useEffect } from 'react';
 import { Helmet } from 'react-helmet-async';
 import { Outlet, useLocation } from 'react-router';
-import { Header, Sidebar, useDemo1Layout } from '../';
+import { Footer, Header, Sidebar, useDemo1Layout } from '../';
 const Main = () => {
   const { layout } = useDemo1Layout();
   const { pathname } = useLocation();
@@ -52,6 +52,7 @@ const Main = () => {
         <main className="grow content pt-5" role="content">
           <Outlet />
         </main>
+        <Footer />
       </div>
     </Fragment>
   );

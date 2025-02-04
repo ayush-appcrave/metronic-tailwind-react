@@ -7,6 +7,7 @@ import {
   SelectTrigger,
   SelectValue,
 } from '@/components/ui/select';
+import { Textarea } from '@/components/ui/textarea';
 import axios from 'axios';
 import clsx from 'clsx';
 import { City, State } from 'country-state-city';
@@ -15,12 +16,12 @@ import { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import * as Yup from 'yup';
 import { companyStatus, companyTypes } from '../../../../constants/company';
-
 const API_BASE_URL = import.meta.env.VITE_APP_API_URL;
 
 const ClientForm = ({ companyType, companyID }) => {
   const [selectedState, setSelectedState] = useState('');
   const [cities, setCities] = useState([]); // Store cities in state
+  const [users, setUsers] = useState([]);
 
   const indianStates = State.getStatesOfCountry('IN');
   const navigate = useNavigate();
@@ -44,6 +45,8 @@ const ClientForm = ({ companyType, companyID }) => {
       PocContact: '',
       PocEmail: '',
       ModeOfOperations: [],
+      AssignedTo: '',
+      Remarks: '',
     },
     validationSchema: Yup.object({
       CompanyName: Yup.string().required('Company name is required'),
@@ -76,6 +79,11 @@ const ClientForm = ({ companyType, companyID }) => {
             'Invalid mode of operation'
           )
         ),
+      AssignedTo: Yup.string().required('Please assign to a user'),
+      Remarks: Yup.string()
+        .required('Remarks are required')
+        .min(1, 'Remarks must be at least 1 characters')
+        .max(1000, 'Remarks must not exceed 1000 characters'),
     }),
 
     onSubmit: async (values, { setStatus, setSubmitting, resetForm }) => {
@@ -169,6 +177,8 @@ const ClientForm = ({ companyType, companyID }) => {
         PocContact: companyData.PocContact || '',
         PocEmail: companyData.PocEmail || '',
         ModeOfOperations: companyData.ModeOfOperations || [],
+        AssignedTo: companyData.AssignedTo || '',
+        Remarks: companyData.Remarks || '',
       });
     } catch (error) {
       console.error('Error fetching company details:', error);
@@ -187,7 +197,17 @@ const ClientForm = ({ companyType, companyID }) => {
       formik.setFieldValue('CompanyAddress.City', formik.values.CompanyAddress.City);
     }
   }, [cities]);
-
+  useEffect(() => {
+    const fetchUsers = async () => {
+      try {
+        const response = await axios.get(`${API_BASE_URL}/users`);
+        setUsers(response.data.data);
+      } catch (error) {
+        console.error('Error fetching users:', error);
+      }
+    };
+    fetchUsers();
+  }, []);
   return (
     <div className="card">
       <div className="card-header border-b border-gray-200 py-6">
@@ -473,7 +493,51 @@ const ClientForm = ({ companyType, companyID }) => {
             )}
           </div>
         </div>
+        <div className="grid grid-cols-1 gap-4">
+          <div className="flex flex-col gap-1">
+            <label className="form-label text-gray-900">
+              Assigned To <span className="text-danger">*</span>
+            </label>
+            <Select
+              value={formik.values.AssignedTo}
+              onValueChange={(value) => formik.setFieldValue('AssignedTo', value)}
+            >
+              <SelectTrigger
+                className={clsx('w-full', {
+                  'border-red-500': formik.touched.AssignedTo && formik.errors.AssignedTo,
+                })}
+              >
+                <SelectValue placeholder="Select User" />
+              </SelectTrigger>
+              <SelectContent>
+                {users.map((user) => (
+                  <SelectItem key={user._id} value={user._id}>
+                    {user.FullName}
+                  </SelectItem>
+                ))}
+              </SelectContent>
+            </Select>
+            {formik.touched.AssignedTo && formik.errors.AssignedTo && (
+              <span className="text-danger text-xs mt-1">{formik.errors.AssignedTo}</span>
+            )}
+          </div>
 
+          <div className="flex flex-col gap-1">
+            <label className="form-label text-gray-900">
+              Remarks <span className="text-danger">*</span>
+            </label>
+            <Textarea
+              placeholder="Enter remarks"
+              {...formik.getFieldProps('Remarks')}
+              className={clsx('min-h-[100px]', {
+                'border-red-500': formik.touched.Remarks && formik.errors.Remarks,
+              })}
+            />
+            {formik.touched.Remarks && formik.errors.Remarks && (
+              <span className="text-danger text-xs mt-1">{formik.errors.Remarks}</span>
+            )}
+          </div>
+        </div>
         <div className="flex justify-end gap-2">
           <button type="submit" className="btn btn-primary" disabled={formik.isSubmitting}>
             {companyID
