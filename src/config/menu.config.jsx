@@ -18,7 +18,16 @@ export const MENU_SIDEBAR = [
     icon: 'briefcase', // Business vendor icon
     path: '/company/vendor',
   },
-  
+
+  {
+    heading: 'Requirements',
+  },
+
+  {
+    title: 'Requirments',
+    icon: 'user-square', // Professional client icon
+    path: '/requirement',
+  },  
   {
     heading: 'User',
   },
