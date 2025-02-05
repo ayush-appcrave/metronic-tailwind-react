@@ -111,18 +111,34 @@ const RequirementForm = ({ requirementID }) => {
       </div>
 
       <form onSubmit={formik.handleSubmit} className="card-body flex flex-col gap-8 p-10">
-        {formik.status && <Alert variant={formik.status.type === 'success' ? 'success' : 'danger'}>{formik.status.message}</Alert>}
+        {formik.status && (
+          <Alert variant={formik.status.type === 'success' ? 'success' : 'danger'}>
+            {formik.status.message}
+          </Alert>
+        )}
 
         {/* Requirement Title */}
         <div className="flex flex-col gap-1">
-          <label className="form-label text-gray-900">Requirement Title <span className="text-danger">*</span></label>
-          <input type="text" {...formik.getFieldProps('requirement_title')} className="input" placeholder="Enter requirement title" />
+          <label className="form-label text-gray-900">
+            Requirement Title <span className="text-danger">*</span>
+          </label>
+          <input
+            type="text"
+            {...formik.getFieldProps('requirement_title')}
+            className="input"
+            placeholder="Enter requirement title"
+          />
         </div>
 
-        {/* Company */}
+        {/* Company Selection */}
         <div className="flex flex-col gap-1">
-          <label className="form-label text-gray-900">Company <span className="text-danger">*</span></label>
-          <Select value={formik.values.requirement_by} onValueChange={(value) => formik.setFieldValue('requirement_by', value)}>
+          <label className="form-label text-gray-900">
+            Company <span className="text-danger">*</span>
+          </label>
+          <Select
+            value={formik.values.requirement_by}
+            onValueChange={(value) => formik.setFieldValue('requirement_by', value)}
+          >
             <SelectTrigger className="w-full">
               <SelectValue placeholder="Select Company" />
             </SelectTrigger>
@@ -136,54 +152,207 @@ const RequirementForm = ({ requirementID }) => {
           </Select>
         </div>
 
-        {/* Other Fields */}
+        {/* Assigned To Selection */}
+        <div className="flex flex-col gap-1">
+          <label className="form-label text-gray-900">
+            Assign To <span className="text-danger">*</span>
+          </label>
+          <Select
+            value={formik.values.assigned_to}
+            onValueChange={(value) => formik.setFieldValue('assigned_to', value)}
+          >
+            <SelectTrigger className="w-full">
+              <SelectValue placeholder="Select User" />
+            </SelectTrigger>
+            <SelectContent>
+              {users.map((user) => (
+                <SelectItem key={user._id} value={user._id}>
+                  {user.FullName}
+                </SelectItem>
+              ))}
+            </SelectContent>
+          </Select>
+        </div>
+
+        {/* Number of Positions and Location */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
           <div className="flex flex-col gap-1">
-            <label className="form-label text-gray-900">Number of Positions <span className="text-danger">*</span></label>
-            <input type="number" {...formik.getFieldProps('number_of_positions')} className="input" />
+            <label className="form-label text-gray-900">
+              Number of Positions <span className="text-danger">*</span>
+            </label>
+            <input
+              type="number"
+              {...formik.getFieldProps('number_of_positions')}
+              className="input"
+              placeholder="Enter number of positions"
+            />
           </div>
 
           <div className="flex flex-col gap-1">
-            <label className="form-label text-gray-900">Location <span className="text-danger">*</span></label>
-            <input type="text" {...formik.getFieldProps('location')} className="input" placeholder="Enter location" />
+            <label className="form-label text-gray-900">
+              Location <span className="text-danger">*</span>
+            </label>
+            <input
+              type="text"
+              {...formik.getFieldProps('location')}
+              className="input"
+              placeholder="Enter location"
+            />
+          </div>
+        </div>
+
+        {/* Job Description */}
+        <div className="flex flex-col gap-1">
+          <label className="form-label text-gray-900">
+            Job Description <span className="text-danger">*</span>
+          </label>
+          <Textarea
+            {...formik.getFieldProps('job_description')}
+            className="input"
+            placeholder="Enter job description"
+          />
+        </div>
+
+        {/* Skills */}
+        <div className="flex flex-col gap-1">
+          <label className="form-label text-gray-900">
+            Skills <span className="text-danger">*</span>
+          </label>
+          <Textarea
+            {...formik.getFieldProps('skills')}
+            className="input"
+            placeholder="Enter required skills"
+          />
+        </div>
+
+        {/* Budget and Experience */}
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+          <div className="flex flex-col gap-1">
+            <label className="form-label text-gray-900">
+              Budget <span className="text-danger">*</span>
+            </label>
+            <input
+              type="text"
+              {...formik.getFieldProps('budget')}
+              className="input"
+              placeholder="Enter budget details"
+            />
+          </div>
+
+          <div className="flex flex-col gap-1">
+            <label className="form-label text-gray-900">
+              Experience <span className="text-danger">*</span>
+            </label>
+            <input
+              type="text"
+              {...formik.getFieldProps('experience')}
+              className="input"
+              placeholder="Enter required experience"
+            />
           </div>
         </div>
 
         {/* Status, Priority, Contract Type */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
           <div className="flex flex-col gap-1">
-            <label className="form-label text-gray-900">Status <span className="text-danger">*</span></label>
-            <Select value={formik.values.status} onValueChange={(value) => formik.setFieldValue('status', value)}>
+            <label className="form-label text-gray-900">
+              Status <span className="text-danger">*</span>
+            </label>
+            <Select
+              value={formik.values.status}
+              onValueChange={(value) => formik.setFieldValue('status', value)}
+            >
               <SelectTrigger className="w-full">
                 <SelectValue placeholder="Select Status" />
               </SelectTrigger>
               <SelectContent>
                 {Object.entries(requirementStatus).map(([key, value]) => (
-                  <SelectItem key={key} value={key}>{value}</SelectItem>
+                  <SelectItem key={key} value={key}>
+                    {value}
+                  </SelectItem>
                 ))}
               </SelectContent>
             </Select>
           </div>
 
           <div className="flex flex-col gap-1">
-            <label className="form-label text-gray-900">Priority <span className="text-danger">*</span></label>
-            <Select value={formik.values.priority} onValueChange={(value) => formik.setFieldValue('priority', value)}>
+            <label className="form-label text-gray-900">
+              Priority <span className="text-danger">*</span>
+            </label>
+            <Select
+              value={formik.values.priority}
+              onValueChange={(value) => formik.setFieldValue('priority', value)}
+            >
               <SelectTrigger className="w-full">
                 <SelectValue placeholder="Select Priority" />
               </SelectTrigger>
               <SelectContent>
                 {Object.entries(requirementPriority).map(([key, value]) => (
-                  <SelectItem key={key} value={key}>{value}</SelectItem>
+                  <SelectItem key={key} value={key}>
+                    {value}
+                  </SelectItem>
+                ))}
+              </SelectContent>
+            </Select>
+          </div>
+
+          <div className="flex flex-col gap-1">
+            <label className="form-label text-gray-900">
+              Contract Type <span className="text-danger">*</span>
+            </label>
+            <Select
+              value={formik.values.contract_type}
+              onValueChange={(value) => formik.setFieldValue('contract_type', value)}
+            >
+              <SelectTrigger className="w-full">
+                <SelectValue placeholder="Select Contract Type" />
+              </SelectTrigger>
+              <SelectContent>
+                {Object.entries(requirementContractType).map(([key, value]) => (
+                  <SelectItem key={key} value={key}>
+                    {value}
+                  </SelectItem>
                 ))}
               </SelectContent>
             </Select>
           </div>
         </div>
 
+        {/* Payroll */}
+        <div className="flex flex-col gap-1">
+          <label className="form-label text-gray-900">
+            Payroll <span className="text-danger">*</span>
+          </label>
+          <input
+            type="text"
+            {...formik.getFieldProps('payroll')}
+            className="input"
+            placeholder="Enter payroll details"
+          />
+        </div>
+
+        {/* Remarks */}
+        <div className="flex flex-col gap-1">
+          <label className="form-label text-gray-900">
+            Remarks
+          </label>
+          <Textarea
+            {...formik.getFieldProps('remarks')}
+            className="input"
+            placeholder="Enter remarks"
+          />
+        </div>
+
         {/* Submit Button */}
         <div className="flex justify-end gap-2">
           <button type="submit" className="btn btn-primary" disabled={formik.isSubmitting}>
-            {requirementID ? (formik.isSubmitting ? 'Updating...' : 'Update Requirement') : (formik.isSubmitting ? 'Creating...' : 'Create Requirement')}
+            {requirementID
+              ? formik.isSubmitting
+                ? 'Updating...'
+                : 'Update Requirement'
+              : formik.isSubmitting
+              ? 'Creating...'
+              : 'Create Requirement'}
           </button>
         </div>
       </form>
