@@ -77,16 +77,16 @@ const RequirementForm = ({ requirementID }) => {
   // Fetch companies
   useEffect(() => {
     const fetchCompanies = async () => {
-        try {
-            const response = await axios.get(`${API_BASE_URL}/company`, {
-                params: {
-                    type: 1
-                },
-            });
-            setCompanies(response.data.data.data);
-        } catch (error) {
-            console.error('Error fetching companies:', error);
-        }
+      try {
+        const response = await axios.get(`${API_BASE_URL}/company`, {
+          params: {
+            type: 1
+          },
+        });
+        setCompanies(response.data.data.data);
+      } catch (error) {
+        console.error('Error fetching companies:', error);
+      }
     };
     fetchCompanies();
   }, []);
@@ -103,7 +103,38 @@ const RequirementForm = ({ requirementID }) => {
     };
     fetchUsers();
   }, []);
-
+  useEffect(() => {
+    if (requirementID) {
+      const fetchRequirementDetails = async () => {
+        try {
+          const response = await axios.get(`${API_BASE_URL}/requirement/detail/${requirementID}`);
+          const requirementData = response.data.data;
+          if (requirementData) {
+            formik.setValues({
+              requirement_title: requirementData.requirement_title || '',
+              requirement_by: requirementData.requirement_by || '',
+              number_of_positions: requirementData.number_of_positions || '',
+              assigned_to: requirementData.assigned_to || '',
+              location: requirementData.location || '',
+              job_description: requirementData.job_description || '',
+              skills: requirementData.skills || '',
+              budget: requirementData.budget || '',
+              experience: requirementData.experience || '',
+              priority: requirementData.priority || '',
+              status: requirementData.status || '',
+              contract_type: requirementData.contract_type || '',
+              payroll: requirementData.payroll || '',
+              remarks: requirementData.remarks || '',
+            });
+          }
+        } catch (error) {
+          console.error('Error fetching requirement details:', error);
+        }
+      };
+      fetchRequirementDetails();
+    }
+  }, [requirementID]);
+  
   return (
     <div className="card">
       <div className="card-header border-b border-gray-200 py-6">
@@ -128,6 +159,9 @@ const RequirementForm = ({ requirementID }) => {
             className="input"
             placeholder="Enter requirement title"
           />
+          {formik.touched.requirement_title && formik.errors.requirement_title && (
+            <span className="text-danger text-xs mt-1">{formik.errors.requirement_title}</span>
+          )}
         </div>
 
         {/* Company Selection */}
@@ -150,6 +184,9 @@ const RequirementForm = ({ requirementID }) => {
               ))}
             </SelectContent>
           </Select>
+          {formik.touched.requirement_by && formik.errors.requirement_by && (
+            <span className="text-danger text-xs mt-1">{formik.errors.requirement_by}</span>
+          )}
         </div>
 
         {/* Assigned To Selection */}
@@ -172,6 +209,9 @@ const RequirementForm = ({ requirementID }) => {
               ))}
             </SelectContent>
           </Select>
+          {formik.touched.assigned_to && formik.errors.assigned_to && (
+            <span className="text-danger text-xs mt-1">{formik.errors.assigned_to}</span>
+          )}
         </div>
 
         {/* Number of Positions and Location */}
@@ -186,6 +226,9 @@ const RequirementForm = ({ requirementID }) => {
               className="input"
               placeholder="Enter number of positions"
             />
+            {formik.touched.number_of_positions && formik.errors.number_of_positions && (
+              <span className="text-danger text-xs mt-1">{formik.errors.number_of_positions}</span>
+            )}
           </div>
 
           <div className="flex flex-col gap-1">
@@ -198,6 +241,9 @@ const RequirementForm = ({ requirementID }) => {
               className="input"
               placeholder="Enter location"
             />
+            {formik.touched.location && formik.errors.location && (
+              <span className="text-danger text-xs mt-1">{formik.errors.location}</span>
+            )}
           </div>
         </div>
 
@@ -211,6 +257,9 @@ const RequirementForm = ({ requirementID }) => {
             className="input"
             placeholder="Enter job description"
           />
+          {formik.touched.job_description && formik.errors.job_description && (
+            <span className="text-danger text-xs mt-1">{formik.errors.job_description}</span>
+          )}
         </div>
 
         {/* Skills */}
@@ -223,6 +272,9 @@ const RequirementForm = ({ requirementID }) => {
             className="input"
             placeholder="Enter required skills"
           />
+          {formik.touched.skills && formik.errors.skills && (
+            <span className="text-danger text-xs mt-1">{formik.errors.skills}</span>
+          )}
         </div>
 
         {/* Budget and Experience */}
@@ -237,6 +289,9 @@ const RequirementForm = ({ requirementID }) => {
               className="input"
               placeholder="Enter budget details"
             />
+            {formik.touched.budget && formik.errors.budget && (
+              <span className="text-danger text-xs mt-1">{formik.errors.budget}</span>
+            )}
           </div>
 
           <div className="flex flex-col gap-1">
@@ -249,6 +304,9 @@ const RequirementForm = ({ requirementID }) => {
               className="input"
               placeholder="Enter required experience"
             />
+            {formik.touched.experience && formik.errors.experience && (
+              <span className="text-danger text-xs mt-1">{formik.errors.experience}</span>
+            )}
           </div>
         </div>
 
@@ -273,6 +331,9 @@ const RequirementForm = ({ requirementID }) => {
                 ))}
               </SelectContent>
             </Select>
+            {formik.touched.status && formik.errors.status && (
+              <span className="text-danger text-xs mt-1">{formik.errors.status}</span>
+            )}
           </div>
 
           <div className="flex flex-col gap-1">
@@ -294,6 +355,9 @@ const RequirementForm = ({ requirementID }) => {
                 ))}
               </SelectContent>
             </Select>
+            {formik.touched.priority && formik.errors.priority && (
+              <span className="text-danger text-xs mt-1">{formik.errors.priority}</span>
+            )}
           </div>
 
           <div className="flex flex-col gap-1">
@@ -315,6 +379,9 @@ const RequirementForm = ({ requirementID }) => {
                 ))}
               </SelectContent>
             </Select>
+            {formik.touched.contract_type && formik.errors.contract_type && (
+              <span className="text-danger text-xs mt-1">{formik.errors.contract_type}</span>
+            )}
           </div>
         </div>
 
@@ -329,18 +396,24 @@ const RequirementForm = ({ requirementID }) => {
             className="input"
             placeholder="Enter payroll details"
           />
+          {formik.touched.payroll && formik.errors.payroll && (
+            <span className="text-danger text-xs mt-1">{formik.errors.payroll}</span>
+          )}
         </div>
 
         {/* Remarks */}
         <div className="flex flex-col gap-1">
           <label className="form-label text-gray-900">
-            Remarks
+            Remarks <span className="text-danger">*</span>
           </label>
           <Textarea
             {...formik.getFieldProps('remarks')}
             className="input"
             placeholder="Enter remarks"
           />
+          {formik.touched.remarks && formik.errors.remarks && (
+            <span className="text-danger text-xs mt-1">{formik.errors.remarks}</span>
+          )}
         </div>
 
         {/* Submit Button */}
