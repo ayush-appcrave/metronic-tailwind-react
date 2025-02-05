@@ -44,7 +44,7 @@ const RequirementDetail = ({}) => {
               </ToolbarDescription>
             </ToolbarHeading>
             <ToolbarActions>
-              <Link to={`/Requirement}`} className="btn btn-sm btn-light">
+              <Link to={`/Requirement`} className="btn btn-sm btn-light">
                 Back to Requirements
               </Link>
             </ToolbarActions>
